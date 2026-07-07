@@ -316,6 +316,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 const CY = new Date().getFullYear();
 const PY = [CY, CY+1, CY+2, CY+3, CY+4]; 
 const LY = PY[4]; 
+  let state = { tickers: {} };
+let CT = "";
 
 function tickerCur(ticker){
   const sym=(state?.tickers?.[ticker]?.yahooSymbol||'').toUpperCase();
