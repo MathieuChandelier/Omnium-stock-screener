@@ -975,7 +975,7 @@ function renderPortfolio(){
     
     el.innerHTML=`
       <div class="pf-main">
-        <div class="pf-name">${d.name||tk}${(d.yahooSymbol&&d.yahooSymbol.toUpperCase()!==(d.name||tk).toUpperCase())?`<span class="pf-sym">${d.yahooSymbol}</span>`:''}</div>
+       <div class="pf-name">${d.name||tk}</div>
         <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
       </div>
       <div class="pf-metrics">
