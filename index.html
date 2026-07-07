@@ -885,7 +885,7 @@ function renderContextBullets(ticker, proj, cours){
   if(wrap)wrap.style.display='none';
   const traceEl=document.getElementById('last-event-trace');
   if(!traceEl)return;
-  const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese;
+  const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
