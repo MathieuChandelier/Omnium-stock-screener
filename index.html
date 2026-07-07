@@ -959,3 +959,59 @@ function renderPortfolio(){
   if(countEl)countEl.textContent=items.length+' titre'+(items.length!==1?'s':'');
   
   const hdr=document.getElementById('pf-col-header');
+  if(hdr) hdr.style.display = items.length ? 'flex' : 'none';
+
+  if(!items.length){
+    list.innerHTML='<div class="pf-empty">Aucun titre. database.json est peut-être vide ou non configuré.</div>';
+    return;
+  }
+  
+  const maxScore=Math.max(...items.map(x=>x.score),0.1);
+  items.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score})=>{
+    const el=document.createElement('div');
+    el.className='pf-item'+(tk===CT?' pf-active':'');
+    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
+    const barW=Math.round(score/maxScore*100);
+    
+    el.innerHTML=`
+      <div class="pf-main">
+        <div class="pf-name">${d.name||tk}${(d.yahooSymbol&&d.yahooSymbol.toUpperCase()!==(d.name||tk).toUpperCase())?`<span class="pf-sym">${d.yahooSymbol}</span>`:''}</div>
+        <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
+      </div>
+      <div class="pf-metrics">
+        <div class="pf-metric" style="min-width:90px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}" style="font-size:22px;">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric"><div class="pf-mv" style="font-size:22px;">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric"><div class="pf-mv" style="font-size:22px;">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+      </div>
+    `;
+    list.appendChild(el);
+  });
+}
+
+const PRICE_TTL=60*60*1000;
+function startPricePoll(){
+  if(CT) fetchLivePrice(CT);
+  setInterval(()=>{ if(CT) fetchLivePrice(CT); },PRICE_TTL);
+}
+
+document.addEventListener('DOMContentLoaded', async function(){
+  state = await loadState();
+  const keys = Object.keys(state.tickers);
+  if(keys.length > 0){
+    CT = keys[0];
+    try{loadTicker();}catch(e){}
+  }
+  refreshSelects();
+  showTab('portefeuille', document.getElementById('tab-btn-pf'));
+  const gd=document.getElementById('gen-date');
+  if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
+  setTimeout(startPricePoll,1500);
+});
+</script>
+
+<script id="omnium-state">
+{
+  "tickers": {}
+}
+</script>
+</body></html>
