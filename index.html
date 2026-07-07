@@ -313,15 +313,17 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
+// DECLARATION DES VARIABLES GLOBALES
+let state = { tickers: {} };
+let CT = "";
+
 const CY = new Date().getFullYear();
 const PY = [CY, CY+1, CY+2, CY+3, CY+4]; 
 const LY = PY[4]; 
-  let state = { tickers: {} };
-let CT = "";
 
 function tickerCur(ticker){
   const sym=(state?.tickers?.[ticker]?.yahooSymbol||'').toUpperCase();
-  if(!sym)return'';                            
+  if(!sym)return '';                            
   if(!sym.includes('.'))return'$';             
   if(sym.endsWith('.MI')||sym.endsWith('.PA')||sym.endsWith('.DE')||
      sym.endsWith('.AS')||sym.endsWith('.MC')||sym.endsWith('.BR')||
@@ -341,7 +343,7 @@ if(!CanvasRenderingContext2D.prototype.roundRect){
     this.beginPath();this.moveTo(x+r,y);this.lineTo(x+w-r,y);
     this.arcTo(x+w,y,x+w,y+r,r);this.lineTo(x+w,y+h-r);
     this.arcTo(x+w,y+h,x+w-r,y+h,r);this.lineTo(x+r,y+h);
-    this.arcTo(x,y+h,x,y+h-r,r);this.lineTo(x,y+r);
+    this.arcTo(x,y+h,x,y+h-r,r);this.lineTo(x+y,r);
     this.arcTo(x,y,x+r,y,r);this.closePath();return this;
   };
 }
@@ -363,18 +365,14 @@ function fingerprint(str){
   return h.toString(16).padStart(8,'0');
 }
 
-// ============================================================================
-// LOGIQUE DE CHARGEMENT DYNAMIQUE DU FICHIER VIA GITHUB (database.json)
-// ============================================================================
 async function loadState() {
   try {
     const response = await fetch('database.json');
     if (!response.ok) {
-      throw new Error(`Fichier database.json introuvable ou erreur HTTP: ${response.status}`);
+      throw new Error(`Fichier database.json introuvable: ${response.status}`);
     }
     const jsonData = await response.json();
     
-    // Calcul de l'empreinte pour le footer
     const fp = fingerprint(JSON.stringify(jsonData));
     const elFp = document.getElementById('data-fingerprint');
     if (elFp) elFp.textContent = fp;
@@ -468,7 +466,7 @@ function getProj(ticker){
 
 function checkEpsCoherence(d){
   const hyp=d&&d.hypothese;
-  if(!hyp)return[];
+  if(!hyp)return [];
   const bad=[];
   Object.keys(hyp.adjEPS||{}).forEach(y=>{
     const eps=+hyp.adjEPS[y],net=+(hyp.adjNet?.[y]),sh=+(hyp.adjShares?.[y]);
@@ -522,7 +520,7 @@ function refreshSelects(){
       const wrapper = document.createElement('div');
       wrapper.className = 'ctrl';
       wrapper.innerHTML = `<label>Titre actif</label><select id="analyse-select" onchange="loadTicker()"></select>`;
-      ctrlWrap.insertBefore(wrapper, ctrlWrap.firstChild); // Code corrigé
+      ctrlWrap.insertBefore(wrapper, ctrlWrap.firstChild);
       s=document.getElementById('analyse-select');
     }
   }
@@ -555,7 +553,6 @@ function saveYahooSymbol(v){
   if(state.tickers[CT]) state.tickers[CT].yahooSymbol=v.trim().toUpperCase();
 }
 
-/* ─── AUTO PRICE FETCH (Google + Yahoo fallback) ─── */
 const GOOGLE_FINANCE_URL='https://script.google.com/macros/s/AKfycbzlc2mqM71rf_zTMC7_wALi9VZEkHdOx9-VGlm8OE4vjZwM7wFh-7bVZH72JG_r_FdNwA/exec';
 const _fetchInFlight={}; 
 
@@ -644,7 +641,6 @@ function updatePriceDot(ts,stale){
   if(el)el.style.display='flex';
 }
 
-/* ─── CHARTS CONFIG ─── */
 let charts={};
 function dc(id){if(charts[id]){charts[id].destroy();delete charts[id];}}
 
@@ -661,7 +657,6 @@ const SC={
 const BASE_OPTS={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
   plugins:{legend:{display:false},tooltip:TT},scales:SC};
 
-/* ─── RENDERING ─── */
 function renderAnalyse(){
   const d=state.tickers[CT];
   if(!d) return;
@@ -746,7 +741,6 @@ function renderAnalyse(){
     tr.innerHTML=c;tbody.appendChild(tr);
   });
 
-  // Chart setup
   const histYrs=d.data.map(r=>r.year);
   const allYrs=[...histYrs,...PY];
   const n=histYrs.length;
@@ -889,7 +883,7 @@ function renderContextBullets(ticker, proj, cours){
   if(wrap)wrap.style.display='none';
   const traceEl=document.getElementById('last-event-trace');
   if(!traceEl)return;
-  const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
+  const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese;
   if(!lastEvt){traceEl.style.display='none';return;}
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
@@ -1018,4 +1012,5 @@ document.addEventListener('DOMContentLoaded', async function(){
   "tickers": {}
 }
 </script>
+</body></html>
 </body></html>
