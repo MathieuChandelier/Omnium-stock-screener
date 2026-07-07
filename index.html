@@ -520,8 +520,7 @@ function refreshSelects(){
       const wrapper = document.createElement('div');
       wrapper.className = 'ctrl';
       wrapper.innerHTML = `<label>Titre actif</label><select id="analyse-select" onchange="loadTicker()"></select>`;
-      ctrlWrap=ctrl=ctrl-label;
-      controls.insertBefore(wrapper, controls.firstChild);
+      ctrlWrap.insertBefore(wrapper, ctrlWrap.firstChild); // Code corrigé
       s=document.getElementById('analyse-select');
     }
   }
