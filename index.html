@@ -369,20 +369,44 @@ function fingerprint(str){
 
 async function loadState() {
   try {
-    const response = await fetch('database.json');
-    if (!response.ok) {
-      throw new Error(`Fichier database.json introuvable: ${response.status}`);
-    }
-    const jsonData = await response.json();
-    
+    // 1. Charge le manifeste : la liste des codes de titres a charger.
+    const manRes = await fetch('data/manifest.json');
+    if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
+    const manifest = await manRes.json();
+    const codes = manifest.tickers || [];
+
+    // 2. Charge chaque fichier de titre en parallele. Un fichier manquant ou
+    //    invalide ne bloque PAS les autres : il est juste ignore avec un
+    //    avertissement, pour qu'une erreur sur un seul titre n'empeche pas
+    //    l'affichage de tout le portefeuille (c'est tout le sens du
+    //    decoupage par fichier).
+    const results = await Promise.all(codes.map(async code => {
+      try {
+        const r = await fetch(`data/${code}.json`);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const obj = await r.json();
+        return [code, obj];
+      } catch (e) {
+        console.error(`loadState: data/${code}.json illisible -`, e);
+        showToast(`⚠ Titre ${code} illisible (data/${code}.json) - ignore.`, 6000);
+        return null;
+      }
+    }));
+
+    const tickers = {};
+    results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
+    const jsonData = { tickers };
+
+    // Empreinte calculee sur l'ensemble reconstitue, pour rester comparable
+    // a l'ancien comportement (verification de coherence entre onglets).
     const fp = fingerprint(JSON.stringify(jsonData));
     const elFp = document.getElementById('data-fingerprint');
     if (elFp) elFp.textContent = fp;
-    
+
     return normalizeState(jsonData);
   } catch (e) {
     console.error('loadState:', e);
-    showToast('⚠ Impossible de charger database.json. Vérifiez son format ou sa présence.', 8000);
+    showToast('⚠ Impossible de charger data/manifest.json. Verifiez sa presence.', 8000);
     return normalizeState({tickers:{}});
   }
 }
