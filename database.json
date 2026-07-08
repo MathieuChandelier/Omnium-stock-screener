@@ -1,161 +1,45 @@
 {
   "tickers": {
-  "name": "Brembo",
-  "cours": 10.6,
-  "yahooSymbol": "BRE.MI",
-  "dividende": 0.3,
-  "data": [
-    {
-      "year": 2015,
-      "ca": 2073,
-      "ebit": 258,
-      "net": 198,
-      "shares": 320,
-      "nd": 290
+    "BREMBO": {
+      "name": "Brembo",
+      "cours": 10.6,
+      "yahooSymbol": "BRE.MI",
+      "dividende": 0.3,
+      "data": [
+        {"year": 2015, "ca": 2073, "ebit": 258, "net": 198, "shares": 320, "nd": 290},
+        {"year": 2016, "ca": 2284, "ebit": 312, "net": 249, "shares": 320, "nd": 190},
+        {"year": 2017, "ca": 2490, "ebit": 368, "net": 310, "shares": 320, "nd": 150},
+        {"year": 2018, "ca": 2627, "ebit": 399, "net": 266, "shares": 320, "nd": 200},
+        {"year": 2019, "ca": 2628, "ebit": 330, "net": 253, "shares": 320, "nd": 346},
+        {"year": 2020, "ca": 2266, "ebit": 183, "net": 166, "shares": 320, "nd": 385},
+        {"year": 2021, "ca": 2752, "ebit": 268, "net": 243, "shares": 320, "nd": 412, "div": 0.27},
+        {"year": 2022, "ca": 3554, "ebit": 383, "net": 310, "shares": 320, "nd": 502, "div": 0.28},
+        {"year": 2023, "ca": 3892, "ebit": 414, "net": 333, "shares": 320, "nd": 455, "div": 0.3},
+        {"year": 2024, "ca": 3841, "ebit": 393, "net": 263, "shares": 319, "nd": 360, "div": 0.3},
+        {"year": 2025, "ca": 3700, "ebit": 337, "net": 206, "shares": 899, "nd": 35235, "div": 6}
+      ],
+      "epsConsensus": {
+        "year": 2026,
+        "eps": 1.53,
+        "epsNY": 1.69,
+        "date": "2026-07-03",
+        "source": "Consensus officiel Bureau Veritas"
+      },
+      "particularites": [],
+      "hypothese": {
+        "date": "2026-07-05",
+        "source": "Creation de la position - Transcript Q1 2026",
+        "summary": "Compounder-acquereur de qualite (DBS), leader bioprocessing/diagnostics/life sciences en reacceleration.",
+        "text": "== EVENEMENTS & INFLEXIONS ==\n1. REACCELERATION BIOPROCESSING : commandes d'equipement +30% g.a. au T1 2026.\n2. GUIDANCE FY2026 RELEVEE : core revenue maintenu a +3-6%.\n3. ACQUISITION MASIMO EN COURS, PAS CLOTUREE : accord SIGNE le 17 fevrier 2026, cloture S2 2026.\n4. BUYBACKS EN PAUSE : rachats d'actions tombes a ~0,5 Md$ (TTM) contre 3,1 Md$ en 2025.",
+        "impact": "positif",
+        "adjEPS": {"2026": 6.43, "2027": 6.86, "2028": 7.78, "2029": 8.73, "2030": 9.68},
+        "adjCA": {"2026": 26186, "2027": 28835, "2028": 30544, "2029": 32262, "2030": 33916},
+        "adjEBIT": {"2026": 5767, "2027": 6457, "2028": 7118, "2029": 7770, "2030": 8419},
+        "adjNet": {"2026": 4596, "2027": 4886, "2028": 5510, "2029": 6134, "2030": 6755},
+        "adjND": {"2026": 21000, "2027": 17500, "2028": 13500, "2029": 9500, "2030": 5500},
+        "adjShares": {"2026": 715, "2027": 712, "2028": 708, "2029": 703, "2030": 698}
+      }
     },
-    {
-      "year": 2016,
-      "ca": 2284,
-      "ebit": 312,
-      "net": 249,
-      "shares": 320,
-      "nd": 190
-    },
-    {
-      "year": 2017,
-      "ca": 2490,
-      "ebit": 368,
-      "net": 310,
-      "shares": 320,
-      "nd": 150
-    },
-    {
-      "year": 2018,
-      "ca": 2627,
-      "ebit": 399,
-      "net": 266,
-      "shares": 320,
-      "nd": 200
-    },
-    {
-      "year": 2019,
-      "ca": 2628,
-      "ebit": 330,
-      "net": 253,
-      "shares": 320,
-      "nd": 346
-    },
-    {
-      "year": 2020,
-      "ca": 2266,
-      "ebit": 183,
-      "net": 166,
-      "shares": 320,
-      "nd": 385
-    },
-    {
-      "year": 2021,
-      "ca": 2752,
-      "ebit": 268,
-      "net": 243,
-      "shares": 320,
-      "nd": 412,
-      "div": 0.27
-    },
-    {
-      "year": 2022,
-      "ca": 3554,
-      "ebit": 383,
-      "net": 310,
-      "shares": 320,
-      "nd": 502,
-      "div": 0.28
-    },
-    {
-      "year": 2023,
-      "ca": 3892,
-      "ebit": 414,
-      "net": 333,
-      "shares": 320,
-      "nd": 455,
-      "div": 0.3
-    },
-    {
-      "year": 2024,
-      "ca": 3841,
-      "ebit": 393,
-      "net": 263,
-      "shares": 319,
-      "nd": 360,
-      "div": 0.3
-    },
-    {
-      "year": 2025,
-      "ca": 3702.7,
-      "ebit": 336.5,
-      "net": 209.3,
-      "shares": 318,
-      "nd": 719.2,
-      "div": 0.3
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 0.69,
-    "epsNY": 0.76,
-    "date": "2026-07-07",
-    "source": "Reconstruit sur guidance RELEVEE FY2026 (+3% cc, EBITDA margin ~16,5%). Reporte proprement (peu d'ecart underlying). Target consensus ~10,92 EUR (Buy ; fourchette UBS 8,20 / high 12,60). Prochaine publ. 29/07"
-  },
-  "particularites": [],
-  "hypothese": {
-    "date": "2026-07-07",
-    "source": "Refresh - Transcript T1 2026 (fourni par Mathieu) + FY2025 + recherche publique. Reconstruit a neuf au standard compact.",
-    "summary": "Leader mondial du freinage haute performance (fosse techno/marque premium), en transition software-defined (Sensify) + diversification (Ohlins, aftermarket, coated discs). GUIDANCE RELEVEE a +3% cc (volume/mix). SENSIFY EN SERIE chez un constructeur mondial = catalyseur de VOLUME/valeur, ramp 2027 (mais DILUTIF a la marge a court terme, accretif seulement une fois les volumes solides). Marge groupe guidee STABLE ~16,5% (mgmt refuse de la relever). adjEPS 0,69->1,11 (2026-2030, +10% seulement en 2027 sur ramp dilutif, accel 2028+). Format compact.",
-    "impact": "positif",
-    "adjEPS": {
-      "2026": 0.69,
-      "2027": 0.76,
-      "2028": 0.88,
-      "2029": 1.0,
-      "2030": 1.11
-    },
-    "adjCA": {
-      "2026": 3759,
-      "2027": 3965,
-      "2028": 4203,
-      "2029": 4434,
-      "2030": 4656
-    },
-    "adjEBIT": {
-      "2026": 342,
-      "2027": 366,
-      "2028": 410,
-      "2029": 451,
-      "2030": 491
-    },
-    "adjNet": {
-      "2026": 217,
-      "2027": 238,
-      "2028": 272,
-      "2029": 305,
-      "2030": 336
-    },
-    "adjND": {
-      "2026": 650,
-      "2027": 520,
-      "2028": 360,
-      "2029": 180,
-      "2030": 0
-    },
-    "adjShares": {
-      "2026": 316,
-      "2027": 312,
-      "2028": 309,
-      "2029": 306,
-      "2030": 303
-    }
-  }
-},
     "INSULET": {
       "name": "Insulet Corporation",
       "cours": 159.77,
@@ -571,4 +455,4 @@
       }
     }
   }
-
+}
