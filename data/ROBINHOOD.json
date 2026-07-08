@@ -1,0 +1,110 @@
+{
+  "name": "Robinhood Markets",
+  "cours": 117.55,
+  "yahooSymbol": "HOOD",
+  "dividende": 0,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 1815,
+      "ebit": -3684,
+      "net": -3687,
+      "shares": 492,
+      "nd": -6200
+    },
+    {
+      "year": 2022,
+      "ca": 1358,
+      "ebit": -1020,
+      "net": -1028,
+      "shares": 879,
+      "nd": -6300
+    },
+    {
+      "year": 2023,
+      "ca": 1865,
+      "ebit": -530,
+      "net": -541,
+      "shares": 887,
+      "nd": -4800
+    },
+    {
+      "year": 2024,
+      "ca": 2951,
+      "ebit": 1090,
+      "net": 1411,
+      "shares": 905,
+      "nd": -4300
+    },
+    {
+      "year": 2025,
+      "ca": 4470,
+      "ebit": 2180,
+      "net": 1900,
+      "shares": 927,
+      "nd": -4300
+    }
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 1.91,
+    "epsNY": 2.6,
+    "date": "2026-07-02",
+    "source": "Consensus 33 analystes (S&P Global via WallStreetZen)"
+  },
+  "particularites": [
+    {
+      "text": "Publication MENSUELLE des metriques operationnelles (volumes actions/options/crypto/event contracts, depots nets) permettant un nowcast intra-trimestriel precis du CA et de l'EPS avant leur publication.",
+      "valuePct": null
+    }
+  ],
+  "hypothese": {
+    "date": "2026-07-05",
+    "source": "Creation - Transcript T1 2026 + metriques mensuelles avril/mai/MTD juin",
+    "summary": "Financial SuperApp. Guidance 'croissance rentable' traitee en contrainte dure. Inflexion Rothera (couche bourse prediction markets, marge quasi 100%) quantifiee via build-up par segments. Nowcast T2 ~1 213M$ (+23%).",
+    "text": "== SYNTHESE DE LA THESE ==\nRobinhood construit la \"Financial SuperApp\" de la nouvelle generation d'investisseurs americains : courtage (actions/options/crypto/prediction markets), gestion, banque (Gold Card) et acces aux marches prives. La these combine trois moteurs : diversification des revenus au-dela du trading, options de croissance quasi gratuites (Trump Accounts, Rothera), et discipline capitalistique (rachats, actions stables). Rothera (JV Susquehanna, bourse de prediction markets en propre, lancement T2 2026) est l'inflexion la plus importante : elle double les unit economics sur ce segment en explosion, a marge incrementale quasi 100%.\n\n== EVENEMENTS & INFLEXIONS (T1 2026) ==\n1. ROTHERA / PREDICTION MARKETS [classe (ii), QUANTIFIE, inflexion principale] : marche en explosion (event contracts ~6,2Md extrapoles en juin). Rothera donne a Robinhood la couche BOURSE en propre (vs bourses tierces payantes) -> unit economics qui doublent sur ce flux, marge incrementale quasi 100%. Modelise : ligne prediction/futures 150M$ (2026) -> 290M$ (2027, annee pleine).\n2. SUPPRESSION DE LA REGLE PDT PAR LA FINRA [classe (iii), optionnalite non chiffrable] : retire un frein structurel a l'engagement des petits comptes actifs.\n3. TRUMP ACCOUNTS [classe (i)] : 5,5M d'enfants inscrits sur 60M eligibles, courtier-depositaire exclusif avec BNY, contrat cost-plus rentable des 2026 (pipeline generationnel de clients).\n4. NOWCAST T2 2026 (application de la particularite) : donnees mensuelles avril/mai + communique MTD juin (volumes records : actions ~400Md$, event contracts ~6,2Md) -> T2 estime a ~1 213M$ (+23% yoy), acceleration nette intra-trimestre.\n\n== PARTICULARITES ==\nPublication MENSUELLE des metriques operationnelles permettant un nowcast intra-trimestriel precis - applique a chaque refresh.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (28 avril). Secondaires : metriques mensuelles avril/mai 2026, FY2025 (CA 4 470M$, EBIT 2 180M$, net 1 900M$). Cours ~118$, ~927M actions.\nGuidance : OpEx ajustes+SBC 2026 RELEVEE a 2,7-2,825Md$ (Trump Accounts). Croissance rentable = contrainte dure.\nProchain refresh utile : T2 2026 fin juillet + metriques de juin mi-juillet.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBuild-up par 6 segments (actions, options, crypto, prediction markets, interets nets, autres). Base = resultat avant impots (comme une fintech). IS normatif glissant 15% (2026) -> 19% (2030), demarre pres du reel 2025 (~13%) pour eviter une fausse marche. Marge pretax 45,7% (2026, annee d'investissement) -> 50,0% (2030, effet mix Rothera).\nA suivre : (1) confronter les economics reels de Rothera au build-up ; (2) effet PDT sur les petits comptes ; (3) confronter le nowcast au CA T2 realise.\n\n== CATALYSEURS ==\nTrump Accounts (pipeline generationnel) ; Rothera (integration verticale prediction markets) ; Gold Card (>1M de cartes visees) ; Great Wealth Transfer (~124 000Md$) + suppression regle PDT ; Ventures (RVI, OpenAI) ; rachats (dilution SBC neutralisee).",
+    "impact": "positif",
+    "adjEPS": {
+      "2026": 2.12,
+      "2027": 2.61,
+      "2028": 3.03,
+      "2029": 3.42,
+      "2030": 3.81
+    },
+    "adjCA": {
+      "2026": 4950,
+      "2027": 5950,
+      "2028": 6800,
+      "2029": 7600,
+      "2030": 8400
+    },
+    "adjEBIT": {
+      "2026": 2262,
+      "2027": 2808,
+      "2028": 3291,
+      "2029": 3747,
+      "2030": 4200
+    },
+    "adjNet": {
+      "2026": 1923,
+      "2027": 2359,
+      "2028": 2732,
+      "2029": 3073,
+      "2030": 3402
+    },
+    "adjND": {
+      "2026": -4600,
+      "2027": -5300,
+      "2028": -6200,
+      "2029": -7300,
+      "2030": -8500
+    },
+    "adjShares": {
+      "2026": 907,
+      "2027": 905,
+      "2028": 902,
+      "2029": 898,
+      "2030": 894
+    }
+  }
+}
