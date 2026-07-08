@@ -1,0 +1,110 @@
+{
+  "name": "Eli Lilly",
+  "cours": 1200.06,
+  "yahooSymbol": "LLY",
+  "dividende": 6.92,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 28318.4,
+      "ebit": 6357,
+      "net": 5581.7,
+      "shares": 912,
+      "nd": 13000,
+      "div": 3.4
+    },
+    {
+      "year": 2022,
+      "ca": 28541.4,
+      "ebit": 8280.4,
+      "net": 6244.8,
+      "shares": 905,
+      "nd": 13700,
+      "div": 3.91
+    },
+    {
+      "year": 2023,
+      "ca": 34124.1,
+      "ebit": 10325,
+      "net": 5240,
+      "shares": 903,
+      "nd": 22400,
+      "div": 4.52
+    },
+    {
+      "year": 2024,
+      "ca": 45043,
+      "ebit": 17040,
+      "net": 10590,
+      "shares": 904,
+      "nd": 30100,
+      "div": 5.2
+    },
+    {
+      "year": 2025,
+      "ca": 65179,
+      "ebit": 29696,
+      "net": 20640,
+      "shares": 899,
+      "nd": 35235,
+      "div": 6
+    }
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 37.13,
+    "epsNY": 45.34,
+    "date": "2026-07-02",
+    "source": "WallStreetZen (consensus ~34 analystes)"
+  },
+  "particularites": [],
+  "hypothese": {
+    "date": "2026-07-02",
+    "source": "Transcript Q1 2026 (conference call)",
+    "summary": "Trajectoire 2027-2030 reconstruite sur logique de penetration de marche (Medicare Bridge, lancement international Foundayo) plutot que decroissance mecanique de CAGR. Marge EBIT 2026 relevee sur nouvelle guidance explicite.",
+    "text": "== SYNTHESE DE LA THESE ==\nEli Lilly est le leader mondial des GLP-1 (Mounjaro/Zepbound) et du traitement du diabete/obesite, en hypercroissance exceptionnelle (CA +45% en 2025). La these repose sur trois leviers de penetration de marche distincts plutot que sur une simple extrapolation : le Medicare GLP-1 Bridge (nouveau canal de remboursement US), le lancement international de Foundayo (GLP-1 oral, expansion du marche adressable sans cannibalisation), et la penetration internationale encore faible hors des marches deja matures (Bresil, Coree).\n\n== EVENEMENTS & INFLEXIONS (Q1 2026) ==\n1. CA 2026 CONFIRME, GUIDANCE RELEVEE : nouvelle guidance officielle $82-85Md (vs $80-83Md), soit +28% au midpoint.\n2. MARGE 2026 RELEVEE : nouvelle guidance explicite \"non-GAAP performance margin\" 47-48,5% (vs hypothese initiale 44%). Modele applique une decote conservatrice (45,5%) faute de reconciliation GAAP precise.\n3. CA 2027-2030 RECONSTRUIT SUR LOGIQUE DE PENETRATION : Medicare Bridge monte en charge sur toute l'annee 2027 (pas un simple effet de base qui s'estompe). Foundayo : 20 000 patients traites, 80% \"new-to-class\" - expansion reelle du marche. International : le GAIN de part devient plus difficile dans les marches deja penetres (~53% OUS), mais le moteur bascule vers la croissance du marche sous-jacent dans les geographies encore peu penetrees.\n4. PRIX EN BAISSE, VOLUME SURCOMPENSATEUR : prix US -7% au T1 (jusqu'a -10% hors ajustement), reponse du volume qualifiee de \"nonlinear\" par le CEO.\n5. BUSINESS DEVELOPMENT : 4 acquisitions au seul T1 2026 (Orna, Centessa, Kelonia, Ajax), rythme de M&A actif finance par la dette.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript Q1 2026. Secondaires : FY2025 (CA 65 179M$, EBIT 29 696M$, net 20 640M$). Cours ~1 200$, ~899M actions.\nGuidance FY2026 : CA $82-85Md, non-GAAP performance margin 47-48,5%.\nProchain refresh utile : Q2 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nMarge EBIT 2026 relevee a 45,5% (decote conservatrice vs la guidance non-GAAP 47-48,5%, faute de reconciliation precise disponible). CA 2027 legerement releve (106 700 vs 105 000).\nA suivre : (1) montee en charge Medicare Bridge sur 2027 ; (2) lancements internationaux Foundayo (40+ pays en revue) ; (3) rythme M&A et impact dette ; (4) reponse volume a la baisse de prix US.\n\n== CATALYSEURS ==\nMedicare GLP-1 Bridge (nouveau canal US) ; Foundayo oral (expansion marche, 40+ pays) ; penetration internationale encore faible (hors Bresil/Coree) ; pipeline retatrutide et molecules suivantes ; volume surcompensant la baisse de prix.",
+    "impact": "positif",
+    "adjEPS": {
+      "2026": 37.13,
+      "2027": 46.03,
+      "2028": 54.52,
+      "2029": 62.65,
+      "2030": 70.33
+    },
+    "adjCA": {
+      "2026": 84700,
+      "2027": 106700,
+      "2028": 128000,
+      "2029": 148500,
+      "2030": 167800
+    },
+    "adjEBIT": {
+      "2026": 38539,
+      "2027": 47758,
+      "2028": 57920,
+      "2029": 67743,
+      "2030": 76921
+    },
+    "adjNet": {
+      "2026": 33230,
+      "2027": 40970,
+      "2028": 48250,
+      "2029": 55130,
+      "2030": 61540
+    },
+    "adjND": {
+      "2026": 42000,
+      "2027": 44000,
+      "2028": 40000,
+      "2029": 32000,
+      "2030": 20000
+    },
+    "adjShares": {
+      "2026": 895,
+      "2027": 890,
+      "2028": 885,
+      "2029": 880,
+      "2030": 875
+    }
+  }
+}
