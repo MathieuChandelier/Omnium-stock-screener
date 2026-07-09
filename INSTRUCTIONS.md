@@ -229,6 +229,15 @@ e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
    reste en GAAP/IFRS PUBLIE ; les adjXXX sont sur cette base normalisee,
    PAS sur l'adjusted flatteur.
 
+### E5 bis. PARAMÈTRE UNIQUE (règle anti-incohérence)
+Tout écart de normalisation utilisé pour passer d'un "ajusté" du management à
+une base réintégrée (ex: amortissement d'acquisition, effet fiscal ponctuel)
+est calculé UNE SEULE FOIS, explicité comme un paramètre nommé avec sa valeur
+(ex: "écart PPA Luminex ≈ 91 M€/an"), et réutilisé tel quel partout où il
+s'applique - dans la base historique ET dans la projection. Ne jamais
+recalculer le même écart par une seconde méthode sans confronter explicitement
+le nouveau résultat à la première valeur obtenue.
+
 ### E6. RECONCILIATION (REFRESH UNIQUEMENT ; sans objet en creation)
 E4-E5 se font A NEUF (jamais depuis les anciens adjXXX du JSON fourni) ; E6
 confronte ENSUITE au passe.
@@ -257,6 +266,14 @@ b) Pas de fausse marche a la soudure (dernier exercice publie -> 1ere
    annee) sur AUCUNE ligne.
 c) Vraisemblance generale : "si je montrais cette trajectoire au CFO, la
    reconnaitrait-il comme une lecture raisonnable ?"
+c-ter) Pour CHAQUE ligne (CA, EBIT, marge, net, EPS), calculer explicitement
+le delta chiffré entre le dernier exercice publié et la 1ère année projetée
+(en % et en points pour les marges), et vérifier que ce delta est entièrement
+expliqué par des éléments déjà énoncés dans le texte (guidance, normalisation
+fiscale, one-off exclu, etc.). Un delta qui ne se laisse pas rattacher à une
+explication déjà écrite est un signal d'incohérence de calcul, pas une
+hypothèse à documenter après coup.
+   
 d) Incoherence residuelle -> ESCALADE plutot que figer une trajectoire
    douteuse.
 
