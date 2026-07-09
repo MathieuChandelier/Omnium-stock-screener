@@ -584,11 +584,23 @@ function saveYahooSymbol(v){
 }
 
 const GOOGLE_FINANCE_URL='https://script.google.com/macros/s/AKfycbzlc2mqM71rf_zTMC7_wALi9VZEkHdOx9-VGlm8OE4vjZwM7wFh-7bVZH72JG_r_FdNwA/exec';
+// Proxy Yahoo Finance côté serveur (PHP, hébergé chez toi) - remplace la
+// chaîne de proxys CORS publics utilisée précédemment. A adapter avec ton
+// propre domaine une fois price.php déposé par FTP.
+const YAHOO_PROXY_URL='https://model.omnium-capital.com/price.php';
 const _fetchInFlight={}; 
 
-function _priceIsPlausible(p,ref){
+function _priceIsPlausible(p,ref,liveConfirmed){
   if(!Number.isFinite(p)||p<=0)return false;
-  if(ref>0 && (p>ref*4 || p<ref/4))return false;
+  // Le "cours" venant du JSON n'est qu'une valeur de secours (jamais
+  // réécrite sur GitHub après un fetch live - voir saveState()). Tant
+  // qu'aucun prix live n'a été confirmé dans CETTE session, on ne doit
+  // pas s'en servir comme borne : un cours de secours obsolète ou faux
+  // bloquerait alors indéfiniment toute correction (le filtre se
+  // compare toujours à la dernière valeur connue, qui resterait la
+  // valeur fausse puisqu'elle ne serait jamais remplacée). Seul un prix
+  // déjà confirmé en live sert de garde-fou contre un vrai bug d'API.
+  if(liveConfirmed && ref>0 && (p>ref*4 || p<ref/4))return false;
   return true;
 }
 
@@ -603,19 +615,13 @@ async function fetchFromGoogleFinance(sym){
 }
 
 async function _fetchFromYahoo(sym){
-  const chartUrl='https://query1.finance.yahoo.com/v8/finance/chart/'+sym+'?interval=1d&range=1d';
-  const quoteUrl='https://query1.finance.yahoo.com/v10/finance/quoteSummary/'+sym+'?modules=summaryDetail';
-  const viaAllorigins=async(url)=>{const r=await fetch('https://api.allorigins.win/get?url='+encodeURIComponent(url),{signal:AbortSignal.timeout(8000)});if(!r.ok)throw 0;const o=await r.json();return JSON.parse(o.contents||'{}');};
-  const viaAlloriginsRaw=async(url)=>{const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(url),{signal:AbortSignal.timeout(8000)});if(!r.ok)throw 0;return await r.json();};
-  const viaCorsproxy=async(url)=>{const r=await fetch('https://corsproxy.io/?url='+encodeURIComponent(url),{signal:AbortSignal.timeout(8000)});if(!r.ok)throw 0;return await r.json();};
-  const viaCodetabs=async(url)=>{const r=await fetch('https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(url),{signal:AbortSignal.timeout(8000)});if(!r.ok)throw 0;return await r.json();};
-  const fetchJson=async(url)=>{for(const fn of[viaAllorigins,viaAlloriginsRaw,viaCorsproxy,viaCodetabs]){try{const d=await fn(url);if(d&&Object.keys(d).length)return d;}catch(e){}}return null;};
-  const [pd,dd]=await Promise.all([fetchJson(chartUrl),fetchJson(quoteUrl)]);
-  const price=+pd?.chart?.result?.[0]?.meta?.regularMarketPrice;
-  const sd=dd?.quoteSummary?.result?.[0]?.summaryDetail;
-  const div=sd?.trailingAnnualDividendRate?.raw ?? sd?.dividendRate?.raw ?? null;
-  if(price&&price>0)return{price,div};
-  return null;
+  try{
+    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(8000)});
+    if(!r.ok)return null;
+    const j=await r.json();
+    if(!j||!j.price)return null;
+    return{price:+j.price, div:(j.div!=null?+j.div:null)};
+  }catch(e){ return null; }
 }
 
 async function autoFetchPrice(ticker,force){
@@ -630,18 +636,20 @@ async function autoFetchPrice(ticker,force){
   _fetchInFlight[ticker]=true;
   const sym=(d.yahooSymbol||'').trim();
   const ref=+d.cours||0;
+  const liveConfirmed=!!d._liveConfirmed;
   let finalPrice=null, finalDiv=null, source='';
   try{
     const gf=await fetchFromGoogleFinance(sym);
-    if(_priceIsPlausible(gf,ref)){ finalPrice=gf; source='google'; }
+    if(_priceIsPlausible(gf,ref,liveConfirmed)){ finalPrice=gf; source='google'; }
     if(finalPrice===null){
       const y=await _fetchFromYahoo(sym);
-      if(y && _priceIsPlausible(y.price,ref)){ finalPrice=y.price; finalDiv=y.div; source='yahoo'; }
+      if(y && _priceIsPlausible(y.price,ref,liveConfirmed)){ finalPrice=y.price; finalDiv=y.div; source='yahoo'; }
     }
   }catch(e){}
   d._lastFetchAttemptAt=Date.now();
   if(finalPrice!==null){
     d.cours=+finalPrice.toFixed(2);
+    d._liveConfirmed=true;
     d._priceCache={price:d.cours,ts:Date.now()};
     d._priceUpdatedAt=Date.now();
     d._priceSource=source;
