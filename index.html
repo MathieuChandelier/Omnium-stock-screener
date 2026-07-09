@@ -267,11 +267,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div class="controls">
     <div class="ctrl">
-      <label id="cours-label" style="display:flex;align-items:center;gap:5px;">Cours (€)</label>
+      <label id="cours-label" style="display:flex;align-items:center;gap:5px;">Cours (<span id="cours-cur">€</span>)</label>
       <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
     </div>
     <div class="ctrl">
-      <label>Symbole Yahoo</label>
+      <label>Ticker</label>
       <input type="text" id="yahoo-symbol" placeholder="ex: BRE.MI" style="width:100px;" oninput="saveYahooSymbol(this.value)">
     </div>
     <div class="price-auto" id="price-status" style="display: none;">
@@ -293,7 +293,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
 
   <div class="card" style="margin-bottom:18px;">
-    <div class="card-title" style="display:flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.02em;text-transform:none;color:var(--navy);"><b>EPS</b> <span style="color:var(--muted);font-weight:600;">(€/action)</span> <span id="eps-pill"></span></div>
+    <div class="card-title" style="display:flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.02em;text-transform:none;color:var(--navy);"><b>EPS</b> <span style="color:var(--muted);font-weight:600;">(<span id="eps-cur">€</span>/action)</span> <span id="eps-pill"></span></div>
     <div class="chart-wrap" style="height:260px"><canvas id="cEPS" style="box-sizing: border-box; display: block; height: 260px; width: 1064px;"></canvas></div>
     <div id="pe-row" style="position: relative; height: 44px; margin-top: 8px;"></div>
   </div>
@@ -526,14 +526,18 @@ function refreshAllPrices(){
   });
   if(!keys.length)return;
   _refreshAllInFlight=true;
+  // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
+  // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
+  // en quelques secondes au lieu de defiler titre par titre.
+  const CONCURRENCY=6;
   let i=0;
-  (function next(){
-    if(i>=keys.length){_refreshAllInFlight=false;return;}
-    const tk=keys[i++];
-    Promise.resolve(autoFetchPrice(tk,false)).catch(()=>{}).finally(()=>{
-      setTimeout(next,350);
-    });
-  })();
+  const worker=async()=>{
+    while(i<keys.length){
+      const tk=keys[i++];
+      try{ await autoFetchPrice(tk,false); }catch(e){}
+    }
+  };
+  Promise.all(Array.from({length:CONCURRENCY},worker)).finally(()=>{_refreshAllInFlight=false;});
 }
 
 function refreshSelects(){
@@ -644,10 +648,12 @@ async function autoFetchPrice(ticker,force){
     if(finalDiv!==null && finalDiv>=0){
       d.dividende=+(+finalDiv).toFixed(4);
     }
-    const coursEl=document.getElementById('cours');
-    if(coursEl && CT===ticker) coursEl.value=d.cours;
     updatePriceDot(d._priceUpdatedAt,false);
-    renderAnalyse();renderPortfolio();
+    // Mise a jour ciblee : pas de renderAnalyse() complet ici, pour ne pas
+    // recreer le graphe EPS (effet de "saut" visuel) ni refermer le panneau
+    // "Hypothese actuelle" que l'utilisateur est peut-etre en train de lire.
+    refreshPriceOnly(ticker);
+    renderPortfolio();
   } else {
     updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt,true);
   }
@@ -670,6 +676,41 @@ function updatePriceDot(ts,stale){
 let charts={};
 function dc(id){if(charts[id]){charts[id].destroy();delete charts[id];}}
 
+// Dessine la ligne de multiples P/E sous le graphe EPS a partir des metadonnees
+// deja calculees par Chart.js (chart.getDatasetMeta). Independant du cours :
+// peut etre rappele a tout moment (rafraichissement de prix) SANS recreer le
+// graphe ni provoquer une animation/re-render visible.
+function drawPERow(chart,opts){
+  const el=document.getElementById('pe-row');
+  if(!el||!chart||!opts)return;
+  const {n,cours}=opts;
+  el.innerHTML='';
+  el.style.cssText='position:relative;height:44px;margin-top:8px;';
+  const meta=chart.getDatasetMeta(1);
+  const ca=chart.chartArea;
+  const lbl=document.createElement('span');
+  lbl.textContent='P/E';
+  lbl.style.cssText=`position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.75;`;
+  el.appendChild(lbl);
+  const firstPt=meta.data[n];
+  if(firstPt){
+    const lineEnd=firstPt.x-28;
+    const line=document.createElement('div');
+    line.style.cssText=`position:absolute;left:${ca.left}px;width:${Math.max(0,lineEnd-ca.left)}px;top:50%;border-top:1px dashed rgba(0,1,144,.15);pointer-events:none;`;
+    el.appendChild(line);
+  }
+  meta.data.forEach((pt,i)=>{
+    if(i<n)return;
+    const val=chart.data.datasets[1].data[i];
+    if(!val)return;
+    const pe=cours/val;
+    const span=document.createElement('span');
+    span.textContent=pe.toFixed(1)+'×';
+    span.style.cssText=`position:absolute;left:${pt.x}px;transform:translateX(-50%);top:50%;margin-top:-14px;font-size:16px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;background:rgba(0,1,144,.08);padding:4px 12px;border-radius:6px;white-space:nowrap;`;
+    el.appendChild(span);
+  });
+}
+
 const TT={
   backgroundColor:'rgba(0,1,80,0.93)',titleColor:'#2BD8C2',bodyColor:'rgba(255,255,255,0.88)',
   borderColor:'rgba(43,216,194,0.25)',borderWidth:1,padding:10,cornerRadius:8,displayColors:false,
@@ -689,7 +730,7 @@ function renderAnalyse(){
   const tblTitle=document.getElementById('analyse-tbl-title');
   if(tblTitle){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    tblTitle.innerHTML=`<div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:0;line-height:1.15;margin-bottom:2px;">${_nm}</div><b>Données historiques &amp; Projections</b>`;
+    tblTitle.innerHTML=`<div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:0;line-height:1.15;margin-bottom:12px;">${_nm}</div><b>Données historiques &amp; Projections</b>`;
   }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
@@ -710,7 +751,9 @@ function renderAnalyse(){
 
   const ea=d.data.map(epsR);
   const ly=d.data[d.data.length-1].year;
-  const cur=tickerCur(CT)||'€';  
+  const cur=tickerCur(CT)||'€';
+  const curCoursEl=document.getElementById('cours-cur'); if(curCoursEl)curCoursEl.textContent=cur;
+  const curEpsEl=document.getElementById('eps-cur'); if(curEpsEl)curEpsEl.textContent=cur;
   const last5=d.data.slice(-5);
 
   const headRow=document.getElementById('analyse-head');
@@ -773,42 +816,13 @@ function renderAnalyse(){
   const histEPS=ea.map(v=>+v.toFixed(2));
   const projEPS=[...Array(n-1).fill(null),ea[ea.length-1],...PY.map(y=>+proj[y].eps.toFixed(2))];
 
-  const peRowPlugin={
-    id:'peRow',
-    afterRender(chart){
-      const el=document.getElementById('pe-row');
-      if(!el)return;el.innerHTML='';
-      el.style.cssText='position:relative;height:44px;margin-top:8px;';
-      const meta=chart.getDatasetMeta(1);
-      const ca=chart.chartArea;
-      const lbl=document.createElement('span');
-      lbl.textContent='P/E';
-      lbl.style.cssText=`position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.75;`;
-      el.appendChild(lbl);
-      const firstPt=meta.data[n];
-      if(firstPt){
-        const lineEnd=firstPt.x-28;
-        const line=document.createElement('div');
-        line.style.cssText=`position:absolute;left:${ca.left}px;width:${Math.max(0,lineEnd-ca.left)}px;top:50%;border-top:1px dashed rgba(0,1,144,.15);pointer-events:none;`;
-        el.appendChild(line);
-      }
-      meta.data.forEach((pt,i)=>{
-        if(i<n)return;
-        const val=chart.data.datasets[1].data[i];
-        if(!val)return;
-        const pe=cours/val;
-        const span=document.createElement('span');
-        span.textContent=pe.toFixed(1)+'×';
-        span.style.cssText=`position:absolute;left:${pt.x}px;transform:translateX(-50%);top:50%;margin-top:-14px;font-size:16px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;background:rgba(0,1,144,.08);padding:4px 12px;border-radius:6px;white-space:nowrap;`;
-        el.appendChild(span);
-      });
-    }
-  };
-
   dc('cEPS');
   charts.cEPS=new Chart(document.getElementById('cEPS'),{
     type:'line',
-    plugins:[peRowPlugin],
+    // Le plugin lit ses options via chart.options.plugins.peRow (n, cours) :
+    // on peut donc mettre ces valeurs a jour plus tard (nouveau cours) et
+    // rappeler drawPERow() directement, sans recreer/re-animer le graphe.
+    plugins:[{id:'peRow',afterRender:(chart,args,options)=>drawPERow(chart,options)}],
     data:{labels:allYrs,datasets:[
       {data:[...histEPS,...Array(5).fill(null)],borderColor:'rgba(0,1,144,.7)',backgroundColor:'rgba(0,1,144,.04)',fill:true,tension:.35,pointRadius:3.5,borderWidth:2.5},
       {data:projEPS,borderColor:'#2BD8C2',backgroundColor:'rgba(43,216,194,.05)',fill:false,tension:.35,pointRadius:5,borderWidth:2.5,borderDash:[7,4],
@@ -818,13 +832,40 @@ function renderAnalyse(){
     options:{
       ...BASE_OPTS,
       plugins:{...BASE_OPTS.plugins,
-        tooltip:{...TT,filter:item=>!(item.datasetIndex===1&&item.dataIndex===n-1),callbacks:{label:c=>`EPS : ${c.parsed.y.toFixed(2)}€`}}
+        tooltip:{...TT,filter:item=>!(item.datasetIndex===1&&item.dataIndex===n-1),callbacks:{label:c=>`EPS : ${c.parsed.y.toFixed(2)}${cur}`}},
+        peRow:{n,cours}
       }
     }
   });
 
   renderReturnBlock(CT,proj,cours);
   renderContextBullets(CT,proj,cours);
+}
+
+// Rafraichissement "leger" declenche par un prix qui vient d'etre recupere en
+// arriere-plan (autoFetchPrice). Contrairement a renderAnalyse(), il ne
+// touche NI au tableau NI au graphe EPS (recree a chaque appel sinon, avec
+// une animation qui donne l'impression que la courbe "saute") NI a
+// l'encadre "Hypothese actuelle" (dont renderContextBullets() reinitialise
+// l'etat deplie/replie a chaque appel). Il se contente de mettre a jour ce
+// qui depend reellement du cours : le champ Cours, le bloc "These Omnium"
+// (rendement, P/E) et la ligne de multiples P/E sous le graphe.
+function refreshPriceOnly(ticker){
+  if(ticker!==CT || !charts.cEPS) return;
+  const d=state.tickers[ticker];
+  if(!d)return;
+  const coursEl=document.getElementById('cours');
+  if(coursEl) coursEl.value=d.cours;
+  const cours=+d.cours||0;
+  let proj;
+  try{({proj}=getProj(ticker));}catch(e){return;}
+  renderReturnBlock(ticker,proj,cours);
+  const chart=charts.cEPS;
+  const peOpts=chart?.options?.plugins?.peRow;
+  if(peOpts){
+    peOpts.cours=cours;
+    drawPERow(chart,peOpts);
+  }
 }
 
 function renderReturnBlock(ticker, proj, cours){
