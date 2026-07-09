@@ -256,8 +256,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div class="pf-col-header" id="pf-col-header" style="display: flex;"><div class="pf-col-name-spacer"></div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl" style="min-width:90px;">CAGR Return</div>
-        <div class="pf-col-lbl">P/E 2026</div>
-        <div class="pf-col-lbl">P/E 2027</div>
+        <div class="pf-col-lbl">P/E N</div>
+        <div class="pf-col-lbl">P/E N+1</div>
       </div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
@@ -319,9 +319,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 let state = { tickers: {} };
 let CT = "";
 
-const CY = new Date().getFullYear();
-const PY = [CY, CY+1, CY+2, CY+3, CY+4]; 
-const LY = PY[4]; 
+// La première année de projection de CHAQUE titre n'est plus déduite de
+// l'horloge système, mais de la dernière année réellement présente dans
+// son historique "data" (+1). Tant qu'un refresh n'a pas intégré les
+// résultats d'un exercice clôturé, rien ne bouge pour ce titre - peu
+// importe la date du jour. Chaque titre suit ainsi son propre calendrier
+// de publication réel plutôt qu'une règle de date générique.
+function yearsFor(ticker){
+  const d = state.tickers[ticker];
+  const lastHist = (d && d.data && d.data.length) ? d.data[d.data.length-1].year : (new Date().getFullYear()-1);
+  const cy = lastHist + 1;
+  const py = [cy, cy+1, cy+2, cy+3, cy+4];
+  return { CY: cy, PY: py, LY: py[4] };
+}
 
 function tickerCur(ticker){
   const sym=(state?.tickers?.[ticker]?.yahooSymbol||'').toUpperCase();
@@ -450,6 +460,7 @@ function getProj(ticker){
   const ca=d.data.map(r=>r.ca),eb=d.data.map(r=>r.ebit),
         nt=d.data.map(r=>r.net),nd=d.data.map(r=>r.nd),sh=d.data.map(r=>r.shares);
   const ly=d.data[d.data.length-1].year;
+  const PY=[ly+1,ly+2,ly+3,ly+4,ly+5]; // propre à CE titre, voir yearsFor()
   const lastCA=ca[ca.length-1],lastEB=eb[eb.length-1],
         lastNT=nt[nt.length-1],lastND=nd[nd.length-1],lastSH=sh[sh.length-1];
   const st=a=>{const s=cagr(a.slice(-3));return s||cagr(a);};
@@ -747,6 +758,7 @@ function renderAnalyse(){
   }
   const cours=+document.getElementById('cours').value||1.0;
   const div=d.dividende||0;
+  const {CY,PY,LY}=yearsFor(CT);
   let proj,date,evtName;
   try{({proj,date,evtName}=getProj(CT));}catch(e){console.error(e);return;}
 
@@ -880,6 +892,7 @@ function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
   const d=state.tickers[ticker];
+  const {CY,LY}=yearsFor(ticker);
   const cur=tickerCur(ticker)||'€';
   const div=d.dividende||0;
   const epsCY=proj[CY]?.eps||0;
@@ -995,6 +1008,7 @@ function calcScore(ticker){
   if(!d||!d.data||d.data.length<2)return 0;
   const cours=d.cours||100;
   const{proj}=getProj(ticker);
+  const {CY,LY}=yearsFor(ticker);
   const epsCY=proj[CY]?.eps||0,eps30=proj[LY]?.eps||0;
   if(epsCY<=0||eps30<=0)return 0;
   const cagrEps=((Math.pow(eps30/epsCY,0.25))-1)*100;
@@ -1016,6 +1030,7 @@ function renderPortfolio(){
       try{
         const cours=d.cours||100;
         const{proj}=getProj(tk);
+        const {CY,LY}=yearsFor(tk);
         const div=d.dividende||0;
         const epsCY=proj[CY]?.eps||0,eps27=proj[CY+1]?.eps||0,eps30=proj[LY]?.eps||0;
         const cagrEps=(epsCY>0&&eps30>0)?((Math.pow(eps30/epsCY,0.25))-1)*100:0;
