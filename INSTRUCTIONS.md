@@ -47,6 +47,9 @@ data/
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
     "impact":"positif|negatif|neutre",
+    "ancrages":[
+      {"id":"identifiant_court","moteur":"Mecanisme en une phrase complete, jamais un chiffre seul.","applique":["adjCA.2026","adjEBIT.2026"],"confiance":"haute|moyenne|basse"}
+    ],
     "adjEPS":{"2026":0.70,"2027":...},
     "adjCA":{"2026":3820,...},
     "adjEBIT":{...},
@@ -62,6 +65,15 @@ accent (ex: `BUREAUVERITAS`, `DELONGHI`). Les cles adjXXX sont indexees par
 annee (les 5 annees de projection en cours). Seules les annees/metriques
 renseignees ecrasent la base CAGR historique automatique ; le reste continue
 a etre extrapole depuis "data" par le moteur.
+
+Le champ `ancrages` est la liste des MOTEURS nommes qui justifient les
+adjXXX : un identifiant court, le mecanisme en une phrase (jamais un chiffre
+seul), les lignes/annees ou il s'applique (`applique`, en notation
+`champ.annee`), et un niveau de confiance optionnel. Chaque ancrage est
+calcule UNE SEULE FOIS et reutilise tel quel partout ou il s'applique (voir
+E5bis). Ce champ decharge `hypothese.text` du "pourquoi chiffre" ligne par
+ligne : le texte reste reserve aux decisions de modelisation non triviales
+qui ne se reduisent pas a un moteur nommable (voir E8).
 
 ## LES DEUX SEULES OPERATIONS
 
@@ -129,7 +141,8 @@ NEUF (il ne pousse jamais l'ancienne projection d'un cran).
 
 ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
 retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
-uniquement] reconciliation (E6) -> controle final de vraisemblance (E7) ->
+uniquement] reconciliation en deux temps, projection independante puis
+confrontation (E6-a / E6-b) -> controle final de vraisemblance (E7) ->
 ecriture unique (E8).
 
 GEOMETRIE VARIABLE : la profondeur d'analyse s'adapte a la complexite du
@@ -137,7 +150,9 @@ titre, ETAPE PAR ETAPE. Un mono-produit a guidance simple traverse en ligne
 droite ; un conglomerat aux divisions divergentes declenche le build-up.
 "Sans objet, une ligne" est un resultat valide. But : la justesse au moindre
 effort, pas l'exhaustivite systematique. SEULES exceptions jamais "sans
-objet" : E4, E5 et E7 s'appliquent toujours (rapides si rien a redresser).
+objet" : E4, E5 et E7 s'appliquent toujours (rapides si rien a redresser) ;
+en refresh, E6-a s'applique toujours egalement (voir plus bas - c'est le
+mecanisme d'independance, il ne se raccourcit pas meme sur un titre simple).
 
 REGLE D'ESCALADE : face a une incoherence MATERIELLE non resolue (segments
 incompatibles avec la guidance, sources contradictoires sur un chiffre cle),
@@ -186,7 +201,10 @@ c) DECOMPOSITION PAR SEGMENTS - seulement si l'entreprise publie des
    pertinent : build-up bottom-up confronte au total E1-E2.
 
 ### E4. RETROFIT n°1 - SCHEMA DE PROJECTION (CA & MARGE), toujours
-a) CROISSANCE DU CA annee par annee, rattachee a des moteurs sources.
+a) CROISSANCE DU CA annee par annee, rattachee a des moteurs sources. Chaque
+   moteur non trivial devient une entree `ancrages` (id, mecanisme en une
+   phrase, annees d'application) plutot qu'une justification qui ne vivrait
+   que dans le raisonnement du moment.
 b) MARGE EN %, confrontee aux trois ancrages : (1) historique (rythme en
    pb/an normalise) ; (2) resultats recents + guidance annee en cours
    (base RECURRENTE, one-offs retraites) ; (3) cibles moyen/long terme
@@ -232,32 +250,56 @@ e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
 ### E5 bis. PARAMÈTRE UNIQUE (règle anti-incohérence)
 Tout écart de normalisation utilisé pour passer d'un "ajusté" du management à
 une base réintégrée (ex: amortissement d'acquisition, effet fiscal ponctuel)
-est calculé UNE SEULE FOIS, explicité comme un paramètre nommé avec sa valeur
-(ex: "écart PPA Luminex ≈ 91 M€/an"), et réutilisé tel quel partout où il
-s'applique - dans la base historique ET dans la projection. Ne jamais
+est calculé UNE SEULE FOIS, enregistré comme une entrée du champ `ancrages`
+(id, mécanisme, valeur explicite dans le mécanisme - ex: "écart PPA Luminex
+≈ 91 M€/an"), et réutilisé tel quel partout où il s'applique - dans la base
+historique ET dans la projection. `hypothese.text` n'a pas à re-décrire un
+écart déjà porté par `ancrages` ; il peut s'y référer par id. Ne jamais
 recalculer le même écart par une seconde méthode sans confronter explicitement
 le nouveau résultat à la première valeur obtenue.
 
 ### E6. RECONCILIATION (REFRESH UNIQUEMENT ; sans objet en creation)
 E4-E5 se font A NEUF (jamais depuis les anciens adjXXX du JSON fourni) ; E6
-confronte ENSUITE au passe.
-a) TABLEAU D'ECARTS sur les annees communes (l'horizon glisse).
+confronte ENSUITE au passe. Cette etape se deroule en DEUX TEMPS
+STRICTEMENT SEPARES, et affiches comme tels dans la reponse : jamais un
+tableau unique retouche discretement apres consultation de l'ancien fichier.
+
+#### E6-a. PROJECTION INDEPENDANTE (toujours, jamais "sans objet" en refresh)
+Avant toute relecture ou mention des anciens adjXXX, affiche le resultat
+complet de E1-E5 : le tableau adjCA/adjEBIT/adjNet/adjEPS/adjND propose,
+accompagne de ses `ancrages` (id + mecanisme + annees d'application). C'est
+le produit brut du raisonnement a neuf - il ne doit pas avoir ete lisse ou
+rapproche, meme legerement, de l'ancienne trajectoire au-dela des trois
+entrees deja autorisees en tete de boucle (borne temporelle E1, verrous
+dans `hypothese.text`, agenda a solder). Si l'ancien JSON a du etre consulte
+plus largement avant ce stade pour une raison quelconque, le signaler
+explicitement plutot que de laisser planer un risque d'ancrage silencieux.
+
+#### E6-b. CONFRONTATION
+Une fois E6-a fige et affiche, confronte-le a l'ancienne `hypothese` :
+a) TABLEAU D'ECARTS sur les annees communes (l'horizon glisse), colonne par
+   colonne entre E6-a et l'ancienne projection.
 b) MATERIALITE : ~5% sur adjCA/adjEBIT/adjNet, ~1pt de marge, ~2pts de
    ratio de conversion.
 c) CLASSEMENT de chaque ecart materiel : (a) information nouvelle sourcee ;
    (b) correction d'erreur de l'ancienne version - dit sans pudeur ; (c)
-   changement de jugement - justifie moteur par moteur. SYMETRIE : l'absence
-   d'ecart face a un fait nouveau majeur est aussi suspecte qu'un ecart
-   inexplique.
+   changement de jugement - justifie moteur par moteur, en pointant vers
+   l'`ancrages` correspondant de E6-a. SYMETRIE : l'absence d'ecart face a
+   un fait nouveau majeur est aussi suspecte qu'un ecart inexplique.
 d) VERROUS HERITES (dans l'ancien `hypothese.text`, section PARAMETRES &
-   POINTS DE SUIVI) : chacun RE-ATTESTE contre les donnees du trimestre -
+   POINTS DE SUIVI, et dans l'ancien `ancrages` s'il existe) : chacun
+   RE-ATTESTE contre les `ancrages` de E6-a et les donnees du trimestre -
    reconduit explicitement, ou leve avec justification sourcee. Jamais
    recopie mecaniquement ni ignore.
 e) QUESTIONS D'AGENDA HERITEES : chaque question de l'ancienne WATCH-LIST
    DOIT etre soldee ici.
 f) GARDE-FOU ANTI-ANCRAGE : l'ancienne projection est une base de
    comparaison, jamais une cible. Un ecart bien classe vaut mieux qu'une
-   fausse continuite.
+   fausse continuite. Le tableau E6-a n'est PAS retouche a ce stade pour se
+   rapprocher de l'ancien : seule la version confrontee/validee issue de
+   E6-b peut ajuster E6-a, et uniquement si E6-b revele une erreur reelle
+   dans le raisonnement de E6-a (classe b) - jamais pour coller a l'ancien
+   par confort.
 
 ### E7. CONTROLE FINAL DE VRAISEMBLANCE, toujours, juste avant l'ecriture
 Relis la serie adjXXX COMPLETE :
@@ -269,23 +311,25 @@ c) Vraisemblance generale : "si je montrais cette trajectoire au CFO, la
 c-ter) Pour CHAQUE ligne (CA, EBIT, marge, net, EPS), calculer explicitement
 le delta chiffré entre le dernier exercice publié et la 1ère année projetée
 (en % et en points pour les marges), et vérifier que ce delta est entièrement
-expliqué par des éléments déjà énoncés dans le texte (guidance, normalisation
-fiscale, one-off exclu, etc.). Un delta qui ne se laisse pas rattacher à une
-explication déjà écrite est un signal d'incohérence de calcul, pas une
-hypothèse à documenter après coup.
-   
+expliqué par un `ancrages` déjà déclaré (ou, à défaut d'ancrage nommable, par
+un élément déjà énoncé dans le texte : guidance, normalisation fiscale,
+one-off exclu, etc.). Un delta qui ne se laisse rattacher à aucun ancrage ni
+à aucune explication déjà écrite est un signal d'incohérence de calcul, pas
+une hypothèse à documenter après coup.
 d) Incoherence residuelle -> ESCALADE plutot que figer une trajectoire
    douteuse.
 
 ### E8. ECRITURE UNIQUE - STANDARD D'ARCHIVAGE
 
-Ecris `hypothese` (elle REMPLACE entierement l'ancienne). Le champ `text`
-est le SEUL document archive du titre : une note compacte, PAS un rapport
-narratif. Il ne stocke QUE ce que les champs structures (data, adjXXX,
-particularites) ne portent pas et que le modele ne reconstruit pas seul.
-Ne jamais re-narrer des chiffres deja presents dans data/adjXXX ni dans le
-transcript source. Budget cible ~5000-9000 caracteres. SIX rubriques
-majuscules "== RUBRIQUE ==", dans cet ordre :
+Ecris `hypothese` (elle REMPLACE entierement l'ancienne, `ancrages` inclus).
+Le champ `text` est le SEUL document archive narratif du titre : une note
+compacte, PAS un rapport. Il ne stocke QUE ce que les champs structures
+(data, adjXXX, particularites, `ancrages`) ne portent pas et que le modele
+ne reconstruit pas seul. Ne jamais re-narrer un chiffre deja present dans
+data/adjXXX, ni un mecanisme deja porte par une entree `ancrages` (y
+referer par id si besoin), ni un fait deja dans le transcript source.
+Budget cible ~5000-9000 caracteres. SIX rubriques majuscules "==
+RUBRIQUE ==", dans cet ordre :
 
 1. **SYNTHESE DE LA THESE** (~800-1200 car.) : un paragraphe de cadrage qui
    explique le PARI CENTRAL en une lecture continue - pourquoi on detient
@@ -303,20 +347,24 @@ majuscules "== RUBRIQUE ==", dans cet ordre :
    DIRECTIONNELLE seulement (contraintes dures) - jamais la re-narration
    du detail trimestriel par segment/geographie + la date du prochain
    refresh utile.
-5. **PARAMETRES & POINTS DE SUIVI** (fusion pont + agenda) : les seuls
-   parametres necessaires pour reconstruire/verifier (base comptable
-   ajustee vs publiee, ETR, net financier, ratio de conversion, tendance
-   adjShares) en quelques lignes - pas la pedagogie du pont. Puis la
-   WATCH-LIST : les questions que le prochain refresh devra solder. C'est
-   la matiere la plus utile au refresh suivant.
+5. **PARAMETRES & POINTS DE SUIVI** (fusion pont + agenda) : une mention
+   synthetique renvoyant aux `ancrages` structures pour le "pourquoi
+   chiffre" (pas de re-narration), plus les seuls parametres qui ne vivent
+   pas dans `ancrages` (base comptable ajustee vs publiee, ETR, net
+   financier, tendance adjShares) en quelques lignes. Puis la WATCH-LIST :
+   les questions que le prochain refresh devra solder. C'est la matiere la
+   plus utile au refresh suivant, avec `ancrages`.
 6. **CATALYSEURS** : une ligne dense (pas une liste longue).
 
-Ce qui est PRESERVE imperativement : toute HYPOTHESE DE MODELISATION non
-triviale qui ne vit QUE dans le "text" (ex: "conflit traite comme
-circonscrit, recovery Q2 assumee", "CA cale sur le consensus officiel") -
-c'est le seul fragment de prose qui porte une decision de modelisation.
-Ce standard ne change RIEN a la construction des projections (E1->E8,
-adjXXX identiques) : il regit seulement la forme du document archive.
+Ce qui est PRESERVE imperativement dans le texte : toute HYPOTHESE DE
+MODELISATION non triviale qui ne se reduit PAS a un moteur nommable en
+`ancrages` (ex: "conflit traite comme circonscrit, recovery Q2 assumee",
+"CA cale sur le consensus officiel") - c'est le fragment de prose qui porte
+une decision de modelisation, pas un chiffre. Ce standard ne change RIEN a
+la construction des projections (E1->E8, adjXXX identiques) : il regit
+seulement la forme du document archive et la repartition entre `ancrages`
+(mecanismes nommes, verifiables, reutilisables) et `text` (decisions de
+lecture non reductibles a un moteur).
 
 ## LIVRABLE FINAL
 
@@ -334,5 +382,8 @@ adjXXX identiques) : il regit seulement la forme du document archive.
 L'utilisateur fournit le JSON existant du titre dans sa requete (source de
 la borne temporelle E1 et de la base de reconciliation E6) : pas besoin de
 confirmer le nom/code, il est deja connu.
-1. Fournis uniquement le contenu JSON MIS A JOUR du fichier (meme schema),
-   pret a remplacer le fichier `data/CODE.json` existant sur GitHub tel quel.
+1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation)
+   comme deux blocs distincts dans la reponse, avant le JSON final.
+2. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
+   `ancrages` inclus), pret a remplacer le fichier `data/CODE.json` existant
+   sur GitHub tel quel.
