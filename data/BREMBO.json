@@ -4,17 +4,99 @@
   "yahooSymbol": "BRE.MI",
   "dividende": 0.3,
   "data": [
-    {"year": 2015, "ca": 2073, "ebit": 258, "net": 198, "shares": 320, "nd": 290},
-    {"year": 2016, "ca": 2284, "ebit": 312, "net": 249, "shares": 320, "nd": 190},
-    {"year": 2017, "ca": 2490, "ebit": 368, "net": 310, "shares": 320, "nd": 150},
-    {"year": 2018, "ca": 2627, "ebit": 399, "net": 266, "shares": 320, "nd": 200},
-    {"year": 2019, "ca": 2628, "ebit": 330, "net": 253, "shares": 320, "nd": 346},
-    {"year": 2020, "ca": 2266, "ebit": 183, "net": 166, "shares": 320, "nd": 385},
-    {"year": 2021, "ca": 2752, "ebit": 268, "net": 243, "shares": 320, "nd": 412, "div": 0.27},
-    {"year": 2022, "ca": 3554, "ebit": 383, "net": 310, "shares": 320, "nd": 502, "div": 0.28},
-    {"year": 2023, "ca": 3892, "ebit": 414, "net": 333, "shares": 320, "nd": 455, "div": 0.3},
-    {"year": 2024, "ca": 3841, "ebit": 393, "net": 263, "shares": 319, "nd": 360, "div": 0.3},
-    {"year": 2025, "ca": 3702.7, "ebit": 336.5, "net": 209.3, "shares": 318, "nd": 719.2, "div": 0.3}
+    {
+      "year": 2015,
+      "ca": 2073,
+      "ebit": 258,
+      "net": 198,
+      "shares": 320,
+      "nd": 290
+    },
+    {
+      "year": 2016,
+      "ca": 2284,
+      "ebit": 312,
+      "net": 249,
+      "shares": 320,
+      "nd": 190
+    },
+    {
+      "year": 2017,
+      "ca": 2490,
+      "ebit": 368,
+      "net": 310,
+      "shares": 320,
+      "nd": 150
+    },
+    {
+      "year": 2018,
+      "ca": 2627,
+      "ebit": 399,
+      "net": 266,
+      "shares": 320,
+      "nd": 200
+    },
+    {
+      "year": 2019,
+      "ca": 2628,
+      "ebit": 330,
+      "net": 253,
+      "shares": 320,
+      "nd": 346
+    },
+    {
+      "year": 2020,
+      "ca": 2266,
+      "ebit": 183,
+      "net": 166,
+      "shares": 320,
+      "nd": 385
+    },
+    {
+      "year": 2021,
+      "ca": 2752,
+      "ebit": 268,
+      "net": 243,
+      "shares": 320,
+      "nd": 412,
+      "div": 0.27
+    },
+    {
+      "year": 2022,
+      "ca": 3554,
+      "ebit": 383,
+      "net": 310,
+      "shares": 320,
+      "nd": 502,
+      "div": 0.28
+    },
+    {
+      "year": 2023,
+      "ca": 3892,
+      "ebit": 414,
+      "net": 333,
+      "shares": 320,
+      "nd": 455,
+      "div": 0.3
+    },
+    {
+      "year": 2024,
+      "ca": 3841,
+      "ebit": 393,
+      "net": 263,
+      "shares": 319,
+      "nd": 360,
+      "div": 0.3
+    },
+    {
+      "year": 2025,
+      "ca": 3702.7,
+      "ebit": 336.5,
+      "net": 209.3,
+      "shares": 318,
+      "nd": 719.2,
+      "div": 0.3
+    }
   ],
   "epsConsensus": {
     "year": 2026,
@@ -26,6 +108,16 @@
   "particularites": [],
   "hypothese": {
     "date": "2026-07-09",
+    "priorEPS": {
+      "date": "2026-07-07",
+      "eps": {
+        "2026": 0.69,
+        "2027": 0.76,
+        "2028": 0.88,
+        "2029": 1.0,
+        "2030": 1.11
+      }
+    },
     "source": "Refresh (audit de rigueur, nouveau standard ancrages) - meme transcript T1 2026 (deja integre au refresh du 07/07, aucune donnee externe nouvelle publiee depuis) + FY2025. Boucle E1-E8 redeployee a neuf, E6-a/E6-b appliques pour verifier et tracer les mecanismes de la trajectoire. Prochaine donnee reelle : S1 2026, 29/07.",
     "summary": "Leader mondial du freinage haute performance (fosse techno/marque premium), en transition software-defined (Sensify) + diversification (Ohlins, aftermarket, coated discs). GUIDANCE +3% cc / marge STABLE ~16,5% reiterees. Audit confirme : trajectoire deja bien construite, AUCUNE contribution Sensify chiffree n'est injectee dans les adjXXX (management refuse de la sizer) - pur upside non modelise. adjEPS 0,69->1,11 (2026-2030), explique par marge/desendettement/buyback seuls.",
     "text": "== EVENEMENTS & INFLEXIONS (T1 2026, publie 07/05 - source inchangee) ==\nPari : leader mondial des systemes de freinage haute performance (fosse technologique, marque premium), en transition vers le freinage software-defined (Sensify) et la diversification (Ohlins, aftermarket, coated discs). Impact : positif.\n1. GUIDANCE FY2026 RELEVEE [classe (i)] : apres un T1 solide, guidance relevee a +3% cc (vs prudence 0% de mars, contre 3-5% qui aurait ete guide hors conflit Moyen-Orient selon le management lui-meme). Tire par VOLUME/MIX (Motorbike, Aftermarket, Auto). Marge preservee = \"meaningful and demanding\". Resolution geopolitique = catalyseur upside explicite si elle intervient.\n2. SENSIFY EN SERIE [classe (ii), catalyseur structurel, MAGNITUDE NON CHIFFREE] : plateforme en production de serie chez un premier OEM mondial (standard sur tout le programme), plusieurs contrats signes avec plusieurs clients (~100k unites/contrat/an, volumes agreges de l'ordre de plusieurs centaines de milliers/an sur 4-5 ans). Contribution CA/profitabilite \"visible des 2027\" mais le management ESQUIVE explicitement (2 relances analystes) toute quantification meme grossiere (2-digit vs 3-digit million). Voir ancrages : aucune valeur Sensify n'est injectee dans adjCA/adjEBIT au-dela de la croissance generale.\n3. AFTERMARKET + COATED DISCS + PRIX [classe (i)/(ii)] : aftermarket 15% du CA au T1, cible ~20% fin 2026 confirmee \"on track\" (croissance sous-jacente Asie/US + kits racing sur-performants). Coated discs : SOP deja engage avec plusieurs clients (deadline nov. 2026, 7mg), execution \"sans probleme\", pipeline additionnel 2026. Effet prix T1 (+1,2-1,3pt cout des ventes) explicitement qualifie de ponctuel par le management, non reconduit.\n4. CHINE + M&A [classe (i)/(iii)] : Chine -10% au T1 (pull-forward Q4 2025 lie au changement d'incitations), recovery deja visible en carnet de commandes T2 (Chine + OEMs europeens). Rumeur M&A (Monroe Ride Solutions) toujours non commentee par le management, MAIS le CFO donne pour la premiere fois un cadre chiffre de capacite : levier actuel 1,1-1,2x, capacite confirmee jusqu'a 2,0-2,5x. Risque explicite sur la trajectoire de desendettement modelisee si un deal est finance par dette.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (meme source que le refresh du 07/07, ne constitue pas une donnee nouvelle - audit de rigueur uniquement). Secondaires : FY2025 (CA 3 702,7 M EUR, EBITDA 612,1 M/16,5%, EBIT 336,5 M/9,1%, net 209,3 M, ND 719,2 M post-Ohlins, div 0,30). Cours ~10,60 EUR, ~318M actions, target ~10,92 EUR (Buy).\nGuidance FY2026 : CA +3% cc, EBITDA margin ~16,5% STABLE, capex ~350M (T1 72M, en ligne, acceleration moderee attendue), ND <700M (deja atteint marginalement fin T1).\nProchain refresh utile : S1 2026, 29 juillet (premiere vraie donnee post-these).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase IFRS publiee (pas de retraitement underlying necessaire). Mecanismes-cles portes par le champ ancrages (guidance marge stable, effet prix T1 non recurrent, conversion FX du CA reporte, non-quantification volontaire de Sensify, expansion de marge graduelle, trajectoire de desendettement). Tax ~28%, charges fin. ~-40->-24 (desendettement), D&A ~278->310M, adjShares -1%/an (buyback).\nA suivre (watch-list soldee au prochain refresh reel, S1) : (1) Sensify - le management chiffrera-t-il enfin une magnitude 2027 ? (2) verifier l'hypothese de conversion FX -1,5pt sur le CA 2026 reporte avec les taux effectifs du S1 ; (3) M&A Monroe / usage reel de la capacite de levier 2,0-2,5x - risque sur la trajectoire ND=0 en 2030 ; (4) recovery marche auto H2 conditionnee a une desescalade Moyen-Orient ; (5) montee aftermarket vers 20% ; (6) coated discs SOP complet.\n\n== CATALYSEURS ==\nSensify (ramp 2027, magnitude encore non chiffree par le management = optionalite pure, non dans le prix) ; desescalade Moyen-Orient (retour possible vers guidance 3-5%) ; coated discs (deadline reglementaire securisee) ; montee aftermarket (~20%) ; diversification Ohlins (Racing +53%) ; recovery cyclique auto/Chine ; desendettement + buyback ; fosse techno/marque premium. Risque a surveiller : M&A (Monroe) potentiellement dilutif au levier si finance par dette.",
@@ -34,45 +126,106 @@
       {
         "id": "guidance_marge_stable_fy26",
         "moteur": "Guidance FY2026 CA +3% cc reiteree avec marge EBITDA explicitement maintenue stable ~16,5% - management refuse de la relever malgre la hausse du CA guide, citant Sensify en ramp et les nouveaux investissements (Mexique/Pologne/Chine) comme absorbant le levier operationnel - contrainte dure.",
-        "applique": ["adjEBIT.2026"],
+        "applique": [
+          "adjEBIT.2026"
+        ],
         "confiance": "haute"
       },
       {
         "id": "effet_prix_t1_non_recurrent",
         "moteur": "Effet prix T1 2026 favorable (~1,2-1,3pt de cout des ventes) explicitement qualifie de ponctuel par le management (timing entre ajustements prix et couts d'achat) ; retour a une contribution equilibree prix/couts anticipe des le T2 - non reconduit au-dela de 2026.",
-        "applique": ["adjEBIT.2026"],
+        "applique": [
+          "adjEBIT.2026"
+        ],
         "confiance": "haute"
       },
       {
         "id": "fx_conversion_ca_reporte_2026",
         "moteur": "Conversion de la guidance +3% organique (cc) en CA reporte (EUR) suppose un effet de change negatif persistant (USD) similaire au T1, d'ou +1,5% reporte vs +3% cc - hypothese non confirmee explicitement par le management, A RE-VERIFIER au S1 avec les taux effectifs.",
-        "applique": ["adjCA.2026"],
+        "applique": [
+          "adjCA.2026"
+        ],
         "confiance": "basse"
       },
       {
         "id": "sensify_optionalite_non_quantifiee",
         "moteur": "Sensify : contribution revenus/profitabilite 'visible des 2027' mais magnitude EXPLICITEMENT non chiffree par le management malgre deux relances directes d'analystes (ni 2-digit ni 3-digit million confirme) ; volumes agreges de l'ordre de plusieurs centaines de milliers d'unites/an sur 4-5 ans mais phasage non communique -> aucune valeur Sensify n'est injectee dans adjCA/adjEBIT au-dela de la croissance CAGR generale, traite en pur upside non modelise.",
-        "applique": ["adjCA.2027", "adjCA.2028", "adjCA.2029", "adjCA.2030", "adjEBIT.2027", "adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030"],
+        "applique": [
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
         "confiance": "basse"
       },
       {
         "id": "expansion_marge_graduelle_2028_2030",
         "moteur": "Expansion de marge graduelle +70pb sur 2027-2030 calee sur le rythme historique de gains d'efficacite operationnelle (ex: -1,2/1,3pt de cout des ventes deja obtenu au T1 2026 en Europe), en l'absence de cible chiffree du management au-dela de FY2026, independamment de toute contribution Sensify.",
-        "applique": ["adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030"],
+        "applique": [
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
         "confiance": "moyenne"
       },
       {
         "id": "desendettement_sans_ma",
         "moteur": "Desendettement lineaire vers ND=0 d'ici 2030 calee sur la generation de cash recurrente a capex stable (~350M guide) et sans hypothese de M&A finance par dette, alors que le CFO confirme une capacite de levier actuelle de 1,1-1,2x extensible jusqu'a 2,0-2,5x (rumeur Monroe non dementie) - risque explicite sur cette trajectoire si un M&A est engage.",
-        "applique": ["adjND.2026", "adjND.2027", "adjND.2028", "adjND.2029", "adjND.2030"],
+        "applique": [
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
+        ],
         "confiance": "moyenne"
       }
     ],
-    "adjEPS": {"2026": 0.69, "2027": 0.76, "2028": 0.88, "2029": 1.0, "2030": 1.11},
-    "adjCA": {"2026": 3759, "2027": 3965, "2028": 4203, "2029": 4434, "2030": 4656},
-    "adjEBIT": {"2026": 342, "2027": 366, "2028": 410, "2029": 451, "2030": 491},
-    "adjNet": {"2026": 217, "2027": 238, "2028": 272, "2029": 305, "2030": 336},
-    "adjND": {"2026": 650, "2027": 520, "2028": 360, "2029": 180, "2030": 0},
-    "adjShares": {"2026": 316, "2027": 312, "2028": 309, "2029": 306, "2030": 303}
+    "adjEPS": {
+      "2026": 0.69,
+      "2027": 0.76,
+      "2028": 0.88,
+      "2029": 1.0,
+      "2030": 1.11
+    },
+    "adjCA": {
+      "2026": 3759,
+      "2027": 3965,
+      "2028": 4203,
+      "2029": 4434,
+      "2030": 4656
+    },
+    "adjEBIT": {
+      "2026": 342,
+      "2027": 366,
+      "2028": 410,
+      "2029": 451,
+      "2030": 491
+    },
+    "adjNet": {
+      "2026": 217,
+      "2027": 238,
+      "2028": 272,
+      "2029": 305,
+      "2030": 336
+    },
+    "adjND": {
+      "2026": 650,
+      "2027": 520,
+      "2028": 360,
+      "2029": 180,
+      "2030": 0
+    },
+    "adjShares": {
+      "2026": 316,
+      "2027": 312,
+      "2028": 309,
+      "2029": 306,
+      "2030": 303
+    }
   }
 }
