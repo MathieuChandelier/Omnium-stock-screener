@@ -43,6 +43,7 @@ data/
   ],
   "hypothese": {
     "date":"2026-07-02",
+    "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
     "source":"Refresh T2 2026 - Transcript T2 2026",
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
@@ -74,6 +75,15 @@ calcule UNE SEULE FOIS et reutilise tel quel partout ou il s'applique (voir
 E5bis). Ce champ decharge `hypothese.text` du "pourquoi chiffre" ligne par
 ligne : le texte reste reserve aux decisions de modelisation non triviales
 qui ne se reduisent pas a un moteur nommable (voir E8).
+
+Le champ `priorEPS` est un INSTANTANE BRUT de l'ANCIENNE `hypothese` (sa
+`date` et son `adjEPS`), copie SANS RECALCUL lors de chaque refresh, AVANT
+que `hypothese` soit remplacee (voir E6-b, point g). Il alimente exclusivement
+l'ecart affiche par l'app a cote des projections EPS CY/CY+1 (delta % vs le
+refresh precedent, avec sa date) - un mecanisme de revision-tracking, pas un
+jugement d'analyse. Absent en creation (aucun historique a snapshotter) ;
+present a partir du premier refresh, et reecrase a chaque refresh suivant
+(un seul snapshot conserve : le plus recent avant l'ecriture en cours).
 
 ## LES DEUX SEULES OPERATIONS
 
@@ -300,6 +310,14 @@ f) GARDE-FOU ANTI-ANCRAGE : l'ancienne projection est une base de
    E6-b peut ajuster E6-a, et uniquement si E6-b revele une erreur reelle
    dans le raisonnement de E6-a (classe b) - jamais pour coller a l'ancien
    par confort.
+g) SNAPSHOT priorEPS (mecanique, jamais un jugement) : copie `date` et
+   `adjEPS` de l'ANCIENNE `hypothese` (celle fournie en entree du refresh),
+   TELS QUELS, dans `hypothese.priorEPS = {date, eps}` de la NOUVELLE
+   hypothese en cours d'ecriture. Cette copie est un simple horodatage du
+   point de depart - elle ne participe a aucun raisonnement de E6-b et ne
+   doit jamais etre recalculee, arrondie differemment ou reinterpretee.
+   Elle alimente uniquement l'ecart EPS affiche par l'app a cote des
+   projections CY/CY+1 dans index.html.
 
 ### E7. CONTROLE FINAL DE VRAISEMBLANCE, toujours, juste avant l'ecriture
 Relis la serie adjXXX COMPLETE :
@@ -321,14 +339,14 @@ d) Incoherence residuelle -> ESCALADE plutot que figer une trajectoire
 
 ### E8. ECRITURE UNIQUE - STANDARD D'ARCHIVAGE
 
-Ecris `hypothese` (elle REMPLACE entierement l'ancienne, `ancrages` inclus).
-Le champ `text` est le SEUL document archive narratif du titre : une note
-compacte, PAS un rapport. Il ne stocke QUE ce que les champs structures
-(data, adjXXX, particularites, `ancrages`) ne portent pas et que le modele
-ne reconstruit pas seul. Ne jamais re-narrer un chiffre deja present dans
-data/adjXXX, ni un mecanisme deja porte par une entree `ancrages` (y
-referer par id si besoin), ni un fait deja dans le transcript source.
-Budget cible ~5000-9000 caracteres. SIX rubriques majuscules "==
+Ecris `hypothese` (elle REMPLACE entierement l'ancienne, `ancrages` et
+`priorEPS` inclus). Le champ `text` est le SEUL document archive narratif du
+titre : une note compacte, PAS un rapport. Il ne stocke QUE ce que les
+champs structures (data, adjXXX, particularites, `ancrages`) ne portent pas
+et que le modele ne reconstruit pas seul. Ne jamais re-narrer un chiffre
+deja present dans data/adjXXX, ni un mecanisme deja porte par une entree
+`ancrages` (y referer par id si besoin), ni un fait deja dans le transcript
+source. Budget cible ~5000-9000 caracteres. SIX rubriques majuscules "==
 RUBRIQUE ==", dans cet ordre :
 
 1. **SYNTHESE DE LA THESE** (~800-1200 car.) : un paragraphe de cadrage qui
@@ -372,7 +390,8 @@ lecture non reductibles a un moteur).
 1. Confirme explicitement le CODE du nouveau titre tel qu'il doit etre
    ajoute sur GitHub, ex : "Le fichier sera `data/SIEMENS.json`."
 2. Fournis le contenu JSON complet du fichier (objet autonome, schema
-   ci-dessus).
+   ci-dessus). `hypothese.priorEPS` est ABSENT en creation (aucun refresh
+   anterieur a snapshotter).
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -382,8 +401,9 @@ lecture non reductibles a un moteur).
 L'utilisateur fournit le JSON existant du titre dans sa requete (source de
 la borne temporelle E1 et de la base de reconciliation E6) : pas besoin de
 confirmer le nom/code, il est deja connu.
-1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation)
-   comme deux blocs distincts dans la reponse, avant le JSON final.
+1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
+   snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
+   avant le JSON final.
 2. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
-   `ancrages` inclus), pret a remplacer le fichier `data/CODE.json` existant
-   sur GitHub tel quel.
+   `ancrages` et `priorEPS` inclus), pret a remplacer le fichier
+   `data/CODE.json` existant sur GitHub tel quel.
