@@ -910,6 +910,22 @@ function renderReturnBlock(ticker, proj, cours){
   const deltaConsNY=(consNY>0&&epsNY>0)?((epsNY-consNY)/consNY*100):null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
   const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
+  // Ecart vs la projection Omnium PRECEDENTE (snapshot pris au refresh precedent,
+  // voir hypothese.priorEPS = {date, eps:{annee:valeur}}). Absent tant qu'aucun
+  // refresh n'a encore ecrit ce champ pour ce titre.
+  const priorEPS=d.hypothese?.priorEPS||null;
+  const priorCY=priorEPS?.eps?.[CY];
+  const priorNY=priorEPS?.eps?.[CY+1];
+  const hasPriorCY=priorCY!=null&&priorCY!==''&&+priorCY>0&&epsCY>0;
+  const hasPriorNY=priorNY!=null&&priorNY!==''&&+priorNY>0&&epsNY>0;
+  const deltaPriorCY=hasPriorCY?((epsCY-priorCY)/priorCY*100):null;
+  const deltaPriorNY=hasPriorNY?((epsNY-priorNY)/priorNY*100):null;
+  const fmtShortDate=(iso)=>{
+    if(!iso)return'';
+    const p=String(iso).split('-');
+    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
+  };
+  const priorDateFmt=fmtShortDate(priorEPS?.date);
 
   el.innerHTML = `
     <div style="padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;">
@@ -939,7 +955,11 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="flex:1;padding-right:14px;">
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY}</div>
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;margin-bottom:6px;">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
+        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
+          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
+          ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
+        </div>
+        ${hasPriorCY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorCY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
         ${cons?.eps?`
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
@@ -953,7 +973,11 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="flex:1;padding-left:14px;">
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY+1}</div>
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;margin-bottom:6px;opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
+        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
+          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
+          ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
+        </div>
+        ${hasPriorNY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorNY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
         ${consNY>0?`
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
