@@ -1,0 +1,237 @@
+{
+  "name": "Arista Networks",
+  "cours": 184.96,
+  "yahooSymbol": "ANET",
+  "dividende": 0,
+  "data": [
+    {
+      "year": 2015,
+      "ca": 838,
+      "ebit": 180,
+      "net": 130,
+      "shares": 260,
+      "nd": -700
+    },
+    {
+      "year": 2016,
+      "ca": 1129,
+      "ebit": 220,
+      "net": 184,
+      "shares": 295,
+      "nd": -900
+    },
+    {
+      "year": 2017,
+      "ca": 1646,
+      "ebit": 460,
+      "net": 423,
+      "shares": 316,
+      "nd": -1400
+    },
+    {
+      "year": 2018,
+      "ca": 2151,
+      "ebit": 380,
+      "net": 328,
+      "shares": 323,
+      "nd": -1700
+    },
+    {
+      "year": 2019,
+      "ca": 2411,
+      "ebit": 490,
+      "net": 402,
+      "shares": 328,
+      "nd": -2100
+    },
+    {
+      "year": 2020,
+      "ca": 2318,
+      "ebit": 700,
+      "net": 635,
+      "shares": 1271,
+      "nd": -2800
+    },
+    {
+      "year": 2021,
+      "ca": 2948,
+      "ebit": 925,
+      "net": 841,
+      "shares": 1277,
+      "nd": -3900
+    },
+    {
+      "year": 2022,
+      "ca": 4381,
+      "ebit": 1527,
+      "net": 1352,
+      "shares": 1266,
+      "nd": -4400
+    },
+    {
+      "year": 2023,
+      "ca": 5860,
+      "ebit": 2257,
+      "net": 2087,
+      "shares": 1269,
+      "nd": -6500
+    },
+    {
+      "year": 2024,
+      "ca": 7003,
+      "ebit": 2945,
+      "net": 2852,
+      "shares": 1281,
+      "nd": -9700
+    },
+    {
+      "year": 2025,
+      "ca": 9006,
+      "ebit": 3856,
+      "net": 3511,
+      "shares": 1276,
+      "nd": -12400
+    }
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 3.63,
+    "epsNY": 4.45,
+    "date": "2026-06-27",
+    "source": "Consensus sell-side non-GAAP ajuste (S&P Global Market Intelligence / TipRanks, 26 analystes, stockanalysis.com)."
+  },
+  "particularites": [
+    {
+      "text": "Concentration client structurelle : Microsoft et Meta representent chacun plus de 10% du chiffre d'affaires (hyperscalers/cloud titans). Lecture permanente du dossier - un ralentissement capex chez l'un de ces deux clients aurait un impact disproportionne par rapport a un fournisseur diversifie.",
+      "valuePct": null
+    }
+  ],
+  "hypothese": {
+    "date": "2026-07-09",
+    "source": "Creation - Transcript T1 2026 (05/05/2026, J. Ullal CEO / C. Breithaupt CFO) + communique T4/FY2025 (12/02/2026) + 10-K FY2024 (base historique) + recherche publique (consensus S&P Global Market Intelligence / TipRanks, 27/06/2026).",
+    "summary": "Leader du switching haute vitesse (#1 part de marche >10GbE), pleinement engage dans la vague de networking IA (backlog multi-annees, cible IA relevee a 3,5 Md$ pour 2026). Pas d'evenement ponctuel materiel signale par l'utilisateur ni detecte de facon autonome au-dela de la dynamique deja publique : guidance FY26 relevee (11,5 Md$, +27,7%) mais marge brute sous pression transitoire (62-64% vs 64,6% en 2025) du fait de contraintes d'approvisionnement (wafers, memoire, optique) signalees pour durer 1-2 ans. L'effet de levier operationnel (opex/CA en baisse continue) plus que compense cette pression au niveau de la marge operationnelle. adjEPS 3,43->7,81 (2026-2030).",
+    "text": "== EVENEMENTS & INFLEXIONS ==\nAucun evenement ponctuel idiosyncratique signale par l'utilisateur. Detection autonome : pas d'evenement isole materiel (pas d'acquisition, litige ou rupture reglementaire identifie ce trimestre), mais plusieurs dynamiques deja publiques et deja injectees dans les adjXXX plutot que traitees en evenements isoles :\n1. GUIDANCE FY2026 RELEVEE [classe i, deja dans les chiffres] : au T1 26 (05/05/26), le CA guide FY26 est releve a ~11,5 Md$ (+27,7%, cible initiale plus prudente en fevrier) et la cible IA a 3,5 Md$ (plus du double de 2025). Coherent avec le pattern historique d'Arista de guider prudemment puis de relever en cours d'annee.\n2. PRESSION MARGE BRUTE - CONTRAINTES D'APPROVISIONNEMENT [classe ii, quantifie via la guidance] : le management guide une marge brute non-GAAP 62-64% pour 2026 (vs 64,6% en 2025), citant des contraintes d'approvisionnement (wafers, memoire, composants optiques) attendues pour durer 1-2 ans, ainsi qu'un mix produit deplace vers le reseau IA (structurellement moins marge que le switching classique).\n3. NOUVEAUX PRODUITS IA [classe iii, non quantifie separement] : lancement du switch 1,6T (Broadcom Tomahawk 6, disponibilite 2027), optiques enfichables XPO refroidies par liquide, spine IA universel base plateforme 7800 - soutiennent la visibilite de croissance sans etre chiffres individuellement par le management.\n4. CONCURRENCE ET RISQUE WHITE-BOX [classe iii, non quantifie] : entree de Nvidia dans le networking, adoption croissante de solutions \"white box\" chez certains hyperscalers - asymetrie negative non modelisee, a surveiller.\n\n== PARTICULARITES ==\nConcentration client (Microsoft, Meta) - voir tableau particularites.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : primaire = transcript T1 2026 (05/05/26) ; secondaires = communique T4/FY2025 (12/02/26), 10-K FY2024, consensus S&P Global Market Intelligence/TipRanks (27/06/26, 26 analystes).\nGuidance T2 2026 : CA ~2,8 Md$. Guidance FY2026 (directionnelle -> traduite en contrainte) : CA ~11,5 Md$ (+27,7%), marge brute non-GAAP 62-64%, IA ~3,5 Md$.\nProchain refresh utile : resultats T2 2026, publication prevue le 04/08/2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase GAAP publiee, pas de retraitement underlying necessaire (pas de one-off materiel identifie en 2025, \"Other income, net\" = interets sur tresorerie, recurrent par nature). Taux d'IS normalise a 18,5%. adjShares -0,5%/an (rachats nets, cf ancrage buyback_driven_shares).\nWatch-list : (1) la marge brute se stabilise-t-elle a 63% ou se degrade-t-elle davantage si les contraintes d'approvisionnement s'aggravent ? (2) la cible IA de 3,5 Md$ est-elle atteinte/depassee au rythme des trimestres restants ? (3) evolution de la concentration Microsoft/Meta (part relative, nouveaux clients hyperscalers/neoclouds) ; (4) rythme reel des rachats d'actions vs le programme additionnel de 1,5 Md$ autorise en 2025.\n\n== CATALYSEURS ==\nBacklog IA pluriannuel et cible 2026 relevee (3,5 Md$) ; nouveaux produits (switch 1,6T 2027, XPO, spine IA universel 7800) ; effet de levier operationnel continu (opex/CA en baisse structurelle) ; tresorerie nette ~12,4 Md$ sans dette soutenant rachats + R&D ; risques a surveiller : pression marge brute liee aux approvisionnements, concentration client, concurrence Nvidia/white-box.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "guidance_revenue_2026",
+        "moteur": "CA FY2026 guide a ~11,5 Md$ (+27,7%) lors du T1 26, releve depuis une cible initiale plus prudente en fevrier - coherent avec le pattern historique d'Arista de guider prudemment puis de relever en cours d'annee.",
+        "applique": [
+          "adjCA.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "deceleration_revenue_2027_2030",
+        "moteur": "Croissance moderee graduellement de 27,7% (2026) vers ~16% (2030) a mesure que la base s'elargit (11,5->23,6 Md$), sur la base des CAGR historiques et du lancement de nouveaux produits (switch 1,6T 2027, XPO, spine IA universel 7800) qui soutiennent la visibilite sans indication chiffree du management au-dela de 2026.",
+        "applique": [
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "gross_margin_supply_pressure",
+        "moteur": "Guidance marge brute non-GAAP 62-64% pour 2026 (vs 64,6% en 2025) sous l'effet du mix IA (structurellement moins marge) et de l'inflation des couts composants (wafers, memoire, optique), contrainte signalee par le management pour durer 1-2 ans avant normalisation graduelle vers ~64% en 2029-2030.",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "opex_leverage",
+        "moteur": "Ratio opex/CA en baisse continue depuis 2022 (26,2% -> 21,2% en 2025), effet d'echelle classique d'un modele a marge brute elevee - extrapole en poursuite du meme rythme jusqu'a ~17% en 2030, ce qui permet a la marge operationnelle de continuer a s'etendre malgre la pression sur la marge brute.",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "cash_yield_interest_income",
+        "moteur": "Autres produits domines par les interets sur une tresorerie nette de ~12,4 Md$ fin 2025 (zero dette) - rendement ~3,2% applique a la tresorerie de fin d'annee precedente, croissant avec l'accumulation de FCF nette des rachats d'actions.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "tax_normalise_18_5pct",
+        "moteur": "Taux d'IS normalise a 18,5% (leger relevement vs 17,4% GAAP FY25 blende) - le niveau historiquement bas de 2023-2024 (12,6-13,8%) etait partiellement lie a des benefices ponctuels de stock-based compensation qui ne se reconduisent pas mecaniquement a l'identique.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "buyback_driven_shares",
+        "moteur": "Rachats nets d'actions actifs (1,60 Md$ en FY25, programme additionnel de 1,5 Md$ autorise en 2025) compensant la dilution RSU - dilution nette negative extrapolee a -0,5%/an sur tout l'horizon.",
+        "applique": [
+          "adjShares.2026",
+          "adjShares.2027",
+          "adjShares.2028",
+          "adjShares.2029",
+          "adjShares.2030"
+        ],
+        "confiance": "moyenne"
+      }
+    ],
+    "adjEPS": {
+      "2026": 3.43,
+      "2027": 4.4,
+      "2028": 5.47,
+      "2029": 6.6,
+      "2030": 7.81
+    },
+    "adjCA": {
+      "2026": 11500,
+      "2027": 14260,
+      "2028": 17255,
+      "2029": 20361,
+      "2030": 23619
+    },
+    "adjEBIT": {
+      "2026": 4945,
+      "2027": 6317,
+      "2028": 7833,
+      "2029": 9406,
+      "2030": 11077
+    },
+    "adjNet": {
+      "2026": 4354,
+      "2027": 5550,
+      "2028": 6871,
+      "2029": 8250,
+      "2030": 9721
+    },
+    "adjND": {
+      "2026": -15400,
+      "2027": -18700,
+      "2028": -22400,
+      "2029": -26600,
+      "2030": -31400
+    },
+    "adjShares": {
+      "2026": 1269,
+      "2027": 1263,
+      "2028": 1257,
+      "2029": 1250,
+      "2030": 1244
+    }
+  }
+}
