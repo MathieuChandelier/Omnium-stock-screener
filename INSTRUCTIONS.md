@@ -97,13 +97,34 @@ Declencheurs : "ajoute [Societe] au portefeuille", "cree une position sur [Socie
 Declencheurs : "fais un refresh de [Titre]", "actualise [Titre]". L'utilisateur
 fournit dans sa requete le fichier JSON existant du titre (colle son contenu).
 
-## QUESTION D'ENTREE UNIQUE (les deux operations)
+## RECHERCHE DU TRANSCRIPT & QUESTION D'ENTREE (les deux operations)
 
-Avant de derouler la boucle d'analyse, pose TOUJOURS cette question unique
+Avant de derouler la boucle d'analyse, RECHERCHE TOI-MEME sur le web le
+transcript du dernier call de resultats (trimestriel ou annuel) publie par
+la societe - ne demande JAMAIS a l'utilisateur de le fournir avant d'avoir
+essaye de le trouver : pour la grande majorite des titres suivis, ces
+transcripts sont disponibles publiquement (site investisseurs du groupe,
+Seeking Alpha, Motley Fool, etc.).
+
+- SI le transcript le plus recent est trouve : confirme explicitement a
+  l'utilisateur ce que tu as recupere (societe, trimestre/exercice, date de
+  publication) AVANT de continuer, puis pose UNIQUEMENT la question sur les
+  evenements particuliers (voir question ci-dessous). Ne demande pas de
+  transcript dans ce cas.
+- SI le transcript le plus recent n'est PAS trouve (paywall, absent,
+  societe peu couverte, etc.) : dis-le explicitement, et pose la question
+  combinee (transcript + evenements) comme auparavant.
+
+Pose TOUJOURS, sous la forme adaptee au cas ci-dessus, cette question
 (sauf si la reponse est deja donnee dans la requete) :
 
-> "Avez-vous un ou plusieurs transcripts de resultats recents a fournir, et
-> y a-t-il UN OU PLUSIEURS evenements particuliers a prendre en compte
+> [Transcript trouve] "J'ai recupere le transcript du [T. 2026] (publie le
+> [date]). Y a-t-il UN OU PLUSIEURS evenements particuliers a prendre en
+> compte (structurels ou ponctuels, chiffres ou qualitatifs) ?"
+>
+> [Transcript non trouve] "Je n'ai pas trouve de transcript public pour le
+> dernier trimestre publie - en avez-vous un ou plusieurs a fournir ? Et y
+> a-t-il UN OU PLUSIEURS evenements particuliers a prendre en compte
 > (structurels ou ponctuels, chiffres ou qualitatifs) ?"
 
 L'utilisateur peut citer PLUSIEURS elements en reponse, de deux natures
@@ -132,11 +153,13 @@ mots pour confirmer le fait ET son mecanisme avant de l'ecrire (jamais un
 chiffre ou un mot-cle seul, qu'il s'agisse d'une particularite ou d'un
 evenement).
 
-- Si aucun transcript n'est fourni : poursuis en recherche publique seule
+- Si aucun transcript n'est disponible (recherche automatique infructueuse
+  ET l'utilisateur n'en fournit pas) : poursuis en recherche publique seule
   (la detection autonome d'evenements reste obligatoire dans tous les cas,
   voir E3 ci-dessous - ne te repose jamais uniquement sur ce que
   l'utilisateur fournit).
-- Si des transcripts sont fournis : ce sont des sources FERMEES et FAISANT
+- Si un ou plusieurs transcripts sont disponibles (trouves par toi-meme ou
+  fournis par l'utilisateur) : ce sont des sources FERMEES et FAISANT
   AUTORITE - enumere TOUS les evenements materiels qu'ils contiennent (voir E3).
 
 ## LA BOUCLE D'ANALYSE (E1 -> E8, commune aux deux operations)
