@@ -1,0 +1,29 @@
+{
+  "name": "Nvidia",
+  "cours": 204.12,
+  "yahooSymbol": "NVDA",
+  "dividende": 1.00,
+  "data": [
+    {"year":2022,"ca":26914,"ebit":10041,"net":9752,"shares":25332,"nd":-10262,"div":0.016},
+    {"year":2023,"ca":26970,"ebit":5580,"net":4368,"shares":25103,"nd":-2343,"div":0.016},
+    {"year":2024,"ca":60922,"ebit":32972,"net":29760,"shares":24940,"nd":-16275,"div":0.016},
+    {"year":2025,"ca":130497,"ebit":81453,"net":72880,"shares":24804,"nd":-34747,"div":0.034},
+    {"year":2026,"ca":215938,"ebit":130387,"net":120067,"shares":24514,"nd":-54088,"div":0.04}
+  ],
+  "epsConsensus": {"year":2027,"eps":9.10,"epsNY":13.20,"date":"2026-07-10","source":"Seeking Alpha (P/E consensus implicite: FY27 ~9.29$, FY28 ~13.22$), recoupe avec Goldman Sachs (FY27 9.50$, FY28 15.25$) et JPMorgan (FY27 8.73$, plus prudent) - retenu au centre de la fourchette"},
+  "particularites": [],
+  "hypothese": {
+    "date": "2026-07-10",
+    "source": "Creation initiale - Transcript T1 FY2027 (20/05/2026, Jensen Huang/Colette Kress) + 10-K FY2026 + recherche publique (Bloomberg/Reuters/The Information sur le dossier Chine, 08-09/07/2026)",
+    "summary": "Pari sur la poursuite du supercycle de calcul accelere IA (CA x8 en 4 exercices). La Chine reste traitee comme option pure (rumeur d'approbation Pekin pour <200k H200, non confirmee au 09/07/2026) et non comme un chiffre acquis.",
+    "text": "[voir fichier ci-dessus pour le texte complet - 6 rubriques]",
+    "impact": "positif",
+    "ancrages": [ /* 7 ancrages nommés, voir fichier */ ],
+    "adjEPS":{"2027":9.10,"2028":13.20,"2029":18.50,"2030":23.50,"2031":27.50},
+    "adjCA":{"2027":391000,"2028":552950,"2029":752270,"2030":933388,"2031":1066136},
+    "adjEBIT":{"2027":262825,"2028":376006,"2029":519066,"2030":648705,"2031":746295},
+    "adjNet":{"2027":220220,"2028":314160,"2029":432900,"2030":540500,"2031":621500},
+    "adjND":{"2027":-90000,"2028":-140000,"2029":-200000,"2030":-260000,"2031":-320000},
+    "adjShares":{"2027":24200,"2028":23800,"2029":23400,"2030":23000,"2031":22600}
+  }
+}
