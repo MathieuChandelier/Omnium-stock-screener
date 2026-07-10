@@ -10,7 +10,7 @@
     {"year":2025,"ca":46313,"ebit":3755,"net":3219,"shares":1490,"nd":-1185,"div":1.60},
     {"year":2026,"ca":46400,"ebit":3840,"net":3113,"shares":1482,"nd":-1127,"div":1.64}
   ],
-  "epsConsensus": {"year":2027,"eps":2.39,"epsNY":3.17,"date":"2026-07-10","source":"Zacks Consensus Estimate (croissance implicite FY27 +13.9%, FY28 +32.5% vs FY26 EPS GAAP 2.10$), recoupe avec la fourchette des cibles analystes (moyenne 51.3$, de Berenberg 49$ a TD Cowen 85$)"},
+  "epsConsensus": {"year":2027,"eps":1.76,"epsNY":2.38,"date":"2026-07-10","source":"Zacks Consensus Estimate (Yahoo Finance, 09/07/2026) : EPS FY27 1.76$ (+11.4% vs base FY26 AJUSTEE ~1.58$, hors bonus IEEPA de 0.52$/action - Zacks precise explicitement que ses chiffres sont 'adjusted for non-recurring items'), EPS FY28 2.38$ (+35.5%). Recoupe avec LSEG (FY27 1.84$, +22%) et WallStreetZen (FY27 1.88$, FY28 2.45$, FY29 3.09$)."},
   "particularites": [],
   "hypothese": {
     "date": "2026-07-10",
@@ -20,18 +20,18 @@
     "impact": "neutre",
     "ancrages": [
       {"id":"guidance_q1_fy27","moteur":"Guidance officielle T1 FY27 (CA en baisse basse/moyenne dizaine de %, marge brute legerement positive en YoY, hypothese tarifaire 10% puis 15%), extrapolee sur l'annee pleine en tenant compte de l'acceleration du wholesale et du Running deja visible au T4 FY26.","applique":["adjCA.2027"],"confiance":"moyenne"},
-      {"id":"consensus_eps_fy27_fy28","moteur":"Consensus Zacks (croissance implicite EPS +13.9% FY27, +32.5% FY28 vs base FY26 GAAP 2.10$), utilise comme ancrage direct de l'EPS plutot qu'un retrofit CA->EBIT->Net, compte tenu de l'ampleur des incertitudes sur le calendrier du redressement.","applique":["adjEPS.2027","adjEPS.2028","adjNet.2027","adjNet.2028"],"confiance":"moyenne"},
-      {"id":"deceleration_fy29_fy31","moteur":"Extrapolation d'une deceleration progressive du taux de croissance de l'EPS (de +32.5% FY28 vers +7% FY31) au-dela de l'horizon consensus fiable (FY27-28), par retour graduel vers l'algorithme de croissance historique de Nike hors periode de crise - confiance nettement plus faible faute de source specifique.","applique":["adjEPS.2029","adjEPS.2030","adjEPS.2031","adjNet.2029","adjNet.2030","adjNet.2031"],"confiance":"basse"},
+      {"id":"consensus_eps_fy27_fy28","moteur":"Consensus Zacks sur base AJUSTEE (hors elements non recurrents, donc hors le bonus IEEPA de 0.52$/action qui gonflait le T4 FY26) : EPS FY27 1.76$ (+11.4% vs base FY26 ajustee ~1.58$), EPS FY28 2.38$ (+35.5%). Utilise comme ancrage direct de l'EPS plutot qu'un retrofit CA->EBIT->Net, compte tenu de l'ampleur des incertitudes sur le calendrier du redressement. ERREUR CORRIGEE le 10/07/2026 : la premiere version de ce fichier appliquait par erreur le taux de croissance consensus a la base GAAP REPORTEE (2.10$, incluant le bonus IEEPA), ce qui aboutissait a un EPS FY27 surestime de +36% (2.39$ au lieu de 1.76$).","applique":["adjEPS.2027","adjEPS.2028","adjNet.2027","adjNet.2028"],"confiance":"moyenne"},
+      {"id":"deceleration_fy29_fy31","moteur":"Ancrage FY29 sur consensus WallStreetZen (3.09$, +29.8% vs FY28), puis extrapolation d'une deceleration progressive du taux de croissance de l'EPS (+16% FY30, +11% FY31) au-dela de l'horizon consensus dense (FY27-29), par retour graduel vers l'algorithme de croissance historique de Nike hors periode de crise - confiance nettement plus faible faute de source specifique au-dela de FY29.","applique":["adjEPS.2029","adjEPS.2030","adjEPS.2031","adjNet.2029","adjNet.2030","adjNet.2031"],"confiance":"basse"},
       {"id":"levier_operationnel_redressement","moteur":"Remontee de la marge EBIT depuis le niveau deprime de FY26 (~8% hors bonus IEEPA) vers un niveau proche de FY24 (~12-13%) d'ici FY29-31, au fur et a mesure que l'attenuation tarifaire se complete et que le reset des franchises classiques est completement digere dans la base de comparaison - sans retour au pic FY22 (14.7%), compte tenu du surcout tarifaire structurel et d'une intensite concurrentielle plus elevee.","applique":["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030","adjEBIT.2031"],"confiance":"basse"},
       {"id":"etr_normatif","moteur":"Taux d'imposition normatif de 18%, au milieu de la fourchette effective recente (14.9% FY24 - 20% FY25/T3FY26), reconduit par simplification sur tout l'horizon de projection.","applique":["adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030","adjNet.2031"],"confiance":"moyenne"},
       {"id":"rachat_actions_modere","moteur":"Poursuite d'un rythme de rachat d'actions modere (~-1.4%/an de dilution en moins), coherent avec le rythme observe FY24-FY26 malgre la priorite donnee au redressement operationnel plutot qu'au retour de capital agressif.","applique":["adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030","adjShares.2031"],"confiance":"moyenne"},
       {"id":"ieepa_one_off_exclu","moteur":"Le bonus ponctuel de 986 M$ (dont 0.52$/action au T4 FY26) lie a la recuperation des tarifs IEEPA est un one-off explicitement exclu de la base recurrente FY26 servant de point de depart a la soudure FY27 - sans ce retraitement, la comparaison FY26->FY27 serait faussee par un effet de base artificiel.","applique":["adjNet.2027","adjEPS.2027"],"confiance":"haute"}
     ],
-    "adjEPS":{"2027":2.39,"2028":3.17,"2029":3.65,"2030":4.02,"2031":4.30},
-    "adjCA":{"2027":46800,"2028":48672,"2029":51106,"2030":53405,"2031":55541},
-    "adjEBIT":{"2027":4169,"2028":5466,"2029":6203,"2030":6728,"2031":7083},
-    "adjNet":{"2027":3501,"2028":4581,"2029":5201,"2030":5648,"2031":5956},
-    "adjND":{"2027":-1300,"2028":-1800,"2029":-2600,"2030":-3600,"2031":-4800},
+    "adjEPS":{"2027":1.76,"2028":2.38,"2029":3.09,"2030":3.60,"2031":4.00},
+    "adjCA":{"2027":46320,"2028":48220,"2029":50631,"2030":52910,"2031":55026},
+    "adjEBIT":{"2027":3064,"2028":4094,"2029":5249,"2030":6028,"2031":6596},
+    "adjNet":{"2027":2578,"2028":3439,"2029":4403,"2030":5058,"2031":5540},
+    "adjND":{"2027":-1100,"2028":-1500,"2029":-2100,"2030":-2800,"2031":-3700},
     "adjShares":{"2027":1465,"2028":1445,"2029":1425,"2030":1405,"2031":1385}
   }
 }
