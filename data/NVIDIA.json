@@ -2,28 +2,191 @@
   "name": "Nvidia",
   "cours": 204.12,
   "yahooSymbol": "NVDA",
-  "dividende": 1.00,
+  "dividende": 1.0,
   "data": [
-    {"year":2022,"ca":26914,"ebit":10041,"net":9752,"shares":25332,"nd":-10262,"div":0.016},
-    {"year":2023,"ca":26970,"ebit":5580,"net":4368,"shares":25103,"nd":-2343,"div":0.016},
-    {"year":2024,"ca":60922,"ebit":32972,"net":29760,"shares":24940,"nd":-16275,"div":0.016},
-    {"year":2025,"ca":130497,"ebit":81453,"net":72880,"shares":24804,"nd":-34747,"div":0.034},
-    {"year":2026,"ca":215938,"ebit":130387,"net":120067,"shares":24514,"nd":-54088,"div":0.04}
+    {
+      "year": 2022,
+      "ca": 26914,
+      "ebit": 10041,
+      "net": 9752,
+      "shares": 25332,
+      "nd": -10262,
+      "div": 0.016
+    },
+    {
+      "year": 2023,
+      "ca": 26970,
+      "ebit": 5580,
+      "net": 4368,
+      "shares": 25103,
+      "nd": -2343,
+      "div": 0.016
+    },
+    {
+      "year": 2024,
+      "ca": 60922,
+      "ebit": 32972,
+      "net": 29760,
+      "shares": 24940,
+      "nd": -16275,
+      "div": 0.016
+    },
+    {
+      "year": 2025,
+      "ca": 130497,
+      "ebit": 81453,
+      "net": 72880,
+      "shares": 24804,
+      "nd": -34747,
+      "div": 0.034
+    },
+    {
+      "year": 2026,
+      "ca": 215938,
+      "ebit": 130387,
+      "net": 120067,
+      "shares": 24514,
+      "nd": -54088,
+      "div": 0.04
+    }
   ],
-  "epsConsensus": {"year":2027,"eps":9.10,"epsNY":13.20,"date":"2026-07-10","source":"Seeking Alpha (P/E consensus implicite: FY27 ~9.29$, FY28 ~13.22$), recoupe avec Goldman Sachs (FY27 9.50$, FY28 15.25$) et JPMorgan (FY27 8.73$, plus prudent) - retenu au centre de la fourchette"},
+  "epsConsensus": {
+    "year": 2027,
+    "eps": 9.1,
+    "epsNY": 13.2,
+    "date": "2026-07-10",
+    "source": "Seeking Alpha (P/E consensus implicite: FY27 ~9.29$, FY28 ~13.22$), recoupe avec Goldman Sachs (FY27 9.50$, FY28 15.25$) et JPMorgan (FY27 8.73$, plus prudent) - retenu au centre de la fourchette"
+  },
   "particularites": [],
   "hypothese": {
     "date": "2026-07-10",
     "source": "Creation initiale - Transcript T1 FY2027 (20/05/2026, Jensen Huang/Colette Kress) + 10-K FY2026 + recherche publique (Bloomberg/Reuters/The Information sur le dossier Chine, 08-09/07/2026)",
-    "summary": "Pari sur la poursuite du supercycle de calcul accelere IA (CA x8 en 4 exercices). La Chine reste traitee comme option pure (rumeur d'approbation Pekin pour <200k H200, non confirmee au 09/07/2026) et non comme un chiffre acquis.",
-    "text": "[voir fichier ci-dessus pour le texte complet - 6 rubriques]",
+    "summary": "Pari sur la poursuite du supercycle de calcul accelere IA (CA x8 en 4 exercices). La Chine reste traitee comme option pure (rumeur d'approbation Pekin pour <200k H200, non confirmee au 09/07/2026) et non comme un chiffre acquis, conformement a la guidance du management lui-meme qui l'exclut explicitement.",
+    "text": "== SYNTHESE DE LA THESE ==\nNvidia est le pari central sur l'infrastructure de calcul de l'IA generative : la these n'est pas \"Nvidia vend des GPU\" mais \"Nvidia est le goulot d'etranglement structurel du cycle d'investissement en capital le plus important de l'histoire recente\" (Data Center = 75.2 Md$ sur 81.6 Md$ de CA au T1 FY27, +92% YoY). Le CA a ete multiplie par huit en quatre exercices (26.9 Md$ FY22 -> 215.9 Md$ FY26), porte par la bascule generale du calcul general-purpose vers le calcul accelere. La marge progresse en parallele grace a un effet de levier operationnel marque (opex +40% quand le CA croit de +65% en FY26). Le T1 FY27 confirme l'acceleration (3e trimestre consecutif d'acceleration YoY) et la guidance T2 FY27 (91.0 Md$, +/-2%) prolonge la trajectoire, EXCLUANT explicitement tout CA de calcul Data Center en Chine - un choix de prudence du management qui structure toute l'approche retenue ici (voir EVENEMENTS). Le pari central est double : (1) la demande en Blackwell/Vera Rubin reste structurellement superieure a l'offre au moins jusqu'a fin FY27 ; (2) la Chine reste une option gratuite - ni promise, ni definitivement perdue - plutot qu'un risque ou un gain a integrer au chiffrage central.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Deja dans les chiffres, sans effet prospectif : charge de 4.5 Md$ liee aux stocks H20 au T1 FY26 (licence USG requise depuis avril 2025), deja purgee des comptes historiques. Hausse du dividende trimestriel de 0.01$ a 0.25$/action (+2400%), annoncee le 20/05/2026, effective au paiement du 26/06/2026 - integree via le champ dividende (1.00$/an annualise), sans mecanisme structurel recurrent a documenter en particularites (simple decision de politique de retour aux actionnaires). Nouvelle autorisation de rachat de 80 Md$ (18/05/2026), en plus des 38.5 Md$ restants - integree via l'ancrage rachat_actions dans la trajectoire adjShares.\n\n(ii) OPTIONNALITE CHINE (classe iii, EXCLUE des adjXXX, non chiffree dans le CA/EBIT projete) : depuis avril 2025, les GPU les plus avances de Nvidia sont soumis a licence USG pour la Chine. En decembre 2025, Trump a autorise la vente du H200 (mais pas Blackwell/Rubin) sous conditions strictes : redevance de 25% versee au gouvernement americain, plafond de volume, tests de securite par tiers - codifie par le BIS le 13/01/2026. Cote americain, une dizaine d'entreprises chinoises (Alibaba, ByteDance, JD.com, Tencent...) et des distributeurs (Lenovo, Foxconn) ont ete autorises a acheter. MAIS cote chinois, Pekin a bloque toute livraison effective jusqu'a une actualite tres recente : selon The Information (Bloomberg/Reuters, 08-09/07/2026), Pekin envisagerait desormais d'autoriser Alibaba, ByteDance et DeepSeek a acheter un volume limite de H200 (moins de 200 000 unites au total, soit moins de la moitie des besoins exprimes), strictement reserve a l'entrainement de modeles (l'inference devant rester sur puces chinoises). Cette information N'EST PAS CONFIRMEE au 09/07/2026 (rapportee, pas officialisee par Pekin) et n'est donc PAS integree aux adjXXX, exactement comme le management lui-meme l'exclut de sa guidance T2 FY27 (\"we are not assuming any Data Center compute revenue from China in our outlook\", CFO Colette Kress). ASYMETRIE : upside estime a 4-6 Md$ de CA H200 Chine d'ici fin FY27 si le plafond de 200k unites se confirme (a ~32k$/unite), voire jusqu'a ~50 Md$/an de marche adressable selon Jensen Huang (GTC, mars 2026) ; downside si le statu quo perdure = Huawei (Ascend) consolide sa base installee chinoise (le CEO Huang admettait en mai 2026 avoir \"largement concede\" ce marche) de facon potentiellement durable. Risque politique symetrique additionnel : le GAIN AI Act (adopte au Senat en octobre 2025) pourrait au contraire durcir le cadre si promulgue.\n\n(iii) Autre point de vigilance non chiffre : rumeur (SemiAnalysis) d'un retard du systeme rack-scale Kyber NVL144 de 2027 a 2028 (probleme de fabrication du midplane PCB) - Nvidia dement officiellement ce retard (juillet 2026). A verifier au prochain refresh, sans impact sur les adjXXX actuels (produit hors horizon de guidance ferme).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : transcript T1 FY2027 (20/05/2026, Jensen Huang/Colette Kress) et communique associe en primaire ; 10-K FY2026, consensus Seeking Alpha/Goldman Sachs/JPMorgan/BofA en secondaire. Guidance directionnelle (contrainte dure) : T2 FY27 CA 91.0 Md$ +/-2% (hors Chine Data Center) ; marge brute GAAP/non-GAAP ~74.9%/75.0% ; taux d'imposition FY27 attendu 16-18% ; retour d'environ 50% du free cash flow aux actionnaires. Prochain refresh utile : resultats T2 FY27 attendus le 26/08/2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nVoir ancrages pour le detail des mecanismes (guidance T2, consensus EPS FY27/28, deceleration FY29-31, levier operationnel, ETR normatif, rachats, tresorerie nette). Base comptable : GAAP, avec convergence GAAP/non-GAAP actee a partir du T1 FY27 (la remuneration en actions n'est plus retraitee en non-GAAP) - a surveiller, cela peut brouiller la comparaison avec des consensus encore libelles selon l'ancien format non-GAAP. WATCH-LIST : (1) confirmer au T2 FY27 (26/08/2026) si la guidance de 91 Md$ est tenue/depassee et si l'exclusion Chine reste de mise dans la guidance suivante ; (2) toute confirmation OFFICIELLE (pas seulement rapportee par voie de presse) d'un deblocage cote Pekin sur le H200 serait un evenement materiel a integrer immediatement en E3/E4 - a ce stade c'est une optionnalite pure, pas un fait acquis ; (3) verifier la realite du retard Kyber NVL144 (Nvidia dement, SemiAnalysis maintient) ; (4) au-dela de FY28, la confiance de ce modele est BASSE - les adjXXX FY29-31 sont une extrapolation de decroissance du taux de croissance (loi des grands nombres), pas un consensus solide, a rebatir des que des donnees FY28 concretes existeront.\n\n== CATALYSEURS ==\nResultats T2 FY27 (26/08/2026) et toute confirmation officielle (ou infirmation) du deblocage chinois du H200 rapporte le 08/07/2026.",
     "impact": "positif",
-    "ancrages": [ /* 7 ancrages nommés, voir fichier */ ],
-    "adjEPS":{"2027":9.10,"2028":13.20,"2029":18.50,"2030":23.50,"2031":27.50},
-    "adjCA":{"2027":391000,"2028":552950,"2029":752270,"2030":933388,"2031":1066136},
-    "adjEBIT":{"2027":262825,"2028":376006,"2029":519066,"2030":648705,"2031":746295},
-    "adjNet":{"2027":220220,"2028":314160,"2029":432900,"2030":540500,"2031":621500},
-    "adjND":{"2027":-90000,"2028":-140000,"2029":-200000,"2030":-260000,"2031":-320000},
-    "adjShares":{"2027":24200,"2028":23800,"2029":23400,"2030":23000,"2031":22600}
+    "ancrages": [
+      {
+        "id": "guidance_q2fy27",
+        "moteur": "Guidance officielle T2 FY27 (91 Md$ de CA +/-2%, marge brute ~75%, opex ~8.3-8.5 Md$), qui ancre le point de depart du consensus FY27 et exclut explicitement tout CA Data Center Chine.",
+        "applique": [
+          "adjCA.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "consensus_eps_fy27_fy28",
+        "moteur": "Consensus sell-side recoupe (Seeking Alpha, Goldman Sachs, JPMorgan, BofA) pour l'EPS FY27 (~9.10$) et FY28 (~13.20$), utilise comme ancrage direct plutot qu'un retrofit CA->EBIT->Net bottom-up, compte tenu de l'ampleur des incertitudes sur le mix Data Center/Networking a cet horizon.",
+        "applique": [
+          "adjEPS.2027",
+          "adjEPS.2028",
+          "adjNet.2027",
+          "adjNet.2028"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "deceleration_fy29_fy31",
+        "moteur": "Extrapolation d'un ralentissement progressif du taux de croissance de l'EPS (de +45% FY28 vers +17% FY31) au-dela de l'horizon consensus fiable (FY27-28), par simple loi des grands nombres - aucune source specifique au-dela de FY28/29, confiance nettement plus faible.",
+        "applique": [
+          "adjEPS.2029",
+          "adjEPS.2030",
+          "adjEPS.2031",
+          "adjNet.2029",
+          "adjNet.2030",
+          "adjNet.2031"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "levier_operationnel",
+        "moteur": "Expansion de la marge EBIT vers 67-70% d'ici FY27-31, portee par un opex croissant nettement plus lentement que le CA (comme observe FY25->FY26 : opex +40% vs CA +65%), plafonnee a 70% par prudence.",
+        "applique": [
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030",
+          "adjEBIT.2031"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "etr_normatif",
+        "moteur": "Taux d'imposition normatif de 17%, au milieu de la fourchette de guidance officielle FY27 (16-18%), reconduit par simplification sur tout l'horizon de projection.",
+        "applique": [
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030",
+          "adjNet.2031"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "rachat_actions",
+        "moteur": "Autorisation de rachat de 80 Md$ approuvee le 18/05/2026 (en sus des 38.5 Md$ restants) et politique de retour d'environ 50% du free cash flow, traduites en decroissance moderee du nombre d'actions diluees (~-1.7%/an en moyenne) sur l'horizon de projection.",
+        "applique": [
+          "adjShares.2027",
+          "adjShares.2028",
+          "adjShares.2029",
+          "adjShares.2030",
+          "adjShares.2031"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "tresorerie_nette_croissante",
+        "moteur": "Le free cash flow genere depasse tres largement les 50% verses aux actionnaires et le capex, ce qui continue a faire croitre la tresorerie nette (cash+placements moins dette) meme apres rachats/dividendes.",
+        "applique": [
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030",
+          "adjND.2031"
+        ],
+        "confiance": "basse"
+      }
+    ],
+    "adjEPS": {
+      "2027": 9.1,
+      "2028": 13.2,
+      "2029": 18.5,
+      "2030": 23.5,
+      "2031": 27.5
+    },
+    "adjCA": {
+      "2027": 391000,
+      "2028": 552950,
+      "2029": 752270,
+      "2030": 933388,
+      "2031": 1066136
+    },
+    "adjEBIT": {
+      "2027": 262825,
+      "2028": 376006,
+      "2029": 519066,
+      "2030": 648705,
+      "2031": 746295
+    },
+    "adjNet": {
+      "2027": 220220,
+      "2028": 314160,
+      "2029": 432900,
+      "2030": 540500,
+      "2031": 621500
+    },
+    "adjND": {
+      "2027": -90000,
+      "2028": -140000,
+      "2029": -200000,
+      "2030": -260000,
+      "2031": -320000
+    },
+    "adjShares": {
+      "2027": 24200,
+      "2028": 23800,
+      "2029": 23400,
+      "2030": 23000,
+      "2031": 22600
+    }
   }
 }
