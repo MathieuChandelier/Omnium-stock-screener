@@ -261,6 +261,16 @@ c-bis) SOUDURE ETENDUE au NET et a l'EPS : la 1ere annee projetee ne cree
 d) INVENTAIRE DES EXCEPTIONNELS (distincts des particularites, qui sont
    structurelles/recurrentes) : one-offs au-dessus comme en-dessous de
    l'EBIT.
+d-bis) BASE DE PROJECTION CHIFFREE (regle anti-oubli) : des qu'un
+   exceptionnel de d) touche le DERNIER exercice publie (celui qui sert de
+   point de depart aux adjXXX), le calcul base_propre = chiffre_publie +/-
+   exceptionnel doit etre ECRIT EN TOUTES LETTRES (jamais seulement
+   mentionne en prose) avant toute projection - y compris dans le cas
+   simple ou la societe ne publie aucun "adjusted" et se contente d'un
+   chiffre GAAP unique assorti d'un exceptionnel explicitement quantifie
+   (ex : credit fiscal ponctuel chiffre par le management). Un taux de
+   croissance externe (guidance, consensus) s'applique ENSUITE a cette base
+   propre - jamais au chiffre publie brut sans avoir fait ce calcul.
 e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
    biais de flatterie. NE PAS reprendre l'adjusted du management tel quel.
    VALIDER le lien GAAP/IFRS <-> ajuste : lister chaque poste ajoute, le
