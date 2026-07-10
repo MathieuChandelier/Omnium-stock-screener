@@ -231,9 +231,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 // ou la réduit dans son ensemble (comme un zoom navigateur piloté automatiquement),
 // pour un rendu propre aussi bien sur un 15" que sur un 29".
 (function(){
-  var REF_WIDTH = 1440;   // largeur de référence = zoom 100% (ordi portable 15" standard)
+  var REF_WIDTH = 1440;    // largeur de référence = échelle 100% sur portable 15"
+  var CAP_WIDTH = 1920;    // largeur repère d'un écran 23" : au-delà, on n'agrandit plus (marges visibles)
   var MIN_ZOOM = 0.80;
-  var MAX_ZOOM = 1.90;
+  var MAX_ZOOM = CAP_WIDTH / REF_WIDTH; // ≈ 1.33, plafond atteint dès 23"
   function applyAppZoom(){
     var w = window.innerWidth;
     var z = w / REF_WIDTH;
