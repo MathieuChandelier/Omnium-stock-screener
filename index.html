@@ -49,26 +49,31 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-header{display:flex;align-items:baseline;gap:8px;margin-bottom:18px;}
 .pf-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;font-family:'Poppins',sans-serif;}
 .pf-count{font-size:11px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
-.pf-list{display:flex;flex-direction:column;gap:10px;}
-.pf-item{display:flex;align-items:center;gap:22px;background:var(--surface);border-radius:14px;padding:18px 22px;box-shadow:0 2px 12px rgba(0,1,144,.05);cursor:pointer;transition:box-shadow .2s,transform .15s;border-left:4px solid transparent;}
-.pf-item:hover{box-shadow:0 4px 20px rgba(0,1,144,.11);transform:translateY(-1px);}
-.pf-item.pf-active{border-left-color:var(--teal);}
-.pf-rank{font-size:20px;font-weight:900;color:rgba(0,1,144,.13);font-family:'Poppins',sans-serif;min-width:28px;text-align:center;}
+.pf-list{display:flex;flex-direction:column;gap:0;background:var(--surface);border-radius:14px;box-shadow:0 2px 14px rgba(0,1,144,.07),0 1px 3px rgba(0,0,0,.04);overflow:hidden;border:1px solid rgba(0,1,144,.05);}
+.pf-item{display:flex;align-items:center;gap:22px;background:transparent;padding:11px 22px;cursor:pointer;transition:background .12s;border-left:4px solid transparent;border-bottom:1px solid rgba(226,232,240,.65);}
+.pf-item:last-child{border-bottom:none;}
+.pf-item:hover{background:rgba(43,216,194,.055);}
+.pf-item.pf-active{border-left-color:var(--teal);background:rgba(43,216,194,.07);}
+.pf-rank{font-size:13px;font-weight:800;color:rgba(0,1,144,.28);font-family:'Poppins',sans-serif;min-width:20px;text-align:center;flex-shrink:0;}
 .pf-main{flex:1.6;min-width:0;}
-.pf-name{font-size:17px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
+.pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
 .pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
 .pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
-.pf-bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden;}
+.pf-bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden;}
 .pf-bar{height:100%;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);border-radius:2px;transition:width .5s;}
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
 .pf-metric{text-align:center;min-width:60px;}
 .pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
-.pf-mv{font-size:18px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
+.pf-mv{font-size:16px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
 .pf-mv.hi{color:var(--teal);}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
-.pf-col-name-spacer{flex:1.6;min-width:0;}
+.pf-col-name-spacer{flex:1.6;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
+.pf-col-name-spacer:hover{color:#0d7a6e;}
 .pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
 .pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
+.pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:3px;transition:color .12s;}
+.pf-col-lbl.pf-col-sortable:hover{color:#0d7a6e;}
+.pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;}
 .pf-score{text-align:center;min-width:52px;padding:7px 12px;background:rgba(0,1,144,.04);border-radius:9px;flex-shrink:0;}
 .pf-score-val{font-size:20px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
 .pf-score-lbl{font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:'Poppins',sans-serif;margin-top:3px;}
@@ -219,6 +224,29 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 </style>
 </head>
 <body>
+<script>
+// Mise à l'échelle proportionnelle de l'application selon la largeur d'écran.
+// L'app est conçue pour desktop uniquement : plutôt qu'un responsive qui réarrange
+// les blocs, on garde EXACTEMENT la même mise en page/proportions et on l'agrandit
+// ou la réduit dans son ensemble (comme un zoom navigateur piloté automatiquement),
+// pour un rendu propre aussi bien sur un 15" que sur un 29".
+(function(){
+  var REF_WIDTH = 1440;   // largeur de référence = zoom 100% (ordi portable 15" standard)
+  var MIN_ZOOM = 0.80;
+  var MAX_ZOOM = 1.90;
+  function applyAppZoom(){
+    var w = window.innerWidth;
+    var z = w / REF_WIDTH;
+    if(z < MIN_ZOOM) z = MIN_ZOOM;
+    if(z > MAX_ZOOM) z = MAX_ZOOM;
+    document.documentElement.style.zoom = z;
+  }
+  var t;
+  window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(applyAppZoom,120); });
+  applyAppZoom();
+  window.__applyAppZoom = applyAppZoom;
+})();
+</script>
 
 <header>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -253,11 +281,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       </svg>
     </div>
   </div>
-  <div class="pf-col-header" id="pf-col-header" style="display: flex;"><div class="pf-col-name-spacer"></div>
+  <div class="pf-col-header" id="pf-col-header" style="display: flex;">
+      <div class="pf-col-name-spacer" onclick="pfSortBy('name')">Titre <span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
-        <div class="pf-col-lbl" style="min-width:90px;">CAGR Return</div>
-        <div class="pf-col-lbl">P/E N</div>
-        <div class="pf-col-lbl">P/E N+1</div>
+        <div class="pf-col-lbl pf-col-sortable" style="min-width:90px;" onclick="pfSortBy('return')">CAGR Return <span class="pf-sort-arrow" data-key="return"></span></div>
+        <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
+        <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
       </div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
@@ -1043,6 +1072,37 @@ function calcScore(ticker){
   return (cagrEps+yieldPct)/peFwd;
 }
 
+// Tri de la vue portefeuille. Défaut = classement d'origine (score CAGR+yield / PE), inchangé.
+let pfSort={key:'score',dir:'desc'};
+function pfSortBy(key){
+  if(pfSort.key===key){ pfSort.dir = pfSort.dir==='asc'?'desc':'asc'; }
+  else{ pfSort.key=key; pfSort.dir = key==='name'?'asc':(key==='peN'||key==='peN1'?'asc':'desc'); }
+  renderPortfolio();
+}
+function pfSortItems(items){
+  const{key,dir}=pfSort;
+  const mul=dir==='asc'?1:-1;
+  return items.slice().sort((a,b)=>{
+    if(key==='name'){
+      return mul*(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'});
+    }
+    let av,bv;
+    switch(key){
+      case 'return': av=a.totalReturn; bv=b.totalReturn; break;
+      case 'peN': av=a.peFwd??Infinity; bv=b.peFwd??Infinity; break;
+      case 'peN1': av=a.pe27??Infinity; bv=b.pe27??Infinity; break;
+      default: av=a.score; bv=b.score;
+    }
+    return mul*(av-bv);
+  });
+}
+function pfUpdateSortHeaderUI(){
+  document.querySelectorAll('.pf-sort-arrow').forEach(el=>{
+    const k=el.getAttribute('data-key');
+    el.textContent=(pfSort.key===k)?(pfSort.dir==='asc'?'▲':'▼'):'';
+  });
+}
+
 function renderPortfolio(){
   const list=document.getElementById('pf-list');
   const countEl=document.getElementById('pf-count');
@@ -1065,8 +1125,7 @@ function renderPortfolio(){
         const score=calcScore(tk);
         return{tk,d,cours,totalReturn,peFwd,pe27,score};
       }catch(e){return null;}
-    }).filter(Boolean)
-    .sort((a,b)=>b.score-a.score);
+    }).filter(Boolean);
 
   if(countEl)countEl.textContent=items.length+' titre'+(items.length!==1?'s':'');
   
@@ -1079,25 +1138,28 @@ function renderPortfolio(){
   }
   
   const maxScore=Math.max(...items.map(x=>x.score),0.1);
-  items.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score})=>{
+  const sorted=pfSortItems(items);
+  sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
     el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
     const barW=Math.round(score/maxScore*100);
     
     el.innerHTML=`
+      <div class="pf-rank">${idx+1}</div>
       <div class="pf-main">
        <div class="pf-name">${d.name||tk}</div>
         <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
       </div>
       <div class="pf-metrics">
-        <div class="pf-metric" style="min-width:90px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}" style="font-size:22px;">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
-        <div class="pf-metric"><div class="pf-mv" style="font-size:22px;">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric"><div class="pf-mv" style="font-size:22px;">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric" style="min-width:90px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
       </div>
     `;
     list.appendChild(el);
   });
+  pfUpdateSortHeaderUI();
 }
 
 const PRICE_TTL=60*60*1000;
