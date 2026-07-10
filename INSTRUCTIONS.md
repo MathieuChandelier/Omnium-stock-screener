@@ -261,16 +261,22 @@ c-bis) SOUDURE ETENDUE au NET et a l'EPS : la 1ere annee projetee ne cree
 d) INVENTAIRE DES EXCEPTIONNELS (distincts des particularites, qui sont
    structurelles/recurrentes) : one-offs au-dessus comme en-dessous de
    l'EBIT.
-d-bis) BASE DE PROJECTION CHIFFREE (regle anti-oubli) : des qu'un
-   exceptionnel de d) touche le DERNIER exercice publie (celui qui sert de
-   point de depart aux adjXXX), le calcul base_propre = chiffre_publie +/-
-   exceptionnel doit etre ECRIT EN TOUTES LETTRES (jamais seulement
-   mentionne en prose) avant toute projection - y compris dans le cas
-   simple ou la societe ne publie aucun "adjusted" et se contente d'un
-   chiffre GAAP unique assorti d'un exceptionnel explicitement quantifie
-   (ex : credit fiscal ponctuel chiffre par le management). Un taux de
-   croissance externe (guidance, consensus) s'applique ENSUITE a cette base
-   propre - jamais au chiffre publie brut sans avoir fait ce calcul.
+d-bis) "DATA" RETRAITEE DES VRAIS ONE-OFFS (regle anti-pollution durable) :
+   des qu'un exceptionnel de d) touche un exercice de `data` (historique OU
+   exercice en cours), CET EXERCICE EST LUI-MEME RETRAITE dans `data`
+   (ebit/net corriges de l'exceptionnel) - jamais seulement dans les
+   adjXXX. Raison : `data` alimente le moteur de CAGR automatique (E1) a
+   CHAQUE refresh futur ; un one-off laisse tel quel y pollue indefiniment
+   la base (court ET long terme), pas seulement l'annee courante. Le calcul
+   (chiffre_publie_brut +/- exceptionnel = chiffre retenu dans `data`) est
+   ECRIT EN TOUTES LETTRES dans `hypothese.text` (rubrique EVENEMENTS,
+   classe i), qui reste l'unique endroit ou le chiffre publie BRUT est
+   trace pour audit - `data` porte desormais le chiffre retraite, pas le
+   chiffre brut. Cette regle ne concerne QUE les vrais one-offs (voir
+   liste en e) ci-dessous) ; les elements recurrents-deguises (SBC,
+   amortissement d'acquisition, restructuration recurrente) restent tels
+   quels DANS `data`, jamais retires. Un taux de croissance externe
+   (guidance, consensus) s'applique ensuite normalement a cette base.
 e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
    biais de flatterie. NE PAS reprendre l'adjusted du management tel quel.
    VALIDER le lien GAAP/IFRS <-> ajuste : lister chaque poste ajoute, le
@@ -281,14 +287,18 @@ e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
      avec les deals.
    - STOCK-BASED COMPENSATION : charge reelle et recurrente - la garder.
    - Couts de "transformation"/restructuration RECURRENTS annee apres annee.
-   Restent de vrais one-offs a exclure : discrete/deferred tax items lies a
-   une reorganisation, plus/moins-values de cession, extinction de dette,
-   depreciation isolee. SIGNAL D'ALERTE : si le NI/EPS GAAP publie DEPASSE
+   Restent de vrais one-offs a exclure (ou reintegrer si c'etait une
+   charge) via d-bis : discrete/deferred tax items lies a une
+   reorganisation, plus/moins-values de cession, extinction de dette,
+   depreciation isolee, credit ou remboursement exceptionnel (ex : recuperation
+   de tarifs douaniers). SIGNAL D'ALERTE : si le NI/EPS GAAP publie DEPASSE
    le NI/EPS "ajuste" (inversion anormale), un CREDIT exceptionnel (souvent
-   fiscal) gonfle le GAAP - l'exclure. Documente dans `hypothese.text` la
-   base retenue et l'ecart chiffre vs. l'adjusted du management. "data"
-   reste en GAAP/IFRS PUBLIE ; les adjXXX sont sur cette base normalisee,
-   PAS sur l'adjusted flatteur.
+   fiscal) gonfle le GAAP - l'exclure via d-bis. Documente dans
+   `hypothese.text` la base retenue et l'ecart chiffre vs. l'adjusted du
+   management. `data` est donc en GAAP/IFRS retraite des seuls vrais
+   one-offs (d-bis) - jamais des elements recurrents-deguises ci-dessus ;
+   les adjXXX restent sur cette meme base normalisee, PAS sur l'adjusted
+   flatteur du management.
 
 ### E5 bis. PARAMÈTRE UNIQUE (règle anti-incohérence)
 Tout écart de normalisation utilisé pour passer d'un "ajusté" du management à
