@@ -201,6 +201,12 @@ textarea{resize:vertical;width:100%;}
 .proj-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:10px;background:var(--gold-light);color:var(--gold-text);border:1px solid rgba(255,215,0,.4);}
 .proj-pill.cagr{background:var(--teal-light);color:#0d7a6e;border-color:rgba(43,216,194,.4);}
 
+/* ── FISCAL YEAR (exercice décalé) PILL ── */
+.fy-pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:4px 11px;border-radius:10px;background:var(--navy-light);color:var(--navy);border:1px solid rgba(0,1,144,.16);letter-spacing:.02em;}
+.fy-pill .fy-dot{width:6px;height:6px;border-radius:50%;background:var(--navy);opacity:.55;flex-shrink:0;}
+.fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal);opacity:.9;letter-spacing:.03em;margin-top:1px;}
+thead th .fy-month-tag{color:#8be9dc;}
+
 /* ── FOOTER ── */
 footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-top:1px solid var(--border);margin-top:22px;font-family:'Quattrocento Sans',serif;}
 
@@ -348,6 +354,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 // DECLARATION DES VARIABLES GLOBALES
 let state = { tickers: {} };
 let CT = "";
+
+// Abréviations FR des mois, utilisées uniquement pour signaler un exercice
+// fiscal décalé (clôture ≠ décembre). Index 1-12, index 0 inutilisé.
+const MONTH_ABBR_FR = ['','janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+
+// Renvoie le mois de clôture d'exercice du titre (1-12). Absent ou invalide
+// => 12 (calendaire standard, comportement inchangé pour tous les titres
+// existants qui n'ont pas ce champ).
+function fyEndMonth(ticker){
+  const d = state.tickers[ticker];
+  const m = +d?.fyEndMonth;
+  return (m>=1 && m<=12) ? m : 12;
+}
 
 // La première année de projection de CHAQUE titre n'est plus déduite de
 // l'horloge système, mais de la dernière année réellement présente dans
@@ -776,10 +795,20 @@ const BASE_OPTS={responsive:true,maintainAspectRatio:false,interaction:{mode:'in
 function renderAnalyse(){
   const d=state.tickers[CT];
   if(!d) return;
+  const fyEnd=fyEndMonth(CT);
+  const isOffCalendar=fyEnd!==12;
   const tblTitle=document.getElementById('analyse-tbl-title');
   if(tblTitle){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    tblTitle.innerHTML=`<div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:0;line-height:1.15;margin-bottom:12px;">${_nm}</div><b>Données historiques &amp; Projections</b>`;
+    const fyBadge=isOffCalendar
+      ? `<span class="fy-pill" title="Cette societe cloture son exercice fiscal en ${MONTH_ABBR_FR[fyEnd]} et non en decembre : les annees du tableau ci-dessous designent des exercices decales, pas des annees civiles.">
+           <span class="fy-dot"></span>Exercice décalé · clôture ${MONTH_ABBR_FR[fyEnd]}
+         </span>`
+      : '';
+    tblTitle.innerHTML=`<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+        <div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:0;line-height:1.15;">${_nm}</div>
+        ${fyBadge}
+      </div><b>Données historiques &amp; Projections</b>`;
   }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
@@ -806,11 +835,19 @@ function renderAnalyse(){
   const curEpsEl=document.getElementById('eps-cur'); if(curEpsEl)curEpsEl.textContent=cur;
   const last5=d.data.slice(-5);
 
+  // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
+  // petit sous l'année, uniquement pour les titres dont l'exercice ne se
+  // termine pas en décembre (isOffCalendar). Comportement par defaut
+  // (calendaire) strictement inchangé.
+  const yearHeaderHtml=(year)=> isOffCalendar
+    ? `${year}<span class="fy-month-tag">clôt. ${MONTH_ABBR_FR[fyEnd]}</span>`
+    : `${year}`;
+
   const headRow=document.getElementById('analyse-head');
   if(headRow){
     headRow.innerHTML=`<th>Indicateur</th>`
-      +last5.map(r=>`<th${r.year===CY?' style="background:var(--teal);color:var(--navy);"':''}>${r.year}</th>`).join('')
-      +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;opacity:.85;'}">${y}</th>`).join('');
+      +last5.map(r=>`<th${r.year===CY?' style="background:var(--teal);color:var(--navy);"':''}>${yearHeaderHtml(r.year)}</th>`).join('')
+      +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;opacity:.85;'}">${yearHeaderHtml(y)}</th>`).join('');
   }
 
   const caGrowthHist=r=>{
