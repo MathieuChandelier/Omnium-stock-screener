@@ -137,6 +137,8 @@ td input[type=number]:hover{border-color:var(--border);}
 .ctrl{display:flex;align-items:center;gap:8px;}
 .ctrl label{font-size:11px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Poppins',sans-serif;}
 .ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
+.ctrl-static{border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:600;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;user-select:none;}
+.ctrl-static-sm{font-size:10px;font-weight:700;padding:4px 8px;color:var(--muted);letter-spacing:.03em;}
 
 /* ── FORMS ── */
 select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
@@ -303,15 +305,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div class="controls">
     <div class="ctrl">
+      <label>Titre actif</label>
+      <div id="analyse-name-display" class="ctrl-static"></div>
+    </div>
+    <div class="ctrl">
       <label id="cours-label" style="display:flex;align-items:center;gap:5px;">Cours (<span id="cours-cur">€</span>)</label>
       <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
+      <div class="price-auto" id="price-status" style="display: none;">
+        <span id="price-lbl"></span>
+      </div>
     </div>
     <div class="ctrl">
       <label>Ticker</label>
-      <input type="text" id="yahoo-symbol" placeholder="ex: BRE.MI" style="width:100px;" oninput="saveYahooSymbol(this.value)">
-    </div>
-    <div class="price-auto" id="price-status" style="display: none;">
-      <span id="price-lbl"></span>
+      <div id="analyse-ticker-display" class="ctrl-static ctrl-static-sm"></div>
     </div>
     <div id="proj-pill-wrap"></div>
   </div>
@@ -601,21 +607,12 @@ function refreshAllPrices(){
 }
 
 function refreshSelects(){
-  const container = document.getElementById('tab-portefeuille');
-  if(!container) return;
-  let s=document.getElementById('analyse-select');
-  if(!s){
-    const ctrlWrap = document.querySelector('.controls');
-    if(ctrlWrap){
-      const wrapper = document.createElement('div');
-      wrapper.className = 'ctrl';
-      wrapper.innerHTML = `<label>Titre actif</label><select id="analyse-select" onchange="loadTicker()"></select>`;
-      ctrlWrap.insertBefore(wrapper, ctrlWrap.firstChild);
-      s=document.getElementById('analyse-select');
-    }
-  }
-  if(s){
-    s.innerHTML=Object.keys(state.tickers).map(t=>`<option value="${t}"${t===CT?' selected':''}>${state.tickers[t].name||t}</option>`).join('');
+  // Le titre actif n'est plus un <select> modifiable : simple affichage
+  // en lecture seule, synchronise sur le ticker courant (CT).
+  const nameEl=document.getElementById('analyse-name-display');
+  if(nameEl){
+    const d=state.tickers[CT];
+    nameEl.textContent=d?.name||CT||'';
   }
 }
 
@@ -624,8 +621,10 @@ function syncAnalyseHeader(ticker){
   const d=state.tickers[tk];
   const tn=document.getElementById('analyse-ticker-name');
   if(tn)tn.textContent=d?.name||tk;
-  const ys=document.getElementById('yahoo-symbol');
-  if(ys) ys.value=d?.yahooSymbol||'';
+  const nameEl=document.getElementById('analyse-name-display');
+  if(nameEl) nameEl.textContent=d?.name||tk;
+  const ys=document.getElementById('analyse-ticker-display');
+  if(ys) ys.textContent=d?.yahooSymbol||'';
 }
 
 function loadTicker(){
