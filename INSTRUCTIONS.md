@@ -41,6 +41,7 @@ data/
   "particularites": [
     {"text":"Explication CONCRETE et complete du fait pris en compte (jamais un chiffre seul).","valuePct":5}
   ],
+  "nextEvent": {"label":"Q3 2026","date":null},
   "hypothese": {
     "date":"2026-07-02",
     "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
@@ -67,6 +68,21 @@ annee (les 5 annees de projection en cours). Seules les annees/metriques
 renseignees ecrasent la base CAGR historique automatique ; le reste continue
 a etre extrapole depuis "data" par le moteur.
 
+Le champ `nextEvent` porte le prochain evenement de resultats (ou, a
+defaut, l'evenement alternatif le plus pertinent, ex: Capital Markets Day)
+affiche en colonne portefeuille dans index.html :
+- `label` : "Q<n> <annee>" (exercice calendaire) ou "Q<n> FY <annee>"
+  (exercice decale, coherent avec `fyEndMonth` si le titre en a un) si la
+  date n'est pas encore annoncee publiquement ; sinon un libelle court de
+  l'evenement lui-meme ("Q2 2026", "CMD", "Investor Day", etc.).
+- `date` : date confirmee au format ISO (`"2026-10-23"`) des qu'elle est
+  publiquement annoncee, sinon `null`.
+Ce champ n'est PAS un objet d'analyse financiere : il ne fait partie ni de
+la boucle E1-E8 ni de `hypothese`, et son absence ou son inexactitude
+n'affecte aucune projection. Il doit neanmoins etre renseigne/actualise a
+chaque creation et chaque refresh (voir NOTE COMMUNE A/B ci-dessous), et
+peut aussi etre rafraichi seul via l'Operation C.
+
 Le champ `ancrages` est la liste des MOTEURS nommes qui justifient les
 adjXXX : un identifiant court, le mecanisme en une phrase (jamais un chiffre
 seul), les lignes/annees ou il s'applique (`applique`, en notation
@@ -85,10 +101,10 @@ jugement d'analyse. Absent en creation (aucun historique a snapshotter) ;
 present a partir du premier refresh, et reecrase a chaque refresh suivant
 (un seul snapshot conserve : le plus recent avant l'ecriture en cours).
 
-## LES DEUX SEULES OPERATIONS
+## LES TROIS OPERATIONS POSSIBLES
 
-Il n'existe que DEUX types de requetes possibles. Identifie laquelle des
-deux avant de commencer.
+Il n'existe que TROIS types de requetes possibles. Identifie laquelle des
+trois avant de commencer.
 
 ### OPERATION A : AJOUTER UN TITRE (creation)
 Declencheurs : "ajoute [Societe] au portefeuille", "cree une position sur [Societe]".
@@ -97,7 +113,31 @@ Declencheurs : "ajoute [Societe] au portefeuille", "cree une position sur [Socie
 Declencheurs : "fais un refresh de [Titre]", "actualise [Titre]". L'utilisateur
 fournit dans sa requete le fichier JSON existant du titre (colle son contenu).
 
-## RECHERCHE DU TRANSCRIPT & QUESTION D'ENTREE (les deux operations)
+### OPERATION C : MISE A JOUR DES PROCHAINS EVENEMENTS (nextEvent)
+Declencheur : "mets a jour les dates de prochains resultats [du portefeuille |
+de TICKER1, TICKER2, ...]". L'utilisateur fournit les codes exacts tels
+qu'ils figurent dans `data/manifest.json`.
+
+Operation LEGERE et INDEPENDANTE de la boucle E1-E8 : ne touche JAMAIS
+`hypothese`/`adjXXX`/`data`. Ne pose PAS la question d'entree standard
+(transcript/evenements). Pour chaque ticker demande :
+1. Recherche web de la prochaine date de resultats confirmee (site IR du
+   titre, calendrier d'earnings). Si un autre evenement significatif et plus
+   proche est publiquement annonce et structurant pour la these (ex. Capital
+   Markets Day, Investor Day), il peut se substituer au trimestre comme
+   `nextEvent` - une ligne suffit pour justifier le choix si non trivial.
+2. Ecrit `nextEvent: {label, date}` selon la definition donnee dans le
+   SCHEMA ci-dessus.
+3. Si la date n'est publiquement pas encore annoncee, deduire le trimestre
+   attendu a partir du dernier exercice publie (`data`) et du calendrier de
+   publication habituel du titre (cadence observee sur ses communiques
+   passes, ~6-10 semaines apres la cloture de trimestre).
+
+Livrable : uniquement le(s) patch(es) du champ `nextEvent` par ticker
+concerne - jamais de regeneration de `hypothese` ou des adjXXX (voir
+LIVRABLE FINAL ci-dessous).
+
+## RECHERCHE DU TRANSCRIPT & QUESTION D'ENTREE (Operations A et B uniquement)
 
 Avant de derouler la boucle d'analyse, RECHERCHE TOI-MEME sur le web le
 transcript du dernier call de resultats (trimestriel ou annuel) publie par
@@ -162,7 +202,7 @@ evenement).
   fournis par l'utilisateur) : ce sont des sources FERMEES et FAISANT
   AUTORITE - enumere TOUS les evenements materiels qu'ils contiennent (voir E3).
 
-## LA BOUCLE D'ANALYSE (E1 -> E8, commune aux deux operations)
+## LA BOUCLE D'ANALYSE (E1 -> E8, commune aux operations A et B)
 
 Il existe UNE SEULE boucle d'analyse. La CREATION la deroule en entier
 depuis une base vierge ; le REFRESH deroule EXACTEMENT la meme boucle, avec
@@ -171,6 +211,9 @@ de reconciliation + verrous a l'interieur de `hypothese.text`, questions
 d'agenda a solder) et une etape de reconciliation en sortie. Un refresh
 n'est jamais une analyse plus pauvre qu'une creation. Il RECALCULE TOUT A
 NEUF (il ne pousse jamais l'ancienne projection d'un cran).
+
+L'Operation C (nextEvent) n'entre PAS dans cette boucle : voir sa propre
+description plus haut.
 
 ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
 retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
@@ -435,7 +478,9 @@ lecture non reductibles a un moteur).
 2. Fournis le contenu JSON complet du fichier (objet autonome, schema
    ci-dessus). `hypothese.priorEPS` est ABSENT en creation (aucun refresh
    anterieur a snapshotter).
-3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
+3. `nextEvent` renseigne (voir logique de l'Operation C) : prochaine
+   publication de resultats trouvee, sinon trimestre attendu deduit.
+4. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
    invisible malgre le fichier present.
@@ -447,6 +492,18 @@ confirmer le nom/code, il est deja connu.
 1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
    snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
    avant le JSON final.
-2. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
-   `ancrages` et `priorEPS` inclus), pret a remplacer le fichier
-   `data/CODE.json` existant sur GitHub tel quel.
+2. `nextEvent` renseigne/actualise (voir logique de l'Operation C) - le
+   refresh venant de solder le trimestre publie, `nextEvent` doit pointer
+   vers l'echeance suivante.
+3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
+   `ancrages`, `priorEPS` et `nextEvent` inclus), pret a remplacer le
+   fichier `data/CODE.json` existant sur GitHub tel quel.
+
+### Pour une mise a jour nextEvent (Operation C)
+L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
+listant tous les codes de `manifest.json`).
+1. Pour chaque code : recherche de la date confirmee, sinon deduction du
+   trimestre attendu (voir logique de l'Operation C ci-dessus).
+2. Livrable : uniquement le patch du champ `nextEvent` par ticker, sous la
+   forme `{"CODE": {"label":"...", "date":"..."|null}, ...}` - jamais de
+   JSON de titre complet, jamais de reference a `hypothese`/adjXXX.
