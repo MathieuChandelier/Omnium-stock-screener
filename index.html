@@ -302,12 +302,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </div>
   </div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
-      <div class="pf-col-name-spacer" onclick="pfSortBy('name')">Titre <span class="pf-sort-arrow" data-key="name"></span></div>
+      <div class="pf-col-name-spacer" onclick="pfSortBy('name')"><span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">CAGR Return <span class="pf-sort-arrow" data-key="return"></span></div>
+        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
-        <div class="pf-col-lbl" style="flex:0 0 158px;">Prochain résultat</div></div></div>
+        <div class="pf-col-lbl" style="flex:0 0 132px;">Next event</div></div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
 
@@ -411,11 +411,12 @@ function tickerCur(ticker){
   return'$'; 
 }
 
-// Libellé affiché dans la colonne "Prochain résultat" de la vue portefeuille.
-// Format d'une entrée : { label: "Q3 2026" | "Q3 FY 2027" | "CMD" | tout
-// libellé court, date: "2026-10-23" | null }
-// - label seul si la date n'est pas encore annoncée : ex. "Q3 2026".
-// - label + date des qu'elle est connue/annoncee : ex. "Q3 2026 - 23 octobre".
+// Libellé affiché dans la colonne "Next event" de la vue portefeuille.
+// Convention COURTE et anglo-saxonne (annee sur 2 chiffres, mois abrege
+// anglais) : { label: "Q3 26" | "Q3 FY 27" | "H1 26" | "CMD" | tout libelle
+// court, date: "2026-10-23" | null }
+// - label seul si la date n'est pas encore annoncée : ex. "Q3 26".
+// - label + date des qu'elle est connue/annoncee : ex. "Q3 26 - Oct 23".
 // - permet aussi un evenement alternatif important (Capital Markets Day,
 //   Investor Day, etc.) via un label libre au lieu d'un trimestre.
 //
@@ -437,7 +438,7 @@ function nextEventLabel(ticker){
   if(!ne.date) return ne.label;
   const dt=new Date(ne.date);
   if(isNaN(dt)) return ne.label;
-  const formatted=dt.toLocaleDateString('fr-FR',{day:'numeric',month:'long'});
+  const formatted=dt.toLocaleDateString('en-US',{day:'numeric',month:'short'});
   return `${ne.label} - ${formatted}`;
 }
 
@@ -484,8 +485,8 @@ async function loadState() {
     //    l'affichage de tout le portefeuille (c'est tout le sens du
     //    decoupage par fichier).
     // 2bis. En parallele, charge aussi data/nextEvents.json : fichier dedie
-    //    et OPTIONNEL (source prioritaire pour la colonne "Prochain
-    //    resultat", alimente uniquement par une mise a jour groupee -
+    //    et OPTIONNEL (source prioritaire pour la colonne "Next event",
+    //    alimente uniquement par une mise a jour groupee -
     //    Operation C). Son absence ou son invalidite est silencieuse : elle
     //    ne doit jamais bloquer le chargement, chaque titre retombe alors
     //    sur son propre champ nextEvent (voir nextEventLabel()).
@@ -1236,7 +1237,7 @@ function renderPortfolio(){
         <div class="pf-metric" style="flex:0 0 100px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
         <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
         <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="flex:0 0 158px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
+        <div class="pf-metric" style="flex:0 0 132px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
       </div>
     `;
     list.appendChild(el);
