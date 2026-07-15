@@ -307,6 +307,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
         <div class="pf-col-lbl pf-col-sortable" style="min-width:90px;" onclick="pfSortBy('return')">CAGR Return <span class="pf-sort-arrow" data-key="return"></span></div>
         <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
         <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
+        <div class="pf-col-lbl" style="min-width:104px;">Prochain résultat</div>
       </div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
@@ -411,6 +412,24 @@ function tickerCur(ticker){
   return'$'; 
 }
 
+// Libellé affiché dans la colonne "Prochain résultat" de la vue portefeuille.
+// d.nextEvent = { label: "Q3 2026" | "Q3 FY 2027" | "CMD" | tout libellé court,
+//                 date: "2026-10-23" | null }
+// - label seul si la date n'est pas encore annoncée (ex. "Q3", debut de
+//   trimestre juste apres un refresh) : ex. "Q3 2026".
+// - label + date des qu'elle est connue/annoncee : ex. "Q3 2026 - 23 octobre".
+// - permet aussi un evenement alternatif important (Capital Markets Day,
+//   Investor Day, etc.) via un label libre au lieu d'un trimestre.
+function nextEventLabel(d){
+  const ne=d?.nextEvent;
+  if(!ne || !ne.label) return '—';
+  if(!ne.date) return ne.label;
+  const dt=new Date(ne.date);
+  if(isNaN(dt)) return ne.label;
+  const formatted=dt.toLocaleDateString('fr-FR',{day:'numeric',month:'long'});
+  return `${ne.label} - ${formatted}`;
+}
+
 if(!CanvasRenderingContext2D.prototype.roundRect){
   CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
     this.beginPath();this.moveTo(x+r,y);this.lineTo(x+w-r,y);
@@ -423,6 +442,7 @@ if(!CanvasRenderingContext2D.prototype.roundRect){
 
 function normalizeTicker(key,d){
   if(!d.particularites)d.particularites=[];
+  if(!d.nextEvent)d.nextEvent=null;
   return d;
 }
 
@@ -1162,7 +1182,8 @@ function renderPortfolio(){
         const peFwd=(cours>0&&epsCY>0)?cours/epsCY:null;
         const pe27=(cours>0&&eps27>0)?cours/eps27:null;
         const score=calcScore(tk);
-        return{tk,d,cours,totalReturn,peFwd,pe27,score};
+        const nextEvt=nextEventLabel(d);
+        return{tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt};
       }catch(e){return null;}
     }).filter(Boolean);
 
@@ -1178,7 +1199,7 @@ function renderPortfolio(){
   
   const maxScore=Math.max(...items.map(x=>x.score),0.1);
   const sorted=pfSortItems(items);
-  sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score},idx)=>{
+  sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
     el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
@@ -1194,6 +1215,7 @@ function renderPortfolio(){
         <div class="pf-metric" style="min-width:90px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
         <div class="pf-metric"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
         <div class="pf-metric"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric" style="min-width:104px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
       </div>
     `;
     list.appendChild(el);
