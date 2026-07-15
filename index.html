@@ -137,8 +137,19 @@ td input[type=number]:hover{border-color:var(--border);}
 .ctrl{display:flex;align-items:center;gap:8px;}
 .ctrl label{font-size:11px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Poppins',sans-serif;}
 .ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
-.ctrl-static{border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:600;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;user-select:none;}
-.ctrl-static-sm{font-size:10px;font-weight:700;padding:4px 8px;color:var(--muted);letter-spacing:.03em;}
+
+/* ── HEADER ANALYSE (nom + ticker + cours) ── */
+.analyse-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;margin-bottom:18px;}
+.analyse-id{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;}
+.analyse-name{font-family:'Poppins',sans-serif;font-size:25px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
+.analyse-ticker{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.analyse-price-wrap{display:flex;align-items:center;gap:12px;}
+.analyse-price{display:flex;align-items:baseline;gap:3px;}
+.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:23px;font-weight:800;color:var(--navy);padding:0 1px 1px;width:112px;text-align:right;transition:border-color .15s;-moz-appearance:textfield;}
+.analyse-price input#cours::-webkit-outer-spin-button,.analyse-price input#cours::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.analyse-price input#cours:hover{border-bottom-color:rgba(0,1,144,.18);}
+.analyse-price input#cours:focus{outline:none;border-bottom-color:var(--teal);}
+.analyse-price-cur{font-size:14px;font-weight:700;color:var(--muted);}
 
 /* ── FORMS ── */
 select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
@@ -303,24 +314,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div id="tab-analyse" class="panel active">
   <span id="analyse-ticker-name" style="display:none;"></span>
 
-  <div class="controls">
-    <div class="ctrl">
-      <label>Titre actif</label>
-      <div id="analyse-name-display" class="ctrl-static"></div>
-    </div>
-    <div class="ctrl">
-      <label id="cours-label" style="display:flex;align-items:center;gap:5px;">Cours (<span id="cours-cur">€</span>)</label>
-      <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
+  <div class="analyse-header">
+    <div class="analyse-id" id="analyse-id"></div>
+    <div class="analyse-price-wrap">
+      <div class="analyse-price">
+        <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
+        <span id="cours-cur" class="analyse-price-cur">€</span>
+      </div>
       <div class="price-auto" id="price-status" style="display: none;">
         <span id="price-lbl"></span>
       </div>
     </div>
-    <div class="ctrl">
-      <label>Ticker</label>
-      <div id="analyse-ticker-display" class="ctrl-static ctrl-static-sm"></div>
-    </div>
-    <div id="proj-pill-wrap"></div>
   </div>
+  <div id="proj-pill-wrap" style="display:none;"></div>
 
   <div class="card">
     <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
@@ -607,13 +613,9 @@ function refreshAllPrices(){
 }
 
 function refreshSelects(){
-  // Le titre actif n'est plus un <select> modifiable : simple affichage
-  // en lecture seule, synchronise sur le ticker courant (CT).
-  const nameEl=document.getElementById('analyse-name-display');
-  if(nameEl){
-    const d=state.tickers[CT];
-    nameEl.textContent=d?.name||CT||'';
-  }
+  // Le titre actif n'est plus un select ni un champ modifiable : son affichage
+  // (nom + ticker) est entierement gere par renderAnalyse(), au-dessus du
+  // tableau de projections. Fonction conservee (no-op) pour compat des appels existants.
 }
 
 function syncAnalyseHeader(ticker){
@@ -621,10 +623,6 @@ function syncAnalyseHeader(ticker){
   const d=state.tickers[tk];
   const tn=document.getElementById('analyse-ticker-name');
   if(tn)tn.textContent=d?.name||tk;
-  const nameEl=document.getElementById('analyse-name-display');
-  if(nameEl) nameEl.textContent=d?.name||tk;
-  const ys=document.getElementById('analyse-ticker-display');
-  if(ys) ys.textContent=d?.yahooSymbol||'';
 }
 
 function loadTicker(){
@@ -796,18 +794,16 @@ function renderAnalyse(){
   if(!d) return;
   const fyEnd=fyEndMonth(CT);
   const isOffCalendar=fyEnd!==12;
-  const tblTitle=document.getElementById('analyse-tbl-title');
-  if(tblTitle){
+  const idWrap=document.getElementById('analyse-id');
+  if(idWrap){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const _tk=(d.yahooSymbol||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const fyBadge=isOffCalendar
       ? `<span class="fy-pill" title="Cette societe cloture son exercice fiscal en ${MONTH_ABBR_FR[fyEnd]} et non en decembre : les annees du tableau ci-dessous designent des exercices decales, pas des annees civiles.">
            <span class="fy-dot"></span>Exercice décalé · clôture ${MONTH_ABBR_FR[fyEnd]}
          </span>`
       : '';
-    tblTitle.innerHTML=`<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
-        <div style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);text-transform:none;letter-spacing:0;line-height:1.15;">${_nm}</div>
-        ${fyBadge}
-      </div><b>Données historiques &amp; Projections</b>`;
+    idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${_tk?`<span class="analyse-ticker">${_tk}</span>`:''}${fyBadge}`;
   }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
