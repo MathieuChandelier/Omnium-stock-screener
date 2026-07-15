@@ -413,15 +413,27 @@ function tickerCur(ticker){
 }
 
 // Libellé affiché dans la colonne "Prochain résultat" de la vue portefeuille.
-// d.nextEvent = { label: "Q3 2026" | "Q3 FY 2027" | "CMD" | tout libellé court,
-//                 date: "2026-10-23" | null }
-// - label seul si la date n'est pas encore annoncée (ex. "Q3", debut de
-//   trimestre juste apres un refresh) : ex. "Q3 2026".
+// Format d'une entrée : { label: "Q3 2026" | "Q3 FY 2027" | "CMD" | tout
+// libellé court, date: "2026-10-23" | null }
+// - label seul si la date n'est pas encore annoncée : ex. "Q3 2026".
 // - label + date des qu'elle est connue/annoncee : ex. "Q3 2026 - 23 octobre".
 // - permet aussi un evenement alternatif important (Capital Markets Day,
 //   Investor Day, etc.) via un label libre au lieu d'un trimestre.
-function nextEventLabel(d){
-  const ne=d?.nextEvent;
+//
+// DOUBLE STOCKAGE AVEC PRIORITE (choix delibere, voir INSTRUCTIONS.md) :
+// - source prioritaire : data/nextEvents.json (fichier dedie, optionnel,
+//   charge dans state.nextEvents par loadState()), alimente UNIQUEMENT par
+//   une mise a jour groupee (Operation C). Rafraichi en un seul fichier,
+//   donc facile a relancer regulierement (ex. toutes les deux semaines).
+// - fallback : le champ nextEvent du JSON du titre lui-meme, ecrit a la
+//   creation/au refresh (Operations A/B). Utilise UNIQUEMENT si le ticker
+//   est absent de state.nextEvents (titre pas encore couvert par un C).
+// Cette priorite volontaire accepte une petite fenetre d'incoherence entre
+// deux passages de l'Operation C, en echange d'une mise a jour groupee en
+// un seul fichier, plutot qu'un double-fetch systematique par titre.
+function nextEventLabel(ticker){
+  const d=state.tickers[ticker];
+  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
   if(!ne || !ne.label) return '—';
   if(!ne.date) return ne.label;
   const dt=new Date(ne.date);
@@ -448,6 +460,7 @@ function normalizeTicker(key,d){
 
 function normalizeState(s){
   if(!s.tickers)s.tickers={};
+  if(!s.nextEvents)s.nextEvents={};
   Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
   return s;
 }
@@ -471,22 +484,31 @@ async function loadState() {
     //    avertissement, pour qu'une erreur sur un seul titre n'empeche pas
     //    l'affichage de tout le portefeuille (c'est tout le sens du
     //    decoupage par fichier).
-    const results = await Promise.all(codes.map(async code => {
-      try {
-        const r = await fetch(`data/${code}.json`);
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        const obj = await r.json();
-        return [code, obj];
-      } catch (e) {
-        console.error(`loadState: data/${code}.json illisible -`, e);
-        showToast(`⚠ Titre ${code} illisible (data/${code}.json) - ignore.`, 6000);
-        return null;
-      }
-    }));
+    // 2bis. En parallele, charge aussi data/nextEvents.json : fichier dedie
+    //    et OPTIONNEL (source prioritaire pour la colonne "Prochain
+    //    resultat", alimente uniquement par une mise a jour groupee -
+    //    Operation C). Son absence ou son invalidite est silencieuse : elle
+    //    ne doit jamais bloquer le chargement, chaque titre retombe alors
+    //    sur son propre champ nextEvent (voir nextEventLabel()).
+    const [results, nextEvents] = await Promise.all([
+      Promise.all(codes.map(async code => {
+        try {
+          const r = await fetch(`data/${code}.json`);
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          const obj = await r.json();
+          return [code, obj];
+        } catch (e) {
+          console.error(`loadState: data/${code}.json illisible -`, e);
+          showToast(`⚠ Titre ${code} illisible (data/${code}.json) - ignore.`, 6000);
+          return null;
+        }
+      })),
+      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers };
+    const jsonData = { tickers, nextEvents: nextEvents || {} };
 
     // Empreinte calculee sur l'ensemble reconstitue, pour rester comparable
     // a l'ancien comportement (verification de coherence entre onglets).
@@ -1182,7 +1204,7 @@ function renderPortfolio(){
         const peFwd=(cours>0&&epsCY>0)?cours/epsCY:null;
         const pe27=(cours>0&&eps27>0)?cours/eps27:null;
         const score=calcScore(tk);
-        const nextEvt=nextEventLabel(d);
+        const nextEvt=nextEventLabel(tk);
         return{tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt};
       }catch(e){return null;}
     }).filter(Boolean);
