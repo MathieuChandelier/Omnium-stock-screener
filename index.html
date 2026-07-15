@@ -304,11 +304,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer" onclick="pfSortBy('name')">Titre <span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
-        <div class="pf-col-lbl pf-col-sortable" style="min-width:90px;" onclick="pfSortBy('return')">CAGR Return <span class="pf-sort-arrow" data-key="return"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
-        <div class="pf-col-lbl" style="min-width:104px;">Prochain résultat</div>
-      </div></div>
+        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">CAGR Return <span class="pf-sort-arrow" data-key="return"></span></div>
+        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
+        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
+        <div class="pf-col-lbl" style="flex:0 0 158px;">Prochain résultat</div></div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
 
@@ -1234,10 +1233,10 @@ function renderPortfolio(){
         <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
       </div>
       <div class="pf-metrics">
-        <div class="pf-metric" style="min-width:90px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
-        <div class="pf-metric"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="min-width:104px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
+        <div class="pf-metric" style="flex:0 0 100px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric" style="flex:0 0 158px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
       </div>
     `;
     list.appendChild(el);
