@@ -48,7 +48,7 @@ data/
   "particularites": [
     {"text":"Explication CONCRETE et complete du fait pris en compte (jamais un chiffre seul).","valuePct":5}
   ],
-  "nextEvent": {"label":"Q3 2026","date":null},
+  "nextEvent": {"label":"Q3 26","date":null},
   "hypothese": {
     "date":"2026-07-02",
     "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
@@ -77,11 +77,16 @@ a etre extrapole depuis "data" par le moteur.
 
 Le champ `nextEvent` porte le prochain evenement de resultats (ou, a
 defaut, l'evenement alternatif le plus pertinent, ex: Capital Markets Day)
-affiche en colonne portefeuille dans index.html :
-- `label` : "Q<n> <annee>" (exercice calendaire) ou "Q<n> FY <annee>"
-  (exercice decale, coherent avec `fyEndMonth` si le titre en a un) si la
-  date n'est pas encore annoncee publiquement ; sinon un libelle court de
-  l'evenement lui-meme ("Q2 2026", "CMD", "Investor Day", etc.).
+affiche en colonne portefeuille dans index.html ("Next event"). Convention
+COURTE et anglo-saxonne (annee sur 2 chiffres, mois abrege anglais quand
+une date est affichee - la conversion date -> "Jul 22" etc. est geree par
+index.html, jamais stockee telle quelle dans le JSON) :
+- `label` : "Q<n> <AA>" (exercice calendaire, ex. "Q2 26"), "H<n> <AA>"
+  (semestre, ex. "H1 26"), ou "Q<n> FY <AA>" (exercice decale, coherent
+  avec `fyEndMonth` si le titre en a un, ex. "Q2 FY 27") si la date n'est
+  pas encore annoncee publiquement ; sinon un libelle court de l'evenement
+  lui-meme ("Q2 26", "CMD", "Investor Day", etc.). Annee TOUJOURS sur 2
+  chiffres, jamais 4 (ex. "26" pas "2026").
 - `date` : date confirmee au format ISO (`"2026-10-23"`) des qu'elle est
   publiquement annoncee, sinon `null`.
 Ce champ n'est PAS un objet d'analyse financiere : il ne fait partie ni de
@@ -159,7 +164,8 @@ evenements). Pour chaque ticker demande :
    evenement retenu - une ligne suffit pour justifier le choix si non
    trivial.
 2. Determine `{label, date}` selon la definition donnee dans le SCHEMA
-   ci-dessus (section DOUBLE STOCKAGE).
+   ci-dessus (section DOUBLE STOCKAGE) - convention courte, annee sur 2
+   chiffres.
 3. Si la date n'est publiquement pas encore annoncee, deduire le trimestre
    attendu a partir du dernier exercice publie (`data` du titre) et du
    calendrier de publication habituel (cadence observee sur ses communiques
