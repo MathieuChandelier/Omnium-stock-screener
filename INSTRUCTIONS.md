@@ -10,17 +10,24 @@ index.html              <- le moteur (jamais modifie pour un titre)
 Logotype-Omnium.png
 data/
   manifest.json          <- la liste des codes de titres a charger
+  nextEvents.json         <- OPTIONNEL, prochains evenements (voir plus bas)
   TICKER1.json            <- un fichier par titre, autonome
   TICKER2.json
   ...
 ```
 
 - `manifest.json` contient UN SEUL champ : `{"tickers": ["CODE1", "CODE2", ...]}`.
+- `nextEvents.json` est un fichier PLAT et OPTIONNEL : `{"CODE1":
+  {"label":"...","date":"..."|null}, "CODE2": {...}, ...}`. Il n'est
+  ALIMENTE QUE par l'Operation C (mise a jour groupee des prochains
+  evenements) - jamais par une creation ou un refresh. Son absence ne
+  bloque jamais le chargement de l'app (voir DOUBLE STOCKAGE plus bas).
 - Chaque `data/CODE.json` est un objet AUTONOME (pas de cle wrapper, pas de
   "tickers": {...} autour) correspondant exactement au schema ci-dessous.
 - `index.html` charge `data/manifest.json`, puis chaque `data/CODE.json` en
-  parallele. Un fichier de titre en echec (absent, invalide) est IGNORE sans
-  bloquer les autres.
+  parallele, ainsi que `data/nextEvents.json` (silencieusement ignore s'il
+  est absent). Un fichier de titre en echec (absent, invalide) est IGNORE
+  sans bloquer les autres.
 - `index.html` n'est JAMAIS retouche pour ajouter/modifier/supprimer un titre.
   Retirer un titre = supprimer son fichier + son code dans manifest.json,
   operation manuelle, ne necessite aucun assistant IA.
@@ -79,9 +86,27 @@ affiche en colonne portefeuille dans index.html :
   publiquement annoncee, sinon `null`.
 Ce champ n'est PAS un objet d'analyse financiere : il ne fait partie ni de
 la boucle E1-E8 ni de `hypothese`, et son absence ou son inexactitude
-n'affecte aucune projection. Il doit neanmoins etre renseigne/actualise a
-chaque creation et chaque refresh (voir NOTE COMMUNE A/B ci-dessous), et
-peut aussi etre rafraichi seul via l'Operation C.
+n'affecte aucune projection.
+
+DOUBLE STOCKAGE AVEC PRIORITE (choix delibere) : la meme information peut
+vivre a DEUX endroits, avec une regle de priorite fixe cote index.html -
+1. **Source prioritaire : `data/nextEvents.json`**, le fichier dedie
+   (voir ARCHITECTURE DU DEPOT). Alimente UNIQUEMENT par l'Operation C
+   (mise a jour groupee), en un seul fichier remplace d'un coup - donc
+   facile a relancer regulierement (ex. toutes les deux semaines) pour
+   garder l'ensemble du portefeuille a jour sans toucher aux fichiers de
+   titre.
+2. **Fallback : le champ `nextEvent` du JSON du titre lui-meme** (ce
+   schema). Ecrit/actualise a chaque creation et chaque refresh (voir NOTE
+   COMMUNE A/B ci-dessous). N'est affiche par index.html QUE si le ticker
+   est absent de `data/nextEvents.json` (typiquement : titre tout juste
+   cree, pas encore couvert par un passage de l'Operation C).
+Consequence acceptee : entre deux passages de l'Operation C, un refresh
+recent peut afficher une date desormais perimee si `data/nextEvents.json`
+contient deja une entree pour ce ticker (le fichier dedie l'emporte). C'est
+un compromis assume au profit de la simplicite de mise a jour groupee -
+la fenetre d'incoherence reste faible si l'Operation C est relancee
+regulierement.
 
 Le champ `ancrages` est la liste des MOTEURS nommes qui justifient les
 adjXXX : un identifiant court, le mecanisme en une phrase (jamais un chiffre
@@ -113,29 +138,39 @@ Declencheurs : "ajoute [Societe] au portefeuille", "cree une position sur [Socie
 Declencheurs : "fais un refresh de [Titre]", "actualise [Titre]". L'utilisateur
 fournit dans sa requete le fichier JSON existant du titre (colle son contenu).
 
-### OPERATION C : MISE A JOUR DES PROCHAINS EVENEMENTS (nextEvent)
+### OPERATION C : MISE A JOUR DES PROCHAINS EVENEMENTS (nextEvents.json)
 Declencheur : "mets a jour les dates de prochains resultats [du portefeuille |
 de TICKER1, TICKER2, ...]". L'utilisateur fournit les codes exacts tels
-qu'ils figurent dans `data/manifest.json`.
+qu'ils figurent dans `data/manifest.json` (ou "le portefeuille" pour tous
+les traiter), ET colle le contenu actuel de `data/nextEvents.json` (pour
+permettre la fusion du point 2 du LIVRABLE FINAL) - a defaut, si l'ancien
+contenu n'est pas fourni, le demander avant de continuer plutot que de
+livrer un fichier partiel qui ferait disparaitre les entrees non
+redemandees.
 
 Operation LEGERE et INDEPENDANTE de la boucle E1-E8 : ne touche JAMAIS
-`hypothese`/`adjXXX`/`data`. Ne pose PAS la question d'entree standard
-(transcript/evenements). Pour chaque ticker demande :
+`hypothese`/`adjXXX`/`data`, et ne touche JAMAIS un `data/CODE.json`
+individuel. Ne pose PAS la question d'entree standard (transcript/
+evenements). Pour chaque ticker demande :
 1. Recherche web de la prochaine date de resultats confirmee (site IR du
    titre, calendrier d'earnings). Si un autre evenement significatif et plus
    proche est publiquement annonce et structurant pour la these (ex. Capital
    Markets Day, Investor Day), il peut se substituer au trimestre comme
-   `nextEvent` - une ligne suffit pour justifier le choix si non trivial.
-2. Ecrit `nextEvent: {label, date}` selon la definition donnee dans le
-   SCHEMA ci-dessus.
+   evenement retenu - une ligne suffit pour justifier le choix si non
+   trivial.
+2. Determine `{label, date}` selon la definition donnee dans le SCHEMA
+   ci-dessus (section DOUBLE STOCKAGE).
 3. Si la date n'est publiquement pas encore annoncee, deduire le trimestre
-   attendu a partir du dernier exercice publie (`data`) et du calendrier de
-   publication habituel du titre (cadence observee sur ses communiques
+   attendu a partir du dernier exercice publie (`data` du titre) et du
+   calendrier de publication habituel (cadence observee sur ses communiques
    passes, ~6-10 semaines apres la cloture de trimestre).
 
-Livrable : uniquement le(s) patch(es) du champ `nextEvent` par ticker
-concerne - jamais de regeneration de `hypothese` ou des adjXXX (voir
-LIVRABLE FINAL ci-dessous).
+Livrable : LE FICHIER `data/nextEvents.json` COMPLET (tous les tickers
+demandes, fusionnes avec les entrees deja presentes pour les tickers NON
+demandes cette fois-ci - ne jamais faire disparaitre une entree existante
+faute d'avoir ete explicitement redemandee), pret a remplacer tel quel le
+fichier existant sur GitHub. Une seule action de deploiement, quel que soit
+le nombre de tickers traites.
 
 ## RECHERCHE DU TRANSCRIPT & QUESTION D'ENTREE (Operations A et B uniquement)
 
@@ -477,10 +512,12 @@ lecture non reductibles a un moteur).
    ajoute sur GitHub, ex : "Le fichier sera `data/SIEMENS.json`."
 2. Fournis le contenu JSON complet du fichier (objet autonome, schema
    ci-dessus). `hypothese.priorEPS` est ABSENT en creation (aucun refresh
-   anterieur a snapshotter).
-3. `nextEvent` renseigne (voir logique de l'Operation C) : prochaine
-   publication de resultats trouvee, sinon trimestre attendu deduit.
-4. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
+   anterieur a snapshotter). `nextEvent` renseigne (prochaine publication
+   de resultats trouvee, sinon trimestre attendu deduit - voir DOUBLE
+   STOCKAGE dans le SCHEMA ci-dessus) : ce nouveau titre n'etant couvert par
+   aucun passage anterieur de l'Operation C, ce champ sert de valeur
+   affichee jusqu'au prochain passage de C.
+3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
    invisible malgre le fichier present.
@@ -492,18 +529,24 @@ confirmer le nom/code, il est deja connu.
 1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
    snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
    avant le JSON final.
-2. `nextEvent` renseigne/actualise (voir logique de l'Operation C) - le
-   refresh venant de solder le trimestre publie, `nextEvent` doit pointer
-   vers l'echeance suivante.
+2. `nextEvent` renseigne/actualise (le refresh venant de solder le
+   trimestre publie, `nextEvent` doit pointer vers l'echeance suivante) -
+   rappelle a l'utilisateur que cette valeur ne s'affichera que si le
+   ticker est absent de `data/nextEvents.json`, ou jusqu'au prochain
+   passage de l'Operation C qui la supplantera (voir DOUBLE STOCKAGE).
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS` et `nextEvent` inclus), pret a remplacer le
    fichier `data/CODE.json` existant sur GitHub tel quel.
 
-### Pour une mise a jour nextEvent (Operation C)
+### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
-listant tous les codes de `manifest.json`).
-1. Pour chaque code : recherche de la date confirmee, sinon deduction du
-   trimestre attendu (voir logique de l'Operation C ci-dessus).
-2. Livrable : uniquement le patch du champ `nextEvent` par ticker, sous la
-   forme `{"CODE": {"label":"...", "date":"..."|null}, ...}` - jamais de
-   JSON de titre complet, jamais de reference a `hypothese`/adjXXX.
+listant tous les codes de `manifest.json`) ET le contenu actuel de
+`data/nextEvents.json`.
+1. Pour chaque code demande : recherche de la date confirmee, sinon
+   deduction du trimestre attendu (voir logique de l'Operation C
+   ci-dessus).
+2. Livrable : LE FICHIER `data/nextEvents.json` COMPLET, entrees demandees
+   mises a jour + entrees existantes non redemandees conservees telles
+   quelles, pret a remplacer le fichier existant sur GitHub. Jamais de
+   `data/CODE.json` individuel touche, jamais de reference a
+   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`.
