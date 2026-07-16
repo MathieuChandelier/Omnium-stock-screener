@@ -302,12 +302,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </div>
   </div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
-      <div class="pf-col-name-spacer" onclick="pfSortBy('name')"><span class="pf-sort-arrow" data-key="name"></span></div>
+      <div class="pf-col-name-spacer pf-col-sortable" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
-        <div class="pf-col-lbl" style="flex:0 0 132px;">Next event</div></div></div>
+        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 132px;" onclick="pfSortBy('nextEvent')">Next event <span class="pf-sort-arrow" data-key="nextEvent"></span></div></div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
 
@@ -440,6 +440,17 @@ function nextEventLabel(ticker){
   if(isNaN(dt)) return ne.label;
   const formatted=dt.toLocaleDateString('en-US',{day:'numeric',month:'short'});
   return `${ne.label} - ${formatted}`;
+}
+// Valeur brute (timestamp) du prochain evenement, pour le tri chronologique
+// de la colonne "Next event". Retourne null si aucune date confirmee n'est
+// disponible (evenement absent, label sans date, ou date invalide) - ces
+// titres sont alors relegues en fin de liste quel que soit le sens du tri.
+function nextEventDate(ticker){
+  const d=state.tickers[ticker];
+  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
+  if(!ne || !ne.date) return null;
+  const dt=new Date(ne.date);
+  return isNaN(dt) ? null : dt.getTime();
 }
 
 if(!CanvasRenderingContext2D.prototype.roundRect){
@@ -1157,7 +1168,7 @@ function calcScore(ticker){
 let pfSort={key:'score',dir:'desc'};
 function pfSortBy(key){
   if(pfSort.key===key){ pfSort.dir = pfSort.dir==='asc'?'desc':'asc'; }
-  else{ pfSort.key=key; pfSort.dir = key==='name'?'asc':(key==='peN'||key==='peN1'?'asc':'desc'); }
+  else{ pfSort.key=key; pfSort.dir = (key==='name'||key==='nextEvent'||key==='peN'||key==='peN1')?'asc':'desc'; }
   renderPortfolio();
 }
 function pfSortItems(items){
@@ -1166,6 +1177,13 @@ function pfSortItems(items){
   return items.slice().sort((a,b)=>{
     if(key==='name'){
       return mul*(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'});
+    }
+    if(key==='nextEvent'){
+      const av=a.nextEvtDate, bv=b.nextEvtDate;
+      if(av==null&&bv==null)return 0;
+      if(av==null)return 1;   // pas de date confirmee -> toujours en fin de liste
+      if(bv==null)return -1;
+      return mul*(av-bv);
     }
     let av,bv;
     switch(key){
@@ -1205,7 +1223,8 @@ function renderPortfolio(){
         const pe27=(cours>0&&eps27>0)?cours/eps27:null;
         const score=calcScore(tk);
         const nextEvt=nextEventLabel(tk);
-        return{tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt};
+        const nextEvtDate=nextEventDate(tk);
+        return{tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt,nextEvtDate};
       }catch(e){return null;}
     }).filter(Boolean);
 
