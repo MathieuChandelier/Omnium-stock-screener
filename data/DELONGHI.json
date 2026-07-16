@@ -4,107 +4,35 @@
   "yahooSymbol": "DLG.MI",
   "dividende": 0.85,
   "data": [
-    {
-      "year": 2021,
-      "ca": 3221.6,
-      "ebit": 386.9,
-      "net": 311.1,
-      "shares": 153,
-      "nd": -425.1,
-      "div": 0.83
-    },
-    {
-      "year": 2022,
-      "ca": 3156.4,
-      "ebit": 263,
-      "net": 177.4,
-      "shares": 152.5,
-      "nd": -298.8,
-      "div": 0.48
-    },
-    {
-      "year": 2023,
-      "ca": 3073.5,
-      "ebit": 328.9,
-      "net": 250.4,
-      "shares": 152,
-      "nd": -662.6,
-      "div": 0.67
-    },
-    {
-      "year": 2024,
-      "ca": 3497.6,
-      "ebit": 430.6,
-      "net": 310.7,
-      "shares": 151.5,
-      "nd": -643.2,
-      "div": 1.25
-    },
-    {
-      "year": 2025,
-      "ca": 3801.5,
-      "ebit": 455.9,
-      "net": 316.3,
-      "shares": 150.95,
-      "nd": -770,
-      "div": 0.85
-    }
+    {"year":2021,"ca":3221.6,"ebit":386.9,"net":311.1,"shares":153,"nd":-425.1,"div":0.83},
+    {"year":2022,"ca":3156.4,"ebit":263,"net":177.4,"shares":152.5,"nd":-298.8,"div":0.48},
+    {"year":2023,"ca":3073.5,"ebit":328.9,"net":250.4,"shares":152,"nd":-662.6,"div":0.67},
+    {"year":2024,"ca":3497.6,"ebit":430.6,"net":310.7,"shares":151.5,"nd":-643.2,"div":1.25},
+    {"year":2025,"ca":3801.5,"ebit":455.9,"net":316.3,"shares":150.95,"nd":-770,"div":0.85}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 2.39,
-    "epsNY": null,
-    "date": "2026-07-01",
-    "source": "Stockopedia (consensus analystes)"
-  },
+  "epsConsensus": {"year":2026,"eps":2.39,"epsNY":null,"date":"2026-07-01","source":"Stockopedia (consensus analystes)"},
   "particularites": [],
+  "nextEvent": {"label":"H1 26","date":"2026-07-30"},
   "hypothese": {
-    "date": "2026-07-05",
-    "source": "Refresh - re-analyse du transcript T1 2026, build-up par segments",
-    "summary": "Build-up par segments (Household ~+4,5% / Professional ~+22%) qui CONVERGE avec la projection globale -> adjXXX confirmes. Effet mix Professional chiffre (~+15pb/an), position nette record +721M.",
-    "text": "== SYNTHESE DE LA THESE ==\nDe'Longhi est un fabricant italien de petit electromenager (De'Longhi, Kenwood, Braun, Nutribullet) organise en deux divisions : HOUSEHOLD (~87% du CA, coeur historique cafe a domicile) et PROFESSIONAL (cafe pro haut de gamme via La Marzocco et Eversys, ~13% du CA mais >40% de croissance et principal moteur d'expansion de marge). La these est un sum-of-the-parts mal price : le marche valorise le groupe comme un fabricant cyclique d'electromenager alors que Professional merite un multiple de pure player du cafe premium, plus une position financiere nette record (~721M EUR) offrant optionnalite M&A.\n\n== EVENEMENTS & INFLEXIONS (refresh du 5 juillet, re-analyse transcript T1) ==\n1. PROFESSIONAL EN HYPERCROISSANCE, GUIDANCE CONSERVATRICE [classe (i)] : +40% au T1 (3e trimestre >40%), broad-based geographiquement. Guidance management \"low-teens\" seulement pour l'annee - biais de depassement fort (track record). Moteurs : La Marzocco Consumer (prosumer/home-barista), Eversys nouveaux clients grand format.\n2. RACHAT DES MINORITAIRES La Marzocco/Eversys [classe (iii), optionnalite] : priorite n°1 d'allocation de capital (~38% de minoritaires). Relutif sur le net part du groupe via reduction des interets minoritaires. Non modelise -> upside.\n3. CONFLIT IRAN/MOYEN-ORIENT [classe (iii), risque contingent] : guidance FY2026 n'integre PAS un conflit prolonge.\n4. POSITION FINANCIERE NETTE record : +721M EUR fin mars 2026, FCF TTM +464M.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (12 mai). Secondaires : FY2025 (CA 3 801,5M EUR, EBIT 455,9M/12,0%, net 316,3M). Cours ~38 EUR, ~151M actions.\nGuidance FY2026 : CA mid-single-digit, EBITDA ajuste 640-660M (+9-12%).\nProchain refresh utile : T2 2026, 30 juillet.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBuild-up : Household ~3 460M (+4,5% cc) + Professional ~597M (+22%) = ~4 058M, converge <1% avec la projection globale (4 030M) - confirme. Effet mix Professional chiffre : poids passe de 12,9% (2025) a ~14,7% (2026), souleve la marge groupe d'environ +15pb/an. IS normatif ~27%. Conversion net/EBIT ~73% stable.\nA suivre : (1) guidance FY2026 relevee ? ; (2) impact conflit Moyen-Orient materialise ? ; (3) rachat des minoritaires (annonce, prix) ; (4) Household - rebond confirme ? ; (5) Professional - taux maintenu vs low-teens guide ?\n\n== CATALYSEURS ==\nDivision Professional (La Marzocco/Eversys, +40%, marge superieure, re-rating possible) ; rachat des minoritaires (relution) ; position de cash nette ~721M (optionnalite M&A) ; guidance conservatrice systematiquement depassee.",
-    "impact": "positif",
-    "adjEPS": {
-      "2026": 2.39,
-      "2027": 2.6,
-      "2028": 2.81,
-      "2029": 3.02,
-      "2030": 3.23
-    },
-    "adjCA": {
-      "2026": 4030,
-      "2027": 4270,
-      "2028": 4510,
-      "2029": 4750,
-      "2030": 4990
-    },
-    "adjEBIT": {
-      "2026": 496,
-      "2027": 535,
-      "2028": 575,
-      "2029": 615,
-      "2030": 655
-    },
-    "adjNet": {
-      "2026": 360,
-      "2027": 390,
-      "2028": 420,
-      "2029": 450,
-      "2030": 480
-    },
-    "adjND": {
-      "2026": -880,
-      "2027": -1000,
-      "2028": -1130,
-      "2029": -1260,
-      "2030": -1400
-    },
-    "adjShares": {
-      "2026": 150.5,
-      "2027": 150,
-      "2028": 149.5,
-      "2029": 149,
-      "2030": 148.5
-    }
+    "date":"2026-07-16",
+    "priorEPS":{"date":"2026-07-05","eps":{"2026":2.39,"2027":2.6,"2028":2.81,"2029":3.02,"2030":3.23}},
+    "source":"Refresh - Aide-mémoire De'Longhi Q2 2026 (pré-quiet period, publié 16/07/2026) ; T1-26 conf call déjà intégré",
+    "summary":"Household recule au T1 (-2,4%, surstockage/tarifs) mais guidance FY26 réaffirmée inchangée ; Professional toujours en hypercroissance (+40% T1) face à des comparants H2 très durs ; build-up légèrement trimmé (-1%, non matériel), converge avec le consensus sell-side indépendant (3 990 M€ CA 2026).",
+    "text":"== SYNTHESE DE LA THESE ==\nDe'Longhi reste un sum-of-the-parts mal price entre un coeur Household mature/cyclique et une division Professional (La Marzocco, Eversys) en hypercroissance et à marge structurellement supérieure. La thèse n'est pas remise en cause par ce point d'étape T1 : Household traverse un trou d'air ponctuel (surstockage trade, tarifs douaniers absents l'an dernier) que le management dit déjà en amélioration (avril positif), tandis que Professional continue de largement dépasser sa propre guidance conservatrice. Position financière nette record (721M€ fin mars) offre toujours une optionnalité M&A/rachat des minoritaires non modélisée.\n\n== EVENEMENTS & INFLEXIONS ==\n1. HOUSEHOLD EN REPLI T1 [classe (i), quantifié] : -2,4% au T1-26 (Home coffee légèrement négatif, Nutrition -mid single digit, Other +low single digit). Causes identifiées : surstockage trade en janvier (en voie de normalisation), tarifs douaniers US non en place au T1-25 (comparant défavorable). Management : tendance en amélioration, avril positif pour Household, guidance FY26 (low-to-mid-single-digit croissance) explicitement réaffirmée inchangée à ce jour malgré le trou d'air T1.\n2. TARIFS DOUANIERS - FREIN EN NET REPLI [classe (i)/(ii), quantifié] : impact net T1-26 seulement ~4M€, contre 10-15M€ net sur FY25 (25-30M€ brut FY25). Atténuation progressive, cohérente avec le maintien de la marge attendue.\n3. PROFESSIONAL - COMPARANTS H2 DURCIS [classe (ii)] : +40,1% au T1-26 (114%/25%/41%/39% par trimestre en 2025), mais le management prévient explicitement que le comparant H2-26 se fera contre une base H2-25 >30%, imposant une décélération mécanique attendue en fin d'année.\n4. EXPOSITION IRAN/MOYEN-ORIENT PRECISEE [classe (iii), risque désormais borné] : MEIA ~6% du CA groupe, Golfe spécifiquement seulement 3% - le management minimise explicitement la matérialité potentielle d'un conflit prolongé, contexte non intégré dans la guidance FY26.\n5. RACHAT DES MINORITAIRES La Marzocco/Eversys [classe (iii), optionnalité inchangée] : toujours priorité n°1 d'allocation de capital (~38% de minoritaires), aucune annonce à ce jour, non modélisé.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : call T1-26 (déjà intégré au refresh du 05/07), reconfirmé et précisé par l'aide-mémoire De'Longhi Q2 2026 (compilation officielle IR, 16/07/2026, pré-quiet period, pas de nouveaux chiffres trimestriels au-delà de T1). Secondaire : consensus sell-side daté 30/03/2026 (CA 2026e 3 990M€, EBITDA adj. 649,6M€, net 352,4M€) - convergence quasi parfaite avec le build-up indépendant ci-dessus. Guidance FY26 réaffirmée inchangée : CA mid-single-digit, EBITDA adjusté 640-660M€. Prochain refresh utile : après publication du rapport semestriel au 30/06/2026 (approbation CA le 30/07/2026).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBuild-up recalculé à neuf : Household 2026e ~3 395M€ (+2,3% cc, ramené de +4,5% suite au T1 réel -2,4%, rattrapage partiel assumé H2) + Professional 2026e ~595M€ (+22%) = 3 990M€, identique au consensus sell-side indépendant. Effet mix Professional (voir ancrage professional_mix_margin) toujours le principal moteur de marge. IS normatif ~27%, conversion net/EBIT ~73% inchangés (pas d'info nouvelle sur ces paramètres). WATCH-LIST pour le prochain refresh (post-H1, 30/07) : (1) Household confirme-t-il le rattrapage annoncé sur T2 ? (2) Professional tient-il un rythme >20% malgré les comparants durs de fin d'année ? (3) rachat des minoritaires - annonce/prix ? (4) exposition Golfe/MEIA - matérialisation du risque géopolitique ?\n\n== CATALYSEURS ==\nRapport semestriel 30/07/2026 (premier test du rattrapage Household annoncé) ; Professional face à des comparants durcis en H2 ; rachat des minoritaires (relution potentielle) ; position de cash ~721-770M€ (optionnalité M&A).",
+    "impact":"positif",
+    "ancrages":[
+      {"id":"household_q1_dip_transitory","moteur":"Household recule -2,4% au T1-26 (surstockage trade + comparant tarifs douaniers défavorable), mais tendance en amélioration dès avril et guidance FY26 low-to-mid-single-digit réaffirmée inchangée par le management - hypothèse de rattrapage partiel sur les trimestres restants sans extrapolation du repli T1.","applique":["adjCA.2026"],"confiance":"moyenne"},
+      {"id":"professional_hypergrowth_conservative_guide","moteur":"Professional +40,1% au T1-26, guidé prudemment 'high-single to low-teens' pour l'année pleine - track record de dépassement, mais comparants H2-26 nettement plus durs (base H2-25 >30%) imposant une décélération mécanique.","applique":["adjCA.2026","adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"moyenne"},
+      {"id":"tariff_drag_fading","moteur":"Impact tarifs douaniers US net ~4M€ au T1-26, en net repli vs 10-15M€ net sur FY25 (25-30M€ brut) - atténuation progressive du frein tarifaire sur la marge.","applique":["adjEBIT.2026"],"confiance":"moyenne"},
+      {"id":"professional_mix_margin","moteur":"Poids de Professional dans le CA groupe passe de 12,9% (2025) à ~15% (2026), tire la marge groupe d'environ +15pb/an (marge Professional structurellement supérieure à Household).","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"haute"},
+      {"id":"minority_buyout_optionality","moteur":"Rachat des minoritaires La Marzocco/Eversys (~38% de minoritaires) identifié comme priorité n°1 d'allocation de capital - non modélisé, relutif sur le net part du groupe si exécuté.","applique":[],"confiance":"basse"},
+      {"id":"net_cash_optionality","moteur":"Position financière nette record 721M€ fin mars 2026 (FCF TTM 464M€), offre une optionnalité M&A/rachat d'actions non intégrée au-delà de la génération de cash organique dans la trajectoire adjND.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"moyenne"}
+    ],
+    "adjEPS":{"2026":2.37,"2027":2.57,"2028":2.78,"2029":2.99,"2030":3.20},
+    "adjCA":{"2026":3990,"2027":4229,"2028":4466,"2029":4703,"2030":4943},
+    "adjEBIT":{"2026":491,"2027":530,"2028":569,"2029":609,"2030":649},
+    "adjNet":{"2026":356,"2027":386,"2028":416,"2029":446,"2030":475},
+    "adjND":{"2026":-880,"2027":-1000,"2028":-1130,"2029":-1260,"2030":-1400},
+    "adjShares":{"2026":150.5,"2027":150,"2028":149.5,"2029":149,"2030":148.5}
   }
 }
