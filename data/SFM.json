@@ -4,48 +4,219 @@
   "yahooSymbol": "SFM",
   "dividende": 0,
   "data": [
-    {"year":2018,"ca":5207,"ebit":223,"net":159,"shares":130.3,"nd":578,"div":0},
-    {"year":2019,"ca":5635,"ebit":217,"net":150,"shares":120.0,"nd":464,"div":0},
-    {"year":2020,"ca":6469,"ebit":392,"net":287,"shares":118.3,"nd":80,"div":0},
-    {"year":2021,"ca":6100,"ebit":334,"net":244,"shares":116.3,"nd":15,"div":0},
-    {"year":2022,"ca":6404,"ebit":358,"net":261,"shares":109.3,"nd":-33,"div":0},
-    {"year":2023,"ca":6837,"ebit":350,"net":259,"shares":103.6,"nd":-67,"div":0},
-    {"year":2024,"ca":7719,"ebit":504,"net":381,"shares":101.4,"nd":-257,"div":0},
-    {"year":2025,"ca":8806,"ebit":686,"net":524,"shares":98.7,"nd":-174,"div":0}
+    {
+      "year": 2018,
+      "ca": 5207,
+      "ebit": 223,
+      "net": 159,
+      "shares": 130.3,
+      "nd": 578,
+      "div": 0
+    },
+    {
+      "year": 2019,
+      "ca": 5635,
+      "ebit": 217,
+      "net": 150,
+      "shares": 120.0,
+      "nd": 464,
+      "div": 0
+    },
+    {
+      "year": 2020,
+      "ca": 6469,
+      "ebit": 392,
+      "net": 287,
+      "shares": 118.3,
+      "nd": 80,
+      "div": 0
+    },
+    {
+      "year": 2021,
+      "ca": 6100,
+      "ebit": 334,
+      "net": 244,
+      "shares": 116.3,
+      "nd": 15,
+      "div": 0
+    },
+    {
+      "year": 2022,
+      "ca": 6404,
+      "ebit": 358,
+      "net": 261,
+      "shares": 109.3,
+      "nd": -33,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 6837,
+      "ebit": 350,
+      "net": 259,
+      "shares": 103.6,
+      "nd": -67,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 7719,
+      "ebit": 504,
+      "net": 381,
+      "shares": 101.4,
+      "nd": -257,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 8806,
+      "ebit": 686,
+      "net": 524,
+      "shares": 98.7,
+      "nd": -174,
+      "div": 0
+    }
   ],
-  "epsConsensus": {"year":2026,"eps":5.57,"epsNY":5.72,"date":"2026-07-10","source":"Zacks Consensus (via Yahoo Finance / MarketBeat)"},
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 5.57,
+    "epsNY": 5.72,
+    "date": "2026-07-10",
+    "source": "Zacks Consensus (via Yahoo Finance / MarketBeat)"
+  },
   "particularites": [],
-  "nextEvent": {"label":"Q2 26","date":"2026-07-29"},
+  "nextEvent": {
+    "label": "Q2 26",
+    "date": "2026-07-29"
+  },
   "hypothese": {
-    "date":"2026-07-17",
-    "source":"Création - Communiqué + transcript T1 2026 (29 avril 2026)",
-    "dernierCall":{
-      "quarter":"Q1 26",
-      "resultatsVsConsensus":{"ca":{"actual":2329,"consensus":2320},"epsAdj":{"actual":1.71,"consensus":1.68,"basis":"GAAP"}},
-      "guidanceProchainTrimestre":"T2 26 : comp sales guidées entre -2% et 0%, BPA dilué $1.32-$1.36, avec pression attendue sur la marge EBIT (~-75 pb) due au déeffet de levier des coûts fixes sur comps faibles et à la hausse du carburant.",
-      "guidanceAnnuelle":"FY26 relevée lors du call : BPA dilué $5.32-$5.48 (base 52 semaines, contre $5.28-$5.44 auparavant), CA +4.5% à +6.5%, comps -1% à +1%, EBIT $675-695M, capex net $280-310M, 40+ nouveaux magasins.",
-      "pointsCles":[
+    "date": "2026-07-17",
+    "source": "Création - Communiqué + transcript T1 2026 (29 avril 2026)",
+    "dernierCall": {
+      "quarter": "Q1 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 2329,
+          "consensus": 2320
+        },
+        "epsAdj": {
+          "actual": 1.71,
+          "consensus": 1.68,
+          "basis": "GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "T2 26 : comp sales guidées entre -2% et 0%, BPA dilué $1.32-$1.36, avec pression attendue sur la marge EBIT (~-75 pb) due au déeffet de levier des coûts fixes sur comps faibles et à la hausse du carburant.",
+      "guidanceAnnuelle": "FY26 relevée lors du call : BPA dilué $5.32-$5.48 (base 52 semaines, contre $5.28-$5.44 auparavant), CA +4.5% à +6.5%, comps -1% à +1%, EBIT $675-695M, capex net $280-310M, 40+ nouveaux magasins.",
+      "pointsCles": [
         "Le comp de -1.7% au T1 reflète en partie un effet de base (grève chez un concurrent en février 2025 qui avait dopé le trafic Sprouts l'an dernier), avec un panier moyen positif compensé par un trafic négatif.",
-        "Marge brute en repli de 20 pb à 39.4%, attribué aux investissements dans le programme de fidélité et à un shrink défavorable ; SG&A en déleveragede 42 pb.",
+        "Marge brute en repli de 20 pb à 39.4%, attribué aux investissements dans le programme de fidélité et à un shrink défavorable ; SG&A en déleverage de 42 pb.",
         "Nouveau magasin de Long Island (entrée dans l'État de New York) évoqué positivement par le CEO comme preuve de la portabilité du modèle hors des marchés historiques de l'Ouest américain.",
         "Auto-distribution de la viande proche de l'achèvement, avec un nouveau centre de distribution en Californie du Nord attendu au T2 26 ; pipeline de magasins jugé solide (~150 approuvés, 105+ baux signés)."
-      ],
-      "summary":"BPA T1 26 ($1.71) au-dessus du consensus malgré un comp négatif ; guidance FY26 relevée. Thèse intacte : reaccélération attendue en cours d'année portée par le parc de magasins et l'auto-distribution.",
-      "text":"== SYNTHESE DE LA THESE ==\nSprouts est un pari sur la capacité d'un \"specialty grocer\" de niche (bio/santé/bien-être, ~483 magasins dans 25 États) à combiner croissance de parc à deux chiffres du nombre de magasins (+8%/an) et expansion structurelle de marge EBIT (5.1% en 2023 à 7.8% en 2025), le tout financé en interne et restitué aux actionnaires quasi intégralement via rachats d'actions (aucun dividende, ~62M d'actions rachetées depuis 2015). Le T1 26 marque une pause dans cette trajectoire : comp sales négatif (-1.7%) et marge brute en léger recul, dans un contexte macro jugé \"dynamique\" par le management lui-même, qui a explicitement guidé un premier semestre 2026 plus dur que le second. La thèse repose sur le pari que ce ralentissement est conjoncturel (effet de base, tests de prix, environnement consommateur tendu) et non structurel, et que le pipeline de magasins approuvés (~150) ainsi que la montée en puissance de l'auto-distribution redonneront de l'élan à la marge à partir de 2027. Le signal le plus rassurant du trimestre est le relèvement de la guidance FY26 malgré le comp négatif, ce qui traduit une confiance du management dans la deuxième moitié d'année.\n\n== EVENEMENTS & INFLEXIONS ==\n(iii) 53e semaine fiscale au T4 26 (année de 53 semaines) : effet calendaire ponctuel chiffré par le management lui-même (~$200M CA / $28M EBIT / $0.21 BPA), non reconduit en 2027 - traité en ancrage `week53_2026`, impact mécaniquement défavorable sur la comparaison de croissance 2027 vs 2026 qu'il faudra neutraliser au prochain refresh. Aucun autre événement structurant identifié au T1 26 (ni en recherche externe, ni dans le transcript) - trimestre \"propre\" sur le plan comptable, sans one-off GAAP à retraiter dans `data`.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : transcript du call T1 26 (29 avril 2026) ; sources secondaires : communiqués T4/FY25 (19 février 2026) et T1 26, consensus Zacks/TipRanks/WallStreetZen. Guidance directionnelle dure : le management vise une \"amélioration séquentielle tout au long de 2026\" (comp de -1.7% au T1 vers une fourchette -1%/+1% en FY) et une réaccélération de la croissance - contrainte vérifiée en E7 (adjNet et adjEPS croissants chaque année du plan malgré la pause 2026). Prochain refresh utile : après publication du T2 26 (29 juillet 2026), pour confirmer si la pression sur la marge EBIT annoncée pour ce trimestre reste conforme au scénario central.\n\n== PARAMETRES & POINTS DE SUIVI ==\nMoteurs de projection portés par `ancrages` : `reaccel_units` (pipeline de magasins), `margin_scale` (effet de levier différé à partir de 2027), `buyback_1bn` (rythme de rachat), `week53_2026` (effet calendaire T4 26), `etr_normatif` (25.5%). Paramètre hors `ancrages` à noter : le `adjND` passe de -174M$ (net cash fin 2025) à environ -100M$ en 2026 puis converge vers un léger endettement net (+50M$ en 2030) - décision de modélisation non triviale : le programme de rachat de $1Md (solde $696M fin T1 26) est supposé consommer la quasi-totalité du free cash-flow disponible au-delà du capex guidé ($280-310M), au même rythme que 2025 (buybacks > cash-flow libre net de capex cette année-là). Net financier quasi nul (position de cash net historiquement basse, pas de dette financière significative hors location-financement). WATCH-LIST pour le prochain refresh : (1) la pression de marge EBIT au T2 26 se matérialise-t-elle comme guidé (-75 pb) ? (2) le comp repasse-t-il en territoire positif au S2 comme l'implique la guidance FY26 ? (3) rythme réel des ouvertures de magasins vs les \"150 approuvés\" évoqués au T1.\n\n== CATALYSEURS ==\nPublication T2 26 le 29 juillet 2026, qui testera la crédibilité de la guidance de marge relevée et le retour en territoire de comp neutre à positif.",
-      "impact":"positif",
-      "ancrages":[
-        {"id":"reaccel_units","moteur":"Pipeline de ~150 magasins approuvés et plus de 105 baux exécutés soutient une croissance de parc d'au moins 40 nouveaux magasins/an (+8% du parc actuel de 483 magasins), moteur structurel du CA au-delà du comp.","applique":["adjCA.2026","adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"haute"},
-        {"id":"margin_scale","moteur":"Maturation des nouveaux magasins et montée en puissance de l'auto-distribution (viande, nouveau DC Californie du Nord au T2 26) génèrent un effet de levier opérationnel progressif sur la marge EBIT au-delà de 2026, une fois les vents contraires ponctuels de 2026 dissipés.","applique":["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"moyenne"},
-        {"id":"buyback_1bn","moteur":"Autorisation de rachat d'actions de $1Md (solde ~$696M fin T1 26) finance une réduction du nombre d'actions diluées d'environ 2.5%/an, cohérente avec le rythme observé depuis 2015 (plus de 62M d'actions rachetées).","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"haute"},
-        {"id":"week53_2026","moteur":"La 53e semaine fiscale (T4 26) ajoute ponctuellement environ $200M de CA, $28M d'EBIT et $0.21 de BPA dilué au-dessus de la guidance FY26 explicitement communiquée sur base 52 semaines ; cet effet ne se reproduit pas en 2027, ce qui comprime mécaniquement la croissance de CA affichée l'année suivante.","applique":["adjCA.2026","adjEBIT.2026","adjEPS.2026"],"confiance":"haute"},
-        {"id":"etr_normatif","moteur":"Taux d'imposition effectif normatif retenu à 25.5%, conforme à la guidance management réaffirmée sur le call T1 26.","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"haute"}
-      ],
-      "adjEPS":{"2026":5.62,"2027":6.29,"2028":7.10,"2029":8.00,"2030":9.01},
-      "adjCA":{"2026":9490,"2027":9990,"2028":10590,"2029":11225,"2030":11900},
-      "adjEBIT":{"2026":715,"2027":779,"2028":858,"2029":943,"2030":1035},
-      "adjNet":{"2026":534,"2027":582,"2028":641,"2029":704,"2030":773},
-      "adjND":{"2026":-100,"2027":-50,"2028":0,"2029":30,"2030":50},
-      "adjShares":{"2026":95.0,"2027":92.6,"2028":90.3,"2029":88.0,"2030":85.8}
+      ]
+    },
+    "summary": "BPA T1 26 ($1.71) au-dessus du consensus malgré un comp négatif ; guidance FY26 relevée. Thèse intacte : reaccélération attendue en cours d'année portée par le parc de magasins et l'auto-distribution.",
+    "text": "== SYNTHESE DE LA THESE ==\nSprouts est un pari sur la capacité d'un \"specialty grocer\" de niche (bio/santé/bien-être, ~483 magasins dans 25 États) à combiner croissance de parc à deux chiffres du nombre de magasins (+8%/an) et expansion structurelle de marge EBIT (5.1% en 2023 à 7.8% en 2025), le tout financé en interne et restitué aux actionnaires quasi intégralement via rachats d'actions (aucun dividende, ~62M d'actions rachetées depuis 2015). Le T1 26 marque une pause dans cette trajectoire : comp sales négatif (-1.7%) et marge brute en léger recul, dans un contexte macro jugé \"dynamique\" par le management lui-même, qui a explicitement guidé un premier semestre 2026 plus dur que le second. La thèse repose sur le pari que ce ralentissement est conjoncturel (effet de base, tests de prix, environnement consommateur tendu) et non structurel, et que le pipeline de magasins approuvés (~150) ainsi que la montée en puissance de l'auto-distribution redonneront de l'élan à la marge à partir de 2027. Le signal le plus rassurant du trimestre est le relèvement de la guidance FY26 malgré le comp négatif, ce qui traduit une confiance du management dans la deuxième moitié d'année.\n\n== EVENEMENTS & INFLEXIONS ==\n(iii) 53e semaine fiscale au T4 26 (année de 53 semaines) : effet calendaire ponctuel chiffré par le management lui-même (~$200M CA / $28M EBIT / $0.21 BPA), non reconduit en 2027 - traité en ancrage `week53_2026`, impact mécaniquement défavorable sur la comparaison de croissance 2027 vs 2026 qu'il faudra neutraliser au prochain refresh. Aucun autre événement structurant identifié au T1 26 (ni en recherche externe, ni dans le transcript) - trimestre \"propre\" sur le plan comptable, sans one-off GAAP à retraiter dans data.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : transcript du call T1 26 (29 avril 2026) ; sources secondaires : communiqués T4/FY25 (19 février 2026) et T1 26, consensus Zacks/TipRanks/WallStreetZen. Guidance directionnelle dure : le management vise une amélioration séquentielle tout au long de 2026 (comp de -1.7% au T1 vers une fourchette -1%/+1% en FY) et une réaccélération de la croissance - contrainte vérifiée en E7 (adjNet et adjEPS croissants chaque année du plan malgré la pause 2026). Prochain refresh utile : après publication du T2 26 (29 juillet 2026), pour confirmer si la pression sur la marge EBIT annoncée pour ce trimestre reste conforme au scénario central.\n\n== PARAMETRES & POINTS DE SUIVI ==\nMoteurs de projection portés par ancrages : reaccel_units (pipeline de magasins), margin_scale (effet de levier différé à partir de 2027), buyback_1bn (rythme de rachat), week53_2026 (effet calendaire T4 26), etr_normatif (25.5%). Paramètre hors ancrages à noter : le adjND passe de -174M$ (net cash fin 2025) à environ -100M$ en 2026 puis converge vers un léger endettement net (+50M$ en 2030) - décision de modélisation non triviale : le programme de rachat de $1Md (solde $696M fin T1 26) est supposé consommer la quasi-totalité du free cash-flow disponible au-delà du capex guidé ($280-310M), au même rythme que 2025. Net financier quasi nul. WATCH-LIST pour le prochain refresh : (1) la pression de marge EBIT au T2 26 se matérialise-t-elle comme guidé (-75 pb) ? (2) le comp repasse-t-il en territoire positif au S2 comme l'implique la guidance FY26 ? (3) rythme réel des ouvertures de magasins vs les 150 approuvés évoqués au T1.\n\n== CATALYSEURS ==\nPublication T2 26 le 29 juillet 2026, qui testera la crédibilité de la guidance de marge relevée et le retour en territoire de comp neutre à positif.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "reaccel_units",
+        "moteur": "Pipeline de ~150 magasins approuvés et plus de 105 baux exécutés soutient une croissance de parc d'au moins 40 nouveaux magasins/an (+8% du parc actuel de 483 magasins), moteur structurel du CA au-delà du comp.",
+        "applique": [
+          "adjCA.2026",
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "margin_scale",
+        "moteur": "Maturation des nouveaux magasins et montée en puissance de l'auto-distribution (viande, nouveau DC Californie du Nord au T2 26) génèrent un effet de levier opérationnel progressif sur la marge EBIT au-delà de 2026, une fois les vents contraires ponctuels de 2026 dissipés.",
+        "applique": [
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "buyback_1bn",
+        "moteur": "Autorisation de rachat d'actions de $1Md (solde ~$696M fin T1 26) finance une réduction du nombre d'actions diluées d'environ 2.5%/an, cohérente avec le rythme observé depuis 2015 (plus de 62M d'actions rachetées).",
+        "applique": [
+          "adjShares.2026",
+          "adjShares.2027",
+          "adjShares.2028",
+          "adjShares.2029",
+          "adjShares.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "week53_2026",
+        "moteur": "La 53e semaine fiscale (T4 26) ajoute ponctuellement environ $200M de CA, $28M d'EBIT et $0.21 de BPA dilué au-dessus de la guidance FY26 explicitement communiquée sur base 52 semaines ; cet effet ne se reproduit pas en 2027, ce qui comprime mécaniquement la croissance de CA affichée l'année suivante.",
+        "applique": [
+          "adjCA.2026",
+          "adjEBIT.2026",
+          "adjEPS.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "etr_normatif",
+        "moteur": "Taux d'imposition effectif normatif retenu à 25.5%, conforme à la guidance management réaffirmée sur le call T1 26.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "haute"
+      }
+    ],
+    "adjEPS": {
+      "2026": 5.62,
+      "2027": 6.29,
+      "2028": 7.1,
+      "2029": 8.0,
+      "2030": 9.01
+    },
+    "adjCA": {
+      "2026": 9490,
+      "2027": 9990,
+      "2028": 10590,
+      "2029": 11225,
+      "2030": 11900
+    },
+    "adjEBIT": {
+      "2026": 715,
+      "2027": 779,
+      "2028": 858,
+      "2029": 943,
+      "2030": 1035
+    },
+    "adjNet": {
+      "2026": 534,
+      "2027": 582,
+      "2028": 641,
+      "2029": 704,
+      "2030": 773
+    },
+    "adjND": {
+      "2026": -100,
+      "2027": -50,
+      "2028": 0,
+      "2029": 30,
+      "2030": 50
+    },
+    "adjShares": {
+      "2026": 95.0,
+      "2027": 92.6,
+      "2028": 90.3,
+      "2029": 88.0,
+      "2030": 85.8
     }
   }
 }
