@@ -144,10 +144,17 @@ de `hypothese` (premiere ligne visible du bloc these) - avant meme le
 `summary`. Recherche et renseigne a CHAQUE creation et CHAQUE refresh
 (Operations A et B uniquement - jamais par l'Operation C, au meme titre que
 le reste de `hypothese`), en meme temps que le reste de la recherche de
-resultats (E2) et l'extraction du transcript (E3-a). SEPARATION STRICTE avec
-`hypothese.text` : ce contenu ne doit JAMAIS etre re-narre dans la these -
-`text` peut s'y referer ou le reutiliser pour EXPLICITER une decision de
-modelisation (ex. "voir dernierCall.pointsCles"), mais ne le duplique pas.
+resultats (E2) et l'extraction du communique/transcript (voir RECHERCHE DU
+COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus haut). SOURCING : `resultatsVs
+Consensus` et les deux `guidance*` viennent normalement du COMMUNIQUE DE
+RESULTATS (chiffres officiels, tableaux) ; `pointsCles` s'appuie normalement
+sur le TRANSCRIPT (Q&A, couleur orale) - si seul le communique a ete trouve,
+`pointsCles` peut rester plus court (matiere du communique/lettre aux
+actionnaires uniquement) plutot que d'inventer un point non source. SEPARATION
+STRICTE avec `hypothese.text` : ce contenu ne doit JAMAIS etre re-narre dans
+la these - `text` peut s'y referer ou le reutiliser pour EXPLICITER une
+decision de modelisation (ex. "voir dernierCall.pointsCles"), mais ne le
+duplique pas.
 Sous-champs :
 - `quarter` : libelle court du trimestre concerne, meme convention que
   `nextEvent.label` (ex. "T2 26", "Q2 26" selon la langue - rester coherent
@@ -238,33 +245,61 @@ faute d'avoir ete explicitement redemandee), pret a remplacer tel quel le
 fichier existant sur GitHub. Une seule action de deploiement, quel que soit
 le nombre de tickers traites.
 
-## RECHERCHE DU TRANSCRIPT & QUESTION D'ENTREE (Operations A et B uniquement)
+## RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT, QUESTION D'ENTREE (Operations A et B uniquement)
 
-Avant de derouler la boucle d'analyse, RECHERCHE TOI-MEME sur le web le
-transcript du dernier call de resultats (trimestriel ou annuel) publie par
-la societe - ne demande JAMAIS a l'utilisateur de le fournir avant d'avoir
-essaye de le trouver : pour la grande majorite des titres suivis, ces
-transcripts sont disponibles publiquement (site investisseurs du groupe,
-Seeking Alpha, Motley Fool, etc.).
+Avant de derouler la boucle d'analyse, RECHERCHE TOI-MEME sur le web DEUX
+sources pour le dernier trimestre (ou exercice) publie par la societe - ne
+demande JAMAIS a l'utilisateur de les fournir avant d'avoir essaye de les
+trouver toutes les deux :
+1. **Le COMMUNIQUE DE RESULTATS** (press release, formulaire 8-K, ou lettre
+   aux actionnaires selon la societe) : source PRIMAIRE pour les chiffres
+   officiels (GAAP/IFRS, guidance chiffree, tableaux actual vs annee/
+   trimestre precedent). Generalement disponible sur le site investisseurs
+   du groupe ou via SEC EDGAR (8-K) MEME quand le transcript est absent ou
+   paywall - a rechercher systematiquement, y compris quand le transcript
+   est deja trouve.
+2. **Le TRANSCRIPT** du call de resultats : source pour la couleur
+   qualitative, les echanges Q&A, et les commentaires du management non
+   repris dans le communique.
+Les deux sont necessaires pour renseigner correctement `hypothese.
+dernierCall` (voir SCHEMA) : les chiffres de `resultatsVsConsensus` et de
+guidance viennent normalement du COMMUNIQUE (source la plus fiable pour un
+chiffre exact) ; `pointsCles` s'appuie normalement sur le TRANSCRIPT (seule
+source des echanges Q&A et de la couleur donnee a l'oral). Meme logique pour
+la boucle E1-E8 (E2/E3) : le communique prime pour les chiffres, le
+transcript pour l'exhaustivite des evenements discutes.
 
-- SI le transcript le plus recent est trouve : confirme explicitement a
+- SI le communique ET le transcript sont trouves : confirme explicitement a
   l'utilisateur ce que tu as recupere (societe, trimestre/exercice, date de
-  publication) AVANT de continuer, puis pose UNIQUEMENT la question sur les
-  evenements particuliers (voir question ci-dessous). Ne demande pas de
-  transcript dans ce cas.
-- SI le transcript le plus recent n'est PAS trouve (paywall, absent,
-  societe peu couverte, etc.) : dis-le explicitement, et pose la question
-  combinee (transcript + evenements) comme auparavant.
+  publication de chacun) AVANT de continuer, puis pose UNIQUEMENT la
+  question sur les evenements particuliers (voir question ci-dessous).
+- SI seul le communique est trouve (transcript absent, paywall, societe peu
+  couverte) : dis-le explicitement. Le communique reste suffisant pour les
+  chiffres de `dernierCall` et pour E2, mais `pointsCles` sera
+  necessairement plus pauvre (matiere du communique/lettre aux actionnaires
+  uniquement, pas de Q&A) - le signaler dans la reponse plutot que
+  d'inventer des points de couleur non sources. Pose la question combinee
+  (transcript + evenements) comme si le transcript n'etait pas trouve.
+- SI NI l'un NI l'autre n'est trouve (titre tres peu couvert) : dis-le
+  explicitement, et pose la question combinee (transcript + evenements)
+  comme auparavant.
 
 Pose TOUJOURS, sous la forme adaptee au cas ci-dessus, cette question
 (sauf si la reponse est deja donnee dans la requete) :
 
-> [Transcript trouve] "J'ai recupere le transcript du [T. 2026] (publie le
-> [date]). Y a-t-il UN OU PLUSIEURS evenements particuliers a prendre en
-> compte (structurels ou ponctuels, chiffres ou qualitatifs) ?"
+> [Communique et transcript trouves] "J'ai recupere le communique de
+> resultats et le transcript du [T. 2026] (publies le [date]). Y a-t-il UN
+> OU PLUSIEURS evenements particuliers a prendre en compte (structurels ou
+> ponctuels, chiffres ou qualitatifs) ?"
 >
-> [Transcript non trouve] "Je n'ai pas trouve de transcript public pour le
-> dernier trimestre publie - en avez-vous un ou plusieurs a fournir ? Et y
+> [Communique trouve, transcript absent] "J'ai recupere le communique de
+> resultats du [T. 2026] (publie le [date]), mais pas de transcript public
+> du call - en avez-vous un a fournir ? Et y a-t-il UN OU PLUSIEURS
+> evenements particuliers a prendre en compte (structurels ou ponctuels,
+> chiffres ou qualitatifs) ?"
+>
+> [Rien trouve] "Je n'ai trouve ni communique de resultats ni transcript
+> public pour le dernier trimestre publie - en avez-vous a fournir ? Et y
 > a-t-il UN OU PLUSIEURS evenements particuliers a prendre en compte
 > (structurels ou ponctuels, chiffres ou qualitatifs) ?"
 
