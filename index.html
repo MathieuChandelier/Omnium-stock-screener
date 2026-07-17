@@ -1110,6 +1110,76 @@ function renderReturnBlock(ticker, proj, cours){
   `;
 }
 
+// Formatte un montant en millions vers un affichage compact "X,XX Md" ou "X M"
+// (pas de decimales inutiles en dessous de 10). Purement cosmetique.
+function fmtBigNum(v){
+  if(v===null||v===undefined||v==='')return null;
+  const n=+v; if(!isFinite(n))return null;
+  return Math.abs(n)>=1000 ? (n/1000).toFixed(2).replace(/\.00$/,'')+' Md' : n.toFixed(n<10&&n!==0?2:0)+' M';
+}
+function fmtPctDelta(actual,consensus){
+  if(actual==null||consensus==null||consensus===0||!isFinite(+actual)||!isFinite(+consensus))return null;
+  return ((+actual-+consensus)/Math.abs(+consensus))*100;
+}
+function pctBadge(delta){
+  if(delta===null)return '';
+  const col=delta>=0?'var(--teal)':'#e05252';
+  const bg=delta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)';
+  return `<span style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};background:${bg};border-radius:5px;padding:1px 6px;white-space:nowrap;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
+}
+
+// Bloc "dernier trimestre publie" (resultats vs consensus, guidance, points cles
+// du call) - voir hypothese.dernierCall dans INSTRUCTIONS.md. Affiche juste sous
+// la ligne date/source, AVANT le resume/texte de la these (ne s'y substitue pas).
+function renderDernierCall(dc, ticker){
+  if(!dc)return '';
+  const cur=tickerCur(ticker)||'€';
+  const q=(dc.quarter||'').trim();
+  const ca=dc.resultatsVsConsensus?.ca||null;
+  const eps=dc.resultatsVsConsensus?.epsAdj||null;
+  const caActual=ca&&ca.actual!=null?fmtBigNum(ca.actual):null;
+  const caCons=ca&&ca.consensus!=null?fmtBigNum(ca.consensus):null;
+  const caDelta=ca?fmtPctDelta(ca.actual,ca.consensus):null;
+  const epsDelta=eps?fmtPctDelta(eps.actual,eps.consensus):null;
+
+  const caLine=caActual?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
+      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">CA</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${caActual}${cur}</span>
+      ${caCons?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${caCons}${cur}</span>`:''}
+      ${pctBadge(caDelta)}
+    </div>`:'';
+  const epsLine=(eps&&eps.actual!=null)?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
+      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">EPS${eps.basis?' ('+eps.basis+')':''}</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+eps.actual).toFixed(2)}${cur}</span>
+      ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
+      ${pctBadge(epsDelta)}
+    </div>`:'';
+  const resultsBlock=(caLine||epsLine)?`<div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats${q?' '+q:''} vs consensus</div>
+      ${caLine}${epsLine}
+    </div>`:'';
+
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
+    </div>`:'';
+  const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
+    </div>`:'';
+  const points=(dc.pointsCles||[]).filter(Boolean);
+  const pointsBlock=points.length?`<div style="margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Points clés du call</div>
+      ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
+    </div>`:'';
+
+  if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
+  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+    ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
+  </div>`;
+}
+
 function renderContextBullets(ticker, proj, cours){
   const d=state.tickers[ticker];
   const wrap=document.getElementById('context-bullets-wrap');
@@ -1118,6 +1188,7 @@ function renderContextBullets(ticker, proj, cours){
   if(!traceEl)return;
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
+  const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
@@ -1140,6 +1211,7 @@ function renderContextBullets(ticker, proj, cours){
   traceEl.innerHTML=`<div style="border-left:3px solid ${impColor};padding:10px 14px;background:rgba(0,1,144,.04);border-radius:0 8px 8px 0;">
     <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
+    ${dcBanner}
     <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
     ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
     <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
