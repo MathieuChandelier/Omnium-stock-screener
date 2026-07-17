@@ -53,7 +53,13 @@ data/
     "date":"2026-07-02",
     "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
     "source":"Refresh T2 2026 - Transcript T2 2026",
-    "vsConsensus":{"quarter":"T2 26","ca":{"actual":3820,"consensus":3790},"epsAdj":{"actual":0.72,"consensus":0.68,"basis":"non-GAAP"}},
+    "dernierCall":{
+      "quarter":"T2 26",
+      "resultatsVsConsensus":{"ca":{"actual":3820,"consensus":3790},"epsAdj":{"actual":0.72,"consensus":0.68,"basis":"non-GAAP"}},
+      "guidanceProchainTrimestre":"Phrase courte, chiffres inclus, ou 'Pas de guidance trimestrielle chiffree fournie' si la societe ne guide qu'a l'annee.",
+      "guidanceAnnuelle":"Phrase courte, chiffres inclus (CA et marge ou EPS).",
+      "pointsCles":["Point 1 du call, une phrase complete.","Point 2.","Point 3.","Point 4 (optionnel)."]
+    },
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
     "impact":"positif|negatif|neutre",
@@ -132,28 +138,58 @@ jugement d'analyse. Absent en creation (aucun historique a snapshotter) ;
 present a partir du premier refresh, et reecrase a chaque refresh suivant
 (un seul snapshot conserve : le plus recent avant l'ecriture en cours).
 
-Le champ `vsConsensus` porte le RESULTAT DU DERNIER TRIMESTRE PUBLIE FACE AU
-CONSENSUS pour le CA et l'EPS ajuste, affiche par l'app juste sous la ligne
-date/source de `hypothese` (premiere ligne visible du bloc these). Recherche
-et renseigne a CHAQUE creation et CHAQUE refresh (Operations A et B
-uniquement - jamais par l'Operation C, au meme titre que le reste de
-`hypothese`), en meme temps que le reste de la recherche de resultats (E2).
+Le champ `dernierCall` porte un BLOC AUTONOME DE LECTURE RAPIDE sur le
+dernier trimestre publie, affiche par l'app JUSTE SOUS la ligne date/source
+de `hypothese` (premiere ligne visible du bloc these) - avant meme le
+`summary`. Recherche et renseigne a CHAQUE creation et CHAQUE refresh
+(Operations A et B uniquement - jamais par l'Operation C, au meme titre que
+le reste de `hypothese`), en meme temps que le reste de la recherche de
+resultats (E2) et l'extraction du transcript (E3-a). SEPARATION STRICTE avec
+`hypothese.text` : ce contenu ne doit JAMAIS etre re-narre dans la these -
+`text` peut s'y referer ou le reutiliser pour EXPLICITER une decision de
+modelisation (ex. "voir dernierCall.pointsCles"), mais ne le duplique pas.
+Sous-champs :
 - `quarter` : libelle court du trimestre concerne, meme convention que
   `nextEvent.label` (ex. "T2 26", "Q2 26" selon la langue - rester coherent
   avec le reste du fichier).
-- `ca` : `{actual, consensus}` en millions, MEME BASE COMPTABLE que `data`
-  (le chiffre publie, pas un chiffre retraite). `null` si aucun consensus de
-  CA n'a ete trouve pour ce trimestre (titres peu couverts).
-- `epsAdj` : `{actual, consensus, basis}` ou `basis` vaut `"GAAP"` ou
-  `"non-GAAP"` selon la base sur laquelle le consensus de marche est
-  effectivement suivi pour ce titre (majoritairement non-GAAP/ajuste pour
-  les valeurs US, souvent plus proche du GAAP pour les valeurs europeennes) -
-  a documenter explicitement car cette base N'EST PAS necessairement celle
-  d'`adjEPS`/`data` (qui restent toujours en GAAP retraite des seuls vrais
-  one-offs, voir E5). `null` si aucun consensus d'EPS n'a ete trouve.
-Champ purement factuel et mecanique (comme `priorEPS`) : il ne participe a
-aucun raisonnement de E1-E8 et n'influence jamais les adjXXX - un simple
-repere de lecture pour l'utilisateur sur la reaction possible du marche.
+- `resultatsVsConsensus` : le PUBLIE face au CONSENSUS pour le trimestre qui
+  vient de sortir.
+  - `ca` : `{actual, consensus}` en millions, MEME BASE COMPTABLE que `data`
+    (le chiffre publie, pas un chiffre retraite). `null` si aucun consensus
+    de CA n'a ete trouve pour ce trimestre (titres peu couverts).
+  - `epsAdj` : `{actual, consensus, basis}` ou `basis` vaut `"GAAP"` ou
+    `"non-GAAP"` selon la base sur laquelle le consensus de marche est
+    effectivement suivi pour ce titre (majoritairement non-GAAP/ajuste pour
+    les valeurs US, souvent plus proche du GAAP pour les valeurs
+    europeennes) - a documenter explicitement car cette base N'EST PAS
+    necessairement celle d'`adjEPS`/`data` (qui restent toujours en GAAP
+    retraite des seuls vrais one-offs, voir E5). `null` si aucun consensus
+    d'EPS n'a ete trouve.
+- `guidanceProchainTrimestre` : PHRASE COURTE (chiffres inclus quand
+  disponibles - CA et marge/EPS guides, confrontes au consensus pre-
+  publication si trouve) resumant la guidance du trimestre suivant donnee
+  par le management sur CE call. Si la societe ne guide qu'a l'annee (cas
+  frequent, ex. medtech europeen) : `"Pas de guidance trimestrielle
+  chiffree fournie"` plutot que de forcer un chiffre absent.
+- `guidanceAnnuelle` : PHRASE COURTE (chiffres inclus) resumant la guidance
+  annuelle en cours (CA et marge OU EPS selon ce que la societe communique),
+  telle que reaffirmee/mise a jour sur CE call.
+- `pointsCles` : 3 A 4 PHRASES COMPLETES (jamais un mot-cle seul) resumant
+  les points les plus importants abordes pendant le call - au choix de
+  l'assistant selon ce qui structure le mieux la lecture (ex : dynamique
+  commerciale marquante, capital allocation, sujet recurrent des questions
+  d'analystes, avertissement ou risque mentionne). Ne doublonne PAS les
+  EVENEMENTS deja portes par `hypothese.text` (E3/E8) : ce sont ici des
+  points de couleur/contexte du call, pas les evenements structurants de la
+  these - une meme information peut apparaitre aux deux endroits si elle est
+  a la fois un point marquant du call ET un moteur de projection, mais sa
+  formulation complete (le "pourquoi") reste dans `text`/`ancrages`, ici
+  seule une phrase de synthese suffit.
+Champ factuel et de synthese (comme `priorEPS`) : il ne participe a aucun
+raisonnement de E1-E8 et n'influence jamais directement les adjXXX (sauf
+si un point qu'il mentionne devient par ailleurs un `ancrages` explicite) -
+un repere de lecture rapide pour l'utilisateur avant de lire la these
+complete.
 
 ## LES TROIS OPERATIONS POSSIBLES
 
@@ -324,12 +360,17 @@ integre-le des maintenant a "data".
   (a ~2% pres). L'app affiche un avertissement sinon.
 - Rachats d'actions : tendance historique + programmes annonces. Dividende :
   projete au rythme de la croissance du net.
-- Recherche egalement, pour `vsConsensus` (voir SCHEMA), le CA et l'EPS
-  ajuste ACTUAL du dernier trimestre publie face au CONSENSUS de marche au
-  moment de la publication (source : couverture presse de resultats deja
-  consultee pour le transcript, ou recherche dediee si absente). Simple
-  collecte factuelle, distincte de la boucle de projection - ne bloque
-  jamais l'analyse si aucun consensus n'est trouve (renseigner `null`).
+- Recherche egalement, pour `dernierCall` (voir SCHEMA), l'ensemble
+  suivant sur le dernier trimestre publie : CA et EPS ajuste ACTUAL face au
+  CONSENSUS de marche au moment de la publication ; la guidance chiffree du
+  prochain trimestre (si la societe en donne une) et son eventuel consensus
+  pre-publication ; la guidance annuelle en cours (CA et marge ou EPS) telle
+  que reaffirmee/mise a jour sur ce call ; 3 a 4 points cles du call
+  (transcript deja consulte pour E3-a, ou couverture presse de resultats).
+  Simple collecte factuelle et de synthese, distincte de la boucle de
+  projection - ne bloque jamais l'analyse si un element n'est pas trouve
+  (renseigner `null` pour les sous-champs numeriques absents, ou la phrase
+  "Pas de guidance trimestrielle chiffree fournie" le cas echeant).
 
 ### E3. EVENEMENTS PARTICULIERS & SEGMENTS
 GEOMETRIE VARIABLE : titre simple -> deux mentions "aucun evenement" et
@@ -552,9 +593,10 @@ lecture non reductibles a un moteur).
    de resultats trouvee, sinon trimestre attendu deduit - voir DOUBLE
    STOCKAGE dans le SCHEMA ci-dessus) : ce nouveau titre n'etant couvert par
    aucun passage anterieur de l'Operation C, ce champ sert de valeur
-   affichee jusqu'au prochain passage de C. `hypothese.vsConsensus` renseigne
-   (dernier trimestre publie face au consensus, voir SCHEMA et E2) - `null`
-   sur `ca`/`epsAdj` si aucun consensus trouve, jamais bloquant.
+   affichee jusqu'au prochain passage de C. `hypothese.dernierCall` renseigne
+   (resultats vs consensus, guidance prochain trimestre et annuelle, points
+   cles du call - voir SCHEMA et E2) - `null`/phrase de repli sur les
+   sous-champs sans donnee trouvee, jamais bloquant.
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -572,10 +614,10 @@ confirmer le nom/code, il est deja connu.
    rappelle a l'utilisateur que cette valeur ne s'affichera que si le
    ticker est absent de `data/nextEvents.json`, ou jusqu'au prochain
    passage de l'Operation C qui la supplantera (voir DOUBLE STOCKAGE).
-   `hypothese.vsConsensus` actualise sur le trimestre venant d'etre solde
+   `hypothese.dernierCall` actualise sur le trimestre venant d'etre solde
    (remplace integralement l'ancien, comme le reste de `hypothese`).
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
-   `ancrages`, `priorEPS`, `vsConsensus` et `nextEvent` inclus), pret a
+   `ancrages`, `priorEPS`, `dernierCall` et `nextEvent` inclus), pret a
    remplacer le fichier `data/CODE.json` existant sur GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
