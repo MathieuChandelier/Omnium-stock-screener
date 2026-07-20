@@ -188,7 +188,6 @@ textarea{resize:vertical;width:100%;}
 .metrics-tbl td input{width:72px;text-align:center;border:1px solid var(--border);border-radius:5px;padding:4px;font-size:11px;font-family:'Quattrocento Sans',serif;}
 
 /* ── CHARTS ── */
-.chart-wrap{position:relative;}
 .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 
 /* ── ANNUAL CHECKBOX BOX ── */
@@ -234,8 +233,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 @media(max-width:700px){.kpi-grid,.chart-grid,.form-grid{grid-template-columns:1fr 1fr;}.adj-eps-grid{grid-template-columns:repeat(3,1fr);}}
 
-/* pe-row: hidden, P/E drawn on canvas */
-.pe-row{display:none;}
 /* context bullets */
 .ctx-bullet{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(226,232,240,.5);font-size:13px;line-height:1.5;}
 .ctx-bullet:last-child{border-bottom:none;}
@@ -349,12 +346,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
 
-  <div class="card" style="margin-bottom:18px;">
-    <div class="card-title" style="display:flex;align-items:center;gap:10px;font-size:15px;letter-spacing:.02em;text-transform:none;color:var(--navy);"><b>EPS</b> <span style="color:var(--muted);font-weight:600;">(<span id="eps-cur">€</span>/action)</span> <span id="eps-pill"></span></div>
-    <div class="chart-wrap" style="height:260px"><canvas id="cEPS" style="box-sizing: border-box; display: block; height: 260px; width: 1064px;"></canvas></div>
-    <div id="pe-row" style="position: relative; height: 44px; margin-top: 8px;"></div>
-  </div>
-
   <div class="card" id="context-card" style="margin-bottom:18px;">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
       <b>Hypothèse actuelle</b>
@@ -370,7 +361,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 </div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // DECLARATION DES VARIABLES GLOBALES
 let state = { tickers: {} };
@@ -806,57 +796,6 @@ function updatePriceDot(ts,stale){
   if(el)el.style.display='flex';
 }
 
-let charts={};
-function dc(id){if(charts[id]){charts[id].destroy();delete charts[id];}}
-
-// Dessine la ligne de multiples P/E sous le graphe EPS a partir des metadonnees
-// deja calculees par Chart.js (chart.getDatasetMeta). Independant du cours :
-// peut etre rappele a tout moment (rafraichissement de prix) SANS recreer le
-// graphe ni provoquer une animation/re-render visible.
-function drawPERow(chart,opts){
-  const el=document.getElementById('pe-row');
-  if(!el||!chart||!opts)return;
-  const {n,cours}=opts;
-  el.innerHTML='';
-  el.style.cssText='position:relative;height:44px;margin-top:8px;';
-  const meta=chart.getDatasetMeta(1);
-  const ca=chart.chartArea;
-  const lbl=document.createElement('span');
-  lbl.textContent='P/E';
-  lbl.style.cssText=`position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.75;`;
-  el.appendChild(lbl);
-  const firstPt=meta.data[n];
-  if(firstPt){
-    const lineEnd=firstPt.x-28;
-    const line=document.createElement('div');
-    line.style.cssText=`position:absolute;left:${ca.left}px;width:${Math.max(0,lineEnd-ca.left)}px;top:50%;border-top:1px dashed rgba(0,1,144,.15);pointer-events:none;`;
-    el.appendChild(line);
-  }
-  meta.data.forEach((pt,i)=>{
-    if(i<n)return;
-    const val=chart.data.datasets[1].data[i];
-    if(!val)return;
-    const pe=cours/val;
-    const span=document.createElement('span');
-    span.textContent=pe.toFixed(1)+'×';
-    span.style.cssText=`position:absolute;left:${pt.x}px;transform:translateX(-50%);top:50%;margin-top:-14px;font-size:16px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;background:rgba(0,1,144,.08);padding:4px 12px;border-radius:6px;white-space:nowrap;`;
-    el.appendChild(span);
-  });
-}
-
-const TT={
-  backgroundColor:'rgba(0,1,80,0.93)',titleColor:'#2BD8C2',bodyColor:'rgba(255,255,255,0.88)',
-  borderColor:'rgba(43,216,194,0.25)',borderWidth:1,padding:10,cornerRadius:8,displayColors:false,
-  titleFont:{family:"'Poppins',sans-serif",size:11,weight:'700'},
-  bodyFont:{family:"'Quattrocento Sans',Georgia,serif",size:12}
-};
-const SC={
-  x:{grid:{display:false},border:{display:false},ticks:{font:{size:12},maxRotation:0}},
-  y:{grid:{color:'rgba(0,0,0,0.035)',lineWidth:1},border:{display:false},ticks:{font:{size:12}}}
-};
-const BASE_OPTS={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
-  plugins:{legend:{display:false},tooltip:TT},scales:SC};
-
 function renderAnalyse(){
   const d=state.tickers[CT];
   if(!d) return;
@@ -891,11 +830,9 @@ function renderAnalyse(){
     divPY[y]=(_epsCY>0&&div>0)?+(div*(epsY/_epsCY)).toFixed(2):div;
   });
 
-  const ea=d.data.map(epsR);
   const ly=d.data[d.data.length-1].year;
   const cur=tickerCur(CT)||'€';
   const curCoursEl=document.getElementById('cours-cur'); if(curCoursEl)curCoursEl.textContent=cur;
-  const curEpsEl=document.getElementById('eps-cur'); if(curEpsEl)curEpsEl.textContent=cur;
   const last5=d.data.slice(-5);
 
   // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
@@ -932,6 +869,7 @@ function renderAnalyse(){
     {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
     {lbl:'Nombre d\'actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
+    {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
     {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
     {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     {lbl:`Dividende (${cur})`,   sep:true,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
@@ -950,6 +888,7 @@ function renderAnalyse(){
     }
     const tr=document.createElement('tr');
     if(m.sep)tr.className='metric-group-start';
+    if(m.id)tr.id=m.id;
     const isMarge=m.lbl.startsWith('Marge EBIT')||m.lbl.startsWith('Dette nette')||m.lbl==='Croissance CA';
     let c=`<td style="${isMarge?'font-size:12px;color:var(--muted);font-weight:600;':''}">${m.lbl}</td>`;
     last5.forEach((row)=>{
@@ -961,48 +900,20 @@ function renderAnalyse(){
     tr.innerHTML=c;tbody.appendChild(tr);
   });
 
-  const histYrs=d.data.map(r=>r.year);
-  const allYrs=[...histYrs,...PY];
-  const n=histYrs.length;
-  const histEPS=ea.map(v=>+v.toFixed(2));
-  const projEPS=[...Array(n-1).fill(null),ea[ea.length-1],...PY.map(y=>+proj[y].eps.toFixed(2))];
-
-  dc('cEPS');
-  charts.cEPS=new Chart(document.getElementById('cEPS'),{
-    type:'line',
-    // Le plugin lit ses options via chart.options.plugins.peRow (n, cours) :
-    // on peut donc mettre ces valeurs a jour plus tard (nouveau cours) et
-    // rappeler drawPERow() directement, sans recreer/re-animer le graphe.
-    plugins:[{id:'peRow',afterRender:(chart,args,options)=>drawPERow(chart,options)}],
-    data:{labels:allYrs,datasets:[
-      {data:[...histEPS,...Array(5).fill(null)],borderColor:'rgba(0,1,144,.7)',backgroundColor:'rgba(0,1,144,.04)',fill:true,tension:.35,pointRadius:3.5,borderWidth:2.5},
-      {data:projEPS,borderColor:'#2BD8C2',backgroundColor:'rgba(43,216,194,.05)',fill:false,tension:.35,pointRadius:5,borderWidth:2.5,borderDash:[7,4],
-        pointBackgroundColor:[...Array(n).fill('transparent'),...PY.map(()=>'#2BD8C2')],
-        pointBorderColor:[...Array(n).fill('transparent'),...PY.map(()=>'#2BD8C2')]}
-    ]},
-    options:{
-      ...BASE_OPTS,
-      plugins:{...BASE_OPTS.plugins,
-        tooltip:{...TT,filter:item=>!(item.datasetIndex===1&&item.dataIndex===n-1),callbacks:{label:c=>`EPS : ${c.parsed.y.toFixed(2)}${cur}`}},
-        peRow:{n,cours}
-      }
-    }
-  });
-
   renderReturnBlock(CT,proj,cours);
   renderContextBullets(CT,proj,cours);
 }
 
 // Rafraichissement "leger" declenche par un prix qui vient d'etre recupere en
 // arriere-plan (autoFetchPrice). Contrairement a renderAnalyse(), il ne
-// touche NI au tableau NI au graphe EPS (recree a chaque appel sinon, avec
-// une animation qui donne l'impression que la courbe "saute") NI a
-// l'encadre "Hypothese actuelle" (dont renderContextBullets() reinitialise
-// l'etat deplie/replie a chaque appel). Il se contente de mettre a jour ce
-// qui depend reellement du cours : le champ Cours, le bloc "These Omnium"
-// (rendement, P/E) et la ligne de multiples P/E sous le graphe.
+// reconstruit pas tout le tableau NI l'encadre "Hypothese actuelle" (dont
+// renderContextBullets() reinitialise l'etat deplie/replie a chaque appel).
+// Il se contente de mettre a jour ce qui depend reellement du cours : le
+// champ Cours, le bloc "These Omnium" (rendement, P/E) et la ligne P/E du
+// tableau de projections.
 function refreshPriceOnly(ticker){
-  if(ticker!==CT || !charts.cEPS) return;
+  const peRow=document.getElementById('pe-metric-row');
+  if(ticker!==CT || !peRow) return;
   const d=state.tickers[ticker];
   if(!d)return;
   const coursEl=document.getElementById('cours');
@@ -1011,12 +922,12 @@ function refreshPriceOnly(ticker){
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
   renderReturnBlock(ticker,proj,cours);
-  const chart=charts.cEPS;
-  const peOpts=chart?.options?.plugins?.peRow;
-  if(peOpts){
-    peOpts.cours=cours;
-    drawPERow(chart,peOpts);
-  }
+  const {PY}=yearsFor(ticker);
+  const cells=peRow.querySelectorAll('td.proj-row');
+  PY.forEach((y,i)=>{
+    const e=proj[y]?.eps;
+    if(cells[i]) cells[i].textContent=(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';
+  });
 }
 
 function renderReturnBlock(ticker, proj, cours){
