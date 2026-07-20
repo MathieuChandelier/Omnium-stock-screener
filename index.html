@@ -8,12 +8,16 @@
 <style>
 :root {
   --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
-  --teal:#2BD8C2; --teal-light:#e6faf8;
+  --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#0D9488; /* teal assombri : contraste AA sur fond blanc, teal brut reste reserve aux fonds/bordures */
   --gold:#FFD700; --gold-light:#fffce6;
   --bg:#f0f2f8; --surface:#fff; --border:#e2e8f0;
   --text:#0d0d1a; --muted:#64748b;
   --proj-bg:#f7f9ff;
   --ok:#10b981; --err:#ef4444; --gold-text:#92700a;
+  /* Echelle typo : appliquee aux classes CSS statiques ci-dessous ; les tailles
+     generees en JS (return-block, badges dynamiques) restent en dur pour ne pas
+     multiplier les points de regression a chaque ajustement. */
+  --text-xs:11px; --text-sm:12px; --text-base:14px; --text-lg:16px; --text-2xl:28px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
@@ -42,7 +46,7 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 
 /* ── CARDS ── */
 .card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
-.card-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;}
+.card-title{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;}
 .card-title b{color:var(--navy);}
 
 /* ── KPI ── */
@@ -65,7 +69,7 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-metric{text-align:center;min-width:60px;}
 .pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
 .pf-mv{font-size:16px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
-.pf-mv.hi{color:var(--teal);}
+.pf-mv.hi{color:var(--teal-text);}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
 .pf-col-name-spacer{flex:1.6;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
 .pf-col-name-spacer:hover{color:#0d7a6e;}
@@ -84,11 +88,11 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .kpi.navy{border-left-color:var(--navy);}
 .kpi.red{border-left-color:var(--err);}
 .kpi-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px;font-weight:700;}
-.kpi-value{font-size:26px;font-weight:800;color:var(--navy);line-height:1.1;}
+.kpi-value{font-size:var(--text-2xl);font-weight:800;color:var(--navy);line-height:1.1;}
 .kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Quattrocento Sans',serif;}
 
 /* ── TABLES ── */
-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+table{width:100%;border-collapse:collapse;font-size:var(--text-base);}
 thead th{background:var(--navy);color:#fff;text-align:right;padding:10px 13px;font-weight:600;font-size:12px;letter-spacing:.02em;white-space:nowrap;width:7%;}
 thead th:first-child{width:16%;}
 thead th:first-child{text-align:left;}
@@ -100,6 +104,8 @@ tbody tr:hover td{background:rgba(43,216,194,.03);}
 tbody tr.hist-last td{background:rgba(0,1,144,.03);}
 tbody tr.proj-row td{background:var(--proj-bg);color:var(--muted);font-style:italic;}
 tbody tr.proj-row td:first-child{font-style:normal;color:var(--navy);opacity:.75;}
+tbody td.proj-first{border-left:2px solid var(--teal);}
+tbody tr.metric-group-start td{border-top:1px solid rgba(0,1,144,.12);}
 tbody tr.proj-sep td{padding:5px 11px;background:linear-gradient(90deg,var(--navy-light),transparent 60%);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-family:'Poppins',sans-serif;font-style:normal;}
 tbody tr.section-sep td{padding:4px;background:transparent;border:none;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
@@ -217,7 +223,7 @@ textarea{resize:vertical;width:100%;}
 /* ── FISCAL YEAR (exercice décalé) PILL ── */
 .fy-pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:4px 11px;border-radius:10px;background:var(--navy-light);color:var(--navy);border:1px solid rgba(0,1,144,.16);letter-spacing:.02em;}
 .fy-pill .fy-dot{width:6px;height:6px;border-radius:50%;background:var(--navy);opacity:.55;flex-shrink:0;}
-.fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal);opacity:.9;letter-spacing:.03em;margin-top:1px;}
+.fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal-text);opacity:.9;letter-spacing:.03em;margin-top:1px;}
 thead th .fy-month-tag{color:#8be9dc;}
 
 /* ── FOOTER ── */
@@ -940,6 +946,7 @@ function renderAnalyse(){
       tbody.appendChild(spacer);
     }
     const tr=document.createElement('tr');
+    if(m.sep)tr.className='metric-group-start';
     const isMarge=m.lbl.startsWith('Marge EBIT')||m.lbl.startsWith('Dette nette')||m.lbl==='Croissance CA';
     let c=`<td style="${isMarge?'font-size:12px;color:var(--muted);font-weight:600;':''}">${m.lbl}</td>`;
     last5.forEach((row)=>{
@@ -947,7 +954,7 @@ function renderAnalyse(){
       const val=m.hRaw? (m.lbl.startsWith('Dividende')?(row.div?(+row.div).toFixed(2):'—'):fM(Math.round(m.hRaw(row)||0))) : m.hFn(row);
       c+=`<td${isLast?' class="hist-last"':''} style="text-align:right;">${val}</td>`;
     });
-    PY.forEach(y=>{c+=`<td class="proj-row" style="background:rgba(43,216,194,.07);"> ${m.pFn(y)}</td>`;});
+    PY.forEach((y,i)=>{c+=`<td class="proj-row${i===0?' proj-first':''}" style="background:rgba(43,216,194,.07);"> ${m.pFn(y)}</td>`;});
     tr.innerHTML=c;tbody.appendChild(tr);
   });
 
@@ -1053,7 +1060,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;">Thèse Omnium</div>
     </div>
     <div style="display:flex;align-items:center;padding:0 20px 10px;gap:14px;">
-      <div style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal)':'var(--navy)'};font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;">${total>=0?'+':''}${total.toFixed(1)}%</div>
+      <div style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;">${total>=0?'+':''}${total.toFixed(1)}%</div>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
         <div style="font-size:13px;color:var(--muted);">EPS CAGR&nbsp;<b style="color:var(--navy);font-size:14px;">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</b></div>
         <div style="font-size:13px;color:var(--muted);">Div. yield&nbsp;<b style="color:var(--navy);font-size:14px;">+${yieldPct.toFixed(1)}%</b></div>
@@ -1078,14 +1085,14 @@ function renderReturnBlock(ticker, proj, cours){
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
         <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
           <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
+          ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
         </div>
         ${hasPriorCY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorCY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
         ${cons?.eps?`
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
           <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${cons.eps.toFixed(2)}${cur}</div>
-          <div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${consDelta>=0?'var(--teal)':'#e05252'};background:${consDelta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${consDelta>=0?'+':''}${consDelta.toFixed(1)}% Omnium</div>
+          <div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${consDelta>=0?'var(--teal-text)':'#e05252'};background:${consDelta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${consDelta>=0?'+':''}${consDelta.toFixed(1)}% Omnium</div>
         </div>
         ${srcLine?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">${srcLine}</div>`:''}
         `:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non dispo</div>`}
@@ -1096,14 +1103,14 @@ function renderReturnBlock(ticker, proj, cours){
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
         <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
           <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
+          ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
         </div>
         ${hasPriorNY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorNY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
         ${consNY>0?`
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
           <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
           <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${consNY.toFixed(2)}${cur}</div>
-          ${deltaConsNY!==null?`<div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaConsNY>=0?'var(--teal)':'#e05252'};background:${deltaConsNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaConsNY>=0?'+':''}${deltaConsNY.toFixed(1)}% Omnium</div>`:''}
+          ${deltaConsNY!==null?`<div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaConsNY>=0?'var(--teal-text)':'#e05252'};background:${deltaConsNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaConsNY>=0?'+':''}${deltaConsNY.toFixed(1)}% Omnium</div>`:''}
         </div>`:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non disp.</div>`}
       </div>
     </div>
@@ -1123,7 +1130,7 @@ function fmtPctDelta(actual,consensus){
 }
 function pctBadge(delta){
   if(delta===null)return '';
-  const col=delta>=0?'var(--teal)':'#e05252';
+  const col=delta>=0?'var(--teal-text)':'#e05252';
   const bg=delta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)';
   return `<span style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};background:${bg};border-radius:5px;padding:1px 6px;white-space:nowrap;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
 }
