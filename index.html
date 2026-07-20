@@ -8,7 +8,7 @@
 <style>
 :root {
   --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
-  --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#2EE3C6; /* turquoise exact du logo (stop median du degrade) ; NB contraste 1.63:1 sur blanc, illisible sur les tres petits badges - a surveiller */
+  --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#1CBBA1; /* turquoise le plus profond du degrade du logo, tel quel */
   --gold:#FFD700; --gold-light:#fffce6;
   --bg:#f0f2f8; --surface:#fff; --border:#e2e8f0;
   --text:#0d0d1a; --muted:#64748b;
@@ -57,7 +57,10 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-item{display:flex;align-items:center;gap:22px;background:transparent;padding:11px 22px;cursor:pointer;transition:background .12s;border-left:4px solid transparent;border-bottom:1px solid rgba(226,232,240,.65);}
 .pf-item:last-child{border-bottom:none;}
 .pf-item:hover{background:rgba(43,216,194,.055);}
-.pf-item.pf-active{border-left-color:var(--teal);background:rgba(43,216,194,.07);}
+/* .pf-active retire volontairement : CT est initialise sur le 1er ticker du select
+   au chargement (voir loadTicker), ce qui surlignait en permanence la 1ere ligne
+   du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
+   Le vrai survol (:hover ci-dessus) reste inchange. */
 .pf-rank{font-size:13px;font-weight:800;color:rgba(0,1,144,.28);font-family:'Poppins',sans-serif;min-width:20px;text-align:center;flex-shrink:0;}
 .pf-main{flex:1.6;min-width:0;}
 .pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
