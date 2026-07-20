@@ -441,6 +441,42 @@ c) CONTINUITE DE BASE : les adjXXX sont sur la MEME BASE COMPTABLE que
 ### E5. RETROFIT n°2 - PONT EBIT -> RESULTAT NET & EXCEPTIONNELS, toujours
 a) PONT : Net = (EBIT de E4 + resultat financier + non-operationnel
    normatif) x (1 - IS normatif) - minoritaires.
+a-bis) RESULTAT FINANCIER NORMATIF (non applicable aux valeurs financieres -
+   banques, assurances, gestion d'actifs, dont le bilan porte la dette/les
+   actifs financiers comme coeur de metier et non comme un agregat "dette
+   nette" au sens industriel ; pour ces titres, le resultat financier reste
+   une ligne modelisee au cas par cas, hors cadre de cette regle). Pour les
+   exercices PUBLIES : le resultat financier retenu est le chiffre publie
+   tel quel, jamais retraite sauf vrai one-off identifie en E5-e (ex.
+   extinction de dette exceptionnelle). Pour les exercices PROJETES,
+   PARAMETRE UNIQUE (meme logique qu'E5bis) :
+   - Si un cout ou rendement de financement EXPLICITE a ete communique par
+     le management pour une operation identifiee (emission obligataire,
+     refinancement, facility-relais), CE TAUX COMMUNIQUE PRIME sur toute
+     autre regle ci-dessous.
+   - A defaut, si `adjND` projete est POSITIF (dette nette) : charge
+     financiere = ND moyen projete de l'annee ((ND debut + ND fin)/2) x
+     taux a 10 ans souverain de la devise de reporting + 2 points de
+     spread normatif (Bund allemand 10 ans + 2pts pour l'EUR, Treasury 10
+     ans + 2pts pour l'USD - le seul Bund/Treasury nu est juge trop
+     optimiste, ne reflete ni prime de credit ni prime de terme d'une
+     entreprise industrielle), taux recalcule a CHAQUE refresh.
+   - A defaut, si `adjND` projete est NEGATIF (cash net) ET que la societe
+     mene un programme de rachat d'actions ACTIF et REGULIER (autorisation
+     en cours ET rythme observe sur au moins les 2-3 derniers exercices,
+     deja documente dans l'`ancrages` qui pilote `adjShares`) : rendement
+     retenu sur ce cash net = 0% (le cash est considere comme consomme par
+     les rachats en cours d'annee, pas comme un stock place sur l'annee).
+   - A defaut (cash net SANS programme de rachat regulier) : produit
+     financier = cash net moyen projete x meme taux de reference 10 ans +
+     2pts que ci-dessus (sans le spread de credit dans ce cas precis
+     serait aussi defendable pour un produit de placement, mais on retient
+     le meme taux unique pour la simplicite et la coherence du parametre).
+   Taux, devise de reference et cas retenu (positif / negatif-buyback /
+   negatif-sans-buyback / taux communique) documentes en `ancrages` (id,
+   taux retenu, devise, date de fixing) au meme titre que l'IS normatif,
+   jamais recalcules une seconde fois sans confrontation a la valeur
+   precedente (E5bis).
 b) IS NORMATIF : guidance fiscale > taux effectif historique NORMALISE >
    statutaire. Un taux anormal (windfalls, credit) n'est jamais reconduit
    tel quel.
