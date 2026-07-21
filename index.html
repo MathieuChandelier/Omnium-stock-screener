@@ -912,13 +912,14 @@ function renderAnalyse(){
 // champ Cours, le bloc "These Omnium" (rendement, P/E) et la ligne P/E du
 // tableau de projections.
 function refreshPriceOnly(ticker){
-  const peRow=document.getElementById('pe-metric-row');
-  if(ticker!==CT || !peRow) return;
+  if(ticker!==CT) return;
   const d=state.tickers[ticker];
   if(!d)return;
   const coursEl=document.getElementById('cours');
   if(coursEl) coursEl.value=d.cours;
   const cours=+d.cours||0;
+  const peRow=document.getElementById('pe-metric-row');
+  if(!peRow) return;
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
   renderReturnBlock(ticker,proj,cours);
@@ -1274,7 +1275,7 @@ function renderPortfolio(){
   sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
-    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
+    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=d.cours||10.0;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
     const barW=Math.round(score/maxScore*100);
     
     el.innerHTML=`
