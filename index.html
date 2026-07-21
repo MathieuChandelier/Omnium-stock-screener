@@ -1101,6 +1101,42 @@ function renderDernierCall(dc, ticker){
   </div>`;
 }
 
+// Suivi trimestriel de la guidance annuelle - voir hypothese.guidanceHistory dans
+// INSTRUCTIONS.md. Accumule un point par refresh au fil des trimestres d'un meme
+// exercice fiscal (fyGuided), reset (tableau reduit a la seule ligne courante) des
+// que le refresh porte sur un nouvel exercice. Affiche juste sous le bloc
+// "dernier trimestre publie". guidanceLongTerme (optionnel) figure en dessous.
+function renderGuidanceHistory(hyp, ticker){
+  if(!hyp)return '';
+  const hist=(hyp.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
+  const lt=(hyp.guidanceLongTerme||'').trim();
+  if(!hist.length&&!lt)return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const fmtShortDate=(iso)=>{
+    if(!iso)return'';
+    const p=String(iso).split('-');
+    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
+  };
+  const fy=hist.length?hist[hist.length-1].fyGuided:null;
+  const fyLabel=fy?String(fy).slice(-2):null;
+  const rows=hist.map(h=>`<div style="display:flex;gap:8px;align-items:baseline;margin-top:4px;flex-wrap:wrap;">
+      <span style="font-size:10.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;min-width:44px;">${esc(h.quarter)}</span>
+      <span style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;min-width:50px;">${fmtShortDate(h.date)}</span>
+      <span style="font-size:12px;color:var(--text);line-height:1.4;">${esc(h.guidanceAnnuelle)}</span>
+    </div>`).join('');
+  const table=hist.length?`<div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Suivi guidance annuelle${fyLabel?' FY'+fyLabel:''}</div>
+      ${rows}
+    </div>`:'';
+  const ltBlock=lt?`<div style="margin-top:${hist.length?8:0}px;">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance long terme</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;font-style:italic;">${esc(lt)}</div>
+    </div>`:'';
+  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+    ${table}${ltBlock}
+  </div>`;
+}
+
 function renderContextBullets(ticker, proj, cours){
   const d=state.tickers[ticker];
   const wrap=document.getElementById('context-bullets-wrap');
@@ -1110,6 +1146,7 @@ function renderContextBullets(ticker, proj, cours){
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
   const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
+  const ghBanner=renderGuidanceHistory(d.hypothese||null, ticker);
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
@@ -1133,6 +1170,7 @@ function renderContextBullets(ticker, proj, cours){
     <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
     ${dcBanner}
+    ${ghBanner}
     <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
     ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
     <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
