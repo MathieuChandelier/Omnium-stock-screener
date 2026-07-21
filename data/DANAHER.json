@@ -4,107 +4,64 @@
   "yahooSymbol": "DHR",
   "dividende": 1.28,
   "data": [
-    {
-      "year": 2021,
-      "ca": 24802,
-      "ebit": 6377,
-      "net": 5283,
-      "shares": 737,
-      "nd": 19590,
-      "div": 0.84
-    },
-    {
-      "year": 2022,
-      "ca": 26643,
-      "ebit": 7536,
-      "net": 6222,
-      "shares": 737,
-      "nd": 13682,
-      "div": 1.0
-    },
-    {
-      "year": 2023,
-      "ca": 23890,
-      "ebit": 5202,
-      "net": 4200,
-      "shares": 743,
-      "nd": 12538,
-      "div": 1.05
-    },
-    {
-      "year": 2024,
-      "ca": 23875,
-      "ebit": 4863,
-      "net": 3899,
-      "shares": 737,
-      "nd": 13927,
-      "div": 1.08
-    },
-    {
-      "year": 2025,
-      "ca": 24568,
-      "ebit": 4690,
-      "net": 3600,
-      "shares": 716,
-      "nd": 13803,
-      "div": 1.28
-    }
+    {"year": 2021, "ca": 24802, "ebit": 6377, "net": 5283, "shares": 737, "nd": 19590, "div": 0.84},
+    {"year": 2022, "ca": 26643, "ebit": 7536, "net": 6222, "shares": 737, "nd": 13682, "div": 1.0},
+    {"year": 2023, "ca": 23890, "ebit": 5202, "net": 4200, "shares": 743, "nd": 12538, "div": 1.05},
+    {"year": 2024, "ca": 23875, "ebit": 4863, "net": 3899, "shares": 737, "nd": 13927, "div": 1.08},
+    {"year": 2025, "ca": 24568, "ebit": 5130, "net": 4174, "shares": 716, "nd": 13803, "div": 1.28}
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 6.43,
-    "epsNY": 6.86,
-    "date": "2026-07-07",
-    "source": "Base NORMALISEE (US GAAP gardant l'amort. des intangibles recurrent) : guidance RELEVEE au 21/04/2026 a 8,35-8,55$ (ex-Masimo, deal pas encore cloture), amort. 2026 officiellement guidee a 1,7 Md$, FX guide +0,5%, ETR recalibre a 17%, buybacks EN PAUSE (financement Masimo 9,9 Md$)."
+    "eps": 8.44,
+    "epsNY": 9.12,
+    "date": "2026-07-20",
+    "source": "Barchart/Zacks, consensus non-GAAP management (pas encore actualise post-T2 26). Ecart deliberement large vs adjEPS Omnium (6,30$) : Omnium reintegre l'amortissement des intangibles d'acquisition (regle acquereur en serie) que ce consensus exclut."
   },
   "particularites": [],
+  "nextEvent": {"label": "Q3 26", "date": null},
   "hypothese": {
-    "date": "2026-07-05",
-    "source": "Creation - Transcript T1 2026 + recherche publique complementaire",
-    "summary": "Compounder-acquereur de qualite (DBS), leader bioprocessing/diagnostics/life sciences en reacceleration. Guidance RELEVEE. Masimo (9,9 Md$) SIGNE mais PAS CLOTURE (S2 2026). Buybacks en pause. Base US GAAP NORMALISEE. adjEPS 6,43->9,68 (digestion 2027 puis reacceleration).",
-    "text": "== SYNTHESE DE LA THESE ==\nDanaher est un compounder-acquereur de qualite organise autour du Danaher Business System (DBS), leader mondial du bioprocessing (equipements/consommables de fabrication biologique), des diagnostics et des sciences de la vie. La these repose sur une REACCELERATION CYCLIQUE apres le creux post-Covid du bioprocessing (destockage severe 2022-2024), confirmee par un rebond net des commandes au T1 2026 (+30%), combinee a l'acquisition de Masimo (diversification vers le monitoring patient/soin aigu, signee mais pas encore cloturee). Le titre se paie une prime de qualite (P/E ~30x sur base normalisee) qui suppose que la reacceleration se confirme sur plusieurs trimestres et que l'integration Masimo se passe sans accroc majeur - deux hypotheses testables des le S2 2026.\n\n== EVENEMENTS & INFLEXIONS (T1 2026, publie 21/04) ==\n1. REACCELERATION BIOPROCESSING [classe (i)] : commandes d'equipement +30% g.a. au T1 2026 (1ere hausse depuis pres de 2 ans) - inflexion cle. Biotechnology core +7%. Diagnostics encore sous pression (Chine), Life Sciences meilleur qu'attendu.\n2. GUIDANCE FY2026 RELEVEE [classe (i)] : suite a un T1 solide (adj EPS 2,06$ +9,5%), haut de fourchette adj EPS releve a 8,35-8,55$. Amort. officiellement guidee 1,7 Md$ (hors Masimo) ; FX +0,5%. NB : guidance en base AJUSTEE - exclut l'amortissement, charge RECURRENTE chez un acquereur en serie -> le modele la REINTEGRE.\n3. ACQUISITION MASIMO EN COURS, PAS CLOTUREE [classe (iii)] : accord SIGNE 17/02/2026 (9,9 Md$ EV, 100% cash), cloture ATTENDUE S2 2026. Accretion attendue +0,15-0,20$ en 1ere annee pleine (2027). Modelisee sur 1 SEUL TRIMESTRE en 2026, annee pleine 2027.\n4. BUYBACKS EN PAUSE [classe (i)] : rachats tombes a ~0,5 Md$ (TTM) vs 3,1 Md$ en 2025 - capital preserve pour financer Masimo.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (CA 6,0 Md$, adj EPS 2,06$ +9,5%, adj op margin 30,2% +60bps). Secondaires : FY2025 (CA 24 568 M$, GAAP net 3 600 M$/5,03$, adj EPS 7,80$), 8-K (amort. 2026 guidee 1,7 Md$), Masimo (9,9 Md$ EV cash, CA ~1,5-1,6 Md$). Cours ~194$, ~716M actions.\nGuidance FY2026 (ADJUSTED, EX-MASIMO) : core revenue +3-6%, adj EPS 8,35-8,55$, amort. 1,7 Md$, FX +0,5%.\nProchain refresh utile : T2 2026 + cloture Masimo au S2 (refresh evenementiel majeur).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = US GAAP NORMALISEE, pas l'adjusted. Amort. : base 1,7 Md$ + Masimo partiel 2026 (~75M, 1 trim.) puis plein 2027 (~300M/an) - NE FOND PAS, croit avec Masimo. ETR 17% (vs GAAP 2025). Financier recalibre (~-200M base) + impact Masimo selon calendrier reel (partiel 2026, PIC 2027 = 1ere annee pleine d'interets). adjShares en pause 2026 (~715), reprise modeste 2027+. Trajectoire EPS : +10,3% (2026) -> +6,7% SEULEMENT (2027, digestion) -> +13,4%/+12,2%/+10,9% (2028-2030). P/E 2026 base normalisee ~30x.\nA suivre : (1) cloture Masimo (prix/financement definitifs) ; (2) confirmation reacceleration bioprocessing ; (3) Diagnostics/Chine ; (4) reprise buybacks ; (5) trajectoire de marge ; (6) synergies Masimo.\n\n== CATALYSEURS ==\nRecovery bioprocessing (moteur de marge/re-rating) ; DBS (execution) ; Masimo (diversification, accretif des 2027) ; desendettement post-Masimo (FCF ~5 Md$/an) ; leader structurel life sciences/diagnostics ; guidance relevee.",
+    "date": "2026-07-21",
+    "priorEPS": {"date": "2026-07-05", "eps": {"2026": 6.43, "2027": 6.86}},
+    "source": "Refresh T2 2026 - Communique de resultats T2 2026 (21/07/2026, PR Newswire) + Transcript T2 2026 (Benzinga)",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "resultatsVsConsensus": {
+        "ca": {"actual": 6265, "consensus": 6110},
+        "epsAdj": {"actual": 1.94, "consensus": 1.84, "basis": "non-GAAP"}
+      },
+      "guidanceProchainTrimestre": "T3 26 : CA total +2-3%, core hors respiratoire ~+5%, marge operationnelle ajustee ~26,5%.",
+      "guidanceAnnuelle": "FY26 : CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0% precedemment), EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$), amortissement releve a ~1,9 Md$ (integration Masimo), ETR ~17%, actions diluees moy. ~707M.",
+      "pointsCles": [
+        "Plusieurs gros clients bioprocessing ont reprogramme des livraisons deja en carnet vers 2027 pour des raisons de planning de production et de site readiness cote client - pas un signal de demande, les commandes consommables ET equipement progressent toujours a mi-dizaine de %.",
+        "Life Sciences a livre son meilleur trimestre depuis plusieurs annees ; marches high-growth (Chine incluse, +mid-single-digit) compensent la faiblesse des marches developpes liee au calendrier de livraisons.",
+        "Masimo integre depuis a peine un mois montre un depart encourageant (croissance high-single-digit) ; Diagnostics guide une acceleration a high-single-digit hors respiratoire en T3 a mesure que les vents contraires Chine s'attenuent.",
+        "Management reaffirme etre en debut d'un cycle pluriannuel de capex bioprocessing (volumes biologiques + reshoring) et confirme la trajectoire d'acceleration CA/EPS attendue en H2 et au-dela."
+      ]
+    },
+    "guidanceHistory": [
+      {"quarter": "T2 26", "date": "2026-07-21", "fyGuided": 2026, "guidanceAnnuelle": "CA core +3,0/+4,0%, EPS ajuste 8,45-8,60$, amort. ~1,9 Md$, ETR ~17%, actions diluees ~707M."}
+    ],
+    "guidanceLongTerme": null,
+    "summary": "Guidance mixte T2 26 : EPS ajuste releve mais CA core resserre/abaisse en haut de fourchette (pushouts bioprocessing). Masimo cloture en avance (10/06, 9,9 Md$ cash). Amortissement releve a ~1,9 Md$ pese sur l'EPS normalise Omnium malgre le relevement du guide management. Correction historique : impairment T1-T2 25 (447 M$ pretax) retraite dans data.2025, non capte lors de la creation initiale.",
+    "text": "== SYNTHESE DE LA THESE ==\nDanaher reste un compounder-acquereur de qualite (DBS) en reacceleration cyclique post-bioprocessing, desormais elargi a la surveillance patient/soins aigus via Masimo, clos plus tot que prevu (10/06/2026, 9,9 Md$ cash). Le T2 26 est un trimestre a lecture double : au niveau du communique, un beat net (CA/EPS ajuste au-dessus du consensus) et un relevement du guide EPS annuel ; au niveau du detail, une guidance de croissance CA core RESSERREE (haut de fourchette abaisse de 6% a 4%) suite a des livraisons bioprocessing reportees en 2027, et un amortissement guide en hausse (1,7 -> 1,9 Md$) qui, une fois reintegre dans la base Omnium (regle acquereur en serie), efface une bonne partie du relevement de guidance affiche. Le marche a lu ce signal mixte negativement (titre ~-10% en pre-marche malgre le beat). La these reste intacte sur le fond (recovery bioprocessing confirme cote commandes, Masimo de-risque par une cloture anticipee) mais l'EPS normalise 2026-2027 est revise legerement a la baisse (-2,0%/-2,2%) du seul fait du parametre amortissement, pas d'une degradation operationnelle.\n\n== EVENEMENTS & INFLEXIONS (T2 2026, publie 21/07) ==\n1. MASIMO CLOTURE, EN AVANCE SUR LE CALENDRIER [classe (i)] : cloture le 10/06/2026 (vs S2 2026 attendu), 9,9 Md$ 100% cash. Aucune contribution materielle en T2 selon le management (moins d'un mois de detention) ; guidance FY26 mise a jour pour integrer sa contribution. Depart operationnel juge encourageant (croissance high-single-digit).\n2. GUIDANCE MIXTE - RELEVEE SUR L'EPS, RESSERREE SUR LE CA [classe (i)] : EPS ajuste FY26 releve a 8,45-8,60$ (vs 8,35-8,55$), mais croissance CA core RESSERREE a +3,0/+4,0% (vs +3,0/+6,0%) - le haut de fourchette est coupe suite aux pushouts bioprocessing. Amortissement FY26 releve a ~1,9 Md$ (vs 1,7 ex-Masimo, integration des intangibles Masimo).\n3. PUSHOUTS BIOPROCESSING [classe (iii), ponctuel a suivre] : plusieurs gros clients ont reprogramme des livraisons deja en carnet (raisons cote client : planning de production, site readiness), pas une baisse de la demande sous-jacente - commandes consommables et equipement toujours en hausse mi-dizaine de %. A confirmer : rattrapage ou non en 2027.\n4. CORRECTION HISTORIQUE data.2025 [classe (i), correction d-bis] : depreciation isolee marque Life Sciences (432 M$ pretax/328 M$ apres impot, T2 25) + installation Biotechnology (15 M$/11 M$, T1 25), vrais one-offs non retraites lors de la creation initiale du titre (05/07/26). Corrige maintenant : net 2025 3 600 -> 4 174 M$, ebit 2025 4 690 -> 5 130 M$ (ce dernier chiffre integre egalement, par approximation documentee, une petite portion non-EBIT du pont GAAP/non-GAAP FY25 non individuellement retracee trimestre par trimestre - cf PARAMETRES).\n5. BUYBACKS TOUJOURS EN PAUSE [classe (i)] : capital preserve pour le desendettement post-Masimo ; reprise graduelle assumee a partir de 2027.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : communique T2 26 (PR Newswire, 21/07) - CA 6 265 M$ (+5,5%, core +3,0%, core hors respiratoire +4,5%), GAAP EPS 1,23$ (+60%, base T2 25 deprimee par l'impairment ci-dessus), EPS ajuste 1,94$ (+8,0%) vs consensus 1,84$. Secondaire : transcript T2 26 (Benzinga). Guidance directionnelle (contraintes dures) : EPS annuel croissant, exit T4 26 a core mid-single-digit, marge en expansion continue - toutes respectees dans la projection. Prochain refresh utile : T3 26 (~20/10/2026, date non encore officiellement confirmee).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase = US GAAP normalisee : amortissement garde (reintegre au guide non-GAAP management), one-offs vrais exclus (impairment 2025, couts de transaction/step-up d'inventaire Masimo T2 26 ~0,15$/action). Methode : adjEPS = guide non-GAAP management - amortissement apres impot SEUL (tous les autres ajustements du management deja valides comme vrais one-offs). Financier 2026 explicitement guide (-310 M$, priorite management) ; 2027+ extrapole du rythme H2-26 implicite (~-460/470 M$ annualise) plutot que la formule Treasury 10Y+2pts (~6,55%, largement surestimee vs le cout reel observe compte tenu du mix dette existante/nouvelle) - CONFIANCE BASSE, a reconfirmer au 10-Q/prochain refresh. ETR 17%. adjShares quasi-figees 2026 (~707), reprise graduelle 2027+.\nWatch-list : (1) bilan/dette nette exacte post-Masimo (10-Q T2 26, adjND actuel = estimation) ; (2) rattrapage ou non des pushouts bioprocessing en 2027 ; (3) trajectoire Diagnostics ex-respiratoire (accel guidee high-single-digit en T3) ; (4) reprise des rachats ; (5) synergies Masimo (125 M$ vises sur 5 ans selon recherche externe, non encore confirme par le management) ; (6) cloture StatLab (attendue fin 2026, non modelisee, optionnalite).\n\n== CATALYSEURS ==\nExecution H2 (exit T4 26 a core mid-single-digit) ; integration et synergies Masimo ; reacceleration bioprocessing (cycle equipement pluriannuel, reshoring) ; desendettement post-Masimo (FCF ~5-6 Md$/an) ; reprise des rachats a moyen terme ; expansion de marge continue.",
     "impact": "positif",
-    "adjEPS": {
-      "2026": 6.43,
-      "2027": 6.86,
-      "2028": 7.78,
-      "2029": 8.73,
-      "2030": 9.68
-    },
-    "adjCA": {
-      "2026": 26186,
-      "2027": 28835,
-      "2028": 30544,
-      "2029": 32262,
-      "2030": 33916
-    },
-    "adjEBIT": {
-      "2026": 5767,
-      "2027": 6457,
-      "2028": 7118,
-      "2029": 7770,
-      "2030": 8419
-    },
-    "adjNet": {
-      "2026": 4596,
-      "2027": 4886,
-      "2028": 5510,
-      "2029": 6134,
-      "2030": 6755
-    },
-    "adjND": {
-      "2026": 21000,
-      "2027": 17500,
-      "2028": 13500,
-      "2029": 9500,
-      "2030": 5500
-    },
-    "adjShares": {
-      "2026": 715,
-      "2027": 712,
-      "2028": 708,
-      "2029": 703,
-      "2030": 698
-    }
+    "ancrages": [
+      {"id": "core_ca_2026", "moteur": "Croissance CA core FY26 resserree par le management a +3,0/+4,0% (vs +3,0/+6,0% precedemment) ; traduite en +3,5% central + FX +0,5%.", "applique": ["adjCA.2026"], "confiance": "haute"},
+      {"id": "masimo_conso", "moteur": "Masimo cloture le 10/06/2026 (avant calendrier), consolide ~6,5 mois en 2026 (~840M$ de CA incremental estime sur une base annualisee ~1,55 Md$), annee pleine des 2027.", "applique": ["adjCA.2026", "adjCA.2027"], "confiance": "haute"},
+      {"id": "core_ca_2027plus", "moteur": "Reacceleration progressive du core (bioprocessing multi-annuel + diagnostics ex-respiratoire guide en acceleration) vers ~4,5-5%/an sur 2027-2030 ; FX neutralise au-dela de 2026.", "applique": ["adjCA.2027", "adjCA.2028", "adjCA.2029", "adjCA.2030"], "confiance": "moyenne"},
+      {"id": "amort_relevee", "moteur": "Amortissement des intangibles d'acquisition guide FY26 a ~1,9 Md$ (vs 1,7 Md$ ex-Masimo) ; charge recurrente reintegree dans la base Omnium (regle acquereur en serie), croissante en annee pleine 2027.", "applique": ["adjEBIT.2026", "adjNet.2026", "adjEBIT.2027", "adjNet.2027", "adjEBIT.2028", "adjNet.2028", "adjEBIT.2029", "adjNet.2029", "adjEBIT.2030", "adjNet.2030"], "confiance": "haute"},
+      {"id": "fin_2026", "moteur": "Charge financiere nette FY26 explicitement guidee par le management a ~-310 M$ (priorite E5-a bis, taux communique).", "applique": ["adjNet.2026"], "confiance": "haute"},
+      {"id": "fin_2027plus", "moteur": "A defaut de guide explicite au-dela de 2026, extrapolation du rythme H2-26 implicite (~-460/470 M$ annualise, deduit de l'interet net H1-26 vs le guide FY26) plutot que la formule Treasury 10Y+2pts (~6,55%) qui surestimerait fortement le cout reel observe (mix dette existante a coupon bas + financement Masimo partiellement court terme) ; puis decroissance avec le desendettement.", "applique": ["adjNet.2027", "adjNet.2028", "adjNet.2029", "adjNet.2030"], "confiance": "basse"},
+      {"id": "etr_norm", "moteur": "ETR normatif maintenu a 17% (guidance management inchangee).", "applique": ["adjNet.2026", "adjNet.2027", "adjNet.2028", "adjNet.2029", "adjNet.2030"], "confiance": "haute"},
+      {"id": "buybacks_pause", "moteur": "Rachats d'actions en pause pour financer Masimo (guide shares moy. ~707M FY26) ; reprise graduelle assumee 2027-2030 a mesure du desendettement.", "applique": ["adjShares.2026", "adjShares.2027", "adjShares.2028", "adjShares.2029", "adjShares.2030"], "confiance": "moyenne"},
+      {"id": "oneoff_masimo_t2", "moteur": "Couts de transaction/step-up d'inventaire Masimo (0,15$/action T2, ~108M$ pretax) traites comme vrai one-off lie a une transaction identifiee et exclus de la base normalisee.", "applique": ["adjNet.2026"], "confiance": "haute"},
+      {"id": "impair_2025", "moteur": "Depreciation isolee marque Life Sciences T2 25 (432M$ pretax/328M$ apres impot) + installation Biotechnology T1 25 (15M$/11M$) : vrais one-offs non retraites lors de la creation initiale, corriges ici via d-bis. Portion residuelle non-EBIT du pont GAAP/non-GAAP FY25 (~273M$ apres impot au S2) traitee comme non-EBIT par approximation, non individuellement retracee.", "applique": ["data.2025"], "confiance": "moyenne"}
+    ],
+    "adjEPS": {"2026": 6.30, "2027": 6.71, "2028": 7.50, "2029": 8.25, "2030": 9.00},
+    "adjCA": {"2026": 26400, "2027": 28250, "2028": 29650, "2029": 31100, "2030": 32650},
+    "adjEBIT": {"2026": 5670, "2027": 6180, "2028": 6670, "2029": 7140, "2030": 7600},
+    "adjNet": {"2026": 4450, "2027": 4730, "2028": 5250, "2029": 5740, "2030": 6210},
+    "adjND": {"2026": 22000, "2027": 17500, "2028": 13000, "2029": 8500, "2030": 4000},
+    "adjShares": {"2026": 707, "2027": 705, "2028": 700, "2029": 695, "2030": 690}
   }
 }
