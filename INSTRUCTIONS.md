@@ -60,6 +60,11 @@ data/
       "guidanceAnnuelle":"Phrase courte, chiffres inclus (CA et marge ou EPS).",
       "pointsCles":["Point 1 du call, une phrase complete.","Point 2.","Point 3.","Point 4 (optionnel)."]
     },
+    "guidanceHistory":[
+      {"quarter":"T1 26","date":"2026-04-10","fyGuided":2026,"guidanceAnnuelle":"CA +6-8%, marge EBIT ~22%."},
+      {"quarter":"T2 26","date":"2026-07-02","fyGuided":2026,"guidanceAnnuelle":"CA +7-9%, marge EBIT ~22.5%."}
+    ],
+    "guidanceLongTerme":"Objectif CMD mars 2025 : marge EBIT >25% et CA CAGR high-single-digit a horizon 2028, ou null si aucune guidance pluriannuelle formulee.",
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
     "impact":"positif|negatif|neutre",
@@ -197,6 +202,70 @@ raisonnement de E1-E8 et n'influence jamais directement les adjXXX (sauf
 si un point qu'il mentionne devient par ailleurs un `ancrages` explicite) -
 un repere de lecture rapide pour l'utilisateur avant de lire la these
 complete.
+
+Le champ `guidanceHistory` est le SUIVI TRIMESTRIEL, au fil d'un meme
+exercice fiscal, de la guidance annuelle telle que communiquee call apres
+call - un historique cumulatif, a distinguer de `dernierCall.
+guidanceAnnuelle` qui n'en porte que le dernier point (voir mecanique
+ci-dessous). Renseigne a CHAQUE creation et CHAQUE refresh (Operations A et
+B uniquement - jamais par l'Operation C), en meme temps que `dernierCall`
+et a partir des memes sources (COMMUNIQUE DE RESULTATS en priorite pour le
+chiffre exact de guidance). Structure : tableau d'objets `{quarter, date,
+fyGuided, guidanceAnnuelle}`.
+- `quarter` : meme convention que `dernierCall.quarter`.
+- `date` : date du call/communique correspondant, format ISO.
+- `fyGuided` : ANNEE (entier, 4 chiffres) de l'exercice fiscal auquel la
+  `guidanceAnnuelle` de cette ligne se rapporte - PAS necessairement
+  l'annee du trimestre qui vient de cloturer. Cas frequent : le call de T4/
+  exercice cloture guide deja l'exercice SUIVANT (`fyGuided` = annee N+1
+  alors que `quarter` reste "T4 <N>" ou l'exercice annuel N) - c'est ce
+  champ, jamais `quarter`, qui pilote le mecanisme de reset ci-dessous.
+- `guidanceAnnuelle` : MEME PHRASE (chiffres inclus) que celle ecrite dans
+  `dernierCall.guidanceAnnuelle` pour ce call - une seule redaction, copiee
+  aux deux endroits, jamais reformulee differemment entre les deux.
+MECANIQUE D'ACCUMULATION ET DE RESET (a appliquer a l'ecriture, avant E8) :
+- CREATION (Operation A) : `guidanceHistory` demarre avec la seule ligne du
+  call couvert par la creation (ou tableau vide si aucune guidance
+  annuelle chiffree n'a ete trouvee - pas de ligne forcee).
+- REFRESH (Operation B) : reprendre `guidanceHistory` TEL QUEL depuis
+  l'ancien JSON fourni (lignes anterieures jamais reecrites ni recalculees,
+  meme logique de non-alteration retroactive que `priorEPS`), puis :
+  - SI le nouveau call a un `fyGuided` IDENTIQUE au `fyGuided` de la
+    DERNIERE ligne existante (meme exercice fiscal suivi depuis plusieurs
+    trimestres) : AJOUTER la nouvelle ligne a la suite du tableau existant.
+  - SI le nouveau call a un `fyGuided` DIFFERENT (premiere guidance d'un
+    nouvel exercice - typiquement le call qui suit la cloture de
+    l'exercice precedent) : RESET - le tableau ne contient plus QUE la
+    nouvelle ligne, les lignes de l'exercice desormais cloture sont
+    abandonnees (leur trace narrative eventuelle, si notable - ex. objectif
+    tenu/rate sur l'annee ecoulee - releve de `hypothese.text`, pas de ce
+    tableau qui ne suit que l'exercice EN COURS).
+  - SI `guidanceHistory` est absent de l'ancien JSON (titre cree avant
+    l'introduction de ce champ) : traiter comme une creation (ligne unique)
+    plutot que bloquer le refresh.
+Champ factuel et cumulatif (mecanique de suivi, pas un jugement) : il ne
+participe a aucun raisonnement de E1-E8 - ce n'est pas parce qu'une
+guidance a ete relevee deux trimestres de suite que la projection doit
+suivre automatiquement (E6-b reste seul juge, ancrage par ancrage). Utile
+au refresh suivant pour visualiser en un coup d'oeil la trajectoire de
+confiance du management sur l'exercice (relevements/abaissements
+successifs, stabilite ou volatilite de la guidance).
+
+Le champ `guidanceLongTerme` est une PHRASE COURTE (chiffres inclus)
+portant la guidance PLURIANNUELLE la plus recente formulee par le
+management (objectifs de Capital Markets Day/Investor Day, cible
+structurelle a 3-5 ans), quand elle existe. Contrairement a
+`guidanceHistory`, ce N'EST PAS un historique cumulatif : c'est un
+INSTANTANE UNIQUE, REMPLACE (pas accumule) des qu'une communication plus
+recente la met a jour (nouveau CMD, revision explicite) - la valeur
+precedente n'est pas conservee ailleurs que dans l'ancien `hypothese.text`
+si elle y avait ete notee. Recherche a chaque creation et chaque refresh ;
+si aucune guidance pluriannuelle n'a jamais ete communiquee par la societe,
+`null`. Meme statut factuel que `guidanceHistory` : ne participe a aucun
+raisonnement E1-E8 par lui-meme (une cible LT peut neanmoins alimenter un
+`ancrages` explicite en E4 si elle est mobilisee comme moteur de
+projection - dans ce cas le lien vers l'id de l'ancrage peut etre
+mentionne ici en une incise courte).
 
 ## LES TROIS OPERATIONS POSSIBLES
 
@@ -406,6 +475,10 @@ integre-le des maintenant a "data".
   projection - ne bloque jamais l'analyse si un element n'est pas trouve
   (renseigner `null` pour les sous-champs numeriques absents, ou la phrase
   "Pas de guidance trimestrielle chiffree fournie" le cas echeant).
+- Ecrit dans le meme mouvement `guidanceHistory` (ajout d'une ligne au
+  tableau accumule depuis l'ancien JSON, ou reset si nouvel exercice fiscal
+  - voir mecanique dans le SCHEMA) et `guidanceLongTerme` (recherche/mise a
+  jour de la derniere guidance pluriannuelle communiquee, `null` a defaut).
 
 ### E3. EVENEMENTS PARTICULIERS & SEGMENTS
 GEOMETRIE VARIABLE : titre simple -> deux mentions "aucun evenement" et
@@ -667,7 +740,10 @@ lecture non reductibles a un moteur).
    affichee jusqu'au prochain passage de C. `hypothese.dernierCall` renseigne
    (resultats vs consensus, guidance prochain trimestre et annuelle, points
    cles du call - voir SCHEMA et E2) - `null`/phrase de repli sur les
-   sous-champs sans donnee trouvee, jamais bloquant.
+   sous-champs sans donnee trouvee, jamais bloquant. `hypothese.
+   guidanceHistory` demarre a une ligne unique (ce call) et `hypothese.
+   guidanceLongTerme` renseigne si une guidance pluriannuelle existe, sinon
+   `null` (voir SCHEMA).
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -687,9 +763,15 @@ confirmer le nom/code, il est deja connu.
    passage de l'Operation C qui la supplantera (voir DOUBLE STOCKAGE).
    `hypothese.dernierCall` actualise sur le trimestre venant d'etre solde
    (remplace integralement l'ancien, comme le reste de `hypothese`).
+   `hypothese.guidanceHistory` mis a jour selon sa mecanique propre
+   (ajout d'une ligne si meme `fyGuided` que la derniere ligne existante,
+   reset a une ligne unique si nouvel exercice fiscal - voir SCHEMA) ;
+   `hypothese.guidanceLongTerme` reconduit tel quel ou remplace si une
+   communication plus recente l'a mise a jour.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
-   `ancrages`, `priorEPS`, `dernierCall` et `nextEvent` inclus), pret a
-   remplacer le fichier `data/CODE.json` existant sur GitHub tel quel.
+   `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
+   `guidanceLongTerme` et `nextEvent` inclus), pret a remplacer le fichier
+   `data/CODE.json` existant sur GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
