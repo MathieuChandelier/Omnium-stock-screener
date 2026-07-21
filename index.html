@@ -484,12 +484,7 @@ function fingerprint(str){
 async function loadState() {
   try {
     // 1. Charge le manifeste : la liste des codes de titres a charger.
-    // cache:'no-store' partout dans cette fonction : les fichiers de titres
-    // sont mis a jour frequemment sur GitHub (refresh/creation), et le cache
-    // HTTP par defaut du navigateur peut servir une version perimee sans
-    // meme revalider aupres du reseau - on force une requete fraiche a
-    // chaque chargement de page.
-    const manRes = await fetch('data/manifest.json', {cache: 'no-store'});
+    const manRes = await fetch('data/manifest.json');
     if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
@@ -508,7 +503,7 @@ async function loadState() {
     const [results, nextEvents] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
-          const r = await fetch(`data/${code}.json`, {cache: 'no-store'});
+          const r = await fetch(`data/${code}.json`);
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           const obj = await r.json();
           return [code, obj];
@@ -518,7 +513,7 @@ async function loadState() {
           return null;
         }
       })),
-      fetch('data/nextEvents.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
     ]);
 
     const tickers = {};
@@ -664,7 +659,7 @@ function refreshAllPrices(){
   // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
   // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
   // en quelques secondes au lieu de defiler titre par titre.
-  const CONCURRENCY=6;
+  const CONCURRENCY=12;
   let i=0;
   const worker=async()=>{
     while(i<keys.length){
@@ -726,7 +721,7 @@ function _priceIsPlausible(p,ref,liveConfirmed){
 
 async function fetchFromGoogleFinance(sym){
   try{
-    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
+    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(6000)});
     if(!r.ok)return null;
     const j=await r.json();
     const price=+j?.price;
@@ -736,7 +731,7 @@ async function fetchFromGoogleFinance(sym){
 
 async function _fetchFromYahoo(sym){
   try{
-    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(8000)});
+    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(5000)});
     if(!r.ok)return null;
     const j=await r.json();
     if(!j||!j.price)return null;
@@ -917,14 +912,13 @@ function renderAnalyse(){
 // champ Cours, le bloc "These Omnium" (rendement, P/E) et la ligne P/E du
 // tableau de projections.
 function refreshPriceOnly(ticker){
-  if(ticker!==CT) return;
+  const peRow=document.getElementById('pe-metric-row');
+  if(ticker!==CT || !peRow) return;
   const d=state.tickers[ticker];
   if(!d)return;
   const coursEl=document.getElementById('cours');
   if(coursEl) coursEl.value=d.cours;
   const cours=+d.cours||0;
-  const peRow=document.getElementById('pe-metric-row');
-  if(!peRow) return;
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
   renderReturnBlock(ticker,proj,cours);
@@ -1107,42 +1101,6 @@ function renderDernierCall(dc, ticker){
   </div>`;
 }
 
-// Suivi trimestriel de la guidance annuelle - voir hypothese.guidanceHistory dans
-// INSTRUCTIONS.md. Accumule un point par refresh au fil des trimestres d'un meme
-// exercice fiscal (fyGuided), reset (tableau reduit a la seule ligne courante) des
-// que le refresh porte sur un nouvel exercice. Affiche juste sous le bloc
-// "dernier trimestre publie". guidanceLongTerme (optionnel) figure en dessous.
-function renderGuidanceHistory(hyp, ticker){
-  if(!hyp)return '';
-  const hist=(hyp.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
-  const lt=(hyp.guidanceLongTerme||'').trim();
-  if(!hist.length&&!lt)return '';
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const fmtShortDate=(iso)=>{
-    if(!iso)return'';
-    const p=String(iso).split('-');
-    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
-  };
-  const fy=hist.length?hist[hist.length-1].fyGuided:null;
-  const fyLabel=fy?String(fy).slice(-2):null;
-  const rows=hist.map(h=>`<div style="display:flex;gap:8px;align-items:baseline;margin-top:4px;flex-wrap:wrap;">
-      <span style="font-size:10.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;min-width:44px;">${esc(h.quarter)}</span>
-      <span style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;min-width:50px;">${fmtShortDate(h.date)}</span>
-      <span style="font-size:12px;color:var(--text);line-height:1.4;">${esc(h.guidanceAnnuelle)}</span>
-    </div>`).join('');
-  const table=hist.length?`<div>
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Suivi guidance annuelle${fyLabel?' FY'+fyLabel:''}</div>
-      ${rows}
-    </div>`:'';
-  const ltBlock=lt?`<div style="margin-top:${hist.length?8:0}px;">
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance long terme</div>
-      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;font-style:italic;">${esc(lt)}</div>
-    </div>`:'';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
-    ${table}${ltBlock}
-  </div>`;
-}
-
 function renderContextBullets(ticker, proj, cours){
   const d=state.tickers[ticker];
   const wrap=document.getElementById('context-bullets-wrap');
@@ -1152,7 +1110,6 @@ function renderContextBullets(ticker, proj, cours){
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
   const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
-  const ghBanner=renderGuidanceHistory(d.hypothese||null, ticker);
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
@@ -1176,7 +1133,6 @@ function renderContextBullets(ticker, proj, cours){
     <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
     ${dcBanner}
-    ${ghBanner}
     <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
     ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
     <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
@@ -1280,7 +1236,7 @@ function renderPortfolio(){
   sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
-    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=d.cours||10.0;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
+    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
     const barW=Math.round(score/maxScore*100);
     
     el.innerHTML=`
