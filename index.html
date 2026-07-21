@@ -484,7 +484,12 @@ function fingerprint(str){
 async function loadState() {
   try {
     // 1. Charge le manifeste : la liste des codes de titres a charger.
-    const manRes = await fetch('data/manifest.json');
+    // cache:'no-store' partout dans cette fonction : les fichiers de titres
+    // sont mis a jour frequemment sur GitHub (refresh/creation), et le cache
+    // HTTP par defaut du navigateur peut servir une version perimee sans
+    // meme revalider aupres du reseau - on force une requete fraiche a
+    // chaque chargement de page.
+    const manRes = await fetch('data/manifest.json', {cache: 'no-store'});
     if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
@@ -503,7 +508,7 @@ async function loadState() {
     const [results, nextEvents] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
-          const r = await fetch(`data/${code}.json`);
+          const r = await fetch(`data/${code}.json`, {cache: 'no-store'});
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           const obj = await r.json();
           return [code, obj];
@@ -513,7 +518,7 @@ async function loadState() {
           return null;
         }
       })),
-      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      fetch('data/nextEvents.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : {}).catch(() => ({}))
     ]);
 
     const tickers = {};
