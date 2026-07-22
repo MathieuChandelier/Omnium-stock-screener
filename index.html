@@ -1,1402 +1,1112 @@
-<html lang="fr"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omnium — Modèle d'investissement</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&amp;family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
-  --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#25CFB4; /* intermediaire entre les deux stops du logo (#1CBBA1 / #2EE3C6) */
-  --gold:#FFD700; --gold-light:#fffce6;
-  --bg:#f0f2f8; --surface:#fff; --border:#e2e8f0;
-  --text:#0d0d1a; --muted:#64748b;
-  --proj-bg:#f7f9ff;
-  --ok:#10b981; --err:#ef4444; --gold-text:#92700a;
-  /* Echelle typo : appliquee aux classes CSS statiques ci-dessous ; les tailles
-     generees en JS (return-block, badges dynamiques) restent en dur pour ne pas
-     multiplier les points de regression a chaque ajustement. */
-  --text-xs:11px; --text-sm:12px; --text-base:14px; --text-lg:16px; --text-2xl:28px;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
-h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,th{font-family:'Poppins',system-ui,sans-serif;}
+# INSTRUCTIONS POUR TOUT ASSISTANT IA (Claude, GPT, Gemini, etc.)
+# travaillant sur le portefeuille Omnium Invest
 
-/* ── HEADER ── */
-header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--teal);}
-.h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
-.h-tagline i{width:6px;height:6px;border-radius:50%;background:var(--teal);flex:0 0 auto;}
-.h-tagline span{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);opacity:.62;font-family:'Poppins',sans-serif;}
-.h-logo{height:34px;width:auto;display:block;}
+## ARCHITECTURE DU DEPOT
 
-/* ── TABS ── */
-.tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);display:flex;align-items:center;padding:11px 24px;gap:8px;}
-.tab{display:inline-flex;align-items:center;gap:9px;padding:8px 20px 8px 10px;cursor:pointer;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-radius:22px;font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;transition:background .15s,color .15s,border-color .15s,transform .12s,box-shadow .15s;box-shadow:0 1px 2px rgba(0,0,0,.12);}
-.tab.active{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 2px 8px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);}
-.tab:hover:not(.active){background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff;transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.18);}
-.tab:active{transform:scale(.96);}
-.tab-back-arrow{display:inline-flex;font-size:13px;transition:opacity .15s;}
-.tab-icon{display:inline-flex;align-items:center;transition:opacity .15s;opacity:.92;}
-.tab:hover:not(.active) .tab-icon{opacity:1;}
-.panel{display:none;}.panel.active{display:block;}
+Le portefeuille vit sur GitHub, dans le depot `Omnium-stock-screener`, sous cette forme :
 
-/* ── LAYOUT ── */
-.container{max-width:1160px;margin:0 auto;padding:22px 24px;}
+```
+index.html              <- le moteur (jamais modifie pour un titre)
+Logotype-Omnium.png
+data/
+  manifest.json          <- la liste des codes de titres a charger
+  nextEvents.json         <- OPTIONNEL, prochains evenements (voir plus bas)
+  TICKER1.json            <- un fichier par titre, autonome
+  TICKER2.json
+  ...
+```
 
-/* ── CARDS ── */
-.card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
-.card-title{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;}
-.card-title b{color:var(--navy);}
+- `manifest.json` contient UN SEUL champ : `{"tickers": ["CODE1", "CODE2", ...]}`.
+- `nextEvents.json` est un fichier PLAT et OPTIONNEL : `{"CODE1":
+  {"label":"...","date":"..."|null}, "CODE2": {...}, ...}`. Il n'est
+  ALIMENTE QUE par l'Operation C (mise a jour groupee des prochains
+  evenements) - jamais par une creation ou un refresh. Son absence ne
+  bloque jamais le chargement de l'app (voir DOUBLE STOCKAGE plus bas).
+- Chaque `data/CODE.json` est un objet AUTONOME (pas de cle wrapper, pas de
+  "tickers": {...} autour) correspondant exactement au schema ci-dessous.
+- `index.html` charge `data/manifest.json`, puis chaque `data/CODE.json` en
+  parallele, ainsi que `data/nextEvents.json` (silencieusement ignore s'il
+  est absent). Un fichier de titre en echec (absent, invalide) est IGNORE
+  sans bloquer les autres.
+- `index.html` n'est JAMAIS retouche pour ajouter/modifier/supprimer un titre.
+  Retirer un titre = supprimer son fichier + son code dans manifest.json,
+  operation manuelle, ne necessite aucun assistant IA.
 
-/* ── KPI ── */
-.pf-header{display:flex;align-items:baseline;gap:8px;margin-bottom:18px;}
-.pf-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;font-family:'Poppins',sans-serif;}
-.pf-count{font-size:11px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
-.pf-list{display:flex;flex-direction:column;gap:0;background:var(--surface);border-radius:14px;box-shadow:0 2px 14px rgba(0,1,144,.07),0 1px 3px rgba(0,0,0,.04);overflow:hidden;border:1px solid rgba(0,1,144,.05);}
-.pf-item{display:flex;align-items:center;gap:22px;background:transparent;padding:11px 22px;cursor:pointer;transition:background .12s;border-left:4px solid transparent;border-bottom:1px solid rgba(226,232,240,.65);}
-.pf-item:last-child{border-bottom:none;}
-.pf-item:hover{background:rgba(43,216,194,.055);}
-/* .pf-active retire volontairement : CT est initialise sur le 1er ticker du select
-   au chargement (voir loadTicker), ce qui surlignait en permanence la 1ere ligne
-   du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
-   Le vrai survol (:hover ci-dessus) reste inchange. */
-.pf-rank{font-size:13px;font-weight:800;color:rgba(0,1,144,.28);font-family:'Poppins',sans-serif;min-width:20px;text-align:center;flex-shrink:0;}
-.pf-main{flex:1.6;min-width:0;}
-.pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
-.pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
-.pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
-.pf-bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden;}
-.pf-bar{height:100%;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);border-radius:2px;transition:width .5s;}
-.pf-metrics{display:flex;gap:28px;flex-shrink:0;}
-.pf-metric{text-align:center;min-width:60px;}
-.pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
-.pf-mv{font-size:16px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
-.pf-mv.hi{color:var(--teal-text);}
-.pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
-.pf-col-name-spacer{flex:1.6;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
-.pf-col-name-spacer:hover{color:var(--teal-text);}
-.pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
-.pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
-.pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:3px;transition:color .12s;}
-.pf-col-lbl.pf-col-sortable:hover{color:var(--teal-text);}
-.pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;}
-.pf-score{text-align:center;min-width:52px;padding:7px 12px;background:rgba(0,1,144,.04);border-radius:9px;flex-shrink:0;}
-.pf-score-val{font-size:20px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
-.pf-score-lbl{font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:'Poppins',sans-serif;margin-top:3px;}
-.pf-empty{text-align:center;padding:48px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
-.kpi{background:var(--surface);border-radius:12px;padding:16px 18px;box-shadow:0 2px 14px rgba(0,1,144,.06);border-left:3px solid var(--teal);}
-.kpi.gold{border-left-color:var(--gold);}
-.kpi.navy{border-left-color:var(--navy);}
-.kpi.red{border-left-color:var(--err);}
-.kpi-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px;font-weight:700;}
-.kpi-value{font-size:var(--text-2xl);font-weight:800;color:var(--navy);line-height:1.1;}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Quattrocento Sans',serif;}
+## SCHEMA D'UN FICHIER DE TITRE (data/CODE.json)
 
-/* ── TABLES ── */
-table{width:100%;border-collapse:collapse;font-size:var(--text-base);}
-thead th{background:var(--navy);color:#fff;text-align:right;padding:10px 13px;font-weight:600;font-size:12px;letter-spacing:.02em;white-space:nowrap;width:7%;}
-thead th:first-child{width:16%;}
-thead th:first-child{text-align:left;}
-thead th.proj-head{background:var(--navy-light);color:var(--navy);}
-tbody td{padding:9px 13px;text-align:right;border-bottom:1px solid rgba(226,232,240,.5);}
-tbody td:first-child{text-align:left;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;}
-tbody td.unit{text-align:left;font-size:10px;color:var(--muted);font-style:italic;font-weight:400;font-family:'Quattrocento Sans',serif;}
-tbody tr:hover td{background:rgba(43,216,194,.03);}
-tbody tr.hist-last td{background:rgba(0,1,144,.03);}
-tbody tr.proj-row td{background:var(--proj-bg);color:var(--muted);font-style:italic;}
-tbody tr.proj-row td:first-child{font-style:normal;color:var(--navy);opacity:.75;}
-tbody td.proj-first{border-left:2px solid var(--teal);}
-tbody tr.metric-group-start td{border-top:1px solid rgba(0,1,144,.12);}
-tbody tr.proj-sep td{padding:5px 11px;background:linear-gradient(90deg,var(--navy-light),transparent 60%);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-family:'Poppins',sans-serif;font-style:normal;}
-tbody tr.section-sep td{padding:4px;background:transparent;border:none;}
-td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
-td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
-td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
-td input[type=number]:hover{border-color:var(--border);}
-
-/* ── BADGES ── */
-.badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;}
-.badge-up{background:#dcfce7;color:var(--ok);}
-.badge-dn{background:#fee2e2;color:var(--err);}
-.badge-nu{background:#f1f5f9;color:#475569;}
-.badge-tl{background:var(--teal-light);color:var(--teal-text);}
-.badge-gd{background:var(--gold-light);color:var(--gold-text);}
-.badge-nv{background:var(--navy-light);color:var(--navy);}
-
-/* ── ALERTS ── */
-.alert{padding:9px 13px;border-radius:8px;font-size:11px;margin-bottom:14px;border-left:3px solid;line-height:1.5;}
-.alert-warn{background:var(--gold-light);border-color:var(--gold);color:var(--gold-text);}
-.alert-info{background:var(--teal-light);border-color:var(--teal);color:var(--teal-text);}
-
-/* ── BUTTONS ── */
-.btn-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center;}
-.btn{padding:9px 20px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;transition:transform .1s,box-shadow .1s,opacity .15s;letter-spacing:.02em;}
-.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.1);}
-.btn:active{transform:translateY(0);}
-.btn:disabled{opacity:.5;cursor:not-allowed;}
-.btn-primary{background:var(--navy);color:#fff;}
-.btn-gold{background:var(--gold);color:var(--navy);}
-.btn-light{background:var(--border);color:var(--text);}
-.btn-danger{background:#fee2e2;color:#991b1b;}
-
-/* ── CONTROLS ── */
-.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:12px 18px;background:var(--navy-light);border-radius:10px;margin-bottom:18px;border:1px solid rgba(0,1,144,.08);}
-.ctrl{display:flex;align-items:center;gap:8px;}
-.ctrl label{font-size:11px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Poppins',sans-serif;}
-.ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
-
-/* ── HEADER ANALYSE (nom + ticker + cours) ── */
-.analyse-header{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:16px 28px;margin-bottom:18px;}
-.analyse-id{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;}
-.analyse-name{font-family:'Poppins',sans-serif;font-size:25px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
-.analyse-ticker{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-.analyse-price-wrap{display:flex;align-items:center;gap:12px;}
-.analyse-price{display:flex;align-items:baseline;gap:3px;}
-.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:23px;font-weight:800;color:var(--navy);padding:0 1px 1px;width:112px;text-align:right;transition:border-color .15s;-moz-appearance:textfield;}
-.analyse-price input#cours::-webkit-outer-spin-button,.analyse-price input#cours::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
-.analyse-price input#cours:hover{border-bottom-color:rgba(0,1,144,.18);}
-.analyse-price input#cours:focus{outline:none;border-bottom-color:var(--teal);}
-.analyse-price-cur{font-size:14px;font-weight:700;color:var(--muted);}
-
-/* ── FORMS ── */
-select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
-select:focus,input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,216,194,.15);}
-textarea{resize:vertical;width:100%;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-.form-field label{font-size:11px;font-weight:700;color:var(--navy);display:block;margin-bottom:4px;font-family:'Poppins',sans-serif;}
-.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
-.sep{height:1px;background:var(--border);margin:16px 0;}
-
-/* ── STEP BOX ── */
-.step-box{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
-.step-num{background:var(--navy);color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
-.step-content{flex:1;}
-.step-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;}
-
-/* ── ADJ GRIDS ── */
-.adj-eps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
-.adj-cell{text-align:center;}
-.adj-label{font-size:10px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px;}
-.adj-cell input{width:100%;text-align:center;border:1px solid var(--border);border-radius:6px;padding:6px 4px;font-size:13px;font-weight:700;font-family:'Quattrocento Sans',serif;}
-.metrics-tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px;}
-.metrics-tbl th{text-align:right;padding:5px 8px;font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;}
-.metrics-tbl th:first-child{text-align:left;}
-.metrics-tbl td{padding:4px 6px;text-align:center;}
-.metrics-tbl td:first-child{text-align:left;font-weight:700;color:var(--navy);font-size:11px;white-space:nowrap;}
-.metrics-tbl td input{width:72px;text-align:center;border:1px solid var(--border);border-radius:5px;padding:4px;font-size:11px;font-family:'Quattrocento Sans',serif;}
-
-/* ── CHARTS ── */
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-
-/* ── ANNUAL CHECKBOX BOX ── */
-.annual-box{margin-top:14px;padding:12px 14px;background:var(--gold-light);border-radius:8px;border:1px solid rgba(255,215,0,.4);}
-.annual-box label.main-lbl{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;}
-
-/* ── OMNIUM BUTTONS ── */
-@keyframes omn-spin{to{transform:rotate(360deg);}}
-.omn-ring-active{stroke-dasharray:30 70 !important;transform-origin:center;transform-box:fill-box;animation:omn-spin 1s linear infinite;}
-.btn-omn-wrap{display:inline-flex;flex-direction:column;gap:5px;}
-.btn-omn-wrap.right{align-items:flex-end;}
-.btn-omn-status{font-size:10px;font-weight:700;letter-spacing:.06em;height:13px;opacity:0;transition:opacity .25s;white-space:nowrap;pointer-events:none;}
-.btn-omn-body{display:flex;align-items:center;border:none;cursor:pointer;padding:0;transition:background .15s,transform .12s,opacity .15s;}
-.btn-omn-body:hover:not(:disabled){transform:translateY(-1px);}
-.btn-omn-body:disabled{opacity:.6;cursor:not-allowed;transform:none !important;}
-.btn-navy{background:linear-gradient(160deg,#0006d8 0%,#000190 55%,#00017e 100%);border-radius:10px;border:1px solid rgba(255,255,255,.13);box-shadow:0 3px 10px rgba(0,1,144,.35),inset 0 1px 0 rgba(255,255,255,.09);}
-.btn-navy:hover:not(:disabled){background:linear-gradient(160deg,#0008f0 0%,#0001b0 55%,#000190 100%);}
-.btn-teal{background:#2BD8C2;border-radius:11px;}
-.btn-teal:hover:not(:disabled){background:#22c9b4;}
-.omn-logo-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
-.omn-ring-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
-.omn-vsep-white{width:1px;background:rgba(255,255,255,.18);flex-shrink:0;align-self:stretch;}
-.omn-vsep-navy{width:1px;background:rgba(0,1,144,.2);flex-shrink:0;align-self:stretch;}
-
-/* ── COLLAPSIBLE ── */
-.coll-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:10px;user-select:none;}
-.coll-hd span{font-size:11px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.04em;}
-.coll-chevron{font-size:10px;color:var(--muted);transition:transform .2s;}
-.coll-hd.open .coll-chevron{transform:rotate(180deg);}
-
-/* ── PROJ LABEL PILL ── */
-.proj-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:10px;background:var(--gold-light);color:var(--gold-text);border:1px solid rgba(255,215,0,.4);}
-.proj-pill.cagr{background:var(--teal-light);color:var(--teal-text);border-color:rgba(43,216,194,.4);}
-
-/* ── FISCAL YEAR (exercice décalé) PILL ── */
-.fy-pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:4px 11px;border-radius:10px;background:var(--navy-light);color:var(--navy);border:1px solid rgba(0,1,144,.16);letter-spacing:.02em;}
-.fy-pill .fy-dot{width:6px;height:6px;border-radius:50%;background:var(--navy);opacity:.55;flex-shrink:0;}
-.fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal-text);opacity:.9;letter-spacing:.03em;margin-top:1px;}
-thead th .fy-month-tag{color:#8be9dc;}
-
-/* ── FOOTER ── */
-footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-top:1px solid var(--border);margin-top:22px;font-family:'Quattrocento Sans',serif;}
-
-@media(max-width:700px){.kpi-grid,.chart-grid,.form-grid{grid-template-columns:1fr 1fr;}.adj-eps-grid{grid-template-columns:repeat(3,1fr);}}
-
-/* context bullets */
-.ctx-bullet{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(226,232,240,.5);font-size:13px;line-height:1.5;}
-.ctx-bullet:last-child{border-bottom:none;}
-.ctx-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.ctx-dot.pos{background:var(--ok);}
-.ctx-dot.neg{background:var(--err);}
-.ctx-dot.neu{background:var(--muted);}
-.ctx-dot.inf{background:var(--teal);}
-/* ── PRICE AUTO ── */
-.price-auto{font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:4px;}
-.price-auto .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);display:inline-block;}
-.price-auto .dot.fresh{background:var(--ok);}
-.price-auto .dot.stale{background:var(--gold);}
-</style>
-</head>
-<body>
-<script>
-// Mise à l'échelle proportionnelle de l'application selon la largeur d'écran.
-// L'app est conçue pour desktop uniquement : plutôt qu'un responsive qui réarrange
-// les blocs, on garde EXACTEMENT la même mise en page/proportions et on l'agrandit
-// ou la réduit dans son ensemble (comme un zoom navigateur piloté automatiquement),
-// pour un rendu propre aussi bien sur un 15" que sur un 29".
-(function(){
-  var REF_WIDTH = 1440;    // largeur de référence = échelle 100% sur portable 15"
-  var CAP_WIDTH = 1920;    // largeur repère d'un écran 23" : au-delà, on n'agrandit plus (marges visibles)
-  var MIN_ZOOM = 0.80;
-  var MAX_ZOOM = CAP_WIDTH / REF_WIDTH; // ≈ 1.33, plafond atteint dès 23"
-  function applyAppZoom(){
-    var w = window.innerWidth;
-    var z = w / REF_WIDTH;
-    if(z < MIN_ZOOM) z = MIN_ZOOM;
-    if(z > MAX_ZOOM) z = MAX_ZOOM;
-    document.documentElement.style.zoom = z;
-  }
-  var t;
-  window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(applyAppZoom,120); });
-  applyAppZoom();
-  window.__applyAppZoom = applyAppZoom;
-})();
-</script>
-
-<header>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <img class="h-logo" src="Logotype-Omnium.png" alt="Omnium">
-    <div class="h-tagline"><i></i><span>Screening Model</span></div>
-  </div>
-</header>
-
-<div class="tab-bar">
-  <button class="tab" id="tab-btn-pf" onclick="showTab('portefeuille',this)"><span class="tab-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></span><span class="tab-back-arrow" id="tab-pf-arrow" style="display: inline-block;">←</span> Portefeuille</button>
-</div>
-
-<div class="container">
-
-<div id="tab-portefeuille" class="panel">
-  <div class="pf-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
-    <div style="display:flex;align-items:flex-start;gap:0;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 104 59" style="width:160px;height:90px;display:block;">
-        <defs>
-          <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#62F2DA"></stop><stop offset="55%" stop-color="#2EE3C6"></stop><stop offset="100%" stop-color="#1CBBA1"></stop>
-          </linearGradient>
-          <linearGradient id="spec" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"></stop><stop offset="70%" stop-color="#FFFFFF" stop-opacity="0"></stop>
-          </linearGradient>
-          <mask id="inkMask">
-            <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="#FFF" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </mask>
-        </defs>
-        <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="url(#ink)" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
-        <g mask="url(#inkMask)"><path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" transform="translate(0 -1.35)" fill="none" stroke="url(#spec)" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round"></path></g>
-      </svg>
-    </div>
-  </div>
-  <div class="pf-col-header" id="pf-col-header" style="display: flex;">
-      <div class="pf-col-name-spacer pf-col-sortable" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></div>
-      <div class="pf-col-labels">
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 132px;" onclick="pfSortBy('nextEvent')">Next event <span class="pf-sort-arrow" data-key="nextEvent"></span></div></div></div>
-  <div class="pf-list" id="pf-list"></div>
-</div>
-
-<div id="tab-analyse" class="panel">
-  <span id="analyse-ticker-name" style="display:none;"></span>
-
-  <div class="analyse-header">
-    <div class="analyse-id" id="analyse-id"></div>
-    <div class="analyse-price-wrap">
-      <div class="analyse-price">
-        <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
-        <span id="cours-cur" class="analyse-price-cur">€</span>
-      </div>
-      <div class="price-auto" id="price-status" style="display: none;">
-        <span id="price-lbl"></span>
-      </div>
-    </div>
-  </div>
-  <div id="proj-pill-wrap" style="display:none;"></div>
-
-  <div class="card">
-    <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
-    <div style="overflow-x:auto;">
-    <table id="analyse-tbl">
-      <thead><tr id="analyse-head"></tr></thead>
-      <tbody id="analyse-body"></tbody>
-    </table>
-    </div>
-  </div>
-
-  <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
-
-  <div class="card" id="context-card" style="margin-bottom:18px;">
-    <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-      <b>Hypothèse actuelle</b>
-    </div>
-    <div id="last-event-trace" style="display:block;"></div>
-    <div id="context-bullets-wrap" style="margin-top: 14px; display: none;">
-      <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Poppins',sans-serif;margin-bottom:8px;">Contexte &amp; trajectoire</div>
-      <ul id="context-bullets" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"></ul>
-    </div>
-  </div>
-
-</div>
-
-</div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
-
-<script>
-// DECLARATION DES VARIABLES GLOBALES
-let state = { tickers: {} };
-let CT = "";
-
-// Abréviations FR des mois, utilisées uniquement pour signaler un exercice
-// fiscal décalé (clôture ≠ décembre). Index 1-12, index 0 inutilisé.
-const MONTH_ABBR_FR = ['','janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
-
-// Renvoie le mois de clôture d'exercice du titre (1-12). Absent ou invalide
-// => 12 (calendaire standard, comportement inchangé pour tous les titres
-// existants qui n'ont pas ce champ).
-function fyEndMonth(ticker){
-  const d = state.tickers[ticker];
-  const m = +d?.fyEndMonth;
-  return (m>=1 && m<=12) ? m : 12;
-}
-
-// La première année de projection de CHAQUE titre n'est plus déduite de
-// l'horloge système, mais de la dernière année réellement présente dans
-// son historique "data" (+1). Tant qu'un refresh n'a pas intégré les
-// résultats d'un exercice clôturé, rien ne bouge pour ce titre - peu
-// importe la date du jour. Chaque titre suit ainsi son propre calendrier
-// de publication réel plutôt qu'une règle de date générique.
-function yearsFor(ticker){
-  const d = state.tickers[ticker];
-  const lastHist = (d && d.data && d.data.length) ? d.data[d.data.length-1].year : (new Date().getFullYear()-1);
-  const cy = lastHist + 1;
-  const py = [cy, cy+1, cy+2, cy+3, cy+4];
-  return { CY: cy, PY: py, LY: py[4] };
-}
-
-function tickerCur(ticker){
-  const sym=(state?.tickers?.[ticker]?.yahooSymbol||'').toUpperCase();
-  if(!sym)return '';                            
-  if(!sym.includes('.'))return'$';             
-  if(sym.endsWith('.MI')||sym.endsWith('.PA')||sym.endsWith('.DE')||
-     sym.endsWith('.AS')||sym.endsWith('.MC')||sym.endsWith('.BR')||
-     sym.endsWith('.LS')||sym.endsWith('.HE')||sym.endsWith('.CO')||
-     sym.endsWith('.ST')||sym.endsWith('.OL'))return'€';
-  if(sym.endsWith('.L')||sym.endsWith('.IL'))return'£';
-  if(sym.endsWith('.T')||sym.endsWith('.TK'))return'¥';
-  if(sym.endsWith('.TO')||sym.endsWith('.V'))return'C$';
-  if(sym.endsWith('.AX'))return'A$';
-  if(sym.endsWith('.HK'))return'HK$';
-  if(sym.endsWith('.SW')||sym.endsWith('.ZH'))return'CHF';
-  return'$'; 
-}
-
-// Libellé affiché dans la colonne "Next event" de la vue portefeuille.
-// Convention COURTE et anglo-saxonne (annee sur 2 chiffres, mois abrege
-// anglais) : { label: "Q3 26" | "Q3 FY 27" | "H1 26" | "CMD" | tout libelle
-// court, date: "2026-10-23" | null }
-// - label seul si la date n'est pas encore annoncée : ex. "Q3 26".
-// - label + date des qu'elle est connue/annoncee : ex. "Q3 26 - Oct 23".
-// - permet aussi un evenement alternatif important (Capital Markets Day,
-//   Investor Day, etc.) via un label libre au lieu d'un trimestre.
-//
-// DOUBLE STOCKAGE AVEC PRIORITE (choix delibere, voir INSTRUCTIONS.md) :
-// - source prioritaire : data/nextEvents.json (fichier dedie, optionnel,
-//   charge dans state.nextEvents par loadState()), alimente UNIQUEMENT par
-//   une mise a jour groupee (Operation C). Rafraichi en un seul fichier,
-//   donc facile a relancer regulierement (ex. toutes les deux semaines).
-// - fallback : le champ nextEvent du JSON du titre lui-meme, ecrit a la
-//   creation/au refresh (Operations A/B). Utilise UNIQUEMENT si le ticker
-//   est absent de state.nextEvents (titre pas encore couvert par un C).
-// Cette priorite volontaire accepte une petite fenetre d'incoherence entre
-// deux passages de l'Operation C, en echange d'une mise a jour groupee en
-// un seul fichier, plutot qu'un double-fetch systematique par titre.
-function nextEventLabel(ticker){
-  const d=state.tickers[ticker];
-  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
-  if(!ne || !ne.label) return '—';
-  if(!ne.date) return ne.label;
-  const dt=new Date(ne.date);
-  if(isNaN(dt)) return ne.label;
-  const formatted=dt.toLocaleDateString('en-US',{day:'numeric',month:'short'});
-  return `${ne.label} - ${formatted}`;
-}
-// Valeur brute (timestamp) du prochain evenement, pour le tri chronologique
-// de la colonne "Next event". Retourne null si aucune date confirmee n'est
-// disponible (evenement absent, label sans date, ou date invalide) - ces
-// titres sont alors relegues en fin de liste quel que soit le sens du tri.
-function nextEventDate(ticker){
-  const d=state.tickers[ticker];
-  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
-  if(!ne || !ne.date) return null;
-  const dt=new Date(ne.date);
-  return isNaN(dt) ? null : dt.getTime();
-}
-
-if(!CanvasRenderingContext2D.prototype.roundRect){
-  CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
-    this.beginPath();this.moveTo(x+r,y);this.lineTo(x+w-r,y);
-    this.arcTo(x+w,y,x+w,y+r,r);this.lineTo(x+w,y+h-r);
-    this.arcTo(x+w,y+h,x+w-r,y+h,r);this.lineTo(x+r,y+h);
-    this.arcTo(x,y+h,x,y+h-r,r);this.lineTo(x+y,r);
-    this.arcTo(x,y,x+r,y,r);this.closePath();return this;
-  };
-}
-
-function normalizeTicker(key,d){
-  if(!d.particularites)d.particularites=[];
-  if(!d.nextEvent)d.nextEvent=null;
-  return d;
-}
-
-function normalizeState(s){
-  if(!s.tickers)s.tickers={};
-  if(!s.nextEvents)s.nextEvents={};
-  Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
-  return s;
-}
-
-function fingerprint(str){
-  let h=5381;
-  for(let i=0;i<str.length;i++){h=((h*33)^str.charCodeAt(i))>>>0;}
-  return h.toString(16).padStart(8,'0');
-}
-
-async function loadState() {
-  try {
-    // 1. Charge le manifeste : la liste des codes de titres a charger.
-    const manRes = await fetch('data/manifest.json');
-    if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
-    const manifest = await manRes.json();
-    const codes = manifest.tickers || [];
-
-    // 2. Charge chaque fichier de titre en parallele. Un fichier manquant ou
-    //    invalide ne bloque PAS les autres : il est juste ignore avec un
-    //    avertissement, pour qu'une erreur sur un seul titre n'empeche pas
-    //    l'affichage de tout le portefeuille (c'est tout le sens du
-    //    decoupage par fichier).
-    // 2bis. En parallele, charge aussi data/nextEvents.json : fichier dedie
-    //    et OPTIONNEL (source prioritaire pour la colonne "Next event",
-    //    alimente uniquement par une mise a jour groupee -
-    //    Operation C). Son absence ou son invalidite est silencieuse : elle
-    //    ne doit jamais bloquer le chargement, chaque titre retombe alors
-    //    sur son propre champ nextEvent (voir nextEventLabel()).
-    const [results, nextEvents] = await Promise.all([
-      Promise.all(codes.map(async code => {
-        try {
-          const r = await fetch(`data/${code}.json`);
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          const obj = await r.json();
-          return [code, obj];
-        } catch (e) {
-          console.error(`loadState: data/${code}.json illisible -`, e);
-          showToast(`⚠ Titre ${code} illisible (data/${code}.json) - ignore.`, 6000);
-          return null;
-        }
-      })),
-      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
-    ]);
-
-    const tickers = {};
-    results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {} };
-
-    // Empreinte calculee sur l'ensemble reconstitue, pour rester comparable
-    // a l'ancien comportement (verification de coherence entre onglets).
-    const fp = fingerprint(JSON.stringify(jsonData));
-    const elFp = document.getElementById('data-fingerprint');
-    if (elFp) elFp.textContent = fp;
-
-    return normalizeState(jsonData);
-  } catch (e) {
-    console.error('loadState:', e);
-    showToast('⚠ Impossible de charger data/manifest.json. Verifiez sa presence.', 8000);
-    return normalizeState({tickers:{}});
+```json
+{
+  "name": "Nom affiche",
+  "cours": 85.90,
+  "yahooSymbol": "VID.MC",
+  "dividende": 1.70,
+  "data": [
+    {"year":2015,"ca":1080,"ebit":173,"net":145.2,"shares":33,"nd":150,"div":1.16},
+    ...
+  ],
+  "epsConsensus": {"year":2026,"eps":0.88,"epsNY":1.15,"date":"2026-07-01","source":"..."},
+  "particularites": [
+    {"text":"Explication CONCRETE et complete du fait pris en compte (jamais un chiffre seul).","valuePct":5}
+  ],
+  "nextEvent": {"label":"Q3 26","date":null},
+  "ownership": {
+    "asOf":"2026-07-22",
+    "insiderPct":4.1,
+    "insiderDesc":"Dirigeants et famille fondatrice (ex: Mendelson) - description courte du bloc de controle.",
+    "insiderSource":"Proxy statement/DEF 14A (date), ou agregateur si le proxy n'est pas exploitable - source nommee explicitement.",
+    "notableHolders":[
+      {"investor":"Vanguard Group","pct":10.1,"asOf":"2026-Q1","source":"13F Q1 2026"},
+      {"investor":"BlackRock","pct":7.0,"asOf":"2026-Q1","source":"13F Q1 2026"}
+    ],
+    "coverageNote":"Precision sur la couverture 13F pour ce titre (voir OWNERSHIP ci-dessous) - null si sans objet (titre US couvert normalement).",
+    "history":[
+      {"asOf":"2026-01-15","insiderPct":4.3},
+      {"asOf":"2026-04-10","insiderPct":4.1}
+    ]
+  },
+  "compliance": {
+    "asOf":"2026-07-22",
+    "items":[
+      {"year":2026,"title":"Phrase courte et complete du fait ou de l'allegation.","allegedBy":"SEC, cabinet d'avocats plaignants, ou vendeur a decouvert nomme","date":"2026-07-16","status":"sollicitation|enquete_en_cours|plainte_deposee|reglee|classee_sans_suite|condamnation|non_fondee","outcome":null,"source":"Source nommee + date"}
+    ],
+    "note":"Synthese courte, ou confirmation explicite qu'aucun element n'a ete trouve."
+  },
+  "hypothese": {
+    "date":"2026-07-02",
+    "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
+    "source":"Refresh T2 2026 - Transcript T2 2026",
+    "dernierCall":{
+      "quarter":"T2 26",
+      "resultatsVsConsensus":{"ca":{"actual":3820,"consensus":3790},"epsAdj":{"actual":0.72,"consensus":0.68,"basis":"non-GAAP"}},
+      "guidanceProchainTrimestre":"Phrase courte, chiffres inclus, ou 'Pas de guidance trimestrielle chiffree fournie' si la societe ne guide qu'a l'annee.",
+      "guidanceAnnuelle":"Phrase courte, chiffres inclus (CA et marge ou EPS).",
+      "pointsCles":["Point 1 du call, une phrase complete.","Point 2.","Point 3.","Point 4 (optionnel)."]
+    },
+    "guidanceHistory":[
+      {"quarter":"T1 26","date":"2026-04-10","fyGuided":2026,"guidanceAnnuelle":"CA +6-8%, marge EBIT ~22%."},
+      {"quarter":"T2 26","date":"2026-07-02","fyGuided":2026,"guidanceAnnuelle":"CA +7-9%, marge EBIT ~22.5%."}
+    ],
+    "guidanceLongTerme":"Objectif CMD mars 2025 : marge EBIT >25% et CA CAGR high-single-digit a horizon 2028, ou null si aucune guidance pluriannuelle formulee.",
+    "summary":"Resume 2 lignes de la these actuelle.",
+    "cagrBridge":"Phrase unique de decomposition du CAGR EPS (voir definition dediee plus bas) - ex: 'CAGR EPS +14%/an : porte par une croissance du CA de +8%/an (dont +6% organique, +2% de build-up acquisitions), une expansion de marge d'environ +1,5pt/an, et des rachats d'actions relutifs d'environ -1%/an (pas de dividende).'",
+    "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
+    "impact":"positif|negatif|neutre",
+    "ancrages":[
+      {"id":"identifiant_court","moteur":"Mecanisme en une phrase complete, jamais un chiffre seul.","applique":["adjCA.2026","adjEBIT.2026"],"confiance":"haute|moyenne|basse"}
+    ],
+    "adjEPS":{"2026":0.70,"2027":...},
+    "adjCA":{"2026":3820,...},
+    "adjEBIT":{...},
+    "adjNet":{...},
+    "adjND":{...},
+    "adjShares":{...}
   }
 }
+```
 
-function showToast(msg,dur=3000){
-  let t=document.getElementById('omnium-toast');
-  if(!t){t=document.createElement('div');t.id='omnium-toast';
-    t.style.cssText='position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;font-family:\'Poppins\',sans-serif;font-size:12px;font-weight:600;padding:10px 18px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.25);z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;';
-    document.body.appendChild(t);
-  }
-  t.textContent=msg;t.style.opacity='1';
-  clearTimeout(t._to);t._to=setTimeout(()=>t.style.opacity='0',dur);
-}
+Le CODE (nom de fichier, sans `.json`) est en MAJUSCULES, sans espace ni
+accent (ex: `BUREAUVERITAS`, `DELONGHI`). Les cles adjXXX sont indexees par
+annee (les 5 annees de projection en cours). Seules les annees/metriques
+renseignees ecrasent la base CAGR historique automatique ; le reste continue
+a etre extrapole depuis "data" par le moteur.
 
-function saveState(){}
+Le champ `nextEvent` porte le prochain evenement de resultats (ou, a
+defaut, l'evenement alternatif le plus pertinent, ex: Capital Markets Day)
+affiche en colonne portefeuille dans index.html ("Next event"). Convention
+COURTE et anglo-saxonne (annee sur 2 chiffres, mois abrege anglais quand
+une date est affichee - la conversion date -> "Jul 22" etc. est geree par
+index.html, jamais stockee telle quelle dans le JSON) :
+- `label` : "Q<n> <AA>" (exercice calendaire, ex. "Q2 26"), "H<n> <AA>"
+  (semestre, ex. "H1 26"), ou "Q<n> FY <AA>" (exercice decale, coherent
+  avec `fyEndMonth` si le titre en a un, ex. "Q2 FY 27") si la date n'est
+  pas encore annoncee publiquement ; sinon un libelle court de l'evenement
+  lui-meme ("Q2 26", "CMD", "Investor Day", etc.). Annee TOUJOURS sur 2
+  chiffres, jamais 4 (ex. "26" pas "2026").
+- `date` : date confirmee au format ISO (`"2026-10-23"`) des qu'elle est
+  publiquement annoncee, sinon `null`.
+Ce champ n'est PAS un objet d'analyse financiere : il ne fait partie ni de
+la boucle E1-E8 ni de `hypothese`, et son absence ou son inexactitude
+n'affecte aucune projection.
 
-const epsR=r=>r.shares>0?r.net/r.shares:0;
-const margeR=r=>r.ca>0?r.ebit/r.ca:0;
-const dnebtR=r=>r.ebit>0?r.nd/r.ebit:null;
-const f2=v=>v!=null?(+v).toFixed(2):'—';
-const fpct=v=>v!=null?(v*100).toFixed(1)+'%':'—';
-const fX=v=>v!=null?(+v).toFixed(1)+'×':'—';
-const fM=v=>v!=null?Math.round(+v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' '):'—';
+DOUBLE STOCKAGE AVEC PRIORITE (choix delibere) : la meme information peut
+vivre a DEUX endroits, avec une regle de priorite fixe cote index.html -
+1. **Source prioritaire : `data/nextEvents.json`**, le fichier dedie
+   (voir ARCHITECTURE DU DEPOT). Alimente UNIQUEMENT par l'Operation C
+   (mise a jour groupee), en un seul fichier remplace d'un coup - donc
+   facile a relancer regulierement (ex. toutes les deux semaines) pour
+   garder l'ensemble du portefeuille a jour sans toucher aux fichiers de
+   titre.
+2. **Fallback : le champ `nextEvent` du JSON du titre lui-meme** (ce
+   schema). Ecrit/actualise a chaque creation et chaque refresh (voir NOTE
+   COMMUNE A/B ci-dessous). N'est affiche par index.html QUE si le ticker
+   est absent de `data/nextEvents.json` (typiquement : titre tout juste
+   cree, pas encore couvert par un passage de l'Operation C).
+Consequence acceptee : entre deux passages de l'Operation C, un refresh
+recent peut afficher une date desormais perimee si `data/nextEvents.json`
+contient deja une entree pour ce ticker (le fichier dedie l'emporte). C'est
+un compromis assume au profit de la simplicite de mise a jour groupee -
+la fenetre d'incoherence reste faible si l'Operation C est relancee
+regulierement.
 
-const PRICE_CACHE_PREFIX='omnium_price_v2_';
+Le champ `ancrages` est la liste des MOTEURS nommes qui justifient les
+adjXXX : un identifiant court, le mecanisme en une phrase (jamais un chiffre
+seul), les lignes/annees ou il s'applique (`applique`, en notation
+`champ.annee`), et un niveau de confiance optionnel. Chaque ancrage est
+calcule UNE SEULE FOIS et reutilise tel quel partout ou il s'applique (voir
+E5bis). Ce champ decharge `hypothese.text` du "pourquoi chiffre" ligne par
+ligne : le texte reste reserve aux decisions de modelisation non triviales
+qui ne se reduisent pas a un moteur nommable (voir E8).
 
-function cagr(arr){
-  let i0=-1,i1=-1;
-  arr.forEach((v,i)=>{if(v>0){if(i0<0)i0=i;i1=i;}});
-  if(i0<0||i1<=i0)return 0;
-  return Math.pow(arr[i1]/arr[i0],1/(i1-i0))-1;
-}
+Le champ `priorEPS` est un INSTANTANE BRUT de l'ANCIENNE `hypothese` (sa
+`date` et son `adjEPS`), copie SANS RECALCUL lors de chaque refresh, AVANT
+que `hypothese` soit remplacee (voir E6-b, point g). Il alimente exclusivement
+l'ecart affiche par l'app a cote des projections EPS CY/CY+1 (delta % vs le
+refresh precedent, avec sa date) - un mecanisme de revision-tracking, pas un
+jugement d'analyse. Absent en creation (aucun historique a snapshotter) ;
+present a partir du premier refresh, et reecrase a chaque refresh suivant
+(un seul snapshot conserve : le plus recent avant l'ecriture en cours).
 
-function particulariteYieldPct(d){
-  return (d.particularites||[]).filter(p=>p.valuePct!==null&&p.valuePct!==undefined&&p.valuePct!=='').reduce((s,p)=>s+(+p.valuePct||0),0);
-}
+Le champ `dernierCall` porte un BLOC AUTONOME DE LECTURE RAPIDE sur le
+dernier trimestre publie, affiche par l'app JUSTE SOUS la ligne date/source
+de `hypothese` (premiere ligne visible du bloc these) - avant meme le
+`summary`. Recherche et renseigne a CHAQUE creation et CHAQUE refresh
+(Operations A et B uniquement - jamais par l'Operation C, au meme titre que
+le reste de `hypothese`), en meme temps que le reste de la recherche de
+resultats (E2) et l'extraction du communique/transcript (voir RECHERCHE DU
+COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus haut). SOURCING : `resultatsVs
+Consensus` et les deux `guidance*` viennent normalement du COMMUNIQUE DE
+RESULTATS (chiffres officiels, tableaux) ; `pointsCles` s'appuie normalement
+sur le TRANSCRIPT (Q&A, couleur orale) - si seul le communique a ete trouve,
+`pointsCles` peut rester plus court (matiere du communique/lettre aux
+actionnaires uniquement) plutot que d'inventer un point non source. SEPARATION
+STRICTE avec `hypothese.text` : ce contenu ne doit JAMAIS etre re-narre dans
+la these - `text` peut s'y referer ou le reutiliser pour EXPLICITER une
+decision de modelisation (ex. "voir dernierCall.pointsCles"), mais ne le
+duplique pas.
+Sous-champs :
+- `quarter` : libelle court du trimestre concerne, meme convention que
+  `nextEvent.label` (ex. "T2 26", "Q2 26" selon la langue - rester coherent
+  avec le reste du fichier).
+- `resultatsVsConsensus` : le PUBLIE face au CONSENSUS pour le trimestre qui
+  vient de sortir.
+  - `ca` : `{actual, consensus}` en millions, MEME BASE COMPTABLE que `data`
+    (le chiffre publie, pas un chiffre retraite). `null` si aucun consensus
+    de CA n'a ete trouve pour ce trimestre (titres peu couverts).
+  - `epsAdj` : `{actual, consensus, basis}` ou `basis` vaut `"GAAP"` ou
+    `"non-GAAP"` selon la base sur laquelle le consensus de marche est
+    effectivement suivi pour ce titre (majoritairement non-GAAP/ajuste pour
+    les valeurs US, souvent plus proche du GAAP pour les valeurs
+    europeennes) - a documenter explicitement car cette base N'EST PAS
+    necessairement celle d'`adjEPS`/`data` (qui restent toujours en GAAP
+    retraite des seuls vrais one-offs, voir E5). `null` si aucun consensus
+    d'EPS n'a ete trouve.
+- `guidanceProchainTrimestre` : PHRASE COURTE (chiffres inclus quand
+  disponibles - CA et marge/EPS guides, confrontes au consensus pre-
+  publication si trouve) resumant la guidance du trimestre suivant donnee
+  par le management sur CE call. Si la societe ne guide qu'a l'annee (cas
+  frequent, ex. medtech europeen) : `"Pas de guidance trimestrielle
+  chiffree fournie"` plutot que de forcer un chiffre absent.
+- `guidanceAnnuelle` : PHRASE COURTE (chiffres inclus) resumant la guidance
+  annuelle en cours (CA et marge OU EPS selon ce que la societe communique),
+  telle que reaffirmee/mise a jour sur CE call.
+- `pointsCles` : 3 A 4 PHRASES COMPLETES (jamais un mot-cle seul) resumant
+  les points les plus importants abordes pendant le call - au choix de
+  l'assistant selon ce qui structure le mieux la lecture (ex : dynamique
+  commerciale marquante, capital allocation, sujet recurrent des questions
+  d'analystes, avertissement ou risque mentionne). Ne doublonne PAS les
+  EVENEMENTS deja portes par `hypothese.text` (E3/E8) : ce sont ici des
+  points de couleur/contexte du call, pas les evenements structurants de la
+  these - une meme information peut apparaitre aux deux endroits si elle est
+  a la fois un point marquant du call ET un moteur de projection, mais sa
+  formulation complete (le "pourquoi") reste dans `text`/`ancrages`, ici
+  seule une phrase de synthese suffit.
+Champ factuel et de synthese (comme `priorEPS`) : il ne participe a aucun
+raisonnement de E1-E8 et n'influence jamais directement les adjXXX (sauf
+si un point qu'il mentionne devient par ailleurs un `ancrages` explicite) -
+un repere de lecture rapide pour l'utilisateur avant de lire la these
+complete.
 
-function getProj(ticker){
-  const d=state.tickers[ticker];
-  if(!d || !d.data || d.data.length === 0) return {proj:{}, date:null, evtName:null};
-  const ca=d.data.map(r=>r.ca),eb=d.data.map(r=>r.ebit),
-        nt=d.data.map(r=>r.net),nd=d.data.map(r=>r.nd),sh=d.data.map(r=>r.shares);
-  const ly=d.data[d.data.length-1].year;
-  const PY=[ly+1,ly+2,ly+3,ly+4,ly+5]; // propre à CE titre, voir yearsFor()
-  const lastCA=ca[ca.length-1],lastEB=eb[eb.length-1],
-        lastNT=nt[nt.length-1],lastND=nd[nd.length-1],lastSH=sh[sh.length-1];
-  const st=a=>{const s=cagr(a.slice(-3));return s||cagr(a);};
-  const cCA_st=st(ca),cEB_st=st(eb),cNT_st=st(nt); 
-  const cCA_lt=cagr(ca),cEB_lt=cagr(eb),cNT_lt=cagr(nt),cND_lt=cagr(nd);
-  const grow=(last,h,rst,rlt)=>h<=2?last*Math.pow(1+rst,h):last*Math.pow(1+rst,2)*Math.pow(1+rlt,h-2);
-  const cSH = sh.filter(v=>v>0).length>=2 ? cagr(sh) : 0;
-  const base={};
-  PY.forEach(y=>{
-    const h=y-ly;
-    const projShares=Math.max(1, lastSH*Math.pow(1+cSH,h));
-    const projNet=grow(lastNT,h,cNT_st,cNT_lt);
-    base[y]={
-      eps:projNet/projShares,
-      ca:grow(lastCA,h,cCA_st,cCA_lt),
-      ebit:grow(lastEB,h,cEB_st,cEB_lt),
-      net:projNet,
-      nd:grow(lastND,h,cND_lt,cND_lt),
-      shares:projShares
-    };
-  });
-  const hyp=d.hypothese;
-  const hasAdj=hyp&&['adjEPS','adjCA','adjEBIT','adjNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
-  if(!hasAdj)return{proj:base,date:null,evtName:null};
-  const out={};
-  PY.forEach(y=>{ out[y]={...base[y]}; });
-  const has=(o,y)=>o&&o[y]!=null&&o[y]!=='';
-  PY.forEach(y=>{
-    if(has(hyp.adjCA,y))     out[y].ca    =+hyp.adjCA[y];
-    if(has(hyp.adjEBIT,y))   out[y].ebit  =+hyp.adjEBIT[y];
-    if(has(hyp.adjNet,y))    out[y].net   =+hyp.adjNet[y];
-    if(has(hyp.adjND,y))     out[y].nd    =+hyp.adjND[y];
-    if(has(hyp.adjShares,y)) out[y].shares=+hyp.adjShares[y];
-    if(has(hyp.adjEPS,y))    out[y].eps   =+hyp.adjEPS[y];
-    else if((has(hyp.adjNet,y)||has(hyp.adjShares,y))&&out[y].shares>0)
-      out[y].eps=out[y].net/out[y].shares;
-  });
-  return{proj:out,date:hyp.date,evtName:hyp.source||null};
-}
+Le champ `guidanceHistory` est le SUIVI TRIMESTRIEL, au fil d'un meme
+exercice fiscal, de la guidance annuelle telle que communiquee call apres
+call - un historique cumulatif, a distinguer de `dernierCall.
+guidanceAnnuelle` qui n'en porte que le dernier point (voir mecanique
+ci-dessous). Renseigne a CHAQUE creation et CHAQUE refresh (Operations A et
+B uniquement - jamais par l'Operation C), en meme temps que `dernierCall`
+et a partir des memes sources (COMMUNIQUE DE RESULTATS en priorite pour le
+chiffre exact de guidance). Structure : tableau d'objets `{quarter, date,
+fyGuided, guidanceAnnuelle}`.
+- `quarter` : meme convention que `dernierCall.quarter`.
+- `date` : date du call/communique correspondant, format ISO.
+- `fyGuided` : ANNEE (entier, 4 chiffres) de l'exercice fiscal auquel la
+  `guidanceAnnuelle` de cette ligne se rapporte - PAS necessairement
+  l'annee du trimestre qui vient de cloturer. Cas frequent : le call de T4/
+  exercice cloture guide deja l'exercice SUIVANT (`fyGuided` = annee N+1
+  alors que `quarter` reste "T4 <N>" ou l'exercice annuel N) - c'est ce
+  champ, jamais `quarter`, qui pilote le mecanisme de reset ci-dessous.
+- `guidanceAnnuelle` : MEME PHRASE (chiffres inclus) que celle ecrite dans
+  `dernierCall.guidanceAnnuelle` pour ce call - une seule redaction, copiee
+  aux deux endroits, jamais reformulee differemment entre les deux.
+MECANIQUE D'ACCUMULATION ET DE RESET (a appliquer a l'ecriture, avant E8) :
+- CREATION (Operation A) : `guidanceHistory` demarre avec la seule ligne du
+  call couvert par la creation (ou tableau vide si aucune guidance
+  annuelle chiffree n'a ete trouvee - pas de ligne forcee).
+- REFRESH (Operation B) : reprendre `guidanceHistory` TEL QUEL depuis
+  l'ancien JSON fourni (lignes anterieures jamais reecrites ni recalculees,
+  meme logique de non-alteration retroactive que `priorEPS`), puis :
+  - SI le nouveau call a un `fyGuided` IDENTIQUE au `fyGuided` de la
+    DERNIERE ligne existante (meme exercice fiscal suivi depuis plusieurs
+    trimestres) : AJOUTER la nouvelle ligne a la suite du tableau existant.
+  - SI le nouveau call a un `fyGuided` DIFFERENT (premiere guidance d'un
+    nouvel exercice - typiquement le call qui suit la cloture de
+    l'exercice precedent) : RESET - le tableau ne contient plus QUE la
+    nouvelle ligne, les lignes de l'exercice desormais cloture sont
+    abandonnees (leur trace narrative eventuelle, si notable - ex. objectif
+    tenu/rate sur l'annee ecoulee - releve de `hypothese.text`, pas de ce
+    tableau qui ne suit que l'exercice EN COURS).
+  - SI `guidanceHistory` est absent de l'ancien JSON (titre cree avant
+    l'introduction de ce champ) : traiter comme une creation (ligne unique)
+    plutot que bloquer le refresh.
+Champ factuel et cumulatif (mecanique de suivi, pas un jugement) : il ne
+participe a aucun raisonnement de E1-E8 - ce n'est pas parce qu'une
+guidance a ete relevee deux trimestres de suite que la projection doit
+suivre automatiquement (E6-b reste seul juge, ancrage par ancrage). Utile
+au refresh suivant pour visualiser en un coup d'oeil la trajectoire de
+confiance du management sur l'exercice (relevements/abaissements
+successifs, stabilite ou volatilite de la guidance).
 
-function checkEpsCoherence(d){
-  const hyp=d&&d.hypothese;
-  if(!hyp)return [];
-  const bad=[];
-  Object.keys(hyp.adjEPS||{}).forEach(y=>{
-    const eps=+hyp.adjEPS[y],net=+(hyp.adjNet?.[y]),sh=+(hyp.adjShares?.[y]);
-    if(!eps||!net||!sh)return;
-    const implied=net/sh;
-    if(Math.abs(eps-implied)/Math.abs(implied)>0.02)
-      bad.push({y,eps,implied});
-  });
-  return bad;
-}
+Le champ `guidanceLongTerme` est une PHRASE COURTE (chiffres inclus)
+portant la guidance PLURIANNUELLE la plus recente formulee par le
+management (objectifs de Capital Markets Day/Investor Day, cible
+structurelle a 3-5 ans), quand elle existe. Contrairement a
+`guidanceHistory`, ce N'EST PAS un historique cumulatif : c'est un
+INSTANTANE UNIQUE, REMPLACE (pas accumule) des qu'une communication plus
+recente la met a jour (nouveau CMD, revision explicite) - la valeur
+precedente n'est pas conservee ailleurs que dans l'ancien `hypothese.text`
+si elle y avait ete notee. Recherche a chaque creation et chaque refresh ;
+si aucune guidance pluriannuelle n'a jamais ete communiquee par la societe,
+`null`. Meme statut factuel que `guidanceHistory` : ne participe a aucun
+raisonnement E1-E8 par lui-meme (une cible LT peut neanmoins alimenter un
+`ancrages` explicite en E4 si elle est mobilisee comme moteur de
+projection - dans ce cas le lien vers l'id de l'ancrage peut etre
+mentionne ici en une incise courte).
 
-const LAST_VIEW_KEY='omniumLastView';
-function saveLastView(id){
-  try{ localStorage.setItem(LAST_VIEW_KEY, JSON.stringify({tab:id, ticker:CT})); }catch(e){}
-}
+Le champ `hypothese.cagrBridge` est une PHRASE UNIQUE (une a deux phrases,
+~150-350 caracteres) qui DECOMPOSE le CAGR EPS projete (le principal
+chiffre de sortie du modele, affiche en tete du bloc "These Omnium" -
+`return-block` - et dans la colonne "5Y CAGR" du portefeuille) en ses
+moteurs constitutifs, pour une lecture immediate SANS avoir a deduire la
+mecanique depuis le tableau de projections ou les `ancrages`. Ecrit a
+CHAQUE creation et CHAQUE refresh, a l'etape E8 (ecriture unique), UNE FOIS
+les adjXXX definitivement figes - ce n'est PAS une recherche independante
+(contrairement a `ownership`/`compliance`) mais une SYNTHESE NARRATIVE
+DERIVEE des `ancrages` et adjXXX deja etablis dans la meme boucle E1-E8 :
+jamais un chiffre invente ici qui ne soit pas deja coherent avec la serie
+adjXXX ecrite dans le meme fichier.
+Decompose typiquement, dans cet ordre :
+1. Croissance du CA sur l'horizon (CAGR CY->LY), ventilee entre organique
+   et build-up acquisitions SI cette ventilation existe explicitement dans
+   les `ancrages` (cas d'un acquereur en serie, ex. HEICO, Broadcom) - a
+   defaut (titre sans M&A structurant, ex. Copart), le mentionner comme
+   "quasi integralement organique" plutot que de forcer une ventilation
+   fictive.
+2. Evolution de la marge operationnelle sur l'horizon (en points, /an si
+   pertinent) - le sens (expansion/compression) et son ordre de grandeur.
+3. Effet des rachats d'actions ou de la dilution sur le nombre de titres
+   (CAGR `adjShares`, relutif si negatif/en baisse, dilutif si positif/en
+   hausse) - avec sa cause si notable (buyback actif, ou emission
+   structurelle type Up-C - voir IBKR).
+4. Rendement du dividende courant SEPAREMENT (composante du retour total
+   affiche, PAS du CAGR EPS lui-meme) si le titre en verse un ; "aucun
+   dividende" explicitement sinon (voir Copart).
+Les chiffres cites doivent etre EXACTEMENT ceux calculables depuis `data`
+(dernier exercice publie) et les adjXXX ecrits dans le meme fichier - une
+verification rapide de coherence (CAGR CA implicite, CAGR marge, CAGR
+actions) fait partie de E7 au meme titre que le reste. `null` uniquement
+si le titre n'a pas encore d'adjXXX exploitables (jamais en pratique pour
+un titre avec historique suffisant). Champ synthetique, affiche en tete du
+bloc "These Omnium" - ne remplace ni ne duplique `ancrages` (qui restent
+la source structuree et reutilisable du "pourquoi chiffre"), c'est une
+mise en phrase compacte a leur usage immediat.
 
-function showTab(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  if(btn)btn.classList.add('active');
-  const arrow=document.getElementById('tab-pf-arrow');
-  if(arrow)arrow.style.display=id==='portefeuille'?'none':'inline-block';
-  if(id==='analyse'){renderAnalyse();}
-  if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
-  saveLastView(id);
-}
+Le champ `ownership` porte un ETAT DES LIEUX FACTUEL ET APPROXIMATIF de
+l'actionnariat du titre, affiche par l'app dans le bloc "Hypothese
+actuelle" en une petite rubrique dediee, juste apres le bloc guidance
+(voir `guidanceHistory`/`guidanceLongTerme`) et avant le texte de these.
+Recherche et renseigne a CHAQUE creation et CHAQUE refresh (Operations A et
+B uniquement - jamais par l'Operation C, au meme titre que le reste de
+`hypothese`/`nextEvent`). Ce champ ne fait PAS partie de la boucle E1-E8 :
+il ne participe a aucun raisonnement de projection et n'influence jamais
+directement les adjXXX. Contrairement a `dernierCall`/`guidanceHistory` il
+n'est pas imbrique dans `hypothese` (il vit au niveau racine, comme
+`nextEvent`), car il ne depend pas d'un trimestre precis. L'etat COURANT
+(`asOf`/`insiderPct`/`insiderDesc`/`insiderSource`/`notableHolders`/
+`coverageNote`) est remplace integralement a chaque recherche ; SEUL le
+sous-champ `history` est cumulatif (voir mecanique dediee plus bas) - a ne
+pas confondre avec `guidanceHistory`, qui suit une logique de reset par
+exercice fiscal sans equivalent ici.
 
-let _refreshAllInFlight=false;
-function refreshAllPrices(){
-  if(_refreshAllInFlight)return;
-  const now=Date.now();
-  const keys=Object.keys(state.tickers).filter(tk=>{
-    const d=state.tickers[tk];
-    if(!d||!(d.yahooSymbol||'').trim())return false;
-    return !(d._priceCache&&(now-d._priceCache.ts)<PRICE_TTL);
-  });
-  if(!keys.length)return;
-  _refreshAllInFlight=true;
-  // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
-  // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
-  // en quelques secondes au lieu de defiler titre par titre.
-  const CONCURRENCY=6;
-  let i=0;
-  const worker=async()=>{
-    while(i<keys.length){
-      const tk=keys[i++];
-      try{ await autoFetchPrice(tk,false); }catch(e){}
-    }
-  };
-  Promise.all(Array.from({length:CONCURRENCY},worker)).finally(()=>{_refreshAllInFlight=false;});
-}
+PERIMETRE 13F - CHOIX ASSUME, PAS UNE LACUNE : `notableHolders` ne couvre
+QUE les gerants americains sur des titres cotes aux US (regime de
+declaration Form 13F aupres de la SEC). AUCUNE recherche d'equivalent
+europeen (franchissements de seuil AMF/BaFin/Consob etc.) n'est tentee -
+ce n'est pas un manque a combler au cas par cas mais une limite de
+perimetre deliberee du champ, pour eviter une recherche disparate et peu
+fiable titre par titre selon la juridiction. Pour un titre non couvert par
+le regime 13F (non cote aux US), `notableHolders` reste simplement `[]` et
+`coverageNote` le precise en une phrase (ex: "Titre cote sur Euronext
+Varsovie, hors perimetre 13F US - notableHolders non recherche pour ce
+titre, choix de perimetre assume du modele").
 
-function refreshSelects(){
-  // Le titre actif n'est plus un select ni un champ modifiable : son affichage
-  // (nom + ticker) est entierement gere par renderAnalyse(), au-dessus du
-  // tableau de projections. Fonction conservee (no-op) pour compat des appels existants.
-}
+PROXY = ANCRAGE DE VERITE POUR `insiderPct` (regle stricte, pas une simple
+priorite parmi d'autres) : le dernier proxy statement/DEF 14A (US) ou
+document d'assemblee generale/rapport annuel (Europe) - concretement, son
+tableau de detention beneficiaire ("beneficial ownership table" ou
+equivalent) - EST la source retenue des qu'il est accessible et lisible,
+sans exception. Toute AUTRE source (agregateur, presse financiere) n'est
+utilisee QUE pour CORROBORER ce chiffre (verifier qu'il n'y a pas d'ecart
+massif ou de mouvement recent non reflete par un proxy potentiellement
+ancien), JAMAIS pour le remplacer ou le moyenner avec lui :
+- Si l'agregateur CONFIRME l'ordre de grandeur du proxy : `insiderSource`
+  cite le proxy en source principale, avec une mention courte de
+  corroboration (ex: "DEF 14A depose le 2026-03-15 (corrobore par
+  WallStreetZen, ecart <0.5pt)").
+- Si l'agregateur DIVERGE materiellement (>5pts) : LE PROXY PRIME toujours
+  - ne jamais le remplacer par le chiffre de l'agregateur. Documenter
+  l'ecart observe dans `insiderDesc` ou `insiderSource` plutot que de le
+  passer sous silence (ex: mouvement d'insider recent post-proxy, base de
+  calcul differente de l'agregateur).
+- Si AUCUN proxy n'est accessible/lisible pour ce titre (cas rare pour une
+  valeur suivie) : replier sur un agregateur reputable, nomme
+  explicitement, avec la reserve explicite que le chiffre est un ORDRE DE
+  GRANDEUR non ancre sur une source primaire cette fois-ci.
+NE JAMAIS presenter ces chiffres avec une fausse precision (decimales
+multiples, absence de reserve) dans la reponse a l'utilisateur.
 
-function syncAnalyseHeader(ticker){
-  const tk=ticker||CT;
-  const d=state.tickers[tk];
-  const tn=document.getElementById('analyse-ticker-name');
-  if(tn)tn.textContent=d?.name||tk;
-}
+Sous-champs :
+- `asOf` : date de la recherche (format ISO), pas necessairement la date
+  d'arrete du chiffre sous-jacent (qui peut etre plus ancienne - voir
+  `insiderSource`/`notableHolders[].asOf`).
+- `insiderPct` : pourcentage APPROXIMATIF du capital detenu par les
+  dirigeants/fondateurs/administrateurs (insiders), ancre sur le proxy
+  (voir regle ci-dessus). `null` si aucune source exploitable trouvee
+  (plutot que d'estimer).
+- `insiderDesc` : PHRASE COURTE identifiant QUI compose ce bloc (ex:
+  "Famille Mendelson, structure a double classe d'actions" ou "Dirigeants
+  et administrateurs, sans famille fondatrice identifiee") - jamais un
+  chiffre seul sans ce contexte qualitatif.
+- `insiderSource` : source nommee + date de l'arrete, PROXY EN PREMIER
+  quand disponible (ex: "DEF 14A depose le 2026-03-15 (corrobore par
+  WallStreetZen)" ou, a defaut de proxy exploitable, "WallStreetZen,
+  agrege 2026-06 - pas de proxy exploitable trouve").
+- `notableHolders` : tableau (0 a ~6 entrees, les plus significatives
+  seulement - pas une liste exhaustive) des fonds/investisseurs notables
+  detectes au DERNIER 13F disponible - GERANTS AMERICAINS UNIQUEMENT sur
+  titres cotes aux US (voir PERIMETRE 13F ci-dessus, choix assume, aucune
+  recherche alternative hors US). Chaque entree : `{investor, pct, asOf,
+  source}` - `asOf` au format trimestre ("2026-Q1") pour un 13F (qui a
+  intrinsequement jusqu'a ~45 jours de delai de depot apres la fin du
+  trimestre couvert - a garder en tete comme decalage structurel, jamais
+  presente comme temps reel). Tableau vide `[]` si rien de notable trouve
+  ou si le titre est hors perimetre 13F.
+- `coverageNote` : PHRASE COURTE precisant que `notableHolders` est hors
+  perimetre pour CE titre quand pertinent (titre non cote aux US - voir
+  PERIMETRE 13F). `null` si le titre est normalement couvert (cas general
+  des valeurs US ou des ADR US-listees).
+- `history` : tableau CUMULATIF (mecanique dediee ci-dessous) des
+  instantanes `{asOf, insiderPct}` successifs, permettant a l'app
+  d'afficher l'EVOLUTION du niveau de detention des insiders au fil des
+  refresh dans l'annee - PAS les `notableHolders` (fonds 13F, pas suivis
+  dans le temps ici, uniquement l'etat courant).
 
-function loadTicker(){
-  const s=document.getElementById('analyse-select');if(s)CT=s.value;
-  const d=state.tickers[CT];
-  if(!d){syncAnalyseHeader();return;}
-  document.getElementById('cours').value=d.cours||10.0;
-  updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt||null, true);
-  syncAnalyseHeader();
-  refreshSelects();renderAnalyse();
-  autoFetchPrice(CT,true);
-}
+MECANIQUE DE `history` (a appliquer a l'ecriture, avant E8, meme logique
+de non-alteration retroactive que `priorEPS`) :
+- CREATION (Operation A) : `history` demarre a un tableau VIDE `[]` (aucun
+  refresh anterieur a snapshotter).
+- REFRESH (Operation B) : AVANT de remplacer l'etat courant, prendre
+  `{asOf, insiderPct}` de l'ANCIEN `ownership` fourni en entree (s'il
+  existe et si `insiderPct` n'y est pas `null`) et l'AJOUTER a la suite de
+  l'ancien tableau `history` (repris tel quel, jamais recalcule) - cette
+  copie est un simple horodatage, jamais reinterpretee. Si l'ancien
+  `ownership` est absent (titre cree avant l'introduction de ce champ),
+  `history` demarre a `[]` comme en creation plutot que de bloquer le
+  refresh.
+- PLAFOND : conserver au maximum les 8 POINTS LES PLUS RECENTS dans
+  `history` (au-dela, retirer les plus anciens en premier) - suffisant
+  pour visualiser la tendance sur ~2 ans de refresh sans faire grossir le
+  fichier indefiniment.
+- Champ mecanique et cumulatif (comme `guidanceHistory`), il ne participe
+  a aucun raisonnement de E1-E8 - une hausse ou une baisse du pourcentage
+  insiders n'est PAS en soi un signal a traduire en ancrage ; c'est un
+  repere de gouvernance affiche a l'utilisateur, qui en tire ses propres
+  conclusions.
 
-function saveYahooSymbol(v){
-  if(state.tickers[CT]) state.tickers[CT].yahooSymbol=v.trim().toUpperCase();
-}
+Champ purement factuel et de synthese, au meme titre que `dernierCall`/
+`priorEPS` : il ne participe a aucun calcul et ne doit jamais influencer un
+`ancrages` ou un adjXXX (l'actionnariat n'est pas un moteur de projection
+financiere dans ce modele - c'est un repere de gouvernance/contexte pour
+l'utilisateur, en ligne avec son critere de selection de titres "founder
+mode").
 
-const GOOGLE_FINANCE_URL='https://script.google.com/macros/s/AKfycbzlc2mqM71rf_zTMC7_wALi9VZEkHdOx9-VGlm8OE4vjZwM7wFh-7bVZH72JG_r_FdNwA/exec';
-// Proxy Yahoo Finance côté serveur (PHP, hébergé chez toi) - remplace la
-// chaîne de proxys CORS publics utilisée précédemment. A adapter avec ton
-// propre domaine une fois price.php déposé par FTP.
-const YAHOO_PROXY_URL='https://model.omnium-capital.com/price.php';
-const _fetchInFlight={}; 
+Le champ `compliance` porte un ETAT DES LIEUX FACTUEL des fraudes averees
+ou allegations de fraude (par des regulateurs, cabinets d'avocats
+plaignants, ou analystes/vendeurs a decouvert activistes type Muddy
+Waters/Hindenburg/Citron) touchant le titre, affiche par l'app dans le
+bloc "Hypothese actuelle" en une petite rubrique dediee, juste apres la
+rubrique `ownership`. Recherche et renseigne a CHAQUE creation et CHAQUE
+refresh (Operations A et B uniquement - jamais par l'Operation C), au meme
+titre que le reste de `hypothese`/`nextEvent`/`ownership`. Vit au niveau
+racine du JSON (comme `ownership`), hors `hypothese`. Ce champ ne fait PAS
+partie de la boucle E1-E8 : il ne participe a aucun raisonnement de
+projection et n'influence jamais directement les adjXXX - un repere de
+diligence/gouvernance pour l'utilisateur, pas un intrant de modelisation.
 
-function _priceIsPlausible(p,ref,liveConfirmed){
-  if(!Number.isFinite(p)||p<=0)return false;
-  // Le "cours" venant du JSON n'est qu'une valeur de secours (jamais
-  // réécrite sur GitHub après un fetch live - voir saveState()). Tant
-  // qu'aucun prix live n'a été confirmé dans CETTE session, on ne doit
-  // pas s'en servir comme borne : un cours de secours obsolète ou faux
-  // bloquerait alors indéfiniment toute correction (le filtre se
-  // compare toujours à la dernière valeur connue, qui resterait la
-  // valeur fausse puisqu'elle ne serait jamais remplacée). Seul un prix
-  // déjà confirmé en live sert de garde-fou contre un vrai bug d'API.
-  if(liveConfirmed && ref>0 && (p>ref*4 || p<ref/4))return false;
-  return true;
-}
+PORTEE DE LA RECHERCHE : uniquement des faits ou allegations de FRAUDE (ou
+pratique commerciale gravement trompeuse assimilable) - PAS le contentieux
+commercial ou social ordinaire (litiges clients, prud'hommes, conflits de
+brevets, class actions "consommateur" courantes type frais/pratiques
+tarifaires) qui releve de la marche normale des affaires et n'a pas sa
+place ici. La distinction : une plainte pour rupture de contrat ou un
+desaccord commercial n'est PAS une allegation de fraude ; une accusation
+de manipulation comptable, de tromperie des investisseurs, ou une enquete
+de la SEC/DOJ pour fraude en valeurs mobilieres, l'EST. En cas de doute sur
+la pertinence d'un element trouve, privilegier l'inclusion avec un statut
+et une caracterisation prudente plutot que l'omission silencieuse.
+CREATION : recherche etendue a TOUT l'historique public raisonnablement
+accessible du titre (depuis l'introduction en bourse si pertinent), pas
+seulement le dernier trimestre.
 
-async function fetchFromGoogleFinance(sym){
-  try{
-    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
-    if(!r.ok)return null;
-    const j=await r.json();
-    const price=+j?.price;
-    return(price&&price>0)?price:null;
-  }catch(e){return null;}
-}
+MECANIQUE D'ACCUMULATION (a la difference de `ownership` qui remplace son
+etat courant, `compliance.items` est un REGISTRE CUMULATIF, jamais purge -
+integrite d'un historique de diligence) :
+- CREATION (Operation A) : `items` recense tout ce qui est trouve dans
+  l'historique public du titre ; tableau vide `[]` (jamais absent) si rien
+  trouve, accompagne d'une `note` le confirmant explicitement (voir
+  sous-champs).
+- REFRESH (Operation B) : reprendre `items` TEL QUEL depuis l'ancien JSON
+  fourni (aucune entree existante supprimee ni recalculee - meme logique
+  de non-alteration retroactive que `priorEPS`/`guidanceHistory`), puis :
+  - AJOUTER toute nouvelle allegation/procedure detectee depuis le dernier
+    `asOf` (recherche ciblee sur la periode ecoulee, pas de re-recherche
+    exhaustive de tout l'historique a chaque refresh).
+  - METTRE A JOUR le `status`/`outcome` d'une entree EXISTANTE si son issue
+    a evolue (ex: enquete classee sans suite, plainte deposee, reglement,
+    condamnation) - modification EN PLACE de l'entree, jamais duplication.
+  - Aucun plafond de taille (contrairement a `ownership.history`) : un
+    registre de diligence ne se purge pas pour des raisons de place.
+- Si `compliance` est absent de l'ancien JSON fourni (titre cree avant
+  l'introduction de ce champ) : traiter comme une creation (recherche
+  etendue a tout l'historique) plutot que bloquer le refresh.
 
-async function _fetchFromYahoo(sym){
-  try{
-    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(8000)});
-    if(!r.ok)return null;
-    const j=await r.json();
-    if(!j||!j.price)return null;
-    return{price:+j.price, div:(j.div!=null?+j.div:null)};
-  }catch(e){ return null; }
-}
+Sous-champs :
+- `asOf` : date de la recherche (format ISO).
+- `items` : tableau (0 a N entrees, PAS de limite haute) :
+  - `year` : annee (entier) du fait ou du debut de l'allegation.
+  - `title` : PHRASE COURTE ET COMPLETE decrivant le fait (jamais un mot-cle
+    seul) - ex: "Enquete de cabinets d'avocats plaignants US sur une
+    possible fraude en valeurs mobilieres, ouverte a la suite de la chute
+    du titre consecutive a l'annonce du depart du CEO."
+  - `allegedBy` : QUI porte l'accusation/l'enquete - nomme explicitement
+    (ex: "SEC", "Pomerantz LLP, Bragar Eagel & Squire (cabinets d'avocats
+    plaignants)", "Muddy Waters Research"). Distinguer explicitement dans
+    `title`/`allegedBy` un rapport de vendeur a decouvert activiste (biais
+    connu : profite de la baisse qu'il provoque) d'une enquete d'un
+    regulateur (SEC/DOJ) ou d'une action en justice deposee - la nature de
+    la source conditionne le niveau de credibilite a accorder.
+  - `date` : date du fait/de l'annonce, format ISO.
+  - `status` : un parmi `"sollicitation"` (cabinet d'avocats sollicitant
+    des plaignants, stade le plus preliminaire - tres frequent apres toute
+    baisse de cours materielle, ne prejuge de rien), `"enquete_en_cours"`
+    (enquete reglementaire ouverte), `"plainte_deposee"` (class action ou
+    poursuite formellement deposee), `"reglee"` (accord transactionnel),
+    `"classee_sans_suite"`, `"condamnation"`, `"non_fondee"` (allegation
+    infirmee/demontree fausse).
+  - `outcome` : PHRASE COURTE sur l'issue si connue (montant d'accord,
+    date de classement, etc.), sinon `null` si encore en cours.
+  - `source` : source nommee + date.
+- `note` : PHRASE COURTE de synthese globale. Si aucun element trouve :
+  confirmer explicitement la recherche plutot que laisser un doute (ex:
+  "Aucune fraude averee ni allegation par un analyste/vendeur a decouvert
+  activiste identifiee dans l'historique du titre a ce jour (recherche du
+  2026-07-22)").
 
-async function autoFetchPrice(ticker,force){
-  const d=state.tickers[ticker];
-  if(!d||!(d.yahooSymbol||'').trim())return;
-  updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt||null,true);
-  if(!force && d._priceCache && (Date.now()-d._priceCache.ts)<PRICE_TTL){
-    updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt||null,false);
-    return;
-  }
-  if(_fetchInFlight[ticker])return;
-  _fetchInFlight[ticker]=true;
-  const sym=(d.yahooSymbol||'').trim();
-  const ref=+d.cours||0;
-  const liveConfirmed=!!d._liveConfirmed;
-  let finalPrice=null, finalDiv=null, source='';
-  try{
-    const gf=await fetchFromGoogleFinance(sym);
-    if(_priceIsPlausible(gf,ref,liveConfirmed)){ finalPrice=gf; source='google'; }
-    if(finalPrice===null){
-      const y=await _fetchFromYahoo(sym);
-      if(y && _priceIsPlausible(y.price,ref,liveConfirmed)){ finalPrice=y.price; finalDiv=y.div; source='yahoo'; }
-    }
-  }catch(e){}
-  d._lastFetchAttemptAt=Date.now();
-  if(finalPrice!==null){
-    d.cours=+finalPrice.toFixed(2);
-    d._liveConfirmed=true;
-    d._priceCache={price:d.cours,ts:Date.now()};
-    d._priceUpdatedAt=Date.now();
-    d._priceSource=source;
-    if(finalDiv!==null && finalDiv>=0){
-      d.dividende=+(+finalDiv).toFixed(4);
-    }
-    updatePriceDot(d._priceUpdatedAt,false);
-    // Mise a jour ciblee : pas de renderAnalyse() complet ici, pour ne pas
-    // recreer le graphe EPS (effet de "saut" visuel) ni refermer le panneau
-    // "Hypothese actuelle" que l'utilisateur est peut-etre en train de lire.
-    refreshPriceOnly(ticker);
-    renderPortfolio();
-  } else {
-    updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt,true);
-  }
-  _fetchInFlight[ticker]=false;
-}
+Champ purement factuel, au meme titre que `ownership`/`dernierCall` : il
+ne participe a aucun calcul et n'influence jamais un `ancrages` ou un
+adjXXX. Une allegation en cours n'est PAS a traduire en decote de
+valorisation dans les projections - c'est un repere de diligence affiche
+tel quel, l'utilisateur en tire ses propres conclusions.
 
-function fetchLivePrice(tickerKey){ return autoFetchPrice(tickerKey,false); }
+## LES TROIS OPERATIONS POSSIBLES
 
-function updatePriceDot(ts,stale){
-  const el=document.getElementById('price-status');
-  const lbl=document.getElementById('price-lbl');
-  if(!lbl)return;
-  if(!ts){if(el)el.style.display='none';return;}
-  const dt=new Date(ts).toLocaleString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  lbl.textContent=dt;
-  lbl.style.color=stale?'#c0392b':'var(--muted)';
-  if(el)el.style.display='flex';
-}
+Il n'existe que TROIS types de requetes possibles. Identifie laquelle des
+trois avant de commencer.
 
-function renderAnalyse(){
-  const d=state.tickers[CT];
-  if(!d) return;
-  const fyEnd=fyEndMonth(CT);
-  const isOffCalendar=fyEnd!==12;
-  const idWrap=document.getElementById('analyse-id');
-  if(idWrap){
-    const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const _tk=(d.yahooSymbol||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const fyBadge=isOffCalendar
-      ? `<span class="fy-pill" title="Cette societe cloture son exercice fiscal en ${MONTH_ABBR_FR[fyEnd]} et non en decembre : les annees du tableau ci-dessous designent des exercices decales, pas des annees civiles.">
-           <span class="fy-dot"></span>Exercice décalé · clôture ${MONTH_ABBR_FR[fyEnd]}
-         </span>`
-      : '';
-    idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${_tk?`<span class="analyse-ticker">${_tk}</span>`:''}${fyBadge}`;
-  }
-  if(!d.data || d.data.length<2){
-    const tb=document.getElementById('analyse-body');
-    if(tb) tb.innerHTML=`<tr><td colspan="12" style="color:var(--muted);padding:20px;">Sélectionnez ou ajoutez un titre valide.</td></tr>`;
-    return;
-  }
-  const cours=+document.getElementById('cours').value||1.0;
-  const div=d.dividende||0;
-  const {CY,PY,LY}=yearsFor(CT);
-  let proj,date,evtName;
-  try{({proj,date,evtName}=getProj(CT));}catch(e){console.error(e);return;}
+### OPERATION A : AJOUTER UN TITRE (creation)
+Declencheurs : "ajoute [Societe] au portefeuille", "cree une position sur [Societe]".
 
-  const _epsCY=proj?.[CY]?.eps||0;
-  const divPY={};
-  PY.forEach(y=>{
-    const epsY=proj?.[y]?.eps||0;
-    divPY[y]=(_epsCY>0&&div>0)?+(div*(epsY/_epsCY)).toFixed(2):div;
-  });
+### OPERATION B : REFRESH D'UN TITRE
+Declencheurs : "fais un refresh de [Titre]", "actualise [Titre]". L'utilisateur
+fournit dans sa requete le fichier JSON existant du titre (colle son contenu).
 
-  const ly=d.data[d.data.length-1].year;
-  const cur=tickerCur(CT)||'€';
-  const curCoursEl=document.getElementById('cours-cur'); if(curCoursEl)curCoursEl.textContent=cur;
-  const last5=d.data.slice(-5);
+### OPERATION C : MISE A JOUR DES PROCHAINS EVENEMENTS (nextEvents.json)
+Declencheur : "mets a jour les dates de prochains resultats [du portefeuille |
+de TICKER1, TICKER2, ...]". L'utilisateur fournit les codes exacts tels
+qu'ils figurent dans `data/manifest.json` (ou "le portefeuille" pour tous
+les traiter), ET colle le contenu actuel de `data/nextEvents.json` (pour
+permettre la fusion du point 2 du LIVRABLE FINAL) - a defaut, si l'ancien
+contenu n'est pas fourni, le demander avant de continuer plutot que de
+livrer un fichier partiel qui ferait disparaitre les entrees non
+redemandees.
 
-  // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
-  // petit sous l'année, uniquement pour les titres dont l'exercice ne se
-  // termine pas en décembre (isOffCalendar). Comportement par defaut
-  // (calendaire) strictement inchangé.
-  const yearHeaderHtml=(year)=> isOffCalendar
-    ? `${year}<span class="fy-month-tag">clôt. ${MONTH_ABBR_FR[fyEnd]}</span>`
-    : `${year}`;
+Operation LEGERE et INDEPENDANTE de la boucle E1-E8 : ne touche JAMAIS
+`hypothese`/`adjXXX`/`data`, et ne touche JAMAIS un `data/CODE.json`
+individuel. Ne pose PAS la question d'entree standard (transcript/
+evenements). Pour chaque ticker demande :
+1. Recherche web de la prochaine date de resultats confirmee (site IR du
+   titre, calendrier d'earnings). Si un autre evenement significatif et plus
+   proche est publiquement annonce et structurant pour la these (ex. Capital
+   Markets Day, Investor Day), il peut se substituer au trimestre comme
+   evenement retenu - une ligne suffit pour justifier le choix si non
+   trivial.
+2. Determine `{label, date}` selon la definition donnee dans le SCHEMA
+   ci-dessus (section DOUBLE STOCKAGE) - convention courte, annee sur 2
+   chiffres.
+3. Si la date n'est publiquement pas encore annoncee, deduire le trimestre
+   attendu a partir du dernier exercice publie (`data` du titre) et du
+   calendrier de publication habituel (cadence observee sur ses communiques
+   passes, ~6-10 semaines apres la cloture de trimestre).
 
-  const headRow=document.getElementById('analyse-head');
-  if(headRow){
-    headRow.innerHTML=`<th>Indicateur</th>`
-      +last5.map(r=>`<th${r.year===CY?' style="background:var(--teal);color:var(--navy);"':''}>${yearHeaderHtml(r.year)}</th>`).join('')
-      +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;opacity:.85;'}">${yearHeaderHtml(y)}</th>`).join('');
-  }
+Livrable : LE FICHIER `data/nextEvents.json` COMPLET (tous les tickers
+demandes, fusionnes avec les entrees deja presentes pour les tickers NON
+demandes cette fois-ci - ne jamais faire disparaitre une entree existante
+faute d'avoir ete explicitement redemandee), pret a remplacer tel quel le
+fichier existant sur GitHub. Une seule action de deploiement, quel que soit
+le nombre de tickers traites.
 
-  const caGrowthHist=r=>{
-    const idx=d.data.findIndex(x=>x.year===r.year);
-    const prev=idx>0?d.data[idx-1]:null;
-    return(prev&&prev.ca>0)?((r.ca-prev.ca)/prev.ca*100):null;
-  };
-  const caGrowthProj=y=>{
-    const prevCA=(y===PY[0])?d.data[d.data.length-1].ca:proj[y-1]?.ca;
-    return(prevCA>0)?((proj[y].ca-prevCA)/prevCA*100):null;
-  };
-  const fGrowth=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(1)+'%';
+## RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT, QUESTION D'ENTREE (Operations A et B uniquement)
 
-  const metrics=[
-    {lbl:`CA (M${cur})`,        sep:false, hFn:r=>fM(r.ca),    pFn:y=>fM(proj[y].ca),    hRaw:r=>r.ca},
-    {lbl:'Croissance CA',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
-    {lbl:`EBIT (M${cur})`,      sep:false, hFn:r=>fM(r.ebit),  pFn:y=>fM(proj[y].ebit),  hRaw:r=>r.ebit},
-    {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
-    {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
-    {lbl:'Nombre d\'actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
-    {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
-    {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
-    {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
-    {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
-    {lbl:`Dividende (${cur})`,   sep:true,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
-    {lbl:'Rendement div.',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
-  ];
+Avant de derouler la boucle d'analyse, RECHERCHE TOI-MEME sur le web DEUX
+sources pour le dernier trimestre (ou exercice) publie par la societe - ne
+demande JAMAIS a l'utilisateur de les fournir avant d'avoir essaye de les
+trouver toutes les deux :
+1. **Le COMMUNIQUE DE RESULTATS** (press release, formulaire 8-K, ou lettre
+   aux actionnaires selon la societe) : source PRIMAIRE pour les chiffres
+   officiels (GAAP/IFRS, guidance chiffree, tableaux actual vs annee/
+   trimestre precedent). Generalement disponible sur le site investisseurs
+   du groupe ou via SEC EDGAR (8-K) MEME quand le transcript est absent ou
+   paywall - a rechercher systematiquement, y compris quand le transcript
+   est deja trouve.
+2. **Le TRANSCRIPT** du call de resultats : source pour la couleur
+   qualitative, les echanges Q&A, et les commentaires du management non
+   repris dans le communique.
+Les deux sont necessaires pour renseigner correctement `hypothese.
+dernierCall` (voir SCHEMA) : les chiffres de `resultatsVsConsensus` et de
+guidance viennent normalement du COMMUNIQUE (source la plus fiable pour un
+chiffre exact) ; `pointsCles` s'appuie normalement sur le TRANSCRIPT (seule
+source des echanges Q&A et de la couleur donnee a l'oral). Meme logique pour
+la boucle E1-E8 (E2/E3) : le communique prime pour les chiffres, le
+transcript pour l'exhaustivite des evenements discutes.
 
-  const tbody=document.getElementById('analyse-body');
-  if(!tbody)return;
-  tbody.innerHTML='';
-  
-  metrics.forEach((m)=>{
-    if(m.sep){
-      const spacer=document.createElement('tr');
-      spacer.innerHTML=`<td colspan="12" style="padding:3px;border:none;background:transparent;"></td>`;
-      tbody.appendChild(spacer);
-    }
-    const tr=document.createElement('tr');
-    if(m.sep)tr.className='metric-group-start';
-    if(m.id)tr.id=m.id;
-    const isMarge=m.lbl.startsWith('Marge EBIT')||m.lbl.startsWith('Dette nette')||m.lbl==='Croissance CA';
-    let c=`<td style="${isMarge?'font-size:12px;color:var(--muted);font-weight:600;':''}">${m.lbl}</td>`;
-    last5.forEach((row)=>{
-      const isLast=row.year===ly;
-      const val=m.hRaw? (m.lbl.startsWith('Dividende')?(row.div?(+row.div).toFixed(2):'—'):fM(Math.round(m.hRaw(row)||0))) : m.hFn(row);
-      c+=`<td${isLast?' class="hist-last"':''} style="text-align:right;">${val}</td>`;
-    });
-    PY.forEach((y,i)=>{c+=`<td class="proj-row${i===0?' proj-first':''}" style="background:rgba(43,216,194,.07);"> ${m.pFn(y)}</td>`;});
-    tr.innerHTML=c;tbody.appendChild(tr);
-  });
+- SI le communique ET le transcript sont trouves : confirme explicitement a
+  l'utilisateur ce que tu as recupere (societe, trimestre/exercice, date de
+  publication de chacun) AVANT de continuer, puis pose UNIQUEMENT la
+  question sur les evenements particuliers (voir question ci-dessous).
+- SI seul le communique est trouve (transcript absent, paywall, societe peu
+  couverte) : dis-le explicitement. Le communique reste suffisant pour les
+  chiffres de `dernierCall` et pour E2, mais `pointsCles` sera
+  necessairement plus pauvre (matiere du communique/lettre aux actionnaires
+  uniquement, pas de Q&A) - le signaler dans la reponse plutot que
+  d'inventer des points de couleur non sources. Pose la question combinee
+  (transcript + evenements) comme si le transcript n'etait pas trouve.
+- SI NI l'un NI l'autre n'est trouve (titre tres peu couvert) : dis-le
+  explicitement, et pose la question combinee (transcript + evenements)
+  comme auparavant.
 
-  renderReturnBlock(CT,proj,cours);
-  renderContextBullets(CT,proj,cours);
-}
+Pose TOUJOURS, sous la forme adaptee au cas ci-dessus, cette question
+(sauf si la reponse est deja donnee dans la requete) :
 
-// Rafraichissement "leger" declenche par un prix qui vient d'etre recupere en
-// arriere-plan (autoFetchPrice). Contrairement a renderAnalyse(), il ne
-// reconstruit pas tout le tableau NI l'encadre "Hypothese actuelle" (dont
-// renderContextBullets() reinitialise l'etat deplie/replie a chaque appel).
-// Il se contente de mettre a jour ce qui depend reellement du cours : le
-// champ Cours, le bloc "These Omnium" (rendement, P/E) et la ligne P/E du
-// tableau de projections.
-function refreshPriceOnly(ticker){
-  const peRow=document.getElementById('pe-metric-row');
-  if(ticker!==CT || !peRow) return;
-  const d=state.tickers[ticker];
-  if(!d)return;
-  const coursEl=document.getElementById('cours');
-  if(coursEl) coursEl.value=d.cours;
-  const cours=+d.cours||0;
-  let proj;
-  try{({proj}=getProj(ticker));}catch(e){return;}
-  renderReturnBlock(ticker,proj,cours);
-  const {PY}=yearsFor(ticker);
-  const cells=peRow.querySelectorAll('td.proj-row');
-  PY.forEach((y,i)=>{
-    const e=proj[y]?.eps;
-    if(cells[i]) cells[i].textContent=(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';
-  });
-}
+> [Communique et transcript trouves] "J'ai recupere le communique de
+> resultats et le transcript du [T. 2026] (publies le [date]). Y a-t-il UN
+> OU PLUSIEURS evenements particuliers a prendre en compte (structurels ou
+> ponctuels, chiffres ou qualitatifs) ?"
+>
+> [Communique trouve, transcript absent] "J'ai recupere le communique de
+> resultats du [T. 2026] (publie le [date]), mais pas de transcript public
+> du call - en avez-vous un a fournir ? Et y a-t-il UN OU PLUSIEURS
+> evenements particuliers a prendre en compte (structurels ou ponctuels,
+> chiffres ou qualitatifs) ?"
+>
+> [Rien trouve] "Je n'ai trouve ni communique de resultats ni transcript
+> public pour le dernier trimestre publie - en avez-vous a fournir ? Et y
+> a-t-il UN OU PLUSIEURS evenements particuliers a prendre en compte
+> (structurels ou ponctuels, chiffres ou qualitatifs) ?"
 
-function renderReturnBlock(ticker, proj, cours){
-  const el=document.getElementById('return-block');
-  if(!el)return;
-  const d=state.tickers[ticker];
-  const {CY,LY}=yearsFor(ticker);
-  const cur=tickerCur(ticker)||'€';
-  const div=d.dividende||0;
-  const epsCY=proj[CY]?.eps||0;
-  const epsNY=proj[CY+1]?.eps||0;
-  const epsLY=proj[LY]?.eps||0;
-  const cagrEps=(epsCY>0&&epsLY>0)?((Math.pow(epsLY/epsCY,0.25))-1)*100:0;
-  const bonusYield=particulariteYieldPct(d);
-  const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+bonusYield;
-  const total=cagrEps+yieldPct;
-  const peCY=cours>0&&epsCY>0?(cours/epsCY):null;
-  const peNY=cours>0&&epsNY>0?(cours/epsNY):null;
-  const cons=(d.epsConsensus?.year===CY)?d.epsConsensus:null;
-  const consDelta=(cons?.eps&&epsCY>0)?((epsCY-cons.eps)/cons.eps*100):null;
-  const consNY=d.epsConsensus?.epsNY||0;
-  const deltaConsNY=(consNY>0&&epsNY>0)?((epsNY-consNY)/consNY*100):null;
-  const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
-  const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
-  // Ecart vs la projection Omnium PRECEDENTE (snapshot pris au refresh precedent,
-  // voir hypothese.priorEPS = {date, eps:{annee:valeur}}). Absent tant qu'aucun
-  // refresh n'a encore ecrit ce champ pour ce titre.
-  const priorEPS=d.hypothese?.priorEPS||null;
-  const priorCY=priorEPS?.eps?.[CY];
-  const priorNY=priorEPS?.eps?.[CY+1];
-  const hasPriorCY=priorCY!=null&&priorCY!==''&&+priorCY>0&&epsCY>0;
-  const hasPriorNY=priorNY!=null&&priorNY!==''&&+priorNY>0&&epsNY>0;
-  const deltaPriorCY=hasPriorCY?((epsCY-priorCY)/priorCY*100):null;
-  const deltaPriorNY=hasPriorNY?((epsNY-priorNY)/priorNY*100):null;
-  const fmtShortDate=(iso)=>{
-    if(!iso)return'';
-    const p=String(iso).split('-');
-    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
-  };
-  const priorDateFmt=fmtShortDate(priorEPS?.date);
+L'utilisateur peut citer PLUSIEURS elements en reponse, de deux natures
+differentes qu'il faut distinguer a l'ecriture (E3/E4/E8) :
 
-  el.innerHTML = `
-    <div style="padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;">
-      <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;">Thèse Omnium</div>
-    </div>
-    <div style="display:flex;align-items:center;padding:0 20px 10px;gap:14px;">
-      <div style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;">${total>=0?'+':''}${total.toFixed(1)}%</div>
-      <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
-        <div style="font-size:13px;color:var(--muted);">EPS CAGR&nbsp;<b style="color:var(--navy);font-size:14px;">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</b></div>
-        <div style="font-size:13px;color:var(--muted);">Div. yield&nbsp;<b style="color:var(--navy);font-size:14px;">+${yieldPct.toFixed(1)}%</b></div>
-      </div>
-    </div>
-    ${d.hypothese?.cagrBridge?`<div style="padding:0 20px 12px;">
-      <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
-    </div>`:''}
-    <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:0;padding:12px 20px 12px;">
-      <div style="flex:1;text-align:center;padding:8px 16px;background:rgba(0,1,144,.07);border-radius:10px 0 0 10px;">
-        <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY}</div>
-        <div style="font-size:26px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${peCY?peCY.toFixed(1)+'×':'—'}</div>
-      </div>
-      <div style="width:1px;background:var(--border);align-self:stretch;"></div>
-      <div style="flex:1;text-align:center;padding:8px 16px;background:rgba(0,1,144,.05);border-radius:0 10px 10px 0;">
-        <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY+1}</div>
-        <div style="font-size:26px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.85;">${peNY?peNY.toFixed(1)+'×':'—'}</div>
-      </div>
-    </div>
-    <div style="height:1px;background:var(--border);margin:0 20px;"></div>
-    <div style="display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;">
-      <div style="flex:1;padding-right:14px;">
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY}</div>
-        <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
-        </div>
-        ${hasPriorCY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorCY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
-        ${cons?.eps?`
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
-          <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${cons.eps.toFixed(2)}${cur}</div>
-          <div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${consDelta>=0?'var(--teal-text)':'#e05252'};background:${consDelta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${consDelta>=0?'+':''}${consDelta.toFixed(1)}% Omnium</div>
-        </div>
-        ${srcLine?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">${srcLine}</div>`:''}
-        `:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non dispo</div>`}
-      </div>
-      <div style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0;"></div>
-      <div style="flex:1;padding-left:14px;">
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY+1}</div>
-        <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
-        </div>
-        ${hasPriorNY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorNY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
-        ${consNY>0?`
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
-          <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${consNY.toFixed(2)}${cur}</div>
-          ${deltaConsNY!==null?`<div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaConsNY>=0?'var(--teal-text)':'#e05252'};background:${deltaConsNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaConsNY>=0?'+':''}${deltaConsNY.toFixed(1)}% Omnium</div>`:''}
-        </div>`:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non disp.</div>`}
-      </div>
-    </div>
-  `;
-}
+- **PARTICULARITE STRUCTURELLE** (recurrente, impacte un calcul CHAQUE
+  annee de la meme facon) : ex. distribution gratuite d'actions annuelle
+  (Vidrala), mecanisme capitalistique atypique. Peut etre chiffree (va dans
+  le tableau `particularites`, avec `valuePct` si un calcul de l'app en
+  depend - voir particulariteYieldPct()) ou purement qualitative/narrative
+  (`valuePct: null`, contexte permanent de lecture, ex: exposition
+  geographique atypique d'un titre - voir Moncler). Peut y en avoir
+  PLUSIEURS pour un meme titre.
+- **EVENEMENT PONCTUEL** (structurel ou conjoncturel, ex: acquisition,
+  changement reglementaire, litige, dynamique de business particuliere du
+  trimestre) : impacte directement l'annee en cours (ou une annee precise),
+  MAIS PAS les annees futures de facon symetrique et automatique - son
+  effet se propage aux annees suivantes UNIQUEMENT parce qu'il change la
+  BASE dont repartent les taux de croissance/marge projetes (E1/E4), pas
+  parce qu'il est reconduit a l'identique chaque annee. Va dans EVENEMENTS
+  & INFLEXIONS (E3, classe i/ii/iii), pas dans `particularites`. Peut y en
+  avoir PLUSIEURS par refresh/creation.
 
-// Formatte un montant en millions vers un affichage compact "X,XX Md" ou "X M"
-// (pas de decimales inutiles en dessous de 10). Purement cosmetique.
-function fmtBigNum(v){
-  if(v===null||v===undefined||v==='')return null;
-  const n=+v; if(!isFinite(n))return null;
-  return Math.abs(n)>=1000 ? (n/1000).toFixed(2).replace(/\.00$/,'')+' Md' : n.toFixed(n<10&&n!==0?2:0)+' M';
-}
-function fmtPctDelta(actual,consensus){
-  if(actual==null||consensus==null||consensus===0||!isFinite(+actual)||!isFinite(+consensus))return null;
-  return ((+actual-+consensus)/Math.abs(+consensus))*100;
-}
-function pctBadge(delta){
-  if(delta===null)return '';
-  const col=delta>=0?'var(--teal-text)':'#e05252';
-  const bg=delta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)';
-  return `<span style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};background:${bg};border-radius:5px;padding:1px 6px;white-space:nowrap;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
-}
+Reformule TOUJOURS chaque element cite par l'utilisateur dans tes propres
+mots pour confirmer le fait ET son mecanisme avant de l'ecrire (jamais un
+chiffre ou un mot-cle seul, qu'il s'agisse d'une particularite ou d'un
+evenement).
 
-// Bloc "dernier trimestre publie" (resultats vs consensus, guidance, points cles
-// du call) - voir hypothese.dernierCall dans INSTRUCTIONS.md. Affiche juste sous
-// la ligne date/source, AVANT le resume/texte de la these (ne s'y substitue pas).
-function renderDernierCall(dc, ticker){
-  if(!dc)return '';
-  const cur=tickerCur(ticker)||'€';
-  const q=(dc.quarter||'').trim();
-  const ca=dc.resultatsVsConsensus?.ca||null;
-  const eps=dc.resultatsVsConsensus?.epsAdj||null;
-  const caActual=ca&&ca.actual!=null?fmtBigNum(ca.actual):null;
-  const caCons=ca&&ca.consensus!=null?fmtBigNum(ca.consensus):null;
-  const caDelta=ca?fmtPctDelta(ca.actual,ca.consensus):null;
-  const epsDelta=eps?fmtPctDelta(eps.actual,eps.consensus):null;
+- Si aucun transcript n'est disponible (recherche automatique infructueuse
+  ET l'utilisateur n'en fournit pas) : poursuis en recherche publique seule
+  (la detection autonome d'evenements reste obligatoire dans tous les cas,
+  voir E3 ci-dessous - ne te repose jamais uniquement sur ce que
+  l'utilisateur fournit).
+- Si un ou plusieurs transcripts sont disponibles (trouves par toi-meme ou
+  fournis par l'utilisateur) : ce sont des sources FERMEES et FAISANT
+  AUTORITE - enumere TOUS les evenements materiels qu'ils contiennent (voir E3).
 
-  const caLine=caActual?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">CA</span>
-      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${caActual}${cur}</span>
-      ${caCons?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${caCons}${cur}</span>`:''}
-      ${pctBadge(caDelta)}
-    </div>`:'';
-  const epsLine=(eps&&eps.actual!=null)?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">EPS${eps.basis?' ('+eps.basis+')':''}</span>
-      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+eps.actual).toFixed(2)}${cur}</span>
-      ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
-      ${pctBadge(epsDelta)}
-    </div>`:'';
-  const resultsBlock=(caLine||epsLine)?`<div>
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats${q?' '+q:''} vs consensus</div>
-      ${caLine}${epsLine}
-    </div>`:'';
+## LA BOUCLE D'ANALYSE (E1 -> E8, commune aux operations A et B)
 
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
-      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
-    </div>`:'';
-  const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
-      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
-    </div>`:'';
-  const points=(dc.pointsCles||[]).filter(Boolean);
-  const pointsBlock=points.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Points clés du call</div>
-      ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
-    </div>`:'';
+Il existe UNE SEULE boucle d'analyse. La CREATION la deroule en entier
+depuis une base vierge ; le REFRESH deroule EXACTEMENT la meme boucle, avec
+en plus trois entrees fournies par le JSON existant (borne temporelle, base
+de reconciliation + verrous a l'interieur de `hypothese.text`, questions
+d'agenda a solder) et une etape de reconciliation en sortie. Un refresh
+n'est jamais une analyse plus pauvre qu'une creation. Il RECALCULE TOUT A
+NEUF (il ne pousse jamais l'ancienne projection d'un cran).
 
-  if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
-    ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
-  </div>`;
-}
+L'Operation C (nextEvent) n'entre PAS dans cette boucle : voir sa propre
+description plus haut. Les champs `ownership` et `compliance` n'entrent
+pas non plus dans cette boucle (voir leur description dans le SCHEMA) -
+ils sont recherches/ecrits en parallele de la boucle, comme `nextEvent`,
+mais jamais utilises comme intrant d'un ancrage ou d'un adjXXX.
 
-// Bloc "Actionnariat" (insiders + fonds notables au dernier 13F) - voir le
-// champ `ownership` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
-// Champ FACTUEL et APPROXIMATIF par nature (sources d'actionnariat souvent
-// contradictoires entre elles, delai structurel des 13F ~45j) : jamais
-// utilise pour un calcul, purement informatif pour l'utilisateur. Affiche
-// juste sous le bloc "dernier trimestre publie", avant le texte de these.
-// L'evolution du % insiders au fil des refresh (voir ownership.history,
-// mecanique de snapshot cumulatif plafonnee a 8 points - voir
-// INSTRUCTIONS.md) est visualisee via un badge de delta vs le point
-// precedent, plus une ligne "Historique" compacte reprenant toute la serie.
-function renderOwnership(own, ticker){
-  if(!own)return '';
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const fmtShortDate=(iso)=>{
-    if(!iso)return'';
-    const p=String(iso).split('-');
-    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
-  };
-  const hasInsider=own.insiderPct!=null&&own.insiderPct!=='';
-  const hist=(own.history||[]).filter(h=>h&&h.insiderPct!=null&&h.insiderPct!=='');
-  const lastHist=hist.length?hist[hist.length-1]:null;
-  const deltaPt=(hasInsider&&lastHist)?(+own.insiderPct-+lastHist.insiderPct):null;
-  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% au ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPt>=0?'var(--teal-text)':'#e05252'};background:${deltaPt>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:1px 6px;white-space:nowrap;">${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt</span>`:'';
+ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
+retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
+uniquement] reconciliation en deux temps, projection independante puis
+confrontation (E6-a / E6-b) -> controle final de vraisemblance (E7) ->
+ecriture unique (E8).
 
-  const insiderLine=hasInsider?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">Insiders</span>
-      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+own.insiderPct).toFixed(1)}%</span>
-      ${deltaBadge}
-      ${own.insiderDesc?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(own.insiderDesc)}</span>`:''}
-    </div>`:'';
-  const insiderSrc=own.insiderSource?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:1px;">${esc(own.insiderSource)}</div>`:'';
+GEOMETRIE VARIABLE : la profondeur d'analyse s'adapte a la complexite du
+titre, ETAPE PAR ETAPE. Un mono-produit a guidance simple traverse en ligne
+droite ; un conglomerat aux divisions divergentes declenche le build-up.
+"Sans objet, une ligne" est un resultat valide. But : la justesse au moindre
+effort, pas l'exhaustivite systematique. SEULES exceptions jamais "sans
+objet" : E4, E5 et E7 s'appliquent toujours (rapides si rien a redresser) ;
+en refresh, E6-a s'applique toujours egalement (voir plus bas - c'est le
+mecanisme d'independance, il ne se raccourcit pas meme sur un titre simple).
 
-  const trail=hist.concat(hasInsider?[{asOf:own.asOf,insiderPct:own.insiderPct}]:[]);
-  const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">Historique : ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
+REGLE D'ESCALADE : face a une incoherence MATERIELLE non resolue (segments
+incompatibles avec la guidance, sources contradictoires sur un chiffre cle),
+ne tranche PAS en silence : pose la question a l'utilisateur en exposant
+l'option, avant de figer les adjXXX.
 
-  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor);
-  const holdersBlock=holders.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds notables (13F)</div>
-      ${holders.map(h=>`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-        <span style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(h.investor)}</span>
-        ${h.pct!=null?`<span style="font-size:11.5px;color:var(--text);">${(+h.pct).toFixed(1)}%</span>`:''}
-        ${h.asOf?`<span style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(h.asOf)}</span>`:''}
-      </div>`).join('')}
-    </div>`:'';
+### E1. BASE CAGR (automatique, moteur de l'app)
+Le moteur (getProj dans index.html) extrapole deja "data" en double regime :
+CAGR court terme (3 derniers exercices) pour les 2 premieres annees, CAGR
+long terme (historique complet) au-dela. C'est la base "stupide" de depart ;
+les adjXXX l'ecrasent la ou l'analyse le justifie. Recherche l'historique
+GAAP/IFRS le plus complet possible (creation) ou, au refresh, les seules
+donnees publiees DEPUIS LA DATE DE LA DERNIERE THESE (`hypothese.date` du
+JSON fourni = borne temporelle). Si un exercice annuel vient de cloturer,
+integre-le des maintenant a "data".
 
-  const coverageNote=own.coverageNote?`<div style="font-size:10.5px;color:var(--gold-text);font-family:'Quattrocento Sans',serif;font-style:italic;line-height:1.4;margin-top:${holders.length||hasInsider?8:0}px;">⚠ ${esc(own.coverageNote)}</div>`:'';
+### E2. GUIDANCE & DERNIERS RESULTATS
+- Chiffres GAAP/IFRS uniquement, jamais d'estimation non sourcee.
+- La guidance du management prime sur toute autre hypothese.
+- GUIDANCE QUALITATIVE DIRECTIONNELLE = CONTRAINTE DURE : une guidance non
+  chiffree mais directionnelle est TRADUITE en contrainte verifiable. Ex :
+  "croissance rentable" -> NI et EPS croissants chaque annee ; "expansion de
+  marge" -> marge en hausse ; "desendettement" -> dette nette en baisse. Ces
+  contraintes sont VERIFIEES en E7 et PRIMENT sur les prudences : si un
+  empilement de prudences viole la direction guidee, on RELACHE la
+  prudence, jamais la guidance.
+- Coherence interne obligatoire : chaque annee, adjEPS = adjNet/adjShares
+  (a ~2% pres). L'app affiche un avertissement sinon.
+- Rachats d'actions : tendance historique + programmes annonces. Dividende :
+  projete au rythme de la croissance du net.
+- Recherche egalement, pour `dernierCall` (voir SCHEMA), l'ensemble
+  suivant sur le dernier trimestre publie : CA et EPS ajuste ACTUAL face au
+  CONSENSUS de marche au moment de la publication ; la guidance chiffree du
+  prochain trimestre (si la societe en donne une) et son eventuel consensus
+  pre-publication ; la guidance annuelle en cours (CA et marge ou EPS) telle
+  que reaffirmee/mise a jour sur ce call ; 3 a 4 points cles du call
+  (transcript deja consulte pour E3-a, ou couverture presse de resultats).
+  Simple collecte factuelle et de synthese, distincte de la boucle de
+  projection - ne bloque jamais l'analyse si un element n'est pas trouve
+  (renseigner `null` pour les sous-champs numeriques absents, ou la phrase
+  "Pas de guidance trimestrielle chiffree fournie" le cas echeant).
+- Ecrit dans le meme mouvement `guidanceHistory` (ajout d'une ligne au
+  tableau accumule depuis l'ancien JSON, ou reset si nouvel exercice fiscal
+  - voir mecanique dans le SCHEMA) et `guidanceLongTerme` (recherche/mise a
+  jour de la derniere guidance pluriannuelle communiquee, `null` a defaut).
+- Recherche egalement, en parallele et hors boucle de projection, le champ
+  `ownership` (voir SCHEMA pour la definition complete, la regle PROXY =
+  ANCRAGE DE VERITE, et le perimetre 13F assume) : `insiderPct` ancre sur
+  le dernier proxy/rapport annuel disponible en priorite (agregateur en
+  corroboration ou repli seulement), `insiderDesc`/`insiderSource`, et
+  jusqu'a ~6 `notableHolders` issus du dernier 13F disponible - gerants
+  americains sur titres cotes aux US UNIQUEMENT, tableau vide et
+  `coverageNote` renseignee si le titre est hors perimetre (aucune
+  recherche d'equivalent local hors US). Ecrit dans le meme mouvement le
+  snapshot `history` (ajout du point precedent avant remplacement de
+  l'etat courant, plafonne a 8 points - voir mecanique dans le SCHEMA). Ne
+  bloque jamais l'analyse si une source fiable n'est pas trouvee (`null`/
+  tableau vide plutot qu'une estimation).
+- Recherche egalement, en parallele et hors boucle de projection, le champ
+  `compliance` (voir SCHEMA pour la definition complete, la portee limitee
+  aux fraudes/allegations de fraude, et la mecanique de registre cumulatif
+  jamais purge) : en CREATION, recherche etendue a tout l'historique
+  public du titre ; en REFRESH, recherche ciblee sur la periode ecoulee
+  depuis le dernier `asOf`, entrees existantes reprises telles quelles
+  (statut mis a jour en place si une issue est connue), jamais supprimees.
+  Tableau `items` vide mais `note` renseignee explicitement si rien trouve
+  - jamais laisser planer un doute entre "rien cherche" et "rien trouve".
 
-  if(!insiderLine&&!holdersBlock&&!coverageNote)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Actionnariat${own.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(own.asOf)}</span>`:''}</div>
-    ${insiderLine}${insiderSrc}${trailLine}${holdersBlock}${coverageNote}
-  </div>`;
-}
+### E3. EVENEMENTS PARTICULIERS & SEGMENTS
+GEOMETRIE VARIABLE : titre simple -> deux mentions "aucun evenement" et
+"segments : sans objet", on passe a E4.
+a) EXTRACTION EXHAUSTIVE : les transcripts fournis sont une source FERMEE et
+   FAISANT AUTORITE. Enumere TOUS les evenements discutes. DETECTION
+   AUTONOME OBLIGATOIRE en plus : cherche AUSSI de toi-meme les evenements
+   non signales. Trie chacun : (i) deja dans les chiffres - dis ou ; (ii)
+   quantifiable - quantifie-le toi-meme si des elements existent, injecte
+   dans les adjXXX via E4 ; (iii) optionnalite/risque non quantifiable -
+   exclu des adjXXX, affiche comme asymetrie.
+b) RECHERCHE EXTERNE bornee au trimestre en cours (0-2 evenements),
+   incluant les evenements SUBIS non mis en avant par le management.
+c) DECOMPOSITION PAR SEGMENTS - seulement si l'entreprise publie des
+   segments aux profils MATERIELLEMENT DIVERGENTS (sinon "sans objet"). Si
+   pertinent : build-up bottom-up confronte au total E1-E2.
 
-// Bloc "Compliance" (fraudes averees / allegations de fraude par regulateurs,
-// cabinets d'avocats plaignants, ou vendeurs a decouvert activistes) - voir le
-// champ `compliance` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
-// Champ FACTUEL, registre CUMULATIF jamais purge (contrairement a `ownership`
-// qui remplace son etat courant) : chaque entree garde sa trace, seul son
-// statut/issue peut etre mis a jour en place au fil des refresh. Affiche
-// juste sous le bloc "Actionnariat", avant le texte de these. Jamais utilise
-// pour un calcul, purement informatif/diligence pour l'utilisateur.
-function renderCompliance(comp, ticker){
-  if(!comp)return '';
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const STATUS_LABEL={
-    sollicitation:'Sollicitation d\'avocats',
-    enquete_en_cours:'Enquête en cours',
-    plainte_deposee:'Plainte déposée',
-    reglee:'Réglée',
-    classee_sans_suite:'Classée sans suite',
-    condamnation:'Condamnation',
-    non_fondee:'Non fondée'
-  };
-  const STATUS_COLOR={
-    sollicitation:'var(--muted)',
-    enquete_en_cours:'var(--gold-text)',
-    plainte_deposee:'var(--gold-text)',
-    reglee:'var(--navy)',
-    classee_sans_suite:'var(--teal-text)',
-    condamnation:'#e05252',
-    non_fondee:'var(--teal-text)'
-  };
-  const items=(comp.items||[]).filter(it=>it&&it.title);
-  const itemsBlock=items.length?items.map(it=>{
-    const statusLbl=it.status?(STATUS_LABEL[it.status]||esc(it.status)):null;
-    const statusCol=it.status?(STATUS_COLOR[it.status]||'var(--muted)'):'var(--muted)';
-    return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.1);">
-      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-        ${it.year?`<span style="font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(it.year)}</span>`:''}
-        ${statusLbl?`<span style="font-size:9.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${statusCol};background:rgba(0,1,144,.06);border-radius:5px;padding:1px 7px;text-transform:uppercase;letter-spacing:.03em;">${statusLbl}</span>`:''}
-      </div>
-      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:3px;">${esc(it.title)}</div>
-      ${it.allegedBy?`<div style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:2px;">Par : ${esc(it.allegedBy)}</div>`:''}
-      ${it.outcome?`<div style="font-size:11.5px;color:var(--text);font-style:italic;margin-top:2px;">${esc(it.outcome)}</div>`:''}
-      ${it.source?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;">${esc(it.source)}${it.date?' · '+esc(it.date):''}</div>`:''}
-    </div>`;
-  }).join(''):'';
+### E4. RETROFIT n°1 - SCHEMA DE PROJECTION (CA & MARGE), toujours
+a) CROISSANCE DU CA annee par annee, rattachee a des moteurs sources. Chaque
+   moteur non trivial devient une entree `ancrages` (id, mecanisme en une
+   phrase, annees d'application) plutot qu'une justification qui ne vivrait
+   que dans le raisonnement du moment.
+b) MARGE EN %, confrontee aux trois ancrages : (1) historique (rythme en
+   pb/an normalise) ; (2) resultats recents + guidance annee en cours
+   (base RECURRENTE, one-offs retraites) ; (3) cibles moyen/long terme
+   (expansion au-dela de la cible chiffree = justifiee moteur par moteur,
+   sinon plafonnee ; sans cible, expansion graduelle calee sur l'historique).
+c) CONTINUITE DE BASE : les adjXXX sont sur la MEME BASE COMPTABLE que
+   "data". CONTROLE DE SOUDURE : le sens de variation entre la derniere
+   marge PUBLIEE et la 1ere annee projetee ne doit pas contredire la
+   guidance de marge.
 
-  const note=comp.note?`<div style="font-size:11.5px;color:${items.length?'var(--muted)':'var(--teal-text)'};font-style:italic;line-height:1.4;margin-top:${items.length?8:0}px;">${esc(comp.note)}</div>`:'';
+### E5. RETROFIT n°2 - PONT EBIT -> RESULTAT NET & EXCEPTIONNELS, toujours
+a) PONT : Net = (EBIT de E4 + resultat financier + non-operationnel
+   normatif) x (1 - IS normatif) - minoritaires.
+a-bis) RESULTAT FINANCIER NORMATIF (non applicable aux valeurs financieres -
+   banques, assurances, gestion d'actifs, dont le bilan porte la dette/les
+   actifs financiers comme coeur de metier et non comme un agregat "dette
+   nette" au sens industriel ; pour ces titres, le resultat financier reste
+   une ligne modelisee au cas par cas, hors cadre de cette regle). Pour les
+   exercices PUBLIES : le resultat financier retenu est le chiffre publie
+   tel quel, jamais retraite sauf vrai one-off identifie en E5-e (ex.
+   extinction de dette exceptionnelle). Pour les exercices PROJETES,
+   PARAMETRE UNIQUE (meme logique qu'E5bis) :
+   - Si un cout ou rendement de financement EXPLICITE a ete communique par
+     le management pour une operation identifiee (emission obligataire,
+     refinancement, facility-relais), CE TAUX COMMUNIQUE PRIME sur toute
+     autre regle ci-dessous.
+   - A defaut, si `adjND` projete est POSITIF (dette nette) : charge
+     financiere = ND moyen projete de l'annee ((ND debut + ND fin)/2) x
+     taux a 10 ans souverain de la devise de reporting + 2 points de
+     spread normatif (Bund allemand 10 ans + 2pts pour l'EUR, Treasury 10
+     ans + 2pts pour l'USD - le seul Bund/Treasury nu est juge trop
+     optimiste, ne reflete ni prime de credit ni prime de terme d'une
+     entreprise industrielle), taux recalcule a CHAQUE refresh.
+   - A defaut, si `adjND` projete est NEGATIF (cash net) ET que la societe
+     mene un programme de rachat d'actions ACTIF et REGULIER (autorisation
+     en cours ET rythme observe sur au moins les 2-3 derniers exercices,
+     deja documente dans l'`ancrages` qui pilote `adjShares`) : rendement
+     retenu sur ce cash net = 0% (le cash est considere comme consomme par
+     les rachats en cours d'annee, pas comme un stock place sur l'annee).
+   - A defaut (cash net SANS programme de rachat regulier) : produit
+     financier = cash net moyen projete x meme taux de reference 10 ans +
+     2pts que ci-dessus (sans le spread de credit dans ce cas precis
+     serait aussi defendable pour un produit de placement, mais on retient
+     le meme taux unique pour la simplicite et la coherence du parametre).
+   Taux, devise de reference et cas retenu (positif / negatif-buyback /
+   negatif-sans-buyback / taux communique) documentes en `ancrages` (id,
+   taux retenu, devise, date de fixing) au meme titre que l'IS normatif,
+   jamais recalcules une seconde fois sans confrontation a la valeur
+   precedente (E5bis).
+b) IS NORMATIF : guidance fiscale > taux effectif historique NORMALISE >
+   statutaire. Un taux anormal (windfalls, credit) n'est jamais reconduit
+   tel quel.
+c) RATIO DE CONVERSION Net/EBIT : derive >~2-3pts expliquee par un moteur
+   precis, sinon corrigee.
+c-bis) SOUDURE ETENDUE au NET et a l'EPS : la 1ere annee projetee ne cree
+   pas de fausse marche vs le dernier exercice PUBLIE, IS inclus.
+d) INVENTAIRE DES EXCEPTIONNELS (distincts des particularites, qui sont
+   structurelles/recurrentes) : one-offs au-dessus comme en-dessous de
+   l'EBIT.
+d-bis) "DATA" RETRAITEE DES VRAIS ONE-OFFS (regle anti-pollution durable) :
+   des qu'un exceptionnel de d) touche un exercice de `data` (historique OU
+   exercice en cours), CET EXERCICE EST LUI-MEME RETRAITE dans `data`
+   (ebit/net corriges de l'exceptionnel) - jamais seulement dans les
+   adjXXX. Raison : `data` alimente le moteur de CAGR automatique (E1) a
+   CHAQUE refresh futur ; un one-off laisse tel quel y pollue indefiniment
+   la base (court ET long terme), pas seulement l'annee courante. Le calcul
+   (chiffre_publie_brut +/- exceptionnel = chiffre retenu dans `data`) est
+   ECRIT EN TOUTES LETTRES dans `hypothese.text` (rubrique EVENEMENTS,
+   classe i), qui reste l'unique endroit ou le chiffre publie BRUT est
+   trace pour audit - `data` porte desormais le chiffre retraite, pas le
+   chiffre brut. Cette regle ne concerne QUE les vrais one-offs (voir
+   liste en e) ci-dessous) ; les elements recurrents-deguises (SBC,
+   amortissement d'acquisition, restructuration recurrente) restent tels
+   quels DANS `data`, jamais retires. Un taux de croissance externe
+   (guidance, consensus) s'applique ensuite normalement a cette base.
+e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
+   biais de flatterie. NE PAS reprendre l'adjusted du management tel quel.
+   VALIDER le lien GAAP/IFRS <-> ajuste : lister chaque poste ajoute, le
+   classer VRAI one-off vs. RECURRENT-DEGUISE. Charges systematiquement
+   RECURRENTES a REINTEGRER (le management les exclut a tort) :
+   - AMORTISSEMENT DES INTANGIBLES D'ACQUISITION chez un acquereur en serie :
+     charge permanente, souvent CROISSANTE - la garder, la faire croitre
+     avec les deals.
+   - STOCK-BASED COMPENSATION : charge reelle et recurrente - la garder.
+   - Couts de "transformation"/restructuration RECURRENTS annee apres annee.
+   Restent de vrais one-offs a exclure (ou reintegrer si c'etait une
+   charge) via d-bis : discrete/deferred tax items lies a une
+   reorganisation, plus/moins-values de cession, extinction de dette,
+   depreciation isolee, credit ou remboursement exceptionnel (ex : recuperation
+   de tarifs douaniers). SIGNAL D'ALERTE : si le NI/EPS GAAP publie DEPASSE
+   le NI/EPS "ajuste" (inversion anormale), un CREDIT exceptionnel (souvent
+   fiscal) gonfle le GAAP - l'exclure via d-bis. Documente dans
+   `hypothese.text` la base retenue et l'ecart chiffre vs. l'adjusted du
+   management. `data` est donc en GAAP/IFRS retraite des seuls vrais
+   one-offs (d-bis) - jamais des elements recurrents-deguises ci-dessus ;
+   les adjXXX restent sur cette meme base normalisee, PAS sur l'adjusted
+   flatteur du management.
 
-  if(!itemsBlock&&!note)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Compliance${comp.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(comp.asOf)}</span>`:''}</div>
-    ${note}${itemsBlock}
-  </div>`;
-}
+### E5 bis. PARAMÈTRE UNIQUE (règle anti-incohérence)
+Tout écart de normalisation utilisé pour passer d'un "ajusté" du management à
+une base réintégrée (ex: amortissement d'acquisition, effet fiscal ponctuel)
+est calculé UNE SEULE FOIS, enregistré comme une entrée du champ `ancrages`
+(id, mécanisme, valeur explicite dans le mécanisme - ex: "écart PPA Luminex
+≈ 91 M€/an"), et réutilisé tel quel partout où il s'applique - dans la base
+historique ET dans la projection. `hypothese.text` n'a pas à re-décrire un
+écart déjà porté par `ancrages` ; il peut s'y référer par id. Ne jamais
+recalculer le même écart par une seconde méthode sans confronter explicitement
+le nouveau résultat à la première valeur obtenue.
 
-function renderContextBullets(ticker, proj, cours){
-  const d=state.tickers[ticker];
-  const wrap=document.getElementById('context-bullets-wrap');
-  if(wrap)wrap.style.display='none';
-  const traceEl=document.getElementById('last-event-trace');
-  if(!traceEl)return;
-  const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
-  if(!lastEvt){traceEl.style.display='none';return;}
-  const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
-  const ownBanner=renderOwnership(d.ownership||null, ticker);
-  const compBanner=renderCompliance(d.compliance||null, ticker);
-  const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
-  const fullSumm=(lastEvt.summary||'').trim();
-  const fullAnalysis=(lastEvt.text||'').trim();
-  const displayText=fullAnalysis||fullSumm;
-  const previewLines=fullSumm.slice(0,220);
-  const needsExpand=displayText.length>220;
-  const expandId='evtExpand_'+ticker;
-  const partList=d.particularites||[];
-  const partBanner=partList.length?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.15);">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Particularité(s) prise(s) en compte</div>
-    ${partList.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;">• ${(p.text||'').replace(/</g,'&lt;')}</div>`).join('')}
-  </div>`:'';
-  const incoh=checkEpsCoherence(d);
-  const cohBanner=incoh.length?`<div style="margin-top:8px;padding:8px 10px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--gold-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">⚠ Incohérence interne de l'hypothèse</div>
-    ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y} : EPS fourni ${b.eps.toFixed(2)} ≠ Net/Actions ${b.implied.toFixed(2)}</div>`).join('')}
-  </div>`:'';
+### E6. RECONCILIATION (REFRESH UNIQUEMENT ; sans objet en creation)
+E4-E5 se font A NEUF (jamais depuis les anciens adjXXX du JSON fourni) ; E6
+confronte ENSUITE au passe. Cette etape se deroule en DEUX TEMPS
+STRICTEMENT SEPARES, et affiches comme tels dans la reponse : jamais un
+tableau unique retouche discretement apres consultation de l'ancien fichier.
 
-  traceEl.style.display='block';
-  traceEl.innerHTML=`<div style="border-left:3px solid ${impColor};padding:10px 14px;background:rgba(0,1,144,.04);border-radius:0 8px 8px 0;">
-    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
-    <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
-    ${dcBanner}
-    ${ownBanner}
-    ${compBanner}
-    <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
-    ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
-    <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
-    ${partBanner}
-    ${cohBanner}
-  </div>`;
-}
+#### E6-a. PROJECTION INDEPENDANTE (toujours, jamais "sans objet" en refresh)
+Avant toute relecture ou mention des anciens adjXXX, affiche le resultat
+complet de E1-E5 : le tableau adjCA/adjEBIT/adjNet/adjEPS/adjND propose,
+accompagne de ses `ancrages` (id + mecanisme + annees d'application). C'est
+le produit brut du raisonnement a neuf - il ne doit pas avoir ete lisse ou
+rapproche, meme legerement, de l'ancienne trajectoire au-dela des trois
+entrees deja autorisees en tete de boucle (borne temporelle E1, verrous
+dans `hypothese.text`, agenda a solder). Si l'ancien JSON a du etre consulte
+plus largement avant ce stade pour une raison quelconque, le signaler
+explicitement plutot que de laisser planer un risque d'ancrage silencieux.
 
-function calcScore(ticker){
-  const d=state.tickers[ticker];
-  if(!d||!d.data||d.data.length<2)return 0;
-  const cours=d.cours||100;
-  const{proj}=getProj(ticker);
-  const {CY,LY}=yearsFor(ticker);
-  const epsCY=proj[CY]?.eps||0,eps30=proj[LY]?.eps||0;
-  if(epsCY<=0||eps30<=0)return 0;
-  const cagrEps=((Math.pow(eps30/epsCY,0.25))-1)*100;
-  const div=d.dividende||0;
-  const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+particulariteYieldPct(d);
-  const peFwd=cours>0?cours/epsCY:null;
-  if(!peFwd||peFwd<=0)return 0;
-  return (cagrEps+yieldPct)/peFwd;
-}
+#### E6-b. CONFRONTATION
+Une fois E6-a fige et affiche, confronte-le a l'ancienne `hypothese` :
+a) TABLEAU D'ECARTS sur les annees communes (l'horizon glisse), colonne par
+   colonne entre E6-a et l'ancienne projection.
+b) MATERIALITE : ~5% sur adjCA/adjEBIT/adjNet, ~1pt de marge, ~2pts de
+   ratio de conversion.
+c) CLASSEMENT de chaque ecart materiel : (a) information nouvelle sourcee ;
+   (b) correction d'erreur de l'ancienne version - dit sans pudeur ; (c)
+   changement de jugement - justifie moteur par moteur, en pointant vers
+   l'`ancrages` correspondant de E6-a. SYMETRIE : l'absence d'ecart face a
+   un fait nouveau majeur est aussi suspecte qu'un ecart inexplique.
+d) VERROUS HERITES (dans l'ancien `hypothese.text`, section PARAMETRES &
+   POINTS DE SUIVI, et dans l'ancien `ancrages` s'il existe) : chacun
+   RE-ATTESTE contre les `ancrages` de E6-a et les donnees du trimestre -
+   reconduit explicitement, ou leve avec justification sourcee. Jamais
+   recopie mecaniquement ni ignore.
+e) QUESTIONS D'AGENDA HERITEES : chaque question de l'ancienne WATCH-LIST
+   DOIT etre soldee ici.
+f) GARDE-FOU ANTI-ANCRAGE : l'ancienne projection est une base de
+   comparaison, jamais une cible. Un ecart bien classe vaut mieux qu'une
+   fausse continuite. Le tableau E6-a n'est PAS retouche a ce stade pour se
+   rapprocher de l'ancien : seule la version confrontee/validee issue de
+   E6-b peut ajuster E6-a, et uniquement si E6-b revele une erreur reelle
+   dans le raisonnement de E6-a (classe b) - jamais pour coller a l'ancien
+   par confort.
+g) SNAPSHOT priorEPS (mecanique, jamais un jugement) : copie `date` et
+   `adjEPS` de l'ANCIENNE `hypothese` (celle fournie en entree du refresh),
+   TELS QUELS, dans `hypothese.priorEPS = {date, eps}` de la NOUVELLE
+   hypothese en cours d'ecriture. Cette copie est un simple horodatage du
+   point de depart - elle ne participe a aucun raisonnement de E6-b et ne
+   doit jamais etre recalculee, arrondie differemment ou reinterpretee.
+   Elle alimente uniquement l'ecart EPS affiche par l'app a cote des
+   projections CY/CY+1 dans index.html.
 
-// Tri de la vue portefeuille. Défaut = classement d'origine (score CAGR+yield / PE), inchangé.
-let pfSort={key:'score',dir:'desc'};
-function pfSortBy(key){
-  if(pfSort.key===key){ pfSort.dir = pfSort.dir==='asc'?'desc':'asc'; }
-  else{ pfSort.key=key; pfSort.dir = (key==='name'||key==='nextEvent'||key==='peN'||key==='peN1')?'asc':'desc'; }
-  renderPortfolio();
-}
-function pfSortItems(items){
-  const{key,dir}=pfSort;
-  const mul=dir==='asc'?1:-1;
-  return items.slice().sort((a,b)=>{
-    if(key==='name'){
-      return mul*(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'});
-    }
-    if(key==='nextEvent'){
-      const av=a.nextEvtDate, bv=b.nextEvtDate;
-      if(av==null&&bv==null)return 0;
-      if(av==null)return 1;   // pas de date confirmee -> toujours en fin de liste
-      if(bv==null)return -1;
-      return mul*(av-bv);
-    }
-    let av,bv;
-    switch(key){
-      case 'return': av=a.totalReturn; bv=b.totalReturn; break;
-      case 'peN': av=a.peFwd??Infinity; bv=b.peFwd??Infinity; break;
-      case 'peN1': av=a.pe27??Infinity; bv=b.pe27??Infinity; break;
-      default: av=a.score; bv=b.score;
-    }
-    return mul*(av-bv);
-  });
-}
-function pfUpdateSortHeaderUI(){
-  document.querySelectorAll('.pf-sort-arrow').forEach(el=>{
-    const k=el.getAttribute('data-key');
-    el.textContent=(pfSort.key===k)?(pfSort.dir==='asc'?'▲':'▼'):'';
-  });
-}
+### E7. CONTROLE FINAL DE VRAISEMBLANCE, toujours, juste avant l'ecriture
+Relis la serie adjXXX COMPLETE :
+a) Contraintes de guidance (E2) respectees ?
+b) Pas de fausse marche a la soudure (dernier exercice publie -> 1ere
+   annee) sur AUCUNE ligne.
+c) Vraisemblance generale : "si je montrais cette trajectoire au CFO, la
+   reconnaitrait-il comme une lecture raisonnable ?"
+c-ter) Pour CHAQUE ligne (CA, EBIT, marge, net, EPS), calculer explicitement
+le delta chiffré entre le dernier exercice publié et la 1ère année projetée
+(en % et en points pour les marges), et vérifier que ce delta est entièrement
+expliqué par un `ancrages` déjà déclaré (ou, à défaut d'ancrage nommable, par
+un élément déjà énoncé dans le texte : guidance, normalisation fiscale,
+one-off exclu, etc.). Un delta qui ne se laisse rattacher à aucun ancrage ni
+à aucune explication déjà écrite est un signal d'incohérence de calcul, pas
+une hypothèse à documenter après coup.
+d) Incoherence residuelle -> ESCALADE plutot que figer une trajectoire
+   douteuse.
 
-function renderPortfolio(){
-  const list=document.getElementById('pf-list');
-  const countEl=document.getElementById('pf-count');
-  if(!list)return;list.innerHTML='';
-  
-  const items=Object.entries(state.tickers)
-    .filter(([,d])=>d.data&&d.data.length>=2)
-    .map(([tk,d])=>{
-      try{
-        const cours=d.cours||100;
-        const{proj}=getProj(tk);
-        const {CY,LY}=yearsFor(tk);
-        const div=d.dividende||0;
-        const epsCY=proj[CY]?.eps||0,eps27=proj[CY+1]?.eps||0,eps30=proj[LY]?.eps||0;
-        const cagrEps=(epsCY>0&&eps30>0)?((Math.pow(eps30/epsCY,0.25))-1)*100:0;
-        const yieldPct=((cours>0&&div>0)?(div/cours)*100:0)+particulariteYieldPct(d);
-        const totalReturn=cagrEps+yieldPct;
-        const peFwd=(cours>0&&epsCY>0)?cours/epsCY:null;
-        const pe27=(cours>0&&eps27>0)?cours/eps27:null;
-        const score=calcScore(tk);
-        const nextEvt=nextEventLabel(tk);
-        const nextEvtDate=nextEventDate(tk);
-        return{tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt,nextEvtDate};
-      }catch(e){return null;}
-    }).filter(Boolean);
+### E8. ECRITURE UNIQUE - STANDARD D'ARCHIVAGE
 
-  if(countEl)countEl.textContent=items.length+' titre'+(items.length!==1?'s':'');
-  
-  const hdr=document.getElementById('pf-col-header');
-  if(hdr) hdr.style.display = items.length ? 'flex' : 'none';
+Ecris `hypothese` (elle REMPLACE entierement l'ancienne, `ancrages` et
+`priorEPS` inclus). AVANT ou juste apres avoir fige les adjXXX definitifs,
+ecris `cagrBridge` (voir definition dediee dans le SCHEMA ci-dessus) : la
+phrase de decomposition du CAGR EPS, DERIVEE des adjXXX/`ancrages` de cette
+meme ecriture - jamais une estimation separee. Le champ `text` est le SEUL
+document archive narratif du titre : une note compacte, PAS un rapport. Il
+ne stocke QUE ce que les champs structures (data, adjXXX, particularites,
+`ancrages`) ne portent pas et que le modele ne reconstruit pas seul. Ne
+jamais re-narrer un chiffre deja present dans data/adjXXX, ni un mecanisme
+deja porte par une entree `ancrages` (y referer par id si besoin), ni un
+fait deja dans le transcript source. Budget cible ~5000-9000 caracteres.
+SIX rubriques majuscules "==
+RUBRIQUE ==", dans cet ordre :
 
-  if(!items.length){
-    list.innerHTML='<div class="pf-empty">Aucun titre. database.json est peut-être vide ou non configuré.</div>';
-    return;
-  }
-  
-  const maxScore=Math.max(...items.map(x=>x.score),0.1);
-  const sorted=pfSortItems(items);
-  sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
-    const el=document.createElement('div');
-    el.className='pf-item'+(tk===CT?' pf-active':'');
-    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
-    const barW=Math.round(score/maxScore*100);
-    
-    el.innerHTML=`
-      <div class="pf-rank">${idx+1}</div>
-      <div class="pf-main">
-       <div class="pf-name">${d.name||tk}</div>
-        <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
-      </div>
-      <div class="pf-metrics">
-        <div class="pf-metric" style="flex:0 0 100px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
-        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="flex:0 0 132px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
-      </div>
-    `;
-    list.appendChild(el);
-  });
-  pfUpdateSortHeaderUI();
-}
+1. **SYNTHESE DE LA THESE** (~800-1200 car.) : un paragraphe de cadrage qui
+   explique le PARI CENTRAL en une lecture continue - pourquoi on detient
+   (ou pas) ce titre, sans avoir a deduire l'argument des evenements epars.
+   Se concentre sur la THESE elle-meme, jamais sur la description generique
+   de l'entreprise (savoir reconstructible).
+2. **EVENEMENTS & INFLEXIONS** : issue de E3, hierarchisee par impact,
+   chaque evenement avec sa classe (i)/(ii)/(iii). Le risque
+   idiosyncratique materiel est loge ICI (pas de rubrique risques a part).
+   "Aucun evenement particulier ce trimestre" si c'est le cas.
+3. **PARTICULARITES** : binaire. La/les particularite(s) listee(s), ou
+   "Aucune".
+4. **RESULTATS, SOURCES & GUIDANCE** (fusion) : une ligne de sources
+   (primaire = transcript ; secondaires = FY/consensus) + la GUIDANCE
+   DIRECTIONNELLE seulement (contraintes dures) - jamais la re-narration
+   du detail trimestriel par segment/geographie + la date du prochain
+   refresh utile.
+5. **PARAMETRES & POINTS DE SUIVI** (fusion pont + agenda) : une mention
+   synthetique renvoyant aux `ancrages` structures pour le "pourquoi
+   chiffre" (pas de re-narration), plus les seuls parametres qui ne vivent
+   pas dans `ancrages` (base comptable ajustee vs publiee, ETR, net
+   financier, tendance adjShares) en quelques lignes. Puis la WATCH-LIST :
+   les questions que le prochain refresh devra solder. C'est la matiere la
+   plus utile au refresh suivant, avec `ancrages`.
+6. **CATALYSEURS** : une ligne dense (pas une liste longue).
 
-const PRICE_TTL=60*60*1000;
-function startPricePoll(){
-  if(CT) fetchLivePrice(CT);
-  setInterval(()=>{ if(CT) fetchLivePrice(CT); },PRICE_TTL);
-}
+Ce qui est PRESERVE imperativement dans le texte : toute HYPOTHESE DE
+MODELISATION non triviale qui ne se reduit PAS a un moteur nommable en
+`ancrages` (ex: "conflit traite comme circonscrit, recovery Q2 assumee",
+"CA cale sur le consensus officiel") - c'est le fragment de prose qui porte
+une decision de modelisation, pas un chiffre. Ce standard ne change RIEN a
+la construction des projections (E1->E8, adjXXX identiques) : il regit
+seulement la forme du document archive et la repartition entre `ancrages`
+(mecanismes nommes, verifiables, reutilisables) et `text` (decisions de
+lecture non reductibles a un moteur).
 
-document.addEventListener('DOMContentLoaded', async function(){
-  state = await loadState();
-  const keys = Object.keys(state.tickers);
-  let lastView=null;
-  try{ lastView=JSON.parse(localStorage.getItem(LAST_VIEW_KEY)||'null'); }catch(e){}
-  if(keys.length > 0){
-    CT = (lastView && lastView.ticker && state.tickers[lastView.ticker]) ? lastView.ticker : keys[0];
-    try{loadTicker();}catch(e){}
-  }
-  refreshSelects();
-  const wantAnalyse = lastView && lastView.tab==='analyse' && CT && state.tickers[CT];
-  if(wantAnalyse){
-    showTab('analyse', null);
-  } else {
-    showTab('portefeuille', document.getElementById('tab-btn-pf'));
-  }
-  const gd=document.getElementById('gen-date');
-  if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
-  setTimeout(startPricePoll,1500);
-});
-  </script>
-</body></html>
+## LIVRABLE FINAL
+
+### Pour une CREATION (Operation A)
+1. Confirme explicitement le CODE du nouveau titre tel qu'il doit etre
+   ajoute sur GitHub, ex : "Le fichier sera `data/SIEMENS.json`."
+2. Fournis le contenu JSON complet du fichier (objet autonome, schema
+   ci-dessus). `hypothese.priorEPS` est ABSENT en creation (aucun refresh
+   anterieur a snapshotter). `nextEvent` renseigne (prochaine publication
+   de resultats trouvee, sinon trimestre attendu deduit - voir DOUBLE
+   STOCKAGE dans le SCHEMA ci-dessus) : ce nouveau titre n'etant couvert par
+   aucun passage anterieur de l'Operation C, ce champ sert de valeur
+   affichee jusqu'au prochain passage de C. `hypothese.dernierCall` renseigne
+   (resultats vs consensus, guidance prochain trimestre et annuelle, points
+   cles du call - voir SCHEMA et E2) - `null`/phrase de repli sur les
+   sous-champs sans donnee trouvee, jamais bloquant. `hypothese.
+   guidanceHistory` demarre a une ligne unique (ce call) et `hypothese.
+   guidanceLongTerme` renseigne si une guidance pluriannuelle existe, sinon
+   `null` (voir SCHEMA). `hypothese.cagrBridge` renseigne (phrase de
+   decomposition du CAGR EPS derivee des adjXXX/`ancrages` fixes a l'etape
+   E8 - voir SCHEMA et E8). `ownership` renseigne (insiders ancres sur le
+   dernier proxy en priorite, notableHolders 13F US uniquement trouves lors
+   de la recherche E2, `coverageNote` si le titre n'est pas couvert par le
+   regime 13F, `history` VIDE `[]` - aucun refresh anterieur a
+   snapshotter - voir SCHEMA), sans jamais bloquer la creation si une
+   source fiable manque. `compliance` renseigne (recherche etendue a tout
+   l'historique public du titre - fraudes averees, enquetes, allegations
+   par regulateurs/cabinets d'avocats plaignants/vendeurs a decouvert
+   activistes, jamais le contentieux commercial ordinaire), `items` vide
+   `[]` avec `note` confirmant explicitement l'absence d'element trouve si
+   c'est le cas plutot que de laisser un doute.
+3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
+   `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
+   tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
+   invisible malgre le fichier present.
+
+### Pour un REFRESH (Operation B)
+L'utilisateur fournit le JSON existant du titre dans sa requete (source de
+la borne temporelle E1 et de la base de reconciliation E6) : pas besoin de
+confirmer le nom/code, il est deja connu.
+1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
+   snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
+   avant le JSON final.
+2. `nextEvent` renseigne/actualise (le refresh venant de solder le
+   trimestre publie, `nextEvent` doit pointer vers l'echeance suivante) -
+   rappelle a l'utilisateur que cette valeur ne s'affichera que si le
+   ticker est absent de `data/nextEvents.json`, ou jusqu'au prochain
+   passage de l'Operation C qui la supplantera (voir DOUBLE STOCKAGE).
+   `hypothese.dernierCall` actualise sur le trimestre venant d'etre solde
+   (remplace integralement l'ancien, comme le reste de `hypothese`).
+   `hypothese.guidanceHistory` mis a jour selon sa mecanique propre
+   (ajout d'une ligne si meme `fyGuided` que la derniere ligne existante,
+   reset a une ligne unique si nouvel exercice fiscal - voir SCHEMA) ;
+   `hypothese.guidanceLongTerme` reconduit tel quel ou remplace si une
+   communication plus recente l'a mise a jour. `hypothese.cagrBridge`
+   RE-ECRIT integralement (jamais reconduit tel quel) a partir des adjXXX/
+   `ancrages` FIXES par ce refresh - jamais recopie de l'ancienne version
+   meme si la trajectoire semble proche (voir SCHEMA et E8). `ownership`
+   RE-RECHERCHE et
+   REMPLACE integralement son etat courant (asOf/insiderPct/insiderDesc/
+   insiderSource/notableHolders/coverageNote), MAIS AVANT ce remplacement
+   snapshotte `{asOf, insiderPct}` de l'ANCIEN `ownership` dans son propre
+   `history` (tableau cumulatif propre a `ownership`, plafonne a 8 points -
+   mecanique dediee, distincte de `guidanceHistory` - voir SCHEMA), sans
+   jamais bloquer le refresh si une source fiable manque. `compliance`
+   REPREND `items` de l'ancien JSON TEL QUEL (rien supprime), AJOUTE toute
+   nouvelle allegation/procedure detectee depuis le dernier `asOf`, et MET
+   A JOUR en place le `status`/`outcome` des entrees existantes dont
+   l'issue a evolue - jamais de reecriture retroactive du contenu d'une
+   ancienne entree au-dela de son statut/issue.
+3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
+   `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
+   `guidanceLongTerme`, `cagrBridge`, `ownership`, `compliance` et
+   `nextEvent` inclus), pret a remplacer le fichier `data/CODE.json`
+   existant sur GitHub tel quel.
+
+### Pour une mise a jour groupee (Operation C)
+L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
+listant tous les codes de `manifest.json`) ET le contenu actuel de
+`data/nextEvents.json`.
+1. Pour chaque code demande : recherche de la date confirmee, sinon
+   deduction du trimestre attendu (voir logique de l'Operation C
+   ci-dessus).
+2. Livrable : LE FICHIER `data/nextEvents.json` COMPLET, entrees demandees
+   mises a jour + entrees existantes non redemandees conservees telles
+   quelles, pret a remplacer le fichier existant sur GitHub. Jamais de
+   `data/CODE.json` individuel touche, jamais de reference a
+   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`/`ownership`/`compliance`.
