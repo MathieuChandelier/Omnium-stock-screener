@@ -1033,6 +1033,17 @@ seulement la forme du document archive et la repartition entre `ancrages`
 (mecanismes nommes, verifiables, reutilisables) et `text` (decisions de
 lecture non reductibles a un moteur).
 
+E8-bis. VALIDATION STRUCTURELLE AVANT LIVRAISON (obligatoire, Operations A et B)
+
+Avant de livrer le JSON final, EXECUTE ce contrôle sur le fichier ecrit (pas seulement une relecture visuelle - le but est de detecter un defaut de SCHEMA qui peut etre invisible a l'oeil sur un JSON par ailleurs valide et bien redige). Ce controle est distinct d'E7 (qui porte sur la VRAISEMBLANCE des chiffres) : E8-bis porte sur la CONFORMITE STRUCTURELLE au schema attendu par index.html.
+
+Parse JSON strict : le fichier doit etre du JSON valide (accolades/ virgules/guillemets corrects). Une erreur de syntaxe fait echouer le chargement silencieusement cote app (le titre est ignore, voir ARCHITECTURE DU DEPOT).
+hypothese.adjXXX = objets plats indexes par annee, jamais un tableau. Verifie explicitement que hypothese.adjCA, adjEBIT, adjNet, adjND, adjShares, adjEPS sont chacun un OBJET de la forme {"2026":valeur,"2027":valeur,...}, directement au niveau racine de hypothese - PAS un tableau [{year:2026,...},...], PAS un champ nomme differemment (ex. projection, forecast). C'est la cause de bug la plus sournoise possible : un JSON parfaitement valide et une these bien redigee, mais l'app retombe silencieusement sur la projection CAGR automatique (E1) sans aucun message d'erreur, produisant un tableau completement different de l'analyse effectuee - ecart qui ne se detecte qu'en comparant visuellement l'app aux chiffres ecrits dans ancrages/text.
+Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees suivant la derniere annee de data), verifie que hypothese.adjCA[annee] (et les 5 autres champs) existe et est un nombre - pas hypothese.adjCA[0].adjCA ni toute autre imbrication.
+Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
+Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
+Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, aucun champ manquant.").
+
 ## LIVRABLE FINAL
 
 ### Pour une CREATION (Operation A)
