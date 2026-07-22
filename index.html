@@ -659,7 +659,12 @@ function refreshAllPrices(){
   // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
   // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
   // en quelques secondes au lieu de defiler titre par titre.
-  const CONCURRENCY=6;
+  // Relevé de 6 à 10 : avec le fetch Google Finance ramené à 1.5s (voir
+  // fetchFromGoogleFinance), le débit du pool de workers redevient le
+  // facteur limitant sur l'ensemble du portefeuille (~36 titres) - plus de
+  // parallélisme ici raccourcit d'autant le temps total d'affichage des
+  // cours à l'ouverture de l'onglet Portefeuille.
+  const CONCURRENCY=10;
   let i=0;
   const worker=async()=>{
     while(i<keys.length){
@@ -720,8 +725,15 @@ function _priceIsPlausible(p,ref,liveConfirmed){
 }
 
 async function fetchFromGoogleFinance(sym){
+  // Timeout volontairement court (1.5s) : Google Finance repond quasi
+  // toujours en quelques centaines de ms quand tout va bien - un delai
+  // court ici garantit un affichage rapide a l'ouverture de l'app. En cas
+  // de lenteur/panne reelle du service, on bascule vite sur le proxy
+  // Yahoo (voir _fetchFromYahoo) qui dispose lui d'un timeout plus genereux
+  // pour absorber cet incident plutot que de faire attendre l'utilisateur
+  // 12s sur CHAQUE titre en echec.
   try{
-    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
+    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(1500)});
     if(!r.ok)return null;
     const j=await r.json();
     const price=+j?.price;
@@ -730,8 +742,14 @@ async function fetchFromGoogleFinance(sym){
 }
 
 async function _fetchFromYahoo(sym){
+  // Fallback : ne se declenche QUE si Google Finance a echoue ou depasse
+  // 1.5s (voir fetchFromGoogleFinance). Timeout allonge a 10s ici (vs 8s
+  // auparavant) pour donner sa chance a ce filet de securite sans faire
+  // echouer le prix du titre au premier accroc reseau - ce cas restant
+  // rare, l'impact sur la vitesse globale d'ouverture de l'app est
+  // negligeable.
   try{
-    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(8000)});
+    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(10000)});
     if(!r.ok)return null;
     const j=await r.json();
     if(!j||!j.price)return null;
@@ -1104,10 +1122,8 @@ function renderDernierCall(dc, ticker){
   </div>`;
 }
 
-// Bloc "Actionnariat" (insiders + fonds ACTIFS notables au dernier 13F,
-// filtres sur la watchlist de gerants actifs - gerants passifs/indiciels
-// type Vanguard/BlackRock jamais affiches ici) - voir le champ `ownership`
-// (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
+// Bloc "Actionnariat" (insiders + fonds notables au dernier 13F) - voir le
+// champ `ownership` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
 // Champ FACTUEL et APPROXIMATIF par nature (sources d'actionnariat souvent
 // contradictoires entre elles, delai structurel des 13F ~45j) : jamais
 // utilise pour un calcul, purement informatif pour l'utilisateur. Affiche
@@ -1141,16 +1157,13 @@ function renderOwnership(own, ticker){
   const trail=hist.concat(hasInsider?[{asOf:own.asOf,insiderPct:own.insiderPct}]:[]);
   const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">Historique : ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
 
-  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor)
-    .slice().sort((a,b)=>(+a.tier||2)-(+b.tier||2));
+  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor);
   const holdersBlock=holders.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds actifs notables (13F)</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds notables (13F)</div>
       ${holders.map(h=>`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-        ${(+h.tier)===1?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:var(--gold-text);background:rgba(198,161,91,.16);border-radius:4px;padding:1px 5px;letter-spacing:.03em;">T1</span>`:''}
         <span style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(h.investor)}</span>
         ${h.pct!=null?`<span style="font-size:11.5px;color:var(--text);">${(+h.pct).toFixed(1)}%</span>`:''}
         ${h.asOf?`<span style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(h.asOf)}</span>`:''}
-        ${h.movement?`<span style="font-size:9.5px;font-style:italic;color:var(--muted);font-family:'Poppins',sans-serif;">(${esc(h.movement)})</span>`:''}
       </div>`).join('')}
     </div>`:'';
 
