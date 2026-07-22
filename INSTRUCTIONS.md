@@ -55,8 +55,8 @@ data/
     "insiderDesc":"Dirigeants et famille fondatrice (ex: Mendelson) - description courte du bloc de controle.",
     "insiderSource":"Proxy statement/DEF 14A (date), ou agregateur si le proxy n'est pas exploitable - source nommee explicitement.",
     "notableHolders":[
-      {"investor":"Vanguard Group","pct":10.1,"asOf":"2026-Q1","source":"13F Q1 2026"},
-      {"investor":"BlackRock","pct":7.0,"asOf":"2026-Q1","source":"13F Q1 2026"}
+      {"investor":"Bill Ackman - Pershing Square Capital Management","pct":0.9,"tier":1,"movement":"position renforcee vs 13F precedent","asOf":"2026-Q1","source":"13F Q1 2026"},
+      {"investor":"Terry Smith - Fundsmith","pct":0.4,"tier":1,"movement":null,"asOf":"2026-Q1","source":"13F Q1 2026"}
     ],
     "coverageNote":"Precision sur la couverture 13F pour ce titre (voir OWNERSHIP ci-dessous) - null si sans objet (titre US couvert normalement).",
     "history":[
@@ -318,6 +318,33 @@ le regime 13F (non cote aux US), `notableHolders` reste simplement `[]` et
 Varsovie, hors perimetre 13F US - notableHolders non recherche pour ce
 titre, choix de perimetre assume du modele").
 
+WATCHLIST GERANTS ACTIFS - CRITERE DE SELECTION DE `notableHolders`
+(CHOIX ASSUME, REVISION DU CRITERE INITIAL "TOP PAR % DETENU") : lister
+les plus gros detenteurs d'un titre au 13F revient structurellement a
+lister les meme quelques mega-gerants passifs/indiciels sur QUASIMENT
+TOUTES les valeurs US suivies (Vanguard, BlackRock, State Street, Fidelity
+[bras indiciel], Geode Capital, Northern Trust, Principal Financial Group,
+Charles Schwab, Invesco, Capital Group/American Funds, Norges Bank) - ces
+positions repliquent un indice par construction et ne portent AUCUN
+signal de conviction ou de discrimination sur le titre. `notableHolders`
+ECARTE SYSTEMATIQUEMENT ces gerants passifs/quasi-indiciels de la liste,
+MEME s'ils figurent parmi les plus gros detenteurs au 13F - leur presence
+n'est jamais recherchee ni affichee dans ce champ.
+
+A la place, `notableHolders` est filtre sur une WATCHLIST FERMEE de
+gerants actifs a gestion concentree et discretionnaire (voir ANNEXE -
+WATCHLIST GERANTS ACTIFS en fin de document), organisee en deux niveaux :
+- TIER 1 : gerants a forte notoriete/conviction reconnue (Buffett, Ackman,
+  Klarman, Icahn, Einhorn, Tepper, etc.) - toujours prioritaires dans
+  l'affichage si presents au dernier 13F du titre.
+- TIER 2 : reste de la watchlist (value/growth/activiste plus large) -
+  affiches en complement du Tier 1, ou seuls si aucun Tier 1 n'est present.
+Seuls les gerants de cette watchlist sont recherches et retenus dans
+`notableHolders` - PAS une recherche libre de "tout detenteur notable" au
+13F, qui retomberait sur les passifs par taille. Si aucun gerant de la
+watchlist n'apparait au dernier 13F du titre, `notableHolders` reste `[]`
+(cas normal et frequent, pas une anomalie a signaler).
+
 PROXY = ANCRAGE DE VERITE POUR `insiderPct` (regle stricte, pas une simple
 priorite parmi d'autres) : le dernier proxy statement/DEF 14A (US) ou
 document d'assemblee generale/rapport annuel (Europe) - concretement, son
@@ -359,16 +386,39 @@ Sous-champs :
   quand disponible (ex: "DEF 14A depose le 2026-03-15 (corrobore par
   WallStreetZen)" ou, a defaut de proxy exploitable, "WallStreetZen,
   agrege 2026-06 - pas de proxy exploitable trouve").
-- `notableHolders` : tableau (0 a ~6 entrees, les plus significatives
-  seulement - pas une liste exhaustive) des fonds/investisseurs notables
-  detectes au DERNIER 13F disponible - GERANTS AMERICAINS UNIQUEMENT sur
-  titres cotes aux US (voir PERIMETRE 13F ci-dessus, choix assume, aucune
-  recherche alternative hors US). Chaque entree : `{investor, pct, asOf,
-  source}` - `asOf` au format trimestre ("2026-Q1") pour un 13F (qui a
+- `notableHolders` : tableau (0 a ~6 entrees) des gerants ACTIFS de la
+  WATCHLIST (voir WATCHLIST GERANTS ACTIFS ci-dessus et ANNEXE en fin de
+  document) detectes au DERNIER 13F disponible - GERANTS AMERICAINS
+  UNIQUEMENT sur titres cotes aux US (voir PERIMETRE 13F ci-dessus, choix
+  assume, aucune recherche alternative hors US). Gerants passifs/
+  quasi-indiciels (Vanguard, BlackRock, State Street, etc.) TOUJOURS
+  ECARTES meme si plus gros detenteurs nominal - voir WATCHLIST. Chaque
+  entree : `{investor, pct, tier, movement, asOf, source}` :
+  - `investor` : nom au format "Prenom Nom - Nom du fonds" pour un gerant
+    identifie individuellement, ou nom du fonds seul si pas de gerant
+    unique nomme dans la watchlist (ex: "ValueAct Capital").
+  - `pct` : part du capital de la societe detenue par ce gerant (peut
+    etre tres faible pour une large cap face a un book concentre - ce
+    champ reste informatif, PAS la mesure de la conviction du gerant, qui
+    se lit plutot via le poids de la ligne dans SON PROPRE portefeuille si
+    la source le precise, a mentionner dans `source` le cas echeant).
+  - `tier` : `1` ou `2` selon la watchlist - determine l'ordre d'affichage
+    (Tier 1 toujours en premier).
+  - `movement` : PHRASE COURTE optionnelle signalant un changement vs le
+    13F precedent SI la comparaison est disponible pour ce refresh
+    (ex: "position nouvelle", "renforcee vs 13F precedent", "reduite vs
+    13F precedent", "sortie de position" si un gerant present au refresh
+    precedent a disparu - a mentionner meme si le gerant sort de la
+    liste). `null` si non determinable ou lors d'une creation (Operation
+    A, pas de 13F precedent a comparer) - recherche a caractere BEST
+    EFFORT, ne bloque jamais le refresh si la comparaison n'est pas
+    trouvable.
+  `asOf` au format trimestre ("2026-Q1") pour un 13F (qui a
   intrinsequement jusqu'a ~45 jours de delai de depot apres la fin du
   trimestre couvert - a garder en tete comme decalage structurel, jamais
-  presente comme temps reel). Tableau vide `[]` si rien de notable trouve
-  ou si le titre est hors perimetre 13F.
+  presente comme temps reel). Tableau vide `[]` si aucun gerant de la
+  watchlist detecte ou si le titre est hors perimetre 13F (cas normal et
+  frequent, pas une anomalie a signaler).
 - `coverageNote` : PHRASE COURTE precisant que `notableHolders` est hors
   perimetre pour CE titre quand pertinent (titre non cote aux US - voir
   PERIMETRE 13F). `null` si le titre est normalement couvert (cas general
@@ -713,11 +763,14 @@ integre-le des maintenant a "data".
   jour de la derniere guidance pluriannuelle communiquee, `null` a defaut).
 - Recherche egalement, en parallele et hors boucle de projection, le champ
   `ownership` (voir SCHEMA pour la definition complete, la regle PROXY =
-  ANCRAGE DE VERITE, et le perimetre 13F assume) : `insiderPct` ancre sur
-  le dernier proxy/rapport annuel disponible en priorite (agregateur en
-  corroboration ou repli seulement), `insiderDesc`/`insiderSource`, et
-  jusqu'a ~6 `notableHolders` issus du dernier 13F disponible - gerants
-  americains sur titres cotes aux US UNIQUEMENT, tableau vide et
+  ANCRAGE DE VERITE, le perimetre 13F assume, et la WATCHLIST GERANTS
+  ACTIFS) : `insiderPct` ancre sur le dernier proxy/rapport annuel
+  disponible en priorite (agregateur en corroboration ou repli seulement),
+  `insiderDesc`/`insiderSource`, et jusqu'a ~6 `notableHolders` filtres sur
+  la watchlist de gerants actifs (voir ANNEXE) issus du dernier 13F
+  disponible - gerants americains sur titres cotes aux US UNIQUEMENT,
+  gerants passifs/quasi-indiciels toujours ecartes meme si plus gros
+  detenteurs, `tier`/`movement` renseignes par entree, tableau vide et
   `coverageNote` renseignee si le titre est hors perimetre (aucune
   recherche d'equivalent local hors US). Ecrit dans le meme mouvement le
   snapshot `history` (ajout du point precedent avant remplacement de
@@ -1061,3 +1114,109 @@ listant tous les codes de `manifest.json`) ET le contenu actuel de
    quelles, pret a remplacer le fichier existant sur GitHub. Jamais de
    `data/CODE.json` individuel touche, jamais de reference a
    `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`/`ownership`/`compliance`.
+
+## ANNEXE - WATCHLIST GERANTS ACTIFS (13F)
+
+Liste FERMEE utilisee pour filtrer `notableHolders` (voir WATCHLIST
+GERANTS ACTIFS - CRITERE DE SELECTION dans la definition du champ
+`ownership`). Base sur la liste "Superinvestors" de Dataroma, complementee
+de quelques gerants growth/tech concentres pour rehausser la couverture
+value historiquement dominante de cette base. Liste vivante : a etoffer au
+fil des sessions si un gerant actif pertinent et recurrent n'y figure pas
+encore - jamais purgee retroactivement sans instruction explicite de
+l'utilisateur.
+
+Gerants explicitement HORS watchlist par principe (passifs/quasi-indiciels,
+jamais recherches ni affiches dans `notableHolders` meme en cas de detention
+importante) : Vanguard Group, BlackRock, State Street, Fidelity
+(gamme indicielle), Geode Capital Management, Northern Trust, Principal
+Financial Group, Charles Schwab, Invesco (gamme ETF), Capital Group/
+American Funds, Norges Bank Investment Management, Wellington Management
+(diversifie a grande echelle).
+
+### TIER 1 - gerants a plus forte notoriete/conviction (toujours prioritaires
+### dans l'affichage si presents au dernier 13F)
+- Warren Buffett - Berkshire Hathaway
+- Bill Ackman - Pershing Square Capital Management
+- Carl Icahn - Icahn Capital Management
+- David Einhorn - Greenlight Capital
+- David Tepper - Appaloosa Management
+- Daniel Loeb - Third Point
+- Seth Klarman - Baupost Group
+- Chase Coleman - Tiger Global Management
+- Stephen Mandel - Lone Pine Capital
+- Nelson Peltz - Trian Fund Management
+- Terry Smith - Fundsmith
+- Chris Hohn - TCI Fund Management
+- Mohnish Pabrai - Pabrai Investments
+- Chuck Akre - Akre Capital Management
+- Prem Watsa - Fairfax Financial Holdings
+- Viking Global Investors
+- ValueAct Capital
+- Li Lu - Himalaya Capital Management
+- Francois Rochon - Giverny Capital
+- Bill Nygren - Oakmark Funds
+- Mason Hawkins - Southeastern Asset Management
+- Leon Cooperman
+- Brad Gerstner - Altimeter Capital (ajout - growth/tech concentre)
+- Philippe Laffont - Coatue Management (ajout - growth/tech concentre)
+
+### TIER 2 - reste de la watchlist (affiches en complement du Tier 1, ou
+### seuls si aucun Tier 1 present au 13F du titre)
+- Abrams Bison Investments
+- Lee Ainslie - Maverick Capital
+- Bruce Berkowitz - Fairholme Capital
+- Bill & Melinda Gates Foundation Trust
+- Norbert Lou - Punch Card Management
+- Henry Ellenbogen - Durable Capital Partners
+- Christopher Bloomstran - Semper Augustus
+- Glenn Greenberg - Brave Warrior Advisors
+- Alex Roepers - Atlantic Investment Management
+- David Rolfe - Wedgewood Partners
+- Glenn Welling - Engaged Capital
+- Clifford Sosin - CAS Investment Partners
+- Arnold Van Den Berg - Century Management
+- Bryan Lawrence - Oakcliff Capital
+- Bill Miller - Miller Value Partners
+- Pat Dorsey - Dorsey Asset Management
+- AKO Capital
+- Hillman Capital Management
+- Tom Bancroft - Makaira Partners
+- Ruane Cunniff LP
+- Greg Alexander - Conifer Management
+- John Rogers - Ariel Investments
+- David Abrams - Abrams Capital Management
+- First Eagle Investment Management
+- Dennis Hong - ShawSpring Partners
+- Sarah Ketterer - Causeway Capital Management
+- Wallace Weitz - Weitz Investment Management
+- Dodge & Cox Funds
+- Francis Chou - Chou Associates
+- Samantha McLemore - Patient Capital Management
+- Polen Capital Management
+- First Pacific Advisors
+- Mairs & Power Funds
+- Third Avenue Management
+- Thomas Russo - Gardner Russo & Quinn
+- Vulcan Value Partners
+- Robert Vinall - RV Capital GmbH
+- Josh Tarasoff - Greenlea Lane Capital
+- Kahn Brothers Group
+- Harry Burn - Sound Shore
+- William Von Mueffling - Cantillon Capital Management
+- Christopher Davis - Davis Advisors
+- Tweedy Browne
+- Muhlenkamp
+- Jensen Investment Management
+- Steven Check - Check Capital Management
+- Thomas Gayner - Markel Group
+- Yacktman Asset Management
+- Whale Rock Capital Partners (ajout - growth/tech concentre)
+- D1 Capital Partners (ajout - growth/multi-strategie concentre)
+- Generation Investment Management (ajout - growth/qualite concentre)
+
+Non retenus a ce stade (AUM/notoriete tres faibles ou frequence de mise a
+jour peu fiable) : Triple Frond Partners, AltaRock Partners, Valley Forge
+Capital Management, Torray Funds - a reconsiderer au cas par cas si l'un
+d'eux devient pertinent sur une valeur specifique du portefeuille (small/
+mid cap notamment).
