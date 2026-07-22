@@ -49,6 +49,28 @@ data/
     {"text":"Explication CONCRETE et complete du fait pris en compte (jamais un chiffre seul).","valuePct":5}
   ],
   "nextEvent": {"label":"Q3 26","date":null},
+  "ownership": {
+    "asOf":"2026-07-22",
+    "insiderPct":4.1,
+    "insiderDesc":"Dirigeants et famille fondatrice (ex: Mendelson) - description courte du bloc de controle.",
+    "insiderSource":"Proxy statement/DEF 14A (date), ou agregateur si le proxy n'est pas exploitable - source nommee explicitement.",
+    "notableHolders":[
+      {"investor":"Vanguard Group","pct":10.1,"asOf":"2026-Q1","source":"13F Q1 2026"},
+      {"investor":"BlackRock","pct":7.0,"asOf":"2026-Q1","source":"13F Q1 2026"}
+    ],
+    "coverageNote":"Precision sur la couverture 13F pour ce titre (voir OWNERSHIP ci-dessous) - null si sans objet (titre US couvert normalement).",
+    "history":[
+      {"asOf":"2026-01-15","insiderPct":4.3},
+      {"asOf":"2026-04-10","insiderPct":4.1}
+    ]
+  },
+  "compliance": {
+    "asOf":"2026-07-22",
+    "items":[
+      {"year":2026,"title":"Phrase courte et complete du fait ou de l'allegation.","allegedBy":"SEC, cabinet d'avocats plaignants, ou vendeur a decouvert nomme","date":"2026-07-16","status":"sollicitation|enquete_en_cours|plainte_deposee|reglee|classee_sans_suite|condamnation|non_fondee","outcome":null,"source":"Source nommee + date"}
+    ],
+    "note":"Synthese courte, ou confirmation explicite qu'aucun element n'a ete trouve."
+  },
   "hypothese": {
     "date":"2026-07-02",
     "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
@@ -267,6 +289,213 @@ raisonnement E1-E8 par lui-meme (une cible LT peut neanmoins alimenter un
 projection - dans ce cas le lien vers l'id de l'ancrage peut etre
 mentionne ici en une incise courte).
 
+Le champ `ownership` porte un ETAT DES LIEUX FACTUEL ET APPROXIMATIF de
+l'actionnariat du titre, affiche par l'app dans le bloc "Hypothese
+actuelle" en une petite rubrique dediee, juste apres le bloc guidance
+(voir `guidanceHistory`/`guidanceLongTerme`) et avant le texte de these.
+Recherche et renseigne a CHAQUE creation et CHAQUE refresh (Operations A et
+B uniquement - jamais par l'Operation C, au meme titre que le reste de
+`hypothese`/`nextEvent`). Ce champ ne fait PAS partie de la boucle E1-E8 :
+il ne participe a aucun raisonnement de projection et n'influence jamais
+directement les adjXXX. Contrairement a `dernierCall`/`guidanceHistory` il
+n'est pas imbrique dans `hypothese` (il vit au niveau racine, comme
+`nextEvent`), car il ne depend pas d'un trimestre precis. L'etat COURANT
+(`asOf`/`insiderPct`/`insiderDesc`/`insiderSource`/`notableHolders`/
+`coverageNote`) est remplace integralement a chaque recherche ; SEUL le
+sous-champ `history` est cumulatif (voir mecanique dediee plus bas) - a ne
+pas confondre avec `guidanceHistory`, qui suit une logique de reset par
+exercice fiscal sans equivalent ici.
+
+PERIMETRE 13F - CHOIX ASSUME, PAS UNE LACUNE : `notableHolders` ne couvre
+QUE les gerants americains sur des titres cotes aux US (regime de
+declaration Form 13F aupres de la SEC). AUCUNE recherche d'equivalent
+europeen (franchissements de seuil AMF/BaFin/Consob etc.) n'est tentee -
+ce n'est pas un manque a combler au cas par cas mais une limite de
+perimetre deliberee du champ, pour eviter une recherche disparate et peu
+fiable titre par titre selon la juridiction. Pour un titre non couvert par
+le regime 13F (non cote aux US), `notableHolders` reste simplement `[]` et
+`coverageNote` le precise en une phrase (ex: "Titre cote sur Euronext
+Varsovie, hors perimetre 13F US - notableHolders non recherche pour ce
+titre, choix de perimetre assume du modele").
+
+PROXY = ANCRAGE DE VERITE POUR `insiderPct` (regle stricte, pas une simple
+priorite parmi d'autres) : le dernier proxy statement/DEF 14A (US) ou
+document d'assemblee generale/rapport annuel (Europe) - concretement, son
+tableau de detention beneficiaire ("beneficial ownership table" ou
+equivalent) - EST la source retenue des qu'il est accessible et lisible,
+sans exception. Toute AUTRE source (agregateur, presse financiere) n'est
+utilisee QUE pour CORROBORER ce chiffre (verifier qu'il n'y a pas d'ecart
+massif ou de mouvement recent non reflete par un proxy potentiellement
+ancien), JAMAIS pour le remplacer ou le moyenner avec lui :
+- Si l'agregateur CONFIRME l'ordre de grandeur du proxy : `insiderSource`
+  cite le proxy en source principale, avec une mention courte de
+  corroboration (ex: "DEF 14A depose le 2026-03-15 (corrobore par
+  WallStreetZen, ecart <0.5pt)").
+- Si l'agregateur DIVERGE materiellement (>5pts) : LE PROXY PRIME toujours
+  - ne jamais le remplacer par le chiffre de l'agregateur. Documenter
+  l'ecart observe dans `insiderDesc` ou `insiderSource` plutot que de le
+  passer sous silence (ex: mouvement d'insider recent post-proxy, base de
+  calcul differente de l'agregateur).
+- Si AUCUN proxy n'est accessible/lisible pour ce titre (cas rare pour une
+  valeur suivie) : replier sur un agregateur reputable, nomme
+  explicitement, avec la reserve explicite que le chiffre est un ORDRE DE
+  GRANDEUR non ancre sur une source primaire cette fois-ci.
+NE JAMAIS presenter ces chiffres avec une fausse precision (decimales
+multiples, absence de reserve) dans la reponse a l'utilisateur.
+
+Sous-champs :
+- `asOf` : date de la recherche (format ISO), pas necessairement la date
+  d'arrete du chiffre sous-jacent (qui peut etre plus ancienne - voir
+  `insiderSource`/`notableHolders[].asOf`).
+- `insiderPct` : pourcentage APPROXIMATIF du capital detenu par les
+  dirigeants/fondateurs/administrateurs (insiders), ancre sur le proxy
+  (voir regle ci-dessus). `null` si aucune source exploitable trouvee
+  (plutot que d'estimer).
+- `insiderDesc` : PHRASE COURTE identifiant QUI compose ce bloc (ex:
+  "Famille Mendelson, structure a double classe d'actions" ou "Dirigeants
+  et administrateurs, sans famille fondatrice identifiee") - jamais un
+  chiffre seul sans ce contexte qualitatif.
+- `insiderSource` : source nommee + date de l'arrete, PROXY EN PREMIER
+  quand disponible (ex: "DEF 14A depose le 2026-03-15 (corrobore par
+  WallStreetZen)" ou, a defaut de proxy exploitable, "WallStreetZen,
+  agrege 2026-06 - pas de proxy exploitable trouve").
+- `notableHolders` : tableau (0 a ~6 entrees, les plus significatives
+  seulement - pas une liste exhaustive) des fonds/investisseurs notables
+  detectes au DERNIER 13F disponible - GERANTS AMERICAINS UNIQUEMENT sur
+  titres cotes aux US (voir PERIMETRE 13F ci-dessus, choix assume, aucune
+  recherche alternative hors US). Chaque entree : `{investor, pct, asOf,
+  source}` - `asOf` au format trimestre ("2026-Q1") pour un 13F (qui a
+  intrinsequement jusqu'a ~45 jours de delai de depot apres la fin du
+  trimestre couvert - a garder en tete comme decalage structurel, jamais
+  presente comme temps reel). Tableau vide `[]` si rien de notable trouve
+  ou si le titre est hors perimetre 13F.
+- `coverageNote` : PHRASE COURTE precisant que `notableHolders` est hors
+  perimetre pour CE titre quand pertinent (titre non cote aux US - voir
+  PERIMETRE 13F). `null` si le titre est normalement couvert (cas general
+  des valeurs US ou des ADR US-listees).
+- `history` : tableau CUMULATIF (mecanique dediee ci-dessous) des
+  instantanes `{asOf, insiderPct}` successifs, permettant a l'app
+  d'afficher l'EVOLUTION du niveau de detention des insiders au fil des
+  refresh dans l'annee - PAS les `notableHolders` (fonds 13F, pas suivis
+  dans le temps ici, uniquement l'etat courant).
+
+MECANIQUE DE `history` (a appliquer a l'ecriture, avant E8, meme logique
+de non-alteration retroactive que `priorEPS`) :
+- CREATION (Operation A) : `history` demarre a un tableau VIDE `[]` (aucun
+  refresh anterieur a snapshotter).
+- REFRESH (Operation B) : AVANT de remplacer l'etat courant, prendre
+  `{asOf, insiderPct}` de l'ANCIEN `ownership` fourni en entree (s'il
+  existe et si `insiderPct` n'y est pas `null`) et l'AJOUTER a la suite de
+  l'ancien tableau `history` (repris tel quel, jamais recalcule) - cette
+  copie est un simple horodatage, jamais reinterpretee. Si l'ancien
+  `ownership` est absent (titre cree avant l'introduction de ce champ),
+  `history` demarre a `[]` comme en creation plutot que de bloquer le
+  refresh.
+- PLAFOND : conserver au maximum les 8 POINTS LES PLUS RECENTS dans
+  `history` (au-dela, retirer les plus anciens en premier) - suffisant
+  pour visualiser la tendance sur ~2 ans de refresh sans faire grossir le
+  fichier indefiniment.
+- Champ mecanique et cumulatif (comme `guidanceHistory`), il ne participe
+  a aucun raisonnement de E1-E8 - une hausse ou une baisse du pourcentage
+  insiders n'est PAS en soi un signal a traduire en ancrage ; c'est un
+  repere de gouvernance affiche a l'utilisateur, qui en tire ses propres
+  conclusions.
+
+Champ purement factuel et de synthese, au meme titre que `dernierCall`/
+`priorEPS` : il ne participe a aucun calcul et ne doit jamais influencer un
+`ancrages` ou un adjXXX (l'actionnariat n'est pas un moteur de projection
+financiere dans ce modele - c'est un repere de gouvernance/contexte pour
+l'utilisateur, en ligne avec son critere de selection de titres "founder
+mode").
+
+Le champ `compliance` porte un ETAT DES LIEUX FACTUEL des fraudes averees
+ou allegations de fraude (par des regulateurs, cabinets d'avocats
+plaignants, ou analystes/vendeurs a decouvert activistes type Muddy
+Waters/Hindenburg/Citron) touchant le titre, affiche par l'app dans le
+bloc "Hypothese actuelle" en une petite rubrique dediee, juste apres la
+rubrique `ownership`. Recherche et renseigne a CHAQUE creation et CHAQUE
+refresh (Operations A et B uniquement - jamais par l'Operation C), au meme
+titre que le reste de `hypothese`/`nextEvent`/`ownership`. Vit au niveau
+racine du JSON (comme `ownership`), hors `hypothese`. Ce champ ne fait PAS
+partie de la boucle E1-E8 : il ne participe a aucun raisonnement de
+projection et n'influence jamais directement les adjXXX - un repere de
+diligence/gouvernance pour l'utilisateur, pas un intrant de modelisation.
+
+PORTEE DE LA RECHERCHE : uniquement des faits ou allegations de FRAUDE (ou
+pratique commerciale gravement trompeuse assimilable) - PAS le contentieux
+commercial ou social ordinaire (litiges clients, prud'hommes, conflits de
+brevets, class actions "consommateur" courantes type frais/pratiques
+tarifaires) qui releve de la marche normale des affaires et n'a pas sa
+place ici. La distinction : une plainte pour rupture de contrat ou un
+desaccord commercial n'est PAS une allegation de fraude ; une accusation
+de manipulation comptable, de tromperie des investisseurs, ou une enquete
+de la SEC/DOJ pour fraude en valeurs mobilieres, l'EST. En cas de doute sur
+la pertinence d'un element trouve, privilegier l'inclusion avec un statut
+et une caracterisation prudente plutot que l'omission silencieuse.
+CREATION : recherche etendue a TOUT l'historique public raisonnablement
+accessible du titre (depuis l'introduction en bourse si pertinent), pas
+seulement le dernier trimestre.
+
+MECANIQUE D'ACCUMULATION (a la difference de `ownership` qui remplace son
+etat courant, `compliance.items` est un REGISTRE CUMULATIF, jamais purge -
+integrite d'un historique de diligence) :
+- CREATION (Operation A) : `items` recense tout ce qui est trouve dans
+  l'historique public du titre ; tableau vide `[]` (jamais absent) si rien
+  trouve, accompagne d'une `note` le confirmant explicitement (voir
+  sous-champs).
+- REFRESH (Operation B) : reprendre `items` TEL QUEL depuis l'ancien JSON
+  fourni (aucune entree existante supprimee ni recalculee - meme logique
+  de non-alteration retroactive que `priorEPS`/`guidanceHistory`), puis :
+  - AJOUTER toute nouvelle allegation/procedure detectee depuis le dernier
+    `asOf` (recherche ciblee sur la periode ecoulee, pas de re-recherche
+    exhaustive de tout l'historique a chaque refresh).
+  - METTRE A JOUR le `status`/`outcome` d'une entree EXISTANTE si son issue
+    a evolue (ex: enquete classee sans suite, plainte deposee, reglement,
+    condamnation) - modification EN PLACE de l'entree, jamais duplication.
+  - Aucun plafond de taille (contrairement a `ownership.history`) : un
+    registre de diligence ne se purge pas pour des raisons de place.
+- Si `compliance` est absent de l'ancien JSON fourni (titre cree avant
+  l'introduction de ce champ) : traiter comme une creation (recherche
+  etendue a tout l'historique) plutot que bloquer le refresh.
+
+Sous-champs :
+- `asOf` : date de la recherche (format ISO).
+- `items` : tableau (0 a N entrees, PAS de limite haute) :
+  - `year` : annee (entier) du fait ou du debut de l'allegation.
+  - `title` : PHRASE COURTE ET COMPLETE decrivant le fait (jamais un mot-cle
+    seul) - ex: "Enquete de cabinets d'avocats plaignants US sur une
+    possible fraude en valeurs mobilieres, ouverte a la suite de la chute
+    du titre consecutive a l'annonce du depart du CEO."
+  - `allegedBy` : QUI porte l'accusation/l'enquete - nomme explicitement
+    (ex: "SEC", "Pomerantz LLP, Bragar Eagel & Squire (cabinets d'avocats
+    plaignants)", "Muddy Waters Research"). Distinguer explicitement dans
+    `title`/`allegedBy` un rapport de vendeur a decouvert activiste (biais
+    connu : profite de la baisse qu'il provoque) d'une enquete d'un
+    regulateur (SEC/DOJ) ou d'une action en justice deposee - la nature de
+    la source conditionne le niveau de credibilite a accorder.
+  - `date` : date du fait/de l'annonce, format ISO.
+  - `status` : un parmi `"sollicitation"` (cabinet d'avocats sollicitant
+    des plaignants, stade le plus preliminaire - tres frequent apres toute
+    baisse de cours materielle, ne prejuge de rien), `"enquete_en_cours"`
+    (enquete reglementaire ouverte), `"plainte_deposee"` (class action ou
+    poursuite formellement deposee), `"reglee"` (accord transactionnel),
+    `"classee_sans_suite"`, `"condamnation"`, `"non_fondee"` (allegation
+    infirmee/demontree fausse).
+  - `outcome` : PHRASE COURTE sur l'issue si connue (montant d'accord,
+    date de classement, etc.), sinon `null` si encore en cours.
+  - `source` : source nommee + date.
+- `note` : PHRASE COURTE de synthese globale. Si aucun element trouve :
+  confirmer explicitement la recherche plutot que laisser un doute (ex:
+  "Aucune fraude averee ni allegation par un analyste/vendeur a decouvert
+  activiste identifiee dans l'historique du titre a ce jour (recherche du
+  2026-07-22)").
+
+Champ purement factuel, au meme titre que `ownership`/`dernierCall` : il
+ne participe a aucun calcul et n'influence jamais un `ancrages` ou un
+adjXXX. Une allegation en cours n'est PAS a traduire en decote de
+valorisation dans les projections - c'est un repere de diligence affiche
+tel quel, l'utilisateur en tire ses propres conclusions.
+
 ## LES TROIS OPERATIONS POSSIBLES
 
 Il n'existe que TROIS types de requetes possibles. Identifie laquelle des
@@ -418,7 +647,10 @@ n'est jamais une analyse plus pauvre qu'une creation. Il RECALCULE TOUT A
 NEUF (il ne pousse jamais l'ancienne projection d'un cran).
 
 L'Operation C (nextEvent) n'entre PAS dans cette boucle : voir sa propre
-description plus haut.
+description plus haut. Les champs `ownership` et `compliance` n'entrent
+pas non plus dans cette boucle (voir leur description dans le SCHEMA) -
+ils sont recherches/ecrits en parallele de la boucle, comme `nextEvent`,
+mais jamais utilises comme intrant d'un ancrage ou d'un adjXXX.
 
 ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
 retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
@@ -479,6 +711,28 @@ integre-le des maintenant a "data".
   tableau accumule depuis l'ancien JSON, ou reset si nouvel exercice fiscal
   - voir mecanique dans le SCHEMA) et `guidanceLongTerme` (recherche/mise a
   jour de la derniere guidance pluriannuelle communiquee, `null` a defaut).
+- Recherche egalement, en parallele et hors boucle de projection, le champ
+  `ownership` (voir SCHEMA pour la definition complete, la regle PROXY =
+  ANCRAGE DE VERITE, et le perimetre 13F assume) : `insiderPct` ancre sur
+  le dernier proxy/rapport annuel disponible en priorite (agregateur en
+  corroboration ou repli seulement), `insiderDesc`/`insiderSource`, et
+  jusqu'a ~6 `notableHolders` issus du dernier 13F disponible - gerants
+  americains sur titres cotes aux US UNIQUEMENT, tableau vide et
+  `coverageNote` renseignee si le titre est hors perimetre (aucune
+  recherche d'equivalent local hors US). Ecrit dans le meme mouvement le
+  snapshot `history` (ajout du point precedent avant remplacement de
+  l'etat courant, plafonne a 8 points - voir mecanique dans le SCHEMA). Ne
+  bloque jamais l'analyse si une source fiable n'est pas trouvee (`null`/
+  tableau vide plutot qu'une estimation).
+- Recherche egalement, en parallele et hors boucle de projection, le champ
+  `compliance` (voir SCHEMA pour la definition complete, la portee limitee
+  aux fraudes/allegations de fraude, et la mecanique de registre cumulatif
+  jamais purge) : en CREATION, recherche etendue a tout l'historique
+  public du titre ; en REFRESH, recherche ciblee sur la periode ecoulee
+  depuis le dernier `asOf`, entrees existantes reprises telles quelles
+  (statut mis a jour en place si une issue est connue), jamais supprimees.
+  Tableau `items` vide mais `note` renseignee explicitement si rien trouve
+  - jamais laisser planer un doute entre "rien cherche" et "rien trouve".
 
 ### E3. EVENEMENTS PARTICULIERS & SEGMENTS
 GEOMETRIE VARIABLE : titre simple -> deux mentions "aucun evenement" et
@@ -743,7 +997,17 @@ lecture non reductibles a un moteur).
    sous-champs sans donnee trouvee, jamais bloquant. `hypothese.
    guidanceHistory` demarre a une ligne unique (ce call) et `hypothese.
    guidanceLongTerme` renseigne si une guidance pluriannuelle existe, sinon
-   `null` (voir SCHEMA).
+   `null` (voir SCHEMA). `ownership` renseigne (insiders ancres sur le
+   dernier proxy en priorite, notableHolders 13F US uniquement trouves lors
+   de la recherche E2, `coverageNote` si le titre n'est pas couvert par le
+   regime 13F, `history` VIDE `[]` - aucun refresh anterieur a
+   snapshotter - voir SCHEMA), sans jamais bloquer la creation si une
+   source fiable manque. `compliance` renseigne (recherche etendue a tout
+   l'historique public du titre - fraudes averees, enquetes, allegations
+   par regulateurs/cabinets d'avocats plaignants/vendeurs a decouvert
+   activistes, jamais le contentieux commercial ordinaire), `items` vide
+   `[]` avec `note` confirmant explicitement l'absence d'element trouve si
+   c'est le cas plutot que de laisser un doute.
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -767,11 +1031,23 @@ confirmer le nom/code, il est deja connu.
    (ajout d'une ligne si meme `fyGuided` que la derniere ligne existante,
    reset a une ligne unique si nouvel exercice fiscal - voir SCHEMA) ;
    `hypothese.guidanceLongTerme` reconduit tel quel ou remplace si une
-   communication plus recente l'a mise a jour.
+   communication plus recente l'a mise a jour. `ownership` RE-RECHERCHE et
+   REMPLACE integralement son etat courant (asOf/insiderPct/insiderDesc/
+   insiderSource/notableHolders/coverageNote), MAIS AVANT ce remplacement
+   snapshotte `{asOf, insiderPct}` de l'ANCIEN `ownership` dans son propre
+   `history` (tableau cumulatif propre a `ownership`, plafonne a 8 points -
+   mecanique dediee, distincte de `guidanceHistory` - voir SCHEMA), sans
+   jamais bloquer le refresh si une source fiable manque. `compliance`
+   REPREND `items` de l'ancien JSON TEL QUEL (rien supprime), AJOUTE toute
+   nouvelle allegation/procedure detectee depuis le dernier `asOf`, et MET
+   A JOUR en place le `status`/`outcome` des entrees existantes dont
+   l'issue a evolue - jamais de reecriture retroactive du contenu d'une
+   ancienne entree au-dela de son statut/issue.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
-   `guidanceLongTerme` et `nextEvent` inclus), pret a remplacer le fichier
-   `data/CODE.json` existant sur GitHub tel quel.
+   `guidanceLongTerme`, `ownership`, `compliance` et `nextEvent` inclus),
+   pret a remplacer le fichier `data/CODE.json` existant sur GitHub tel
+   quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
@@ -784,4 +1060,4 @@ listant tous les codes de `manifest.json`) ET le contenu actuel de
    mises a jour + entrees existantes non redemandees conservees telles
    quelles, pret a remplacer le fichier existant sur GitHub. Jamais de
    `data/CODE.json` individuel touche, jamais de reference a
-   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`.
+   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`/`ownership`/`compliance`.
