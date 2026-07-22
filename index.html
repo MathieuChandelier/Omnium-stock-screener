@@ -659,7 +659,7 @@ function refreshAllPrices(){
   // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
   // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
   // en quelques secondes au lieu de defiler titre par titre.
-  const CONCURRENCY=12;
+  const CONCURRENCY=6;
   let i=0;
   const worker=async()=>{
     while(i<keys.length){
@@ -721,7 +721,7 @@ function _priceIsPlausible(p,ref,liveConfirmed){
 
 async function fetchFromGoogleFinance(sym){
   try{
-    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(6000)});
+    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
     if(!r.ok)return null;
     const j=await r.json();
     const price=+j?.price;
@@ -731,7 +731,7 @@ async function fetchFromGoogleFinance(sym){
 
 async function _fetchFromYahoo(sym){
   try{
-    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(5000)});
+    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(8000)});
     if(!r.ok)return null;
     const j=await r.json();
     if(!j||!j.price)return null;
@@ -1076,28 +1076,136 @@ function renderDernierCall(dc, ticker){
       ${pctBadge(epsDelta)}
     </div>`:'';
   const resultsBlock=(caLine||epsLine)?`<div>
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats${q?' '+q:''} vs consensus</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats${q?' '+q:''} vs consensus</div>
       ${caLine}${epsLine}
     </div>`:'';
 
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
     </div>`:'';
   const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
     </div>`:'';
   const points=(dc.pointsCles||[]).filter(Boolean);
   const pointsBlock=points.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Points clés du call</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Points clés du call</div>
       ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
     </div>`:'';
 
   if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
   return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
     ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
+  </div>`;
+}
+
+// Bloc "Actionnariat" (insiders + fonds notables au dernier 13F) - voir le
+// champ `ownership` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
+// Champ FACTUEL et APPROXIMATIF par nature (sources d'actionnariat souvent
+// contradictoires entre elles, delai structurel des 13F ~45j) : jamais
+// utilise pour un calcul, purement informatif pour l'utilisateur. Affiche
+// juste sous le bloc "dernier trimestre publie", avant le texte de these.
+// L'evolution du % insiders au fil des refresh (voir ownership.history,
+// mecanique de snapshot cumulatif plafonnee a 8 points - voir
+// INSTRUCTIONS.md) est visualisee via un badge de delta vs le point
+// precedent, plus une ligne "Historique" compacte reprenant toute la serie.
+function renderOwnership(own, ticker){
+  if(!own)return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const fmtShortDate=(iso)=>{
+    if(!iso)return'';
+    const p=String(iso).split('-');
+    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
+  };
+  const hasInsider=own.insiderPct!=null&&own.insiderPct!=='';
+  const hist=(own.history||[]).filter(h=>h&&h.insiderPct!=null&&h.insiderPct!=='');
+  const lastHist=hist.length?hist[hist.length-1]:null;
+  const deltaPt=(hasInsider&&lastHist)?(+own.insiderPct-+lastHist.insiderPct):null;
+  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% au ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPt>=0?'var(--teal-text)':'#e05252'};background:${deltaPt>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:1px 6px;white-space:nowrap;">${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt</span>`:'';
+
+  const insiderLine=hasInsider?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
+      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">Insiders</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+own.insiderPct).toFixed(1)}%</span>
+      ${deltaBadge}
+      ${own.insiderDesc?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(own.insiderDesc)}</span>`:''}
+    </div>`:'';
+  const insiderSrc=own.insiderSource?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:1px;">${esc(own.insiderSource)}</div>`:'';
+
+  const trail=hist.concat(hasInsider?[{asOf:own.asOf,insiderPct:own.insiderPct}]:[]);
+  const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">Historique : ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
+
+  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor);
+  const holdersBlock=holders.length?`<div style="margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds notables (13F)</div>
+      ${holders.map(h=>`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
+        <span style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(h.investor)}</span>
+        ${h.pct!=null?`<span style="font-size:11.5px;color:var(--text);">${(+h.pct).toFixed(1)}%</span>`:''}
+        ${h.asOf?`<span style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(h.asOf)}</span>`:''}
+      </div>`).join('')}
+    </div>`:'';
+
+  const coverageNote=own.coverageNote?`<div style="font-size:10.5px;color:var(--gold-text);font-family:'Quattrocento Sans',serif;font-style:italic;line-height:1.4;margin-top:${holders.length||hasInsider?8:0}px;">⚠ ${esc(own.coverageNote)}</div>`:'';
+
+  if(!insiderLine&&!holdersBlock&&!coverageNote)return '';
+  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Actionnariat${own.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(own.asOf)}</span>`:''}</div>
+    ${insiderLine}${insiderSrc}${trailLine}${holdersBlock}${coverageNote}
+  </div>`;
+}
+
+// Bloc "Compliance" (fraudes averees / allegations de fraude par regulateurs,
+// cabinets d'avocats plaignants, ou vendeurs a decouvert activistes) - voir le
+// champ `compliance` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
+// Champ FACTUEL, registre CUMULATIF jamais purge (contrairement a `ownership`
+// qui remplace son etat courant) : chaque entree garde sa trace, seul son
+// statut/issue peut etre mis a jour en place au fil des refresh. Affiche
+// juste sous le bloc "Actionnariat", avant le texte de these. Jamais utilise
+// pour un calcul, purement informatif/diligence pour l'utilisateur.
+function renderCompliance(comp, ticker){
+  if(!comp)return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const STATUS_LABEL={
+    sollicitation:'Sollicitation d\'avocats',
+    enquete_en_cours:'Enquête en cours',
+    plainte_deposee:'Plainte déposée',
+    reglee:'Réglée',
+    classee_sans_suite:'Classée sans suite',
+    condamnation:'Condamnation',
+    non_fondee:'Non fondée'
+  };
+  const STATUS_COLOR={
+    sollicitation:'var(--muted)',
+    enquete_en_cours:'var(--gold-text)',
+    plainte_deposee:'var(--gold-text)',
+    reglee:'var(--navy)',
+    classee_sans_suite:'var(--teal-text)',
+    condamnation:'#e05252',
+    non_fondee:'var(--teal-text)'
+  };
+  const items=(comp.items||[]).filter(it=>it&&it.title);
+  const itemsBlock=items.length?items.map(it=>{
+    const statusLbl=it.status?(STATUS_LABEL[it.status]||esc(it.status)):null;
+    const statusCol=it.status?(STATUS_COLOR[it.status]||'var(--muted)'):'var(--muted)';
+    return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.1);">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        ${it.year?`<span style="font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(it.year)}</span>`:''}
+        ${statusLbl?`<span style="font-size:9.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${statusCol};background:rgba(0,1,144,.06);border-radius:5px;padding:1px 7px;text-transform:uppercase;letter-spacing:.03em;">${statusLbl}</span>`:''}
+      </div>
+      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:3px;">${esc(it.title)}</div>
+      ${it.allegedBy?`<div style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:2px;">Par : ${esc(it.allegedBy)}</div>`:''}
+      ${it.outcome?`<div style="font-size:11.5px;color:var(--text);font-style:italic;margin-top:2px;">${esc(it.outcome)}</div>`:''}
+      ${it.source?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;">${esc(it.source)}${it.date?' · '+esc(it.date):''}</div>`:''}
+    </div>`;
+  }).join(''):'';
+
+  const note=comp.note?`<div style="font-size:11.5px;color:${items.length?'var(--muted)':'var(--teal-text)'};font-style:italic;line-height:1.4;margin-top:${items.length?8:0}px;">${esc(comp.note)}</div>`:'';
+
+  if(!itemsBlock&&!note)return '';
+  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Compliance${comp.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(comp.asOf)}</span>`:''}</div>
+    ${note}${itemsBlock}
   </div>`;
 }
 
@@ -1110,6 +1218,8 @@ function renderContextBullets(ticker, proj, cours){
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
   const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
+  const ownBanner=renderOwnership(d.ownership||null, ticker);
+  const compBanner=renderCompliance(d.compliance||null, ticker);
   const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
@@ -1119,7 +1229,7 @@ function renderContextBullets(ticker, proj, cours){
   const expandId='evtExpand_'+ticker;
   const partList=d.particularites||[];
   const partBanner=partList.length?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.15);">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Particularité(s) prise(s) en compte</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Particularité(s) prise(s) en compte</div>
     ${partList.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;">• ${(p.text||'').replace(/</g,'&lt;')}</div>`).join('')}
   </div>`:'';
   const incoh=checkEpsCoherence(d);
@@ -1130,9 +1240,11 @@ function renderContextBullets(ticker, proj, cours){
 
   traceEl.style.display='block';
   traceEl.innerHTML=`<div style="border-left:3px solid ${impColor};padding:10px 14px;background:rgba(0,1,144,.04);border-radius:0 8px 8px 0;">
-    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
     ${dcBanner}
+    ${ownBanner}
+    ${compBanner}
     <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
     ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
     <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
