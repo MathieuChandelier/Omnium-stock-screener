@@ -1104,8 +1104,10 @@ function renderDernierCall(dc, ticker){
   </div>`;
 }
 
-// Bloc "Actionnariat" (insiders + fonds notables au dernier 13F) - voir le
-// champ `ownership` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
+// Bloc "Actionnariat" (insiders + fonds ACTIFS notables au dernier 13F,
+// filtres sur la watchlist de gerants actifs - gerants passifs/indiciels
+// type Vanguard/BlackRock jamais affiches ici) - voir le champ `ownership`
+// (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
 // Champ FACTUEL et APPROXIMATIF par nature (sources d'actionnariat souvent
 // contradictoires entre elles, delai structurel des 13F ~45j) : jamais
 // utilise pour un calcul, purement informatif pour l'utilisateur. Affiche
@@ -1139,13 +1141,16 @@ function renderOwnership(own, ticker){
   const trail=hist.concat(hasInsider?[{asOf:own.asOf,insiderPct:own.insiderPct}]:[]);
   const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">Historique : ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
 
-  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor);
+  const holders=(own.notableHolders||[]).filter(h=>h&&h.investor)
+    .slice().sort((a,b)=>(+a.tier||2)-(+b.tier||2));
   const holdersBlock=holders.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds notables (13F)</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds actifs notables (13F)</div>
       ${holders.map(h=>`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
+        ${(+h.tier)===1?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:var(--gold-text);background:rgba(198,161,91,.16);border-radius:4px;padding:1px 5px;letter-spacing:.03em;">T1</span>`:''}
         <span style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(h.investor)}</span>
         ${h.pct!=null?`<span style="font-size:11.5px;color:var(--text);">${(+h.pct).toFixed(1)}%</span>`:''}
         ${h.asOf?`<span style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;">${esc(h.asOf)}</span>`:''}
+        ${h.movement?`<span style="font-size:9.5px;font-style:italic;color:var(--muted);font-family:'Poppins',sans-serif;">(${esc(h.movement)})</span>`:''}
       </div>`).join('')}
     </div>`:'';
 
