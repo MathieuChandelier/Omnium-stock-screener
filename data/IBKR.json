@@ -1,0 +1,70 @@
+{
+  "name": "Interactive Brokers",
+  "cours": 96.50,
+  "yahooSymbol": "IBKR",
+  "dividende": 0.35,
+  "data": [
+    {"year":2018,"ca":1903,"ebit":1195,"net":169,"shares":300,"nd":-1489,"div":0.10},
+    {"year":2019,"ca":1937,"ebit":1159,"net":161,"shares":307,"nd":-1730,"div":0.10},
+    {"year":2020,"ca":2218,"ebit":1257,"net":195,"shares":363,"nd":-2422,"div":0.10},
+    {"year":2021,"ca":2714,"ebit":1787,"net":308,"shares":383,"nd":-3529,"div":0.10},
+    {"year":2022,"ca":3067,"ebit":1998,"net":380,"shares":408,"nd":-3806,"div":0.10},
+    {"year":2023,"ca":4340,"ebit":3069,"net":600,"shares":420,"nd":-4881,"div":0.10},
+    {"year":2024,"ca":5185,"ebit":3695,"net":755,"shares":434,"nd":-5748,"div":0.21},
+    {"year":2025,"ca":6210,"ebit":4771,"net":984,"shares":446,"nd":-7093,"div":0.32}
+  ],
+  "epsConsensus": {"year":2026,"eps":2.57,"epsNY":2.95,"date":"2026-07-21","source":"ChartMill/FactSet (post-Q2 2026) pour FY26 ; WallStreetZen (7 analystes) pour FY27, ordre de grandeur"},
+  "particularites": [
+    {"text":"IBKR opère sous une structure Up-C héritée de son IPO (2007) : le titre coté (IBG Inc.) ne détient qu'une fraction minoritaire du résultat consolidé du groupe opérationnel IBG LLC - environ 26,5% à mi-2026, contre 17,4% en 2018. Cette part augmente structurellement chaque année via le rachat progressif, par IBG Inc., de parts de IBG LLC détenues par IBG Holdings LLC (famille Peterffy, management et employés historiques) : un mécanisme à sens unique (IBG Inc. n'a jamais cédé de parts) qui accroît mécaniquement à la fois le résultat net attribuable aux actionnaires ordinaires ET le nombre d'actions IBG Inc. en circulation, indépendamment de la croissance opérationnelle sous-jacente du groupe. Pris en compte via le ratio de conversion Net/EBIT projeté et la trajectoire d'actions - voir ancrages ibgOwnershipAccretion et sharesUpCGrowth.","valuePct":null}
+  ],
+  "nextEvent": {"label":"Q3 26","date":null},
+  "clientAccounts": {
+    "_instructions": "Indicateur PROPRE A CE TITRE (IBKR), HORS boucle standard E1-E8 : nombre de comptes clients ouverts chez Interactive Brokers (\"Total Accounts\"), publié par la société elle-même chaque trimestre dans le communiqué de résultats (tableau OPERATING DATA / CUSTOMER STATISTICS) et mensuellement dans ses \"Electronic Brokerage Statistics\" (interactivebrokers.com/mkt/getFileNew.php?file=latestMetric). A CHAQUE REFRESH (Operation B) : 1) ajouter le point du trimestre venant d'être publié au tableau 'quarterly' ci-dessous (valeur de FIN de trimestre telle que publiée, en milliers de comptes, jamais recalculée) ; 2) SI le trimestre publié est un Q4 (clôture d'exercice) : basculer ce point dans 'annual' (avec sa valeur de fin d'année) ET repartir avec un tableau 'quarterly' ne contenant plus que le nouveau point Q1 de l'exercice qui commence (reset) ; 3) si le trimestre publié n'est PAS un Q4, se contenter d'ajouter le point à 'quarterly' (pas de reset, pas de bascule vers 'annual'). Ne jamais toucher aux points déjà présents dans 'annual'. Champ purement factuel et de synthèse (comme dernierCall/priorEPS) : il n'entre dans AUCUN calcul adjXXX et ne doit jamais être recalculé, arrondi différemment ou estimé - copier tel que publié par IBKR.",
+    "unit": "comptes clients, en milliers, fin de période",
+    "annual": [
+      {"year":2020,"value":1070},
+      {"year":2021,"value":1680},
+      {"year":2022,"value":2090},
+      {"year":2023,"value":2562},
+      {"year":2024,"value":3337},
+      {"year":2025,"value":4400}
+    ],
+    "quarterly": [
+      {"quarter":"Q1 26","value":4754},
+      {"quarter":"Q2 26","value":5185}
+    ]
+  },
+  "hypothese": {
+    "date":"2026-07-22",
+    "source":"Création - T2 2026 (communiqué de résultats + transcript du 21 juillet 2026)",
+    "dernierCall":{
+      "quarter":"Q2 26",
+      "resultatsVsConsensus":{
+        "ca":{"actual":1896,"consensus":1797},
+        "epsAdj":{"actual":0.69,"consensus":0.651,"basis":"non-GAAP"}
+      },
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffrée fournie - IBKR ne communique pas de guidance formelle et publie à la place des statistiques mensuelles détaillées (comptes, DARTs, encours).",
+      "guidanceAnnuelle":"Pas de guidance annuelle chiffrée fournie non plus - même pratique constante du management sur l'ensemble de l'historique.",
+      "pointsCles":[
+        "Croissance des comptes clients exceptionnelle : +34% sur un an à 5,19 millions fin juin (+9% sur le seul trimestre), portée par l'expansion géographique (lancement du trading en Corée) et produit (accès à l'IPO SpaceX en Europe, élargissement de l'offre crypto en Europe).",
+        "Approbation préliminaire conditionnelle de l'OCC pour une charte de banque nationale de confiance (National Trust Bank), avec un objectif d'opérationnalisation d'ici la fin de l'année - une extension réglementaire potentiellement structurante du modèle, encore non opérationnelle.",
+        "Marge avant impôts de 77%, septième trimestre consécutif au-dessus de 70%, malgré une hausse des effectifs (3 265 salariés) pour accompagner l'onboarding des nouveaux comptes et la conformité.",
+        "Prêts sur marge en forte accélération (+67% à 108,5 Md$), principal moteur de la hausse des revenus d'intérêts nets (+23% à 1,06 Md$, la ligne de revenus la plus importante du groupe)."
+      ]
+    },
+    "summary":"Broker électronique en croissance structurelle de comptes clients à un rythme rarement observé dans le secteur, avec un effet de levier actionnarial propre (structure Up-C) qui amplifie mécaniquement l'EPS au-delà de la seule croissance opérationnelle.",
+    "text":"== SYNTHESE DE LA THESE ==\nIBKR est le courtier électronique automatisé le plus rentable de son secteur (marge avant impôts >75% depuis sept trimestres), porté par une croissance de comptes clients qui s'est encore accélérée en 2026 (+34% sur un an, base multipliée par ~5 depuis fin 2020) plutôt que de ralentir. Le pari central n'est pas seulement la croissance du nombre de clients et de leurs encours (930 Md$ d'equity client, +40% sur un an), mais aussi un second moteur propre à IBKR et largement ignoré par une lecture superficielle du titre : la structure Up-C héritée de son introduction en bourse de 2007. Le titre coté ne détient qu'une fraction minoritaire (~26,5%) du résultat économique du groupe ; cette fraction augmente structurellement et irréversiblement chaque année via le rachat de parts détenues par les initiés historiques (famille Peterffy, management), ce qui amplifie mécaniquement l'EPS et le nombre d'actions en circulation indépendamment de la croissance du chiffre d'affaires. La combinaison des deux moteurs justifie une trajectoire d'EPS projetée nettement supérieure à la seule croissance du résultat avant impôts consolidé. Risque principal : la croissance des comptes et des prêts sur marge actuelle (respectivement +34% et +67% sur un an) est en partie cyclique (appétit spéculatif retail, niveau des taux) et ne peut raisonnablement pas se maintenir à ce rythme sur 5 ans - la modélisation retient une décélération progressive et volontairement prudente plutôt qu'une extrapolation linéaire du momentum actuel.\n\n== EVENEMENTS & INFLEXIONS ==\n(ii) Approbation préliminaire conditionnelle de l'OCC pour une charte de banque nationale de confiance (National Trust Bank) - potentiellement structurant à moyen terme (élargissement possible de la gamme de services et de la base de dépôts), mais non opérationnel à ce stade et donc non intégré aux adjXXX ; à solder au prochain refresh (voir watch-list).\n(ii) Expansion géographique et produit du trimestre : lancement du trading en Corée, accès à l'IPO SpaceX pour la clientèle européenne, élargissement de l'offre crypto en Europe - facteurs qualitatifs soutenant la trajectoire de comptes déjà captée par l'ancrage accountGrowthDecel, sans quantification isolée possible à ce stade.\n(i) Fractionnement d'actions 4-pour-1 effectif en 2025 (annoncé avril 2025) : l'historique \"data\" de ce fichier est présenté intégralement en base post-fractionnement (actions, EPS, dividende par action), cohérent avec la présentation retraitée des communiqués de résultats eux-mêmes (note 2 des press releases).\n\n== PARTICULARITES ==\nStructure Up-C (voir tableau particularites) : part de propriété d'IBG Inc. dans le résultat consolidé croissante de façon structurelle et irréversible (17,4% en 2018 -> 26,5% mi-2026), prise en compte via ibgOwnershipAccretion et sharesUpCGrowth plutôt que comme un simple ajustement de trésorerie.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communiqué de résultats T2 2026 (SEC 8-K, exhibit 99.1, 21 juillet 2026) pour les chiffres officiels ; transcripts du call T2 2026 (Motley Fool, Seeking Alpha, Benzinga) pour la couleur qualitative. Pas de guidance chiffrée, trimestrielle ou annuelle - IBKR ne guide jamais formellement (pratique constante), le suivi se fait via les statistiques mensuelles \"Electronic Brokerage\" publiées en début de mois suivant. Prochain refresh utile après la publication du T3 2026, attendue mi-octobre 2026 (non encore annoncée à ce jour - voir nextEvent).\n\n== PARAMETRES & POINTS DE SUIVI ==\nMoteurs de projection : voir ancrages accountGrowthDecel (CA), pretaxMarginPlateau (marge), ibgOwnershipAccretion (conversion Net/EBIT) et sharesUpCGrowth (actions). Base comptable : \"ca\"=revenus nets consolidés totaux (net revenues, tels que publiés), \"ebit\"=résultat avant impôts consolidé total AVANT répartition entre IBG Inc. et les minoritaires (IBG Holdings LLC), \"net\"=résultat net attribuable aux actionnaires ordinaires d'IBG Inc. (base de l'EPS publié) - donc \"ebit\" et \"net\" de ce fichier ne se raccordent PAS par un simple taux d'IS classique, le pont passe par le ratio de conversion Net/EBIT documenté en ancrages, qui capture à la fois la part de détention IBG Inc. ET la fiscalité effective de son seul périmètre (le résultat des minoritaires n'est pas fiscalisé au niveau consolidé, structure de type pass-through). Net financier (E5-a bis) : sans objet - IBKR est un courtier (secteur financier exclu de la règle), quasi sans dette corporate (13 M$ d'emprunts court terme pour 22,3 Md$ de fonds propres au T2 26). \"nd\" de ce fichier est une approximation de la trésorerie nette corporate hors cash client séquestré (non audité poste par poste pour les années antérieures à 2026, ordre de grandeur uniquement) - paramètre secondaire pour cette thèse, IBKR n'ayant pas de levier financier pertinent. Indicateur clientAccounts (champ dédié, hors E1-E8) : suivi factuel du nombre de comptes clients, voir instructions dans le champ lui-même. WATCH-LIST : (a) rythme réel de décélération de la croissance des comptes vs hypothèse modélisée (accountGrowthDecel) ; (b) évolution effective du ratio Net/EBIT et de la part de détention IBG Inc. au prochain trimestre, à confronter au 10-Q/10-K plutôt qu'au seul communiqué ; (c) suite donnée à la charte National Trust Bank (calendrier d'opérationnalisation, impact potentiel sur le modèle) ; (d) sensibilité des revenus d'intérêts nets (~56% des revenus nets) à une baisse éventuelle des taux directeurs US, non couverte par une guidance.\n\n== CATALYSEURS ==\nPoursuite de la croissance de comptes à un rythme encore élevé + nouveaux trimestres de progression du ratio de conversion Net/EBIT (structure Up-C) + clarification du calendrier d'opérationnalisation de la charte National Trust Bank.",
+    "impact":"positif",
+    "ancrages":[
+      {"id":"accountGrowthDecel","moteur":"Croissance des comptes clients ouverte à un rythme exceptionnel (+34% sur un an, +9% au T2 26 seul, base multipliée par ~5 depuis fin 2020) mais appelée à décélérer progressivement à mesure que la base s'élargit ; le CA (majoritairement commissions et intérêts nets liés aux comptes/encours) suit cette décélération, d'environ +15% en 2026 à ~+9% en 2030.","applique":["adjCA.2026","adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"moyenne"},
+      {"id":"pretaxMarginPlateau","moteur":"Marge avant impôts consolidée déjà très élevée (77% au T2 26, 7e trimestre consécutif >70%) ; modélisée en stabilisation prudente autour de 77-78% sur l'horizon plutôt qu'en extrapolation d'une expansion supplémentaire au-delà des niveaux déjà records.","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"haute"},
+      {"id":"ibgOwnershipAccretion","moteur":"Structure Up-C : la part d'IBG Inc. (titre coté) dans le résultat consolidé croît structurellement et irréversiblement chaque année via le rachat de parts LLC détenues par les initiés historiques - de 17,4% (2018) à 26,5% (T2 26). Ce mécanisme documenté par la société elle-même (10-K) élève mécaniquement le ratio de conversion Net(part IBG Inc.)/EBIT consolidé, modélisé en poursuivant la tendance historique mais à rythme décéléré par prudence : ratio de 21,1% au 1S26, projeté vers 23,7% en 2030 (vs +5 à +7pts sur les 8 dernières années).","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"haute"},
+      {"id":"sharesUpCGrowth","moteur":"Corollaire direct du même mécanisme : le nombre d'actions IBG Inc. en circulation augmente structurellement (émission de nouvelles actions en échange des parts LLC rachetées, PAS une dilution opportuniste) - de ~300M (2018) à ~450M (T2 26) ; projeté en poursuivant la même trajectoire d'accroissement de la part de détention, vers ~528M en 2030 (soit ~30,5% de détention estimée).","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"haute"}
+    ],
+    "adjCA":{"2026":7150,"2027":8080,"2028":9020,"2029":9920,"2030":10810},
+    "adjEBIT":{"2026":5541,"2027":6262,"2028":7018,"2029":7738,"2030":8454},
+    "adjNet":{"2026":1191,"2027":1390,"2028":1600,"2029":1803,"2030":2004},
+    "adjND":{"2026":-8500,"2027":-9800,"2028":-11200,"2029":-12700,"2030":-14300},
+    "adjShares":{"2026":467,"2027":486,"2028":502,"2029":516,"2030":528}
+  }
+}
