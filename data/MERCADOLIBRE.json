@@ -1,0 +1,78 @@
+{
+  "cours": 1650.00,
+  "yahooSymbol": "MELI",
+  "dividende": 0,
+  "fyEndMonth": null,
+  "data": [
+    {"year":2015,"ca":652,"ebit":139,"net":106,"shares":44.16,"nd":-369,"div":0},
+    {"year":2016,"ca":844,"ebit":181,"net":136,"shares":44.16,"nd":-487,"div":0},
+    {"year":2017,"ca":1217,"ebit":56,"net":14,"shares":44.16,"nd":-598,"div":0},
+    {"year":2018,"ca":1440,"ebit":-69,"net":-37,"shares":44.53,"nd":-926,"div":0},
+    {"year":2019,"ca":2296,"ebit":-153,"net":-172,"shares":48.69,"nd":-3049,"div":0},
+    {"year":2020,"ca":3974,"ebit":128,"net":-1,"shares":49.74,"nd":-3750,"div":0},
+    {"year":2021,"ca":7069,"ebit":441,"net":83,"shares":49.80,"nd":-3358,"div":0},
+    {"year":2022,"ca":10780,"ebit":1069,"net":482,"shares":50.35,"nd":-3800,"div":0},
+    {"year":2023,"ca":15107,"ebit":2207,"net":987,"shares":50.26,"nd":-5125,"div":0},
+    {"year":2024,"ca":20777,"ebit":2631,"net":1911,"shares":50.70,"nd":2247,"div":0},
+    {"year":2025,"ca":28893,"ebit":3102,"net":1927,"shares":50.70,"nd":4682,"div":0}
+  ],
+  "epsConsensus": {"year":2026,"eps":41.06,"epsNY":60.37,"date":"2026-06-02","source":"WallStreetZen, agrege ~24 analystes, 2026-06-02"},
+  "particularites": [],
+  "nextEvent": {"label":"Q2 26","date":"2026-08-05"},
+  "ownership": {
+    "asOf":"2026-07-22",
+    "insiderPct":6.7,
+    "insiderDesc":"Structure fiduciaire liee au fondateur Marcos Galperin (Meliga No. 1 Corp / Galperin Trust / Corpag Trust South Dakota Inc., Executive Chairman depuis le 1er janvier 2026) ; administrateurs et autres dirigeants detiennent individuellement des positions negligeables (quelques milliers d'actions chacun, sans commune mesure avec le bloc Galperin).",
+    "insiderSource":"Schedule 13D/A depose le 17 juin 2026 (Meliga No. 1 Corp/Galperin Trust/Corpag Trust South Dakota) - source primaire de detention beneficiaire, equivalent proxy pour ce bloc de controle ; base sur 50 697 182 actions en circulation.",
+    "notableHolders":[
+      {"investor":"Brad Gerstner - Altimeter Capital","pct":0.0,"tier":1,"movement":"position quasi liquidee (-90,9% vs T4 2025, ne represente plus que ~0,1% du portefeuille d'Altimeter)","asOf":"2026-Q1","source":"13F Q1 2026 (SEC, via MarketBeat)"}
+    ],
+    "coverageNote": null,
+    "history": []
+  },
+  "compliance": {
+    "asOf":"2026-07-22",
+    "items":[
+      {"year":2026,"title":"Plusieurs cabinets d'avocats plaignants (Frank R. Cruz, Glancy Prongay Wolke & Rotter, Kirby McInerney) ont annonce des enquetes pour fraude en valeurs mobilieres, suite a la chute d'environ 13% du titre le 8 mai 2026 apres la divulgation, au T1'26, d'un allongement de la duree moyenne des prets au Bresil (5 a 8 mois) et d'une hausse des provisions pour creances douteuses.","allegedBy":"Cabinets d'avocats plaignants (Frank R. Cruz, Glancy Prongay Wolke & Rotter, Kirby McInerney)","date":"2026-06-30","status":"sollicitation","outcome":null,"source":"Communiques Business Wire des cabinets, fin juin/debut juillet 2026 - aucune plainte formellement deposee a ce stade selon Kirby McInerney"}
+    ],
+    "note": null
+  },
+  "hypothese": {
+    "date":"2026-07-22",
+    "summary":"Leader incontestable du e-commerce et de la fintech en Amerique latine, en phase deliberee de compression de marge pour capter un marche encore tres sous-penetre (Bresil, Mexique, Argentine). Croissance CA proche de 40-50% YoY, mais marge operationnelle T1'26 tombee a 6,9% (vs ~11% sur FY25) par choix assume du management, sans changement materiel attendu a court terme. Ecart volontaire vs consensus sell-side : base adjEPS Omnium plus conservatrice (retraitement du credit d'impot bresilien ponctuel de T4'25, marge de recuperation plus prudente que le consensus 2026).",
+    "priorEPS": null,
+    "dernierCall": {
+      "quarter":"T1 26",
+      "date":"2026-05-07",
+      "ca":{"actual":8845,"consensus":8285,"unit":"M$"},
+      "eps":{"actual":8.23,"consensus":8.32,"basis":"GAAP"},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree fournie (MercadoLibre ne communique pas d'objectifs chiffres formels).",
+      "guidanceAnnuelle":"Pas de guidance annuelle chiffree fournie. Management indique explicitement ne pas anticiper de changement materiel du niveau de marge operationnelle T1'26 (6,9%) a court terme - le 'dial' de marge est abaisse par choix strategique, pas par derive.",
+      "pointsCles":[
+        "Croissance du CA de +49% YoY, la plus forte depuis quatre ans, tiree par le Bresil ou la baisse du seuil de livraison gratuite est confirmee comme un choix permanent ('here to stay').",
+        "Marge operationnelle comprimee a 6,9% (vs ~11% sur FY25) : le CFO indique ne pas optimiser pour la marge court terme et assumer ce choix d'investissement.",
+        "Allongement de la duree moyenne des prets au Bresil (5 a 8 mois) et hausse des provisions pour creances douteuses lies a l'expansion du portefeuille de credit (~2 Md$ de croissance nette au T1'26) - a l'origine d'enquetes de cabinets d'avocats plaignants (voir compliance).",
+        "Transition CEO effective au 1er janvier 2026 : Ariel Szarfsztejn devient CEO, le fondateur Marcos Galperin devient Executive Chairman, a l'issue d'un processus de succession pluriannuel."
+      ]
+    },
+    "guidanceHistory": [],
+    "guidanceLongTerme": null,
+    "ancrages": [
+      {"id":"brazil_shipping_threshold","mecanisme":"Seuil de livraison gratuite au Bresil abaisse en 2025, effet confirme comme permanent par le management - moteur structurel de la croissance CA (acceleration des nouveaux acheteurs, frequence d'achat) mais compresseur durable de marge via le cout de shipping absorbe.","applique":"ca.2026,ca.2027,ebit.2026,ebit.2027","confiance":"haute"},
+      {"id":"margin_dial_2026","mecanisme":"Management indique explicitement ne pas anticiper de changement materiel du niveau de marge operationnelle T1'26 (6,9%) a court terme - la marge FY2026 est projetee proche de ce niveau plutot que sur une trajectoire de reprise immediate.","applique":"ebit.2026","confiance":"haute"},
+      {"id":"investment_drag_quantified","mecanisme":"Impact combine des investissements strategiques (livraison gratuite, 1P, cross-border trade, carte de credit) quantifie par le management a 5-6 points de marge operationnelle au T4'25 - sert d'ancrage pour la trajectoire de recuperation de marge projetee en 2027-2030 a mesure que ces investissements arrivent a maturite.","applique":"ebit.2027,ebit.2028,ebit.2029,ebit.2030","confiance":"moyenne"},
+      {"id":"brazil_credit_provisioning","mecanisme":"Allongement de la duree moyenne des prets au Bresil (5 a 8 mois) et hausse des provisions pour creances douteuses annonces au T1'26 - pese sur le resultat net projete 2026 au-dela du seul effet marge operationnelle.","applique":"net.2026","confiance":"moyenne"},
+      {"id":"netfin_rate_2026","mecanisme":"Regle E5-a bis : dette nette positive (4 682 M$ fin FY2025) et croissante (financement du portefeuille de credit), pas de programme de rachat actif -> charges financieres nettes projetees = Treasury US 10Y (4,63% au 21/07/2026) + 2pts = 6,63%, appliquees a la dette nette moyenne projetee de chaque annee.","applique":"net.2026,net.2027,net.2028,net.2029,net.2030","confiance":"haute"},
+      {"id":"oneoff_q4_tax_credit","mecanisme":"Credit fiscal ponctuel de 99 M$ au Bresil, comptabilise en cout des ventes au T4'25 et explicitement designe comme one-off par le management - exclu de la base restated FY2025 (regle E5 d-bis) ; effet net d'impot approxime au taux effectif FY25 (29,7%), faute de detail public sur le traitement fiscal du credit lui-meme (approximation documentee).","applique":"ebit.2025,net.2025","confiance":"moyenne"},
+      {"id":"etr_2026_2030","mecanisme":"Taux effectif d'imposition projete maintenu a 29,7% (taux effectif FY2025 reel : 845/2842), en l'absence de communication specifique du management sur une trajectoire de taux different.","applique":"net.2026,net.2027,net.2028,net.2029,net.2030","confiance":"moyenne"}
+    ],
+    "projection": [
+      {"year":2026,"adjCA":39500,"adjEBIT":3080,"adjNet":1900,"adjShares":51.0,"adjEPS":37.25,"adjND":7500},
+      {"year":2027,"adjCA":51800,"adjEBIT":4921,"adjNet":3082,"adjShares":51.3,"adjEPS":60.08,"adjND":10000},
+      {"year":2028,"adjCA":64700,"adjEBIT":7117,"adjNet":4536,"adjShares":51.6,"adjEPS":87.91,"adjND":12000},
+      {"year":2029,"adjCA":77600,"adjEBIT":9545,"adjNet":6176,"adjShares":51.9,"adjEPS":118.96,"adjND":13500},
+      {"year":2030,"adjCA":90000,"adjEBIT":12150,"adjNet":7968,"adjShares":52.2,"adjEPS":152.64,"adjND":14500}
+    ],
+    "text":"CREATION (Operation A) - E1-E8. BASE : historique GAAP 2015-2025 reconstitue (SEC 8-K/10-K, croise MarketBeat/Fiscal.ai). Retraitement E5 d-bis applique a FY2025 uniquement : credit fiscal ponctuel bresilien de 99 M$ (T4'25, explicitement 'one-off' par le management) exclu de la base EBIT/Net - voir ancrage oneoff_q4_tax_credit. Aucun autre one-off materiel identifie sur l'historique (pas de SBC a exclure : le LTRP - Long Term Retention Program, ~303 M$ en 2025 - est une charge recurrente, conservee dans la base). MELI n'est pas un acquereur serial (goodwill FY2025 : 163 M$ seulement) : pas de retraitement PPA necessaire.\n\nEVENEMENTS PARTICULIERS : (i) baisse du seuil de livraison gratuite au Bresil (2025), confirmee permanente - moteur de croissance ET compresseur de marge, integre via ancrage brazil_shipping_threshold ; (ii) expansion agressive du portefeuille de credit avec allongement des durees de pret au Bresil et hausse des provisions (T1'26) - integre via ancrage brazil_credit_provisioning, egalement a l'origine du volet compliance ; (iii) transition CEO au 1er janvier 2026 (Szarfsztejn/Galperin) - evenement de gouvernance, non quantifiable, mentionne pour memoire, le fondateur restant Executive Chairman et premier actionnaire individuel via sa structure fiduciaire.\n\nSEGMENTS : MELI publie par pays (Bresil, Mexique, Argentine, Autres) et par activite (Commerce/Fintech), profils structurellement divergents (Bresil/Mexique en croissance structurelle du e-commerce et de la fintech ; Argentine plus erratique, portee par la desinflation). Compte tenu de la geometrie variable, pas de build-up bottom-up complet a ce stade de creation : le Bresil concentre l'essentiel du moteur de croissance/marge (ancrage brazil_shipping_threshold) et sera le point de vigilance prioritaire des prochains refresh.\n\nRETROFIT CA & MARGE (E4) : croissance CA calee sur la trajectoire recente (49% YoY au T1'26, guidance implicite de poursuite du rythme eleve sur 2026 via les commentaires du management), puis deceleration progressive vers un rythme plus soutenable (base d'un marche encore tres sous-penetre vs US/UK/Chine selon le management). Marge operationnelle maintenue proche du niveau T1'26 (6,9%) sur 2026 (ancrage margin_dial_2026), puis trajectoire de recuperation progressive 2027-2030 a mesure que les investissements strategiques (5-6pts de marge selon le management) arrivent a maturite (ancrage investment_drag_quantified) - sans reconstituer integralement la marge FY2025 (10,7% restate) avant l'horizon de projection.\n\nPONT EBIT->NET (E5) : charges financieres nettes projetees via la regle E5-a bis (dette nette positive et croissante, Treasury 10Y + 2pts = 6,63%, ancrage netfin_rate_2026). Taux effectif d'imposition maintenu au niveau FY2025 reel (29,7%, ancrage etr_2026_2030) faute de signal contraire du management. adjShares en legere dilution annuelle (~0,5-0,6%/an), coherent avec le rythme historique du LTRP.\n\nCONTROLE DE VRAISEMBLANCE (E7) : sens de variation marge FY2025 restatee (10,7%) -> 2026 (7,8%) coherent avec la guidance qualitative directionnelle du management ('pas de changement materiel a court terme' sur le niveau T1'26 de 6,9%) - la prudence est maintenue plutot que relachee, aucune contradiction avec une guidance chiffree (MELI n'en fournit pas). adjEPS = adjNet/adjShares verifie a chaque annee.\n\nECART DOCUMENTE VS CONSENSUS : adjEPS 2026 Omnium (37,25$) vs consensus sell-side (~41,06$, WallStreetZen) - ecart d'environ -9%, explique par (a) la base restatee FY2025 (exclusion du credit fiscal ponctuel bresilien) et (b) une hypothese de marge 2026 plus prudente que l'implicite du consensus. adjEPS 2027 (60,08$) converge en revanche tres pres du consensus (60,37$), l'ecart etant surtout concentre sur l'annee de transition 2026.\n\nPARAMETRES & POINTS DE SUIVI : base comptable ajustee = GAAP retraite du seul one-off T4'25 identifie. ETR 29,7% reconduit. Watch-list pour le prochain refresh : (1) la marge operationnelle du S2'26 confirme-t-elle le maintien du 'dial' bas ou amorce-t-elle deja une reprise plus rapide que prevu ? (2) evolution du risque credit au Bresil (NPL, duree des prets) et suite donnee aux enquetes des cabinets d'avocats plaignants ; (3) trajectoire du financement du portefeuille de credit et impact sur la dette nette projetee ; (4) premiers elements de guidance ou de discours du nouveau CEO Ariel Szarfsztejn sur la strategie 2026-2027.\n\nCATALYSEURS : resultats T2'26 le 5 aout 2026 - premier trimestre complet sous la nouvelle direction et test cle de la trajectoire de marge annoncee comme durable par le management ; toute inflexion (positive ou negative) sur le 'dial' de marge ou sur le risque credit bresilien serait structurante pour la these."
+  }
+}
