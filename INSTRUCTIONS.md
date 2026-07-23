@@ -857,6 +857,30 @@ a-bis) RESULTAT FINANCIER NORMATIF (non applicable aux valeurs financieres -
    taux retenu, devise, date de fixing) au meme titre que l'IS normatif,
    jamais recalcules une seconde fois sans confrontation a la valeur
    precedente (E5bis).
+a-ter) COHERENCE DETTE/CHARGES FINANCIERES LORS D'UNE M&A OU CESSION : toute
+   acquisition ou cession modelisee dans les `ancrages` doit ajuster de
+   facon coherente et SIMULTANEE (1) `adjND` du montant NET de l'operation
+   (prix net encaisse pour une cession, financement net mobilise pour une
+   acquisition) a la date de cloture prevue, en precisant dans le mecanisme
+   de l'ancrage l'affectation du produit/cout entre desendettement, retour
+   aux actionnaires (dividende/buyback) et reinvestissement/CapEx quand ces
+   informations sont connues ; ET (2) les charges financieres nettes
+   implicites dans le pont EBIT -> adjNet, RECALCULEES selon la regle E5
+   a-bis ci-dessus sur la NOUVELLE trajectoire d'`adjND` qui en resulte -
+   jamais laissees figees sur le ratio de conversion Net/EBIT anterieur a
+   l'operation. Cas particulier explicite : si l'operation fait basculer
+   `adjND` en position de cash net (negatif), la charge financiere doit
+   etre remplacee par un produit financier net FAIBLE (voire nul si
+   programme de rachat actif, cf. E5 a-bis) plutot que par une charge -
+   l'erreur a eviter est de continuer a appliquer le cout de la dette
+   d'avant-cession a une societe qui n'a temporairement plus de dette
+   nette. Symetriquement, une acquisition financee par dette doit alourdir
+   `adjND` ET la charge financiere projetee, pas seulement `adjND` seul.
+   Le lien (montant de l'operation -> nouvel `adjND` -> nouvelle charge/
+   produit financier -> impact sur `adjNet`) est trace dans un seul
+   `ancrages` dedie a l'operation plutot que reparti implicitement, pour
+   eviter qu'un des deux effets soit ajuste sans l'autre lors d'un refresh
+   futur (cf. E5bis, parametre unique).
 b) IS NORMATIF : guidance fiscale > taux effectif historique NORMALISE >
    statutaire. Un taux anormal (windfalls, credit) n'est jamais reconduit
    tel quel.
