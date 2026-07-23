@@ -4,102 +4,61 @@
   "yahooSymbol": "ARGX",
   "dividende": 0,
   "data": [
-    {
-      "year": 2021,
-      "ca": 411,
-      "ebit": -435,
-      "net": -434,
-      "shares": 54,
-      "nd": -2200
-    },
-    {
-      "year": 2022,
-      "ca": 401,
-      "ebit": -560,
-      "net": -433,
-      "shares": 58,
-      "nd": -2100
-    },
-    {
-      "year": 2023,
-      "ca": 1213,
-      "ebit": -260,
-      "net": -181,
-      "shares": 60,
-      "nd": -3200
-    },
-    {
-      "year": 2024,
-      "ca": 2194,
-      "ebit": -30,
-      "net": 832,
-      "shares": 60,
-      "nd": -3400
-    },
-    {
-      "year": 2025,
-      "ca": 4153,
-      "ebit": 1050,
-      "net": 1290,
-      "shares": 66,
-      "nd": -4700
-    }
+    {"year":2021,"ca":411,"ebit":-435,"net":-434,"shares":54,"nd":-2200},
+    {"year":2022,"ca":401,"ebit":-560,"net":-433,"shares":58,"nd":-2100},
+    {"year":2023,"ca":1213,"ebit":-260,"net":-181,"shares":60,"nd":-3200},
+    {"year":2024,"ca":2194,"ebit":-30,"net":832,"shares":60,"nd":-3400},
+    {"year":2025,"ca":4153,"ebit":1050,"net":1290,"shares":66,"nd":-4700}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 27.0,
-    "epsNY": 38.0,
-    "date": "2026-07-03",
-    "source": "Q1 2026 EPS dilue 5,52$ (beat) ; consensus forward P/E ~30x ; targets analystes 1 016-1 260$ (Strong Buy). Pas de guidance CA chiffree (biotech)"
-  },
+  "epsConsensus": {"year":2026,"eps":29.5,"epsNY":41.0,"date":"2026-07-23","source":"Q2 26 EPS dilue 7,32$ (beat consensus 5,86$, +25%) ; S1 26 EPS dilue 13,00$. Pas de guidance CA chiffree (convention biotech). Objectifs de cours analystes 1 016-1 260$ (Strong Buy) - snapshot pre-T2, a rafraichir."},
   "particularites": [],
+  "nextEvent": {"label":"Q3 26","date":"2026-10-22"},
+  "ownership": {
+    "asOf":"2026-07-23",
+    "insiderPct":0.09,
+    "insiderDesc":"Detention interne tres faible (~0,09%, essentiellement des dirigeants/administrateurs individuels). Transition de gouvernance majeure actee en mai 2026 : Karen Massey (COO depuis mars 2023) nommee CEO, le fondateur Tim Van Hauwermeiren devenant President non-executif du Conseil - continuite strategique affichee, 90,9% du capital represente a l'AG 2026 en soutien de la transition. Van Hauwermeiren a cede des actions a plusieurs reprises sur 2024-2025 (ventes reguliere, programme de type 10b5-1 vraisemblable), sans signal d'alerte particulier.",
+    "insiderSource":"SimplyWallSt (insider transactions, T1-T3 2026) + StockTitan 6-K mai 2026 (transition CEO) + AGM 2026",
+    "notableHolders":[],
+    "coverageNote":"Aucun investisseur de la watchlist tier-1 identifie avec une position notable sur ce titre. Institutions ~60-81% du capital selon la source (FMR/Fidelity ~10%, T. Rowe Price ~9%, BlackRock ~6%, Artisan Partners, Wellington, Janus Henderson, Capital Research, Norges Bank, Vanguard, Avoro Capital - fonds specialise biotech) - detention institutionnelle large et diversifiee, sans actionnaire de controle.",
+    "history":[]
+  },
+  "compliance": {
+    "asOf":"2026-07-23",
+    "items":[
+      {"year":2025,"title":"Enquete de cabinets d'avocats plaignants (Pomerantz LLP en tete) sur une possible fraude en valeurs mobilieres, suite a une alerte de securite FDA (30/06/2025) signalant un risque potentiel d'aggravation severe de la CIDP sous VYVGART Hytrulo (base sur des signalements FAERS) ; le titre avait recule de 1,6% le jour de l'alerte.","allegedBy":"Cabinets d'avocats plaignants (Pomerantz LLP, entre autres)","date":"2025-06-30","status":"sollicitation","outcome":null,"source":"Communiques PRNewswire/GlobeNewswire Pomerantz LLP (juillet-aout 2025) ; aucune plainte formellement deposee retrouvee a la date de ce refresh (statut inchange depuis l'ouverture de l'enquete, pas d'escalade en class action confirmee)"}
+    ],
+    "note":"Un seul element identifie, toujours au stade d'enquete preliminaire sans plainte deposee confirmee (contrairement a d'autres dossiers Pomerantz de la meme periode ou une class action a ete formellement annoncee). A reverifier lors d'un prochain refresh si le statut evolue. Champ absent de l'ancien JSON : premiere population a l'occasion de ce refresh."
+  },
   "hypothese": {
-    "date": "2026-07-06",
-    "source": "Creation - Transcript T1 2026 + FY2025 + 6-K SEC + recherche publique",
-    "summary": "Biotech immunologie en hypercroissance rentable. Franchise VYVGART (17e trimestre de croissance) + pipeline first-in-class sous Vision 2030. Nouvelle CEO (continuite). Trajectoire portee par binaires de pipeline (myositis T3, MMN T4). adjEPS 26,9->76,6, dilution stoppee.",
-    "text": "== SYNTHESE DE LA THESE ==\nargenx est une biotech immunologie passee de l'hypercroissance a la RENTABILITE, portee par sa franchise VYVGART (antagoniste FcRn, #1 biologique en myasthenie gravis) et un pipeline first-in-class encore jeune (empasiprubart, myositis, next-gen FcRn). La these combine un compounder de croissance (17 trimestres consecutifs) et un profil de biotech classique a binaires de pipeline (les readouts de Phase III determinent une bonne partie de la trajectoire au-dela de 2026). Point structurel important : contrairement a l'historique des levees de capital des biotechs, argenx a STOPPE sa dilution depuis qu'elle est profitable et autofinancee (net cash 4,9 Md$).\n\n== EVENEMENTS & INFLEXIONS (T1 2026, publie 07/05) ==\nImpact : positif.\n1. NOUVELLE CEO [classe (iii)] : Karen Massey (1er jour au poste au call), architecte de Vision 2030 - continuite strategique explicite.\n2. CATALYSEURS PIPELINE = MOTEUR ET RISQUE [classe (ii), binaires] : readouts de Phase III concentres sur 2026 - seronegative gMG (PDUFA 10 mai), ocular MG, myositis Q3 (IMNM/DM), empasiprubart MMN Q4 (2e medicament potentiel). Chaque readout est un binaire non dans les chiffres.\n3. HYPERCROISSANCE + BASCULE MARGE [classe (i)] : Q1 2026 product sales 1,3 Md$ (+63% YoY), 17e trimestre consecutif de croissance, marge op. 30% (+183% YoY), tresorerie 4,9 Md$ (+400M QoQ).\n4. DILUTION STOPPEE [classe (i)] : actions ~STABLES (66M, -0,85% sur un an) - la profitabilite autofinance le pipeline, contrairement a l'historique de levees.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026. Secondaires : FY2025 (product net sales 4,15 Md$ +90%, 1ere annee de profitabilite op. 1,05 Md$, net 1,29 Md$), Q1 2026 EPS dilue 5,52$ (beat). Cours ~1 030$ (Nasdaq)/~688 EUR (Bruxelles), ~62-66M actions. Reporte en USD.\nGuidance : pas de guidance CA chiffree (biotech). Expansion de marge op. CHAQUE trimestre YoY (levier operationnel, gross margin 90%).\nProchain refresh utile : T2 2026, 23 juillet + readouts myositis Q3 et MMN Q4 (refreshs evenementiels).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase : \"ca\" = product net sales, \"ebit\" = operating profit publie. Reporte en USD. Tax ~14%. Produits financiers ~+200M$/an. Marge op. 25% (2025) -> 30% (2026) -> 42% (2030). adjShares ~stable (dilution stoppee). CA +46% (2026) decelerant vers +17% (2030). Soudure T1 controlee (Q1 = ~21% du FY2026, saisonnalite + step-up Q2).\nA suivre : (1) readout myositis Q3 - binaire majeur ; (2) readout empasiprubart MMN Q4 ; (3) approbations seronegative/ocular MG ; (4) step-up sequentiel Q2 ; (5) rythme de marge op. ; (6) deploiement du cash en BD/licensing.\n\n== CATALYSEURS ==\nElargissement du label MG (seronegative, ocular, pediatrique) ; penetration MG/CIDP encore faible ; entree en rhumatologie (myositis, Sjogren) ; 2e medicament empasiprubart (MMN, CIDP) ; portefeuille next-gen FcRn ; levier operationnel ; tresorerie 4,9 Md$ pour BD.",
-    "impact": "positif",
-    "adjEPS": {
-      "2026": 26.9,
-      "2027": 38.52,
-      "2028": 50.99,
-      "2029": 63.26,
-      "2030": 76.57
+    "date":"2026-07-23",
+    "priorEPS":{"date":"2026-07-06","eps":{"2026":26.9,"2027":38.52}},
+    "source":"Refresh Q2/S1 2026 - Communique de resultats officiel (23/07/2026, 7h00 CET) + call management (23/07/2026, 14h30 CET/8h30 ET, transcript verbatim non retrouve mais chiffres et points cles du communique et de sources secondaires recoupes)",
+    "dernierCall":{
+      "quarter":"Q2 26",
+      "resultatsVsConsensus":{"ca":{"actual":1516,"consensus":1450},"epsAdj":{"actual":7.32,"consensus":5.86,"basis":"GAAP"}},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree (convention biotech, inchange depuis la creation).",
+      "guidanceAnnuelle":"Pas de guidance CA/EPS chiffree publiee. Vision 2030 reaffirmee qualitativement sans changement : 50 000 patients traites dans le monde, 10 indications labellisees, 5 candidats pipeline en developpement d'enregistrement d'ici 2030.",
+      "pointsCles":["Lancement reussi du label VYVGART/VYVGART Hytrulo elargi a tous les serotypes de gMG (seronegative inclus) aux Etats-Unis - resolution positive d'un des deux binaires reglementaires suivis a la creation (l'autre etant l'extension ocular MG, egalement positive suite aux resultats ADAPT OCULUS).","Flux de tresorerie d'exploitation S1 26 nettement positif (+0,7 Md$ contre -0,4 Md$ au S1 25), tresorerie totale portee a 5,2 Md$ (contre 4,4 Md$ fin 2025) - generation de cash plus rapide que prevu.","Elargissement du pipeline au-dela des catalyseurs deja suivis : etude d'enregistrement lancee dans la maladie de Graves, signal positif de l'etude Phase 2 VARVARA (empasiprubart en transplantation/DGF) a 52 semaines, dix molecules attendues en developpement clinique d'ici fin 2026.","Les deux binaires majeurs de la these (lecture topline ALKIVIA en myositis au T3 26, lecture topline EMPASSION en MMN au T4 26) restent confirmes sur le calendrier annonce, toujours non resolus et hors modele."]
     },
-    "adjCA": {
-      "2026": 6063,
-      "2027": 8004,
-      "2028": 10005,
-      "2029": 12005,
-      "2030": 14046
-    },
-    "adjEBIT": {
-      "2026": 1880,
-      "2027": 2801,
-      "2028": 3802,
-      "2029": 4802,
-      "2030": 5899
-    },
-    "adjNet": {
-      "2026": 1789,
-      "2027": 2581,
-      "2028": 3442,
-      "2029": 4302,
-      "2030": 5245
-    },
-    "adjND": {
-      "2026": -5800,
-      "2027": -7300,
-      "2028": -9200,
-      "2029": -11500,
-      "2030": -14000
-    },
-    "adjShares": {
-      "2026": 66.5,
-      "2027": 67,
-      "2028": 67.5,
-      "2029": 68,
-      "2030": 68.5
-    }
+    "guidanceHistory":[],
+    "guidanceLongTerme":"Vision 2030 : traiter 50 000 patients dans le monde, obtenir 10 indications labellisees, faire progresser 5 candidats pipeline en developpement d'enregistrement d'ici 2030 - reaffirmee sans changement au T2 26, cible qualitative non chiffree financierement.",
+    "summary":"Franchise VYVGART toujours en hypercroissance rentable (CA +60% YoY, marge operationnelle S1 a 31% contre 19% un an plus tot), deux binaires reglementaires resolus positivement (seronegative gMG, ocular MG), dilution confirmee quasi nulle. Les deux binaires pipeline majeurs (myositis T3, MMN T4) restent a venir.",
+    "text":"== SYNTHESE DE LA THESE ==\nLa these de compounder de croissance rentable se confirme et se renforce au S1 2026 : ventes nettes produit S1 a 2 813 M$ (+62% YoY), marge operationnelle a 31,1% (contre 19,2% au S1 25) - le levier operationnel anticipe a la creation se materialise plus vite que prevu. Deux des binaires reglementaires suivis a la creation se sont resolus POSITIVEMENT au T2 : le label VYVGART/VYVGART Hytrulo a ete elargi a tous les serotypes de gMG (seronegative inclus, lance aux Etats-Unis) et les resultats ADAPT OCULUS ont ete positifs, ouvrant la voie a l'extension en ocular MG - deux catalyseurs qui etaient explicitement identifies comme binaires non-chiffres a la creation et qui viennent alimenter la croissance confirmee. La dilution reste quasi nulle (actions diluees moyennes S1 26 a 64,4M, en leger repli vs 65,6M un an plus tot), validant l'ancrage central de la these selon lequel argenx s'autofinance desormais sans lever de capital. Le bilan continue de se renforcer (tresorerie totale 5,2 Md$, flux de tresorerie d'exploitation S1 nettement positif a +0,7 Md$), laissant une capacite de deploiement en BD/licensing intacte et meme accrue. Les deux binaires pipeline les plus importants pour la suite de la these - lecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) - restent non resolus et hors modele : c'est la ou se jouera la validation ou l'invalidation de l'expansion au-dela de la franchise FcRn/gMG-CIDP sur l'horizon 2027+.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Lancement du label elargi seronegative gMG aux Etats-Unis (resolution positive du binaire PDUFA suivi depuis la creation) - VYVGART devient le seul traitement approuve pour l'ensemble des serotypes de gMG adultes. (i) Resultats ADAPT OCULUS positifs, ouvrant la voie a l'extension en ocular MG (oMG) - deuxieme binaire resolu positivement au T2. (ii) Etude d'enregistrement lancee dans la maladie de Graves (nouvelle indication, extension vers l'auto-immunite thyroidienne) - non chiffree dans le modele, optionnalite pure. (ii) Signal positif de l'etude Phase 2 VARVARA (empasiprubart, delayed graft function en transplantation) a 52 semaines, soutenant une evaluation plus poussee dans ce contexte - optionnalite pipeline additionnelle. (ii) Programme ADAPT-Forward en cours (empasiprubart en association avec efgartigimod dans la gMG) - exploration de combinaisons intra-portefeuille. (iii) Autoinjecteur VYVGART SC positionne pour un lancement en 2027 sur l'ensemble des indications approuvees - amelioration de l'experience patient/potentiel de switch de canal, non chiffre. (iii) Transition de gouvernance actee en mai 2026 : Karen Massey (COO depuis mars 2023) nommee CEO, le fondateur Tim Van Hauwermeiren devenant President non-executif du Conseil - continuite strategique explicite, 90,9% du capital represente a l'AG 2026 en soutien. Aucun impact chiffrable sur le modele, mais point de gouvernance a noter. (iii) Enquete de cabinets d'avocats plaignants (Pomerantz en tete) ouverte depuis juillet-aout 2025 suite a une alerte FDA sur un risque potentiel d'aggravation de la CIDP sous VYVGART Hytrulo - toujours au stade d'enquete preliminaire a la date de ce refresh, sans plainte formellement deposee confirmee (voir champ compliance).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : communique officiel des resultats S1/T2 2026 (23/07/2026, 7h00 CET, argenx.com/globenewswire). CA T2 1 516 M$ (+60% YoY, +17% QoQ) vs consensus ~1 450 M$ (estimation secondaire, non officielle) - large depassement. EPS dilue T2 7,32$ vs consensus Zacks 5,86$ (+25% de surprise). Marge operationnelle T2 32,0% (sur total operating income), S1 31,1% (contre 19,2% au S1 25). Charge d'impot S1 119 M$ sur un resultat avant impot de 958 M$, ETR 12,4% (proche de l'hypothese normative ~14% retenue a la creation, legerement favorable). Produits financiers S1 92 M$ (annualise ~184 M$/an, coherent avec l'hypothese de creation ~200 M$/an) ; pertes de change S1 -19 M$ (contre +76 M$ de gains un an plus tot - swing de change notable, traite comme bruit non modelise explicitement). Tresorerie totale (cash + equivalents + actifs financiers courants) 5,2 Md$ au 30/06/2026 (contre 4,4 Md$ fin 2025). Flux de tresorerie d'exploitation S1 +0,7 Md$ (contre -0,4 Md$ au S1 25). Prochain refresh utile : resultats T3 2026 (22/10/2026), qui devrait coincider avec ou suivre de peu la lecture topline ALKIVIA (myositis) - refresh evenementiel a anticiper des la publication du readout si celui-ci intervient avant.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee : \"ca\" = ventes nettes produit, \"ebit\" = operating profit publie (IFRS), reporte en USD. Pas de mise a jour de \"data\" a ce refresh (exercice fiscal 2026 non cloture). Tax normatif maintenu ~13-14%, valide par l'ETR S1 26 observe (12,4%). Produits financiers ~200 M$/an valides par le S1 26 (92 M$ sur 6 mois, annualise ~184 M$). adjShares : dilution quasi nulle confirmee (64,4M diluees S1 26 vs hypothese FY26 de 66,5M a la creation - tendance meme plus favorable que prevu). WATCH-LIST pour le prochain refresh : (1) lecture topline ALKIVIA (myositis) attendue T3 26 - binaire majeur ; (2) lecture topline EMPASSION (MMN, empasiprubart) attendue T4 26 - binaire majeur, deuxieme produit potentiel ; (3) suite de l'enquete Pomerantz (statut sollicitation, verifier si escalade en plainte formelle) ; (4) montant et calendrier d'un eventuel deploiement de la tresorerie en BD/licensing ; (5) trajectoire de la marge operationnelle sur un H2 historiquement plus charge en R&D (multiples etudes d'enregistrement en cours).\n\n== CATALYSEURS ==\nLecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) sont les deux catalyseurs binaires majeurs de la deuxieme moitie de l'annee, determinant l'expansion de la these au-dela de la franchise FcRn/gMG-CIDP deja validee ; au-dela, le lancement effectif de l'autoinjecteur VYVGART SC (2027) et la montee en puissance des nouvelles indications (Graves, ocular MG, seronegative gMG) conditionnent la trajectoire de CA 2027-2028.",
+    "impact":"positif",
+    "ancrages":[
+      {"id":"AN-VYVGART-GROWTH","moteur":"Franchise VYVGART en acceleration confirmee : ventes nettes produit T2 26 a 1 516 M$ (+60% YoY, +17% QoQ), 18e trimestre consecutif de croissance, portee par le lancement du label elargi seronegative gMG (approuve et lance au T2) et les premiers effets de l'extension ocular MG (resultats ADAPT OCULUS positifs).","applique":["adjCA.2026","adjCA.2027","adjCA.2028"],"confiance":"haute"},
+      {"id":"AN-MARGIN-LEVERAGE","moteur":"Levier operationnel confirme : marge operationnelle S1 26 a 31,1% (contre 19,2% au S1 25), effet de ciseau ventes/couts qui se poursuit a mesure que la franchise VYVGART s'echelle.","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028"],"confiance":"haute"},
+      {"id":"AN-BINAIRES-PIPELINE","moteur":"Deux catalyseurs binaires majeurs toujours a venir sur l'annee : lecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) - non inclus dans les adjXXX, purs binaires hors modele. Deux binaires anterieurs (seronegative gMG, ocular MG) se sont resolus positivement au T2, reduisant le risque de pipeline a court terme.","applique":[],"confiance":"haute sur l'occurrence des lectures, nulle sur leur issue"},
+      {"id":"AN-DILUTION-STOPPED","moteur":"Dilution confirmee quasi nulle : actions diluees moyennes S1 26 a 64,4M (en leger repli vs 65,6M au S1 25) - la these d'un financement autofinance sans nouvelle levee de capital se valide, meme legerement mieux que prevu.","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"haute"},
+      {"id":"AN-CASH-BUILD","moteur":"Position de tresorerie (cash + equivalents + actifs financiers courants) en hausse a 5,2 Md$ au 30/06/2026 (contre 4,4 Md$ fin 2025), flux de tresorerie d'exploitation S1 26 nettement positif (+0,7 Md$ contre -0,4 Md$ au S1 25) - trajectoire de generation de cash plus rapide que prevu, disponible pour BD/licensing selon l'ambition Vision 2030.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"haute"},
+      {"id":"AN-PIPELINE-EXPANSION","moteur":"Elargissement du pipeline au-dela des catalyseurs deja suivis : etude d'enregistrement lancee dans la maladie de Graves, signal positif de l'etude Phase 2 VARVARA (empasiprubart, delayed graft function en transplantation) a 52 semaines, dix molecules attendues en developpement clinique d'ici fin 2026 - optionnalite positive non chiffree dans le modele.","applique":[],"confiance":"haute sur l'occurrence, nulle sur la valorisation"},
+      {"id":"AN-CEO-TRANSITION","moteur":"Transition de gouvernance actee : Karen Massey (ex-COO depuis mars 2023) nommee CEO en mai 2026, le fondateur Tim Van Hauwermeiren devenant President non-executif du Conseil - continuite strategique affichee (Vision 2030 reaffirmee sans changement), 90,9% du capital represente a l'AG 2026 en soutien.","applique":[],"confiance":"haute sur l'occurrence, sans impact chiffrable direct"}
+    ],
+    "adjEPS":{"2026":29.89,"2027":41.22,"2028":54.09,"2029":66.77,"2030":80.60},
+    "adjCA":{"2026":6400,"2027":8300,"2028":10350,"2029":12350,"2030":14400},
+    "adjEBIT":{"2026":2043,"2027":2950,"2028":3950,"2029":4950,"2030":6050},
+    "adjNet":{"2026":1943,"2027":2700,"2028":3570,"2029":4440,"2030":5400},
+    "adjND":{"2026":-6300,"2027":-7900,"2028":-9850,"2029":-12200,"2030":-14700},
+    "adjShares":{"2026":65.0,"2027":65.5,"2028":66.0,"2029":66.5,"2030":67.0}
   }
 }
