@@ -2,114 +2,65 @@
   "name": "Vidrala",
   "cours": 88.7,
   "yahooSymbol": "VID.MC",
-  "dividende": 1.7,
+  "dividende": 1.7505,
   "data": [
-    {
-      "year": 2021,
-      "ca": 1080,
-      "ebit": 173,
-      "net": 145.2,
-      "shares": 33,
-      "nd": 150,
-      "div": 1.16
-    },
-    {
-      "year": 2022,
-      "ca": 1371,
-      "ebit": 167,
-      "net": 153.6,
-      "shares": 32.5,
-      "nd": 180,
-      "div": 1.24
-    },
-    {
-      "year": 2023,
-      "ca": 1590,
-      "ebit": 251,
-      "net": 233.4,
-      "shares": 32.3,
-      "nd": 220,
-      "div": 1.35
-    },
-    {
-      "year": 2024,
-      "ca": 1588,
-      "ebit": 300,
-      "net": 298,
-      "shares": 32.5,
-      "nd": 250,
-      "div": 1.45
-    },
-    {
-      "year": 2025,
-      "ca": 1465,
-      "ebit": 280,
-      "net": 220,
-      "shares": 33.5,
-      "nd": 230,
-      "div": 1.7
-    }
+    {"year":2021,"ca":1080,"ebit":173,"net":145.2,"shares":33,"nd":150,"div":1.16},
+    {"year":2022,"ca":1371,"ebit":167,"net":153.6,"shares":32.5,"nd":180,"div":1.24},
+    {"year":2023,"ca":1590,"ebit":251,"net":233.4,"shares":32.3,"nd":220,"div":1.35},
+    {"year":2024,"ca":1588,"ebit":300,"net":298,"shares":32.5,"nd":250,"div":1.45},
+    {"year":2025,"ca":1465,"ebit":280,"net":220,"shares":33.5,"nd":230,"div":1.7}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 6.7,
-    "epsNY": 7.1,
-    "date": "2026-07-02",
-    "source": "Stockopedia/consensus ~12 analystes"
-  },
+  "epsConsensus": {"year":2026,"eps":6.9,"epsNY":7.4,"date":"2026-06-22","source":"Stocks Report / consensus 12 analystes (releve 22/06/2026, pre-T2) : objectif de cours moyen 102,13€ (fourchette 85-124€), recommandation Achat. Snapshot pre-S1, a rafraichir."},
   "particularites": [
-    {
-      "text": "Distribution gratuite d'actions recurrente, qui doit se traiter comme un dividende et correspond a un dividende de 5%.",
-      "valuePct": 5
-    }
+    {"text":"Distribution gratuite d'actions recurrente, qui doit se traiter comme un dividende et correspond a un dividende de 5%.","valuePct":5}
   ],
+  "nextEvent": {"label":"Q3 26","date":"2026-10-28"},
+  "ownership": {
+    "asOf":"2026-07-23",
+    "insiderPct":null,
+    "insiderDesc":"Actionnariat historiquement concentre autour de plusieurs holdings familiales basques (URDALA 21 S.L., BIDAROA S.L., ADDVALIA CAPITAL, MUGARBURU S.L., SURAMAR S.L., AZPILU S.L., BAISEL S.L., entre autres, identifiees dans les rapports de gouvernance CNMV) - pourcentage cumule exact non retrouve dans cette recherche, portee reduite. A rafraichir avec le detail des participations significatives CNMV au prochain point.",
+    "insiderSource":"CNMV - Informe de Gobierno Corporativo Vidrala (structure des holdings familiales identifiees, pourcentages non extraits)",
+    "notableHolders":[],
+    "coverageNote":"Aucun investisseur de la watchlist tier-1 identifie. Titre hors perimetre 13F (cote a Madrid, pas d'ADR US identifie) - recherche institutionnelle US non pertinente.",
+    "history":[]
+  },
+  "compliance": {
+    "asOf":"2026-07-23",
+    "items":[],
+    "note":"Aucune allegation de fraude identifiee dans cette recherche (portee reduite, premiere population de ce champ a l'occasion de ce refresh)."
+  },
   "hypothese": {
-    "date": "2026-07-02",
-    "source": "Transcript Q1 2026 (conference call)",
-    "summary": "Guidance FY2026 confirmee mais recalibree sur un 2025 pro forma incluant le Chili. Dette nette 2026 revue fortement a la baisse (declaration explicite du CEO 'pratiquement sans dette'). Rythme de rachats confirme.",
-    "text": "== SYNTHESE DE LA THESE ==\nVidrala est un fabricant de verre d'emballage (bouteilles, bocaux) present en Espagne, au Portugal, au UK/Irlande et desormais au Chili (acquisition recente). La these repose sur un modele resilient a marge stable (~19%), une discipline capitalistique forte (rachats d'actions compensant la dilution des actions gratuites recurrentes), et un desendettement rapide qui degage une optionnalite de retour de capital ou de nouvelle consolidation.\n\n== EVENEMENTS & INFLEXIONS (Q1 2026) ==\n1. GUIDANCE FY2026 REAFFIRMEE mais RECALIBREE : le transcript revele que la guidance 2026 est benchmarkee contre un 2025 PRO FORMA incluant le Chili sur annee pleine (CA ~1,5Md EUR, EBITDA 453M EUR), et NON contre le 2025 reel autonome. CA organique T1 -4,7% a change constant, EBITDA organique -2,1%. Europe -4%, UK/Irlande -9%, Amerique du Sud +12%.\n2. DETTE NETTE REVISEE FORTEMENT A LA BAISSE : dette nette fin mars 273M EUR (0,6x EBITDA pro forma LTM). Le CEO declare explicitement que si l'objectif de FCF ~200M EUR est atteint, le groupe terminera l'annee \"pratiquement sans dette\".\n3. RACHATS D'ACTIONS CONFIRMES : deux tranches de 1% du capital deja realisees (decembre 2025, mars 2026), soit 2% cumules sur 4 mois.\n4. M&A ECARTE A COURT TERME : le CEO exclut explicitement toute operation immediate (Mexique exclu, integration Chili pas terminee).\n\n== PARTICULARITES ==\nDistribution gratuite d'actions recurrente, traitee comme un dividende, correspond a un rendement de 5%.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript Q1 2026. Secondaires : FY2025 (CA 1 465M EUR, EBIT 280M, net 220M). Cours ~89 EUR, ~33,5M actions.\nGuidance FY2026 : EBITDA >450M EUR (similaire ou legerement superieur a 2025 comparable Chili inclus), EPS +5%+, FCF ~200M EUR soutenable.\nProchain refresh utile : S1 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nCA 2026 quasi-stable vs la base pro forma 2025 (~1 503M EUR), pas une croissance de +3,8% vs le 2025 autonome comme initialement modelise. Dette nette 2026 revisee de 200M a 40M EUR (quasi nulle).\nA suivre : (1) tenue de la guidance FY2026 ; (2) couverture energetique (>85% deja securise) ; (3) rythme des rachats ; (4) capital excedentaire redeploye vers l'actionnaire une fois le desendettement atteint.\n\n== CATALYSEURS ==\nDesendettement rapide (quasi zero fin 2026) -> optionnalite de retour de capital accru ; rachats compensant la dilution des actions gratuites ; couverture energetique solide (risque limite) ; Chili en forte croissance (+12%).",
-    "impact": "neutre",
-    "adjEPS": {
-      "2026": 6.25,
-      "2027": 6.53,
-      "2028": 6.81,
-      "2029": 7.09,
-      "2030": 7.4
+    "date":"2026-07-23",
+    "priorEPS":{"date":"2026-07-02","eps":{"2026":6.25,"2027":6.53}},
+    "source":"Refresh S1/T2 2026 - Rapport de gestion officiel 'Business Performance Q2 2026' (23/07/2026, fourni par l'utilisateur, source primaire complete) ; transcript du call (23/07/2026, 10h00 CET) non consulte separement, donnees chiffrees et guidance couvertes par le rapport de gestion",
+    "dernierCall":{
+      "quarter":"Q2 26",
+      "resultatsVsConsensus":{"ca":{"actual":386.4,"consensus":380.5},"epsAdj":{"actual":null,"consensus":null,"basis":"GAAP"}},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree publiee (convention du secteur, guidance annuelle uniquement).",
+      "guidanceAnnuelle":"Guidance FY2026 reiteree sans changement : EBITDA superieur a 450 M€ (au-dessus de 2025), croissance du BPA superieure a 5%, flux de tresorerie disponible d'environ 200 M€. Management souligne une acceleration attendue de la generation de cash au S2 pour atteindre l'objectif de FCF.",
+      "pointsCles":["Amelioration des marges malgre un environnement de couts defavorable : marge EBITDA S1 26 a 29,9% (+110 points de base sur un an), marge EBIT a 20,2% (+30pb) - discipline de couts confirmee malgre une demande toujours atone en Europe.","Ventes organiques toujours en repli (-3,8% a change et perimetre constants sur le S1, incluant le Chili en base 2025 pro forma), mais des 'poches de reprise' des ventes identifiees au T2 par le management, avec une nette acceleration de l'Amerique du Sud (ventes S1 +14% pro forma, marge EBITDA 37,6%).","Extension EXTRAORDINAIRE du programme de rachat d'actions jusqu'a 3% du capital (contre 2% annonce en mars), avec pour objectif l'ANNULATION des actions rachetees - mesure complementaire au dividende en numeraire, portant l'enveloppe totale de remuneration actionnariale a plus de 150 M€. Ce point remet en cause la trajectoire de desendettement 'quasi sans dette' evoquee par le CEO au T1 26.","Dividende complementaire 2025 verse le 15 juillet 2026 (0,4687€/action, +15% sur un an) ; remuneration totale en numeraire 2026 (interim + complementaire + prime AG) a 1,7505€/action, +15% vs 2025 (1,5959€)."]
     },
-    "adjCA": {
-      "2026": 1510,
-      "2027": 1535,
-      "2028": 1565,
-      "2029": 1600,
-      "2030": 1640
-    },
-    "adjEBIT": {
-      "2026": 291,
-      "2027": 296,
-      "2028": 304,
-      "2029": 313,
-      "2030": 325
-    },
-    "adjNet": {
-      "2026": 211,
-      "2027": 222,
-      "2028": 233,
-      "2029": 244,
-      "2030": 256
-    },
-    "adjND": {
-      "2026": 40,
-      "2027": 20,
-      "2028": 10,
-      "2029": -20,
-      "2030": -50
-    },
-    "adjShares": {
-      "2026": 33.8,
-      "2027": 34,
-      "2028": 34.2,
-      "2029": 34.4,
-      "2030": 34.6
-    }
+    "guidanceHistory":[
+      {"quarter":"Q1 26","date":"2026-04-29","fyGuided":2026,"guidanceAnnuelle":"EBITDA >450 M€, BPA +5%+, FCF ~200 M€ - guidance benchmarkee contre un 2025 pro forma incluant le Chili sur annee pleine."},
+      {"quarter":"Q2 26","date":"2026-07-23","fyGuided":2026,"guidanceAnnuelle":"Guidance reiteree sans changement (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec mention explicite d'une acceleration attendue de la generation de cash au S2."}
+    ],
+    "guidanceLongTerme":null,
+    "summary":"Marges renforcees malgre une demande europeenne toujours atone (EBITDA S1 +4,4% publie, marge +110pb), guidance FY2026 reiteree, mais extension extraordinaire du programme de rachat d'actions a 3% du capital (avec annulation) qui retarde significativement le desendettement complet evoque au T1.",
+    "text":"== SYNTHESE DE LA THESE ==\nLa these d'un fabricant de verre d'emballage resilient a marge stable se confirme au S1 2026 : malgre une demande organique toujours en repli (-3,8% a change et perimetre constants), la discipline de couts permet une expansion de marge notable (EBITDA +110pb a 29,9%, EBIT +30pb a 20,2%), et le benefice net progresse de 8,9% (117,4 M€ contre 107,8 M€ au S1 25). L'Amerique du Sud (Chili) continue de surperformer nettement (ventes S1 +14% pro forma, marge EBITDA 37,6%, la plus elevee des trois zones), validant la logique de diversification geographique de la these. Le point le plus important de ce refresh concerne la politique de retour de capital : le Conseil a decide d'etendre EXTRAORDINAIREMENT le programme de rachat d'actions jusqu'a 3% du capital (contre 2% annonce en mars), avec pour objectif explicite d'ANNULER les actions rachetees, portant l'enveloppe totale de remuneration actionnariale a plus de 150 M€ pour 2026. Cette decision, conjuguee a la hausse de 15% du dividende, consomme une part significative du flux de tresorerie disponible attendu (~200 M€), ce qui invalide largement la declaration du CEO au T1 26 selon laquelle le groupe terminerait l'annee 'pratiquement sans dette' : la dette nette au 30/06/2026 s'etablit a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable par rapport a fin mars 2026 (~273 M€ selon le T1) malgre un semestre beneficiaire - le desendettement se poursuit mais a un rythme bien plus lent que ce qu'anticipait le modele de creation.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Extension extraordinaire du programme de rachat d'actions a 3% du capital (annonce avec les resultats S1 26), avec objectif d'annulation des actions rachetees - mesure complementaire au dividende, enveloppe totale de remuneration actionnariale portee a plus de 150 M€ pour 2026. Consequence directe : le narratif de desendettement quasi-total evoque au T1 26 est fortement attenue, la dette nette restant proche de 250 M€ a mi-annee au lieu de converger rapidement vers zero. (i) Amelioration continue des marges malgre un environnement de couts defavorable ('adverse cost environment' selon le management) - preuve de l'efficacite des actions de controle des couts internes. (i) Reprise partielle des volumes en Europe au T2 ('pockets of sales recovery'), avec une contribution croissante de l'Amerique Latine qui compense la faiblesse persistante du Royaume-Uni/Irlande (ventes UK&Irlande S1 en repli a 249,8 M€ contre 280,6 M€, marge toutefois en hausse a 23,5%). (ii) Dividende complementaire 2025 verse le 15 juillet 2026 (0,4687€/action, +15%), portant la remuneration totale en numeraire 2026 a 1,7505€/action (+15% vs 2025).\n\n== PARTICULARITES ==\nDistribution gratuite d'actions recurrente, traitee comme un dividende, correspond a un rendement de 5% (inchange, voir champ particularites).\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : rapport de gestion officiel 'Vidrala Business Performance Q2 2026' (23/07/2026, fourni directement par l'utilisateur). Ventes S1 26 : 754,0 M€ (+0,5% publie, -3,8% organique) vs consensus S2 attendu a 380,5 M€ pour le seul T2 (ventes T2 reelles calculees a partir des segments : 386,4 M€, legerement au-dessus). EBITDA S1 26 : 225,5 M€ (+4,4% publie, +1,5% organique), marge 29,9%. EBIT S1 26 : 152,6 M€, marge 20,2%. Benefice net S1 26 : 117,4 M€ (+9,9% sur la base du BPA, retraite de l'effet de l'emission d'actions gratuites de novembre 2025 pour assurer la comparabilite). Dette nette au 30/06/2026 : 252,3 M€ (0,6x EBITDA pro forma LTM, contre 0,5x un an plus tot). Guidance FY2026 reiteree sans changement : EBITDA >450 M€, BPA +5%+, FCF ~200 M€. Prochain refresh utile : resultats T3 2026 (28/10/2026, 8h00 CET).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee : \"ebit\" = EBIT (resultat operationnel apres amortissements, coherent avec la serie historique 2021-2025), et non l'EBITDA (mesure alternative >450 M€ visee pour 2026, superieure a l'EBIT d'environ 160 M€ compte tenu des amortissements). Pas de mise a jour de \"data\" a ce refresh (exercice fiscal 2026 non cloture). Nombre d'actions : revise nettement a la hausse par rapport au modele de creation (34,5M vs 33,8M pour 2026), le BPA S1 26 (3,36€) sur un benefice S1 de 117,4 M€ impliquant un nombre d'actions moyen pondere d'environ 34,9M sur le semestre - l'effet de l'emission d'actions gratuites de novembre 2025 avait ete sous-estime dans le modele de creation. Trajectoire de desendettement revisee a la hausse (moins de baisse) : le rythme de rachat d'actions etendu (3% du capital avec annulation) et la hausse du dividende consomment une part significative du FCF attendu (~200 M€), limitant la reduction de la dette nette sur l'horizon de projection par rapport a l'hypothese quasi-nulle retenue a la creation. WATCH-LIST pour le prochain refresh : (1) confirmation de l'acceleration de la generation de cash au S2 evoquee par le management ; (2) rythme reel d'execution et d'annulation du programme de rachat etendu a 3% ; (3) poursuite de la reprise des volumes europeens amorcee au T2 ; (4) trajectoire de la dette nette en fin d'annee face aux nouvelles priorites de retour de capital.\n\n== CATALYSEURS ==\nResultats T3 2026 (28/10/2026) permettront de verifier si l'acceleration de la generation de cash annoncee pour le S2 se confirme, et de suivre le rythme d'execution du programme de rachat d'actions etendu a 3% du capital ; au-dela, la poursuite de la forte dynamique sud-americaine et la reprise progressive des volumes europeens conditionnent la trajectoire de marge sur l'horizon de projection.",
+    "impact":"neutre",
+    "ancrages":[
+      {"id":"AN-GUIDANCE-REITEREE","moteur":"Guidance FY2026 reiteree sans changement au S1 26 (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec une acceleration attendue de la generation de cash au S2 explicitement mentionnee par le management.","applique":["adjCA.2026","adjEBIT.2026","adjNet.2026"],"confiance":"haute"},
+      {"id":"AN-AMSUD-ACCELERATION","moteur":"Amerique du Sud (Chili) en forte croissance confirmee : ventes S1 26 +14% pro forma, marge EBITDA 37,6% (la plus elevee des trois zones, quoique en repli vs 38,5% un an plus tot) - moteur de croissance et de marge le plus solide du groupe.","applique":["adjCA.2026","adjCA.2027","adjCA.2028"],"confiance":"haute"},
+      {"id":"AN-EUROPE-UK-FAIBLESSE","moteur":"Demande europeenne et britannique toujours atone (ventes Iberia+RoE S1 26 en repli a 363,6 M€, UK&Irlande a 249,8 M€), avec des 'poches de reprise' identifiees au T2 - hypothese de stabilisation progressive plutot que de reprise franche sur l'horizon de projection.","applique":["adjCA.2026","adjCA.2027"],"confiance":"moyenne"},
+      {"id":"AN-DILUTION-ACTIONS-GRATUITES","moteur":"Nombre d'actions moyen pondere S1 26 (~34,9M, calcule a partir du BPA et du benefice net publies) nettement superieur a l'hypothese de creation (33,8M pour l'annee complete) - effet de l'emission d'actions gratuites de novembre 2025 sous-estime initialement.","applique":["adjShares.2026"],"confiance":"haute"},
+      {"id":"AN-RACHAT-ANNULATION-EXTENDED","moteur":"Extension extraordinaire du programme de rachat d'actions a 3% du capital (annoncee avec les resultats S1 26, contre 2% en mars), avec objectif d'annulation - enveloppe totale de remuneration actionnariale >150 M€ en 2026, consommant une part significative du FCF attendu et reduisant progressivement le nombre d'actions sur l'horizon de projection (effet compensateur partiel de la dilution des actions gratuites).","applique":["adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"moyenne"},
+      {"id":"AN-DETTE-DESENDETTEMENT-RALENTI","moteur":"Dette nette au 30/06/2026 a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable depuis fin mars (273 M€) malgre un FCF positif, du fait de la hausse du dividende (+15%) et de l'extension du programme de rachat - le narratif 'quasiment sans dette' evoque au T1 26 est invalide par ce refresh ; trajectoire de desendettement revisee nettement a la hausse (moins de baisse) sur tout l'horizon de projection.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"haute"}
+    ],
+    "adjEPS":{"2026":6.86,"2027":7.27,"2028":7.71,"2029":8.13,"2030":8.54},
+    "adjCA":{"2026":1500,"2027":1545,"2028":1595,"2029":1645,"2030":1695},
+    "adjEBIT":{"2026":288,"2027":299,"2028":312,"2029":325,"2030":338},
+    "adjNet":{"2026":237,"2027":247,"2028":258,"2029":268,"2030":278},
+    "adjND":{"2026":200,"2027":170,"2028":140,"2029":110,"2030":80},
+    "adjShares":{"2026":34.5,"2027":34.0,"2028":33.5,"2029":33.0,"2030":32.5}
   }
 }
