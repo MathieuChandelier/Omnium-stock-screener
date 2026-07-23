@@ -633,7 +633,7 @@ function saveLastView(id){
   try{ localStorage.setItem(LAST_VIEW_KEY, JSON.stringify({tab:id, ticker:CT})); }catch(e){}
 }
 
-function showTab(id,btn){
+function showTab(id,btn,fromHistory){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
@@ -643,7 +643,34 @@ function showTab(id,btn){
   if(id==='analyse'){renderAnalyse();}
   if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
   saveLastView(id);
+  // Historique du navigateur : on empile un etat interne a chaque navigation
+  // reelle (pas quand on est appele depuis popstate, sinon boucle infinie).
+  // Objectif : le bouton "Precedent" du navigateur doit faire remonter
+  // l'utilisateur dans l'app (ex. fiche titre -> portefeuille) plutot que
+  // de le faire sortir du site.
+  if(!fromHistory){
+    try{ history.pushState({omniumTab:id, omniumTicker:CT}, '', location.pathname+location.search); }
+    catch(e){}
+  }
 }
+
+window.addEventListener('popstate', function(e){
+  const st=e.state;
+  if(st && st.omniumTab==='analyse' && st.omniumTicker && state.tickers[st.omniumTicker]){
+    CT=st.omniumTicker;
+    refreshSelects();
+    const d=state.tickers[CT];
+    const coursEl=document.getElementById('cours');
+    if(coursEl && d) coursEl.value=d.cours||10.0;
+    syncAnalyseHeader(CT);
+    showTab('analyse', null, true);
+  } else {
+    // Etat "portefeuille" ou etat inconnu/absent (ex. tout premier chargement) :
+    // on retombe toujours sur la vue portefeuille plutot que de laisser le
+    // panel precedent affiche dans un etat incoherent.
+    showTab('portefeuille', document.getElementById('tab-btn-pf'), true);
+  }
+});
 
 let _refreshAllInFlight=false;
 function refreshAllPrices(){
@@ -1407,10 +1434,14 @@ document.addEventListener('DOMContentLoaded', async function(){
   }
   refreshSelects();
   const wantAnalyse = lastView && lastView.tab==='analyse' && CT && state.tickers[CT];
+  // replaceState (et non pushState) pour l'etat initial : on ne veut pas
+  // qu'un "Precedent" sur le tout premier ecran empile un doublon avant de
+  // quitter le site - l'etat initial remplace simplement l'entree d'arrivee.
+  try{ history.replaceState({omniumTab: wantAnalyse?'analyse':'portefeuille', omniumTicker: CT}, '', location.pathname+location.search); }catch(e){}
   if(wantAnalyse){
-    showTab('analyse', null);
+    showTab('analyse', null, true);
   } else {
-    showTab('portefeuille', document.getElementById('tab-btn-pf'));
+    showTab('portefeuille', document.getElementById('tab-btn-pf'), true);
   }
   const gd=document.getElementById('gen-date');
   if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
