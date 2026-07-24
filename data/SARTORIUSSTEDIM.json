@@ -1,107 +1,72 @@
 {
   "name": "Sartorius Stedim Biotech",
-  "cours": 163.9,
+  "cours": 163.3,
   "yahooSymbol": "DIM.PA",
-  "dividende": 0.74,
+  "dividende": 0.69,
   "data": [
-    {
-      "year": 2021,
-      "ca": 1737,
-      "ebit": 420,
-      "net": 322,
-      "shares": 92,
-      "nd": 600
-    },
-    {
-      "year": 2022,
-      "ca": 2394,
-      "ebit": 530,
-      "net": 381,
-      "shares": 92,
-      "nd": 2400
-    },
-    {
-      "year": 2023,
-      "ca": 2787,
-      "ebit": 330,
-      "net": 180,
-      "shares": 92,
-      "nd": 2600
-    },
-    {
-      "year": 2024,
-      "ca": 2779,
-      "ebit": 360,
-      "net": 175,
-      "shares": 92,
-      "nd": 2191,
-      "div": 0.69
-    },
-    {
-      "year": 2025,
-      "ca": 2967,
-      "ebit": 490,
-      "net": 266,
-      "shares": 92,
-      "nd": 2100,
-      "div": 0.74
-    }
+    {"year":2021,"ca":1737,"ebit":420,"net":322,"shares":92,"nd":600},
+    {"year":2022,"ca":2394,"ebit":530,"net":381,"shares":92,"nd":2400},
+    {"year":2023,"ca":2787,"ebit":330,"net":180,"shares":92,"nd":2600},
+    {"year":2024,"ca":2779,"ebit":360,"net":175,"shares":92,"nd":2191,"div":0.69},
+    {"year":2025,"ca":2967,"ebit":490,"net":266,"shares":92,"nd":2173,"div":0.69}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 4.15,
-    "epsNY": 5.22,
-    "date": "2026-07-07",
-    "source": "Base NORMALISEE IFRS (garde l'amort. des intangibles recurrent Polyplus ~205M EUR/an ; exclut les exceptionnels S/4HANA). NB : consensus ~5,02 EUR et guidance sont en 'underlying'. Prochaine publ. 23/07"
-  },
+  "epsConsensus": {"year":2026,"eps":4.35,"epsNY":5.28,"date":"2026-07-24","source":"Base IFRS NORMALISEE Omnium (garde l'amort. intangibles récurrent Polyplus/CellGenix/BIA Separations ~110-115 M€/an ; exclut les 'extraordinary items' - restructuration/M&A). Consensus sell-side externe ~5,02€ (Stockopedia, juillet 2026) mais sur base 'underlying' management (strip amortissement IFRS3) et vraisemblablement pour CY2026 (cohérent avec l'EPS underlying S1 26 publié de 2,42€ x2 environ), donc non directement comparable à adjEPS Omnium."},
   "particularites": [],
+  "nextEvent": {"label":"Q3 26","date":"2026-10-22"},
+  "ownership": {
+    "asOf":"2026-07-24",
+    "insiderPct":71.5,
+    "insiderDesc":"Situation atypique : SSB est une filiale contrôlée, pas une société à actionnariat diffus. Sartorius AG (Göttingen, Allemagne) détient directement et indirectement 71,5% du capital et 83,0% des droits de vote (structure à droits de vote double probable) ; flottant ~28,5% du capital.",
+    "insiderSource":"Rapport financier semestriel S1 2026 (SSB, note 7 'Related Parties', déposé le 23/07/2026, revu par les commissaires aux comptes PwC/KPMG).",
+    "notableHolders":[],
+    "coverageNote":"Titre coté à Paris (Euronext), hors périmètre 13F (gérants actifs américains) - aucune recherche d'équivalent local (AMF) effectuée à ce stade, cohérent avec le choix assumé du protocole pour les titres non cotés aux US.",
+    "history":[]
+  },
+  "compliance": {
+    "asOf":"2026-07-24",
+    "items":[],
+    "note":"Recherche étendue à l'historique public du titre (champ absent du fichier de création). Aucune allégation de fraude, enquête réglementaire ou recours collectif identifié contre Sartorius Stedim Biotech. Un litige commercial ordinaire est mentionné dans les notes du rapport S1 26 (filiale Sartorius BIA Separations d.o.o., différend avec l'ancien actionnaire BIA Separations GmbH lié à une procédure d'insolvabilité antérieure à l'acquisition de 2020) - écarté du périmètre de ce champ (contentieux commercial ordinaire, pas une allégation de fraude)."
+  },
   "hypothese": {
-    "date": "2026-07-07",
-    "source": "Creation - Transcript T1 2026 + FY2025 + recherche publique",
-    "summary": "Pure-player bioprocessing (bioreacteurs, single-use, consommables), filiale 71,5% Sartorius AG. THESE = recovery cyclique : marges au plus bas depuis 2022, catalyseur = redemarrage reel des commandes d'EQUIPEMENT attendu d'ici fin 2026. Base IFRS NORMALISEE. adjEPS 4,15->8,58 (pic 2027 avec le redemarrage).",
-    "text": "== SYNTHESE DE LA THESE ==\nSartorius Stedim Biotech est le pure-player mondial du bioprocessing (bioreacteurs a usage unique, consommables, equipements de production biopharmaceutique), filiale a 71,5% de Sartorius AG. La these est une RECOVERY CYCLIQUE : apres le hangover post-Covid (2022-2025, destockage massif des clients pharma qui avaient sur-commande pendant la pandemie), les marges sont au plus bas de la decennie. Les consommables (haute marge, recurrents) ont deja repris une croissance solide, mais la division EQUIPEMENT (cyclique, plus grosse contribution a la marge) reste en attente d'un vrai redemarrage des commandes clients, attendu entre maintenant et fin 2026. Le titre est le pari inverse d'un titre de qualite qui se paye cher pour sa croissance stable : ici on paye une prime de recovery (P/E ~40x sur base normalisee) qui suppose que ce redemarrage se materialise reellement.\n\n== EVENEMENTS & INFLEXIONS (T1 2026, publie 22/04) ==\nImpact : positif.\n1. CREUX ET REDEMARRAGE [classe (ii), LE COEUR DE LA THESE] : les consommables (recurrent, haute marge) croissent deja a rythme high-teens et portent la profitabilite ; mais l'EQUIPEMENT (bioreacteurs, systemes) reste MUET, les clients hesitant encore a investir. Book-to-bill >1 et en amelioration sequentielle = signal avance du redemarrage. Le management attend une stabilisation puis reprise \"au moins stable\" en 2026. C'est CE redemarrage (non encore dans les chiffres) qui fera repartir la marge vers l'ambition mid-term.\n2. T1 2026 [classe (i)] : CA 762 M EUR (+7,9% cc, +2,3% reporte), underlying EBITDA 233 M EUR (marge 30,7%, stable). Net reporte 88 M EUR (+3%). Operating cash flow 193 M EUR (+61%). Net debt/EBITDA 2,28x (vs 2,38x). H2 attendu plus fort que H1.\n3. TARIFS US [classe (i)] : surcharges tarifaires ajoutent ~1pt au CA mais diluent techniquement la marge (~25-30bps). FX vent contraire ~-2pt sur l'annee.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (Rene Faber, CEO SSB). Secondaires : FY2025 (CA 2 967M EUR +9,6% cc, underlying EBITDA 913,7M/30,8%, UNDERLYING net 427,7M/4,40 EUR, net REPORTE 265,6M/2,73 EUR). Cours ~164 EUR, ~92M actions, -19% sur un an.\nGuidance FY2026 : CA +6-10% cc, underlying EBITDA margin \"slightly above 31%\", equipement \"at least stable\".\nProchain refresh utile : S1 2026, 23 juillet - confirmation cle : redemarrage des commandes d'equipement.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = IFRS NORMALISEE, pas l'\"underlying\" du management. Lien valide (FY2025) : underlying net 427,7M - reporte 265,6M = 162M EUR d'add-backs, dont ~155M d'AMORTISSEMENT INTANGIBLES (RECURRENT, Polyplus, garde) et ~7M d'exceptionnels. Base normalisee 2025 ~3,61 EUR. adjEBIT = underlying EBITDA - D&A totale. Marge EBIT normalisee 19,4% (2026) -> 25,2% (2030). Trajectoire : +15% (2026) -> +26% (2027, PIC quand le redemarrage se materialise) -> +22%/+18%/+14%. P/E 2026 ~40x - prime de recovery a valider.\nA suivre : (1) REDEMARRAGE DES COMMANDES D'EQUIPEMENT (book-to-bill, order intake) - le catalyseur ; (2) marge vers l'ambition mid-term 34-35% ; (3) desendettement ; (4) tarifs US/FX ; (5) redevance de marque Sartorius AG.\n\n== CATALYSEURS ==\nRedemarrage du cycle equipement (fin du destockage, book-to-bill >1) ; consommables recurrents high-teens ; marche bioprocessing structurel ; leader single-use/bioreacteurs ; desendettement post-Polyplus ; decote (-19% sur un an) sur un leader au creux du cycle.",
+    "date": "2026-07-24",
+    "priorEPS": {"date":"2026-07-07","eps":{"2026":4.15,"2027":5.22}},
+    "source": "Refresh S1/T2 2026 - Rapport financier semestriel complet (SSB, 23/07/2026, revu PwC/KPMG) - couverture de call sourcée (GuruFocus/Investing.com, citations directes René Fáber CEO SSB et Florian Funck CFO Sartorius AG) - CMD mars 2026 (nouvelles cibles moyen terme)",
+    "dernierCall": {
+      "quarter":"T2 26",
+      "resultatsVsConsensus":{"ca":{"actual":1527,"consensus":null},"epsAdj":{"actual":2.42,"consensus":null,"basis":"non-GAAP"}},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffrée fournie (guidance annuelle uniquement).",
+      "guidanceAnnuelle":"FY26 confirmée : CA +6-10% cc (bas de fourchette optique du fait de l'effet de compensation tarifaire ~35 M€ ; croissance opérationnelle hors effet proche du milieu de fourchette ~8% cc), marge EBITDA underlying 'légèrement au-dessus de 31%', capex/CA ~13,3% (stable vs 2025), dette nette/EBITDA visée 'légèrement au-dessus de 2x' fin 2026 (vs 2,38x fin 2025).",
+      "pointsCles":[
+        "Le catalyseur central de la thèse se matérialise : l'activité équipement, en berne depuis 2022, s'est stabilisée comme attendu et est repassée en légère croissance organique au S1 26, tandis que les consommables ont crû de plus de 9% en organique - René Fáber a réaffirmé sa confiance dans la cible 9-12%/an à partir de 2027 lors du Q&A.",
+        "Événement technique ponctuel : suite à la décision de la Cour Suprême américaine (20/02/2026) jugeant inconstitutionnels certains tarifs douaniers IEEPA, SSB a perçu d'importants remboursements en fin de semestre et prévoit de compenser ses clients (~23 M€ de provision comptabilisée au 30/06/26) - la direction souligne explicitement que la réduction technique du CA et l'amélioration technique des marges qui en résultent ne reflètent pas la performance opérationnelle sous-jacente.",
+        "Refinancement obligataire réalisé en mai 2026 : la première tranche du financement 2023 (520 M€, échéance septembre 2026) a été refinancée via Sartorius Finance B.V. à un coupon explicite de 3,75%, réduisant le coût de financement prospectif du groupe.",
+        "Rachat des 24% minoritaires restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%), financé sur trésorerie/dette - opération légèrement relutive sur le résultat net part du groupe."
+      ]
+    },
+    "guidanceHistory":[
+      {"quarter":"T2 26","date":"2026-07-23","fyGuided":2026,"guidanceAnnuelle":"CA +6-10% cc confirmée (bas de fourchette optique, effet compensation tarifs ~35 M€ ; opérationnel hors effet ~8% cc), marge EBITDA underlying 'légèrement au-dessus de 31%', capex/CA ~13,3%, dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026."}
+    ],
+    "guidanceLongTerme": "CMD mars 2026 : ambition moyen terme à partir de 2027 - croissance CA organique 9-12%/an (devises constantes, 100-200pb au-dessus de la croissance de marché bioprocessing estimée à 8-10%/an) et expansion de marge EBITDA underlying de 60-85 pb/an, tirée par le levier opérationnel, les améliorations opérationnelles et la part croissante des consommables haute marge.",
+    "summary": "Pure-player bioprocessing, filiale 71,5% Sartorius AG. THESE VALIDEE au S1 26 : l'équipement s'est stabilisé et repasse en croissance comme attendu, les consommables restent >9% organique. Nouvelles cibles CMD mars 2026 (CA +9-12%/an, marge +60-85pb/an à partir de 2027) précisent et confirment la trajectoire. Seul bémol : désendettement plus lent que prévu (CellGenix + dividende ont consommé le FCF du S1) et effet technique tarifs douaniers qui brouille temporairement la lecture du CA publié.",
+    "text": "== SYNTHESE DE LA THESE ==\nSartorius Stedim Biotech est le pure-player mondial du bioprocessing, filiale à 71,5% de Sartorius AG (83% des droits de vote). La thèse de recovery cyclique posée à la création (07/07/2026) est validée par le premier trimestre test : l'activité équipement, muette depuis 2022, s'est 'stabilisée comme attendu et est repassée en légère croissance' au S1 26, pendant que les consommables (haute marge, récurrents) continuent de croître à plus de 9% en organique. Le Capital Markets Day de mars 2026 - non capturé à la création, 15 jours avant - a formalisé une ambition moyen terme précise à partir de 2027 : croissance organique 9-12%/an (100-200pb au-dessus du marché bioprocessing 8-10%/an) et expansion de marge EBITDA underlying de 60-85pb/an. Ces cibles chiffrées remplacent la référence plus vague à une 'ambition mid-term 34-35%' de la création et servent désormais d'ancrage direct pour la projection 2027+. Le seul bémol de ce trimestre est financier plutôt qu'opérationnel : le désendettement, pilier de la thèse, a marqué une pause au S1 (dette nette quasi stable) car le free cash flow généré a été absorbé par le dividende FY25 et le rachat des minoritaires CellGenix - la direction confirme cependant l'objectif de dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026, impliquant un désendettement concentré sur le second semestre.\n\n== EVENEMENTS & INFLEXIONS (S1 2026, publié 23/07) ==\nImpact : positif.\n1. CONFIRMATION DU REDEMARRAGE EQUIPEMENT [classe (ii), coeur de la thèse validé] : équipement stabilisé et en légère croissance organique au S1 26 (vs quasi-stagnation 2022-2025) ; consommables >9% organique. APAC +12,5% cc, porté par une nette reprise en Chine après deux années faibles. EMEA +7,7% cc. Americas pénalisée optiquement par l'effet de compensation tarifaire (+0,8% cc publié, +5,4% cc hors effet).\n2. EFFET TECHNIQUE TARIFS DOUANIERS IEEPA [classe (i), à isoler en fin d'exercice] : la Cour Suprême américaine a jugé le 20/02/2026 inconstitutionnels certains tarifs imposés sous l'IEEPA (introduits en avril 2025). SSB a perçu d'importants remboursements juste avant la fin du S1 et prévoit de compenser ses clients des surcharges répercutées (~23 M€ de provision comptabilisée au 30/06/26, venant en réduction du CA et du coût des ventes publiés à due concurrence). Effet purement technique et ponctuel, sans lien avec la performance opérationnelle sous-jacente selon la direction elle-même - à isoler comme non-récurrent dans 'data' 2026 lors de la clôture de l'exercice (E5-d-bis), non retraité pour l'instant car l'exercice n'est pas clos. Impact FY26 estimé jusqu'à 35 M€ sur le CA guidé.\n3. NOUVELLES CIBLES MOYEN TERME (CMD mars 2026, classe i) : croissance organique 9-12%/an cc et expansion de marge EBITDA underlying de 60-85pb/an à partir de 2027, fondées sur une croissance de marché bioprocessing estimée à 8-10%/an et une surperformance ciblée de 100-200pb.\n4. REFINANCEMENT OBLIGATAIRE (classe i) : première tranche 2023 (520 M€, échéance septembre 2026) refinancée en mai 2026 via Sartorius Finance B.V. à un coupon explicite de 3,75% - réduit le coût de financement prospectif, remboursement net pour SSB d'environ 240,2 M€.\n5. RACHAT MINORITAIRES CELLGENIX (classe i) : exercice de l'option d'achat des 24% restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%) - légèrement relutif sur le résultat net part du groupe, mais a consommé une part significative du FCF du S1.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : rapport financier semestriel complet S1 26 (23/07/2026, revu PwC/KPMG). Secondaires : couverture de call sourcée (citations directes René Fáber CEO SSB, Florian Funck CFO Sartorius AG), CMD mars 2026. Guidance directionnelle (contraintes dures) : CA +6-10% cc FY26 (bas de fourchette optique du fait de l'effet tarifs, opérationnel hors effet ~8% cc), marge EBITDA underlying 'légèrement au-dessus de 31%', capex/CA ~13,3%, dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026 ; à partir de 2027, CA +9-12%/an cc et +60-85pb/an de marge (CMD mars 2026). Prochain refresh utile : après publication des chiffres à 9 mois, le 22/10/2026 (date confirmée par le calendrier financier officiel).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = IFRS NORMALISEE (adjEBIT = underlying EBITDA - D&A totale, y compris l'amortissement IFRS3/intangibles lié aux acquisitions en série - Polyplus, CellGenix, BIA Separations - gardé dans la base contrairement à l'ajusté 'underlying' du management qui l'exclut). IS retenu à 26% (explicitement appliqué par le management pour les résultats intermédiaires, identique 2025/2026). Amortissement IFRS3 précisé à ~109-115 M€/an sur la base du S1 26 publié (54,7 M€/6 mois) - chiffre plus fin que l'estimation ~155 M€/an de la création, recalculé une fois avec confrontation explicite (E5bis). Résultat financier net : trajectoire d'amélioration retenue jusqu'en 2030 (S1 26 publié -57,5 M€, refinancement mai 2026 à 3,75% de coupon). Pas de programme de rachat d'actions (filiale contrôlée à 71,5% par Sartorius AG) - adjShares stable à 92M sur tout l'horizon. WATCH-LIST pour le refresh suivant : (1) confirmation du redémarrage équipement sur un deuxième trimestre consécutif (S2 26) ; (2) isolement de l'effet technique tarifs douaniers dans 'data' 2026 à la clôture ; (3) rythme réel de désendettement au S2 (cible dette nette/EBITDA 'légèrement au-dessus de 2x') ; (4) premiers indicateurs de matérialisation des cibles CMD 2027 (CA +9-12%, marge +60-85pb) ; (5) cohérence de la méthodologie adjEBIT (basée sur underlying EBITDA, donc excluant de facto les 'extraordinary items' de restructuration/M&A récurrents d'une année sur l'autre - ~30 M€/an - à reconfirmer avec Mathieu, tension possible avec la règle E5-e sur les coûts de restructuration récurrents à réintégrer).\n\n== CATALYSEURS ==\nConfirmation du redémarrage équipement sur un second trimestre consécutif, matérialisation des cibles CMD 2027 (CA +9-12%/an, marge +60-85pb/an), désendettement post-CellGenix au S2, décote actuelle sur un leader au sortir du creux de cycle.",
     "impact": "positif",
-    "adjEPS": {
-      "2026": 4.15,
-      "2027": 5.22,
-      "2028": 6.38,
-      "2029": 7.5,
-      "2030": 8.58
-    },
-    "adjCA": {
-      "2026": 3145,
-      "2027": 3428,
-      "2028": 3754,
-      "2029": 4073,
-      "2030": 4378
-    },
-    "adjEBIT": {
-      "2026": 611,
-      "2027": 729,
-      "2028": 858,
-      "2029": 983,
-      "2030": 1104
-    },
-    "adjNet": {
-      "2026": 382,
-      "2027": 480,
-      "2028": 587,
-      "2029": 690,
-      "2030": 789
-    },
-    "adjND": {
-      "2026": 1850,
-      "2027": 1500,
-      "2028": 1100,
-      "2029": 650,
-      "2030": 150
-    },
-    "adjShares": {
-      "2026": 92,
-      "2027": 92,
-      "2028": 92,
-      "2029": 92,
-      "2030": 92
-    }
+    "ancrages": [
+      {"id":"reprise_equipement_2026","mechanism":"Activité équipement stabilisée comme attendu et repassée en légère croissance organique au S1 26 (vs quasi-stagnation 2022-2025), confirmée par des consommables >9% organique et le maintien de la guidance CA","scope":"adjCA 2026","confidence":"haute"},
+      {"id":"ambition_moyen_terme_2027plus","mechanism":"CMD mars 2026 : croissance CA organique 9-12%/an cc à partir de 2027 (100-200pb au-dessus du marché bioprocessing 8-10%/an) - retenu à ~9,5% reporté (retrait ~1pt FX)","scope":"adjCA 2027-2030","confidence":"haute"},
+      {"id":"expansion_marge_2027plus","mechanism":"CMD mars 2026 : expansion de marge EBITDA underlying de 60-85pb/an à partir de 2027 (levier opérationnel, part croissante des consommables) - retenu au milieu de fourchette ~72,5pb/an","scope":"adjEBIT 2027-2030 (marge)","confidence":"haute"},
+      {"id":"marge_ebitda_2026","mechanism":"Guidance confirmée au S1 26 : marge EBITDA underlying 'légèrement au-dessus de 31%' - retenu à 31,3%, cohérent avec le 31,4% déjà publié au S1 26","scope":"adjEBIT 2026 (marge)","confidence":"haute"},
+      {"id":"effet_technique_tarifs_2026","mechanism":"Remboursement de tarifs douaniers IEEPA jugés inconstitutionnels (Cour Suprême US, 20/02/2026) + compensation clients (jusqu'à 35 M€ sur l'année selon la guidance) : effet ponctuel qui réduit optiquement le CA publié S1/FY26 sans refléter la performance opérationnelle sous-jacente (croissance opérationnelle hors effet ~8% cc) - à isoler comme non-récurrent dans data 2026 lors de la clôture de l'exercice (E5-d-bis)","scope":"watch-list (informatif, pas un moteur de projection actif)","confidence":"haute"},
+      {"id":"is_normatif","mechanism":"Taux d'IS explicitement guidé et appliqué par le management pour le calcul des résultats intermédiaires : 26% (identique 2025 et 2026), reconduit sur tout l'horizon de projection à défaut d'information contraire","scope":"adjNet/adjEPS 2026-2030 (taux d'IS)","confidence":"haute"},
+      {"id":"resultat_financier_net","mechanism":"Résultat financier S1 26 publié -57,5 M€ (vs -62,2 M€ S1 25), amélioration liée à la baisse des charges d'intérêt et aux effets de change/valorisation positifs. Refinancement obligataire de mai 2026 (tranche 2023 refinancée via Sartorius Finance B.V. à un coupon explicite de 3,75%, priorité 1 E5-a-bis) réduit le coût de financement prospectif - trajectoire d'amélioration retenue jusqu'en 2030 à mesure du désendettement","scope":"adjNet 2026-2030","confidence":"moyenne"},
+      {"id":"rebasage_nd_2026","mechanism":"Dette nette de 2 198,7 M€ au 30/06/26 (vs 2 173,1 M€ fin 2025, quasi stable au lieu de la décrue attendue), le FCF du S1 (198,8 M€) ayant été consommé par le dividende FY25 (67,9 M€) et le rachat des minoritaires CellGenix (71,8 M€). Guidance confirmée : dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026 (vs 2,38x fin 2025), impliquant un désendettement concentré sur le S2. Rebasage de la trajectoire adjND vs le refresh de création (1 850 M€ fin 2026 projetés, désormais 2 050 M€)","scope":"adjND 2026-2030","confidence":"haute"},
+      {"id":"rachat_cellgenix_2026","mechanism":"Exercice de l'option d'achat des 24% minoritaires restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%) - légèrement relutif sur le résultat net part du groupe (suppression de la quote-part minoritaire), effet mineur mais retenu dans le résultat net projeté","scope":"adjNet 2026-2030 (mineur)","confidence":"moyenne"},
+      {"id":"base_amortissement_intangibles","mechanism":"Amortissement IFRS3/intangibles lié aux acquisitions en série (Polyplus, CellGenix, BIA Separations) explicitement gardé dans la base Omnium (E5-e, acquéreur en série) : ~109-115 M€/an sur la base du S1 26 publié (54,7 M€ sur 6 mois) - chiffre plus précis que l'estimation ~155 M€/an retenue à la création, recalculé une fois avec confrontation explicite (E5bis)","scope":"adjEBIT/adjNet 2026-2030 (base)","confidence":"haute"}
+    ],
+    "adjEPS": {"2026":4.35,"2027":5.28,"2028":6.30,"2029":7.46,"2030":8.71},
+    "adjCA": {"2026":3100,"2027":3395,"2028":3717,"2029":4070,"2030":4457},
+    "adjEBIT": {"2026":645,"2027":747,"2028":859,"2029":987,"2030":1130},
+    "adjNet": {"2026":400,"2027":486,"2028":580,"2029":686,"2030":801},
+    "adjND": {"2026":2050,"2027":1650,"2028":1250,"2029":800,"2030":350},
+    "adjShares": {"2026":92,"2027":92,"2028":92,"2029":92,"2030":92}
   }
 }
