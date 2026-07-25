@@ -40,6 +40,7 @@ data/
   "cours": 85.90,
   "yahooSymbol": "VID.MC",
   "dividende": 1.70,
+  "fyEndMonth": 7,
   "data": [
     {"year":2015,"ca":1080,"ebit":173,"net":145.2,"shares":33,"nd":150,"div":1.16},
     ...
@@ -108,6 +109,20 @@ accent (ex: `BUREAUVERITAS`, `DELONGHI`). Les cles adjXXX sont indexees par
 annee (les 5 annees de projection en cours). Seules les annees/metriques
 renseignees ecrasent la base CAGR historique automatique ; le reste continue
 a etre extrapole depuis "data" par le moteur.
+
+Le champ `fyEndMonth` est OPTIONNEL, entier de 1 a 12, le mois de cloture de
+l'exercice fiscal du titre. ABSENT (pas de cle du tout) pour un exercice
+calendaire standard (cloture en decembre) - c'est le cas par defaut, ne
+JAMAIS ecrire `"fyEndMonth": 12` explicitement. Renseigne UNIQUEMENT pour un
+exercice DECALE (ex. Copart, cloture le 31 juillet -> `"fyEndMonth": 7`) :
+declenche cote `index.html` le badge "Exercice decale" et les libelles de
+mois dans les colonnes de projection. Les annees du tableau `data` et des
+`adjXXX` designent alors des EXERCICES FISCAUX (ex. "2025" = exercice clos
+au mois `fyEndMonth` de l'annee civile 2025), jamais des annees civiles au
+sens strict. Pilote egalement la convention `"Q<n> FY <AA>"` de `nextEvent.
+label` (voir plus bas) et le declenchement conditionnel d'E7 bis (voir
+boucle d'analyse plus bas) des qu'un ou plusieurs trimestres de l'exercice
+en cours sont deja publies au moment de l'analyse.
 
 Le champ `nextEvent` porte le prochain evenement de resultats (ou, a
 defaut, l'evenement alternatif le plus pertinent, ex: Capital Markets Day)
@@ -706,7 +721,8 @@ ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
 retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
 uniquement] reconciliation en deux temps, projection independante puis
 confrontation (E6-a / E6-b) -> controle final de vraisemblance (E7) ->
-ecriture unique (E8).
+[titres a `fyEndMonth` avec trimestres de l'exercice en cours deja publies
+uniquement] coherence intra-exercice (E7 bis) -> ecriture unique (E8).
 
 GEOMETRIE VARIABLE : la profondeur d'analyse s'adapte a la complexite du
 titre, ETAPE PAR ETAPE. Un mono-produit a guidance simple traverse en ligne
@@ -807,7 +823,11 @@ c) DECOMPOSITION PAR SEGMENTS - seulement si l'entreprise publie des
 a) CROISSANCE DU CA annee par annee, rattachee a des moteurs sources. Chaque
    moteur non trivial devient une entree `ancrages` (id, mecanisme en une
    phrase, annees d'application) plutot qu'une justification qui ne vivrait
-   que dans le raisonnement du moment.
+   que dans le raisonnement du moment. TITRE A `fyEndMonth` AVEC TRIMESTRES
+   DE L'EXERCICE EN COURS DEJA PUBLIES : construis directement la 1ere annee
+   projetee bottom-up (cumul publie + reste raisonne), jamais par une
+   hypothese de croissance annuelle isolee - voir la mecanique complete en
+   E7 bis, a appliquer ICI et pas seulement relue en fin de boucle.
 b) MARGE EN %, confrontee aux trois ancrages : (1) historique (rythme en
    pb/an normalise) ; (2) resultats recents + guidance annee en cours
    (base RECURRENTE, one-offs retraites) ; (3) cibles moyen/long terme
@@ -1010,6 +1030,40 @@ une hypothèse à documenter après coup.
 d) Incoherence residuelle -> ESCALADE plutot que figer une trajectoire
    douteuse.
 
+### E7 bis. COHERENCE INTRA-EXERCICE (titres a `fyEndMonth`, CONDITIONNEL)
+S'applique UNIQUEMENT si le titre a un `fyEndMonth` ET qu'au moins un
+trimestre de l'exercice fiscal en cours est deja publie au moment de
+l'analyse (sinon : sans objet, une ligne, comme les etapes non-obligatoires
+de la boucle). Cas vise : l'exercice fiscal en cours n'est PAS encore
+cloture, mais un ou plusieurs de ses trimestres sont DEJA publies
+(creation ou refresh) - situation frequente pour un titre a `fyEndMonth`
+puisque son exercice ne s'aligne pas sur l'annee civile de l'analyse. E7
+verifie la soudure entre le dernier exercice CLOS (`data`) et la 1ere annee
+PROJETEE (adjXXX) ; il ne verifie PAS que cette 1ere annee projetee est
+elle-meme coherente avec les trimestres de CET exercice deja publies. C'est
+un angle mort distinct, a couvrir explicitement :
+a) Avant d'ecrire le premier adjXXX de l'exercice fiscal en cours,
+   additionne les trimestres DEJA PUBLIES de cet exercice (CA, EBIT/resultat
+   operationnel, resultat net, actions diluees).
+b) Raisonne le ou les trimestres RESTANTS (pas de guidance chiffree chez la
+   plupart de ces societes -> extrapolation motivee : rythme des derniers
+   trimestres publies, comparable a N-1, elements ponctuels deja identifies
+   en E3) plutot que de les ignorer.
+c) Le premier adjXXX = somme(trimestres publies) + estimation(trimestres
+   restants). JAMAIS une hypothese de croissance annuelle isolee (ex.
+   "CA +X% cette annee") deconnectee de ce cumul deja connu.
+d) Calcule explicitement l'ecart entre le cumul deja publie (annualise au
+   prorata) et l'adjXXX retenu ; si cet ecart implique un dernier trimestre
+   dont la croissance s'ecarte fortement (>10 points) du rythme des
+   trimestres deja publies sans catalyseur nomme en E3, c'est un signal
+   d'incoherence (meme traitement qu'E7-d : documenter le catalyseur ou
+   revoir a la baisse, jamais figer tel quel).
+e) Consequence mecanique attendue : dans un exercice en cours ou les
+   trimestres deja publies sont mitigés/plats, le premier adjXXX doit
+   generalement l'etre aussi - un rebond n'est justifie que par un
+   catalyseur explicite (E3), jamais par la seule proximite de la fin
+   d'exercice.
+
 ### E8. ECRITURE UNIQUE - STANDARD D'ARCHIVAGE
 
 Ecris `hypothese` (elle REMPLACE entierement l'ancienne, `ancrages` et
@@ -1065,8 +1119,9 @@ Parse JSON strict : le fichier doit etre du JSON valide (accolades/ virgules/gui
 hypothese.adjXXX = objets plats indexes par annee, jamais un tableau. Verifie explicitement que hypothese.adjCA, adjEBIT, adjNet, adjND, adjShares, adjEPS sont chacun un OBJET de la forme {"2026":valeur,"2027":valeur,...}, directement au niveau racine de hypothese - PAS un tableau [{year:2026,...},...], PAS un champ nomme differemment (ex. projection, forecast). C'est la cause de bug la plus sournoise possible : un JSON parfaitement valide et une these bien redigee, mais l'app retombe silencieusement sur la projection CAGR automatique (E1) sans aucun message d'erreur, produisant un tableau completement different de l'analyse effectuee - ecart qui ne se detecte qu'en comparant visuellement l'app aux chiffres ecrits dans ancrages/text.
 Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees suivant la derniere annee de data), verifie que hypothese.adjCA[annee] (et les 5 autres champs) existe et est un nombre - pas hypothese.adjCA[0].adjCA ni toute autre imbrication.
 Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
+Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
-Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, aucun champ manquant.").
+Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
 ## LIVRABLE FINAL
 
