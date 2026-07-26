@@ -686,11 +686,11 @@ function refreshAllPrices(){
   // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
   // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
   // en quelques secondes au lieu de defiler titre par titre.
-  // Relevé de 6 à 10 : avec le fetch Google Finance ramené à 1.5s (voir
-  // fetchFromGoogleFinance), le débit du pool de workers redevient le
-  // facteur limitant sur l'ensemble du portefeuille (~36 titres) - plus de
-  // parallélisme ici raccourcit d'autant le temps total d'affichage des
-  // cours à l'ouverture de l'onglet Portefeuille.
+  // Relevé de 6 à 10 : avec price.php qui répond désormais en quelques
+  // dizaines/centaines de ms (voir _fetchPrice), le débit du pool de
+  // workers redevient le facteur limitant sur l'ensemble du portefeuille
+  // (~52 titres) - plus de parallélisme ici raccourcit d'autant le temps
+  // total d'affichage des cours à l'ouverture de l'onglet Portefeuille.
   const CONCURRENCY=10;
   let i=0;
   const worker=async()=>{
@@ -730,11 +730,16 @@ function saveYahooSymbol(v){
   if(state.tickers[CT]) state.tickers[CT].yahooSymbol=v.trim().toUpperCase();
 }
 
-const GOOGLE_FINANCE_URL='https://script.google.com/macros/s/AKfycbzlc2mqM71rf_zTMC7_wALi9VZEkHdOx9-VGlm8OE4vjZwM7wFh-7bVZH72JG_r_FdNwA/exec';
-// Proxy Yahoo Finance côté serveur (PHP, hébergé chez toi) - remplace la
-// chaîne de proxys CORS publics utilisée précédemment. A adapter avec ton
-// propre domaine une fois price.php déposé par FTP.
-const YAHOO_PROXY_URL='https://model.omnium-capital.com/price.php';
+// price.php fait desormais tout le travail cote serveur : il sert en
+// priorite un prix Google Finance pousse par le trigger Apps Script en
+// arriere-plan (frais, <15 min - voir refreshAllCachedPrices cote script),
+// et ne retombe sur son propre fetch Yahoo que si ce cache est perime.
+// L'app n'appelle donc plus JAMAIS script.google.com en direct au clic
+// utilisateur : ce round-trip a un plancher de latence incompressible
+// d'environ 1s cote Apps Script (verifie le 2026-07-26), non lie au code
+// mais a la plateforme elle-meme - un seul appel a price.php suffit desormais,
+// et repond en general en quelques dizaines/centaines de ms.
+const PRICE_PROXY_URL='https://model.omnium-capital.com/price.php';
 const _fetchInFlight={}; 
 
 function _priceIsPlausible(p,ref,liveConfirmed){
@@ -751,36 +756,18 @@ function _priceIsPlausible(p,ref,liveConfirmed){
   return true;
 }
 
-async function fetchFromGoogleFinance(sym){
-  // Timeout volontairement court (1.5s) : Google Finance repond quasi
-  // toujours en quelques centaines de ms quand tout va bien - un delai
-  // court ici garantit un affichage rapide a l'ouverture de l'app. En cas
-  // de lenteur/panne reelle du service, on bascule vite sur le proxy
-  // Yahoo (voir _fetchFromYahoo) qui dispose lui d'un timeout plus genereux
-  // pour absorber cet incident plutot que de faire attendre l'utilisateur
-  // 12s sur CHAQUE titre en echec.
+async function _fetchPrice(sym){
+  // Timeout genereux (12s) : dans le pire cas (ticker jamais pousse par le
+  // trigger ET cache Yahoo perime), price.php doit faire lui-meme un fetch
+  // Yahoo cote serveur (jusqu'a 10s de timeout cURL interne, voir price.php)
+  // avant de repondre. Ce cas reste rare - la plupart du temps price.php
+  // repond en quelques dizaines/centaines de ms via son cache.
   try{
-    const r=await fetch(GOOGLE_FINANCE_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(1500)});
-    if(!r.ok)return null;
-    const j=await r.json();
-    const price=+j?.price;
-    return(price&&price>0)?price:null;
-  }catch(e){return null;}
-}
-
-async function _fetchFromYahoo(sym){
-  // Fallback : ne se declenche QUE si Google Finance a echoue ou depasse
-  // 1.5s (voir fetchFromGoogleFinance). Timeout allonge a 10s ici (vs 8s
-  // auparavant) pour donner sa chance a ce filet de securite sans faire
-  // echouer le prix du titre au premier accroc reseau - ce cas restant
-  // rare, l'impact sur la vitesse globale d'ouverture de l'app est
-  // negligeable.
-  try{
-    const r=await fetch(YAHOO_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(10000)});
+    const r=await fetch(PRICE_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
     if(!r.ok)return null;
     const j=await r.json();
     if(!j||!j.price)return null;
-    return{price:+j.price, div:(j.div!=null?+j.div:null)};
+    return{price:+j.price, div:(j.div!=null?+j.div:null), source:j.source||null};
   }catch(e){ return null; }
 }
 
@@ -799,11 +786,9 @@ async function autoFetchPrice(ticker,force){
   const liveConfirmed=!!d._liveConfirmed;
   let finalPrice=null, finalDiv=null, source='';
   try{
-    const gf=await fetchFromGoogleFinance(sym);
-    if(_priceIsPlausible(gf,ref,liveConfirmed)){ finalPrice=gf; source='google'; }
-    if(finalPrice===null){
-      const y=await _fetchFromYahoo(sym);
-      if(y && _priceIsPlausible(y.price,ref,liveConfirmed)){ finalPrice=y.price; finalDiv=y.div; source='yahoo'; }
+    const r=await _fetchPrice(sym);
+    if(r && _priceIsPlausible(r.price,ref,liveConfirmed)){
+      finalPrice=r.price; finalDiv=r.div; source=r.source||'price.php';
     }
   }catch(e){}
   d._lastFetchAttemptAt=Date.now();
