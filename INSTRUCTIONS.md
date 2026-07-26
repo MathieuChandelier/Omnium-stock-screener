@@ -110,6 +110,27 @@ annee (les 5 annees de projection en cours). Seules les annees/metriques
 renseignees ecrasent la base CAGR historique automatique ; le reste continue
 a etre extrapole depuis "data" par le moteur.
 
+LANGUE DES CHAMPS TEXTE (regle distincte du CODE ci-dessus, qui lui reste
+TOUJOURS sans accent) : tous les champs texte narratifs du JSON -
+`hypothese.text`, `hypothese.summary`, `ancrages[].moteur`,
+`hypothese.dernierCall.*`, `hypothese.guidanceHistory[].guidanceAnnuelle`,
+`hypothese.guidanceLongTerme`, `particularites[].text`,
+`ownership.insiderDesc`/`insiderSource`/`coverageNote`,
+`compliance.items[].title`/`note`, etc. - sont REDIGES EN FRANCAIS AVEC LES
+ACCENTS CORRECTS (é/è/à/ê/ç/ô/î... complets), JAMAIS en ASCII depouille de
+ses accents (interdit, ASCII sans accent : "decceleration", "marche" pour
+"marché", "these" pour "thèse" ; correct, accentue : "décélération",
+"marché", "thèse").
+Eviter les traductions maladroites ou lourdes de termes techniques anglais
+consacres dans l'analyse financiere (ex : NE PAS traduire "moat" par
+"fosse" - le conserver tel quel "moat"). A l'inverse, des termes anglais
+d'usage courant du secteur (guidance, transcript, flagship, DTC, moat,
+benchmark, one-off, etc.) peuvent rester en anglais sans etre force-traduits,
+mais TOUT le reste de la prose environnante reste en francais correctement
+accentue - ce n'est donc pas "tout en anglais" ni "tout traduit de force",
+mais du francais accentue avec les quelques termes techniques anglais deja
+ancres dans l'usage du secteur conserves tels quels.
+
 Le champ `fyEndMonth` est OPTIONNEL, entier de 1 a 12, le mois de cloture de
 l'exercice fiscal du titre. ABSENT (pas de cle du tout) pour un exercice
 calendaire standard (cloture en decembre) - c'est le cas par defaut, ne
