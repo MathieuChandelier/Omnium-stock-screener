@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 -13.2 80 80">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#2E39BE"/>
+      <stop offset="100%" stop-color="#000190"/>
+    </linearGradient>
+    <linearGradient id="spec" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="70%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="inkMask">
+      <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43"
+            fill="none" stroke="#FFF" stroke-width="8.4"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </mask>
+  </defs>
+  <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43"
+        fill="none" stroke="url(#ink)" stroke-width="8.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <g mask="url(#inkMask)">
+    <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43"
+          transform="translate(0 -1.35)"
+          fill="none" stroke="url(#spec)" stroke-width="1.43"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
