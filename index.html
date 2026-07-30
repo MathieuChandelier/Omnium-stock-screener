@@ -349,7 +349,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   #analyse-tbl thead th{padding:8px 10px;font-size:10.5px;}
   #analyse-tbl tbody td{padding:7px 10px;}
   #analyse-tbl tbody td:first-child{font-size:10px;padding-right:6px;}
-  #analyse-tbl thead th:first-child{width:auto;min-width:115px;padding-right:6px;}
+  #analyse-tbl thead th:first-child{width:auto;min-width:98px;padding-right:6px;}
 
   /* ── Thèse Omnium (return-block) ── */
   .rb-header{padding:12px 14px 4px;}
@@ -1022,7 +1022,7 @@ function renderAnalyse(){
     {lbl:`EBIT (M${cur})`,      sep:false, hFn:r=>fM(r.ebit),  pFn:y=>fM(proj[y].ebit),  hRaw:r=>r.ebit},
     {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
     {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
-    {lbl:'Actions en circu. (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
+    {lbl:'Actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
     {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
