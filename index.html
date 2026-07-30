@@ -68,7 +68,6 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
    au chargement (voir loadTicker), ce qui surlignait en permanence la 1ere ligne
    du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
    Le vrai survol (:hover ci-dessus) reste inchange. */
-.pf-rank{font-size:13px;font-weight:800;color:rgba(0,1,144,.28);font-family:'Poppins',sans-serif;min-width:20px;text-align:center;flex-shrink:0;}
 .pf-main{flex:1.6;min-width:0;}
 .pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
 .pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
@@ -278,7 +277,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:22px;font-weight:900;}
+.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
+.rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
+.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;min-width:60px;flex-shrink:0;}
+.rb-eps-val-omnium{color:var(--navy);}
+.rb-eps-val-consensus{color:var(--teal-text);}
+.rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -333,7 +338,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-list{gap:0;}
   .pf-item{gap:8px;padding:8px 8px;}
   .pf-row-top{gap:6px;}
-  .pf-rank{min-width:11px;font-size:9.5px;}
   .pf-name{font-size:11.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .pf-bar-wrap{margin-top:3px;height:2px;}
 
@@ -1101,16 +1105,27 @@ function renderAnalyse(){
 // desktop des que toutes les colonnes tiennent deja dans le conteneur.
 function scrollAnalyseTblToDefault(histCount){
   const headRow=document.getElementById('analyse-head');
-  if(!headRow)return;
+  const table=document.getElementById('analyse-tbl');
+  if(!headRow||!table)return;
+  const wrap=table.parentElement; // div avec overflow-x:auto
+  if(!wrap)return;
   // Index (0-based, hors colonne "Indicateur") de la 1ere colonne a
   // garder visible a gauche : on masque tout sauf les 2 dernieres
   // annees historiques (ex. histCount=5 -> on cache les 3 premieres).
   const targetIdx=Math.max(0,histCount-2);
   const dataThs=Array.from(headRow.children).slice(1); // hors <th>Indicateur</th>
   const targetTh=dataThs[targetIdx];
-  if(!targetTh)return;
+  const firstTh=headRow.children[0]; // colonne "Indicateur", fixee (sticky) au defilement
+  if(!targetTh||!firstTh)return;
   requestAnimationFrame(()=>{
-    try{ targetTh.scrollIntoView({inline:'start',block:'nearest'}); }catch(e){}
+    try{
+      // offsetLeft = position de la colonne dans le flux normal du tableau
+      // (inchangee par le sticky, qui ne fait que la deplacer visuellement).
+      // On soustrait la largeur de la colonne fixe pour que la colonne
+      // ciblee arrive juste APRES elle, et non dessous/masquee par elle.
+      const stickyW=firstTh.getBoundingClientRect().width;
+      wrap.scrollLeft=Math.max(0,targetTh.offsetLeft-stickyW);
+    }catch(e){}
   });
 }
 
@@ -1208,37 +1223,28 @@ function renderReturnBlock(ticker, proj, cours){
     <div style="height:1px;background:var(--border);margin:0 20px;"></div>
     <div class="rb-eps-row">
       <div class="rb-eps-col" style="padding-right:14px;">
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY}</div>
-        <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div class="rb-eps-val" style="font-size:24px;font-weight:900;color:var(--navy);">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
+        <div class="rb-eps-year">EPS ${CY}</div>
+        <div class="rb-eps-line">
+          <span class="rb-eps-lbl">Omnium</span>
+          <span class="rb-eps-val rb-eps-val-omnium">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</span>
         </div>
-        ${hasPriorCY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorCY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
-        ${cons?.eps?`
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
-          <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${cons.eps.toFixed(2)}${cur}</div>
-          <div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${consDelta>=0?'var(--teal-text)':'#e05252'};background:${consDelta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${consDelta>=0?'+':''}${consDelta.toFixed(1)}% Omnium</div>
+        <div class="rb-eps-line">
+          <span class="rb-eps-lbl">Consensus</span>
+          <span class="rb-eps-val rb-eps-val-consensus">${cons?.eps?cons.eps.toFixed(2)+cur:'—'}</span>
         </div>
-        ${srcLine?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">${srcLine}</div>`:''}
-        `:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non dispo</div>`}
+        ${srcLine?`<div class="rb-eps-src">${srcLine}</div>`:''}
       </div>
       <div class="rb-eps-sep"></div>
       <div class="rb-eps-col" style="padding-left:14px;">
-        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY+1}</div>
-        <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
-        <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div class="rb-eps-val" style="font-size:24px;font-weight:900;color:var(--navy);opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
-          ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
+        <div class="rb-eps-year">EPS ${CY+1}</div>
+        <div class="rb-eps-line">
+          <span class="rb-eps-lbl">Omnium</span>
+          <span class="rb-eps-val rb-eps-val-omnium">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</span>
         </div>
-        ${hasPriorNY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorNY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
-        ${consNY>0?`
-        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;">Consensus</div>
-          <div style="font-size:14px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${consNY.toFixed(2)}${cur}</div>
-          ${deltaConsNY!==null?`<div style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaConsNY>=0?'var(--teal-text)':'#e05252'};background:${deltaConsNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaConsNY>=0?'+':''}${deltaConsNY.toFixed(1)}% Omnium</div>`:''}
-        </div>`:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non disp.</div>`}
+        <div class="rb-eps-line">
+          <span class="rb-eps-lbl">Consensus</span>
+          <span class="rb-eps-val rb-eps-val-consensus">${consNY>0?consNY.toFixed(2)+cur:'—'}</span>
+        </div>
       </div>
     </div>
   `;
@@ -1568,7 +1574,6 @@ function renderPortfolio(){
     
     el.innerHTML=`
       <div class="pf-row-top">
-        <div class="pf-rank">${idx+1}</div>
         <div class="pf-main">
          <div class="pf-name">${d.name||tk}</div>
           <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
