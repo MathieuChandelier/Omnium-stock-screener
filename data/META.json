@@ -1,24 +1,67 @@
 {
   "name": "Meta Platforms",
-  "cours": 560.00,
+  "cours": 560.0,
   "yahooSymbol": "META",
-  "dividende": 2.10,
+  "dividende": 2.1,
   "data": [
-    {"year": 2021, "ca": 117929, "ebit": 46753, "net": 39370, "shares": 2859, "nd": -48000, "div": 0},
-    {"year": 2022, "ca": 116609, "ebit": 28940, "net": 23200, "shares": 2701, "nd": -30820, "div": 0},
-    {"year": 2023, "ca": 134902, "ebit": 46751, "net": 39098, "shares": 2629, "nd": -47010, "div": 0},
-    {"year": 2024, "ca": 164501, "ebit": 69380, "net": 62360, "shares": 2614, "nd": -48980, "div": 1.94},
-    {"year": 2025, "ca": 200966, "ebit": 83280, "net": 60458, "shares": 2574, "nd": -22850, "div": 2.10}
+    {
+      "year": 2021,
+      "ca": 117929,
+      "ebit": 46753,
+      "net": 39370,
+      "shares": 2859,
+      "nd": -48000,
+      "div": 0
+    },
+    {
+      "year": 2022,
+      "ca": 116609,
+      "ebit": 28940,
+      "net": 23200,
+      "shares": 2701,
+      "nd": -30820,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 134902,
+      "ebit": 46751,
+      "net": 39098,
+      "shares": 2629,
+      "nd": -47010,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 164501,
+      "ebit": 69380,
+      "net": 62360,
+      "shares": 2614,
+      "nd": -48980,
+      "div": 1.94
+    },
+    {
+      "year": 2025,
+      "ca": 200966,
+      "ebit": 83280,
+      "net": 60458,
+      "shares": 2574,
+      "nd": -22850,
+      "div": 2.1
+    }
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 32.50,
+    "eps": 32.5,
     "epsNY": 35.17,
     "date": "2026-07-06",
     "source": "Consensus sell-side (S&P Global / multiples agrégateurs), actualisé début juillet 2026 - ANTERIEUR au T2 2026 (publié 29/07/2026, EPS 6,18$ vs consensus trimestriel 7,23$, miss de 14,5%). A recouper au prochain refresh une fois le consensus FY2026 mis à jour post-publication."
   },
   "particularites": [],
-  "nextEvent": {"label":"T3 2026","date":null},
+  "nextEvent": {
+    "label": "T3 2026",
+    "date": null
+  },
   "ownership": {
     "asOf": "2026-07-30",
     "insiderPct": 13.0,
@@ -37,19 +80,84 @@
     "date": "2026-07-30",
     "priorEPS": {
       "date": "2026-07-09",
-      "eps": {"2026":29.57,"2027":28.17,"2028":33.44,"2029":41.34,"2030":50.33}
+      "eps": {
+        "2026": 29.57,
+        "2027": 28.17,
+        "2028": 33.44,
+        "2029": 41.34,
+        "2030": 50.33
+      }
     },
     "source": "Refresh T2 2026 - Communiqué complet des résultats T2 2026 (29/07/2026, incluant les états financiers condensés) + transcript intégral du call du même jour (Mark Zuckerberg/Susan Li, incluant la session Q&A complète) - sources primaires trouvées et confrontées au modèle de création (09/07/2026, basé sur le transcript T1 2026).",
     "summary": "Le T2 2026 confirme le mécanisme central identifié à la création (explosion du capex → remontée différée de la D&A comprimant la marge) mais avec une ampleur et un calendrier significativement différents des estimations initiales : la D&A réelle du S1 2026 (12,4 Md$) est nettement inférieure à la trajectoire modélisée à la création (qui projetait ~36 Md$ sur l'année complète), ce qui améliore la marge à court terme mais implique probablement un rattrapage plus tardif et plus abrupt. Par ailleurs, le résultat opérationnel publié (-8% au T2) masque une réalité opérationnelle sous-jacente saine (+9% hors éléments non récurrents, selon la CFO elle-même) : la baisse est entièrement due à 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de départ (plan social de mai 2026), pas à une dégradation du métier publicitaire.",
     "text": "== SYNTHESE DE LA THESE ==\nLe refresh T2 2026 confirme le pari central identifié à la création : Meta engage le cycle d'investissement le plus lourd de son histoire (capex FY2026 desormais guide a 130-145 Md$, resserre par le haut vs 125-145 Md$ precedemment) pour financer sa strategie IA, avec un mecanisme de remontee differee de la D&A qui va necessairement comprimer la marge d'exploitation sur plusieurs annees, independamment du succes commercial des paris produits. La bonne nouvelle de ce refresh : la traction commerciale du coeur publicitaire reste exceptionnelle (CA T2 +28% publie/+27% a change constant, le rythme de croissance publicitaire le plus rapide de l'industrie selon Zuckerberg), et la baisse du resultat operationnel publie au T2 (-8%) est entierement imputable a des elements non recurrents identifies (2,4 Md$ de charges juridiques, 1,2 Md$ de charges de depart liees au plan social de mai 2026) : hors ces elements, la CFO indique explicitement que le resultat operationnel aurait progresse de +9%. La mauvaise nouvelle, et le changement le plus important de ce refresh : le free cash flow s'est effondre a seulement 784 M$ au T2 (contre 8,5 Md$ au T2 2025), et le bilan a bascule en quelques mois d'une position de cash net confortable vers une position quasi neutre (cash+titres 90,3 Md$ contre 83,7 Md$ de dette long terme, soit un cash net residuel de seulement ~6,6 Md$ contre 22,9 Md$ fin 2025) - la societe a emis 25 Md$ de nouvelle dette long terme au seul T2 et a totalement suspendu ses rachats d'actions (zero au T2 2026 contre 10,2 Md$ au T2 2025). La CFO confirme explicitement une evolution structurelle vers un mix de financement davantage oriente dette, ainsi que le recours a des structures de partenariat hors bilan partiel (coentreprise avec BlackRock annoncee la veille du call pour un data center de 1 GW a El Paso, Texas).\n\n== EVENEMENTS & INFLEXIONS ==\n(i) CORRECTION MAJEURE DE LA TRAJECTOIRE D&A (E6-a/E6-b, changement le plus important de ce refresh) : la D&A reelle du S1 2026 s'etablit a 12,4 Md$ (6,0 Md$ au T1, 6,36 Md$ au T2, en acceleration sequentielle modeste), ce qui extrapole a environ 27 Md$ sur l'annee complete (+44% vs 18,6 Md$ en FY2025) - tres en-deca des ~36 Md$ (+94%) projetes par le modele de creation, qui appliquait un ratio D&A/capex(n-1) de 50% avec un decalage d'un an. La realite montre un decalage de mise en service plus long que modelise (construction/equipement des datacenters prenant plus d'un an). Cette correction ameliore mecaniquement la marge a court terme (2026-2027) mais implique probablement un rattrapage plus marque en 2028-2029 a mesure que les capex massifs de 2025-2026 finissent par entrer en service - trajectoire de marge entierement reconstruite ce refresh (voir ancrage dedie).\n(i) Resultat operationnel T2 2026 en baisse de -8% publie (18,8 Md$, marge 31% vs 43% un an plus tot), mais la CFO Susan Li indique explicitement que HORS charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel aurait progresse de +9% - la degradation affichee est donc integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier. Plan social de mai 2026 : ~8 000 employes impactes, effectif total 75 472 (-1% sur un an), la majorite des employes impactes devant sortir des effectifs d'ici fin T3 2026.\n(i) Effondrement du free cash flow (784 M$ au T2 2026 contre 8,5 Md$ au T2 2025, -91%) du fait du capex massif (31,1 Md$ au T2 seul). Bilan bascule : cash+titres 90,3 Md$ vs dette long terme 83,7 Md$ au 30/06/2026 (cash net residuel ~6,6 Md$, contre 22,9 Md$ fin FY2025) - emission de 25 Md$ de nouvelle dette long terme au T2 seul. Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) - la CFO confirme un virage structurel vers un mix de financement davantage oriente dette (\"evolving our capital structure... to include a greater mix of debt\") et l'exploration de structures de partenariat/JV hors bilan partiel (BlackRock, 1 GW a El Paso, Texas, annonce la veille du call).\n(ii) Guidance T3 2026 CA : 61-64 Md$ (headwind change ~1pt). Guidance charges totales FY2026 relevee a 165-169 Md$ (vs 162-169 Md$ precedemment, integrant les 2,4 Md$ de charges juridiques du T2). Guidance capex FY2026 resserree/relevee par le bas a 130-145 Md$ (vs 125-145 Md$). Guidance taux d'imposition relevee a 15-17% pour le reste de l'annee (vs 13-16% precedemment). Objectif de resultat d'exploitation FY2026 superieur a FY2025 (83,28 Md$) reconfirme explicitement. AUCUNE guidance capex 2027 fournie - la CFO le confirme explicitement en Q&A (\"we aren't providing a specific outlook for 2027 CapEx at this time... infrastructure planning remains highly dynamic\"), tout en indiquant que la planification actuelle vise a \"maximiser la capacite 2026 et 2027\", signal qualitatif que le capex 2027 restera probablement eleve sans confirmation chiffree.\n(ii) Traction commerciale IA quantifiee et en forte hausse par rapport a la creation : outils publicitaires Advantage+ (bout-en-bout, alimentes par IA) atteignent desormais un rythme annualise de CA de plus de 75 Md$ (nouvelle metrique cle, non disponible a la creation). Ameliorations de ciblage/conversion publicitaire : +8,3% de clics publicitaires et +15,7% de hausse des conversions sur Facebook (modeles Gem + comprehension utilisateur combines) - metriques plus larges et plus recentes que celles citees a la creation (Lattice/GEM +6%, Adaptive Ranking Model +1,6%). Plus d'1 million d'entreprises utilisent desormais les Business Agents chaque semaine (deploiement mondial complete sur WhatsApp/Messenger, extension a Instagram en cours). Nouveau flux de revenus \"Family of Apps Other\" franchit pour la premiere fois le seuil du milliard de dollars sur un trimestre (+73% sur un an, porte par la messagerie payante et les abonnements WhatsApp).\n(iii) Risque juridique/reglementaire confirme et desormais partiellement materialise : 2,4 Md$ de charges juridiques deja comptabilisees au T2 2026 (nature precise non detaillee dans les sources consultees a ce refresh - a clarifier via le 10-Q). Proces lies a la protection des mineurs toujours programmes en 2026 aux Etats-Unis, la direction reiterant qu'ils \"peuvent resulter en une perte materielle\" - risque non chiffre au-dela des 2,4 Md$ deja pris, exclu du reste des adjXXX.\n\n== PARTICULARITES ==\nAucune particularite structurelle chiffree identifiee (structure de gouvernance a droits de vote differencies classe A/B deja traitee dans ownership, pas un mecanisme capitalistique recurrent au sens du champ particularites).\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communique complet des resultats T2 2026 (29/07/2026, incluant etats financiers condenses, tableau de reconciliation GAAP/non-GAAP) et transcript integral du call du meme jour (Zuckerberg/Li + Q&A complet), trouves et confrontes - primaires pour ce refresh. CA T2 2026 de 60 801 M$ (+28% publie, +27% a change constant), legerement au-dessus du consensus (60,26 Md$, +0,9%). EPS dilue de 6,18$ (-13% sur un an), MANQUANT le consensus de 7,23$ de 14,5% - le marche a immediatement identifie que ce miss provient integralement des elements non recurrents (charges juridiques + plan social) plutot que d'une deterioration operationnelle. Resultat net S1 2026 (42 621 M$) reste artificiellement gonfle par le benefice fiscal ponctuel du T1 2026 deja identifie a la creation (provision d'impot NEGATIVE de -2 113 M$ sur le semestre, contre une charge de 3 935 M$ au S1 2025) - ce benefice ne se reproduira pas au S2, ou le taux d'imposition guide remonte a 15-17%. Prochain refresh utile : resultats T3 2026 (date non confirmee dans les sources consultees, generalement fin octobre - a verifier).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable GAAP publiee, aucun retraitement \"adjusted\" du management au niveau du resultat net. D&A RECALIBREE ce refresh sur la base de donnees reelles S1 2026 (12,4 Md$, vs ~18 Md$ projetes par le modele de creation pour la meme periode) : extrapolation a ~27 Md$ pour FY2026 complet (vs ~36 Md$ dans le modele de creation), puis rattrapage plus marque et plus tardif sur 2027-2028 (40 Md$ puis 55 Md$, le capex massif 2025-2026 finissant par entrer en service avec un decalage plus long qu'initialement suppose) avant deceleration de la croissance de la D&A en 2029-2030 (62 Md$ puis 65 Md$, a mesure que la croissance du capex lui-meme ralentit). EBIT FY2026 ancre directement sur la guidance officielle (CA estime moins charges totales guidees, midpoint) plutot que sur une hypothese de marge independante - methodologie plus robuste que la creation. Taux d'imposition normatif : 16% pour le S2 2026 (aligne sur la guidance 15-17%), puis 17% en 2027, 17,5% a partir de 2028 (le S1 2026 integre l'effet ponctuel favorable deja realise, non reconduit). Position de tresorerie/dette nette ENTIEREMENT RECALIBREE ce refresh sur la base du bilan reel au 30/06/2026 (cash net residuel de seulement 6,6 Md$, contre une position encore confortable de -22,9 Md$ modelisee pour fin FY2025) : bascule en dette nette attendue des la fin FY2026 (charge de capex du S2 encore tres lourde, ~80-95 Md$ necessaires pour atteindre le bas de la guidance FY2026 de 130-145 Md$), pic de dette nette modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse. Nombre d'actions : rachats suspendus au T2 2026 (vs hypothese de poursuite des rachats a la creation) - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance.\nWATCH-LIST pour le prochain refresh : (1) guidance capex 2027 (toujours non fournie, probablement au call T4 2026/janvier 2027) ; (2) rythme reel de conversion capex->D&A observe au S2 2026 et au T1 2027, pour confirmer ou infirmer la recalibration operee ce refresh ; (3) nature precise des 2,4 Md$ de charges juridiques du T2 2026 (a clarifier via le 10-Q) et issue des proces lies aux mineurs programmes en 2026 ; (4) rythme de reprise des rachats d'actions (suspendus au T2, a confirmer si ponctuel ou plus durable compte tenu du virage vers un financement par la dette) ; (5) traction reelle du programme d'abonnement \"Meta [premium]\" recemment lance et des Business Agents (extension a Instagram) ; (6) confirmation de la date exacte des resultats T3 2026.\n\n== CATALYSEURS ==\nResultats T3 2026 (date a confirmer, generalement fin octobre) - premier test de la trajectoire D&A recalibree sur un troisieme trimestre consecutif de donnees reelles ; Connect Conference le 23 septembre 2026 (nouvelle gamme de lunettes connectees, ventes precoces deja superieures aux attentes selon Zuckerberg) ; guidance capex 2027 attendue au plus tot au call T4 2026 ; poursuite de la montee en charge d'Advantage+ (deja 75 Md$ de rythme annualise) et des Business Agents (extension Instagram).",
     "impact": "neutre",
     "ancrages": [
-      {"id":"da_recalibree_donnees_reelles","moteur":"CORRECTION MAJEURE ce refresh (E6-a/E6-b) : la D&A reelle du S1 2026 (12,4 Md$, dont 6,36 Md$ au T2 seul) est nettement inferieure a la trajectoire du modele de creation (~18 Md$ attendus sur la meme periode selon le ratio de 50% du capex n-1 avec un an de decalage). Extrapolation FY2026 revisee a ~27 Md$ (vs ~36 Md$ a la creation), le decalage de mise en service des datacenters etant plus long qu'initialement suppose. Rattrapage plus marque et plus tardif projete sur 2027-2028 (40 Md$ puis 55 Md$) avant deceleration 2029-2030 (62 Md$ puis 65 Md$).","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"moyenne"},
-      {"id":"guidance_fy26_ancree","moteur":"EBIT FY2026 ancre directement sur la guidance officielle du T2 2026 : CA estime (~256 Md$, construit bottom-up S1 reel + guidance T3 + estimation T4) moins charges totales guidees (165-169 Md$, midpoint 167 Md$) = ~89 Md$ - methodologie plus robuste que la creation (qui partait d'une hypothese de marge independante). Coherent avec la reaffirmation explicite du management que le resultat d'exploitation FY2026 depassera FY2025 (83,28 Md$).","applique":["adjCA.2026","adjEBIT.2026"],"confiance":"haute"},
-      {"id":"resultat_operationnel_sous_jacent_sain","moteur":"La CFO confirme explicitement que hors charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel T2 2026 aurait progresse de +9% sur un an (au lieu du -8% publie) - la baisse affichee est integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier publicitaire (CA publicitaire toujours en croissance la plus rapide de l'industrie selon Zuckerberg). Element qualitatif confirmant la robustesse du socle operationnel sous-jacent au capex/D&A.","applique":["adjEBIT.2026"],"confiance":"moyenne"},
-      {"id":"is_normatif_post_effet_ponctuel","moteur":"Taux d'imposition normatif aligne sur la guidance officielle relevee (15-17% pour le reste de 2026, vs 13-16% precedemment) : 16% pour le S2 2026 (le S1 integre deja l'effet fiscal ponctuel favorable de 8,03 Md$ realise au T1, non reconduit), puis normalisation progressive a 17% (2027) et 17,5% (2028-2030).","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
-      {"id":"bascule_dette_nette_recalibree","moteur":"Position de tresorerie/dette nette ENTIEREMENT RECALIBREE sur la base du bilan reel au 30/06/2026 (cash net residuel de 6,6 Md$ seulement, contre 22,9 Md$ modelise fin FY2025) : emission de 25 Md$ de dette long terme au seul T2 2026, rachats d'actions suspendus, CFO confirmant explicitement un virage structurel vers un financement davantage oriente dette. Bascule en dette nette projetee des fin FY2026 (compte tenu du capex S2 restant a engager pour atteindre la guidance 130-145 Md$), pic modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse avec la montee en charge de la D&A (non-cash) relativement au capex cash.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"basse"},
-      {"id":"actions_rachats_suspendus","moteur":"Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) dans un contexte de priorisation du financement du capex - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance vs la creation (qui supposait une poursuite des rachats), nombre d'actions quasi stable a court terme avec une legere reprise de decroissance supposee a partir de 2028 une fois le pic du cycle d'investissement passe.","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"basse"}
+      {
+        "id": "da_recalibree_donnees_reelles",
+        "moteur": "CORRECTION MAJEURE ce refresh (E6-a/E6-b) : la D&A reelle du S1 2026 (12,4 Md$, dont 6,36 Md$ au T2 seul) est nettement inferieure a la trajectoire du modele de creation (~18 Md$ attendus sur la meme periode selon le ratio de 50% du capex n-1 avec un an de decalage). Extrapolation FY2026 revisee a ~27 Md$ (vs ~36 Md$ a la creation), le decalage de mise en service des datacenters etant plus long qu'initialement suppose. Rattrapage plus marque et plus tardif projete sur 2027-2028 (40 Md$ puis 55 Md$) avant deceleration 2029-2030 (62 Md$ puis 65 Md$).",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "guidance_fy26_ancree",
+        "moteur": "EBIT FY2026 ancre directement sur la guidance officielle du T2 2026 : CA estime (~256 Md$, construit bottom-up S1 reel + guidance T3 + estimation T4) moins charges totales guidees (165-169 Md$, midpoint 167 Md$) = ~89 Md$ - methodologie plus robuste que la creation (qui partait d'une hypothese de marge independante). Coherent avec la reaffirmation explicite du management que le resultat d'exploitation FY2026 depassera FY2025 (83,28 Md$).",
+        "applique": [
+          "adjCA.2026",
+          "adjEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "resultat_operationnel_sous_jacent_sain",
+        "moteur": "La CFO confirme explicitement que hors charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel T2 2026 aurait progresse de +9% sur un an (au lieu du -8% publie) - la baisse affichee est integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier publicitaire (CA publicitaire toujours en croissance la plus rapide de l'industrie selon Zuckerberg). Element qualitatif confirmant la robustesse du socle operationnel sous-jacent au capex/D&A.",
+        "applique": [
+          "adjEBIT.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "is_normatif_post_effet_ponctuel",
+        "moteur": "CORRECTION apres verification (le calcul initial de ce refresh appliquait par erreur le taux d'imposition REEL du S1 2026, lui-meme distordu par le benefice fiscal ponctuel de 8,03 Md$ du T1 2026 deja identifie a la creation - le S1 2026 publie affiche une PROVISION D'IMPOT NEGATIVE de -2 113 M$, soit un ETR implicite de -5,2%, contre ~16% au T2 seul hors cet effet). Taux d'imposition normatif desormais applique de maniere COHERENTE sur l'ensemble de FY2026 (17%, aligne sur le T2 seul et la guidance officielle 15-17%), plutot que de melanger le taux S1 reel distordu avec un taux S2 normatif - evite de reconduire artificiellement l'effet ponctuel T1 dans la projection annuelle. Taux maintenu a 17% pour 2027 puis 17,5% (2028-2030).",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "bascule_dette_nette_recalibree",
+        "moteur": "Position de tresorerie/dette nette ENTIEREMENT RECALIBREE sur la base du bilan reel au 30/06/2026 (cash net residuel de 6,6 Md$ seulement, contre 22,9 Md$ modelise fin FY2025) : emission de 25 Md$ de dette long terme au seul T2 2026, rachats d'actions suspendus, CFO confirmant explicitement un virage structurel vers un financement davantage oriente dette. Bascule en dette nette projetee des fin FY2026 (compte tenu du capex S2 restant a engager pour atteindre la guidance 130-145 Md$), pic modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse avec la montee en charge de la D&A (non-cash) relativement au capex cash.",
+        "applique": [
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "actions_rachats_suspendus",
+        "moteur": "Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) dans un contexte de priorisation du financement du capex - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance vs la creation (qui supposait une poursuite des rachats), nombre d'actions quasi stable a court terme avec une legere reprise de decroissance supposee a partir de 2028 une fois le pic du cycle d'investissement passe.",
+        "applique": [
+          "adjShares.2026",
+          "adjShares.2027",
+          "adjShares.2028",
+          "adjShares.2029",
+          "adjShares.2030"
+        ],
+        "confiance": "basse"
+      }
     ],
     "dernierCall": {
       "quarter": "T2 26",
@@ -90,11 +198,47 @@
       }
     ],
     "guidanceLongTerme": "Planification actuelle geree pour 'maximiser la capacite 2026 et 2027' (CFO, T2 2026) sans engagement chiffre au-dela de FY2026 - la flexibilite decisionnelle est explicitement reservee pour 2028 et au-dela, le management indiquant vouloir evaluer les besoins reels avant de s'engager sur des decisions de serveurs a plus long terme. Aucun objectif chiffre de marge ou de CA a moyen terme communique.",
-    "adjCA": {"2026":256000,"2027":307200,"2028":356352,"2029":406241,"2030":455000},
-    "adjEBIT": {"2026":89000,"2027":92160,"2028":103342,"2029":129997,"2030":159250},
-    "adjNet": {"2026":81977,"2027":75248,"2028":83607,"2029":106010,"2030":130556},
-    "adjEPS": {"2026":31.96,"2027":29.45,"2028":32.92,"2029":42.07,"2030":52.22},
-    "adjND": {"2026":30000,"2027":55000,"2028":45000,"2029":25000,"2030":5000},
-    "adjShares": {"2026":2565,"2027":2555,"2028":2540,"2029":2520,"2030":2500}
+    "adjCA": {
+      "2026": 256000,
+      "2027": 307200,
+      "2028": 356352,
+      "2029": 406241,
+      "2030": 455000
+    },
+    "adjEBIT": {
+      "2026": 89000,
+      "2027": 92160,
+      "2028": 103342,
+      "2029": 129997,
+      "2030": 159250
+    },
+    "adjNet": {
+      "2026": 72510,
+      "2027": 75248,
+      "2028": 83607,
+      "2029": 106010,
+      "2030": 130556
+    },
+    "adjEPS": {
+      "2026": 28.27,
+      "2027": 29.45,
+      "2028": 32.92,
+      "2029": 42.07,
+      "2030": 52.22
+    },
+    "adjND": {
+      "2026": 30000,
+      "2027": 55000,
+      "2028": 45000,
+      "2029": 25000,
+      "2030": 5000
+    },
+    "adjShares": {
+      "2026": 2565,
+      "2027": 2555,
+      "2028": 2540,
+      "2029": 2520,
+      "2030": 2500
+    }
   }
 }
