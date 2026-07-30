@@ -269,14 +269,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
 .rb-total-num{font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;}
 .rb-bridge-wrap{padding:0 20px 12px;}
-.rb-pe-row{display:flex;align-items:center;justify-content:center;gap:0;padding:12px 20px 12px;}
-.rb-pe-box{flex:1;text-align:center;padding:8px 16px;}
-.rb-pe-sep{width:1px;background:var(--border);align-self:stretch;}
-.rb-pe-val{font-family:'Poppins',sans-serif;line-height:1;}
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:14px;font-weight:800;color:inherit;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:14px;font-weight:700;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
@@ -364,9 +360,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
   .rb-total-num{font-size:22px !important;}
   .rb-bridge-wrap{padding:0 14px 12px;}
-  .rb-pe-row{padding:10px 14px 10px;}
-  .rb-pe-box{padding:8px 10px;}
-  .rb-pe-val{font-size:21px !important;}
   .rb-eps-row{flex-direction:column;padding:12px 14px 14px;gap:0;}
   .rb-eps-sep{display:none;}
   .rb-eps-col{padding:0 !important;}
@@ -1163,8 +1156,6 @@ function renderReturnBlock(ticker, proj, cours){
   const bonusYield=particulariteYieldPct(d);
   const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+bonusYield;
   const total=cagrEps+yieldPct;
-  const peCY=cours>0&&epsCY>0?(cours/epsCY):null;
-  const peNY=cours>0&&epsNY>0?(cours/epsNY):null;
   const cons=(d.epsConsensus?.year===CY)?d.epsConsensus:null;
   const consDelta=(cons?.eps&&epsCY>0)?((epsCY-cons.eps)/cons.eps*100):null;
   const consNY=d.epsConsensus?.epsNY||0;
@@ -1195,26 +1186,14 @@ function renderReturnBlock(ticker, proj, cours){
     <div class="rb-total-row">
       <div class="rb-total-num" style="font-size:28px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};">${total>=0?'+':''}${total.toFixed(1)}%</div>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
-        <div style="font-size:13px;color:var(--muted);">EPS CAGR&nbsp;<b style="color:var(--navy);font-size:14px;">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</b></div>
-        <div style="font-size:13px;color:var(--muted);">Div. yield&nbsp;<b style="color:var(--navy);font-size:14px;">+${yieldPct.toFixed(1)}%</b></div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy);">Div. yield +${yieldPct.toFixed(1)}%</div>
       </div>
     </div>
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
-    <div class="rb-pe-row">
-      <div class="rb-pe-box" style="background:rgba(0,1,144,.07);border-radius:10px 0 0 10px;">
-        <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY}</div>
-        <div class="rb-pe-val" style="font-size:26px;font-weight:900;color:var(--navy);">${peCY?peCY.toFixed(1)+'×':'—'}</div>
-      </div>
-      <div class="rb-pe-sep"></div>
-      <div class="rb-pe-box" style="background:rgba(0,1,144,.05);border-radius:0 10px 10px 0;">
-        <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY+1}</div>
-        <div class="rb-pe-val" style="font-size:26px;font-weight:900;color:var(--navy);opacity:.85;">${peNY?peNY.toFixed(1)+'×':'—'}</div>
-      </div>
-    </div>
-    <div style="height:1px;background:var(--border);margin:0 20px;"></div>
     <div class="rb-eps-row">
       <div class="rb-eps-col" style="padding-right:14px;">
         <div class="rb-eps-year">EPS ${CY}</div>
