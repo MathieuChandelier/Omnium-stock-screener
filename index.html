@@ -251,6 +251,123 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .price-auto .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);display:inline-block;}
 .price-auto .dot.fresh{background:var(--ok);}
 .price-auto .dot.stale{background:var(--gold);}
+
+/* ══════════════════════════════════════════════════════════════
+   STRUCTURE — classes utilisées par renderPortfolio()/renderReturnBlock()
+   pour la mise en page (les couleurs/valeurs dynamiques restent en style
+   inline). Neutres en desktop, reprises et surchargées en mobile ci-dessous.
+   ══════════════════════════════════════════════════════════════ */
+.pf-row-top{display:flex;align-items:center;gap:22px;flex:1;min-width:0;}
+.pf-metric-return{flex:0 0 100px;}
+.pf-metric-pe{flex:0 0 70px;}
+.pf-metric-event{flex:0 0 132px;}
+.pf-ml-mobile{display:none;}
+.pf-sort-mobile{display:none;}
+
+.rb-header{padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;}
+.rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
+.rb-total-num{font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;}
+.rb-bridge-wrap{padding:0 20px 12px;}
+.rb-pe-row{display:flex;align-items:center;justify-content:center;gap:0;padding:12px 20px 12px;}
+.rb-pe-box{flex:1;text-align:center;padding:8px 16px;}
+.rb-pe-sep{width:1px;background:var(--border);align-self:stretch;}
+.rb-pe-val{font-family:'Poppins',sans-serif;line-height:1;}
+.rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
+.rb-eps-col{flex:1;}
+.rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE — écran ≤ 760px : vraie mise en page empilée (le zoom JS
+   proportionnel desktop est désactivé sous ce seuil, voir script en bas
+   de <body>). Le desktop ci-dessus reste strictement inchangé.
+   ══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  html,body{overflow-x:hidden;}
+  body{font-size:14px;}
+
+  header{padding:12px 16px;}
+  .h-logo{height:28px;}
+  .h-tagline{gap:5px;margin-top:0;}
+  .h-tagline span{font-size:10px;}
+
+  .tab-bar{padding:9px 14px;}
+  .tab{padding:7px 14px 7px 9px;font-size:11.5px;gap:7px;}
+
+  .container{padding:14px 12px 36px;}
+
+  .card{padding:16px 14px;border-radius:11px;margin-bottom:14px;}
+
+  /* ── Portefeuille : logo + liste ── */
+  #tab-portefeuille .pf-header svg{width:112px;height:63px;}
+
+  .pf-col-header{display:none !important;}
+  .pf-sort-mobile{display:flex;align-items:center;gap:8px;margin:2px 0 14px;}
+  .pf-sort-mobile label{font-size:10.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;flex-shrink:0;}
+  .pf-sort-mobile select{flex:1;font-size:12.5px;padding:8px 10px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;color:var(--navy);}
+
+  .pf-list{border-radius:16px;}
+  .pf-item{flex-direction:column;align-items:stretch;gap:12px;padding:14px 15px;}
+  .pf-item:active{background:rgba(43,216,194,.08);}
+  .pf-row-top{gap:13px;}
+  .pf-rank{min-width:16px;font-size:12px;}
+  .pf-name{font-size:15px;}
+  .pf-sub{font-size:11px;}
+
+  .pf-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;width:100%;}
+  .pf-metric-return,.pf-metric-pe,.pf-metric-event{flex:none;min-width:0;}
+  .pf-metric{background:rgba(0,1,144,.035);border-radius:10px;padding:8px 10px;text-align:left;}
+  .pf-metric-event{grid-column:1 / -1;}
+  .pf-ml-mobile{display:block;font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:'Poppins',sans-serif;margin-bottom:3px;}
+  .pf-mv{font-size:15px !important;}
+  .pf-metric-event .pf-mv{font-size:12.5px !important;}
+
+  /* ── Analyse : en-tête titre + cours ── */
+  .analyse-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:14px;}
+  .analyse-id{gap:8px 12px;}
+  .analyse-name{font-size:19px;}
+  .analyse-price-wrap{width:100%;justify-content:space-between;}
+  .analyse-price input#cours{font-size:25px;width:120px;}
+
+  /* ── Tableau historique & projections : défilement horizontal + 1re colonne fixe ── */
+  #analyse-tbl-card{padding:14px 0 14px 14px;}
+  #analyse-tbl-card > div[style*="overflow-x"]{padding-right:14px;-webkit-overflow-scrolling:touch;}
+  #analyse-tbl{font-size:11.5px;}
+  #analyse-tbl thead th{padding:8px 10px;font-size:10.5px;}
+  #analyse-tbl tbody td{padding:7px 10px;}
+  #analyse-tbl tbody td:first-child{font-size:10px;}
+  #analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
+    position:sticky;left:0;z-index:2;background:var(--surface);
+    box-shadow:2px 0 5px rgba(0,0,0,.10);
+  }
+  #analyse-tbl thead th:first-child{background:var(--navy);width:auto;min-width:98px;}
+  #analyse-tbl tbody tr.proj-row td:first-child{background:#fbfcff;}
+  #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
+
+  /* ── Thèse Omnium (return-block) ── */
+  .rb-header{padding:12px 16px 4px;}
+  .rb-total-row{padding:2px 16px 10px;gap:12px;flex-wrap:wrap;}
+  .rb-total-num{font-size:32px !important;}
+  .rb-bridge-wrap{padding:0 16px 12px;}
+  .rb-pe-row{padding:10px 16px 10px;}
+  .rb-pe-box{padding:8px 10px;}
+  .rb-pe-val{font-size:21px !important;}
+  .rb-eps-row{flex-direction:column;padding:12px 16px 14px;gap:0;}
+  .rb-eps-sep{display:none;}
+  .rb-eps-col{padding:0 !important;}
+  .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
+  .rb-eps-val{font-size:21px !important;}
+
+  /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
+  #context-card{padding:14px}
+
+  footer{padding:16px;font-size:9.5px;}
+}
+
+@media(max-width:400px){
+  .pf-metrics{grid-template-columns:1fr;}
+  .pf-metric-event{grid-column:auto;}
+}
 </style>
 </head>
 <body>
@@ -263,10 +380,20 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 (function(){
   var REF_WIDTH = 1440;    // largeur de référence = échelle 100% sur portable 15"
   var CAP_WIDTH = 1920;    // largeur repère d'un écran 23" : au-delà, on n'agrandit plus (marges visibles)
+  var MOBILE_BREAKPOINT = 760; // doit rester synchronisé avec le @media(max-width:760px) du CSS
   var MIN_ZOOM = 0.80;
   var MAX_ZOOM = CAP_WIDTH / REF_WIDTH; // ≈ 1.33, plafond atteint dès 23"
   function applyAppZoom(){
     var w = window.innerWidth;
+    // En dessous du seuil mobile, on abandonne le "zoom proportionnel"
+    // (pensé pour redimensionner un même agencement desktop) : le CSS
+    // responsive prend le relais avec une vraie mise en page empilée,
+    // donc le zoom doit rester à 1 pour que les media queries s'appuient
+    // sur la largeur réelle du viewport.
+    if(w <= MOBILE_BREAKPOINT){
+      document.documentElement.style.zoom = 1;
+      return;
+    }
     var z = w / REF_WIDTH;
     if(z < MIN_ZOOM) z = MIN_ZOOM;
     if(z > MAX_ZOOM) z = MAX_ZOOM;
@@ -319,6 +446,17 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
         <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 132px;" onclick="pfSortBy('nextEvent')">Next event <span class="pf-sort-arrow" data-key="nextEvent"></span></div></div></div>
+  <div class="pf-sort-mobile" id="pf-sort-mobile">
+    <label for="pf-sort-select">Trier par</label>
+    <select id="pf-sort-select" onchange="pfSortBy(this.value)">
+      <option value="score">Score</option>
+      <option value="name">Nom</option>
+      <option value="return">5Y CAGR</option>
+      <option value="peN">P/E N</option>
+      <option value="peN1">P/E N+1</option>
+      <option value="nextEvent">Next event</option>
+    </select>
+  </div>
   <div class="pf-list" id="pf-list"></div>
 </div>
 
@@ -339,7 +477,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   </div>
   <div id="proj-pill-wrap" style="display:none;"></div>
 
-  <div class="card">
+  <div class="card" id="analyse-tbl-card">
     <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
     <div style="overflow-x:auto;">
     <table id="analyse-tbl">
@@ -1005,38 +1143,38 @@ function renderReturnBlock(ticker, proj, cours){
   const priorDateFmt=fmtShortDate(priorEPS?.date);
 
   el.innerHTML = `
-    <div style="padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;">
+    <div class="rb-header">
       <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;">Thèse Omnium</div>
     </div>
-    <div style="display:flex;align-items:center;padding:0 20px 10px;gap:14px;">
-      <div style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};font-family:'Poppins',sans-serif;line-height:1;flex-shrink:0;">${total>=0?'+':''}${total.toFixed(1)}%</div>
+    <div class="rb-total-row">
+      <div class="rb-total-num" style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};">${total>=0?'+':''}${total.toFixed(1)}%</div>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
         <div style="font-size:13px;color:var(--muted);">EPS CAGR&nbsp;<b style="color:var(--navy);font-size:14px;">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</b></div>
         <div style="font-size:13px;color:var(--muted);">Div. yield&nbsp;<b style="color:var(--navy);font-size:14px;">+${yieldPct.toFixed(1)}%</b></div>
       </div>
     </div>
-    ${d.hypothese?.cagrBridge?`<div style="padding:0 20px 12px;">
+    ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:0;padding:12px 20px 12px;">
-      <div style="flex:1;text-align:center;padding:8px 16px;background:rgba(0,1,144,.07);border-radius:10px 0 0 10px;">
+    <div class="rb-pe-row">
+      <div class="rb-pe-box" style="background:rgba(0,1,144,.07);border-radius:10px 0 0 10px;">
         <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY}</div>
-        <div style="font-size:26px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${peCY?peCY.toFixed(1)+'×':'—'}</div>
+        <div class="rb-pe-val" style="font-size:26px;font-weight:900;color:var(--navy);">${peCY?peCY.toFixed(1)+'×':'—'}</div>
       </div>
-      <div style="width:1px;background:var(--border);align-self:stretch;"></div>
-      <div style="flex:1;text-align:center;padding:8px 16px;background:rgba(0,1,144,.05);border-radius:0 10px 10px 0;">
+      <div class="rb-pe-sep"></div>
+      <div class="rb-pe-box" style="background:rgba(0,1,144,.05);border-radius:0 10px 10px 0;">
         <div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">P/E ${CY+1}</div>
-        <div style="font-size:26px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.85;">${peNY?peNY.toFixed(1)+'×':'—'}</div>
+        <div class="rb-pe-val" style="font-size:26px;font-weight:900;color:var(--navy);opacity:.85;">${peNY?peNY.toFixed(1)+'×':'—'}</div>
       </div>
     </div>
     <div style="height:1px;background:var(--border);margin:0 20px;"></div>
-    <div style="display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;">
-      <div style="flex:1;padding-right:14px;">
+    <div class="rb-eps-row">
+      <div class="rb-eps-col" style="padding-right:14px;">
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY}</div>
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
         <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
+          <div class="rb-eps-val" style="font-size:24px;font-weight:900;color:var(--navy);">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</div>
           ${hasPriorCY?`<div title="vs ${priorCY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorCY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorCY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorCY>=0?'+':''}${deltaPriorCY.toFixed(1)}% préc.</div>`:''}
         </div>
         ${hasPriorCY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorCY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
@@ -1049,12 +1187,12 @@ function renderReturnBlock(ticker, proj, cours){
         ${srcLine?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">${srcLine}</div>`:''}
         `:`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:4px;">Consensus non dispo</div>`}
       </div>
-      <div style="width:1px;background:var(--border);margin:0 4px;flex-shrink:0;"></div>
-      <div style="flex:1;padding-left:14px;">
+      <div class="rb-eps-sep"></div>
+      <div class="rb-eps-col" style="padding-left:14px;">
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-family:'Poppins',sans-serif;margin-bottom:2px;">EPS ${CY+1}</div>
         <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px;">Omnium</div>
         <div style="display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;">
-          <div style="font-size:24px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
+          <div class="rb-eps-val" style="font-size:24px;font-weight:900;color:var(--navy);opacity:.9;">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</div>
           ${hasPriorNY?`<div title="vs ${priorNY.toFixed(2)}${cur} (proj. du ${priorDateFmt})" style="font-size:11px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPriorNY>=0?'var(--teal-text)':'#e05252'};background:${deltaPriorNY>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:2px 7px;white-space:nowrap;">${deltaPriorNY>=0?'+':''}${deltaPriorNY.toFixed(1)}% préc.</div>`:''}
         </div>
         ${hasPriorNY?`<div style="font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;margin:1px 0 5px;">vs ${priorNY.toFixed(2)}${cur} au ${priorDateFmt}</div>`:`<div style="margin-bottom:6px;"></div>`}
@@ -1343,6 +1481,8 @@ function pfUpdateSortHeaderUI(){
     const k=el.getAttribute('data-key');
     el.textContent=(pfSort.key===k)?(pfSort.dir==='asc'?'▲':'▼'):'';
   });
+  const sel=document.getElementById('pf-sort-select');
+  if(sel && sel.value!==pfSort.key) sel.value=pfSort.key;
 }
 
 function renderPortfolio(){
@@ -1390,16 +1530,18 @@ function renderPortfolio(){
     const barW=Math.round(score/maxScore*100);
     
     el.innerHTML=`
-      <div class="pf-rank">${idx+1}</div>
-      <div class="pf-main">
-       <div class="pf-name">${d.name||tk}</div>
-        <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
+      <div class="pf-row-top">
+        <div class="pf-rank">${idx+1}</div>
+        <div class="pf-main">
+         <div class="pf-name">${d.name||tk}</div>
+          <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
+        </div>
       </div>
       <div class="pf-metrics">
-        <div class="pf-metric" style="flex:0 0 100px;"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
-        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="flex:0 0 70px;"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric" style="flex:0 0 132px;"><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
+        <div class="pf-metric pf-metric-return"><div class="pf-ml-mobile">5Y CAGR</div><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric pf-metric-pe"><div class="pf-ml-mobile">P/E N</div><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric pf-metric-pe"><div class="pf-ml-mobile">P/E N+1</div><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric pf-metric-event"><div class="pf-ml-mobile">Next event</div><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
       </div>
     `;
     list.appendChild(el);
