@@ -275,10 +275,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-col{flex:1;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
-.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
+.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--teal-text);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
-.rb-eps-line-consensus{color:var(--teal-text);}
+.rb-eps-line-consensus{color:var(--navy);}
 .rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
@@ -353,8 +353,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   #analyse-tbl{font-size:11.5px;}
   #analyse-tbl thead th{padding:8px 10px;font-size:10.5px;}
   #analyse-tbl tbody td{padding:7px 10px;}
-  #analyse-tbl tbody td:first-child{font-size:10px;}
-  #analyse-tbl thead th:first-child{width:auto;min-width:128px;}
+  #analyse-tbl tbody td:first-child{font-size:10px;padding-right:6px;}
+  #analyse-tbl thead th:first-child{width:auto;min-width:115px;padding-right:6px;}
 
   /* ── Thèse Omnium (return-block) ── */
   .rb-header{padding:12px 14px 4px;}
@@ -1056,7 +1056,7 @@ function renderAnalyse(){
       const val=m.hRaw? (m.lbl.startsWith('Dividende')?(row.div?(+row.div).toFixed(2):'—'):fM(Math.round(m.hRaw(row)||0))) : m.hFn(row);
       c+=`<td${isLast?' class="hist-last"':''} style="text-align:right;">${val}</td>`;
     });
-    PY.forEach((y,i)=>{c+=`<td class="proj-row${i===0?' proj-first':''}" style="background:rgba(43,216,194,.07);"> ${m.pFn(y)}</td>`;});
+    PY.forEach((y,i)=>{c+=`<td class="proj-row${i===0?' proj-first':''}" style="background:rgba(43,216,194,.03);"> ${m.pFn(y)}</td>`;});
     tr.innerHTML=c;tbody.appendChild(tr);
   });
 
