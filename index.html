@@ -31,9 +31,8 @@ h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,
 /* ── HEADER ── */
 header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--teal);}
 .h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
-.h-tagline i{width:6px;height:6px;border-radius:50%;background:var(--teal);flex:0 0 auto;}
-.h-tagline span{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);opacity:.62;font-family:'Poppins',sans-serif;}
-.h-logo{height:34px;width:auto;display:block;}
+.h-tagline span{font-size:15px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);opacity:.62;font-family:'Poppins',sans-serif;}
+.h-logo{height:48px;width:auto;display:block;}
 
 /* ── TABS ── */
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);display:flex;align-items:center;padding:11px 24px;gap:8px;}
@@ -57,7 +56,6 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .card-title b{color:var(--navy);}
 
 /* ── KPI ── */
-.pf-header{display:flex;align-items:baseline;gap:8px;margin-bottom:18px;}
 .pf-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;font-family:'Poppins',sans-serif;}
 .pf-count{font-size:11px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
 .pf-list{display:flex;flex-direction:column;gap:0;background:transparent;}
@@ -309,9 +307,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   body{font-size:13px;}
 
   header{padding:10px 14px;}
-  .h-logo{height:26px;}
+  .h-logo{height:36px;}
   .h-tagline{gap:5px;margin-top:0;}
-  .h-tagline span{font-size:9.5px;}
+  .h-tagline span{font-size:11px;}
 
   .tab-bar{padding:8px 12px;}
   .tab{padding:6px 13px 6px 8px;font-size:11px;gap:6px;}
@@ -321,7 +319,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .card{padding:14px 12px;border-radius:11px;margin-bottom:12px;}
 
   /* ── Portefeuille : logo ── */
-  #tab-portefeuille .pf-header svg{width:88px;height:50px;}
 
   /* En-tête de colonnes : conservé (même design), juste réduit. */
   .pf-col-header{padding:0 8px 6px;gap:8px;}
@@ -427,7 +424,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="url(#ink-h)" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
       <g mask="url(#inkMask-h)"><path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" transform="translate(0 -1.35)" fill="none" stroke="url(#spec-h)" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round"></path></g>
     </svg>
-    <div class="h-tagline"><i></i><span>Screening Model</span></div>
+    <div class="h-tagline"><span>Screening Model</span></div>
   </div>
 </header>
 
@@ -438,25 +435,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div class="container">
 
 <div id="tab-portefeuille" class="panel">
-  <div class="pf-header" style="display:flex;align-items:flex-start;justify-content:space-between;">
-    <div style="display:flex;align-items:flex-start;gap:0;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 104 59" style="width:160px;height:90px;display:block;">
-        <defs>
-          <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#62F2DA"></stop><stop offset="55%" stop-color="#2EE3C6"></stop><stop offset="100%" stop-color="#1CBBA1"></stop>
-          </linearGradient>
-          <linearGradient id="spec" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"></stop><stop offset="70%" stop-color="#FFFFFF" stop-opacity="0"></stop>
-          </linearGradient>
-          <mask id="inkMask">
-            <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="#FFF" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
-          </mask>
-        </defs>
-        <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="url(#ink)" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
-        <g mask="url(#inkMask)"><path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" transform="translate(0 -1.35)" fill="none" stroke="url(#spec)" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round"></path></g>
-      </svg>
-    </div>
-  </div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer pf-col-sortable" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
