@@ -277,12 +277,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:22px;font-weight:900;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:17px;font-weight:800;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
-.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;min-width:60px;flex-shrink:0;}
-.rb-eps-val-omnium{color:var(--navy);}
-.rb-eps-val-consensus{color:var(--teal-text);}
+.rb-eps-line-omnium{color:var(--navy);}
+.rb-eps-line-consensus{color:var(--teal-text);}
+.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;min-width:88px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
@@ -338,15 +338,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-list{gap:0;}
   .pf-item{gap:8px;padding:8px 8px;}
   .pf-row-top{gap:6px;}
-  .pf-name{font-size:11.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pf-name{font-size:10.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .pf-bar-wrap{margin-top:3px;height:2px;}
 
   .pf-metrics{gap:5px;}
   .pf-metric-return{flex:0 0 46px;}
   .pf-metric-pe{flex:0 0 32px;}
   .pf-metric-event{flex:0 0 58px;}
-  .pf-mv{font-size:10.5px !important;white-space:nowrap;}
-  .pf-mv-event{font-size:9px !important;line-height:1.15;}
+  .pf-mv{font-size:9.5px !important;font-weight:400 !important;white-space:nowrap;}
+  .pf-mv-event{font-size:8px !important;font-weight:400 !important;line-height:1.15;}
 
   /* ── Analyse : en-tête titre + cours ── */
   .analyse-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:14px;}
@@ -376,7 +376,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-sep{display:none;}
   .rb-eps-col{padding:0 !important;}
   .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
-  .rb-eps-val{font-size:21px !important;}
+  .rb-eps-val{font-size:15px !important;}
+  .rb-eps-lbl{font-size:13px;min-width:78px;}
 
   /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1080,8 +1081,7 @@ function renderAnalyse(){
     const tr=document.createElement('tr');
     if(m.sep)tr.className='metric-group-start';
     if(m.id)tr.id=m.id;
-    const isMarge=m.lbl.startsWith('Marge EBIT')||m.lbl.startsWith('Dette nette')||m.lbl==='Croissance CA';
-    let c=`<td style="${isMarge?'font-size:12px;color:var(--muted);font-weight:600;':''}">${m.lbl}</td>`;
+    let c=`<td>${m.lbl}</td>`;
     last5.forEach((row)=>{
       const isLast=row.year===ly;
       const val=m.hRaw? (m.lbl.startsWith('Dividende')?(row.div?(+row.div).toFixed(2):'—'):fM(Math.round(m.hRaw(row)||0))) : m.hFn(row);
@@ -1224,26 +1224,26 @@ function renderReturnBlock(ticker, proj, cours){
     <div class="rb-eps-row">
       <div class="rb-eps-col" style="padding-right:14px;">
         <div class="rb-eps-year">EPS ${CY}</div>
-        <div class="rb-eps-line">
+        <div class="rb-eps-line rb-eps-line-omnium">
           <span class="rb-eps-lbl">Omnium</span>
-          <span class="rb-eps-val rb-eps-val-omnium">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</span>
+          <span class="rb-eps-val">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</span>
         </div>
-        <div class="rb-eps-line">
+        <div class="rb-eps-line rb-eps-line-consensus">
           <span class="rb-eps-lbl">Consensus</span>
-          <span class="rb-eps-val rb-eps-val-consensus">${cons?.eps?cons.eps.toFixed(2)+cur:'—'}</span>
+          <span class="rb-eps-val">${cons?.eps?cons.eps.toFixed(2)+cur:'—'}</span>
         </div>
         ${srcLine?`<div class="rb-eps-src">${srcLine}</div>`:''}
       </div>
       <div class="rb-eps-sep"></div>
       <div class="rb-eps-col" style="padding-left:14px;">
         <div class="rb-eps-year">EPS ${CY+1}</div>
-        <div class="rb-eps-line">
+        <div class="rb-eps-line rb-eps-line-omnium">
           <span class="rb-eps-lbl">Omnium</span>
-          <span class="rb-eps-val rb-eps-val-omnium">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</span>
+          <span class="rb-eps-val">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</span>
         </div>
-        <div class="rb-eps-line">
+        <div class="rb-eps-line rb-eps-line-consensus">
           <span class="rb-eps-lbl">Consensus</span>
-          <span class="rb-eps-val rb-eps-val-consensus">${consNY>0?consNY.toFixed(2)+cur:'—'}</span>
+          <span class="rb-eps-val">${consNY>0?consNY.toFixed(2)+cur:'—'}</span>
         </div>
       </div>
     </div>
