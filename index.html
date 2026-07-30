@@ -70,14 +70,11 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
 .pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
 .pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
-.pf-bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden;}
-.pf-bar{height:100%;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);border-radius:2px;transition:width .5s;}
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
 .pf-metric{text-align:center;min-width:60px;}
 .pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
-.pf-mv{font-size:16px;font-weight:600;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1;}
-.pf-mv-event{font-size:12.5px;}
-.pf-mv.hi{color:var(--teal-text);}
+.pf-mv{font-size:17px;font-weight:600;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1;}
+.pf-mv-event{font-size:17px;}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
 .pf-col-name-spacer{flex:1.6;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
 .pf-col-name-spacer:hover{color:var(--teal-text);}
@@ -335,14 +332,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-item{gap:8px;padding:8px 8px;}
   .pf-row-top{gap:6px;}
   .pf-name{font-size:10.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .pf-bar-wrap{margin-top:3px;height:2px;}
 
   .pf-metrics{gap:5px;}
   .pf-metric-return{flex:0 0 46px;}
   .pf-metric-pe{flex:0 0 32px;}
-  .pf-metric-event{flex:0 0 58px;}
-  .pf-mv{font-size:9.5px !important;font-weight:600 !important;white-space:nowrap;}
-  .pf-mv-event{font-size:8px !important;font-weight:600 !important;line-height:1.15;}
+  .pf-metric-event{flex:0 0 66px;}
+  .pf-mv{font-size:10.5px !important;font-weight:600 !important;white-space:nowrap;}
+  .pf-mv-event{font-size:10.5px !important;font-weight:600 !important;line-height:1.15;white-space:normal;}
 
   /* ── Analyse : en-tête titre + cours ── */
   /* En-tête analyse : déjà compact et identique en base CSS, rien à surcharger ici. */
@@ -1509,17 +1505,14 @@ function renderPortfolio(){
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
     el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
-    const barW=Math.round(score/maxScore*100);
-    
     el.innerHTML=`
       <div class="pf-row-top">
         <div class="pf-main">
          <div class="pf-name">${d.name||tk}</div>
-          <div class="pf-bar-wrap"><div class="pf-bar" style="width:${barW}%"></div></div>
         </div>
       </div>
       <div class="pf-metrics">
-        <div class="pf-metric pf-metric-return"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric pf-metric-return"><div class="pf-mv">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
         <div class="pf-metric pf-metric-pe"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
         <div class="pf-metric pf-metric-pe"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
         <div class="pf-metric pf-metric-event"><div class="pf-mv pf-mv-event">${nextEvt}</div></div>
