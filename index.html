@@ -15,7 +15,7 @@
   --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
   --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#25CFB4; /* intermediaire entre les deux stops du logo (#1CBBA1 / #2EE3C6) */
   --gold:#FFD700; --gold-light:#fffce6;
-  --bg:#f0f2f8; --surface:#fff; --border:#e2e8f0;
+  --bg:#ffffff; --surface:#fff; --border:#e6e6f0;
   --text:#0d0d1a; --muted:#64748b;
   --proj-bg:#f7f9ff;
   --ok:#10b981; --err:#ef4444; --gold-text:#92700a;
@@ -29,9 +29,9 @@ body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:va
 h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,th{font-family:'Poppins',system-ui,sans-serif;}
 
 /* ── HEADER ── */
-header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--teal);}
+header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;}
 .h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
-.h-tagline span{font-size:15px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy);opacity:.62;font-family:'Poppins',sans-serif;}
+.h-tagline span{font-size:15px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;opacity:.78;font-family:'Poppins',sans-serif;}
 .h-logo{height:48px;width:auto;display:block;}
 
 /* ── TABS ── */
@@ -75,7 +75,7 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
 .pf-metric{text-align:center;min-width:60px;}
 .pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
-.pf-mv{font-size:16px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
+.pf-mv{font-size:16px;font-weight:600;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1;}
 .pf-mv-event{font-size:12.5px;}
 .pf-mv.hi{color:var(--teal-text);}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
@@ -341,8 +341,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-metric-return{flex:0 0 46px;}
   .pf-metric-pe{flex:0 0 32px;}
   .pf-metric-event{flex:0 0 58px;}
-  .pf-mv{font-size:9.5px !important;font-weight:800 !important;white-space:nowrap;}
-  .pf-mv-event{font-size:8px !important;font-weight:800 !important;line-height:1.15;}
+  .pf-mv{font-size:9.5px !important;font-weight:600 !important;white-space:nowrap;}
+  .pf-mv-event{font-size:8px !important;font-weight:600 !important;line-height:1.15;}
 
   /* ── Analyse : en-tête titre + cours ── */
   /* En-tête analyse : déjà compact et identique en base CSS, rien à surcharger ici. */
