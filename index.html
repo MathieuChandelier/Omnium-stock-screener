@@ -277,12 +277,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:17px;font-weight:800;color:inherit;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:14px;font-weight:800;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
 .rb-eps-line-consensus{color:var(--teal-text);}
-.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;min-width:88px;flex-shrink:0;}
+.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:76px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
@@ -367,7 +367,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   /* ── Thèse Omnium (return-block) ── */
   .rb-header{padding:12px 14px 4px;}
   .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
-  .rb-total-num{font-size:32px !important;}
+  .rb-total-num{font-size:22px !important;}
   .rb-bridge-wrap{padding:0 14px 12px;}
   .rb-pe-row{padding:10px 14px 10px;}
   .rb-pe-box{padding:8px 10px;}
@@ -376,8 +376,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-sep{display:none;}
   .rb-eps-col{padding:0 !important;}
   .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
-  .rb-eps-val{font-size:15px !important;}
-  .rb-eps-lbl{font-size:13px;min-width:78px;}
+  .rb-eps-val{font-size:13px !important;}
+  .rb-eps-lbl{font-size:11px;width:68px;}
 
   /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1199,7 +1199,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
-      <div class="rb-total-num" style="font-size:40px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};">${total>=0?'+':''}${total.toFixed(1)}%</div>
+      <div class="rb-total-num" style="font-size:28px;font-weight:900;color:${total>=0?'var(--teal-text)':'var(--navy)'};">${total>=0?'+':''}${total.toFixed(1)}%</div>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
         <div style="font-size:13px;color:var(--muted);">EPS CAGR&nbsp;<b style="color:var(--navy);font-size:14px;">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</b></div>
         <div style="font-size:13px;color:var(--muted);">Div. yield&nbsp;<b style="color:var(--navy);font-size:14px;">+${yieldPct.toFixed(1)}%</b></div>
@@ -1315,7 +1315,7 @@ function renderDernierCall(dc, ticker){
     </div>`:'';
 
   if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
   </div>`;
 }
@@ -1342,7 +1342,7 @@ function renderOwnership(own, ticker){
   const hist=(own.history||[]).filter(h=>h&&h.insiderPct!=null&&h.insiderPct!=='');
   const lastHist=hist.length?hist[hist.length-1]:null;
   const deltaPt=(hasInsider&&lastHist)?(+own.insiderPct-+lastHist.insiderPct):null;
-  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% au ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${deltaPt>=0?'var(--teal-text)':'#e05252'};background:${deltaPt>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)'};border-radius:5px;padding:1px 6px;white-space:nowrap;">${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt</span>`:'';
+  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% au ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:700;font-family:'Poppins',sans-serif;color:var(--muted);white-space:nowrap;">(${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt)</span>`:'';
 
   const insiderLine=hasInsider?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
       <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">Insiders</span>
@@ -1365,10 +1365,10 @@ function renderOwnership(own, ticker){
       </div>`).join('')}
     </div>`:'';
 
-  const coverageNote=own.coverageNote?`<div style="font-size:10.5px;color:var(--gold-text);font-family:'Quattrocento Sans',serif;font-style:italic;line-height:1.4;margin-top:${holders.length||hasInsider?8:0}px;">⚠ ${esc(own.coverageNote)}</div>`:'';
+  const coverageNote=own.coverageNote?`<div style="font-size:10.5px;color:var(--muted);font-family:'Quattrocento Sans',serif;font-style:italic;line-height:1.4;margin-top:${holders.length||hasInsider?8:0}px;">⚠ ${esc(own.coverageNote)}</div>`:'';
 
   if(!insiderLine&&!holdersBlock&&!coverageNote)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Actionnariat${own.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(own.asOf)}</span>`:''}</div>
     ${insiderLine}${insiderSrc}${trailLine}${holdersBlock}${coverageNote}
   </div>`;
@@ -1394,23 +1394,13 @@ function renderCompliance(comp, ticker){
     condamnation:'Condamnation',
     non_fondee:'Non fondée'
   };
-  const STATUS_COLOR={
-    sollicitation:'var(--muted)',
-    enquete_en_cours:'var(--gold-text)',
-    plainte_deposee:'var(--gold-text)',
-    reglee:'var(--navy)',
-    classee_sans_suite:'var(--teal-text)',
-    condamnation:'#e05252',
-    non_fondee:'var(--teal-text)'
-  };
   const items=(comp.items||[]).filter(it=>it&&it.title);
   const itemsBlock=items.length?items.map(it=>{
     const statusLbl=it.status?(STATUS_LABEL[it.status]||esc(it.status)):null;
-    const statusCol=it.status?(STATUS_COLOR[it.status]||'var(--muted)'):'var(--muted)';
-    return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.1);">
+    return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);">
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
         ${it.year?`<span style="font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(it.year)}</span>`:''}
-        ${statusLbl?`<span style="font-size:9.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${statusCol};background:rgba(0,1,144,.06);border-radius:5px;padding:1px 7px;text-transform:uppercase;letter-spacing:.03em;">${statusLbl}</span>`:''}
+        ${statusLbl?`<span style="font-size:9.5px;font-weight:800;font-family:'Poppins',sans-serif;color:var(--navy);background:var(--navy-light);border-radius:5px;padding:1px 7px;text-transform:uppercase;letter-spacing:.03em;">${statusLbl}</span>`:''}
       </div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:3px;">${esc(it.title)}</div>
       ${it.allegedBy?`<div style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:2px;">Par : ${esc(it.allegedBy)}</div>`:''}
@@ -1419,10 +1409,10 @@ function renderCompliance(comp, ticker){
     </div>`;
   }).join(''):'';
 
-  const note=comp.note?`<div style="font-size:11.5px;color:${items.length?'var(--muted)':'var(--teal-text)'};font-style:italic;line-height:1.4;margin-top:${items.length?8:0}px;">${esc(comp.note)}</div>`:'';
+  const note=comp.note?`<div style="font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.4;margin-top:${items.length?8:0}px;">${esc(comp.note)}</div>`:'';
 
   if(!itemsBlock&&!note)return '';
-  return `<div style="margin-top:6px;padding:9px 12px;background:rgba(0,1,144,.03);border:1px solid rgba(0,1,144,.1);border-radius:8px;">
+  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Compliance${comp.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(comp.asOf)}</span>`:''}</div>
     ${note}${itemsBlock}
   </div>`;
@@ -1439,34 +1429,28 @@ function renderContextBullets(ticker, proj, cours){
   const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
-  const impColor=lastEvt.impact==='positif'?'var(--teal)':lastEvt.impact==='negatif'?'#c0392b':'var(--navy)';
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
   const displayText=fullAnalysis||fullSumm;
-  const previewLines=fullSumm.slice(0,220);
-  const needsExpand=displayText.length>220;
-  const expandId='evtExpand_'+ticker;
   const partList=d.particularites||[];
-  const partBanner=partList.length?`<div style="margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,1,144,.15);">
+  const partBanner=partList.length?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Particularité(s) prise(s) en compte</div>
     ${partList.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;">• ${(p.text||'').replace(/</g,'&lt;')}</div>`).join('')}
   </div>`:'';
   const incoh=checkEpsCoherence(d);
-  const cohBanner=incoh.length?`<div style="margin-top:8px;padding:8px 10px;background:var(--gold-light);border:1px solid var(--gold);border-radius:8px;">
+  const cohBanner=incoh.length?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--gold-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">⚠ Incohérence interne de l'hypothèse</div>
     ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y} : EPS fourni ${b.eps.toFixed(2)} ≠ Net/Actions ${b.implied.toFixed(2)}</div>`).join('')}
   </div>`:'';
 
   traceEl.style.display='block';
-  traceEl.innerHTML=`<div style="border-left:3px solid ${impColor};padding:10px 14px;background:rgba(0,1,144,.04);border-radius:0 8px 8px 0;">
+  traceEl.innerHTML=`<div>
     <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
-    <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
+    <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
+    <div style="font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;">${displayText}</div>
     ${dcBanner}
     ${ownBanner}
     ${compBanner}
-    <div id="${expandId}-short" style="font-size:12px;color:var(--text);line-height:1.6;">${previewLines}${needsExpand?'…':''}</div>
-    ${needsExpand?`<div id="${expandId}-full" style="display:none;font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;max-height:400px;overflow-y:auto;padding-right:8px;">${displayText}</div>
-    <button onclick="(function(){const s=document.getElementById('${expandId}-short'),f=document.getElementById('${expandId}-full'),b=event.target;if(f.style.display==='none'){f.style.display='block';s.style.display='none';b.textContent='Réduire';}else{f.style.display='none';s.style.display='block';b.textContent='Voir tout';}})();" style="margin-top:8px;background:none;border:none;color:var(--navy);font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;padding:0;text-decoration:underline;">Voir tout</button>`:''}
     ${partBanner}
     ${cohBanner}
   </div>`;
