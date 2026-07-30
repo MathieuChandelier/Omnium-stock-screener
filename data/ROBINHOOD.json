@@ -4,53 +4,18 @@
   "yahooSymbol": "HOOD",
   "dividende": 0,
   "data": [
-    {
-      "year": 2021,
-      "ca": 1815,
-      "ebit": -3684,
-      "net": -3687,
-      "shares": 492,
-      "nd": -6200
-    },
-    {
-      "year": 2022,
-      "ca": 1358,
-      "ebit": -1020,
-      "net": -1028,
-      "shares": 879,
-      "nd": -6300
-    },
-    {
-      "year": 2023,
-      "ca": 1865,
-      "ebit": -530,
-      "net": -541,
-      "shares": 887,
-      "nd": -4800
-    },
-    {
-      "year": 2024,
-      "ca": 2951,
-      "ebit": 1090,
-      "net": 1411,
-      "shares": 905,
-      "nd": -4300
-    },
-    {
-      "year": 2025,
-      "ca": 4470,
-      "ebit": 2180,
-      "net": 1900,
-      "shares": 927,
-      "nd": -4300
-    }
+    {"year":2021,"ca":1815,"ebit":-3684,"net":-3687,"shares":492,"nd":-6200},
+    {"year":2022,"ca":1358,"ebit":-1020,"net":-1028,"shares":879,"nd":-6300},
+    {"year":2023,"ca":1865,"ebit":-530,"net":-541,"shares":887,"nd":-4800},
+    {"year":2024,"ca":2951,"ebit":1090,"net":1411,"shares":905,"nd":-4300},
+    {"year":2025,"ca":4470,"ebit":2180,"net":1900,"shares":927,"nd":-4300}
   ],
   "epsConsensus": {
     "year": 2026,
     "eps": 1.91,
     "epsNY": 2.6,
     "date": "2026-07-02",
-    "source": "Consensus 33 analystes (S&P Global via WallStreetZen)"
+    "source": "Consensus 33 analystes (S&P Global via WallStreetZen), ANTERIEUR au T2 2026 (publie 29/07/2026, EPS 0,62$ vs consensus trimestriel 0,42$, beat de 47,6%) - quasi certainement obsolete a la hausse, a recouper au prochain refresh."
   },
   "particularites": [
     {
@@ -58,53 +23,83 @@
       "valuePct": null
     }
   ],
+  "nextEvent": {"label":"T3 2026","date":null},
+  "ownership": {
+    "asOf": "2026-07-30",
+    "insiderPct": null,
+    "insiderDesc": "Non renseigne a ce refresh - Vladimir Tenev (co-fondateur, Chairman & CEO) et Baiju Bhatt (co-fondateur) detiennent des participations significatives via des actions de classe B a droits de vote renforces, structure de gouvernance fondateur-controlee mais sans pourcentage precis verifie a ce refresh. A completer au prochain refresh via le proxy statement (DEF 14A).",
+    "insiderSource": null,
+    "notableHolders": [],
+    "coverageNote": "Titre coté aux Etats-Unis, perimetre 13F applicable - notableHolders non renseigne a ce stade.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-07-30",
+    "items": [],
+    "note": "Aucune allegation de fraude comptable ou de tromperie des investisseurs identifiee a ce jour lors de ce refresh. Robinhood a un historique de sanctions regulatoires passees (FINRA, SEC, notamment autour du GameStop/2021 et de pratiques PFOF) anterieures a la periode couverte par ce modele - a documenter explicitement lors d'un futur audit de ce champ, actuellement laisse vide faute de recherche dediee a ce refresh."
+  },
   "hypothese": {
-    "date": "2026-07-05",
-    "source": "Creation - Transcript T1 2026 + metriques mensuelles avril/mai/MTD juin",
-    "summary": "Financial SuperApp. Guidance 'croissance rentable' traitee en contrainte dure. Inflexion Rothera (couche bourse prediction markets, marge quasi 100%) quantifiee via build-up par segments. Nowcast T2 ~1 213M$ (+23%).",
-    "text": "== SYNTHESE DE LA THESE ==\nRobinhood construit la \"Financial SuperApp\" de la nouvelle generation d'investisseurs americains : courtage (actions/options/crypto/prediction markets), gestion, banque (Gold Card) et acces aux marches prives. La these combine trois moteurs : diversification des revenus au-dela du trading, options de croissance quasi gratuites (Trump Accounts, Rothera), et discipline capitalistique (rachats, actions stables). Rothera (JV Susquehanna, bourse de prediction markets en propre, lancement T2 2026) est l'inflexion la plus importante : elle double les unit economics sur ce segment en explosion, a marge incrementale quasi 100%.\n\n== EVENEMENTS & INFLEXIONS (T1 2026) ==\n1. ROTHERA / PREDICTION MARKETS [classe (ii), QUANTIFIE, inflexion principale] : marche en explosion (event contracts ~6,2Md extrapoles en juin). Rothera donne a Robinhood la couche BOURSE en propre (vs bourses tierces payantes) -> unit economics qui doublent sur ce flux, marge incrementale quasi 100%. Modelise : ligne prediction/futures 150M$ (2026) -> 290M$ (2027, annee pleine).\n2. SUPPRESSION DE LA REGLE PDT PAR LA FINRA [classe (iii), optionnalite non chiffrable] : retire un frein structurel a l'engagement des petits comptes actifs.\n3. TRUMP ACCOUNTS [classe (i)] : 5,5M d'enfants inscrits sur 60M eligibles, courtier-depositaire exclusif avec BNY, contrat cost-plus rentable des 2026 (pipeline generationnel de clients).\n4. NOWCAST T2 2026 (application de la particularite) : donnees mensuelles avril/mai + communique MTD juin (volumes records : actions ~400Md$, event contracts ~6,2Md) -> T2 estime a ~1 213M$ (+23% yoy), acceleration nette intra-trimestre.\n\n== PARTICULARITES ==\nPublication MENSUELLE des metriques operationnelles permettant un nowcast intra-trimestriel precis - applique a chaque refresh.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (28 avril). Secondaires : metriques mensuelles avril/mai 2026, FY2025 (CA 4 470M$, EBIT 2 180M$, net 1 900M$). Cours ~118$, ~927M actions.\nGuidance : OpEx ajustes+SBC 2026 RELEVEE a 2,7-2,825Md$ (Trump Accounts). Croissance rentable = contrainte dure.\nProchain refresh utile : T2 2026 fin juillet + metriques de juin mi-juillet.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBuild-up par 6 segments (actions, options, crypto, prediction markets, interets nets, autres). Base = resultat avant impots (comme une fintech). IS normatif glissant 15% (2026) -> 19% (2030), demarre pres du reel 2025 (~13%) pour eviter une fausse marche. Marge pretax 45,7% (2026, annee d'investissement) -> 50,0% (2030, effet mix Rothera).\nA suivre : (1) confronter les economics reels de Rothera au build-up ; (2) effet PDT sur les petits comptes ; (3) confronter le nowcast au CA T2 realise.\n\n== CATALYSEURS ==\nTrump Accounts (pipeline generationnel) ; Rothera (integration verticale prediction markets) ; Gold Card (>1M de cartes visees) ; Great Wealth Transfer (~124 000Md$) + suppression regle PDT ; Ventures (RVI, OpenAI) ; rachats (dilution SBC neutralisee).",
+    "date": "2026-07-30",
+    "priorEPS": {
+      "date": "2026-07-05",
+      "eps": {"2026":2.12,"2027":2.61,"2028":3.03,"2029":3.42,"2030":3.81}
+    },
+    "source": "Refresh T2 2026 - Communique et transcript integral du call T2 2026 (29/07/2026, Vlad Tenev/Shiv Verma, incluant la session Q&A complete - format original avec questions actionnaires Say Technologies puis salle puis Zoom) + communique T1 2026 (28/04/2026, source secondaire pour reconstituer le S1 complet) - sources primaires trouvees et confrontees au nowcast de creation.",
+    "summary": "Le T2 2026 confirme la these de creation mais avec une ampleur qui depasse tres largement le nowcast : CA record 1,308 Md$ (+32%, nowcast de creation ~1,213 Md$ - depasse de ~8%), EPS 0,62$ (+48%, consensus battu de 47,6%). Surtout, Rothera/prediction markets explose bien au-dela du modele de creation : 156 M$ de revenus au seul T2 2026, contre 150 M$ modelises pour l'ANNEE COMPLETE 2026 a la creation - le catalyseur central de la these est deja realise a plus de 100% de l'objectif annuel apres un seul trimestre plein, avant meme la saison NFL et les elections de mi-mandat de novembre 2026 (evenement majeur a venir). Reaction de marche negative malgre le beat (-3,33% le jour de la publication) : le marche semble juger que la bonne nouvelle etait deja largement dans le cours.",
+    "text": "== SYNTHESE DE LA THESE ==\nRobinhood construit la \"Financial SuperApp\" combinant courtage (actions/options/crypto/prediction markets), banque (Gold Card, Robinhood Banking), gestion de patrimoine et acces aux marches prives. Le refresh T2 2026 valide tres largement les trois moteurs identifies a la creation (diversification des revenus, options de croissance quasi gratuites via Rothera/Trump Accounts, discipline capitalistique) tout en revelant que l'ampleur de l'inflexion Rothera/prediction markets a ete significativement sous-estimee au moment de la creation : le modele visait 150 M$ de revenus prediction markets pour l'ANNEE 2026 complete, or le seul T2 2026 (porte par la Coupe du Monde) a genere 156 M$ - depassant deja la cible annuelle initiale apres un trimestre. Rothera, la coentreprise avec Susquehanna qui donne a Robinhood sa propre bourse de prediction markets, est devenue en un seul mois d'existence la 3e bourse reglementee (DCM) des Etats-Unis en volume - la direction indique explicitement viser a faire croitre cette part davantage. Deuxieme confirmation forte : la croissance des comptes finances a ete la plus rapide en pres de 5 ans (+1M au T2), portee par un cocktail de facteurs (contexte de marche porteur, nouveaux produits bancaires/carte, IPO SpaceX, acquisition WonderFi, expansion internationale) plutot que par un seul levier - signe de diversification saine des sources de croissance plutot que de dependance a un catalyseur unique. Point de vigilance central pour le prochain refresh : les elections de mi-mandat americaines de novembre 2026 constituent un catalyseur prediction markets potentiellement d'une ampleur comparable ou superieure a la Coupe du Monde, non encore integre au T2 et a suivre de pres au T4.\n\n== EVENEMENTS & INFLEXIONS (T2 2026) ==\n1. ROTHERA / PREDICTION MARKETS [CONFIRME ET LARGEMENT AU-DELA DU MODELE DE CREATION] : revenus prediction markets a 156 M$ au T2 seul (vs 104 M$ au T1, et vs 150 M$ modelises pour l'annee COMPLETE 2026 a la creation) ; volume de contrats a 13 Md au T2 (vs 9 Md au T1). Rothera, lancee ce trimestre, est devenue la 3e DCM (designated contract market) des Etats-Unis en volume apres un seul mois d'exploitation - la direction vise explicitement a continuer de faire croitre cette part et a acheminer la majorite du flux via Rothera a moyen terme. Catalyseur a venir majeur non encore integre : elections de mi-mandat de novembre 2026 (T4), la direction citant explicitement ce catalyseur comme un moteur attendu, en plus de la saison NFL qui prend le relais de la Coupe du Monde des le T3.\n2. CROISSANCE DES COMPTES FINANCES [NOUVEAU, non anticipe a la creation] : ~1M de nouveaux comptes finances au T2, la plus forte progression trimestrielle en pres de 5 ans, portee par une combinaison de facteurs (contexte de marche, nouveaux produits banque/carte, IPO SpaceX, acquisition WonderFi ~200K comptes, expansion internationale) plutot qu'un seul levier - diversification saine des sources de croissance.\n3. SUPPRESSION DE LA REGLE PDT PAR LA FINRA [CONFIRME COMME TAILWIND REEL] : la direction confirme un benefice tangible au T2, avec un effet jugee superieur a celui des pairs du fait de la base de clientele a solde plus faible de Robinhood - tailwind attendu sur plusieurs trimestres, pas seulement un effet ponctuel de juin.\n4. TRUMP ACCOUNTS [ACCELERATION] : 7M d'enfants inscrits (vs 5,5M/60M eligibles a la creation), ~1,5 Md$ de contributions deja recues avant meme le debut des dons philanthropiques a grande echelle - pipeline generationnel confirme, prochaine etape : contribution des employeurs (limite de 2 500$/an exoneree d'impot).\n5. LEVEE DE CAPITAL OPPORTUNISTE : 2,2 Md$ de notes convertibles a coupon 0%, sans dilution nette avant que le cours ne depasse 300$ - renforce la flexibilite de bilan pour financer la croissance sans diluer les actionnaires a court terme. Rachats d'actions poursuivis en parallele (7,5M d'actions pour 664 M$ depuis le debut de l'annee) - \"le denominateur compte\" (CFO Shiv Verma).\n6. GUIDANCE DE CHARGES RESSERREE ET ABAISSEE : OpEx ajustes + SBC 2026 desormais guides a 2,675-2,775 Md$ (vs 2,7-2,825 Md$ precedemment), MALGRE l'integration des couts de Rothera et WonderFi non prevus dans la guidance initiale - la direction indique explicitement autofinancer ces nouvelles activites via des gains d'efficacite sur le socle historique plutot que de reduire l'investissement dans les nouveaux paris.\n7. NOWCAST DE CREATION CONFRONTE AU REEL (E6-a/E6-b) : le nowcast T2 2026 etabli a la creation (~1 213 M$, base sur les metriques mensuelles avril/mai et le communique MTD juin) a ete DEPASSE par le reel (1 308 M$, +7,8% au-dessus du nowcast) - la methodologie de nowcast mensuel s'avere directionnellement fiable mais a sous-estime l'ampleur de l'acceleration, principalement du fait de la sous-estimation du pic prediction markets lie a la Coupe du Monde.\n\n== PARTICULARITES ==\nPublication MENSUELLE des metriques operationnelles permettant un nowcast intra-trimestriel - confirmee utile ce refresh (nowcast T2 a 8% du reel, directionnellement fiable) meme si elle a sous-estime l'ampleur du pic prediction markets. A recalibrer pour mieux capturer les evenements ponctuels a fort volume (Coupe du Monde, elections) plutot qu'une simple extrapolation lineaire des donnees mensuelles disponibles.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : communique et transcript integral du call T2 2026 (29/07/2026). Secondaire : communique T1 2026 (28/04/2026, CA 1,07 Md$ +15%, EPS 0,38$ +3%, manque le consensus de 1,14 Md$ du fait d'un effondrement de 47% du CA crypto - trimestre faible avant le rebond spectaculaire du T2). CA S1 2026 reel : 2,378 Md$ (1,070+1,308). Guidance : OpEx ajustes+SBC FY2026 resserree a 2,675-2,775 Md$. Juillet 2026 : ADV actions/options/prediction markets proches des niveaux record du T2 ; depots nets juillet suivant un rythme d'environ 4 Md$ (hors Trump Accounts, ralentissement saisonnier estival normal selon la direction, objectif annuel >20% de croissance annualisee des depots nets reaffirme sur l'ensemble de l'annee).\nProchain refresh utile : resultats T3 2026 (date non confirmee, generalement fin octobre/debut novembre) - premier test de la saison NFL sur les prediction markets et signal precoce sur les elections de mi-mandat de novembre.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBuild-up par segments (actions, options, crypto, prediction markets, interets nets, autres). Base = resultat avant impots (comme une fintech). CA FY2026 reconstruit bottom-up : S1 reel (2 378 M$) + S2 estime (~2 900 M$, T3 ~1 350 M$ porte par la saison NFL, T4 ~1 550 M$ porte par les elections de mi-mandat de novembre et la saisonnalite de fin d'annee) = ~5 278 M$ (+18% vs FY2025), revise significativement a la hausse vs la creation (4 950 M$) du fait principalement de la reevaluation a la hausse de la trajectoire prediction markets. Marge EBIT retenue a 47% pour FY2026 (vs 45,7% a la creation), amelioration portee par l'effet de levier operationnel demontre au T2 (marge EBITDA ajustee reelle de 57%) et la discipline de couts confirmee par le relevement/resserrement de la guidance OpEx malgre l'ajout de Rothera/WonderFi. IS normatif et ratio de conversion Net/EBIT inchanges dans leur principe (respectivement glissant 15%->19% et ~85%), faute d'element nouveau remettant en cause cette hypothese.\nWATCH-LIST pour le prochain refresh : (1) PRIORITE - confronter le T4 2026 aux elections de mi-mandat de novembre, catalyseur prediction markets potentiellement du meme ordre de grandeur que la Coupe du Monde ; (2) suivre la part de flux prediction markets effectivement acheminee via Rothera (vs Kalshi/ForecastEx/autres contreparties) ; (3) confirmer le maintien du rythme de depots nets >20% annualise sur l'annee complete malgre le ralentissement estival de juillet ; (4) suivre l'evolution du take rate crypto (legerement plus faible en debut de T3 selon la direction) ; (5) suivre la montee en puissance du trading agentique (>100K comptes) et de Robinhood Social (deploiement grand public vise avant fin T3 2026) ; (6) completer le champ ownership (participations Tenev/Bhatt) et compliance (historique regulatoire) laisses incomplets a ce refresh.\n\n== CATALYSEURS ==\nElections de mi-mandat americaines de novembre 2026 (catalyseur prediction markets majeur, T4) ; saison NFL (T3-T4) ; deploiement grand public de Robinhood Social avant fin T3 2026 ; montee en puissance de Robinhood Chain (12+ Md$ de volume DEX, 120+ pays pour les stock tokens) et des perpetual futures (deja actifs hors Etats-Unis via Bitstamp, discussions constructives avec la CFTC pour un lancement US) ; poursuite de la contribution des Trump Accounts (7M d'enfants inscrits, ouverture prochaine aux contributions employeurs) ; Advisor Network et comptes multiples/trusts comme nouveaux moteurs durables de depots nets au-dela des promotions ponctuelles.",
     "impact": "positif",
-    "adjEPS": {
-      "2026": 2.12,
-      "2027": 2.61,
-      "2028": 3.03,
-      "2029": 3.42,
-      "2030": 3.81
+    "ancrages": [
+      {"id":"AN-CA-2026","moteur":"CA FY2026 reconstruit bottom-up : S1 2026 reel (2 378 M$, +23% vs S1 2025 estime) + S2 2026 estime a ~2 900 M$ (T3 porte par la saison NFL sur les prediction markets, T4 porte par les elections de mi-mandat de novembre 2026 et la saisonnalite de fin d'annee) - revise significativement a la hausse vs la creation (4 950 M$ -> 5 278 M$) du fait principalement de la trajectoire prediction markets/Rothera, qui a deja depasse la cible annuelle de creation (150 M$) des le seul T2 (156 M$).","applique":["adjCA.2026"],"confiance":"haute"},
+      {"id":"AN-CA-2027-2030","moteur":"Poursuite d'une croissance forte mais graduellement moins spectaculaire : +18%/an sur 2027-2028 (2028 etant une annee d'election presidentielle, catalyseur prediction markets potentiellement comparable a 2026), puis moderation a +12%/an sur 2029-2030 (annees sans grand catalyseur electoral). Hypothese de reconstruction faute de guidance chiffree au-dela du trimestre suivant.","applique":["adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"basse"},
+      {"id":"AN-MARGE","moteur":"Marge EBIT retenue a 47% pour FY2026 (vs 45,7% a la creation), revisee a la hausse suite a la confirmation d'un effet de levier operationnel superieur aux attentes (marge EBITDA ajustee reelle de 57% au T2, guidance de couts resserree/abaissee malgre l'ajout de Rothera et WonderFi non budgetes initialement). Expansion graduelle poursuivie vers 48-49% sur l'horizon 2027-2030, l'effet mix Rothera (marge incrementale quasi 100% sur ce segment) continuant de tirer la marge consolidee vers le haut.","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"moyenne"},
+      {"id":"AN-IS-CONVERSION","moteur":"Taux d'IS normatif glissant maintenu (15% en 2026 -> 19% en 2030, demarrant pres du taux effectif reel 2025 pour eviter une fausse marche) et ratio de conversion Net/EBIT normalise maintenu a ~85%, methodologie de la creation inchangee faute d'element nouveau la remettant en cause.","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
+      {"id":"AN-SHARES","moteur":"Nombre d'actions maintenu quasi stable (~907-908M en 2026, legere decroissance ensuite) : rachats d'actions poursuivis (7,5M d'actions pour 664 M$ YTD au T2) compensant la dilution SBC, la levee de 2,2 Md$ de notes convertibles a 0% de coupon ne generant aucune dilution nette tant que le cours reste sous 300$ (tres loin du cours actuel).","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"moyenne"},
+      {"id":"AN-TRESORERIE","moteur":"Position de tresorerie nette renforcee par la levee de capital de 2,2 Md$ au T2 2026 (notes convertibles), partiellement compensee par la poursuite des rachats d'actions (664 M$ YTD) - trajectoire de tresorerie nette revisee a la hausse (plus negative, donc plus de cash net) vs la creation, avec poursuite de la generation de cash sur l'horizon de projection.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"basse"}
+    ],
+    "dernierCall": {
+      "quarter": "T2 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 1308,
+          "consensus": 1250
+        },
+        "epsAdj": {
+          "actual": 0.62,
+          "consensus": 0.42,
+          "basis": "GAAP dilue - beat tres net de 47,6%. Le beat de resultat est nettement superieur au beat de CA (4,8%), signe d'un fort effet de levier operationnel et d'une discipline de couts marquee (OpEx ajustes+SBC a 641 M$, sous la guidance anterieure, MEME apres integration des couts Rothera/WonderFi non budgetes initialement)."
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance CA/EPS chiffree pour le T3. Signal qualitatif fort : ADV juillet pour actions/options/prediction markets proches des niveaux record du T2 ; crypto legerement plus lent en debut de mois ; take rates juillet dans la meme zone que la moyenne du T2. Depots nets juillet suivant un rythme d'environ 4 Md$ (hors Trump Accounts), ralentissement saisonnier estival normal selon la direction, qui reaffirme un objectif de croissance annualisee des depots nets >20% sur l'ensemble de l'annee (deja atteint et depasse au S1 y compris juillet).",
+      "guidanceAnnuelle": "OpEx ajustes + SBC FY2026 resserres et abaisses a 2,675-2,775 Md$ (vs 2,7-2,825 Md$ precedemment), malgre l'integration des couts Rothera et WonderFi non prevus dans la guidance initiale - autofinancement via des gains d'efficacite sur le socle historique. Pas de guidance CA/EPS annuelle chiffree fournie (politique habituelle de la societe).",
+      "pointsCles": [
+        "Rothera (coentreprise avec Susquehanna) devenue 3e DCM (designated contract market) des Etats-Unis en volume apres seulement un mois d'exploitation - la Coupe du Monde a servi de 'proof of concept' selon Vlad Tenev, qui vise explicitement a faire croitre rapidement cette part et a acheminer la majorite du flux prediction markets via Rothera a moyen terme.",
+        "Croissance des comptes finances la plus forte en pres de 5 ans (~1M au T2) attribuee a une combinaison de facteurs plutot qu'a un seul levier : contexte de marche porteur, nouveaux produits (banque, carte de credit), IPO SpaceX, acquisition WonderFi (~200K comptes), expansion internationale (licence Singapour obtenue) - signal de diversification saine des sources de croissance.",
+        "Objectif de depots nets a 20%/an confirme comme metrique nord (avec le Rule of 40, desormais qualifie de 'Rule of 80+' par le CFO) et le nombre d'entreprises internes generant >100M$ de revenus annualises (13 desormais, dont 2 nouvelles ce trimestre : Robinhood Legend et la carte de credit) - cadre de pilotage interne explicite communique aux investisseurs pour la premiere fois sous cette forme.",
+        "Regle PDT (Pattern Day Trader) supprimee par la SEC en juin 2026 : la direction confirme un benefice tangible et durable (pas seulement ponctuel), Robinhood ayant selon elle beneficie de maniere disproportionnee par rapport aux pairs du fait de sa base de clientele a solde plus faible - tailwind attendu sur plusieurs trimestres.",
+        "Ambition affichee de devenir une entreprise a 1 000 Md$ de capitalisation sur 10 ans (10x l'activite actuelle) selon le CFO, en s'appuyant sur la comparaison des actifs de plateforme (~400 Md$ aujourd'hui) avec ceux des concurrents traditionnels (plusieurs dizaines de milliers de milliards de dollars) - declaration prospective ambitieuse a traiter comme un objectif directionnel de tres long terme, non chiffrable dans les adjXXX.",
+        "Reaction boursiere negative malgre le beat (-3,33% en seance, -0,66% supplementaire apres cloture) - le marche semble avoir deja largement integre la bonne nouvelle en amont de la publication, avec des inquietudes residuelles sur la valorisation (le titre reste tres en-dessous de son plus haut sur 52 semaines de 153,86$)."
+      ]
     },
-    "adjCA": {
-      "2026": 4950,
-      "2027": 5950,
-      "2028": 6800,
-      "2029": 7600,
-      "2030": 8400
-    },
-    "adjEBIT": {
-      "2026": 2262,
-      "2027": 2808,
-      "2028": 3291,
-      "2029": 3747,
-      "2030": 4200
-    },
-    "adjNet": {
-      "2026": 1923,
-      "2027": 2359,
-      "2028": 2732,
-      "2029": 3073,
-      "2030": 3402
-    },
-    "adjND": {
-      "2026": -4600,
-      "2027": -5300,
-      "2028": -6200,
-      "2029": -7300,
-      "2030": -8500
-    },
-    "adjShares": {
-      "2026": 907,
-      "2027": 905,
-      "2028": 902,
-      "2029": 898,
-      "2030": 894
-    }
+    "guidanceHistory": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-04-28",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "OpEx ajustes+SBC FY26 relevee a 2,7-2,825 Md$ (vs 2,6-2,725 Md$ precedemment), integrant 100 M$ d'investissement supplementaire pour l'interface Trump Accounts."
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-29",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "OpEx ajustes+SBC FY26 resserree et abaissee a 2,675-2,775 Md$, malgre l'integration des couts Rothera/WonderFi non budgetes initialement - autofinancement via gains d'efficacite."
+      }
+    ],
+    "guidanceLongTerme": "Objectif directionnel de tres long terme communique par le CFO lors du call T2 2026 : multiplier l'activite par 10 sur les 10 prochaines annees (vision d'une capitalisation boursiere pouvant atteindre 1 000 Md$, comparaison faite avec les actifs sous gestion des institutions financieres traditionnelles, plusieurs dizaines de milliers de milliards de dollars). Non chiffrable dans les adjXXX, traite comme contexte strategique qualitatif.",
+    "adjCA": {"2026":5278,"2027":6228,"2028":7349,"2029":8231,"2030":9219},
+    "adjEBIT": {"2026":2481,"2027":2989,"2028":3601,"2029":3992,"2030":4517},
+    "adjNet": {"2026":2109,"2027":2541,"2028":3061,"2029":3393,"2030":3839},
+    "adjEPS": {"2026":2.32,"2027":2.81,"2028":3.40,"2029":3.78,"2030":4.30},
+    "adjND": {"2026":-6500,"2027":-7500,"2028":-8800,"2029":-10200,"2030":-11800},
+    "adjShares": {"2026":908,"2027":905,"2028":901,"2029":897,"2030":893}
   }
 }
