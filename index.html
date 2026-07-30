@@ -51,6 +51,8 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 
 /* ── CARDS ── */
 .card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
+/* Tableau de projections : pas d'encadré, il vit directement sur le fond de page (même comportement desktop/mobile). */
+#analyse-tbl-card{background:transparent;box-shadow:none;padding:0;}
 .card-title{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px;}
 .card-title b{color:var(--navy);}
 
@@ -58,7 +60,7 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-header{display:flex;align-items:baseline;gap:8px;margin-bottom:18px;}
 .pf-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;font-family:'Poppins',sans-serif;}
 .pf-count{font-size:11px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
-.pf-list{display:flex;flex-direction:column;gap:0;background:var(--surface);border-radius:14px;box-shadow:0 2px 14px rgba(0,1,144,.07),0 1px 3px rgba(0,0,0,.04);overflow:hidden;border:1px solid rgba(0,1,144,.05);}
+.pf-list{display:flex;flex-direction:column;gap:0;background:transparent;}
 .pf-item{display:flex;align-items:center;gap:22px;background:transparent;padding:11px 22px;cursor:pointer;transition:background .12s;border-left:4px solid transparent;border-bottom:1px solid rgba(226,232,240,.65);}
 .pf-item:last-child{border-bottom:none;}
 .pf-item:hover{background:rgba(43,216,194,.055);}
@@ -77,6 +79,7 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-metric{text-align:center;min-width:60px;}
 .pf-ml{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:'Poppins',sans-serif;margin-bottom:5px;white-space:nowrap;}
 .pf-mv{font-size:16px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
+.pf-mv-event{font-size:12.5px;}
 .pf-mv.hi{color:var(--teal-text);}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
 .pf-col-name-spacer{flex:1.6;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
@@ -278,49 +281,68 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;}
 
 /* ══════════════════════════════════════════════════════════════
-   MOBILE — écran ≤ 760px : vraie mise en page empilée (le zoom JS
-   proportionnel desktop est désactivé sous ce seuil, voir script en bas
-   de <body>). Le desktop ci-dessus reste strictement inchangé.
+   TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
+   Règle universelle (desktop ET mobile) : sur desktop les colonnes
+   tiennent généralement dans le conteneur donc ceci reste inactif ;
+   sur mobile, ça permet de faire défiler les années tout en gardant
+   le libellé de ligne visible. Le fond de chaque cellule fixe est
+   explicite (aucun encadré blanc derrière depuis la suppression de
+   la carte : la table vit directement sur le fond de page).
+   ══════════════════════════════════════════════════════════════ */
+#analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
+  position:sticky;left:0;z-index:2;
+  box-shadow:2px 0 5px rgba(0,0,0,.08);
+}
+#analyse-tbl tbody td:first-child{background:var(--bg);}
+#analyse-tbl tbody tr.proj-row td:first-child{background:var(--proj-bg);}
+#analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE — écran ≤ 760px : même design que le desktop (mêmes blocs,
+   même structure, mêmes en-têtes), uniquement redimensionné pour
+   qu'une ligne de portefeuille tienne entièrement sur une largeur de
+   téléphone. Le zoom JS proportionnel desktop est désactivé sous ce
+   seuil (voir script en bas de <body>) au profit de ces règles.
    ══════════════════════════════════════════════════════════════ */
 @media(max-width:760px){
   html,body{overflow-x:hidden;}
-  body{font-size:14px;}
+  body{font-size:13px;}
 
-  header{padding:12px 16px;}
-  .h-logo{height:28px;}
+  header{padding:10px 14px;}
+  .h-logo{height:26px;}
   .h-tagline{gap:5px;margin-top:0;}
-  .h-tagline span{font-size:10px;}
+  .h-tagline span{font-size:9.5px;}
 
-  .tab-bar{padding:9px 14px;}
-  .tab{padding:7px 14px 7px 9px;font-size:11.5px;gap:7px;}
+  .tab-bar{padding:8px 12px;}
+  .tab{padding:6px 13px 6px 8px;font-size:11px;gap:6px;}
 
-  .container{padding:14px 12px 36px;}
+  .container{padding:10px 8px 30px;}
 
-  .card{padding:16px 14px;border-radius:11px;margin-bottom:14px;}
+  .card{padding:14px 12px;border-radius:11px;margin-bottom:12px;}
 
-  /* ── Portefeuille : logo + liste ── */
-  #tab-portefeuille .pf-header svg{width:112px;height:63px;}
+  /* ── Portefeuille : logo ── */
+  #tab-portefeuille .pf-header svg{width:88px;height:50px;}
 
-  .pf-col-header{display:none !important;}
-  .pf-sort-mobile{display:flex;align-items:center;gap:8px;margin:2px 0 14px;}
-  .pf-sort-mobile label{font-size:10.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;flex-shrink:0;}
-  .pf-sort-mobile select{flex:1;font-size:12.5px;padding:8px 10px;border-radius:9px;font-family:'Poppins',sans-serif;font-weight:700;color:var(--navy);}
+  /* En-tête de colonnes : conservé (même design), juste réduit. */
+  .pf-col-header{padding:0 8px 6px;gap:8px;}
+  .pf-col-name-spacer{font-size:9px;}
+  .pf-col-labels{gap:5px;}
+  .pf-col-lbl{font-size:8.5px;letter-spacing:.03em;}
 
-  .pf-list{border-radius:16px;}
-  .pf-item{flex-direction:column;align-items:stretch;gap:12px;padding:14px 15px;}
-  .pf-item:active{background:rgba(43,216,194,.08);}
-  .pf-row-top{gap:13px;}
-  .pf-rank{min-width:16px;font-size:12px;}
-  .pf-name{font-size:15px;}
-  .pf-sub{font-size:11px;}
+  /* Une seule ligne compacte par titre — structure identique au desktop. */
+  .pf-list{gap:0;}
+  .pf-item{gap:8px;padding:8px 8px;}
+  .pf-row-top{gap:6px;}
+  .pf-rank{min-width:11px;font-size:9.5px;}
+  .pf-name{font-size:11.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pf-bar-wrap{margin-top:3px;height:2px;}
 
-  .pf-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;width:100%;}
-  .pf-metric-return,.pf-metric-pe,.pf-metric-event{flex:none;min-width:0;}
-  .pf-metric{background:rgba(0,1,144,.035);border-radius:10px;padding:8px 10px;text-align:left;}
-  .pf-metric-event{grid-column:1 / -1;}
-  .pf-ml-mobile{display:block;font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:'Poppins',sans-serif;margin-bottom:3px;}
-  .pf-mv{font-size:15px !important;}
-  .pf-metric-event .pf-mv{font-size:12.5px !important;}
+  .pf-metrics{gap:5px;}
+  .pf-metric-return{flex:0 0 46px;}
+  .pf-metric-pe{flex:0 0 32px;}
+  .pf-metric-event{flex:0 0 58px;}
+  .pf-mv{font-size:10.5px !important;white-space:nowrap;}
+  .pf-mv-event{font-size:9px !important;line-height:1.15;}
 
   /* ── Analyse : en-tête titre + cours ── */
   .analyse-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:14px;}
@@ -329,30 +351,24 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .analyse-price-wrap{width:100%;justify-content:space-between;}
   .analyse-price input#cours{font-size:25px;width:120px;}
 
-  /* ── Tableau historique & projections : défilement horizontal + 1re colonne fixe ── */
-  #analyse-tbl-card{padding:14px 0 14px 14px;}
-  #analyse-tbl-card > div[style*="overflow-x"]{padding-right:14px;-webkit-overflow-scrolling:touch;}
+  /* ── Tableau historique & projections ── */
+  #analyse-tbl-card{padding-right:10px;}
+  #analyse-tbl-card > div[style*="overflow-x"]{-webkit-overflow-scrolling:touch;}
   #analyse-tbl{font-size:11.5px;}
-  #analyse-tbl thead th{padding:8px 10px;font-size:10.5px;}
-  #analyse-tbl tbody td{padding:7px 10px;}
+  #analyse-tbl thead th{padding:8px 9px;font-size:10.5px;}
+  #analyse-tbl tbody td{padding:7px 9px;}
   #analyse-tbl tbody td:first-child{font-size:10px;}
-  #analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
-    position:sticky;left:0;z-index:2;background:var(--surface);
-    box-shadow:2px 0 5px rgba(0,0,0,.10);
-  }
-  #analyse-tbl thead th:first-child{background:var(--navy);width:auto;min-width:98px;}
-  #analyse-tbl tbody tr.proj-row td:first-child{background:#fbfcff;}
-  #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
+  #analyse-tbl thead th:first-child{width:auto;min-width:92px;}
 
   /* ── Thèse Omnium (return-block) ── */
-  .rb-header{padding:12px 16px 4px;}
-  .rb-total-row{padding:2px 16px 10px;gap:12px;flex-wrap:wrap;}
+  .rb-header{padding:12px 14px 4px;}
+  .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
   .rb-total-num{font-size:32px !important;}
-  .rb-bridge-wrap{padding:0 16px 12px;}
-  .rb-pe-row{padding:10px 16px 10px;}
+  .rb-bridge-wrap{padding:0 14px 12px;}
+  .rb-pe-row{padding:10px 14px 10px;}
   .rb-pe-box{padding:8px 10px;}
   .rb-pe-val{font-size:21px !important;}
-  .rb-eps-row{flex-direction:column;padding:12px 16px 14px;gap:0;}
+  .rb-eps-row{flex-direction:column;padding:12px 14px 14px;gap:0;}
   .rb-eps-sep{display:none;}
   .rb-eps-col{padding:0 !important;}
   .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
@@ -361,12 +377,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
 
-  footer{padding:16px;font-size:9.5px;}
-}
-
-@media(max-width:400px){
-  .pf-metrics{grid-template-columns:1fr;}
-  .pf-metric-event{grid-column:auto;}
+  footer{padding:14px;font-size:9.5px;}
 }
 </style>
 </head>
@@ -408,7 +419,21 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 <header>
   <div style="display:flex;align-items:center;gap:12px;">
-    <img class="h-logo" src="Logotype-Omnium.png" alt="Omnium">
+    <svg class="h-logo" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 104 59">
+      <defs>
+        <linearGradient id="ink-h" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#62F2DA"></stop><stop offset="55%" stop-color="#2EE3C6"></stop><stop offset="100%" stop-color="#1CBBA1"></stop>
+        </linearGradient>
+        <linearGradient id="spec-h" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"></stop><stop offset="70%" stop-color="#FFFFFF" stop-opacity="0"></stop>
+        </linearGradient>
+        <mask id="inkMask-h">
+          <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="#FFF" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
+        </mask>
+      </defs>
+      <path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" fill="none" stroke="url(#ink-h)" stroke-width="8.4" stroke-linecap="round" stroke-linejoin="round"></path>
+      <g mask="url(#inkMask-h)"><path d="M 14.74 23.17 L 20.79 13.39 Q 25 6.59 25 14.59 L 25 39.01 Q 25 47.01 29.21 40.21 L 45.79 13.39 Q 50 6.59 50 14.59 L 50 39.01 Q 50 47.01 54.21 40.21 L 70.79 13.39 Q 75 6.59 75 14.59 L 75 39.01 Q 75 47.01 79.21 40.21 L 85.26 30.43" transform="translate(0 -1.35)" fill="none" stroke="url(#spec-h)" stroke-width="1.43" stroke-linecap="round" stroke-linejoin="round"></path></g>
+    </svg>
     <div class="h-tagline"><i></i><span>Screening Model</span></div>
   </div>
 </header>
@@ -442,21 +467,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer pf-col-sortable" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></div>
       <div class="pf-col-labels">
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 100px;" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 70px;" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
-        <div class="pf-col-lbl pf-col-sortable" style="flex:0 0 132px;" onclick="pfSortBy('nextEvent')">Next event <span class="pf-sort-arrow" data-key="nextEvent"></span></div></div></div>
-  <div class="pf-sort-mobile" id="pf-sort-mobile">
-    <label for="pf-sort-select">Trier par</label>
-    <select id="pf-sort-select" onchange="pfSortBy(this.value)">
-      <option value="score">Score</option>
-      <option value="name">Nom</option>
-      <option value="return">5Y CAGR</option>
-      <option value="peN">P/E N</option>
-      <option value="peN1">P/E N+1</option>
-      <option value="nextEvent">Next event</option>
-    </select>
-  </div>
+        <div class="pf-col-lbl pf-col-sortable pf-metric-return" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
+        <div class="pf-col-lbl pf-col-sortable pf-metric-pe" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
+        <div class="pf-col-lbl pf-col-sortable pf-metric-pe" onclick="pfSortBy('peN1')">P/E N+1 <span class="pf-sort-arrow" data-key="peN1"></span></div>
+        <div class="pf-col-lbl pf-col-sortable pf-metric-event" onclick="pfSortBy('nextEvent')">Next event <span class="pf-sort-arrow" data-key="nextEvent"></span></div></div></div>
   <div class="pf-list" id="pf-list"></div>
 </div>
 
@@ -1073,8 +1087,31 @@ function renderAnalyse(){
     tr.innerHTML=c;tbody.appendChild(tr);
   });
 
+  scrollAnalyseTblToDefault(last5.length);
   renderReturnBlock(CT,proj,cours);
   renderContextBullets(CT,proj,cours);
+}
+
+// Position par defaut du defilement horizontal du tableau Historique &
+// Projections : centree sur "les 2 dernieres annees publiees + les 2
+// premieres annees projetees", ce qui correspond a la zone la plus
+// consultee (transition passe/futur). Le reste de l'historique reste
+// accessible en scrollant vers la gauche, le futur plus lointain vers la
+// droite. Purement cosmetique (aucun impact sur les donnees) : no-op sur
+// desktop des que toutes les colonnes tiennent deja dans le conteneur.
+function scrollAnalyseTblToDefault(histCount){
+  const headRow=document.getElementById('analyse-head');
+  if(!headRow)return;
+  // Index (0-based, hors colonne "Indicateur") de la 1ere colonne a
+  // garder visible a gauche : on masque tout sauf les 2 dernieres
+  // annees historiques (ex. histCount=5 -> on cache les 3 premieres).
+  const targetIdx=Math.max(0,histCount-2);
+  const dataThs=Array.from(headRow.children).slice(1); // hors <th>Indicateur</th>
+  const targetTh=dataThs[targetIdx];
+  if(!targetTh)return;
+  requestAnimationFrame(()=>{
+    try{ targetTh.scrollIntoView({inline:'start',block:'nearest'}); }catch(e){}
+  });
 }
 
 // Rafraichissement "leger" declenche par un prix qui vient d'etre recupere en
@@ -1538,10 +1575,10 @@ function renderPortfolio(){
         </div>
       </div>
       <div class="pf-metrics">
-        <div class="pf-metric pf-metric-return"><div class="pf-ml-mobile">5Y CAGR</div><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
-        <div class="pf-metric pf-metric-pe"><div class="pf-ml-mobile">P/E N</div><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric pf-metric-pe"><div class="pf-ml-mobile">P/E N+1</div><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
-        <div class="pf-metric pf-metric-event"><div class="pf-ml-mobile">Next event</div><div class="pf-mv" style="font-size:12.5px;">${nextEvt}</div></div>
+        <div class="pf-metric pf-metric-return"><div class="pf-mv${totalReturn!=='—'&&parseFloat(totalReturn)>=8?' hi':''}">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</div></div>
+        <div class="pf-metric pf-metric-pe"><div class="pf-mv">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric pf-metric-pe"><div class="pf-mv">${pe27?pe27.toFixed(1)+'×':'—'}</div></div>
+        <div class="pf-metric pf-metric-event"><div class="pf-mv pf-mv-event">${nextEvt}</div></div>
       </div>
     `;
     list.appendChild(el);
