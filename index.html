@@ -108,7 +108,7 @@ thead th:first-child{width:16%;}
 thead th:first-child{text-align:left;}
 thead th.proj-head{background:var(--navy-light);color:var(--navy);}
 tbody td{padding:9px 13px;text-align:right;border-bottom:1px solid rgba(226,232,240,.5);}
-tbody td:first-child{text-align:left;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;}
+tbody td:first-child{text-align:left;font-weight:500;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;}
 tbody td.unit{text-align:left;font-size:10px;color:var(--muted);font-style:italic;font-weight:400;font-family:'Quattrocento Sans',serif;}
 tbody tr:hover td{background:rgba(43,216,194,.03);}
 tbody tr.hist-last td{background:rgba(0,1,144,.03);}
@@ -154,18 +154,17 @@ td input[type=number]:hover{border-color:var(--border);}
 .ctrl label{font-size:11px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Poppins',sans-serif;}
 .ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
 
-/* ── HEADER ANALYSE (nom + ticker + cours) ── */
-.analyse-header{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:16px 28px;margin-bottom:18px;}
-.analyse-id{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;}
-.analyse-name{font-family:'Poppins',sans-serif;font-size:25px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
-.analyse-ticker{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-.analyse-price-wrap{display:flex;align-items:center;gap:12px;}
-.analyse-price{display:flex;align-items:baseline;gap:3px;}
-.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:23px;font-weight:800;color:var(--navy);padding:0 1px 1px;width:112px;text-align:right;transition:border-color .15s;-moz-appearance:textfield;}
+/* ── HEADER ANALYSE (nom + cours), compact, une seule ligne, meme typo ── */
+.analyse-header{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.analyse-id{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
+.analyse-price-wrap{display:flex;align-items:baseline;gap:8px;}
+.analyse-price{display:flex;align-items:baseline;gap:2px;}
+.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);padding:0 1px 1px;width:64px;text-align:left;transition:border-color .15s;-moz-appearance:textfield;}
 .analyse-price input#cours::-webkit-outer-spin-button,.analyse-price input#cours::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 .analyse-price input#cours:hover{border-bottom-color:rgba(0,1,144,.18);}
 .analyse-price input#cours:focus{outline:none;border-bottom-color:var(--teal);}
-.analyse-price-cur{font-size:14px;font-weight:700;color:var(--muted);}
+.analyse-price-cur{font-size:13px;font-weight:700;color:var(--muted);}
 
 /* ── FORMS ── */
 select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
@@ -349,11 +348,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-mv-event{font-size:8px !important;font-weight:400 !important;line-height:1.15;}
 
   /* ── Analyse : en-tête titre + cours ── */
-  .analyse-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:14px;}
-  .analyse-id{gap:8px 12px;}
-  .analyse-name{font-size:19px;}
-  .analyse-price-wrap{width:100%;justify-content:space-between;}
-  .analyse-price input#cours{font-size:25px;width:120px;}
+  /* En-tête analyse : déjà compact et identique en base CSS, rien à surcharger ici. */
 
   /* ── Tableau historique & projections ── */
   #analyse-tbl-card{padding-right:10px;}
@@ -996,13 +991,12 @@ function renderAnalyse(){
   const idWrap=document.getElementById('analyse-id');
   if(idWrap){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const _tk=(d.yahooSymbol||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const fyBadge=isOffCalendar
       ? `<span class="fy-pill" title="Cette societe cloture son exercice fiscal en ${MONTH_ABBR_FR[fyEnd]} et non en decembre : les annees du tableau ci-dessous designent des exercices decales, pas des annees civiles.">
            <span class="fy-dot"></span>Exercice décalé · clôture ${MONTH_ABBR_FR[fyEnd]}
          </span>`
       : '';
-    idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${_tk?`<span class="analyse-ticker">${_tk}</span>`:''}${fyBadge}`;
+    idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${fyBadge}`;
   }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
@@ -1055,17 +1049,17 @@ function renderAnalyse(){
 
   const metrics=[
     {lbl:`CA (M${cur})`,        sep:false, hFn:r=>fM(r.ca),    pFn:y=>fM(proj[y].ca),    hRaw:r=>r.ca},
-    {lbl:'Croissance CA',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
+    {lbl:'Croissance %',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
     {lbl:`EBIT (M${cur})`,      sep:false, hFn:r=>fM(r.ebit),  pFn:y=>fM(proj[y].ebit),  hRaw:r=>r.ebit},
     {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
     {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
-    {lbl:'Nombre d\'actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
+    {lbl:'Share count (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
     {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
     {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     {lbl:`Dividende (${cur})`,   sep:true,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
-    {lbl:'Rendement div.',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
+    {lbl:'Div. yield',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
   ];
 
   const tbody=document.getElementById('analyse-body');
