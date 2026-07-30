@@ -83,9 +83,13 @@ header{background:#fff;color:var(--navy);padding:16px 28px;display:flex;align-it
 .pf-col-name-spacer:hover{color:var(--teal-text);}
 .pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
 .pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
-.pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:center;gap:3px;transition:color .12s;}
+.pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;position:relative;display:block;transition:color .12s;}
 .pf-col-lbl.pf-col-sortable:hover{color:var(--teal-text);}
-.pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;}
+.pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:2px;}
+/* Colonne "Next event" : alignee a gauche (titre + contenu), pas centree comme les autres. */
+.pf-metric-event{text-align:left;}
+.pf-col-lbl.pf-metric-event{text-align:left;padding-left:2px;}
+.pf-col-lbl.pf-metric-event .pf-sort-arrow{position:static;transform:none;margin-left:3px;}
 .pf-score{text-align:center;min-width:52px;padding:7px 12px;background:rgba(0,1,144,.04);border-radius:9px;flex-shrink:0;}
 .pf-score-val{font-size:20px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;line-height:1;}
 .pf-score-lbl{font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:'Poppins',sans-serif;margin-top:3px;}
