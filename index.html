@@ -159,12 +159,12 @@ td input[type=number]:hover{border-color:var(--border);}
 .analyse-id{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
 .analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
 .analyse-price-wrap{display:flex;align-items:baseline;gap:8px;}
-.analyse-price{display:flex;align-items:baseline;gap:2px;}
-.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);padding:0 1px 1px;width:64px;text-align:left;transition:border-color .15s;-moz-appearance:textfield;}
+.analyse-price{display:flex;align-items:baseline;gap:0;}
+.analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);padding:0 1px 1px 0;width:60px;text-align:right;transition:border-color .15s;-moz-appearance:textfield;}
 .analyse-price input#cours::-webkit-outer-spin-button,.analyse-price input#cours::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 .analyse-price input#cours:hover{border-bottom-color:rgba(0,1,144,.18);}
 .analyse-price input#cours:focus{outline:none;border-bottom-color:var(--teal);}
-.analyse-price-cur{font-size:13px;font-weight:700;color:var(--muted);}
+.analyse-price-cur{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);}
 
 /* ── FORMS ── */
 select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
@@ -1046,7 +1046,7 @@ function renderAnalyse(){
     {lbl:`EBIT (M${cur})`,      sep:false, hFn:r=>fM(r.ebit),  pFn:y=>fM(proj[y].ebit),  hRaw:r=>r.ebit},
     {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
     {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
-    {lbl:'Share count (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
+    {lbl:'Actions en circu. (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
     {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
