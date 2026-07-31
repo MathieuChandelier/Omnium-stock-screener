@@ -87,57 +87,161 @@
     {
       "year": 2025,
       "ca": 716924,
-      "ebit": 79975,
-      "net": 77670,
+      "ebit": 84600,
+      "net": 82150,
       "shares": 10735,
       "nd": -57400
     }
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 8.7,
-    "epsNY": 9.9,
-    "date": "2026-07-08",
-    "source": "Consensus sell-side non-GAAP ajuste (S&P Global Market Intelligence / TipRanks, 60 analystes, stockanalysis.com). Inclut vraisemblablement une partie des gains de marque-a-marche Anthropic, contrairement au modele Omnium qui les exclut integralement (voir ancrage anthropic_mtm_exclu) - explique l'ecart negatif attendu vs adjEPS."
+    "eps": 8.71,
+    "epsNY": 9.91,
+    "date": "2026-07-29",
+    "source": "Consensus sell-side non-GAAP ajuste (S&P Global Market Intelligence / TipRanks, 60 analystes, stockanalysis.com) - ATTENTION : date-e du 29/07/2026, donc ANTERIEURE a la publication du 30/07/2026 (EPS GAAP T2 5,75$, tire a plus de 90% par le gain de valorisation Anthropic). Ce consensus sera tres probablement revise nettement a la hausse dans les jours suivant le print pour integrer une partie du gain deja engrange en H1. A reverifier au prochain refresh."
   },
   "particularites": [
     {
-      "text": "Amazon ne verse aucun dividende et ne pratique pas de rachats d'actions nets (dilution legere et continue via la remuneration en actions RSU, cf adjShares) - la totalite du free cash flow disponible est reinvestie en capex. Le rendement total du modele Omnium pour ce titre repose donc integralement sur la croissance de l'EPS, la ligne Div. yield affichant 0%.",
+      "text": "Amazon ne verse aucun dividende et ne pratique pas de rachats d'actions nets (dilution legere et continue via la remuneration en actions RSU, cf adjShares) - la totalite du free cash flow disponible est reinvestie en capex, desormais finance en partie par emission de dette (67 Md$ de nouvelle dette long terme au S1 2026). Le rendement total du modele Omnium pour ce titre repose donc integralement sur la croissance de l'EPS, la ligne Div. yield affichant 0%.",
       "valuePct": null
     }
   ],
+  "ownership": {
+    "asOf": "2026-Q1",
+    "insiderPct": 8.9,
+    "insiderDesc": "Jeff Bezos (fondateur, President executif du board) seul a 8.8% (950,4M actions) ; ensemble des 17 dirigeants/administrateurs a 8.87% (953,9M actions) sur ~10,75 Md actions en circulation.",
+    "insiderSource": "Proxy statement 2026 d'Amazon (record date 24/02/2026), via compilation Yahoo Finance/AOL/LegalClarity.",
+    "notableHolders": [
+      {
+        "investor": "Pershing Square (Bill Ackman)",
+        "tier": "T1",
+        "pct": null,
+        "asOf": "2026-Q1",
+        "movement": "renforce (+19% du nombre d'actions, ~17.4% du portefeuille, 2e position)"
+      },
+      {
+        "investor": "Appaloosa (David Tepper)",
+        "tier": "T1",
+        "pct": null,
+        "asOf": "2026-Q1",
+        "movement": "quasi double (+98%, devenue sa plus grosse position, ~15.2% du portefeuille)"
+      },
+      {
+        "investor": "Baupost Group (Seth Klarman)",
+        "tier": "T1",
+        "pct": null,
+        "asOf": "2026-Q1",
+        "movement": "renforce, devenue sa plus grosse position"
+      },
+      {
+        "investor": "Sanders Capital",
+        "tier": "T2",
+        "pct": null,
+        "asOf": "2026-Q1",
+        "movement": "double (29,8M actions, ~6,2 Md$, 3e position)"
+      }
+    ],
+    "coverageNote": null,
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-07-30",
+    "items": [
+      {
+        "year": 2025,
+        "status": "reglee",
+        "title": "FTC v. Amazon.com - pratiques d'inscription/desinscription Prime ('dark patterns') jugees trompeuses (Restore Online Shoppers' Confidence Act).",
+        "allegedBy": "Federal Trade Commission (plainte initiale 2023)",
+        "outcome": "Reglement de 2,5 Md$ (1 Md$ d'amende + 1,5 Md$ de restitution aux consommateurs) entre en vigueur le 25/09/2025 ; Amazon n'admet pas la violation. C'est le meme reglement deja retraite comme one-off dans le resultat operationnel FY2025 (voir ancrages).",
+        "source": "FTC / couverture Regulatory Oversight, CNBC",
+        "date": "2025-09-25"
+      },
+      {
+        "year": 2026,
+        "status": "reglee",
+        "title": "FTC - violation du Fair Credit Reporting Act (section 609(e)) : refus/retard a fournir aux victimes d'usurpation d'identite les dossiers de transactions frauduleuses.",
+        "allegedBy": "Federal Trade Commission / DOJ",
+        "outcome": "Amazon a accepte de payer 2,25 M$ d'amende civile (record pour ce type de violation) ; pas de politique ecrite de traitement de ces demandes avant debut 2025.",
+        "source": "FTC press release, Law.com, PaymentsDive",
+        "date": "2026-06-30"
+      }
+    ],
+    "note": "Perimetre = fraudes averees/allegations par regulateurs, jamais le contentieux commercial ordinaire. Aucune nouvelle enquete/plainte materielle identifiee au-dela des deux elements ci-dessus depuis la derniere these."
+  },
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": null
+  },
   "hypothese": {
-    "date": "2026-07-09",
-    "source": "Creation - Transcript T1 2026 (29/04/2026, A. Jassy CEO / B. Olsavsky CFO) + 10-K FY2025 (depot SEC 20/02/2026) + communiques T4 2025 (05/02/2026) et T1 2026 + recherche publique (consensus S&P Global Market Intelligence / TipRanks, 08/07/2026).",
-    "summary": "Leader cloud (AWS) + e-commerce mondial, en plein cycle d'investissement capex record (~200 Md$ 2026, +52%) pour l'infrastructure IA. AWS reaccelere nettement (20%->28% YoY, backlog 364 Md$) mais sa marge est transitoirement comprimee par la montee en charge de l'amortissement ; l'expansion des marges NA/International compense au niveau consolide. Optionnalite majeure non modelisee : participation Anthropic (32 Md$ au bilan, gains de marque-a-marche exclus des adjXXX). adjEPS 7,55->14,41 (2026-2030), tire par le mix-shift retail + normalisation progressive de la marge AWS.",
-    "text": "== EVENEMENTS & INFLEXIONS ==\n1. CAPEX 2026 ~200 Md$ [classe i, deja engage] : guide au T4 2025 (05/02/26), confirme au T1 2026 - +52% vs 131,8 Md$ en 2025, tres majoritairement AWS/IA (data centers, puces Trainium/Graviton, reseau). 51,5 Md$ de nouvelles obligations USD/EUR emises en mars 2026 pour le financer. Impact marge AWS transitoire (voir ancrages).\n2. AWS - reacceleration confirmee [classe i] : croissance 20% (FY25) -> 24% (T4 25) -> 28% (T1 26, plus haut niveau en 15 trimestres). Carnet de commandes 364 Md$ au T1 26 (hors accord Anthropic >100 Md$ signe separement). IA a runrate >15 Md$, puces maison (Trainium/Graviton) a runrate >20 Md$ en croissance a trois chiffres.\n3. Investissement Anthropic - optionnalite majeure non modelisee [classe iii] : participation reevaluee a 32 Md$ au bilan T1 26 (investissement cumule ~8 Md$), +25 Md$ d'engagement supplementaire annonce le 21/04/26 lie a 5GW de capacite compute. Gains de marque-a-marche : +3,3 Md$ (FY25) puis +16,8 Md$ avant impot au seul T1 26 - EXCLUS des adjXXX (non-operationnel, hautement volatil, symetriquement reversible si la valorisation d'Anthropic se retourne).\n4. Amazon Leo (Kuiper) - lancement commercial imminent [classe ii, partiellement quantifie] : plus de 250 satellites en orbite, service commercial vise pour le T3 2026 (pas 'fin 2026'), engagements de revenu deja signes (Delta, JetBlue, AT&T, Vodafone, DIRECTV LatAm, Australia NBN, NASA, accord Apple). Cout ~1 Md$ signale par le management pour le seul T2 26 - absorbe dans la marge NA projetee plutot qu'isole (Amazon ne publie pas de 4e segment), a re-verifier au prochain refresh.\n5. One-offs FY2025 [classe i, deja dans les chiffres] : ~4,6 Md$ de charges non recurrentes dans le resultat operationnel publie (reglement FTC publicite ~2,5 Md$ T3, indemnites de depart ~2,7 Md$, litige fiscal Italie + reglement judiciaire ~1,1 Md$ T4, depreciations magasins ~0,6 Md$ T4) - retraitees pour etablir la base de continuite 2026 (voir ancrage one_off_fy2025_charges).\n6. Risque reglementaire [classe iii, non quantifie] : enquete FTC en cours sur les pratiques publicitaires ; scrutiny antitrust UE sur le cloud. Asymetrie negative non modelisee.\n\n== PARTICULARITES ==\nAmazon ne verse aucun dividende et ne pratique pas de rachats d'actions nets - voir tableau particularites. Le rendement du modele repose entierement sur l'EPS CAGR.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : primaire = transcript T1 2026 (29/04/26) ; secondaires = 10-K FY2025 (depot SEC 20/02/26), communiques T4 2025 (05/02/26) et T1 2026, consensus S&P Global Market Intelligence/TipRanks (08/07/26, 60 analystes).\nGuidance T2 2026 (directionnelle -> traduite en contrainte) : CA 194-199 Md$ (Prime Day bascule en Q2 2026), OI 20-24 Md$. Capex FY2026 confirme ~200 Md$. Management : monetisation du capex IA \"primarily in 2027-2028\" - traduit en marge AWS encore comprimee en 2026-2027 avant expansion a partir de 2028.\nProchain refresh utile : resultats T2 2026, publication prevue le 30/07/2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase normalisee hors gains Anthropic (non-operationnels) et hors one-offs FY25 - voir ancrages pour le detail des ecarts vs GAAP publie. Taux d'IS normalise a 21%. Interet net proche de l'equilibre en 2026 (transition d'une position de cash net vers un endettement net modeste), legerement negatif ensuite. adjShares +~1,1%/an (dilution RSU continue, aucun programme de rachat identifie).\nWatch-list : (1) Amazon isolera-t-il un cout Kuiper recurrent au-dela du \"~1 Md$ T2\" deja signale ? (2) la marge AWS se stabilise-t-elle ou continue-t-elle de se comprimer au S2 2026 avec la montee en charge complete du capex ? (3) le point de bascule en dette nette positive (attendu courant 2026) se confirme-t-il au rythme projete ? (4) la marge International poursuit-elle sa convergence, ou la baisse sequentielle du T4 2025 (OI -21% YoY) se reproduit-elle ? (5) calendrier reel du lancement commercial Leo (T3 26 vise).\n\n== CATALYSEURS ==\nReacceleration AWS (28% YoY, backlog 364 Md$+) et monetisation IA (Trainium/Bedrock, runrate >20 Md$) ; expansion marge NA/International (effets d'echelle logistique + mix publicite) ; lancement commercial Leo T3 2026 ; optionnalite Anthropic non pricee dans le modele ; risque capex/endettement 2026-2027 a surveiller comme contrepoids.",
+    "date": "2026-07-31",
+    "source": "Refresh T2 2026 - Communique complet des resultats T2 2026 (30/07/2026, incluant les etats financiers condenses) + transcript integral du call du meme jour (Andy Jassy CEO / Brian Olsavsky CFO, incluant la session Q&A complete, via BigGo Finance/MarketScreener) + recherche publique complementaire (consensus stockanalysis.com du 29/07/2026, proxy statement 2026, 13F T1 2026, FTC).",
+    "summary": "AWS accelere pour le 5e trimestre consecutif (36,7% au T2, backlog +36% sequentiel a 496 Md$) et sa marge tient mieux que redoute (39,4%, +650pb) malgre le cycle de capex le plus lourd de l'histoire du groupe, desormais releve a ~220 Md$ pour 2026 (vs ~200 Md$ guide au T1) a cause de l'inflation des couts memoire. Le resultat net publie (62,6 Md$, EPS 5,75$) est en realite tire a plus de 90% par un gain de marque-a-marche non-operationnel de 53,4 Md$ sur la participation Anthropic - integralement exclu du modele Omnium, qui prefere juger la societe sur son AWS/NA/International operationnels. Le free cash flow continue de se degrader (TTM -7,6 Md$ contre +18,2 Md$ il y a un an) et le bilan a bascule en dette nette positive des le S1 2026, avec 67 Md$ de nouvelle dette long terme emise en six mois - confirmant et amplifiant le scenario de financement par la dette deja anticipe. adjEPS 7,67->14,27 (2026-2030), une trajectoire globalement reconduite malgre le beat du trimestre : le relevement du capex prolonge la pression D&A sur la marge de sortie, ce qui compense l'amelioration operationnelle immediate.",
+    "text": "== SYNTHESE DE LA THESE ==\nLe refresh T2 2026 renforce le pari central AWS/IA tout en confirmant son cout : la reacceleration du cloud (36,7% YoY, backlog 496 Md$, IA et puces maison chacune >25 Md$ de runrate) valide la these de leadership infrastructure IA, avec une marge AWS (39,4%) qui resiste mieux qu'anticipe a la montee en charge du capex. Mais le capex FY2026 est releve a ~220 Md$ (vs ~200 Md$ au T1, +67% vs 131,8 Md$ en 2025), et le bilan a bascule en dette nette positive (+5,9 Md$ a fin juin, contre -57,4 Md$ fin 2025) apres 67 Md$ de nouvelle dette long terme emise en six mois. Le resultat net publie (62,6 Md$, EPS GAAP 5,75$) est structurellement trompeur : plus de 90% provient d'un gain de marque-a-marche non-operationnel de 53,4 Md$ sur la participation Anthropic, integralement exclu des adjXXX. Le modele Omnium retient donc une lecture operationnelle robuste mais pas euphorique : la trajectoire d'EPS ajuste est globalement reconduite (legerement relevee en 2026, legerement abaissee en 2027-2030) car le beat AWS/marge immediat est compense par la prolongation de la pression D&A liee au capex releve et par le maintien d'une position de dette nette positive plus longtemps que prevu.\n\n== EVENEMENTS & INFLEXIONS ==\n1. CAPEX FY2026 RELEVE A ~220 MD$ [classe i, deja engage] : guide ~200 Md$ au T1 26, releve a ~220 Md$ au T2 26 (Jassy : inflation des couts memoire). +67% vs 131,8 Md$ en 2025. Management : \"nous n'aurons toujours pas assez de capacite pour repondre a la demande en 2026 ET en 2027\", demande 2028 deja \"frappante\". Prolonge la pression D&A sur la marge au-dela de l'hypothese precedente (voir ancrages).\n2. AWS - reacceleration confirmee et amplifiee [classe i] : croissance 28% (T1 26) -> 36,7% (T2 26), 5e trimestre consecutif d'acceleration, plus rapide depuis 18 trimestres. Backlog 496 Md$ (+36% sequentiel vs 364 Md$ au T1, croissance \"a trois chiffres\" YoY). IA et puces (Trainium/Graviton) chacune >25 Md$ de runrate annualise, croissance a trois chiffres. Marge AWS 39,4% (+650pb YoY, dont ~120pb lies a un gain comptable sur instruments derives ponctuel).\n3. Gain de marque-a-marche Anthropic - ampleur inedite [classe iii, exclu] : 53,4 Md$ avant impot au seul T2 26 (vs 16,8 Md$ au T1 26 dans la these precedente) - soit ~69,4 Md$ cumules sur le seul S1 2026. Porte le resultat net publie a 62,6 Md$ / EPS 5,75$ (vs consensus pre-publication de 1,82$ non-GAAP), une distorsion sans precedent par rapport a la performance operationnelle sous-jacente. Exclusion integrale maintenue (non-operationnel, hautement volatil, symetriquement reversible).\n4. Bascule en dette nette positive, plus rapide et plus large que projete [classe i] : 67 Md$ de nouvelle dette long terme emise au S1 2026 (dette LT 65,6 Md$ fin 2025 -> 128,9 Md$ a fin juin, quasiment doublee), position nette de cash de -57,4 Md$ (FY25) a +5,9 Md$ (fin juin 26) - la bascule anticipee par la these precedente pour \"fin 2026\" est deja depassee a mi-annee. Free cash flow TTM -7,6 Md$ (vs +18,2 Md$ un an plus tot), du a +66,1 Md$ de capex net TTM.\n5. One-offs T2 2026 dans l'OI publie [classe i, deja dans les chiffres] : ~1,2 Md$ de benefices non recurrents dans l'OI publie de 27,5 Md$ (remboursement tarifs douaniers ~0,6 Md$ + gain comptable sur derives AWS ~0,6 Md$) - neutralises dans la base H1 utilisee pour construire l'estimation FY2026 (voir ancrages).\n6. One-offs FY2025 - retraitement direct dans data (correction, classe i) : les ~4,6 Md$ de charges non recurrentes de l'exercice publie (reglement FTC Prime ~2,5 Md$, indemnites de depart ~2,7 Md$, litige fiscal Italie + reglement judiciaire ~1,1 Md$, depreciations magasins ~0,6 Md$) etaient deja identifiees dans la these precedente mais seulement referencees en ancrage, jamais retraitees dans `data` lui-meme (defaut de conformite E5 d-bis) - corrige ce refresh : ebit FY2025 retraite de 79 975 a 84 600 M$ (marge ~11,80%, coherent avec la lecture \"hors charges\" deja ecrite precedemment), net retraite proportionnellement de 77 670 a 82 150 M$ (meme taux de conversion net/EBIT publie de 97,1%, conserve pour ne pas introduire de rupture artificielle).\n7. Risque reglementaire [classe iii, partiellement realise] : reglement FTC Prime (2,5 Md$, 25/09/2025) desormais effectif - voir `compliance`. Nouveau reglement FTC mineur (2,25 M$, 30/06/2026, Fair Credit Reporting Act) - non materiel. Scrutiny antitrust UE sur le cloud toujours latent, non quantifie.\n\n== PARTICULARITES ==\nAmazon ne verse aucun dividende et ne pratique pas de rachats d'actions nets - voir tableau particularites. Le rendement du modele repose entierement sur l'EPS CAGR. Confirme ce trimestre : financement du capex desormais mixte capex/dette plutot que capex/cash.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : primaire = communique de resultats T2 2026 (30/07/26) + transcript integral du call (Jassy/Olsavsky, meme jour) ; secondaires = consensus stockanalysis.com (S&P Global Market Intelligence/TipRanks, 29/07/26, pre-publication), proxy statement 2026, 13F T1 2026.\nGuidance T3 2026 (chiffree) : CA 197,0-202,0 Md$ (+9-12% YoY, dont ~-400pb lies au decalage du Prime Day vers le T2 et ~-80pb de FX defavorable), OI 22,5-26,5 Md$ (vs 17,4 Md$ au T3 25). Pas de guidance CA/OI annuelle formelle (Amazon guide uniquement au trimestre) ; seule guidance a portee annuelle chiffree = le capex ~220 Md$.\nProchain refresh utile : resultats T3 2026, publication attendue fin octobre 2026 (non confirmee).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase normalisee hors gain Anthropic (non-operationnel) et hors one-offs FY25/T2-26 identifies - voir ancrages pour le detail des ecarts vs GAAP publie. Taux d'IS normalise maintenu a 21% (le taux effectif FY2025 implicite, nettement plus bas, n'est pas reconduit - regle E5-b, taux anormal jamais reconduit tel quel). Charges/produits financiers nets recalcules chaque annee au taux Treasury 10 ans + 2pts (6,67% au 30/07/26, aucun programme de rachat regulier identifie donc pas d'exception a taux zero sur le cash net). adjShares +~1,1%/an (dilution RSU continue, toujours aucun programme de rachat identifie - confirme ce trimestre par l'absence totale de rachat dans les flux de financement).\nWatch-list : (1) SOLDE - la marge AWS s'est-elle stabilisee ou comprimee au S2 2026 ? Elle s'est en realite EXPANSEE (37,7%->39,4%), contredisant le risque de compression identifie precedemment. (2) SOLDE - le point de bascule en dette nette positive attendu \"courant 2026\" s'est confirme, et plus tot que prevu (des le T2). (3) SOLDE - la marge International a poursuivi sa convergence (3,6%->4,1%). (4) OUVERT - Amazon n'a toujours pas isole de cout Kuiper recurrent explicite au-dela du \"~1 Md$\" deja signale au T1 ; a re-verifier. (5) OUVERT - calendrier reel du lancement commercial Leo : \"~400 satellites en orbite, assez pour debuter un service cette annee\" evoque au T2, sans date T3 26 explicitement reconfirmee. (6) NOUVEAU - la trajectoire de desendettement 2027-2028 (retour en cash net) tient-elle compte du rythme de capex reellement engage au S2 2026, ou le calendrier glisse-t-il encore ?\n\n== CATALYSEURS ==\nReacceleration et resilience de marge AWS (36,7% YoY, backlog 496 Md$, marge 39,4%) et monetisation IA/puces (chacune >25 Md$ de runrate, croissance a trois chiffres) ; expansion des marges NA (7,9%) et International (4,1%) ; lancement commercial Leo imminent ; optionnalite Anthropic non pricee dans le modele (gains exclus) ; contrepoids a surveiller : capex desormais a 220 Md$ finance en partie par la dette, FCF TTM negatif, et prolongation de la pression D&A sur la marge de sortie 2027-2028.",
     "impact": "positif",
+    "priorEPS": {
+      "date": "2026-07-09",
+      "eps": {
+        "2026": 7.55,
+        "2027": 9.06,
+        "2028": 10.84,
+        "2029": 12.59,
+        "2030": 14.41
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T2 2026",
+        "date": "2026-07-30",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Capex FY2026 releve a ~220 Md$ (vs ~200 Md$ guide au T1 26) ; pas de guidance CA/OI annuelle formelle (Amazon guide uniquement au trimestre)."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "dernierCall": {
+      "quarter": "T2 2026",
+      "date": "2026-07-30",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 200606,
+          "consensus": 196180
+        },
+        "epsAdj": {
+          "actual": 5.75,
+          "consensus": 1.82
+        }
+      },
+      "guidanceProchainTrimestre": "CA 197,0-202,0 Md$ (+9-12% YoY, ~-400pb lies au decalage du Prime Day vers le T2, ~-80pb de FX defavorable) ; OI 22,5-26,5 Md$ (vs 17,4 Md$ au T3 25).",
+      "guidanceAnnuelle": "Capex FY2026 releve a ~220 Md$ (vs ~200 Md$ guide au T1 26) ; pas de guidance CA/OI annuelle formelle.",
+      "pointsCles": [
+        "AWS accelere pour le 5e trimestre consecutif a 36,7% YoY (plus rapide depuis 18 trimestres), backlog en hausse de 36% sequentiel a 496 Md$, IA et puces maison chacune au-dela de 25 Md$ de runrate annualise en croissance a trois chiffres.",
+        "Le resultat net publie de 62,6 Md$ (EPS 5,75$) est tire a plus de 90% par un gain de marque-a-marche non-operationnel de 53,4 Md$ sur la participation Anthropic, sans lien avec la performance operationnelle du trimestre.",
+        "Le capex FY2026 est releve a ~220 Md$ en raison de l'inflation des couts des puces memoire ; le management previent que la contrainte de capacite persistera en 2026 et 2027, avec une demande 2028 deja qualifiee de \"frappante\".",
+        "Le free cash flow TTM continue de se degrader (-7,6 Md$ contre +18,2 Md$ un an plus tot) et le bilan a bascule en dette nette positive des le T2, apres 67 Md$ de nouvelle dette long terme emise au S1."
+      ]
+    },
     "ancrages": [
       {
-        "id": "capex_ramp_aws_margin_2026",
-        "moteur": "Capex FY2026 ~200 Md$ (+52% vs 131,8 Md$ FY25), tres majoritairement AWS/IA ; management guide une monetisation 'primarily in 2027-2028' -> marge AWS maintenue comprimee (~34-35%) en 2026 puis 2027, avant recuperation a partir de 2028.",
+        "id": "capex_220md_dna_ramp_2026",
+        "moteur": "Capex FY2026 releve a ~220 Md$ (vs ~200 Md$ au T1 26, +67% vs 131,8 Md$ en 2025), monetisation toujours guidee 'principalement 2027-2028' -> prolonge et amplifie la pression D&A sur la marge de sortie 2027-2028 au-dela de l'hypothese precedente, malgre la resilience de marge observee au T2 26.",
         "applique": [
-          "adjEBIT.2026",
           "adjEBIT.2027",
           "adjEBIT.2028"
         ],
         "confiance": "haute"
       },
       {
-        "id": "aws_reacceleration_backlog",
-        "moteur": "Croissance AWS reacceleree a 28% YoY au T1 26 (plus haut niveau en 15 trimestres), adossee a un backlog de 364 Md$ (hors accord Anthropic) et un runrate IA >15 Md$ -> croissance AWS maintenue 26-28% en 2026 puis deceleration graduelle vers ~16% en 2030 a mesure que la base s'elargit.",
+        "id": "aws_reacceleration_backlog_496",
+        "moteur": "Croissance AWS accentuee a 36,7% YoY au T2 26 (vs 28% au T1), backlog +36% sequentiel a 496 Md$ (vs 364 Md$ au T1) avec croissance a trois chiffres YoY -> releve modestement la trajectoire de croissance du CA consolide 2026-2027 vs l'hypothese precedente, deceleration graduelle ensuite vers ~9,5% en 2030.",
         "applique": [
           "adjCA.2026",
           "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "adjCA.2028"
         ],
         "confiance": "haute"
       },
       {
-        "id": "anthropic_mtm_exclu",
-        "moteur": "Gains de marque-a-marche sur la participation Anthropic (+3,3 Md$ FY25, +16,8 Md$ avant impot au seul T1 26, participation a 32 Md$ au bilan) sont non-operationnels, hautement volatils et symetriquement reversibles -> exclus integralement des adjXXX, traites en asymetrie/optionnalite non chiffree plutot qu'en resultat recurrent.",
+        "id": "anthropic_mtm_exclu_h1_2026",
+        "moteur": "Gains de marque-a-marche sur la participation Anthropic (53,4 Md$ avant impot au seul T2 26, ~69,4 Md$ cumules sur le S1 2026) demeurent non-operationnels, hautement volatils et symetriquement reversibles -> exclusion integrale maintenue des adjXXX sur tout l'horizon.",
         "applique": [
           "adjNet.2026",
           "adjNet.2027",
@@ -148,8 +252,8 @@
         "confiance": "haute"
       },
       {
-        "id": "na_margin_efficiency",
-        "moteur": "Marge operationnelle Amerique du Nord en expansion continue (6,4% FY24 -> 6,95% FY25 -> 7,9-8,0% T1 26) portee par les gains d'efficacite du reseau logistique et la montee du mix publicitaire a plus haute marge -> extrapolee en expansion graduelle +~130-150pb/an jusqu'en 2030.",
+        "id": "na_intl_margin_2026_confirme",
+        "moteur": "Marge Amerique du Nord stable a 7,9% (T1 et T2 26, plateau apres l'expansion 2024-25) et marge International poursuivant sa convergence (3,6% T1 -> 4,1% T2) -> trajectoire d'expansion graduelle des deux segments reconduite, rythme NA legerement tempere vs hypothese precedente (plateau observe plutot que poursuite lineaire).",
         "applique": [
           "adjEBIT.2026",
           "adjEBIT.2027",
@@ -160,28 +264,8 @@
         "confiance": "moyenne"
       },
       {
-        "id": "intl_margin_convergence",
-        "moteur": "Marge International encore faible (2,93% FY25, ~3,5% T1 26) mais en amelioration structurelle annee apres annee -> convergence graduelle vers le niveau NA extrapolee sans atteindre la parite d'ici 2030 (ambition de long terme du management, non chiffree).",
-        "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "one_off_fy2025_charges",
-        "moteur": "Resultat operationnel FY2025 publie (79 975 M$) inclut ~4,6 Md$ de charges non recurrentes (reglement FTC ~2,5 Md$, indemnites de depart ~2,7 Md$, litige fiscal Italie + reglement judiciaire ~1,1 Md$, depreciations magasins ~0,6 Md$) -> base de continuite normalisee retenue pour 2026 = marge ~11,8% (ex-charges) plutot que 11,2% publie.",
-        "applique": [
-          "adjEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "debt_funded_capex_2026",
-        "moteur": "51,5 Md$ de nouvelles obligations USD/EUR emises en mars 2026 ont porte la dette LT de 65,6 Md$ (FY25) a 119,1 Md$ (T1 26) contre une tresorerie de 143,1 Md$ ; position nette de cash reduite de -57,4 Md$ (FY25) a -24,0 Md$ (T1 26) -> bascule modelisee vers un endettement net modeste fin 2026 le temps d'achever le plan capex ~200 Md$, puis desendettement progressif des 2027 avec la reprise du FCF.",
+        "id": "debt_funded_capex_h1_2026",
+        "moteur": "67 Md$ de nouvelle dette long terme emise au S1 2026 (dette LT quasi doublee, 65,6 -> 128,9 Md$), position nette de cash basculee de -57,4 Md$ (FY25) a +5,9 Md$ des fin juin 2026 (plus tot et plus ample que projete precedemment) -> adjND revise a la hausse et le retour en position de cash net repousse a 2028 (vs 2027 dans la these precedente) compte tenu du capex FY26 releve a 220 Md$ finance en partie par la dette.",
         "applique": [
           "adjND.2026",
           "adjND.2027",
@@ -192,8 +276,20 @@
         "confiance": "moyenne"
       },
       {
+        "id": "financial_rate_treasury_2pts_202607",
+        "moteur": "Aucun taux de financement explicite communique par le management ce trimestre -> regle par defaut appliquee : Treasury americain 10 ans (4,67% au 30/07/2026) + 2pts de spread normatif = 6,67%, applique symetriquement au ND moyen projete (positif ou negatif) chaque annee ; aucun programme de rachat regulier identifie donc pas d'exception a taux zero sur le cash net.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
         "id": "tax_normalise_21pct",
-        "moteur": "Taux d'IS normalise retenu a 21% (proche du taux effectif GAAP blende FY25 de 19,6% hors distorsion des gains Anthropic, et du taux statutaire US + mix etats/etranger), applique uniformement a (EBIT + interets nets normalises) sur tout l'horizon.",
+        "moteur": "Taux d'IS normatif maintenu a 21% ; le taux effectif implicite FY2025 (nettement plus bas, conjugue a un effet financier net favorable alors que la societe etait en cash net) n'est pas reconduit car non representatif d'une base normalisee (regle E5-b, taux anormal jamais reconduit tel quel).",
         "applique": [
           "adjNet.2026",
           "adjNet.2027",
@@ -204,8 +300,8 @@
         "confiance": "moyenne"
       },
       {
-        "id": "adjShares_dilution_legere",
-        "moteur": "Dilution nette continue via la remuneration en actions RSU (total actions + attributions : 10,9 Md fin 2024 -> 11,0 Md fin 2025), aucun programme de rachat net identifie dans les disclosures -> extrapolee a +~1,1%/an sur tout l'horizon.",
+        "id": "adjShares_dilution_legere_confirme",
+        "moteur": "Dilution nette continue via la remuneration en actions RSU, aucun programme de rachat net identifie ce trimestre non plus (flux de financement S1 26 : uniquement de la dette, zero rachat d'actions) -> extrapolee a +~1,1%/an sur tout l'horizon, inchangee vs these precedente.",
         "applique": [
           "adjShares.2026",
           "adjShares.2027",
@@ -214,49 +310,65 @@
           "adjShares.2030"
         ],
         "confiance": "moyenne"
+      },
+      {
+        "id": "one_off_fy2025_charges_retraite_data",
+        "moteur": "Resultat operationnel FY2025 publie (79 975 M$) incluait ~4,6 Md$ de charges non recurrentes (reglement FTC Prime ~2,5 Md$, indemnites de depart ~2,7 Md$, litige fiscal Italie + reglement judiciaire ~1,1 Md$, depreciations magasins ~0,6 Md$) deja identifiees dans la these precedente mais jamais retraitees dans `data` (defaut de conformite E5 d-bis, corrige ce refresh) -> `data` 2025 desormais retraite : ebit 84 600 M$ (marge 11,80%), net 82 150 M$ (meme taux de conversion net/EBIT publie de 97,1% conserve pour ne pas introduire de rupture artificielle).",
+        "applique": [
+          "adjEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "one_off_q2_2026_neutralise",
+        "moteur": "OI publie T2 26 (27,5 Md$) inclut ~1,2 Md$ de benefices non recurrents (remboursement tarifs douaniers ~0,6 Md$ + gain comptable sur derives AWS ~0,6 Md$) -> neutralises dans la base H1 2026 utilisee pour construire l'estimation FY2026 bottom-up (H1 normalise ~50,1 Md$ d'EBIT plutot que 51,3 Md$ publies).",
+        "applique": [
+          "adjEBIT.2026"
+        ],
+        "confiance": "haute"
       }
     ],
     "adjEPS": {
-      "2026": 7.55,
-      "2027": 9.06,
-      "2028": 10.84,
-      "2029": 12.59,
-      "2030": 14.41
+      "2026": 7.67,
+      "2027": 8.81,
+      "2028": 10.47,
+      "2029": 12.29,
+      "2030": 14.27
     },
     "adjCA": {
-      "2026": 822700,
-      "2027": 924950,
-      "2028": 1031930,
-      "2029": 1140100,
-      "2030": 1253850
+      "2026": 824000,
+      "2027": 935000,
+      "2028": 1047000,
+      "2029": 1157000,
+      "2030": 1267000
     },
     "adjEBIT": {
-      "2026": 103200,
-      "2027": 126310,
-      "2028": 153260,
-      "2029": 180210,
-      "2030": 208690
+      "2026": 105000,
+      "2027": 124500,
+      "2028": 147500,
+      "2029": 172500,
+      "2030": 199000
     },
     "adjNet": {
-      "2026": 81923,
-      "2027": 99390,
-      "2028": 120185,
-      "2029": 141101,
-      "2030": 163205
+      "2026": 83700,
+      "2027": 97300,
+      "2028": 116800,
+      "2029": 138650,
+      "2030": 162750
     },
     "adjND": {
-      "2026": 15000,
-      "2027": -10000,
-      "2028": -60000,
-      "2029": -130000,
-      "2030": -220000
+      "2026": 30000,
+      "2027": 10000,
+      "2028": -20000,
+      "2029": -70000,
+      "2030": -140000
     },
     "adjShares": {
-      "2026": 10850,
-      "2027": 10970,
-      "2028": 11090,
-      "2029": 11210,
-      "2030": 11330
+      "2026": 10920,
+      "2027": 11040,
+      "2028": 11161,
+      "2029": 11284,
+      "2030": 11408
     }
   }
 }
