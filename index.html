@@ -29,20 +29,18 @@ body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:va
 h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,th{font-family:'Poppins',system-ui,sans-serif;}
 
 /* ── HEADER ── */
-header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;}
+header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:28px 28px 32px;display:flex;align-items:center;justify-content:space-between;}
 .h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
-.h-tagline span{font-size:15px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;opacity:.78;font-family:'Poppins',sans-serif;}
-.h-logo{height:48px;width:auto;display:block;}
+.h-tagline span{font-size:21px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.85;font-family:'Poppins',sans-serif;}
+.h-logo{height:66px;width:auto;display:block;}
 
 /* ── TABS ── */
-.tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);display:flex;align-items:center;padding:11px 24px;gap:8px;}
-.tab{display:inline-flex;align-items:center;gap:9px;padding:8px 20px 8px 10px;cursor:pointer;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-radius:22px;font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;transition:background .15s,color .15s,border-color .15s,transform .12s,box-shadow .15s;box-shadow:0 1px 2px rgba(0,0,0,.12);}
-.tab.active{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 2px 8px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);}
-.tab:hover:not(.active){background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff;transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.18);}
-.tab:active{transform:scale(.96);}
-.tab-back-arrow{display:inline-flex;font-size:13px;transition:opacity .15s;}
-.tab-icon{display:inline-flex;align-items:center;transition:opacity .15s;opacity:.92;}
-.tab:hover:not(.active) .tab-icon{opacity:1;}
+.tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px 8px 14px;cursor:pointer;border:none;background:rgba(255,255,255,.1);color:#fff;border-radius:20px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .15s,transform .12s;}
+.back-btn:hover{background:rgba(255,255,255,.18);}
+.back-btn:active{transform:scale(.96);}
+.back-btn-arrow{font-size:15px;display:inline-block;transition:transform .15s;}
+.back-btn:hover .back-btn-arrow{transform:translateX(-2px);}
 .panel{display:none;}.panel.active{display:block;}
 
 /* ── LAYOUT ── */
@@ -79,7 +77,7 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-col-name-spacer{flex:1 1 auto;max-width:360px;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
 .pf-col-name-spacer:hover{color:var(--teal-text);}
 .pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
-.pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
+.pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;}
 .pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;position:relative;display:block;transition:color .12s;}
 .pf-col-lbl.pf-col-sortable:hover{color:var(--teal-text);}
 .pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:2px;}
@@ -258,8 +256,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    inline). Neutres en desktop, reprises et surchargées en mobile ci-dessous.
    ══════════════════════════════════════════════════════════════ */
 .pf-row-top{display:flex;align-items:center;gap:22px;flex:1 1 auto;max-width:360px;min-width:0;}
-.pf-metric-return{flex:0 0 100px;}
-.pf-metric-pe{flex:0 0 70px;}
+.pf-metric-return{flex:0 0 72px;}
+.pf-metric-pe{flex:0 0 64px;}
 .pf-metric-event{flex:0 0 132px;}
 .pf-ml-mobile{display:none;}
 .pf-sort-mobile{display:none;}
@@ -306,13 +304,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
 
-  header{padding:10px 14px;}
-  .h-logo{height:36px;}
+  header{padding:16px 14px 18px;}
+  .h-logo{height:46px;}
   .h-tagline{gap:5px;margin-top:0;}
-  .h-tagline span{font-size:11px;}
+  .h-tagline span{font-size:14px;}
 
   .tab-bar{padding:8px 12px;}
-  .tab{padding:6px 13px 6px 8px;font-size:11px;gap:6px;}
+  .back-btn{padding:7px 15px 7px 12px;font-size:12px;gap:6px;}
 
   .container{padding:10px 8px 30px;}
 
@@ -330,14 +328,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-list{gap:0;}
   .pf-item{gap:8px;padding:8px 8px;}
   .pf-row-top{gap:6px;}
-  .pf-name{font-size:10.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pf-name{font-size:10.5px;font-weight:400;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   .pf-metrics{gap:5px;}
-  .pf-metric-return{flex:0 0 46px;}
-  .pf-metric-pe{flex:0 0 32px;}
+  .pf-metric-return{flex:0 0 50px;}
+  .pf-metric-pe{flex:0 0 38px;}
   .pf-metric-event{flex:0 0 78px;}
-  .pf-mv{font-size:9px !important;font-weight:600 !important;white-space:nowrap;}
-  .pf-mv-event{font-size:8.5px !important;font-weight:600 !important;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pf-mv{font-size:10.5px !important;font-weight:600 !important;white-space:nowrap;}
+  .pf-mv-event{font-size:10px !important;font-weight:600 !important;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   /* ── Analyse : en-tête titre + cours ── */
   /* En-tête analyse : déjà compact et identique en base CSS, rien à surcharger ici. */
@@ -426,8 +424,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   </div>
 </header>
 
-<div class="tab-bar">
-  <button class="tab" id="tab-btn-pf" onclick="showTab('portefeuille',this)"><span class="tab-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></span><span class="tab-back-arrow" id="tab-pf-arrow" style="display: inline-block;">←</span> Portefeuille</button>
+<div class="tab-bar" id="tab-bar" style="display:none;">
+  <button class="back-btn" id="tab-btn-pf" onclick="showTab('portefeuille',this)"><span class="back-btn-arrow">←</span> Retour au portefeuille</button>
 </div>
 
 <div class="container">
@@ -761,11 +759,9 @@ function saveLastView(id){
 
 function showTab(id,btn,fromHistory){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
-  if(btn)btn.classList.add('active');
-  const arrow=document.getElementById('tab-pf-arrow');
-  if(arrow)arrow.style.display=id==='portefeuille'?'none':'inline-block';
+  const tabBar=document.getElementById('tab-bar');
+  if(tabBar)tabBar.style.display=id==='portefeuille'?'none':'flex';
   if(id==='analyse'){renderAnalyse();}
   if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
   saveLastView(id);
