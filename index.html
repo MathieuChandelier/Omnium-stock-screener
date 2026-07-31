@@ -36,8 +36,8 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 
 /* ── TABS ── */
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
-.back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px 8px 14px;cursor:pointer;border:none;background:rgba(255,255,255,.1);color:#fff;border-radius:20px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;transition:background .15s,transform .12s;}
-.back-btn:hover{background:rgba(255,255,255,.18);}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px 8px 15px;cursor:pointer;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.08);transition:background .15s,border-color .15s,transform .12s,box-shadow .15s;}
+.back-btn:hover{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 3px 10px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);transform:translateY(-1px);}
 .back-btn:active{transform:scale(.96);}
 .back-btn-arrow{font-size:15px;display:inline-block;transition:transform .15s;}
 .back-btn:hover .back-btn-arrow{transform:translateX(-2px);}
@@ -65,7 +65,7 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
    du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
    Le vrai survol (:hover ci-dessus) reste inchange. */
 .pf-main{flex:1.6;min-width:0;}
-.pf-name{font-size:14.5px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;}
+.pf-name{font-size:14.5px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;}
 .pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
 .pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
@@ -328,7 +328,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-list{gap:0;}
   .pf-item{gap:8px;padding:11px 8px;}
   .pf-row-top{gap:6px;}
-  .pf-name{font-size:10.5px;font-weight:500;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pf-name{font-size:10.5px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   .pf-metrics{gap:5px;}
   .pf-metric-return{flex:0 0 50px;}
