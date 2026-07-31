@@ -1445,7 +1445,7 @@ function calcScore(ticker){
 }
 
 // Tri de la vue portefeuille. Défaut = classement d'origine (score CAGR+yield / PE), inchangé.
-let pfSort={key:'score',dir:'desc'};
+let pfSort={key:'name',dir:'asc'};
 function pfSortBy(key){
   if(pfSort.key===key){ pfSort.dir = pfSort.dir==='asc'?'desc':'asc'; }
   else{ pfSort.key=key; pfSort.dir = (key==='name'||key==='nextEvent'||key==='peN'||key==='peN1')?'asc':'desc'; }
