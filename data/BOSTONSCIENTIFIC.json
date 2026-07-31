@@ -39,67 +39,228 @@
     {
       "year": 2025,
       "ca": 20074,
-      "ebit": 3450,
-      "net": 2898,
+      "ebit": 4324,
+      "net": 3813,
       "shares": 1495,
       "nd": 9500
     }
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 2.52,
-    "epsNY": 2.93,
-    "date": "2026-07-06",
-    "source": "Base US GAAP NORMALISEE (garde l'amort. des intangibles recurrent, exclut le discrete tax benefit +384M$ du T1 et les one-offs). NB : guidance management 'adjusted' = 3,34-3,41$ (exclut l'amort recurrent) ; PT analystes 61-70$"
+    "eps": 3.3,
+    "epsNY": 3.42,
+    "date": "2026-07-29",
+    "source": "Base management ADJUSTED (pas la base normalisee Omnium) : point median de la guidance FY2026 relevee/abaissee le 29/07 (3,28-3,32$), qui a immediatement remplace le consensus analystes pre-publication (~3,35$, desormais obsolete). epsNY = estimation Omnium d'une croissance limitee 2027 (~+4%) faute de consensus 2027 public frais a cette date ; a reverifier au prochain refresh."
   },
   "particularites": [],
+  "ownership": {
+    "asOf": "2026-Q1",
+    "insiderPct": 0.5,
+    "insiderDesc": "Tres faible, typique d'un CEO de tres grande capitalisation sans participation fondatrice (Mike Mahoney ~1,4M actions apres donation de 386 755 actions a un trust familial en mai 2026 ; vendeur net regulier, ex. 160 901 actions cedees le 02/02/2026).",
+    "insiderSource": "SEC Form 4 (compilation GuruFocus/MarketBeat/StockTitan).",
+    "notableHolders": [
+      {
+        "investor": "PRIMECAP Management",
+        "tier": "T2",
+        "pct": 2.23,
+        "asOf": "2026-Q1",
+        "movement": "reduit (-4,5%)"
+      },
+      {
+        "investor": "Capital World Investors",
+        "tier": "T2",
+        "pct": 1.8,
+        "asOf": "2026-Q1",
+        "movement": "n/d"
+      }
+    ],
+    "coverageNote": "Base actionnariale tres majoritairement passive/indicielle (Vanguard, Fidelity, BlackRock, State Street, Geode representent a eux seuls >27% du capital) - peu de gerants actifs de conviction identifies dans la liste de suivi Omnium.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-07-31",
+    "items": [
+      {
+        "year": 2026,
+        "status": "enquete_en_cours",
+        "title": "Class action boursiere (Securities Exchange Act) alleguant que le management aurait presente de maniere trompeuse le taux de croissance des procedures d'electrophysiologie US.",
+        "allegedBy": "Actionnaires (plusieurs cabinets d'avocats specialises, ex. Pomerantz, Kirby McInerney, Kessler Topaz)",
+        "outcome": "Periode couverte : 23/07/2025-03/02/2026 (date de l'annonce de la premiere baisse de guidance EP/WATCHMAN). Stade preliminaire (appels a candidature de lead plaintiff), issue et montant non determinables a ce stade.",
+        "source": "Depots judiciaires federaux, alertes investisseurs (MarketBeat, Law.com)",
+        "date": "2026-02-03"
+      }
+    ],
+    "note": "A suivre de pres au prochain refresh : calendrier de la class action (lead plaintiff, eventuelle motion to dismiss)."
+  },
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": null
+  },
   "hypothese": {
-    "date": "2026-07-06",
-    "source": "Creation - Transcript T1 2026 + 8-K SEC FY2021-2025 + recherche publique",
-    "summary": "Leader medtech diversifie (cardio/EP/WATCHMAN, MedSurg). GUIDANCE ABAISSEE T1 2026 (organique 6,5-8%). BASE US GAAP NORMALISEE (exclut le discrete tax benefit +384M$ du T1 et les one-offs, garde l'amort. recurrent) - pas l'adjusted flatteur. Penumbra HORS guidance. Recall + sortie indices -> titre -46% du pic. adjEPS normalise 2,52->4,37.",
-    "text": "== SYNTHESE DE LA THESE ==\nBoston Scientific est un leader medtech diversifie (cardiovasculaire/electrophysiologie/WATCHMAN, MedSurg), avec un historique de croissance superieure au marche (~8% WAMGR). La these actuelle est une decote de qualite : le titre a chute de -46% depuis son pic (guidance cut sur WATCHMAN/EP/Urology, recall Orca, sortie d'indices de croissance), mais le socle reste solide. Le point crucial de ce dossier est methodologique : le management communique en base \"adjusted\" qui exclut l'amortissement des intangibles (charge pourtant recurrente chez un acquereur en serie comme Penumbra en cours d'acquisition) et, au T1 2026, un discrete tax benefit ponctuel de +384M$ a artificiellement gonfle le GAAP. Sur base normalisee (ni l'un ni l'autre), le titre traite ~18x et non ~13x - une decote reelle mais moins spectaculaire que le multiple affiche.\n\n== EVENEMENTS & INFLEXIONS (T1 2026, publie 22/04) ==\n1. GUIDANCE ABAISSEE [classe (i)] : FY2026 organique ramene a 6,5-8% (vs >10% LRP). Trois causes : (a) WATCHMAN - deceleration stand-alone (bascule EP/concomitant), global mid-teens vs ~30% en 2025 ; (b) EP - erosion de parts > anticipe (Medtronic/J&J/Abbott), global ~10% ; (c) Urology - stone (VBP Chine) + disruption SNM. T2 = trimestre le plus dur. 150bps de marge + double-digit EPS MAINTENUS.\n2. IMPOTS NEGATIFS T1 2026 = ELEMENT EXCEPTIONNEL [classe (i), a exclure] : GAAP net T1 (1 341M$/0,90$) INCLUT un discrete tax benefit de +384M$. Signe revelateur : GAAP EPS > adjusted EPS (inversion anormale). Net normalise du trimestre ~957M$.\n3. PENUMBRA [classe (iii), HORS guidance/projections] : deal ~14,5 Md$, cloture S2 2026. Financee par dette (~+11 Md$). Exclue des projections (comme la guidance).\n4. RECALL + SORTIE D'INDICES + CAPITAL [classe (i)] : recall Classe II Orca (9 750 dispositifs) + sortie d'indices Russell -> pression technique. ASR 2 Md$ execute (18/05). FCF FY2026 ~4 Md$.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 + 10-Q. Secondaires : FY2025 (CA 20,07 Md$, GAAP net 2 898M$/1,94$, adj EPS 3,06$). Cours ~45$, ~1,49 Md actions, dette nette ~9,5 Md$.\nGuidance FY2026 (management, ADJUSTED, HORS Penumbra) : organique 6,5-8%, adj op margin +50-75bps, adj EPS 3,34-3,41$ (+9-11%).\nProchain refresh utile : T2 2026, 29 juillet + closing Penumbra S2.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = US GAAP NORMALISEE, pas l'adjusted. Lien valide (FY2025) : adj net 4 575M$ - GAAP 2 898M$ = 1 677M$ d'add-backs, dont ~1 161M$ d'AMORTISSEMENT DES INTANGIBLES (RECURRENT, garde) et ~516M$ de vrais exceptionnels (exclus). Amort. CROISSANT (~+8%/an, acquisitions permanentes). Tax normalise ~14%. Marge op. normalisee 22,0% (2026) -> 25,7% (2030). adjShares -1%/an. P/E 2026 ~18x (vs ~13x sur base flatteuse).\nA suivre : (1) closing Penumbra (financement, amort. additionnel) ; (2) stabilisation WATCHMAN ; (3) parts EP/PFA ; (4) redressement Urology ; (5) trajectoire de marge ; (6) autres discrete tax items.\n\n== CATALYSEURS ==\nCadence de lancements 2027-2028 (FARAPULSE 3e gen, ICE, Faraflex) + comps faciles 2027 ; WATCHMAN (donnees CHAMPION -> mise a jour guidelines) ; Penumbra (upside hors guidance) ; levier OpEx ; decote (~18x fwd normalise) sur un compounder medtech de qualite.",
+    "date": "2026-07-31",
+    "source": "Refresh T2 2026 - Communique complet des resultats T2 2026 (29/07/2026) + transcript integral du call du meme jour (Mike Mahoney CEO / Jon Monson CFO / Dr Ken Stein CMO) + 10-K/Rapport annuel FY2025 (reconciliation non-GAAP complete) + recherche publique complementaire.",
+    "summary": "T2 solide en absolu (CA +7% organique, adj EPS 0,86$ +15%, au-dessus de la guidance) mais le vrai signal du trimestre est le relevement de la guidance FY2026 a la baisse (adj EPS 3,28-3,32$ vs 3,34-3,41$ au T1) et surtout l'annonce explicite d'une '2027 de transition' a croissance d'EPS limitee, la persistance de la faiblesse WATCHMAN/EP repoussant le retour a une expansion de marge significative a 2028. Nouveau programme de restructuration (~500M$ d'economies recurrentes visees fin 2029). Correction importante apportee ce refresh : `data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels (874M$, hors amortissement) - une fois corrige, l'EPS normalise 2025 passe de ~1,94$ (GAAP brut) a 2,55$, restaurant une croissance normalisee 2025->2026 coherente (+7,5% plutot qu'un chiffre trompeur). adjEPS 2,74->4,30 (2026-2030).",
+    "text": "== SYNTHESE DE LA THESE ==\nLe refresh T2 2026 confirme la nature bifide de ce dossier : l'execution operationnelle du trimestre est bonne (CA +7% organique au-dessus de la guidance, adj EPS 0,86$ +15% YoY, battant le haut de fourchette), mais le message clef aux investisseurs est negatif - la guidance FY2026 est de nouveau abaissee (3e fois en trois trimestres) et le management previent explicitement d'une 2027 de transition a croissance d'EPS limitee, la faiblesse WATCHMAN/EP devant persister plus longtemps que prevu et la dilution initiale de Penumbra (cloture attendue au S2 2026, financee par 11 Md$ de nouvelle dette) pesant sur la marge. Le retour a une expansion de marge et une croissance d'EPS soutenues n'est plus attendu qu'a partir de 2028, porte par sept lancements produits (FARAWAVE Ultra, FARAFLEX, SEISMIQ IVL, denervation renale TIVUS, portefeuille Penumbra, option MiRus TAVR, entree en imagerie ICE) adressant un TAM combine de 25 Md$, et par les economies du nouveau programme de restructuration (500M$ vises fin 2029, plus de la moitie realisee fin 2027).\n\nPoint methodologique majeur de ce refresh : en verifiant la coherence du raccord 2025->2026, il est apparu que la these precedente n'avait jamais retraite `data` 2025 des vrais exceptionnels operationnels (874M$ hors amortissement : depreciations d'actifs incorporels, couts lies aux acquisitions/cessions, restructuration, litiges, couts EU MDR), le laissant a son niveau GAAP brut (EBIT 3 450M$, marge 17,2%) alors que le modele Omnium exclut ces memes elements des projections. Corrige ce refresh : EBIT 2025 retraite a 4 324M$ (marge 21,54%), net retraite a 3 813M$ (EPS normalise implicite 2,55$ plutot que 1,94$ GAAP) - la these precedente comparait donc, sans le signaler, un EPS 2026 normalise (2,52$) a un historique 2025 non normalise, ce qui aurait masque une croissance normalisee saine.\n\n== EVENEMENTS & INFLEXIONS (T2 2026, publie 29/07) ==\n1. GUIDANCE FY2026 DE NOUVEAU ABAISSEE [classe i] : adj EPS 3,28-3,32$ (vs 3,34-3,41$ au T1, vs 3,43-3,49$ en debut d'annee - 3e baisse consecutive). CA reporte desormais 5,5-6,5% (vs 7-8,5% au T1). Guidance T3 EPS 0,80-0,82$ et CA +3-5%, sous le consensus pre-publication.\n2. '2027 DE TRANSITION' ANNONCEE EXPLICITEMENT [classe i, nouvelle information majeure] : le CFO Jon Monson anticipe une croissance d'EPS ajuste LIMITEE en 2027 et une expansion de marge operationnelle difficile, du fait de la persistance de la faiblesse WATCHMAN/EP ET de la dilution initiale de Penumbra. Retour a 'une expansion de marge significative et une forte croissance d'EPS' repousse a 2028, porte par 7 lancements produits (TAM combine 25 Md$).\n3. NOUVEAU PROGRAMME DE RESTRUCTURATION [classe i, quantifie] : ~500M$ d'economies annuelles recurrentes visees a la sortie de 2029, plus de la moitie realisee a la sortie de 2027. Economies d'abord visibles en SG&A puis en COGS. Vise a financer les investissements de croissance prioritaires tout en restaurant l'expansion de marge.\n4. PENUMBRA - FINANCEMENT PRECISE [classe i, quantifie, hors guidance/projections] : cloture toujours visee au S2 2026. Prix ~14,5 Md$ (374$/action), finance par un mix cash + ~11,0 Md$ de nouvelle dette + une portion en actions Boston Scientific (10-K FY2025). Le chiffre de dette (11 Md$) est desormais officiel et precis - largement superieur a l'hypothese prudente retenue dans la these precedente. Toujours exclue des projections operationnelles (CA/EBIT) tant que la cloture et la premiere guidance post-integration ne sont pas publiees, mais le financement par dette est integre a adjND des 2026-2027 compte tenu du degre de certitude desormais eleve de l'operation.\n5. CLASS ACTION BOURSIERE [classe iii, nouvelle, non quantifiable] : plainte alleguant une presentation trompeuse de la croissance des procedures EP US, periode couverte 23/07/2025-03/02/2026 (voir `compliance`). Stade preliminaire.\n6. Litige/one-offs T2 2026 [classe i, deja dans les chiffres] : 76M$ de charges litigieuses nettes (probablement liees au dossier de rappel Orca/produits, a confirmer), 42M$ de restructuration, 92M$ lies aux acquisitions/cessions (MiRus notamment), 83M$ de remboursement tarifaire IEEPA (credit ponctuel) - tous exclus de la base normalisee, coherent avec la methodologie deja en place.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : communique de resultats T2 2026 (29/07/26, etats financiers + reconciliation non-GAAP complete) + transcript integral du call (Mahoney/Monson/Stein). Secondaires : Rapport annuel/10-K FY2025 (reconciliation non-GAAP annuelle complete, utilisee pour retraiter `data` 2025), 10-K note sur le financement Penumbra.\nGuidance T3 2026 : CA +3-5% (reporte et organique), adj EPS 0,80-0,82$.\nGuidance FY2026 : CA reporte +5,5-6,5% (organique +5-6%), adj EPS 3,28-3,32$ (hors Penumbra).\nProchain refresh utile : resultats T3 2026 (date non confirmee, ~fin octobre) - possible cloture Penumbra dans l'intervalle, a surveiller en continu.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = US GAAP NORMALISEE (amortissement des intangibles garde car recurrent chez un acquereur en serie ; tous les autres exceptionnels identifies par le management - depreciations, couts d'acquisition/cession, restructuration, litiges, couts EU MDR, elements fiscaux differes/discrets - exclus). Tax normalise ~14% (coherent avec le taux effectif FY2025 reel de 14,6%). adjShares quasi stable 2026 (rachats vs emission actions Penumbra) puis legere baisse reprend 2027+. adjND revise nettement a la hausse (financement Penumbra 11 Md$ desormais officiel) : bascule vers ~18,5 Md$ fin 2026 avant desendettement progressif.\nA suivre : (1) cloture effective de Penumbra et premiere guidance post-integration (impact CA/marge a modeliser explicitement au prochain refresh) ; (2) stabilisation ou non de WATCHMAN/EP en 2027 ; (3) avancement de la class action boursiere ; (4) cadence reelle des economies de restructuration (SG&A puis COGS) ; (5) sept lancements produits 2027-2028.\n\n== CATALYSEURS ==\nCadence de lancements 2027-2028 (FARAWAVE Ultra, FARAFLEX, SEISMIQ IVL, TIVUS, Penumbra, option MiRus TAVR, ICE) adressant un TAM de 25 Md$ ; economies de restructuration (500M$ vises fin 2029) ; Penumbra (upside une fois integre) ; decote de qualite sur un compounder medtech (~16x fwd normalise 2026 sur le nouveau cours) ; risques a surveiller en contrepoids : 2027 de transition confirmee par le management, dette Penumbra desormais lourde, class action boursiere en cours.",
     "impact": "neutre",
+    "priorEPS": {
+      "date": "2026-07-06",
+      "eps": {
+        "2026": 2.52,
+        "2027": 2.93,
+        "2028": 3.38,
+        "2029": 3.86,
+        "2030": 4.37
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T2 2026",
+        "date": "2026-07-29",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Adj EPS abaisse a 3,28-3,32$ (vs 3,34-3,41$ au T1 26) ; CA reporte abaisse a 5,5-6,5% (vs 7-8,5% au T1 26). 3e baisse de guidance consecutive depuis le debut de l'annee."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "dernierCall": {
+      "quarter": "T2 2026",
+      "date": "2026-07-29",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 5442,
+          "consensus": 5361
+        },
+        "epsAdj": {
+          "actual": 0.86,
+          "consensus": 0.83
+        }
+      },
+      "guidanceProchainTrimestre": "CA +3-5% (reporte et organique) vs T3 2025 ; adj EPS 0,80-0,82$ (guidance sous le consensus pre-publication).",
+      "guidanceAnnuelle": "FY2026 CA reporte +5,5-6,5% (organique +5-6%), adj EPS 3,28-3,32$ (hors Penumbra) - 3e baisse de guidance de l'annee.",
+      "pointsCles": [
+        "CA T2 en hausse de 7,0% organique, au-dessus de la guidance (5-7%) ; adj EPS 0,86$ (+15% YoY), au-dessus du haut de fourchette (0,82-0,84$), porte notamment par des elements fiscaux favorables.",
+        "Guidance FY2026 de nouveau abaissee (3e fois en 2026) et 2027 explicitement qualifiee de 'transition' a croissance d'EPS limitee - la faiblesse WATCHMAN/EP doit persister, et Penumbra sera legerement dilutive a son integration.",
+        "Nouveau programme de restructuration vise ~500M$ d'economies annuelles recurrentes a la sortie de 2029, plus de la moitie realisee fin 2027, pour financer les investissements de croissance et restaurer l'expansion de marge.",
+        "Le financement de Penumbra est precise dans le 10-K : ~11,0 Md$ de nouvelle dette (plus cash et actions), un chiffre officiel largement superieur a l'hypothese retenue dans la these precedente."
+      ]
+    },
+    "ancrages": [
+      {
+        "id": "data_2025_retraitement_true_up",
+        "moteur": "`data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels identifies par le management lui-meme (874M$ pretax hors amortissement : impairment 46M$, acquisition/cession 245M$, restructuration 343M$, litige 194M$, EU MDR 46M$ - source : reconciliation non-GAAP annuelle du 10-K FY2025), restant a son niveau GAAP brut (EBIT 3450M$, marge 17,2%) - defaut de conformite E5 d-bis corrige ce refresh : EBIT retraite a 4324M$ (marge 21,54%), net retraite a 3813M$ (meme methodologie 'adjusted moins amortissement garde' appliquee de facon coherente a l'historique et aux projections).",
+        "applique": [
+          "adjEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "guidance_fy2026_abaissee_3e_fois",
+        "moteur": "Guidance FY2026 adj EPS abaissee a 3,28-3,32$ (vs 3,34-3,41$ au T1 26, vs 3,43-3,49$ en debut d'annee), CA reporte a 5,5-6,5% (vs 7-8,5%) - construction bottom-up H1 reel (EPS normalise 1,39$) + H2 guide (EPS normalise ~1,35$ apres amortissement) donnant un FY2026 normalise de 2,74$.",
+        "applique": [
+          "adjCA.2026",
+          "adjEBIT.2026",
+          "adjNet.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "2027_transition_croissance_limitee",
+        "moteur": "Le CFO qualifie explicitement 2027 d'annee de transition a 'croissance d'EPS ajuste limitee' du fait de la persistance WATCHMAN/EP et de la dilution initiale Penumbra, avec un retour a une expansion de marge significative et une forte croissance d'EPS repousse a 2028 -> trajectoire 2027 nettement tassee (+5% vs +16% dans la these precedente), reacceleration a partir de 2028 portee par 7 lancements produits (TAM combine 25 Md$) et les economies de restructuration.",
+        "applique": [
+          "adjCA.2027",
+          "adjEBIT.2027",
+          "adjNet.2027",
+          "adjEPS.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "penumbra_financement_dette_11md_officiel",
+        "moteur": "Le 10-K FY2025 precise desormais officiellement le financement de Penumbra : ~11,0 Md$ de nouvelle dette (plus cash et une portion en actions), deal ~14,5 Md$ au total, cloture visee au S2 2026 - chiffre bien plus lourd que l'hypothese prudente de la these precedente -> adjND revise nettement a la hausse des 2026 (bascule vers ~18,5 Md$ en fin d'annee), desendettement progressif ensuite porte par la generation de FCF. Le volet operationnel (CA/EBIT) de Penumbra reste exclu des projections tant que la societe n'a pas publie de guidance post-cloture officielle.",
+        "applique": [
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "restructuring_500m_savings_2029",
+        "moteur": "Nouveau programme de restructuration annonce ce trimestre, ~500M$ d'economies annuelles recurrentes visees a la sortie de 2029 (plus de la moitie realisee fin 2027, d'abord en SG&A puis en COGS) -> contribue a la reacceleration de marge modelisee a partir de 2028-2029, en plus des lancements produits.",
+        "applique": [
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "tax_normalise_14pct_confirme",
+        "moteur": "Taux d'IS normatif maintenu a 14% (coherent avec le taux effectif FY2025 reel de 14,57% - 493/3385 - une fois les elements fiscaux differes/discrets neutralises), inchange vs these precedente.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "amortissement_recurrent_acquereur_serie",
+        "moteur": "Amortissement des intangibles (897M$ pretax en 2025, ~466M$ au seul S1 2026) maintenu dans la base normalisee car recurrent chez un acquereur en serie comme Boston Scientific (et desormais Penumbra en cours d'integration) - politique inchangee vs these precedente, reconfirmee par la reconciliation non-GAAP du T2 2026.",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "haute"
+      }
+    ],
     "adjEPS": {
-      "2026": 2.52,
-      "2027": 2.93,
-      "2028": 3.38,
-      "2029": 3.86,
-      "2030": 4.37
+      "2026": 2.74,
+      "2027": 2.88,
+      "2028": 3.28,
+      "2029": 3.77,
+      "2030": 4.3
     },
     "adjCA": {
-      "2026": 21580,
-      "2027": 23522,
-      "2028": 25521,
-      "2029": 27563,
-      "2030": 29630
+      "2026": 21400,
+      "2027": 22800,
+      "2028": 24850,
+      "2029": 27200,
+      "2030": 29650
     },
     "adjEBIT": {
-      "2026": 4757,
-      "2027": 5413,
-      "2028": 6117,
-      "2029": 6865,
-      "2030": 7622
+      "2026": 4850,
+      "2027": 5240,
+      "2028": 6040,
+      "2029": 6880,
+      "2030": 7770
     },
     "adjNet": {
-      "2026": 3713,
-      "2027": 4277,
-      "2028": 4882,
-      "2029": 5526,
-      "2030": 6177
+      "2026": 4050,
+      "2027": 4230,
+      "2028": 4780,
+      "2029": 5450,
+      "2030": 6150
     },
     "adjND": {
-      "2026": 8500,
-      "2027": 7000,
-      "2028": 5000,
-      "2029": 2500,
-      "2030": 0
+      "2026": 18500,
+      "2027": 14500,
+      "2028": 10000,
+      "2029": 5000,
+      "2030": -500
     },
     "adjShares": {
-      "2026": 1475,
-      "2027": 1460,
-      "2028": 1445,
-      "2029": 1430,
-      "2030": 1415
+      "2026": 1478,
+      "2027": 1470,
+      "2028": 1458,
+      "2029": 1445,
+      "2030": 1430
     }
   }
 }
