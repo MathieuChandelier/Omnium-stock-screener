@@ -20,6 +20,7 @@
 :root {
   --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
   --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#25CFB4; /* intermediaire entre les deux stops du logo (#1CBBA1 / #2EE3C6) */
+  --teal-dark-text:#0E7A6C; /* turquoise fonce, contraste suffisant pour du texte sur fond blanc */
   --gold:#FFD700; --gold-light:#fffce6;
   --bg:#ffffff; --surface:#fff; --border:#e6e6f0;
   --text:#0d0d1a; --muted:#64748b;
@@ -35,10 +36,10 @@ body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:va
 h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,th{font-family:'Poppins',system-ui,sans-serif;}
 
 /* ── HEADER ── */
-header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:28px 28px 32px;display:flex;align-items:center;justify-content:space-between;}
+header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:35px 34px 40px;display:flex;align-items:center;justify-content:space-between;}
 .h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
-.h-tagline span{font-size:21px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.85;font-family:'Poppins',sans-serif;}
-.h-logo{height:66px;width:auto;display:block;}
+.h-tagline span{font-size:27px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:1;font-family:'Poppins',sans-serif;}
+.h-logo{height:79px;width:auto;display:block;}
 
 /* ── TABS ── */
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
@@ -65,14 +66,14 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-list{display:flex;flex-direction:column;gap:0;background:transparent;}
 .pf-item{display:flex;align-items:center;gap:22px;background:transparent;padding:11px 22px;cursor:pointer;transition:background .12s;border-left:4px solid transparent;border-bottom:1px solid rgba(0,1,144,.16);}
 .pf-item:last-child{border-bottom:none;}
-.pf-metric-pe .pf-mv{color:var(--navy);font-weight:700;}
+.pf-metric-return .pf-mv,.pf-metric-pe .pf-mv{color:var(--teal-dark-text);font-weight:600;}
 .pf-item:hover{background:rgba(43,216,194,.055);}
 /* .pf-active retire volontairement : CT est initialise sur le 1er ticker du select
    au chargement (voir loadTicker), ce qui surlignait en permanence la 1ere ligne
    du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
    Le vrai survol (:hover ci-dessus) reste inchange. */
 .pf-main{flex:1.6;min-width:0;}
-.pf-name{font-size:14.5px;font-weight:900;color:var(--navy);font-family:'Poppins',sans-serif;}
+.pf-name{font-size:14.5px;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif;}
 .pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
 .pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
@@ -311,10 +312,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
 
-  header{padding:16px 14px 18px;}
-  .h-logo{height:46px;}
+  header{padding:20px 18px 22px;}
+  .h-logo{height:55px;}
   .h-tagline{gap:5px;margin-top:0;}
-  .h-tagline span{font-size:14px;}
+  .h-tagline span{font-size:18px;}
 
   .tab-bar{padding:8px 12px;}
   .back-btn{padding:7px 15px 7px 12px;font-size:12px;gap:6px;}
@@ -342,7 +343,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-metric-pe{flex:0 0 38px;}
   .pf-metric-event{flex:0 0 78px;}
   .pf-mv{font-size:10.5px !important;font-weight:600 !important;color:#8896ab !important;white-space:nowrap;}
-  .pf-metric-pe .pf-mv{color:var(--navy) !important;font-weight:700 !important;}
+  .pf-metric-return .pf-mv,.pf-metric-pe .pf-mv{color:var(--teal-dark-text) !important;font-weight:600 !important;}
   .pf-mv-event{font-size:10px !important;font-weight:600 !important;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
   /* ── Analyse : en-tête titre + cours ── */
