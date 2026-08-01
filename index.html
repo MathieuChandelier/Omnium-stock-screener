@@ -462,6 +462,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       </div>
     </div>
   </div>
+  <div id="last-refresh-line" style="display:none;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);margin:-6px 0 16px;"></div>
   <div id="proj-pill-wrap" style="display:none;"></div>
 
   <div class="card" id="analyse-tbl-card">
@@ -969,6 +970,17 @@ function renderAnalyse(){
       : '';
     idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${fyBadge}`;
   }
+  const refreshLine=document.getElementById('last-refresh-line');
+  if(refreshLine){
+    const hyp=d.hypothese;
+    if(hyp && hyp.date){
+      const q=hyp.dernierCall?.quarter;
+      refreshLine.style.display='block';
+      refreshLine.innerHTML=`Dernière mise à jour de la thèse : <span style="color:var(--navy);">${hyp.date}</span>${q?` · ${q}`:''}`;
+    } else {
+      refreshLine.style.display='none';
+    }
+  }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
     if(tb) tb.innerHTML=`<tr><td colspan="12" style="color:var(--muted);padding:20px;">Sélectionnez ou ajoutez un titre valide.</td></tr>`;
@@ -1370,10 +1382,10 @@ function renderCompliance(comp, ticker){
   </div>`;
 }
 
-function formatThesisText(txt){
+function formatThesisText(txt, insertAfterFirst){
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const lines=(txt||'').split(/\n/);
-  let html='', buf=[], first=true;
+  let html='', buf=[], first=true, sectionCount=0, injected=false;
   const flush=()=>{
     const t=buf.join('\n');
     if(t.trim()){
@@ -1385,6 +1397,11 @@ function formatThesisText(txt){
     const m=line.trim().match(/^==\s*(.+?)\s*==$/);
     if(m){
       flush();
+      sectionCount++;
+      if(sectionCount===2 && insertAfterFirst && !injected){
+        html+=insertAfterFirst;
+        injected=true;
+      }
       html+=`<div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;margin:${first?'0':'14px'} 0 6px;">${esc(m[1])}</div>`;
       first=false;
     }else{
@@ -1393,6 +1410,7 @@ function formatThesisText(txt){
     }
   });
   flush();
+  if(insertAfterFirst && !injected){ html+=insertAfterFirst; }
   return html;
 }
 
@@ -1425,8 +1443,7 @@ function renderContextBullets(ticker, proj, cours){
   traceEl.innerHTML=`<div>
     <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
-    <div>${formatThesisText(displayText)}</div>
-    ${dcBanner}
+    <div>${formatThesisText(displayText, dcBanner)}</div>
     ${ownBanner}
     ${compBanner}
     ${partBanner}
