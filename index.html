@@ -274,7 +274,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
 .rb-bridge-wrap{padding:0 20px 12px;}
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
-.rb-eps-col{flex:1;}
+.rb-eps-col{flex:1;display:flex;flex-direction:column;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--teal-text);margin-bottom:9px;}
@@ -289,14 +289,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    quarterlyEPS dans INSTRUCTIONS.md (E5 ter). Les puces Q1-Q4 CY
    vivent DANS .rb-eps-col (année en cours), les puces NY DANS l'autre
    .rb-eps-col (année suivante) - integrees a l'annee a laquelle elles
-   appartiennent plutot qu'affichees dans un bloc a part. La legende
-   Publié/Estimé et le P/E stack restent des elements transversaux aux
-   deux colonnes.
+   appartiennent plutot qu'affichees dans un bloc a part.
+   .qs-qtr-block est pousse en bas de sa colonne (margin-top:auto, les
+   deux .rb-eps-col ayant la meme hauteur via align-items:stretch sur
+   .rb-eps-row) pour que les puces CY et NY demarrent a la meme hauteur
+   malgre le texte de source (rb-eps-src) present uniquement cote CY.
+   La legende Publié/Estimé n'a de sens que pour l'annee en cours (NY
+   est par definition toujours estime) : elle vit sous les puces CY
+   uniquement, jamais cote NY.
    ══════════════════════════════════════════════════════════════ */
-.qtr-legend-row{display:flex;justify-content:flex-end;padding:0 20px;margin-top:-6px;}
-.qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;}
+.qs-qtr-block{margin-top:auto;padding-top:12px;}
+.qtr-legend{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:8px;font-weight:400;font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
-.qs-qtr-block{margin-top:12px;}
 .qs-chips-row{display:flex;gap:6px;}
 .qs-chip{flex:1;text-align:center;border-radius:7px;padding:6px 2px;}
 .qs-chip.actual{background:var(--navy-light);}
@@ -314,13 +318,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-sum{margin-top:6px;text-align:center;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin:10px 20px 0;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--muted);font-weight:600;justify-content:center;}
-/* P/E stack : CY, puis le forward 12 mois (a cheval sur CY/NY), puis NY -
-   l'ordre reflete la position temporelle du P/E forward entre les deux
-   annees, plutot que de le relayer en dernier. */
-.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:0;}
-.pe-row{display:flex;align-items:center;justify-content:space-between;padding:9px 2px;border-bottom:1px solid var(--border);}
-.pe-row:last-child{border-bottom:none;}
-.pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+/* P/E stack : une seule section compacte (pas de separateur entre les 3
+   lignes) - CY, puis le forward 12 mois (a cheval sur CY/NY), puis NY,
+   l'ordre reflete sa position temporelle entre les deux. Valeur rapprochee
+   du libelle (gap fixe) plutot que plaquee au bord droit de la carte. */
+.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:12px;}
+.pe-row{display:flex;align-items:baseline;gap:18px;}
+.pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
 .pe-row-lbl small{display:block;font-size:9px;font-weight:600;color:var(--muted);text-transform:none;margin-top:1px;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
 
@@ -410,17 +414,16 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-lbl{font-size:11.5px;width:88px;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
-  .qtr-legend-row{padding:0 14px;margin-top:-4px;}
-  .qtr-legend{font-size:8.5px;gap:10px;}
-  .qs-qtr-block{margin-top:10px;}
+  .qtr-legend{font-size:8.5px;gap:10px;margin-top:6px;}
+  .qs-qtr-block{margin-top:10px;padding-top:0;}
   .qs-chip{padding:5px 1px;}
   .chip-q{font-size:6.5px;}
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin:8px 14px 0;padding-top:10px;}
-  .pe-stack{padding:12px 14px 14px;margin-top:10px;}
-  .pe-row{padding:7px 2px;}
-  .pe-row-lbl{font-size:10.5px;}
+  .pe-stack{padding:12px 14px 14px;margin-top:10px;gap:9px;}
+  .pe-row{gap:10px;}
+  .pe-row-lbl{font-size:10.5px;width:108px;}
   .pe-row-lbl small{font-size:8px;}
   .pe-row-val{font-size:10.5px;}
 
@@ -1238,8 +1241,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
       <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}</div></div>
     </div>`;
   return {
-    legendRow: `<div class="qtr-legend-row">${legend}</div>`,
-    chipsCY: `<div class="qs-qtr-block">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}</div>`,
+    chipsCY: `<div class="qs-qtr-block">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}${legend}</div>`,
     chipsNY: `<div class="qs-qtr-block">${chipsRow(qe.NY)}${sumBlock(qe.NY,epsNY)}</div>`,
     coherence,
     peStack
@@ -1300,7 +1302,6 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
-    ${qeBlock?qeBlock.legendRow:''}
     <div class="rb-eps-row">
       <div class="rb-eps-col" style="padding-right:14px;">
         <div class="rb-eps-year">EPS ${CY}</div>
