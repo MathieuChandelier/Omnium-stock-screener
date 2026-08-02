@@ -1,3 +1,4 @@
+
 <html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -312,7 +313,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-chip{flex:1;text-align:center;border-radius:7px;padding:6px 2px;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border:1.5px dashed var(--border);}
-.chip-q{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;}
+.chip-q{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;}
 .qs-chip.actual .chip-q{color:var(--navy);opacity:.7;}
 .chip-v{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;}
 .qs-chip.actual .chip-v{color:var(--navy);}
@@ -334,7 +335,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
    le libelle, pour ne pas faire varier la largeur fixe du libelle entre
    les 3 lignes.  */
-.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:flex;flex-direction:column;gap:6px;}
 .pe-row{display:flex;align-items:baseline;gap:18px;}
 .pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
@@ -430,11 +431,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .qtr-legend{font-size:8.5px;gap:10px;}
   .qs-qtr-block{margin-top:10px;padding-top:0;}
   .qs-chip{padding:5px 1px;}
-  .chip-q{font-size:6.5px;}
+  .chip-q{font-size:7.5px;}
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:12px 14px 14px;margin-top:10px;gap:5px;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;gap:5px;}
   .pe-row{gap:10px;flex-wrap:wrap;}
   .pe-row-lbl{font-size:10.5px;width:108px;}
   .pe-row-val{font-size:10.5px;}
@@ -1327,6 +1328,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
+    ${qeBlock?qeBlock.peStack:''}
     <div class="rb-eps-row">
       <div class="rb-eps-col" style="padding-right:14px;">
         <div class="rb-eps-year">EPS ${CY}</div>
@@ -1356,7 +1358,6 @@ function renderReturnBlock(ticker, proj, cours){
       </div>
     </div>
     ${qeBlock?qeBlock.legendRow:''}
-    ${qeBlock?qeBlock.peStack:''}
   `;
 }
 
