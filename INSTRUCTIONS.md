@@ -104,8 +104,8 @@ data/
       ],
       "epsForward12m":0.90,
       "forwardPeriodLabel":"T3 26 -> T2 27",
-      "coherenceStatus":"ok",
-      "coherenceNote":"Somme coherente avec l'EPS annuel (ecart < 1%)"
+      "coherenceNoteCY":null,
+      "coherenceNoteNY":null
     },
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
@@ -376,32 +376,42 @@ Sous-champs :
   toujours a jour du cours live).
 - `forwardPeriodLabel` : phrase courte identifiant la plage couverte par
   `epsForward12m` (ex. `"T3 26 -> T2 27"`).
-- `coherenceStatus` : `"ok"` ou `"ecart"` - resultat de l'arbitrage E5 ter
-  point 4. Pilote la couleur du message affiche cote app.
-- `coherenceNote` : DESTINATAIRE = le lecteur de l'app, pas l'assistant qui
-  refera le refresh suivant. Ce champ s'affiche TEL QUEL dans l'UI, en une
-  seule ligne sous la grille CY/NY (`index.html`, bloc `.coherence`) - ce
-  n'est PAS un espace pour justifier la methode de calcul (ca, c'est le role
-  de `hypothese.text`/`ancrages`, jamais duplique ici). Cote app, le total
-  Σ affiche sous chaque colonne (voir `index.html`) rend deja l'ecart
-  chiffre visible d'un coup d'oeil ; `coherenceNote` n'a donc PAS a le
-  re-chiffrer en mots ni a expliquer comment le T4/l'annee suivante ont ete
-  calibres - une phrase de verdict suffit :
-  - cas `"ok"` : confirmation courte, ex. `"Coherent avec l'EPS annuel."`
-    ou `"Coherent avec l'EPS annuel ; T4 non encore publie estime par
-    saisonnalite."` (une seule clause factuelle, pas plus).
-  - cas `"ecart"` : la seule chose qui manque au lecteur, a savoir POURQUOI
-    ca diverge (ex. `"Guidance T4 tres en retrait du rythme des 3
-    trimestres publies - marge de securite non retenue par le management."`),
-    jamais COMMENT le calcul a ete mene.
+- `coherenceNoteCY` / `coherenceNoteNY` : DESTINATAIRE = le lecteur de
+  l'app, pas l'assistant qui refera le refresh suivant. Il n'existe PLUS de
+  `coherenceStatus` fourni par l'assistant : le statut ok/ecart est
+  desormais CALCULE EN DIRECT cote app a partir de l'ecart reel entre Σ(CY)
+  et `adjEPS[CY]` (resp. NY) - un statut fige au moment de l'ecriture du
+  JSON pouvait finir perime si le cours ou une correction ulterieure
+  changeait la lecture ; le recalcul live evite ce risque. CONSEQUENCE
+  DIRECTE POUR L'ASSISTANT : `coherenceNoteCY`/`coherenceNoteNY` ne
+  s'affichent QUE si l'ecart chiffre de LEUR PROPRE annee est reellement
+  non-nul - jamais les deux en meme temps si un seul des deux ecarts est
+  reel, jamais aucune des deux si les deux ecarts sont nuls (le total Σ
+  affiche a cote de chaque colonne suffit alors, aucun texte a ecrire).
+  - Chaque champ est independant : documente l'ecart de CETTE annee
+    precisement, jamais l'autre (voir E5 ter point 4 - l'ecart CY et
+    l'ecart NY peuvent avoir des causes differentes, ex. CY calibre en
+    residu sur un T4 pas encore publie vs NY construit par pure
+    saisonnalite).
+  - `null` (pas de chaine vide) quand cette annee n'a pas d'ecart reel a
+    justifier - cas le plus frequent, l'ecart etant normalement absorbe a
+    la construction (voir E5 ter point 4). Ne JAMAIS ecrire une phrase de
+    confirmation type "Coherent avec l'EPS annuel" quand l'ecart est nul :
+    le Σ a cote du total suffit, un texte redondant a cote n'ajoute rien.
+  - Quand rempli (ecart reel, non absorbe) : UNE SEULE phrase courte, la
+    chose qui manque au lecteur, a savoir POURQUOI ca diverge (ex.
+    `"Guidance T4 tres en retrait du rythme des 3 trimestres publies -
+    marge de securite non retenue par le management."`), jamais COMMENT le
+    calcul a ete mene.
   MAUVAIS EXEMPLE (a ne plus reproduire) : "Somme CY (8,78$) et NY (9,58$)
   alignee exactement sur adjEPS[2026]/[2027] par construction : les 3
   trimestres deja publies de FY26 (...) restent inchanges, le T4 FY26 et
   l'ensemble de FY27 sont calibres en residu/saisonnalite pour boucler sur
   la these deja figee - ecart initial <2% avant calage, absorbe
-  silencieusement." - c'est un paragraphe de methodologie interne, illisible
-  pour l'utilisateur final de l'app, qui n'a besoin ni du detail du calage
-  ni des chiffres (deja visibles via Σ).
+  silencieusement." - en plus d'etre un paragraphe de methodologie interne
+  illisible pour l'utilisateur final, cet exemple documente un ecart NUL
+  (absorbe) : avec le nouveau modele, les deux champs auraient du rester
+  `null`.
 
 MECANIQUE CREATION vs REFRESH : champ FACTUEL ET DE SYNTHESE reconstruit A
 NEUF a chaque creation/refresh (comme `dernierCall`), PAS un registre
@@ -1113,25 +1123,31 @@ E4-E5, en quatre passes dans cet ordre :
    `NY` vs `adjEPS[CY+1]`) - c'est un VRAI test de coherence interne, pas
    une formalite : calcule explicitement l'ecart en %.
 4. **ARBITRAGE.** `adjEPS` (issu du protocole complet E1-E8, sources
-   multiples, ancrages documentes) est l'ANCRE AUTORITAIRE :
+   multiples, ancrages documentes) est l'ANCRE AUTORITAIRE. CY et NY
+   s'arbitrent INDEPENDAMMENT l'un de l'autre (rien n'oblige les deux a
+   suivre la meme branche) :
    - Ecart FAIBLE (typiquement <3-4%, seuil a apprecier comme les autres
      seuils de materialite de E6-b) : ABSORBE SILENCIEUSEMENT - recale
      proportionnellement les periodes de `CY`/`NY` pour que leur somme
      coincide exactement avec `adjEPS[CY]`/`adjEPS[CY+1]`, EN PRESERVANT LA
      FORME saisonniere identifiee en etape 1 (jamais un recalage uniforme
-     qui aplatirait la saisonnalite). `coherenceStatus: "ok"`.
+     qui aplatirait la saisonnalite). `coherenceNoteCY`/`coherenceNoteNY`
+     (selon l'annee concernee) reste `null` - l'ecart est desormais nul,
+     rien a justifier (le statut ok/ecart n'est plus a declarer, l'app le
+     recalcule elle-meme depuis le chiffre).
    - Ecart MATERIEL : NE PAS corriger en silence - deux choix possibles
      selon le cas, a trancher au moment de l'ecriture : (a) documenter
      l'ecart et laisser la decomposition trimestrielle TELLE QUELLE
-     (`coherenceStatus: "ecart"`, `coherenceNote` explicite), signal que le
-     lecteur doit examiner ; ou (b) si la construction bottom-up (etapes
-     1-2) est manifestement plus fiable que l'annuel (ex. l'annuel n'avait
-     pas encore integre un element que le detail trimestriel revele), le
-     signaler explicitement dans `hypothese.text` comme une PROPOSITION DE
-     REVISION de `adjEPS` - jamais une reecriture automatique de `adjEPS`
-     sans que ce soit assume et trace dans le texte. En cas de doute entre
-     (a) et (b) : REGLE D'ESCALADE (voir tete de section BOUCLE D'ANALYSE),
-     poser la question a l'utilisateur plutot que trancher seul.
+     (`coherenceNoteCY` ou `coherenceNoteNY` explicite, selon l'annee ou
+     l'ecart subsiste), signal que le lecteur doit examiner ; ou (b) si la
+     construction bottom-up (etapes 1-2) est manifestement plus fiable que
+     l'annuel (ex. l'annuel n'avait pas encore integre un element que le
+     detail trimestriel revele), le signaler explicitement dans
+     `hypothese.text` comme une PROPOSITION DE REVISION de `adjEPS` -
+     jamais une reecriture automatique de `adjEPS` sans que ce soit assume
+     et trace dans le texte. En cas de doute entre (a) et (b) : REGLE
+     D'ESCALADE (voir tete de section BOUCLE D'ANALYSE), poser la question
+     a l'utilisateur plutot que trancher seul.
 5. **GEOMETRIE VARIABLE.** Si les donnees disponibles (trimestres publies,
    guidance) sont trop pauvres pour construire une decomposition
    raisonnablement fiable (titre tres peu couvert, guidance totalement
@@ -1301,7 +1317,7 @@ Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees su
 Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
-Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` compte tenu du `coherenceStatus` declare - un `coherenceStatus: "ok"` alors que l'ecart reel depasse le seuil de materialite est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
+Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
 Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
 ## LIVRABLE FINAL
