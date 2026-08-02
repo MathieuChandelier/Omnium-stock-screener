@@ -293,13 +293,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    .qs-qtr-block est pousse en bas de sa colonne (margin-top:auto, les
    deux .rb-eps-col ayant la meme hauteur via align-items:stretch sur
    .rb-eps-row) pour que les puces CY et NY demarrent a la meme hauteur
-   malgre le texte de source (rb-eps-src) present uniquement cote CY.
-   La legende Publié/Estimé n'a de sens que pour l'annee en cours (NY
-   est par definition toujours estime) : elle vit sous les puces CY
-   uniquement, jamais cote NY.
+   malgre le texte de source (rb-eps-src) present uniquement cote CY -
+   condition necessaire : chipsCY et chipsNY doivent rester des blocs de
+   contenu strictement identiques (chips + Σ, rien d'autre), toute
+   asymetrie entre les deux casse l'alignement.
+   Ordre sous la grille CY/NY : coherenceNote (verdict le plus utile
+   d'abord), puis la legende Publié/Estimé (qui ne s'applique qu'a
+   l'annee en cours, NY etant par definition toujours estime), puis le
+   P/E stack.
    ══════════════════════════════════════════════════════════════ */
 .qs-qtr-block{margin-top:auto;padding-top:12px;}
-.qtr-legend{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:8px;font-weight:400;font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;}
+.qtr-legend-row{display:flex;justify-content:center;padding:0 20px;margin-top:10px;}
+.qtr-legend{display:flex;align-items:center;justify-content:center;gap:14px;font-weight:400;font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:6px;}
 .qs-chip{flex:1;text-align:center;border-radius:7px;padding:6px 2px;}
@@ -321,12 +326,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 /* P/E stack : une seule section compacte (pas de separateur entre les 3
    lignes) - CY, puis le forward 12 mois (a cheval sur CY/NY), puis NY,
    l'ordre reflete sa position temporelle entre les deux. Valeur rapprochee
-   du libelle (gap fixe) plutot que plaquee au bord droit de la carte. */
+   du libelle (gap fixe) plutot que plaquee au bord droit de la carte. Le
+   sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
+   le libelle, pour ne pas faire varier la largeur fixe du libelle entre
+   les 3 lignes.  */
 .pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:12px;}
 .pe-row{display:flex;align-items:baseline;gap:18px;}
 .pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
-.pe-row-lbl small{display:block;font-size:9px;font-weight:600;color:var(--muted);text-transform:none;margin-top:1px;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+.pe-fwd-sub{margin-left:8px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -414,7 +422,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-lbl{font-size:11.5px;width:88px;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
-  .qtr-legend{font-size:8.5px;gap:10px;margin-top:6px;}
+  .qtr-legend-row{padding:0 14px;margin-top:8px;}
+  .qtr-legend{font-size:8.5px;gap:10px;}
   .qs-qtr-block{margin-top:10px;padding-top:0;}
   .qs-chip{padding:5px 1px;}
   .chip-q{font-size:6.5px;}
@@ -422,10 +431,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin:8px 14px 0;padding-top:10px;}
   .pe-stack{padding:12px 14px 14px;margin-top:10px;gap:9px;}
-  .pe-row{gap:10px;}
+  .pe-row{gap:10px;flex-wrap:wrap;}
   .pe-row-lbl{font-size:10.5px;width:108px;}
-  .pe-row-lbl small{font-size:8px;}
   .pe-row-val{font-size:10.5px;}
+  .pe-fwd-sub{font-size:8px;margin-left:6px;}
 
   /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1220,10 +1229,10 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
     const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
     return `<div class="qs-sum${bad?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
   };
-  const legend=`<span class="qtr-legend">
+  const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend">
       <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
       <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
-    </span>`;
+    </span></div>`;
   const isEcart=qe.coherenceStatus==='ecart';
   const icon=isEcart
     ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`
@@ -1237,13 +1246,20 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
   // plutot que de le releguer en dernier.
   const peStack=`<div class="pe-stack">
       <div class="pe-row"><div class="pe-row-lbl">P/E ${CY}</div><div class="pe-row-val">${peCY?peCY.toFixed(1)+'×':'—'}</div></div>
-      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward${qe.forwardPeriodLabel?`<small>${esc(qe.forwardPeriodLabel)}</small>`:''}</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}${qe.forwardPeriodLabel?`<span class="pe-fwd-sub">${esc(qe.forwardPeriodLabel)}</span>`:''}</div></div>
       <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}</div></div>
     </div>`;
   return {
-    chipsCY: `<div class="qs-qtr-block">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}${legend}</div>`,
+    // chipsCY/chipsNY restent structurellement IDENTIQUES (chips + Σ,
+    // rien d'autre) : la legende sort du bloc CY pour que les deux blocs
+    // aient exactement la meme hauteur de contenu, condition necessaire
+    // pour que .qs-qtr-block (margin-top:auto) aligne les puces Q1-Q4 des
+    // deux colonnes a la meme hauteur quelle que soit la longueur du texte
+    // de source sous le consensus CY.
+    chipsCY: `<div class="qs-qtr-block">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}</div>`,
     chipsNY: `<div class="qs-qtr-block">${chipsRow(qe.NY)}${sumBlock(qe.NY,epsNY)}</div>`,
     coherence,
+    legendRow,
     peStack
   };
 }
@@ -1331,6 +1347,7 @@ function renderReturnBlock(ticker, proj, cours){
       </div>
     </div>
     ${qeBlock?qeBlock.coherence:''}
+    ${qeBlock?qeBlock.legendRow:''}
     ${qeBlock?qeBlock.peStack:''}
   `;
 }
