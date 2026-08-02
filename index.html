@@ -293,14 +293,16 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    .qs-qtr-block est pousse en bas de sa colonne (margin-top:auto, les
    deux .rb-eps-col ayant la meme hauteur via align-items:stretch sur
    .rb-eps-row) pour que les puces CY et NY demarrent a la meme hauteur
-   malgre le texte de source (rb-eps-src) present uniquement cote CY -
-   condition necessaire : chipsCY et chipsNY doivent rester des blocs de
-   contenu strictement identiques (chips + Σ, rien d'autre), toute
-   asymetrie entre les deux casse l'alignement.
-   Ordre sous la grille CY/NY : coherenceNote (verdict le plus utile
-   d'abord), puis la legende Publié/Estimé (qui ne s'applique qu'a
-   l'annee en cours, NY etant par definition toujours estime), puis le
-   P/E stack.
+   par defaut, malgre le texte de source (rb-eps-src) present uniquement
+   cote CY. Chaque colonne peut en plus afficher sa propre note de
+   reconciliation (.coherence), UNIQUEMENT si l'ecart Σ vs EPS annuel de
+   CETTE colonne est reellement non-nul - jamais dupliquee sur l'autre
+   annee si son ecart a elle est nul. Consequence assumee : si une seule
+   des deux annees a un ecart a justifier, l'alignement pixel des puces
+   n'est plus garanti pour ce refresh (voir buildQuarterlyEPS).
+   La legende Publié/Estimé reste transversale (elle ne s'applique qu'a
+   l'annee en cours, NY etant par definition toujours estime), affichee
+   sous les deux colonnes, avant le P/E stack.
    ══════════════════════════════════════════════════════════════ */
 .qs-qtr-block{margin-top:auto;padding-top:12px;}
 .qtr-legend-row{display:flex;justify-content:center;padding:0 20px;margin-top:10px;}
@@ -318,11 +320,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 /* Total trimestriel (Σ) affiche sous les puces de chaque colonne, pour
    rendre visible d'un coup d'oeil l'ecart entre la somme du detail
    trimestriel (qe.CY/qe.NY) et l'EPS Omnium affiche juste au-dessus dans
-   la meme colonne - complement visuel a qe.coherenceNote, qui reste une
-   phrase courte plutot que d'avoir a chiffrer l'ecart en mots. */
+   la meme colonne - c'est ce chiffre, calcule en direct, qui decide si la
+   note qe.coherenceNoteCY/NY s'affiche (voir buildQuarterlyEPS), plutot
+   qu'un statut ok/ecart fourni a part et potentiellement perime. */
 .qs-sum{margin-top:6px;text-align:center;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
-.coherence{margin:10px 20px 0;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--muted);font-weight:600;justify-content:center;}
+.coherence{margin-top:8px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
+.coherence svg{flex-shrink:0;margin-top:2px;}
 /* P/E stack : une seule section compacte (pas de separateur entre les 3
    lignes) - CY, puis le forward 12 mois (a cheval sur CY/NY), puis NY,
    l'ordre reflete sa position temporelle entre les deux. Valeur rapprochee
@@ -330,7 +334,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
    le libelle, pour ne pas faire varier la largeur fixe du libelle entre
    les 3 lignes.  */
-.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:12px;}
+.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:6px;}
 .pe-row{display:flex;align-items:baseline;gap:18px;}
 .pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
@@ -429,8 +433,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-q{font-size:6.5px;}
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
-  .coherence{font-size:8.5px;margin:8px 14px 0;padding-top:10px;}
-  .pe-stack{padding:12px 14px 14px;margin-top:10px;gap:9px;}
+  .coherence{font-size:8.5px;margin-top:6px;}
+  .pe-stack{padding:12px 14px 14px;margin-top:10px;gap:5px;}
   .pe-row{gap:10px;flex-wrap:wrap;}
   .pe-row-lbl{font-size:10.5px;width:108px;}
   .pe-row-val{font-size:10.5px;}
@@ -1218,26 +1222,32 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const chip=p=>`<div class="qs-chip ${p.actual?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
   const chipsRow=arr=>`<div class="qs-chips-row">${arr.map(chip).join('')}</div>`;
+  const icons={
+    ok:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`,
+    ecart:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`
+  };
   // Total trimestriel (Σ) confronte a l'EPS annuel affiche juste au-dessus,
-  // dans la meme colonne (epsCY/epsNY) - rend l'ecart visible sans avoir a
-  // le lire dans coherenceNote, qui reste une phrase courte de verdict.
-  // Seuil de materialite aligne sur E5 ter (~3-4%).
-  const sumBlock=(arr,annual)=>{
+  // dans la meme colonne (epsCY/epsNY). Le statut ok/ecart n'est plus un
+  // champ fourni par l'assistant (risque de flag perime face au chiffre
+  // reel) : il est calcule ICI, en direct, a partir de l'ecart affiche.
+  // note (coherenceNoteCY/NY) ne s'affiche QUE si l'ecart est non-nul -
+  // seuil aligne sur l'arrondi affiche (0.05pt), pas la materialite E5 ter
+  // (~3%) qui ne pilote plus que la couleur d'alerte. Rien a justifier
+  // quand la reconciliation est exacte : le Σ a cote de l'EPS annuel suffit.
+  const colBlock=(arr,annual,note)=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const delta=(annual>0)?((sum-annual)/annual*100):null;
-    const bad=delta!=null&&Math.abs(delta)>=3;
+    const hasGap=delta!=null&&Math.abs(delta)>=0.05;
+    const material=delta!=null&&Math.abs(delta)>=3;
     const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
-    return `<div class="qs-sum${bad?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+    const sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+    const noteHtml=(hasGap&&note)?`<div class="coherence"${material?' style="color:#c0392b;"':''}>${icons[material?'ecart':'ok']} ${esc(note)}</div>`:'';
+    return `<div class="qs-qtr-block">${chipsRow(arr)}${sumHtml}${noteHtml}</div>`;
   };
   const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend">
       <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
       <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
     </span></div>`;
-  const isEcart=qe.coherenceStatus==='ecart';
-  const icon=isEcart
-    ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`
-    : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
-  const coherence=qe.coherenceNote?`<div class="coherence"${isEcart?' style="color:#c0392b;"':''}>${icon} ${esc(qe.coherenceNote)}</div>`:'';
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
@@ -1250,15 +1260,14 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
       <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}</div></div>
     </div>`;
   return {
-    // chipsCY/chipsNY restent structurellement IDENTIQUES (chips + Σ,
-    // rien d'autre) : la legende sort du bloc CY pour que les deux blocs
-    // aient exactement la meme hauteur de contenu, condition necessaire
-    // pour que .qs-qtr-block (margin-top:auto) aligne les puces Q1-Q4 des
-    // deux colonnes a la meme hauteur quelle que soit la longueur du texte
-    // de source sous le consensus CY.
-    chipsCY: `<div class="qs-qtr-block">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}</div>`,
-    chipsNY: `<div class="qs-qtr-block">${chipsRow(qe.NY)}${sumBlock(qe.NY,epsNY)}</div>`,
-    coherence,
+    // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
+    // une note n'apparait QUE sous l'annee dont l'ecart est reellement
+    // non-nul. En contrepartie, si une seule des deux annees a un ecart a
+    // justifier, l'alignement en pied de colonne (.qs-qtr-block,
+    // margin-top:auto) n'est plus parfait entre CY et NY pour ce refresh -
+    // compromis assume : l'ecart signale prime sur l'alignement pixel.
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY),
     legendRow,
     peStack
   };
@@ -1346,7 +1355,6 @@ function renderReturnBlock(ticker, proj, cours){
         ${qeBlock?qeBlock.chipsNY:''}
       </div>
     </div>
-    ${qeBlock?qeBlock.coherence:''}
     ${qeBlock?qeBlock.legendRow:''}
     ${qeBlock?qeBlock.peStack:''}
   `;
