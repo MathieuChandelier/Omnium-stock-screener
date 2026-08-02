@@ -285,6 +285,36 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
+   DÉTAIL TRIMESTRIEL/SEMESTRIEL DE L'EPS + P/E — voir hypothese.
+   quarterlyEPS dans INSTRUCTIONS.md (E5 ter). Sous le bloc EPS
+   CY/NY existant, dans la même carte "Thèse Omnium".
+   ══════════════════════════════════════════════════════════════ */
+.qtr-wrap{padding:14px 20px 4px;border-top:1px solid var(--border);margin-top:8px;}
+.qtr-title{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:4px;}
+.qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;text-transform:none;letter-spacing:0;font-size:9.5px;color:var(--muted);margin-left:auto;}
+.leg-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
+.qtr-split{display:flex;gap:0;}
+.qs-col{flex:1;display:flex;gap:6px;}
+.qs-col.right{padding-left:14px;}
+.qs-col.left{padding-right:14px;}
+.qs-chip{flex:1;text-align:center;border-radius:7px;padding:6px 2px;}
+.qs-chip.actual{background:var(--navy-light);}
+.qs-chip.estim{background:#fff;border:1.5px dashed var(--border);}
+.chip-q{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px;}
+.qs-chip.actual .chip-q{color:var(--navy);opacity:.7;}
+.chip-v{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;}
+.qs-chip.actual .chip-v{color:var(--navy);}
+.qs-chip.estim .chip-v{color:var(--muted);}
+.qs-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
+.coherence{margin-top:12px;display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--muted);font-weight:600;justify-content:center;padding-bottom:4px;}
+.pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:0;}
+.pe-row{display:flex;align-items:center;justify-content:space-between;padding:9px 2px;border-bottom:1px solid var(--border);}
+.pe-row:last-child{border-bottom:none;}
+.pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+.pe-row-lbl small{display:block;font-size:9px;font-weight:600;color:var(--muted);text-transform:none;margin-top:1px;}
+.pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+
+/* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
    Règle universelle (desktop ET mobile) : sur desktop les colonnes
    tiennent généralement dans le conteneur donc ceci reste inactif ;
@@ -368,6 +398,22 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
   .rb-eps-val{font-size:12px !important;}
   .rb-eps-lbl{font-size:11.5px;width:88px;}
+
+  /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
+  .qtr-wrap{padding:12px 14px 2px;}
+  .qtr-title{font-size:9px;margin-bottom:8px;}
+  .qtr-legend{font-size:8.5px;gap:10px;}
+  .qs-col.left{padding-right:8px;}
+  .qs-col.right{padding-left:8px;}
+  .qs-chip{padding:5px 1px;}
+  .chip-q{font-size:6.5px;}
+  .chip-v{font-size:9.5px;}
+  .coherence{font-size:8.5px;}
+  .pe-stack{padding:12px 14px 14px;margin-top:10px;}
+  .pe-row{padding:7px 2px;}
+  .pe-row-lbl{font-size:10.5px;}
+  .pe-row-lbl small{font-size:8px;}
+  .pe-row-val{font-size:10.5px;}
 
   /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1135,6 +1181,46 @@ function refreshPriceOnly(ticker){
   });
 }
 
+// Detail trimestriel/semestriel de l'EPS + les 3 P/E (annee courante, annee
+// suivante, 12 mois glissants forward) - voir hypothese.quarterlyEPS dans
+// INSTRUCTIONS.md (E5 ter). Affiche sous le bloc EPS CY/NY existant, dans
+// la meme carte "These Omnium". Absent gracieusement si le titre n'a pas
+// encore ce champ (retraitement progressif au fil des refresh, pas de
+// backfill retroactif force).
+function renderQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
+  if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const chip=p=>`<div class="qs-chip ${p.actual?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  const legend=`<span class="qtr-legend">
+      <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
+      <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
+    </span>`;
+  const grid=`<div class="qtr-split">
+      <div class="qs-col left">${qe.CY.map(chip).join('')}</div>
+      <div class="qs-sep"></div>
+      <div class="qs-col right">${qe.NY.map(chip).join('')}</div>
+    </div>`;
+  const isEcart=qe.coherenceStatus==='ecart';
+  const icon=isEcart
+    ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`
+    : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
+  const coherence=qe.coherenceNote?`<div class="coherence"${isEcart?' style="color:#c0392b;"':''}>${icon} ${esc(qe.coherenceNote)}</div>`:'';
+  const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
+  const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
+  const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
+  const peStack=`<div class="pe-stack">
+      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY}</div><div class="pe-row-val">${peCY?peCY.toFixed(1)+'×':'—'}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward${qe.forwardPeriodLabel?`<small>${esc(qe.forwardPeriodLabel)}</small>`:''}</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div></div>
+    </div>`;
+  return `<div class="qtr-wrap">
+      <div class="qtr-title">Détail ${qe.cadence==='semestriel'?'semestriel':'trimestriel'}${legend}</div>
+      ${grid}
+      ${coherence}
+      ${peStack}
+    </div>`;
+}
+
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
@@ -1214,6 +1300,7 @@ function renderReturnBlock(ticker, proj, cours){
         </div>
       </div>
     </div>
+    ${renderQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur)}
   `;
 }
 
