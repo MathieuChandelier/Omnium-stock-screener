@@ -294,9 +294,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;text-transform:none;letter-spacing:0;font-size:9.5px;color:var(--muted);margin-left:auto;}
 .leg-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qtr-split{display:flex;gap:0;}
-.qs-col{flex:1;display:flex;gap:6px;}
+.qs-col{flex:1;display:flex;flex-direction:column;gap:6px;}
 .qs-col.right{padding-left:14px;}
 .qs-col.left{padding-right:14px;}
+.qs-chips-row{display:flex;gap:6px;}
 .qs-chip{flex:1;text-align:center;border-radius:7px;padding:6px 2px;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border:1.5px dashed var(--border);}
@@ -305,6 +306,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .chip-v{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;}
 .qs-chip.actual .chip-v{color:var(--navy);}
 .qs-chip.estim .chip-v{color:var(--muted);}
+/* Total trimestriel (Σ) affiche sous chaque colonne CY/NY, pour rendre
+   visible d'un coup d'oeil l'ecart entre la somme du detail trimestriel
+   (qe.CY/qe.NY) et l'EPS annuel affiche juste au-dessus (epsCY/epsNY) -
+   complement visuel a qe.coherenceNote, qui reste une phrase courte plutot
+   que d'avoir a chiffrer l'ecart en mots. */
+.qs-sum{margin-top:2px;text-align:center;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);}
+.qs-sum.ecart{color:#c0392b;}
 .qs-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
 .coherence{margin-top:12px;display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;font-size:10px;color:var(--muted);font-weight:600;justify-content:center;padding-bottom:4px;}
 .pe-stack{padding:16px 20px 18px;border-top:1px solid var(--border);margin-top:14px;display:flex;flex-direction:column;gap:0;}
@@ -408,6 +416,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .qs-chip{padding:5px 1px;}
   .chip-q{font-size:6.5px;}
   .chip-v{font-size:9.5px;}
+  .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;}
   .pe-stack{padding:12px 14px 14px;margin-top:10px;}
   .pe-row{padding:7px 2px;}
@@ -1191,14 +1200,26 @@ function renderQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return '';
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const chip=p=>`<div class="qs-chip ${p.actual?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  const chipsRow=arr=>`<div class="qs-chips-row">${arr.map(chip).join('')}</div>`;
+  // Total trimestriel (Σ) confronte a l'EPS annuel affiche juste au-dessus
+  // (epsCY/epsNY) - rend l'ecart visible sans avoir a le lire dans
+  // coherenceNote, qui reste une phrase courte de verdict/explication.
+  // Seuil de materialite aligne sur E5 ter (~3-4%).
+  const sumBlock=(arr,annual)=>{
+    const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
+    const delta=(annual>0)?((sum-annual)/annual*100):null;
+    const bad=delta!=null&&Math.abs(delta)>=3;
+    const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
+    return `<div class="qs-sum${bad?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+  };
   const legend=`<span class="qtr-legend">
       <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
       <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
     </span>`;
   const grid=`<div class="qtr-split">
-      <div class="qs-col left">${qe.CY.map(chip).join('')}</div>
+      <div class="qs-col left">${chipsRow(qe.CY)}${sumBlock(qe.CY,epsCY)}</div>
       <div class="qs-sep"></div>
-      <div class="qs-col right">${qe.NY.map(chip).join('')}</div>
+      <div class="qs-col right">${chipsRow(qe.NY)}${sumBlock(qe.NY,epsNY)}</div>
     </div>`;
   const isEcart=qe.coherenceStatus==='ecart';
   const icon=isEcart
