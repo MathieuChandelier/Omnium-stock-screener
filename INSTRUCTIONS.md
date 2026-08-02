@@ -88,6 +88,25 @@ data/
       {"quarter":"T2 26","date":"2026-07-02","fyGuided":2026,"guidanceAnnuelle":"CA +7-9%, marge EBIT ~22.5%."}
     ],
     "guidanceLongTerme":"Objectif CMD mars 2025 : marge EBIT >25% et CA CAGR high-single-digit a horizon 2028, ou null si aucune guidance pluriannuelle formulee.",
+    "quarterlyEPS":{
+      "cadence":"trimestriel",
+      "CY":[
+        {"label":"T1","eps":0.16,"actual":true},
+        {"label":"T2","eps":0.18,"actual":true},
+        {"label":"T3","eps":0.19,"actual":false},
+        {"label":"T4","eps":0.17,"actual":false}
+      ],
+      "NY":[
+        {"label":"T1","eps":0.20,"actual":false},
+        {"label":"T2","eps":0.23,"actual":false},
+        {"label":"T3","eps":0.25,"actual":false},
+        {"label":"T4","eps":0.22,"actual":false}
+      ],
+      "epsForward12m":0.90,
+      "forwardPeriodLabel":"T3 26 -> T2 27",
+      "coherenceStatus":"ok",
+      "coherenceNote":"Somme coherente avec l'EPS annuel (ecart < 1%)"
+    },
     "summary":"Resume 2 lignes de la these actuelle.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
     "impact":"positif|negatif|neutre",
@@ -324,6 +343,62 @@ raisonnement E1-E8 par lui-meme (une cible LT peut neanmoins alimenter un
 `ancrages` explicite en E4 si elle est mobilisee comme moteur de
 projection - dans ce cas le lien vers l'id de l'ancrage peut etre
 mentionne ici en une incise courte).
+
+Le champ `quarterlyEPS` porte le DETAIL TRIMESTRIEL (ou semestriel) de
+l'EPS pour l'annee en cours et l'annee suivante, plus le P/E 12 mois
+glissants (forward), affiche par l'app juste sous le bloc EPS CY/NY
+existant, dans la meme carte "These Omnium". Construit selon E5 ter (voir
+BOUCLE D'ANALYSE) a partir des `adjEPS` deja figes en E4-E5 - jamais un
+intrant independant, toujours une DECOMPOSITION du chiffre annuel deja
+etabli.
+
+Sous-champs :
+- `cadence` : `"trimestriel"` ou `"semestriel"` - pilote uniquement le
+  libelle affiche cote app, determine par la cadence de publication reelle
+  de la societe (voir E5 ter).
+- `CY` : tableau de 4 periodes (trimestres) - ou 2 (semestres) - COUVRANT
+  L'INTEGRALITE DE L'ANNEE COURANTE (`adjEPS[CY]`), quel que soit le nombre
+  deja publie. Chaque entree `{label, eps, actual}` :
+  - `label` : `"T1"`/`"T2"`/`"T3"`/`"T4"` (ou `"H1"`/`"H2"`) SANS l'annee.
+    Pour un titre a `fyEndMonth` decale, ce sont des trimestres/semestres
+    FISCAUX.
+  - `eps` : EPS normalise de la periode, MEME base comptable que `adjEPS`
+    (GAAP/IFRS retraite des seuls vrais one-offs, amortissement garde).
+  - `actual` : `true` si la periode est deja publiee, `false` si estimee -
+    pilote le rendu visuel cote app (pastille pleine vs contour pointille).
+- `NY` : meme structure que `CY`, pour l'annee suivante (`adjEPS[CY+1]`) -
+  quasi toujours `actual:false` sur toute la ligne.
+- `epsForward12m` : somme des 4 PROCHAINS trimestres CHRONOLOGIQUES a
+  compter d'aujourd'hui (le premier trimestre non encore publie + les 3
+  suivants) - INDEPENDANT du decoupage `CY`/`NY` par annee, qui lui
+  affiche toujours l'annee complete. Alimente le P/E 12 mois glissants
+  affiche par l'app (calcule cote JS comme `cours / epsForward12m`,
+  toujours a jour du cours live).
+- `forwardPeriodLabel` : phrase courte identifiant la plage couverte par
+  `epsForward12m` (ex. `"T3 26 -> T2 27"`).
+- `coherenceStatus` : `"ok"` ou `"ecart"` - resultat de l'arbitrage E5 ter
+  point 4. Pilote la couleur du message affiche cote app.
+- `coherenceNote` : phrase courte explicite (confirmation si `"ok"`,
+  explication de la nature de l'ecart si `"ecart"` - jamais corrige en
+  silence).
+
+MECANIQUE CREATION vs REFRESH : champ FACTUEL ET DE SYNTHESE reconstruit A
+NEUF a chaque creation/refresh (comme `dernierCall`), PAS un registre
+cumulatif (contrairement a `ownership.history`/`compliance.items`) - la
+fenetre de periodes glisse a chaque refresh, aucun sens a en preserver une
+trace historique. Entierement REMPLACE, sans lien avec l'ancien contenu du
+JSON fourni en entree.
+
+ABSENCE GRACIEUSE : si les donnees disponibles ne permettent pas une
+decomposition fiable (voir E5 ter point 5), `quarterlyEPS` reste absent -
+l'app n'affiche simplement pas la section, comportement normal, jamais une
+erreur. Ne JAMAIS forcer une decomposition approximative juste pour remplir
+le champ.
+
+Champ purement factuel et de synthese, comme `dernierCall`/`priorEPS` : ne
+participe a aucun raisonnement E1-E8 au-dela de son role de decomposition
+(le detail trimestriel ne redefinit jamais `adjEPS` sans passer par le
+mecanisme d'arbitrage/escalade d'E5 ter point 4).
 
 Le champ `ownership` porte un ETAT DES LIEUX FACTUEL ET APPROXIMATIF de
 l'actionnariat du titre, affiche par l'app dans le bloc "Hypothese
@@ -739,7 +814,8 @@ ils sont recherches/ecrits en parallele de la boucle, comme `nextEvent`,
 mais jamais utilises comme intrant d'un ancrage ou d'un adjXXX.
 
 ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
-retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> [refresh
+retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> decomposition
+trimestrielle de l'EPS (E5 ter) -> [refresh
 uniquement] reconciliation en deux temps, projection independante puis
 confrontation (E6-a / E6-b) -> controle final de vraisemblance (E7) ->
 [titres a `fyEndMonth` avec trimestres de l'exercice en cours deja publies
@@ -982,6 +1058,68 @@ historique ET dans la projection. `hypothese.text` n'a pas à re-décrire un
 recalculer le même écart par une seconde méthode sans confronter explicitement
 le nouveau résultat à la première valeur obtenue.
 
+### E5 ter. DÉCOMPOSITION TRIMESTRIELLE/SEMESTRIELLE DE L'EPS, toujours
+(comme E4/E5/E7 - jamais "sans objet", mais peut se conclure sans ecrire
+`quarterlyEPS` si la fiabilite n'est pas au rendez-vous, voir point 5)
+
+Construit `quarterlyEPS` (voir SCHEMA) a partir des adjEPS deja figes en
+E4-E5, en quatre passes dans cet ordre :
+
+1. **SAISONNALITE + TRIMESTRES/SEMESTRES DEJA PUBLIES.** Rassemble les
+   resultats des periodes deja publiees pour l'exercice en cours et le
+   precedent (typiquement 4 a 8 trimestres/semestres selon ce qui est
+   disponible), et RETRAITE CHACUN selon la meme discipline que E5
+   (amortissement garde, vrais one-offs exclus - un seul trimestre pollue
+   par un exceptionnel non retraite fausse le P/E glissant pendant les 4
+   trimestres qui suivent). Identifie le patron de saisonnalite propre a ce
+   titre (ex. Q4 structurellement plus lourd, S1 traditionnellement plus
+   faible). Pour un titre a publication SEMESTRIELLE (pas de trimestres
+   publies) : reconstitue une estimation trimestrielle indicative a partir
+   du chiffre d'affaires trimestriel (souvent publie meme par un
+   semestriel, via un point d'activite) et d'un ratio de marge interpole
+   entre la marge du dernier semestre publie et la guidance de marge
+   annuelle - marquer ces points `"actual": false` malgre tout (ce sont des
+   estimations, pas des publications), et documenter la methode dans le
+   texte si le titre bascule ainsi en affichage semestriel plutot que
+   trimestriel (voir point 5).
+2. **DECOUPAGE VIA LA GUIDANCE.** Applique le patron de saisonnalite
+   identifie a la guidance du trimestre suivant (souvent chiffree
+   precisement par le management) et a la guidance annuelle en cours, pour
+   estimer les trimestres restants de l'exercice en cours et le debut de
+   l'exercice suivant.
+3. **RECOUPEMENT AVEC LES PROJECTIONS ANNUELLES.** La somme des periodes de
+   `CY` doit converger vers `adjEPS[CY]` deja construit en E4-E5 (idem pour
+   `NY` vs `adjEPS[CY+1]`) - c'est un VRAI test de coherence interne, pas
+   une formalite : calcule explicitement l'ecart en %.
+4. **ARBITRAGE.** `adjEPS` (issu du protocole complet E1-E8, sources
+   multiples, ancrages documentes) est l'ANCRE AUTORITAIRE :
+   - Ecart FAIBLE (typiquement <3-4%, seuil a apprecier comme les autres
+     seuils de materialite de E6-b) : ABSORBE SILENCIEUSEMENT - recale
+     proportionnellement les periodes de `CY`/`NY` pour que leur somme
+     coincide exactement avec `adjEPS[CY]`/`adjEPS[CY+1]`, EN PRESERVANT LA
+     FORME saisonniere identifiee en etape 1 (jamais un recalage uniforme
+     qui aplatirait la saisonnalite). `coherenceStatus: "ok"`.
+   - Ecart MATERIEL : NE PAS corriger en silence - deux choix possibles
+     selon le cas, a trancher au moment de l'ecriture : (a) documenter
+     l'ecart et laisser la decomposition trimestrielle TELLE QUELLE
+     (`coherenceStatus: "ecart"`, `coherenceNote` explicite), signal que le
+     lecteur doit examiner ; ou (b) si la construction bottom-up (etapes
+     1-2) est manifestement plus fiable que l'annuel (ex. l'annuel n'avait
+     pas encore integre un element que le detail trimestriel revele), le
+     signaler explicitement dans `hypothese.text` comme une PROPOSITION DE
+     REVISION de `adjEPS` - jamais une reecriture automatique de `adjEPS`
+     sans que ce soit assume et trace dans le texte. En cas de doute entre
+     (a) et (b) : REGLE D'ESCALADE (voir tete de section BOUCLE D'ANALYSE),
+     poser la question a l'utilisateur plutot que trancher seul.
+5. **GEOMETRIE VARIABLE.** Si les donnees disponibles (trimestres publies,
+   guidance) sont trop pauvres pour construire une decomposition
+   raisonnablement fiable (titre tres peu couvert, guidance totalement
+   absente, societe qui vient d'entrer en bourse sans historique
+   trimestriel) : NE PAS ecrire `quarterlyEPS` plutot que de publier une
+   decomposition non fiable - une ligne dans `hypothese.text` (rubrique
+   PARAMETRES & POINTS DE SUIVI) suffit pour le signaler comme point a
+   reprendre au refresh suivant.
+
 ### E6. RECONCILIATION (REFRESH UNIQUEMENT ; sans objet en creation)
 E4-E5 se font A NEUF (jamais depuis les anciens adjXXX du JSON fourni) ; E6
 confronte ENSUITE au passe. Cette etape se deroule en DEUX TEMPS
@@ -1142,6 +1280,7 @@ Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees su
 Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
+Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` compte tenu du `coherenceStatus` declare - un `coherenceStatus: "ok"` alors que l'ecart reel depasse le seuil de materialite est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
 Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
 ## LIVRABLE FINAL
@@ -1161,7 +1300,11 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
    sous-champs sans donnee trouvee, jamais bloquant. `hypothese.
    guidanceHistory` demarre a une ligne unique (ce call) et `hypothese.
    guidanceLongTerme` renseigne si une guidance pluriannuelle existe, sinon
-   `null` (voir SCHEMA). `ownership` renseigne (insiders ancres sur le
+   `null` (voir SCHEMA). `hypothese.quarterlyEPS` renseigne selon E5 ter
+   (decomposition trimestrielle/semestrielle de l'EPS, P/E 12 mois
+   glissants) - absent uniquement si les donnees disponibles ne permettent
+   pas une decomposition fiable (voir E5 ter point 5), jamais publie a
+   titre indicatif non fiable. `ownership` renseigne (insiders ancres sur le
    dernier proxy en priorite, notableHolders 13F US uniquement trouves lors
    de la recherche E2, `coverageNote` si le titre n'est pas couvert par le
    regime 13F, `history` VIDE `[]` - aucun refresh anterieur a
@@ -1195,7 +1338,10 @@ confirmer le nom/code, il est deja connu.
    (ajout d'une ligne si meme `fyGuided` que la derniere ligne existante,
    reset a une ligne unique si nouvel exercice fiscal - voir SCHEMA) ;
    `hypothese.guidanceLongTerme` reconduit tel quel ou remplace si une
-   communication plus recente l'a mise a jour. `ownership` RE-RECHERCHE et
+   communication plus recente l'a mise a jour. `hypothese.quarterlyEPS`
+   entierement RECONSTRUIT selon E5 ter (pas de mecanique cumulative comme
+   `priorEPS`/`guidanceHistory` - la fenetre glissante de periodes n'a pas
+   de sens a preserver d'un refresh a l'autre). `ownership` RE-RECHERCHE et
    REMPLACE integralement son etat courant (asOf/insiderPct/insiderDesc/
    insiderSource/notableHolders/coverageNote), MAIS AVANT ce remplacement
    snapshotte `{asOf, insiderPct}` de l'ANCIEN `ownership` dans son propre
@@ -1209,9 +1355,9 @@ confirmer le nom/code, il est deja connu.
    ancienne entree au-dela de son statut/issue.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
-   `guidanceLongTerme`, `ownership`, `compliance` et `nextEvent` inclus),
-   pret a remplacer le fichier `data/CODE.json` existant sur GitHub tel
-   quel.
+   `guidanceLongTerme`, `quarterlyEPS`, `ownership`, `compliance` et
+   `nextEvent` inclus), pret a remplacer le fichier `data/CODE.json`
+   existant sur GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
