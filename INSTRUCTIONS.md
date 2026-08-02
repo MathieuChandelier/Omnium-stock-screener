@@ -378,9 +378,30 @@ Sous-champs :
   `epsForward12m` (ex. `"T3 26 -> T2 27"`).
 - `coherenceStatus` : `"ok"` ou `"ecart"` - resultat de l'arbitrage E5 ter
   point 4. Pilote la couleur du message affiche cote app.
-- `coherenceNote` : phrase courte explicite (confirmation si `"ok"`,
-  explication de la nature de l'ecart si `"ecart"` - jamais corrige en
-  silence).
+- `coherenceNote` : DESTINATAIRE = le lecteur de l'app, pas l'assistant qui
+  refera le refresh suivant. Ce champ s'affiche TEL QUEL dans l'UI, en une
+  seule ligne sous la grille CY/NY (`index.html`, bloc `.coherence`) - ce
+  n'est PAS un espace pour justifier la methode de calcul (ca, c'est le role
+  de `hypothese.text`/`ancrages`, jamais duplique ici). Cote app, le total
+  Σ affiche sous chaque colonne (voir `index.html`) rend deja l'ecart
+  chiffre visible d'un coup d'oeil ; `coherenceNote` n'a donc PAS a le
+  re-chiffrer en mots ni a expliquer comment le T4/l'annee suivante ont ete
+  calibres - une phrase de verdict suffit :
+  - cas `"ok"` : confirmation courte, ex. `"Coherent avec l'EPS annuel."`
+    ou `"Coherent avec l'EPS annuel ; T4 non encore publie estime par
+    saisonnalite."` (une seule clause factuelle, pas plus).
+  - cas `"ecart"` : la seule chose qui manque au lecteur, a savoir POURQUOI
+    ca diverge (ex. `"Guidance T4 tres en retrait du rythme des 3
+    trimestres publies - marge de securite non retenue par le management."`),
+    jamais COMMENT le calcul a ete mene.
+  MAUVAIS EXEMPLE (a ne plus reproduire) : "Somme CY (8,78$) et NY (9,58$)
+  alignee exactement sur adjEPS[2026]/[2027] par construction : les 3
+  trimestres deja publies de FY26 (...) restent inchanges, le T4 FY26 et
+  l'ensemble de FY27 sont calibres en residu/saisonnalite pour boucler sur
+  la these deja figee - ecart initial <2% avant calage, absorbe
+  silencieusement." - c'est un paragraphe de methodologie interne, illisible
+  pour l'utilisateur final de l'app, qui n'a besoin ni du detail du calage
+  ni des chiffres (deja visibles via Σ).
 
 MECANIQUE CREATION vs REFRESH : champ FACTUEL ET DE SYNTHESE reconstruit A
 NEUF a chaque creation/refresh (comme `dernierCall`), PAS un registre
