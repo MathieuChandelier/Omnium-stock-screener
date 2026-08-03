@@ -126,7 +126,14 @@ tbody td.proj-first{border-left:2px solid var(--teal);}
    valeurs historiques/projetees (normalement 400, ou 400 italique en
    projection). Volontairement discret : pas de changement de couleur ni
    de taille, juste la graisse. */
-tbody tr.row-emph td{font-weight:500;font-size:inherit;}
+/* Lignes EPS et P/E : SEULES les valeurs (historique + projection) sont
+   legerement epaissies (500), jamais la colonne "Indicateur" qui doit
+   rester rigoureusement identique (typo, taille, graisse) a celle de
+   toutes les autres lignes du tableau. Pas de font-size ici : le
+   :not(:first-child) suffit a cibler les valeurs sans jamais risquer de
+   re-ecraser le font-size:11px de tbody td:first-child (regle plus
+   specifique ailleurs, mais mieux vaut ne pas en dependre). */
+tbody tr.row-emph td:not(:first-child){font-weight:500;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
 td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
@@ -304,7 +311,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    fixe (98px) quand les deux lignes sont empilees (alignement vertical
    des valeurs entre Omnium et Consensus) mais passe en largeur auto ici,
    ce alignement n'ayant plus de sens sur une ligne unique. */
-.rb-eps-line-combo{flex-wrap:wrap;}
+.rb-eps-line-combo{flex-wrap:wrap;color:var(--navy);}
 .rb-eps-line-combo .rb-eps-lbl{width:auto;}
 .rb-eps-combo-sep{color:var(--muted);font-weight:400;font-family:'Poppins',sans-serif;font-size:13px;}
 .rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
