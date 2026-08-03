@@ -339,8 +339,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
    une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
    detail de periode uniquement sur la ligne forward). */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content auto auto;column-gap:14px;row-gap:5px;align-items:baseline;}
-.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:left;margin-bottom:1px;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:14px;row-gap:5px;align-items:baseline;}
+.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.02em;text-align:center;margin-bottom:1px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
 .pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
@@ -456,11 +456,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:max-content auto auto;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:max-content max-content max-content;}
   .pe-lbl{font-size:11.5px;}
   .pe-val{font-size:11.5px;}
   .pe-sub{font-size:8px;}
-  .pe-exhead{font-size:8px;}
+  .pe-exhead{font-size:11.5px;}
   .pe-exval{font-size:11.5px;}
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
@@ -1495,13 +1495,13 @@ function renderDernierCall(hyp, ticker, opts={}){
   const epsDelta=eps?fmtPctDelta(eps.actual,eps.consensus):null;
 
   const caLine=caActual?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">CA</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">CA</span>
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${caActual}${cur}</span>
       ${caCons?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${caCons}${cur}</span>`:''}
       ${pctBadge(caDelta)}
     </div>`:'';
   const epsLine=(eps&&eps.actual!=null)?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">EPS${eps.basis?' ('+eps.basis+')':''}</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">EPS${eps.basis?' ('+eps.basis+')':''}</span>
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+eps.actual).toFixed(2)}${cur}</span>
       ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
       ${pctBadge(epsDelta)}
@@ -1515,7 +1515,7 @@ function renderDernierCall(hyp, ticker, opts={}){
   const checkIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
   const crossIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>`;
   const srcBadge=(label,analyzed)=>`<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;color:${analyzed?'var(--teal-text)':'var(--muted)'};">${analyzed?checkIcon:crossIcon}${label}</span>`;
-  const sourcesHeading=q?`<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+  const sourcesHeading=q?`<div style="display:flex;align-items:center;justify-content:flex-start;gap:14px;flex-wrap:wrap;">
       <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats ${esc(q)}</div>
       <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
         ${srcBadge('Communiqué',!!dc.communiqueAnalyse)}
