@@ -1448,6 +1448,7 @@ function renderDernierCall(dc, ticker, opts={}){
   if(!dc)return '';
   const cur=tickerCur(ticker)||'€';
   const q=(dc.quarter||'').trim();
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const ca=dc.resultatsVsConsensus?.ca||null;
   const eps=dc.resultatsVsConsensus?.epsAdj||null;
   const caActual=ca&&ca.actual!=null?fmtBigNum(ca.actual):null;
@@ -1467,12 +1468,23 @@ function renderDernierCall(dc, ticker, opts={}){
       ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
       ${pctBadge(epsDelta)}
     </div>`:'';
-  const resultsBlock=(caLine||epsLine)?`<div>
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats${q?' '+q:''} vs consensus</div>
-      ${caLine}${epsLine}
+  // Badge "Communique"/"Transcript" : tick turquoise si le document a ete
+  // analyse pour ce refresh (dc.communiqueAnalyse/dc.transcriptAnalyse),
+  // croix grise sinon - remplace l'ancienne ligne date/source (trop
+  // longue, peu lisible pour l'utilisateur final) quand le dernier refresh
+  // est bien un resultat trimestriel (dc present). Voir INSTRUCTIONS.md
+  // pour la description complete de ces deux champs.
+  const checkIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
+  const crossIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>`;
+  const srcBadge=(label,analyzed)=>`<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;color:${analyzed?'var(--teal-text)':'var(--muted)'};">${analyzed?checkIcon:crossIcon}${label}</span>`;
+  const sourcesHeading=q?`<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats ${esc(q)}</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+        ${srcBadge('Communiqué',!!dc.communiqueAnalyse)}
+        ${srcBadge('Transcript',!!dc.transcriptAnalyse)}
+      </div>
     </div>`:'';
-
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const resultsBlock=(caLine||epsLine)?`<div>${caLine}${epsLine}</div>`:'';
   const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
       <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
@@ -1487,9 +1499,9 @@ function renderDernierCall(dc, ticker, opts={}){
       ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
     </div>`:'';
 
-  if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
+  if(!sourcesHeading&&!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
   return `<div style="${opts.first?'':'border-top:1px solid var(--border);margin-top:10px;'}padding-top:${opts.first?'0':'10px'};">
-    ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
+    ${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}${guidQ}${guidFY}${pointsBlock}
   </div>`;
 }
 
@@ -1649,10 +1661,17 @@ function renderContextBullets(ticker, proj, cours){
   </div>`:'';
 
   traceEl.style.display='block';
+  // Ligne date/source verbeuse : utile en fallback (refresh non lie a un
+  // resultat trimestriel, ex. mise a jour suite a une actualite hors call),
+  // mais redondante et peu lisible quand dcBanner affiche deja "Résultats
+  // {quarter}" + les badges Communiqué/Transcript juste au-dessus - dans ce
+  // cas (refresh = resultat), on la masque.
+  const isEarningsRefresh=!!(d.hypothese?.dernierCall?.quarter);
+  const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>`;
   traceEl.innerHTML=`<div>
     ${dcBanner}
-    <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
-    <div>${formatThesisText(displayText)}</div>
+    ${dateSourceLine}
+    <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
     ${ownBanner}
     ${compBanner}
     ${partBanner}
