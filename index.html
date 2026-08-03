@@ -112,7 +112,7 @@ thead th{background:var(--navy);color:#fff;text-align:right;padding:10px 14px;fo
 thead th:first-child{width:16%;}
 thead th:first-child{text-align:left;}
 thead th.proj-head{background:var(--navy-light);color:var(--navy);}
-tbody td{padding:9px 14px;text-align:right;white-space:nowrap;border-bottom:1px solid rgba(226,232,240,.5);}
+tbody td{padding:9px 14px;text-align:right;white-space:nowrap;}
 tbody td:first-child{text-align:left;font-weight:500;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;}
 tbody td.unit{text-align:left;font-size:10px;color:var(--muted);font-style:italic;font-weight:400;font-family:'Quattrocento Sans',serif;}
 tbody tr:hover td{background:rgba(43,216,194,.03);}
@@ -120,9 +120,13 @@ tbody tr.hist-last td{background:rgba(0,1,144,.03);}
 tbody tr.proj-row td{background:var(--proj-bg);color:var(--muted);font-style:italic;}
 tbody tr.proj-row td:first-child{font-style:normal;color:var(--navy);opacity:.75;}
 tbody td.proj-first{border-left:2px solid var(--teal);}
-tbody tr.metric-group-start td{border-top:1px solid rgba(0,1,144,.12);}
-tbody tr.proj-sep td{padding:5px 11px;background:linear-gradient(90deg,var(--navy-light),transparent 60%);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-family:'Poppins',sans-serif;font-style:normal;}
-tbody tr.section-sep td{padding:4px;background:transparent;border:none;}
+/* Lignes EPS et P/E : police legerement epaissie (600) par rapport aux
+   autres lignes du tableau, pour les distinguer un peu au coup d'oeil -
+   applique a la fois a la colonne "Indicateur" (500 -> 600) et aux
+   valeurs historiques/projetees (normalement 400, ou 400 italique en
+   projection). Volontairement discret : pas de changement de couleur ni
+   de taille, juste la graisse. */
+tbody tr.row-emph td{font-weight:600;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
 td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
@@ -1176,11 +1180,11 @@ function renderAnalyse(){
     {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
     {lbl:`Résultat net (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net),   hRaw:r=>r.net},
     {lbl:'Actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
-    {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
-    {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
+    {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
+    {lbl:'P/E',                 sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
     {lbl:`Dette nette (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd),    hRaw:r=>r.nd},
     {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
-    {lbl:`Dividende (${cur})`,   sep:true,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
+    {lbl:`Dividende (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
     {lbl:'Div. yield',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
   ];
 
@@ -1189,13 +1193,8 @@ function renderAnalyse(){
   tbody.innerHTML='';
   
   metrics.forEach((m)=>{
-    if(m.sep){
-      const spacer=document.createElement('tr');
-      spacer.innerHTML=`<td colspan="12" style="padding:3px;border:none;background:transparent;"></td>`;
-      tbody.appendChild(spacer);
-    }
     const tr=document.createElement('tr');
-    if(m.sep)tr.className='metric-group-start';
+    if(m.cls)tr.className=m.cls;
     if(m.id)tr.id=m.id;
     let c=`<td>${m.lbl}</td>`;
     last5.forEach((row)=>{
