@@ -1,24 +1,67 @@
 {
   "name": "Kering",
-  "cours": 278.50,
+  "cours": 278.5,
   "yahooSymbol": "KER.PA",
-  "dividende": 3.00,
+  "dividende": 3.0,
   "data": [
-    {"year":2021,"ca":17645,"ebit":5017,"net":3176,"shares":123.5,"nd":2900,"div":12.00},
-    {"year":2022,"ca":20351,"ebit":5589,"net":3614,"shares":122.0,"nd":2300,"div":14.00},
-    {"year":2023,"ca":19566,"ebit":4700,"net":2983,"shares":122.3,"nd":8500,"div":14.00},
-    {"year":2024,"ca":16874,"ebit":2447,"net":1133,"shares":122.6,"nd":10500,"div":6.00},
-    {"year":2025,"ca":14675,"ebit":1630,"net":72,"shares":122.6,"nd":8000,"div":4.00}
+    {
+      "year": 2021,
+      "ca": 17645,
+      "ebit": 5017,
+      "net": 3176,
+      "shares": 123.5,
+      "nd": 2900,
+      "div": 12.0
+    },
+    {
+      "year": 2022,
+      "ca": 20351,
+      "ebit": 5589,
+      "net": 3614,
+      "shares": 122.0,
+      "nd": 2300,
+      "div": 14.0
+    },
+    {
+      "year": 2023,
+      "ca": 19566,
+      "ebit": 4700,
+      "net": 2983,
+      "shares": 122.3,
+      "nd": 8500,
+      "div": 14.0
+    },
+    {
+      "year": 2024,
+      "ca": 16874,
+      "ebit": 2447,
+      "net": 1133,
+      "shares": 122.6,
+      "nd": 10500,
+      "div": 6.0
+    },
+    {
+      "year": 2025,
+      "ca": 14675,
+      "ebit": 1630,
+      "net": 72,
+      "shares": 122.6,
+      "nd": 8000,
+      "div": 4.0
+    }
   ],
   "epsConsensus": {
     "year": 2026,
     "eps": 6.48,
     "epsNY": null,
     "date": "2026-06-23",
-    "source": "Consensus sell-side implicite (ideal-investisseur, PER 2026 consensus de 40,93x au cours de 265€ le 23/06/2026, soit EPS implicite ~6,48€) - ANTERIEUR au beat du S1 2026 (28/07/2026) et au bond de cours de +15% qui a suivi ; consensus quasi-certainement obsolete et a la hausse au prochain refresh. Pas de consensus post-résultats identifié à date de creation."
+    "source": "Consensus sell-side implicite (ideal-investisseur, PER 2026 40,93x au 23/06/2026 ~ EPS 6,48€) - antérieur au S1 2026 (28/07/2026), quasi-certainement obsolète à la hausse."
   },
   "particularites": [],
-  "nextEvent": {"label":"T3 2026","date":"2026-10-29"},
+  "nextEvent": {
+    "label": "T3 2026",
+    "date": "2026-10-29"
+  },
   "ownership": {
     "asOf": "2026-07-29",
     "insiderPct": 42.3,
@@ -37,20 +80,100 @@
     "date": "2026-07-29",
     "source": "Création T3 2026 - Communiqué et transcript intégral du call S1 2026 (28/07/2026, Luca de Meo/Jean-Marc Duplaix/Armelle Poulou, incluant la session Q&A complète) + résultats annuels FY2025 (10/02/2026) + résultats S1 2025 et FY2021-2024 (sources secondaires, communiqués officiels Kering et presse financière) + communiqués sur la cession de Kering Beauté à L'Oréal (19/10/2025, clôture 31/03/2026) et la résiliation anticipée de la licence Gucci Beauty avec Coty (07/07/2026).",
     "summary": "Groupe de luxe multi-maisons (Gucci, Saint Laurent, Bottega Veneta, Balenciaga, McQueen, Brioni, joaillerie Boucheron/Pomellato/Qeelin, Kering Eyewear) en sortie de crise sévère 2023-2025 (CA -27% et ROI -71% entre 2022 et 2025, année 2025 marquée par une perte nette sur base continuing) : le S1 2026 marque une inflexion tangible - retour à la croissance au T2 (premier trimestre positif après 12 trimestres de baisse), marge en nette expansion (+300pb vs S2 2025) et désendettement massif (-4,7 Md€ au S1, porté par les cessions Kering Beauté/immobilier), mais Gucci reste en décroissance comparable (-2% au T2) et la Chine nécessite un travail de fond pluriannuel. Thèse de reconstruction progressive, pas de retour rapide aux marges historiques (30% en 2019).",
-    "text": "== SYNTHESE DE LA THESE ==\nKering est un groupe de luxe multi-maisons dont la fortune a longtemps été indexée sur celle de Gucci, sa maison historiquement la plus rentable et la plus large (encore ~40% du CA groupe en 2025 malgré un effondrement des ventes). Le cycle 2022-2025 a été un désastre : le CA groupe est passé de 20,35 Md€ (2022) à 14,68 Md€ (2025, -28%), le résultat opérationnel courant de 5,59 Md€ à 1,63 Md€ (-71%, marge de 27,5% à 11,1%), et le résultat net publié 2025 s'est effondré à 72 M€ (contre 3,6 Md€ en 2022) - sur base continuing hors éléments non récurrents, le groupe a même affiché une perte nette de -29 M€ en 2025. Cette dégradation reflète un effondrement de Gucci (CA divisé par près de 2 entre 2022 et 2025, de ~10 Md€ à 6 Md€) sur fond de crise de désirabilité et de multiples changements créatifs, aggravé par un attentisme généralisé du consommateur aspirationnel dans le luxe et une Chine structurellement plus faible depuis 2022. Face à cela, la nomination de Luca de Meo (ex-Renault) comme CEO Groupe (2025) et la tenue d'un Capital Markets Day en avril 2026 ont posé les bases d'un plan de redressement (\"Rinascimento\" chez Gucci, rationalisation du réseau de 250 magasins nets 2026-2030, réduction de stocks d'1 Md€, plateforme groupe mutualisée, programme qualité industrielle) dont le S1 2026 livre les premiers résultats tangibles : retour à la croissance comparable au T2 (+2%, première fois en 12 trimestres), Gucci en amélioration séquentielle nette (-2% au T2 vs -8% au T1), marge du groupe en expansion marquée (12,8% au S1, +300pb vs S2 2025) et désendettement spectaculaire (dette nette divisée par plus de 2 en six mois, de 8,0 à 3,3 Md€, portée par les 4 Md€ de la cession de Kering Beauté à L'Oréal et des cessions immobilières). Le dossier reste en phase de reconstruction : Gucci demeure en décroissance comparable, la direction elle-même anticipe un T3 \"flattish\" (base de comparaison plus dure) et qualifie le chemin de non-linéaire, et la Chine nécessite selon la direction un \"travail de fond\" pluriannuel plutôt qu'une réparation rapide. La thèse Omnium retient une trajectoire de reconstruction progressive et prudente plutôt qu'un retour rapide vers les marges historiques (27-30% en 2019-2022), avec une marge normative culminant autour de 18% en 2030 - loin de l'ancien pic.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Retour à la croissance comparable au T2 2026 (+2%, après un T1 stable/-0%), premier trimestre de croissance après 12 trimestres consécutifs de baisse. Effet de change toujours défavorable mais en nette atténuation (S1 2026 : -4pts sur le CA publié, très concentré au T1 ; T2 seul : environ -1pt, aidé par l'appréciation du renminbi chinois et du won coréen). CA S1 2026 : 7,22 Md€ (+1% comparable, -3% publié).\n(i) Redressement de Gucci en cours mais non achevé : CA S1 2026 à 2,8 Md€ (-5% comparable), T2 seul à 1,4 Md€ (-2%, amélioration de 6pts vs T1). Maroquinerie repassée en croissance au T2 (lancements Borsetto/Paparazzo). Marge Gucci en hausse à 17,0% (+1pt vs S1 2025) grâce à la discipline de coûts. Collection Primavera (première collection complète de Demna) déployée en magasin depuis le 15 juillet 2026, campagne marketing majeure attendue fin août - test clé pour le S2. Licence beauté Gucci transférée de Coty à L'Oréal (accord signé 7 juillet 2026, ~1 an d'avance sur l'échéance initiale de juin 2028) : Coty perçoit ~400 M$ pour la résiliation anticipée (effective au plus tard le 30 juin 2027), nouvelle licence exclusive de 50 ans avec L'Oréal effective mi-2027 - transforme le modèle Gucci Beauty d'une opération consolidée vers un flux de redevances, impact CA/marge non quantifié par le management et non intégré aux adjXXX (effet différé à 2027 et probablement peu matériel au niveau groupe).\n(i) Désendettement massif et rapide : dette nette divisée par plus de 2 en six mois, de 8,0 Md€ (fin 2025) à 3,3 Md€ (30/06/2026), porté par la clôture le 31/03/2026 de la cession de Kering Beauté (incluant Creed) à L'Oréal pour 4 Md€ (accord-cadre du 19/10/2025) et par des cessions immobilières (dont 700 M€ pour Via Monte Napoleone à Milan). Ratio dette nette/EBITDA ajusté à 1,4x (jugé sain par la direction). Aucun rachat d'actions prévu en 2026, priorité au désendettement et à l'investissement dans les maisons.\n(ii) Réduction du réseau de magasins accélérée : 84 fermetures nettes au S1 2026 (après 75 en 2025), objectif ≥100 fermetures nettes sur l'année confirmé et probablement dépassé selon la direction (\"on va plus vite\"), sur un plan total de 250 fermetures nettes 2026-2030 annoncé au Capital Markets Day d'avril 2026 (phasage initial : 100 en 2026, ~100 en 2027-2028, 50 en 2029-2030). Réduction des charges opérationnelles de 5% au S1 2026 (-3% à change constant), guidance annuelle relevée de \"stable\" à \"en baisse\" sans quantification précise donnée par la direction.\n(iii) Objectif de réduction des stocks d'1 Md€ (maisons Mode & Maroquinerie, de septembre 2025 à décembre 2026) confirmé sur la bonne trajectoire selon la direction, malgré un ratio stocks/ventes apparent stable au S1 (effet de base sur le début du programme) - la direction insiste sur la baisse de la production plutôt que sur un simple déstockage comptable, et sur la protection du plein tarif (pas de recours accru aux soldes/outlets pour atteindre l'objectif).\n(iii) Partenariat Gucci Racing avec l'écurie de Formule 1 Alpine à partir de la saison 2027 - plateforme de visibilité et nouvelle catégorie sportswear, coût jugé \"non fondamental\" dans le budget A&P de Gucci selon la direction (pas de chiffre communiqué), non intégré aux adjXXX.\n(iii) Grève dans les usines italiennes du groupe signalée par la presse en 2026 (taux de participation 70-100% selon les syndicats) - risque social à surveiller, non quantifié.\n\n== PARTICULARITES ==\nAucune (pas de mécanisme capitalistique atypique récurrent).\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communiqué de résultats S1 2026 (28/07/2026) et transcript intégral du call du même jour (management + Q&A complet), trouvés et confrontés - primaire pour le S1 2026. Résultats annuels FY2025 (10/02/2026) et historique FY2021-2024 en secondaire (communiqués officiels Kering, presse financière spécialisée). CA S1 2026 de 7 220 M€ (+1% comparable, -3% publié), résultat opérationnel courant de 921 M€ (marge 12,8%, +40pb publié vs S1 2025, +300pb vs S2 2025). Résultat net part du groupe S1 2026 : 189 M€ (en repli de 60% vs S1 2025, impacté par des éléments non récurrents - principalement coûts liés aux cessions immobilières, dépréciations et pénalités de fermeture de magasins pour 223 M€ net - et un taux effectif d'impôt sur le résultat courant ponctuellement élevé à 32,5%, la direction visant un retour graduel vers 27-28% sur 2 à 3 ans). Guidance directionnelle qualitative uniquement (pas de chiffrage précis) : croissance et amélioration de la profitabilité en 2026 vs 2025 confirmées ; marge S2 > marge S1 (12,8%) ; T3 \"flattish\" (comparaison plus dure) ; T4 porté par la nouveauté produit (Primavera + collection Core Cruise). Prochain refresh utile : chiffre d'affaires T3 2026, date confirmée au calendrier financier (29/10/2026).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable adjXXX = résultat opérationnel courant tel que publié par Kering (déjà une base \"propre\" par construction, la société excluant elle-même les éléments non récurrents de cet indicateur - pas de retraitement supplémentaire nécessaire, contrairement à d'autres dossiers où un retraitement E5e est requis). Le résultat net publié 2025 (72 M€, data.2025) reste TRES volatil et peu représentatif de la capacité bénéficiaire courante : il mélange un résultat net courant de 532 M€ (métrique propre publiée par la société), une charge nette d'éléments non récurrents significative sur la même base continuing (ramenant à -29 M€), et un gain sur cession de Kering Beauté comptabilisé en activités abandonnées (~+101 M€, estimation résiduelle) ramenant au chiffre publié final de +72 M€. Conformément à E5 d-bis, ce chiffre est préservé tel quel dans data (traçabilité d'audit) mais les projections adjNet repartent du résultat opérationnel courant et non de ce résultat net publié bruité. Charges financières nettes projetées en décroissance rapide, cohérente avec le désendettement massif déjà réalisé (coût de la dette nette S1 2026 en baisse de 26% vs S1 2025, à 122 M€) : retenues à 500 M€ FY2026 (vs 594 M€ FY2025) puis décroissance vers 150 M€ en 2030 à mesure que la dette nette tend vers zéro. Taux d'IS normatif aligné sur la guidance explicite du management (retour graduel 27-28% sur 2-3 ans depuis 32,5% au S1 2026) : 31% (2026), 29% (2027), 27,5% (2028-2030). Nombre d'actions maintenu stable à ~122,6M (pas de rachat prévu en 2026, dilution historique quasi nulle).\nWATCH-LIST pour le prochain refresh : (1) confirmer si le T3 2026 est bien \"flattish\" comme guidé ou si la dynamique T2 se prolonge ; (2) suivre la réception de la collection Primavera en magasin (déployée mi-juillet, campagne majeure fin août) et son impact sur la trajectoire Gucci T3/T4 ; (3) suivre le plan d'action Chine dédié (lancé mi-juillet 2026, premier point d'étape promis par la direction en novembre) ; (4) confirmer l'atteinte de l'objectif de réduction de stocks d'1 Md€ d'ici fin 2026 ; (5) suivre le rythme réel de poursuite du désendettement au S2 (pas de nouvelle cession majeure attendue, désendettement désormais tiré par le seul cash-flow) ; (6) quantifier si possible l'impact de la nouvelle licence beauté Gucci/L'Oréal (effective mi-2027) sur le CA/la marge groupe.\n\n== CATALYSEURS ==\nRésultats T3 2026 (29 octobre) - premier test de la guidance \"flattish\" et de la réception de la collection Primavera en magasin sur un trimestre complet ; lancement de la campagne marketing Primavera fin août 2026 ; collection Core Cruise attendue au T4 ; premier point d'étape sur le plan d'action Chine promis pour novembre 2026 ; poursuite de la baisse des charges financières à mesure que la dette nette continue de refluer.",
+    "text": "== SYNTHESE DE LA THESE ==\nKering est un groupe de luxe multi-maisons dont la fortune a longtemps été indexée sur celle de Gucci, sa maison historiquement la plus rentable et la plus large (encore ~40% du CA groupe en 2025 malgré un effondrement des ventes). Le cycle 2022-2025 a été un désastre : le CA groupe est passé de 20,35 Md€ (2022) à 14,68 Md€ (2025, -28%), le résultat opérationnel courant de 5,59 Md€ à 1,63 Md€ (-71%, marge de 27,5% à 11,1%), et le résultat net publié 2025 s'est effondré à 72 M€ (contre 3,6 Md€ en 2022) - sur base continuing hors éléments non récurrents, le groupe a même affiché une perte nette de -29 M€ en 2025. Cette dégradation reflète un effondrement de Gucci (CA divisé par près de 2 entre 2022 et 2025, de ~10 Md€ à 6 Md€) sur fond de crise de désirabilité et de multiples changements créatifs, aggravé par un attentisme généralisé du consommateur aspirationnel dans le luxe et une Chine structurellement plus faible depuis 2022. Face à cela, la nomination de Luca de Meo (ex-Renault) comme CEO Groupe (2025) et la tenue d'un Capital Markets Day en avril 2026 ont posé les bases d'un plan de redressement (\"Rinascimento\" chez Gucci, rationalisation du réseau de 250 magasins nets 2026-2030, réduction de stocks d'1 Md€, plateforme groupe mutualisée, programme qualité industrielle) dont le S1 2026 livre les premiers résultats tangibles : retour à la croissance comparable au T2 (+2%, première fois en 12 trimestres), Gucci en amélioration séquentielle nette (-2% au T2 vs -8% au T1), marge du groupe en expansion marquée (12,8% au S1, +300pb vs S2 2025) et désendettement spectaculaire (dette nette divisée par plus de 2 en six mois, de 8,0 à 3,3 Md€, portée par les 4 Md€ de la cession de Kering Beauté à L'Oréal et des cessions immobilières). Le dossier reste en phase de reconstruction : Gucci demeure en décroissance comparable, la direction elle-même anticipe un T3 \"flattish\" (base de comparaison plus dure) et qualifie le chemin de non-linéaire, et la Chine nécessite selon la direction un \"travail de fond\" pluriannuel plutôt qu'une réparation rapide. La thèse Omnium retient une trajectoire de reconstruction progressive et prudente plutôt qu'un retour rapide vers les marges historiques (27-30% en 2019-2022), avec une marge normative culminant autour de 18% en 2030 - loin de l'ancien pic.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Retour à la croissance comparable au T2 2026 (+2%, après un T1 stable/-0%), premier trimestre de croissance après 12 trimestres consécutifs de baisse. Effet de change toujours défavorable mais en nette atténuation (S1 2026 : -4pts sur le CA publié, très concentré au T1 ; T2 seul : environ -1pt, aidé par l'appréciation du renminbi chinois et du won coréen). CA S1 2026 : 7,22 Md€ (+1% comparable, -3% publié).\n(i) Redressement de Gucci en cours mais non achevé : CA S1 2026 à 2,8 Md€ (-5% comparable), T2 seul à 1,4 Md€ (-2%, amélioration de 6pts vs T1). Maroquinerie repassée en croissance au T2 (lancements Borsetto/Paparazzo). Marge Gucci en hausse à 17,0% (+1pt vs S1 2025) grâce à la discipline de coûts. Collection Primavera (première collection complète de Demna) déployée en magasin depuis le 15 juillet 2026, campagne marketing majeure attendue fin août - test clé pour le S2. Licence beauté Gucci transférée de Coty à L'Oréal (accord signé 7 juillet 2026, ~1 an d'avance sur l'échéance initiale de juin 2028) : Coty perçoit ~400 M$ pour la résiliation anticipée (effective au plus tard le 30 juin 2027), nouvelle licence exclusive de 50 ans avec L'Oréal effective mi-2027 - transforme le modèle Gucci Beauty d'une opération consolidée vers un flux de redevances, impact CA/marge non quantifié par le management et non intégré aux adjXXX (effet différé à 2027 et probablement peu matériel au niveau groupe).\n(i) Désendettement massif et rapide : dette nette divisée par plus de 2 en six mois, de 8,0 Md€ (fin 2025) à 3,3 Md€ (30/06/2026), porté par la clôture le 31/03/2026 de la cession de Kering Beauté (incluant Creed) à L'Oréal pour 4 Md€ (accord-cadre du 19/10/2025) et par des cessions immobilières (dont 700 M€ pour Via Monte Napoleone à Milan). Ratio dette nette/EBITDA ajusté à 1,4x (jugé sain par la direction). Aucun rachat d'actions prévu en 2026, priorité au désendettement et à l'investissement dans les maisons.\n(ii) Réduction du réseau de magasins accélérée : 84 fermetures nettes au S1 2026 (après 75 en 2025), objectif ≥100 fermetures nettes sur l'année confirmé et probablement dépassé selon la direction (\"on va plus vite\"), sur un plan total de 250 fermetures nettes 2026-2030 annoncé au Capital Markets Day d'avril 2026 (phasage initial : 100 en 2026, ~100 en 2027-2028, 50 en 2029-2030). Réduction des charges opérationnelles de 5% au S1 2026 (-3% à change constant), guidance annuelle relevée de \"stable\" à \"en baisse\" sans quantification précise donnée par la direction.\n(iii) Objectif de réduction des stocks d'1 Md€ (maisons Mode & Maroquinerie, de septembre 2025 à décembre 2026) confirmé sur la bonne trajectoire selon la direction, malgré un ratio stocks/ventes apparent stable au S1 (effet de base sur le début du programme) - la direction insiste sur la baisse de la production plutôt que sur un simple déstockage comptable, et sur la protection du plein tarif (pas de recours accru aux soldes/outlets pour atteindre l'objectif).\n(iii) Partenariat Gucci Racing avec l'écurie de Formule 1 Alpine à partir de la saison 2027 - plateforme de visibilité et nouvelle catégorie sportswear, coût jugé \"non fondamental\" dans le budget A&P de Gucci selon la direction (pas de chiffre communiqué), non intégré aux adjXXX.\n(iii) Grève dans les usines italiennes du groupe signalée par la presse en 2026 (taux de participation 70-100% selon les syndicats) - risque social à surveiller, non quantifié.\n\n== PARTICULARITES ==\nAucune (pas de mécanisme capitalistique atypique récurrent).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable adjXXX = résultat opérationnel courant tel que publié par Kering (déjà une base \"propre\" par construction, la société excluant elle-même les éléments non récurrents de cet indicateur - pas de retraitement supplémentaire nécessaire, contrairement à d'autres dossiers où un retraitement E5e est requis). Le résultat net publié 2025 (72 M€, data.2025) reste TRES volatil et peu représentatif de la capacité bénéficiaire courante : il mélange un résultat net courant de 532 M€ (métrique propre publiée par la société), une charge nette d'éléments non récurrents significative sur la même base continuing (ramenant à -29 M€), et un gain sur cession de Kering Beauté comptabilisé en activités abandonnées (~+101 M€, estimation résiduelle) ramenant au chiffre publié final de +72 M€. Conformément à E5 d-bis, ce chiffre est préservé tel quel dans data (traçabilité d'audit) mais les projections adjNet repartent du résultat opérationnel courant et non de ce résultat net publié bruité. Charges financières nettes projetées en décroissance rapide, cohérente avec le désendettement massif déjà réalisé (coût de la dette nette S1 2026 en baisse de 26% vs S1 2025, à 122 M€) : retenues à 500 M€ FY2026 (vs 594 M€ FY2025) puis décroissance vers 150 M€ en 2030 à mesure que la dette nette tend vers zéro. Taux d'IS normatif aligné sur la guidance explicite du management (retour graduel 27-28% sur 2-3 ans depuis 32,5% au S1 2026) : 31% (2026), 29% (2027), 27,5% (2028-2030). Nombre d'actions maintenu stable à ~122,6M (pas de rachat prévu en 2026, dilution historique quasi nulle).\nWATCH-LIST pour le prochain refresh : (1) confirmer si le T3 2026 est bien \"flattish\" comme guidé ou si la dynamique T2 se prolonge ; (2) suivre la réception de la collection Primavera en magasin (déployée mi-juillet, campagne majeure fin août) et son impact sur la trajectoire Gucci T3/T4 ; (3) suivre le plan d'action Chine dédié (lancé mi-juillet 2026, premier point d'étape promis par la direction en novembre) ; (4) confirmer l'atteinte de l'objectif de réduction de stocks d'1 Md€ d'ici fin 2026 ; (5) suivre le rythme réel de poursuite du désendettement au S2 (pas de nouvelle cession majeure attendue, désendettement désormais tiré par le seul cash-flow) ; (6) quantifier si possible l'impact de la nouvelle licence beauté Gucci/L'Oréal (effective mi-2027) sur le CA/la marge groupe ; (7) obtenir un consensus post-résultats fiable (le consensus actuel de création, daté du 23/06/2026, est antérieur au beat du S1 et quasi-certainement obsolète à la baisse) ; (8) prochain refresh utile : chiffre d'affaires T3 2026, date confirmée au calendrier financier (29/10/2026).\n\n== CATALYSEURS ==\nRésultats T3 2026 (29 octobre) - premier test de la guidance \"flattish\" et de la réception de la collection Primavera en magasin sur un trimestre complet ; lancement de la campagne marketing Primavera fin août 2026 ; collection Core Cruise attendue au T4 ; premier point d'étape sur le plan d'action Chine promis pour novembre 2026 ; poursuite de la baisse des charges financières à mesure que la dette nette continue de refluer.",
     "impact": "positif",
     "ancrages": [
-      {"id":"guidance_qualitative_ca_2026","moteur":"Guidance officielle qualitative uniquement (pas de chiffrage précis) : croissance du CA en 2026 vs 2025 confirmée au S1. Reconstruit bottom-up : S1 2026 réel (7 220 M€) + S2 2026 estimé à ~7 580 M€ (T3 'flattish' comparable comme guidé par la direction avec un effet de change proche de neutre, T4 en accélération modérée portée par Primavera/Core Cruise sur une base de comparaison T4 2025 déjà moins dure) - retenu prudemment sous le rythme du T2 seul (+2% comparable) compte tenu de l'avertissement explicite de la direction sur un T3 flattish.","applique":["adjCA.2026"],"confiance":"moyenne"},
-      {"id":"croissance_ca_post_2026","moteur":"Poursuite d'une reconstruction progressive du CA à +5%/an sur 2027-2029 puis +5,5% en 2030, portée par la stabilisation attendue de Gucci, la poursuite de la forte dynamique de Kering Jewelry (+20% comparable au S1 2026) et Kering Eyewear (+8%), et l'anniversarisation des effets de change/comparaison difficiles de 2025-2026 - hypothèse de reconstruction linéaire faute de guidance chiffrée au-delà de 2026, à confiance basse par construction.","applique":["adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"basse"},
-      {"id":"marge_expansion_2026","moteur":"Guidance officielle : marge S2 2026 supérieure à la marge S1 (12,8%). Retenue à ~14,5% au S2 (poursuite de la discipline de coûts, effet de levier volumes T4 mentionné par la direction), donnant une marge FY2026 consolidée de 13,6% (vs 11,1% en FY2025) - reconstruction bottom-up S1 réel + S2 estimé, cohérente avec les 190-220pb d'expansion de marge annuelle mentionnés par la direction sur le S1 seul.","applique":["adjEBIT.2026"],"confiance":"moyenne"},
-      {"id":"marge_trajectoire_2027_2030","moteur":"Poursuite d'une expansion graduelle de la marge opérationnelle courante vers 15,0% (2027), 16,3% (2028), 17,3% (2029) et 18,0% (2030) - trajectoire de reconstruction prudente et volontairement bien en-deçà des pics historiques du groupe (24,3% en 2023, 27,5% en 2022, 30,1% en 2019), reflétant l'absence de guidance chiffrée à moyen terme et une thèse de redressement mesuré plutôt qu'un retour rapide aux marges d'avant-crise.","applique":["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"basse"},
-      {"id":"charges_financieres_desendettement","moteur":"Charges financières nettes projetées en décroissance rapide et cohérente avec le désendettement déjà réalisé (dette nette divisée par plus de 2 au S1 2026, coût de la dette nette S1 2026 en baisse de 26% vs S1 2025) : retenues à 500 M€ FY2026 (vs 594 M€ FY2025), puis 380/280/200/150 M€ sur 2027-2030 à mesure que la dette nette tend vers zéro.","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
-      {"id":"is_normatif_retour_gradue","moteur":"Taux d'IS normatif aligné sur la guidance EXPLICITE du management (retour graduel vers la fourchette normative de 27-28% sur 2 à 3 ans, depuis 32,5% au S1 2026) : 31% (2026), 29% (2027), 27,5% (2028-2030).","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"haute"},
-      {"id":"desendettement_rapide","moteur":"Poursuite du désendettement à un rythme rapide porté par la génération de cash-flow libre (1,8 Md€ au S1 2026 hors éléments exceptionnels, +68% vs S1 2025) en l'absence de nouvelle cession majeure identifiée et de programme de rachat d'actions : dette nette projetée à ~2,5 Md€ fin 2026 (vs 3,3 Md€ au 30/06/2026), puis décroissance continue vers une position proche de la neutralité en 2030.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"basse"},
-      {"id":"actions_stables","moteur":"Nombre d'actions diluées maintenu stable à ~122,6M sur tout l'horizon - aucun programme de rachat d'actions prévu en 2026 selon la direction (priorité au désendettement et à l'investissement dans les maisons), dilution historique quasi nulle.","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"moyenne"}
+      {
+        "id": "guidance_qualitative_ca_2026",
+        "moteur": "Guidance officielle qualitative uniquement (pas de chiffrage précis) : croissance du CA en 2026 vs 2025 confirmée au S1. Reconstruit bottom-up : S1 2026 réel (7 220 M€) + S2 2026 estimé à ~7 580 M€ (T3 'flattish' comparable comme guidé par la direction avec un effet de change proche de neutre, T4 en accélération modérée portée par Primavera/Core Cruise sur une base de comparaison T4 2025 déjà moins dure) - retenu prudemment sous le rythme du T2 seul (+2% comparable) compte tenu de l'avertissement explicite de la direction sur un T3 flattish.",
+        "applique": [
+          "adjCA.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "croissance_ca_post_2026",
+        "moteur": "Poursuite d'une reconstruction progressive du CA à +5%/an sur 2027-2029 puis +5,5% en 2030, portée par la stabilisation attendue de Gucci, la poursuite de la forte dynamique de Kering Jewelry (+20% comparable au S1 2026) et Kering Eyewear (+8%), et l'anniversarisation des effets de change/comparaison difficiles de 2025-2026 - hypothèse de reconstruction linéaire faute de guidance chiffrée au-delà de 2026, à confiance basse par construction.",
+        "applique": [
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "marge_expansion_2026",
+        "moteur": "Guidance officielle : marge S2 2026 supérieure à la marge S1 (12,8%). Retenue à ~14,5% au S2 (poursuite de la discipline de coûts, effet de levier volumes T4 mentionné par la direction), donnant une marge FY2026 consolidée de 13,6% (vs 11,1% en FY2025) - reconstruction bottom-up S1 réel + S2 estimé, cohérente avec les 190-220pb d'expansion de marge annuelle mentionnés par la direction sur le S1 seul.",
+        "applique": [
+          "adjEBIT.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "marge_trajectoire_2027_2030",
+        "moteur": "Poursuite d'une expansion graduelle de la marge opérationnelle courante vers 15,0% (2027), 16,3% (2028), 17,3% (2029) et 18,0% (2030) - trajectoire de reconstruction prudente et volontairement bien en-deçà des pics historiques du groupe (24,3% en 2023, 27,5% en 2022, 30,1% en 2019), reflétant l'absence de guidance chiffrée à moyen terme et une thèse de redressement mesuré plutôt qu'un retour rapide aux marges d'avant-crise.",
+        "applique": [
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "charges_financieres_desendettement",
+        "moteur": "Charges financières nettes projetées en décroissance rapide et cohérente avec le désendettement déjà réalisé (dette nette divisée par plus de 2 au S1 2026, coût de la dette nette S1 2026 en baisse de 26% vs S1 2025) : retenues à 500 M€ FY2026 (vs 594 M€ FY2025), puis 380/280/200/150 M€ sur 2027-2030 à mesure que la dette nette tend vers zéro.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "is_normatif_retour_gradue",
+        "moteur": "Taux d'IS normatif aligné sur la guidance EXPLICITE du management (retour graduel vers la fourchette normative de 27-28% sur 2 à 3 ans, depuis 32,5% au S1 2026) : 31% (2026), 29% (2027), 27,5% (2028-2030).",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "desendettement_rapide",
+        "moteur": "Poursuite du désendettement à un rythme rapide porté par la génération de cash-flow libre (1,8 Md€ au S1 2026 hors éléments exceptionnels, +68% vs S1 2025) en l'absence de nouvelle cession majeure identifiée et de programme de rachat d'actions : dette nette projetée à ~2,5 Md€ fin 2026 (vs 3,3 Md€ au 30/06/2026), puis décroissance continue vers une position proche de la neutralité en 2030.",
+        "applique": [
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "actions_stables",
+        "moteur": "Nombre d'actions diluées maintenu stable à ~122,6M sur tout l'horizon - aucun programme de rachat d'actions prévu en 2026 selon la direction (priorité au désendettement et à l'investissement dans les maisons), dilution historique quasi nulle.",
+        "applique": [
+          "adjShares.2026",
+          "adjShares.2027",
+          "adjShares.2028",
+          "adjShares.2029",
+          "adjShares.2030"
+        ],
+        "confiance": "moyenne"
+      }
     ],
     "dernierCall": {
       "quarter": "S1 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
           "actual": 7220,
@@ -88,11 +211,48 @@
       }
     ],
     "guidanceLongTerme": "Capital Markets Day d'avril 2026 : plan de réduction du réseau de magasins de 250 fermetures nettes sur 2026-2030 (phasage 100/2026, ~100/2027-2028, 50/2029-2030) ; objectif de réduction progressive du ratio stocks/ventes des maisons Mode & Maroquinerie sur 5 ans ; retour graduel du taux d'IS normatif vers 27-28% sur 2-3 ans depuis le niveau élevé actuel (32,5% au S1 2026) ; pas d'objectif de marge ou de CA chiffré à moyen terme communiqué à ce stade - point de vigilance pour un futur point d'étape stratégique.",
-    "adjCA": {"2026":14800,"2027":15540,"2028":16472,"2029":17460,"2030":18420},
-    "adjEBIT": {"2026":2020,"2027":2331,"2028":2685,"2029":3020,"2030":3316},
-    "adjNet": {"2026":1049,"2027":1385,"2028":1744,"2029":2045,"2030":2295},
-    "adjEPS": {"2026":8.56,"2027":11.30,"2028":14.23,"2029":16.68,"2030":18.72},
-    "adjND": {"2026":2500,"2027":1600,"2028":900,"2029":400,"2030":0},
-    "adjShares": {"2026":122.6,"2027":122.6,"2028":122.6,"2029":122.6,"2030":122.6}
+    "adjCA": {
+      "2026": 14800,
+      "2027": 15540,
+      "2028": 16472,
+      "2029": 17460,
+      "2030": 18420
+    },
+    "adjEBIT": {
+      "2026": 2020,
+      "2027": 2331,
+      "2028": 2685,
+      "2029": 3020,
+      "2030": 3316
+    },
+    "adjNet": {
+      "2026": 1049,
+      "2027": 1385,
+      "2028": 1744,
+      "2029": 2045,
+      "2030": 2295
+    },
+    "adjEPS": {
+      "2026": 8.56,
+      "2027": 11.3,
+      "2028": 14.23,
+      "2029": 16.68,
+      "2030": 18.72
+    },
+    "adjND": {
+      "2026": 2500,
+      "2027": 1600,
+      "2028": 900,
+      "2029": 400,
+      "2030": 0
+    },
+    "adjShares": {
+      "2026": 122.6,
+      "2027": 122.6,
+      "2028": 122.6,
+      "2029": 122.6,
+      "2030": 122.6
+    },
+    "guidanceLongTermeHistory": []
   }
 }
