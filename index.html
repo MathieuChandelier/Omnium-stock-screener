@@ -1,4 +1,3 @@
-
 <html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -162,7 +161,7 @@ td input[type=number]:hover{border-color:var(--border);}
 
 /* ── HEADER ANALYSE (nom + cours), compact, une seule ligne, meme typo ── */
 .analyse-header{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
-.analyse-id{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.analyse-id{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
 .analyse-price-wrap{display:flex;align-items:baseline;gap:8px;}
 .analyse-price{display:flex;align-items:baseline;gap:0;}
@@ -277,12 +276,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;display:flex;flex-direction:column;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:12px;font-weight:700;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--teal-text);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
 .rb-eps-line-consensus{color:var(--navy);}
-.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
+.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
@@ -335,7 +334,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
    le libelle, pour ne pas faire varier la largeur fixe du libelle entre
    les 3 lignes.  */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:flex;flex-direction:column;gap:6px;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:flex;flex-direction:column;gap:2px;}
 .pe-row{display:flex;align-items:baseline;gap:18px;}
 .pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
@@ -435,7 +434,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;gap:5px;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;gap:2px;}
   .pe-row{gap:10px;flex-wrap:wrap;}
   .pe-row-lbl{font-size:10.5px;width:108px;}
   .pe-row-val{font-size:10.5px;}
@@ -1049,9 +1048,8 @@ function renderAnalyse(){
   if(refreshLine){
     const hyp=d.hypothese;
     if(hyp && hyp.date){
-      const q=hyp.dernierCall?.quarter;
       refreshLine.style.display='block';
-      refreshLine.innerHTML=`Dernière mise à jour de la thèse : <span style="color:var(--navy);">${hyp.date}</span>${q?` · ${q}`:''}`;
+      refreshLine.innerHTML=`Dernière mise à jour : <span style="color:var(--navy);">${hyp.date}</span>`;
     } else {
       refreshLine.style.display='none';
     }
@@ -1317,11 +1315,11 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-year" style="margin-bottom:0;">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
-      <div class="rb-eps-val" style="color:var(--navy);">${total>=0?'+':''}${total.toFixed(1)}%</div>
+      <div class="rb-eps-val" style="color:var(--navy);">CAGR ${total>=0?'+':''}${total.toFixed(1)}%</div>
       <span style="font-size:18px;color:var(--muted);flex-shrink:0;">→</span>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
-        <div style="font-size:13px;font-weight:700;color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
-        <div style="font-size:13px;font-weight:700;color:var(--navy);">Div. yield +${yieldPct.toFixed(1)}%</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy);">Div. yield +${yieldPct.toFixed(1)}%</div>
       </div>
     </div>
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
