@@ -49,52 +49,185 @@
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 1.41,
+    "eps": 1.55,
     "epsNY": null,
-    "date": "2026-07-01",
-    "source": "Consensus implicite S&P Global (P/E forward 13,7x, objectif moyen 23,58 EUR, Buy)"
+    "date": "2026-08-01",
+    "source": "Snapshot immediat post-H1 26 - a recouper au prochain refresh, plusieurs bureaux n'ayant pas encore integre le beat T2/H1 dans leurs modeles."
   },
   "particularites": [],
+  "nextEvent": {
+    "label": "Q3 2026 (CA)",
+    "date": null
+  },
+  "ownership": {
+    "asOf": null,
+    "insiderPct": null,
+    "insiderDesc": "Non renseigne - champ absent de la creation (famille Decaux, actionnaire de controle historique co-dirigeant le groupe, mais pourcentage non verifie a ce refresh). A completer au prochain refresh.",
+    "insiderSource": null,
+    "notableHolders": [],
+    "coverageNote": "Titre cote a titre principal sur Euronext Paris - champ ownership non renseigne a ce stade.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": null,
+    "items": [],
+    "note": "Champ absent de la creation, non renseigne a ce refresh evenementiel faute de recherche dediee. A auditer au prochain refresh."
+  },
   "hypothese": {
-    "date": "2026-07-05",
-    "source": "Creation - Transcript FY2025 + communique T1 2026",
-    "summary": "N°1 mondial OOH en inflexion digitale/programmatique, levier operationnel demontre, valorisation deprimee (~13,7x). Projections validees par boucle complete : CA 4 030->4 760M, EPS 1,30->1,89.",
-    "text": "== SYNTHESE DE LA THESE ==\nJCDecaux est le numero un mondial de la communication exterieure (OOH), seul acteur global d'un marche fragmente (~4 000 villes, 154 aeroports). Trois moteurs : le OOH/DOOH en croissance structurelle gagnant des parts du mix media, la bascule digitale/programmatique (digital 41,7% du CA, programmatique +19,2%), et un levier operationnel deja demontre (marge op. 20,9%, FCF record). La these est une decote nette vs multiples historiques et transactions privees (Clear Channel/Mubadala ~12x), avec un catalyseur d'ad tech proprietaire (VIOOH) non valorise.\n\n== EVENEMENTS & INFLEXIONS (FY2025 + T1 2026) ==\n1. FY2025 SOLIDE [classe (i)] : marge op. 831,1M (20,9%, +150pb, aide par le reset des loyers en Chine). EBIT recurrent 376,7M (+18,6%). FCF record 342,9M (+47,9%). Dette nette 587M (-169M). Dividende repris a 0,65 EUR (+18,2%).\n2. T1 2026 SOLIDE [classe (i)] : CA 880,6M (+5,7% organique, conforme guidance). Digital +13,1%, programmatique +27,2%.\n3. GUIDANCE T2 2026 REVISEE [classe (i)] : ~+3% organique (~+5% HORS Moyen-Orient) - le conflit pese sur la region (~5% du CA 2025, aeroports Dubai/EAU).\n4. RAMPE DE CONTRATS [classe (ii), quantifie] : Coupe du Monde FIFA, contrats gagnes (metro Stockholm, Barcelone, aeroport Denver, Carrefour/Carmila) en rampe S2 2026, plein effet 2027.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript FY2025 (12 mars). Secondaires : communique T1 2026 (5 mai, sans transcript). Cours ~21 EUR, ~213M actions, objectif moyen 23,58 EUR.\nGuidance : marge op. cible \"au-dela de 21% puis vers 22%\", sans calendrier.\nProchain refresh utile : S1 2026, 30 juillet.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase publiee (recurrent + ~25M/an de quasi-recurrents reconduits, reprises de provisions liees aux renegociations). IS normatif 25,5%. Cession du solde APG|SGA (10,85%, accord NZZ) attendue en 2026, plus-value probable NON taxable, EXCLUE des projections (connue mais non projetee).\nA suivre : (1) Moyen-Orient (redevances/renegociations si le conflit dure) ; (2) rampe des contrats gagnes ; (3) programmatique (cible >20% du digital) ; (4) cloture cession APG|SGA.\n\n== CATALYSEURS ==\nProgrammatique (+27,2%, >50% incremental) ; ad tech VIOOH/displayce (OUTFRONT rallie, optionnalite non valorisee) ; contrats en rampe (Stockholm, Barcelone, Carrefour) ; retail media DOOH ; Coupe du Monde 2026 ; re-rating (~5-6x EV/marge op. vs ~9x historique).",
+    "date": "2026-08-03",
+    "priorEPS": {
+      "date": "2026-07-05",
+      "eps": {
+        "2026": 1.3,
+        "2027": 1.44,
+        "2028": 1.6,
+        "2029": 1.74,
+        "2030": 1.89
+      }
+    },
+    "source": "Refresh H1 2026 - Transcript integral du call H1 2026 (Jean-Charles Decaux Co-CEO / Jean-Francois Decaux Co-CEO / David Bourg CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 05/07/2026 (transcript FY2025 + communique T1 2026, deja integres, non rouverts par ce refresh sauf ou indique).",
+    "dernierCall": {
+      "quarter": "H1 2026",
+      "communiqueAnalyse": false,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 1953.9,
+          "consensus": null
+        },
+        "epsAdj": {
+          "actual": null,
+          "consensus": null,
+          "basis": "Aucun consensus externe recoupe pour ce refresh (transcript uniquement, pas de communique de presse distinct fourni)."
+        }
+      },
+      "guidanceProchainTrimestre": "T3 2026 : croissance organique attendue autour de +5%, malgre les tensions macroeconomiques et geopolitiques persistantes (ralentissement attendu de la contribution Coupe du Monde, dont 60% de l'effet incremental etait deja capte au T2 contre 40% attendu au T3).",
+      "guidanceAnnuelle": "Pas de guidance CA/marge annuelle chiffree formelle (convention du groupe). CapEx net maintenu a ~8% du CA sur l'annee pleine (confirme malgre un S1 plus bas, du fait de retards de deploiement de nouveaux contrats reportes au S2).",
+      "pointsCles": [
+        "CA H1 26 record a 1 953,9 M EUR (+4,6% publie, +5,7% organique), T2 seul egalement +5,7% organique - tres au-dessus de la guidance T2 donnee au call precedent (~+3%), malgre le conflit au Moyen-Orient, grace au digital et a un effet Coupe du Monde FIFA superieur aux attentes initiales (+30 M EUR d'impact incremental total, dont 60% au T2 et 40% attendu au T3).",
+        "Levier operationnel tres marque : marge operationnelle H1 +16,8% (359 M EUR, marge 18,4% contre 16,5%), EBIT recurrent H1 +53,5% (136,2 M EUR, marge 7% contre 4,7%), resultat net part du groupe H1 +84,7% (140,1 M EUR) - MAIS ce dernier chiffre inclut une plus-value non taxable de 47,5 M EUR liee a la cession du solde de la participation APG|SGA (deja identifiee comme optionnalite non modelisee a la creation, desormais realisee) ; hors cet element, la croissance du resultat net ressort a +23,3%, toujours tres solide mais sans commune mesure avec le +84,7% brut.",
+        "Free cash-flow H1 devenu positif a 26,2 M EUR (contre un niveau nettement inferieur un an plus tot, amelioration de 91,1 M EUR), une performance rare a ce stade de l'annee compte tenu de la saisonnalite habituellement defavorable du premier semestre pour le groupe.",
+        "Digital a 42,8% du CA groupe au H1 (43,7% au T2 seul, +14,5% organique) ; programmatique a 12,3% du CA digital (contre 10,1% un an plus tot, +30,9% organique) - VIOOH desormais breakeven cash-on-cash sur une base autonome et rentable en EBIT au niveau groupe.",
+        "Renouvellement du contrat Heathrow pour 8 ans SANS appel d'offres (decision de l'aeroport, conditions tarifaires globalement inchangees vs les 10 dernieres annees) - confirmation de la solidite du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands aeroports mondiaux, dont Denver qui demarre avec ~6 mois de retard).",
+        "Dette nette en baisse de 284,1 M EUR sur un an (dont plus de 200 M EUR hors les 79 M EUR de produit de cession APG|SGA) ; les deux agences de notation ont ameliore leur perspective de stable a positive."
+      ]
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "FY25/T1 26",
+        "date": "2026-05-05",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance T2 26 donnee a ~+3% organique, penalisee par le conflit au Moyen-Orient (~5% du CA 2025, aeroports Dubai/EAU)."
+      },
+      {
+        "quarter": "H1 26",
+        "date": "2026-07-31",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Pas de guidance annuelle chiffree formelle ; T3 26 guide a ~+5% organique, la contribution incrementale de la Coupe du Monde refluant (40% de l'effet total attendu au T3, contre 60% deja capte au T2)."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "summary": "H1 2026 tres nettement au-dessus des attentes (CA organique +5,7% contre une guidance T2 de ~+3%), porte par le digital/programmatique et un effet Coupe du Monde FIFA superieur aux attentes initiales, avec un levier operationnel spectaculaire (EBIT recurrent H1 +53,5%). Element important a isoler : la cession finalisee de la participation residuelle APG|SGA a genere une plus-value non taxable de 47,5 M EUR au H1, deja anticipee comme optionnalite a la creation mais desormais realisee et explicitement exclue de la base Omnium (croissance nette ex-cet element : +23,3%, toujours tres solide). adjEPS 2026 releve de 1,30 a 1,49 EUR.",
+    "text": "== SYNTHESE DE LA THESE ==\nJCDecaux est le numero un mondial de la communication exterieure (OOH), seul acteur global d'un marche fragmente. Le refresh H1 2026 confirme et amplifie tres nettement la these de creation : CA organique +5,7% sur le semestre, tres au-dessus de la guidance T2 donnee au call precedent (~+3%), malgre le conflit au Moyen-Orient mieux absorbe que redoute et grace a un effet Coupe du Monde FIFA superieur aux attentes initiales (+30 M EUR incrementaux). Le levier operationnel du modele se confirme de facon spectaculaire : EBIT recurrent H1 +53,5%, marge operationnelle +190pb. Point methodologique important a isoler : le resultat net part du groupe publie (+84,7%) inclut une plus-value non taxable de 47,5 M EUR liee a la cession finalisee de la participation residuelle APG|SGA - un evenement deja identifie comme optionnalite non modelisee a la creation, desormais realise et traite comme un vrai one-off exclu de la base Omnium (croissance nette normalisee : +23,3%, confirmee par le CFO lui-meme, toujours tres solide). Free cash-flow H1 devenu positif (26,2 M EUR), une performance rare compte tenu de la saisonnalite habituellement defavorable du premier semestre - confirme la solidite du modele de generation de cash. La decote de valorisation qui fondait la these de creation (~13,7x P/E forward) apparait d'autant moins justifiee au vu de ce beat operationnel.\n\n== EVENEMENTS & INFLEXIONS (H1 2026, call fourni par l'utilisateur) ==\n1. BEAT ORGANIQUE MAJEUR [classe i] : CA H1 +5,7% organique (T1 et T2 tous deux a +5,7%), tres au-dessus de la guidance T2 (~+3%) - Street Furniture +7,3% organique, Transport +5,3%, Billboard retour a la croissance (+0,8%, approche plus disciplinee de l'inventaire notamment en France). Amerique du Nord (+19,6%) et Royaume-Uni (+12,8%) les zones les plus dynamiques, toutes deux portees par le digital et la Coupe du Monde.\n2. EFFET COUPE DU MONDE FIFA SUPERIEUR AUX ATTENTES [classe i, quantifie] : +30 M EUR de revenus incrementaux au total, dont 60% deja captes au T2 (contre 50/50 anticipe au call precedent) et 40% restants attendus au T3 - le management confirme explicitement que cet effet n'a PAS ete obtenu par anticipation de campagnes normalement prevues au T4, qui reste la guidance de tendance actuelle la plus forte de l'annee sans revision.\n3. LEVIER OPERATIONNEL SPECTACULAIRE [classe i] : marge operationnelle H1 +16,8% (359 M EUR, marge 18,4% contre 16,5%), EBIT recurrent H1 +53,5% (136,2 M EUR, marge +220pb a 7%) - loyers/redevances +3,4% seulement (vs CA +4,6%) et autres couts operationnels +0,9% seulement, effet de ciseaux tres favorable visible sur tous les segments.\n4. PLUS-VALUE APG|SGA REALISEE ET ISOLEE [classe i, one-off confirme] : 47,5 M EUR de plus-value non taxable comptabilisee au H1 dans les elements non recurrents (60 M EUR au total, dont 23 M EUR de hausse nette hors APG, H1 25 ayant lui-meme beneficie de cessions d'actifs et reprises de provisions ponctuelles) - resultat net part du groupe +84,7% publie mais +23,3% hors cet element (chiffre explicitement fourni par le CFO), retenu comme base de la reconstruction de la trajectoire normalisee.\n5. FREE CASH-FLOW POSITIF AU H1 [classe i, inhabituel] : 26,2 M EUR (amelioration de 91,1 M EUR sur un an), porte par la hausse de la marge operationnelle, un meilleur controle du besoin en fonds de roulement et un CapEx net en repli (5,9% du CA contre 6,4%, en partie du fait de retards de deploiement de nouveaux contrats reportes au S2, ce qui explique aussi la hausse des stocks).\n6. RENOUVELLEMENT HEATHROW SANS APPEL D'OFFRES [classe ii] : contrat de 8 ans, conditions tarifaires globalement inchangees vs les 10 dernieres annees - confirmation de la solidite du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands mondiaux).\n7. DIGITAL ET PROGRAMMATIQUE EN FORTE ACCELERATION [classe i] : digital 42,8% du CA (43,7% au T2), +14,5% organique ; programmatique 12,3% du CA digital (contre 10,1% un an plus tot), +30,9% organique, VIOOH desormais breakeven cash-on-cash en standalone et deja rentable en EBIT au niveau groupe.\n8. LIMITES DE CE REFRESH [classe iii, a noter] : passage effectue a partir du seul transcript fourni par l'utilisateur, sans communique de presse officiel distinct recoupe. Champs ownership et compliance non renseignes (deja absents de la creation).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire pour ce refresh : transcript integral du call H1 2026 (Jean-Charles Decaux, Jean-Francois Decaux, David Bourg), fourni par l'utilisateur - aucun communique de presse officiel distinct recoupe pour ce refresh. CA H1 1 953,9 M EUR (+4,6% publie, +5,7% organique) ; operating margin H1 359 M EUR (marge 18,4%) ; EBIT recurrent H1 136,2 M EUR (marge 7%) ; EBIT (apres elements non recurrents) 192,5 M EUR (+52,4%) ; resultat net part du groupe H1 140,1 M EUR (+84,7% publie, +23,3% hors plus-value APG|SGA) ; FCF H1 26,2 M EUR ; dette nette en baisse de 284,1 M EUR sur un an. Guidance T3 26 : ~+5% organique. Prochain refresh utile : CA T3 2026 (date non confirmee).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase publiee (recurrent + quasi-recurrents reconduits, inchangee depuis la creation), avec exclusion explicite du one-off APG|SGA (47,5 M EUR) desormais realise. Build-up FY2026 recalcule : H1 reel (CA 1 953,9 M EUR) + H2 estime par application de la guidance T3 (~+5% organique, en repli modere vs le H1 compte tenu du reflux de l'effet Coupe du Monde) au comparant H2 2025 -> CA FY2026 ~4 160 M EUR (vs 4 030 M EUR a la creation, +3,2%). EBIT recurrent (base Omnium) reconstruit a partir du rythme H1 mais moderee au S2 par les avertissements explicites du management (nouveaux contrats en phase de demarrage dilutive, reflux du tailwind sportif) -> ~480 M EUR pour 2026 (vs 445 M EUR a la creation, +7,9% - revision moins prononcee que le seul H1 ne le suggererait, par prudence). adjNet/adjEPS 2026 : 317 M EUR / 1,49 EUR (vs 276 M EUR / 1,30 EUR precedemment, +14,9%/+14,6%), construits a partir du taux de croissance nette normalise de +23,3% (hors APG) communique par le CFO. IS normatif 25,5% inchange. ownership et compliance restent NON RENSEIGNES (deja absents de la creation).\nWATCH-LIST pour le prochain refresh : (1) confirmer si la marge H2 26 se degrade effectivement comme anticipe par le management (demarrage des nouveaux contrats, reflux Coupe du Monde) ; (2) rythme reel de contribution des contrats en rampe (Stockholm, Barcelone, Denver avec ~6 mois de retard) ; (3) Moyen-Orient - le conflit reste non resolu, a suivre pour un impact plus marque si prolonge ; (4) confirmer la poursuite du rythme programmatique (>20% du digital vise a moyen terme) ; (5) completer les champs ownership et compliance ; (6) recherche d'un communique de presse officiel au prochain refresh pour recouper le transcript.\n\n== CATALYSEURS ==\nCA T3 2026 (premier test du reflux attendu de l'effet Coupe du Monde et de la dilution des nouveaux contrats en demarrage) ; poursuite de l'acceleration programmatique (VIOOH/Displayce, cible >20% du digital) ; rampe des contrats en cours (Stockholm, Barcelone, Denver, Carrefour/Carmila) ; retail media DOOH (marche total de 174 Md$, CAGR ~11,6% 2025-2031) ; re-rating potentiel compte tenu de la decote de valorisation persistante face a la demonstration operationnelle du H1.",
     "impact": "positif",
+    "ancrages": [
+      {
+        "id": "h1-beat-organique-confirme",
+        "moteur": "CA H1 26 +5,7% organique (T1 et T2 tous deux a +5,7%), tres au-dessus de la guidance T2 donnee au call FY25/T1 26 (~+3%) - la resilience du modele face au conflit Moyen-Orient (mieux absorbe que redoute selon le management) et l'effet Coupe du Monde FIFA (+30 M EUR incrementaux, superieurs aux attentes initiales) expliquent l'essentiel de ce beat. Reconstruction bottom-up retenue : H1 reel (1 953,9 M EUR) + H2 estime par application de la guidance T3 (~+5% organique) au comparant H2 2025, donnant un FY2026 CA ~4 160 M EUR (vs 4 030 M EUR a la creation, +3,2%).",
+        "applique": [
+          "adjCA.2026",
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "apg-sga-oneoff-realise",
+        "moteur": "Plus-value de 47,5 M EUR liee a la cession finalisee du solde de la participation APG|SGA (10,85%, accord NZZ) comptabilisee au H1 26, non taxable comme anticipe a la creation - traitee comme un vrai one-off, exclue integralement de la base Omnium (deja la methodologie retenue a la creation : 'connue mais non projetee'). Le CFO confirme explicitement une croissance du resultat net de +23,3% hors cet element, chiffre retenu comme base de la reconstruction du resultat net normalise H1.",
+        "applique": [
+          "adjNet.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "levier-operationnel-superieur",
+        "moteur": "EBIT recurrent H1 26 +53,5% (marge +220pb a 7%), operating margin H1 +16,8% (marge +190pb a 18,4%) - effet de ciseaux tres favorable (loyers/redevances +3,4% seulement vs CA +4,6%, autres couts operationnels +0,9% seulement) nettement superieur a l'hypothese de creation. Le management previent neanmoins explicitement d'un ralentissement du rythme de progression de marge au S2 du fait du demarrage de nouveaux contrats (dilutif en phase de lancement) et de l'attenuation du tailwind Coupe du Monde - trajectoire de marge 2026-2030 revisee a la hausse mais de facon moins prononcee que le seul H1 ne le suggererait.",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "heathrow-renouvellement",
+        "moteur": "Renouvellement du contrat Heathrow pour 8 ans sans appel d'offres, conditions tarifaires globalement inchangees vs les 10 dernieres annees - confirmation de la resilience du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands mondiaux), sans impact chiffrable materiel isole (deja dans la base contractuelle existante).",
+        "applique": [],
+        "confiance": "haute sur l'occurrence, sans impact chiffrable isole"
+      },
+      {
+        "id": "fcf-positif-h1-inhabituel",
+        "moteur": "FCF H1 26 devenu positif (26,2 M EUR, amelioration de 91,1 M EUR sur un an) malgre la saisonnalite habituellement defavorable du premier semestre - trajectoire de desendettement 2026-2030 revisee legerement a la hausse (dette nette FY2026 estimee legerement inferieure a l'hypothese de creation).",
+        "applique": [
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "programmatique-acceleration",
+        "moteur": "Programmatique +30,9% organique au H1 (12,3% du CA digital, contre 10,1% un an plus tot), VIOOH desormais breakeven cash-on-cash en standalone et deja rentable en EBIT au niveau groupe - confirme et amplifie l'ancrage de croissance digitale deja retenu a la creation.",
+        "applique": [
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030"
+        ],
+        "confiance": "moyenne"
+      }
+    ],
     "adjEPS": {
-      "2026": 1.3,
-      "2027": 1.44,
-      "2028": 1.6,
-      "2029": 1.74,
-      "2030": 1.89
+      "2026": 1.49,
+      "2027": 1.65,
+      "2028": 1.83,
+      "2029": 2.0,
+      "2030": 2.17
     },
     "adjCA": {
-      "2026": 4030,
-      "2027": 4220,
-      "2028": 4400,
-      "2029": 4580,
-      "2030": 4760
+      "2026": 4160,
+      "2027": 4355,
+      "2028": 4541,
+      "2029": 4727,
+      "2030": 4912
     },
     "adjEBIT": {
-      "2026": 445,
-      "2027": 475,
-      "2028": 510,
-      "2029": 540,
-      "2030": 575
+      "2026": 480,
+      "2027": 513,
+      "2028": 550,
+      "2029": 583,
+      "2030": 620
     },
     "adjNet": {
-      "2026": 276,
-      "2027": 306,
-      "2028": 339,
-      "2029": 369,
-      "2030": 401
+      "2026": 317,
+      "2027": 351,
+      "2028": 389,
+      "2029": 424,
+      "2030": 460
     },
     "adjND": {
-      "2026": 490,
-      "2027": 400,
-      "2028": 310,
-      "2029": 220,
-      "2030": 130
+      "2026": 470,
+      "2027": 380,
+      "2028": 290,
+      "2029": 200,
+      "2030": 110
     },
     "adjShares": {
       "2026": 213,
@@ -102,6 +235,37 @@
       "2028": 212.5,
       "2029": 212.5,
       "2030": 212
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 0.44,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 1.05,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 0.49,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 1.16,
+          "actual": false
+        }
+      ],
+      "epsForward12m": 1.54,
+      "forwardPeriodLabel": "S2 26 -> S1 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
     }
   }
 }
