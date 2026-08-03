@@ -126,7 +126,7 @@ tbody td.proj-first{border-left:2px solid var(--teal);}
    valeurs historiques/projetees (normalement 400, ou 400 italique en
    projection). Volontairement discret : pas de changement de couleur ni
    de taille, juste la graisse. */
-tbody tr.row-emph td{font-weight:600;}
+tbody tr.row-emph td{font-weight:500;font-size:inherit;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
 td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
@@ -298,8 +298,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:5px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
-.rb-eps-line-omnium{color:var(--navy);}
-.rb-eps-line-consensus{color:var(--navy);}
+/* Omnium et Consensus sur la MEME ligne (plutot que l'un sous l'autre) :
+   les deux paires libelle/valeur cohabitent dans un seul .rb-eps-line,
+   separees par une barre oblique discrete. Le libelle garde une largeur
+   fixe (98px) quand les deux lignes sont empilees (alignement vertical
+   des valeurs entre Omnium et Consensus) mais passe en largeur auto ici,
+   ce alignement n'ayant plus de sens sur une ligne unique. */
+.rb-eps-line-combo{flex-wrap:wrap;}
+.rb-eps-line-combo .rb-eps-lbl{width:auto;}
+.rb-eps-combo-sep{color:var(--muted);font-weight:400;font-family:'Poppins',sans-serif;font-size:13px;}
 .rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
@@ -451,26 +458,33 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-bridge-wrap{padding:0 14px 12px;}
   /* rb-eps-grid en mobile : grille -> flex column, avec un ORDRE explicite
      par classe (plutot que l'ordre naturel du DOM) pour que le groupe CY
-     (entete + puces trimestrielles) reste visuellement ensemble avant le
+     (entete + puces trimestrielles + legende Publié/Estimé, qui ne
+     concerne QUE l'annee en cours) reste visuellement ensemble avant le
      groupe NY, meme si en desktop les puces vivent dans une ligne de
-     grille separee de l'entete. Le separateur dashed (qui marquait
+     grille separee de l'entete et la legende dans une 3e ligne
+     transversale sous les deux colonnes (of. rb-eps-legend-row, ligne 3
+     de la grille desktop - inchangee, alignement CY/NY toujours garanti
+     par le grid-row commun). Le separateur dashed (qui marquait
      auparavant la fin de la colonne CY) se deplace donc sur le DERNIER
-     element du groupe CY - rb-eps-qtrCY si des puces trimestrielles
-     existent (classe .has-qtr posee par JS sur rb-eps-grid), sinon
-     rb-eps-headCY en repli pour les tickers pas encore migres vers
-     quarterlyEPS (comportement mobile inchange pour ceux-la). */
+     element du groupe CY - rb-eps-legend-row si des puces trimestrielles
+     existent (classe .has-qtr posee par JS sur rb-eps-grid, la legende
+     suit alors toujours les puces CY), sinon rb-eps-headCY en repli pour
+     les tickers pas encore migres vers quarterlyEPS (comportement mobile
+     inchange pour ceux-la). */
   .rb-eps-grid{display:flex;flex-direction:column;padding:12px 14px 14px;}
   .rb-eps-sep{display:none;}
   .rb-eps-headCY,.rb-eps-headNY,.rb-eps-qtrCY,.rb-eps-qtrNY{padding:0 !important;}
   .rb-eps-headCY{order:1;}
   .rb-eps-qtrCY{order:2;margin-top:10px;}
-  .rb-eps-headNY{order:3;margin-top:14px;}
-  .rb-eps-qtrNY{order:4;margin-top:10px;}
-  .rb-eps-legend-row{order:5;margin-top:8px;}
+  .rb-eps-legend-row{order:3;margin-top:8px;}
+  .rb-eps-headNY{order:4;margin-top:14px;}
+  .rb-eps-qtrNY{order:5;margin-top:10px;}
   .rb-eps-grid:not(.has-qtr) .rb-eps-headCY{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
-  .rb-eps-grid.has-qtr .rb-eps-qtrCY{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
+  .rb-eps-grid.has-qtr .rb-eps-legend-row{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
   .rb-eps-val{font-size:11.5px !important;}
   .rb-eps-lbl{font-size:11.5px;width:88px;}
+  .rb-eps-line-combo{gap:6px;}
+  .rb-eps-line-combo .rb-eps-lbl{width:auto;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
   .qtr-legend-row{margin-top:0;}
@@ -1181,7 +1195,7 @@ function renderAnalyse(){
     {lbl:`Résultat net (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net),   hRaw:r=>r.net},
     {lbl:'Actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
-    {lbl:'P/E',                 sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
+    {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1):'—';}},
     {lbl:`Dette nette (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd),    hRaw:r=>r.nd},
     {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     {lbl:`Dividende (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
@@ -1266,7 +1280,7 @@ function refreshPriceOnly(ticker){
   const cells=peRow.querySelectorAll('td.proj-row');
   PY.forEach((y,i)=>{
     const e=proj[y]?.eps;
-    if(cells[i]) cells[i].textContent=(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';
+    if(cells[i]) cells[i].textContent=(cours>0&&e>0)?(cours/e).toFixed(1):'—';
   });
 }
 
@@ -1444,11 +1458,10 @@ function renderReturnBlock(ticker, proj, cours){
     <div class="rb-eps-grid${qeBlock?' has-qtr':''}">
       <div class="rb-eps-headCY">
         <div class="rb-eps-year">EPS ${CY}</div>
-        <div class="rb-eps-line rb-eps-line-omnium">
+        <div class="rb-eps-line rb-eps-line-combo">
           <span class="rb-eps-lbl">Omnium</span>
           <span class="rb-eps-val">${epsCY>0?epsCY.toFixed(2)+cur:'—'}</span>
-        </div>
-        <div class="rb-eps-line rb-eps-line-consensus">
+          <span class="rb-eps-combo-sep">/</span>
           <span class="rb-eps-lbl">Consensus</span>
           <span class="rb-eps-val">${cons?.eps?cons.eps.toFixed(2)+cur:'—'}</span>
         </div>
@@ -1457,11 +1470,10 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-sep" style="grid-row:1 / span ${qeBlock?2:1};"></div>
       <div class="rb-eps-headNY">
         <div class="rb-eps-year">EPS ${CY+1}</div>
-        <div class="rb-eps-line rb-eps-line-omnium">
+        <div class="rb-eps-line rb-eps-line-combo">
           <span class="rb-eps-lbl">Omnium</span>
           <span class="rb-eps-val">${epsNY>0?epsNY.toFixed(2)+cur:'—'}</span>
-        </div>
-        <div class="rb-eps-line rb-eps-line-consensus">
+          <span class="rb-eps-combo-sep">/</span>
           <span class="rb-eps-lbl">Consensus</span>
           <span class="rb-eps-val">${consNY>0?consNY.toFixed(2)+cur:'—'}</span>
         </div>
