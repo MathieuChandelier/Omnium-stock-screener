@@ -90,6 +90,9 @@ data/
       {"quarter":"T2 26","date":"2026-07-02","fyGuided":2026,"guidanceAnnuelle":"CA +7-9%, marge EBIT ~22.5%."}
     ],
     "guidanceLongTerme":"Objectif CMD mars 2025 : marge EBIT >25% et CA CAGR high-single-digit a horizon 2028, ou null si aucune guidance pluriannuelle formulee.",
+    "guidanceLongTermeHistory":[
+      {"asOf":"2024-11-05","text":"Objectif CMD nov. 2023 : marge EBIT >22% a horizon 2026."}
+    ],
     "quarterlyEPS":{
       "cadence":"trimestriel",
       "CY":[
@@ -151,6 +154,34 @@ mais TOUT le reste de la prose environnante reste en francais correctement
 accentue - ce n'est donc pas "tout en anglais" ni "tout traduit de force",
 mais du francais accentue avec les quelques termes techniques anglais deja
 ancres dans l'usage du secteur conserves tels quels.
+
+Le champ `epsConsensus` porte le consensus sell-side de reference pour `CY`
+et `CY+1` (`eps`/`epsNY`), affiche cote app juste sous les lignes OMNIUM/
+CONSENSUS de la colonne EPS en cours (`index.html`, bloc `.rb-eps-src`) :
+- `source` : UNE SEULE LIGNE D'ATTRIBUTION - la base comptable (GAAP/non-
+  GAAP) + le fournisseur nomme + le nombre d'analystes si connu. RIEN
+  D'AUTRE. Ce champ repond a une question unique pour le lecteur - "d'ou
+  vient ce chiffre de consensus, et sur quelle base ?" - jamais "pourquoi
+  Omnium en differe" (c'est le role d'un `ancrages` explicite, jamais
+  duplique ici) ni "que va-t-il se passer au prochain refresh" (une
+  speculation sur une revision future n'a pas sa place dans un champ de
+  citation ; si c'est un point de suivi reel, il vit dans la WATCH-LIST de
+  `hypothese.text`). Exemple correct : `"GAAP - S&P Global Market
+  Intelligence/TipRanks via Yahoo Finance/Barchart (~30 analystes)"`.
+  MAUVAIS EXEMPLE (a ne plus reproduire) : "Consensus sell-side GAAP (Apple
+  ne publie pas d'EPS ajuste separe ; S&P Global Market Intelligence/
+  TipRanks via Yahoo Finance/Barchart, ~30 analystes). Date-e de juste
+  avant la publication du 30/07 - Apple a bat ce trimestre (2,02$ vs 1,89$
+  attendu) donc ce consensus sera probablement revise legerement a la
+  hausse au prochain refresh, mais l'essentiel de l'ecart avec l'estimation
+  Omnium tient au retraitement du remboursement tarifaire (+0,11$ au T3,
+  non recurrent) que le consensus GAAP n'exclut pas." - la justification du
+  choix GAAP, le rappel du beat du trimestre (deja dans `dernierCall`,
+  visible plus haut dans la meme carte) et l'explication de l'ecart avec
+  Omnium (deja dans `ancrages`) y sont tous re-narres en double emploi.
+- `date` : date du consensus (juste avant la derniere publication de
+  resultats, generalement), affichee automatiquement a cote de `source`
+  cote app (pas besoin de la repeter dans le texte de `source`).
 
 Le champ `fyEndMonth` est OPTIONNEL, entier de 1 a 12, le mois de cloture de
 l'exercice fiscal du titre. ABSENT (pas de cle du tout) pour un exercice
@@ -346,18 +377,44 @@ successifs, stabilite ou volatilite de la guidance).
 Le champ `guidanceLongTerme` est une PHRASE COURTE (chiffres inclus)
 portant la guidance PLURIANNUELLE la plus recente formulee par le
 management (objectifs de Capital Markets Day/Investor Day, cible
-structurelle a 3-5 ans), quand elle existe. Contrairement a
-`guidanceHistory`, ce N'EST PAS un historique cumulatif : c'est un
-INSTANTANE UNIQUE, REMPLACE (pas accumule) des qu'une communication plus
-recente la met a jour (nouveau CMD, revision explicite) - la valeur
-precedente n'est pas conservee ailleurs que dans l'ancien `hypothese.text`
-si elle y avait ete notee. Recherche a chaque creation et chaque refresh ;
-si aucune guidance pluriannuelle n'a jamais ete communiquee par la societe,
-`null`. Meme statut factuel que `guidanceHistory` : ne participe a aucun
-raisonnement E1-E8 par lui-meme (une cible LT peut neanmoins alimenter un
-`ancrages` explicite en E4 si elle est mobilisee comme moteur de
-projection - dans ce cas le lien vers l'id de l'ancrage peut etre
-mentionne ici en une incise courte).
+structurelle a 3-5 ans), quand elle existe. C'est un INSTANTANE UNIQUE (la
+valeur COURANTE), REMPLACE des qu'une communication plus recente la met a
+jour (nouveau CMD, revision explicite). Recherche a chaque creation et
+chaque refresh ; si aucune guidance pluriannuelle n'a jamais ete
+communiquee par la societe, `null`. Meme statut factuel que
+`guidanceHistory` : ne participe a aucun raisonnement E1-E8 par lui-meme
+(une cible LT peut neanmoins alimenter un `ancrages` explicite en E4 si
+elle est mobilisee comme moteur de projection - dans ce cas le lien vers
+l'id de l'ancrage peut etre mentionne ici en une incise courte).
+
+Le champ `guidanceLongTermeHistory` porte SON historique (contrairement a
+`guidanceHistory`, qui suit `dernierCall`, celui-ci suit `guidanceLongTerme`
+- deux mecaniques de snapshot distinctes, ne pas les confondre) :
+- MECANIQUE DE SNAPSHOT (Operation B uniquement) : AVANT de remplacer
+  `guidanceLongTerme` par la valeur trouvee ce refresh, COMPARE-la a
+  l'ancienne valeur du JSON fourni en entree. Si elle a REELLEMENT change
+  (nouveau CMD, cible revisee) : pousse l'ANCIENNE valeur dans
+  `guidanceLongTermeHistory` sous la forme `{"asOf": <date du refresh ou
+  elle etait encore la valeur courante>, "text": <l'ancienne phrase telle
+  quelle>}`, tableau CUMULATIF plafonne aux 5 DERNIERS points (le plus
+  ancien tombe silencieusement, comme `ownership.history` mais sur 5 points
+  plutot que 8 - une guidance LT change trop rarement pour justifier une
+  fenetre plus large). Si elle n'a PAS change (cas de tres loin le plus
+  frequent, une guidance LT etant reaffirmee identique refresh apres
+  refresh) : NE RIEN AJOUTER a l'historique - un ajout a chaque refresh
+  meme sans changement ferait gonfler le tableau de doublons sans aucune
+  valeur informative.
+- SI `guidanceLongTermeHistory` est absent de l'ancien JSON (titre cree
+  avant l'introduction de ce champ) : demarre a tableau VIDE `[]` (pas de
+  ligne unique forcee, contrairement a `guidanceHistory` - on ne connait
+  pas la valeur qui precedait la version actuelle de `guidanceLongTerme`,
+  inutile d'inventer un point de depart).
+- CREATION (Operation A) : `guidanceLongTermeHistory` demarre a `[]`
+  (aucune valeur anterieure connue).
+- Champ factuel et cumulatif, meme statut que `guidanceHistory` : ne
+  participe a aucun raisonnement E1-E8, utile au refresh suivant/au
+  lecteur pour visualiser la trajectoire d'ambition du management sur le
+  temps long (cible relevee, maintenue, ou abaissee d'un CMD au suivant).
 
 Le champ `quarterlyEPS` porte le DETAIL TRIMESTRIEL (ou semestriel) de
 l'EPS pour l'annee en cours et l'annee suivante, plus le P/E 12 mois
@@ -447,9 +504,9 @@ participe a aucun raisonnement E1-E8 au-dela de son role de decomposition
 mecanisme d'arbitrage/escalade d'E5 ter point 4).
 
 Le champ `ownership` porte un ETAT DES LIEUX FACTUEL ET APPROXIMATIF de
-l'actionnariat du titre, affiche par l'app dans le bloc "Hypothese
-actuelle" en une petite rubrique dediee, juste apres le bloc guidance
-(voir `guidanceHistory`/`guidanceLongTerme`) et avant le texte de these.
+l'actionnariat du titre, affiche par l'app dans le bloc "Dernières
+hypothèses" en une petite rubrique dediee, juste apres le texte de these
+(`hypothese.text`) et avant le bloc `compliance`.
 Recherche et renseigne a CHAQUE creation et CHAQUE refresh (Operations A et
 B uniquement - jamais par l'Operation C, au meme titre que le reste de
 `hypothese`/`nextEvent`). Ce champ ne fait PAS partie de la boucle E1-E8 :
@@ -619,7 +676,7 @@ Le champ `compliance` porte un ETAT DES LIEUX FACTUEL des fraudes averees
 ou allegations de fraude (par des regulateurs, cabinets d'avocats
 plaignants, ou analystes/vendeurs a decouvert activistes type Muddy
 Waters/Hindenburg/Citron) touchant le titre, affiche par l'app dans le
-bloc "Hypothese actuelle" en une petite rubrique dediee, juste apres la
+bloc "Dernières hypothèses" en une petite rubrique dediee, juste apres la
 rubrique `ownership`. Recherche et renseigne a CHAQUE creation et CHAQUE
 refresh (Operations A et B uniquement - jamais par l'Operation C), au meme
 titre que le reste de `hypothese`/`nextEvent`/`ownership`. Vit au niveau
@@ -772,7 +829,10 @@ guidance viennent normalement du COMMUNIQUE (source la plus fiable pour un
 chiffre exact) ; `pointsCles` s'appuie normalement sur le TRANSCRIPT (seule
 source des echanges Q&A et de la couleur donnee a l'oral). Meme logique pour
 la boucle E1-E8 (E2/E3) : le communique prime pour les chiffres, le
-transcript pour l'exhaustivite des evenements discutes.
+transcript pour l'exhaustivite des evenements discutes. C'est CETTE
+recherche qui determine directement `dernierCall.communiqueAnalyse`/
+`transcriptAnalyse` (voir SCHEMA) : `true` uniquement si le document a
+reellement ete trouve et lu ci-dessous, jamais par defaut.
 
 - SI le communique ET le transcript sont trouves : confirme explicitement a
   l'utilisateur ce que tu as recupere (societe, trimestre/exercice, date de
@@ -1284,7 +1344,7 @@ champs structures (data, adjXXX, particularites, `ancrages`) ne portent pas
 et que le modele ne reconstruit pas seul. Ne jamais re-narrer un chiffre
 deja present dans data/adjXXX, ni un mecanisme deja porte par une entree
 `ancrages` (y referer par id si besoin), ni un fait deja dans le transcript
-source. Budget cible ~5000-9000 caracteres. SIX rubriques majuscules "==
+source. Budget cible ~4500-8500 caracteres. CINQ rubriques majuscules "==
 RUBRIQUE ==", dans cet ordre :
 
 1. **SYNTHESE DE LA THESE** (~800-1200 car.) : un paragraphe de cadrage qui
@@ -1298,19 +1358,30 @@ RUBRIQUE ==", dans cet ordre :
    "Aucun evenement particulier ce trimestre" si c'est le cas.
 3. **PARTICULARITES** : binaire. La/les particularite(s) listee(s), ou
    "Aucune".
-4. **RESULTATS, SOURCES & GUIDANCE** (fusion) : une ligne de sources
-   (primaire = transcript ; secondaires = FY/consensus) + la GUIDANCE
-   DIRECTIONNELLE seulement (contraintes dures) - jamais la re-narration
-   du detail trimestriel par segment/geographie + la date du prochain
-   refresh utile.
-5. **PARAMETRES & POINTS DE SUIVI** (fusion pont + agenda) : une mention
+4. **PARAMETRES & POINTS DE SUIVI** (fusion pont + agenda) : une mention
    synthetique renvoyant aux `ancrages` structures pour le "pourquoi
    chiffre" (pas de re-narration), plus les seuls parametres qui ne vivent
    pas dans `ancrages` (base comptable ajustee vs publiee, ETR, net
    financier, tendance adjShares) en quelques lignes. Puis la WATCH-LIST :
-   les questions que le prochain refresh devra solder. C'est la matiere la
-   plus utile au refresh suivant, avec `ancrages`.
-6. **CATALYSEURS** : une ligne dense (pas une liste longue).
+   les questions que le prochain refresh devra solder, ET la date/l'echeance
+   de ce prochain refresh utile (ex. "resultats T4 FY2026, publication
+   attendue fin octobre 2026"). C'est la matiere la plus utile au refresh
+   suivant, avec `ancrages`.
+5. **CATALYSEURS** : une ligne dense (pas une liste longue).
+
+RUBRIQUE SUPPRIMEE - NE PAS REINTRODUIRE : une ancienne rubrique 4
+"RESULTATS, SOURCES & GUIDANCE" existait ici (sources lues + guidance
+directionnelle re-narrees en prose). Elle est devenue integralement
+redondante avec des champs structures qui n'existaient pas au moment de sa
+creation : `dernierCall.communiqueAnalyse`/`transcriptAnalyse` (badges
+Communique/Transcript coches ou non, cote app) couvrent desormais les
+sources lues, et `dernierCall.guidanceProchainTrimestre`/`guidanceAnnuelle`
+couvrent la guidance chiffree - re-narrer l'un ou l'autre dans `text` viole
+la regle de separation stricte avec `dernierCall` (voir sa definition dans
+SCHEMA) exactement comme un chiffre deja present dans `data`/`adjXXX`. Seule
+la date du prochain refresh utile n'avait pas d'autre foyer : elle est
+desormais dans la WATCH-LIST de la rubrique PARAMETRES & POINTS DE SUIVI
+ci-dessus.
 
 Ce qui est PRESERVE imperativement dans le texte : toute HYPOTHESE DE
 MODELISATION non triviale qui ne se reduit PAS a un moteur nommable en
@@ -1333,6 +1404,8 @@ Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici co
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
 Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
+
+Verifie `hypothese.guidanceHistory` : TABLEAU (jamais un objet), chaque entree avec exactement `quarter`/`date`/`fyGuided`/`guidanceAnnuelle`, et TOUTES les entrees partagent le MEME `fyGuided` (c'est ce qui borne le tableau a l'exercice fiscal en cours - un `fyGuided` heterogene dans le tableau casse a la fois la mecanique de reset et le badge "Nᵉ point de l'exercice" affiche cote app). Verifie `hypothese.guidanceLongTermeHistory` : TABLEAU (jamais absent si `guidanceLongTerme` a deja change au moins une fois), chaque entree avec exactement `asOf`/`text` - jamais une entree ajoutee pour un refresh ou `guidanceLongTerme` est reste identique (verifie qu'aucune entree consecutive n'a le meme `text`, signe d'un ajout fait a tort).
 Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
 ## LIVRABLE FINAL
@@ -1352,7 +1425,8 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
    sous-champs sans donnee trouvee, jamais bloquant. `hypothese.
    guidanceHistory` demarre a une ligne unique (ce call) et `hypothese.
    guidanceLongTerme` renseigne si une guidance pluriannuelle existe, sinon
-   `null` (voir SCHEMA). `hypothese.quarterlyEPS` renseigne selon E5 ter
+   `null` (voir SCHEMA), `hypothese.guidanceLongTermeHistory` demarre a `[]`.
+   `hypothese.quarterlyEPS` renseigne selon E5 ter
    (decomposition trimestrielle/semestrielle de l'EPS, P/E 12 mois
    glissants) - absent uniquement si les donnees disponibles ne permettent
    pas une decomposition fiable (voir E5 ter point 5), jamais publie a
@@ -1390,7 +1464,10 @@ confirmer le nom/code, il est deja connu.
    (ajout d'une ligne si meme `fyGuided` que la derniere ligne existante,
    reset a une ligne unique si nouvel exercice fiscal - voir SCHEMA) ;
    `hypothese.guidanceLongTerme` reconduit tel quel ou remplace si une
-   communication plus recente l'a mise a jour. `hypothese.quarterlyEPS`
+   communication plus recente l'a mise a jour - AVANT tout remplacement,
+   snapshotte l'ancienne valeur dans `hypothese.guidanceLongTermeHistory`
+   selon sa mecanique propre (voir SCHEMA, uniquement si la valeur a
+   reellement change, plafonne a 5 points). `hypothese.quarterlyEPS`
    entierement RECONSTRUIT selon E5 ter (pas de mecanique cumulative comme
    `priorEPS`/`guidanceHistory` - la fenetre glissante de periodes n'a pas
    de sens a preserver d'un refresh a l'autre). `ownership` RE-RECHERCHE et
@@ -1407,9 +1484,9 @@ confirmer le nom/code, il est deja connu.
    ancienne entree au-dela de son statut/issue.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
-   `guidanceLongTerme`, `quarterlyEPS`, `ownership`, `compliance` et
-   `nextEvent` inclus), pret a remplacer le fichier `data/CODE.json`
-   existant sur GitHub tel quel.
+   `guidanceLongTerme`, `guidanceLongTermeHistory`, `quarterlyEPS`,
+   `ownership`, `compliance` et `nextEvent` inclus), pret a remplacer le
+   fichier `data/CODE.json` existant sur GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
