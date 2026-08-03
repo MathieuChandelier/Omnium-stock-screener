@@ -339,6 +339,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
 .pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
 .pe-fwd-sub{margin-left:8px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
+.pe-exval{margin-left:8px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--muted);}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -439,8 +440,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pe-row-lbl{font-size:10.5px;width:108px;}
   .pe-row-val{font-size:10.5px;}
   .pe-fwd-sub{font-size:8px;margin-left:6px;}
+  .pe-exval{font-size:9px;margin-left:6px;}
 
-  /* ── Hypothèse actuelle / bandeaux (dernier call, actionnariat, compliance) ── */
+  /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
 
   footer{padding:14px;font-size:9.5px;}
@@ -553,7 +555,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div class="card" id="context-card" style="margin-bottom:18px;">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-      <b>Hypothèse actuelle</b>
+      <b>Dernières hypothèses</b>
     </div>
     <div id="last-event-trace" style="display:block;"></div>
     <div id="context-bullets-wrap" style="margin-top: 14px; display: none;">
@@ -1103,16 +1105,38 @@ function renderAnalyse(){
   };
   const fGrowth=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(1)+'%';
 
+  // Unite d'affichage des 4 lignes monetaires du tableau (CA/EBIT/Resultat
+  // net/Dette nette) : le JSON reste TOUJOURS stocke en millions (unite
+  // canonique unique, aucune ambiguite pour les calculs EPS/P/E/dette qui
+  // melangent ces champs avec `shares`, lui-meme toujours en millions
+  // d'actions - un compte d'actions n'est pas un montant, il n'est jamais
+  // converti). Seul l'AFFICHAGE bascule en Md a partir de 10 000 M (10Md)
+  // de CA le plus recent, purement cosmetique (cf fmtBigNum, deja utilise
+  // ailleurs pour ce meme usage). Decision prise UNE FOIS par ticker (sur
+  // le dernier CA historique publie) et appliquee uniformement aux 4
+  // lignes, pour ne pas avoir un tableau ou une ligne est en Md et une
+  // autre en M pour la meme societe.
+  const latestCA=d.data[d.data.length-1]?.ca||0;
+  const bigUnit=Math.abs(latestCA)>=10000?'Md':'M';
+  const bigDiv=bigUnit==='Md'?1000:1;
+  const fBigTbl=v=>{
+    if(v==null||v==='')return'—';
+    const n=(+v)/bigDiv;
+    return bigDiv===1
+      ? Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')
+      : n.toFixed(2);
+  };
+
   const metrics=[
-    {lbl:`CA (M${cur})`,        sep:false, hFn:r=>fM(r.ca),    pFn:y=>fM(proj[y].ca),    hRaw:r=>r.ca},
+    {lbl:`CA (${bigUnit}${cur})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca),    hRaw:r=>r.ca},
     {lbl:'Croissance %',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
-    {lbl:`EBIT (M${cur})`,      sep:false, hFn:r=>fM(r.ebit),  pFn:y=>fM(proj[y].ebit),  hRaw:r=>r.ebit},
+    {lbl:`EBIT (${bigUnit}${cur})`,      sep:false, hFn:r=>fBigTbl(r.ebit),  pFn:y=>fBigTbl(proj[y].ebit),  hRaw:r=>r.ebit},
     {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
-    {lbl:`Résultat net (M${cur})`, sep:false, hFn:r=>fM(r.net), pFn:y=>fM(proj[y].net),   hRaw:r=>r.net},
+    {lbl:`Résultat net (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net),   hRaw:r=>r.net},
     {lbl:'Actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—', hRaw:r=>r.shares},
     {lbl:`EPS (${cur})`,        sep:true,  hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E',                 sep:false, id:'pe-metric-row', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1)+'×':'—';}},
-    {lbl:`Dette nette (M${cur})`, sep:false, hFn:r=>fM(r.nd),  pFn:y=>fM(proj[y].nd),    hRaw:r=>r.nd},
+    {lbl:`Dette nette (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd),    hRaw:r=>r.nd},
     {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     {lbl:`Dividende (${cur})`,   sep:true,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—', hRaw:r=>r.div},
     {lbl:'Div. yield',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
@@ -1216,7 +1240,7 @@ function refreshPriceOnly(ticker){
 // qu'un bloc "Détail trimestriel" a part, pour que chaque trimestre
 // s'affiche a cote de l'annee a laquelle il appartient) ; retourne null si
 // le champ est absent (comportement gracieux inchange).
-function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
+function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const chip=p=>`<div class="qs-chip ${p.actual?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
@@ -1250,13 +1274,38 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur){
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
+  // P/E "ex-cash" : neutralise la tresorerie/dette nette du bilan de
+  // l'annee concernee avant de calculer le multiple, pour ne pas
+  // penaliser/avantager artificiellement des societes tres cash-riches ou
+  // tres endettees dans une comparaison de P/E brut. adjND est deja negatif
+  // pour du cash net (convention du JSON) -> prix_ajuste = cours +
+  // adjND/adjShares ramene mecaniquement le P/E ex-cash EN DESSOUS du P/E
+  // brut quand il y a du cash net, et AU-DESSUS quand il y a de la dette
+  // nette. Le forward reutilise le bilan de l'annee en cours (CY), pas
+  // celui de l'annee suivante, puisque les 12 prochains mois glissants
+  // partent d'aujourd'hui. Absence gracieuse : si adjND/adjShares ne sont
+  // pas renseignes pour l'annee concernee, ou si le prix ajuste tombe a
+  // zero ou en dessous (tresorerie nette par action > cours, cas limite
+  // des tres petites capitalisations tres cash-riches), pas de suffixe
+  // ex-cash affiche plutot qu'un nombre trompeur.
+  const exCashPrice=(nd,sh)=>{
+    if(nd==null||!(sh>0))return null;
+    const p=cours+(nd/sh);
+    return p>0?p:null;
+  };
+  const priceExCY=exCashPrice(ndCY,shCY);
+  const priceExNY=exCashPrice(ndNY,shNY);
+  const peExCY=(priceExCY!=null&&epsCY>0)?(priceExCY/epsCY):null;
+  const peExFwd=(priceExCY!=null&&qe.epsForward12m>0)?(priceExCY/qe.epsForward12m):null;
+  const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
+  const exSuffix=v=>v!=null?`<span class="pe-exval">${v.toFixed(1)}× ex-cash</span>`:'';
   // Ordre : P/E CY, puis le forward 12 mois (a cheval entre les deux
   // annees), puis P/E NY - reflete sa position temporelle entre les deux
   // plutot que de le releguer en dernier.
   const peStack=`<div class="pe-stack">
-      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY}</div><div class="pe-row-val">${peCY?peCY.toFixed(1)+'×':'—'}</div></div>
-      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}${qe.forwardPeriodLabel?`<span class="pe-fwd-sub">${esc(qe.forwardPeriodLabel)}</span>`:''}</div></div>
-      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY}</div><div class="pe-row-val">${peCY?peCY.toFixed(1)+'×':'—'}${exSuffix(peExCY)}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}${exSuffix(peExFwd)}${qe.forwardPeriodLabel?`<span class="pe-fwd-sub">${esc(qe.forwardPeriodLabel)}</span>`:''}</div></div>
+      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}${exSuffix(peExNY)}</div></div>
     </div>`;
   return {
     // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
@@ -1308,7 +1357,11 @@ function renderReturnBlock(ticker, proj, cours){
     return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
   };
   const priorDateFmt=fmtShortDate(priorEPS?.date);
-  const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur);
+  const ndCY=d.hypothese?.adjND?.[CY];
+  const shCY=d.hypothese?.adjShares?.[CY];
+  const ndNY=d.hypothese?.adjND?.[CY+1];
+  const shNY=d.hypothese?.adjShares?.[CY+1];
+  const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY);
 
   el.innerHTML = `
     <div class="rb-header">
@@ -1380,7 +1433,7 @@ function pctBadge(delta){
 // Bloc "dernier trimestre publie" (resultats vs consensus, guidance, points cles
 // du call) - voir hypothese.dernierCall dans INSTRUCTIONS.md. Affiche juste sous
 // la ligne date/source, AVANT le resume/texte de la these (ne s'y substitue pas).
-function renderDernierCall(dc, ticker){
+function renderDernierCall(dc, ticker, opts={}){
   if(!dc)return '';
   const cur=tickerCur(ticker)||'€';
   const q=(dc.quarter||'').trim();
@@ -1424,7 +1477,7 @@ function renderDernierCall(dc, ticker){
     </div>`:'';
 
   if(!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
-  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+  return `<div style="${opts.first?'':'border-top:1px solid var(--border);margin-top:10px;'}padding-top:${opts.first?'0':'10px'};">
     ${resultsBlock}${guidQ}${guidFY}${pointsBlock}
   </div>`;
 }
@@ -1567,7 +1620,7 @@ function renderContextBullets(ticker, proj, cours){
   if(!traceEl)return;
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
-  const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker);
+  const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker, {first:true});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
   const fullSumm=(lastEvt.summary||'').trim();
@@ -1586,9 +1639,9 @@ function renderContextBullets(ticker, proj, cours){
 
   traceEl.style.display='block';
   traceEl.innerHTML=`<div>
-    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Dernière mise à jour de la thèse</div>
+    ${dcBanner}
     <div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>
-    <div>${formatThesisText(displayText, dcBanner)}</div>
+    <div>${formatThesisText(displayText)}</div>
     ${ownBanner}
     ${compBanner}
     ${partBanner}
