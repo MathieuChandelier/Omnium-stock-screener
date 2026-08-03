@@ -276,12 +276,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
 .rb-eps-col{flex:1;display:flex;flex-direction:column;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
-.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:12px;font-weight:700;color:inherit;}
-.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
+.rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
+.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:5px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
 .rb-eps-line-consensus{color:var(--navy);}
-.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
+.rb-eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:inherit;text-transform:uppercase;letter-spacing:.02em;width:98px;flex-shrink:0;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* ══════════════════════════════════════════════════════════════
@@ -339,12 +339,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
    une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
    detail de periode uniquement sur la ligne forward). */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:150px auto auto auto;column-gap:14px;row-gap:5px;align-items:baseline;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:150px auto auto;column-gap:14px;row-gap:5px;align-items:baseline;}
 .pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:left;margin-bottom:1px;}
-.pe-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
-.pe-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
-.pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--teal-text);}
-.pe-exval{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);text-align:left;}
+.pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
+.pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
+.pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:left;}
 
 /* Chips d'evolution de la guidance annuelle (hypothese.guidanceHistory) -
    chaque point du call affiche en chip, le plus recent mis en avant en
@@ -382,6 +382,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 @media(max-width:760px){
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
+
+  /* Le prix passe sur sa propre ligne au wrap (analyse-header en
+     flex-wrap) : le champ etant text-align:right par defaut (pour aligner
+     les decimales en desktop cote a cote avec la devise), il laissait un
+     vide visuel a gauche sur mobile au lieu de demarrer sous le nom du
+     titre. Aligne a gauche uniquement sur mobile. */
+  .analyse-price input#cours{text-align:left;}
 
   header{padding:20px 18px 22px;}
   .h-logo{height:55px;}
@@ -437,7 +444,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-sep{display:none;}
   .rb-eps-col{padding:0 !important;}
   .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
-  .rb-eps-val{font-size:12px !important;}
+  .rb-eps-val{font-size:11.5px !important;}
   .rb-eps-lbl{font-size:11.5px;width:88px;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
@@ -449,12 +456,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:108px auto auto auto;}
-  .pe-lbl{font-size:10.5px;}
-  .pe-val{font-size:10.5px;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:108px auto auto;}
+  .pe-lbl{font-size:11.5px;}
+  .pe-val{font-size:11.5px;}
   .pe-sub{font-size:8px;}
   .pe-exhead{font-size:8px;}
-  .pe-exval{font-size:10.5px;}
+  .pe-exval{font-size:11.5px;}
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1067,7 +1074,7 @@ function renderAnalyse(){
     const hyp=d.hypothese;
     if(hyp && hyp.date){
       refreshLine.style.display='block';
-      refreshLine.innerHTML=`Dernière mise à jour : <span style="color:var(--navy);">${hyp.date}</span>`;
+      refreshLine.innerHTML=`Dernière mise à jour du modèle : <span style="color:var(--navy);">${hyp.date}</span>`;
     } else {
       refreshLine.style.display='none';
     }
@@ -1107,7 +1114,7 @@ function renderAnalyse(){
   if(headRow){
     headRow.innerHTML=`<th>Indicateur</th>`
       +last5.map(r=>`<th>${yearHeaderHtml(r.year)}</th>`).join('')
-      +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;opacity:.85;'}">${yearHeaderHtml(y)}</th>`).join('');
+      +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;'}">${yearHeaderHtml(y)}</th>`).join('');
   }
 
   const caGrowthHist=r=>{
@@ -1318,21 +1325,23 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const exCell=v=>hasExCash?`<div class="pe-exval">${v!=null?v.toFixed(1)+'×':'—'}</div>`:'';
   // Ordre : P/E CY, puis le forward 12 mois (a cheval entre les deux
   // annees), puis P/E NY - reflete sa position temporelle entre les deux
-  // plutot que de le releguer en dernier. Grille a 4 colonnes (libelle /
-  // valeur / P/E ex-cash / detail periode forward) : le P/E ex-cash est
-  // volontairement place juste apres la valeur principale (le plus a
-  // gauche possible tout en gardant le column-gap, jamais colle) puisque
-  // c'est une variante du MEME P/E, plus lisible proche de sa valeur
-  // source que relegue en bord droit ; le detail de periode du forward
-  // (qui n'existe que sur la ligne du milieu) devient la colonne finale.
-  // Chaque ligne emet EXACTEMENT 4 cellules dans le meme ordre pour que le
+  // plutot que de le releguer en dernier. Grille a 3 colonnes (libelle /
+  // valeur / P/E ex-cash) : le P/E ex-cash est volontairement place juste
+  // apres la valeur principale (le plus a gauche possible tout en gardant
+  // le column-gap, jamais colle) puisque c'est une variante du MEME P/E,
+  // plus lisible proche de sa valeur source que relegue en bord droit. Le
+  // detail de periode du forward (qui n'existe que sur la ligne du milieu)
+  // vit DANS la cellule du libelle, entre parentheses et en gris (.pe-sub)
+  // juste apres "P/E 1Y FWD" - jamais une colonne a part, ca n'a pas
+  // besoin d'un alignement propre puisque une seule ligne le porte. Chaque
+  // ligne emet EXACTEMENT 3 cellules dans le meme ordre pour que le
   // placement automatique de la grille aligne les valeurs entre les 3
   // lignes, meme quand une cellule est vide (span vide plutot qu'omise).
   const peStack=`<div class="pe-stack">
-      ${hasExCash?`<div></div><div></div><div class="pe-exhead">P/E ex-cash</div><div></div>`:''}
-      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}<div></div>
-      <div class="pe-lbl">P/E 12 mois forward</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}<div class="pe-sub">${qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel):''}</div>
-      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}<div></div>
+      ${hasExCash?`<div></div><div></div><div class="pe-exhead">P/E ex-cash</div>`:''}
+      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}
+      <div class="pe-lbl">P/E 1Y FWD${qe.forwardPeriodLabel?` <span class="pe-sub">(${esc(qe.forwardPeriodLabel)})</span>`:''}</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}
+      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}
     </div>`;
   return {
     // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
@@ -1395,11 +1404,11 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-year" style="margin-bottom:0;color:var(--navy);">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
-      <div class="rb-eps-val" style="color:var(--navy);">CAGR ${total>=0?'+':''}${total.toFixed(1)}%</div>
+      <div class="rb-eps-val" style="color:var(--navy);">Total Return ${total>=0?'+':''}${total.toFixed(1)}%</div>
       <span style="font-size:18px;color:var(--muted);flex-shrink:0;">→</span>
       <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
-        <div style="font-size:12px;font-weight:700;color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
-        <div style="font-size:12px;font-weight:700;color:var(--navy);">Div. yield +${yieldPct.toFixed(1)}%</div>
+        <div class="rb-eps-val" style="color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
+        <div class="rb-eps-val" style="color:var(--navy);margin-top:5px;">Div. yield +${yieldPct.toFixed(1)}%</div>
       </div>
     </div>
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
