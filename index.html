@@ -127,13 +127,17 @@ tbody td.proj-first{border-left:2px solid var(--teal);}
    projection). Volontairement discret : pas de changement de couleur ni
    de taille, juste la graisse. */
 /* Lignes EPS et P/E : SEULES les valeurs (historique + projection) sont
-   legerement epaissies (500), jamais la colonne "Indicateur" qui doit
-   rester rigoureusement identique (typo, taille, graisse) a celle de
-   toutes les autres lignes du tableau. Pas de font-size ici : le
-   :not(:first-child) suffit a cibler les valeurs sans jamais risquer de
-   re-ecraser le font-size:11px de tbody td:first-child (regle plus
-   specifique ailleurs, mais mieux vaut ne pas en dependre). */
-tbody tr.row-emph td:not(:first-child){font-weight:500;}
+   en gras, jamais la colonne "Indicateur" qui reste rigoureusement
+   identique (typo, taille, graisse) a celle de toutes les autres lignes.
+   IMPORTANT : les valeurs du tableau heritent de la police du body,
+   'Quattrocento Sans', qui n'existe QUE en 400 et 700 (voir le <link>
+   Google Fonts dans <head> - pas de graisse intermediaire reelle pour
+   cette police). Demander un poids intermediaire (500/600) forcerait le
+   navigateur a SYNTHETISER cette graisse manquante, ce qui deforme
+   legerement les glyphes et les fait paraitre plus grands - c'est ce qui
+   causait le probleme de taille. 700 est un poids REELLEMENT charge :
+   memes metriques, meme taille, uniquement plus epais.*/
+tbody tr.row-emph td:not(:first-child){font-weight:700;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
 td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
@@ -484,7 +488,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-headCY{order:1;}
   .rb-eps-qtrCY{order:2;margin-top:10px;}
   .rb-eps-legend-row{order:3;margin-top:8px;}
-  .rb-eps-headNY{order:4;margin-top:14px;}
+  .rb-eps-headNY{order:4;margin-top:4px;}
   .rb-eps-qtrNY{order:5;margin-top:10px;}
   .rb-eps-grid:not(.has-qtr) .rb-eps-headCY{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
   .rb-eps-grid.has-qtr .rb-eps-legend-row{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
