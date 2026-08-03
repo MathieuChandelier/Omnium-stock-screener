@@ -305,7 +305,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    sous les deux colonnes, avant le P/E stack.
    ══════════════════════════════════════════════════════════════ */
 .qs-qtr-block{margin-top:auto;padding-top:12px;}
-.qtr-legend-row{display:flex;justify-content:center;padding:0 20px;margin-top:10px;}
+.qtr-legend-row{display:flex;justify-content:center;margin-top:6px;}
 .qtr-legend{display:flex;align-items:center;justify-content:center;gap:14px;font-weight:400;font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:6px;}
@@ -339,12 +339,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
    une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
    detail de periode uniquement sur la ligne forward). */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:14px;row-gap:5px;align-items:baseline;}
-.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.02em;text-align:center;margin-bottom:1px;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
+.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
 .pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
-.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:left;}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;}
 
 /* Chips d'evolution de la guidance annuelle (hypothese.guidanceHistory) -
    chaque point du call affiche en chip, le plus recent mis en avant en
@@ -448,7 +448,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-lbl{font-size:11.5px;width:88px;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
-  .qtr-legend-row{padding:0 14px;margin-top:8px;}
+  .qtr-legend-row{margin-top:5px;}
   .qtr-legend{font-size:8.5px;gap:10px;}
   .qs-qtr-block{margin-top:10px;padding-top:0;}
   .qs-chip{padding:5px 1px;}
@@ -456,11 +456,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:max-content max-content max-content;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
   .pe-lbl{font-size:11.5px;}
   .pe-val{font-size:11.5px;}
   .pe-sub{font-size:8px;}
-  .pe-exhead{font-size:11.5px;}
+  .pe-exhead{font-size:8.5px;}
   .pe-exval{font-size:11.5px;}
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
@@ -1280,7 +1280,15 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // seuil aligne sur l'arrondi affiche (0.05pt), pas la materialite E5 ter
   // (~3%) qui ne pilote plus que la couleur d'alerte. Rien a justifier
   // quand la reconciliation est exacte : le Σ a cote de l'EPS annuel suffit.
-  const colBlock=(arr,annual,note)=>{
+  const legend=`<span class="qtr-legend">
+      <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
+      <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
+    </span>`;
+  // La legende Publié/Estimé ne concerne que l'annee EN COURS (NY est par
+  // definition toujours estime, la distinction n'a pas de sens la-bas) :
+  // elle vit DANS le bloc CY, juste apres son Σ/sa note, jamais dans un
+  // bloc a part au-dessus des deux colonnes.
+  const colBlock=(arr,annual,note,showLegend)=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const delta=(annual>0)?((sum-annual)/annual*100):null;
     const hasGap=delta!=null&&Math.abs(delta)>=0.05;
@@ -1288,12 +1296,9 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
     const sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
     const noteHtml=(hasGap&&note)?`<div class="coherence"${material?' style="color:#c0392b;"':''}>${icons[material?'ecart':'ok']} ${esc(note)}</div>`:'';
-    return `<div class="qs-qtr-block">${chipsRow(arr)}${sumHtml}${noteHtml}</div>`;
+    const legendHtml=showLegend?`<div class="qtr-legend-row">${legend}</div>`:'';
+    return `<div class="qs-qtr-block">${chipsRow(arr)}${sumHtml}${noteHtml}${legendHtml}</div>`;
   };
-  const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend">
-      <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
-      <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
-    </span></div>`;
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
@@ -1350,9 +1355,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     // justifier, l'alignement en pied de colonne (.qs-qtr-block,
     // margin-top:auto) n'est plus parfait entre CY et NY pour ce refresh -
     // compromis assume : l'ecart signale prime sur l'alignement pixel.
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY),
-    legendRow,
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,true),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,false),
     peStack
   };
 }
@@ -1444,7 +1448,6 @@ function renderReturnBlock(ticker, proj, cours){
         ${qeBlock?qeBlock.chipsNY:''}
       </div>
     </div>
-    ${qeBlock?qeBlock.legendRow:''}
   `;
 }
 
