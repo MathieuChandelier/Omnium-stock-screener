@@ -273,9 +273,24 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-header{padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;}
 .rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
 .rb-bridge-wrap{padding:0 20px 12px;}
-.rb-eps-row{display:flex;align-items:stretch;padding:14px 20px 16px;gap:0;}
-.rb-eps-col{flex:1;display:flex;flex-direction:column;}
-.rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
+/* rb-eps-grid remplace l'ancien rb-eps-row (flex). Grille explicite a 3
+   colonnes (CY / separateur / NY) x N lignes (entete, puces trimestrielles,
+   legende) : chaque LIGNE de grille a sa propre hauteur, commune aux deux
+   colonnes, INDEPENDAMMENT du contenu des autres lignes. C'est ce qui
+   garantit que les puces T1-T4 de CY et NY demarrent TOUJOURS a la meme
+   hauteur, quelle que soit l'asymetrie du contenu au-dessus (rb-eps-src
+   n'existe que cote CY) ou en dessous (note de coherence presente sur un
+   seul cote, legende...) - contrairement a l'ancien systeme en flex/
+   margin-top:auto qui ne fonctionnait que si les DEUX blocs de puces
+   avaient exactement la meme hauteur cumulee. Regle structurelle valable
+   quel que soit le contenu futur, jamais a re-verifier a chaque refresh. */
+.rb-eps-grid{display:grid;grid-template-columns:1fr 1px 1fr;padding:14px 20px 16px;}
+.rb-eps-headCY{grid-column:1;grid-row:1;padding-right:14px;}
+.rb-eps-headNY{grid-column:3;grid-row:1;padding-left:14px;}
+.rb-eps-qtrCY{grid-column:1;grid-row:2;padding-right:14px;padding-top:12px;}
+.rb-eps-qtrNY{grid-column:3;grid-row:2;padding-left:14px;padding-top:12px;}
+.rb-eps-legend-row{grid-column:1/-1;grid-row:3;margin-top:8px;}
+.rb-eps-sep{grid-column:2;background:var(--border);margin:0 4px;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:5px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
@@ -286,23 +301,21 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 /* ══════════════════════════════════════════════════════════════
    DÉTAIL TRIMESTRIEL/SEMESTRIEL DE L'EPS + P/E — voir hypothese.
-   quarterlyEPS dans INSTRUCTIONS.md (E5 ter). Les puces Q1-Q4 CY
-   vivent DANS .rb-eps-col (année en cours), les puces NY DANS l'autre
-   .rb-eps-col (année suivante) - integrees a l'annee a laquelle elles
-   appartiennent plutot qu'affichees dans un bloc a part.
-   .qs-qtr-block est pousse en bas de sa colonne (margin-top:auto, les
-   deux .rb-eps-col ayant la meme hauteur via align-items:stretch sur
-   .rb-eps-row) pour que les puces CY et NY demarrent a la meme hauteur
-   par defaut, malgre le texte de source (rb-eps-src) present uniquement
-   cote CY. Chaque colonne peut en plus afficher sa propre note de
-   reconciliation (.coherence), UNIQUEMENT si l'ecart Σ vs EPS annuel de
-   CETTE colonne est reellement non-nul - jamais dupliquee sur l'autre
-   annee si son ecart a elle est nul. Consequence assumee : si une seule
-   des deux annees a un ecart a justifier, l'alignement pixel des puces
-   n'est plus garanti pour ce refresh (voir buildQuarterlyEPS).
-   La legende Publié/Estimé reste transversale (elle ne s'applique qu'a
-   l'annee en cours, NY etant par definition toujours estime), affichee
-   sous les deux colonnes, avant le P/E stack.
+   quarterlyEPS dans INSTRUCTIONS.md (E5 ter). Vit dans .rb-eps-grid (voir
+   plus haut) : rb-eps-headCY/headNY portent l'entete (annee/Omnium/
+   Consensus/source), rb-eps-qtrCY/qtrNY portent les puces T1-T4 - deux
+   LIGNES DE GRILLE distinctes, chacune de hauteur commune aux deux
+   colonnes. Consequence : les puces CY et NY demarrent TOUJOURS a la
+   meme hauteur, quel que soit le contenu au-dessus (source consensus,
+   presente uniquement cote CY) ou en dessous (note de coherence
+   .coherence, presente sur un seul cote si un seul ecart est materiel) -
+   ce n'est plus un alignement negocie au pixel pres (ancien systeme flex/
+   margin-top:auto) mais une garantie structurelle de la grille, valable
+   pour n'importe quelle combinaison de contenu future sans jamais avoir
+   besoin d'etre revalidee a chaque refresh.
+   La legende Publié/Estimé (transversale : ne s'applique qu'a l'annee en
+   cours, NY etant par definition toujours estime) vit dans sa propre
+   ligne de grille .rb-eps-legend-row, sous les deux colonnes de puces.
    ══════════════════════════════════════════════════════════════ */
 .qs-qtr-block{margin-top:auto;padding-top:12px;}
 .qtr-legend-row{display:flex;justify-content:center;margin-top:6px;}
@@ -346,14 +359,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;}
 
-/* Chips d'evolution de la guidance annuelle (hypothese.guidanceHistory) -
-   chaque point du call affiche en chip, le plus recent mis en avant en
-   navy plein, les precedents en fond clair mute - permet de VOIR d'un
-   coup d'oeil la sequence (ex. relevee 3x cette annee) sans avoir a lire
-   une phrase. Voir renderDernierCall. */
-.guid-chip{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--navy-light);color:var(--muted);line-height:1.4;}
-.guid-chip.current{background:var(--navy);color:#fff;font-weight:700;}
-.guid-arrow{color:var(--muted);font-size:10px;flex-shrink:0;}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -440,17 +445,33 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-header{padding:12px 14px 4px;}
   .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
   .rb-bridge-wrap{padding:0 14px 12px;}
-  .rb-eps-row{flex-direction:column;padding:12px 14px 14px;gap:0;}
+  /* rb-eps-grid en mobile : grille -> flex column, avec un ORDRE explicite
+     par classe (plutot que l'ordre naturel du DOM) pour que le groupe CY
+     (entete + puces trimestrielles) reste visuellement ensemble avant le
+     groupe NY, meme si en desktop les puces vivent dans une ligne de
+     grille separee de l'entete. Le separateur dashed (qui marquait
+     auparavant la fin de la colonne CY) se deplace donc sur le DERNIER
+     element du groupe CY - rb-eps-qtrCY si des puces trimestrielles
+     existent (classe .has-qtr posee par JS sur rb-eps-grid), sinon
+     rb-eps-headCY en repli pour les tickers pas encore migres vers
+     quarterlyEPS (comportement mobile inchange pour ceux-la). */
+  .rb-eps-grid{display:flex;flex-direction:column;padding:12px 14px 14px;}
   .rb-eps-sep{display:none;}
-  .rb-eps-col{padding:0 !important;}
-  .rb-eps-col:first-child{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
+  .rb-eps-headCY,.rb-eps-headNY,.rb-eps-qtrCY,.rb-eps-qtrNY{padding:0 !important;}
+  .rb-eps-headCY{order:1;}
+  .rb-eps-qtrCY{order:2;margin-top:10px;}
+  .rb-eps-headNY{order:3;margin-top:14px;}
+  .rb-eps-qtrNY{order:4;margin-top:10px;}
+  .rb-eps-legend-row{order:5;margin-top:8px;}
+  .rb-eps-grid:not(.has-qtr) .rb-eps-headCY{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
+  .rb-eps-grid.has-qtr .rb-eps-qtrCY{padding-bottom:14px !important;margin-bottom:14px;border-bottom:1px dashed var(--border);}
   .rb-eps-val{font-size:11.5px !important;}
   .rb-eps-lbl{font-size:11.5px;width:88px;}
 
   /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
-  .qtr-legend-row{margin-top:5px;}
+  .qtr-legend-row{margin-top:0;}
   .qtr-legend{font-size:8.5px;gap:10px;}
-  .qs-qtr-block{margin-top:10px;padding-top:0;}
+  .qs-qtr-block{margin-top:0;padding-top:0;}
   .qs-chip{padding:5px 1px;}
   .chip-q{font-size:7.5px;}
   .chip-v{font-size:9.5px;}
@@ -465,8 +486,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
-  .guid-chip{font-size:9px;padding:2px 6px;}
-  .guid-arrow{font-size:9px;}
 
   footer{padding:14px;font-size:9.5px;}
 }
@@ -1286,9 +1305,12 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     </span>`;
   // La legende Publié/Estimé ne concerne que l'annee EN COURS (NY est par
   // definition toujours estime, la distinction n'a pas de sens la-bas) :
-  // elle vit DANS le bloc CY, juste apres son Σ/sa note, jamais dans un
-  // bloc a part au-dessus des deux colonnes.
-  const colBlock=(arr,annual,note,showLegend)=>{
+  // elle est desormais retournee A PART (voir legendRow ci-dessous) et
+  // affichee UNE SEULE FOIS, dans sa propre ligne de grille sous les deux
+  // colonnes de puces - jamais nichee dans le bloc CY, precisement pour
+  // ne plus faire varier la hauteur du bloc CY par rapport au bloc NY
+  // (c'est cette variation qui cassait l'alignement des puces avant).
+  const colBlock=(arr,annual,note)=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const delta=(annual>0)?((sum-annual)/annual*100):null;
     const hasGap=delta!=null&&Math.abs(delta)>=0.05;
@@ -1296,9 +1318,9 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
     const sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
     const noteHtml=(hasGap&&note)?`<div class="coherence"${material?' style="color:#c0392b;"':''}>${icons[material?'ecart':'ok']} ${esc(note)}</div>`:'';
-    const legendHtml=showLegend?`<div class="qtr-legend-row">${legend}</div>`:'';
-    return `<div class="qs-qtr-block">${chipsRow(arr)}${sumHtml}${noteHtml}${legendHtml}</div>`;
+    return `<div class="qs-qtr-block">${chipsRow(arr)}${sumHtml}${noteHtml}</div>`;
   };
+  const legendRow=`<div class="qtr-legend-row">${legend}</div>`;
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
@@ -1349,14 +1371,14 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}
     </div>`;
   return {
-    // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
-    // une note n'apparait QUE sous l'annee dont l'ecart est reellement
-    // non-nul. En contrepartie, si une seule des deux annees a un ecart a
-    // justifier, l'alignement en pied de colonne (.qs-qtr-block,
-    // margin-top:auto) n'est plus parfait entre CY et NY pour ce refresh -
-    // compromis assume : l'ecart signale prime sur l'alignement pixel.
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,true),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,false),
+    // chipsCY/chipsNY peuvent avoir des hauteurs differentes (note de
+    // coherence presente sur un seul cote) SANS consequence sur
+    // l'alignement des puces : celles-ci vivent dans leur propre ligne de
+    // grille (.rb-eps-qtrCY/.rb-eps-qtrNY), la note eventuelle s'empile
+    // simplement EN DESSOUS dans la meme cellule - voir .rb-eps-grid.
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY),
+    legendRow,
     peStack
   };
 }
@@ -1420,8 +1442,8 @@ function renderReturnBlock(ticker, proj, cours){
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
     ${qeBlock?qeBlock.peStack:''}
-    <div class="rb-eps-row">
-      <div class="rb-eps-col" style="padding-right:14px;">
+    <div class="rb-eps-grid${qeBlock?' has-qtr':''}">
+      <div class="rb-eps-headCY">
         <div class="rb-eps-year">EPS ${CY}</div>
         <div class="rb-eps-line rb-eps-line-omnium">
           <span class="rb-eps-lbl">Omnium</span>
@@ -1432,10 +1454,9 @@ function renderReturnBlock(ticker, proj, cours){
           <span class="rb-eps-val">${cons?.eps?cons.eps.toFixed(2)+cur:'—'}</span>
         </div>
         ${srcLine?`<div class="rb-eps-src">${srcLine}</div>`:''}
-        ${qeBlock?qeBlock.chipsCY:''}
       </div>
-      <div class="rb-eps-sep"></div>
-      <div class="rb-eps-col" style="padding-left:14px;">
+      <div class="rb-eps-sep" style="grid-row:1 / span ${qeBlock?2:1};"></div>
+      <div class="rb-eps-headNY">
         <div class="rb-eps-year">EPS ${CY+1}</div>
         <div class="rb-eps-line rb-eps-line-omnium">
           <span class="rb-eps-lbl">Omnium</span>
@@ -1445,8 +1466,12 @@ function renderReturnBlock(ticker, proj, cours){
           <span class="rb-eps-lbl">Consensus</span>
           <span class="rb-eps-val">${consNY>0?consNY.toFixed(2)+cur:'—'}</span>
         </div>
-        ${qeBlock?qeBlock.chipsNY:''}
       </div>
+      ${qeBlock?`
+      <div class="rb-eps-qtrCY">${qeBlock.chipsCY}</div>
+      <div class="rb-eps-qtrNY">${qeBlock.chipsNY}</div>
+      <div class="rb-eps-legend-row">${qeBlock.legendRow}</div>
+      `:''}
     </div>
   `;
 }
@@ -1532,17 +1557,20 @@ function renderDernierCall(hyp, ticker, opts={}){
     </div>`:'';
   // Evolution de la guidance ANNUELLE au fil de l'exercice fiscal en cours
   // (hyp.guidanceHistory, deja borne a l'exercice courant par sa propre
-  // mecanique de reset - voir SCHEMA). Chaque point du call en chip, le
-  // plus recent en navy plein - rend visible en un coup d'oeil qu'une
-  // guidance a ete relevee/abaissee plusieurs fois sans avoir a lire une
-  // phrase ("X -> Y -> Z"). Pas d'equivalent pour la guidance trimestrielle
-  // (one-off par nature, pas de suivi a faire).
+  // mecanique de reset - voir SCHEMA). Le DERNIER point de guidanceHistory
+  // correspond toujours au call en cours (meme texte que dc.guidanceAnnuelle,
+  // affiche juste au-dessus) : on l'exclut donc de la liste pour ne jamais
+  // repeter deux fois la meme information. Les points PRECEDENTS sont
+  // affiches en dessous, du plus recent au plus ancien (ordre inverse de la
+  // mecanique d'accumulation qui est chronologique croissante), en simple
+  // ligne muette - meme gabarit que le "Precedemment" de la guidance long
+  // terme juste plus bas (harmonisation des polices/styles entre les deux
+  // mecaniques de suivi, plutot que des chips encadrees en navy).
   const gHist=(hyp?.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
-  const guidTrend=gHist.length>1?`<div style="display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:5px;">
-      ${gHist.map((h,i)=>`${i>0?'<span class="guid-arrow">→</span>':''}<span class="guid-chip${i===gHist.length-1?' current':''}" title="${esc(h.date||'')}">${esc(h.quarter||'')} : ${esc(h.guidanceAnnuelle)}</span>`).join('')}
-    </div>`:'';
+  const gHistPrev=gHist.slice(0,-1).reverse();
+  const guidTrend=gHistPrev.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;line-height:1.5;">Précédemment : ${gHistPrev.map(h=>`${esc(h.quarter||'')} : ${esc(h.guidanceAnnuelle)}`).join(' → ')}</div>`:'';
   const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle${gHist.length>1?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${gHist.length}ᵉ point de l'exercice</span>`:''}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
       ${guidTrend}
     </div>`:'';
