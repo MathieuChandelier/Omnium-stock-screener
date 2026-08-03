@@ -355,7 +355,13 @@ MECANIQUE D'ACCUMULATION ET DE RESET (a appliquer a l'ecriture, avant E8) :
   meme logique de non-alteration retroactive que `priorEPS`), puis :
   - SI le nouveau call a un `fyGuided` IDENTIQUE au `fyGuided` de la
     DERNIERE ligne existante (meme exercice fiscal suivi depuis plusieurs
-    trimestres) : AJOUTER la nouvelle ligne a la suite du tableau existant.
+    trimestres) : AJOUTER la nouvelle ligne a la suite du tableau existant
+    - SAUF SI ce call est en realite le MEME que celui deja porte par la
+      derniere ligne (`quarter` identique) : dans ce cas NE RIEN AJOUTER,
+      le tableau reste tel quel (voir VERIFICATION DE FRAICHEUR en tete de
+      la section REFRESH plus bas, qui doit normalement deja avoir arrete
+      le refresh avant d'arriver ici - cette regle est une securite
+      redondante, pas le mecanisme principal).
   - SI le nouveau call a un `fyGuided` DIFFERENT (premiere guidance d'un
     nouvel exercice - typiquement le call qui suit la cloture de
     l'exercice precedent) : RESET - le tableau ne contient plus QUE la
@@ -651,7 +657,11 @@ de non-alteration retroactive que `priorEPS`) :
   `{asOf, insiderPct}` de l'ANCIEN `ownership` fourni en entree (s'il
   existe et si `insiderPct` n'y est pas `null`) et l'AJOUTER a la suite de
   l'ancien tableau `history` (repris tel quel, jamais recalcule) - cette
-  copie est un simple horodatage, jamais reinterpretee. Si l'ancien
+  copie est un simple horodatage, jamais reinterpretee, SAUF si ce point
+  est identique (meme `asOf`) au DERNIER point deja present dans `history`
+  (signe que ce refresh est redondant avec le precedent, voir VERIFICATION
+  DE FRAICHEUR en tete de la section REFRESH) : dans ce cas NE RIEN
+  AJOUTER, securite redondante avec ce garde-fou en amont. Si l'ancien
   `ownership` est absent (titre cree avant l'introduction de ce champ),
   `history` demarre a `[]` comme en creation plutot que de bloquer le
   refresh.
@@ -1450,6 +1460,24 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
 L'utilisateur fournit le JSON existant du titre dans sa requete (source de
 la borne temporelle E1 et de la base de reconciliation E6) : pas besoin de
 confirmer le nom/code, il est deja connu.
+0. VERIFICATION DE FRAICHEUR (avant toute recherche) : compare le trimestre/
+   evenement trouve lors de la RECHERCHE DU COMMUNIQUE (plus haut) au
+   `hypothese.dernierCall.quarter` DEJA PRESENT dans le JSON fourni en
+   entree. SI IDENTIQUE (le refresh porte sur le MEME call que celui deja
+   couvert par le fichier - rien de nouveau n'a ete publie depuis) :
+   ARRETE-TOI ICI, ne deroule PAS la suite de la boucle, et demande
+   explicitement a l'utilisateur s'il souhaite (a) un refresh de pure forme
+   ne touchant que des elements independants du trimestre (ex. un
+   evenement hors-cycle survenu depuis, un changement d'actionnariat/
+   compliance), auquel cas `dernierCall`/`guidanceHistory` sont repris TELS
+   QUELS sans nouvelle ligne ni recherche redondante du communique/
+   transcript, ou (b) qu'un nouveau trimestre a bien ete publie entre
+   temps et qu'il faut regarder plus loin. Ce garde-fou existe parce que
+   `guidanceHistory` (AJOUTE une ligne des que `fyGuided` correspond, voir
+   SCHEMA) et `ownership.history` (snapshotte l'ancien point a CHAQUE
+   refresh, sans condition de changement) n'ont eux-memes aucune protection
+   interne contre un doublon si le meme call est traite deux fois - c'est
+   cette etape 0, en amont, qui doit l'empecher.
 1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
    snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
    avant le JSON final.
