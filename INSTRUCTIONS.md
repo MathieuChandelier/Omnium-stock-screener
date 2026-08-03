@@ -78,6 +78,8 @@ data/
     "source":"Refresh T2 2026 - Transcript T2 2026",
     "dernierCall":{
       "quarter":"T2 26",
+      "communiqueAnalyse":true,
+      "transcriptAnalyse":true,
       "resultatsVsConsensus":{"ca":{"actual":3820,"consensus":3790},"epsAdj":{"actual":0.72,"consensus":0.68,"basis":"non-GAAP"}},
       "guidanceProchainTrimestre":"Phrase courte, chiffres inclus, ou 'Pas de guidance trimestrielle chiffree fournie' si la societe ne guide qu'a l'annee.",
       "guidanceAnnuelle":"Phrase courte, chiffres inclus (CA et marge ou EPS).",
@@ -241,6 +243,19 @@ Sous-champs :
 - `quarter` : libelle court du trimestre concerne, meme convention que
   `nextEvent.label` (ex. "T2 26", "Q2 26" selon la langue - rester coherent
   avec le reste du fichier).
+- `communiqueAnalyse` / `transcriptAnalyse` : booleens FACTUELS - `true` si
+  l'assistant a effectivement pu LIRE le document correspondant pour ce
+  refresh (voir RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus
+  haut), `false` sinon (introuvable, payant, pas encore publie au moment du
+  refresh, etc.). PILOTE L'AFFICHAGE cote app (`index.html`,
+  `renderDernierCall`) : coche turquoise si `true`, croix grise si `false`,
+  a cote du libelle "Résultats {quarter}" - c'est la SEULE fonction de ces
+  deux champs, ne jamais les renseigner sans avoir reellement tente d'ouvrir
+  chaque document (un `true` alors que seul le communique a ete lu, par
+  exemple, induit le lecteur en erreur sur la profondeur de la recherche).
+  Si `dernierCall` est absent (refresh non lie a un resultat trimestriel),
+  ces deux champs n'ont pas lieu d'etre - l'app retombe alors sur l'ancien
+  affichage `date · source`.
 - `resultatsVsConsensus` : le PUBLIE face au CONSENSUS pour le trimestre qui
   vient de sortir.
   - `ca` : `{actual, consensus}` en millions, MEME BASE COMPTABLE que `data`
