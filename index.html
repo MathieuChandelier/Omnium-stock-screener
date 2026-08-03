@@ -339,12 +339,21 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
    une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
    detail de periode uniquement sur la ligne forward). */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:150px auto 1fr auto;column-gap:14px;row-gap:5px;align-items:baseline;}
-.pe-exhead{grid-column:4;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:right;margin-bottom:1px;}
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:150px auto auto auto;column-gap:14px;row-gap:5px;align-items:baseline;}
+.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:left;margin-bottom:1px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
 .pe-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--teal-text);}
-.pe-exval{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);text-align:right;}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);text-align:left;}
+
+/* Chips d'evolution de la guidance annuelle (hypothese.guidanceHistory) -
+   chaque point du call affiche en chip, le plus recent mis en avant en
+   navy plein, les precedents en fond clair mute - permet de VOIR d'un
+   coup d'oeil la sequence (ex. relevee 3x cette annee) sans avoir a lire
+   une phrase. Voir renderDernierCall. */
+.guid-chip{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--navy-light);color:var(--muted);line-height:1.4;}
+.guid-chip.current{background:var(--navy);color:#fff;font-weight:700;}
+.guid-arrow{color:var(--muted);font-size:10px;flex-shrink:0;}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -440,7 +449,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:108px auto 1fr auto;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:108px auto auto auto;}
   .pe-lbl{font-size:10.5px;}
   .pe-val{font-size:10.5px;}
   .pe-sub{font-size:8px;}
@@ -449,6 +458,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
+  .guid-chip{font-size:9px;padding:2px 6px;}
+  .guid-arrow{font-size:9px;}
 
   footer{padding:14px;font-size:9.5px;}
 }
@@ -1308,15 +1319,20 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // Ordre : P/E CY, puis le forward 12 mois (a cheval entre les deux
   // annees), puis P/E NY - reflete sa position temporelle entre les deux
   // plutot que de le releguer en dernier. Grille a 4 colonnes (libelle /
-  // valeur / detail periode forward / P/E ex-cash) : chaque ligne emet
-  // EXACTEMENT 4 cellules dans le meme ordre pour que le placement
-  // automatique de la grille aligne les valeurs P/E et ex-cash entre les 3
+  // valeur / P/E ex-cash / detail periode forward) : le P/E ex-cash est
+  // volontairement place juste apres la valeur principale (le plus a
+  // gauche possible tout en gardant le column-gap, jamais colle) puisque
+  // c'est une variante du MEME P/E, plus lisible proche de sa valeur
+  // source que relegue en bord droit ; le detail de periode du forward
+  // (qui n'existe que sur la ligne du milieu) devient la colonne finale.
+  // Chaque ligne emet EXACTEMENT 4 cellules dans le meme ordre pour que le
+  // placement automatique de la grille aligne les valeurs entre les 3
   // lignes, meme quand une cellule est vide (span vide plutot qu'omise).
   const peStack=`<div class="pe-stack">
-      ${hasExCash?`<div></div><div></div><div></div><div class="pe-exhead">P/E ex-cash</div>`:''}
-      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div><div></div>${exCell(peExCY)}
-      <div class="pe-lbl">P/E 12 mois forward</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div><div class="pe-sub">${qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel):''}</div>${exCell(peExFwd)}
-      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div><div></div>${exCell(peExNY)}
+      ${hasExCash?`<div></div><div></div><div class="pe-exhead">P/E ex-cash</div><div></div>`:''}
+      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}<div></div>
+      <div class="pe-lbl">P/E 12 mois forward</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}<div class="pe-sub">${qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel):''}</div>
+      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}<div></div>
     </div>`;
   return {
     // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
@@ -1376,7 +1392,7 @@ function renderReturnBlock(ticker, proj, cours){
 
   el.innerHTML = `
     <div class="rb-header">
-      <div class="rb-eps-year" style="margin-bottom:0;color:var(--teal-text);">Thèse Omnium</div>
+      <div class="rb-eps-year" style="margin-bottom:0;color:var(--navy);">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
       <div class="rb-eps-val" style="color:var(--navy);">CAGR ${total>=0?'+':''}${total.toFixed(1)}%</div>
@@ -1444,11 +1460,24 @@ function pctBadge(delta){
 // Bloc "dernier trimestre publie" (resultats vs consensus, guidance, points cles
 // du call) - voir hypothese.dernierCall dans INSTRUCTIONS.md. Affiche juste sous
 // la ligne date/source, AVANT le resume/texte de la these (ne s'y substitue pas).
-function renderDernierCall(dc, ticker, opts={}){
+// Recoit `hyp` (hypothese complete, pas seulement dernierCall) pour pouvoir
+// aussi afficher l'EVOLUTION de la guidance annuelle (hyp.guidanceHistory,
+// propre a l'exercice fiscal en cours, pas de suivi necessaire pour la
+// guidance trimestrielle qui est un one-off par nature) et de la guidance
+// long terme (hyp.guidanceLongTerme + son historique hyp.
+// guidanceLongTermeHistory, qui ne change que rarement). Rien de tout ca ne
+// s'affiche si `dernierCall` est absent (refresh non lie a un resultat).
+function renderDernierCall(hyp, ticker, opts={}){
+  const dc=hyp?.dernierCall||null;
   if(!dc)return '';
   const cur=tickerCur(ticker)||'€';
   const q=(dc.quarter||'').trim();
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const fmtShortDate=(iso)=>{
+    if(!iso)return'';
+    const p=String(iso).split('-');
+    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
+  };
   const ca=dc.resultatsVsConsensus?.ca||null;
   const eps=dc.resultatsVsConsensus?.epsAdj||null;
   const caActual=ca&&ca.actual!=null?fmtBigNum(ca.actual):null;
@@ -1489,9 +1518,34 @@ function renderDernierCall(dc, ticker, opts={}){
       <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
     </div>`:'';
+  // Evolution de la guidance ANNUELLE au fil de l'exercice fiscal en cours
+  // (hyp.guidanceHistory, deja borne a l'exercice courant par sa propre
+  // mecanique de reset - voir SCHEMA). Chaque point du call en chip, le
+  // plus recent en navy plein - rend visible en un coup d'oeil qu'une
+  // guidance a ete relevee/abaissee plusieurs fois sans avoir a lire une
+  // phrase ("X -> Y -> Z"). Pas d'equivalent pour la guidance trimestrielle
+  // (one-off par nature, pas de suivi a faire).
+  const gHist=(hyp?.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
+  const guidTrend=gHist.length>1?`<div style="display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      ${gHist.map((h,i)=>`${i>0?'<span class="guid-arrow">→</span>':''}<span class="guid-chip${i===gHist.length-1?' current':''}" title="${esc(h.date||'')}">${esc(h.quarter||'')} : ${esc(h.guidanceAnnuelle)}</span>`).join('')}
+    </div>`:'';
   const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle${gHist.length>1?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${gHist.length}ᵉ point de l'exercice</span>`:''}</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
+      ${guidTrend}
+    </div>`:'';
+  // Guidance LONG TERME : vit au niveau de `hypothese` (pas de
+  // `dernierCall`, un objectif pluriannuel n'est pas propre a un
+  // trimestre), avec son propre historique cumulatif (guidanceLongTerme
+  // History, snapshot uniquement quand le texte change reellement - voir
+  // SCHEMA), affiche en simple ligne "Precedemment" (evolution rare,
+  // contrairement a la guidance annuelle qui justifie des chips).
+  const ltHist=(hyp?.guidanceLongTermeHistory||[]).filter(h=>h&&h.text);
+  const ltTrail=ltHist.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:3px;">Précédemment : ${ltHist.map(h=>`${esc(h.text)}${h.asOf?` (${fmtShortDate(h.asOf)})`:''}`).join(' → ')}</div>`:'';
+  const guidLT=hyp?.guidanceLongTerme?`<div style="margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance long terme</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(hyp.guidanceLongTerme)}</div>
+      ${ltTrail}
     </div>`:'';
   const points=(dc.pointsCles||[]).filter(Boolean);
   const pointsBlock=points.length?`<div style="margin-top:8px;">
@@ -1499,9 +1553,9 @@ function renderDernierCall(dc, ticker, opts={}){
       ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
     </div>`:'';
 
-  if(!sourcesHeading&&!resultsBlock&&!guidQ&&!guidFY&&!pointsBlock)return '';
+  if(!sourcesHeading&&!resultsBlock&&!guidQ&&!guidFY&&!guidLT&&!pointsBlock)return '';
   return `<div style="${opts.first?'':'border-top:1px solid var(--border);margin-top:10px;'}padding-top:${opts.first?'0':'10px'};">
-    ${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}${guidQ}${guidFY}${pointsBlock}
+    ${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}${guidQ}${guidFY}${guidLT}${pointsBlock}
   </div>`;
 }
 
@@ -1643,7 +1697,7 @@ function renderContextBullets(ticker, proj, cours){
   if(!traceEl)return;
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
-  const dcBanner=renderDernierCall(d.hypothese?.dernierCall||null, ticker, {first:true});
+  const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
   const fullSumm=(lastEvt.summary||'').trim();
