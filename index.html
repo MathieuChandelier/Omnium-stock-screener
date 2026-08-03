@@ -277,7 +277,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-col{flex:1;display:flex;flex-direction:column;}
 .rb-eps-sep{width:1px;background:var(--border);margin:0 4px;flex-shrink:0;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:12px;font-weight:700;color:inherit;}
-.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--teal-text);margin-bottom:9px;}
+.rb-eps-year{font-family:'Poppins',sans-serif;font-size:16px;font-weight:900;color:var(--navy);margin-bottom:9px;}
 .rb-eps-line{display:flex;align-items:baseline;gap:9px;margin-bottom:5px;}
 .rb-eps-line-omnium{color:var(--navy);}
 .rb-eps-line-consensus{color:var(--navy);}
@@ -334,12 +334,17 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
    le libelle, pour ne pas faire varier la largeur fixe du libelle entre
    les 3 lignes.  */
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:flex;flex-direction:column;gap:2px;}
-.pe-row{display:flex;align-items:baseline;gap:18px;}
-.pe-row-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);width:150px;flex-shrink:0;}
-.pe-row-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
-.pe-fwd-sub{margin-left:8px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
-.pe-exval{margin-left:8px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--muted);}
+/* P/E stack : grille a 4 colonnes (libelle / valeur / detail periode
+   forward / P/E ex-cash) pour garantir un alignement pixel-parfait des
+   valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
+   une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
+   detail de periode uniquement sur la ligne forward). */
+.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:150px auto 1fr auto;column-gap:14px;row-gap:5px;align-items:baseline;}
+.pe-exhead{grid-column:4;font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:right;margin-bottom:1px;}
+.pe-lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+.pe-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);}
+.pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--teal-text);}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);text-align:right;}
 
 /* ══════════════════════════════════════════════════════════════
    TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
@@ -435,12 +440,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8.5px;}
   .coherence{font-size:8.5px;margin-top:6px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;gap:2px;}
-  .pe-row{gap:10px;flex-wrap:wrap;}
-  .pe-row-lbl{font-size:10.5px;width:108px;}
-  .pe-row-val{font-size:10.5px;}
-  .pe-fwd-sub{font-size:8px;margin-left:6px;}
-  .pe-exval{font-size:9px;margin-left:6px;}
+  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:8px;grid-template-columns:108px auto 1fr auto;}
+  .pe-lbl{font-size:10.5px;}
+  .pe-val{font-size:10.5px;}
+  .pe-sub{font-size:8px;}
+  .pe-exhead{font-size:8px;}
+  .pe-exval{font-size:10.5px;}
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -1298,14 +1303,20 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peExCY=(priceExCY!=null&&epsCY>0)?(priceExCY/epsCY):null;
   const peExFwd=(priceExCY!=null&&qe.epsForward12m>0)?(priceExCY/qe.epsForward12m):null;
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
-  const exSuffix=v=>v!=null?`<span class="pe-exval">${v.toFixed(1)}× ex-cash</span>`:'';
+  const hasExCash=peExCY!=null||peExFwd!=null||peExNY!=null;
+  const exCell=v=>hasExCash?`<div class="pe-exval">${v!=null?v.toFixed(1)+'×':'—'}</div>`:'';
   // Ordre : P/E CY, puis le forward 12 mois (a cheval entre les deux
   // annees), puis P/E NY - reflete sa position temporelle entre les deux
-  // plutot que de le releguer en dernier.
+  // plutot que de le releguer en dernier. Grille a 4 colonnes (libelle /
+  // valeur / detail periode forward / P/E ex-cash) : chaque ligne emet
+  // EXACTEMENT 4 cellules dans le meme ordre pour que le placement
+  // automatique de la grille aligne les valeurs P/E et ex-cash entre les 3
+  // lignes, meme quand une cellule est vide (span vide plutot qu'omise).
   const peStack=`<div class="pe-stack">
-      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY}</div><div class="pe-row-val">${peCY?peCY.toFixed(1)+'×':'—'}${exSuffix(peExCY)}</div></div>
-      <div class="pe-row"><div class="pe-row-lbl">P/E 12 mois forward</div><div class="pe-row-val">${peFwd?peFwd.toFixed(1)+'×':'—'}${exSuffix(peExFwd)}${qe.forwardPeriodLabel?`<span class="pe-fwd-sub">${esc(qe.forwardPeriodLabel)}</span>`:''}</div></div>
-      <div class="pe-row"><div class="pe-row-lbl">P/E ${CY+1}</div><div class="pe-row-val">${peNY?peNY.toFixed(1)+'×':'—'}${exSuffix(peExNY)}</div></div>
+      ${hasExCash?`<div></div><div></div><div></div><div class="pe-exhead">P/E ex-cash</div>`:''}
+      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div><div></div>${exCell(peExCY)}
+      <div class="pe-lbl">P/E 12 mois forward</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div><div class="pe-sub">${qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel):''}</div>${exCell(peExFwd)}
+      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div><div></div>${exCell(peExNY)}
     </div>`;
   return {
     // chipsCY/chipsNY ne sont plus garantis structurellement identiques :
@@ -1365,7 +1376,7 @@ function renderReturnBlock(ticker, proj, cours){
 
   el.innerHTML = `
     <div class="rb-header">
-      <div class="rb-eps-year" style="margin-bottom:0;">Thèse Omnium</div>
+      <div class="rb-eps-year" style="margin-bottom:0;color:var(--teal-text);">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
       <div class="rb-eps-val" style="color:var(--navy);">CAGR ${total>=0?'+':''}${total.toFixed(1)}%</div>
