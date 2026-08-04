@@ -4,104 +4,59 @@
   "yahooSymbol": "KO",
   "dividende": 2.04,
   "data": [
-    {
-      "year": 2021,
-      "ca": 38655,
-      "ebit": 10308,
-      "net": 9771,
-      "shares": 4340,
-      "nd": 30000
-    },
-    {
-      "year": 2022,
-      "ca": 43004,
-      "ebit": 10909,
-      "net": 9542,
-      "shares": 4330,
-      "nd": 32000
-    },
-    {
-      "year": 2023,
-      "ca": 45754,
-      "ebit": 11311,
-      "net": 10714,
-      "shares": 4324,
-      "nd": 31000
-    },
-    {
-      "year": 2024,
-      "ca": 47061,
-      "ebit": 9992,
-      "net": 10631,
-      "shares": 4315,
-      "nd": 33000,
-      "div": 1.94
-    },
-    {
-      "year": 2025,
-      "ca": 47900,
-      "ebit": 14300,
-      "net": 13100,
-      "shares": 4310,
-      "nd": 33300,
-      "div": 2.04
-    }
+    {"year":2021,"ca":38655,"ebit":10308,"net":9771,"shares":4340,"nd":30000},
+    {"year":2022,"ca":43004,"ebit":10909,"net":9542,"shares":4330,"nd":32000},
+    {"year":2023,"ca":45754,"ebit":11311,"net":10714,"shares":4324,"nd":31000},
+    {"year":2024,"ca":47061,"ebit":9992,"net":10631,"shares":4315,"nd":33000,"div":1.94},
+    {"year":2025,"ca":47900,"ebit":14300,"net":13100,"shares":4310,"nd":33300,"div":2.04}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 3.25,
-    "epsNY": 3.51,
-    "date": "2026-07-07",
-    "source": "Guidance FY2026 comparable EPS +8-9% vs 3,00$ (RELEVEE de 7-8%) = ~3,24-3,27. Base comparable PROPRE (peu d'enjeu retraitement). P/E ~25x. Prochaine publ. 28/07"
-  },
+  "epsConsensus": {"year":2026,"eps":3.29,"epsNY":3.54,"date":"2026-07-28","source":"Guidance FY2026 comparable EPS +9-10% vs 3,00$ (RELEVEE de +8-9% au T1) = ~3,27-3,30$. Base comparable propre. P/E ~25x. Prochaine publication T3 26 fin octobre 2026"},
   "particularites": [],
+  "nextEvent": {"label":"T3 26","date":"2026-10-27"},
+  "compliance": {
+    "asOf":"2026-08-04",
+    "items":[
+      {"year":2026,"title":"Litige fiscal transfer pricing avec l'IRS (annees fiscales 2010-2025) : plaidoiries orales presentees devant la Cour d'appel du 11e circuit fin juin 2026, decision attendue sous 6 a 12 mois. Exposition potentielle desormais chiffree par la societe a environ 14 Md$ d'impot et interets cumules selon la methodologie retenue par le Tax Court ; 6,0 Md$ deja verses en depot de garantie (IRS Tax Litigation Deposit). Le management se dit confiant de l'emporter en appel.","allegedBy":"Internal Revenue Service (IRS)","date":"2020-11-18","status":"en_appel","outcome":null,"source":"10-Q T2 2026 (SEC) + transcript earnings call 28/07/2026 (reponse John Murphy, CFO)"}
+    ],
+    "note":"Il ne s'agit pas d'une allegation de fraude comptable mais d'un differend de methodologie de prix de transfert (repartition des profits entre filiales) - de nature recurrente dans l'industrie pour les multinationales de cette taille. Le passif reste NON provisionne au bilan au-dela du depot de garantie deja verse ; en cas de defaite en appel, l'impact potentiel (~14 Md$) serait tres significatif rapporte a la capitalisation. Traite comme risque idiosyncratique hors base centrale (aucun adjXXX ne l'integre). (Recherche du 2026-08-04)"
+  },
   "hypothese": {
-    "date": "2026-07-07",
-    "source": "Creation - Transcript T1 2026 + 8-K SEC FY2025 + recherche publique",
-    "summary": "Leader mondial boissons non-alcoolisees, modele concentre asset-light, FCF ~12 Md$, machine RGM (parts de valeur +20 trimestres). GUIDANCE RELEVEE (comparable EPS +8-9%). Cession CCBA (S2 2026). Litige IRS = risque ouvert. Base comparable propre (peu d'enjeu retraitement). adjEPS 3,25->4,38.",
-    "text": "== SYNTHESE DE LA THESE ==\nCoca-Cola est le leader mondial des boissons non-alcoolisees, avec un modele \"concentre\" asset-light exceptionnellement rentable (marge operationnelle >30%, FCF ~12 Md$/an) porte par 32 marques milliardaires et un systeme d'embouteillage mondial quasi impossible a repliquer. La these est celle d'une valeur DEFENSIVE DE QUALITE : le titre gagne des parts de valeur depuis 20 trimestres consecutifs grace a une discipline de revenue growth management (RGM) exceptionnelle, et vient de voir sa guidance RELEVEE apres un T1 solide. Contrairement a la plupart des dossiers du portefeuille, KO ne pose quasiment aucun probleme de retraitement comptable (l'ecart comparable/GAAP est domine par de vrais elements non-operationnels, pas par de l'amortissement recurrent masque) - c'est le titre le plus \"propre\" a modeliser du portefeuille. Le risque principal n'est pas operationnel mais juridique : un litige fiscal IRS non provisionne.\n\n== EVENEMENTS & INFLEXIONS (T1 2026, publie 28/04) ==\nImpact : positif.\n1. GUIDANCE FY2026 RELEVEE [classe (i)] : suite a un T1 solide (comparable EPS 0,86$ +18%, volume +3% sur tous segments), guidance comparable EPS relevee a +8-9% (vs 7-8%) vs 3,00$ en 2025, grace a un taux d'impot abaisse a 19,9%. Organique +4-5% maintenu.\n2. CESSION CCBA (Coca-Cola Beverages Africa) [classe (iii)] : cloture attendue S2 2026. Headwind ~-4pt sur le CA comparable et ~-1pt sur l'EPS en 2026, MAIS relutif a la MARGE (embouteillage = basse marge) -> opportunite d'expansion au S2.\n3. LITIGE IRS [classe (iii), risque ouvert, NON chiffre] : contentieux fiscal en cours (depot de caution deja effectue), en attente d'une decision de justice. Passif potentiel non provisionne -> principal risque baissier idiosyncratique. Buyback faible (0,7 Md$ en 2025), cash preserve dans l'attente.\n4. MARGE T1 [classe (i)] : gross margin comparable -30bps (pressions the/cafe, phasing inventaire APAC = one-off), MAIS operating margin comparable +70bps (efficiences OpEx).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript T1 2026 (organique +10%, volume +3%, comparable EPS 0,86$ +18%). Secondaires : FY2025 (CA 47,9 Md$ +1,9%, COMPARABLE EPS 3,00$ +4%, GAAP EPS 3,04$ - quasi identiques = base propre). Cours ~83$ (proche du plus haut historique), ~4,31 Md actions, dette nette ~33,3 Md$.\nGuidance FY2026 (RELEVEE) : organique +4-5%, comparable EPS +8-9%, tax underlying 19,9%.\nProchain refresh utile : T2 2026, 28 juillet.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = COMPARABLE, metrique de guidance ET de consensus. PEU d'enjeu retraitement : l'ecart comparable/GAAP vient d'elements NON-OPERATIONNELS ponctuels (charge fairlife CVR 2024, litige IRS, mark-to-market hedges), pas d'amortissement recurrent masque. En 2025 comparable (3,00) ~ GAAP (3,04) - base propre. adjEBIT = op income comparable, marge 30,5% (2026) -> 32,8% (2030), expansion via RGM + sortie CCBA. Trajectoire : +8,3% (2026) -> +8%/+8%/+7,4%/+7,6% (algo LT). P/E 2026 ~25,5x.\nA suivre : (1) cloture CCBA (calendrier, effet marge/CA) ; (2) LITIGE IRS (decision de justice) ; (3) tenue du volume (+3% au T1) ; (4) matieres the/cafe ; (5) FX ; (6) reprise buybacks post-IRS.\n\n== CATALYSEURS ==\nMachine RGM (parts de valeur +20 trimestres) ; 32 marques milliardaires + innovation ; FCF massif (dividende Dividend King + reprise buyback) ; expansion de marge post-CCBA ; croissance structurelle APAC ; systeme d'embouteillage (fosse) ; valeur defensive prisee.",
-    "impact": "positif",
-    "adjEPS": {
-      "2026": 3.25,
-      "2027": 3.51,
-      "2028": 3.79,
-      "2029": 4.07,
-      "2030": 4.38
+    "date":"2026-08-04",
+    "priorEPS":{"date":"2026-07-07","eps":{"2026":3.25,"2027":3.51}},
+    "source":"Refresh T2 2026 - Communique de resultats (28/07/2026) + Transcript conference (28/07/2026, 8h30 ET)",
+    "dernierCall":{
+      "quarter":"T2 26",
+      "resultatsVsConsensus":{"ca":{"actual":13380,"consensus":13100},"epsAdj":{"actual":0.97,"consensus":0.93,"basis":"comparable non-GAAP"}},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree (guidance annuelle uniquement). Elements qualitatifs T3 26 : expeditions de concentre en retard d'1 point sur les volumes unitaires (effet de timing).",
+      "guidanceAnnuelle":"Organique ~5% (haut de la fourchette 4-5% precedente), comparable EPS all-in +9-10% vs 3,00$ en 2025 (releve de +8-9%), comparable EPS change constant hors M&A +7-8% (releve de +6-7%), ETR sous-jacent maintenu a 19,9%. Cession CCBA supposee cloturee fin T3/T4 26 (headwind 2-3pts CA comparable, ~1pt EPS comparable), tailwind devises desormais ~3pts sur l'EPS comparable annuel. T4 26 : 6 jours de vente en moins vs T4 25 (effet calendaire).",
+      "pointsCles":[
+        "Volume unitaire mondial +5%, meilleur trimestre depuis environ 17 ans, largement porte par l'activation Coupe du Monde FIFA (Trademark Coca-Cola +5%, Powerade +8%) - effet a fort caractere non recurrent, a ne pas extrapoler tel quel sur les trimestres suivants.",
+        "Litige IRS desormais chiffre pour la premiere fois : exposition potentielle ~14 Md$ (impot + interets 2010-2025), 6,0 Md$ deja verses en depot ; plaidoiries orales tenues fin juin devant le 11e circuit, decision attendue sous 6 a 12 mois, management confiant de l'emporter.",
+        "Perte de parts de valeur en Asie-Pacifique, concentree en Inde (gains compenses en partie par le Japon et la Chine) : price/mix regional -9%, explique a parts egales par le timing des investissements, des initiatives d'accessibilite prix et le mix geographique (Inde/Chine croissant plus vite que les marches developpes) - strategie d'investissement deliberee selon le management, pas une perte de competitivite.",
+        "Cession CCBA : charges de depreciation anterieures partiellement reprises en 2026, cloture attendue fin T3/debut T4 sous reserve des autorisations reglementaires, benefice structurel de marge attendu des le T4."
+      ]
     },
-    "adjCA": {
-      "2026": 48618,
-      "2027": 50806,
-      "2028": 53093,
-      "2029": 55482,
-      "2030": 57701
-    },
-    "adjEBIT": {
-      "2026": 14828,
-      "2027": 15851,
-      "2028": 16884,
-      "2029": 17921,
-      "2030": 18926
-    },
-    "adjNet": {
-      "2026": 13975,
-      "2027": 15058,
-      "2028": 16221,
-      "2029": 17379,
-      "2030": 18659
-    },
-    "adjND": {
-      "2026": 31000,
-      "2027": 28000,
-      "2028": 24000,
-      "2029": 19000,
-      "2030": 13000
-    },
-    "adjShares": {
-      "2026": 4300,
-      "2027": 4290,
-      "2028": 4280,
-      "2029": 4270,
-      "2030": 4260
-    }
+    "guidanceHistory":[
+      {"quarter":"T1 26","date":"2026-04-28","fyGuided":2026,"guidanceAnnuelle":"Organique +4-5%, comparable EPS +8-9% vs 3,00$, ETR sous-jacent 19,9%."},
+      {"quarter":"T2 26","date":"2026-07-28","fyGuided":2026,"guidanceAnnuelle":"Organique ~5% (haut de fourchette), comparable EPS +9-10% vs 3,00$ (releve), ETR sous-jacent maintenu 19,9%, tailwind devises ~3pts sur EPS, headwind cession CCBA ~1pt EPS / 2-3pts CA."}
+    ],
+    "guidanceLongTerme":"Algorithme long terme reaffirme : organique 4-6%/an, ambition de se situer au haut de cette fourchette de facon soutenue (citation CFO John Murphy) ; expansion de marge structurelle liee au modele asset-light.",
+    "guidanceLongTermeHistory":[],
+    "summary":"Leader mondial boissons non-alcoolisees, modele concentre asset-light, FCF ~12 Md$, machine RGM (parts de valeur +20 trimestres, mais premiere fissure localisee en Inde). GUIDANCE RELEVEE une 2e fois (comparable EPS +9-10%, apres +8-9% au T1). Cession CCBA en cours de finalisation (S2 2026). Litige IRS desormais CHIFFRE (~14 Md$ d'exposition) = risque toujours ouvert mais mieux caracterise. adjEPS 3,29->4,40.",
+    "text":"== SYNTHESE DE LA THESE ==\nCoca-Cola est le leader mondial des boissons non-alcoolisees, avec un modele \"concentre\" asset-light exceptionnellement rentable (marge operationnelle comparable 35,6% au T2, FCF ~12 Md$/an) porte par 32 marques milliardaires et un systeme d'embouteillage mondial quasi impossible a repliquer. La these reste celle d'une valeur DEFENSIVE DE QUALITE, et le T2 26 la renforce : guidance relevee pour la deuxieme fois consecutive (comparable EPS +9-10% contre +8-9% au T1), portee par un volume unitaire mondial en hausse de 5% (meilleur trimestre depuis pres de 17 ans), largement du a l'activation Coupe du Monde FIFA - un catalyseur puissant mais NON recurrent, dont l'effet ne doit pas etre extrapole sur les trimestres a venir (comparaisons plus difficiles au S2, 6 jours de vente en moins au T4). La machine RGM continue de gagner des parts de valeur en Amerique du Nord, Amerique latine et EMEA, mais affiche pour la premiere fois une fissure localisee : perte de parts de valeur en Inde, assumee par le management comme un investissement deliberement genererateur d'accessibilite prix plutot qu'une perte de competitivite - point a surveiller sur les prochains trimestres pour confirmer cette lecture. Le risque principal reste juridique et desormais mieux caracterise : le litige fiscal IRS, longtemps traite comme un risque ouvert non chiffre, est desormais quantifie par la societe elle-meme a environ 14 Md$ d'exposition potentielle (impot + interets 2010-2025), avec une decision d'appel attendue sous 6 a 12 mois - le risque n'est pas leve mais il est desormais mesurable, ce qui ameliore la qualite de l'information disponible pour le modele sans en changer la conclusion (toujours hors base centrale, cf ancrage IRS_LITIGATION_RISK).\n\n== EVENEMENTS & INFLEXIONS (T2 2026, publie 28/07) ==\nImpact : positif.\n1. GUIDANCE FY2026 RELEVEE UNE 2E FOIS [classe (i)] : comparable EPS +9-10% (vs +8-9% au T1) vs 3,00$ en 2025, organique porte a ~5% (haut de la fourchette 4-5%), grace a un T2 solide (volume +5%, organique +6%) et un tailwind devises desormais estime a 3 points sur l'EPS comparable annuel.\n2. LITIGE IRS DESORMAIS CHIFFRE [classe (iii), risque ouvert, precise] : exposition potentielle ~14 Md$ (impot+interets 2010-2025 selon methodologie Tax Court), 6,0 Md$ deja verses en depot de garantie. Plaidoiries orales tenues fin juin devant le 11e circuit, decision attendue sous 6-12 mois. Toujours non provisionne au-dela du depot ; management confiant de l'emporter en appel.\n3. CESSION CCBA [classe (iii), en cours de finalisation] : cloture desormais attendue fin T3 ou T4 2026 (sous reserve des autorisations reglementaires) ; charges de depreciation anterieures partiellement reprises en 2026 (signe de conditions de cession meilleures qu'anticipe) ; headwind temporaire 2-3pts CA / ~1pt EPS en 2026, benefice structurel de marge attendu des le T4 (sortie d'une activite d'embouteillage a basse marge).\n4. PARTS DE VALEUR - PREMIERE FISSURE LOCALISEE [classe (ii)] : gains confirmes en Amerique du Nord, Amerique latine et EMEA, mais PERTE de parts de valeur en Asie-Pacifique concentree sur l'Inde (price/mix regional -9%, explique a parts egales par timing des investissements, initiatives d'accessibilite et mix geographique) - strategie d'investissement assumee par le management (multi-decennale), pas encore un signal de deterioration structurelle mais point de vigilance nouveau.\n5. EFFET COUPE DU MONDE FIFA [classe (ii), largement non recurrent] : activation record (180+ marches, 20M+ points de vente, plus de 60 Md d'impressions), contribution significative aux +5% de volume du trimestre (Trademark Coca-Cola +5%, Powerade +8%) - a exclure de l'extrapolation du rythme de croissance des trimestres suivants.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : communique officiel de resultats T2 2026 (28/07/2026, coca-colacompany.com) et conference management du meme jour (8h30 ET). CA T2 13,38 Md$ (+7% publie, +6% organique, volume +5%). Marge operationnelle 34,9% (comparable 35,6%, +90bps). EPS GAAP 1,03$ (+16%), comparable EPS 0,97$ (+11%, consensus 0,93$ battu). Cash-flow operationnel S1 7,5 Md$, FCF S1 6,9 Md$. Dette long terme 37,0 Md$ (contre 42,1 Md$ fin 2025) - desendettement plus rapide qu'anticipe. 4 303 M actions en circulation au 27/07/2026. Guidance FY26 : organique ~5%, comparable EPS +9-10% vs 3,00$, ETR sous-jacent 19,9%. Prochain refresh utile : publication T3 2026, fin octobre 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = COMPARABLE, metrique de guidance ET de consensus, inchangee depuis la creation (peu d'enjeu retraitement, ecart comparable/GAAP domine par des elements non-operationnels ponctuels). adjCA 2026 reconstruit par bridge explicite (base 2025 x (1+organique 5%+FX 1%-cession CCBA 2,5%) = 49 580 M$) plutot que par un taux de croissance implicite seul - methode plus tracable, ecart de +2% avec le refresh precedent absorbe car sous le seuil de materialite. adjEPS directement ancre sur le milieu de la guidance relevee (9-10%) = 3,29$. Schema du fichier ENRICHI a ce refresh : ajout des champs dernierCall/guidanceHistory/compliance/priorEPS/ancrages, absents du fichier de creation (mise a niveau vers le protocole actuel). Champ ownership toujours absent - non traite a ce refresh (hors perimetre de la demande, a envisager separement si utile : gouvernance KO peu differenciante, flottant tres largement institutionnel). A suivre : (1) decision de la Cour d'appel du 11e circuit sur le litige IRS (6-12 mois) ; (2) cloture effective de la cession CCBA et materialisation du benefice de marge au T4 ; (3) confirmation ou non d'une perte de parts de valeur structurelle en Inde sur les prochains trimestres ; (4) desendettement (dette LT deja en baisse de 5,1 Md$ au S1, trajectoire adjND revisee a la baisse) ; (5) normalisation de la croissance de volume post-effet Coupe du Monde au S2/2027.\n\n== CATALYSEURS ==\nPublication T3 2026 (fin octobre) permettra de verifier la normalisation du rythme de croissance post-Coupe du Monde et une premiere lecture de l'impact CCBA sur la marge. Machine RGM (parts de valeur, hors Inde) ; 32 marques milliardaires + innovation ; FCF massif (dividende Dividend King + reprise buyback) ; expansion de marge post-CCBA des le T4 ; decision favorable eventuelle sur le litige IRS (recours aux fonds deja deposes en cas de victoire).",
+    "impact":"positif",
+    "ancrages": [
+      {"id":"GUIDANCE_RAISE_Q2","moteur":"Guidance FY26 relevee pour la 2e fois consecutive au T2 : comparable EPS +9-10% (vs +8-9% au T1) vs 3,00$ en 2025, organique porte a ~5% (haut de fourchette 4-5%), tailwind devises annuel desormais estime a 3 points sur l'EPS comparable.","applique":["adjCA.2026","adjEBIT.2026","adjNet.2026","adjEPS.2026"],"confiance":"haute"},
+      {"id":"CCBA_DIVESTITURE","moteur":"Cession CCBA desormais quantifiee : headwind 2026 de 2-3pts sur le CA comparable et ~1pt sur l'EPS comparable, cloture attendue fin T3/T4 26 ; benefice structurel de marge attendu des le T4 (sortie d'une activite d'embouteillage a basse marge), charges de depreciation anterieures deja partiellement reprises en 2026.","applique":["adjCA.2026","adjEBIT.2026","adjEBIT.2027"],"confiance":"haute"},
+      {"id":"IRS_LITIGATION_RISK","moteur":"Litige transfer pricing IRS desormais chiffre par la societe : exposition potentielle ~14 Md$ (impot+interets 2010-2025), 6,0 Md$ deja verses en depot de garantie, decision d'appel attendue sous 6-12 mois (plaidoiries tenues fin juin 2026). Risque idiosyncratique majeur volontairement maintenu HORS base centrale (non provisionne), a traiter comme asymetrie baissiere non chiffree dans les adjXXX plutot qu'integre.","applique":[],"confiance":"haute"},
+      {"id":"WORLD_CUP_ONEOFF","moteur":"Volume T2 +5% (meilleur trimestre depuis ~17 ans) largement tire par l'activation Coupe du Monde FIFA, evenement non recurrent ; base de comparaison plus difficile attendue au S2 2026 et en 2027, combinee a 6 jours de vente en moins au T4 26 (effet calendaire).","applique":["adjCA.2027"],"confiance":"moyenne"},
+      {"id":"APAC_INDIA_SHARE_LOSS","moteur":"Perte de parts de valeur en Asie-Pacifique concentree sur l'Inde (price/mix regional -9%), assumee par le management comme investissement deliberement multi-decennal (accessibilite prix, mix geographique) plutot que perte de competitivite - watch-list plutot que retraitement chiffre a ce stade, impact potentiel modeste si la lecture du management se confirme.","applique":["adjCA.2026","adjCA.2027"],"confiance":"basse"}
+    ],
+    "adjEPS":{"2026":3.29,"2027":3.54,"2028":3.80,"2029":4.09,"2030":4.40},
+    "adjCA":{"2026":49580,"2027":52150,"2028":54750,"2029":57400,"2030":60100},
+    "adjEBIT":{"2026":15200,"2027":16072,"2028":17211,"2029":18481,"2030":19835},
+    "adjNet":{"2026":14147,"2027":15187,"2028":16264,"2029":17464,"2030":18744},
+    "adjND":{"2026":30000,"2027":26000,"2028":21000,"2029":15000,"2030":9000},
+    "adjShares":{"2026":4300,"2027":4290,"2028":4280,"2029":4270,"2030":4260}
   }
 }
