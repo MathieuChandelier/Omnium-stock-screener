@@ -4,143 +4,53 @@
   "yahooSymbol": "BVI.PA",
   "dividende": 0.92,
   "data": [
-    {
-      "year": 2021,
-      "ca": 4981,
-      "ebit": 719,
-      "net": 425,
-      "shares": 452,
-      "nd": 900
-    },
-    {
-      "year": 2022,
-      "ca": 5651,
-      "ebit": 799,
-      "net": 455,
-      "shares": 451,
-      "nd": 950
-    },
-    {
-      "year": 2023,
-      "ca": 5868,
-      "ebit": 824,
-      "net": 504,
-      "shares": 450,
-      "nd": 1050,
-      "div": 0.83
-    },
-    {
-      "year": 2024,
-      "ca": 6241,
-      "ebit": 933,
-      "net": 569,
-      "shares": 448,
-      "nd": 1250,
-      "div": 0.9
-    },
-    {
-      "year": 2025,
-      "ca": 6466,
-      "ebit": 992,
-      "net": 588,
-      "shares": 445,
-      "nd": 1400,
-      "div": 0.92
-    }
+    {"year":2021,"ca":4981,"ebit":719,"net":425,"shares":452,"nd":900},
+    {"year":2022,"ca":5651,"ebit":799,"net":455,"shares":451,"nd":950},
+    {"year":2023,"ca":5868,"ebit":824,"net":504,"shares":450,"nd":1050,"div":0.83},
+    {"year":2024,"ca":6241,"ebit":933,"net":569,"shares":448,"nd":1250,"div":0.9},
+    {"year":2025,"ca":6466,"ebit":992,"net":588,"shares":445,"nd":1400,"div":0.92}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 1.58,
-    "epsNY": 1.72,
-    "date": "2026-07-29",
-    "source": "Consensus officiel BV pre-publication (1,53€) ajuste par Omnium de la revision haussiere anticipee par AlphaValue/RBC/Jefferies suite au beat S1 26."
-  },
+  "epsConsensus": {"year":2026,"eps":1.58,"epsNY":1.72,"date":"2026-07-29","source":"Consensus officiel BV pre-publication (1,53€) ajuste par Omnium de la revision haussiere anticipee par AlphaValue/RBC/Jefferies suite au beat S1 26."},
   "particularites": [],
   "ownership": {
-    "asOf": "2026-04",
-    "insiderPct": 23.0,
-    "insiderDesc": "Wendel SE, actionnaire de reference historique depuis 1995 (detenait 99,2% avant l'introduction en bourse de 2007), reduit progressivement sa participation depuis 2024-2025 (~26% en avril 2024, cession complementaire ~6,7% du capital via vente a terme prepayee annoncee courant 2025-2026) - reste de tres loin le premier actionnaire, avec representation au conseil d'administration.",
-    "insiderSource": "Communiques Wendel/Bureau Veritas (WendelGroup.com, Businesswire 2024), a rafraichir sur la derniere declaration de franchissement de seuil AMF au prochain refresh.",
-    "notableHolders": [
-      {
-        "investor": "The Capital Group Companies",
-        "tier": "T2",
-        "pct": null,
-        "asOf": "2026",
-        "movement": "n/d"
-      }
-    ],
-    "coverageNote": "Titre francais (Euronext Paris) : perimetre 13F americain non applicable, pas d'equivalent local recherche systematiquement au-dela du reperage ci-dessus.",
+    "asOf":"2026-04",
+    "insiderPct":23.0,
+    "insiderDesc":"Wendel SE, actionnaire de reference historique depuis 1995 (detenait 99,2% avant l'introduction en bourse de 2007), reduit progressivement sa participation depuis 2024-2025 (~26% en avril 2024, cession complementaire ~6,7% du capital via vente a terme prepayee annoncee courant 2025-2026) - reste de tres loin le premier actionnaire, avec representation au conseil d'administration.",
+    "insiderSource":"Communiques Wendel/Bureau Veritas (WendelGroup.com, Businesswire 2024), a rafraichir sur la derniere declaration de franchissement de seuil AMF au prochain refresh.",
+    "notableHolders":[{"investor":"The Capital Group Companies","tier":"T2","pct":null,"asOf":"2026","movement":"n/d"}],
+    "coverageNote":"Titre francais (Euronext Paris) : perimetre 13F americain non applicable, pas d'equivalent local recherche systematiquement au-dela du reperage ci-dessus.",
     "history": []
   },
   "compliance": {
-    "asOf": "2026-07-29",
-    "items": [
-      {
-        "year": 2026,
-        "status": "enquete_en_cours",
-        "title": "Irregularites internes decouvertes dans la zone Moyen-Orient & Afrique, essentiellement au sein du sous-segment 'Services aux Gouvernements' (audits/inspections pour comptes publics) - decouvertes a la suite d'alertes internes, auto-declarees aux autorites francaises dans une demarche volontaire de transparence.",
-        "allegedBy": "Verifications internes de la Societe elle-meme, autorites francaises informees volontairement (nature exacte - corruption, falsification - non precisee publiquement ; un analyste a explicitement demande si cela s'apparentait a de la corruption lors du call T1 2026 sans reponse tranchee de la direction)",
-        "outcome": "Contrats concernes resilies, sortie integrale du sous-segment Services aux Gouvernements engagee au T2 2026 et devant se poursuivre tout au long de 2026 (quelques contrats pouvant deborder debut 2027). Provision de 32,0 M€ comptabilisee au 30/06/2026 representant la meilleure estimation a date des consequences financieres. Titre -13% le jour de l'annonce initiale (avril 2026).",
-        "source": "Communiques Bureau Veritas T1 2026 (avril) et S1 2026 (29/07/2026), transcripts des calls correspondants",
-        "date": "2026-07-29"
-      }
+    "asOf":"2026-07-29",
+    "items":[
+      {"year":2026,"status":"enquete_en_cours","title":"Irregularites internes decouvertes dans la zone Moyen-Orient & Afrique, essentiellement au sein du sous-segment 'Services aux Gouvernements' (audits/inspections pour comptes publics) - decouvertes a la suite d'alertes internes, auto-declarees aux autorites francaises dans une demarche volontaire de transparence.","allegedBy":"Verifications internes de la Societe elle-meme, autorites francaises informees volontairement (nature exacte - corruption, falsification - non precisee publiquement ; un analyste a explicitement demande si cela s'apparentait a de la corruption lors du call T1 2026 sans reponse tranchee de la direction)","outcome":"Contrats concernes resilies, sortie integrale du sous-segment Services aux Gouvernements engagee au T2 2026 et devant se poursuivre tout au long de 2026 (quelques contrats pouvant deborder debut 2027). Provision de 32,0 M€ comptabilisee au 30/06/2026 representant la meilleure estimation a date des consequences financieres. Titre -13% le jour de l'annonce initiale (avril 2026).","source":"Communiques Bureau Veritas T1 2026 (avril) et S1 2026 (29/07/2026), transcripts des calls correspondants","date":"2026-07-29"}
     ],
-    "note": "Recherche etendue a l'historique public du titre lors de cette premiere initialisation du champ (titre cree avant l'introduction de compliance dans le schema) : aucune autre allegation de fraude ou enquete de regulateur/cabinet plaignant/vendeur a decouvert identifiee au-dela de l'element ci-dessus."
+    "note":"Recherche etendue a l'historique public du titre lors de cette premiere initialisation du champ (titre cree avant l'introduction de compliance dans le schema) : aucune autre allegation de fraude ou enquete de regulateur/cabinet plaignant/vendeur a decouvert identifiee au-dela de l'element ci-dessus."
   },
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": "2026-10-21"
-  },
+  "nextEvent": {"label":"Q3 26","date":"2026-10-21"},
   "hypothese": {
-    "date": "2026-07-31",
-    "source": "Refresh S1 2026 - Communique complet des resultats semestriels (29/07/2026, etats financiers consolides + indicateurs alternatifs de performance detailles) + TRANSCRIPT INTEGRAL du call du meme jour (Hinda Gharbi CEO / Francois Chabas CFO, prepared remarks + Q&A complete avec 10 analystes) + couverture de marche (Zonebourse/BFM/AlphaValue/RBC/Jefferies) + recherche publique complementaire.",
-    "summary": "S1 2026 solide : croissance organique 5,0% (acceleration a 5,5% au T2), marge operationnelle ajustee 15,5% (+29pb a change constant), guidance FY2026 RELEVEE (croissance organique 'moderee a elevee a un chiffre' contre 'moderee a un chiffre'). Le dossier compliance Government Services (avril 2026) est desormais CHIFFRE : provision de 32,0 M€ comptabilisee, sortie du sous-segment engagee, evenement qualifie de 'clarificateur' par les brokers. Dette nette ajustee en forte hausse a 1 688,6 M€ (effet calendaire dividende T2 vs T3 l'an dernier, dans la fourchette LEAP 28 1,0-2,0x EBITDA a 1,45x). Cession O&P/Charbon signee (470 M€ EV, cloture visee T1 2027) et acquisition LotusWorks finalisee (centres de donnees/semi-conducteurs). adjEPS normalise 1,42->2,25 (2026-2030), revise a la baisse a court terme (charge compliance desormais reelle, base de CA reduite par la rotation de portefeuille) mais convergence quasi inchangee a horizon 2029-2030.",
-    "text": "== SYNTHESE DE LA THESE ==\nLe S1 2026 confirme la solidite operationnelle de Bureau Veritas (croissance organique 5,0% en acceleration sequentielle a 5,5% au T2, marge ajustee en progression de 29pb a change constant) et la guidance FY2026 est RELEVEE sur la composante croissance. Le marche a salue ces resultats (+7-8% le jour de la publication) malgre un chiffre d'affaires publie inferieur aux attentes en valeur absolue, les investisseurs se concentrant sur l'acceleration organique, l'expansion de marge et le relevement de guidance. Le dossier compliance Government Services, ouvert et non chiffre lors de la these de creation (T1 2026), est desormais CLARIFIE : une provision de 32,0 M€ a ete comptabilisee au 30 juin 2026, representant la meilleure estimation actuelle de l'impact financier total, et la sortie du sous-segment est en cours d'execution (engagee au T2, quasi achevee fin 2026, quelques contrats pouvant deborder sur le T1 2027). Plusieurs brokers (Jefferies, RBC Capital) qualifient cette clarification d'evenement positif apres plusieurs mois de vide d'information. En parallele, la rotation de portefeuille LEAP 28 s'accelere : cession signee des activites Produits Petroliers & Petrochimiques et Charbon (470 M€ de valeur d'entreprise, ~450 M€ de CA annualise 2025, cloture visee T1 2027) et finalisation de l'acquisition LotusWorks (centres de donnees/semi-conducteurs, effet relutif des 2026). Le modele Omnium normalise (base ajustee moins amortissement des incorporels d'acquisition, methodologie inchangee depuis la these de creation) integre desormais la charge compliance reellement constatee - non presente dans les chiffres de creation - et une base de chiffre d'affaires reduite par les cessions en cours, d'ou une revision a la baisse de l'EPS 2026-2027 malgre le beat operationnel du semestre ; la trajectoire de sortie (2029-2030) est quasiment inchangee, la rotation de portefeuille ameliorant la qualite du mix a mesure qu'elle compense la perte de CA absolu.\n\n== EVENEMENTS & INFLEXIONS (S1 2026, publie 29/07) ==\n1. GUIDANCE FY2026 RELEVEE [classe i] : croissance organique desormais 'moderee a elevee a un chiffre' (contre 'moderee a un chiffre' precedemment) ; marge operationnelle ajustee 'en amelioration a change constant' (inchangee) ; flux de tresorerie 'a un niveau eleve' (inchange). RBC note que le relevement tient surtout a l'effet des cessions/sorties d'activites sur le profil de croissance organique du perimetre restant, plus qu'a une reacceleration generalisee.\n2. COMPLIANCE GOVERNMENT SERVICES - DESORMAIS CHIFFRE [classe i, ex-classe iii] : provision de 32,0 M€ comptabilisee au 30/06/26 (meilleure estimation a date). Sortie integrale du sous-segment (185 M€ de CA 2025) engagee au T2 2026, quasi achevee fin d'annee (quelques contrats debordant potentiellement sur le T1 2027 selon le CEO). Nature exacte de l'irregularite (corruption ou autre) toujours non precisee publiquement malgre une question directe d'analyste (Kepler Cheuvreux) lors du call T1.\n3. CESSION PRODUITS PETROLIERS & PETROCHIMIQUES + CHARBON [classe i, quantifie] : accord signe juin 2026, valeur d'entreprise 470 M€ (multiple VE/EBIT 11,1x sur base 2025 post-IFRS16), ~450 M€ de CA annualise 2025 cede, cloture visee fin T1 2027, transaction attendue globalement neutre sur le resultat. Activites a croissance et marge inferieures a la moyenne du Groupe - la cession ameliore le profil structurel (croissance organique, marge, ROCE).\n4. ACQUISITION LOTUSWORKS FINALISEE [classe i] : cloturee le 27/07/2026 (Irlande/Etats-Unis, 750 employes, CA 2025 131 M€), plateforme mise en service/QA-QC pour centres de donnees et fabricants de semi-conducteurs - renforce la these Mission Critical Assets (B&I Capex +40% organique au S1). Integration a compter d'aout 2026, legerement relutive en 2026.\n5. DETTE NETTE AJUSTEE EN FORTE HAUSSE SEQUENTIELLE [classe i, largement technique] : 1 688,6 M€ au 30/06/26 (vs 1 253,3 M€ fin 2025), ratio ND/EBITDA 1,45x (vs 1,1x), reste dans la fourchette LEAP 28 (1,0-2,0x). Hausse principalement due a l'effet calendaire du versement de dividende (T2 26 vs T3 25 l'an dernier, 427,7 M€ verses) plutot qu'a une deterioration operationnelle - la tresorerie disponible de 942,1 M€ et 600 M€ de lignes non tirees preservent une structure financiere solide, notation A3 Moody's confirmee en avril 2026.\n6. NOUVEAU REPORTING A 4 DIVISIONS [classe iii, cosmetique] : passage de 6 a 4 lignes de reporting (Industrie & Matieres Premieres, Batiment & Infrastructures, Business Assurance, Tests & Services Produits) a compter du T3 2026 - vise a mieux refleter la transformation du portefeuille, sans impact sur les chiffres consolides.\n7. CHANGEMENTS AU COMITE EXECUTIF [classe iii] : nouveau Directeur Commercial (Khurram Majeed) et nouveau Directeur du Developpement d'entreprise/M&A (Marios Broustas, ex-banquier d'affaires 30 ans d'experience) nommes en juillet 2026, dans un contexte d'acceleration M&A explicitement annoncee par la direction.\n\n8. CERTIFICATION - DIAGNOSTIC PRECISE PAR LE TRANSCRIPT [classe i] : le CEO ecarte explicitement un ralentissement de marche (\"I don't think it's a market slowdown\") - la sous-performance (organique 1,9%, marge -236pb organique) est attribuee a un probleme d'EXECUTION COMMERCIALE localise aux marches matures/schemas QHSE traditionnels (les marches emergents et les activites de transition/digital assurance croissent en high-single-digit). Cote marge, le CFO cite deux causes precises et jugees temporaires : (i) deux acquisitions dont la montee en puissance prend plus de temps que prevu, (ii) 'une situation operationnelle tres localisee' qualifiee d''accident' - recovery attendu des le S2, 'operations review' axee sur les efforts commerciaux (pas d'exit ou cession envisage a ce stade).\n9. STRATEGIE IA REPORTEE A LA JOURNEE INVESTISSEURS [classe iii, non chiffre] : le management a explicitement choisi de ne pas aborder l'IA lors de ce call ('we have elected in this busy call not to discuss AI matters'), la prochaine phase de LEAP 28 devant l'integrer avec une mise a jour complete prevue le 22/09/2026. Point d'attention explicite pour le prochain refresh.\n10. TRAITEMENT COMPTABLE 'ACTIVITES ABANDONNEES' (IFRS 5) A PARTIR DU T3 [classe iii, technique] : confirme par le CFO, les DEUX activites en cours de sortie (Government Services ET Petrole/Petrochimie-Charbon) basculeront en 'discontinued operations' des la publication T3 2026 (1er janvier retraite en base de comparaison), avec un chiffre d'affaires 'continuing operations' distinct du chiffre total groupe. Vigilance a avoir au prochain refresh sur la bonne base de comparaison (perimetre total vs perimetre continue).\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = IFRS ajustee moins amortissement des incorporels d'acquisition (recurrent chez un acquereur en serie, garde - methodologie inchangee depuis la these de creation). ETR normatif maintenu a 29,3% (coherent avec le TEI ajuste S1 26 reel, stable vs S1 25). H1 2026 normalise (Omnium) : EBIT 483,1 M€ (marge 14,83%), net part du Groupe 287,3 M€ (EPS implicite 0,647€, +5,7% vs S1 25 normalise). FY2026 construit bottom-up (S1 reel + S2 estime sur guidance/tendance de marge) plutot que simplement cale sur le consensus officiel comme a la creation - ecart a la baisse vs le consensus pre-publication (1,53) qui n'integrait pas encore la charge compliance ni la base de CA reduite par les cessions.\nA suivre : (1) cloture effective de la cession O&P/Charbon (T1 2027 vise) et impact definitif sur le perimetre 2027 ; (2) calendrier complet de sortie Government Services (essentiellement fin 2026) ; (3) Journee Investisseurs du 22/09/26 (mise a jour ambitions post-recentrage) ; (4) normalisation de la dette nette ajustee au S2 (effet calendaire dividende) ; (5) montee en puissance de LotusWorks et de l'acceleration M&A annoncee ; (6) recouper epsConsensus une fois le consensus officiel effectivement mis a jour post-publication ; (7) prochain refresh utile : chiffre d'affaires T3 2026 (21/10/26) puis Journee Investisseurs (22/09/26) et resultats annuels 2026 (25/02/27).\n\n== CATALYSEURS ==\nMission Critical Assets / centres de donnees (B&I Capex +40% organique, LotusWorks) ; recentrage de portefeuille LEAP 28 (rotation ~20% du portefeuille executee, re-rating du mix qualite/marge) ; clarification du dossier compliance (32 M€ provisionnes, incertitude levee) ; Journee Investisseurs du 22 septembre ; machine a cash (FCF, dividende + rachats d'actions 200 M€) ; risque residuel : nature exacte de l'irregularite MEA toujours non precisee publiquement, execution de la sortie Government Services a finaliser.",
-    "impact": "positif",
-    "priorEPS": {
-      "date": "2026-07-06",
-      "eps": {
-        "2026": 1.55,
-        "2027": 1.69,
-        "2028": 1.86,
-        "2029": 2.04,
-        "2030": 2.23
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 2026",
-        "date": "2026-04-21",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance organique moderee a un chiffre du chiffre d'affaires ; marge operationnelle ajustee en amelioration a change constant ; flux de tresorerie eleve."
-      },
-      {
-        "quarter": "S1 2026",
-        "date": "2026-07-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance organique RELEVEE a moderee a elevee a un chiffre (compte tenu des sorties d'activites engagees) ; marge operationnelle ajustee en amelioration a change constant (inchangee) ; flux de tresorerie eleve (inchange)."
-      }
+    "date":"2026-08-04",
+    "source":"Refresh de forme (ajout decoupage semestriel S1/S2) - meme call S1 2026 (29/07/2026), pas de nouveau document ni nouveau trimestre publie",
+    "summary":"S1 2026 solide : croissance organique 5,0% (acceleration a 5,5% au T2), marge operationnelle ajustee 15,5% (+29pb a change constant), guidance FY2026 RELEVEE (croissance organique 'moderee a elevee a un chiffre' contre 'moderee a un chiffre'). Le dossier compliance Government Services (avril 2026) est desormais CHIFFRE : provision de 32,0 M€ comptabilisee, sortie du sous-segment engagee, evenement qualifie de 'clarificateur' par les brokers. Dette nette ajustee en forte hausse a 1 688,6 M€ (effet calendaire dividende T2 vs T3 l'an dernier, dans la fourchette LEAP 28 1,0-2,0x EBITDA a 1,45x). Cession O&P/Charbon signee (470 M€ EV, cloture visee T1 2027) et acquisition LotusWorks finalisee (centres de donnees/semi-conducteurs). adjEPS normalise 1,42->2,25 (2026-2030), revise a la baisse a court terme (charge compliance desormais reelle, base de CA reduite par la rotation de portefeuille) mais convergence quasi inchangee a horizon 2029-2030.",
+    "text": "== SYNTHESE DE LA THESE ==\nLe S1 2026 confirme la solidite operationnelle de Bureau Veritas (croissance organique 5,0% en acceleration sequentielle a 5,5% au T2, marge ajustee en progression de 29pb a change constant) et la guidance FY2026 est RELEVEE sur la composante croissance. Le marche a salue ces resultats (+7-8% le jour de la publication) malgre un chiffre d'affaires publie inferieur aux attentes en valeur absolue, les investisseurs se concentrant sur l'acceleration organique, l'expansion de marge et le relevement de guidance. Le dossier compliance Government Services, ouvert et non chiffre lors de la these de creation (T1 2026), est desormais CLARIFIE : une provision de 32,0 M€ a ete comptabilisee au 30 juin 2026, representant la meilleure estimation actuelle de l'impact financier total, et la sortie du sous-segment est en cours d'execution (engagee au T2, quasi achevee fin 2026, quelques contrats pouvant deborder sur le T1 2027). Plusieurs brokers (Jefferies, RBC Capital) qualifient cette clarification d'evenement positif apres plusieurs mois de vide d'information. En parallele, la rotation de portefeuille LEAP 28 s'accelere : cession signee des activites Produits Petroliers & Petrochimiques et Charbon (470 M€ de valeur d'entreprise, ~450 M€ de CA annualise 2025, cloture visee T1 2027) et finalisation de l'acquisition LotusWorks (centres de donnees/semi-conducteurs, effet relutif des 2026). Le modele Omnium normalise (base ajustee moins amortissement des incorporels d'acquisition, methodologie inchangee depuis la these de creation) integre desormais la charge compliance reellement constatee - non presente dans les chiffres de creation - et une base de chiffre d'affaires reduite par les cessions en cours, d'ou une revision a la baisse de l'EPS 2026-2027 malgre le beat operationnel du semestre ; la trajectoire de sortie (2029-2030) est quasiment inchangee, la rotation de portefeuille ameliorant la qualite du mix a mesure qu'elle compense la perte de CA absolu.\n\n== EVENEMENTS & INFLEXIONS (S1 2026, publie 29/07) ==\n1. GUIDANCE FY2026 RELEVEE [classe i] : croissance organique desormais 'moderee a elevee a un chiffre' (contre 'moderee a un chiffre' precedemment) ; marge operationnelle ajustee 'en amelioration a change constant' (inchangee) ; flux de tresorerie 'a un niveau eleve' (inchange). RBC note que le relevement tient surtout a l'effet des cessions/sorties d'activites sur le profil de croissance organique du perimetre restant, plus qu'a une reacceleration generalisee.\n2. COMPLIANCE GOVERNMENT SERVICES - DESORMAIS CHIFFRE [classe i, ex-classe iii] : provision de 32,0 M€ comptabilisee au 30/06/26 (meilleure estimation a date). Sortie integrale du sous-segment (185 M€ de CA 2025) engagee au T2 2026, quasi achevee fin d'annee (quelques contrats debordant potentiellement sur le T1 2027 selon le CEO). Nature exacte de l'irregularite (corruption ou autre) toujours non precisee publiquement malgre une question directe d'analyste (Kepler Cheuvreux) lors du call T1.\n3. CESSION PRODUITS PETROLIERS & PETROCHIMIQUES + CHARBON [classe i, quantifie] : accord signe juin 2026, valeur d'entreprise 470 M€ (multiple VE/EBIT 11,1x sur base 2025 post-IFRS16), ~450 M€ de CA annualise 2025 cede, cloture visee fin T1 2027, transaction attendue globalement neutre sur le resultat. Activites a croissance et marge inferieures a la moyenne du Groupe - la cession ameliore le profil structurel (croissance organique, marge, ROCE).\n4. ACQUISITION LOTUSWORKS FINALISEE [classe i] : cloturee le 27/07/2026 (Irlande/Etats-Unis, 750 employes, CA 2025 131 M€), plateforme mise en service/QA-QC pour centres de donnees et fabricants de semi-conducteurs - renforce la these Mission Critical Assets (B&I Capex +40% organique au S1). Integration a compter d'aout 2026, legerement relutive en 2026.\n5. DETTE NETTE AJUSTEE EN FORTE HAUSSE SEQUENTIELLE [classe i, largement technique] : 1 688,6 M€ au 30/06/26 (vs 1 253,3 M€ fin 2025), ratio ND/EBITDA 1,45x (vs 1,1x), reste dans la fourchette LEAP 28 (1,0-2,0x). Hausse principalement due a l'effet calendaire du versement de dividende (T2 26 vs T3 25 l'an dernier, 427,7 M€ verses) plutot qu'a une deterioration operationnelle - la tresorerie disponible de 942,1 M€ et 600 M€ de lignes non tirees preservent une structure financiere solide, notation A3 Moody's confirmee en avril 2026.\n6. NOUVEAU REPORTING A 4 DIVISIONS [classe iii, cosmetique] : passage de 6 a 4 lignes de reporting (Industrie & Matieres Premieres, Batiment & Infrastructures, Business Assurance, Tests & Services Produits) a compter du T3 2026 - vise a mieux refleter la transformation du portefeuille, sans impact sur les chiffres consolides.\n7. CHANGEMENTS AU COMITE EXECUTIF [classe iii] : nouveau Directeur Commercial (Khurram Majeed) et nouveau Directeur du Developpement d'entreprise/M&A (Marios Broustas, ex-banquier d'affaires 30 ans d'experience) nommes en juillet 2026, dans un contexte d'acceleration M&A explicitement annoncee par la direction.\n8. CERTIFICATION - DIAGNOSTIC PRECISE PAR LE TRANSCRIPT [classe i] : le CEO ecarte explicitement un ralentissement de marche (\"I don't think it's a market slowdown\") - la sous-performance (organique 1,9%, marge -236pb organique) est attribuee a un probleme d'EXECUTION COMMERCIALE localise aux marches matures/schemas QHSE traditionnels (les marches emergents et les activites de transition/digital assurance croissent en high-single-digit). Cote marge, le CFO cite deux causes precises et jugees temporaires : (i) deux acquisitions dont la montee en puissance prend plus de temps que prevu, (ii) 'une situation operationnelle tres localisee' qualifiee d''accident' - recovery attendu des le S2, 'operations review' axee sur les efforts commerciaux (pas d'exit ou cession envisage a ce stade).\n9. STRATEGIE IA REPORTEE A LA JOURNEE INVESTISSEURS [classe iii, non chiffre] : le management a explicitement choisi de ne pas aborder l'IA lors de ce call ('we have elected in this busy call not to discuss AI matters'), la prochaine phase de LEAP 28 devant l'integrer avec une mise a jour complete prevue le 22/09/2026. Point d'attention explicite pour le prochain refresh.\n10. TRAITEMENT COMPTABLE 'ACTIVITES ABANDONNEES' (IFRS 5) A PARTIR DU T3 [classe iii, technique] : confirme par le CFO, les DEUX activites en cours de sortie (Government Services ET Petrole/Petrochimie-Charbon) basculeront en 'discontinued operations' des la publication T3 2026 (1er janvier retraite en base de comparaison), avec un chiffre d'affaires 'continuing operations' distinct du chiffre total groupe. Vigilance a avoir au prochain refresh sur la bonne base de comparaison (perimetre total vs perimetre continue).\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBASE = IFRS ajustee moins amortissement des incorporels d'acquisition (recurrent chez un acquereur en serie, garde - methodologie inchangee depuis la these de creation). ETR normatif maintenu a 29,3% (coherent avec le TEI ajuste S1 26 reel, stable vs S1 25). H1 2026 normalise (Omnium) : EBIT 483,1 M€ (marge 14,83%), net part du Groupe 287,3 M€ (EPS implicite 0,647€, +5,7% vs S1 25 normalise). FY2026 construit bottom-up (S1 reel + S2 estime sur guidance/tendance de marge) plutot que simplement cale sur le consensus officiel comme a la creation - ecart a la baisse vs le consensus pre-publication (1,53) qui n'integrait pas encore la charge compliance ni la base de CA reduite par les cessions. Decoupage semestriel ajoute a ce refresh (E5 ter, cadence semestrielle - BV ne publie pas de resultat operationnel trimestriel complet) : S1 26 actual 0,647€ / S2 26 reconstruit 0,773€, ratio S1/FY (45,6%) reconduit pour batir l'estimation S1/S2 2027.\nA suivre : (1) cloture effective de la cession O&P/Charbon (T1 2027 vise) et impact definitif sur le perimetre 2027 ; (2) calendrier complet de sortie Government Services (essentiellement fin 2026) ; (3) Journee Investisseurs du 22/09/26 (mise a jour ambitions post-recentrage) ; (4) normalisation de la dette nette ajustee au S2 (effet calendaire dividende) ; (5) montee en puissance de LotusWorks et de l'acceleration M&A annoncee ; (6) recouper epsConsensus une fois le consensus officiel effectivement mis a jour post-publication ; (7) prochain refresh utile : chiffre d'affaires T3 2026 (21/10/26) puis Journee Investisseurs (22/09/26) et resultats annuels 2026 (25/02/27).\n\n== CATALYSEURS ==\nMission Critical Assets / centres de donnees (B&I Capex +40% organique, LotusWorks) ; recentrage de portefeuille LEAP 28 (rotation ~20% du portefeuille executee, re-rating du mix qualite/marge) ; clarification du dossier compliance (32 M€ provisionnes, incertitude levee) ; Journee Investisseurs du 22 septembre ; machine a cash (FCF, dividende + rachats d'actions 200 M€) ; risque residuel : nature exacte de l'irregularite MEA toujours non precisee publiquement, execution de la sortie Government Services a finaliser.",
+    "impact":"positif",
+    "priorEPS":{"date":"2026-07-06","eps":{"2026":1.55,"2027":1.69,"2028":1.86,"2029":2.04,"2030":2.23}},
+    "guidanceHistory":[
+      {"quarter":"T1 2026","date":"2026-04-21","fyGuided":2026,"guidanceAnnuelle":"Croissance organique moderee a un chiffre du chiffre d'affaires ; marge operationnelle ajustee en amelioration a change constant ; flux de tresorerie eleve."},
+      {"quarter":"S1 2026","date":"2026-07-29","fyGuided":2026,"guidanceAnnuelle":"Croissance organique RELEVEE a moderee a elevee a un chiffre (compte tenu des sorties d'activites engagees) ; marge operationnelle ajustee en amelioration a change constant (inchangee) ; flux de tresorerie eleve (inchange)."}
     ],
-    "guidanceLongTerme": "LEAP | 28 (annonce mars 2024, reaffirme) : croissance totale du CA elevee a un chiffre (organique moderee a elevee a un chiffre + M&A/rotation de portefeuille) ; amelioration constante de la marge operationnelle ajustee (~17% vise 2028) ; rendement annuel a deux chiffres (croissance BPA + rendement dividende) a change constant sur 2024-2028 ; conversion cash superieure a 90% ; dividende = 65% du resultat net ajuste ; ratio d'endettement net cible 1,0x-2,0x d'ici 2028.",
-    "dernierCall": {
-      "quarter": "S1 2026",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "date": "2026-07-29",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 3258.4,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": 0.68,
-          "consensus": 0.6667
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree specifique (le Groupe guide en organique/marge sur l'annee pleine) ; prochain point d'etape = chiffre d'affaires T3 2026 le 21/10/26.",
-      "guidanceAnnuelle": "FY2026 : croissance organique moderee a elevee a un chiffre (relevee) ; marge operationnelle ajustee en amelioration a change constant ; flux de tresorerie a un niveau eleve.",
-      "pointsCles": [
+    "guidanceLongTerme":"LEAP | 28 (annonce mars 2024, reaffirme) : croissance totale du CA elevee a un chiffre (organique moderee a elevee a un chiffre + M&A/rotation de portefeuille) ; amelioration constante de la marge operationnelle ajustee (~17% vise 2028) ; rendement annuel a deux chiffres (croissance BPA + rendement dividende) a change constant sur 2024-2028 ; conversion cash superieure a 90% ; dividende = 65% du resultat net ajuste ; ratio d'endettement net cible 1,0x-2,0x d'ici 2028.",
+    "guidanceLongTermeHistory": [],
+    "dernierCall":{
+      "quarter":"S1 2026",
+      "communiqueAnalyse":true,
+      "transcriptAnalyse":true,
+      "date":"2026-07-29",
+      "resultatsVsConsensus":{"ca":{"actual":3258.4,"consensus":null},"epsAdj":{"actual":0.68,"consensus":0.6667}},
+      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree specifique (le Groupe guide en organique/marge sur l'annee pleine) ; prochain point d'etape = chiffre d'affaires T3 2026 le 21/10/26.",
+      "guidanceAnnuelle":"FY2026 : croissance organique moderee a elevee a un chiffre (relevee) ; marge operationnelle ajustee en amelioration a change constant ; flux de tresorerie a un niveau eleve.",
+      "pointsCles":[
         "Croissance organique de 5,0% au S1 avec acceleration sequentielle a 5,5% au T2 (T1 4,5%), portee par Batiment & Infrastructures (+8,7%, Mission Critical Assets/centres de donnees >40%), Marine & Offshore (+8,7%) et Biens de Consommation (+5,1%), malgre un conflit persistant au Moyen-Orient.",
         "Marge operationnelle ajustee en hausse de 29pb a change constant a 15,5%, le beat sur ventes et resultat operationnel ajuste devant selon plusieurs brokers (AlphaValue, RBC, Jefferies) entrainer des revisions haussieres du consensus.",
         "Dossier compliance Government Services desormais chiffre : provision de 32,0 M€ comptabilisee, qualifiee d''evenement clarificateur' par RBC apres plusieurs mois d'incertitude ; sortie du sous-segment quasi achevee fin 2026.",
@@ -148,131 +58,36 @@
         "Le vent contraire de change s'attenue nettement trimestre apres trimestre (-5,2% au T1 -> -0,6% au T2, le seul mois de juin redevenant meme legerement accretif) - le CFO evoque explicitement une perspective plus favorable sur le change pour le reste de l'annee, un element de soutien pour la construction du S2 2026."
       ]
     },
-    "ancrages": [
-      {
-        "id": "compliance_provision_32m_chiffree",
-        "moteur": "Le dossier compliance Government Services, non chiffre a la creation de la these (T1 2026), est desormais quantifie : provision de 32,0 M€ comptabilisee au 30/06/26, deja exclue du resultat operationnel ajuste (comme les autres elements non recurrents du S1, 32,9 M€ au total) -> reintegree comme un vrai one-off ponctuel dans la construction normalisee du S1 2026 (n'affecte pas la trajectoire 2027+, la sortie du sous-segment etant quasi achevee fin 2026).",
-        "applique": [
-          "adjEBIT.2026",
-          "adjNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "guidance_relevee_croissance_organique",
-        "moteur": "Guidance FY2026 relevee de 'moderee a un chiffre' a 'moderee a elevee a un chiffre' de croissance organique, avec acceleration sequentielle deja constatee T1->T2 (4,5%->5,5%) -> trajectoire de CA S2 2026 construite avec une croissance organique proche du haut de fourchette, temperee par l'effet dilutif de la sortie progressive de Government Services.",
-        "applique": [
-          "adjCA.2026",
-          "adjCA.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "cession_op_charbon_470m",
-        "moteur": "Cession signee des activites Produits Petroliers & Petrochimiques et Charbon (valeur d'entreprise 470 M€, ~450 M€ de CA annualise 2025, cloture visee fin T1 2027) -> ampute la base de CA 2027 d'environ 450 M€ (activites a croissance et marge inferieures a la moyenne du Groupe, donc impact relutif sur la marge malgre la perte de CA absolu), produit de cession redeploye vers M&A a plus forte croissance/marge conformement a LEAP 28.",
-        "applique": [
-          "adjCA.2027",
-          "adjEBIT.2027",
-          "adjND.2027"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "dette_nette_s1_2026_effet_calendaire",
-        "moteur": "Dette financiere nette ajustee a 1 688,6 M€ au 30/06/26 (vs 1 253,3 M€ fin 2025) tiree essentiellement par le decalage calendaire du versement de dividende (427,7 M€ verses au T2 26 contre T3 25 l'an dernier) plutot que par une deterioration operationnelle -> trajectoire d'adjND 2026 relevee vs la these de creation (base de depart plus haute que projete), desendettement ensuite porte par le FCF recurrent et le produit de la cession O&P/Charbon en 2027.",
-        "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "amortissement_recurrent_acquereur_serie",
-        "moteur": "Amortissement des actifs incorporels issus des acquisitions (23,4 M€ au S1 26, coherent avec le rythme historique) maintenu dans la base normalisee car recurrent chez un acquereur en serie comme Bureau Veritas - methodologie inchangee depuis la these de creation.",
-        "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "tax_normalise_29_3pct",
-        "moteur": "Taux effectif d'impot ajuste maintenu a 29,3% (coherent avec le TEI ajuste S1 26 reel de 29,3%, stable vs 29,2% au S1 25 malgre la contribution exceptionnelle francaise integralement comptabilisee au S1 - un effet de calendrier plutot qu'une hausse structurelle du taux).",
-        "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "marge_convergence_17pct_2028",
-        "moteur": "Ambition LEAP 28 reaffirmee d'une marge operationnelle ajustee proche de 17% en 2028, le CFO indiquant vouloir y parvenir 'sans fluctuation annuelle significative' -> trajectoire de marge normalisee construite en progression graduelle et reguliere de 15,6% (2026) a ~17,6% (2030), plutot qu'un saut brutal une annee donnee.",
-        "applique": [
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "scope_tailwind_22pb_durable",
-        "moteur": "Le CFO confirme explicitement (Q&A, reponse a Jefferies) que les +22pb d'effet perimetre favorable sur la marge du S1 ne sont PAS lies aux cessions Government Services/food testing et sont 'here to stay through the year' au perimetre de fin juin -> tailwind de marge traite comme structurellement acquis pour le solde de l'annee (hors nouvelles acquisitions/cessions), conforte la trajectoire de marge S2 2026 sans hypothese de rebond exceptionnel.",
-        "applique": [
-          "adjEBIT.2026"
-        ],
-        "confiance": "haute"
-      }
+    "quarterlyEPS":{
+      "cadence":"semestriel",
+      "CY":[
+        {"label":"S1","eps":0.647,"actual":true},
+        {"label":"S2","eps":0.773,"actual":false}
+      ],
+      "NY":[
+        {"label":"S1","eps":0.734,"actual":false},
+        {"label":"S2","eps":0.876,"actual":false}
+      ],
+      "epsForward12m":1.51,
+      "forwardPeriodLabel":"S2 26 -> S1 27",
+      "coherenceNoteCY":null,
+      "coherenceNoteNY":null
+    },
+    "ancrages":[
+      {"id":"compliance_provision_32m_chiffree","moteur":"Le dossier compliance Government Services, non chiffre a la creation de la these (T1 2026), est desormais quantifie : provision de 32,0 M€ comptabilisee au 30/06/26, deja exclue du resultat operationnel ajuste (comme les autres elements non recurrents du S1, 32,9 M€ au total) -> reintegree comme un vrai one-off ponctuel dans la construction normalisee du S1 2026 (n'affecte pas la trajectoire 2027+, la sortie du sous-segment etant quasi achevee fin 2026).","applique":["adjEBIT.2026","adjNet.2026"],"confiance":"haute"},
+      {"id":"guidance_relevee_croissance_organique","moteur":"Guidance FY2026 relevee de 'moderee a un chiffre' a 'moderee a elevee a un chiffre' de croissance organique, avec acceleration sequentielle deja constatee T1->T2 (4,5%->5,5%) -> trajectoire de CA S2 2026 construite avec une croissance organique proche du haut de fourchette, temperee par l'effet dilutif de la sortie progressive de Government Services.","applique":["adjCA.2026","adjCA.2027"],"confiance":"moyenne"},
+      {"id":"cession_op_charbon_470m","moteur":"Cession signee des activites Produits Petroliers & Petrochimiques et Charbon (valeur d'entreprise 470 M€, ~450 M€ de CA annualise 2025, cloture visee fin T1 2027) -> ampute la base de CA 2027 d'environ 450 M€ (activites a croissance et marge inferieures a la moyenne du Groupe, donc impact relutif sur la marge malgre la perte de CA absolu), produit de cession redeploye vers M&A a plus forte croissance/marge conformement a LEAP 28.","applique":["adjCA.2027","adjEBIT.2027","adjND.2027"],"confiance":"haute"},
+      {"id":"dette_nette_s1_2026_effet_calendaire","moteur":"Dette financiere nette ajustee a 1 688,6 M€ au 30/06/26 (vs 1 253,3 M€ fin 2025) tiree essentiellement par le decalage calendaire du versement de dividende (427,7 M€ verses au T2 26 contre T3 25 l'an dernier) plutot que par une deterioration operationnelle -> trajectoire d'adjND 2026 relevee vs la these de creation (base de depart plus haute que projete), desendettement ensuite porte par le FCF recurrent et le produit de la cession O&P/Charbon en 2027.","applique":["adjND.2026","adjND.2027","adjND.2028"],"confiance":"moyenne"},
+      {"id":"amortissement_recurrent_acquereur_serie","moteur":"Amortissement des actifs incorporels issus des acquisitions (23,4 M€ au S1 26, coherent avec le rythme historique) maintenu dans la base normalisee car recurrent chez un acquereur en serie comme Bureau Veritas - methodologie inchangee depuis la these de creation.","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"haute"},
+      {"id":"tax_normalise_29_3pct","moteur":"Taux effectif d'impot ajuste maintenu a 29,3% (coherent avec le TEI ajuste S1 26 reel de 29,3%, stable vs 29,2% au S1 25 malgre la contribution exceptionnelle francaise integralement comptabilisee au S1 - un effet de calendrier plutot qu'une hausse structurelle du taux).","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
+      {"id":"marge_convergence_17pct_2028","moteur":"Ambition LEAP 28 reaffirmee d'une marge operationnelle ajustee proche de 17% en 2028, le CFO indiquant vouloir y parvenir 'sans fluctuation annuelle significative' -> trajectoire de marge normalisee construite en progression graduelle et reguliere de 15,6% (2026) a ~17,6% (2030), plutot qu'un saut brutal une annee donnee.","applique":["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"moyenne"},
+      {"id":"scope_tailwind_22pb_durable","moteur":"Le CFO confirme explicitement (Q&A, reponse a Jefferies) que les +22pb d'effet perimetre favorable sur la marge du S1 ne sont PAS lies aux cessions Government Services/food testing et sont 'here to stay through the year' au perimetre de fin juin -> tailwind de marge traite comme structurellement acquis pour le solde de l'annee (hors nouvelles acquisitions/cessions), conforte la trajectoire de marge S2 2026 sans hypothese de rebond exceptionnel.","applique":["adjEBIT.2026"],"confiance":"haute"}
     ],
-    "adjEPS": {
-      "2026": 1.42,
-      "2027": 1.61,
-      "2028": 1.84,
-      "2029": 2.04,
-      "2030": 2.25
-    },
-    "adjCA": {
-      "2026": 6728,
-      "2027": 6990,
-      "2028": 7480,
-      "2029": 8000,
-      "2030": 8520
-    },
-    "adjEBIT": {
-      "2026": 1049,
-      "2027": 1140,
-      "2028": 1272,
-      "2029": 1384,
-      "2030": 1500
-    },
-    "adjNet": {
-      "2026": 626,
-      "2027": 704,
-      "2028": 796,
-      "2029": 875,
-      "2030": 958
-    },
-    "adjND": {
-      "2026": 1490,
-      "2027": 1120,
-      "2028": 900,
-      "2029": 650,
-      "2030": 400
-    },
-    "adjShares": {
-      "2026": 442,
-      "2027": 437,
-      "2028": 433,
-      "2029": 429,
-      "2030": 425
-    },
-    "guidanceLongTermeHistory": []
+    "adjEPS":{"2026":1.42,"2027":1.61,"2028":1.84,"2029":2.04,"2030":2.25},
+    "adjCA":{"2026":6728,"2027":6990,"2028":7480,"2029":8000,"2030":8520},
+    "adjEBIT":{"2026":1049,"2027":1140,"2028":1272,"2029":1384,"2030":1500},
+    "adjNet":{"2026":626,"2027":704,"2028":796,"2029":875,"2030":958},
+    "adjND":{"2026":1490,"2027":1120,"2028":900,"2029":650,"2030":400},
+    "adjShares":{"2026":442,"2027":437,"2028":433,"2029":429,"2030":425}
   }
 }
