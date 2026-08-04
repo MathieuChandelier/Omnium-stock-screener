@@ -1961,7 +1961,17 @@ function renderPortfolio(){
     ? filtered.length+' titre'+(filtered.length!==1?'s':'')+' (sur '+items.length+')'
     : items.length+' titre'+(items.length!==1?'s':'');
 
-  const sorted=pfSortItems(filtered);
+  // Recherche active -> ordre alphabetique force sur le sous-ensemble
+  // filtre, quel que soit le tri de colonne actuellement selectionne
+  // (pfSort peut pointer sur "5Y CAGR", "P/E", etc. suite a un clic
+  // precedent) : sinon les resultats d'une recherche par nom apparaissent
+  // dans un ordre qui semble arbitraire (tri par rendement/score) plutot
+  // que par proximite avec ce qui vient d'etre tape. Le tri de colonne
+  // choisi par l'utilisateur reste inchange et se reapplique des que le
+  // champ de recherche est vide.
+  const sorted=q
+    ? filtered.slice().sort((a,b)=>(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'}))
+    : pfSortItems(filtered);
   pfLastFilteredItems=sorted;
 
   if(!sorted.length){
