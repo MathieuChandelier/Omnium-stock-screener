@@ -411,11 +411,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   body{font-size:13px;}
 
   /* Le prix passe sur sa propre ligne au wrap (analyse-header en
-     flex-wrap) : le champ etant text-align:right par defaut (pour aligner
-     les decimales en desktop cote a cote avec la devise), il laissait un
-     vide visuel a gauche sur mobile au lieu de demarrer sous le nom du
-     titre. Aligne a gauche uniquement sur mobile. */
-  .analyse-price input#cours{text-align:left;}
+     flex-wrap). Le champ #cours garde desormais une largeur calculee
+     dynamiquement en JS (voir sizeCoursInput()) pour coller exactement
+     au nombre de caracteres affiches : plus de vide ni a gauche (ancien
+     probleme resolu par un text-align:left, desormais inutile) ni a
+     droite entre le chiffre et le symbole devise (regression introduite
+     par ce meme text-align:left, gap 0 oblige entre le champ et
+     #cours-cur). text-align:right reste donc coherent avec le desktop. */
 
   header{padding:20px 18px 22px;}
   .h-logo{height:55px;}
@@ -601,7 +603,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     <div class="analyse-id" id="analyse-id"></div>
     <div class="analyse-price-wrap">
       <div class="analyse-price">
-        <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
+        <input type="number" id="cours" value="0.00" step="0.10" oninput="sizeCoursInput()" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
         <span id="cours-cur" class="analyse-price-cur">€</span>
       </div>
       <div class="price-auto" id="price-status" style="display: none;">
@@ -978,6 +980,19 @@ function refreshAllPrices(){
   Promise.all(Array.from({length:CONCURRENCY},worker)).finally(()=>{_refreshAllInFlight=false;});
 }
 
+// Fait coller la largeur du champ #cours au nombre de caracteres affiches
+// (ex. "45.2" vs "1234.56"), pour que le symbole devise (#cours-cur) reste
+// immediatement accole au chiffre - a la fois sur desktop et sur mobile,
+// que le champ soit sur la meme ligne que le titre ou sur sa propre ligne
+// apres wrap. +0.9ch de marge pour laisser la place au curseur de saisie
+// sans provoquer de decalage visible avec la devise.
+function sizeCoursInput(){
+  const el=document.getElementById('cours');
+  if(!el)return;
+  const len=String(el.value||'').length||1;
+  el.style.width=(len+0.9)+'ch';
+}
+
 function refreshSelects(){
   // Le titre actif n'est plus un select ni un champ modifiable : son affichage
   // (nom + ticker) est entierement gere par renderAnalyse(), au-dessus du
@@ -996,6 +1011,7 @@ function loadTicker(){
   const d=state.tickers[CT];
   if(!d){syncAnalyseHeader();return;}
   document.getElementById('cours').value=d.cours||10.0;
+  sizeCoursInput();
   updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt||null, true);
   syncAnalyseHeader();
   refreshSelects();renderAnalyse();
@@ -1148,6 +1164,7 @@ function renderAnalyse(){
   const ly=d.data[d.data.length-1].year;
   const cur=tickerCur(CT)||'€';
   const curCoursEl=document.getElementById('cours-cur'); if(curCoursEl)curCoursEl.textContent=cur;
+  sizeCoursInput();
   const last5=d.data.slice(-5);
 
   // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
@@ -1278,7 +1295,7 @@ function refreshPriceOnly(ticker){
   const d=state.tickers[ticker];
   if(!d)return;
   const coursEl=document.getElementById('cours');
-  if(coursEl) coursEl.value=d.cours;
+  if(coursEl){ coursEl.value=d.cours; sizeCoursInput(); }
   const cours=+d.cours||0;
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
@@ -1888,7 +1905,7 @@ function renderPortfolio(){
   sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
-    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
+    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;sizeCoursInput();syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
     el.innerHTML=`
       <div class="pf-row-top">
         <div class="pf-main">
