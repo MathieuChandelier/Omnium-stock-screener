@@ -1,0 +1,100 @@
+{
+  "name": "Snap Inc.",
+  "cours": 5.04,
+  "yahooSymbol": "SNAP",
+  "dividende": 0,
+  "data": [
+    {"year":2019,"ca":1716,"ebit":-1103,"net":-1034,"shares":1378,"nd":-800,"div":0},
+    {"year":2020,"ca":2507,"ebit":-862,"net":-945,"shares":1458,"nd":-1150,"div":0},
+    {"year":2021,"ca":4117,"ebit":-702,"net":-488,"shares":1574,"nd":-1062,"div":0},
+    {"year":2022,"ca":4602,"ebit":-1395,"net":-1430,"shares":1610,"nd":236,"div":0},
+    {"year":2023,"ca":4606,"ebit":-1398,"net":-1322,"shares":1610,"nd":801,"div":0},
+    {"year":2024,"ca":5361,"ebit":-787,"net":-698,"shares":1660,"nd":868,"div":0},
+    {"year":2025,"ca":5931,"ebit":-532,"net":-460,"shares":1690,"nd":1203,"div":0}
+  ],
+  "epsConsensus": {"year":2026,"eps":-0.17,"epsNY":0.06,"date":"2026-08-03","source":"GAAP - consensus agrege ~40 analystes (Simply Wall St), aout 2026"},
+  "particularites": [
+    {"text":"Structure actionnariale a classes multiples (A/B/C) concentrant environ 99% du pouvoir de vote entre les mains des co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO) pour une detention economique combinee d'environ 20% du capital total - lecture permanente de gouvernance d'entreprise, sans impact sur un calcul de l'application.","valuePct":null}
+  ],
+  "nextEvent": {"label":"Q3 26","date":"2026-11-04"},
+  "ownership": {
+    "asOf":"2026-08-03",
+    "insiderPct":19.8,
+    "insiderDesc":"Co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO), detenteurs quasi exclusifs des actions de Classe C (10 voix/action) leur conferant ensemble environ 99% du pouvoir de vote, pour une detention economique combinee estimee a environ 20% du capital total (classes A+B+C).",
+    "insiderSource":"Rapport SEC 2026 (10-K/proxy), repris par BGR (3 aout 2026) - detention economique calculee a partir de la repartition par classe d'actions divulguee.",
+    "notableHolders": [],
+    "coverageNote":"Aucun gerant de la watchlist Tier 1/2 identifie avec une position materielle et recente confirmee dans les derniers 13F disponibles (T1 2026). Coatue Management (Tier 1), historiquement actionnaire de Snap, n'apparait plus dans son top 10 13F au T1 2026 sans confirmation d'une sortie totale ou d'une position residuelle. Base d'actionnaires institutionnels dominee par des gerants passifs/indiciels (Vanguard, Fidelity/FMR, BlackRock, State Street, Capital World/International Investors) hors perimetre de la watchlist.",
+    "history": []
+  },
+  "compliance": {
+    "asOf":"2026-08-03",
+    "items":[
+      {"year":2024,"title":"Le Nouveau-Mexique poursuit Snap pour manquement allegue a proteger les mineurs contre l'exploitation sexuelle en ligne (sextorsion).","allegedBy":"Procureur general du Nouveau-Mexique (Raul Torrez)","date":"2024-09-01","status":"plainte_deposee","outcome":null,"source":"Couverture juridique specialisee (socialmediavictims.org, motleyrice.com), 2026"},
+      {"year":2025,"title":"Litige consolide (MDL n°3047, Californie du Nord) reunissant des milliers de plaignants (particuliers, districts scolaires, comtes) alleguant un design addictif de Snapchat nuisible a la sante mentale des mineurs ; premiers proces-temoins programmes devant la Cour superieure de Californie (comte de Los Angeles).","allegedBy":"Plaignants multiples - class actions et poursuites individuelles consolidees","date":"2025-03-01","status":"plainte_deposee","outcome":"Snap a annonce un accord transactionnel partiel en amont du proces, le 9 fevrier 2026 ; conditions financieres non divulguees.","source":"Bloomberg Law, fevrier 2026"},
+      {"year":2025,"title":"La Floride poursuit Snap pour violation alleguee de la loi HB 3 (acces des mineurs a la plateforme) et pratiques commerciales trompeuses (FDUTPA).","allegedBy":"Procureur general de Floride (James Uthmeier)","date":"2025-04-01","status":"plainte_deposee","outcome":null,"source":"My Florida Legal, 2025-2026"},
+      {"year":2026,"title":"Le Texas poursuit Snap pour conception jugee addictive de l'application et defaut de protection des mineurs contre le contenu explicite.","allegedBy":"Procureur general du Texas (Ken Paxton)","date":"2026-02-10","status":"plainte_deposee","outcome":null,"source":"Bloomberg Law, 10 fevrier 2026"},
+      {"year":2026,"title":"La Commission europeenne ouvre une procedure formelle au titre du Digital Services Act (DSA) visant la conformite de Snap sur l'evaluation des risques systemiques et la protection des mineurs dans l'UE.","allegedBy":"Commission europeenne","date":"2026-03-26","status":"enquete_en_cours","outcome":null,"source":"Formulaire 10-Q de Snap (T1 2026), SEC"}
+    ],
+    "note":"Aucune fraude financiere averee ni enquete SEC/DOJ identifiee a ce jour ; le registre porte essentiellement sur le contentieux reglementaire/civil lie a la protection des mineurs (design addictif, exploitation sexuelle, conformite DSA), tres repandu dans l'industrie des reseaux sociaux depuis 2024. Un accord transactionnel partiel a ete annonce en fevrier 2026 en amont d'un proces californien. (Recherche du 2026-08-04)"
+  },
+  "hypothese": {
+    "date":"2026-08-03",
+    "source":"Creation - Communique + Transcript T2 2026 (3 aout 2026)",
+    "dernierCall":{
+      "quarter":"T2 26",
+      "communiqueAnalyse":true,
+      "transcriptAnalyse":true,
+      "resultatsVsConsensus":{"ca":{"actual":1599,"consensus":1530},"epsAdj":{"actual":-0.10,"consensus":-0.12,"basis":"non-GAAP"}},
+      "guidanceProchainTrimestre":"CA guide a 1,70-1,74 Md$ (vs 1,507 Md$ au T3 25, soit +13% a +15%), Adjusted EBITDA guide a 300-350 M$.",
+      "guidanceAnnuelle":"Couts d'infrastructure FY26 releves a 1,65-1,70 Md$ (investissement IA/ML), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; direction confirme un retour a un resultat net positif de facon soutenue a partir de 2027.",
+      "pointsCles":[
+        "Restructuration d'avril 2026 (~1000 postes, -16% des effectifs) : charges de 128,5 M$ au T2, economies annualisees superieures a 500 M$ visees en 2S26, deja visibles (couts ajustes +4% seulement contre CA +19% au T2).",
+        "Free cash flow positif pour le 8e trimestre consecutif (121 M$ au T2) ; le free cash flow par action devient l'objectif financier prioritaire affiche par le management.",
+        "Lancement commercial des lunettes Specs prevu a l'automne 2026, evenement de lancement le 16 septembre a Los Angeles ; adoption de masse visee vers la fin de la decennie selon Evan Spiegel.",
+        "L'activiste Irenic Capital Management (environ 2,5% du capital) avait publiquement pousse pour la discipline de couts desormais engagee ; aucun commentaire du management sur une eventuelle cession de Specs lors du call."
+      ]
+    },
+    "guidanceHistory":[
+      {"quarter":"T2 26","date":"2026-08-03","fyGuided":2026,"guidanceAnnuelle":"Couts d'infrastructure releves a 1,65-1,70 Md$ (vs 1,60-1,65 Md$ precedemment), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; retour a un resultat net positif soutenu vise a partir de 2027."}
+    ],
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS":{
+      "cadence":"trimestriel",
+      "CY":[
+        {"label":"T1","eps":-0.05,"actual":true},
+        {"label":"T2","eps":-0.10,"actual":true},
+        {"label":"T3","eps":0.00,"actual":false},
+        {"label":"T4","eps":0.06,"actual":false}
+      ],
+      "NY":[
+        {"label":"T1","eps":0.02,"actual":false},
+        {"label":"T2","eps":0.03,"actual":false},
+        {"label":"T3","eps":0.04,"actual":false},
+        {"label":"T4","eps":0.086,"actual":false}
+      ],
+      "epsForward12m":0.11,
+      "forwardPeriodLabel":"T3 26 -> T2 27",
+      "coherenceNoteCY":null,
+      "coherenceNoteNY":null
+    },
+    "summary":"Redressement de marge deja engage (levier operationnel visible au T2 26) plutot que promesse de croissance ; retour a un resultat net positif soutenu attendu des 2027, Specs traite comme optionnalite de long terme non chiffree.",
+    "text":"== SYNTHESE DE LA THESE ==\nSnap opere un redressement operationnel net et deja mesurable : le T2 26 confirme la bascule d'un modele historiquement expansif en couts vers une discipline stricte (CA +19% pour des couts ajustes +4% seulement), fruit direct de la restructuration d'avril 2026 (environ 1000 postes supprimes, plus de 500 M$ d'economies annualisees visees en 2S26). Le pari central n'est pas une acceleration miraculeuse du CA publicitaire - deja solide grace aux outils IA (Smart Campaign, conversions +56%) - mais la conversion de ce CA en free cash flow durable, desormais objectif financier prioritaire affiche par le management. La diversification des revenus (Other Revenue +85%, 20% du CA, tiree par Snapchat+/Lens+/Memories) reduit la dependance a la publicite pure et laisse un potentiel de penetration abonnement encore tres inferieur aux standards du secteur (moins de 3% des MAU payants contre 7-12% usuellement observe). Specs reste une option strategique de long terme (lancement commercial a l'automne 2026) volontairement traitee comme asymetrie haussiere non chiffree plutot que comme moteur de CA a court terme, le management lui-meme visant une adoption de masse vers la fin de la decennie. Le scenario retenu ici est donc celui d'un redressement de marge deja engage et documente par les chiffres publies, avec un retour a un resultat net positif attendu des 2027 conformement a la guidance directionnelle du management.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Restructuration d'avril 2026 : deja dans les chiffres T1/T2 26 (charges de 128,5 M$ au T2), traitee comme un cout recurrent-deguise plutot qu'un vrai one-off (voir PARAMETRES) ; effet de levier operationnel deja visible. (ii) Lancement commercial de Specs, evenement le 16 septembre 2026 a Los Angeles : quantifiable a terme mais non integre aux adjXXX faute de guidance chiffree, traite comme asymetrie haussiere de long terme. (iii) Activisme actionnarial - Irenic Capital Management (environ 2,5% du capital) a publiquement pousse pour la discipline de couts desormais engagee ; aucune escalade suivie d'effet a ce stade. (iv) Contentieux reglementaire lie a la protection des mineurs (Nouveau-Mexique, Floride, Texas, MDL californien, enquete DSA de la Commission europeenne depuis mars 2026) : risque idiosyncratique materiel mais non quantifiable, traite qualitativement (voir compliance) plutot qu'integre aux adjXXX.\n\n== PARTICULARITES ==\nStructure actionnariale a classes multiples (A/B/C) concentrant environ 99% du pouvoir de vote chez les co-fondateurs pour une detention economique combinee d'environ 20% - voir champ particularites, valuePct null.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable : data reste en GAAP tel que publie, restructuration NON retraitee (voir ancrage restructuration_recurrente - occurrences quasi annuelles depuis l'introduction en bourse : charges legales 2019, restructuration 2022, restructuration 2026 - traitees comme un cout recurrent-deguise, conformement a la consigne recue pour cette creation de ne retraiter que le vrai exceptionnel). Resultat financier : voir ancrage fin_result_snap - rythme net trimestriel recent (proche de l'equilibre) retenu plutot que la regle normative Treasury 10 ans + 2pts, jugee trop penalisante face au tres faible coupon des obligations convertibles emises par Snap. IS normatif : taux effectif maintenu bas et croissant progressivement (deficits reportables importants accumules depuis 2017, voir ancrage IS_normatif_snap). Tendance adjShares : legere decrue portee par le nouveau programme pluriannuel de gestion de la dilution finance par le FCF a partir de 2027 (voir ancrage dilution_mgmt_program), apres achevement du programme de rachat actuel au T4 2026.\nWATCH-LIST : (1) confirmer au prochain refresh que les economies de restructuration superieures a 500 M$ se materialisent pleinement au S2 26 comme guide ; (2) suivre le lancement commercial de Specs (16 septembre 2026) et une eventuelle premiere guidance chiffree de contribution CA ; (3) suivre l'issue des poursuites Texas/Floride/Nouveau-Mexique et de l'enquete DSA UE ; (4) verifier au prochain 13F une eventuelle position materielle d'un gerant de la watchlist, non confirmee a ce stade. Prochain refresh utile : resultats T3 26, publication attendue debut novembre 2026.\n\n== CATALYSEURS ==\nMaterialisation complete des economies de restructuration au S2 26, lancement commercial de Specs le 16 septembre 2026, et premier trimestre de resultat net positif attendu courant 2027.",
+    "impact":"positif",
+    "ancrages":[
+      {"id":"revenue_accel_2026","moteur":"Reprise de la croissance publicitaire portee par les outils IA (Smart Campaign, conversions +56%) et montee en puissance du revenu Other (Snapchat+, Lens+, Memories) qui pese desormais 20% du CA et croit a 85%","applique":["adjCA.2026","adjCA.2027"],"confiance":"haute"},
+      {"id":"revenue_deceleration_LT","moteur":"Ralentissement progressif attendu de la croissance publicitaire a mesure que la base de comparaison grossit, Specs devenant le principal catalyseur incrementiel non chiffre au-dela de 2027","applique":["adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"moyenne"},
+      {"id":"ebit_margin_expansion","moteur":"Restructuration d'avril 2026 (plus de 500 M$ d'economies annualisees, pleinement reflechies a partir du T3 26 donc en base pleine des 2027) et effet de levier operationnel deja observe (CA +19% vs couts ajustes +4% au T2 26)","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"haute"},
+      {"id":"restructuration_recurrente","moteur":"Les charges de restructuration (2019 : 100 M$ ; 2022 : 189 M$ ; 2026 : 128,5 M$ au 1S) survenant a intervalles reguliers depuis l'IPO sont traitees comme une composante recurrente-deguisee du cout operationnel, non retraitee dans data ni exclue des adjXXX","applique":["adjEBIT.2026"],"confiance":"haute"},
+      {"id":"fin_result_snap","moteur":"Charges/produits financiers projetes sur la base du rythme net trimestriel recent (quasi a l'equilibre, obligations convertibles a coupon tres faible 0-0,75% emises 2019-2023) plutot que la regle normative Treasury 10 ans +2pts","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
+      {"id":"IS_normatif_snap","moteur":"Taux d'IS effectif maintenu bas et croissant progressivement du fait des importants deficits reportables (NOL) accumules depuis l'introduction en bourse en 2017","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
+      {"id":"dilution_mgmt_program","moteur":"Nouveau programme pluriannuel de gestion de la dilution finance par le free cash flow a partir de 2027, apres achevement du programme de rachat actuel au T4 2026","applique":["adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"moyenne"}
+    ],
+    "adjEPS":{"2026":-0.09,"2027":0.18,"2028":0.34,"2029":0.47,"2030":0.59},
+    "adjCA":{"2026":6818,"2027":7775,"2028":8708,"2029":9579,"2030":10441},
+    "adjEBIT":{"2026":-140,"2027":311,"2028":610,"2029":862,"2030":1096},
+    "adjNet":{"2026":-156,"2027":291,"2028":547,"2029":753,"2030":935},
+    "adjND":{"2026":1250,"2027":1100,"2028":900,"2029":650,"2030":400},
+    "adjShares":{"2026":1670,"2027":1650,"2028":1630,"2029":1610,"2030":1590}
+  }
+}
