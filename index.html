@@ -82,8 +82,15 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-mv{font-size:13.5px;font-weight:600;color:var(--muted);font-family:'Poppins',sans-serif;line-height:1;}
 .pf-mv-event{font-size:12px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
 .pf-col-header{display:flex;align-items:center;gap:22px;padding:0 22px 8px;margin-top:4px;}
-.pf-col-name-spacer{flex:1 1 auto;max-width:360px;min-width:0;display:flex;align-items:center;gap:4px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;cursor:pointer;user-select:none;transition:color .12s;}
-.pf-col-name-spacer:hover{color:var(--teal-text);}
+.pf-col-name-spacer{flex:1 1 auto;max-width:360px;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
+.pf-name-sort-lbl{cursor:pointer;user-select:none;transition:color .12s;white-space:nowrap;flex-shrink:0;}
+.pf-name-sort-lbl:hover{color:var(--teal-text);}
+/* Recherche par nom, positionnee dans l'en-tete de la colonne Name : filtre
+   la liste du portefeuille en direct (voir pfFilterByName) et permet
+   d'ouvrir directement un titre a l'Entree (voir pfNameFilterKeydown). */
+.pf-name-filter{flex:1 1 auto;min-width:0;border:none;border-bottom:1.5px solid rgba(0,1,144,.18);background:transparent;color:var(--navy);font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;text-transform:none;letter-spacing:normal;padding:2px 2px 3px;cursor:text;transition:border-color .12s;}
+.pf-name-filter::placeholder{color:var(--muted);font-weight:500;}
+.pf-name-filter:focus{outline:none;border-bottom-color:var(--teal-text);}
 .pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
 .pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;}
 .pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;position:relative;display:block;transition:color .12s;}
@@ -411,13 +418,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   body{font-size:13px;}
 
   /* Le prix passe sur sa propre ligne au wrap (analyse-header en
-     flex-wrap). Le champ #cours garde desormais une largeur calculee
-     dynamiquement en JS (voir sizeCoursInput()) pour coller exactement
-     au nombre de caracteres affiches : plus de vide ni a gauche (ancien
-     probleme resolu par un text-align:left, desormais inutile) ni a
-     droite entre le chiffre et le symbole devise (regression introduite
-     par ce meme text-align:left, gap 0 oblige entre le champ et
-     #cours-cur). text-align:right reste donc coherent avec le desktop. */
+     flex-wrap) : le champ etant text-align:right par defaut (pour aligner
+     les decimales en desktop cote a cote avec la devise), il laissait un
+     vide visuel a gauche sur mobile au lieu de demarrer sous le nom du
+     titre. Aligne a gauche uniquement sur mobile. */
+  .analyse-price input#cours{text-align:left;}
 
   header{padding:20px 18px 22px;}
   .h-logo{height:55px;}
@@ -435,7 +440,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   /* En-tête de colonnes : conservé (même design), juste réduit. */
   .pf-col-header{padding:0 8px 6px;gap:8px;}
-  .pf-col-name-spacer{font-size:9px;}
+  .pf-col-name-spacer{font-size:9px;gap:6px;}
+  .pf-name-filter{font-size:11px;min-width:60px;}
   .pf-col-labels{gap:5px;}
   .pf-col-lbl{font-size:8.5px;letter-spacing:.03em;}
 
@@ -587,7 +593,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 <div id="tab-portefeuille" class="panel">
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
-      <div class="pf-col-name-spacer pf-col-sortable" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></div>
+      <div class="pf-col-name-spacer">
+        <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
+        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Rechercher un titre…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
+      </div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl pf-col-sortable pf-metric-return" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
         <div class="pf-col-lbl pf-col-sortable pf-metric-pe" onclick="pfSortBy('peN')">P/E N <span class="pf-sort-arrow" data-key="peN"></span></div>
@@ -603,7 +612,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     <div class="analyse-id" id="analyse-id"></div>
     <div class="analyse-price-wrap">
       <div class="analyse-price">
-        <input type="number" id="cours" value="0.00" step="0.10" oninput="sizeCoursInput()" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
+        <input type="number" id="cours" value="0.00" step="0.10" onchange="const d=state.tickers[CT];if(d)d.cours=+this.value||d.cours;renderAnalyse();renderPortfolio()">
         <span id="cours-cur" class="analyse-price-cur">€</span>
       </div>
       <div class="price-auto" id="price-status" style="display: none;">
@@ -980,19 +989,6 @@ function refreshAllPrices(){
   Promise.all(Array.from({length:CONCURRENCY},worker)).finally(()=>{_refreshAllInFlight=false;});
 }
 
-// Fait coller la largeur du champ #cours au nombre de caracteres affiches
-// (ex. "45.2" vs "1234.56"), pour que le symbole devise (#cours-cur) reste
-// immediatement accole au chiffre - a la fois sur desktop et sur mobile,
-// que le champ soit sur la meme ligne que le titre ou sur sa propre ligne
-// apres wrap. +0.9ch de marge pour laisser la place au curseur de saisie
-// sans provoquer de decalage visible avec la devise.
-function sizeCoursInput(){
-  const el=document.getElementById('cours');
-  if(!el)return;
-  const len=String(el.value||'').length||1;
-  el.style.width=(len+0.9)+'ch';
-}
-
 function refreshSelects(){
   // Le titre actif n'est plus un select ni un champ modifiable : son affichage
   // (nom + ticker) est entierement gere par renderAnalyse(), au-dessus du
@@ -1011,7 +1007,6 @@ function loadTicker(){
   const d=state.tickers[CT];
   if(!d){syncAnalyseHeader();return;}
   document.getElementById('cours').value=d.cours||10.0;
-  sizeCoursInput();
   updatePriceDot(d._priceUpdatedAt||d._lastFetchAttemptAt||null, true);
   syncAnalyseHeader();
   refreshSelects();renderAnalyse();
@@ -1164,7 +1159,6 @@ function renderAnalyse(){
   const ly=d.data[d.data.length-1].year;
   const cur=tickerCur(CT)||'€';
   const curCoursEl=document.getElementById('cours-cur'); if(curCoursEl)curCoursEl.textContent=cur;
-  sizeCoursInput();
   const last5=d.data.slice(-5);
 
   // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
@@ -1295,7 +1289,7 @@ function refreshPriceOnly(ticker){
   const d=state.tickers[ticker];
   if(!d)return;
   const coursEl=document.getElementById('cours');
-  if(coursEl){ coursEl.value=d.cours; sizeCoursInput(); }
+  if(coursEl) coursEl.value=d.cours;
   const cours=+d.cours||0;
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
@@ -1824,6 +1818,43 @@ function calcScore(ticker){
   return (cagrEps+yieldPct)/peFwd;
 }
 
+// Recherche par nom dans l'en-tete de la colonne Name (voir pf-name-filter) :
+// filtre la liste affichee en direct, insensible a la casse/accents, sur
+// d.name ET le code ticker. pfOpenTicker() factorise l'ouverture d'un titre,
+// reutilisee par le clic sur une ligne et par l'Entree dans le champ de
+// recherche (pfNameFilterKeydown) pour "choisir" directement un titre tape.
+let pfNameFilter='';
+function pfNormalize(s){
+  return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function pfFilterByName(v){
+  pfNameFilter=v;
+  renderPortfolio();
+}
+function pfOpenTicker(tk,cours){
+  CT=tk;refreshSelects();
+  document.getElementById('cours').value=cours;
+  syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);
+}
+function pfNameFilterKeydown(e){
+  if(e.key==='Escape'){
+    e.target.value='';pfFilterByName('');e.target.blur();
+    return;
+  }
+  if(e.key!=='Enter')return;
+  // Ouvre directement le premier titre correspondant au filtre courant, dans
+  // l'ordre de tri actif (meme logique que pfSortItems) - permet de taper un
+  // nom et d'appuyer sur Entree pour "choisir" le titre sans avoir a cliquer.
+  const q=pfNormalize(pfNameFilter);
+  if(!q)return;
+  const match=pfLastFilteredItems.find(({d,tk})=>pfNormalize(d.name||tk).includes(q));
+  if(match) pfOpenTicker(match.tk,match.cours);
+}
+// Memorise la derniere liste filtree/triee affichee, pour que l'Entree dans
+// le champ de recherche (pfNameFilterKeydown) ouvre exactement le premier
+// resultat visible a l'ecran, sans avoir a refaire le calcul.
+let pfLastFilteredItems=[];
+
 // Tri de la vue portefeuille. Défaut = classement d'origine (score CAGR+yield / PE), inchangé.
 let pfSort={key:'name',dir:'asc'};
 function pfSortBy(key){
@@ -1867,6 +1898,7 @@ function pfUpdateSortHeaderUI(){
 function renderPortfolio(){
   const list=document.getElementById('pf-list');
   const countEl=document.getElementById('pf-count');
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   if(!list)return;list.innerHTML='';
   
   const items=Object.entries(state.tickers)
@@ -1890,22 +1922,38 @@ function renderPortfolio(){
       }catch(e){return null;}
     }).filter(Boolean);
 
-  if(countEl)countEl.textContent=items.length+' titre'+(items.length!==1?'s':'');
-  
   const hdr=document.getElementById('pf-col-header');
   if(hdr) hdr.style.display = items.length ? 'flex' : 'none';
 
   if(!items.length){
+    if(countEl)countEl.textContent='0 titre';
     list.innerHTML='<div class="pf-empty">Aucun titre. database.json est peut-être vide ou non configuré.</div>';
+    pfLastFilteredItems=[];
     return;
   }
-  
+
+  // Filtre par nom (voir pf-name-filter / pfFilterByName) : insensible a la
+  // casse/accents, matche le nom affiche ET le code ticker.
+  const q=pfNormalize(pfNameFilter);
+  const filtered=q?items.filter(({tk,d})=>pfNormalize(d.name||tk).includes(q)||pfNormalize(tk).includes(q)):items;
+
+  if(countEl)countEl.textContent=q
+    ? filtered.length+' titre'+(filtered.length!==1?'s':'')+' (sur '+items.length+')'
+    : items.length+' titre'+(items.length!==1?'s':'');
+
+  const sorted=pfSortItems(filtered);
+  pfLastFilteredItems=sorted;
+
+  if(!sorted.length){
+    list.innerHTML='<div class="pf-empty">Aucun titre ne correspond à « '+esc(pfNameFilter)+' ».</div>';
+    return;
+  }
+
   const maxScore=Math.max(...items.map(x=>x.score),0.1);
-  const sorted=pfSortItems(items);
   sorted.forEach(({tk,d,cours,totalReturn,peFwd,pe27,score,nextEvt},idx)=>{
     const el=document.createElement('div');
     el.className='pf-item'+(tk===CT?' pf-active':'');
-    el.onclick=()=>{CT=tk;refreshSelects();document.getElementById('cours').value=cours;sizeCoursInput();syncAnalyseHeader(tk);showTab('analyse',null);autoFetchPrice(tk,true);};
+    el.onclick=()=>pfOpenTicker(tk,cours);
     el.innerHTML=`
       <div class="pf-row-top">
         <div class="pf-main">
