@@ -113,6 +113,7 @@ data/
       "coherenceNoteNY":null
     },
     "summary":"Resume 2 lignes de la these actuelle.",
+    "cagrBridge":"OPTIONNEL - phrase courte de pont explicitant les composantes du CAGR EPS quand une decomposition explicite aide le lecteur (ex. '+6% volume +3% prix +2pt marge -1pt dilution = +10% CAGR'), null/absent sinon - voir definition complete plus bas.",
     "text":"Voir STANDARD D'ARCHIVAGE ci-dessous.",
     "impact":"positif|negatif|neutre",
     "ancrages":[
@@ -508,6 +509,22 @@ Champ purement factuel et de synthese, comme `dernierCall`/`priorEPS` : ne
 participe a aucun raisonnement E1-E8 au-dela de son role de decomposition
 (le detail trimestriel ne redefinit jamais `adjEPS` sans passer par le
 mecanisme d'arbitrage/escalade d'E5 ter point 4).
+
+Le champ `cagrBridge` porte un PONT NARRATIF OPTIONNEL affiche par l'app
+juste sous le bloc "Total Return / EPS CAGR / Div. yield", au-dessus de la
+ligne EPS CY/NY (`index.html`, `.rb-bridge-wrap`) - une seule phrase courte
+decomposant le CAGR EPS affiche en ses composantes economiques quand cette
+decomposition aide reellement le lecteur a juger la these d'un coup d'oeil
+(ex. `"+6% volume, +3% prix/mix, +2pt de marge, -1pt de dilution = +10%
+CAGR EPS"`). ABSENCE GRACIEUSE PAR DEFAUT : ce champ reste `null`/absent la
+plupart du temps - un CAGR simple (un seul moteur dominant, deja explicite
+dans `hypothese.text`) n'en a pas besoin, la repetition n'ajoutant rien.
+Reserve aux cas ou PLUSIEURS moteurs de nature differente (volume, prix,
+marge, dilution, effet de change...) se combinent pour produire le CAGR
+final et ou cette combinaison merite d'etre visible sans devoir lire tout
+`hypothese.text`. Jamais un calcul independant : les composantes citees
+doivent sommer (approximativement) au CAGR EPS deja etabli en E4-E5, jamais
+une nouvelle hypothese introduite a cet endroit.
 
 Le champ `ownership` porte un ETAT DES LIEUX FACTUEL ET APPROXIMATIF de
 l'actionnariat du titre, affiche par l'app dans le bloc "Dernières
@@ -942,9 +959,34 @@ titre, ETAPE PAR ETAPE. Un mono-produit a guidance simple traverse en ligne
 droite ; un conglomerat aux divisions divergentes declenche le build-up.
 "Sans objet, une ligne" est un resultat valide. But : la justesse au moindre
 effort, pas l'exhaustivite systematique. SEULES exceptions jamais "sans
-objet" : E4, E5 et E7 s'appliquent toujours (rapides si rien a redresser) ;
+objet" : E4, E5, E5 ter ET E7 s'appliquent toujours (rapides si rien a
+redresser ; E5 ter peut se conclure sans ecrire `quarterlyEPS` si la
+fiabilite n'est pas au rendez-vous - voir E5 ter point 5 - mais la PASSE
+elle-meme, c'est-a-dire la tentative de construction, n'est jamais sautee) ;
 en refresh, E6-a s'applique toujours egalement (voir plus bas - c'est le
 mecanisme d'independance, il ne se raccourcit pas meme sur un titre simple).
+Idem pour la recherche du communique/transcript et le renseignement sincere
+de `dernierCall.communiqueAnalyse`/`transcriptAnalyse` (voir SCHEMA et
+RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus haut) : ce sont
+des DEFAUTS DE L'OPERATION (creation/refresh), pas des options a la carte.
+
+CE QUI NE REDUIT JAMAIS CE PERIMETRE PAR DEFAUT : quand l'utilisateur
+formule sa demande de refresh sur un angle precis ("mets a jour post Q2",
+"ajoute le decoupage sequentiel", "refresh avec tel focus"), cette formulation
+oriente l'ATTENTION et la PROSE de la reponse (E6-a/E6-b, ancrages mis en
+avant) - elle ne dispense JAMAIS des defauts ci-dessus. Une demande de
+refresh centree sur un aspect precis reste une Operation B a part entiere :
+`dernierCall` (ticks inclus) et `quarterlyEPS` (E5 ter) s'appliquent au meme
+titre que si la demande avait ete generique, SAUF si l'etape 0 (verification
+de fraicheur) a deja identifie un refresh de pure forme sur le meme call
+(auquel cas ces champs, deja corrects, sont repris tels quels plutot que
+re-recherches inutilement - voir LIVRABLE FINAL, Operation B). Avant de
+livrer le JSON final d'un refresh, verifie explicitement (checklist E8-bis) :
+`dernierCall.communiqueAnalyse`/`transcriptAnalyse` sont bien presents et
+reflaetent sincerement ce qui a ete lu CE tour-ci (jamais un oubli silencieux
+d'un booleen alors que les documents ont ete lus), et `quarterlyEPS` a ete
+au moins TENTE (present si les donnees le permettaient, absent avec une
+ligne de justification en PARAMETRES & POINTS DE SUIVI sinon).
 
 REGLE D'ESCALADE : face a une incoherence MATERIELLE non resolue (segments
 incompatibles avec la guidance, sources contradictoires sur un chiffre cle),
@@ -1415,6 +1457,7 @@ Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `i
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
 Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
 
+Si `hypothese.dernierCall` est present (refresh ou creation lie a un resultat), verifie que `communiqueAnalyse` et `transcriptAnalyse` sont BIEN PRESENTS (jamais un champ omis par oubli alors que `dernierCall` lui-meme a ete rempli) et qu'ils reflaetent sincerement la recherche menee CE tour-ci (voir RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT) - un `dernierCall` chiffre et detaille alors que ces deux booleens sont absents ou a `false` alors que les documents ont ete lus est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme (elle affiche une croix grise trompeuse cote app malgre une recherche reellement effectuee).
 Verifie `hypothese.guidanceHistory` : TABLEAU (jamais un objet), chaque entree avec exactement `quarter`/`date`/`fyGuided`/`guidanceAnnuelle`, et TOUTES les entrees partagent le MEME `fyGuided` (c'est ce qui borne le tableau a l'exercice fiscal en cours - un `fyGuided` heterogene dans le tableau casse a la fois la mecanique de reset et le badge "Nᵉ point de l'exercice" affiche cote app). Verifie `hypothese.guidanceLongTermeHistory` : TABLEAU (jamais absent si `guidanceLongTerme` a deja change au moins une fois), chaque entree avec exactement `asOf`/`text` - jamais une entree ajoutee pour un refresh ou `guidanceLongTerme` est reste identique (verifie qu'aucune entree consecutive n'a le meme `text`, signe d'un ajout fait a tort).
 Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
