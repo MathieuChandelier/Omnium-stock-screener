@@ -597,7 +597,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
-        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Rechercher un titre…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
+        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Rechercher un titre…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeyup="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
       </div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl pf-col-sortable pf-metric-return" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
@@ -1865,7 +1865,7 @@ function pfNameFilterKeydown(e){
   // nom et d'appuyer sur Entree pour "choisir" le titre sans avoir a cliquer.
   const q=pfNormalize(pfNameFilter);
   if(!q)return;
-  const match=pfLastFilteredItems.find(({d,tk})=>pfNormalize(d.name||tk).includes(q));
+  const match=pfLastFilteredItems.find(({d,tk})=>pfNormalize(d.name||tk).startsWith(q));
   if(match) pfOpenTicker(match.tk,match.cours);
 }
 // Memorise la derniere liste filtree/triee affichee, pour que l'Entree dans
@@ -1950,10 +1950,12 @@ function renderPortfolio(){
     return;
   }
 
-  // Filtre par nom (voir pf-name-filter / pfFilterByName) : insensible a la
-  // casse/accents, matche le nom affiche ET le code ticker.
+  // Filtre par nom (voir pf-name-filter / pfFilterByName) : "commence par",
+  // insensible a la casse/accents, sur le nom affiche OU le code ticker -
+  // taper "s" doit remonter tous les titres commencant par S des la
+  // premiere lettre (pas de correspondance sur une sous-chaine interne).
   const q=pfNormalize(pfNameFilter);
-  const filtered=q?items.filter(({tk,d})=>pfNormalize(d.name||tk).includes(q)||pfNormalize(tk).includes(q)):items;
+  const filtered=q?items.filter(({tk,d})=>pfNormalize(d.name||tk).startsWith(q)||pfNormalize(tk).startsWith(q)):items;
 
   if(countEl)countEl.textContent=q
     ? filtered.length+' titre'+(filtered.length!==1?'s':'')+' (sur '+items.length+')'
