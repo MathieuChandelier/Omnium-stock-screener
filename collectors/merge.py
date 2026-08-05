@@ -93,7 +93,7 @@ def write_per_ticker(accepted_items):
         by_ticker.setdefault(item["ticker"], []).append(item)
 
     manifest = load_manifest()
-    for ticker in manifest.keys():
+    for ticker in manifest:
         existing = load_existing_news(ticker)
         existing_ids = {it["id"] for it in existing}
         new_for_ticker = [it for it in by_ticker.get(ticker, []) if it["id"] not in existing_ids]
@@ -117,7 +117,7 @@ def write_per_ticker(accepted_items):
 def write_news_all():
     manifest = load_manifest()
     all_items = []
-    for ticker in manifest.keys():
+    for ticker in manifest:
         items = load_existing_news(ticker)
         if not items:
             continue
