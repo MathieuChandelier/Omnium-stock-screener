@@ -22,6 +22,10 @@ from datetime import datetime, timezone
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # garantit que lib/ est trouve quel que soit l'environnement d'execution
+
 from lib.state import get_window_start, make_id, load_manifest, load_ticker_json, load_existing_news, write_artifact
 
 MAX_RESULTS_PER_TICKER = 5
