@@ -27,6 +27,10 @@ import sys
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # garantit que lib/ est trouve quel que soit l'environnement d'execution
+
 from lib.state import load_manifest, load_ticker_json, load_existing_news, utcnow_iso, STATE_PATH
 
 ARTIFACTS_DIR = "artifacts"
