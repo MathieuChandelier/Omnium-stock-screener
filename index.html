@@ -261,6 +261,25 @@ textarea{resize:vertical;width:100%;}
 .fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal-text);opacity:.9;letter-spacing:.03em;margin-top:1px;}
 thead th .fy-month-tag{color:#8be9dc;}
 
+/* ── NEWS BAR & DETAIL ── */
+.news-bar{display:none;align-items:center;justify-content:space-between;padding:16px 24px;margin:20px 0;background:#f1f4ff;border-radius:16px;cursor:pointer;}
+.news-bar-text{font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:600;color:var(--navy);}
+.news-bar-text b{font-weight:800;}
+.news-bar-link{display:flex;align-items:center;gap:5px;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);flex-shrink:0;}
+.news-section{margin-bottom:26px;}
+.news-section-hd{display:flex;align-items:center;gap:9px;margin:0 0 10px;}
+.news-section-hd svg{flex-shrink:0;}
+.news-section-lbl{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;}
+.news-card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);overflow:hidden;}
+.news-company-block{padding:13px 20px;}
+.news-company-block+.news-company-block{border-top:1px solid rgba(0,1,144,.08);}
+.news-company-name{font-family:'Quattrocento Sans',serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.news-item-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;gap:12px;}
+.news-item-row a{color:var(--muted);text-decoration:none;font-size:13.5px;flex:1;min-width:0;}
+.news-item-row a:hover{color:var(--navy);text-decoration:underline;}
+.news-item-date{font-size:11px;color:#94a3b8;white-space:nowrap;flex-shrink:0;font-family:'Quattrocento Sans',serif;}
+.news-empty{text-align:center;padding:48px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
+
 /* ── FOOTER ── */
 footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-top:1px solid var(--border);margin-top:22px;font-family:'Quattrocento Sans',serif;}
 
@@ -339,14 +358,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qtr-legend-row{display:flex;justify-content:flex-start;margin:6px 0 4px;}
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
-.qs-chips-row{display:flex;gap:8px;justify-content:flex-start;}
+.qs-chips-row{display:flex;gap:8px;}
 /* box-sizing:border-box + bordure transparente de meme epaisseur sur les
    puces "actual" : sans ca, les puces "estim" (bordure pointillee 1.5px)
    sont mecaniquement ~3px plus hautes que les puces "actual" (sans
    bordure) - ecart invisible au premier coup d'oeil mais reel. Avec cette
    regle, TOUTES les puces (PY, CY publiees/estimees, NY) font rigoureusement
    la meme hauteur, quelle que soit l'annee. */
-.qs-chip{box-sizing:border-box;flex:0 0 auto;width:70px;text-align:center;border-radius:6px;padding:5px 2px;border:1.5px solid transparent;}
+.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -490,7 +509,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .qs-qtr-block{margin-top:6px;}
   .rb-eps-headline{gap:14px;}
   .qs-chips-row{gap:6px;}
-  .qs-chip{width:52px;padding:4px 1px;}
+  .qs-chip{padding:4px 1px;}
   .chip-q{font-size:7px;}
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8px;}
@@ -501,6 +520,16 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pe-sub{font-size:8px;}
   .pe-exhead{font-size:8.5px;}
   .pe-exval{font-size:11.5px;}
+
+  /* ── News (barre + vue détaillée), sur mobile ── */
+  .news-bar{padding:12px 16px;margin:12px 0;border-radius:14px;}
+  .news-bar-text{font-size:12px;}
+  .news-bar-link{font-size:11px;}
+  .news-section-lbl{font-size:10px;}
+  .news-company-block{padding:11px 14px;}
+  .news-company-name{font-size:12.5px;}
+  .news-item-row a{font-size:12px;}
+  .news-item-date{font-size:10px;}
 
   /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
@@ -573,6 +602,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div class="container">
 
 <div id="tab-portefeuille" class="panel">
+  <div id="news-bar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
@@ -627,6 +657,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </div>
   </div>
 
+</div>
+
+<div id="tab-news" class="panel">
+  <div id="news-detail-content"></div>
 </div>
 
 </div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
@@ -741,6 +775,8 @@ function normalizeTicker(key,d){
 function normalizeState(s){
   if(!s.tickers)s.tickers={};
   if(!s.nextEvents)s.nextEvents={};
+  if(!s.newsDigest)s.newsDigest=[];
+  if(!s.newsAll)s.newsAll=[];
   Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
   return s;
 }
@@ -770,7 +806,13 @@ async function loadState() {
     //    Operation C). Son absence ou son invalidite est silencieuse : elle
     //    ne doit jamais bloquer le chargement, chaque titre retombe alors
     //    sur son propre champ nextEvent (voir nextEventLabel()).
-    const [results, nextEvents] = await Promise.all([
+    // 2ter. Egalement en parallele, data/newsDigest.json (compteur de la
+    //    barre de notif portefeuille) et data/newsAll.json (contenu de la
+    //    vue detaillee) - alimentes par le pipeline de veille news
+    //    (GitHub Action, voir collectors/). Tout comme nextEvents, absence
+    //    ou invalidite silencieuse : la barre de notif ne s'affiche
+    //    simplement pas plutot que de bloquer le chargement de l'app.
+    const [results, nextEvents, newsDigest, newsAll] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`);
@@ -783,12 +825,14 @@ async function loadState() {
           return null;
         }
       })),
-      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch('data/newsDigest.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch('data/newsAll.json').then(r => r.ok ? r.json() : []).catch(() => [])
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {} };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [] };
 
     // Empreinte calculee sur l'ensemble reconstitue, pour rester comparable
     // a l'ancien comportement (verification de coherence entre onglets).
@@ -910,6 +954,7 @@ function showTab(id,btn,fromHistory){
   if(tabBar)tabBar.style.display=id==='portefeuille'?'none':'flex';
   if(id==='analyse'){renderAnalyse();}
   if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
+  if(id==='news'){renderNewsDetail();}
   saveLastView(id);
   // Historique du navigateur : on empile un etat interne a chaque navigation
   // reelle (pas quand on est appele depuis popstate, sinon boucle infinie).
@@ -932,6 +977,8 @@ window.addEventListener('popstate', function(e){
     if(coursEl && d){ coursEl.value=d.cours||10.0; sizeCoursInput(); }
     syncAnalyseHeader(CT);
     showTab('analyse', null, true);
+  } else if(st && st.omniumTab==='news'){
+    showTab('news', null, true);
   } else {
     // Etat "portefeuille" ou etat inconnu/absent (ex. tout premier chargement) :
     // on retombe toujours sur la vue portefeuille plutot que de laisser le
@@ -1813,6 +1860,136 @@ function calcScore(ticker){
   return (cagrEps+yieldPct)/peFwd;
 }
 
+// ══════════════════════════════════════════════════════════════
+// NEWS — barre de notification (portefeuille) + vue detaillee.
+// Alimentees par data/newsDigest.json et data/newsAll.json (voir
+// collectors/merge.py), chargees dans state.newsDigest/state.newsAll par
+// loadState(). Fraicheur "vue/pas vue" geree cote client via une SEULE
+// date en localStorage (omniumLastSeenNews) - jamais de compte serveur ni
+// d'ecriture partagee : chaque navigateur a son propre etat, le clic d'une
+// personne n'affecte jamais ce que voient les autres.
+// ══════════════════════════════════════════════════════════════
+const NEWS_LAST_SEEN_KEY='omniumLastSeenNews';
+const NEWS_COUNT_CAP=40;
+const NEWS_TYPE_ORDER=['communique','web','youtube'];
+const NEWS_TYPE_LABEL={communique:'Communiqués',web:'Web',youtube:'Vidéos'};
+const NEWS_TYPE_ICON={
+  communique:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 12V5a2 2 0 0 1 2-2h7l5 5v4"/><path d="M5 15h14"/><path d="M5 19h14"/></svg>',
+  web:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>',
+  youtube:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z" fill="#000190" stroke="none"/></svg>'
+};
+
+// Formatte "2026-08-05" -> "5 août" (reutilise MONTH_ABBR_FR, deja utilise
+// ailleurs dans l'app pour les badges d'exercice decale).
+function formatNewsDayMonth(iso){
+  const p=String(iso||'').split('-');
+  if(p.length!==3)return iso||'';
+  const day=parseInt(p[2],10);
+  const month=MONTH_ABBR_FR[parseInt(p[1],10)]||'';
+  return isNaN(day)?iso:`${day} ${month}`;
+}
+
+// Etat de la barre de notif : compte cumule de tous les jours du digest
+// posterieurs a la derniere date vue (pas seulement le dernier run) - voir
+// discussion de design. Retourne null si rien de nouveau (bar masquee).
+function newsBarState(){
+  const digest=state.newsDigest||[];
+  if(!digest.length)return null;
+  let lastSeen='';
+  try{ lastSeen=localStorage.getItem(NEWS_LAST_SEEN_KEY)||''; }catch(e){}
+  const fresh=digest.filter(e=>e&&e.date>lastSeen);
+  if(!fresh.length)return null;
+  const total=fresh.reduce((s,e)=>s+(+e.total||0),0);
+  if(total<=0)return null;
+  const mostRecent=fresh.reduce((m,e)=>e.date>m?e.date:m,fresh[0].date);
+  return {total, date:mostRecent};
+}
+
+function renderNewsBar(){
+  const wrap=document.getElementById('news-bar-wrap');
+  if(!wrap)return;
+  const st=newsBarState();
+  if(!st){ wrap.innerHTML=''; return; }
+  const countTxt=st.total>NEWS_COUNT_CAP?NEWS_COUNT_CAP+'+':st.total;
+  wrap.innerHTML=`<div class="news-bar" style="display:flex;" onclick="openNewsDetail()">
+    <span class="news-bar-text">News disponibles au ${formatNewsDayMonth(st.date)}&nbsp;: <b>${countTxt}</b></span>
+    <span class="news-bar-link">Afficher
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </span>
+  </div>`;
+}
+
+// Marque tout le digest connu comme "vu" (pas seulement les entrees
+// nouvellement affichees dans la barre - voir design : la date memorisee
+// est la plus recente de TOUT newsDigest.json, pas juste celle du jour
+// affiche), puis bascule vers la vue detaillee.
+function openNewsDetail(){
+  const digest=state.newsDigest||[];
+  if(digest.length){
+    const maxDate=digest.reduce((m,e)=>(e&&e.date>m)?e.date:m,digest[0].date||'');
+    try{ localStorage.setItem(NEWS_LAST_SEEN_KEY, maxDate); }catch(e){}
+  }
+  renderNewsBar();
+  showTab('news', null);
+}
+
+// Groupe newsAll (liste plate) en type -> societe -> items tries par date
+// desc, dans l'ordre NEWS_TYPE_ORDER (communiques -> web -> videos) et par
+// ordre alphabetique de societe a l'interieur de chaque type.
+function groupNewsAll(){
+  const all=state.newsAll||[];
+  const byType={};
+  all.forEach(it=>{
+    if(!it||!it.type)return;
+    (byType[it.type]=byType[it.type]||[]).push(it);
+  });
+  return NEWS_TYPE_ORDER.filter(t=>byType[t]&&byType[t].length).map(t=>{
+    const byCompany={};
+    byType[t].forEach(it=>{
+      const key=it.ticker||it.name||'?';
+      if(!byCompany[key])byCompany[key]={name:it.name||it.ticker||'?', items:[]};
+      byCompany[key].items.push(it);
+    });
+    const companies=Object.values(byCompany).map(c=>{
+      c.items.sort((a,b)=>String(b.dateEvenement||'').localeCompare(String(a.dateEvenement||'')));
+      return c;
+    }).sort((a,b)=>a.name.localeCompare(b.name,'fr',{sensitivity:'base'}));
+    return {type:t, label:NEWS_TYPE_LABEL[t]||t, companies};
+  });
+}
+
+function renderNewsDetail(){
+  const el=document.getElementById('news-detail-content');
+  if(!el)return;
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const sections=groupNewsAll();
+  if(!sections.length){
+    el.innerHTML='<div class="news-empty">Aucune actualité disponible pour le moment.</div>';
+    return;
+  }
+  el.innerHTML=sections.map(sec=>`
+    <div class="news-section">
+      <div class="news-section-hd">
+        ${NEWS_TYPE_ICON[sec.type]||''}
+        <span class="news-section-lbl">${esc(sec.label)}</span>
+      </div>
+      <div class="news-card">
+        ${sec.companies.map(c=>`
+          <div class="news-company-block">
+            <div class="news-company-name">${esc(c.name)}</div>
+            ${c.items.map(it=>`
+              <div class="news-item-row">
+                <a href="${esc(it.url||'#')}" target="_blank" rel="noopener noreferrer">${esc(it.title||'')}</a>
+                <span class="news-item-date">${formatNewsDayMonth(it.dateEvenement)}</span>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
 // Recherche par nom dans l'en-tete de la colonne Name (voir pf-name-filter) :
 // filtre la liste affichee en direct, insensible a la casse/accents, sur
 // d.name ET le code ticker. pfOpenTicker() factorise l'ouverture d'un titre,
@@ -1892,6 +2069,7 @@ function pfUpdateSortHeaderUI(){
 }
 
 function renderPortfolio(){
+  renderNewsBar();
   const list=document.getElementById('pf-list');
   const countEl=document.getElementById('pf-count');
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
