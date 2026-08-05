@@ -4,102 +4,55 @@
   "yahooSymbol": "PODD",
   "dividende": 0,
   "data": [
-    {
-      "year": 2021,
-      "ca": 1099,
-      "ebit": 126,
-      "net": 16.8,
-      "shares": 69,
-      "nd": 482
-    },
-    {
-      "year": 2022,
-      "ca": 1305,
-      "ebit": 37.6,
-      "net": 4.6,
-      "shares": 70,
-      "nd": 727
-    },
-    {
-      "year": 2023,
-      "ca": 1697,
-      "ebit": 220.1,
-      "net": 206.3,
-      "shares": 74,
-      "nd": 712
-    },
-    {
-      "year": 2024,
-      "ca": 2072,
-      "ebit": 308.9,
-      "net": 418.3,
-      "shares": 74,
-      "nd": 427
-    },
-    {
-      "year": 2025,
-      "ca": 2708,
-      "ebit": 473.8,
-      "net": 247.1,
-      "shares": 72,
-      "nd": 233
-    }
+    {"year":2021,"ca":1099,"ebit":126,"net":16.8,"shares":69,"nd":482},
+    {"year":2022,"ca":1305,"ebit":37.6,"net":4.6,"shares":70,"nd":727},
+    {"year":2023,"ca":1697,"ebit":220.1,"net":206.3,"shares":74,"nd":712},
+    {"year":2024,"ca":2072,"ebit":308.9,"net":418.3,"shares":74,"nd":427},
+    {"year":2025,"ca":2708,"ebit":473.8,"net":247.1,"shares":72,"nd":233}
   ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 6.48,
-    "epsNY": 8.08,
-    "date": "2026-07-01",
-    "source": "S&P Global 24 analystes (EPS ajuste non-GAAP)"
-  },
+  "epsConsensus": {"year":2026,"eps":6.48,"epsNY":8.08,"date":"2026-07-01","source":"S&P Global 24 analystes (EPS ajuste non-GAAP) - snapshot PRE-T2 26, non actualise depuis la publication du 05/08 et la baisse de guidance US - probablement trop haut desormais, a rafraichir au prochain point."},
   "particularites": [],
+  "nextEvent": {"label":"Q3 26","date":null},
   "hypothese": {
-    "date": "2026-07-01",
-    "source": "Transcript Q1 2026 (6 mai 2026)",
-    "summary": "Revision haussiere post-transcript Q1 2026: CA guidance releve +22% midpoint; buybacks tres agressifs ($300M Q1); rappel $12M exceptionnel non-recurrent; catalyseurs forts 2027-2028 (Omnipod 6, fully closed loop).",
-    "text": "== SYNTHESE DE LA THESE ==\nInsulet est le leader des systemes de delivrance d'insuline en patch (Omnipod), avec une franchise en forte croissance internationale et US, et un pipeline de nouvelles generations (Omnipod 6, algorithme Gen 3, fully closed loop T2D) qui elargit continuellement le marche adressable. La these repose sur la combinaison croissance + expansion de marge + rachats d'actions agressifs.\n\n== EVENEMENTS & INFLEXIONS (Q1 2026, 6 mai 2026) ==\n1. RAPPEL PRODUIT — EXCEPTIONNEL NON-RECURRENT : $12M de charges GAAP au T1 2026 (correction volontaire deployee mars 2026, aucun nouvel incident depuis le 10 avril). Traite comme one-off, exclu des projections futures.\n2. GUIDANCE CA 2026 RELEVEE : +21-23% (midpoint +22%, vs +20-22% avant). US Omnipod +20-22%, International +26-28% (releve).\n3. BUYBACKS MASSIFS EN Q1 : $300M rachetes en Q1 seul (1,25M actions a ~$240). Credit facility $500M entierement disponible.\n4. NET INTEREST EXPENSE guide $40M en 2026 (+$15M vs 2025, refinancement dette).\n5. MARGE OPERATIONNELLE Q1 2026 : +110bps (17,5% adjusted). Full year guide +100bps -> ~18,5%.\n6. CATALYSEURS 2027-2028 CONFIRMES : Omnipod 6 + algorithme Gen 3 (lancement 2027, donnees STRIVE presentees ADA juin 2026) ; fully closed loop T2D EVOLVE (1er patient enrole, filing FDA 2027, lancement 2028) ; Libre 3+ integration (+450k utilisateurs MDI adressables).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript Q1 2026 (6 mai). Secondaires : FY2025 (CA 2 708M$, EBIT 473,8M$, net 247,1M$). Cours ~160$, ~70-72M actions.\nGuidance FY2026 : CA +21-23%, marge op. +100bps, actions diluted ~70M (rachat accelere).\nProchain refresh utile : Q2 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nFX : impact favorable +100bps sur CA total 2026 (reporte). Modele en USD reporte. Other non-op 2025 (-109,6M$, loss on debt extinguishment) traite comme non-recurrent -> amelioration pretax 2026 d'~80M$ apres impot.\nA suivre : (1) donnees STRIVE (ADA juin 2026) ; (2) enrolement EVOLVE ; (3) rythme des rachats ; (4) impact Libre 3+ sur les volumes MDI.\n\n== CATALYSEURS ==\nOmnipod 6 + Gen 3 (2027) ; fully closed loop T2D EVOLVE (2028) ; expansion internationale (+26-28%) ; Libre 3+ integration ; buybacks agressifs (dilution neutralisee, EPS accretif).",
-    "impact": "positif",
-    "adjEPS": {
-      "2026": 6.4,
-      "2027": 8.69,
-      "2028": 11.1,
-      "2029": 14.03,
-      "2030": 17.6
+    "date":"2026-08-05",
+    "priorEPS":{"date":"2026-07-01","eps":{"2026":6.4,"2027":8.69}},
+    "source":"Refresh T2 2026 (COMMUNIQUE SEUL - transcript non analyse, a reprendre au prochain refresh) - Communique officiel de resultats (05/08/2026, BusinessWire/SEC 8-K) + syntheses de presse detaillees (BigGo Finance, StockStory/FinancialContent, GuruFocus)",
+    "dernierCall": {
+      "quarter":"T2 26",
+      "communiqueAnalyse":true,
+      "transcriptAnalyse":false,
+      "resultatsVsConsensus":{"ca":{"actual":801.7,"consensus":787},"epsAdj":{"actual":1.66,"consensus":1.48,"basis":"non-GAAP"}},
+      "guidanceProchainTrimestre":"T3 26 : CA guide au point median a 833,4 M$, en dessous du consensus (~847,3 M$) - explique une bonne partie de la reaction negative du marche malgre le beat T2 ; FX legerement defavorable au T3 pour l'International (vs tailwind sur l'annee pleine).",
+      "guidanceAnnuelle":"FY26 CA total ABAISSE a +20-22% cc (vs +21-23% a la creation) ; Omnipod US ABAISSE a +17-19% cc (vs +20-22%) suite a une retention/utilisation plus faible que prevue chez les patients diabetiques de type 2 durant les 90 premiers jours de traitement - la CEO Ashley McEvoy a assume personnellement ce manque d'anticipation. Omnipod International RELEVE a +30-32% cc (vs +26-28%), tire par une tres forte dynamique (Australie, entree en Espagne) ; tailwind FX ~+300pb sur la croissance publiee International pour l'annee.",
+      "pointsCles":[
+        "Le beat T2 (CA +23,5%, EPS ajuste 1,66$ +41,5%, marge operationnelle ajustee 19,3% +140pb) a ete largement eclipse par la baisse de la guidance US Omnipod - reaction boursiere tres negative (~-9,6% sur la seance, cours ~150,83$).",
+        "Cause identifiee et assumee publiquement par la direction : retention/utilisation plus faible que prevue chez les patients de type 2 durant les 90 premiers jours de traitement - plan d'action annonce (renforcement du service client, remuneration commerciale reorientee vers la retention, amelioration de l'echantillonnage, deploiement de la plateforme cloud Omnipod Discover pour l'onboarding).",
+        "International en tres forte acceleration (+33% cc au T2), guidance annuelle relevee a +30-32% cc - Omnipod 5 devenu numero 1 des nouvelles prescriptions de pompes a insuline en Australie, entree sur le marche espagnol.",
+        "Premiere indication 2027 : croissance de sortie d'annee 2026 attendue 'mid-teens', objectif de maintenir ou ameliorer ce rythme, SANS integrer encore les benefices attendus des initiatives de retention en cours.",
+        "Donnees STRIVE (Omnipod 6) presentees a l'ADA (juin 2026) : amelioration du temps dans la cible et du temps dans la cible etroite - confirme le pipeline clinique, non encore chiffre en impact commercial.",
+        "AVERTISSEMENT METHODOLOGIQUE : ce refresh s'appuie sur le communique officiel et des syntheses de presse detaillees, PAS sur le transcript integral du call (non disponible au moment de ce refresh, call tenu le matin meme) - la couleur Q&A complete (marge detaillee, ampleur chiffree du plan de retention, questions analystes) manque encore. A REPRENDRE explicitement au prochain refresh une fois le transcript disponible."
+      ]
     },
-    "adjCA": {
-      "2026": 3304,
-      "2027": 3965,
-      "2028": 4560,
-      "2029": 5244,
-      "2030": 6031
-    },
-    "adjEBIT": {
-      "2026": 615,
-      "2027": 793,
-      "2028": 980,
-      "2029": 1206,
-      "2030": 1478
-    },
-    "adjNet": {
-      "2026": 448,
-      "2027": 595,
-      "2028": 749,
-      "2029": 933,
-      "2030": 1153
-    },
-    "adjND": {
-      "2026": -150,
-      "2027": -500,
-      "2028": -1000,
-      "2029": -1600,
-      "2030": -2300
-    },
-    "adjShares": {
-      "2026": 70,
-      "2027": 68.5,
-      "2028": 67.5,
-      "2029": 66.5,
-      "2030": 65.5
-    }
+    "guidanceHistory":[
+      {"quarter":"T1 26","date":"2026-05-06","fyGuided":2026,"guidanceAnnuelle":"CA total +21-23% cc, US Omnipod +20-22%, International +26-28%, marge operationnelle ajustee +100pb."},
+      {"quarter":"T2 26","date":"2026-08-05","fyGuided":2026,"guidanceAnnuelle":"CA total ABAISSE a +20-22% cc ; US Omnipod ABAISSE a +17-19% cc (retention/utilisation Type 2 plus faible que prevue) ; International RELEVE a +30-32% cc."}
+    ],
+    "guidanceLongTerme":"Premiere indication 2027 (nouvelle a ce refresh) : croissance de sortie d'annee 2026 attendue 'mid-teens', objectif de maintenir ou ameliorer ce rythme - ne integre PAS encore les benefices esperes des initiatives de retention en cours de deploiement.",
+    "guidanceLongTermeHistory": [],
+    "summary":"T2 26 : beat net (CA +23,5%, EPS ajuste 1,66$ +41,5%) largement eclipse par une baisse de la guidance US Omnipod (retention Type 2 plus faible que prevue, assumee par la CEO) partiellement compensee par une hausse de la guidance International. Titre -9,6% sur la seance. Refresh base sur le communique SEUL (transcript non disponible) - adjEPS revise legerement a la baisse (6,40->6,25) par prudence, a affiner au prochain refresh avec le transcript.",
+    "text": "== SYNTHESE DE LA THESE ==\nLe T2 2026 est un trimestre a lecture double, typique d'une these medtech de qualite qui rencontre un accroc d'execution localise plutot qu'une remise en cause structurelle. Sur le plan financier pur, Insulet delivre un beat net (CA 801,7 M$ +23,5%, EPS ajuste 1,66$ +41,5%, marge operationnelle ajustee 19,3% +140pb, EBITDA ajuste 199,8 M$ au-dessus du consensus). Mais la guidance US Omnipod est abaissee (17-19% cc contre 20-22%), la direction identifiant et assumant publiquement un probleme de retention/utilisation chez les patients diabetiques de type 2 durant les 90 premiers jours de traitement - un segment plus recent et moins mature de la base de patients qu'Insulet cible activement depuis l'extension au-dela du diabete de type 1. La reaction du marche (-9,6%) montre que ce signal a domine la lecture du trimestre malgre le beat. La contrepartie positive - une International en acceleration nette et une guidance relevee a +30-32% cc - n'a pas suffi a compenser aux yeux des investisseurs, l'US restant le moteur historique et le plus gros contributeur de revenus. Le pipeline clinique (STRIVE/Omnipod 6, entree Espagne, leadership Australie) reste intact et les catalyseurs 2027-2028 (Gen 3, EVOLVE T2D closed loop) ne sont pas remis en cause par cet episode, qui a plutot le profil d'un probleme d'execution commerciale correctible (le plan d'action annonce est concret et rapide a deployer) que d'un probleme de demande sous-jacente.\n\n== EVENEMENTS & INFLEXIONS (T2 2026, publie 05/08) ==\n1. GUIDANCE US OMNIPOD ABAISSEE [classe (i), negatif, nouveau] : +17-19% cc (vs +20-22%), cause identifiee (retention/utilisation Type 2 90 premiers jours) et assumee par la CEO, plan d'action deja engage (service client, remuneration commerciale, echantillonnage, plateforme Omnipod Discover).\n2. GUIDANCE INTERNATIONAL RELEVEE [classe (i), positif] : +30-32% cc (vs +26-28%), Omnipod 5 numero 1 des nouvelles prescriptions en Australie, entree sur le marche espagnol, tailwind FX ~+300pb sur la croissance publiee annuelle.\n3. BEAT T2 GENERALISE [classe (i)] : CA, EPS ajuste et EBITDA ajuste tous au-dessus du consensus ; marge operationnelle ajustee en hausse de 140pb.\n4. PREMIERE INDICATION 2027 [classe (iii), nouveau, non chiffre] : croissance de sortie 2026 attendue mid-teens, objectif de maintenir/ameliorer, sans integrer les benefices attendus des initiatives de retention.\n5. STRIVE/ADA (Omnipod 6) [classe (iii), qualitatif] : donnees cliniques positives (temps dans la cible), pipeline confirme sans impact commercial chiffre a ce stade.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource UNIQUE a ce refresh : communique officiel de resultats T2 2026 (05/08/2026, BusinessWire/SEC 8-K) et syntheses de presse detaillees (BigGo Finance, StockStory/FinancialContent, GuruFocus) - PAS de transcript integral du call, non disponible au moment de ce refresh (call tenu le matin meme). CA T2 801,7 M$ (+23,5%, +22,7% cc). Omnipod US 544,1 M$ (+20,1%). Omnipod International 251,8 M$ (+35,5%, +32,9% cc). Marge operationnelle ajustee 19,3% (+140pb). Net income GAAP 95,0 M$ / 1,37$ par action diluee (vs 22,5 M$/0,32$ un an plus tot). EPS ajuste 1,66$ (vs consensus ~1,48$). Prochain refresh utile : DES QUE LE TRANSCRIPT T2 26 SERA DISPONIBLE (priorite absolue, voir avertissement dans dernierCall.pointsCles), sinon resultats T3 2026 (date non confirmee).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee (adj EPS/CA/EBIT non-GAAP, coherente avec la guidance et le consensus). adjCA 2026 quasi-inchange (3 304 -> 3 290 M$, -0,4%) : la baisse US et la hausse International se compensent largement en valeur absolue (l'International partant d'une base plus petite). adjEPS 2026 revise LEGEREMENT a la baisse par prudence (6,40 -> 6,25, -2,3%) pour refleter les investissements supplementaires probables lies au plan de retention (service client, remuneration commerciale) evoques mais non chiffres dans le communique - ESTIMATION PROVISOIRE, a la fois cote CA et cote marge, dans l'attente du transcript qui donnera la ventilation precise. adjEBIT/adjNet 2027-2030 mis a l'echelle proportionnellement (memes ratios qu'a la creation). adjND et adjShares laisses inchanges (aucun element nouveau).\nWATCH-LIST pour le prochain refresh : (1) PRIORITE : analyser le transcript T2 26 des qu'il sera disponible pour affiner precisement l'impact du plan de retention sur la marge/les couts, et recueillir la couleur Q&A complete ; (2) suivre la trajectoire trimestrielle de la retention Type 2 (le probleme se resorbe-t-il comme prevu ?) ; (3) confirmer si le CA T3 26 (833,4 M$ guide, sous le consensus) se materialise ou si un nouveau trim de guidance intervient ; (4) progression STRIVE/Omnipod 6 (lancement 2027) et EVOLVE (enrolement, filing FDA 2027) ; (5) actualiser epsConsensus, non rafraichi depuis la publication.\n\n== CATALYSEURS ==\nAnalyse du transcript T2 26 (des que disponible) est le catalyseur immediat le plus important pour fiabiliser ce refresh ; resolution du probleme de retention Type 2 US (plan d'action deja engage) ; poursuite de l'acceleration International (Espagne, Australie) ; Omnipod 6 + Gen 3 (2027, donnees STRIVE positives) ; fully closed loop T2D EVOLVE (2028) ; Libre 3+ integration.",
+    "impact":"neutre",
+    "ancrages": [
+      {"id":"us_omnipod_guidance_cut","moteur":"Guidance FY26 US Omnipod abaissee a +17-19% cc (vs +20-22%) suite a une retention/utilisation plus faible que prevue chez les patients Type 2 durant les 90 premiers jours de traitement - cause identifiee et plan d'action engage par la direction (service client, remuneration commerciale, echantillonnage, plateforme Omnipod Discover).","applique":["adjCA.2026","adjCA.2027"],"confiance":"moyenne (source communique + presse uniquement, pas de transcript)"},
+      {"id":"international_guidance_raise","moteur":"Guidance FY26 International relevee a +30-32% cc (vs +26-28%), croissance T2 +33% cc, Omnipod 5 numero 1 en Australie, entree Espagne, tailwind FX ~+300pb sur la croissance publiee annuelle - compense largement en valeur absolue la baisse US du fait d'une base plus petite mais une croissance plus rapide.","applique":["adjCA.2026","adjCA.2027","adjCA.2028"],"confiance":"moyenne"},
+      {"id":"retention_investissements_marge","moteur":"Investissements supplementaires probables lies au plan de retention Type 2 (service client, remuneration commerciale) evoques par le communique mais non chiffres - trim provisoire et prudent d'adjEPS/adjEBIT en attendant le transcript pour une ventilation precise.","applique":["adjEBIT.2026","adjEBIT.2027","adjNet.2026","adjNet.2027","adjEPS.2026","adjEPS.2027","adjEPS.2028","adjEPS.2029","adjEPS.2030"],"confiance":"basse (estimation provisoire, source communique uniquement)"},
+      {"id":"indication_2027_mid_teens","moteur":"Premiere indication management pour 2027 : croissance de sortie 2026 'mid-teens', objectif de maintenir/ameliorer, sans integrer les benefices attendus du plan de retention - traite comme reference qualitative, non encore integree chiffree dans les adjXXX 2027+ faute de precision suffisante.","applique":[],"confiance":"basse"}
+    ],
+    "adjEPS": {"2026":6.25,"2027":8.49,"2028":10.84,"2029":13.71,"2030":17.2},
+    "adjCA": {"2026":3290,"2027":3949,"2028":4542,"2029":5223,"2030":6007},
+    "adjEBIT": {"2026":600,"2027":775,"2028":957,"2029":1178,"2030":1444},
+    "adjNet": {"2026":438,"2027":582,"2028":732,"2029":912,"2030":1127},
+    "adjND": {"2026":-150,"2027":-500,"2028":-1000,"2029":-1600,"2030":-2300},
+    "adjShares": {"2026":70,"2027":68.5,"2028":67.5,"2029":66.5,"2030":65.5}
   }
 }
