@@ -316,7 +316,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-py-toggle span.lbl{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
 .rb-eps-py-chevron{font-size:9px;color:var(--muted);transition:transform .2s;}
 .rb-eps-py-toggle.open .rb-eps-py-chevron{transform:rotate(180deg);}
-.rb-eps-py-content{padding:12px 20px 0;display:none;}
+/* Contenu du depliant "Historique" : scrollable au-dela d'une hauteur
+   raisonnable, pour accueillir sans probleme les annees qui s'accumulent
+   au fil des bascules d'exercice (voir hypothese.quarterlyEPS.historique). */
+.rb-eps-py-content{padding:12px 20px 0;display:none;max-height:280px;overflow-y:auto;}
 .rb-eps-py-content.open{display:block;}
 
 .qs-qtr-block{margin-top:8px;}
@@ -1077,15 +1080,20 @@ function refreshPriceOnly(ticker){
 }
 
 // Detail trimestriel/semestriel de l'EPS - voir hypothese.quarterlyEPS.
-// Retourne les morceaux a placer par renderReturnBlock. La legende Σ (somme)
-// et la note de coherence NE SONT PLUS AFFICHEES pour CY/NY (voir opts.
-// hideSum) : toute divergence entre le cumul trimestriel et l'EPS annuel
-// doit desormais etre arbitree AVANT la livraison du JSON (voir
-// INSTRUCTIONS.md, E5 ter point 4 revise), donc un JSON livre ne devrait
-// plus jamais en presenter - le retrait de l'affichage est la consequence
-// visuelle de ce changement de process, pas une simple preference
-// esthetique. Conservee pour PY (bloc historique) a titre informatif, sans
-// enjeu de coherence puisque PY n'est jamais confrontee a un adjEPS projete.
+// Retourne les morceaux a placer par renderReturnBlock.
+//
+// AFFICHAGE DE LA SOMME (Σ) - regle distincte selon le bloc :
+// - CY, NY et PY (annee N-1, affichee EN LIGNE par defaut a cote des
+//   autres) : JAMAIS de Σ affichee. Toute divergence entre le cumul
+//   trimestriel et l'EPS annuel est desormais arbitree AVEC Mathieu AVANT
+//   la livraison du JSON (voir INSTRUCTIONS.md, E5 ter point 4 revise) -
+//   un JSON livre ne devrait donc plus jamais en presenter, et PY (annee
+//   deja cloturee, comparee a son propre "adjEPS" implicite via `data`)
+//   suit la meme regle de retrait par coherence visuelle avec CY/NY.
+// - `historique` (annees N-2 et plus anciennes, repliees derriere le
+//   bouton "Historique") : Σ CONSERVEE, a titre purement informatif -
+//   aucun enjeu de coherence a arbitrer sur des annees aussi anciennes,
+//   la Σ y sert seulement de repere de lecture rapide.
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
@@ -1102,10 +1110,27 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     }
     return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}</div>`;
   };
+  // PY (annee N-1) : desormais affichee EN LIGNE par defaut, au meme titre
+  // que CY/NY (plus de toggle ni de repli specifique a cette seule annee -
+  // voir historiqueBlocks ci-dessous pour N-2 et au-dela, qui elles restent
+  // repliees). Sigma masquee, coherent avec CY/NY.
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
-    html: colBlock(qe.PY, null, null, {forceActual:true})
+    html: colBlock(qe.PY, null, null, {forceActual:true, hideSum:true})
   }:null;
+  // Historique (N-2 et plus anciennes) : voir hypothese.quarterlyEPS.
+  // historique dans INSTRUCTIONS.md - tableau ACCUMULATIF (contrairement a
+  // PY/CY/NY, entierement reconstruites a chaque refresh) alimente au fil
+  // des bascules d'exercice. Chaque entree {year, periods} rend son propre
+  // bloc, Σ conservee (voir note ci-dessus). Absence gracieuse : tant
+  // qu'aucune bascule n'a eu lieu depuis l'introduction de ce champ, le
+  // tableau est vide et la section n'apparait simplement pas.
+  const historiqueBlocks=(Array.isArray(qe.historique)?qe.historique:[])
+    .filter(h=>h && Array.isArray(h.periods) && h.periods.length)
+    .map(h=>({
+      year: h.year,
+      html: colBlock(h.periods, null, null, {forceActual:true})
+    }));
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
@@ -1129,27 +1154,30 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     </div>`;
   return {
     pyBlock,
+    historiqueBlocks,
     chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideSum:true}),
     chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideSum:true}),
     peStack
   };
 }
 
-// Etat (en memoire, pas persiste) du depliant EPS historique (PY) - reduit
-// par defaut a chaque changement de titre, voir renderReturnBlock.
-let _epsPyOpen=false;
-function toggleEpsPyBlock(){
-  _epsPyOpen=!_epsPyOpen;
-  const toggle=document.getElementById('eps-py-toggle');
-  const content=document.getElementById('eps-py-content');
-  if(toggle)toggle.classList.toggle('open',_epsPyOpen);
-  if(content)content.classList.toggle('open',_epsPyOpen);
+// Etat (en memoire, pas persiste) du depliant "Historique" (N-2 et plus
+// anciennes) - replie par defaut a chaque changement de titre, voir
+// renderReturnBlock. Remplace l'ancien toggle qui portait sur PY seule
+// (PY est desormais toujours affichee en ligne, voir buildQuarterlyEPS).
+let _epsHistOpen=false;
+function toggleEpsHistBlock(){
+  _epsHistOpen=!_epsHistOpen;
+  const toggle=document.getElementById('eps-hist-toggle');
+  const content=document.getElementById('eps-hist-content');
+  if(toggle)toggle.classList.toggle('open',_epsHistOpen);
+  if(content)content.classList.toggle('open',_epsHistOpen);
 }
 
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
-  _epsPyOpen=false; // replie par defaut a chaque nouveau rendu (changement de titre ou de prix)
+  _epsHistOpen=false; // replie par defaut a chaque nouveau rendu (changement de titre ou de prix)
   const d=state.tickers[ticker];
   const {CY,LY}=yearsFor(ticker);
   const cur=tickerCur(ticker)||'€';
@@ -1188,17 +1216,26 @@ function renderReturnBlock(ticker, proj, cours){
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
     ${qeBlock?qeBlock.peStack:''}
-    ${qeBlock?.pyBlock?`
-    <div class="rb-eps-py-toggle" id="eps-py-toggle" onclick="toggleEpsPyBlock()">
-      <span class="lbl">EPS ${qeBlock.pyBlock.year} (historique)</span>
+    ${qeBlock?.historiqueBlocks?.length?`
+    <div class="rb-eps-py-toggle" id="eps-hist-toggle" onclick="toggleEpsHistBlock()">
+      <span class="lbl">Historique (avant ${qeBlock.pyBlock?qeBlock.pyBlock.year:CY-1})</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
-    <div class="rb-eps-py-content" id="eps-py-content">
-      <div class="rb-eps-block rb-eps-block-py">
-        ${qeBlock.pyBlock.html}
-      </div>
+    <div class="rb-eps-py-content" id="eps-hist-content">
+      ${qeBlock.historiqueBlocks.map(h=>`
+      <div class="rb-eps-block rb-eps-block-py" style="margin-bottom:12px;">
+        <div class="rb-eps-year-py" style="margin-bottom:6px;">EPS ${h.year}</div>
+        ${h.html}
+      </div>`).join('')}
     </div>`:''}
     <div class="rb-eps-grid">
+      ${qeBlock?.pyBlock?`
+      <div class="rb-eps-block">
+        <div class="rb-eps-headline">
+          <span class="rb-eps-year">EPS ${qeBlock.pyBlock.year}</span>
+        </div>
+        ${qeBlock.pyBlock.html}
+      </div>`:''}
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY}</span>
