@@ -127,23 +127,6 @@ tbody tr.hist-last td{background:rgba(0,1,144,.03);}
 tbody tr.proj-row td{background:var(--proj-bg);color:var(--muted);font-style:italic;}
 tbody tr.proj-row td:first-child{font-style:normal;color:var(--navy);opacity:.75;}
 tbody td.proj-first{border-left:2px solid var(--teal);}
-/* Lignes EPS et P/E : police legerement epaissie (600) par rapport aux
-   autres lignes du tableau, pour les distinguer un peu au coup d'oeil -
-   applique a la fois a la colonne "Indicateur" (500 -> 600) et aux
-   valeurs historiques/projetees (normalement 400, ou 400 italique en
-   projection). Volontairement discret : pas de changement de couleur ni
-   de taille, juste la graisse. */
-/* Lignes EPS et P/E : SEULES les valeurs (historique + projection) sont
-   en gras, jamais la colonne "Indicateur" qui reste rigoureusement
-   identique (typo, taille, graisse) a celle de toutes les autres lignes.
-   IMPORTANT : les valeurs du tableau heritent de la police du body,
-   'Quattrocento Sans', qui n'existe QUE en 400 et 700 (voir le <link>
-   Google Fonts dans <head> - pas de graisse intermediaire reelle pour
-   cette police). Demander un poids intermediaire (500/600) forcerait le
-   navigateur a SYNTHETISER cette graisse manquante, ce qui deforme
-   legerement les glyphes et les fait paraitre plus grands - c'est ce qui
-   causait le probleme de taille. 700 est un poids REELLEMENT charge :
-   memes metriques, meme taille, uniquement plus epais.*/
 tbody tr.row-emph td:not(:first-child){font-weight:700;}
 td input[type=number]{width:100%;border:1px solid transparent;background:transparent;text-align:right;font-size:12px;padding:2px 0;color:inherit;border-radius:4px;font-family:'Quattrocento Sans',serif;transition:border-color .1s,background .1s;-moz-appearance:textfield;}
 td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
@@ -262,10 +245,12 @@ textarea{resize:vertical;width:100%;}
 thead th .fy-month-tag{color:#8be9dc;}
 
 /* ── NEWS BAR & DETAIL ── */
-.news-bar{display:none;align-items:center;justify-content:space-between;padding:16px 24px;margin:20px 0;background:#f1f4ff;border-radius:16px;cursor:pointer;}
-.news-bar-text{font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:600;color:var(--navy);}
+.news-bar-wrap{display:flex;flex-direction:column;gap:8px;margin:20px 0;}
+.news-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#f1f4ff;border-radius:14px;gap:12px;}
+.news-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--navy);cursor:pointer;flex:1;min-width:0;}
 .news-bar-text b{font-weight:800;}
-.news-bar-link{display:flex;align-items:center;gap:5px;font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);flex-shrink:0;}
+.news-bar-close{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:var(--navy);opacity:.55;transition:opacity .12s,background .12s;padding:0;}
+.news-bar-close:hover{opacity:1;background:rgba(0,1,144,.08);}
 .news-section{margin-bottom:26px;}
 .news-section-hd{display:flex;align-items:center;gap:9px;margin:0 0 10px;}
 .news-section-hd svg{flex-shrink:0;}
@@ -299,11 +284,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .price-auto .dot.fresh{background:var(--ok);}
 .price-auto .dot.stale{background:var(--gold);}
 
-/* ══════════════════════════════════════════════════════════════
-   STRUCTURE — classes utilisées par renderPortfolio()/renderReturnBlock()
-   pour la mise en page (les couleurs/valeurs dynamiques restent en style
-   inline). Neutres en desktop, reprises et surchargées en mobile ci-dessous.
-   ══════════════════════════════════════════════════════════════ */
 .pf-row-top{display:flex;align-items:center;gap:22px;flex:1 1 auto;max-width:360px;min-width:0;}
 .pf-metric-return{flex:0 0 72px;}
 .pf-metric-pe{flex:0 0 64px;}
@@ -314,57 +294,36 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-header{padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;}
 .rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
 .rb-bridge-wrap{padding:0 20px 12px;}
-/* rb-eps-grid : PILE UNIQUE de blocs annee (PY optionnel, CY, NY), un sous
-   l'autre - STRICTEMENT IDENTIQUE en desktop et en mobile (aucune media
-   query ne change plus ni l'ordre ni la structure, seulement des tailles -
-   voir le bloc @media plus bas). Chaque bloc .rb-eps-block porte son propre
-   titre d'annee + valeur annuelle sur la MEME ligne (flex, gap fixe de
-   20px/14px mobile plutot que plaquee au bord droit : voir .rb-eps-
-   headline - jamais de retour a la ligne), puis
-   ses puces trimestrielles/semestrielles le cas echeant. Le bloc PY (annee
-   precedente, 100% publiee - voir hypothese.quarterlyEPS.PY dans
-   INSTRUCTIONS.md E5 ter) est volontairement plus discret (.rb-eps-year-py)
-   et place EN PREMIER, au-dessus du bloc annee en cours, pour servir de
-   reference de comparaison sans jamais dominer visuellement l'annee en
-   cours. Coherence dans le temps : l'annee PY est TOUJOURS calculee comme
-   CY-1 (jamais codee en dur) - au fil des refresh, quand CY avance d'un
-   cran, ce bloc glisse donc automatiquement avec elle sans aucun code a
-   modifier ici ; seule la donnee hypothese.quarterlyEPS.PY doit etre
-   rafraichie cote assistant a chaque refresh (voir INSTRUCTIONS.md). */
 .rb-eps-grid{display:flex;flex-direction:column;gap:14px;padding:14px 20px 16px;}
 .rb-eps-block-py{opacity:.82;}
 .rb-eps-headline{display:flex;align-items:baseline;justify-content:flex-start;gap:20px;flex-wrap:nowrap;}
-.rb-eps-year{font-family:'Poppins',sans-serif;font-size:15px;font-weight:900;color:var(--navy);white-space:nowrap;}
-.rb-eps-year-py{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:4px;}
+/* Typo unifiee avec la section P/E juste au-dessus (.pe-lbl/.pe-val) : meme
+   police/graisse/taille/couleur pour les libelles d'annee EPS (CY, NY, et
+   desormais PY egalement), les valeurs Omnium/Consensus, et le mot
+   "Consensus" lui-meme - un seul systeme typographique pour tout ce bloc
+   plutot que des tailles/graisses differentes par sous-element. */
+.rb-eps-year{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
+.rb-eps-year-py{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;margin-bottom:0;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
-/* Valeur annuelle Omnium/Consensus : toujours SUR LA MEME LIGNE que le
-   titre d'annee, alignee a droite (justify-content:space-between du
-   parent), jamais de libelle "Omnium" (implicite - c'est la valeur
-   principale du modele) mais "Consensus" toujours ecrit en toutes lettres
-   avant sa valeur, separes par une barre oblique discrete. */
-.rb-eps-annualval{font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;}
+.rb-eps-annualval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;}
 .rb-eps-annualsep{color:var(--muted);font-weight:400;margin:0 2px;}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
-/* ══════════════════════════════════════════════════════════════
-   DÉTAIL TRIMESTRIEL/SEMESTRIEL DE L'EPS + P/E — voir hypothese.
-   quarterlyEPS dans INSTRUCTIONS.md (E5 ter). Ordre a l'interieur du bloc
-   annee en cours : puces -> legende Publié/Estimé (SOUS les puces, jamais
-   au-dessus) -> total Σ. Le bloc PY et le bloc NY n'affichent pas la
-   legende (PY est 100% publie par definition, NY 100% estime) mais
-   affichent bien leur propre total Σ.
-   ══════════════════════════════════════════════════════════════ */
+/* Bloc EPS historique (PY) replie par defaut : bouton depliant une section
+   AU-DESSUS du bloc CY, meme famille visuelle que .coll-hd deja utilisee
+   ailleurs dans l'app pour ce pattern. */
+.rb-eps-py-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 20px;user-select:none;border-bottom:1px solid var(--border);}
+.rb-eps-py-toggle span.lbl{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
+.rb-eps-py-chevron{font-size:9px;color:var(--muted);transition:transform .2s;}
+.rb-eps-py-toggle.open .rb-eps-py-chevron{transform:rotate(180deg);}
+.rb-eps-py-content{padding:12px 20px 0;display:none;}
+.rb-eps-py-content.open{display:block;}
+
 .qs-qtr-block{margin-top:8px;}
 .qtr-legend-row{display:flex;justify-content:flex-start;margin:6px 0 4px;}
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:8px;}
-/* box-sizing:border-box + bordure transparente de meme epaisseur sur les
-   puces "actual" : sans ca, les puces "estim" (bordure pointillee 1.5px)
-   sont mecaniquement ~3px plus hautes que les puces "actual" (sans
-   bordure) - ecart invisible au premier coup d'oeil mais reel. Avec cette
-   regle, TOUTES les puces (PY, CY publiees/estimees, NY) font rigoureusement
-   la meme hauteur, quelle que soit l'annee. */
 .qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
@@ -373,28 +332,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .chip-v{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;}
 .qs-chip.actual .chip-v{color:var(--navy);}
 .qs-chip.estim .chip-v{color:var(--muted);}
-/* Total trimestriel (Σ) affiche sous les puces de chaque bloc, pour
-   rendre visible d'un coup d'oeil l'ecart entre la somme du detail
-   trimestriel (qe.PY/CY/NY) et l'EPS Omnium affiche juste au-dessus dans
-   le meme bloc - c'est ce chiffre, calcule en direct, qui decide si la
-   note qe.coherenceNoteCY/NY s'affiche (voir buildQuarterlyEPS), plutot
-   qu'un statut ok/ecart fourni a part et potentiellement perime. */
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
-/* P/E stack : une seule section compacte (pas de separateur entre les 3
-   lignes) - CY, puis le forward 12 mois (a cheval sur CY/NY), puis NY,
-   l'ordre reflete sa position temporelle entre les deux. Valeur rapprochee
-   du libelle (gap fixe) plutot que plaquee au bord droit de la carte. Le
-   sous-libelle de periode du forward (pe-fwd-sub) suit la VALEUR, jamais
-   le libelle, pour ne pas faire varier la largeur fixe du libelle entre
-   les 3 lignes.  */
-/* P/E stack : grille a 4 colonnes (libelle / valeur / detail periode
-   forward / P/E ex-cash) pour garantir un alignement pixel-parfait des
-   valeurs entre les 3 lignes - un flex row par ligne ne peut pas aligner
-   une colonne dont le contenu varie en largeur d'une ligne a l'autre (ex.
-   detail de periode uniquement sur la ligne forward). */
 .pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
 .pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
@@ -402,16 +343,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;}
 
-
-/* ══════════════════════════════════════════════════════════════
-   TABLEAU — colonne "Indicateur" fixée au défilement horizontal.
-   Règle universelle (desktop ET mobile) : sur desktop les colonnes
-   tiennent généralement dans le conteneur donc ceci reste inactif ;
-   sur mobile, ça permet de faire défiler les années tout en gardant
-   le libellé de ligne visible. Le fond de chaque cellule fixe est
-   explicite (aucun encadré blanc derrière depuis la suppression de
-   la carte : la table vit directement sur le fond de page).
-   ══════════════════════════════════════════════════════════════ */
 #analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
   position:sticky;left:0;z-index:2;
   box-shadow:2px 0 5px rgba(0,0,0,.08);
@@ -420,53 +351,26 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 #analyse-tbl tbody tr.proj-row td:first-child{background:var(--proj-bg);}
 #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
 
-/* ══════════════════════════════════════════════════════════════
-   MOBILE — écran ≤ 760px : même design que le desktop (mêmes blocs,
-   même structure, mêmes en-têtes), uniquement redimensionné pour
-   qu'une ligne de portefeuille tienne entièrement sur une largeur de
-   téléphone. Le zoom JS proportionnel desktop est désactivé sous ce
-   seuil (voir script en bas de <body>) au profit de ces règles.
-   ══════════════════════════════════════════════════════════════ */
 @media(max-width:760px){
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
-
-  /* Le prix passe sur sa propre ligne au wrap (analyse-header en
-     flex-wrap). Le champ #cours garde desormais une largeur calculee
-     dynamiquement en JS (voir sizeCoursInput()) pour coller exactement
-     au nombre de caracteres affiches : plus de vide ni a gauche (ancien
-     probleme resolu par un text-align:left, desormais inutile) ni a
-     droite entre le chiffre et le symbole devise (regression introduite
-     par ce meme text-align:left, gap 0 oblige entre le champ et
-     #cours-cur). text-align:right reste donc coherent avec le desktop. */
-
   header{padding:20px 18px 22px;}
   .h-logo{height:55px;}
   .h-tagline{gap:5px;margin-top:0;}
   .h-tagline span{font-size:18px;}
-
   .tab-bar{padding:8px 12px;}
   .back-btn{padding:7px 15px 7px 12px;font-size:12px;gap:6px;}
-
   .container{padding:10px 8px 30px;}
-
   .card{padding:14px 12px;border-radius:11px;margin-bottom:12px;}
-
-  /* ── Portefeuille : logo ── */
-
-  /* En-tête de colonnes : conservé (même design), juste réduit. */
   .pf-col-header{padding:0 8px 6px;gap:8px;}
   .pf-col-name-spacer{font-size:9px;gap:6px;}
   .pf-name-filter{font-size:10px;width:64px;height:12px;padding:0 1px;}
   .pf-col-labels{gap:5px;}
   .pf-col-lbl{font-size:8.5px;letter-spacing:.03em;}
-
-  /* Une seule ligne compacte par titre — structure identique au desktop. */
   .pf-list{gap:0;}
   .pf-item{gap:8px;padding:11px 8px;}
   .pf-row-top{gap:6px;}
   .pf-name{font-size:10.5px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
   .pf-metrics{gap:5px;}
   .pf-metric-return{flex:0 0 49px;}
   .pf-metric-pe{flex:0 0 37px;}
@@ -474,11 +378,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pf-mv{font-size:10.5px !important;font-weight:600 !important;color:#8896ab !important;white-space:nowrap;}
   .pf-metric-return .pf-mv,.pf-metric-pe .pf-mv{color:var(--teal-dark-text) !important;font-weight:600 !important;}
   .pf-mv-event{font-size:10px !important;font-weight:600 !important;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
-  /* ── Analyse : en-tête titre + cours ── */
-  /* En-tête analyse : déjà compact et identique en base CSS, rien à surcharger ici. */
-
-  /* ── Tableau historique & projections ── */
   #analyse-tbl-card{padding-right:10px;}
   #analyse-tbl-card > div[style*="overflow-x"]{-webkit-overflow-scrolling:touch;}
   #analyse-tbl{font-size:11.5px;}
@@ -486,24 +385,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   #analyse-tbl tbody td{padding:7px 10px;}
   #analyse-tbl tbody td:first-child{font-size:10px;padding-right:6px;}
   #analyse-tbl thead th:first-child{width:auto;min-width:98px;padding-right:6px;}
-
-  /* ── Thèse Omnium (return-block) ── */
   .rb-header{padding:12px 14px 4px;}
   .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
   .rb-bridge-wrap{padding:0 14px 12px;}
-  /* rb-eps-grid en mobile : MEME structure qu'en desktop (pile de blocs
-     .rb-eps-block, PY en premier si present, meme ordre, meme logique de
-     legende sous les puces de l'annee en cours) - seules les TAILLES sont
-     resserrees ici, plus aucun changement de mise en page/ordre. C'est ce
-     qui garantit que l'affichage est structurellement identique desktop/
-     mobile, avec juste moins d'espace entre les blocs pour permettre de
-     comparer visuellement 2026 et 2027 sans defilement. */
   .rb-eps-grid{padding:12px 14px 14px;gap:9px;}
-  .rb-eps-year{font-size:12.5px;}
-  .rb-eps-year-py{font-size:11px;}
-  .rb-eps-annualval{font-size:11px;}
-
-  /* ── Détail trimestriel/semestriel + P/E, sur mobile ── */
+  .rb-eps-year{font-size:12px;}
+  .rb-eps-year-py{font-size:12px;}
+  .rb-eps-annualval{font-size:12px;}
+  .rb-eps-py-toggle{padding:8px 14px;}
+  .rb-eps-py-content{padding:10px 14px 0;}
   .qtr-legend-row{margin:5px 0 3px;}
   .qtr-legend{font-size:8px;gap:10px;}
   .qs-qtr-block{margin-top:6px;}
@@ -520,44 +410,28 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pe-sub{font-size:8px;}
   .pe-exhead{font-size:8.5px;}
   .pe-exval{font-size:11.5px;}
-
-  /* ── News (barre + vue détaillée), sur mobile ── */
-  .news-bar{padding:12px 16px;margin:12px 0;border-radius:14px;}
+  .news-bar{padding:11px 15px;border-radius:12px;}
   .news-bar-text{font-size:12px;}
-  .news-bar-link{font-size:11px;}
   .news-section-lbl{font-size:10px;}
   .news-company-block{padding:11px 14px;}
   .news-company-name{font-size:12.5px;}
   .news-item-row a{font-size:12px;}
   .news-item-date{font-size:10px;}
-
-  /* ── Dernières hypothèses / bandeaux (dernier call, actionnariat, compliance) ── */
   #context-card{padding:14px}
-
   footer{padding:14px;font-size:9.5px;}
 }
 </style>
 </head>
 <body>
 <script>
-// Mise à l'échelle proportionnelle de l'application selon la largeur d'écran.
-// L'app est conçue pour desktop uniquement : plutôt qu'un responsive qui réarrange
-// les blocs, on garde EXACTEMENT la même mise en page/proportions et on l'agrandit
-// ou la réduit dans son ensemble (comme un zoom navigateur piloté automatiquement),
-// pour un rendu propre aussi bien sur un 15" que sur un 29".
 (function(){
-  var REF_WIDTH = 1440;    // largeur de référence = échelle 100% sur portable 15"
-  var CAP_WIDTH = 1920;    // largeur repère d'un écran 23" : au-delà, on n'agrandit plus (marges visibles)
-  var MOBILE_BREAKPOINT = 760; // doit rester synchronisé avec le @media(max-width:760px) du CSS
+  var REF_WIDTH = 1440;
+  var CAP_WIDTH = 1920;
+  var MOBILE_BREAKPOINT = 760;
   var MIN_ZOOM = 0.80;
-  var MAX_ZOOM = CAP_WIDTH / REF_WIDTH; // ≈ 1.33, plafond atteint dès 23"
+  var MAX_ZOOM = CAP_WIDTH / REF_WIDTH;
   function applyAppZoom(){
     var w = window.innerWidth;
-    // En dessous du seuil mobile, on abandonne le "zoom proportionnel"
-    // (pensé pour redimensionner un même agencement desktop) : le CSS
-    // responsive prend le relais avec une vraie mise en page empilée,
-    // donc le zoom doit rester à 1 pour que les media queries s'appuient
-    // sur la largeur réelle du viewport.
     if(w <= MOBILE_BREAKPOINT){
       document.documentElement.style.zoom = 1;
       return;
@@ -666,29 +540,17 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 </div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
 
 <script>
-// DECLARATION DES VARIABLES GLOBALES
 let state = { tickers: {} };
 let CT = "";
 
-// Abréviations FR des mois, utilisées uniquement pour signaler un exercice
-// fiscal décalé (clôture ≠ décembre). Index 1-12, index 0 inutilisé.
 const MONTH_ABBR_FR = ['','janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
 
-// Renvoie le mois de clôture d'exercice du titre (1-12). Absent ou invalide
-// => 12 (calendaire standard, comportement inchangé pour tous les titres
-// existants qui n'ont pas ce champ).
 function fyEndMonth(ticker){
   const d = state.tickers[ticker];
   const m = +d?.fyEndMonth;
   return (m>=1 && m<=12) ? m : 12;
 }
 
-// La première année de projection de CHAQUE titre n'est plus déduite de
-// l'horloge système, mais de la dernière année réellement présente dans
-// son historique "data" (+1). Tant qu'un refresh n'a pas intégré les
-// résultats d'un exercice clôturé, rien ne bouge pour ce titre - peu
-// importe la date du jour. Chaque titre suit ainsi son propre calendrier
-// de publication réel plutôt qu'une règle de date générique.
 function yearsFor(ticker){
   const d = state.tickers[ticker];
   const lastHist = (d && d.data && d.data.length) ? d.data[d.data.length-1].year : (new Date().getFullYear()-1);
@@ -714,26 +576,6 @@ function tickerCur(ticker){
   return'$'; 
 }
 
-// Libellé affiché dans la colonne "Next event" de la vue portefeuille.
-// Convention COURTE et anglo-saxonne (annee sur 2 chiffres, mois abrege
-// anglais) : { label: "Q3 26" | "Q3 FY 27" | "H1 26" | "CMD" | tout libelle
-// court, date: "2026-10-23" | null }
-// - label seul si la date n'est pas encore annoncée : ex. "Q3 26".
-// - label + date des qu'elle est connue/annoncee : ex. "Q3 26 - Oct 23".
-// - permet aussi un evenement alternatif important (Capital Markets Day,
-//   Investor Day, etc.) via un label libre au lieu d'un trimestre.
-//
-// DOUBLE STOCKAGE AVEC PRIORITE (choix delibere, voir INSTRUCTIONS.md) :
-// - source prioritaire : data/nextEvents.json (fichier dedie, optionnel,
-//   charge dans state.nextEvents par loadState()), alimente UNIQUEMENT par
-//   une mise a jour groupee (Operation C). Rafraichi en un seul fichier,
-//   donc facile a relancer regulierement (ex. toutes les deux semaines).
-// - fallback : le champ nextEvent du JSON du titre lui-meme, ecrit a la
-//   creation/au refresh (Operations A/B). Utilise UNIQUEMENT si le ticker
-//   est absent de state.nextEvents (titre pas encore couvert par un C).
-// Cette priorite volontaire accepte une petite fenetre d'incoherence entre
-// deux passages de l'Operation C, en echange d'une mise a jour groupee en
-// un seul fichier, plutot qu'un double-fetch systematique par titre.
 function nextEventLabel(ticker){
   const d=state.tickers[ticker];
   const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
@@ -744,10 +586,6 @@ function nextEventLabel(ticker){
   const formatted=dt.toLocaleDateString('en-US',{day:'numeric',month:'short'});
   return `${ne.label} - ${formatted}`;
 }
-// Valeur brute (timestamp) du prochain evenement, pour le tri chronologique
-// de la colonne "Next event". Retourne null si aucune date confirmee n'est
-// disponible (evenement absent, label sans date, ou date invalide) - ces
-// titres sont alors relegues en fin de liste quel que soit le sens du tri.
 function nextEventDate(ticker){
   const d=state.tickers[ticker];
   const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
@@ -789,29 +627,11 @@ function fingerprint(str){
 
 async function loadState() {
   try {
-    // 1. Charge le manifeste : la liste des codes de titres a charger.
     const manRes = await fetch('data/manifest.json');
     if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    // 2. Charge chaque fichier de titre en parallele. Un fichier manquant ou
-    //    invalide ne bloque PAS les autres : il est juste ignore avec un
-    //    avertissement, pour qu'une erreur sur un seul titre n'empeche pas
-    //    l'affichage de tout le portefeuille (c'est tout le sens du
-    //    decoupage par fichier).
-    // 2bis. En parallele, charge aussi data/nextEvents.json : fichier dedie
-    //    et OPTIONNEL (source prioritaire pour la colonne "Next event",
-    //    alimente uniquement par une mise a jour groupee -
-    //    Operation C). Son absence ou son invalidite est silencieuse : elle
-    //    ne doit jamais bloquer le chargement, chaque titre retombe alors
-    //    sur son propre champ nextEvent (voir nextEventLabel()).
-    // 2ter. Egalement en parallele, data/newsDigest.json (compteur de la
-    //    barre de notif portefeuille) et data/newsAll.json (contenu de la
-    //    vue detaillee) - alimentes par le pipeline de veille news
-    //    (GitHub Action, voir collectors/). Tout comme nextEvents, absence
-    //    ou invalidite silencieuse : la barre de notif ne s'affiche
-    //    simplement pas plutot que de bloquer le chargement de l'app.
     const [results, nextEvents, newsDigest, newsAll] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
@@ -834,8 +654,6 @@ async function loadState() {
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
     const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [] };
 
-    // Empreinte calculee sur l'ensemble reconstitue, pour rester comparable
-    // a l'ancien comportement (verification de coherence entre onglets).
     const fp = fingerprint(JSON.stringify(jsonData));
     const elFp = document.getElementById('data-fingerprint');
     if (elFp) elFp.textContent = fp;
@@ -887,7 +705,7 @@ function getProj(ticker){
   const ca=d.data.map(r=>r.ca),eb=d.data.map(r=>r.ebit),
         nt=d.data.map(r=>r.net),nd=d.data.map(r=>r.nd),sh=d.data.map(r=>r.shares);
   const ly=d.data[d.data.length-1].year;
-  const PY=[ly+1,ly+2,ly+3,ly+4,ly+5]; // propre à CE titre, voir yearsFor()
+  const PY=[ly+1,ly+2,ly+3,ly+4,ly+5];
   const lastCA=ca[ca.length-1],lastEB=eb[eb.length-1],
         lastNT=nt[nt.length-1],lastND=nd[nd.length-1],lastSH=sh[sh.length-1];
   const st=a=>{const s=cagr(a.slice(-3));return s||cagr(a);};
@@ -956,11 +774,6 @@ function showTab(id,btn,fromHistory){
   if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
   if(id==='news'){renderNewsDetail();}
   saveLastView(id);
-  // Historique du navigateur : on empile un etat interne a chaque navigation
-  // reelle (pas quand on est appele depuis popstate, sinon boucle infinie).
-  // Objectif : le bouton "Precedent" du navigateur doit faire remonter
-  // l'utilisateur dans l'app (ex. fiche titre -> portefeuille) plutot que
-  // de le faire sortir du site.
   if(!fromHistory){
     try{ history.pushState({omniumTab:id, omniumTicker:CT}, '', location.pathname+location.search); }
     catch(e){}
@@ -980,9 +793,6 @@ window.addEventListener('popstate', function(e){
   } else if(st && st.omniumTab==='news'){
     showTab('news', null, true);
   } else {
-    // Etat "portefeuille" ou etat inconnu/absent (ex. tout premier chargement) :
-    // on retombe toujours sur la vue portefeuille plutot que de laisser le
-    // panel precedent affiche dans un etat incoherent.
     showTab('portefeuille', document.getElementById('tab-btn-pf'), true);
   }
 });
@@ -998,14 +808,6 @@ function refreshAllPrices(){
   });
   if(!keys.length)return;
   _refreshAllInFlight=true;
-  // Plusieurs requetes de prix en parallele (au lieu d'une file avec 350ms
-  // d'attente entre chaque titre) : le portefeuille affiche des cours a jour
-  // en quelques secondes au lieu de defiler titre par titre.
-  // Relevé de 6 à 10 : avec price.php qui répond désormais en quelques
-  // dizaines/centaines de ms (voir _fetchPrice), le débit du pool de
-  // workers redevient le facteur limitant sur l'ensemble du portefeuille
-  // (~52 titres) - plus de parallélisme ici raccourcit d'autant le temps
-  // total d'affichage des cours à l'ouverture de l'onglet Portefeuille.
   const CONCURRENCY=10;
   let i=0;
   const worker=async()=>{
@@ -1017,12 +819,6 @@ function refreshAllPrices(){
   Promise.all(Array.from({length:CONCURRENCY},worker)).finally(()=>{_refreshAllInFlight=false;});
 }
 
-// Fait coller la largeur du champ #cours au nombre de caracteres affiches
-// (ex. "45.2" vs "1234.56"), pour que le symbole devise (#cours-cur) reste
-// immediatement accole au chiffre - a la fois sur desktop et sur mobile,
-// que le champ soit sur la meme ligne que le titre ou sur sa propre ligne
-// apres wrap. +0.9ch de marge pour laisser la place au curseur de saisie
-// sans provoquer de decalage visible avec la devise.
 function sizeCoursInput(){
   const el=document.getElementById('cours');
   if(!el)return;
@@ -1030,11 +826,7 @@ function sizeCoursInput(){
   el.style.width=(len+0.9)+'ch';
 }
 
-function refreshSelects(){
-  // Le titre actif n'est plus un select ni un champ modifiable : son affichage
-  // (nom + ticker) est entierement gere par renderAnalyse(), au-dessus du
-  // tableau de projections. Fonction conservee (no-op) pour compat des appels existants.
-}
+function refreshSelects(){}
 
 function syncAnalyseHeader(ticker){
   const tk=ticker||CT;
@@ -1059,38 +851,16 @@ function saveYahooSymbol(v){
   if(state.tickers[CT]) state.tickers[CT].yahooSymbol=v.trim().toUpperCase();
 }
 
-// price.php fait desormais tout le travail cote serveur : il sert en
-// priorite un prix Google Finance pousse par le trigger Apps Script en
-// arriere-plan (frais, <15 min - voir refreshAllCachedPrices cote script),
-// et ne retombe sur son propre fetch Yahoo que si ce cache est perime.
-// L'app n'appelle donc plus JAMAIS script.google.com en direct au clic
-// utilisateur : ce round-trip a un plancher de latence incompressible
-// d'environ 1s cote Apps Script (verifie le 2026-07-26), non lie au code
-// mais a la plateforme elle-meme - un seul appel a price.php suffit desormais,
-// et repond en general en quelques dizaines/centaines de ms.
 const PRICE_PROXY_URL='https://model.omnium-capital.com/price.php';
 const _fetchInFlight={}; 
 
 function _priceIsPlausible(p,ref,liveConfirmed){
   if(!Number.isFinite(p)||p<=0)return false;
-  // Le "cours" venant du JSON n'est qu'une valeur de secours (jamais
-  // réécrite sur GitHub après un fetch live - voir saveState()). Tant
-  // qu'aucun prix live n'a été confirmé dans CETTE session, on ne doit
-  // pas s'en servir comme borne : un cours de secours obsolète ou faux
-  // bloquerait alors indéfiniment toute correction (le filtre se
-  // compare toujours à la dernière valeur connue, qui resterait la
-  // valeur fausse puisqu'elle ne serait jamais remplacée). Seul un prix
-  // déjà confirmé en live sert de garde-fou contre un vrai bug d'API.
   if(liveConfirmed && ref>0 && (p>ref*4 || p<ref/4))return false;
   return true;
 }
 
 async function _fetchPrice(sym){
-  // Timeout genereux (12s) : dans le pire cas (ticker jamais pousse par le
-  // trigger ET cache Yahoo perime), price.php doit faire lui-meme un fetch
-  // Yahoo cote serveur (jusqu'a 10s de timeout cURL interne, voir price.php)
-  // avant de repondre. Ce cas reste rare - la plupart du temps price.php
-  // repond en quelques dizaines/centaines de ms via son cache.
   try{
     const r=await fetch(PRICE_PROXY_URL+'?ticker='+encodeURIComponent(sym),{signal:AbortSignal.timeout(12000)});
     if(!r.ok)return null;
@@ -1131,9 +901,6 @@ async function autoFetchPrice(ticker,force){
       d.dividende=+(+finalDiv).toFixed(4);
     }
     updatePriceDot(d._priceUpdatedAt,false);
-    // Mise a jour ciblee : pas de renderAnalyse() complet ici, pour ne pas
-    // recreer le graphe EPS (effet de "saut" visuel) ni refermer le panneau
-    // "Hypothese actuelle" que l'utilisateur est peut-etre en train de lire.
     refreshPriceOnly(ticker);
     renderPortfolio();
   } else {
@@ -1204,10 +971,6 @@ function renderAnalyse(){
   sizeCoursInput();
   const last5=d.data.slice(-5);
 
-  // Libellé d'en-tête d'une colonne-année : ajoute le mois de clôture en
-  // petit sous l'année, uniquement pour les titres dont l'exercice ne se
-  // termine pas en décembre (isOffCalendar). Comportement par defaut
-  // (calendaire) strictement inchangé.
   const yearHeaderHtml=(year)=> isOffCalendar
     ? `${year}<span class="fy-month-tag">clôt. ${MONTH_ABBR_FR[fyEnd]}</span>`
     : `${year}`;
@@ -1230,17 +993,6 @@ function renderAnalyse(){
   };
   const fGrowth=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(1)+'%';
 
-  // Unite d'affichage des 4 lignes monetaires du tableau (CA/EBIT/Resultat
-  // net/Dette nette) : le JSON reste TOUJOURS stocke en millions (unite
-  // canonique unique, aucune ambiguite pour les calculs EPS/P/E/dette qui
-  // melangent ces champs avec `shares`, lui-meme toujours en millions
-  // d'actions - jamais converti). Seul l'AFFICHAGE bascule en Md a partir
-  // de 10 000 M (10Md) de CA le plus recent, purement cosmetique. Decision
-  // prise UNE FOIS par ticker (sur le dernier CA historique publie) et
-  // appliquee A L'IDENTIQUE aux cellules HISTORIQUES (hFn) ET PROJETEES
-  // (pFn) de ces 4 lignes - jamais l'une en Md et l'autre en M sur la
-  // meme ligne. Valeurs en Md toujours a 2 decimales ; valeurs en M
-  // arrondies a l'entier avec separateur de milliers (fM).
   const latestCA=d.data[d.data.length-1]?.ca||0;
   const bigUnit=Math.abs(latestCA)>=10000?'Md':'M';
   const fBigTbl=v=>{
@@ -1286,46 +1038,25 @@ function renderAnalyse(){
   renderContextBullets(CT,proj,cours);
 }
 
-// Position par defaut du defilement horizontal du tableau Historique &
-// Projections : centree sur "les 2 dernieres annees publiees + les 2
-// premieres annees projetees", ce qui correspond a la zone la plus
-// consultee (transition passe/futur). Le reste de l'historique reste
-// accessible en scrollant vers la gauche, le futur plus lointain vers la
-// droite. Purement cosmetique (aucun impact sur les donnees) : no-op sur
-// desktop des que toutes les colonnes tiennent deja dans le conteneur.
 function scrollAnalyseTblToDefault(histCount){
   const headRow=document.getElementById('analyse-head');
   const table=document.getElementById('analyse-tbl');
   if(!headRow||!table)return;
-  const wrap=table.parentElement; // div avec overflow-x:auto
+  const wrap=table.parentElement;
   if(!wrap)return;
-  // Index (0-based, hors colonne "Indicateur") de la 1ere colonne a
-  // garder visible a gauche : on masque tout sauf les 2 dernieres
-  // annees historiques (ex. histCount=5 -> on cache les 3 premieres).
   const targetIdx=Math.max(0,histCount-2);
-  const dataThs=Array.from(headRow.children).slice(1); // hors <th>Indicateur</th>
+  const dataThs=Array.from(headRow.children).slice(1);
   const targetTh=dataThs[targetIdx];
-  const firstTh=headRow.children[0]; // colonne "Indicateur", fixee (sticky) au defilement
+  const firstTh=headRow.children[0];
   if(!targetTh||!firstTh)return;
   requestAnimationFrame(()=>{
     try{
-      // offsetLeft = position de la colonne dans le flux normal du tableau
-      // (inchangee par le sticky, qui ne fait que la deplacer visuellement).
-      // On soustrait la largeur de la colonne fixe pour que la colonne
-      // ciblee arrive juste APRES elle, et non dessous/masquee par elle.
       const stickyW=firstTh.getBoundingClientRect().width;
       wrap.scrollLeft=Math.max(0,targetTh.offsetLeft-stickyW);
     }catch(e){}
   });
 }
 
-// Rafraichissement "leger" declenche par un prix qui vient d'etre recupere en
-// arriere-plan (autoFetchPrice). Contrairement a renderAnalyse(), il ne
-// reconstruit pas tout le tableau NI l'encadre "Hypothese actuelle" (dont
-// renderContextBullets() reinitialise l'etat deplie/replie a chaque appel).
-// Il se contente de mettre a jour ce qui depend reellement du cours : le
-// champ Cours, le bloc "These Omnium" (rendement, P/E) et la ligne P/E du
-// tableau de projections.
 function refreshPriceOnly(ticker){
   const peRow=document.getElementById('pe-metric-row');
   if(ticker!==CT || !peRow) return;
@@ -1345,63 +1076,32 @@ function refreshPriceOnly(ticker){
   });
 }
 
-// Detail trimestriel/semestriel de l'EPS + les 3 P/E (annee courante, annee
-// suivante, 12 mois glissants forward) - voir hypothese.quarterlyEPS dans
-// INSTRUCTIONS.md (E5 ter). Affiche sous le bloc EPS CY/NY existant, dans
-// la meme carte "These Omnium". Absent gracieusement si le titre n'a pas
-// encore ce champ (retraitement progressif au fil des refresh, pas de
-// backfill retroactif force).
-// Retourne les morceaux a placer par renderReturnBlock (les puces CY vont
-// DANS la colonne EPS CY, les puces NY DANS la colonne EPS CY+1 - plutot
-// qu'un bloc "Détail trimestriel" a part, pour que chaque trimestre
-// s'affiche a cote de l'annee a laquelle il appartient) ; retourne null si
-// le champ est absent (comportement gracieux inchange).
+// Detail trimestriel/semestriel de l'EPS - voir hypothese.quarterlyEPS.
+// Retourne les morceaux a placer par renderReturnBlock. La legende Σ (somme)
+// et la note de coherence NE SONT PLUS AFFICHEES pour CY/NY (voir opts.
+// hideSum) : toute divergence entre le cumul trimestriel et l'EPS annuel
+// doit desormais etre arbitree AVANT la livraison du JSON (voir
+// INSTRUCTIONS.md, E5 ter point 4 revise), donc un JSON livre ne devrait
+// plus jamais en presenter - le retrait de l'affichage est la consequence
+// visuelle de ce changement de process, pas une simple preference
+// esthetique. Conservee pour PY (bloc historique) a titre informatif, sans
+// enjeu de coherence puisque PY n'est jamais confrontee a un adjEPS projete.
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  // forceActual : le bloc PY (annee precedente, integralement close et
-  // publiee) affiche TOUJOURS ses puces dans le style "actual" (navy plein),
-  // quelle que soit la valeur de p.actual dans la donnee - coherent avec le
-  // fait qu'une annee entierement ecoulee n'a plus de composante estimee.
   const chip=(p,forceActual)=>`<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
   const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
-  const icons={
-    ok:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`,
-    ecart:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`
-  };
-  // Total trimestriel (Σ) confronte a l'EPS annuel affiche juste au-dessus,
-  // dans le meme bloc (epsCY/epsNY - le bloc PY n'a pas d'EPS annuel a
-  // confronter, annual=null desactive silencieusement ce controle). Le
-  // statut ok/ecart n'est plus un champ fourni par l'assistant (risque de
-  // flag perime face au chiffre reel) : il est calcule ICI, en direct, a
-  // partir de l'ecart affiche. note (coherenceNoteCY/NY) ne s'affiche QUE
-  // si l'ecart est non-nul - seuil aligne sur l'arrondi affiche (0.05pt),
-  // pas la materialite E5 ter (~3%) qui ne pilote plus que la couleur
-  // d'alerte. Rien a justifier quand la reconciliation est exacte.
-  const legendHtml=`<div class="qtr-legend-row"><span class="qtr-legend">
-      <span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span>
-      <span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span>
-    </span></div>`;
-  // La legende Publié/Estimé ne concerne que l'annee EN COURS (PY est par
-  // definition 100% publie, NY 100% estime - la distinction n'a de sens
-  // que pour CY, qui melange les deux) : elle s'affiche desormais SOUS les
-  // puces de l'annee en cours (opts.legend:true), jamais au-dessus, jamais
-  // pour PY/NY.
   const colBlock=(arr,annual,note,opts={})=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
-    const delta=(annual>0)?((sum-annual)/annual*100):null;
-    const hasGap=delta!=null&&Math.abs(delta)>=0.05;
-    const material=delta!=null&&Math.abs(delta)>=3;
-    const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
-    const sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
-    const noteHtml=(hasGap&&note)?`<div class="coherence"${material?' style="color:#c0392b;"':''}>${icons[material?'ecart':'ok']} ${esc(note)}</div>`:'';
-    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?legendHtml:''}${sumHtml}${noteHtml}</div>`;
+    let sumHtml='', noteHtml='';
+    if(!opts.hideSum){
+      const delta=(annual>0)?((sum-annual)/annual*100):null;
+      const material=delta!=null&&Math.abs(delta)>=3;
+      const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
+      sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+    }
+    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}</div>`;
   };
-  // Bloc annee precedente (PY) : optionnel, absence gracieuse si
-  // hypothese.quarterlyEPS.PY n'existe pas encore pour ce titre (migration
-  // progressive au fil des refresh - voir INSTRUCTIONS.md E5 ter). Annee
-  // TOUJOURS calculee comme CY-1, jamais codee en dur : au fil des refresh
-  // futurs, quand CY avance, ce libelle avance avec elle automatiquement.
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
     html: colBlock(qe.PY, null, null, {forceActual:true})
@@ -1409,20 +1109,6 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
   const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
-  // P/E "ex-cash" : neutralise la tresorerie/dette nette du bilan de
-  // l'annee concernee avant de calculer le multiple, pour ne pas
-  // penaliser/avantager artificiellement des societes tres cash-riches ou
-  // tres endettees dans une comparaison de P/E brut. adjND est deja negatif
-  // pour du cash net (convention du JSON) -> prix_ajuste = cours +
-  // adjND/adjShares ramene mecaniquement le P/E ex-cash EN DESSOUS du P/E
-  // brut quand il y a du cash net, et AU-DESSUS quand il y a de la dette
-  // nette. Le forward reutilise le bilan de l'annee en cours (CY), pas
-  // celui de l'annee suivante, puisque les 12 prochains mois glissants
-  // partent d'aujourd'hui. Absence gracieuse : si adjND/adjShares ne sont
-  // pas renseignes pour l'annee concernee, ou si le prix ajuste tombe a
-  // zero ou en dessous (tresorerie nette par action > cours, cas limite
-  // des tres petites capitalisations tres cash-riches), pas de suffixe
-  // ex-cash affiche plutot qu'un nombre trompeur.
   const exCashPrice=(nd,sh)=>{
     if(nd==null||!(sh>0))return null;
     const p=cours+(nd/sh);
@@ -1435,20 +1121,6 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
   const hasExCash=peExCY!=null||peExFwd!=null||peExNY!=null;
   const exCell=v=>hasExCash?`<div class="pe-exval">${v!=null?v.toFixed(1)+'×':'—'}</div>`:'';
-  // Ordre : P/E CY, puis le forward 12 mois (a cheval entre les deux
-  // annees), puis P/E NY - reflete sa position temporelle entre les deux
-  // plutot que de le releguer en dernier. Grille a 3 colonnes (libelle /
-  // valeur / P/E ex-cash) : le P/E ex-cash est volontairement place juste
-  // apres la valeur principale (le plus a gauche possible tout en gardant
-  // le column-gap, jamais colle) puisque c'est une variante du MEME P/E,
-  // plus lisible proche de sa valeur source que relegue en bord droit. Le
-  // detail de periode du forward (qui n'existe que sur la ligne du milieu)
-  // vit DANS la cellule du libelle, entre parentheses et en gris (.pe-sub)
-  // juste apres "P/E 1Y FWD" - jamais une colonne a part, ca n'a pas
-  // besoin d'un alignement propre puisque une seule ligne le porte. Chaque
-  // ligne emet EXACTEMENT 3 cellules dans le meme ordre pour que le
-  // placement automatique de la grille aligne les valeurs entre les 3
-  // lignes, meme quand une cellule est vide (span vide plutot qu'omise).
   const peStack=`<div class="pe-stack">
       ${hasExCash?`<div></div><div></div><div class="pe-exhead">P/E ex-cash</div>`:''}
       <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}
@@ -1457,15 +1129,27 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     </div>`;
   return {
     pyBlock,
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true}),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY),
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideSum:true}),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideSum:true}),
     peStack
   };
+}
+
+// Etat (en memoire, pas persiste) du depliant EPS historique (PY) - reduit
+// par defaut a chaque changement de titre, voir renderReturnBlock.
+let _epsPyOpen=false;
+function toggleEpsPyBlock(){
+  _epsPyOpen=!_epsPyOpen;
+  const toggle=document.getElementById('eps-py-toggle');
+  const content=document.getElementById('eps-py-content');
+  if(toggle)toggle.classList.toggle('open',_epsPyOpen);
+  if(content)content.classList.toggle('open',_epsPyOpen);
 }
 
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
+  _epsPyOpen=false; // replie par defaut a chaque nouveau rendu (changement de titre ou de prix)
   const d=state.tickers[ticker];
   const {CY,LY}=yearsFor(ticker);
   const cur=tickerCur(ticker)||'€';
@@ -1478,27 +1162,9 @@ function renderReturnBlock(ticker, proj, cours){
   const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+bonusYield;
   const total=cagrEps+yieldPct;
   const cons=(d.epsConsensus?.year===CY)?d.epsConsensus:null;
-  const consDelta=(cons?.eps&&epsCY>0)?((epsCY-cons.eps)/cons.eps*100):null;
   const consNY=d.epsConsensus?.epsNY||0;
-  const deltaConsNY=(consNY>0&&epsNY>0)?((epsNY-consNY)/consNY*100):null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
   const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
-  // Ecart vs la projection Omnium PRECEDENTE (snapshot pris au refresh precedent,
-  // voir hypothese.priorEPS = {date, eps:{annee:valeur}}). Absent tant qu'aucun
-  // refresh n'a encore ecrit ce champ pour ce titre.
-  const priorEPS=d.hypothese?.priorEPS||null;
-  const priorCY=priorEPS?.eps?.[CY];
-  const priorNY=priorEPS?.eps?.[CY+1];
-  const hasPriorCY=priorCY!=null&&priorCY!==''&&+priorCY>0&&epsCY>0;
-  const hasPriorNY=priorNY!=null&&priorNY!==''&&+priorNY>0&&epsNY>0;
-  const deltaPriorCY=hasPriorCY?((epsCY-priorCY)/priorCY*100):null;
-  const deltaPriorNY=hasPriorNY?((epsNY-priorNY)/priorNY*100):null;
-  const fmtShortDate=(iso)=>{
-    if(!iso)return'';
-    const p=String(iso).split('-');
-    return p.length===3?`${p[2]}/${p[1]}/${p[0].slice(2)}`:iso;
-  };
-  const priorDateFmt=fmtShortDate(priorEPS?.date);
   const ndCY=d.hypothese?.adjND?.[CY];
   const shCY=d.hypothese?.adjShares?.[CY];
   const ndNY=d.hypothese?.adjND?.[CY+1];
@@ -1507,7 +1173,7 @@ function renderReturnBlock(ticker, proj, cours){
 
   el.innerHTML = `
     <div class="rb-header">
-      <div class="rb-eps-year" style="margin-bottom:0;color:var(--navy);">Thèse Omnium</div>
+      <div class="rb-eps-year" style="margin-bottom:0;color:var(--navy);font-size:15px;font-weight:900;">Thèse Omnium</div>
     </div>
     <div class="rb-total-row">
       <div class="rb-eps-val" style="color:var(--navy);">Total Return ${total>=0?'+':''}${total.toFixed(1)}%</div>
@@ -1522,12 +1188,17 @@ function renderReturnBlock(ticker, proj, cours){
     </div>`:''}
     <div style="height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--teal) 100%);opacity:.5;"></div>
     ${qeBlock?qeBlock.peStack:''}
-    <div class="rb-eps-grid">
-      ${qeBlock?.pyBlock?`
+    ${qeBlock?.pyBlock?`
+    <div class="rb-eps-py-toggle" id="eps-py-toggle" onclick="toggleEpsPyBlock()">
+      <span class="lbl">EPS ${qeBlock.pyBlock.year} (historique)</span>
+      <span class="rb-eps-py-chevron">▼</span>
+    </div>
+    <div class="rb-eps-py-content" id="eps-py-content">
       <div class="rb-eps-block rb-eps-block-py">
-        <div class="rb-eps-year rb-eps-year-py">EPS ${qeBlock.pyBlock.year}</div>
         ${qeBlock.pyBlock.html}
-      </div>`:''}
+      </div>
+    </div>`:''}
+    <div class="rb-eps-grid">
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY}</span>
@@ -1547,8 +1218,6 @@ function renderReturnBlock(ticker, proj, cours){
   `;
 }
 
-// Formatte un montant en millions vers un affichage compact "X,XX Md" ou "X M"
-// (pas de decimales inutiles en dessous de 10). Purement cosmetique.
 function fmtBigNum(v){
   if(v===null||v===undefined||v==='')return null;
   const n=+v; if(!isFinite(n))return null;
@@ -1565,16 +1234,6 @@ function pctBadge(delta){
   return `<span style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};background:${bg};border-radius:5px;padding:1px 6px;white-space:nowrap;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
 }
 
-// Bloc "dernier trimestre publie" (resultats vs consensus, guidance, points cles
-// du call) - voir hypothese.dernierCall dans INSTRUCTIONS.md. Affiche juste sous
-// la ligne date/source, AVANT le resume/texte de la these (ne s'y substitue pas).
-// Recoit `hyp` (hypothese complete, pas seulement dernierCall) pour pouvoir
-// aussi afficher l'EVOLUTION de la guidance annuelle (hyp.guidanceHistory,
-// propre a l'exercice fiscal en cours, pas de suivi necessaire pour la
-// guidance trimestrielle qui est un one-off par nature) et de la guidance
-// long terme (hyp.guidanceLongTerme + son historique hyp.
-// guidanceLongTermeHistory, qui ne change que rarement). Rien de tout ca ne
-// s'affiche si `dernierCall` est absent (refresh non lie a un resultat).
 function renderDernierCall(hyp, ticker, opts={}){
   const dc=hyp?.dernierCall||null;
   if(!dc)return '';
@@ -1605,12 +1264,6 @@ function renderDernierCall(hyp, ticker, opts={}){
       ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
       ${pctBadge(epsDelta)}
     </div>`:'';
-  // Badge "Communique"/"Transcript" : tick turquoise si le document a ete
-  // analyse pour ce refresh (dc.communiqueAnalyse/dc.transcriptAnalyse),
-  // croix grise sinon - remplace l'ancienne ligne date/source (trop
-  // longue, peu lisible pour l'utilisateur final) quand le dernier refresh
-  // est bien un resultat trimestriel (dc present). Voir INSTRUCTIONS.md
-  // pour la description complete de ces deux champs.
   const checkIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
   const crossIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>`;
   const srcBadge=(label,analyzed)=>`<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;color:${analyzed?'var(--teal-text)':'var(--muted)'};">${analyzed?checkIcon:crossIcon}${label}</span>`;
@@ -1626,17 +1279,6 @@ function renderDernierCall(hyp, ticker, opts={}){
       <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
     </div>`:'';
-  // Evolution de la guidance ANNUELLE au fil de l'exercice fiscal en cours
-  // (hyp.guidanceHistory, deja borne a l'exercice courant par sa propre
-  // mecanique de reset - voir SCHEMA). Le DERNIER point de guidanceHistory
-  // correspond toujours au call en cours (meme texte que dc.guidanceAnnuelle,
-  // affiche juste au-dessus) : on l'exclut donc de la liste pour ne jamais
-  // repeter deux fois la meme information. Les points PRECEDENTS sont
-  // affiches en dessous, du plus recent au plus ancien (ordre inverse de la
-  // mecanique d'accumulation qui est chronologique croissante), en simple
-  // ligne muette - meme gabarit que le "Precedemment" de la guidance long
-  // terme juste plus bas (harmonisation des polices/styles entre les deux
-  // mecaniques de suivi, plutot que des chips encadrees en navy).
   const gHist=(hyp?.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
   const gHistPrev=gHist.slice(0,-1).reverse();
   const guidTrend=gHistPrev.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;line-height:1.5;">Précédemment : ${gHistPrev.map(h=>`${esc(h.quarter||'')} : ${esc(h.guidanceAnnuelle)}`).join(' → ')}</div>`:'';
@@ -1645,12 +1287,6 @@ function renderDernierCall(hyp, ticker, opts={}){
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
       ${guidTrend}
     </div>`:'';
-  // Guidance LONG TERME : vit au niveau de `hypothese` (pas de
-  // `dernierCall`, un objectif pluriannuel n'est pas propre a un
-  // trimestre), avec son propre historique cumulatif (guidanceLongTerme
-  // History, snapshot uniquement quand le texte change reellement - voir
-  // SCHEMA), affiche en simple ligne "Precedemment" (evolution rare,
-  // contrairement a la guidance annuelle qui justifie des chips).
   const ltHist=(hyp?.guidanceLongTermeHistory||[]).filter(h=>h&&h.text);
   const ltTrail=ltHist.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:3px;">Précédemment : ${ltHist.map(h=>`${esc(h.text)}${h.asOf?` (${fmtShortDate(h.asOf)})`:''}`).join(' → ')}</div>`:'';
   const guidLT=hyp?.guidanceLongTerme?`<div style="margin-top:8px;">
@@ -1670,16 +1306,6 @@ function renderDernierCall(hyp, ticker, opts={}){
   </div>`;
 }
 
-// Bloc "Actionnariat" (insiders + fonds notables au dernier 13F) - voir le
-// champ `ownership` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
-// Champ FACTUEL et APPROXIMATIF par nature (sources d'actionnariat souvent
-// contradictoires entre elles, delai structurel des 13F ~45j) : jamais
-// utilise pour un calcul, purement informatif pour l'utilisateur. Affiche
-// juste sous le bloc "dernier trimestre publie", avant le texte de these.
-// L'evolution du % insiders au fil des refresh (voir ownership.history,
-// mecanique de snapshot cumulatif plafonnee a 8 points - voir
-// INSTRUCTIONS.md) est visualisee via un badge de delta vs le point
-// precedent, plus une ligne "Historique" compacte reprenant toute la serie.
 function renderOwnership(own, ticker){
   if(!own)return '';
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
@@ -1724,14 +1350,6 @@ function renderOwnership(own, ticker){
   </div>`;
 }
 
-// Bloc "Compliance" (fraudes averees / allegations de fraude par regulateurs,
-// cabinets d'avocats plaignants, ou vendeurs a decouvert activistes) - voir le
-// champ `compliance` (racine du JSON, hors `hypothese`) dans INSTRUCTIONS.md.
-// Champ FACTUEL, registre CUMULATIF jamais purge (contrairement a `ownership`
-// qui remplace son etat courant) : chaque entree garde sa trace, seul son
-// statut/issue peut etre mis a jour en place au fil des refresh. Affiche
-// juste sous le bloc "Actionnariat", avant le texte de these. Jamais utilise
-// pour un calcul, purement informatif/diligence pour l'utilisateur.
 function renderCompliance(comp, ticker){
   if(!comp)return '';
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
@@ -1826,11 +1444,6 @@ function renderContextBullets(ticker, proj, cours){
   </div>`:'';
 
   traceEl.style.display='block';
-  // Ligne date/source verbeuse : utile en fallback (refresh non lie a un
-  // resultat trimestriel, ex. mise a jour suite a une actualite hors call),
-  // mais redondante et peu lisible quand dcBanner affiche deja "Résultats
-  // {quarter}" + les badges Communiqué/Transcript juste au-dessus - dans ce
-  // cas (refresh = resultat), on la masque.
   const isEarningsRefresh=!!(d.hypothese?.dernierCall?.quarter);
   const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>`;
   traceEl.innerHTML=`<div>
@@ -1861,15 +1474,26 @@ function calcScore(ticker){
 }
 
 // ══════════════════════════════════════════════════════════════
-// NEWS — barre de notification (portefeuille) + vue detaillee.
-// Alimentees par data/newsDigest.json et data/newsAll.json (voir
-// collectors/merge.py), chargees dans state.newsDigest/state.newsAll par
-// loadState(). Fraicheur "vue/pas vue" geree cote client via une SEULE
-// date en localStorage (omniumLastSeenNews) - jamais de compte serveur ni
+// NEWS — barre de notification (portefeuille, MULTI-LIGNES desormais) +
+// vue detaillee. Alimentees par data/newsDigest.json et data/newsAll.json
+// (voir collectors/merge.py), chargees dans state.newsDigest/state.newsAll
+// par loadState(). Fraicheur "vue/pas vue" geree cote client via un
+// ENSEMBLE de dates rejetees en localStorage (omniumDismissedNewsDates,
+// remplace l'ancienne cle a date unique) - jamais de compte serveur ni
 // d'ecriture partagee : chaque navigateur a son propre etat, le clic d'une
 // personne n'affecte jamais ce que voient les autres.
+//
+// DESIGN : une ligne PAR JOUR ayant au moins 1 news (pas une ligne
+// cumulative unique) ; jusqu'a 10 lignes affichees (plus recentes en
+// haut), le reste au-dela de 10 reste dans newsDigest.json mais n'est plus
+// affiche comme ligne active - la vue detaillee (newsAll.json) reste de
+// toute facon la source exhaustive, non filtree par le statut vu/pas vu.
+// Chaque ligne : cliquer sur le TEXTE navigue vers la vue detaillee (et
+// marque ce jour comme vu au passage) ; la CROIX a droite dismisse ce jour
+// precis sans naviguer nulle part.
 // ══════════════════════════════════════════════════════════════
-const NEWS_LAST_SEEN_KEY='omniumLastSeenNews';
+const NEWS_DISMISSED_KEY='omniumDismissedNewsDates';
+const NEWS_MAX_LINES=10;
 const NEWS_COUNT_CAP=40;
 const NEWS_TYPE_ORDER=['communique','web','youtube'];
 const NEWS_TYPE_LABEL={communique:'Communiqués',web:'Web',youtube:'Vidéos'};
@@ -1879,8 +1503,6 @@ const NEWS_TYPE_ICON={
   youtube:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5l5 2.5-5 2.5z" fill="#000190" stroke="none"/></svg>'
 };
 
-// Formatte "2026-08-05" -> "5 août" (reutilise MONTH_ABBR_FR, deja utilise
-// ailleurs dans l'app pour les badges d'exercice decale).
 function formatNewsDayMonth(iso){
   const p=String(iso||'').split('-');
   if(p.length!==3)return iso||'';
@@ -1889,53 +1511,61 @@ function formatNewsDayMonth(iso){
   return isNaN(day)?iso:`${day} ${month}`;
 }
 
-// Etat de la barre de notif : compte cumule de tous les jours du digest
-// posterieurs a la derniere date vue (pas seulement le dernier run) - voir
-// discussion de design. Retourne null si rien de nouveau (bar masquee).
-function newsBarState(){
+function getDismissedNewsDates(){
+  try{ return new Set(JSON.parse(localStorage.getItem(NEWS_DISMISSED_KEY)||'[]')); }
+  catch(e){ return new Set(); }
+}
+function addDismissedNewsDate(dateStr){
+  const s=getDismissedNewsDates();
+  s.add(dateStr);
+  try{ localStorage.setItem(NEWS_DISMISSED_KEY, JSON.stringify([...s])); }catch(e){}
+}
+
+// Liste des lignes actives a afficher : les jours non-dismisses, tries du
+// plus recent au plus ancien, plafonnes a NEWS_MAX_LINES.
+function newsBarLines(){
   const digest=state.newsDigest||[];
-  if(!digest.length)return null;
-  let lastSeen='';
-  try{ lastSeen=localStorage.getItem(NEWS_LAST_SEEN_KEY)||''; }catch(e){}
-  const fresh=digest.filter(e=>e&&e.date>lastSeen);
-  if(!fresh.length)return null;
-  const total=fresh.reduce((s,e)=>s+(+e.total||0),0);
-  if(total<=0)return null;
-  const mostRecent=fresh.reduce((m,e)=>e.date>m?e.date:m,fresh[0].date);
-  return {total, date:mostRecent};
+  if(!digest.length)return [];
+  const dismissed=getDismissedNewsDates();
+  return digest
+    .filter(e=>e && (+e.total||0)>0 && !dismissed.has(e.date))
+    .slice()
+    .sort((a,b)=>b.date.localeCompare(a.date))
+    .slice(0,NEWS_MAX_LINES);
 }
 
 function renderNewsBar(){
   const wrap=document.getElementById('news-bar-wrap');
   if(!wrap)return;
-  const st=newsBarState();
-  if(!st){ wrap.innerHTML=''; return; }
-  const countTxt=st.total>NEWS_COUNT_CAP?NEWS_COUNT_CAP+'+':st.total;
-  wrap.innerHTML=`<div class="news-bar" style="display:flex;" onclick="openNewsDetail()">
-    <span class="news-bar-text">News disponibles au ${formatNewsDayMonth(st.date)}&nbsp;: <b>${countTxt}</b></span>
-    <span class="news-bar-link">Afficher
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-    </span>
-  </div>`;
+  const lines=newsBarLines();
+  if(!lines.length){ wrap.innerHTML=''; return; }
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  wrap.innerHTML=`<div class="news-bar-wrap">${lines.map(l=>{
+    const countTxt=(+l.total||0)>NEWS_COUNT_CAP?NEWS_COUNT_CAP+'+':l.total;
+    return `<div class="news-bar">
+      <span class="news-bar-text" onclick="openNewsDetailForDate('${esc(l.date)}')">News au ${formatNewsDayMonth(l.date)}&nbsp;: <b>${countTxt}</b></span>
+      <button class="news-bar-close" title="Ignorer cette ligne" onclick="event.stopPropagation();dismissNewsLine('${esc(l.date)}')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>`;
+  }).join('')}</div>`;
 }
 
-// Marque tout le digest connu comme "vu" (pas seulement les entrees
-// nouvellement affichees dans la barre - voir design : la date memorisee
-// est la plus recente de TOUT newsDigest.json, pas juste celle du jour
-// affiche), puis bascule vers la vue detaillee.
-function openNewsDetail(){
-  const digest=state.newsDigest||[];
-  if(digest.length){
-    const maxDate=digest.reduce((m,e)=>(e&&e.date>m)?e.date:m,digest[0].date||'');
-    try{ localStorage.setItem(NEWS_LAST_SEEN_KEY, maxDate); }catch(e){}
-  }
+// Clic sur le TEXTE d'une ligne : marque ce jour comme vu (on vient de le
+// consulter) et bascule vers la vue detaillee complete.
+function openNewsDetailForDate(dateStr){
+  addDismissedNewsDate(dateStr);
   renderNewsBar();
   showTab('news', null);
 }
 
-// Groupe newsAll (liste plate) en type -> societe -> items tries par date
-// desc, dans l'ordre NEWS_TYPE_ORDER (communiques -> web -> videos) et par
-// ordre alphabetique de societe a l'interieur de chaque type.
+// Clic sur la CROIX : dismisse uniquement CE jour, sans naviguer nulle
+// part - la ligne disparait, les autres restent.
+function dismissNewsLine(dateStr){
+  addDismissedNewsDate(dateStr);
+  renderNewsBar();
+}
+
 function groupNewsAll(){
   const all=state.newsAll||[];
   const byType={};
@@ -1990,11 +1620,6 @@ function renderNewsDetail(){
   `).join('');
 }
 
-// Recherche par nom dans l'en-tete de la colonne Name (voir pf-name-filter) :
-// filtre la liste affichee en direct, insensible a la casse/accents, sur
-// d.name ET le code ticker. pfOpenTicker() factorise l'ouverture d'un titre,
-// reutilisee par le clic sur une ligne et par l'Entree dans le champ de
-// recherche (pfNameFilterKeydown) pour "choisir" directement un titre tape.
 let pfNameFilter='';
 function pfNormalize(s){
   return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -2015,20 +1640,13 @@ function pfNameFilterKeydown(e){
     return;
   }
   if(e.key!=='Enter')return;
-  // Ouvre directement le premier titre correspondant au filtre courant, dans
-  // l'ordre de tri actif (meme logique que pfSortItems) - permet de taper un
-  // nom et d'appuyer sur Entree pour "choisir" le titre sans avoir a cliquer.
   const q=pfNormalize(pfNameFilter);
   if(!q)return;
   const match=pfLastFilteredItems.find(({d,tk})=>pfNormalize(d.name||tk).startsWith(q));
   if(match) pfOpenTicker(match.tk,match.cours);
 }
-// Memorise la derniere liste filtree/triee affichee, pour que l'Entree dans
-// le champ de recherche (pfNameFilterKeydown) ouvre exactement le premier
-// resultat visible a l'ecran, sans avoir a refaire le calcul.
 let pfLastFilteredItems=[];
 
-// Tri de la vue portefeuille. Défaut = classement d'origine (score CAGR+yield / PE), inchangé.
 let pfSort={key:'name',dir:'asc'};
 function pfSortBy(key){
   if(pfSort.key===key){ pfSort.dir = pfSort.dir==='asc'?'desc':'asc'; }
@@ -2045,7 +1663,7 @@ function pfSortItems(items){
     if(key==='nextEvent'){
       const av=a.nextEvtDate, bv=b.nextEvtDate;
       if(av==null&&bv==null)return 0;
-      if(av==null)return 1;   // pas de date confirmee -> toujours en fin de liste
+      if(av==null)return 1;
       if(bv==null)return -1;
       return mul*(av-bv);
     }
@@ -2106,10 +1724,6 @@ function renderPortfolio(){
     return;
   }
 
-  // Filtre par nom (voir pf-name-filter / pfFilterByName) : "commence par",
-  // insensible a la casse/accents, sur le nom affiche OU le code ticker -
-  // taper "s" doit remonter tous les titres commencant par S des la
-  // premiere lettre (pas de correspondance sur une sous-chaine interne).
   const q=pfNormalize(pfNameFilter);
   const filtered=q?items.filter(({tk,d})=>pfNormalize(d.name||tk).startsWith(q)||pfNormalize(tk).startsWith(q)):items;
 
@@ -2117,14 +1731,6 @@ function renderPortfolio(){
     ? filtered.length+' titre'+(filtered.length!==1?'s':'')+' (sur '+items.length+')'
     : items.length+' titre'+(items.length!==1?'s':'');
 
-  // Recherche active -> ordre alphabetique force sur le sous-ensemble
-  // filtre, quel que soit le tri de colonne actuellement selectionne
-  // (pfSort peut pointer sur "5Y CAGR", "P/E", etc. suite a un clic
-  // precedent) : sinon les resultats d'une recherche par nom apparaissent
-  // dans un ordre qui semble arbitraire (tri par rendement/score) plutot
-  // que par proximite avec ce qui vient d'etre tape. Le tri de colonne
-  // choisi par l'utilisateur reste inchange et se reapplique des que le
-  // champ de recherche est vide.
   const sorted=q
     ? filtered.slice().sort((a,b)=>(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'}))
     : pfSortItems(filtered);
@@ -2175,9 +1781,6 @@ document.addEventListener('DOMContentLoaded', async function(){
   }
   refreshSelects();
   const wantAnalyse = lastView && lastView.tab==='analyse' && CT && state.tickers[CT];
-  // replaceState (et non pushState) pour l'etat initial : on ne veut pas
-  // qu'un "Precedent" sur le tout premier ecran empile un doublon avant de
-  // quitter le site - l'etat initial remplace simplement l'entree d'arrivee.
   try{ history.replaceState({omniumTab: wantAnalyse?'analyse':'portefeuille', omniumTicker: CT}, '', location.pathname+location.search); }catch(e){}
   if(wantAnalyse){
     showTab('analyse', null, true);
