@@ -77,8 +77,20 @@ def make_id(*parts: str) -> str:
 
 
 def load_manifest(path="data/manifest.json"):
+    """Retourne la LISTE des codes tickers. Le fichier reel a la forme
+    {"tickers": ["EL", "AAPL", ...]} (voir index.html / loadState()) - PAS
+    un dictionnaire plat par ticker. C'est le point precis qui avait
+    regresse une fois (load_manifest retournant le dict brut au lieu de
+    raw["tickers"]) et provoquait un traitement silencieux d'un seul faux
+    ticker nomme litteralement "tickers" - voir le diagnostic du run #8."""
     with open(path, encoding="utf-8") as f:
-        return json.load(f)
+        raw = json.load(f)
+    tickers = raw.get("tickers", [])
+    assert isinstance(tickers, list), (
+        "data/manifest.json['tickers'] doit etre une LISTE de codes - "
+        f"trouve un {type(tickers).__name__}. Verifiez le format du fichier."
+    )
+    return tickers
 
 
 def load_ticker_json(ticker: str, path_tpl="data/{}.json"):
