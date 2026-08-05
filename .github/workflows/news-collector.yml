@@ -1,0 +1,98 @@
+name: Veille news Omnium
+
+on:
+  schedule:
+    # 05:30 UTC = avant l'ouverture Europe. Ajuster / dupliquer pour un
+    # second run avant l'ouverture US si besoin plus tard.
+    - cron: '30 5 * * 1-5'
+  workflow_dispatch: {}  # déclenchement manuel pour les tests
+
+permissions:
+  contents: write
+
+jobs:
+  communiques:
+    runs-on: ubuntu-latest
+    continue-on-error: true  # un flux IR cassé ne doit jamais bloquer web/youtube
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install feedparser
+      - run: python collectors/communiques.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact-communiques
+          path: artifacts/communiques.json
+          if-no-files-found: warn
+
+  web:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install anthropic
+      - run: python collectors/web.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact-web
+          path: artifacts/web.json
+          if-no-files-found: warn
+
+  youtube:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install google-api-python-client
+      - run: python collectors/youtube.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact-youtube
+          path: artifacts/youtube.json
+          if-no-files-found: warn
+
+  merge:
+    needs: [communiques, web, youtube]
+    if: always()  # tourne même si un ou plusieurs collecteurs ont échoué
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: artifact-*
+          path: artifacts
+          merge-multiple: false
+      # Les artifacts téléchargés atterrissent dans artifacts/artifact-<nom>/<nom>.json
+      # - on les remet à plat en artifacts/<nom>.json pour que merge.py les trouve.
+      - name: Aplatir les artifacts téléchargés
+        run: |
+          mkdir -p artifacts_flat
+          for d in artifacts/artifact-*; do
+            name=$(basename "$d" | sed 's/artifact-//')
+            [ -f "$d/$name.json" ] && cp "$d/$name.json" "artifacts_flat/$name.json"
+          done
+          rm -rf artifacts
+          mv artifacts_flat artifacts
+      - run: python collectors/merge.py
+      - name: Commit et push si changements
+        run: |
+          git config user.name "omnium-news-bot"
+          git config user.email "actions@github.com"
+          git add data/news/ data/newsAll.json data/newsDigest.json data/newsState.json
+          git diff --cached --quiet || git commit -m "Veille news : mise à jour automatique $(date -u +%Y-%m-%d)"
+          git push
