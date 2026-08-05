@@ -141,7 +141,7 @@ def main():
 
     all_items = []
     error_count = 0
-    for ticker in manifest.keys():
+    for ticker in manifest:
         tdata = load_ticker_json(ticker) or {}
         name = tdata.get("name", ticker)
         existing = load_existing_news(ticker)
