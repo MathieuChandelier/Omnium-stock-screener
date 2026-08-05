@@ -91,7 +91,7 @@ def main():
     skipped_unconfigured = []
     broken_feeds = []
 
-    for ticker in manifest.keys():
+    for ticker in manifest:
         cfg = sources.get(ticker) or {}
         feed_url = cfg.get("irFeedUrl")
         if not feed_url:
