@@ -27,11 +27,30 @@ from datetime import datetime, timezone
 
 import anthropic
 
-import os
-import sys
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # garantit que lib/ est trouve quel que soit l'environnement d'execution
+import importlib.util as _ilu
 
-from lib.state import get_window_start, make_id, load_manifest, load_ticker_json, load_existing_news, write_artifact
+def _load_state_module():
+    """Charge lib/state.py par son chemin de fichier absolu, sans dependre
+    de sys.path ni du mecanisme de resolution de paquets Python - la
+    tentative precedente (sys.path.insert + "from lib.state import")
+    echouait sur le runner GitHub Actions (ModuleNotFoundError: No module
+    named 'lib') pour une raison d'environnement non elucidee ; le
+    chargement par chemin de fichier explicite est immune a ce type de
+    probleme, quel que soit l'environnement d'execution."""
+    import os
+    state_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib", "state.py")
+    spec = _ilu.spec_from_file_location("omnium_news_state", state_path)
+    module = _ilu.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+_state = _load_state_module()
+get_window_start = _state.get_window_start
+make_id = _state.make_id
+load_manifest = _state.load_manifest
+load_ticker_json = _state.load_ticker_json
+load_existing_news = _state.load_existing_news
+write_artifact = _state.write_artifact
 
 MODEL = "claude-sonnet-5"
 EXISTING_CONTEXT_DAYS = 14  # fenêtre du contexte anti-doublon envoyé au modèle
