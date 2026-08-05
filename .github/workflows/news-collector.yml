@@ -2,9 +2,15 @@ name: Veille news Omnium
 
 on:
   schedule:
-    # 05:30 UTC = avant l'ouverture Europe. Ajuster / dupliquer pour un
-    # second run avant l'ouverture US si besoin plus tard.
-    - cron: '30 5 * * 1-5'
+    # 07:00 UTC = 09:00 heure de Paris en ete (CEST, UTC+2). GitHub Actions
+    # n'ajuste jamais automatiquement pour l'heure d'hiver (CET, UTC+1) :
+    # de fin octobre a fin mars, ce run tournera donc a 08:00 heure
+    # francaise, pas 09:00 - decalage d'1h assume plutot que deux crons
+    # saisonniers separes. La fenetre de fraicheur (voir get_window_start)
+    # s'aligne d'elle-meme sur "depuis le run d'hier" des lors que ce
+    # cron tourne de façon fiable chaque jour ouvre - aucun autre reglage
+    # necessaire pour obtenir "depuis la veille 09h".
+    - cron: '0 7 * * 1-5'
   workflow_dispatch: {}  # déclenchement manuel pour les tests
 
 permissions:
