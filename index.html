@@ -299,8 +299,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    l'autre - STRICTEMENT IDENTIQUE en desktop et en mobile (aucune media
    query ne change plus ni l'ordre ni la structure, seulement des tailles -
    voir le bloc @media plus bas). Chaque bloc .rb-eps-block porte son propre
-   titre d'annee + valeur annuelle sur la MEME ligne (justify-content:
-   space-between, jamais de retour a la ligne : voir .rb-eps-headline), puis
+   titre d'annee + valeur annuelle sur la MEME ligne (flex, gap fixe de
+   20px/14px mobile plutot que plaquee au bord droit : voir .rb-eps-
+   headline - jamais de retour a la ligne), puis
    ses puces trimestrielles/semestrielles le cas echeant. Le bloc PY (annee
    precedente, 100% publiee - voir hypothese.quarterlyEPS.PY dans
    INSTRUCTIONS.md E5 ter) est volontairement plus discret (.rb-eps-year-py)
@@ -313,7 +314,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    rafraichie cote assistant a chaque refresh (voir INSTRUCTIONS.md). */
 .rb-eps-grid{display:flex;flex-direction:column;gap:14px;padding:14px 20px 16px;}
 .rb-eps-block-py{opacity:.82;}
-.rb-eps-headline{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:nowrap;}
+.rb-eps-headline{display:flex;align-items:baseline;justify-content:flex-start;gap:20px;flex-wrap:nowrap;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:15px;font-weight:900;color:var(--navy);white-space:nowrap;}
 .rb-eps-year-py{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:4px;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
@@ -338,14 +339,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qtr-legend-row{display:flex;justify-content:flex-start;margin:6px 0 4px;}
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
-.qs-chips-row{display:flex;gap:5px;}
+.qs-chips-row{display:flex;gap:7px;justify-content:flex-start;}
 /* box-sizing:border-box + bordure transparente de meme epaisseur sur les
    puces "actual" : sans ca, les puces "estim" (bordure pointillee 1.5px)
    sont mecaniquement ~3px plus hautes que les puces "actual" (sans
    bordure) - ecart invisible au premier coup d'oeil mais reel. Avec cette
    regle, TOUTES les puces (PY, CY publiees/estimees, NY) font rigoureusement
    la meme hauteur, quelle que soit l'annee. */
-.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:5px 2px;border:1.5px solid transparent;}
+.qs-chip{box-sizing:border-box;flex:0 0 auto;width:64px;text-align:center;border-radius:6px;padding:5px 2px;border:1.5px solid transparent;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -487,7 +488,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .qtr-legend-row{margin:5px 0 3px;}
   .qtr-legend{font-size:8px;gap:10px;}
   .qs-qtr-block{margin-top:6px;}
-  .qs-chip{padding:4px 1px;}
+  .rb-eps-headline{gap:14px;}
+  .qs-chips-row{gap:5px;}
+  .qs-chip{width:48px;padding:4px 1px;}
   .chip-q{font-size:7px;}
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8px;}
