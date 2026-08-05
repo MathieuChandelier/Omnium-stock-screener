@@ -55,6 +55,8 @@ write_artifact = _state.write_artifact
 MODEL = "claude-sonnet-5"
 EXISTING_CONTEXT_DAYS = 14  # fenêtre du contexte anti-doublon envoyé au modèle
 MAX_ITEMS_PER_TICKER = 8
+MAX_SEARCHES_PER_TICKER = 2  # plafonne le cout : voir max_uses sur l'outil web_search
+DEBUG_PREVIEW_CHARS = 300  # longueur de l'extrait logue en cas d'echec de parsing
 
 
 def build_prompt(company_name: str, window_start: datetime, window_end: datetime, existing_titles: list) -> str:
@@ -80,8 +82,20 @@ Maximum {MAX_ITEMS_PER_TICKER} items, les plus significatifs uniquement."""
 
 
 def extract_json_array(text: str):
+    """Extrait le tableau JSON de la réponse du modèle.
+
+    Robuste au fait que le modèle, malgré la consigne stricte, ajoute
+    parfois une courte phrase d'introduction ou une citation avant/après
+    le tableau (constaté en pratique avec l'outil web_search : 100% des
+    réponses échouaient au parsing strict avant ce correctif, alors que le
+    JSON attendu était bien présent dans le texte). On cherche donc la
+    PREMIERE structure [...] dans le texte plutôt que d'exiger une
+    correspondance exacte sur l'ensemble de la réponse."""
     text = text.strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text.strip())
+    match = re.search(r"\[.*\]", text, re.S)
+    if match:
+        text = match.group(0)
     try:
         data = json.loads(text)
         return data if isinstance(data, list) else []
@@ -93,7 +107,11 @@ def call_model(client, prompt: str):
     response = client.messages.create(
         model=MODEL,
         max_tokens=2000,
-        tools=[{"type": "web_search_20250305", "name": "web_search"}],
+        # max_uses plafonne le nombre de recherches web par appel - sans
+        # cette borne, le modele peut enchainer plusieurs recherches par
+        # ticker sans limite, ce qui a fait deraper le cout d'un run complet
+        # bien au-dela de l'estimation (voir diagnostic du run #9).
+        tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": MAX_SEARCHES_PER_TICKER}],
         messages=[{"role": "user", "content": prompt}],
     )
     text_parts = [b.text for b in response.content if getattr(b, "type", None) == "text"]
@@ -113,7 +131,12 @@ def collect_for_ticker(client, ticker: str, name: str, window_start: datetime, w
 
     parsed = extract_json_array(raw_text)
     if parsed is None:
-        print(f"  [WARN] {ticker}: réponse non-JSON, ignorée", file=sys.stderr)
+        # Extrait de la reponse brute loggue pour pouvoir diagnostiquer SANS
+        # relancer un run payant a l'aveugle si ce cas se represente sous
+        # une forme differente (ex. le modele ignore completement la
+        # consigne de format plutot que d'ajouter juste une phrase autour).
+        preview = raw_text[:DEBUG_PREVIEW_CHARS].replace("\n", " ")
+        print(f"  [WARN] {ticker}: réponse non-JSON, ignorée - extrait: {preview!r}", file=sys.stderr)
         return [], "error"
 
     items = []
