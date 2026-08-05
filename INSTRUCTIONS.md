@@ -1182,6 +1182,15 @@ d-bis) "DATA" RETRAITEE DES VRAIS ONE-OFFS (regle anti-pollution durable) :
    amortissement d'acquisition, restructuration recurrente) restent tels
    quels DANS `data`, jamais retires. Un taux de croissance externe
    (guidance, consensus) s'applique ensuite normalement a cette base.
+d-ter) Quand le titre retient une base "AJUSTEE" comme methodologie centrale
+   (frequent pour les societes avec des elements discrets GAAP recurrents :
+   equity securities, litiges, mark-to-market de dette convertible, discrete
+   tax items), `data` du DERNIER exercice publie doit elle-meme etre batie
+   sur cette base ajustee - pas laissee en GAAP brut avec une simple mention
+   en prose. Rechercher le resultat Adjusted/non-GAAP officiellement publie
+   (jamais une estimation) et l'utiliser directement dans `data.net` (et
+   `data.ebit` si l'ecart y est significatif) - voir test de coherence en
+   E7 point b-bis.
 e) RETRAITEMENTS "UNDERLYING"/"ADJUSTED" DU MANAGEMENT - regle contre le
    biais de flatterie. NE PAS reprendre l'adjusted du management tel quel.
    VALIDER le lien GAAP/IFRS <-> ajuste : lister chaque poste ajoute, le
@@ -1340,6 +1349,23 @@ Relis la serie adjXXX COMPLETE :
 a) Contraintes de guidance (E2) respectees ?
 b) Pas de fausse marche a la soudure (dernier exercice publie -> 1ere
    annee) sur AUCUNE ligne.
+b-bis) TEST DE BASE COMPTABLE (avant meme de juger le delta plausible) : si
+   le titre declare une base ajustee pour ses adjXXX (ex. "BASE = AJUSTEE",
+   frequent pour les titres avec des elements discrets GAAP recurrents -
+   equity securities, litiges, one-offs fiscaux), verifie que `data` du
+   DERNIER exercice publie est construite sur CETTE MEME base, pas en GAAP
+   brut. Symptome typique d'un manquement : l'EBIT progresse et le nombre
+   d'actions baisse (rachats) d'une annee sur l'autre, mais l'EPS historique
+   stagne ou recule - c'est le signe qu'un element discret GAAP (non lie a
+   l'exploitation) a pollue `data.net` sans avoir ete retraite, meme si le
+   texte le MENTIONNE en commentaire (mentionner en prose ne suffit pas,
+   voir E1 point d-bis - `data` doit etre corrigee, pas seulement annotee).
+   Dans ce cas, retraite `data` du/des exercice(s) concernes (recherche des
+   resultats Adjusted/non-GAAP officiellement publies par la societe,
+   jamais une estimation) AVANT de juger la soudure vers la 1ere annee
+   projetee - un delta qui parait aberrant (ex. +50-60% sur l'EPS d'une
+   annee a l'autre) est souvent le symptome de ce manquement plutot qu'une
+   vraie inflexion a expliquer par un ancrage.
 c) Vraisemblance generale : "si je montrais cette trajectoire au CFO, la
    reconnaitrait-il comme une lecture raisonnable ?"
 c-ter) Pour CHAQUE ligne (CA, EBIT, marge, net, EPS), calculer explicitement
