@@ -95,6 +95,12 @@ data/
     ],
     "quarterlyEPS":{
       "cadence":"trimestriel",
+      "PY":[
+        {"label":"T1","eps":0.14,"actual":true},
+        {"label":"T2","eps":0.15,"actual":true},
+        {"label":"T3","eps":0.17,"actual":true},
+        {"label":"T4","eps":0.15,"actual":true}
+      ],
       "CY":[
         {"label":"T1","eps":0.16,"actual":true},
         {"label":"T2","eps":0.18,"actual":true},
@@ -435,6 +441,30 @@ Sous-champs :
 - `cadence` : `"trimestriel"` ou `"semestriel"` - pilote uniquement le
   libelle affiche cote app, determine par la cadence de publication reelle
   de la societe (voir E5 ter).
+- `PY` (Prior Year) : tableau de meme structure que `CY`, pour l'annee
+  PRECEDENTE (`CY-1`) - TOUJOURS `actual:true` sur toute la ligne (annee
+  entierement close et publiee). Affiche par l'app de facon discrete
+  au-dessus du bloc annee en cours, comme reference de comparaison visuelle
+  - PAS confronte a un `adjEPS` (l'annee est deja dans `data`, ce n'est plus
+  une projection), donc pas de `coherenceNotePY` correspondant. Absence
+  gracieuse : si absent, l'app n'affiche simplement pas ce bloc - migration
+  progressive au fil des refresh comme pour `CY`/`NY` a l'introduction du
+  champ. TOUJOURS TENTE a chaque creation/refresh au meme titre que `CY`/
+  `NY` (voir E5 ter) : c'est une donnee deja publiee et connue (aucun
+  cout de recherche supplementaire, contrairement a `CY`/`NY` qui melangent
+  actual et estime) - l'absence de `PY` doit rester l'exception, jamais le
+  defaut par paresse.
+  BASCULE TEMPORELLE (mecanisme a appliquer a chaque refresh) : au refresh
+  qui suit la cloture d'un exercice fiscal (`data` vient de recevoir une
+  nouvelle annee, `yearsFor()` cote app avance donc `CY` d'un cran), le
+  bloc `CY` du refresh PRECEDENT (dont toutes les periodes sont desormais
+  `actual:true` par construction, l'annee etant close) devient le nouveau
+  `PY` - reprends ses valeurs telles quelles (eventuellement recalees sur
+  le chiffre definitif publie si different de la derniere estimation), et
+  construis un `CY` entierement neuf pour le nouvel exercice en cours. Le
+  libelle affiche (`EPS {CY-1}`) est calcule par l'app a partir de `CY`,
+  jamais code en dur cote assistant - aucune action requise cote app lors
+  de cette bascule, seule la donnee `PY`/`CY`/`NY` doit etre rafraichie.
 - `CY` : tableau de 4 periodes (trimestres) - ou 2 (semestres) - COUVRANT
   L'INTEGRALITE DE L'ANNEE COURANTE (`adjEPS[CY]`), quel que soit le nombre
   deja publie. Chaque entree `{label, eps, actual}` :
@@ -1230,8 +1260,15 @@ le nouveau résultat à la première valeur obtenue.
 `quarterlyEPS` si la fiabilite n'est pas au rendez-vous, voir point 5)
 
 Construit `quarterlyEPS` (voir SCHEMA) a partir des adjEPS deja figes en
-E4-E5, en quatre passes dans cet ordre :
+E4-E5, en quatre passes dans cet ordre - PLUS UNE PASSE 0 systematique :
 
+0. **`PY` (annee precedente).** Avant meme `CY`/`NY`, renseigne `PY` avec
+   les periodes de l'annee CY-1, integralement `actual:true` - c'est une
+   donnee deja publiee (resultats annuels/trimestriels deja sortis), sans
+   cout de recherche supplementaire au-dela de ce qui a deja ete rassemble
+   au point 1 ci-dessous. Si le refresh fait suite a une bascule d'exercice
+   (l'ancien `CY` vient de se cloturer), reprends directement ses valeurs
+   comme nouveau `PY` plutot que de tout reconstruire depuis zero.
 1. **SAISONNALITE + TRIMESTRES/SEMESTRES DEJA PUBLIES.** Rassemble les
    resultats des periodes deja publiees pour l'exercice en cours et le
    precedent (typiquement 4 a 8 trimestres/semestres selon ce qui est
@@ -1481,7 +1518,7 @@ Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees su
 Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
-Si `hypothese.quarterlyEPS` est present, verifie que `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual`, et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
+Si `hypothese.quarterlyEPS` est present, verifie que `PY` (si present), `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual` (`PY` : `actual` toujours `true`), et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
 
 Si `hypothese.dernierCall` est present (refresh ou creation lie a un resultat), verifie que `communiqueAnalyse` et `transcriptAnalyse` sont BIEN PRESENTS (jamais un champ omis par oubli alors que `dernierCall` lui-meme a ete rempli) et qu'ils reflaetent sincerement la recherche menee CE tour-ci (voir RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT) - un `dernierCall` chiffre et detaille alors que ces deux booleens sont absents ou a `false` alors que les documents ont ete lus est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme (elle affiche une croix grise trompeuse cote app malgre une recherche reellement effectuee).
 Verifie `hypothese.guidanceHistory` : TABLEAU (jamais un objet), chaque entree avec exactement `quarter`/`date`/`fyGuided`/`guidanceAnnuelle`, et TOUTES les entrees partagent le MEME `fyGuided` (c'est ce qui borne le tableau a l'exercice fiscal en cours - un `fyGuided` heterogene dans le tableau casse a la fois la mecanique de reset et le badge "Nᵉ point de l'exercice" affiche cote app). Verifie `hypothese.guidanceLongTermeHistory` : TABLEAU (jamais absent si `guidanceLongTerme` a deja change au moins une fois), chaque entree avec exactement `asOf`/`text` - jamais une entree ajoutee pour un refresh ou `guidanceLongTerme` est reste identique (verifie qu'aucune entree consecutive n'a le meme `text`, signe d'un ajout fait a tort).
