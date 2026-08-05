@@ -307,6 +307,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
 .rb-eps-annualval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;}
 .rb-eps-annualsep{color:var(--muted);font-weight:400;margin:0 2px;}
+.rb-eps-analysts{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
 /* Bloc EPS historique (PY) replie par defaut : bouton depliant une section
@@ -1191,6 +1192,13 @@ function renderReturnBlock(ticker, proj, cours){
   const total=cagrEps+yieldPct;
   const cons=(d.epsConsensus?.year===CY)?d.epsConsensus:null;
   const consNY=d.epsConsensus?.epsNY||0;
+  // Nombre d'analystes : champ STRUCTURE (epsConsensus.analystsCount /
+  // analystsCountNY), plus fiable qu'un parsing du texte libre de
+  // `source`. NY retombe sur le meme panel que CY si aucun compte
+  // specifique n'est renseigne (cas le plus frequent, meme panel de
+  // consensus pour les deux annees).
+  const analystsCY=cons?.analystsCount||null;
+  const analystsNY=d.epsConsensus?.analystsCountNY||cons?.analystsCount||null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
   const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
   const ndCY=d.hypothese?.adjND?.[CY];
@@ -1239,15 +1247,14 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY}</span>
-          <span class="rb-eps-annualval">${epsCY>0?epsCY.toFixed(2)+cur:'—'}${cons?.eps?`<span class="rb-eps-annualsep">/</span>Consensus ${cons.eps.toFixed(2)+cur}`:''}</span>
+          <span class="rb-eps-annualval">${epsCY>0?epsCY.toFixed(2)+cur:'—'}${cons?.eps?`<span class="rb-eps-annualsep">/</span>Consensus ${cons.eps.toFixed(2)+cur}${analystsCY?` <span class="rb-eps-analysts">(${analystsCY} analystes)</span>`:''}`:''}</span>
         </div>
-        ${srcLine?`<div class="rb-eps-src">${srcLine}</div>`:''}
         ${qeBlock?qeBlock.chipsCY:''}
       </div>
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY+1}</span>
-          <span class="rb-eps-annualval">${epsNY>0?epsNY.toFixed(2)+cur:'—'}${consNY>0?`<span class="rb-eps-annualsep">/</span>Consensus ${consNY.toFixed(2)+cur}`:''}</span>
+          <span class="rb-eps-annualval">${epsNY>0?epsNY.toFixed(2)+cur:'—'}${consNY>0?`<span class="rb-eps-annualsep">/</span>Consensus ${consNY.toFixed(2)+cur}${analystsNY?` <span class="rb-eps-analysts">(${analystsNY} analystes)</span>`:''}`:''}</span>
         </div>
         ${qeBlock?qeBlock.chipsNY:''}
       </div>
@@ -1480,11 +1487,27 @@ function renderContextBullets(ticker, proj, cours){
     ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y} : EPS fourni ${b.eps.toFixed(2)} ≠ Net/Actions ${b.implied.toFixed(2)}</div>`).join('')}
   </div>`:'';
 
+  // Detail complet de la source du consensus (fournisseur, base comptable,
+  // date) - deplace ICI depuis le bloc EPS CY/NY en haut de page pour
+  // preserver la symetrie/harmonie de ces cadres sequentiels (voir
+  // discussion de design) : seul le nombre d'analystes entre parentheses
+  // reste affiche au plus pres de la valeur Consensus, le detail complet
+  // vit desormais ici, aux cotes de la construction de l'EPS.
+  const {CY:_CYforCons}=yearsFor(ticker);
+  const cons=(d.epsConsensus?.year===_CYforCons)?d.epsConsensus:null;
+  const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
+  const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
+  const consSourceBanner=srcLine?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Source consensus EPS</div>
+    <div style="font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;line-height:1.4;">${srcLine.replace(/</g,'&lt;')}</div>
+  </div>`:'';
+
   traceEl.style.display='block';
   const isEarningsRefresh=!!(d.hypothese?.dernierCall?.quarter);
   const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>`;
   traceEl.innerHTML=`<div>
     ${dcBanner}
+    ${consSourceBanner}
     ${dateSourceLine}
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
     ${ownBanner}
