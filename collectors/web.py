@@ -2,7 +2,7 @@
 collectors/web.py
 
 Collecteur 2/3 : web généraliste (actualités, notes de brokers) via l'API
-Anthropic + l'outil web_search, un appel par ticker.
+Anthropic + l'outil web_search, appels PARALLELISES (un par ticker).
 
 Garantie de fraîcheur : PROBABILISTE côté modèle, DETERMINISTE côté code.
 1. Le prompt reçoit la fenêtre exacte (bornes explicites, pas "récent") et
@@ -14,15 +14,28 @@ Garantie de fraîcheur : PROBABILISTE côté modèle, DETERMINISTE côté code.
    tout item dont dateEvenement sort de la fenêtre ou est absent/invalide.
    C'est ce filtre code qui constitue la vraie garantie, pas le prompt.
 
+BUDGET TEMPS (voir discussion de design) :
+- Visée ~60s pour l'ensemble des tickers, via parallelisation (MAX_CONCURRENCY
+  appels simultanes) plutot qu'un traitement sequentiel un par un.
+- Hard stop absolu a HARD_STOP_SECONDS : au-dela, on cesse d'attendre les
+  requetes encore en cours, on ecrit l'artifact avec CE QUI A ETE COLLECTE
+  jusque-la (jamais un artifact vide par choix, seulement par absence
+  reelle de resultats), et on force la sortie du process pour ne jamais
+  rester bloque sur un thread encore en attente reseau. Le job merge
+  tolere deja un artifact partiel ou absent (voir merge.py) - un hard stop
+  ne bloque donc jamais la production de la ligne de notif portefeuille.
+
 Usage : python web.py
 Nécessite ANTHROPIC_API_KEY en variable d'environnement.
-Écrit artifacts/web.json.
+Écrit artifacts/web.json (complet ou partiel selon le budget temps).
 """
 
+import concurrent.futures
 import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 
 import anthropic
@@ -55,8 +68,12 @@ write_artifact = _state.write_artifact
 MODEL = "claude-sonnet-5"
 EXISTING_CONTEXT_DAYS = 14  # fenêtre du contexte anti-doublon envoyé au modèle
 MAX_ITEMS_PER_TICKER = 8
-MAX_SEARCHES_PER_TICKER = 2  # plafonne le cout : voir max_uses sur l'outil web_search
-DEBUG_PREVIEW_CHARS = 300  # longueur de l'extrait logue en cas d'echec de parsing
+MAX_SEARCHES_PER_TICKER = 2  # plafonne le cout par ticker (voir max_uses sur web_search)
+DEBUG_PREVIEW_CHARS = 300  # longueur de l'extrait loggue en cas d'echec de parsing
+
+MAX_CONCURRENCY = 20            # appels API simultanes - vise ~60s pour 56 tickers
+PER_REQUEST_TIMEOUT_SECONDS = 25  # aucune requete individuelle ne peut depasser ca
+HARD_STOP_SECONDS = 90           # budget total absolu, non negociable
 
 
 def build_prompt(company_name: str, window_start: datetime, window_end: datetime, existing_titles: list) -> str:
@@ -109,10 +126,10 @@ def call_model(client, prompt: str):
         max_tokens=2000,
         # max_uses plafonne le nombre de recherches web par appel - sans
         # cette borne, le modele peut enchainer plusieurs recherches par
-        # ticker sans limite, ce qui a fait deraper le cout d'un run complet
-        # bien au-dela de l'estimation (voir diagnostic du run #9).
+        # ticker sans limite, ce qui a fait deraper le cout d'un run.
         tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": MAX_SEARCHES_PER_TICKER}],
         messages=[{"role": "user", "content": prompt}],
+        timeout=PER_REQUEST_TIMEOUT_SECONDS,
     )
     text_parts = [b.text for b in response.content if getattr(b, "type", None) == "text"]
     return "\n".join(text_parts)
@@ -133,8 +150,7 @@ def collect_for_ticker(client, ticker: str, name: str, window_start: datetime, w
     if parsed is None:
         # Extrait de la reponse brute loggue pour pouvoir diagnostiquer SANS
         # relancer un run payant a l'aveugle si ce cas se represente sous
-        # une forme differente (ex. le modele ignore completement la
-        # consigne de format plutot que d'ajouter juste une phrase autour).
+        # une forme differente.
         preview = raw_text[:DEBUG_PREVIEW_CHARS].replace("\n", " ")
         print(f"  [WARN] {ticker}: réponse non-JSON, ignorée - extrait: {preview!r}", file=sys.stderr)
         return [], "error"
@@ -174,39 +190,85 @@ def collect_for_ticker(client, ticker: str, name: str, window_start: datetime, w
 
 
 def main():
+    started_at = time.monotonic()
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         print("[ERREUR] ANTHROPIC_API_KEY absente - collecteur web skippé entièrement", file=sys.stderr)
         write_artifact("web", [])
         return 1
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key, timeout=PER_REQUEST_TIMEOUT_SECONDS)
     manifest = load_manifest()
     window_start = get_window_start("web")
     window_end = datetime.now(timezone.utc)
 
     all_items = []
     error_count = 0
+    completed_count = 0
+
+    # Soumission de TOUS les tickers en parallele (jusqu'a MAX_CONCURRENCY
+    # requetes API simultanees) plutot qu'un traitement sequentiel - c'est
+    # ce qui fait passer le temps total de plusieurs minutes a ~60s pour
+    # l'ensemble du portefeuille.
+    executor = concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENCY)
+    future_to_ticker = {}
     for ticker in manifest:
         tdata = load_ticker_json(ticker) or {}
         name = tdata.get("name", ticker)
         existing = load_existing_news(ticker)
+        fut = executor.submit(collect_for_ticker, client, ticker, name, window_start, window_end, existing)
+        future_to_ticker[fut] = ticker
 
-        items, status = collect_for_ticker(client, ticker, name, window_start, window_end, existing)
+    # HARD STOP : on n'attend jamais plus de HARD_STOP_SECONDS au total,
+    # meme si des requetes sont encore en cours. concurrent.futures.wait
+    # avec timeout retourne immediatement passe ce delai, avec les futures
+    # non terminees dans "not_done" - on ne bloque jamais dessus.
+    remaining = max(0.0, HARD_STOP_SECONDS - (time.monotonic() - started_at))
+    done, not_done = concurrent.futures.wait(
+        future_to_ticker.keys(), timeout=remaining, return_when=concurrent.futures.ALL_COMPLETED
+    )
+
+    for fut in done:
+        ticker = future_to_ticker[fut]
+        try:
+            items, status = fut.result()
+        except Exception as e:
+            print(f"  [ERREUR] {ticker}: exception non geree ({e})", file=sys.stderr)
+            items, status = [], "error"
         if status == "error":
             error_count += 1
+        completed_count += 1
         all_items.extend(items)
 
-    write_artifact("web", all_items)
-    print(f"[web] {len(all_items)} nouveaux items, {error_count} tickers en erreur sur {len(manifest)}")
+    if not_done:
+        skipped_tickers = [future_to_ticker[f] for f in not_done]
+        print(f"[web] HARD STOP a {HARD_STOP_SECONDS}s atteint - {len(skipped_tickers)} tickers non traites, "
+              f"artifact ecrit avec les {completed_count} tickers deja termines : {', '.join(skipped_tickers[:10])}"
+              f"{' ...' if len(skipped_tickers) > 10 else ''}")
 
-    # Erreur bloquante seulement si (quasi) tout a échoué - un ou deux
-    # tickers en erreur isolée ne doit pas marquer tout le collecteur "error"
-    # dans newsState.json (voir merge.py : "error" empêche l'avancée de la
-    # fenêtre pour ce collecteur).
-    if manifest and error_count >= len(manifest) * 0.8:
-        return 1
-    return 0
+    # Ecriture INCONDITIONNELLE de l'artifact - complet ou partiel, c'est
+    # toujours ce qui a ete reellement collecte jusqu'ici. Le job merge
+    # (voir merge.py) traite un artifact partiel exactement comme un
+    # artifact complet : rien a adapter de ce cote-la.
+    write_artifact("web", all_items)
+
+    elapsed = time.monotonic() - started_at
+    print(f"[web] {len(all_items)} nouveaux items, {error_count} tickers en erreur, "
+          f"{completed_count}/{len(manifest)} tickers traites en {elapsed:.1f}s")
+
+    # Sortie forcee et immediate : evite tout risque de rester accroche a
+    # un thread du pool encore en attente reseau apres le hard stop (les
+    # threads de ThreadPoolExecutor ne sont pas daemon par defaut, donc un
+    # simple retour de main() attendrait leur fin naturelle - potentiellement
+    # bien au-dela des 90s promis). os._exit() termine le process tout de
+    # suite, sans attendre quoi que ce soit d'autre.
+    #
+    # Code de sortie : jamais bloquant pour merge (voir if: always() sur ce
+    # job dans le workflow) - un hard stop ou des erreurs partielles restent
+    # une sortie normale, pas un echec du collecteur dans son ensemble.
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(0)
 
 
 if __name__ == "__main__":
