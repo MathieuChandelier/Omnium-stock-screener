@@ -27,6 +27,10 @@ from datetime import datetime, timezone
 
 import anthropic
 
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # garantit que lib/ est trouve quel que soit l'environnement d'execution
+
 from lib.state import get_window_start, make_id, load_manifest, load_ticker_json, load_existing_news, write_artifact
 
 MODEL = "claude-sonnet-5"
