@@ -1,0 +1,7 @@
+{
+  "_comment": "Config IR par ticker. irFeedUrl=null ou entrée absente => collecteur communiques skip proprement ce ticker (loggé, non bloquant). A compléter au fil de l'eau ; candidat pour devenir une étape d'Operation A plus tard.",
+  "EL": {
+    "irFeedUrl": null,
+    "irFeedType": "rss"
+  }
+}
