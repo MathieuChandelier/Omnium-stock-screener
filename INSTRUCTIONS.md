@@ -45,7 +45,7 @@ data/
     {"year":2015,"ca":1080,"ebit":173,"net":145.2,"shares":33,"nd":150,"div":1.16},
     ...
   ],
-  "epsConsensus": {"year":2026,"eps":0.88,"epsNY":1.15,"date":"2026-07-01","source":"..."},
+  "epsConsensus": {"year":2026,"eps":0.88,"epsNY":1.15,"date":"2026-07-01","source":"...","analystsCount":25,"analystsCountNY":null},
   "particularites": [
     {"text":"Explication CONCRETE et complete du fait pris en compte (jamais un chiffre seul).","valuePct":5}
   ],
@@ -95,6 +95,14 @@ data/
     ],
     "quarterlyEPS":{
       "cadence":"trimestriel",
+      "historique":[
+        {"year":2024,"periods":[
+          {"label":"T1","eps":0.10},
+          {"label":"T2","eps":0.11},
+          {"label":"T3","eps":0.13},
+          {"label":"T4","eps":0.12}
+        ]}
+      ],
       "PY":[
         {"label":"T1","eps":0.14,"actual":true},
         {"label":"T2","eps":0.15,"actual":true},
@@ -163,18 +171,43 @@ mais du francais accentue avec les quelques termes techniques anglais deja
 ancres dans l'usage du secteur conserves tels quels.
 
 Le champ `epsConsensus` porte le consensus sell-side de reference pour `CY`
-et `CY+1` (`eps`/`epsNY`), affiche cote app juste sous les lignes OMNIUM/
-CONSENSUS de la colonne EPS en cours (`index.html`, bloc `.rb-eps-src`) :
+et `CY+1` (`eps`/`epsNY`), affiche cote app EN LIGNE, juste a cote de la
+valeur Consensus dans le bloc EPS CY/NY (`index.html`, `.rb-eps-annualval`)
+- CHANGEMENT DE DESIGN : le detail complet de la source n'apparait PLUS a
+cet endroit (l'ancien bloc `.rb-eps-src`, directement sous le titre EPS,
+cassait la symetrie visuelle avec les autres cadres sequentiels du bloc
+"These Omnium"). Seul le NOMBRE D'ANALYSTES apparait desormais a cote de
+la valeur, entre parentheses (ex. "Consensus 5,98€ (25 analystes)") ; le
+detail complet (fournisseur, base comptable, date) est affiche PLUS BAS,
+dans la carte "Dernieres hypotheses", juste apres le bandeau `dernierCall`
+- au meme niveau que les autres precisions factuelles sur la construction
+de l'EPS, plutot que de casser le rythme visuel du haut de page.
+- `analystsCount` : ENTIER, le nombre d'analystes composant le consensus
+  pour `CY`. Champ STRUCTURE (pas a extraire d'un texte libre) - c'est lui,
+  et lui seul, qui pilote l'affichage "(N analystes)" cote app. `null` si
+  le nombre exact n'est pas connu (l'app n'affiche alors simplement rien
+  entre parentheses, jamais une estimation approximative a ce niveau).
+- `analystsCountNY` : OPTIONNEL, meme principe pour `CY+1` UNIQUEMENT si
+  le panel d'analystes couvrant l'annee suivante est CONNU pour differer
+  de celui de `CY` (rare - la plupart du temps le meme panel de consensus
+  couvre les deux annees). Si absent, l'app retombe automatiquement sur
+  `analystsCount` (celui de `CY`) pour l'annee suivante egalement - ne PAS
+  dupliquer la meme valeur ici par defaut, laisser le champ absent dans ce
+  cas courant.
 - `source` : UNE SEULE LIGNE D'ATTRIBUTION - la base comptable (GAAP/non-
-  GAAP) + le fournisseur nomme + le nombre d'analystes si connu. RIEN
-  D'AUTRE. Ce champ repond a une question unique pour le lecteur - "d'ou
+  GAAP) + le fournisseur nomme. NE PLUS EMBARQUER LE NOMBRE D'ANALYSTES
+  DANS CE TEXTE (desormais porte par `analystsCount`/`analystsCountNY` ci-
+  dessus, champ structure - eviter la duplication de la meme information
+  sous deux formes differentes dans le meme JSON). RIEN D'AUTRE dans ce
+  champ. Ce champ repond a une question unique pour le lecteur - "d'ou
   vient ce chiffre de consensus, et sur quelle base ?" - jamais "pourquoi
   Omnium en differe" (c'est le role d'un `ancrages` explicite, jamais
   duplique ici) ni "que va-t-il se passer au prochain refresh" (une
   speculation sur une revision future n'a pas sa place dans un champ de
   citation ; si c'est un point de suivi reel, il vit dans la WATCH-LIST de
   `hypothese.text`). Exemple correct : `"GAAP - S&P Global Market
-  Intelligence/TipRanks via Yahoo Finance/Barchart (~30 analystes)"`.
+  Intelligence/TipRanks via Yahoo Finance/Barchart"` (SANS le nombre
+  d'analystes, qui vit desormais dans `analystsCount`).
   MAUVAIS EXEMPLE (a ne plus reproduire) : "Consensus sell-side GAAP (Apple
   ne publie pas d'EPS ajuste separe ; S&P Global Market Intelligence/
   TipRanks via Yahoo Finance/Barchart, ~30 analystes). Date-e de juste
@@ -182,10 +215,33 @@ CONSENSUS de la colonne EPS en cours (`index.html`, bloc `.rb-eps-src`) :
   attendu) donc ce consensus sera probablement revise legerement a la
   hausse au prochain refresh, mais l'essentiel de l'ecart avec l'estimation
   Omnium tient au retraitement du remboursement tarifaire (+0,11$ au T3,
-  non recurrent) que le consensus GAAP n'exclut pas." - la justification du
-  choix GAAP, le rappel du beat du trimestre (deja dans `dernierCall`,
-  visible plus haut dans la meme carte) et l'explication de l'ecart avec
-  Omnium (deja dans `ancrages`) y sont tous re-narres en double emploi.
+  non recurrent) que le consensus GAAP n'exclut pas." - en plus du nombre
+  d'analystes qui n'a plus sa place ici (voir `analystsCount`), la
+  justification du choix GAAP, le rappel du beat du trimestre (deja dans
+  `dernierCall`, visible plus haut dans la meme carte) et l'explication de
+  l'ecart avec Omnium (deja dans `ancrages`) y sont tous re-narres en
+  double emploi.
+  DEUXIEME MAUVAIS EXEMPLE, AUTRE MODE DE DERIVE (a ne plus reproduire) :
+  "Consensus dedui du forward P/E ~17,2x (cours 182$, post-split) ; adj
+  EPS - guidance management low-to-mid-teens growth. Targets analystes
+  ~214-223$ (Strong Buy). Confirme par le T2 26 : croissance H1 reelle
+  +14,9%, quasi identique a l'hypothese." - ici ce n'est PAS le nombre
+  d'analystes qui pollue le champ, mais QUATRE informations de nature
+  differente qui n'ont chacune pas leur place ICI : (1) la METHODOLOGIE de
+  construction du consensus (deduction via un forward P/E) - si elle
+  merite d'etre tracee, elle vit dans `ancrages` ou `hypothese.text`,
+  jamais dans ce champ d'attribution ; (2) un rappel de guidance - deja
+  couvert par `dernierCall.guidanceAnnuelle`, double emploi pur ; (3) des
+  OBJECTIFS DE COURS de brokers ("targets analystes ~214-223$, Strong
+  Buy") - hors perimetre total du champ `epsConsensus`, qui ne porte QUE
+  le consensus d'EPS, jamais des price targets ni des recommandations
+  d'achat/vente ; (4) une CONFIRMATION post-publication (croissance H1
+  reelle) - un fait de refresh qui appartient a `dernierCall.pointsCles`
+  ou a la rubrique EVENEMENTS de `hypothese.text`, jamais ici. Aucun
+  nombre d'analystes n'etant identifiable dans ce texte, le champ
+  `analystsCount` correspondant doit rester `null` plutot que d'inventer
+  un chiffre - l'app n'affiche alors simplement pas la parenthese
+  "(N analystes)", comportement normal (voir SCHEMA, absence gracieuse).
 - `date` : date du consensus (juste avant la derniere publication de
   resultats, generalement), affichee automatiquement a cote de `source`
   cote app (pas besoin de la repeter dans le texte de `source`).
@@ -441,12 +497,54 @@ Sous-champs :
 - `cadence` : `"trimestriel"` ou `"semestriel"` - pilote uniquement le
   libelle affiche cote app, determine par la cadence de publication reelle
   de la societe (voir E5 ter).
+- `historique` : tableau CUMULATIF (contrairement a `PY`/`CY`/`NY`,
+  entierement reconstruites a chaque refresh) des annees ANTERIEURES a
+  `PY` (donc N-2 et au-dela), affiche par l'app derriere un bouton
+  depliant SEPARE ("Historique"), au-dessus du bloc `PY` - repli par
+  defaut, jamais affiche en ligne. Chaque entree : `{year, periods}` ou
+  `periods` suit EXACTEMENT la meme structure que `PY`/`CY`/`NY` (tableau
+  de `{label, eps}` - le champ `actual` est omis ici, une annee historique
+  etant par nature entierement publiee, comme `PY`).
+  MECANIQUE D'ALIMENTATION (a appliquer UNIQUEMENT au moment de la
+  BASCULE TEMPORELLE decrite pour `PY` ci-dessous - jamais a un refresh
+  ordinaire a l'interieur du meme exercice fiscal) : au refresh qui fait
+  avancer `CY` d'un cran (nouvel exercice cloture dans `data`), AVANT
+  d'ecraser `PY` par les valeurs de l'ancien `CY`, pousse l'ANCIEN `PY`
+  (celui du JSON fourni en entree, sur le point de devenir obsolete) EN
+  TETE de `historique` sous la forme `{"year": <annee de cet ancien PY>,
+  "periods": <ses periodes telles quelles>}` - jamais recalcule.
+  PLAFOND : conserver au maximum les 5 ANNEES LES PLUS RECENTES dans
+  `historique` (au-dela, retirer la plus ancienne en premier) - memes
+  choix de taille que `guidanceLongTermeHistory`, pour donner une
+  profondeur de lecture utile (jusqu'a ~7 ans en tout avec `PY`/`CY`) sans
+  faire grossir le fichier indefiniment au fil des annees.
+  SI `historique` est absent de l'ancien JSON (titre cree avant
+  l'introduction de ce champ, ou refresh a l'interieur du meme exercice
+  qui n'a jamais eu a l'alimenter) : reprendre TEL QUEL (tableau vide `[]`
+  si jamais renseigne) plutot que de le reconstruire retroactivement -
+  aucune tentative de retrouver des annees anterieures non deja captures
+  au fil des bascules passees.
+  CREATION (Operation A) : `historique` demarre a `[]` (aucune bascule
+  anterieure a l'assistant).
+  ABSENCE GRACIEUSE : si `historique` est vide ou absent, l'app n'affiche
+  simplement pas le bouton "Historique" - comportement normal, pas une
+  erreur (cas de tous les titres tant qu'aucune bascule d'exercice n'a
+  encore eu lieu depuis l'introduction de ce champ).
+  Champ purement factuel et cumulatif (comme `guidanceLongTermeHistory`),
+  jamais un intrant de la boucle E1-E8 - une simple archive de lecture,
+  affichee AVEC sa somme (Σ) a titre informatif cote app (a la difference
+  de `PY`/`CY`/`NY`, voir ci-dessous), puisqu'aucun enjeu de coherence
+  n'existe plus a comparer sur une annee aussi ancienne.
 - `PY` (Prior Year) : tableau de meme structure que `CY`, pour l'annee
   PRECEDENTE (`CY-1`) - TOUJOURS `actual:true` sur toute la ligne (annee
-  entierement close et publiee). Affiche par l'app de facon discrete
-  au-dessus du bloc annee en cours, comme reference de comparaison visuelle
-  - PAS confronte a un `adjEPS` (l'annee est deja dans `data`, ce n'est plus
-  une projection), donc pas de `coherenceNotePY` correspondant. Absence
+  entierement close et publiee). Affiche par l'app EN LIGNE, au meme titre
+  que `CY`/`NY` (plus de repli/toggle specifique a cette seule annee -
+  seules les annees plus anciennes que `PY`, dans `historique` ci-dessus,
+  sont repliees derriere un bouton) - PAS confronte a un `adjEPS` (l'annee
+  est deja dans `data`, ce n'est plus une projection), donc pas de
+  `coherenceNotePY` correspondant, et pas de somme (Σ) affichee non plus,
+  par coherence visuelle avec `CY`/`NY` (voir `coherenceNoteCY`/
+  `coherenceNoteNY` ci-dessous pour le detail de ce choix). Absence
   gracieuse : si absent, l'app n'affiche simplement pas ce bloc - migration
   progressive au fil des refresh comme pour `CY`/`NY` a l'introduction du
   champ. TOUJOURS TENTE a chaque creation/refresh au meme titre que `CY`/
@@ -456,15 +554,22 @@ Sous-champs :
   defaut par paresse.
   BASCULE TEMPORELLE (mecanisme a appliquer a chaque refresh) : au refresh
   qui suit la cloture d'un exercice fiscal (`data` vient de recevoir une
-  nouvelle annee, `yearsFor()` cote app avance donc `CY` d'un cran), le
-  bloc `CY` du refresh PRECEDENT (dont toutes les periodes sont desormais
-  `actual:true` par construction, l'annee etant close) devient le nouveau
-  `PY` - reprends ses valeurs telles quelles (eventuellement recalees sur
-  le chiffre definitif publie si different de la derniere estimation), et
-  construis un `CY` entierement neuf pour le nouvel exercice en cours. Le
-  libelle affiche (`EPS {CY-1}`) est calcule par l'app a partir de `CY`,
-  jamais code en dur cote assistant - aucune action requise cote app lors
-  de cette bascule, seule la donnee `PY`/`CY`/`NY` doit etre rafraichie.
+  nouvelle annee, `yearsFor()` cote app avance donc `CY` d'un cran), DEUX
+  choses se produisent dans le MEME mouvement, avant d'ecrire quoi que ce
+  soit :
+  1. l'ANCIEN `PY` (celui du JSON fourni en entree, sur le point d'etre
+     ecrase) est pousse en tete de `historique` (voir mecanique dediee
+     ci-dessus) ;
+  2. le bloc `CY` du refresh PRECEDENT (dont toutes les periodes sont
+     desormais `actual:true` par construction, l'annee etant close)
+     devient le nouveau `PY` - reprends ses valeurs telles quelles
+     (eventuellement recalees sur le chiffre definitif publie si different
+     de la derniere estimation).
+  Puis construis un `CY` entierement neuf pour le nouvel exercice en
+  cours. Le libelle affiche (`EPS {CY-1}`) est calcule par l'app a partir
+  de `CY`, jamais code en dur cote assistant - aucune action requise cote
+  app lors de cette bascule, seule la donnee `historique`/`PY`/`CY`/`NY`
+  doit etre rafraichie.
 - `CY` : tableau de 4 periodes (trimestres) - ou 2 (semestres) - COUVRANT
   L'INTEGRALITE DE L'ANNEE COURANTE (`adjEPS[CY]`), quel que soit le nombre
   deja publie. Chaque entree `{label, eps, actual}` :
@@ -485,49 +590,35 @@ Sous-champs :
   toujours a jour du cours live).
 - `forwardPeriodLabel` : phrase courte identifiant la plage couverte par
   `epsForward12m` (ex. `"T3 26 -> T2 27"`).
-- `coherenceNoteCY` / `coherenceNoteNY` : DESTINATAIRE = le lecteur de
-  l'app, pas l'assistant qui refera le refresh suivant. Il n'existe PLUS de
-  `coherenceStatus` fourni par l'assistant : le statut ok/ecart est
-  desormais CALCULE EN DIRECT cote app a partir de l'ecart reel entre Σ(CY)
-  et `adjEPS[CY]` (resp. NY) - un statut fige au moment de l'ecriture du
-  JSON pouvait finir perime si le cours ou une correction ulterieure
-  changeait la lecture ; le recalcul live evite ce risque. CONSEQUENCE
-  DIRECTE POUR L'ASSISTANT : `coherenceNoteCY`/`coherenceNoteNY` ne
-  s'affichent QUE si l'ecart chiffre de LEUR PROPRE annee est reellement
-  non-nul - jamais les deux en meme temps si un seul des deux ecarts est
-  reel, jamais aucune des deux si les deux ecarts sont nuls (le total Σ
-  affiche a cote de chaque colonne suffit alors, aucun texte a ecrire).
-  - Chaque champ est independant : documente l'ecart de CETTE annee
-    precisement, jamais l'autre (voir E5 ter point 4 - l'ecart CY et
-    l'ecart NY peuvent avoir des causes differentes, ex. CY calibre en
-    residu sur un T4 pas encore publie vs NY construit par pure
-    saisonnalite).
-  - `null` (pas de chaine vide) quand cette annee n'a pas d'ecart reel a
-    justifier - cas le plus frequent, l'ecart etant normalement absorbe a
-    la construction (voir E5 ter point 4). Ne JAMAIS ecrire une phrase de
-    confirmation type "Coherent avec l'EPS annuel" quand l'ecart est nul :
-    le Σ a cote du total suffit, un texte redondant a cote n'ajoute rien.
-  - Quand rempli (ecart reel, non absorbe) : UNE SEULE phrase courte, la
-    chose qui manque au lecteur, a savoir POURQUOI ca diverge (ex.
-    `"Guidance T4 tres en retrait du rythme des 3 trimestres publies -
-    marge de securite non retenue par le management."`), jamais COMMENT le
-    calcul a ete mene.
-  MAUVAIS EXEMPLE (a ne plus reproduire) : "Somme CY (8,78$) et NY (9,58$)
-  alignee exactement sur adjEPS[2026]/[2027] par construction : les 3
-  trimestres deja publies de FY26 (...) restent inchanges, le T4 FY26 et
-  l'ensemble de FY27 sont calibres en residu/saisonnalite pour boucler sur
-  la these deja figee - ecart initial <2% avant calage, absorbe
-  silencieusement." - en plus d'etre un paragraphe de methodologie interne
-  illisible pour l'utilisateur final, cet exemple documente un ecart NUL
-  (absorbe) : avec le nouveau modele, les deux champs auraient du rester
-  `null`.
+- `coherenceNoteCY` / `coherenceNoteNY` : DEPRECIES SOUS LE PROTOCOLE
+  ACTUEL (voir E5 ter point 4, revise) - toute divergence entre la somme
+  des periodes et l'EPS annuel est desormais ARBITREE INTERACTIVEMENT AVEC
+  MATHIEU AVANT LA LIVRAISON DU JSON, jamais documentee a posteriori dans
+  ce champ. CONSEQUENCE DIRECTE : ces deux champs restent TOUJOURS `null`
+  sur toute creation/refresh mene sous ce protocole - ils ne sont conserves
+  dans le schema QUE pour la retro-compatibilite de lecture avec d'anciens
+  JSON ecrits avant cette revision (jamais reecrits a neuf, jamais
+  utilises pour documenter un ecart desormais resolu en amont de
+  l'ecriture). Cote app, ces champs ne pilotent plus aucun affichage pour
+  `CY`/`NY` (la somme elle-meme n'est plus affichee pour ces deux blocs -
+  voir `historique` et `PY` ci-dessus pour le seul endroit ou une somme
+  reste visible, a titre informatif).
+  ANCIEN COMPORTEMENT (pour memoire, plus en vigueur) : ces champs
+  servaient a documenter un ecart materiel non resolu entre la somme
+  trimestrielle et `adjEPS`. Ce mecanisme de documentation a posteriori
+  est remplace par l'arbitrage interactif d'E5 ter point 4 - voir cette
+  section pour le protocole actuel.
 
-MECANIQUE CREATION vs REFRESH : champ FACTUEL ET DE SYNTHESE reconstruit A
-NEUF a chaque creation/refresh (comme `dernierCall`), PAS un registre
-cumulatif (contrairement a `ownership.history`/`compliance.items`) - la
-fenetre de periodes glisse a chaque refresh, aucun sens a en preserver une
-trace historique. Entierement REMPLACE, sans lien avec l'ancien contenu du
-JSON fourni en entree.
+MECANIQUE CREATION vs REFRESH : `PY`/`CY`/`NY` sont un champ FACTUEL ET DE
+SYNTHESE reconstruit A NEUF a chaque creation/refresh (comme `dernierCall`),
+PAS un registre cumulatif (contrairement a `historique` ci-dessus, ou a
+`ownership.history`/`compliance.items`) - la fenetre de periodes glisse a
+chaque refresh, aucun sens a en preserver une trace historique au-dela de
+ce que `historique` capture deja au moment des bascules. `PY`/`CY`/`NY`
+sont donc entierement REMPLACES a chaque ecriture, sans lien avec l'ancien
+contenu du JSON fourni en entree (SAUF au moment precis d'une bascule
+d'exercice, ou l'ancien `CY` devient le nouveau `PY` - voir BASCULE
+TEMPORELLE ci-dessus, seul lien delibere entre deux refresh successifs).
 
 ABSENCE GRACIEUSE : si les donnees disponibles ne permettent pas une
 decomposition fiable (voir E5 ter point 5), `quarterlyEPS` reste absent -
@@ -1262,13 +1353,20 @@ le nouveau résultat à la première valeur obtenue.
 Construit `quarterlyEPS` (voir SCHEMA) a partir des adjEPS deja figes en
 E4-E5, en quatre passes dans cet ordre - PLUS UNE PASSE 0 systematique :
 
-0. **`PY` (annee precedente).** Avant meme `CY`/`NY`, renseigne `PY` avec
-   les periodes de l'annee CY-1, integralement `actual:true` - c'est une
-   donnee deja publiee (resultats annuels/trimestriels deja sortis), sans
-   cout de recherche supplementaire au-dela de ce qui a deja ete rassemble
-   au point 1 ci-dessous. Si le refresh fait suite a une bascule d'exercice
-   (l'ancien `CY` vient de se cloturer), reprends directement ses valeurs
-   comme nouveau `PY` plutot que de tout reconstruire depuis zero.
+0. **`PY` (annee precedente) et `historique` (N-2 et au-dela).** Avant meme
+   `CY`/`NY`, renseigne `PY` avec les periodes de l'annee CY-1,
+   integralement `actual:true` - c'est une donnee deja publiee (resultats
+   annuels/trimestriels deja sortis), sans cout de recherche
+   supplementaire au-dela de ce qui a deja ete rassemble au point 1
+   ci-dessous. En REFRESH uniquement, si ce refresh correspond a une
+   BASCULE D'EXERCICE (l'ancien `CY` du JSON fourni en entree vient de se
+   cloturer, `data` recoit une nouvelle annee) : AVANT de remplacer `PY`,
+   pousse l'ANCIEN `PY` (celui du JSON fourni, sur le point de devenir
+   obsolete) en tete de `historique` (voir mecanique complete dans le
+   SCHEMA, y compris le plafond de 5 annees), PUIS reprends les valeurs de
+   l'ancien `CY` comme nouveau `PY`. En dehors d'une bascule d'exercice
+   (refresh ordinaire a l'interieur du meme exercice fiscal), `historique`
+   n'est PAS touche - reprends-le tel quel depuis l'ancien JSON.
 1. **SAISONNALITE + TRIMESTRES/SEMESTRES DEJA PUBLIES.** Rassemble les
    resultats des periodes deja publiees pour l'exercice en cours et le
    precedent (typiquement 4 a 8 trimestres/semestres selon ce qui est
@@ -1294,33 +1392,33 @@ E4-E5, en quatre passes dans cet ordre - PLUS UNE PASSE 0 systematique :
 3. **RECOUPEMENT AVEC LES PROJECTIONS ANNUELLES.** La somme des periodes de
    `CY` doit converger vers `adjEPS[CY]` deja construit en E4-E5 (idem pour
    `NY` vs `adjEPS[CY+1]`) - c'est un VRAI test de coherence interne, pas
-   une formalite : calcule explicitement l'ecart en %.
-4. **ARBITRAGE.** `adjEPS` (issu du protocole complet E1-E8, sources
-   multiples, ancrages documentes) est l'ANCRE AUTORITAIRE. CY et NY
-   s'arbitrent INDEPENDAMMENT l'un de l'autre (rien n'oblige les deux a
-   suivre la meme branche) :
-   - Ecart FAIBLE (typiquement <3-4%, seuil a apprecier comme les autres
-     seuils de materialite de E6-b) : ABSORBE SILENCIEUSEMENT - recale
-     proportionnellement les periodes de `CY`/`NY` pour que leur somme
-     coincide exactement avec `adjEPS[CY]`/`adjEPS[CY+1]`, EN PRESERVANT LA
-     FORME saisonniere identifiee en etape 1 (jamais un recalage uniforme
-     qui aplatirait la saisonnalite). `coherenceNoteCY`/`coherenceNoteNY`
-     (selon l'annee concernee) reste `null` - l'ecart est desormais nul,
-     rien a justifier (le statut ok/ecart n'est plus a declarer, l'app le
-     recalcule elle-meme depuis le chiffre).
-   - Ecart MATERIEL : NE PAS corriger en silence - deux choix possibles
-     selon le cas, a trancher au moment de l'ecriture : (a) documenter
-     l'ecart et laisser la decomposition trimestrielle TELLE QUELLE
-     (`coherenceNoteCY` ou `coherenceNoteNY` explicite, selon l'annee ou
-     l'ecart subsiste), signal que le lecteur doit examiner ; ou (b) si la
-     construction bottom-up (etapes 1-2) est manifestement plus fiable que
-     l'annuel (ex. l'annuel n'avait pas encore integre un element que le
-     detail trimestriel revele), le signaler explicitement dans
-     `hypothese.text` comme une PROPOSITION DE REVISION de `adjEPS` -
-     jamais une reecriture automatique de `adjEPS` sans que ce soit assume
-     et trace dans le texte. En cas de doute entre (a) et (b) : REGLE
-     D'ESCALADE (voir tete de section BOUCLE D'ANALYSE), poser la question
-     a l'utilisateur plutot que trancher seul.
+   une formalite : calcule explicitement l'ecart en %, POUR CHAQUE ANNEE
+   INDEPENDAMMENT (rien n'oblige CY et NY a suivre la meme branche a
+   l'etape 4).
+4. **ARBITRAGE INTERACTIF (remplace l'ancien mecanisme d'absorption
+   silencieuse).** `adjEPS` (issu du protocole complet E1-E8, sources
+   multiples, ancrages documentes) reste l'ANCRE DE DEPART, mais DES QU'UN
+   ECART EXISTE entre la somme des periodes de `CY` (resp. `NY`) et
+   `adjEPS[CY]` (resp. `adjEPS[CY+1]`) - QUELLE QUE SOIT SON AMPLEUR, plus
+   de seuil de materialite qui dispenserait d'en parler - PRESENTE L'ECART
+   CHIFFRE A MATHIEU AVANT DE FINALISER LE JSON, et demande explicitement
+   lequel des deux doit l'emporter :
+   - (a) le CUMUL TRIMESTRIEL (`adjEPS[CY]`/`adjEPS[CY+1]` est alors
+     ajuste pour coller exactement a la somme des periodes construites en
+     etapes 1-2) ; ou
+   - (b) l'EPS ANNUEL deja etabli en E1-E5 (les periodes trimestrielles
+     sont alors recalees proportionnellement pour boucler exactement sur
+     `adjEPS`, EN PRESERVANT LA FORME saisonniere identifiee en etape 1 -
+     jamais un recalage uniforme qui aplatirait la saisonnalite).
+   Ne JAMAIS trancher seul, ne JAMAIS absorber silencieusement meme un
+   ecart minime - CHANGEMENT DE PROTOCOLE : l'ancienne regle qui tolerait
+   une absorption automatique sous ~3-4% n'est PLUS EN VIGUEUR. CONSEQUENCE
+   DIRECTE : une fois la decision de Mathieu actee, le JSON livre ne
+   presente PLUS JAMAIS d'ecart residuel entre la somme trimestrielle et
+   `adjEPS` - `coherenceNoteCY`/`coherenceNoteNY` (voir SCHEMA, desormais
+   depreciees) restent donc TOUJOURS `null` sur tout JSON ecrit sous ce
+   protocole, l'arbitrage ayant deja eu lieu EN AMONT de l'ecriture plutot
+   que d'etre documente a posteriori dans le JSON.
 5. **GEOMETRIE VARIABLE.** Si les donnees disponibles (trimestres publies,
    guidance) sont trop pauvres pour construire une decomposition
    raisonnablement fiable (titre tres peu couvert, guidance totalement
@@ -1519,10 +1617,11 @@ Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici co
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
 Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
 AVANT de verifier la forme, verifie l'OBLIGATION elle-meme (piege identifie en pratique : un refresh signale comme "provisoire" ou "source incomplete" - ex. transcript manquant - n'exempte JAMAIS de tenter E5 ter, ces deux dimensions sont independantes) : si `hypothese.quarterlyEPS` est ABSENT, la reponse doit contenir soit le champ, soit une justification explicite (E5 ter point 5 - donnees insuffisantes/non fiables) dans le texte ou la reponse - jamais une absence silencieuse. Un refresh qui construit un pont H1-actual + H2-estime pour adjEPS (E4-a) mais n'utilise PAS ces memes trimestres actual pour `quarterlyEPS.CY` est incoherent avec lui-meme : les donnees etaient deja rassemblees, ne pas les reutiliser est un oubli, pas un choix.
-Si `hypothese.quarterlyEPS` est present, verifie que `PY` (si present), `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual` (`PY` : `actual` toujours `true`), et que la somme des `eps` de `CY` (et de `NY`) reste dans un ordre de grandeur coherent avec `adjEPS[CY]`/`adjEPS[CY+1]` - `coherenceNoteCY`/`coherenceNoteNY` doivent rester `null` si cet ecart est nul (l'app recalcule le statut elle-meme, aucun champ a laisser a "ok" par erreur) et etre renseignes UNIQUEMENT sur l'annee dont l'ecart est reellement materiel ; une note presente alors que l'ecart correspondant est nul (ou l'inverse) est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme.
+Si `hypothese.quarterlyEPS` est present, verifie que `PY` (si present), `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual` (`PY` : `actual` toujours `true`), et que la somme des `eps` de `CY` (et de `NY`) COINCIDE EXACTEMENT avec `adjEPS[CY]`/`adjEPS[CY+1]` (a un arrondi d'affichage pres, <0,05 pt) - CE N'EST PLUS UNE TOLERANCE A ~3-4% : sous le protocole actuel (E5 ter point 4), tout ecart devait deja avoir ete arbitre AVEC MATHIEU avant l'ecriture, donc un ecart residuel a ce stade est une INCOHERENCE A CORRIGER avant livraison, pas un cas normal a documenter. `coherenceNoteCY`/`coherenceNoteNY` doivent TOUJOURS rester `null` (voir SCHEMA, champs desormais deprecies) - la presence d'un texte dans l'un ou l'autre de ces deux champs sur un JSON ecrit sous ce protocole est elle-meme une incoherence a corriger. Si `historique` est present, verifie qu'il s'agit d'un TABLEAU (jamais un objet), que chaque entree porte exactement `year`/`periods`, que `periods` suit la structure `{label, eps}` (sans `actual`, toujours implicitement publiee), qu'aucune annee n'y apparait EN DOUBLE, et que le tableau ne depasse pas 5 entrees (plafond - voir SCHEMA).
 
 Si `hypothese.dernierCall` est present (refresh ou creation lie a un resultat), verifie que `communiqueAnalyse` et `transcriptAnalyse` sont BIEN PRESENTS (jamais un champ omis par oubli alors que `dernierCall` lui-meme a ete rempli) et qu'ils reflaetent sincerement la recherche menee CE tour-ci (voir RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT) - un `dernierCall` chiffre et detaille alors que ces deux booleens sont absents ou a `false` alors que les documents ont ete lus est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme (elle affiche une croix grise trompeuse cote app malgre une recherche reellement effectuee).
 Verifie `hypothese.guidanceHistory` : TABLEAU (jamais un objet), chaque entree avec exactement `quarter`/`date`/`fyGuided`/`guidanceAnnuelle`, et TOUTES les entrees partagent le MEME `fyGuided` (c'est ce qui borne le tableau a l'exercice fiscal en cours - un `fyGuided` heterogene dans le tableau casse a la fois la mecanique de reset et le badge "Nᵉ point de l'exercice" affiche cote app). Verifie `hypothese.guidanceLongTermeHistory` : TABLEAU (jamais absent si `guidanceLongTerme` a deja change au moins une fois), chaque entree avec exactement `asOf`/`text` - jamais une entree ajoutee pour un refresh ou `guidanceLongTerme` est reste identique (verifie qu'aucune entree consecutive n'a le meme `text`, signe d'un ajout fait a tort).
+Si `epsConsensus` est present, verifie que `analystsCount` (si renseigne) est un ENTIER (pas une chaine "~25" ni un texte), et que `source` ne contient PLUS de mention du nombre d'analystes en texte libre (desormais porte exclusivement par `analystsCount`/`analystsCountNY` - voir SCHEMA) - une mention residuelle du type "(~25 analystes)" encore presente dans `source` est une duplication a corriger avant livraison.
 Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livre jamais un fichier dont tu sais qu'il echouera silencieusement au chargement ou a l'affichage des projections. Mentionne explicitement dans la reponse que ce controle a ete effectue et son resultat (ex. "Validation E8-bis : JSON valide, 6/6 champs adjXXX conformes en objets indexes, coherence EPS verifiee a <0,1% pres, N/N ancrages conformes en cles/format, aucun champ manquant.").
 
 ## LIVRABLE FINAL
@@ -1547,17 +1646,19 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
    (decomposition trimestrielle/semestrielle de l'EPS, P/E 12 mois
    glissants) - absent uniquement si les donnees disponibles ne permettent
    pas une decomposition fiable (voir E5 ter point 5), jamais publie a
-   titre indicatif non fiable. `ownership` renseigne (insiders ancres sur le
-   dernier proxy en priorite, notableHolders 13F US uniquement trouves lors
-   de la recherche E2, `coverageNote` si le titre n'est pas couvert par le
-   regime 13F, `history` VIDE `[]` - aucun refresh anterieur a
-   snapshotter - voir SCHEMA), sans jamais bloquer la creation si une
-   source fiable manque. `compliance` renseigne (recherche etendue a tout
-   l'historique public du titre - fraudes averees, enquetes, allegations
-   par regulateurs/cabinets d'avocats plaignants/vendeurs a decouvert
-   activistes, jamais le contentieux commercial ordinaire), `items` vide
-   `[]` avec `note` confirmant explicitement l'absence d'element trouve si
-   c'est le cas plutot que de laisser un doute.
+   titre indicatif non fiable ; `historique` demarre a `[]` (aucune bascule
+   d'exercice anterieure a l'assistant). `ownership` renseigne (insiders
+   ancres sur le dernier proxy en priorite, notableHolders 13F US
+   uniquement trouves lors de la recherche E2, `coverageNote` si le titre
+   n'est pas couvert par le regime 13F, `history` VIDE `[]` - aucun
+   refresh anterieur a snapshotter - voir SCHEMA), sans jamais bloquer la
+   creation si une source fiable manque. `compliance` renseigne (recherche
+   etendue a tout l'historique public du titre - fraudes averees,
+   enquetes, allegations par regulateurs/cabinets d'avocats plaignants/
+   vendeurs a decouvert activistes, jamais le contentieux commercial
+   ordinaire), `items` vide `[]` avec `note` confirmant explicitement
+   l'absence d'element trouve si c'est le cas plutot que de laisser un
+   doute.
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -1602,26 +1703,31 @@ confirmer le nom/code, il est deja connu.
    communication plus recente l'a mise a jour - AVANT tout remplacement,
    snapshotte l'ancienne valeur dans `hypothese.guidanceLongTermeHistory`
    selon sa mecanique propre (voir SCHEMA, uniquement si la valeur a
-   reellement change, plafonne a 5 points). `hypothese.quarterlyEPS`
-   entierement RECONSTRUIT selon E5 ter (pas de mecanique cumulative comme
-   `priorEPS`/`guidanceHistory` - la fenetre glissante de periodes n'a pas
-   de sens a preserver d'un refresh a l'autre). `ownership` RE-RECHERCHE et
-   REMPLACE integralement son etat courant (asOf/insiderPct/insiderDesc/
-   insiderSource/notableHolders/coverageNote), MAIS AVANT ce remplacement
-   snapshotte `{asOf, insiderPct}` de l'ANCIEN `ownership` dans son propre
-   `history` (tableau cumulatif propre a `ownership`, plafonne a 8 points -
-   mecanique dediee, distincte de `guidanceHistory` - voir SCHEMA), sans
-   jamais bloquer le refresh si une source fiable manque. `compliance`
-   REPREND `items` de l'ancien JSON TEL QUEL (rien supprime), AJOUTE toute
-   nouvelle allegation/procedure detectee depuis le dernier `asOf`, et MET
-   A JOUR en place le `status`/`outcome` des entrees existantes dont
-   l'issue a evolue - jamais de reecriture retroactive du contenu d'une
-   ancienne entree au-dela de son statut/issue.
+   reellement change, plafonne a 5 points). `hypothese.quarterlyEPS.PY`/
+   `CY`/`NY` entierement RECONSTRUITS selon E5 ter (pas de mecanique
+   cumulative comme `priorEPS`/`guidanceHistory` - la fenetre glissante de
+   periodes n'a pas de sens a preserver d'un refresh a l'autre) ;
+   `hypothese.quarterlyEPS.historique` REPRIS TEL QUEL sauf si ce refresh
+   est precisement une BASCULE D'EXERCICE, auquel cas l'ancien `PY` y est
+   pousse en tete avant d'etre remplace (voir SCHEMA et E5 ter point 0).
+   `ownership` RE-RECHERCHE et REMPLACE integralement son etat courant
+   (asOf/insiderPct/insiderDesc/insiderSource/notableHolders/
+   coverageNote), MAIS AVANT ce remplacement snapshotte `{asOf,
+   insiderPct}` de l'ANCIEN `ownership` dans son propre `history` (tableau
+   cumulatif propre a `ownership`, plafonne a 8 points - mecanique dediee,
+   distincte de `guidanceHistory` - voir SCHEMA), sans jamais bloquer le
+   refresh si une source fiable manque. `compliance` REPREND `items` de
+   l'ancien JSON TEL QUEL (rien supprime), AJOUTE toute nouvelle
+   allegation/procedure detectee depuis le dernier `asOf`, et MET A JOUR
+   en place le `status`/`outcome` des entrees existantes dont l'issue a
+   evolue - jamais de reecriture retroactive du contenu d'une ancienne
+   entree au-dela de son statut/issue.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
-   `guidanceLongTerme`, `guidanceLongTermeHistory`, `quarterlyEPS`,
-   `ownership`, `compliance` et `nextEvent` inclus), pret a remplacer le
-   fichier `data/CODE.json` existant sur GitHub tel quel.
+   `guidanceLongTerme`, `guidanceLongTermeHistory`, `quarterlyEPS` (avec
+   son sous-champ `historique`), `ownership`, `compliance` et `nextEvent`
+   inclus), pret a remplacer le fichier `data/CODE.json` existant sur
+   GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
