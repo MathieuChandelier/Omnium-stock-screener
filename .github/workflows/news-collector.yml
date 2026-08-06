@@ -1,21 +1,26 @@
 name: Veille news Omnium
-
 on:
   schedule:
-    # 07:00 UTC = 09:00 heure de Paris en ete (CEST, UTC+2). GitHub Actions
+    # 06:15 UTC = 08:15 heure de Paris en ete (CEST, UTC+2). GitHub Actions
     # n'ajuste jamais automatiquement pour l'heure d'hiver (CET, UTC+1) :
-    # de fin octobre a fin mars, ce run tournera donc a 08:00 heure
-    # francaise, pas 09:00 - decalage d'1h assume plutot que deux crons
-    # saisonniers separes. La fenetre de fraicheur (voir get_window_start)
-    # s'aligne d'elle-meme sur "depuis le run d'hier" des lors que ce
-    # cron tourne de façon fiable chaque jour ouvre - aucun autre reglage
-    # necessaire pour obtenir "depuis la veille 09h".
-    - cron: '0 7 * * 1-5'
+    # de fin octobre a fin mars, ce run tournera donc a 07:15 heure
+    # francaise, pas 08:15 - decalage d'1h assume plutot que deux crons
+    # saisonniers separes (voir INSTRUCTIONS/discussion pour le meme choix
+    # applique precedemment a l'ancien creneau de 07:00 UTC).
+    #
+    # Avance a 08:15 (au lieu de 09:00 initialement) delibrement : les
+    # schedules GitHub Actions sont "best effort" et peuvent subir un
+    # retard variable (observe : jusqu'a ~2h30 un jour donne, sans SLA
+    # garanti par GitHub). Ce delai avant l'heure cible reelle (~09h-10h
+    # souhaitee) absorbe ce risque plutot que de le subir.
+    #
+    # La fenetre de fraicheur (voir get_window_start) s'aligne d'elle-meme
+    # sur "depuis le run d'hier" des lors que ce cron tourne de façon
+    # fiable chaque jour ouvre - aucun autre reglage necessaire.
+    - cron: '15 6 * * 1-5'
   workflow_dispatch: {}  # déclenchement manuel pour les tests
-
 permissions:
   contents: write
-
 jobs:
   communiques:
     runs-on: ubuntu-latest
@@ -32,7 +37,6 @@ jobs:
           name: artifact-communiques
           path: artifacts/communiques.json
           if-no-files-found: warn
-
   web:
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -50,7 +54,6 @@ jobs:
           name: artifact-web
           path: artifacts/web.json
           if-no-files-found: warn
-
   youtube:
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -68,7 +71,6 @@ jobs:
           name: artifact-youtube
           path: artifacts/youtube.json
           if-no-files-found: warn
-
   merge:
     needs: [communiques, web, youtube]
     if: always()  # tourne même si un ou plusieurs collecteurs ont échoué
