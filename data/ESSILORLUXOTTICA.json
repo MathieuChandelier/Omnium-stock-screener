@@ -1,12 +1,30 @@
 {
   "name": "EssilorLuxottica",
-  "cours": 187.2,
+  "cours": 161.75,
   "yahooSymbol": "EL.PA",
   "dividende": 4.0,
   "data": [
     {
+      "year": 2020,
+      "ca": 14432,
+      "ebit": 719,
+      "net": 85,
+      "shares": 437,
+      "nd": 3000,
+      "div": 2.23
+    },
+    {
+      "year": 2021,
+      "ca": 21500,
+      "ebit": 2310,
+      "net": 1206,
+      "shares": 448,
+      "nd": 9700,
+      "div": 2.51
+    },
+    {
       "year": 2022,
-      "ca": 24494,
+      "ca": 24486,
       "ebit": 3157,
       "net": 2152,
       "shares": 452,
@@ -15,10 +33,10 @@
     },
     {
       "year": 2023,
-      "ca": 25395,
+      "ca": 25382,
       "ebit": 3176,
       "net": 2289,
-      "shares": 457,
+      "shares": 455,
       "nd": 9100,
       "div": 3.95
     },
@@ -28,7 +46,7 @@
       "ebit": 3448,
       "net": 2359,
       "shares": 460,
-      "nd": 10970,
+      "nd": 10966,
       "div": 3.95
     },
     {
@@ -43,106 +61,216 @@
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 7.25,
-    "epsNY": null,
-    "date": "2026-07-10",
-    "source": "Consensus sell-side (Stockopedia, ~25 analystes) - EPS sur base AJUSTEE du management (hors amortissement PPA), non comparable directement à l'EPS normalisé Omnium (voir hypothese.text) - antérieur au S1 2026, à recouper au prochain refresh"
+    "eps": 7.35,
+    "epsNY": 7.95,
+    "date": "2026-06-09",
+    "source": "Ajusté (non-GAAP, hors PPA/one-offs) - consensus sell-side via MarketScreener/ideal-investisseur.fr",
+    "analystsCount": 33,
+    "analystsCountNY": null
   },
   "particularites": [],
   "nextEvent": {
-    "label": "T3 2026",
+    "label": "Q3 26",
     "date": "2026-10-20"
   },
   "ownership": {
-    "asOf": "2026-07-29",
-    "insiderPct": 32.4,
-    "insiderDesc": "Delfin S.à r.l., holding luxembourgeoise de la famille Del Vecchio (fondateur de Luxottica, décédé en 2022), actionnaire de référence historique d'EssilorLuxottica depuis la fusion Essilor-Luxottica de 2018 (~32% du capital, ~31% des droits de vote). Delfin est présidée par Francesco Milleri (également PDG d'EssilorLuxottica). Un différend successoral interne à Delfin (rachat par Leonardo Maria Del Vecchio des parts de deux de ses frère et sœur, ~10 Md€, validé en assemblée extraordinaire fin avril 2026, litiges résiduels non résolus entre héritiers) concerne la gouvernance de la holding elle-même et non directement la participation ou la gouvernance d'EssilorLuxottica - à surveiller comme risque de gouvernance indirect mais non quantifiable, exclu des adjXXX.",
-    "insiderSource": "Wikipedia (Delfin, holding company) et presse financière (BFM Bourse, Zonebourse, Les Echos via Delfineo, avril-juillet 2026) - pas de proxy statement US pour ce titre français, Delfin étant une société non cotée, information de marché utilisée comme équivalent primaire.",
+    "asOf": "2026-08-06",
+    "insiderPct": 32.0,
+    "insiderDesc": "Delfin S.à r.l., holding luxembourgeois de la famille Del Vecchio (Leonardo Del Vecchio, fondateur de Luxottica, décédé en 2022) - droits de vote statutairement plafonnés à 31% malgré ~32% du capital détenu, aux termes de l'accord de combinaison Essilor-Luxottica de 2018.",
+    "insiderSource": "Wikipedia/Delfin (agrégateur, données 2024-2025) - pas de proxy statement US applicable (titre non coté aux Etats-Unis) ; se référer au Document d'Enregistrement Universel 2025 d'EssilorLuxottica pour la déclaration officielle des franchissements de seuils.",
     "notableHolders": [],
-    "coverageNote": "Titre coté à titre principal sur Euronext Paris (hors périmètre 13F, qui ne couvre que les valeurs cotées aux Etats-Unis) - notableHolders non renseigné par choix assumé, voir PERIMETRE 13F.",
+    "coverageNote": "Titre coté sur Euronext Paris (et Borsa Italiana) - hors périmètre du régime de déclaration 13F américain ; notableHolders non recherché pour ce titre, choix de périmètre assumé du modèle.",
     "history": []
   },
   "compliance": {
-    "asOf": "2026-07-29",
+    "asOf": "2026-08-06",
     "items": [
       {
-        "year": 2023,
-        "title": "Amende de 17 M€ infligée par les autorités turques de la concurrence, EssilorLuxottica étant accusée de ne pas avoir respecté les engagements de cession d'actifs pris lors de l'autorisation de la fusion Essilor-Luxottica.",
-        "allegedBy": "Autorité turque de la concurrence",
-        "date": "2023-08",
+        "year": 2019,
+        "title": "Fraude financière découverte dans une usine du groupe Essilor International en Thaïlande ; l'impact financier a été intégralement comptabilisé dans le compte de résultat de l'exercice 2019.",
+        "allegedBy": "Constat interne du groupe, divulgué dans le communiqué de résultats annuels 2019",
+        "date": "2020-03-06",
         "status": "reglee",
-        "outcome": "Amende de 17 M€ payée",
-        "source": "Presse financière (couverture large, août 2023)"
+        "outcome": "Impact financier de 185 M€ (net des effets de change) intégralement absorbé dans les comptes 2019 ; aucune suite judiciaire ou réglementaire publique identifiée depuis.",
+        "source": "Communiqué de résultats annuels 2019 d'EssilorLuxottica, 6 mars 2020"
+      },
+      {
+        "year": 2023,
+        "title": "Action de groupe antitrust aux Etats-Unis (In re Eyewear Antitrust Litigation, S.D.N.Y.) alléguant une entente sur les prix orchestrée par EssilorLuxottica avec des dizaines de marques de luxe co-défenderesses, visant à gonfler artificiellement les prix des lunettes jusqu'à 1000%.",
+        "allegedBy": "Plaignants privés (class action), cabinets d'avocats plaignants américains",
+        "date": "2023-08-01",
+        "status": "classee_sans_suite",
+        "outcome": "Requête en irrecevabilité (motion to dismiss) accueillie le 26 septembre 2025, le juge jugeant implausible la définition de marché 'premium eyewear' avancée par les plaignants ; ces derniers disposaient d'une dernière possibilité de déposer une plainte modifiée (délai au 17 octobre 2025).",
+        "source": "Law360 (26 septembre 2025) ; Justia, In re Eyewear Antitrust Litigation, No. 1:24-cv-04826 (S.D.N.Y.)"
       }
     ],
-    "note": "Sanction de nature concurrentielle (non-respect d'engagements de cession post-fusion), pas une allégation de fraude comptable ou de tromperie des investisseurs/consommateurs. Aucun autre élément identifié à ce jour pour EssilorLuxottica. Le différend successoral au sein de Delfin (holding actionnaire, voir champ ownership) est un risque de gouvernance familiale, pas une allégation de fraude, et reste donc hors de ce champ."
+    "note": "Aucune enquête réglementaire (SEC/DOJ) ni allégation de fraude comptable ou financière en cours identifiée à ce jour. Le seul incident de fraude avéré recensé (Thaïlande, 2019) est ancien, ponctuel, et déjà absorbé dans les comptes. Le contentieux antitrust américain (2023) porte sur une entente alléguée sur les prix, pas sur une fraude comptable - inclus ici par prudence compte tenu de sa nature de pratique commerciale gravement anticoncurrentielle alléguée et de son statut judiciaire encore ouvert (recherche du 2026-08-06)."
+  },
+  "coherenceQualitative": {
+    "asOf": "2026-08-06",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-28",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Cardani (Intesa Sanpaolo) - moteurs de la profitabilité des lunettes connectées au S1 : le CFO indique une amélioration en glissement annuel de tous les indicateurs (prix moyen, pénétration verres correcteurs/Transitions/polarisés, productivité industrielle), effet visible dans la marge brute.",
+          "Q Cardani - trajectoire des charges d'exploitation et pressions inflationnistes au S2 : le CFO ne voit aucun sujet d'inquiétude, coûts jugés bien maîtrisés pour le reste de l'année.",
+          "Q Dormois (Jefferies) - divergence de positionnement prix avec les nouveaux Meta Glasses et risque d'ouverture à d'autres partenaires tech : le CEO répond que le portefeuille couvre déjà le luxe au milieu de gamme, que Meta cible un public plus jeune et sensible au prix, et qu'aucun autre partenariat n'est envisagé au-delà de Meta à ce stade.",
+          "Q Dormois - ventes séquentielles de lunettes IA (T2 vs T1) : le CFO précise que le cœur d'activité traditionnel croît en haut de la fourchette 'mid-single-digit' (M&A bolt-on inclus), le solde de la croissance du T2 (+8,7%) provenant des lunettes connectées.",
+          "Q Solvet (BNP Paribas) - partenariats/accords d'approvisionnement envisagés avec d'autres fabricants de lunettes connectées : le CEO présente le partenariat Applied Materials comme stratégique, visant une technologie de verres à projection propriétaire, positionnant à terme EssilorLuxottica comme fournisseur d'autres marques.",
+          "Q Solvet - remboursements de droits de douane perçus au S1, montant : le CFO confirme un effet net positif de 60 points de base sur la marge brute au S1, combinant nouvelles charges et remboursements.",
+          "Q Smalley (Morgan Stanley) - clarification sur l'ampleur des remboursements de douane au S2, remboursement déjà intégralement perçu ou reliquat à venir : le CFO indique qu'un reliquat de remboursements est possible au S2, sans le chiffrer.",
+          "Q Smalley - perspectives S2 par segment (Professional Solutions vs Direct to Consumer) et tendance de juillet : le CFO cite un bon mois de juillet, une montée en puissance de la productivité Stellest aux Etats-Unis (grands comptes activés) et un pipeline d'innovation dense (Varilux, lunettes IA, Nuance Audio 2e génération, nouveautés Meta) comme raisons d'optimisme malgré une base de comparaison exigeante.",
+          "Q Al-Wakeel (Barclays) - impact marge du lancement Meta Glasses à bas prix et confirmation de l'exclusivité verres pour Meta : le CEO confirme qu'EssilorLuxottica reste fabricant exclusif de verres pour Meta et que l'impact marge est positif, la plateforme technologique partagée réduisant les coûts à mesure que les volumes montent.",
+          "Q Al-Wakeel - ordre de grandeur du remboursement douanier brut (~300 M€) et risque d'inflation des coûts mémoire/composants pour 2027 : le CFO ne confirme ni n'infirme le chiffre avancé, indique ne voir aucun vent contraire de coûts à ce stade et anticipe une poursuite de la progression de marge des wearables au S2.",
+          "Q Dubajova (Citi) - écart entre le commentaire de croissance à deux chiffres évoqué en avril et la performance du T2, zones de ralentissement de la consommation : le CFO indique un écart T1/T2 non matériel, un tassement observé sur certains grands comptes B2B nord-américains, mais une vision à 6 mois toujours en haut de fourchette 'high-single-digit' pour la région, expliqué par un effet de calendrier sell-in/sell-out.",
+          "Q Dubajova - actualisation sur l'adoption de la myopie aux Etats-Unis et poids des Etats-Unis dans le chiffre d'affaires myopie mondial : le Deputy CEO indique une croissance mondiale de la myopie de +25% au S1 26 (contre +22% sur 2025), la Chine représentant 75% du total (vs 80% en 2025), les Etats-Unis étant en phase précoce d'adoption avec 11 000 points de vente actifs et un soutien média prévu au S2.",
+          "Q Cota (BofA) - bénéfice structurel attendu de la baisse des droits de douane, plus visible en 2027 : le CFO indique que les droits de douane du S2 26 sont légèrement inférieurs à l'an dernier, sans être matériellement plus bas.",
+          "Q Cota - risque d'inflation des coûts mémoire sur la marge des wearables en 2027 : le CFO attribue la dynamique de coûts à l'efficacité de la chaîne d'approvisionnement, à l'effet d'échelle et à l'amélioration du mix prix, et s'attend à une poursuite de la progression de marge.",
+          "Q Ghilotti (Equita) - propriété intellectuelle du partenariat Applied Materials et calendrier de mise sur le marché : le CEO indique que les brevets seront partagés, que le partenariat pourrait évoluer vers une coentreprise structurelle, et espère avoir des produits à vendre dès le début de l'année prochaine (2027).",
+          "Q Ghilotti - trajectoire de marge brute au S2 hors effet des remboursements douaniers : le CFO confirme de bonnes raisons de voir une trajectoire positive de la marge brute au S2, au-delà du seul effet douanier."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "applied_materials_produits_debut_2027",
+        "quarterOrigine": "T2 26",
+        "engagement": "Partenariat stratégique avec Applied Materials pour développer des systèmes optiques intelligents (verres à projection) pour lunettes IA/AR ; premiers produits visés pour la commercialisation dès le début de l'année 2027.",
+        "echeance": "2027-Q1",
+        "statut": "en_cours"
+      },
+      {
+        "id": "production_wearables_italie_debut_2027",
+        "quarterOrigine": "T2 26",
+        "engagement": "Lancement des premières lignes de production de wearables en Italie (site d'Agordo), avec début des opérations industrielles visé pour début 2027.",
+        "echeance": "2027-Q1",
+        "statut": "en_cours"
+      }
+    ]
   },
   "hypothese": {
-    "date": "2026-07-29",
-    "priorEPS": {
-      "date": "2026-07-16",
-      "eps": {
-        "2026": 5.59,
-        "2027": 6.02,
-        "2028": 6.46,
-        "2029": 6.91,
-        "2030": 7.39
-      }
-    },
-    "source": "Refresh S1 2026 (première mise à jour post-création T3 2026) - Communiqué de résultats T2/S1 2026 (EssilorLuxottica, comptes arrêtés le 28/07/2026) + synthèse de presse financière détaillée (Zonebourse/BFM Bourse/Investing.com/Acuité, reprenant les éléments chiffrés du communiqué et de la réunion d'analystes) ; transcript intégral du call non localisé au moment du refresh (webcast/replay non indexé), synthèse presse jugée suffisamment détaillée et chiffrée pour ce refresh - à rechercher explicitement au prochain refresh si le transcript devient disponible.",
+    "date": "2026-08-06",
+    "source": "Création - Transcript T2 2026",
     "dernierCall": {
-      "quarter": "H1 26",
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
-          "actual": 14818,
-          "consensus": 14910
+          "actual": 7692,
+          "consensus": 7800
         },
-        "epsAdj": {
-          "actual": null,
-          "consensus": null,
-          "basis": "Pas d'EPS ajusté S1 explicitement comparé au consensus dans les sources disponibles ; le résultat opérationnel ajusté S1 (2 751 M€) a battu le consensus Visible Alpha (2 440 M€, +12,7%) et le résultat net ajusté ressort à 1 921 M€ (marge 13,0%, +20pb publié / +50pb à change constant)"
-        }
+        "epsAdj": null
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée. Signal directionnel : la direction évoque des bases de comparaison plus difficiles au S2 (après un T4 2025 déjà exceptionnel à +18,4% organique), cohérent avec la décélération déjà observée T1→T2 2026 (organique +10,8% puis +8,7%).",
-      "guidanceAnnuelle": "Pas d'objectif chiffré annuel ; nouveau cadre directionnel à 5 ans (introduit en février 2026) reconfirmé sans changement : 'croissance soutenue du chiffre d'affaires total et croissance globalement alignée du résultat opérationnel ajusté', à taux de change constants.",
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie - la société ne communique qu'une guidance qualitative annuelle et pluriannuelle.",
+      "guidanceAnnuelle": "Pas d'objectif chiffré annuel formel ; le management vise une croissance organique solide à change constant au S2 malgré une base de comparaison exigeante (S2 2025 avait déjà accéléré à +15,2% à change constant), avec une trajectoire de marge brute et opérationnelle orientée à la hausse au second semestre.",
       "pointsCles": [
-        "Signal MIXTE et important pour la thèse : le CA S1 (14 818 M€) et la croissance organique du T2 (+8,7%) ont légèrement manqué le consensus (14 910 M€ et +10,1% attendus respectivement) - accueil boursier négatif au T2 malgré la publication - MAIS le résultat opérationnel ajusté (2 751 M€) a très largement battu le consensus (2 440 M€, +12,7%), la marge ajustée progressant de +50pb publié (18,1%→18,6%) et +80pb à change constant (18,9%).",
-        "L'écart organique/publié s'est spectaculairement réduit au T2 (+8,7% organique vs +7,2% publié, soit 1,5pt seulement) après un T1 marqué par un écart de 6,7pts - le headwind de change sévère qui structurait la thèse de création s'est donc déjà largement atténué, plus vite que l'hypothèse de normalisation graduelle vers 2028-2030 retenue à la création.",
-        "Effet tarifs douaniers américains désormais NET POSITIF de 60pb sur la marge brute au S1 2026, un renversement complet vs l'impact négatif de -260pb constaté sur l'ensemble de 2025 - la direction ne détaille pas précisément le mécanisme (probablement combinaison de hausses de prix ciblées, relocalisation partielle de production et effet de base moins défavorable).",
-        "Gestion de la myopie confirmée comme moteur de croissance majeur (+24% au T2) et lunettes IA quasiment doublées au T2 - les deux relais de croissance medtech/IA identifiés à la création continuent de monter en puissance sans signe de ralentissement, contredisant le scénario de dilution de marge persistante retenu par prudence à la création.",
-        "Nouveau partenariat stratégique avec Applied Materials annoncé (prochaine génération de systèmes optiques intelligents) et intégration de Top Charoen en Thaïlande (extension du réseau de distribution) - éléments qualitatifs, non quantifiés dans les adjXXX à ce stade."
+        "Les indicateurs de rentabilité des lunettes connectées (prix moyen, pénétration verres correcteurs/Transitions, productivité industrielle) s'améliorent tous en glissement annuel ; EssilorLuxottica reste fabricant exclusif de verres pour Meta.",
+        "L'effet net des droits de douane américains a été positif de 60 points de base sur la marge brute au S1 2026 (nouvelles charges et remboursements combinés), avec des remboursements additionnels possibles au S2.",
+        "Le déploiement de Stellest aux Etats-Unis franchit un cap avec 11 000 points de vente actifs et l'activation des grands comptes indépendants prévue au S2 ; la myopie progresse de +25% dans le monde (+75% Chine) au S1 26.",
+        "Nouveau partenariat stratégique avec Applied Materials pour développer une nouvelle génération de systèmes optiques intelligents (verres à projection) pour lunettes IA/RA, premier produit visé début 2027."
       ]
     },
     "guidanceHistory": [
       {
-        "quarter": "T4/FY25",
-        "date": "2026-02-11",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Abandon de l'objectif chiffré 2022-2026 (CA 27-28Md€, marge ajustée 19-20%) au profit d'un nouveau cadre directionnel non chiffré sur 5 ans : croissance soutenue du CA, résultat opérationnel ajusté globalement aligné sur cette croissance."
-      },
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-22",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Cadre directionnel de février 2026 reconfirmé sans changement chiffré."
-      },
-      {
-        "quarter": "H1 26",
+        "quarter": "T2 26",
         "date": "2026-07-28",
         "fyGuided": 2026,
-        "guidanceAnnuelle": "Cadre directionnel reconfirmé sans changement ('croissance soutenue du CA, croissance globalement alignée du résultat opérationnel ajusté'), sur fond de marge ajustée S1 en nette amélioration (+50pb publié / +80pb change constant) et d'écart organique/publié en forte réduction au T2."
+        "guidanceAnnuelle": "Pas d'objectif chiffré annuel formel ; croissance organique solide visée à change constant au S2 malgré une base de comparaison exigeante, marge brute orientée à la hausse."
       }
     ],
-    "guidanceLongTerme": "Cadre directionnel à 5 ans introduit en février 2026 (remplaçant l'ancien objectif chiffré 2022-2026 abandonné) : 'en moyenne, durant les cinq prochaines années et à taux de change constants, le Groupe prévoit de réaliser une solide croissance de son chiffre d'affaires total et une croissance globalement alignée de son résultat opérationnel ajusté'. Pas de chiffrage précis à ce jour ; watch-list pour un éventuel Capital Markets Day.",
-    "summary": "Le refresh S1 2026 livre un signal structurellement plus favorable que le scénario prudent retenu à la création : la marge ajustée progresse (+50pb) au lieu de se stabiliser en zone basse comme redouté, l'écart organique/publié (moteur central de la thèse de change) se réduit spectaculairement au T2, et les tarifs douaniers américains basculent en effet net positif. Contrepartie : décélération de la croissance organique T1→T2 (10,8%→8,7%) et léger manqué du consensus sur le CA/l'organique, qui a pesé sur le cours malgré le beat de marge.",
-    "text": "== SYNTHESE DE LA THESE ==\nLe refresh S1 2026 confirme la thèse de fond (leadership indiscuté de la correction visuelle, relais de croissance medtech/IA qui montent en puissance) tout en corrigeant significativement à la hausse le scénario de marge retenu par prudence à la création. La crainte centrale de la thèse initiale - une dilution de marge structurelle et persistante liée aux wearables IA et à l'audiologie - ne s'est PAS matérialisée au S1 2026 : la marge opérationnelle ajustée progresse au contraire de +50pb publié (18,1%→18,6%) et +80pb à change constant (18,9%), portée par la montée en puissance de la gestion de la myopie (+24% au T2, activité à forte marge) et par un effet tarifs douaniers américains désormais NET POSITIF (+60pb) après avoir été un vent contraire de -260pb sur l'ensemble de 2025. Deuxième correction majeure : l'écart entre croissance organique et croissance publiée, qui atteignait 6,7pts au T1 2026 (dollar faible) et structurait l'essentiel du scénario de change prudent retenu à la création, s'est réduit à seulement 1,5pt au T2 2026 (+8,7% organique vs +7,2% publié) - le headwind de change se normalise donc nettement plus vite que l'hypothèse initiale d'une normalisation graduelle étalée jusqu'en 2028-2030. En contrepartie, la croissance organique elle-même décélère (T1 +10,8% → T2 +8,7%), et le CA S1 (14 818 M€) comme la croissance organique du T2 ont légèrement manqué le consensus (14 910 M€ et +10,1% attendus), ce qui a pesé sur le cours malgré le beat très net sur la marge (résultat opérationnel ajusté à 2 751 M€ vs 2 440 M€ attendus, +12,7%). Le dossier reste positionné en watch : la thèse est révisée nettement à la hausse sur la profitabilité, mais la trajectoire de croissance organique doit être confirmée au S2 sur des bases de comparaison plus difficiles (T4 2025 avait été exceptionnel à +18,4% organique).\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Réduction spectaculaire de l'écart organique/publié au T2 2026 (1,5pt, vs 6,7pts au T1 2026 et 3,7pts en moyenne 2025) : le headwind de change qui structurait l'essentiel de la prudence de la thèse de création se normalise nettement plus vite que prévu. Traité comme une inflexion positive majeure de l'ancrage 'croissance_ca_reportee', qui assumait une persistance du headwind à ~5,5pts sur l'ensemble de 2026.\n(i) Renversement de l'effet tarifs douaniers américains : +60pb net sur la marge brute au S1 2026, contre -260pb sur l'ensemble de 2025 (impact quantifié à 300 M€ par le CFO au refresh précédent). Mécanisme non détaillé dans les sources disponibles (probablement combinaison de hausses de prix ciblées et d'un effet de base moins défavorable) - à clarifier au prochain refresh si le transcript devient disponible.\n(i) Décélération de la croissance organique T1→T2 2026 (+10,8% → +8,7%), CA S1 et organique T2 légèrement sous consensus - accueil boursier négatif malgré le beat de marge, signal que le marché reste sensible au momentum de croissance autant qu'à la rentabilité. Bases de comparaison T2 2025 déjà solides, et T4 2025 exceptionnel (+18,4% organique) rendant les comparaisons S2 2026 mécaniquement plus difficiles.\n(ii) Marge opérationnelle ajustée S1 2026 en amélioration nette (+50pb publié, +80pb change constant) - contredit directement le scénario de dilution persistante retenu par prudence à la création ; principale révision à la hausse de ce refresh, portée par la gestion de la myopie (+24% T2, activité à forte marge), la montée en puissance des lunettes IA (CA quasiment doublé au T2) et l'effet de base favorable côté tarifs douaniers.\n(iii) Partenariat stratégique avec Applied Materials annoncé (prochaine génération de systèmes optiques intelligents) - optionnalité pure, non quantifiée dans les adjXXX à ce stade, mais signal stratégique cohérent avec la thèse medtech/IA.\n(iii) Intégration de Top Charoen (Thaïlande) dans le réseau de distribution - extension géographique mineure, non matérielle au niveau Groupe.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communiqué de résultats T2/S1 2026 (28/07/2026, comptes consolidés résumés examinés de façon limitée par les commissaires aux comptes) et synthèse de presse financière détaillée reprenant les éléments chiffrés du communiqué et de la réunion d'analystes (Zonebourse, BFM Bourse, Investing.com, Acuité) - transcript intégral du call non localisé à ce refresh (à rechercher explicitement au prochain refresh). CA S1 2026 de 14 818 M€ (+9,7% organique, +5,7% publié), légèrement sous le consensus de 14 910 M€ ; CA T2 seul de 7 692 M€ (+8,7% organique, +7,2% publié), organique sous l'estimation de +10,1%. Résultat opérationnel ajusté S1 2026 de 2 751 M€ (marge 18,6% publié / 18,9% change constant), largement au-dessus du consensus Visible Alpha de 2 440 M€. Résultat net ajusté du Groupe de 1 921 M€ (marge 13,0%, +20pb publié / +50pb change constant à 13,3%). Free cash-flow de 1,07 Md€ au S1 2026 (+100 M€ vs S1 2025 à 0,96 Md€). Cadre directionnel à 5 ans reconfirmé sans changement chiffré. Prochain refresh utile : chiffre d'affaires T3 2026, date confirmée au calendrier financier officiel (20/10/2026).\n\n== SEQUENCAGE SEMESTRIEL DE L'EPS (E5 ter) ==\nCadence de publication réelle du titre = SEMESTRIELLE pour le résultat net (T1 et T3 ne sont que des points d'activité CA, sans P&L) : décomposition retenue en H1/H2, pas en T1-T4. Tentative de reconstruction menée au refresh S1 2026 : (1) repasser le résultat net ajusté management (base hors PPA) en base Omnium (PPA gardé, voir ancrage ppa_amortissement_essilor) donne un adjEPS Omnium estimé d'environ 3,16€ au H1 2025 (net ajusté mgmt 1799 M€, PPA H1 2025 officiel 455 M€, effet net d'IS -350 M€, ~458M actions) et environ 3,40€ au H1 2026 (net ajusté mgmt 1921 M€, PPA H1 2026 ESTIME ~430 M€ non confirmé par ventilation officielle, effet net d'IS -331 M€, ~468M actions), soit une croissance H1/H1 de seulement +7,6% ; (2) le résidu H2 obtenu par différence avec l'annuel déjà figé (FY2025 base data = 4,98€, adjEPS FY2026 = 6,02€) implique alors un H2 2025 d'environ 1,82€ et un H2 2026 d'environ 2,62€, soit une croissance H2/H2 implicite d'environ +44% - écart de rythme entre les deux semestres qui ne se rattache à AUCUN ancrage déclaré ni à aucune inflexion S2 spécifiquement documentée (test de vraisemblance E7 négatif). Cet écart provient très probablement de l'approximation du PPA H1 2026 (encore estimé par extrapolation de tendance, pas la ventilation officielle du rapport financier semestriel complet) plutôt que d'un vrai signal de saisonnalité. DECISION (E5 ter point 5, géométrie variable) : `quarterlyEPS` volontairement NON publié ce refresh plutôt que de livrer une décomposition non fiable. A reprendre au refresh T3 2026 une fois la ventilation officielle PPA du rapport financier semestriel 2026 complet obtenue (voir point 1 de la watch-list ci-dessous, désormais partagé par les deux besoins).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable adjXXX = reconstruction GAAP/IFRS-équivalente à partir du résultat opérationnel ajusté publié par le management, DONT on retire l'amortissement PPA (acquéreur en série E5e) et les ajustements 'autres' non-récurrents normalisés - PAS l'ajusté brut du management (voir ancrage ppa_amortissement_essilor). Cette reconstruction reste une estimation à confiance moyenne pour le S1 2026 (le communiqué détaillé et le rapport financier semestriel complet, contenant la ventilation exacte PPA/autres ajustements du semestre, n'ont pas été intégralement consultés à ce refresh - seule la synthèse de presse a été mobilisée) ; le pont utilisé prolonge la tendance connue de l'amortissement PPA (485 M€ H1 2024 → 455 M€ H1 2025, source communiqué officiel H1 2025) et l'hypothèse de charges 'autres' normalisées à ~100 M€/an retenue à la création. A FIABILISER au prochain refresh via consultation directe du rapport financier semestriel 2026 (ventilation exacte disponible en note annexe). IS normatif maintenu à 23% (inchangé, proche de l'effectif GAAP 2025 de 23,5%). Ratio Net/EBIT maintenu à ~70% (méthodologie de la création conservée en l'absence d'élément nouveau justifiant sa révision). Tendance adjShares maintenue à +1,3%/an (inchangée, aucun élément nouveau identifié sur la dilution scrip/actions).\nWATCH-LIST pour le prochain refresh (T3 2026, 20/10/2026) : (1) obtenir le rapport financier semestriel 2026 complet pour fiabiliser la ventilation exacte PPA/autres ajustements du S1 (actuellement estimée par extrapolation) - ce même élément déverrouillerait aussi une décomposition quarterlyEPS fiable (voir SEQUENCAGE SEMESTRIEL ci-dessus) ; (2) confirmer si la décélération organique T1→T2 se poursuit au T3/T4 sur des bases de comparaison plus dures, ou si elle se stabilise autour de 8-9% ; (3) clarifier le mécanisme du renversement tarifs douaniers (+60pb net) - durable ou ponctuel ; (4) suivre le développement du différend successoral Delfin (risque de gouvernance indirect, non quantifiable) ; (5) rechercher activement le transcript du call S1 2026 (non localisé à ce refresh) pour enrichir la couleur qualitative Q&A ; (6) chiffrage éventuel du cadre directionnel à 5 ans lors d'un futur Capital Markets Day ; (7) reprendre `quarterlyEPS` avec la ventilation PPA officielle du S1 2026, une fois obtenue.\n\n== CATALYSEURS ==\nRésultats T3 2026 (20 octobre) - test de la trajectoire organique sur une base de comparaison plus dure (T3 2025) ; poursuite de la montée en puissance de la gestion de la myopie et des lunettes IA de nouvelle génération ; premiers développements du partenariat Applied Materials ; confirmation ou non de la durabilité du renversement tarifaire américain.",
+    "guidanceLongTerme": "Nouvel horizon (février 2026, en remplacement de l'objectif CA 27-28 Md€ / marge ajustée 19-20% du CMD 2022, déjà dépassé en CA mais pas en marge) : sur les 5 prochaines années, à change constant, croissance solide du chiffre d'affaires et progression de la marge opérationnelle ajustée globalement alignée sur celle du CA.",
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "historique": [],
+      "PY": [
+        {
+          "label": "H1",
+          "eps": 3.0,
+          "actual": true
+        },
+        {
+          "label": "H2",
+          "eps": 1.98,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "H1",
+          "eps": 3.37,
+          "actual": true
+        },
+        {
+          "label": "H2",
+          "eps": 2.86,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "H1",
+          "eps": 3.55,
+          "actual": false
+        },
+        {
+          "label": "H2",
+          "eps": 3.35,
+          "actual": false
+        }
+      ],
+      "epsForward12m": 6.41,
+      "forwardPeriodLabel": "H2 26 -> H1 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
+    },
+    "summary": "Leader mondial vertical de l'optique-lunetterie (Essilor+Luxottica+GrandVision), en pleine bascule med-tech (lunettes IA avec Meta, myopie, audition, oculomique) ; croissance structurelle forte, marge en cours de reconstitution après le creux douanier 2025.",
+    "cagrBridge": null,
     "impact": "positif",
     "ancrages": [
       {
-        "id": "croissance_ca_reportee",
-        "moteur": "RÉVISÉ ce refresh (E6-a/E6-b) : l'écart organique/publié s'est réduit à seulement 1,5pt au T2 2026 (vs 6,7pts au T1 2026), signal que le headwind de change se normalise nettement plus vite que l'hypothèse de persistance à ~5,5pts sur 2026 retenue à la création. Croissance organique guidée 'soutenue' mais en décélération observée (T1 +10,8% → T2 +8,7%, bases de comparaison plus dures au S2 dont un T4 2025 exceptionnel à +18,4%) : retenue à ~8,5% en moyenne 2026 puis modération progressive vers 6,5% d'ici 2030 ; écart de change retenu désormais à seulement ~1-1,5pt sur tout l'horizon (vs 5,5pts→1-2pts précédemment), la normalisation étant déjà largement acquise.",
+        "id": "deceleration_h2_base_comparaison_exigeante",
+        "moteur": "Le S1 26 a crû de 9,7% à change constant, mais le S2 25 avait déjà accéléré à +15,2% à change constant (effet lunettes IA) - cette base élevée freine mécaniquement la croissance affichée au S2 26 malgré un momentum opérationnel intact ; le modèle retient une croissance FY26 d'environ 8% à change constant, ramenée à ~5% en change courant compte tenu du dollar faible sur H1.",
         "applique": [
-          "adjCA.2026",
+          "adjCA.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "redressement_marge_normalisation_douanes",
+        "moteur": "La marge opérationnelle ajustée, tombée à 16,0% à change constant en 2025 (creux lié aux droits de douane américains et au mix lunettes IA), se redresse au S1 26 (18,9% cc) grâce à l'effet net positif des remboursements douaniers et à l'amélioration de la productivité des wearables ; le modèle retient une marge opérationnelle GAAP proche de 14,2-14,8% sur 2026-2027 (écart d'environ 350-400 pb avec la marge ajustée, lié à l'amortissement PPA).",
+        "applique": [
+          "adjEBIT.2026",
+          "adjEBIT.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "amortissement_ppa_recurrent",
+        "moteur": "Amortissement récurrent des actifs incorporels issus des allocations de prix d'acquisition (combinaison Essilor-Luxottica + acquisition GrandVision), environ 900 M€/an avant impôt, maintenu dans la base GAAP du modèle (jamais retiré, contrairement à la mesure 'ajustée' du management) - explique l'essentiel de l'écart structurel entre l'EPS GAAP du modèle et le consensus de marché, généralement suivi sur base ajustée/non-GAAP.",
+        "applique": [
+          "adjNet.2026",
+          "adjNet.2027",
+          "adjNet.2028",
+          "adjNet.2029",
+          "adjNet.2030",
+          "adjEPS.2026",
+          "adjEPS.2027",
+          "adjEPS.2028",
+          "adjEPS.2029",
+          "adjEPS.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "myopie_lunettes_ia_moteurs_structurels",
+        "moteur": "La gestion de la myopie (+25% au S1 26, +22% en 2025) et les lunettes IA (unités vendues environ x1,7 en 2025, ramp-up US/international en cours) restent les deux moteurs structurels de la croissance organique, avec une contribution qui se banalise progressivement (base plus large) faisant refluer la croissance du groupe vers un rythme haut de fourchette 'mid-single-digit' à moyen terme.",
+        "applique": [
           "adjCA.2027",
           "adjCA.2028",
           "adjCA.2029",
@@ -151,68 +279,20 @@
         "confiance": "moyenne"
       },
       {
-        "id": "marge_ajustee_amelioration",
-        "moteur": "RÉVISÉ ce refresh (E6-a/E6-b) : la marge ajustée S1 2026 progresse de +50pb publié (18,1%→18,6%) et +80pb à change constant (18,9%), contredisant directement le scénario de stabilisation basse (16,0%) retenu par prudence à la création - la dilution de marge liée aux wearables/IA ne s'est pas matérialisée, contrairement à la crainte initiale. Marge ajustée annuelle FY2026 retenue à 16,5% (vs 16,0% en FY2025 sur la base publiée en février 2026, la saisonnalité S2 restant nettement plus faible que le S1 - S2 2025 estimé à ~13,3% de marge contre 18,1% au S1 2025), puis expansion graduelle et prudente vers 17,4% en 2030 conformément au cadre directionnel qualitatif 'globalement aligné' (pas d'hypothèse de retour vers l'ancien objectif abandonné de 19-20%).",
+        "id": "dette_nette_stabilisation_fcf",
+        "moteur": "Dette nette élevée (13,4 Md€ fin juin 2026, ND/EBITDA ~2,0x) du fait des acquisitions bolt-on (Optegra, Top Charoen, Signifeye, Faro...) et des rachats d'actions liés aux plans salariés ; le free cash flow annuel (~2,8 Md€ en 2025) finance ces usages sans réendettement matériel supplémentaire - le modèle retient une décrue progressive de la dette nette vers ~8,8 Md€ d'ici 2030.",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "adjND.2026",
+          "adjND.2027",
+          "adjND.2028",
+          "adjND.2029",
+          "adjND.2030"
         ],
         "confiance": "moyenne"
       },
       {
-        "id": "ppa_amortissement_essilor",
-        "moteur": "Amortissement des actifs incorporels reconnus lors de la Combinaison Essilor-Luxottica et de l'acquisition GrandVision (acquéreur en série, E5e), maintenu dans la base adjXXX (non retiré comme le fait l'ajusté du management) : tendance déclinante confirmée par la source officielle (485 M€ H1 2024 → 455 M€ H1 2025), extrapolée à ~840 M€ pour FY2026 (H1 2026 estimé ~430 M€, partiellement compensé par l'acquisition Signifeye clôturée en février 2026), décroissance graduelle vers 760 M€ en 2030 - estimation à confiance moyenne en l'absence de la ventilation exacte du rapport financier S1 2026 complet (voir watch-list).",
-        "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "restructuration_normative",
-        "moteur": "Charges de restructuration/réorganisation récurrentes normalisées maintenues à ~100 M€/an (inchangé vs création), les éléments ponctuels de 2025 (SuperBoost 70 M€, rémunération variable exceptionnelle 75 M€) n'ayant pas vocation à se reproduire à l'identique.",
-        "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "is_normatif",
-        "moteur": "Taux d'IS normatif maintenu à 23%, proche du taux effectif GAAP 2025 (23,5%) - inchangé, aucun élément nouveau identifié au S1 2026.",
-        "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "ratio_net_ebit",
-        "moteur": "Ratio Net/EBIT (base normalisée retenue) maintenu à ~70%, méthodologie de la création conservée faute d'élément nouveau permettant de reconstruire précisément le résultat financier et la charge d'impôt du S1 2026 sur la base normalisée (voir watch-list pour fiabilisation au prochain refresh via le rapport financier semestriel complet).",
-        "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "dilution_actions",
-        "moteur": "Dividende scrip (option de paiement en actions) et rémunération en actions élargissent le nombre d'actions diluées d'environ 1,3%/an, inchangé vs la tendance observée 2022-2025 (+1,1 à +1,5%/an) - aucun élément nouveau identifié au S1 2026.",
+        "id": "dilution_modeste_scrip_dividende",
+        "moteur": "Le nombre d'actions augmente modestement chaque année via l'option de paiement du dividende en actions (part des actionnaires optant pour le scrip variant fortement d'une année sur l'autre, de 9% à 70% selon les années) et les plans d'actionnariat salarié, partiellement compensés par les rachats d'actions dédiés aux plans de rémunération - le modèle retient une dérive nette d'environ +0,6-0,8%/an.",
         "applique": [
           "adjShares.2026",
           "adjShares.2027",
@@ -223,59 +303,65 @@
         "confiance": "haute"
       },
       {
-        "id": "desendettement_fcf",
-        "moteur": "Désendettement accéléré vs l'hypothèse de la création, porté par un free cash-flow S1 2026 en hausse de +100 M€ vs S1 2025 (1,07 Md€) et un FCF FY2025 déjà record à 2,8 Md€ (+400 M€ vs 2024) : net debt retenu en décroissance d'environ 600 M€/an (vs ~400 M€/an à la création), tempéré par l'appétit M&A bolt-on démontré (Signifeye, Top Charoen) et l'investissement dans le partenariat Applied Materials.",
+        "id": "nouvel_horizon_long_terme_2026",
+        "moteur": "Le nouvel horizon long terme communiqué en février 2026 (succédant à l'objectif CMD 2022, dépassé en chiffre d'affaires dès 2025 mais pas en marge) guide une 'croissance solide' du CA et une progression de la marge opérationnelle ajustée 'globalement alignée' sur celle du CA, à change constant, sans chiffrage précis - sert de garde-fou directionnel plutôt que de cible calibrée pour la trajectoire 2026-2030 du modèle.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "adjCA.2026",
+          "adjCA.2027",
+          "adjCA.2028",
+          "adjCA.2029",
+          "adjCA.2030",
+          "adjEBIT.2026",
+          "adjEBIT.2027",
+          "adjEBIT.2028",
+          "adjEBIT.2029",
+          "adjEBIT.2030"
         ],
         "confiance": "basse"
       }
     ],
-    "adjEPS": {
-      "2026": 6.02,
-      "2027": 6.63,
-      "2028": 7.18,
-      "2029": 7.72,
-      "2030": 8.28
-    },
     "adjCA": {
-      "2026": 30230,
-      "2027": 32350,
-      "2028": 34450,
-      "2029": 36550,
-      "2030": 38650
+      "2026": 29900,
+      "2027": 32000,
+      "2028": 34200,
+      "2029": 36300,
+      "2030": 38300
     },
     "adjEBIT": {
-      "2026": 4048,
-      "2027": 4515,
-      "2028": 4957,
-      "2029": 5407,
-      "2030": 5865
+      "2026": 4260,
+      "2027": 4750,
+      "2028": 5150,
+      "2029": 5530,
+      "2030": 5880
     },
     "adjNet": {
-      "2026": 2834,
-      "2027": 3161,
-      "2028": 3470,
-      "2029": 3785,
-      "2030": 4106
+      "2026": 2918,
+      "2027": 3255,
+      "2028": 3528,
+      "2029": 3788,
+      "2030": 4028
     },
     "adjND": {
-      "2026": 10100,
-      "2027": 9500,
-      "2028": 8900,
-      "2029": 8300,
-      "2030": 7700
+      "2026": 12500,
+      "2027": 11800,
+      "2028": 10900,
+      "2029": 9900,
+      "2030": 8800
     },
     "adjShares": {
-      "2026": 471,
-      "2027": 477,
-      "2028": 483,
-      "2029": 490,
-      "2030": 496
-    }
+      "2026": 468,
+      "2027": 472,
+      "2028": 476,
+      "2029": 479,
+      "2030": 482
+    },
+    "adjEPS": {
+      "2026": 6.24,
+      "2027": 6.9,
+      "2028": 7.41,
+      "2029": 7.91,
+      "2030": 8.36
+    },
+    "text": "== SYNTHESE DE LA THESE ==\nEssilorLuxottica est le leader mondial vertical de l'optique-lunetterie, combinant fabrication de verres (Essilor), montures et distribution (Luxottica, GrandVision), et une position de plus en plus centrale dans les nouvelles catégories med-tech : lunettes IA avec Meta (Ray-Ban Meta, Oakley Meta, Meta Ray-Ban Display), gestion de la myopie (Stellest), audition (Nuance Audio), et cliniques ophtalmologiques (Optegra, Signifeye). La these repose sur la conjonction de trois moteurs rarement reunis chez un acteur de cette taille : un coeur de metier resilient (verres/montures, croissance mid-single-digit stable), une plateforme de distribution integree unique (pres de 20 000 magasins, 300 000 professionnels servis) capable d'absorber de nouvelles categories a cout marginal faible, et une optionnalite reelle sur la sante connectee (oculomique, LensCrafters ouvrant son premier centre chirurgical). L'annee 2025 a ete une annee de transition douloureuse en marge (creux a 16,0% de marge ajustee, sous le coup des droits de douane americains et du mix defavorable des lunettes IA), mais le S1 2026 confirme un redressement net (18,9% a change constant) tout en maintenant une croissance de CA proche de 10% a change constant. Le titre, qui a recule d'environ 30% sur un an et se traite pres de ses plus bas de 52 semaines, offre donc un point d'entree sur un compounder de qualite dont le narratif de marge s'ameliore concretement, sans que le marche semble encore totalement l'avoir integre.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Deja dans les chiffres - Consolidation de Top Charoen (plus grande chaine optique de Thailande, ~2 000 magasins, depuis avril 2026) et d'Optegra/Signifeye (cliniques ophtalmologiques europeennes, depuis oct. 2025/fev. 2026) : contribue positivement au CA Asie-Pacifique et EMEA du S1 26, deja integre dans la base \"data\" et les projections.\n(ii) Quantifiable, injecte dans les adjXXX - Effet net des droits de douane americains : +60 pb sur la marge brute au S1 26 (charges nouvelles vs remboursements lies a l'annulation par la Cour supreme americaine, fevrier 2026, des droits reciproques 2025), avec un reliquat de remboursement possible au S2 - integre dans le redressement de marge modelise via l'ancrage redressement_marge_normalisation_douanes.\n(iii) Optionnalite non quantifiable - Partenariat strategique avec Applied Materials (developpement conjoint de systemes optiques a projection pour lunettes IA/RA, potentiel d'evolution vers une coentreprise structurelle selon le CEO) : premiers produits vises debut 2027, aucun chiffre d'affaires incremental integre dans les projections avant confirmation d'une trajectoire commerciale ; suivi via engagementsStructurants.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable : GAAP/IFRS retraite des seuls vrais one-offs (voir E5), amortissement PPA (~900 M€/an) volontairement conserve - voir ancrage amortissement_ppa_recurrent, qui explique l'ecart avec le consensus de marche (suivi sur base ajustee/non-GAAP par la quasi-totalite des brokers, d'ou le champ epsConsensus nettement au-dessus de l'adjEPS du modele). Ratio de conversion Net/EBIT retenu stable a ~68,5% (coherent avec 2024-2025), la hausse du cout de la dette etant approximativement compensee par l'amelioration du mix. `quarterlyEPS` construit en cadence SEMESTRIELLE (et non trimestrielle) : la societe ne publie un compte de resultat complet qu'au S1 et en annuel (les communiques T1/T3 ne portent que sur le chiffre d'affaires) - une decomposition trimestrielle du resultat n'aurait pas ete fiable, voir E5 ter point 5.\n\nWATCH-LIST : (1) l'ampleur exacte des remboursements douaniers restants au S2 26, non chiffree par le CFO lors du call ; (2) confirmation ou non d'une premiere contribution commerciale du partenariat Applied Materials debut 2027 (voir engagementsStructurants) ; (3) issue du feuilleton successoral chez Delfin (rachat par Leonardo Maria Del Vecchio des 25% de participation combines de son frere et de sa soeur, financement bancaire d'environ 10 Md€) - sans impact direct sur EssilorLuxottica a ce stade mais a surveiller pour la stabilite de l'actionnaire de reference ; (4) rythme reel d'adoption de Stellest aux Etats-Unis apres l'activation des grands comptes prevue au S2. Prochain refresh utile : resultats T3 2026 (chiffre d'affaires seul), publication attendue le 20 octobre 2026 ; refresh complet suivant a l'occasion des resultats S2/FY 2026, courant fevrier 2027.\n\n== CATALYSEURS ==\nAmpleur du redressement de marge au S2 2026 (remboursements douaniers, mix lunettes IA) et premiers signaux commerciaux du partenariat Applied Materials debut 2027."
   }
 }
