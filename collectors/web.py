@@ -65,7 +65,7 @@ load_ticker_json = _state.load_ticker_json
 load_existing_news = _state.load_existing_news
 write_artifact = _state.write_artifact
 
-MODEL = "claude-sonnet-5"
+MODEL = "claude-haiku-4-5"  # bascule Sonnet -> Haiku pour reduire le cout par run (voir discussion : ~35-43% de reduction attendue, le web_search reste facture au meme tarif quel que soit le modele)
 EXISTING_CONTEXT_DAYS = 14  # fenêtre du contexte anti-doublon envoyé au modèle
 MAX_ITEMS_PER_TICKER = 8
 MAX_SEARCHES_PER_TICKER = 2  # plafonne le cout par ticker (voir max_uses sur web_search)
