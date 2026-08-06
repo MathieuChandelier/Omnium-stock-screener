@@ -1593,13 +1593,26 @@ function renderNewsBar(){
   }).join('')}</div>`;
 }
 
-// Clic sur le TEXTE d'une ligne : navigue UNIQUEMENT vers la vue detaillee.
-// Ne dismisse plus la ligne au passage (correctif demande : sur mobile, un
-// tap sur le texte etait interprete a tort comme une dismissal implicite -
-// desormais SEULE la croix dismisse, sans exception, quel que soit
-// l'appareil).
+// Clic sur le TEXTE d'une ligne : navigue vers la vue detaillee, FILTREE
+// sur la date de CETTE ligne precisement (correctif : avant, le clic
+// menait systematiquement a la vue complete toutes dates confondues,
+// quelle que soit la ligne cliquee - ce qui donnait l'impression trompeuse
+// de "tomber sur le contenu d'une autre ligne" des qu'une date plus
+// ancienne comptait beaucoup plus d'items qu'une date recente). Ne
+// dismisse plus la ligne au passage (correctif precedent, inchange) -
+// seule la croix dismisse desormais, sans exception.
+let newsDetailDateFilter=null;
 function openNewsDetailForDate(dateStr){
+  newsDetailDateFilter=dateStr;
   showTab('news', null);
+}
+
+// Efface le filtre de date et revient a la vue complete (tous les items
+// connus, toutes dates confondues) - point de sortie explicite pour qui
+// veut parcourir l'ensemble plutot qu'une seule journee.
+function clearNewsDetailFilter(){
+  newsDetailDateFilter=null;
+  renderNewsDetail();
 }
 
 // Clic sur la CROIX : SEUL point d'entree qui dismisse une ligne. Mise a
@@ -1614,8 +1627,10 @@ function dismissNewsLine(dateStr){
   postDismissedNewsDate(dateStr);
 }
 
-function groupNewsAll(){
-  const all=state.newsAll||[];
+// filterDate : si fourni, ne conserve QUE les items dont dateEvenement
+// correspond exactement - sinon (null), comportement inchange (tout).
+function groupNewsAll(filterDate){
+  const all=(state.newsAll||[]).filter(it=>!filterDate || it.dateEvenement===filterDate);
   const byType={};
   all.forEach(it=>{
     if(!it||!it.type)return;
@@ -1640,12 +1655,20 @@ function renderNewsDetail(){
   const el=document.getElementById('news-detail-content');
   if(!el)return;
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const sections=groupNewsAll();
+  const sections=groupNewsAll(newsDetailDateFilter);
+  // Bandeau de filtre actif : n'apparait que si une date precise est
+  // selectionnee, avec un lien explicite pour revenir a la vue complete -
+  // rend visible et reversible le fait que la vue est restreinte a ce
+  // jour-la, plutot qu'un filtrage silencieux.
+  const filterBanner=newsDetailDateFilter?`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:10px 16px;background:var(--navy-light);border-radius:10px;">
+      <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">Actualités du ${esc(formatNewsDayMonth(newsDetailDateFilter))}</span>
+      <span style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;text-decoration:underline;" onclick="clearNewsDetailFilter()">Voir toutes les actualités</span>
+    </div>`:'';
   if(!sections.length){
-    el.innerHTML='<div class="news-empty">Aucune actualité disponible pour le moment.</div>';
+    el.innerHTML=filterBanner+'<div class="news-empty">Aucune actualité disponible pour le moment.</div>';
     return;
   }
-  el.innerHTML=sections.map(sec=>`
+  el.innerHTML=filterBanner+sections.map(sec=>`
     <div class="news-section">
       <div class="news-section-hd">
         ${NEWS_TYPE_ICON[sec.type]||''}
