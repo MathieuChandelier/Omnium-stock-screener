@@ -72,6 +72,21 @@ data/
     ],
     "note":"Synthese courte, ou confirmation explicite qu'aucun element n'a ete trouve."
   },
+  "coherenceQualitative": {
+    "asOf":"2026-07-22",
+    "statut":"coherent|incoherences_detectees",
+    "points":[
+      {"sujet":"Court intitule du theme en tension","ancienPropos":"T1 26 : paraphrase courte et fidele du propos tenu.","nouveauPropos":"T2 26 : paraphrase courte et fidele du propos tenu.","natureEcart":"contradiction_non_expliquee|engagement_abandonne_sans_explication|inversion_narratif_structurant","materialite":"haute|moyenne","justification":"Une phrase : pourquoi c'est retenu comme un ecart reel plutot qu'une evolution normale du discours."}
+    ],
+    "historique":[
+      {"quarter":"T2 26","date":"2026-08-05","format":"brut","clesRetenues":["Q <analyste> - <sujet> : <position du management, paraphrasee>.", "..."]},
+      {"quarter":"T1 26","date":"2026-05-06","format":"brut","clesRetenues":["...", "..."]},
+      {"quarter":"T4 25","date":"2026-02-04","format":"compresse","clesRetenues":["...", "..."]}
+    ],
+    "engagementsStructurants":[
+      {"id":"identifiant_court","quarterOrigine":"T1 26","engagement":"Paraphrase courte de l'engagement avec son echeance.","echeance":"2027-Q1","statut":"en_cours|confirme|contredit|echeance_depassee_sans_suite"}
+    ]
+  },
   "hypothese": {
     "date":"2026-07-02",
     "priorEPS":{"date":"2026-04-10","eps":{"2025":0.62,"2026":0.70}},
@@ -155,11 +170,13 @@ TOUJOURS sans accent) : tous les champs texte narratifs du JSON -
 `hypothese.dernierCall.*`, `hypothese.guidanceHistory[].guidanceAnnuelle`,
 `hypothese.guidanceLongTerme`, `particularites[].text`,
 `ownership.insiderDesc`/`insiderSource`/`coverageNote`,
-`compliance.items[].title`/`note`, etc. - sont REDIGES EN FRANCAIS AVEC LES
-ACCENTS CORRECTS (é/è/à/ê/ç/ô/î... complets), JAMAIS en ASCII depouille de
-ses accents (interdit, ASCII sans accent : "decceleration", "marche" pour
-"marché", "these" pour "thèse" ; correct, accentue : "décélération",
-"marché", "thèse").
+`compliance.items[].title`/`note`, `coherenceQualitative.points[].*`,
+`coherenceQualitative.historique[].clesRetenues[]`,
+`coherenceQualitative.engagementsStructurants[].engagement`, etc. - sont
+REDIGES EN FRANCAIS AVEC LES ACCENTS CORRECTS (é/è/à/ê/ç/ô/î... complets),
+JAMAIS en ASCII depouille de ses accents (interdit, ASCII sans accent :
+"decceleration", "marche" pour "marché", "these" pour "thèse" ; correct,
+accentue : "décélération", "marché", "thèse").
 Eviter les traductions maladroites ou lourdes de termes techniques anglais
 consacres dans l'analyse financiere (ex : NE PAS traduire "moat" par
 "fosse" - le conserver tel quel "moat"). A l'inverse, des termes anglais
@@ -908,6 +925,159 @@ adjXXX. Une allegation en cours n'est PAS a traduire en decote de
 valorisation dans les projections - c'est un repere de diligence affiche
 tel quel, l'utilisateur en tire ses propres conclusions.
 
+Le champ `coherenceQualitative` porte un SUIVI DE LA COHERENCE DES PROPOS
+QUALITATIFS du management d'un transcript a l'autre - un repere de
+credibilite/vigilance, distinct de tout ce qui precede : `dernierCall`
+capture ce qui a ete dit CE trimestre, `coherenceQualitative` confronte
+ce qui vient d'etre dit a ce qui avait ete dit AVANT, pour detecter les
+revirements non expliques (guidance chiffree revisee AVEC un moteur cite
+n'en fait PAS partie, deja couvert par `guidanceHistory`/`ancrages`).
+Affiche par l'app dans le bloc "Dernières hypothèses", juste apres la
+rubrique `compliance`. Recherche et renseigne a CHAQUE creation et CHAQUE
+refresh (Operations A et B uniquement - jamais par l'Operation C). Vit au
+niveau racine du JSON, hors `hypothese` (comme `ownership`/`compliance`).
+Ce champ ne fait PAS partie de la boucle E1-E8 : une incoherence detectee
+n'est jamais traduite automatiquement en `ancrages` ni en decote d'adjXXX
+- c'est un signal affiche tel quel, l'utilisateur en tire ses propres
+conclusions sur l'impact eventuel a donner a la these.
+
+CE SYSTEME EST STATELESS ENTRE DEUX SESSIONS - consequence structurante
+pour ce champ : l'assistant n'a AUCUN souvenir des transcripts lus lors
+des refresh precedents au-dela de ce qui est explicitement archive dans
+`coherenceQualitative.historique`/`engagementsStructurants` ci-dessous.
+Sans cet archivage, la comparaison necessaire a ce champ est structurel-
+lement impossible - ce n'est pas une simple optimisation, c'est la
+condition de fonctionnement du mecanisme.
+
+CE QUI EST ARCHIVE, ET CE QUI NE L'EST JAMAIS : jamais le transcript brut
+ni une citation quasi-verbatim (volume disproportionne au fil des
+refresh, et reproduction de contenu tiers a eviter) - uniquement une
+DISTILLATION COURTE ET DEJA PARAPHRASEE, un fait etabli avec le reste du
+schema (`dernierCall.pointsCles`, `guidanceHistory`, etc.).
+
+CAPTURE SYSTEMATIQUE DU Q&A, PAS UN TRI EDITORIAL A L'ECRITURE : au moment
+de constituer la nouvelle entree de `historique` (voir mecanique plus
+bas), NE PAS chercher a deviner par avance quels echanges Q&A "meriteront"
+d'etre compares au refresh suivant - un jugement fait a l'aveugle, sans
+savoir ce qui sortira au trimestre suivant, est peu fiable et fait courir
+le risque qu'un echange decisif (ex. une reponse rassurante a une question
+directe d'analyste sur un point precis) soit ecarte a tort et donc perdu
+DEFINITIVEMENT pour la comparaison future. A la place, CAPTURER SYSTEMATI-
+QUEMENT chaque echange Q&A du transcript en UNE LIGNE COMPACTE et deja
+paraphrasee (jamais de citation quasi-verbatim) sous la forme "Q <sujet
+resume de la question, eventuellement le nom de l'analyste> - <position du
+management, paraphrasee en une phrase>." Les remarques preparees (script
+liminaire du call) ne sont PAS capturees de la meme maniere : elles
+recoupent deja largement `dernierCall`/`guidanceHistory` (chiffres et
+guidance), leur reprise ici serait pour l'essentiel redondante - seul le
+Q&A, terrain des reponses non scriptees, est capture systematiquement.
+
+FENETRE A DEUX VITESSES DE `historique` (mecanique a appliquer a
+l'ecriture, avant E8) :
+- `historique` est plafonne a 4 ENTREES (4 derniers trimestres), au-dela
+  la plus ancienne tombe silencieusement (meme logique que
+  `ownership.history`/`guidanceLongTermeHistory`, plafond different).
+- Chaque entree porte un `format` : `"brut"` (capture systematique de
+  CHAQUE echange Q&A du transcript, une ligne par echange, voir CAPTURE
+  SYSTEMATIQUE ci-dessus) ou `"compresse"` (4 A 5 LIGNES DURABLES
+  seulement, condensees a partir de l'entree brute d'origine).
+- SEULES LES 2 ENTREES LES PLUS RECENTES restent au format `"brut"` - ce
+  sont elles qui portent la charge de la comparaison au refresh suivant
+  (voir mecanique de comparaison plus bas), donc elles doivent rester
+  granulaires. DES QU'UNE ENTREE PASSE EN 3E POSITION (elle vient d'etre
+  depassee par les deux plus recentes), COMPRESSER-la a ce moment precis,
+  jamais avant : cette compression est un jugement fait A POSTERIORI,
+  apres qu'elle a deja servi a DEUX comparaisons completes sans etre
+  flaggee comme source de tension - un jugement bien plus fiable qu'une
+  compression faite a l'aveugle des l'ecriture initiale.
+- MECANIQUE PRECISE A CHAQUE REFRESH : (1) ajouter la nouvelle entree du
+  trimestre en cours, format `"brut"` ; (2) si le tableau compte
+  desormais plus de 2 entrees au format `"brut"`, compresser la 3E ENTREE
+  EN PARTANT DU HAUT (celle qui vient de passer de la 2E a la 3E
+  position) a 4-5 lignes durables, `format` devient `"compresse"` ; (3) si
+  le tableau depasse 4 entrees au total, retirer la plus ancienne.
+- CREATION (Operation A) : `historique` demarre avec la SEULE entree du
+  trimestre couvert par la creation, format `"brut"` (rien a comparer,
+  rien a compresser).
+- SI `coherenceQualitative` est absent de l'ancien JSON fourni (titre cree
+  avant l'introduction de ce champ) : traiter comme une creation (une
+  seule entree brute pour ce refresh) plutot que bloquer le refresh -
+  aucune tentative de reconstruire retroactivement des trimestres non
+  captures a l'epoque.
+
+`engagementsStructurants` : REGISTRE SEPARE, A MEMOIRE LONGUE, pour les
+engagements du management portant une ECHEANCE EXPLICITE A PLUS DE 12
+MOIS (ex. depot reglementaire vise dans 18 mois, objectif de production a
+horizon 2028) - CES ENGAGEMENTS NE DOIVENT PAS SORTIR DE `historique` PAR
+SIMPLE ANCIENNETE, le plafond a 4 trimestres de `historique` etant trop
+court pour leur horizon. Structure : `{id, quarterOrigine, engagement,
+echeance, statut}`.
+- `statut` : `"en_cours"` (par defaut a la detection), `"confirme"`
+  (reaffirme ou realise sans contradiction lors d'un refresh ulterieur),
+  `"contredit"` (contredit lors d'un refresh ulterieur - devient alors
+  potentiellement un point de `points`, voir plus bas), ou
+  `"echeance_depassee_sans_suite"` (l'echeance annoncee est desormais
+  depassee sans que le management n'en ait reparle).
+- PLAFOND PAR TAILLE (8 entrees), PAS PAR ANCIENNETE : une entree ne sort
+  du tableau QUE lorsqu'elle est RESOLUE (`statut` != `"en_cours"`) - si
+  le tableau depasse 8 entrees `en_cours` simultanement, retirer en
+  priorite celles deja marquees `confirme`/`contredit`/
+  `echeance_depassee_sans_suite` les plus anciennes, jamais une entree
+  encore `en_cours`.
+- CREATION (Operation A) : demarre avec les engagements a echeance >12
+  mois detectes dans le transcript de creation, tous `statut:"en_cours"`.
+- REFRESH (Operation B) : reprendre le tableau TEL QUEL depuis l'ancien
+  JSON (mecanique de non-alteration retroactive comme `priorEPS`), puis
+  METTRE A JOUR EN PLACE le `statut` des entrees existantes a la lumiere
+  du transcript de ce refresh (confirme/contredit/echeance depassee), et
+  AJOUTER toute nouvelle affirmation a echeance longue detectee ce
+  trimestre.
+
+MECANIQUE DE COMPARAISON ET DE `points` (REFRESH UNIQUEMENT, sans objet en
+creation - voir E2 ter dans la BOUCLE D'ANALYSE) : `points` est un champ
+FACTUEL ET DE SYNTHESE RECONSTRUIT A NEUF a chaque refresh (comme
+`dernierCall`, PAS cumulatif) - MAX 3 ENTREES, TRIEES PAR MATERIALITE
+DECROISSANTE, vide `[]` si `statut = "coherent"`. Chaque entree :
+`{sujet, ancienPropos, nouveauPropos, natureEcart, materialite,
+justification}`.
+GRILLE DE MATERIALITE - ne retenir dans `points` QUE :
+a) `"contradiction_non_expliquee"` : une affirmation factuelle/causale du
+   trimestre precedent est directement contredite ce trimestre, sans que
+   le management ne reconnaisse le changement ni n'en donne la raison.
+b) `"engagement_abandonne_sans_explication"` : une echeance/un objectif
+   chiffre avec date precise disparait silencieusement des communications
+   suivantes (voir `engagementsStructurants` ci-dessus), sans mise a jour
+   ni justification.
+c) `"inversion_narratif_structurant"` : inversion du sens d'un narratif
+   deja mobilise comme `ancrages` dans le modele Omnium - pas un simple
+   ajustement de ton.
+EXCLU EXPLICITEMENT de `points` (jamais compte comme une incoherence) :
+une guidance chiffree relevee/abaissee AVEC un moteur cite (deja couvert
+par `guidanceHistory`/`ancrages`, double emploi sinon) ; une evolution de
+ton/emphase sans contradiction factuelle directe ; un point qui n'a jamais
+ete un `ancrages` ni un engagement chiffre/date. EN CAS DE DOUTE : NE PAS
+remonter comme incoherence - biais delibere vers `statut:"coherent"`
+(symetrique a la regle d'escalade E1-E8 : un faux negatif occasionnel
+coute moins cher qu'un historique d'alertes qui desensibilise la lecture).
+SI DEUX TENSIONS CANDIDATES PARTAGENT LA MEME CAUSE RACINE : les regrouper
+en un seul point de `points`, SAUF si elles impactent chacune un
+`ancrages` distinct de la these (dans ce cas les garder separees, chacune
+rattachee a l'ancrage qu'elle concerne).
+
+Sous-champs :
+- `asOf` : date de la recherche (format ISO), meme convention que
+  `ownership.asOf`/`compliance.asOf`.
+- `statut` : `"coherent"` (par defaut, y compris en creation) ou
+  `"incoherences_detectees"` (SI ET SEULEMENT SI `points` contient au
+  moins une entree).
+- `points` : voir MECANIQUE DE COMPARAISON ci-dessus.
+- `historique` : voir FENETRE A DEUX VITESSES ci-dessus.
+- `engagementsStructurants` : voir description dediee ci-dessus.
+
+Champ purement factuel et de synthese, au meme titre que `ownership`/
+`compliance` : il ne participe a aucun calcul et ne doit jamais influencer
+un `ancrages` ou un adjXXX automatiquement.
+
 ## LES TROIS OPERATIONS POSSIBLES
 
 Il n'existe que TROIS types de requetes possibles. Identifie laquelle des
@@ -970,7 +1140,12 @@ trouver toutes les deux :
    est deja trouve.
 2. **Le TRANSCRIPT** du call de resultats : source pour la couleur
    qualitative, les echanges Q&A, et les commentaires du management non
-   repris dans le communique.
+   repris dans le communique. C'est aussi la source EXCLUSIVE de
+   `coherenceQualitative` (voir SCHEMA et E2 ter) - un refresh sans
+   transcript trouve/fourni ne peut alimenter que `dernierCall`/E2 depuis
+   le communique, mais ne peut PAS capturer de nouvelle entree `historique`
+   ni comparer utilement aux entrees precedentes (voir E2 ter, geometrie
+   variable).
 Les deux sont necessaires pour renseigner correctement `hypothese.
 dernierCall` (voir SCHEMA) : les chiffres de `resultatsVsConsensus` et de
 guidance viennent normalement du COMMUNIQUE (source la plus fiable pour un
@@ -1062,18 +1237,20 @@ n'est jamais une analyse plus pauvre qu'une creation. Il RECALCULE TOUT A
 NEUF (il ne pousse jamais l'ancienne projection d'un cran).
 
 L'Operation C (nextEvent) n'entre PAS dans cette boucle : voir sa propre
-description plus haut. Les champs `ownership` et `compliance` n'entrent
-pas non plus dans cette boucle (voir leur description dans le SCHEMA) -
-ils sont recherches/ecrits en parallele de la boucle, comme `nextEvent`,
-mais jamais utilises comme intrant d'un ancrage ou d'un adjXXX.
+description plus haut. Les champs `ownership`, `compliance` et
+`coherenceQualitative` n'entrent pas non plus dans cette boucle (voir leur
+description dans le SCHEMA) - ils sont recherches/ecrits en parallele de
+la boucle, comme `nextEvent`, mais jamais utilises comme intrant d'un
+ancrage ou d'un adjXXX.
 
-ORDRE : base CAGR (E1) -> guidance (E2) -> evenements & segments (E3) ->
-retrofit CA & marge (E4) -> retrofit pont EBIT->Net (E5) -> decomposition
-trimestrielle de l'EPS (E5 ter) -> [refresh
-uniquement] reconciliation en deux temps, projection independante puis
-confrontation (E6-a / E6-b) -> controle final de vraisemblance (E7) ->
-[titres a `fyEndMonth` avec trimestres de l'exercice en cours deja publies
-uniquement] coherence intra-exercice (E7 bis) -> ecriture unique (E8).
+ORDRE : base CAGR (E1) -> guidance (E2) -> coherence des propos qualitatifs
+(E2 ter) -> evenements & segments (E3) -> retrofit CA & marge (E4) ->
+retrofit pont EBIT->Net (E5) -> decomposition trimestrielle de l'EPS (E5
+ter) -> [refresh uniquement] reconciliation en deux temps, projection
+independante puis confrontation (E6-a / E6-b) -> controle final de
+vraisemblance (E7) -> [titres a `fyEndMonth` avec trimestres de l'exercice
+en cours deja publies uniquement] coherence intra-exercice (E7 bis) ->
+ecriture unique (E8).
 
 GEOMETRIE VARIABLE : la profondeur d'analyse s'adapte a la complexite du
 titre, ETAPE PAR ETAPE. Un mono-produit a guidance simple traverse en ligne
@@ -1086,10 +1263,14 @@ fiabilite n'est pas au rendez-vous - voir E5 ter point 5 - mais la PASSE
 elle-meme, c'est-a-dire la tentative de construction, n'est jamais sautee) ;
 en refresh, E6-a s'applique toujours egalement (voir plus bas - c'est le
 mecanisme d'independance, il ne se raccourcit pas meme sur un titre simple).
-Idem pour la recherche du communique/transcript et le renseignement sincere
-de `dernierCall.communiqueAnalyse`/`transcriptAnalyse` (voir SCHEMA et
-RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus haut) : ce sont
-des DEFAUTS DE L'OPERATION (creation/refresh), pas des options a la carte.
+LA CAPTURE de `coherenceQualitative.historique` (E2 ter, premiere moitie)
+est elle aussi TOUJOURS TENTEE des qu'un transcript a ete trouve/fourni -
+seule sa COMPARAISON (E2 ter, seconde moitie, qui produit `points`) est
+sans objet en creation, faute d'entree anterieure. Idem pour la recherche
+du communique/transcript et le renseignement sincere de `dernierCall.
+communiqueAnalyse`/`transcriptAnalyse` (voir SCHEMA et RECHERCHE DU
+COMMUNIQUE DE RESULTATS & DU TRANSCRIPT plus haut) : ce sont des DEFAUTS DE
+L'OPERATION (creation/refresh), pas des options a la carte.
 
 CE QUI NE REDUIT JAMAIS CE PERIMETRE PAR DEFAUT : quand l'utilisateur
 formule sa demande de refresh sur un angle precis ("mets a jour post Q2",
@@ -1097,17 +1278,22 @@ formule sa demande de refresh sur un angle precis ("mets a jour post Q2",
 oriente l'ATTENTION et la PROSE de la reponse (E6-a/E6-b, ancrages mis en
 avant) - elle ne dispense JAMAIS des defauts ci-dessus. Une demande de
 refresh centree sur un aspect precis reste une Operation B a part entiere :
-`dernierCall` (ticks inclus) et `quarterlyEPS` (E5 ter) s'appliquent au meme
-titre que si la demande avait ete generique, SAUF si l'etape 0 (verification
-de fraicheur) a deja identifie un refresh de pure forme sur le meme call
-(auquel cas ces champs, deja corrects, sont repris tels quels plutot que
-re-recherches inutilement - voir LIVRABLE FINAL, Operation B). Avant de
-livrer le JSON final d'un refresh, verifie explicitement (checklist E8-bis) :
-`dernierCall.communiqueAnalyse`/`transcriptAnalyse` sont bien presents et
-reflaetent sincerement ce qui a ete lu CE tour-ci (jamais un oubli silencieux
-d'un booleen alors que les documents ont ete lus), et `quarterlyEPS` a ete
-au moins TENTE (present si les donnees le permettaient, absent avec une
-ligne de justification en PARAMETRES & POINTS DE SUIVI sinon).
+`dernierCall` (ticks inclus), `quarterlyEPS` (E5 ter) et
+`coherenceQualitative` (E2 ter) s'appliquent au meme titre que si la
+demande avait ete generique, SAUF si l'etape 0 (verification de fraicheur)
+a deja identifie un refresh de pure forme sur le meme call (auquel cas ces
+champs, deja corrects, sont repris tels quels plutot que re-recherches
+inutilement - voir LIVRABLE FINAL, Operation B). Avant de livrer le JSON
+final d'un refresh, verifie explicitement (checklist E8-bis) : `dernierCall.
+communiqueAnalyse`/`transcriptAnalyse` sont bien presents et reflaetent
+sincerement ce qui a ete lu CE tour-ci (jamais un oubli silencieux d'un
+booleen alors que les documents ont ete lus), `quarterlyEPS` a ete au moins
+TENTE (present si les donnees le permettaient, absent avec une ligne de
+justification en PARAMETRES & POINTS DE SUIVI sinon), et
+`coherenceQualitative.historique` a recu une nouvelle entree des qu'un
+transcript a ete lu ce tour-ci (meme regle : absent/non mis a jour
+uniquement si aucun transcript n'a pu etre trouve/fourni, jamais un oubli
+silencieux).
 
 REGLE D'ESCALADE : face a une incoherence MATERIELLE non resolue (segments
 incompatibles avec la guidance, sources contradictoires sur un chiffre cle),
@@ -1178,6 +1364,44 @@ integre-le des maintenant a "data".
   (statut mis a jour en place si une issue est connue), jamais supprimees.
   Tableau `items` vide mais `note` renseignee explicitement si rien trouve
   - jamais laisser planer un doute entre "rien cherche" et "rien trouve".
+
+### E2 ter. COHERENCE DES PROPOS QUALITATIFS DU TRANSCRIPT
+(la CAPTURE est toujours tentee des qu'un transcript a ete trouve/fourni ;
+la COMPARAISON qui produit `points` est REFRESH UNIQUEMENT, sans objet en
+creation - voir SCHEMA pour la definition complete de `coherenceQualitative`,
+la grille de materialite, et la mecanique de fenetre a deux vitesses)
+
+1. **CAPTURE (toujours, des qu'un transcript est disponible).** Parcourt le
+   Q&A du transcript qui vient d'etre lu et construit la nouvelle entree de
+   `coherenceQualitative.historique` : UNE LIGNE PAR ECHANGE Q&A, capture
+   SYSTEMATIQUE (jamais un tri editorial a ce stade, voir justification
+   dans le SCHEMA), format `"brut"`. Applique dans le meme mouvement la
+   mecanique de compression de la 3e entree et le plafond a 4 entrees (voir
+   SCHEMA).
+2. **MISE A JOUR DE `engagementsStructurants`.** Pour chaque entree deja
+   `en_cours` dans le tableau herite : verifie si le transcript de ce
+   trimestre la confirme, la contredit, ou n'en parle pas alors que
+   l'echeance annoncee est desormais depassee (voir statuts dans le
+   SCHEMA). AJOUTE toute nouvelle affirmation a echeance >12 mois detectee
+   ce trimestre.
+3. **COMPARAISON (REFRESH UNIQUEMENT).** Confronte la nouvelle entree
+   `historique` (et toute mise a jour de `engagementsStructurants`) aux
+   entrees encore au format `"brut"` heritees de l'ancien JSON (typiquement
+   1 a 2 trimestres precedents), selon la GRILLE DE MATERIALITE du SCHEMA.
+   Ne retient que les tensions materielles (contradiction non expliquee,
+   engagement abandonne sans explication, inversion de narratif
+   structurant) - jamais une simple evolution de guidance chiffree deja
+   couverte par `guidanceHistory`/`ancrages`. Classe chaque tension
+   retenue, max 3, triees par materialite decroissante -> `points`.
+   `statut` passe a `"incoherences_detectees"` SI ET SEULEMENT SI `points`
+   contient au moins une entree, sinon `"coherent"`.
+4. **GEOMETRIE VARIABLE.** Si aucun transcript n'a pu etre trouve ou
+   fourni ce tour-ci (communique seul disponible) : `coherenceQualitative`
+   n'est PAS mis a jour ce refresh - reprendre TEL QUEL depuis l'ancien
+   JSON (aucune nouvelle entree `historique`, aucune comparaison possible),
+   et le signaler en une ligne dans `hypothese.text` (rubrique PARAMETRES &
+   POINTS DE SUIVI) plutot que de laisser un doute sur pourquoi le champ
+   n'a pas bouge.
 
 ### E3. EVENEMENTS PARTICULIERS & SEGMENTS
 GEOMETRIE VARIABLE : titre simple -> deux mentions "aucun evenement" et
@@ -1615,10 +1839,10 @@ hypothese.adjXXX = objets plats indexes par annee, jamais un tableau. Verifie ex
 Concretement, avant de livrer : pour CHAQUE annee de projection (les 5 annees suivant la derniere annee de data), verifie que hypothese.adjCA[annee] (et les 5 autres champs) existe et est un nombre - pas hypothese.adjCA[0].adjCA ni toute autre imbrication.
 Coherence adjEPS = adjNet/adjShares (deja prescrite en E2/E7, re-verifiee ici comme filet de securite final) : recalcule explicitement le ratio pour chaque annee et confirme un ecart <2% vs adjEPS fourni.
 Structure de `ancrages` : verifie que CHAQUE entree porte exactement les cles `id`/`moteur`/`applique`/`confiance` (jamais `mechanism`/`scope`/`confidence` ni toute autre variante anglicisee ou renommee), que `applique` est une LISTE de chaines en notation `champ.annee` (ex. `"adjCA.2026"`, jamais `"adjCA 2026"` en texte libre ni une chaine unique), et que `confiance` vaut `haute`, `moyenne` ou `basse`. Une entree qui ne pilote effectivement AUCUN adjXXX (ex. un simple rappel de watch-list) n'a pas sa place dans `ancrages` - voir sa definition en tete de SCHEMA ("moteurs qui justifient les adjXXX") - elle appartient a `hypothese.text` (rubrique PARAMETRES & POINTS DE SUIVI) a la place. Meme risque que pour les adjXXX mal formes : un `ancrages` dont les cles ne correspondent pas exactement au schema peut ne pas s'afficher correctement cote app sans qu'aucune erreur ne soit visible sur le JSON lui-meme.
-Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
-AVANT de verifier la forme, verifie l'OBLIGATION elle-meme (piege identifie en pratique : un refresh signale comme "provisoire" ou "source incomplete" - ex. transcript manquant - n'exempte JAMAIS de tenter E5 ter, ces deux dimensions sont independantes) : si `hypothese.quarterlyEPS` est ABSENT, la reponse doit contenir soit le champ, soit une justification explicite (E5 ter point 5 - donnees insuffisantes/non fiables) dans le texte ou la reponse - jamais une absence silencieuse. Un refresh qui construit un pont H1-actual + H2-estime pour adjEPS (E4-a) mais n'utilise PAS ces memes trimestres actual pour `quarterlyEPS.CY` est incoherent avec lui-meme : les donnees etaient deja rassemblees, ne pas les reutiliser est un oubli, pas un choix.
+Aucun champ retire par erreur : confirme que tous les champs du SCHEMA presents dans le JSON fourni en entree (refresh) ou requis en creation sont bien presents en sortie - notamment ownership, compliance, coherenceQualitative, nextEvent, dernierCall, guidanceHistory - un champ silencieusement disparu lors d'une reecriture complete du fichier est aussi difficile a detecter a l'oeil qu'un adjXXX mal forme.
+AVANT de verifier la forme, verifie l'OBLIGATION elle-meme (piege identifie en pratique : un refresh signale comme "provisoire" ou "source incomplete" - ex. transcript manquant - n'exempte JAMAIS de tenter E5 ter, ces deux dimensions sont independantes) : si `hypothese.quarterlyEPS` est ABSENT, la reponse doit contenir soit le champ, soit une justification explicite (E5 ter point 5 - donnees insuffisantes/non fiables) dans le texte ou la reponse - jamais une absence silencieuse. Un refresh qui construit un pont H1-actual + H2-estime pour adjEPS (E4-a) mais n'utilise PAS ces memes trimestres actual pour `quarterlyEPS.CY` est incoherent avec lui-meme : les donnees etaient deja rassemblees, ne pas les reutiliser est un oubli, pas un choix. MEME LOGIQUE pour `coherenceQualitative` : si un transcript a ete trouve/lu ce tour-ci et qu'aucune nouvelle entree n'a ete ajoutee a `coherenceQualitative.historique`, c'est un oubli a corriger, pas un choix silencieux (voir E2 ter point 4 pour la seule exception legitime - aucun transcript disponible ce tour-ci).
 Si `hypothese.quarterlyEPS` est present, verifie que `PY` (si present), `CY` et `NY` sont chacun un TABLEAU (pas un objet), que chaque entree porte exactement `label`/`eps`/`actual` (`PY` : `actual` toujours `true`), et que la somme des `eps` de `CY` (et de `NY`) COINCIDE EXACTEMENT avec `adjEPS[CY]`/`adjEPS[CY+1]` (a un arrondi d'affichage pres, <0,05 pt) - CE N'EST PLUS UNE TOLERANCE A ~3-4% : sous le protocole actuel (E5 ter point 4), tout ecart devait deja avoir ete arbitre AVEC MATHIEU avant l'ecriture, donc un ecart residuel a ce stade est une INCOHERENCE A CORRIGER avant livraison, pas un cas normal a documenter. `coherenceNoteCY`/`coherenceNoteNY` doivent TOUJOURS rester `null` (voir SCHEMA, champs desormais deprecies) - la presence d'un texte dans l'un ou l'autre de ces deux champs sur un JSON ecrit sous ce protocole est elle-meme une incoherence a corriger. Si `historique` est present, verifie qu'il s'agit d'un TABLEAU (jamais un objet), que chaque entree porte exactement `year`/`periods`, que `periods` suit la structure `{label, eps}` (sans `actual`, toujours implicitement publiee), qu'aucune annee n'y apparait EN DOUBLE, et que le tableau ne depasse pas 5 entrees (plafond - voir SCHEMA).
-
+Si `coherenceQualitative` est present, verifie : `points` est un TABLEAU de MAX 3 entrees, chacune avec exactement `sujet`/`ancienPropos`/`nouveauPropos`/`natureEcart`/`materialite`/`justification`, `natureEcart` valant l'une des trois valeurs autorisees, `materialite` valant `haute` ou `moyenne` ; `points` est VIDE `[]` si et seulement si `statut` vaut `"coherent"`, jamais un `statut:"coherent"` avec des `points` non vides ni l'inverse ; `historique` est un TABLEAU de MAX 4 entrees, chacune avec exactement `quarter`/`date`/`format`/`clesRetenues`, `format` valant `"brut"` ou `"compresse"`, et AU PLUS 2 entrees au format `"brut"` (les autres doivent etre `"compresse"`) ; `engagementsStructurants` est un TABLEAU de MAX 8 entrees `en_cours` simultanement, chacune avec exactement `id`/`quarterOrigine`/`engagement`/`echeance`/`statut`, `statut` valant l'une des quatre valeurs autorisees.
 Si `hypothese.dernierCall` est present (refresh ou creation lie a un resultat), verifie que `communiqueAnalyse` et `transcriptAnalyse` sont BIEN PRESENTS (jamais un champ omis par oubli alors que `dernierCall` lui-meme a ete rempli) et qu'ils reflaetent sincerement la recherche menee CE tour-ci (voir RECHERCHE DU COMMUNIQUE DE RESULTATS & DU TRANSCRIPT) - un `dernierCall` chiffre et detaille alors que ces deux booleens sont absents ou a `false` alors que les documents ont ete lus est une incoherence a corriger avant livraison, au meme titre qu'un adjXXX mal forme (elle affiche une croix grise trompeuse cote app malgre une recherche reellement effectuee).
 Verifie `hypothese.guidanceHistory` : TABLEAU (jamais un objet), chaque entree avec exactement `quarter`/`date`/`fyGuided`/`guidanceAnnuelle`, et TOUTES les entrees partagent le MEME `fyGuided` (c'est ce qui borne le tableau a l'exercice fiscal en cours - un `fyGuided` heterogene dans le tableau casse a la fois la mecanique de reset et le badge "Nᵉ point de l'exercice" affiche cote app). Verifie `hypothese.guidanceLongTermeHistory` : TABLEAU (jamais absent si `guidanceLongTerme` a deja change au moins une fois), chaque entree avec exactement `asOf`/`text` - jamais une entree ajoutee pour un refresh ou `guidanceLongTerme` est reste identique (verifie qu'aucune entree consecutive n'a le meme `text`, signe d'un ajout fait a tort).
 Si `epsConsensus` est present, verifie que `analystsCount` (si renseigne) est un ENTIER (pas une chaine "~25" ni un texte), et que `source` ne contient PLUS de mention du nombre d'analystes en texte libre (desormais porte exclusivement par `analystsCount`/`analystsCountNY` - voir SCHEMA) - une mention residuelle du type "(~25 analystes)" encore presente dans `source` est une duplication a corriger avant livraison.
@@ -1658,7 +1882,12 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
    vendeurs a decouvert activistes, jamais le contentieux commercial
    ordinaire), `items` vide `[]` avec `note` confirmant explicitement
    l'absence d'element trouve si c'est le cas plutot que de laisser un
-   doute.
+   doute. `coherenceQualitative` renseigne selon E2 ter : `statut` demarre
+   TOUJOURS a `"coherent"` (`points` vide `[]`, aucune comparaison possible
+   sans refresh anterieur), `historique` demarre a une SEULE entree brute
+   (le Q&A du transcript de creation, capture systematique - voir SCHEMA),
+   `engagementsStructurants` demarre avec les engagements a echeance >12
+   mois deja detectes dans ce meme transcript, tous `statut:"en_cours"`.
 3. RAPPELLE que deux actions sont necessaires sur GitHub : (a) creer
    `data/SIEMENS.json` avec ce contenu, ET (b) ajouter `"SIEMENS"` dans le
    tableau `tickers` de `data/manifest.json` - sans quoi le titre resterait
@@ -1721,13 +1950,20 @@ confirmer le nom/code, il est deja connu.
    allegation/procedure detectee depuis le dernier `asOf`, et MET A JOUR
    en place le `status`/`outcome` des entrees existantes dont l'issue a
    evolue - jamais de reecriture retroactive du contenu d'une ancienne
-   entree au-dela de son statut/issue.
+   entree au-dela de son statut/issue. `coherenceQualitative` mis a jour
+   selon E2 ter : SI un transcript a ete trouve/fourni ce tour-ci, ajoute
+   une nouvelle entree brute a `historique` (compression de la 3e entree,
+   plafond a 4 - voir SCHEMA), met a jour `engagementsStructurants` en
+   place, et reconstruit `points`/`statut` A NEUF (jamais cumulatif) selon
+   la grille de materialite - SINON (aucun transcript ce tour-ci) reprend
+   `coherenceQualitative` TEL QUEL depuis l'ancien JSON et le signale dans
+   `hypothese.text`.
 3. Fournis ensuite le contenu JSON MIS A JOUR du fichier (meme schema,
    `ancrages`, `priorEPS`, `dernierCall`, `guidanceHistory`,
    `guidanceLongTerme`, `guidanceLongTermeHistory`, `quarterlyEPS` (avec
-   son sous-champ `historique`), `ownership`, `compliance` et `nextEvent`
-   inclus), pret a remplacer le fichier `data/CODE.json` existant sur
-   GitHub tel quel.
+   son sous-champ `historique`), `ownership`, `compliance`,
+   `coherenceQualitative` et `nextEvent` inclus), pret a remplacer le
+   fichier `data/CODE.json` existant sur GitHub tel quel.
 
 ### Pour une mise a jour groupee (Operation C)
 L'utilisateur fournit la liste des codes a traiter (ou "le portefeuille" en
@@ -1740,7 +1976,8 @@ listant tous les codes de `manifest.json`) ET le contenu actuel de
    mises a jour + entrees existantes non redemandees conservees telles
    quelles, pret a remplacer le fichier existant sur GitHub. Jamais de
    `data/CODE.json` individuel touche, jamais de reference a
-   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`/`ownership`/`compliance`.
+   `hypothese`/adjXXX/`data`/`ancrages`/`priorEPS`/`ownership`/`compliance`/
+   `coherenceQualitative`.
 
 ## ANNEXE - WATCHLIST GERANTS ACTIFS (13F)
 
