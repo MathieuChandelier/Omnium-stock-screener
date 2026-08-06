@@ -1446,6 +1446,43 @@ function renderCompliance(comp, ticker){
   </div>`;
 }
 
+function renderCoherenceQualitative(cq, ticker){
+  if(!cq)return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const statut=cq.statut||'coherent';
+  const points=(cq.points||[]).filter(p=>p&&p.sujet);
+  const MATERIALITE_COLOR={haute:'#c0392b',moyenne:'var(--gold-text)'};
+  if(statut==='coherent'||!points.length){
+    return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Cohérence des propos qualitatifs${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;color:var(--text);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"></path></svg>
+        Propos qualitatifs cohérents avec les derniers transcripts.
+      </div>
+    </div>`;
+  }
+  const pointsBlock=points.map(p=>{
+    const col=MATERIALITE_COLOR[p.materialite]||'var(--muted)';
+    return `<div style="margin-top:8px;padding:8px 10px;background:var(--gold-light);border-radius:8px;border-left:3px solid ${col};">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <span style="font-size:12px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(p.sujet)}</span>
+        ${p.materialite?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};text-transform:uppercase;letter-spacing:.03em;">${esc(p.materialite)}</span>`:''}
+      </div>
+      ${p.ancienPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:4px;"><b>Avant :</b> ${esc(p.ancienPropos)}</div>`:''}
+      ${p.nouveauPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:2px;"><b>Maintenant :</b> ${esc(p.nouveauPropos)}</div>`:''}
+      ${p.justification?`<div style="font-size:10.5px;color:var(--muted);font-style:italic;line-height:1.4;margin-top:4px;">${esc(p.justification)}</div>`:''}
+    </div>`;
+  }).join('');
+  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Cohérence des propos qualitatifs${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;font-weight:700;color:#c0392b;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>
+      ${points.length} point${points.length>1?'s':''} en tension avec les derniers transcripts
+    </div>
+    ${pointsBlock}
+  </div>`;
+}
+
 function formatThesisText(txt, insertAfterFirst){
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const lines=(txt||'').split(/\n/);
@@ -1489,6 +1526,7 @@ function renderContextBullets(ticker, proj, cours){
   const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
+  const cqBanner=renderCoherenceQualitative(d.coherenceQualitative||null, ticker);
   const fullSumm=(lastEvt.summary||'').trim();
   const fullAnalysis=(lastEvt.text||'').trim();
   const displayText=fullAnalysis||fullSumm;
@@ -1522,6 +1560,7 @@ function renderContextBullets(ticker, proj, cours){
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
     ${ownBanner}
     ${compBanner}
+    ${cqBanner}
     ${partBanner}
     ${cohBanner}
   </div>`;
