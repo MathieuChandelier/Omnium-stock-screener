@@ -26,22 +26,17 @@
   --text:#0d0d1a; --muted:#64748b;
   --proj-bg:#f7f9ff;
   --ok:#10b981; --err:#ef4444; --gold-text:#92700a;
-  /* Echelle typo : appliquee aux classes CSS statiques ci-dessous ; les tailles
-     generees en JS (return-block, badges dynamiques) restent en dur pour ne pas
-     multiplier les points de regression a chaque ajustement. */
   --text-xs:11px; --text-sm:12px; --text-base:14px; --text-lg:16px; --text-2xl:28px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Quattrocento Sans',Georgia,serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
 h1,h2,.tab,.kpi-value,.card-title,.step-title,.btn,.badge,.kpi-label,.adj-label,th{font-family:'Poppins',system-ui,sans-serif;}
 
-/* ── HEADER ── */
 header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);color:#fff;padding:35px 34px 40px;display:flex;align-items:center;justify-content:space-between;}
 .h-tagline{display:flex;align-items:center;gap:7px;margin-top:1px;margin-left:1px;}
 .h-tagline span{font-size:27px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:1;font-family:'Poppins',sans-serif;}
 .h-logo{height:79px;width:auto;display:block;}
 
-/* ── TABS ── */
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
 .back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px 8px 15px;cursor:pointer;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.08);transition:background .15s,border-color .15s,transform .12s,box-shadow .15s;}
 .back-btn:hover{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 3px 10px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);transform:translateY(-1px);}
@@ -50,17 +45,13 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .back-btn:hover .back-btn-arrow{transform:translateX(-2px);}
 .panel{display:none;}.panel.active{display:block;}
 
-/* ── LAYOUT ── */
 .container{max-width:1160px;margin:0 auto;padding:22px 24px;}
 
-/* ── CARDS ── */
 .card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
-/* Tableau de projections : pas d'encadré, il vit directement sur le fond de page (même comportement desktop/mobile). */
 #analyse-tbl-card{background:transparent;box-shadow:none;padding:0;}
 .card-title{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:14px;}
 .card-title b{color:var(--navy);}
 
-/* ── KPI ── */
 .pf-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.10em;font-family:'Poppins',sans-serif;}
 .pf-count{font-size:11px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
 .pf-list{display:flex;flex-direction:column;gap:0;background:transparent;}
@@ -68,13 +59,8 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-item:last-child{border-bottom:none;}
 .pf-metric-return .pf-mv,.pf-metric-pe .pf-mv{color:var(--teal-dark-text);font-weight:600;}
 .pf-item:hover{background:rgba(43,216,194,.055);}
-/* .pf-active retire volontairement : CT est initialise sur le 1er ticker du select
-   au chargement (voir loadTicker), ce qui surlignait en permanence la 1ere ligne
-   du portefeuille avant tout clic - effet visuellement confondu avec un survol fige.
-   Le vrai survol (:hover ci-dessus) reste inchange. */
 .pf-main{flex:1.6;min-width:0;}
 .pf-name{font-size:14.5px;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif;}
-.pf-sym覆{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
 .pf-sub{font-size:10.5px;color:var(--muted);margin-top:2px;font-family:'Quattrocento Sans',serif;}
 .pf-metrics{display:flex;gap:28px;flex-shrink:0;}
 .pf-metric{text-align:center;min-width:60px;}
@@ -85,9 +71,6 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-col-name-spacer{flex:1 1 auto;max-width:360px;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
 .pf-name-sort-lbl{cursor:pointer;user-select:none;transition:color .12s;white-space:nowrap;flex-shrink:0;}
 .pf-name-sort-lbl:hover{color:var(--teal-text);}
-/* Recherche par nom, positionnee dans l'en-tete de la colonne Name : filtre
-   la liste du portefeuille en direct (voir pfFilterByName) et permet
-   d'ouvrir directement un titre a l'Entree (voir pfNameFilterKeydown). */
 .pf-name-filter{flex:0 0 auto;width:118px;min-width:0;border:none;border-bottom:1.5px solid rgba(0,1,144,.18);background:transparent;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:none;letter-spacing:normal;line-height:1;padding:0 1px 1px;margin:0;height:14px;cursor:text;transition:border-color .12s;}
 .pf-name-filter::placeholder{color:var(--muted);font-weight:500;}
 .pf-name-filter:focus{outline:none;border-bottom-color:var(--teal-text);}
@@ -96,7 +79,6 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;position:relative;display:block;transition:color .12s;}
 .pf-col-lbl.pf-col-sortable:hover{color:var(--teal-text);}
 .pf-sort-arrow{font-size:8px;opacity:.75;display:inline-block;min-width:7px;position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:2px;}
-/* Colonne "Next event" : alignee a gauche (titre + contenu), pas centree comme les autres. */
 .pf-metric-event{text-align:left;}
 .pf-col-lbl.pf-metric-event{text-align:left;padding-left:2px;}
 .pf-col-lbl.pf-metric-event .pf-sort-arrow{position:static;transform:none;margin-left:3px;}
@@ -113,7 +95,6 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .kpi-value{font-size:var(--text-2xl);font-weight:800;color:var(--navy);line-height:1.1;}
 .kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Quattrocento Sans',serif;}
 
-/* ── TABLES ── */
 table{width:100%;border-collapse:collapse;font-size:var(--text-base);}
 thead th{background:var(--navy);color:#fff;text-align:right;padding:10px 14px;font-weight:600;font-size:12px;letter-spacing:.02em;white-space:nowrap;width:7%;}
 thead th:first-child{width:16%;}
@@ -133,7 +114,6 @@ td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
 td input[type=number]:hover{border-color:var(--border);}
 
-/* ── BADGES ── */
 .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;}
 .badge-up{background:#dcfce7;color:var(--ok);}
 .badge-dn{background:#fee2e2;color:var(--err);}
@@ -142,12 +122,10 @@ td input[type=number]:hover{border-color:var(--border);}
 .badge-gd{background:var(--gold-light);color:var(--gold-text);}
 .badge-nv{background:var(--navy-light);color:var(--navy);}
 
-/* ── ALERTS ── */
 .alert{padding:9px 13px;border-radius:8px;font-size:11px;margin-bottom:14px;border-left:3px solid;line-height:1.5;}
 .alert-warn{background:var(--gold-light);border-color:var(--gold);color:var(--gold-text);}
 .alert-info{background:var(--teal-light);border-color:var(--teal);color:var(--teal-text);}
 
-/* ── BUTTONS ── */
 .btn-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center;}
 .btn{padding:9px 20px;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;transition:transform .1s,box-shadow .1s,opacity .15s;letter-spacing:.02em;}
 .btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.1);}
@@ -158,13 +136,11 @@ td input[type=number]:hover{border-color:var(--border);}
 .btn-light{background:var(--border);color:var(--text);}
 .btn-danger{background:#fee2e2;color:#991b1b;}
 
-/* ── CONTROLS ── */
 .controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:12px 18px;background:var(--navy-light);border-radius:10px;margin-bottom:18px;border:1px solid rgba(0,1,144,.08);}
 .ctrl{display:flex;align-items:center;gap:8px;}
 .ctrl label{font-size:11px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Poppins',sans-serif;}
 .ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
 
-/* ── HEADER ANALYSE (nom + cours), compact, une seule ligne, meme typo ── */
 .analyse-header{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
 .analyse-id{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
@@ -176,7 +152,6 @@ td input[type=number]:hover{border-color:var(--border);}
 .analyse-price input#cours:focus{outline:none;border-bottom-color:var(--teal);}
 .analyse-price-cur{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);}
 
-/* ── FORMS ── */
 select,input[type=text],input[type=date],textarea{border:1px solid var(--border);border-radius:8px;padding:7px 11px;font-size:12px;background:#fff;color:var(--text);font-family:'Quattrocento Sans',serif;transition:border-color .1s,box-shadow .1s;}
 select:focus,input:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,216,194,.15);}
 textarea{resize:vertical;width:100%;}
@@ -185,13 +160,11 @@ textarea{resize:vertical;width:100%;}
 .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
 .sep{height:1px;background:var(--border);margin:16px 0;}
 
-/* ── STEP BOX ── */
 .step-box{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
 .step-num{background:var(--navy);color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
 .step-content{flex:1;}
 .step-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 
-/* ── ADJ GRIDS ── */
 .adj-eps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
 .adj-cell{text-align:center;}
 .adj-label{font-size:10px;font-weight:700;color:var(--muted);display:block;margin-bottom:4px;}
@@ -203,14 +176,11 @@ textarea{resize:vertical;width:100%;}
 .metrics-tbl td:first-child{text-align:left;font-weight:700;color:var(--navy);font-size:11px;white-space:nowrap;}
 .metrics-tbl td input{width:72px;text-align:center;border:1px solid var(--border);border-radius:5px;padding:4px;font-size:11px;font-family:'Quattrocento Sans',serif;}
 
-/* ── CHARTS ── */
 .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 
-/* ── ANNUAL CHECKBOX BOX ── */
 .annual-box{margin-top:14px;padding:12px 14px;background:var(--gold-light);border-radius:8px;border:1px solid rgba(255,215,0,.4);}
 .annual-box label.main-lbl{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;}
 
-/* ── OMNIUM BUTTONS ── */
 @keyframes omn-spin{to{transform:rotate(360deg);}}
 .omn-ring-active{stroke-dasharray:30 70 !important;transform-origin:center;transform-box:fill-box;animation:omn-spin 1s linear infinite;}
 .btn-omn-wrap{display:inline-flex;flex-direction:column;gap:5px;}
@@ -228,23 +198,19 @@ textarea{resize:vertical;width:100%;}
 .omn-vsep-white{width:1px;background:rgba(255,255,255,.18);flex-shrink:0;align-self:stretch;}
 .omn-vsep-navy{width:1px;background:rgba(0,1,144,.2);flex-shrink:0;align-self:stretch;}
 
-/* ── COLLAPSIBLE ── */
 .coll-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 0;border-bottom:1px solid var(--border);margin-bottom:10px;user-select:none;}
 .coll-hd span{font-size:11px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.04em;}
 .coll-chevron{font-size:10px;color:var(--muted);transition:transform .2s;}
 .coll-hd.open .coll-chevron{transform:rotate(180deg);}
 
-/* ── PROJ LABEL PILL ── */
 .proj-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:10px;background:var(--gold-light);color:var(--gold-text);border:1px solid rgba(255,215,0,.4);}
 .proj-pill.cagr{background:var(--teal-light);color:var(--teal-text);border-color:rgba(43,216,194,.4);}
 
-/* ── FISCAL YEAR (exercice décalé) PILL ── */
 .fy-pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;padding:4px 11px;border-radius:10px;background:var(--navy-light);color:var(--navy);border:1px solid rgba(0,1,144,.16);letter-spacing:.02em;}
 .fy-pill .fy-dot{width:6px;height:6px;border-radius:50%;background:var(--navy);opacity:.55;flex-shrink:0;}
 .fy-month-tag{display:block;font-size:9px;font-weight:600;color:var(--teal-text);opacity:.9;letter-spacing:.03em;margin-top:1px;}
 thead th .fy-month-tag{color:#8be9dc;}
 
-/* ── NEWS BAR & DETAIL ── */
 .news-bar-wrap{display:flex;flex-direction:column;gap:8px;margin:20px 0;}
 .news-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#f1f4ff;border-radius:14px;gap:12px;}
 .news-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--navy);cursor:pointer;flex:1;min-width:0;}
@@ -265,12 +231,10 @@ thead th .fy-month-tag{color:#8be9dc;}
 .news-item-date{font-size:11px;color:#94a3b8;white-space:nowrap;flex-shrink:0;font-family:'Quattrocento Sans',serif;}
 .news-empty{text-align:center;padding:48px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
 
-/* ── FOOTER ── */
 footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-top:1px solid var(--border);margin-top:22px;font-family:'Quattrocento Sans',serif;}
 
 @media(max-width:700px){.kpi-grid,.chart-grid,.form-grid{grid-template-columns:1fr 1fr;}.adj-eps-grid{grid-template-columns:repeat(3,1fr);}}
 
-/* context bullets */
 .ctx-bullet{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(226,232,240,.5);font-size:13px;line-height:1.5;}
 .ctx-bullet:last-child{border-bottom:none;}
 .ctx-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
@@ -278,7 +242,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .ctx-dot.neg{background:var(--err);}
 .ctx-dot.neu{background:var(--muted);}
 .ctx-dot.inf{background:var(--teal);}
-/* ── PRICE AUTO ── */
 .price-auto{font-size:10px;color:var(--muted);font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:4px;}
 .price-auto .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);display:inline-block;}
 .price-auto .dot.fresh{background:var(--ok);}
@@ -294,14 +257,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-header{padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;}
 .rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
 .rb-bridge-wrap{padding:0 20px 12px;}
-.rb-eps-grid{display:flex;flex-direction:column;gap:14px;padding:14px 20px 16px;}
+.rb-eps-grid{display:flex;flex-direction:column;gap:18px;padding:0 20px 16px;margin-top:18px;}
 .rb-eps-block-py{opacity:.82;}
 .rb-eps-headline{display:flex;align-items:baseline;justify-content:flex-start;gap:20px;flex-wrap:nowrap;}
-/* Typo unifiee avec la section P/E juste au-dessus (.pe-lbl/.pe-val) : meme
-   police/graisse/taille/couleur pour les libelles d'annee EPS (CY, NY, et
-   desormais PY egalement), les valeurs Omnium/Consensus, et le mot
-   "Consensus" lui-meme - un seul systeme typographique pour tout ce bloc
-   plutot que des tailles/graisses differentes par sous-element. */
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
 .rb-eps-year-py{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;margin-bottom:0;}
 .rb-eps-val{font-family:'Poppins',sans-serif;line-height:1;font-size:13px;font-weight:700;color:inherit;}
@@ -310,21 +268,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-analysts{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
-/* Bloc EPS historique (PY) replie par defaut : bouton depliant une section
-   AU-DESSUS du bloc CY, meme famille visuelle que .coll-hd deja utilisee
-   ailleurs dans l'app pour ce pattern. */
 .rb-eps-py-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 20px;user-select:none;border-bottom:1px solid var(--border);}
 .rb-eps-py-toggle span.lbl{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
 .rb-eps-py-chevron{font-size:9px;color:var(--muted);transition:transform .2s;}
 .rb-eps-py-toggle.open .rb-eps-py-chevron{transform:rotate(180deg);}
-/* Contenu du depliant "Historique" : scrollable au-dela d'une hauteur
-   raisonnable, pour accueillir sans probleme les annees qui s'accumulent
-   au fil des bascules d'exercice (voir hypothese.quarterlyEPS.historique). */
 .rb-eps-py-content{padding:12px 20px 0;display:none;max-height:280px;overflow-y:auto;}
 .rb-eps-py-content.open{display:block;}
 
 .qs-qtr-block{margin-top:8px;}
-.qtr-legend-row{display:flex;justify-content:flex-start;margin:6px 0 4px;}
+.qtr-legend-row{display:flex;justify-content:flex-start;margin:6px 0 0;}
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:8px;}
@@ -341,11 +293,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
 .pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
-.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;}
+.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;margin-left:10px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
 .pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
-.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;margin-left:10px;}
 
 #analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
   position:sticky;left:0;z-index:2;
@@ -392,13 +344,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-header{padding:12px 14px 4px;}
   .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
   .rb-bridge-wrap{padding:0 14px 12px;}
-  .rb-eps-grid{padding:12px 14px 14px;gap:9px;}
+  .rb-eps-grid{padding:0 14px 14px;gap:12px;margin-top:12px;}
   .rb-eps-year{font-size:12px;}
   .rb-eps-year-py{font-size:12px;}
   .rb-eps-annualval{font-size:12px;}
   .rb-eps-py-toggle{padding:8px 14px;}
   .rb-eps-py-content{padding:10px 14px 0;}
-  .qtr-legend-row{margin:5px 0 3px;}
+  .qtr-legend-row{margin:5px 0 0;}
   .qtr-legend{font-size:8px;gap:10px;}
   .qs-qtr-block{margin-top:6px;}
   .rb-eps-headline{gap:14px;}
@@ -412,8 +364,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .pe-lbl{font-size:11.5px;}
   .pe-val{font-size:11.5px;}
   .pe-sub{font-size:8px;}
-  .pe-exhead{font-size:8.5px;}
-  .pe-exval{font-size:11.5px;}
+  .pe-exhead{font-size:8.5px;margin-left:8px;}
+  .pe-exval{font-size:11.5px;margin-left:8px;}
   .news-bar{padding:11px 15px;border-radius:12px;}
   .news-bar-text{font-size:12px;}
   .news-section-lbl{font-size:10px;}
@@ -512,6 +464,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="last-refresh-line" style="display:none;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--muted);margin:-6px 0 16px;"></div>
   <div id="proj-pill-wrap" style="display:none;"></div>
 
+  <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
+
   <div class="card" id="analyse-tbl-card">
     <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
     <div style="overflow-x:auto;">
@@ -521,8 +475,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </table>
     </div>
   </div>
-
-  <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
 
   <div class="card" id="context-card" style="margin-bottom:18px;">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
@@ -619,6 +571,7 @@ function normalizeState(s){
   if(!s.nextEvents)s.nextEvents={};
   if(!s.newsDigest)s.newsDigest=[];
   if(!s.newsAll)s.newsAll=[];
+  if(!s.dismissedNewsDates)s.dismissedNewsDates=new Set();
   Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
   return s;
 }
@@ -629,6 +582,32 @@ function fingerprint(str){
   return h.toString(16).padStart(8,'0');
 }
 
+// Endpoint PHP dedie (a deployer sur model.omnium-capital.com, meme serveur
+// que price.php) pour synchroniser l'etat "news ignorees" entre TOUS les
+// appareils - contrairement a l'ancien mecanisme localStorage, propre a
+// chaque navigateur/appareil. GET renvoie la liste complete ; POST ajoute
+// une date. Stockage cote serveur volontairement simple (fichier JSON plat),
+// coherent avec le reste de l'infra (pas de base de donnees dediee pour
+// cette app). Absence gracieuse : si l'endpoint n'est pas encore deploye ou
+// injoignable, l'app degrade silencieusement vers "rien n'est jamais
+// ignore" plutot que de planter.
+const DISMISS_ENDPOINT='https://model.omnium-capital.com/dismiss.php';
+
+async function fetchDismissedNewsDates(){
+  try{
+    const r=await fetch(DISMISS_ENDPOINT,{signal:AbortSignal.timeout(6000)});
+    if(!r.ok)return new Set();
+    const j=await r.json();
+    return new Set(Array.isArray(j.dismissed)?j.dismissed:[]);
+  }catch(e){ return new Set(); }
+}
+
+async function postDismissedNewsDate(dateStr){
+  try{
+    await fetch(DISMISS_ENDPOINT+'?date='+encodeURIComponent(dateStr),{method:'POST',signal:AbortSignal.timeout(6000)});
+  }catch(e){}
+}
+
 async function loadState() {
   try {
     const manRes = await fetch('data/manifest.json');
@@ -636,7 +615,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`);
@@ -651,14 +630,15 @@ async function loadState() {
       })),
       fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
       fetch('data/newsDigest.json').then(r => r.ok ? r.json() : []).catch(() => []),
-      fetch('data/newsAll.json').then(r => r.ok ? r.json() : []).catch(() => [])
+      fetch('data/newsAll.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetchDismissedNewsDates()
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [] };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates };
 
-    const fp = fingerprint(JSON.stringify(jsonData));
+    const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
     if (elFp) elFp.textContent = fp;
 
@@ -1080,21 +1060,6 @@ function refreshPriceOnly(ticker){
   });
 }
 
-// Detail trimestriel/semestriel de l'EPS - voir hypothese.quarterlyEPS.
-// Retourne les morceaux a placer par renderReturnBlock.
-//
-// AFFICHAGE DE LA SOMME (Σ) - regle distincte selon le bloc :
-// - CY, NY et PY (annee N-1, affichee EN LIGNE par defaut a cote des
-//   autres) : JAMAIS de Σ affichee. Toute divergence entre le cumul
-//   trimestriel et l'EPS annuel est desormais arbitree AVEC Mathieu AVANT
-//   la livraison du JSON (voir INSTRUCTIONS.md, E5 ter point 4 revise) -
-//   un JSON livre ne devrait donc plus jamais en presenter, et PY (annee
-//   deja cloturee, comparee a son propre "adjEPS" implicite via `data`)
-//   suit la meme regle de retrait par coherence visuelle avec CY/NY.
-// - `historique` (annees N-2 et plus anciennes, repliees derriere le
-//   bouton "Historique") : Σ CONSERVEE, a titre purement informatif -
-//   aucun enjeu de coherence a arbitrer sur des annees aussi anciennes,
-//   la Σ y sert seulement de repere de lecture rapide.
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
@@ -1111,21 +1076,10 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     }
     return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}</div>`;
   };
-  // PY (annee N-1) : desormais affichee EN LIGNE par defaut, au meme titre
-  // que CY/NY (plus de toggle ni de repli specifique a cette seule annee -
-  // voir historiqueBlocks ci-dessous pour N-2 et au-dela, qui elles restent
-  // repliees). Sigma masquee, coherent avec CY/NY.
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
     html: colBlock(qe.PY, null, null, {forceActual:true, hideSum:true})
   }:null;
-  // Historique (N-2 et plus anciennes) : voir hypothese.quarterlyEPS.
-  // historique dans INSTRUCTIONS.md - tableau ACCUMULATIF (contrairement a
-  // PY/CY/NY, entierement reconstruites a chaque refresh) alimente au fil
-  // des bascules d'exercice. Chaque entree {year, periods} rend son propre
-  // bloc, Σ conservee (voir note ci-dessus). Absence gracieuse : tant
-  // qu'aucune bascule n'a eu lieu depuis l'introduction de ce champ, le
-  // tableau est vide et la section n'apparait simplement pas.
   const historiqueBlocks=(Array.isArray(qe.historique)?qe.historique:[])
     .filter(h=>h && Array.isArray(h.periods) && h.periods.length)
     .map(h=>({
@@ -1162,10 +1116,6 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   };
 }
 
-// Etat (en memoire, pas persiste) du depliant "Historique" (N-2 et plus
-// anciennes) - replie par defaut a chaque changement de titre, voir
-// renderReturnBlock. Remplace l'ancien toggle qui portait sur PY seule
-// (PY est desormais toujours affichee en ligne, voir buildQuarterlyEPS).
 let _epsHistOpen=false;
 function toggleEpsHistBlock(){
   _epsHistOpen=!_epsHistOpen;
@@ -1178,7 +1128,7 @@ function toggleEpsHistBlock(){
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
-  _epsHistOpen=false; // replie par defaut a chaque nouveau rendu (changement de titre ou de prix)
+  _epsHistOpen=false;
   const d=state.tickers[ticker];
   const {CY,LY}=yearsFor(ticker);
   const cur=tickerCur(ticker)||'€';
@@ -1192,11 +1142,6 @@ function renderReturnBlock(ticker, proj, cours){
   const total=cagrEps+yieldPct;
   const cons=(d.epsConsensus?.year===CY)?d.epsConsensus:null;
   const consNY=d.epsConsensus?.epsNY||0;
-  // Nombre d'analystes : champ STRUCTURE (epsConsensus.analystsCount /
-  // analystsCountNY), plus fiable qu'un parsing du texte libre de
-  // `source`. NY retombe sur le meme panel que CY si aucun compte
-  // specifique n'est renseigne (cas le plus frequent, meme panel de
-  // consensus pour les deux annees).
   const analystsCY=cons?.analystsCount||null;
   const analystsNY=d.epsConsensus?.analystsCountNY||cons?.analystsCount||null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
@@ -1487,12 +1432,6 @@ function renderContextBullets(ticker, proj, cours){
     ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y} : EPS fourni ${b.eps.toFixed(2)} ≠ Net/Actions ${b.implied.toFixed(2)}</div>`).join('')}
   </div>`:'';
 
-  // Detail complet de la source du consensus (fournisseur, base comptable,
-  // date) - deplace ICI depuis le bloc EPS CY/NY en haut de page pour
-  // preserver la symetrie/harmonie de ces cadres sequentiels (voir
-  // discussion de design) : seul le nombre d'analystes entre parentheses
-  // reste affiche au plus pres de la valeur Consensus, le detail complet
-  // vit desormais ici, aux cotes de la construction de l'EPS.
   const {CY:_CYforCons}=yearsFor(ticker);
   const cons=(d.epsConsensus?.year===_CYforCons)?d.epsConsensus:null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
@@ -1533,25 +1472,6 @@ function calcScore(ticker){
   return (cagrEps+yieldPct)/peFwd;
 }
 
-// ══════════════════════════════════════════════════════════════
-// NEWS — barre de notification (portefeuille, MULTI-LIGNES desormais) +
-// vue detaillee. Alimentees par data/newsDigest.json et data/newsAll.json
-// (voir collectors/merge.py), chargees dans state.newsDigest/state.newsAll
-// par loadState(). Fraicheur "vue/pas vue" geree cote client via un
-// ENSEMBLE de dates rejetees en localStorage (omniumDismissedNewsDates,
-// remplace l'ancienne cle a date unique) - jamais de compte serveur ni
-// d'ecriture partagee : chaque navigateur a son propre etat, le clic d'une
-// personne n'affecte jamais ce que voient les autres.
-//
-// DESIGN : une ligne PAR JOUR ayant au moins 1 news (pas une ligne
-// cumulative unique) ; jusqu'a 10 lignes affichees (plus recentes en
-// haut), le reste au-dela de 10 reste dans newsDigest.json mais n'est plus
-// affiche comme ligne active - la vue detaillee (newsAll.json) reste de
-// toute facon la source exhaustive, non filtree par le statut vu/pas vu.
-// Chaque ligne : cliquer sur le TEXTE navigue vers la vue detaillee (et
-// marque ce jour comme vu au passage) ; la CROIX a droite dismisse ce jour
-// precis sans naviguer nulle part.
-// ══════════════════════════════════════════════════════════════
 const NEWS_DISMISSED_KEY='omniumDismissedNewsDates';
 const NEWS_MAX_LINES=10;
 const NEWS_COUNT_CAP=40;
@@ -1571,22 +1491,13 @@ function formatNewsDayMonth(iso){
   return isNaN(day)?iso:`${day} ${month}`;
 }
 
-function getDismissedNewsDates(){
-  try{ return new Set(JSON.parse(localStorage.getItem(NEWS_DISMISSED_KEY)||'[]')); }
-  catch(e){ return new Set(); }
-}
-function addDismissedNewsDate(dateStr){
-  const s=getDismissedNewsDates();
-  s.add(dateStr);
-  try{ localStorage.setItem(NEWS_DISMISSED_KEY, JSON.stringify([...s])); }catch(e){}
-}
-
-// Liste des lignes actives a afficher : les jours non-dismisses, tries du
-// plus recent au plus ancien, plafonnes a NEWS_MAX_LINES.
+// Liste des lignes actives a afficher : les jours non-dismisses (selon
+// l'etat PARTAGE cote serveur, state.dismissedNewsDates, voir loadState),
+// tries du plus recent au plus ancien, plafonnes a NEWS_MAX_LINES.
 function newsBarLines(){
   const digest=state.newsDigest||[];
   if(!digest.length)return [];
-  const dismissed=getDismissedNewsDates();
+  const dismissed=state.dismissedNewsDates||new Set();
   return digest
     .filter(e=>e && (+e.total||0)>0 && !dismissed.has(e.date))
     .slice()
@@ -1611,19 +1522,25 @@ function renderNewsBar(){
   }).join('')}</div>`;
 }
 
-// Clic sur le TEXTE d'une ligne : marque ce jour comme vu (on vient de le
-// consulter) et bascule vers la vue detaillee complete.
+// Clic sur le TEXTE d'une ligne : navigue UNIQUEMENT vers la vue detaillee.
+// Ne dismisse plus la ligne au passage (correctif demande : sur mobile, un
+// tap sur le texte etait interprete a tort comme une dismissal implicite -
+// desormais SEULE la croix dismisse, sans exception, quel que soit
+// l'appareil).
 function openNewsDetailForDate(dateStr){
-  addDismissedNewsDate(dateStr);
-  renderNewsBar();
   showTab('news', null);
 }
 
-// Clic sur la CROIX : dismisse uniquement CE jour, sans naviguer nulle
-// part - la ligne disparait, les autres restent.
+// Clic sur la CROIX : SEUL point d'entree qui dismisse une ligne. Mise a
+// jour optimiste locale immediate (retour visuel instantane) PUIS
+// synchronisation serveur en arriere-plan (voir postDismissedNewsDate) -
+// c'est cette synchronisation qui rend la dismissal visible sur TOUS les
+// appareils au prochain chargement, pas seulement celui d'origine.
 function dismissNewsLine(dateStr){
-  addDismissedNewsDate(dateStr);
+  if(!state.dismissedNewsDates) state.dismissedNewsDates=new Set();
+  state.dismissedNewsDates.add(dateStr);
   renderNewsBar();
+  postDismissedNewsDate(dateStr);
 }
 
 function groupNewsAll(){
