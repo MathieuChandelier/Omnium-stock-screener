@@ -231,6 +231,15 @@ thead th .fy-month-tag{color:#8be9dc;}
 .news-item-date{font-size:11px;color:#94a3b8;white-space:nowrap;flex-shrink:0;font-family:'Quattrocento Sans',serif;}
 .news-empty{text-align:center;padding:48px;color:var(--muted);font-family:'Quattrocento Sans',serif;}
 
+/* ── IDENTITE UTILISATEUR (mini-formulaire premiere visite) ── */
+#uid-overlay{position:fixed;inset:0;background:rgba(0,1,74,.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;z-index:10000;padding:20px;}
+.uid-modal{background:#fff;border-radius:16px;padding:28px 26px;max-width:340px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.uid-modal-title{font-family:'Poppins',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+.uid-modal-sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:18px;}
+.uid-modal-input{width:100%;border:1.5px solid var(--border);border-radius:9px;padding:10px 12px;font-size:14px;font-family:'Poppins',sans-serif;margin-bottom:12px;}
+.uid-modal-input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,216,194,.15);}
+.uid-modal-btn{width:100%;text-align:center;}
+
 footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-top:1px solid var(--border);margin-top:22px;font-family:'Quattrocento Sans',serif;}
 
 @media(max-width:700px){.kpi-grid,.chart-grid,.form-grid{grid-template-columns:1fr 1fr;}.adj-eps-grid{grid-template-columns:repeat(3,1fr);}}
@@ -593,9 +602,69 @@ function fingerprint(str){
 // ignore" plutot que de planter.
 const DISMISS_ENDPOINT='https://model.omnium-capital.com/dismiss.php';
 
+// ══════════════════════════════════════════════════════════════
+// IDENTITE UTILISATEUR (leger, sans mot de passe) — permet de scoper la
+// dismissal des news PAR PERSONNE plutot que globalement pour tout le
+// monde qui charge la page. Demande le prenom UNE SEULE FOIS par appareil
+// (stocke ensuite en localStorage, jamais redemande sur ce meme appareil).
+// NORMALISATION : le nom saisi est reduit a un identifiant stable
+// (minuscules, sans accents, sans espaces/ponctuation) - "Mathieu" et
+// "mathieu " donnent le meme identifiant "mathieu", donc taper le meme
+// prenom sur desktop et mobile pointe vers le MEME compte cote serveur,
+// sans jamais avoir besoin de mot de passe pour le prouver. Aucune
+// verification d'unicite/collision n'est faite (deux personnes au meme
+// prenom partageraient le meme compte) - limite assumee pour cette
+// premiere version "sans mot de passe".
+// ══════════════════════════════════════════════════════════════
+const USER_ID_KEY='omniumUserId';
+
+function slugifyUserName(name){
+  return String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'').trim();
+}
+function getUserId(){
+  try{ return localStorage.getItem(USER_ID_KEY)||''; }catch(e){ return ''; }
+}
+function setUserId(id){
+  try{ localStorage.setItem(USER_ID_KEY, id); }catch(e){}
+}
+
+// Bloque le demarrage de l'app UNIQUEMENT si aucun identifiant n'est deja
+// stocke sur cet appareil (premiere visite) - affiche un mini-formulaire
+// plein ecran, resout des que le prenom est saisi et valide.
+function ensureUserIdentity(){
+  return new Promise(resolve=>{
+    const existing=getUserId();
+    if(existing){ resolve(existing); return; }
+    const overlay=document.createElement('div');
+    overlay.id='uid-overlay';
+    overlay.innerHTML=`
+      <div class="uid-modal">
+        <div class="uid-modal-title">Qui êtes-vous ?</div>
+        <div class="uid-modal-sub">Pour synchroniser vos préférences (news déjà vues) entre vos appareils. Pas de mot de passe à ce stade.</div>
+        <input type="text" id="uid-input" class="uid-modal-input" placeholder="Votre prénom" autocomplete="off">
+        <button class="btn btn-primary uid-modal-btn" id="uid-submit-btn" type="button">Continuer</button>
+      </div>`;
+    document.body.appendChild(overlay);
+    const input=overlay.querySelector('#uid-input');
+    const btn=overlay.querySelector('#uid-submit-btn');
+    const submit=()=>{
+      const slug=slugifyUserName(input.value);
+      if(!slug){ input.focus(); return; }
+      setUserId(slug);
+      overlay.remove();
+      resolve(slug);
+    };
+    btn.addEventListener('click',submit);
+    input.addEventListener('keydown',e=>{ if(e.key==='Enter')submit(); });
+    setTimeout(()=>input.focus(),50);
+  });
+}
+
 async function fetchDismissedNewsDates(){
+  const userId=getUserId();
+  if(!userId)return new Set();
   try{
-    const r=await fetch(DISMISS_ENDPOINT,{signal:AbortSignal.timeout(6000)});
+    const r=await fetch(DISMISS_ENDPOINT+'?user='+encodeURIComponent(userId),{signal:AbortSignal.timeout(6000)});
     if(!r.ok)return new Set();
     const j=await r.json();
     return new Set(Array.isArray(j.dismissed)?j.dismissed:[]);
@@ -603,8 +672,10 @@ async function fetchDismissedNewsDates(){
 }
 
 async function postDismissedNewsDate(dateStr){
+  const userId=getUserId();
+  if(!userId)return;
   try{
-    await fetch(DISMISS_ENDPOINT+'?date='+encodeURIComponent(dateStr),{method:'POST',signal:AbortSignal.timeout(6000)});
+    await fetch(DISMISS_ENDPOINT+'?user='+encodeURIComponent(userId)+'&date='+encodeURIComponent(dateStr),{method:'POST',signal:AbortSignal.timeout(6000)});
   }catch(e){}
 }
 
@@ -1748,6 +1819,7 @@ function startPricePoll(){
 }
 
 document.addEventListener('DOMContentLoaded', async function(){
+  await ensureUserIdentity();
   state = await loadState();
   const keys = Object.keys(state.tickers);
   let lastView=null;
