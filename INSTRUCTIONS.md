@@ -577,11 +577,19 @@ Sous-champs :
   1. l'ANCIEN `PY` (celui du JSON fourni en entree, sur le point d'etre
      ecrase) est pousse en tete de `historique` (voir mecanique dediee
      ci-dessus) ;
-  2. le bloc `CY` du refresh PRECEDENT (dont toutes les periodes sont
-     desormais `actual:true` par construction, l'annee etant close)
-     devient le nouveau `PY` - reprends ses valeurs telles quelles
-     (eventuellement recalees sur le chiffre definitif publie si different
-     de la derniere estimation).
+  2. le bloc `CY` du refresh PRECEDENT devient le nouveau `PY` - mais AVANT
+     de le reprendre, VERIFIE ACTIVEMENT (au moyen du communique/transcript
+     correspondant, jamais une recopie a l'aveugle) la ou les periodes qui
+     etaient encore `actual:false` dans ce bloc (typiquement une seule -
+     ex. le H2 ou le T4 du desormais-ancien exercice, puisque les periodes
+     anterieures etaient deja `actual:true` et n'ont pas besoin d'etre
+     re-verifiees). RECALE la valeur sur le chiffre definitif publie s'il
+     differe de l'estimation portee dans l'ancien `CY` - ce n'est PAS une
+     etape optionnelle ("eventuellement" ne veut pas dire "si l'occasion
+     se presente") : c'est la seule recherche specifique qu'exige cette
+     bascule, bornee a cette derniere periode. Puis marque TOUTES les
+     periodes de ce nouveau `PY` `actual:true` (l'exercice est desormais
+     integralement clos).
   Puis construis un `CY` entierement neuf pour le nouvel exercice en
   cours. Le libelle affiche (`EPS {CY-1}`) est calcule par l'app a partir
   de `CY`, jamais code en dur cote assistant - aucune action requise cote
