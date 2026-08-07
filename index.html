@@ -49,6 +49,7 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 
 .card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
 #analyse-tbl-card{background:transparent;box-shadow:none;padding:0;}
+#return-block,#context-card{background:transparent;box-shadow:none;padding:0;}
 .card-title{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:14px;}
 .card-title b{color:var(--navy);}
 
@@ -143,7 +144,7 @@ td input[type=number]:hover{border-color:var(--border);}
 
 .analyse-header{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
 .analyse-id{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;}
+.analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;margin-left:2px;}
 .analyse-price-wrap{display:flex;align-items:baseline;gap:8px;}
 .analyse-price{display:flex;align-items:baseline;gap:0;}
 .analyse-price input#cours{border:none;border-bottom:1.5px solid transparent;background:transparent;font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);padding:0 1px 1px 0;width:60px;text-align:right;transition:border-color .15s;-moz-appearance:textfield;}
@@ -263,10 +264,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pf-ml-mobile{display:none;}
 .pf-sort-mobile{display:none;}
 
-.rb-header{padding:10px 20px 6px;display:flex;align-items:center;justify-content:space-between;}
-.rb-total-row{display:flex;align-items:center;padding:0 20px 10px;gap:14px;}
-.rb-bridge-wrap{padding:0 20px 12px;}
-.rb-eps-grid{display:flex;flex-direction:column;gap:18px;padding:0 20px 16px;margin-top:18px;}
+.rb-header{padding:10px 0 6px;display:flex;align-items:center;justify-content:space-between;}
+.rb-total-row{display:flex;align-items:center;padding:0 0 10px;gap:14px;}
+.rb-bridge-wrap{padding:0 0 12px;}
+.rb-eps-grid{display:flex;flex-direction:column;gap:18px;padding:0 0 16px;margin-top:18px;}
 .rb-eps-block-py{opacity:.82;}
 .rb-eps-headline{display:flex;align-items:baseline;justify-content:flex-start;gap:20px;flex-wrap:nowrap;}
 .rb-eps-year{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
@@ -277,11 +278,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .rb-eps-analysts{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);}
 .rb-eps-src{font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;}
 
-.rb-eps-py-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 20px;user-select:none;border-bottom:1px solid var(--border);}
+.rb-eps-py-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:8px 0;user-select:none;border-bottom:1px solid var(--border);}
 .rb-eps-py-toggle span.lbl{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
 .rb-eps-py-chevron{font-size:9px;color:var(--muted);transition:transform .2s;}
 .rb-eps-py-toggle.open .rb-eps-py-chevron{transform:rotate(180deg);}
-.rb-eps-py-content{padding:12px 20px 0;display:none;max-height:280px;overflow-y:auto;}
+.rb-eps-py-content{padding:12px 0 0;display:none;max-height:280px;overflow-y:auto;}
 .rb-eps-py-content.open{display:block;}
 
 .qs-qtr-block{margin-top:8px;}
@@ -301,7 +302,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
-.pe-stack{padding:14px 20px 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
+.pe-stack{padding:14px 0 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
 .pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;margin-left:10px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
 .pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
@@ -350,15 +351,15 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   #analyse-tbl tbody td{padding:7px 10px;}
   #analyse-tbl tbody td:first-child{font-size:10px;padding-right:6px;}
   #analyse-tbl thead th:first-child{width:auto;min-width:98px;padding-right:6px;}
-  .rb-header{padding:12px 14px 4px;}
-  .rb-total-row{padding:2px 14px 10px;gap:12px;flex-wrap:wrap;}
-  .rb-bridge-wrap{padding:0 14px 12px;}
-  .rb-eps-grid{padding:0 14px 14px;gap:12px;margin-top:12px;}
+  .rb-header{padding:12px 0 4px;}
+  .rb-total-row{padding:2px 0 10px;gap:12px;flex-wrap:wrap;}
+  .rb-bridge-wrap{padding:0 0 12px;}
+  .rb-eps-grid{padding:0 0 14px;gap:12px;margin-top:12px;}
   .rb-eps-year{font-size:12px;}
   .rb-eps-year-py{font-size:12px;}
   .rb-eps-annualval{font-size:12px;}
-  .rb-eps-py-toggle{padding:8px 14px;}
-  .rb-eps-py-content{padding:10px 14px 0;}
+  .rb-eps-py-toggle{padding:8px 0;}
+  .rb-eps-py-content{padding:10px 0 0;}
   .qtr-legend-row{margin:5px 0 0;}
   .qtr-legend{font-size:8px;gap:10px;}
   .qs-qtr-block{margin-top:6px;}
@@ -369,7 +370,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .chip-v{font-size:9.5px;}
   .qs-sum{font-size:8px;}
   .coherence{font-size:8px;margin-top:5px;}
-  .pe-stack{padding:10px 14px 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
+  .pe-stack{padding:10px 0 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
   .pe-lbl{font-size:11.5px;}
   .pe-val{font-size:11.5px;}
   .pe-sub{font-size:8px;}
@@ -382,7 +383,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .news-company-name{font-size:12.5px;}
   .news-item-row a{font-size:12px;}
   .news-item-date{font-size:10px;}
-  #context-card{padding:14px}
+  #context-card{padding:0}
   footer{padding:14px;font-size:9.5px;}
 }
 </style>
@@ -1140,10 +1141,14 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
     let sumHtml='', noteHtml='';
     if(!opts.hideSum){
-      const delta=(annual>0)?((sum-annual)/annual*100):null;
-      const material=delta!=null&&Math.abs(delta)>=3;
-      const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
-      sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+      if(opts.hideDelta){
+        sumHtml=`<div class="qs-sum">Σ ${sum.toFixed(2)}${cur||'$'}</div>`;
+      }else{
+        const delta=(annual>0)?((sum-annual)/annual*100):null;
+        const material=delta!=null&&Math.abs(delta)>=3;
+        const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
+        sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
+      }
     }
     return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}</div>`;
   };
@@ -1181,8 +1186,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   return {
     pyBlock,
     historiqueBlocks,
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideSum:true}),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideSum:true}),
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideDelta:true}),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideDelta:true}),
     peStack
   };
 }
@@ -1490,7 +1495,7 @@ function formatThesisText(txt, insertAfterFirst){
   const flush=()=>{
     const t=buf.join('\n');
     if(t.trim()){
-      html+=`<div style="font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;margin-bottom:10px;">${esc(t)}</div>`;
+      html+=`<div style="font-size:12px;color:var(--text);line-height:1.6;white-space:pre-wrap;margin-bottom:10px;padding-left:6px;">${esc(t)}</div>`;
     }
     buf=[];
   };
@@ -1666,10 +1671,19 @@ function dismissNewsLine(dateStr){
   postDismissedNewsDate(dateStr);
 }
 
-// filterDate : si fourni, ne conserve QUE les items dont dateEvenement
-// correspond exactement - sinon (null), comportement inchange (tout).
+// filterDate : si fourni, ne conserve QUE les items dont dateCollecte
+// correspond exactement - PAS dateEvenement (correctif : le digest, voir
+// merge.py update_digest(), regroupe ses lignes par date de COLLECTE - le
+// jour ou le run a tourne - pas par date de l'evenement sous-jacent. Un
+// item dont l'evenement date d'hier mais collecte aujourd'hui est compte
+// dans la ligne "aujourd'hui" du digest ; filtrer sur dateEvenement le
+// faisait donc disparaitre a tort de la vue detaillee correspondante,
+// donnant l'impression trompeuse d'une ligne "vide" alors que le compteur
+// affichait bien un total > 0). Le tri interne reste sur dateEvenement
+// (ordre de lecture chronologique de l'evenement lui-meme, inchange) -
+// seul le FILTRE change de champ.
 function groupNewsAll(filterDate){
-  const all=(state.newsAll||[]).filter(it=>!filterDate || it.dateEvenement===filterDate);
+  const all=(state.newsAll||[]).filter(it=>!filterDate || it.dateCollecte===filterDate);
   const byType={};
   all.forEach(it=>{
     if(!it||!it.type)return;
