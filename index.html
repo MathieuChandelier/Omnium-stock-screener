@@ -1154,6 +1154,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   };
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
+    annualEps: qe.PY.reduce((a,p)=>a+(+p.eps||0),0),
     html: colBlock(qe.PY, null, null, {forceActual:true, hideSum:true})
   }:null;
   const historiqueBlocks=(Array.isArray(qe.historique)?qe.historique:[])
@@ -1262,6 +1263,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${qeBlock.pyBlock.year}</span>
+          <span class="rb-eps-annualval">${qeBlock.pyBlock.annualEps>0?qeBlock.pyBlock.annualEps.toFixed(2)+cur:'—'}</span>
         </div>
         ${qeBlock.pyBlock.html}
       </div>`:''}
@@ -1560,12 +1562,12 @@ function renderContextBullets(ticker, proj, cours){
   const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>`;
   traceEl.innerHTML=`<div>
     ${dcBanner}
+    ${cqBanner}
     ${consSourceBanner}
     ${dateSourceLine}
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
     ${ownBanner}
     ${compBanner}
-    ${cqBanner}
     ${partBanner}
     ${cohBanner}
   </div>`;
