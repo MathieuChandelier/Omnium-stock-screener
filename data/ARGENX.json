@@ -81,18 +81,65 @@
     ],
     "note": "Un seul element identifie, toujours au stade d'enquete preliminaire sans plainte deposee confirmee (contrairement a d'autres dossiers Pomerantz de la meme periode ou une class action a ete formellement annoncee). A reverifier lors d'un prochain refresh si le statut evolue. Champ absent de l'ancien JSON : premiere population a l'occasion de ce refresh."
   },
+  "coherenceQualitative": {
+    "asOf": "2026-08-07",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-23",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Minter (analyste, saisonnalite T2 vs reste de l'annee) - la direction (Sandrine Piret-Gerard) confirme un rebond classique post-T1 et anticipe une forme de courbe similaire aux annees precedentes sur le reste de l'exercice malgre le bon depart de la seronegative gMG.",
+          "Q Archila (Wells Fargo, statut du dossier ocular MG et impact sur la trajectoire de revenus) - la direction se dit tres confiante que cette indication constituera un nouveau relais de croissance long terme.",
+          "Q Thompson (Stifel, donnees topline attendues en myositis et voie de depot en DM) - Karen Massey indique qu'une approbation constituerait la premiere autorisation FcRn en rhumatologie, et que la societe recherche des donnees positives sur le critere primaire dans un ou plusieurs sous-groupes.",
+          "Q Tiwari (Jefferies, sur la taille/duree de l'essai myositis) - le CMO Luc Truyen reconnait qu'un essai deux fois plus long et large augmente la probabilite de significativite statistique sans la garantir, et que la societe determinera sa trajectoire une fois les donnees lues, positives ou non.",
+          "Q Sharma (Goldman Sachs, enseignements de l'etude DGF pour MMN) - le CMO precise que l'etude Phase 2 DGF (transplantation) etait une etude exploratoire de preuve de concept et que ses resultats ne soutiennent PAS une indication DGF ; Karen Massey ajoute qu'aucun lien de causalite n'est a tirer avec MMN, le point de donnee le plus important pour MMN restant les resultats positifs de Phase 2 sur la force de prehension (partie A et extension en ouvert).",
+          "Q Suneja (Guggenheim, profil Phase 1 du programme IgAN ARGX-One2One) - le CMO se dit tres enthousiaste sur le signal de Phase 1, cite un accueil positif des leaders d'opinion, et met en avant la rapidite et la profondeur du programme par rapport aux autres efforts IgAN du secteur.",
+          "Q Werber (Cowen, design de l'etude MMN) - le CMO confirme que le critere primaire est la force de prehension, avec une marge de non-inferiorite definie a partir de donnees IVIG existantes, et une option de viser la superiorite compte tenu des donnees de Phase 2.",
+          "Q analyste Truist pour Danielle Brill (dynamique commerciale CIDP vs essais empasiprubart) - la Chief Commercialization Officer confirme l'intention d'analyser conjointement les donnees VYVGART et empasiprubart une fois le readout disponible pour affiner la strategie commerciale.",
+          "Q Smith (Leerink, strategie de portefeuille FcRn 213/124 vs VYVGART) - Karen Massey precise qu'ARGX-213 a un schema d'administration hebdomadaire au T4, qu'ARGX-124 est encore en cours de caracterisation de ses avantages differentiels, et qu'un programme FcRn oral progresse egalement rapidement.",
+          "Q Semenkow (Citi, dynamique des patients CIDP naifs de traitement) - la Chief Commercialization Officer indique une traction croissante mais progressive chez les patients naifs, freinee par des habitudes de prescription ancrees et par des payeurs exigeant une experience prealable sous IVIG.",
+          "Q Clark Gartner (Evercore, impact de l'actualite riliprubart sur le programme CIDP empasiprubart) - Karen Massey rappelle que le programme CIDP d'empasiprubart comprend deux etudes distinctes (tete-a-tete vs IVIG et controlee par placebo) ; le CMO indique que cette actualite renforce sa confiance sur l'etude IVIG.",
+          "Q Flock (BNP Paribas, dynamique du pre-filled syringe et de l'autoinjecteur) - Karen Massey confirme que l'autoinjecteur VYVGART SC reste sur la trajectoire d'un lancement en 2027.",
+          "Q analyste RBC pour Luca Issey (seuil de significativite statistique/alpha des essais myositis) - le CMO refuse de divulguer la valeur d'alpha retenue, precisant que meme un alpha entre 0,05 et 0,1 pourrait ouvrir une discussion reglementaire dans ces maladies rares, et confirme que les donnees seront bientot disponibles.",
+          "Q Ding (Redburn, criteres de selection des actifs de business development) - Karen Massey indique rechercher des actifs a fort besoin medical non couvert, premiers ou meilleurs de leur categorie, aussi bien pour le pipeline interne que pour le BD.",
+          "Q Xiandeng (UBS, rationnel biologique IMNM vs DM en myositis) - le CMO indique que les deux sous-types sont pilotes par des auto-anticorps mais que le signal de Phase 2 en DM n'etait pas explicable par la voie de l'interferon de type 1, justifiant une approche differenciee de celle d'autres acteurs du secteur."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "autoinjecteur_vyvgart_sc_2027",
+        "quarterOrigine": "Q2 26",
+        "engagement": "Autoinjecteur VYVGART SC positionne pour un lancement sur l'ensemble des indications approuvees en 2027 - confirme explicitement en Q&A (question Flock/BNP Paribas) comme etant toujours sur la trajectoire prevue.",
+        "echeance": "2027-Q4",
+        "statut": "en_cours"
+      },
+      {
+        "id": "myositis_phase3_assurance_h2_2027",
+        "quarterOrigine": "Q2 26",
+        "engagement": "Donnees de l'etude de Phase 3 'ASSURE' en myositis (au-dela de la lecture Phase 2/3 ALKIVIA attendue T3 26) attendues au second semestre 2027, fondation d'un leadership plus large en rhumatologie selon la CEO.",
+        "echeance": "2027-H2",
+        "statut": "en_cours"
+      }
+    ]
+  },
   "hypothese": {
-    "date": "2026-08-03",
+    "date": "2026-08-07",
     "priorEPS": {
-      "date": "2026-07-06",
+      "date": "2026-08-03",
       "eps": {
-        "2026": 26.9,
-        "2027": 38.52
+        "2026": 29.89,
+        "2027": 41.22
       }
     },
-    "source": "Harmonisation structurelle du schema (03/08/2026) - alignement sur la version courante du protocole (ajout communiqueAnalyse/transcriptAnalyse, guidanceLongTermeHistory, quarterlyEPS via E5 ter) ; aucune nouvelle publication de resultats depuis le refresh du 23/07/2026 (Q2/S1 26) - these, ancrages et adjXXX inchanges.",
+    "source": "Refresh de sourcing (07/08/2026) - transcript complet du call T2 26 desormais disponible et lu (Benzinga), completant le communique deja analyse le 23/07/2026. Aucune nouvelle publication de resultats depuis (prochain trimestre Q3 26 attendu le 22/10/2026) - these, ancrages et adjXXX inchanges. Objet de cette passe : marquer transcriptAnalyse=true sur dernierCall (T2 26), et proceder a la premiere population de coherenceQualitative (champ absent des refresh precedents), via capture systematique du Q&A du transcript desormais lu.",
     "dernierCall": {
       "quarter": "Q2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
           "actual": 1516,
@@ -111,15 +158,65 @@
         "Flux de tresorerie d'exploitation S1 26 nettement positif (+0,7 Md$ contre -0,4 Md$ au S1 25), tresorerie totale portee a 5,2 Md$ (contre 4,4 Md$ fin 2025) - generation de cash plus rapide que prevu.",
         "Elargissement du pipeline au-dela des catalyseurs deja suivis : etude d'enregistrement lancee dans la maladie de Graves, signal positif de l'etude Phase 2 VARVARA (empasiprubart en transplantation/DGF) a 52 semaines, dix molecules attendues en developpement clinique d'ici fin 2026.",
         "Les deux binaires majeurs de la these (lecture topline ALKIVIA en myositis au T3 26, lecture topline EMPASSION en MMN au T4 26) restent confirmes sur le calendrier annonce, toujours non resolus et hors modele."
-      ],
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": false
+      ]
     },
     "guidanceHistory": [],
     "guidanceLongTerme": "Vision 2030 : traiter 50 000 patients dans le monde, obtenir 10 indications labellisees, faire progresser 5 candidats pipeline en developpement d'enregistrement d'ici 2030 - reaffirmee sans changement au T2 26, cible qualitative non chiffree financierement.",
+    "guidanceLongTermeHistory": [],
     "summary": "Franchise VYVGART toujours en hypercroissance rentable (CA +60% YoY, marge operationnelle S1 a 31% contre 19% un an plus tot), deux binaires reglementaires resolus positivement (seronegative gMG, ocular MG), dilution confirmee quasi nulle. Les deux binaires pipeline majeurs (myositis T3, MMN T4) restent a venir.",
-    "text": "== SYNTHESE DE LA THESE ==\nLa these de compounder de croissance rentable se confirme et se renforce au S1 2026 : ventes nettes produit S1 a 2 813 M$ (+62% YoY), marge operationnelle a 31,1% (contre 19,2% au S1 25) - le levier operationnel anticipe a la creation se materialise plus vite que prevu. Deux des binaires reglementaires suivis a la creation se sont resolus POSITIVEMENT au T2 : le label VYVGART/VYVGART Hytrulo a ete elargi a tous les serotypes de gMG (seronegative inclus, lance aux Etats-Unis) et les resultats ADAPT OCULUS ont ete positifs, ouvrant la voie a l'extension en ocular MG - deux catalyseurs qui etaient explicitement identifies comme binaires non-chiffres a la creation et qui viennent alimenter la croissance confirmee. La dilution reste quasi nulle (actions diluees moyennes S1 26 a 64,4M, en leger repli vs 65,6M un an plus tot), validant l'ancrage central de la these selon lequel argenx s'autofinance desormais sans lever de capital. Le bilan continue de se renforcer (tresorerie totale 5,2 Md$, flux de tresorerie d'exploitation S1 nettement positif a +0,7 Md$), laissant une capacite de deploiement en BD/licensing intacte et meme accrue. Les deux binaires pipeline les plus importants pour la suite de la these - lecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) - restent non resolus et hors modele : c'est la ou se jouera la validation ou l'invalidation de l'expansion au-dela de la franchise FcRn/gMG-CIDP sur l'horizon 2027+.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Lancement du label elargi seronegative gMG aux Etats-Unis (resolution positive du binaire PDUFA suivi depuis la creation) - VYVGART devient le seul traitement approuve pour l'ensemble des serotypes de gMG adultes. (i) Resultats ADAPT OCULUS positifs, ouvrant la voie a l'extension en ocular MG (oMG) - deuxieme binaire resolu positivement au T2. (ii) Etude d'enregistrement lancee dans la maladie de Graves (nouvelle indication, extension vers l'auto-immunite thyroidienne) - non chiffree dans le modele, optionnalite pure. (ii) Signal positif de l'etude Phase 2 VARVARA (empasiprubart, delayed graft function en transplantation) a 52 semaines, soutenant une evaluation plus poussee dans ce contexte - optionnalite pipeline additionnelle. (ii) Programme ADAPT-Forward en cours (empasiprubart en association avec efgartigimod dans la gMG) - exploration de combinaisons intra-portefeuille. (iii) Autoinjecteur VYVGART SC positionne pour un lancement en 2027 sur l'ensemble des indications approuvees - amelioration de l'experience patient/potentiel de switch de canal, non chiffre. (iii) Transition de gouvernance actee en mai 2026 : Karen Massey (COO depuis mars 2023) nommee CEO, le fondateur Tim Van Hauwermeiren devenant President non-executif du Conseil - continuite strategique explicite, 90,9% du capital represente a l'AG 2026 en soutien. Aucun impact chiffrable sur le modele, mais point de gouvernance a noter. (iii) Enquete de cabinets d'avocats plaignants (Pomerantz en tete) ouverte depuis juillet-aout 2025 suite a une alerte FDA sur un risque potentiel d'aggravation de la CIDP sous VYVGART Hytrulo - toujours au stade d'enquete preliminaire a la date de ce refresh, sans plainte formellement deposee confirmee (voir champ compliance).\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : communique officiel des resultats S1/T2 2026 (23/07/2026, 7h00 CET, argenx.com/globenewswire). CA T2 1 516 M$ (+60% YoY, +17% QoQ) vs consensus ~1 450 M$ (estimation secondaire, non officielle) - large depassement. EPS dilue T2 7,32$ vs consensus Zacks 5,86$ (+25% de surprise). Marge operationnelle T2 32,0% (sur total operating income), S1 31,1% (contre 19,2% au S1 25). Charge d'impot S1 119 M$ sur un resultat avant impot de 958 M$, ETR 12,4% (proche de l'hypothese normative ~14% retenue a la creation, legerement favorable). Produits financiers S1 92 M$ (annualise ~184 M$/an, coherent avec l'hypothese de creation ~200 M$/an) ; pertes de change S1 -19 M$ (contre +76 M$ de gains un an plus tot - swing de change notable, traite comme bruit non modelise explicitement). Tresorerie totale (cash + equivalents + actifs financiers courants) 5,2 Md$ au 30/06/2026 (contre 4,4 Md$ fin 2025). Flux de tresorerie d'exploitation S1 +0,7 Md$ (contre -0,4 Md$ au S1 25). Prochain refresh utile : resultats T3 2026 (22/10/2026), qui devrait coincider avec ou suivre de peu la lecture topline ALKIVIA (myositis) - refresh evenementiel a anticiper des la publication du readout si celui-ci intervient avant.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee : \"ca\" = ventes nettes produit, \"ebit\" = operating profit publie (IFRS), reporte en USD. Pas de mise a jour de \"data\" a ce refresh (exercice fiscal 2026 non cloture). Tax normatif maintenu ~13-14%, valide par l'ETR S1 26 observe (12,4%). Produits financiers ~200 M$/an valides par le S1 26 (92 M$ sur 6 mois, annualise ~184 M$). adjShares : dilution quasi nulle confirmee (64,4M diluees S1 26 vs hypothese FY26 de 66,5M a la creation - tendance meme plus favorable que prevu). WATCH-LIST pour le prochain refresh : (1) lecture topline ALKIVIA (myositis) attendue T3 26 - binaire majeur ; (2) lecture topline EMPASSION (MMN, empasiprubart) attendue T4 26 - binaire majeur, deuxieme produit potentiel ; (3) suite de l'enquete Pomerantz (statut sollicitation, verifier si escalade en plainte formelle) ; (4) montant et calendrier d'un eventuel deploiement de la tresorerie en BD/licensing ; (5) trajectoire de la marge operationnelle sur un H2 historiquement plus charge en R&D (multiples etudes d'enregistrement en cours).\n\n== HARMONISATION STRUCTURELLE (03/08/2026) ==\nPassage technique sans nouvelle publication ni revision de these : ajout des champs communiqueAnalyse/transcriptAnalyse (transcriptAnalyse mis a false - hypothese.source indique explicitement que le transcript verbatim du call n'a pas ete retrouve a la creation, seuls le communique et des sources secondaires recoupees ont ete utilises ; a rechercher activement au prochain refresh), guidanceLongTermeHistory (tableau vide, Vision 2030 reaffirmee sans changement depuis la creation) et quarterlyEPS. Ce dernier a ete construit selon E5 ter directement sur base GAAP publiee (aucun retraitement necessaire, argenx n'a pas d'element non-operationnel de type gain de reevaluation identifie a ce jour) : T1 26 = 5,68$ (deduit par difference entre le S1 26 total de 13,00$ deja documente et le T2 26 de 7,32$) ; T2 26 = 7,32$ (publie, deja dans dernierCall). T3-T4 26 et l'ensemble de NY 27 estimes par prolongation de la dynamique sequentielle recente et convergent exactement vers adjEPS[2026]=29,89$ et adjEPS[2027]=41,22$ deja figes (ecart nul, aucune note de coherence necessaire). adjXXX, ancrages, ownership et compliance restent ceux du refresh du 23/07/2026 et n'ont pas ete rouverts par cette passe.\n\n== CATALYSEURS ==\nLecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) sont les deux catalyseurs binaires majeurs de la deuxieme moitie de l'annee, determinant l'expansion de la these au-dela de la franchise FcRn/gMG-CIDP deja validee ; au-dela, le lancement effectif de l'autoinjecteur VYVGART SC (2027) et la montee en puissance des nouvelles indications (Graves, ocular MG, seronegative gMG) conditionnent la trajectoire de CA 2027-2028.",
     "impact": "positif",
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "historique": [],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 5.68,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 7.32,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 7.9,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 8.99,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 7.84,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 10.1,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 10.9,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 12.38,
+          "actual": false
+        }
+      ],
+      "epsForward12m": 34.83,
+      "forwardPeriodLabel": "T3 26 -> T2 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
+    },
     "ancrages": [
       {
         "id": "AN-VYVGART-GROWTH",
@@ -226,57 +323,6 @@
       "2029": 66.5,
       "2030": 67.0
     },
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 5.68,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 7.32,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 7.9,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 8.99,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 7.84,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 10.1,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 10.9,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 12.38,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 34.83,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    }
+    "text": "== SYNTHESE DE LA THESE ==\nLa these de compounder de croissance rentable se confirme et se renforce au S1 2026 : ventes nettes produit S1 a 2 813 M$ (+62% YoY), marge operationnelle a 31,1% (contre 19,2% au S1 25) - le levier operationnel anticipe a la creation se materialise plus vite que prevu. Deux des binaires reglementaires suivis a la creation se sont resolus POSITIVEMENT au T2 : le label VYVGART/VYVGART Hytrulo a ete elargi a tous les serotypes de gMG (seronegative inclus, lance aux Etats-Unis) et les resultats ADAPT OCULUS ont ete positifs, ouvrant la voie a l'extension en ocular MG. La dilution reste quasi nulle (actions diluees moyennes S1 26 a 64,4M, en leger repli vs 65,6M un an plus tot). Le bilan continue de se renforcer (tresorerie totale 5,2 Md$, flux de tresorerie d'exploitation S1 nettement positif a +0,7 Md$). Les deux binaires pipeline les plus importants pour la suite de la these - lecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) - restent non resolus et hors modele. La lecture du transcript complet du call (desormais disponible) confirme ce narratif sans y ajouter d'element materiellement nouveau : la direction reaffirme une saisonnalite T2 classique, un rythme de croissance attendu comparable aux annees precedentes sur le reste de l'exercice, et une confiance inchangee sur les deux lectures pipeline a venir.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Lancement du label elargi seronegative gMG aux Etats-Unis (resolution positive du binaire PDUFA suivi depuis la creation) - VYVGART devient le seul traitement approuve pour l'ensemble des serotypes de gMG adultes. (i) Resultats ADAPT OCULUS positifs, ouvrant la voie a l'extension en ocular MG (oMG) - deuxieme binaire resolu positivement au T2. (ii) Etude d'enregistrement lancee dans la maladie de Graves - non chiffree dans le modele, optionnalite pure. (ii) Signal positif de l'etude Phase 2 VARVARA (empasiprubart, delayed graft function en transplantation) a 52 semaines - le Q&A precise que ce signal ne soutient PAS une indication DGF specifique (etude exploratoire de preuve de concept) et n'emporte aucun lien de causalite direct avec le programme MMN, deja suivi separement. (ii) Programme d'expansion FcRn (ARGX-213 en administration hebdomadaire, ARGX-124 en cours de caracterisation, programme FcRn oral) et pipeline immunologie (ARGX-118, ARGX-125, TSP101 en Phase 1) - optionnalite non chiffree. (iii) Autoinjecteur VYVGART SC confirme en Q&A comme etant toujours sur la trajectoire d'un lancement en 2027 - engagement structurant suivi desormais via coherenceQualitative.engagementsStructurants. (iii) Donnees de Phase 3 'ASSURE' en myositis annoncees pour le second semestre 2027, fondation d'un leadership elargi en rhumatologie selon la CEO - engagement structurant egalement suivi. (iii) Transition de gouvernance actee en mai 2026 (Karen Massey CEO, Tim Van Hauwermeiren President non-executif) - continuite strategique explicite, sans impact chiffrable. (iii) Enquete de cabinets d'avocats plaignants (Pomerantz en tete) ouverte depuis juillet-aout 2025, toujours au stade preliminaire sans plainte deposee confirmee (voir compliance).\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee : \"ca\" = ventes nettes produit, \"ebit\" = operating profit publie (IFRS), reporte en USD. Pas de mise a jour de \"data\" a ce refresh (exercice fiscal 2026 non cloture, aucune nouvelle publication depuis le 23/07/2026). Tax normatif et produits financiers inchanges, deja valides par le S1 26 observe. adjShares : dilution quasi nulle confirmee. Portee de cette passe : completion du sourcing du call T2 26 (transcript complet desormais lu, transcriptAnalyse passe a true) et premiere population de coherenceQualitative (champ absent des refresh precedents) - statut \"coherent\", aucune tension detectee entre le communique deja analyse le 23/07 et le contenu du transcript desormais lu ; capture systematique des echanges Q&A en historique (brut, T2 26), deux engagements structurants identifies (autoinjecteur VYVGART SC 2027, donnees Phase 3 myositis 'ASSURE' H2 2027). ownership et compliance restent ceux du refresh du 23/07/2026, non rouverts par cette passe cibleee. WATCH-LIST pour le prochain refresh : (1) lecture topline ALKIVIA (myositis) attendue T3 26 - binaire majeur ; (2) lecture topline EMPASSION (MMN) attendue T4 26 - binaire majeur ; (3) suite de l'enquete Pomerantz (statut sollicitation, verifier escalade eventuelle) ; (4) montant et calendrier d'un eventuel deploiement de tresorerie en BD/licensing (aucune precision donnee en Q&A malgre plusieurs questions sur le sujet) ; (5) trajectoire de la marge operationnelle sur un H2 historiquement plus charge en R&D. Prochain refresh utile : resultats T3 2026, publication attendue le 22/10/2026, potentiellement concomitante avec la lecture ALKIVIA.\n\n== CATALYSEURS ==\nLecture topline ALKIVIA (myositis, T3 26) et EMPASSION (MMN, T4 26) restent les deux catalyseurs binaires majeurs du second semestre ; au-dela, l'autoinjecteur VYVGART SC (2027) et les donnees de Phase 3 myositis 'ASSURE' (H2 2027) conditionnent la trajectoire 2027-2028."
   }
 }
