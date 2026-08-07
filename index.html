@@ -1187,8 +1187,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   return {
     pyBlock,
     historiqueBlocks,
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideDelta:true}),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideDelta:true}),
+    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideSum:true}),
+    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideSum:true}),
     peStack
   };
 }
