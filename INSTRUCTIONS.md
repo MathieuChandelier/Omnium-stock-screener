@@ -1905,24 +1905,55 @@ Si un ecart est detecte a l'une de ces etapes : CORRIGE avant de livrer, ne livr
 L'utilisateur fournit le JSON existant du titre dans sa requete (source de
 la borne temporelle E1 et de la base de reconciliation E6) : pas besoin de
 confirmer le nom/code, il est deja connu.
-0. VERIFICATION DE FRAICHEUR (avant toute recherche) : compare le trimestre/
-   evenement trouve lors de la RECHERCHE DU COMMUNIQUE (plus haut) au
-   `hypothese.dernierCall.quarter` DEJA PRESENT dans le JSON fourni en
-   entree. SI IDENTIQUE (le refresh porte sur le MEME call que celui deja
-   couvert par le fichier - rien de nouveau n'a ete publie depuis) :
-   ARRETE-TOI ICI, ne deroule PAS la suite de la boucle, et demande
-   explicitement a l'utilisateur s'il souhaite (a) un refresh de pure forme
-   ne touchant que des elements independants du trimestre (ex. un
-   evenement hors-cycle survenu depuis, un changement d'actionnariat/
-   compliance), auquel cas `dernierCall`/`guidanceHistory` sont repris TELS
-   QUELS sans nouvelle ligne ni recherche redondante du communique/
-   transcript, ou (b) qu'un nouveau trimestre a bien ete publie entre
-   temps et qu'il faut regarder plus loin. Ce garde-fou existe parce que
-   `guidanceHistory` (AJOUTE une ligne des que `fyGuided` correspond, voir
-   SCHEMA) et `ownership.history` (snapshotte l'ancien point a CHAQUE
-   refresh, sans condition de changement) n'ont eux-memes aucune protection
-   interne contre un doublon si le meme call est traite deux fois - c'est
-   cette etape 0, en amont, qui doit l'empecher.
+0. VERIFICATION DE FRAICHEUR (avant toute recherche approfondie) : compare
+   le trimestre/evenement trouve lors de la RECHERCHE DU COMMUNIQUE (plus
+   haut) au `hypothese.dernierCall.quarter` DEJA PRESENT dans le JSON
+   fourni en entree. SI DIFFERENT (nouveau trimestre publie) : ignore le
+   reste de cette etape, deroule la boucle normalement. SI IDENTIQUE (le
+   refresh porte sur le MEME call que celui deja couvert par le fichier),
+   NE PAS s'arreter automatiquement - verifier d'abord si le sourcing de
+   CE call est deja COMPLET :
+   - SOURCING COMPLET (cas redondant reel) : `dernierCall.
+     communiqueAnalyse` ET `dernierCall.transcriptAnalyse` valent deja
+     `true` dans le JSON fourni, ET `coherenceQualitative.historique`
+     contient deja une entree pour ce `quarter`, ET `quarterlyEPS` est deja
+     present et coherent avec ce trimestre. Dans ce seul cas : ARRETE-TOI
+     ICI, ne deroule PAS la suite de la boucle, et demande explicitement a
+     l'utilisateur s'il souhaite (a) un refresh de pure forme ne touchant
+     que des elements independants du trimestre (ex. un evenement
+     hors-cycle survenu depuis, un changement d'actionnariat/compliance),
+     auquel cas `dernierCall`/`guidanceHistory` sont repris TELS QUELS sans
+     nouvelle ligne ni recherche redondante du communique/transcript, ou
+     (b) qu'un nouveau trimestre a bien ete publie entre temps et qu'il
+     faut regarder plus loin.
+   - SOURCING INCOMPLET (cas le plus frequent d'une reprise sur le meme
+     trimestre) : `transcriptAnalyse` vaut `false` dans le JSON fourni (ou
+     `coherenceQualitative`/`quarterlyEPS` sont absents/ne couvrent pas
+     encore ce `quarter`) - NE JAMAIS traiter cela comme une "recherche
+     redondante" a eviter : chercher une source jamais trouvee n'est pas
+     repeter une recherche, c'est la terminer. NE PAS s'arreter pour
+     demander a l'utilisateur non plus - COMPLETER AUTOMATIQUEMENT et sans
+     etre sollicite : retente la recherche du transcript (voir RECHERCHE DU
+     COMMUNIQUE DE RESULTATS & DU TRANSCRIPT), et s'il est desormais
+     trouve, execute dans la foulee E2 ter (capture systematique du Q&A
+     dans `coherenceQualitative.historique`, premiere population si le
+     champ etait absent) et E5 ter (construction de `quarterlyEPS` si
+     absent) a partir des donnees deja figees (`adjEPS` etc.), SANS rouvrir
+     `data`/`adjXXX`/`ancrages`/`ownership`/`compliance` puisqu'aucun
+     nouveau trimestre n'a ete publie - portee identique a un refresh de
+     pure forme, mais declenchee et executee sans confirmation prealable,
+     puisqu'il ne s'agit pas d'un choix mais de la simple achevement d'une
+     obligation deja identifiee (voir E8-bis) lors du refresh precedent. Ce
+     n'est QUE si le transcript reste introuvable a cette nouvelle tentative
+     que le sourcing reste incomplet legitimement (comme en RECHERCHE DU
+     COMMUNIQUE DE RESULTATS & DU TRANSCRIPT, geometrie variable).
+   Ce garde-fou existe parce que `guidanceHistory` (AJOUTE une ligne des
+   que `fyGuided` correspond, voir SCHEMA) et `ownership.history`
+   (snapshotte l'ancien point a CHAQUE refresh, sans condition de
+   changement) n'ont eux-memes aucune protection interne contre un doublon
+   si le meme call est traite deux fois - c'est cette etape 0, en amont,
+   qui doit l'empecher SANS pour autant bloquer la completion legitime d'un
+   sourcing laisse inacheve.
 1. Affiche E6-a (projection independante + ancrages) et E6-b (confrontation,
    snapshot priorEPS inclus) comme deux blocs distincts dans la reponse,
    avant le JSON final.
