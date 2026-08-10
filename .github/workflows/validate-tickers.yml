@@ -1,0 +1,49 @@
+name: Valider les fichiers de titres
+# Ne bloque QUE les fichiers data/CODE.json effectivement modifies par le
+# push (pas l'ensemble du portefeuille) - le repo contient des titres plus
+# anciens qui ne respectent pas encore tous les champs du schema actuel ;
+# cette regle "propre a partir de maintenant" evite un CI rouge en
+# permanence pour de la dette deja existante, tout en garantissant qu'un
+# refresh/creation desormais livre respecte la structure attendue par
+# index.html (voir scripts/validate_ticker.py et E8-bis dans
+# INSTRUCTIONS.md).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/*.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Determiner les fichiers de titre modifies
+        id: changed
+        run: |
+          set -e
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE=$(git rev-list --max-parents=0 HEAD)
+          fi
+          RAW=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- 'data/*.json' || true)
+          TICKERS=$(python3 -c "import json;print('\n'.join(json.load(open('data/manifest.json'))['tickers']))")
+          FILES=""
+          for f in $RAW; do
+            code=$(basename "$f" .json)
+            if printf '%s\n' "$TICKERS" | grep -qx "$code"; then
+              FILES="$FILES $f"
+            fi
+          done
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+      - name: Valider les fichiers modifies
+        if: steps.changed.outputs.files != ''
+        run: python scripts/validate_ticker.py ${{ steps.changed.outputs.files }}
+      - name: Rien a valider
+        if: steps.changed.outputs.files == ''
+        run: echo "Aucun fichier data/CODE.json (titre) modifie dans ce push - rien a valider."
