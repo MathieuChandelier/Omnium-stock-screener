@@ -18,11 +18,68 @@
     {"text":"Concentration client extrême sur le segment IA : une poignée de méga-clients (Google, Meta, et désormais Anthropic, OpenAI via des accords pluriannuels custom silicon) concentre l'essentiel de la croissance du chiffre d'affaires semi-conducteurs IA. Cette dépendance est une source d'asymétrie majeure (upside si les commandes se matérialisent, downside si un hyperscaler internalise ou décale ses investissements) - facteur de risque idiosyncratique porté dans hypothese.text plutôt que quantifié dans les adjXXX.","valuePct":null}
   ],
   "nextEvent": {"label":"Q3 FY 26","date":null},
+  "coherenceQualitative": {
+    "asOf": "2026-08-10",
+    "statut": "incoherences_detectees",
+    "points": [
+      {
+        "sujet": "Resilience de la marge brute face au mix TPU/racks bas-marge",
+        "ancienPropos": "Q1 FY26 (04/03/2026, reponse directe a une question sur le risque de compression de marge lie aux racks bas-marge (45-50% de marge brute), Timothy Arcuri UBS) : Hock Tan ecarte categoriquement le risque, affirmant que 'les produits IA ne seront pas affectes par la marge brute' ; la CFO Kirsten Spears ajoute que l'impact du mix 'ne sera pas substantiel'.",
+        "nouveauPropos": "Q2 FY26 (03/06/2026, reponse a une question sur les moteurs de marge brute, Ross Seymore Deutsche Bank) : le CFO confirme explicitement que les produits TPU/ASIC portent des marges INFERIEURES a celles du networking (qualifie de 'tres riche en marge'), et bien que le CEO qualifie les marges du segment semi-conducteurs de 'structurellement tres stables et solides', il attribue desormais une compression consolidee observee au 'glissement de mix software vers semi-conducteurs' - une nuance absente du discours de mars, qui ecartait categoriquement tout impact de mix sur la marge.",
+        "natureEcart": "contradiction_non_expliquee",
+        "materialite": "haute",
+        "justification": "La marge est un pilier central de la these (ancrage marginLeverage) ; le passage d'un dementi categorique ('pas affecte', 'pas substantiel') a une reconnaissance explicite que le TPU/ASIC est structurellement moins marge-riche que le networking et qu'un glissement de mix comprime deja les marges consolidees, sans que le management ne revienne sur son propos de mars, merite d'etre trace - la modelisation actuelle (ancrage marginLeverage, confiance moyenne, expansion de marge progressive plutot qu'immediate) reste compatible avec les deux discours mais le CFO nuance desormais un risque qu'il ecartait entierement trois mois plus tot."
+      }
+    ],
+    "historique": [
+      {
+        "quarter": "Q1 FY2026",
+        "date": "2026-03-04",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Blayne Curtis (Jefferies) - l'objectif '>100 Md$' IA 2027 exclut-il le networking et les racks, pessimisme des investisseurs sur le ROI des hyperscalers vu la trajectoire de croissance : Hock Tan precise que le chiffre porte sur les puces silicium (XPU, switches, DSP), souligne que les clients ne sont pas que des hyperscalers mais aussi des developpeurs de LLM construisant des plateformes, demande forte tiree par l'entrainement ET l'inference.",
+          "Q Harlan Sur (JPMorgan) - les initiatives de puces maison (COT) des clients menacent-elles la position de Broadcom, comment maintenir une avance techno de 12-18 mois : Hock souligne la complexite du design silicium, le packaging avance et l'echelle de fabrication comme barrieres, aucun concurrent ne peut egaler le 'track record' de livraison de XPU en gros volumes avec des rendements tres eleves.",
+          "Q Ross Seymore (Deutsche Bank) - moteurs de la part du networking IA a 40% du CA IA, le networking est-il inclus dans le '>100 Md$', comment le leadership networking renforce le positionnement XPU : Hock cite la demande pour les switches Tomahawk 6 et le SerDes 200G, projette une part networking IA de 33 a 40% du CA IA total, clients visant du 200G puis 400G.",
+          "Q Christopher Muse (Cantor Fitzgerald) - desagregation des charges de travail (separation prefill/decode) et bascule potentielle GPU vs silicium custom : Hock explique que les XPU sont de plus en plus adaptes a des charges specifiques (ex. mixture-of-experts), contrairement aux GPU en multiplication matricielle dense, ce qui ameliore l'efficacite.",
+          "Q Timothy Arcuri (UBS) - crainte qu'un mix de racks bas-marge (45-50% de marge brute) ne fasse chuter la marge consolidee de 500 points de base, quel est le plancher de marge brute : Hock ecarte la premisse, affirme que les rendements et couts ont ete optimises et que 'les produits IA ne seront pas affectes par la marge brute' ; Kirsten Spears ajoute que l'impact de mix 'ne sera pas substantiel'.",
+          "Q Stacy Rasgon (Bernstein) - tentative de reconstituer le calcul de l'objectif '>100 Md$' 2027 via les deploiements en gigawatts et le contenu $/GW (~20 Md$/GW), la methode est-elle correcte : Hock confirme l'approche, reconnait une forte variabilite du $/GW selon les clients, indique environ 10 GW de deploiement attendus en 2027.",
+          "Q Benjamin Reitzes (Melius Research) - comment Broadcom a securise la capacite composants jusqu'en 2028 (substrats, HBM, wafers) avant ses concurrents, la visibilite est-elle suffisante pour la croissance 2028 : Hock souligne la reservation precoce de substrats avances et des partenariats ; Charlie Kawwas ajoute que les engagements pluriannuels avec les six clients silicium custom offrent une visibilite de 2 a 4 ans sur leurs feuilles de route.",
+          "Q Vivek Arya (BofA) - repartition du deal Anthropic 20 Md$/GW entre puces et racks, comment Broadcom maintient sa visibilite de part de marche dans un environnement multi-fournisseurs fragmente : Hock distingue les programmes XPU custom strategiques du business GPU cloud transactionnel, souligne que ces six clients considerent le developpement XPU comme 'strategique, pas optionnel', avec une visibilite tres claire sur leurs feuilles de route.",
+          "Q Tom O'Malley (Barclays) - pourquoi Broadcom met en avant le cuivre a attache directe (DAC) via SerDes 400G malgre son leadership en optique co-packagee (CPO), adoption du protocole Ethernet scale-up : Hock explique que le DAC offre la latence, la consommation et le cout les plus bas pour les clusters scale-up ; Charlie Kawwas confirme qu'Ethernet est le standard de facto pour le scale-out et un choix emergent pour le scale-up XPU.",
+          "Q Jim Schneider (Goldman Sachs) - les engagements XPU custom hors TPU ciblent-ils principalement l'inference, avantages performance/cout vs GPU justifiant les previsions a grande echelle : Hock note que les clients demarrent souvent par l'inference (besoins de calcul et cout moindres), mais indique que la majorite developpe desormais des puces distinctes pour l'entrainement et l'inference simultanement.",
+          "Q Joshua Buchalter (TD Cowen) - comment la visibilite s'est-elle amelioree sur 1-2 trimestres pour permettre des previsions clients plus detaillees, l'annonce OpenAI '>1 GW en 2027' implique-t-elle une inflexion brutale en 2028 vu le deal 10 GW/2029 : Hock attribue l'amelioration de la visibilite a la confiance croissante des clients a mesure que les XPU prouvent leurs capacites et s'alignent sur les feuilles de route strategiques, reaffirme que le XPU est un 'pari strategique durable' plutot que transactionnel."
+        ]
+      },
+      {
+        "quarter": "Q2 FY2026",
+        "date": "2026-06-03",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Harlan Sur (JPMorgan) - reconciliation de la guidance CA IA FY26 de 56 Md$ avec un S2 annonce a 2x le S1, le carnet de commandes a 18 mois depasse-t-il desormais 200 Md$ : le management precise un CA IA S1 d'environ 19 Md$, un S2 a 2x donnant ~38 Md$ (total ~56 Md$) ; pour 2027 le CEO reitere l'objectif '>100 Md$' sans detail trimestriel, notant un momentum intact voire renforce.",
+          "Q Blayne Curtis (Jefferies) - perimetre de l'accord long terme avec Google (volume fixe ou upside possible), confiance sur la part de marche chez ce client : Hock souligne un 'montant en dollars tres substantiel', reconnait que Google s'approvisionnera probablement aupres de plusieurs fournisseurs vu la croissance de la consommation IA, mais l'engagement de Broadcom reste 'tres substantiel'.",
+          "Q Ross Seymore (Deutsche Bank) - moteurs de marge brute au sein des semi-conducteurs (XPU vs networking), la pression sur la marge se poursuit-elle en 2027 : le CFO explique que les produits TPU/ASIC portent des marges inferieures au networking (qualifie de 'tres riche en marge') ; le CEO insiste sur des marges semi-conducteurs 'structurellement tres stables et solides', la compression consolidee etant attribuee au glissement de mix software vers semi-conducteurs.",
+          "Q Benjamin Reitzes (Melius) - evolution du TAM par gigawatt a mesure que le contenu de calcul augmente, cela accelere-t-il au-dela de la guidance actuelle : le CEO indique un $/GW 'relativement stable' (les puces plus puissantes reduisant les volumes unitaires) mais une demande en gigawatts elle-meme en forte acceleration, trajectoires 2027-2028 suggerant une croissance au-dela des previsions actuelles.",
+          "Q Timothy Arcuri (UBS) - securite d'approvisionnement en wafers et HBM si les clients demandent un volume incremental, alternatives de fonderie envisagees : le CEO affirme etre a l'aise sur la securisation de l'approvisionnement jusqu'en 2028-2029 et confirme la capacite a repondre a des demandes incrementales de capacite, sans detailler de strategie de fonderie alternative.",
+          "Q Stacy Rasgon (Bernstein) - objectifs de livraison en gigawatts pour 2027 vs la guidance precedente, la repartition penche-t-elle vers le second semestre : le CEO confirme un objectif de planification 2027 d'environ 10 GW, inchange vs le trimestre precedent, avec une ponderation S2, ouvrant une trajectoire 'interessante' vers 2028 avec des volumes nettement plus eleves.",
+          "Q Jim Schneider (Goldman Sachs) - profil de la part du networking dans le CA IA sur 2026-2027, calendrier de materialisation du CA optique/CPO : le CEO indique que la part networking actuelle de 40% represente un pic 'anormal', attend une normalisation 'plutot autour de 30%' a mesure que la montee en puissance des XPU s'accelere.",
+          "Q Tom O'Malley (Barclays) - Broadcom joue-t-il un role de 'backstop' puces dans de futurs deals clients, futurs modeles de financement de l'infrastructure IA : le CEO corrige la caracterisation, precisant que Broadcom fournit directement les puces TPU et le compute a des clients comme Anthropic plutot que de jouer un role de garantie tierce.",
+          "Q CJ Muse (Cantor Fitzgerald) - interet pour des marches XPU derives de niche (interconnexion, stockage) vs les plateformes coeur a grande echelle : le CEO reaffirme un modele focalise : fournir accelerateurs XPU et composants de clustering critiques (switches, PCIe, DSP, lasers) exclusivement aux developpeurs de LLM, les vehicules de financement soutenant les labos de modeles frontier plutot que des acheteurs entreprise disperses.",
+          "Q AT Malik (Citi) - impact de l'IA/IA generative sur la croissance du software d'infrastructure, renouvellements et trajectoire long terme : le CEO ne rapporte aucun impact negatif, au contraire une croissance VMware acceleree par le deploiement de volumes CPU/GPU, attend un momentum VMware soutenu plusieurs trimestres, isolation structurelle liee au positionnement de la couche hyperviseur.",
+          "Q Edward Snyder (Charter Equity Research) - l'adoption de l'IA en entreprise et l'acces aux modeles via le cloud (Bedrock, Vertex) representent-ils une seconde vague de demande distincte des charges internes des hyperscalers : le CEO reconnait une consommation IA entreprise emergente mais souligne que les tokens achetes transitent par les plateformes API des memes labos frontier (Anthropic, OpenAI, Google), l'essentiel de la demande provenant in fine de ces developpeurs centralises plutot que d'un deploiement entreprise disperse.",
+          "Q Joe Moore (Morgan Stanley) - explication des 30 Md$ de bookings vs le rythme d'expedition court terme, moteurs de la visibilite etendue jusqu'en 2028 : le CEO attribue les bookings a une planification anticipee couvrant compute, memoire, HBM, energie et infrastructure, souligne des clients 'passant commande tot' en 'forte demande', etendant la visibilite a '2028 desormais' contre 2027 precedemment.",
+          "Q Joshua Buchalter (TD Cowen) - evolution du revenu par gigawatt vu la guidance anterieure de 15-20 Md$, comment prix et contenu evoluent de generation en generation : le CEO projette un contenu par gigawatt en forte hausse porte par la montee des prix XPU, l'integration de coeurs CPU, les architectures multi-die et l'integration HBM, ces changements se manifestant de generation en generation plutot que trimestre par trimestre."
+        ]
+      }
+    ],
+    "engagementsStructurants": []
+  },
   "hypothese": {
-    "date":"2026-07-22",
-    "source":"Création - Q2 FY2026 (communiqué de résultats + transcript du 3 juin 2026)",
+    "date":"2026-08-10",
+    "source":"Création - Q2 FY2026 (communiqué de résultats + transcript du 3 juin 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS en base GAAP (coherente avec la base adjXXX du fichier) - PY (FY2025 T1 1.14/T2 1.03/T3 0.85/T4 1.74, EPS dilue GAAP publie par trimestre, somme 4.76 proche de data[2025].net/shares=4.74), CY (T1 26 1.50 et T2 26 1.91 GAAP actuals, T3/T4 26 estimes par repartition saisonniere de adjNet/adjShares FY26), NY (FY2027 estime par la meme methode). Ajout coherenceQualitative avec reconstruction retroactive du T1 FY26 (transcript Motley Fool du 04/03/2026, 11 analystes/11 echanges) compare au T2 FY26 (transcript Motley Fool du 03/06/2026, 13 analystes/13 echanges) - 1 point d'incoherence identifie (statut incoherences_detectees) : la resilience de la marge brute face au mix TPU/racks bas-marge, categoriquement ecartee au T1 ('pas affecte', 'pas substantiel') puis nuancee au T2 (TPU/ASIC confirme structurellement moins marge-riche que le networking, compression consolidee attribuee au mix software/semi) sans reconciliation explicite (materialite haute). Correction incidente : ajout de hypothese.adjEPS (derive de adjNet/adjShares) et des booleens dernierCall.communiqueAnalyse/transcriptAnalyse, absents depuis la creation.",
     "dernierCall":{
       "quarter":"Q2 FY 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
       "resultatsVsConsensus":{
         "ca":{"actual":22187,"consensus":22270},
         "epsAdj":{"actual":2.44,"consensus":2.40,"basis":"non-GAAP"}
@@ -48,7 +105,32 @@
     "adjCA":{"2026":74400,"2027":93000,"2028":110000,"2029":126500,"2030":149300},
     "adjEBIT":{"2026":34400,"2027":45600,"2028":56100,"2029":66000,"2030":77600},
     "adjNet":{"2026":25200,"2027":33200,"2028":41400,"2029":49500,"2030":58600},
+    "adjEPS":{"2026":5.13,"2027":6.70,"2028":8.29,"2029":9.83,"2030":11.55},
     "adjND":{"2026":42000,"2027":32000,"2028":20000,"2029":6000,"2030":-10000},
-    "adjShares":{"2026":4915,"2027":4954,"2028":4994,"2029":5034,"2030":5074}
+    "adjShares":{"2026":4915,"2027":4954,"2028":4994,"2029":5034,"2030":5074},
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "historique": [],
+      "PY": [
+        {"label":"T1","eps":1.14,"actual":true},
+        {"label":"T2","eps":1.03,"actual":true},
+        {"label":"T3","eps":0.85,"actual":true},
+        {"label":"T4","eps":1.74,"actual":true}
+      ],
+      "CY": [
+        {"label":"T1","eps":1.50,"actual":true},
+        {"label":"T2","eps":1.91,"actual":true},
+        {"label":"T3","eps":0.56,"actual":false},
+        {"label":"T4","eps":1.15,"actual":false}
+      ],
+      "NY": [
+        {"label":"T1","eps":1.96,"actual":false},
+        {"label":"T2","eps":2.50,"actual":false},
+        {"label":"T3","eps":0.73,"actual":false},
+        {"label":"T4","eps":1.51,"actual":false}
+      ],
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
+    }
   }
 }
