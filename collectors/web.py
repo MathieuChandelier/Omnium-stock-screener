@@ -14,6 +14,17 @@ Garantie de fraîcheur : PROBABILISTE côté modèle, DETERMINISTE côté code.
    tout item dont dateEvenement sort de la fenêtre ou est absent/invalide.
    C'est ce filtre code qui constitue la vraie garantie, pas le prompt.
 
+ROTATION A 2 JOURS (cout /2, decision du 11/08/2026) : ce collecteur ne
+traite que LA MOITIE du portefeuille par run (alternance deterministe par
+parite du jour, voir select_rotation_half) - chaque ticker est donc couvert
+par l'IA un jour ouvre sur deux, jamais tous les jours. C'est le seul poste
+de cout reel du pipeline (web_search facture au call), les deux autres
+collecteurs (communiques.py, gratuit via flux SEC EDGAR/IR officiels ;
+youtube.py, quota gratuit) continuent de couvrir TOUS les tickers TOUS les
+jours - aucune perte de fraicheur sur les faits reglementaires/officiels,
+seule la couche notes de brokers/actualite generaliste passe a J+1 pour la
+moitie du portefeuille non tiree aujourd'hui.
+
 BUDGET TEMPS (voir discussion de design) :
 - Visée ~60s pour l'ensemble des tickers, via parallelisation (MAX_CONCURRENCY
   appels simultanes) plutot qu'un traitement sequentiel un par un.
@@ -36,7 +47,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 import anthropic
 
@@ -74,6 +85,30 @@ DEBUG_PREVIEW_CHARS = 300  # longueur de l'extrait loggue en cas d'echec de pars
 MAX_CONCURRENCY = 20            # appels API simultanes - vise ~60s pour 56 tickers
 PER_REQUEST_TIMEOUT_SECONDS = 25  # aucune requete individuelle ne peut depasser ca
 HARD_STOP_SECONDS = 90           # budget total absolu, non negociable
+
+# ROTATION A 2 JOURS (reduction de cout /2, decision du 11/08/2026) : ce
+# collecteur est le seul poste de cout reel du pipeline (web_search facture
+# au call, ~3€/jour a couvrir la totalite du portefeuille chaque jour).
+# Plutot que de reduire la qualite par ticker (moins de recherches, prompt
+# degrade), on reduit la FREQUENCE par ticker : chaque titre est couvert un
+# jour sur deux au lieu de chaque jour, le reste du pipeline (communiques.py,
+# gratuit, flux SEC EDGAR/IR officiels) continue de couvrir TOUS les tickers
+# TOUS les jours - aucune perte de fraicheur sur les faits les plus
+# importants (resultats, depots reglementaires), seule la couche notes de
+# brokers/actualite generaliste passe a une cadence 1 jour sur 2 par titre.
+# Alternance DETERMINISTE sans etat externe (pas de fichier a maintenir, pas
+# de risque de derive) : parite du jour ordinal (proleptic Gregorian, stable
+# et continu meme apres un week-end ou un jour sans run).
+
+
+def select_rotation_half(manifest: list) -> list:
+    """Retourne la moitie du portefeuille a traiter AUJOURD'HUI. Split par
+    parite d'INDEX (pas en deux blocs contigus) pour eviter qu'un
+    regroupement geographique/sectoriel fortuit dans manifest.json ne
+    biaise systematiquement quelle moitie du portefeuille est couverte tel
+    ou tel jour de la semaine."""
+    parity = date.today().toordinal() % 2
+    return [t for i, t in enumerate(manifest) if i % 2 == parity]
 
 
 def build_prompt(company_name: str, window_start: datetime, window_end: datetime, existing_titles: list) -> str:
@@ -199,6 +234,11 @@ def main():
 
     client = anthropic.Anthropic(api_key=api_key, timeout=PER_REQUEST_TIMEOUT_SECONDS)
     manifest = load_manifest()
+    todays_tickers = select_rotation_half(manifest)
+    # La fenetre de fraicheur reste globale (depuis le dernier run reussi,
+    # peu importe quels tickers y ont ete traites) : un ticker saute hier
+    # est donc bien couvert sur les DERNIERES 48h aujourd'hui, jamais un
+    # trou silencieux - voir get_window_start dans lib/state.py.
     window_start = get_window_start("web")
     window_end = datetime.now(timezone.utc)
 
@@ -206,13 +246,13 @@ def main():
     error_count = 0
     completed_count = 0
 
-    # Soumission de TOUS les tickers en parallele (jusqu'a MAX_CONCURRENCY
+    # Soumission de la moitie du jour en parallele (jusqu'a MAX_CONCURRENCY
     # requetes API simultanees) plutot qu'un traitement sequentiel - c'est
-    # ce qui fait passer le temps total de plusieurs minutes a ~60s pour
-    # l'ensemble du portefeuille.
+    # ce qui fait passer le temps total de plusieurs minutes a ~30s pour
+    # cette moitie du portefeuille.
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENCY)
     future_to_ticker = {}
-    for ticker in manifest:
+    for ticker in todays_tickers:
         tdata = load_ticker_json(ticker) or {}
         name = tdata.get("name", ticker)
         existing = load_existing_news(ticker)
@@ -254,7 +294,8 @@ def main():
 
     elapsed = time.monotonic() - started_at
     print(f"[web] {len(all_items)} nouveaux items, {error_count} tickers en erreur, "
-          f"{completed_count}/{len(manifest)} tickers traites en {elapsed:.1f}s")
+          f"{completed_count}/{len(todays_tickers)} tickers traites (rotation : "
+          f"{len(todays_tickers)}/{len(manifest)} du portefeuille aujourd'hui) en {elapsed:.1f}s")
 
     # Sortie forcee et immediate : evite tout risque de rester accroche a
     # un thread du pool encore en attente reseau apres le hard stop (les

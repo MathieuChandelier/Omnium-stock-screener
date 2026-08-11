@@ -24,6 +24,7 @@ Usage : python merge.py
 import json
 import os
 import sys
+import urllib.request
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 
@@ -169,14 +170,22 @@ def update_digest(new_items_count_by_type):
     digest = [d for d in digest if d["date"] != today]
 
     total = sum(new_items_count_by_type.values())
-    if total > 0:
-        digest.insert(0, {
-            "date": today,
-            "total": total,
-            "communique": new_items_count_by_type.get("communique", 0),
-            "web": new_items_count_by_type.get("web", 0),
-            "youtube": new_items_count_by_type.get("youtube", 0),
-        })
+    # CORRECTIF (11/08/2026) : une ligne est desormais ECRITE CHAQUE JOUR,
+    # y compris a total=0 - avant ce correctif, un jour sans aucun nouvel
+    # item ne laissait AUCUNE trace dans ce fichier, rendant indiscernables
+    # "le pipeline a tourne et n'a rien trouve" et "le pipeline n'a pas
+    # tourne du tout" (cause directe de la question utilisateur du
+    # 11/08/2026 "la boucle n'a pas tourne ce matin, pourquoi ?"). Cote app,
+    # newsBarLines() (index.html) filtre deja explicitement sur total>0
+    # avant affichage - une ligne a 0 n'ajoute donc AUCUN bandeau visible
+    # dans le portefeuille, seul newsDigest.json porte la trace verifiable.
+    digest.insert(0, {
+        "date": today,
+        "total": total,
+        "communique": new_items_count_by_type.get("communique", 0),
+        "web": new_items_count_by_type.get("web", 0),
+        "youtube": new_items_count_by_type.get("youtube", 0),
+    })
 
     digest = digest[:MAX_DIGEST_DAYS]
     with open(DIGEST_PATH, "w", encoding="utf-8") as f:
@@ -210,6 +219,56 @@ def update_state(collector_statuses, run_ok: bool):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
+def notify(counts_by_type, run_ok, statuses):
+    """Notifie a chaque run, meme a 0 item - c'est tout le point du
+    correctif du 11/08/2026 (avant : silence total un jour sans news,
+    indiscernable d'une panne). Deux canaux independants, chacun
+    best-effort (une notif ratee ne doit jamais faire echouer le run) :
+    1. Resume de job GitHub Actions ($GITHUB_STEP_SUMMARY) - gratuit,
+       toujours disponible sur le runner, aucune config requise.
+    2. Push ntfy.sh (topic prive via secret NTFY_TOPIC) - gratuit, sans
+       compte ; no-op silencieux si le secret n'est pas defini (meme
+       pattern que ANTHROPIC_API_KEY / YOUTUBE_API_KEY ailleurs dans le
+       pipeline)."""
+    total = sum(counts_by_type.values())
+    status_label = "OK" if run_ok else "PARTIEL"
+    lines = [
+        f"## News Omnium - {status_label}",
+        "",
+        f"- **{total}** nouvel(le) item(s) ({counts_by_type.get('communique', 0)} communiqués, "
+        f"{counts_by_type.get('web', 0)} web, {counts_by_type.get('youtube', 0)} youtube)",
+        f"- Statut collecteurs : {statuses}",
+    ]
+    summary = "\n".join(lines)
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        try:
+            with open(summary_path, "a", encoding="utf-8") as f:
+                f.write(summary + "\n")
+        except OSError as e:
+            print(f"  [WARN] écriture GITHUB_STEP_SUMMARY échouée ({e})", file=sys.stderr)
+
+    ntfy_topic = os.environ.get("NTFY_TOPIC")
+    if ntfy_topic:
+        title = f"News Omnium : {total} item(s)" if total > 0 else "News Omnium : rien de nouveau"
+        body = (f"{counts_by_type.get('communique', 0)} communiqués, "
+                f"{counts_by_type.get('web', 0)} web, "
+                f"{counts_by_type.get('youtube', 0)} youtube - run {status_label}")
+        try:
+            req = urllib.request.Request(
+                f"https://ntfy.sh/{ntfy_topic}",
+                data=body.encode("utf-8"),
+                headers={"Title": title, "Priority": "default" if total > 0 else "low"},
+                method="POST",
+            )
+            urllib.request.urlopen(req, timeout=10)
+        except Exception as e:
+            print(f"  [WARN] push ntfy.sh échoué ({e})", file=sys.stderr)
+    else:
+        print("  [INFO] NTFY_TOPIC non défini - push ntfy.sh ignoré (résumé GitHub Actions seul actif)")
+
+
 def main():
     accepted, statuses = merge_all_items()
     by_ticker = write_per_ticker(accepted)
@@ -226,6 +285,7 @@ def main():
     # run) n'est pas bloquant en soi, seul "error" l'est vraiment.
     run_ok = all(s != "error" for s in statuses.values())
     update_state(statuses, run_ok)
+    notify(counts_by_type, run_ok, statuses)
 
     print(f"[merge] {sum(counts_by_type.values())} nouveaux items acceptés "
           f"({counts_by_type}) - run {'OK' if run_ok else 'PARTIEL'}")

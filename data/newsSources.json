@@ -1,7 +1,288 @@
 {
-  "_comment": "Config IR par ticker. irFeedUrl=null ou entrée absente => collecteur communiques skip proprement ce ticker (loggé, non bloquant). A compléter au fil de l'eau ; candidat pour devenir une étape d'Operation A plus tard.",
-  "EL": {
+  "_comment": "Config IR par ticker pour le collecteur communiques.py. irFeedUrl=null => skip propre, loggé, non bloquant. Tickers US : flux Atom SEC EDGAR (8-K domestiques, 6-K émetteurs privés étrangers), résolus via le registre officiel company_tickers.json et validés par fetch+parse (nom de société confirmé, entrées présentes). Tickers non-US : aucun flux RSS/Atom officiel découvert après recherche + validation fetch/parse sur plusieurs candidats par société (10/08/2026) - beaucoup de sites IR modernes n'en publient plus. Laissés explicitement irFeedUrl=null plutôt que de configurer un flux non vérifié.",
+  "AMADEUS": {
+    "irFeedType": "rss",
     "irFeedUrl": null,
-    "irFeedType": "rss"
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "ARGENX": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1697862&type=6-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1697862, type=6-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "BOOKING": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1075531&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1075531, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "BOSTONSCIENTIFIC": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=885725&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=885725, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "BREMBO": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "BUREAUVERITAS": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "COCACOLA": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=21344&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=21344, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "DANAHER": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=313616&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=313616, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "DELONGHI": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "INSULET": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1145197&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1145197, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "JCDECAUX": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "LILLY": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=59478&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=59478, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "MONCLER": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "NUBANK": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1691493&type=6-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1691493, type=6-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ROBINHOOD": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1783879&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1783879, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "SARTORIUSSTEDIM": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "SCHNEIDER": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "VIDRALA": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "META": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1326801&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1326801, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "LVMH": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "DIASORIN": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "FUCHS": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "AMAZON": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1018724&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1018724, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ARISTANETWORKS": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1596532&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1596532, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "CAMPARI": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "NVIDIA": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1045810&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1045810, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "NIKE": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=320187&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=320187, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "REPLIGEN": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=730272&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=730272, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "INTUIT": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=896878&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=896878, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "MICROSOFT": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=789019&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=789019, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "THERMOFISHER": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=97745&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=97745, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "DEXCOM": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1093557&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1093557, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "BIOMERIEUX": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "SHARKNINJA": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1957132&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1957132, type=8-K, valide le 2026-08-11 (7 entrees)"
+  },
+  "SEB": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "EDWARDSLIFESCIENCES": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1099800&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1099800, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ESSILORLUXOTTICA": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "SPOTIFY": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1639920&type=6-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1639920, type=6-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ALPHABET": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1652044&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1652044, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "RATIONAL": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "INTUITIVESURGICAL": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1035267&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1035267, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "NETFLIX": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1065280&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1065280, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "SFM": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1575515&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1575515, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ABT": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1800&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1800, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "IBKR": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1381197&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1381197, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "AVGO": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1730168&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1730168, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "CPRT": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=900075&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=900075, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "MERCADOLIBRE": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1099590&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1099590, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "ABNB": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1559720&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1559720, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "BNP": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "LONZA": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "DASSAULTSYSTEMES": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "KERING": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "HERMES": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
+  },
+  "AAPL": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=320193&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=320193, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "SNAP": {
+    "irFeedType": "atom",
+    "irFeedUrl": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1564408&type=8-K&dateb=&owner=include&count=40&output=atom",
+    "_source": "SEC EDGAR CIK=1564408, type=8-K, valide le 2026-08-11 (40 entrees)"
+  },
+  "HEINEKEN": {
+    "irFeedType": "rss",
+    "irFeedUrl": null,
+    "_source": "Aucun flux RSS/Atom officiel trouve apres recherche (10/08/2026) - a reessayer periodiquement, le site IR peut evoluer."
   }
 }

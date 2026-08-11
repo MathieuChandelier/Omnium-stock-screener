@@ -21,6 +21,7 @@ les ranger).
 """
 
 import sys
+import time
 import feedparser
 from datetime import datetime, timezone
 
@@ -62,10 +63,37 @@ def parse_entry_date(entry):
     return None
 
 
+
+# SEC EDGAR (et d'autres emetteurs) rejettent les requetes sans User-Agent
+# identifiable (403) - feedparser envoie sinon son propre UA generique,
+# invisible a l'oeil (bozo=1, aucun message d'erreur explicite) tant qu'on
+# n'a pas compare avec/sans ce header. Voir politique SEC :
+# https://www.sec.gov/os/webmaster-faq#developers
+REQUEST_HEADERS = {"User-Agent": "Omnium Invest research (contact via GitHub repo)"}
+
+
+def fetch_feed(feed_url: str):
+    """Recupere et parse un flux, avec retry (backoff croissant) en cas
+    d'echec - observe en pratique sur sec.gov : des requetes repetees
+    depuis la meme IP declenchent un throttling TRANSITOIRE (403) meme
+    avec un User-Agent conforme, alors qu'une requete isolee reussit
+    systematiquement. Cout nul dans le cas normal (aucun retry declenche),
+    n'allonge le run que dans le cas degrade ou ca protege justement contre
+    un flux marque 'casse' pour la journee a tort."""
+    delays = (1.5, 3.0)
+    parsed = feedparser.parse(feed_url, request_headers=REQUEST_HEADERS)
+    for delay in delays:
+        if not (parsed.bozo and not parsed.entries and parsed.get("status") in (403, 429, 503)):
+            break
+        time.sleep(delay)
+        parsed = feedparser.parse(feed_url, request_headers=REQUEST_HEADERS)
+    return parsed
+
+
 def collect_for_ticker(ticker: str, feed_url: str, window_start: datetime, existing_ids: set):
     items = []
     try:
-        parsed = feedparser.parse(feed_url)
+        parsed = fetch_feed(feed_url)
     except Exception as e:
         print(f"  [ERREUR] {ticker}: échec parsing flux ({e})", file=sys.stderr)
         return items, "error"
@@ -125,6 +153,15 @@ def main():
         if status == "broken":
             broken_feeds.append(ticker)
         all_items.extend(items)
+
+        # Pause entre chaque flux : la majorite pointe vers sec.gov (34/57
+        # tickers) qui applique un throttling transitoire sur les rafales
+        # de requetes meme avec un User-Agent conforme (voir fetch_feed) -
+        # 0.5s empiriquement suffisant pour eliminer les echecs constates
+        # a 0.25s (teste le 11/08/2026 : 34/34 flux EDGAR OK a 0.5s contre
+        # de multiples echecs a 0.25s). Cout total ~30s sur le portefeuille,
+        # negligeable face au budget du job.
+        time.sleep(0.5)
 
     write_artifact("communiques", all_items)
 
