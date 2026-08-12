@@ -10,10 +10,18 @@ titres en hausse de 2% ou plus.
 Seuil HAUSSES UNIQUEMENT (pas de valeur absolue) - décision explicite du
 12/08/2026.
 
-data/marketAction.json est réécrit intégralement à chaque run (pas un
-historique cumulatif) - la notification "disparaît" naturellement le jour
-suivant dès que market_reset.py écrit une nouvelle baseline et que ce
-script recalcule sur une base neuve.
+data/marketAction.json est réécrit intégralement à chaque run, mais avec
+PERSISTANCE intra-journée (correctif du 12/08/2026) : un titre qui a
+franchi le seuil à un run donné reste dans la liste jusqu'à minuit MÊME
+SI son cours repasse ensuite sous 2% (sa valeur affichée continue d'être
+actualisée à chaque run - seule sa PRÉSENCE dans la liste persiste, pas
+sa valeur). Avant ce correctif, un titre repassant sous 2% en cours de
+séance disparaissait immédiatement de la notification, ce qui donnait
+l'impression trompeuse d'un bug ("la notification disparaît alors qu'il
+n'est pas minuit") alors que c'était le comportement (non désiré) du
+code. La notification ne disparaît plus qu'au reset de minuit, quand
+market_reset.py écrit une nouvelle baseline et que ce script repart
+d'une liste vide.
 
 Usage : python market_check.py
 Écrit data/marketAction.json.
@@ -23,6 +31,7 @@ import concurrent.futures
 import json
 import os
 import sys
+import time
 import urllib.request
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -57,22 +66,45 @@ PER_REQUEST_TIMEOUT_SECONDS = 10
 THRESHOLD_PERCENT = 2.0
 
 
+FETCH_RETRY_DELAYS_SECONDS = (1.0, 2.0)  # tentative initiale + 2 retries
+
+
 def fetch_price(yahoo_symbol: str):
+    """Retry court en cas d'echec reseau transitoire (observe le 12/08/2026 :
+    panne reseau totale et simultanee sur les 57 tickers d'un run, tres
+    probablement un souci IPv6 ponctuel du runner GitHub Actions - voir
+    docstring du module). Le retry seul ne suffit pas a couvrir une panne
+    plus longue, voir le garde-fou complementaire dans main()."""
     url = f"{PRICE_PROXY_URL}?ticker={yahoo_symbol}"
-    with urllib.request.urlopen(url, timeout=PER_REQUEST_TIMEOUT_SECONDS) as r:
-        data = json.loads(r.read().decode("utf-8"))
-    price = data.get("price")
-    if price is None:
-        raise ValueError(f"reponse price.php sans champ 'price' pour {yahoo_symbol}")
-    return float(price)
+    last_error = None
+    for attempt, delay in enumerate((0.0,) + FETCH_RETRY_DELAYS_SECONDS):
+        if delay:
+            time.sleep(delay)
+        try:
+            with urllib.request.urlopen(url, timeout=PER_REQUEST_TIMEOUT_SECONDS) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            price = data.get("price")
+            if price is None:
+                raise ValueError(f"reponse price.php sans champ 'price' pour {yahoo_symbol}")
+            return float(price)
+        except Exception as e:
+            last_error = e
+    raise last_error
 
 
-def check_ticker(ticker: str, base_price: float):
+def compute_ticker(ticker: str, base_price: float):
+    """Calcule l'etat actuel d'un ticker (prix, variation) SANS filtrer sur
+    le seuil - le filtrage seuil-ou-deja-signale-aujourd'hui se fait dans
+    main(), pour permettre la persistance intra-journee (voir docstring du
+    module). Retourne (resultat, statut) - statut in {"ok","not_open","error","no_data"} :
+    "not_open" (marche pas encore ouvert) est un skip ATTENDU, exclu du
+    calcul de taux d'echec dans main() ; "error" (echec reseau) est ce qui
+    declenche le garde-fou anti-ecrasement en cas de panne massive."""
     tdata = load_ticker_json(ticker) or {}
     sym = (tdata.get("yahooSymbol") or "").strip()
     name = tdata.get("name", ticker)
     if not sym or not base_price:
-        return None
+        return None, "no_data"
 
     # Ne jamais evaluer un titre avant l'ouverture (+ marge de securite)
     # de SA place boursiere - voir lib/market_hours.py pour le contexte du
@@ -81,25 +113,40 @@ def check_ticker(ticker: str, base_price: float):
     # price.php/Google Finance renvoie un prix pre-marche peu fiable avant
     # l'ouverture officielle).
     if not market_has_opened(sym):
-        return None
+        return None, "not_open"
 
     try:
         price = fetch_price(sym)
     except Exception as e:
         print(f"  [WARN] {ticker} ({sym}): echec recuperation prix ({e})", file=sys.stderr)
-        return None
+        return None, "error"
 
     change_percent = (price - base_price) / base_price * 100.0
-    if change_percent < THRESHOLD_PERCENT:
-        return None
-
     return {
         "ticker": ticker,
         "name": name,
         "price": round(price, 2),
         "basePrice": round(base_price, 2),
         "changePercent": round(change_percent, 2),
-    }
+    }, "ok"
+
+
+def load_already_flagged_today(today_str: str) -> set:
+    """Tickers deja presents dans data/marketAction.json POUR AUJOURD'HUI
+    (peu importe leur variation a l'epoque) - base de la persistance
+    intra-journee. Vide si le fichier est absent, illisible, ou date d'un
+    autre jour (protege automatiquement contre une fuite d'un jour a
+    l'autre, sans dependre du seul reset de minuit)."""
+    if not os.path.exists(OUTPUT_PATH):
+        return set()
+    try:
+        with open(OUTPUT_PATH, encoding="utf-8") as f:
+            existing = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return set()
+    if existing.get("date") != today_str:
+        return set()
+    return {m["ticker"] for m in existing.get("movers", []) if m.get("ticker")}
 
 
 def write_output(today_str: str, movers: list, note: str = None):
@@ -137,21 +184,47 @@ def main():
 
     base_prices = baseline.get("prices", {})
     manifest = load_manifest()
+    already_flagged = load_already_flagged_today(today_str)
 
     movers = []
+    status_counts = {"ok": 0, "not_open": 0, "error": 0, "no_data": 0}
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENCY) as executor:
         futures = {
-            executor.submit(check_ticker, ticker, base_prices.get(ticker)): ticker
+            executor.submit(compute_ticker, ticker, base_prices.get(ticker)): ticker
             for ticker in manifest if ticker in base_prices
         }
         for fut in concurrent.futures.as_completed(futures):
-            result = fut.result()
-            if result:
+            result, status = fut.result()
+            status_counts[status] = status_counts.get(status, 0) + 1
+            if not result:
+                continue
+            # Inclus si le seuil est franchi MAINTENANT, ou si ce ticker a
+            # deja ete signale plus tot dans la journee (persistance
+            # intra-journee - voir docstring du module) : la valeur reste
+            # actualisee au dernier calcul, seule la presence persiste.
+            if result["changePercent"] >= THRESHOLD_PERCENT or result["ticker"] in already_flagged:
                 movers.append(result)
 
+    # Garde-fou anti-ecrasement (ajoute suite a l'incident du 12/08/2026 :
+    # panne reseau simultanee sur les 57 tickers d'un run, qui aurait
+    # silencieusement efface des mouvements reels (+9,91% sur Arista
+    # Networks entre autres) en ecrivant une liste vide sans que rien ne
+    # le signale). "not_open"/"no_data" sont des skips ATTENDUS, exclus du
+    # taux d'echec - seul "error" (echec reseau/prix) compte. Si plus de
+    # la moitie des tickers effectivement tentes echouent, le run est jugé
+    # non fiable : on n'ecrit RIEN plutot que de remplacer un etat valide
+    # par un resultat corrompu par la panne.
+    attempted = status_counts["ok"] + status_counts["error"]
+    if attempted > 0 and status_counts["error"] / attempted > 0.5:
+        print(f"[market_check] ABANDON : {status_counts['error']}/{attempted} echecs de recuperation "
+              f"de prix (probable panne reseau transitoire) - data/marketAction.json NON touche pour "
+              f"ne pas ecraser un etat valide.", file=sys.stderr)
+        return 1
+
     write_output(today_str, movers)
-    print(f"[market_check] {len(movers)} titre(s) en hausse >= {THRESHOLD_PERCENT}% "
-          f"sur {len(base_prices)} tickers avec baseline.")
+    new_count = sum(1 for m in movers if m["ticker"] not in already_flagged)
+    print(f"[market_check] {len(movers)} titre(s) affiches ({new_count} nouveaux ce run, "
+          f"{status_counts['error']} erreurs isolees) sur {len(base_prices)} tickers avec baseline.")
     return 0
 
 
