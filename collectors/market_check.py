@@ -2,7 +2,7 @@
 collectors/market_check.py
 
 Job de vérification (voir .github/workflows/market-action-check.yml) :
-toutes les 30 minutes, lundi à vendredi entre 08h00 et 22h30 heure de
+toutes les 15 minutes, lundi à vendredi entre 08h00 et 22h30 heure de
 Paris (jours fériés français exclus), compare le prix actuel de chaque
 ticker à la baseline du jour (voir market_reset.py) et écrit la liste des
 titres en hausse de 2% ou plus.

@@ -1,12 +1,13 @@
-name: Market action - vérification toutes les 30 min
+name: Market action - vérification toutes les 15 min
 on:
   schedule:
-    # Vise 08h00-22h30 heure de Paris, lundi a vendredi, toutes les 30 min.
+    # Vise 08h00-22h30 heure de Paris, lundi a vendredi, toutes les 15 min
+    # (decision du 12/08/2026 - 30 min jugee trop lente par l'utilisateur).
     # Cible en UTC : 06h00-20h30 (CEST, UTC+2, en vigueur actuellement).
     # Meme limite de derive DST assumee que les autres crons de ce depot
     # (voir market-action-reset.yml) : en heure d'hiver (CET, UTC+1), la
     # fenetre reelle cote Paris devient 07h00-21h30 (1h plus tot).
-    - cron: '0,30 6-20 * * 1-5'
+    - cron: '0,15,30,45 6-20 * * 1-5'
   workflow_dispatch: {}  # déclenchement manuel pour les tests
 permissions:
   contents: write
