@@ -45,6 +45,9 @@ load_ticker_json = _state.load_ticker_json
 _hol = _load_module("lib/holidays_fr.py", "omnium_market_holidays")
 is_market_day = _hol.is_market_day
 
+_hours = _load_module("lib/market_hours.py", "omnium_market_hours")
+market_has_opened = _hours.market_has_opened
+
 PRICE_PROXY_URL = "https://model.omnium-capital.com/price.php"
 BASELINE_PATH = "data/marketActionBaseline.json"
 OUTPUT_PATH = "data/marketAction.json"
@@ -70,6 +73,16 @@ def check_ticker(ticker: str, base_price: float):
     name = tdata.get("name", ticker)
     if not sym or not base_price:
         return None
+
+    # Ne jamais evaluer un titre avant l'ouverture (+ marge de securite)
+    # de SA place boursiere - voir lib/market_hours.py pour le contexte du
+    # bug du 12/08/2026 (des tickers US remontaient une "variation" avant
+    # 15h30 heure de Paris, alors que leur session n'avait pas commence -
+    # price.php/Google Finance renvoie un prix pre-marche peu fiable avant
+    # l'ouverture officielle).
+    if not market_has_opened(sym):
+        return None
+
     try:
         price = fetch_price(sym)
     except Exception as e:
