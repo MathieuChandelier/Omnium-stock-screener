@@ -1,0 +1,190 @@
+{
+  "name": "UCB",
+  "cours": 217.0,
+  "yahooSymbol": "UCB.BR",
+  "dividende": 1.45,
+  "data": [
+    {"year": 2021, "ca": 5777, "ebit": 1284, "net": 1058, "shares": 194, "nd": 3200},
+    {"year": 2022, "ca": 5517, "ebit": 585, "net": 418, "shares": 194, "nd": 4300},
+    {"year": 2023, "ca": 5252, "ebit": 604, "net": 343, "shares": 193, "nd": 3400},
+    {"year": 2024, "ca": 6152, "ebit": 1324, "net": 1065, "shares": 192, "nd": 1600},
+    {"year": 2025, "ca": 7741, "ebit": 1948, "net": 1558, "shares": 190, "nd": -7}
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 11.62,
+    "epsNY": 13.93,
+    "date": "2026-08-04",
+    "source": "Core (non-GAAP) - consensus sell-side (StockAnalysis.com, agregateur multi-brokers)",
+    "analystsCount": 16
+  },
+  "particularites": [
+    {
+      "text": "Perte d'exclusivite de BRIVIACT (antiepileptique) en Europe des aout 2026, avec un declin attendu d'environ 80% des ventes US sur les 12 mois suivants - vent contraire deja identifie par la direction pour le S2 26, distinct de la dynamique des 5 moteurs de croissance (BIMZELX en tete).",
+      "valuePct": -2
+    },
+    {
+      "text": "Acquisitions de Neurona Therapeutics (therapie cellulaire, epilepsie) et Candid Therapeutics au S1 26, financees en partie par dette : la position nette est passee d'une tresorerie nette de 7 M€ fin 2025 a une dette nette de 2 821 M€ fin juin 2026 (avec le dividende verse et des rachats d'actions sur la meme periode) - degradation temporaire du bilan, sans remise en cause de la trajectoire de desendettement compte tenu de la generation de cash croissante du groupe.",
+      "valuePct": null
+    }
+  ],
+  "nextEvent": {"label": "FY 26", "date": null},
+  "ownership": {
+    "asOf": "2026-08-12",
+    "insiderPct": 36,
+    "insiderDesc": "Financiere de Tubize SA (vehicule de controle familial cree en 1928, reunissant les descendants du fondateur Emmanuel Janssen et les actionnaires partageant leur vision long terme) detient environ 36% du capital - objectif explicitement affiche de stabilite actionnariale et de predominance familiale pour le developpement industriel long terme d'UCB.",
+    "insiderSource": "Communication Financiere de Tubize (2025-2026) recoupee avec les publications UCB.",
+    "notableHolders": [],
+    "coverageNote": "Pas d'investisseur de la watchlist tier-1 identifie avec une position notable - actionnariat institutionnel large et passif (FMR/Fidelity ~7%, BlackRock ~6%, Vanguard ~2,8%), sans gestionnaire de conviction nomme au-dela du bloc de controle familial via Financiere de Tubize.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-08-12",
+    "items": [
+      {
+        "year": 2020,
+        "title": "Allegation de retro-commissions illegales (kickbacks) envers des medecins prescripteurs de Cimzia (via des services d'education/reimbursement gratuits), portee par un relator (CIMZNHCA LLC) au titre du False Claims Act americain.",
+        "allegedBy": "CIMZNHCA LLC (relator prive, qui-tam)",
+        "date": "2020-08-17",
+        "status": "classee_sans_suite",
+        "outcome": "Le gouvernement americain a refuse d'intervenir et a demande le rejet de l'action, indiquant apres enquete que les allegations etaient infondees ; rejet confirme par la Cour d'appel du 7e circuit (2020).",
+        "source": "United States ex rel. CIMZNHCA, LLC v. UCB, Inc., 970 F.3d 835 (7th Cir. 2020)"
+      }
+    ],
+    "note": "Un seul element identifie sur l'historique public recherche (allegation de 2020, classee sans suite par la justice americaine). Litiges de brevets identifies par ailleurs (Cimzia vs Kennedy Institute Trust, Yeda Research - ce dernier tranche en faveur d'UCB) ecartes du perimetre car relevant du contentieux commercial/brevet ordinaire, pas d'une allegation de fraude."
+  },
+  "coherenceQualitative": {
+    "asOf": "2026-08-12",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "H1 26",
+        "date": "2026-07-30",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Peter Verdult (BNP Paribas) - donnees Phase III de Galvokimig en dermatite atopique et confort sur le consensus BIMZELX 2026 : lecture des donnees attendue debut 2028 (recrutement en acceleration) ; direction confirme son confort avec le consensus Visible Alpha 2026 ; donnees BE BOLD (EULAR de juin) montrant une superiorite face a SKYRIZI, premieres reactions des medecins tres positives.",
+          "Q Sarita Kapila (Morgan Stanley) - concurrence emergente en hidradenite suppuree (remibrutinib oral de Novartis, lutikizumab d'AbbVie) : le CMO Emmanuel Caeymaex juge le double blocage IL-17A/F de BIMZELX central en HS, aucune donnee des concurrents ne suggere une efficacite superieure, l'heterogeneite des patients HS justifie une pluralite d'approches.",
+          "Q Sophia Graeff Buhl-Nielsen (JPMorgan) - mix de canaux de distribution de BIMZELX et penetration du canal gouvernemental : la societe ne divulgue pas le detail du mix canal, progression continue sur les segments commercial et gouvernemental ; trop tot pour identifier des marqueurs predictifs de reponse au traitement anti-IL-17.",
+          "Q Xian Deng (UBS) - detail de l'accord d'acces de premiere ligne avec un grand PBM et decomposition de l'objectif de pic de ventes de 7 Md€ de BIMZELX : accord effectif au 1er juin couvrant les trois indications en premiere ligne aupres de ce PBM ; decomposition du pic de ventes par indication non divulguee, reflete des stades de competition/penetration differents.",
+          "Q Charles Pitman-King (Barclays) - quantification de la pression sur le prix net de BIMZELX et soutenabilite du taux de R&D : la CFO Sandrine Dufour n'indique pas de tendance chiffree precise sur le prix net (mix double step-edit / single step-edit / premiere ligne) ; cible R&D a moyen terme autour de 25% des ventes nettes, guidance 2027 jugee premature a ce stade.",
+          "Q Charlie Haywood (Bank of America) - mecanique de baisse de la marge d'EBITDA S2 vs S1 : vents contraires du S2 identifies - perte d'exclusivite de BRIVIACT (Europe en aout, declin US attendu de 80% sur 12 mois), moindres benefices de gross-to-net, erosion du prix d'acces de BIMZELX avant la montee en volume, phasing R&D plus charge au S2, couts d'integration des acquisitions.",
+          "Q Kerry Holford (Berenberg) - guidance de marge long terme et appetit pour le business development : pas de guidance de marge long terme donnee, objectif d'amelioration progressive ; portefeuille myasthenie grave (gMG) en croissance de 38% sur un an grace a la double therapie FcRn/C5 ; focus BD sur les actifs en phase precoce, capacite d'integration geree jusqu'a 2035 et au-dela.",
+          "Q Rudy Li (Wolfe Research) - moteurs cles de l'objectif de 7 Md€ pour BIMZELX : execution terrain/optimisation des canaux, donnees cliniques (BE BOLD publiees en juin 2026), extension du cycle de vie (essai PPP, indications adolescentes).",
+          "Q Michael Leuchten (Jefferies) - efficacite de la campagne DTC de BIMZELX (tendances NBRx) et allocation de capital sur bepranemab (anticorps anti-tau) apres les donnees Biogen a l'AAIC : investissement DTC soutenu, la periode calme de novembre explique un creux ponctuel des nouvelles prescriptions, retour a plein regime depuis ; donnees Biogen jugees favorables a l'hypothese tau extracellulaire, alignement reglementaire finalise sur les 6 derniers mois pour une etude de Phase II confirmatoire."
+        ]
+      },
+      {
+        "quarter": "FY 25",
+        "date": "2026-02-26",
+        "format": "compresse",
+        "clesRetenues": [
+          "Contexte chiffre de l'annee : ventes nettes +35% a change constant a 7,4 Md€, EBITDA ajuste +79% a 2,6 Md€ (marge 34%, +10pt), core EPS double a 9,99€ ; BIMZELX plus que triple a plus de 2,2 Md€, leader de la classe IL-17 aux Etats-Unis (>30% de part en psoriasis, 45% en HS).",
+          "Guidance 2026 initiale communiquee : croissance des ventes a un chiffre eleve/deux chiffres bas (revisee a la hausse par la suite au S1 26 vers 'low-teens to mid-teens').",
+          "Q (plans pour bepranemab en Alzheimer) - le CEO Jean-Christophe Tellier reconnait les risques inherents aux programmes Alzheimer et indique qu'UCB reste ouvert a des partenariats pour mutualiser ce risque."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "galvokimig_phase3_readout_2028",
+        "quarterOrigine": "H1 26",
+        "engagement": "Lecture des donnees de Phase III de Galvokimig (dermatite atopique) attendue debut 2028, recrutement en cours d'acceleration selon la direction.",
+        "echeance": "2028-Q1",
+        "statut": "en_cours"
+      }
+    ]
+  },
+  "hypothese": {
+    "date": "2026-08-12",
+    "source": "Creation (12/08/2026) - communique et transcript du H1 26 (30/07/2026) analyses, ainsi que le transcript du FY 25 (26/02/2026) pour amorcer la comparaison de coherenceQualitative des le premier passage. NB : UCB publie en cadence SEMESTRIELLE (H1 + annuel complet), pas trimestrielle - quarterlyEPS structure en consequence (2 periodes par an, pas 4).",
+    "dernierCall": {
+      "quarter": "H1 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {"actual": 4100, "consensus": null},
+        "epsAdj": {"actual": 6.84, "consensus": 5.03, "basis": "Core (non-GAAP)"}
+      },
+      "guidanceProchainTrimestre": "Pas de guidance semestrielle S2 chiffree isolement fournie (guidance donnee a l'annee).",
+      "guidanceAnnuelle": "Guidance 2026 relevee : croissance des ventes nettes de 'low-teens' a 'mid-teens' a change constant (vs guidance initiale a un chiffre eleve/deux chiffres bas), croissance de l'EBITDA ajuste de 'mid-teens' a 'low-20s' a change constant, taux d'imposition core autour de 15%.",
+      "pointsCles": [
+        "Ventes nettes S1 26 en hausse de 23% a 4,1 Md€, EBITDA ajuste +68% a 1,7 Md€ ; core EPS a 6,84€ (quasi doublement sur un an), largement au-dessus du consensus de 5,03€.",
+        "BIMZELX moteur principal : ventes doublees a 1,5 Md€ au S1, objectif de pic de ventes releve a au moins 7 Md€ (parts de marche ~35% psoriasis, ~30% rhumatologie, ~45% hidradenite suppuree) ; accord d'acces de premiere ligne avec un grand PBM americain effectif au 1er juin 2026.",
+        "Vents contraires identifies pour le S2 26 : perte d'exclusivite de BRIVIACT (Europe des aout, declin US ~80% sur 12 mois), erosion du prix net de BIMZELX avant montee en volume, phasing R&D plus charge, couts d'integration des acquisitions Neurona Therapeutics et Candid Therapeutics.",
+        "Cinq moteurs de croissance representant desormais plus de la moitie des ventes nettes du groupe ; portefeuille myasthenie grave (gMG) en hausse de 38% sur un an."
+      ]
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "H1 26",
+        "date": "2026-07-30",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Croissance des ventes nettes 'low-teens' a 'mid-teens' et croissance de l'EBITDA ajuste 'mid-teens' a 'low-20s', a change constant, taux d'imposition core ~15%."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "historique": [],
+      "PY": [
+        {"label": "H1", "eps": 3.53, "actual": true},
+        {"label": "H2", "eps": 6.46, "actual": true}
+      ],
+      "CY": [
+        {"label": "H1", "eps": 6.84, "actual": true},
+        {"label": "H2", "eps": 4.78, "actual": false}
+      ],
+      "NY": [
+        {"label": "H1", "eps": 7.10, "actual": false},
+        {"label": "H2", "eps": 6.83, "actual": false}
+      ],
+      "epsForward12m": 11.88,
+      "forwardPeriodLabel": "H2 26 -> H1 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
+    },
+    "summary": "Biopharma belge sous controle familial stable (Financiere de Tubize, ~36%), en forte acceleration portee par BIMZELX (objectif de pic de ventes releve a au moins 7 Md€) et 4 autres moteurs de croissance ; le S2 26 doit absorber plusieurs vents contraires identifies (perte d'exclusivite BRIVIACT, pression sur le prix net de BIMZELX) avant la poursuite de la montee en puissance en 2027.",
+    "text": "== SYNTHESE DE LA THESE ==\nUCB est une biopharma belge centenaire, sous controle familial stable via Financiere de Tubize (~36% du capital, descendants du fondateur Emmanuel Janssen), specialisee en neurologie/immunologie. Apres un creuil de revenus 2021-2023 (perte d'exclusivite de produits matures), le groupe est entre dans une phase d'acceleration nette portee par BIMZELX (bimekizumab, anti-IL-17A/F) : ventes multipliees par plus de 3 en 2025 a plus de 2,2 Md€, doublees a nouveau au S1 26 a 1,5 Md€, objectif de pic de ventes releve a au moins 7 Md€ avec des parts de marche desormais leaders dans la classe IL-17 aux Etats-Unis (psoriasis, hidradenite suppuree, rhumatologie). Cinq moteurs de croissance (BIMZELX, CIMZIA, FINTEPLA, portefeuille gMG, EVENITY) representent desormais plus de la moitie des ventes nettes du groupe. La guidance 2026 a ete relevee des le S1 (croissance des ventes 'low-teens' a 'mid-teens', EBITDA 'mid-teens' a 'low-20s' a change constant), avec un core EPS S1 26 (6,84€) quasi double sur un an et largement au-dessus du consensus (5,03€). Le bilan, passe en tresorerie nette quasi nulle fin 2025, s'est de nouveau endette au S1 26 (2,8 Md€ de dette nette fin juin) suite aux acquisitions de Neurona Therapeutics et Candid Therapeutics, combinees au dividende verse et aux rachats d'actions - degradation jugee temporaire compte tenu de la generation de cash croissante.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Relevement de l'objectif de pic de ventes de BIMZELX a au moins 7 Md€, soutenu par les donnees de superiorite de l'etude BE BOLD (EULAR juin 2026) face a SKYRIZI et un accord d'acces de premiere ligne avec un grand PBM americain (effectif 1er juin 2026, couvrant les trois indications). (i) Guidance annuelle 2026 relevee des la publication du S1. (ii) Acquisitions de Neurona Therapeutics (therapie cellulaire, epilepsie - Rezanecel, Phase III prevue H1 27) et de Candid Therapeutics au S1 26, financees en partie par dette. (ii) Vents contraires S2 26 explicitement identifies par la direction : perte d'exclusivite de BRIVIACT (Europe des aout 2026, declin US ~80% sur 12 mois), erosion du prix net de BIMZELX avant montee en volume, phasing R&D plus charge, couts d'integration. (iii) Concurrence emergente en hidradenite suppuree (remibrutinib oral Novartis, lutikizumab AbbVie) jugee non differenciante par la direction sur les donnees disponibles a ce stade. (iii) Portefeuille myasthenie grave (gMG) en croissance de 38% sur un an, cible de 20 000 patients traites annuellement.\n\n== PARTICULARITES ==\nVoir le champ dedie particularites : perte d'exclusivite BRIVIACT (vent contraire S2 26 identifie) et impact bilanciel des acquisitions Neurona/Candid Therapeutics (retour a une dette nette significative apres une tresorerie nette quasi nulle fin 2025).\n\n== PARAMETRES & POINTS DE SUIVI ==\n\"ca\" = ventes nettes/revenu total consolide, \"ebit\" = resultat operationnel IFRS publie (source StockAnalysis.com, feuille de calcul agregee - a recouper avec le rapport annuel complet au prochain refresh), \"net\" = resultat net IFRS part du groupe, tous en euros. Nombre d'actions et dette nette historiques (2021-2024) estimes par recoupement (buybacks progressifs depuis ~194,5M actions en 2014 ; dette nette suivant le profil des acquisitions Ra Pharmaceuticals 2020 et Zogenix 2022 puis desendettement jusqu'a la tresorerie nette quasi nulle confirmee fin 2025) - a corriger au prochain refresh si le detail annee par annee est retrouve dans les rapports annuels complets. UCB publie en cadence SEMESTRIELLE (H1 + resultats annuels complets en fevrier), pas trimestrielle - quarterlyEPS et coherenceQualitative.historique structures en consequence (labels H1/H2, pas T1-T4). epsConsensus et adjEPS sont sur base CORE (non-GAAP), convention de reporting principale de la societe et des analystes qui la couvrent - pas de serie IFRS/GAAP separee retenue ici faute de source fiable distincte. WATCH-LIST pour le prochain refresh : (1) publication des resultats annuels complets FY26 (fevrier 2027) - premiere lecture complete de l'ampleur reelle des vents contraires S2 26 (BRIVIACT, prix net BIMZELX) ; (2) trajectoire du desendettement post-acquisitions Neurona/Candid ; (3) evolution de la concurrence en hidradenite suppuree (Novartis, AbbVie) ; (4) lecture Phase III Galvokimig (dermatite atopique, debut 2028, engagement structurant suivi).\n\n== CATALYSEURS ==\nPublication des resultats annuels complets FY26 (fevrier 2027), premiere lecture de l'ampleur reelle des vents contraires du S2 26 vs les indications qualitatives donnees au S1 ; poursuite de la montee en charge de BIMZELX (extension d'indications, executions terrain, donnees BE BOLD publiees) ; lecture Phase III Galvokimig (dermatite atopique) attendue debut 2028.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "AN-BIMZELX-RAMP",
+        "moteur": "BIMZELX en hypercroissance confirmee : ventes plus que triplees en 2025 (>2,2 Md€), doublees a nouveau au S1 26 (1,5 Md€), objectif de pic de ventes releve a au moins 7 Md€ soutenu par un accord d'acces de premiere ligne avec un grand PBM americain (effectif juin 2026) et des donnees de superiorite clinique (etude BE BOLD).",
+        "applique": ["adjCA.2026", "adjCA.2027", "adjCA.2028", "adjEBIT.2027", "adjEBIT.2028"],
+        "confiance": "haute"
+      },
+      {
+        "id": "AN-BRIVIACT-LOE",
+        "moteur": "Perte d'exclusivite de BRIVIACT identifiee comme vent contraire du S2 26 (Europe des aout, declin US ~80% sur 12 mois) - effet transitoire de composition du chiffre d'affaires, distinct de la dynamique structurelle des 5 moteurs de croissance.",
+        "applique": ["adjCA.2026"],
+        "confiance": "haute"
+      },
+      {
+        "id": "AN-OPERATING-LEVERAGE",
+        "moteur": "Effet de ciseau operationnel confirme : marge d'EBITDA ajuste passee de 24% (2024) a 34% (2025), guidance 2026 pour une croissance de l'EBITDA superieure a celle des ventes ('mid-teens to low-20s' vs 'low-teens to mid-teens') - expansion de marge attendue poursuivie a mesure que les moteurs de croissance montent en echelle.",
+        "applique": ["adjEBIT.2026", "adjEBIT.2029", "adjEBIT.2030"],
+        "confiance": "haute"
+      },
+      {
+        "id": "AN-BD-DELEVERAGING",
+        "moteur": "Acquisitions Neurona Therapeutics et Candid Therapeutics (S1 26) ramenant la dette nette a 2,8 Md€ fin juin 2026 (contre une tresorerie nette quasi nulle fin 2025) ; desendettement attendu porte par la generation de cash croissante du groupe (effet de ciseau EBITDA/ventes), la direction se disant 'raisonnablement equipee jusqu'a 2035+' pour absorber du business development supplementaire cible sur des actifs en phase precoce.",
+        "applique": ["adjND.2026", "adjND.2027", "adjND.2028", "adjND.2029", "adjND.2030"],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "AN-FAMILY-CONTROL",
+        "moteur": "Controle familial stable via Financiere de Tubize (~36% du capital) depuis 1928, gouvernance orientee stabilite et developpement industriel long terme - coherent avec la strategie de business development cible (actifs en phase precoce plutot que M&A opportuniste de grande taille).",
+        "applique": [],
+        "confiance": "haute"
+      }
+    ],
+    "adjEPS": {"2026": 11.62, "2027": 13.93, "2028": 15.90, "2029": 18.00, "2030": 20.30},
+    "adjCA": {"2026": 8825, "2027": 10149, "2028": 11468, "2029": 12730, "2030": 14003},
+    "adjEBIT": {"2026": 2339, "2027": 2842, "2028": 3326, "2029": 3755, "2030": 4201},
+    "adjNet": {"2026": 2208, "2027": 2633, "2028": 2989, "2029": 3366, "2030": 3776},
+    "adjND": {"2026": 2400, "2027": 1400, "2028": 500, "2029": -400, "2030": -1500},
+    "adjShares": {"2026": 190, "2027": 189, "2028": 188, "2029": 187, "2030": 186}
+  }
+}
