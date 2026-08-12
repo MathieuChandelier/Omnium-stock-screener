@@ -218,6 +218,19 @@ thead th .fy-month-tag{color:#8be9dc;}
 .news-bar-text b{font-weight:800;}
 .news-bar-close{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:var(--navy);opacity:.55;transition:opacity .12s,background .12s;padding:0;}
 .news-bar-close:hover{opacity:1;background:rgba(0,1,144,.08);}
+.market-action-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#e8f9ee;border-radius:14px;gap:12px;margin:0 0 8px;}
+.market-action-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:#0a7a3d;cursor:pointer;flex:1;min-width:0;}
+.market-action-bar-text b{font-weight:800;}
+.market-action-bar-close{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:#0a7a3d;opacity:.55;transition:opacity .12s,background .12s;padding:0;}
+.market-action-bar-close:hover{opacity:1;background:rgba(10,122,61,.1);}
+.market-action-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;}
+.market-action-modal{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:100%;max-height:80vh;overflow-y:auto;}
+.market-action-modal-title{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:14px;}
+.market-action-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee;}
+.market-action-row:last-child{border-bottom:none;}
+.market-action-row-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--navy);}
+.market-action-row-pct{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:#0a7a3d;}
+.market-action-modal-close{margin-top:16px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--navy-light);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;cursor:pointer;}
 .news-section{margin-bottom:26px;}
 .news-section-hd{display:flex;align-items:center;gap:9px;margin:0 0 10px;}
 .news-section-hd svg{flex-shrink:0;}
@@ -442,6 +455,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div class="container">
 
 <div id="tab-portefeuille" class="panel">
+  <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
@@ -582,6 +596,7 @@ function normalizeState(s){
   if(!s.newsDigest)s.newsDigest=[];
   if(!s.newsAll)s.newsAll=[];
   if(!s.dismissedNewsDates)s.dismissedNewsDates=new Set();
+  if(!s.marketAction)s.marketAction=null;
   Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
   return s;
 }
@@ -687,7 +702,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`);
@@ -703,12 +718,13 @@ async function loadState() {
       fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
       fetch('data/newsDigest.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch('data/newsAll.json').then(r => r.ok ? r.json() : []).catch(() => []),
-      fetchDismissedNewsDates()
+      fetchDismissedNewsDates(),
+      fetch('data/marketAction.json').then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -1674,6 +1690,88 @@ function dismissNewsLine(dateStr){
   postDismissedNewsDate(dateStr);
 }
 
+// ══════════════════════════════════════════════════════════════
+// MARKET ACTION - bandeau "hausse significative" (>=2% depuis la baseline
+// du jour, voir collectors/market_reset.py + market_check.py). Meme
+// pattern visuel que le bandeau news, en plus simple : un seul etat "du
+// jour" (pas un digest multi-jours), donc une seule ligne possible a la
+// fois. Dismissal en localStorage UNIQUEMENT (pas de sync serveur comme
+// pour les news) - assume car cette notification ne vit qu'une seule
+// journee de toute facon (voir la conversation de design du 12/08/2026) :
+// la valeur d'une synchro multi-appareils est faible pour un etat qui
+// disparait le lendemain.
+// ══════════════════════════════════════════════════════════════
+const MARKET_ACTION_DISMISS_KEY='omniumMarketActionDismissedDate';
+
+// Date du jour cote Paris (PAS le fuseau local du visiteur) - le backend
+// (market_check.py) raisonne en heure de Paris, la comparaison cote client
+// doit utiliser le meme referentiel pour ne jamais afficher une ligne
+// perimee (ou en cacher une valide) a cause d'un visiteur dans un autre
+// fuseau horaire.
+function todayParisDateStr(){
+  return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+}
+
+function isMarketActionDismissed(dateStr){
+  try{ return localStorage.getItem(MARKET_ACTION_DISMISS_KEY)===dateStr; }catch(e){ return false; }
+}
+function dismissMarketAction(dateStr){
+  try{ localStorage.setItem(MARKET_ACTION_DISMISS_KEY,dateStr); }catch(e){}
+  renderMarketActionBar();
+}
+
+// Ligne active uniquement si : donnee du jour (pas d'hier, voir date du
+// fichier vs todayParisDateStr), au moins un titre concerne, et pas deja
+// dismissee aujourd'hui.
+function activeMarketAction(){
+  const ma=state.marketAction;
+  if(!ma || !ma.date || !Array.isArray(ma.movers) || !ma.movers.length)return null;
+  if(ma.date!==todayParisDateStr())return null;
+  if(isMarketActionDismissed(ma.date))return null;
+  return ma;
+}
+
+function renderMarketActionBar(){
+  const wrap=document.getElementById('market-action-bar-wrap');
+  if(!wrap)return;
+  const ma=activeMarketAction();
+  if(!ma){ wrap.innerHTML=''; return; }
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const n=ma.movers.length;
+  const label=n>1?`${n} titres`:`${n} titre`;
+  wrap.innerHTML=`<div class="market-action-bar">
+      <span class="market-action-bar-text" onclick="openMarketActionDetail()">${esc(formatNewsDayMonth(ma.date))} — Progression significative : <b>${label}</b></span>
+      <button class="market-action-bar-close" title="Ignorer" onclick="event.stopPropagation();dismissMarketAction('${esc(ma.date)}')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>`;
+}
+
+function openMarketActionDetail(){
+  const ma=activeMarketAction();
+  if(!ma)return;
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const rows=ma.movers.slice().sort((a,b)=>b.changePercent-a.changePercent).map(m=>`
+      <div class="market-action-row">
+        <span class="market-action-row-name">${esc(m.name||m.ticker)}</span>
+        <span class="market-action-row-pct">+${(+m.changePercent).toFixed(2)}%</span>
+      </div>`).join('');
+  const overlay=document.createElement('div');
+  overlay.className='market-action-overlay';
+  overlay.id='market-action-overlay';
+  overlay.innerHTML=`<div class="market-action-modal">
+      <div class="market-action-modal-title">Progression significative — ${esc(formatNewsDayMonth(ma.date))}</div>
+      ${rows}
+      <button class="market-action-modal-close" onclick="closeMarketActionDetail()">Fermer</button>
+    </div>`;
+  overlay.addEventListener('click',e=>{ if(e.target===overlay)closeMarketActionDetail(); });
+  document.body.appendChild(overlay);
+}
+function closeMarketActionDetail(){
+  const overlay=document.getElementById('market-action-overlay');
+  if(overlay)overlay.remove();
+}
+
 // filterDate : si fourni, ne conserve QUE les items dont dateCollecte
 // correspond exactement - PAS dateEvenement (correctif : le digest, voir
 // merge.py update_digest(), regroupe ses lignes par date de COLLECTE - le
@@ -1815,6 +1913,7 @@ function pfUpdateSortHeaderUI(){
 
 function renderPortfolio(){
   renderNewsBar();
+  renderMarketActionBar();
   const list=document.getElementById('pf-list');
   const countEl=document.getElementById('pf-count');
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');

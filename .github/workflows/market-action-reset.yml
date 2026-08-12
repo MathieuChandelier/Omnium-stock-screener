@@ -1,0 +1,33 @@
+name: Market action - reset baseline quotidienne
+on:
+  schedule:
+    # Vise minuit heure de Paris, lundi a vendredi. Cible en UTC : 22h00
+    # (CEST, UTC+2, en vigueur actuellement) les dimanche-jeudi UTC, pour
+    # obtenir minuit lundi-vendredi cote Paris. Meme limite assumee que le
+    # cron quotidien des news (news-collector.yml) : ce cron fixe derive
+    # d'1h en heure d'hiver (CET, UTC+1) - la baseline serait alors captee
+    # a 23h Paris au lieu de minuit pile, encore avant l'ouverture de tout
+    # marche concerne donc sans impact reel sur la justesse de la
+    # reference. Le script lui-meme revalide de toute facon le jour de
+    # marche (week-end + feries FR, voir lib/holidays_fr.py) - un run qui
+    # tomberait un jour non ouvre est un no-op propre, pas une erreur.
+    - cron: '0 22 * * 0-4'
+  workflow_dispatch: {}  # déclenchement manuel pour les tests
+permissions:
+  contents: write
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python collectors/market_reset.py
+      - name: Commit et push si changements
+        run: |
+          git config user.name "omnium-news-bot"
+          git config user.email "actions@github.com"
+          git add data/marketActionBaseline.json
+          git diff --cached --quiet || git commit -m "Market action : reset baseline $(date -u +%Y-%m-%d)"
+          git push
