@@ -91,10 +91,10 @@ def is_near_duplicate(item, existing_batch):
     return False
 
 
-def merge_all_items():
+def merge_all_items(collector_names=("communiques", "web", "youtube")):
     combined = []
     statuses = {}
-    for name in ("communiques", "web", "youtube"):
+    for name in collector_names:
         items, status = load_artifact(name)
         statuses[name] = status
         combined.append((name, items))
@@ -219,7 +219,18 @@ def update_state(collector_statuses, run_ok: bool):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
-def notify(counts_by_type, run_ok, statuses):
+TYPE_LABELS = {"communique": "communiqués", "web": "web", "youtube": "youtube", "conference": "conférences"}
+
+
+def _format_breakdown(counts_by_type):
+    """Construit le detail par type dynamiquement (pas de liste figee a 3
+    types) - necessaire depuis l'ajout du collecteur conferences.py qui
+    appelle cette meme fonction avec un type "conference" absent des 3
+    types du pipeline quotidien d'origine."""
+    return ", ".join(f"{v} {TYPE_LABELS.get(k, k)}" for k, v in counts_by_type.items())
+
+
+def notify(counts_by_type, run_ok, statuses, title="News Omnium"):
     """Notifie a chaque run, meme a 0 item - c'est tout le point du
     correctif du 11/08/2026 (avant : silence total un jour sans news,
     indiscernable d'une panne). Deux canaux independants, chacun
@@ -229,14 +240,21 @@ def notify(counts_by_type, run_ok, statuses):
     2. Push ntfy.sh (topic prive via secret NTFY_TOPIC) - gratuit, sans
        compte ; no-op silencieux si le secret n'est pas defini (meme
        pattern que ANTHROPIC_API_KEY / YOUTUBE_API_KEY ailleurs dans le
-       pipeline)."""
+       pipeline).
+    Reutilisee telle quelle par merge_conferences.py (titre different,
+    memes deux canaux) - voir _format_breakdown pour le detail par type,
+    generique plutot que fige sur les 3 types du pipeline quotidien.
+    IMPORTANT : garder "title" en ASCII pur (pas d'accents) - c'est envoye
+    tel quel dans le header HTTP "Title" de ntfy.sh, qui exige un
+    encodage RFC 2047 pour tout caractere non-ASCII (sinon affichage en
+    "?" cote app) ; le corps du message (body), lui, est du contenu POST
+    classique et supporte l'UTF-8/les accents sans restriction."""
     total = sum(counts_by_type.values())
     status_label = "OK" if run_ok else "PARTIEL"
     lines = [
-        f"## News Omnium - {status_label}",
+        f"## {title} - {status_label}",
         "",
-        f"- **{total}** nouvel(le) item(s) ({counts_by_type.get('communique', 0)} communiqués, "
-        f"{counts_by_type.get('web', 0)} web, {counts_by_type.get('youtube', 0)} youtube)",
+        f"- **{total}** nouvel(le) item(s) ({_format_breakdown(counts_by_type)})",
         f"- Statut collecteurs : {statuses}",
     ]
     summary = "\n".join(lines)
@@ -251,15 +269,13 @@ def notify(counts_by_type, run_ok, statuses):
 
     ntfy_topic = os.environ.get("NTFY_TOPIC")
     if ntfy_topic:
-        title = f"News Omnium : {total} item(s)" if total > 0 else "News Omnium : rien de nouveau"
-        body = (f"{counts_by_type.get('communique', 0)} communiqués, "
-                f"{counts_by_type.get('web', 0)} web, "
-                f"{counts_by_type.get('youtube', 0)} youtube - run {status_label}")
+        ntfy_title = f"{title} : {total} item(s)" if total > 0 else f"{title} : rien de nouveau"
+        body = f"{_format_breakdown(counts_by_type)} - run {status_label}"
         try:
             req = urllib.request.Request(
                 f"https://ntfy.sh/{ntfy_topic}",
                 data=body.encode("utf-8"),
-                headers={"Title": title, "Priority": "default" if total > 0 else "low"},
+                headers={"Title": ntfy_title, "Priority": "default" if total > 0 else "low"},
                 method="POST",
             )
             urllib.request.urlopen(req, timeout=10)

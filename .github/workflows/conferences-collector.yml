@@ -1,0 +1,66 @@
+name: Veille conférences investisseurs Omnium
+on:
+  schedule:
+    # Hebdomadaire (lundi) plutôt que quotidien : decision du 12/08/2026,
+    # il y a toujours au moins une semaine entre l'annonce d'une conference
+    # investisseurs/roadshow et l'evenement lui-meme, donc une cadence
+    # hebdo suffit cote fraicheur tout en gardant le cout marginal faible
+    # (voir collectors/conferences.py). Horaire volontairement decale de
+    # 30 min par rapport au cron quotidien (06:15 UTC, voir
+    # news-collector.yml) pour reduire le risque de collision au moment du
+    # commit/push - les deux workflows restent independants et un push
+    # ordonne differemment resterait de toute facon sans consequence grave
+    # (fichiers disjoints entre les deux pipelines), mais autant l'eviter.
+    - cron: '45 6 * * 1'
+  workflow_dispatch: {}  # déclenchement manuel pour les tests
+permissions:
+  contents: write
+jobs:
+  conferences:
+    runs-on: ubuntu-latest
+    continue-on-error: true  # une erreur ici ne doit jamais empecher le job de fusion de tourner
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install anthropic
+      - run: python collectors/conferences.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact-conferences
+          path: artifacts/conferences.json
+          if-no-files-found: warn
+  merge:
+    needs: [conferences]
+    if: always()  # tourne même si le collecteur a échoué
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact-conferences
+          path: artifacts_dl
+      # L'artifact atterrit dans artifacts_dl/conferences.json - on le
+      # remet en place en artifacts/conferences.json pour que
+      # merge_conferences.py le trouve (meme convention que le pipeline
+      # quotidien, voir news-collector.yml).
+      - name: Placer l'artifact téléchargé
+        run: |
+          mkdir -p artifacts
+          [ -f artifacts_dl/conferences.json ] && cp artifacts_dl/conferences.json artifacts/conferences.json
+      - run: python collectors/merge_conferences.py
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+      - name: Commit et push si changements
+        run: |
+          git config user.name "omnium-news-bot"
+          git config user.email "actions@github.com"
+          git add data/news/ data/newsAll.json data/conferencesState.json
+          git diff --cached --quiet || git commit -m "Veille conférences investisseurs : mise à jour hebdomadaire $(date -u +%Y-%m-%d)"
+          git push
