@@ -4,17 +4,25 @@ collectors/market_reset.py
 Job de reset quotidien (voir .github/workflows/market-action-reset.yml) :
 capture le prix de tous les tickers du portefeuille pour servir de
 référence ("clôture de la veille") aux calculs de variation intraday de
-market_check.py. Exécuté à minuit heure de Paris, lundi à vendredi
-uniquement (jours fériés français exclus) - voir lib/holidays_fr.py pour
-la justification de ce choix et sa limite assumée.
+market_check.py. Exécuté à 01h00 heure de Paris (pas minuit - voir plus
+bas), lundi à vendredi uniquement (jours fériés français exclus) - voir
+lib/holidays_fr.py pour la justification de ce choix et sa limite
+assumée.
 
-Pourquoi un job dédié à minuit plutôt qu'une baseline "premier run de la
-fenêtre horaire" (décision du 12/08/2026, corrigée en cours de
-conception) : à minuit heure de Paris, tous les marchés US et européens
-sont fermés avec certitude, ce qui garantit que le prix capturé est bien
-celui de la clôture - une capture plus tardive (ex. 08h00) reposerait sur
+Pourquoi un job dédié tôt le matin plutôt qu'une baseline "premier run de
+la fenêtre horaire" (décision du 12/08/2026, corrigée en cours de
+conception) : à cette heure, tous les marchés US et européens sont
+fermés avec certitude, ce qui garantit que le prix capturé est bien celui
+de la clôture - une capture plus tardive (ex. 08h00) reposerait sur
 l'hypothèse qu'aucun marché n'a encore ouvert, hypothèse non garantie en
 cas de retard du scheduler GitHub Actions.
+
+Pourquoi 01h00 et pas minuit pile (décision du 13/08/2026) : la
+notification de market_check.py de la veille reste ainsi visible côté
+app jusqu'à 01h00 (voir todayParisDateStr() dans index.html, même cutoff
+décalé) plutôt que de disparaître à minuit pile - utile pour un
+utilisateur qui consulte tard le soir. Sans incidence sur la justesse de
+la référence (les marchés sont fermés aussi bien à minuit qu'à 01h00).
 
 Usage : python market_reset.py
 Écrit data/marketActionBaseline.json.

@@ -1703,13 +1703,19 @@ function dismissNewsLine(dateStr){
 // ══════════════════════════════════════════════════════════════
 const MARKET_ACTION_DISMISS_KEY='omniumMarketActionDismissedDate';
 
-// Date du jour cote Paris (PAS le fuseau local du visiteur) - le backend
+// "Jour" cote Paris (PAS le fuseau local du visiteur) - le backend
 // (market_check.py) raisonne en heure de Paris, la comparaison cote client
 // doit utiliser le meme referentiel pour ne jamais afficher une ligne
 // perimee (ou en cacher une valide) a cause d'un visiteur dans un autre
-// fuseau horaire.
+// fuseau horaire. Cutoff a 01h00 (pas minuit pile) - decision du
+// 13/08/2026 : en retranchant 1h avant de lire la date, la notification
+// de la veille reste affichee jusqu'a 01h00 heure de Paris plutot que de
+// disparaitre a minuit pile, avant que market_reset.py (recale sur le
+// meme cutoff, voir sa docstring) n'ait ecrit la nouvelle baseline du
+// jour - utile pour une consultation tardive en soiree.
 function todayParisDateStr(){
-  return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  const shifted=new Date(Date.now()-60*60*1000);
+  return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(shifted);
 }
 
 function isMarketActionDismissed(dateStr){
