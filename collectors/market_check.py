@@ -10,18 +10,16 @@ titres en hausse de 2% ou plus.
 Seuil HAUSSES UNIQUEMENT (pas de valeur absolue) - décision explicite du
 12/08/2026.
 
-data/marketAction.json est réécrit intégralement à chaque run, mais avec
-PERSISTANCE intra-journée (correctif du 12/08/2026) : un titre qui a
-franchi le seuil à un run donné reste dans la liste jusqu'à minuit MÊME
-SI son cours repasse ensuite sous 2% (sa valeur affichée continue d'être
-actualisée à chaque run - seule sa PRÉSENCE dans la liste persiste, pas
-sa valeur). Avant ce correctif, un titre repassant sous 2% en cours de
-séance disparaissait immédiatement de la notification, ce qui donnait
-l'impression trompeuse d'un bug ("la notification disparaît alors qu'il
-n'est pas minuit") alors que c'était le comportement (non désiré) du
-code. La notification ne disparaît plus qu'au reset de minuit, quand
-market_reset.py écrit une nouvelle baseline et que ce script repart
-d'une liste vide.
+data/marketAction.json est réécrit intégralement à chaque run, à partir
+du SEUL état courant (pas de persistance intra-journée - retirée le
+13/08/2026 : elle faisait ressortir des titres repassés sous 2% depuis,
+ce qui n'est pas voulu - seuls les titres réellement au-dessus de 2%
+AU MOMENT DU RUN doivent apparaître). Protégé contre les pannes réseau
+transitoires par un garde-fou dédié (voir plus bas) : un run qui échoue
+massivement à récupérer les prix n'écrit RIEN plutôt que de remplacer un
+état valide par une liste vide erronée (incident du 12/08/2026, où une
+panne réseau simultanée sur tous les tickers avait effacé un mouvement
+réel de +9,91% sur Arista Networks).
 
 Usage : python market_check.py
 Écrit data/marketAction.json.
@@ -94,9 +92,9 @@ def fetch_price(yahoo_symbol: str):
 
 def compute_ticker(ticker: str, base_price: float):
     """Calcule l'etat actuel d'un ticker (prix, variation) SANS filtrer sur
-    le seuil - le filtrage seuil-ou-deja-signale-aujourd'hui se fait dans
-    main(), pour permettre la persistance intra-journee (voir docstring du
-    module). Retourne (resultat, statut) - statut in {"ok","not_open","error","no_data"} :
+    le seuil - le filtrage se fait dans main(), pour separer proprement le
+    calcul du garde-fou anti-ecrasement (voir plus bas). Retourne
+    (resultat, statut) - statut in {"ok","not_open","error","no_data"} :
     "not_open" (marche pas encore ouvert) est un skip ATTENDU, exclu du
     calcul de taux d'echec dans main() ; "error" (echec reseau) est ce qui
     declenche le garde-fou anti-ecrasement en cas de panne massive."""
@@ -129,24 +127,6 @@ def compute_ticker(ticker: str, base_price: float):
         "basePrice": round(base_price, 2),
         "changePercent": round(change_percent, 2),
     }, "ok"
-
-
-def load_already_flagged_today(today_str: str) -> set:
-    """Tickers deja presents dans data/marketAction.json POUR AUJOURD'HUI
-    (peu importe leur variation a l'epoque) - base de la persistance
-    intra-journee. Vide si le fichier est absent, illisible, ou date d'un
-    autre jour (protege automatiquement contre une fuite d'un jour a
-    l'autre, sans dependre du seul reset de minuit)."""
-    if not os.path.exists(OUTPUT_PATH):
-        return set()
-    try:
-        with open(OUTPUT_PATH, encoding="utf-8") as f:
-            existing = json.load(f)
-    except (json.JSONDecodeError, OSError):
-        return set()
-    if existing.get("date") != today_str:
-        return set()
-    return {m["ticker"] for m in existing.get("movers", []) if m.get("ticker")}
 
 
 def write_output(today_str: str, movers: list, note: str = None):
@@ -184,7 +164,6 @@ def main():
 
     base_prices = baseline.get("prices", {})
     manifest = load_manifest()
-    already_flagged = load_already_flagged_today(today_str)
 
     movers = []
     status_counts = {"ok": 0, "not_open": 0, "error": 0, "no_data": 0}
@@ -198,11 +177,9 @@ def main():
             status_counts[status] = status_counts.get(status, 0) + 1
             if not result:
                 continue
-            # Inclus si le seuil est franchi MAINTENANT, ou si ce ticker a
-            # deja ete signale plus tot dans la journee (persistance
-            # intra-journee - voir docstring du module) : la valeur reste
-            # actualisee au dernier calcul, seule la presence persiste.
-            if result["changePercent"] >= THRESHOLD_PERCENT or result["ticker"] in already_flagged:
+            # Seuil evalue AU MOMENT DU RUN uniquement (pas de persistance
+            # intra-journee - voir docstring du module).
+            if result["changePercent"] >= THRESHOLD_PERCENT:
                 movers.append(result)
 
     # Garde-fou anti-ecrasement (ajoute suite a l'incident du 12/08/2026 :
@@ -222,9 +199,8 @@ def main():
         return 1
 
     write_output(today_str, movers)
-    new_count = sum(1 for m in movers if m["ticker"] not in already_flagged)
-    print(f"[market_check] {len(movers)} titre(s) affiches ({new_count} nouveaux ce run, "
-          f"{status_counts['error']} erreurs isolees) sur {len(base_prices)} tickers avec baseline.")
+    print(f"[market_check] {len(movers)} titre(s) en hausse >= {THRESHOLD_PERCENT}% "
+          f"({status_counts['error']} erreurs isolees) sur {len(base_prices)} tickers avec baseline.")
     return 0
 
 
