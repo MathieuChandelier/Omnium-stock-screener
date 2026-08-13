@@ -695,9 +695,19 @@ async function postDismissedNewsDate(dateStr){
   }catch(e){}
 }
 
+// no-store sur tous les fetch de data/*.json : ces fichiers changent
+// plusieurs fois par jour (news, market action, refresh de titres) et
+// GitHub Pages les sert avec un cache-control de 10 min - un rechargement
+// force cote navigateur (Cmd/Ctrl+Maj+R) ne garantit PAS de contourner le
+// cache HTTP pour des fetch() declenches en JS (contrairement au
+// chargement du document lui-meme), ce qui pouvait laisser l'app afficher
+// des donnees perimees plusieurs minutes apres une mise a jour reelle -
+// correctif du 14/08/2026.
+const NO_STORE = { cache: 'no-store' };
+
 async function loadState() {
   try {
-    const manRes = await fetch('data/manifest.json');
+    const manRes = await fetch('data/manifest.json', NO_STORE);
     if (!manRes.ok) throw new Error(`data/manifest.json introuvable: ${manRes.status}`);
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
@@ -705,7 +715,7 @@ async function loadState() {
     const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
-          const r = await fetch(`data/${code}.json`);
+          const r = await fetch(`data/${code}.json`, NO_STORE);
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           const obj = await r.json();
           return [code, obj];
@@ -715,11 +725,11 @@ async function loadState() {
           return null;
         }
       })),
-      fetch('data/nextEvents.json').then(r => r.ok ? r.json() : {}).catch(() => ({})),
-      fetch('data/newsDigest.json').then(r => r.ok ? r.json() : []).catch(() => []),
-      fetch('data/newsAll.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch('data/nextEvents.json', NO_STORE).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+      fetch('data/newsDigest.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch('data/newsAll.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       fetchDismissedNewsDates(),
-      fetch('data/marketAction.json').then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/marketAction.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
