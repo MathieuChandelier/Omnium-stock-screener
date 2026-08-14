@@ -336,6 +336,13 @@
     "guidanceLongTermeHistory": [],
     "quarterlyEPS": {
       "cadence": "trimestriel",
+      "historique": [],
+      "PY": [
+        {"label": "T1", "eps": 0.75, "actual": true},
+        {"label": "T2", "eps": 0.75, "actual": true},
+        {"label": "T3", "eps": 0.75, "actual": true},
+        {"label": "T4", "eps": 0.80, "actual": true}
+      ],
       "CY": [
         {
           "label": "T1",
