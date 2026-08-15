@@ -47,45 +47,207 @@
   ],
   "epsConsensus": {
     "year": 2026,
-    "eps": 0.88,
+    "eps": 0.85,
     "epsNY": 1.15,
-    "date": "2026-07-01",
-    "source": "Consensus ~19 analystes (Yahoo Finance/Visible Alpha)"
+    "date": "2026-08-14",
+    "source": "Consensus sell-side agrégé post-T2 2026 (agrégateurs multiples, fourchette 0,83-0,88$ CY2026 ; ~1,15$ CY2027)"
   },
   "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": null
+  },
+  "ownership": {
+    "asOf": "2026-08-15",
+    "insiderPct": 75.2,
+    "insiderDesc": "David Vélez (fondateur, Chairman & CEO) contrôle 88,6% des actions de Classe B, soit 75,2% du pouvoir de vote combiné (structure à double classe) - distinct de sa détention économique en capital total, non chiffrée précisément dans les sources consultées. Berkshire Hathaway (Warren Buffett), précédemment détenteur notable, a intégralement liquidé sa position d'ici juillet 2025 (0 action au 13F-HR/A du 14/08/2025, contre 40,2M d'actions en février 2025).",
+    "insiderSource": "Form 20-F FY2024 (SEC) pour le contrôle de Vélez ; 13F-HR/A Berkshire Hathaway (14/08/2025) pour la sortie de position",
+    "notableHolders": [],
+    "coverageNote": null,
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-08-15",
+    "items": [],
+    "note": "Aucune fraude avérée ni allégation par un régulateur, cabinet d'avocats plaignants ou vendeur à découvert activiste identifiée pour Nu Holdings (NYSE:NU) dans cette recherche (2026-08-15). Note de vigilance : un ticker distinct et sans lien (NUAI, New Era Energy & Digital) fait l'objet de poursuites pour fraude en valeurs mobilières non liées à Nu Holdings - à ne pas confondre."
+  },
+  "coherenceQualitative": {
+    "asOf": "2026-08-15",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-13",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Tito Labarta (Goldman Sachs) - impact de Desenrola sur le NIM ajusté au risque, perspective de croissance 2027 : minorité de l'amélioration liée à Desenrola, majorité à la saisonnalité/performance solide ; aucune détérioration structurelle observée.",
+          "Q Jorge Kuri (Morgan Stanley) - KPIs soutenant la soutenabilité du NIM ajusté au risque de 12,4%, contribution de l'IA au crédit : modèles IA plus puissants que la régression logistique, cadre de risque inchangé, bilan sous-levier avec opportunité de réallocation des dépôts.",
+          "Q Eduardo Rosman (BTG Pactual) - nomination de David Vélez au board d'OpenAI : IA jugée transformation technologique la plus importante, rôle offrant un accès privilégié au développement de l'IA de pointe.",
+          "Q Pedro Leduc (Itaú BBA) - traitement comptable de Desenrola, rythme des prêts non garantis, masse salariale privée : portefeuille Desenrola en catégorie stage 3, impact ECL minime (<10M$) ; croissance des prêts non garantis en normalisation.",
+          "Q Yuri Fernandes (JP Morgan) - trajectoire de croissance du résultat net post-1Md$, cibles Chroma : Brésil reste la plus grande opportunité malgré la taille de la base, ARPAC 17$ vs 40-45$ pour les banques historiques.",
+          "Q Geoffrey Elliott (Autonomous) - baisse des effectifs (10 500 à 10 400), impact productivité IA : baisse liée à l'attrition du retour au bureau, réembauches compensant la majorité des pertes.",
+          "Q Daniel Vaz (Safra) - priorités IA en financement carte/optimisation dépôts, stratégie de pricing : priorité au NPS et à la qualité produit aux côtés de l'optimisation des coûts, pricing personnalisé par client.",
+          "Q Craig Muir (FT Partners) - transférabilité du modèle US, calendrier de reconstruction du modèle de crédit : plateforme nuFormer et expertise crédit transposables rapidement, 12-30 mois pour la richesse de données spécifique US.",
+          "Q Mario Pierry (Bank of America) - beat du NIM ajusté au risque vs guidance T1 (attendu 10,5-10,8%, délivré 12,4%), réconciliation NPL : ~1/3 de la surperformance lié à Desenrola, ~2/3 à la performance crédit et à la montée en charge du T1 vers le T2."
+        ]
+      },
+      {
+        "quarter": "T1 26",
+        "date": "2026-05-14",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Jorge Kuri (Morgan Stanley) - lancement produit PME au Brésil : base de 5M de clients PME construite à coût d'acquisition nul via cross-sell, nouvelles lignes de crédit tirant parti de garanties gouvernementales, opportunité qualifiée d'\"océan bleu\".",
+          "Q Yuri Fernandes (JPMorgan) - lecture de la qualité des actifs et conservatisme du provisionnement : provisions ne reflétant pas une prévision macro directionnelle, approche conservatrice supposant un futur pire que le passé.",
+          "Q Eduardo Rosman (BTG Pactual) - différences de sentiment investisseurs locaux vs étrangers : trois sujets polarisants identifiés (qualité des actifs, expansion internationale, IA) ; scepticisme local historique sur les nouveaux marchés.",
+          "Q Daniel Vaz (Safra) - stratégie Brésil non garanti vs garanti, approche masse salariale privée : opportunité en phase précoce (7% du pool de profit), masse salariale privée délibérément plus lente (risque de défaut sous-estimé perçu).",
+          "Q Marcelo Mizrahi (Bradesco BBI) - prévision du ratio d'efficience, impact masse salariale privée : ~2/3 de la surperformance T1 liée au calendrier (marketing, immobilier décalés), ~1/3 structurel (gains IA, discipline d'embauche).",
+          "Q Tito Labarta (Goldman Sachs) - performance segment haut revenu, opportunité prêt garanti hors FGTS : nouveaux produits carte premium dynamisant l'engagement, base haut revenu +24% YoY, segment \"super core\" 3 Brésiliens sur 5 déjà clients."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "us_credit_model_confidence",
+        "quarterOrigine": "T1 26",
+        "engagement": "Management indique 12 à 30 mois nécessaires pour construire la confiance du modèle de crédit US avant d'accélérer l'expansion, avec un impact plafonné à <100 pb sur le ratio d'efficience consolidé.",
+        "echeance": "2027-Q4",
+        "statut": "en_cours"
+      }
+    ]
+  },
   "hypothese": {
-    "date": "2026-07-01",
-    "source": "Transcript Q1 2026 (conference call)",
-    "summary": "Revenu 2026 releve, Mexique rentable IFRS en avance, coute US expansion plafonne et chiffre, nouveau risque reglementaire Bresil identifie.",
-    "text": "== SYNTHESE DE LA THESE ==\nNu Holdings est la neobanque leader en Amerique Latine (Bresil, Mexique, Colombie), en hypercroissance rentable (portefeuille credit +40% YoY). La these repose sur trois piliers : le Bresil deja tres rentable et generateur de cash, le Mexique qui vient d'atteindre son point mort (catalyseur cle), et l'expansion US en option gratuite (cout plafonne <100bps/an).\n\n== EVENEMENTS & INFLEXIONS (Q1 2026) ==\n1. CROISSANCE REVENU RELEVEE : revenu managerial trimestriel franchit $5Md pour la 1ere fois. Portefeuille credit +40% YoY FXN a $37,2Md, depots +22% YoY FXN a $42,4Md.\n2. RATIO D'EFFICIENCE : 17,6% au Q1 (16,6% hors investissements RTO/international/IA), mais ~2/3 de la surperformance = effets calendaires non recurrents. Guidance ferme annee pleine : ~20%, stable vs 2025.\n3. MEXIQUE : 1er trimestre de rentabilite IFRS au Q1 2026, en avance sur le plan interne. Base clients x7 en 4 ans (>2M -> 15M).\n4. TAUX D'IMPOSITION : guidance 30-35% pour 2026, cohere avec l'hypothese du modele (~32%).\n5. EXPANSION US : impact maximal quantifie a <100bps/an sur le ratio d'efficience consolide, 2026 et 2027. \"Option d'achat\" a faible mise de capital.\n6. NOUVEAU RISQUE BRESIL : possible regulation du prix (plafonnement) sur le pret sur salaire prive (consignado privado). Nu a volontairement ralenti sa croissance sur ce segment.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nPrimaire : transcript Q1 2026. Secondaires : FY2025 (CA 16 320M$, EBIT 3 868M$, net 2 869M$). Cours ~14$, ~4,9Md actions.\nGuidance : ratio d'efficience consolide ~20% stable, expansion US <100bps/an.\nProchain refresh utile : Q2 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase = resultat avant impots (le cout de financement vit dans le produit net, comme pour une fintech). IS normatif ~32%. NI 2024 gonfle de +424M$ (benefice fiscal T4, exclu de la base de rythme).\nA suivre : (1) trajectoire Mexique post point-mort ; (2) regulation consignado privado Bresil ; (3) qualite de credit (NPL) ; (4) rythme US.\n\n== CATALYSEURS ==\nMexique post point-mort (accelerateur 2027+) ; expansion US (optionnalite gratuite) ; qualite de credit solide (couverture 153,8% des nouvelles creances douteuses) ; croissance du portefeuille credit +40%.",
+    "date": "2026-08-15",
+    "priorEPS": {
+      "date": "2026-07-01",
+      "eps": {
+        "2026": 0.88,
+        "2027": 1.22
+      }
+    },
+    "source": "Refresh T2 2026 - Transcript T2 2026 (13/08/2026) - couverture de call sourcée (Investing.com, TradingKey, Yahoo Finance) - transcript T1 2026 (14/05/2026, récupéré rétroactivement) - Form 20-F FY2024 (SEC) - 13F-HR/A Berkshire Hathaway",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 5510,
+          "consensus": 5450
+        },
+        "epsAdj": {
+          "actual": 0.22,
+          "consensus": 0.20,
+          "basis": "GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée de CA/EPS fournie (Nu ne guide pas ces métriques) ; impact supplémentaire de Desenrola attendu au T3 mais majoritairement déjà réalisé au T2.",
+      "guidanceAnnuelle": "Ratio d'efficience visé ~20% en moyenne sur l'année ; NIM ajusté au risque attendu \"dans la zone\" des 12,4% actuels ; expansion US plafonnée à <100 pb d'impact sur le ratio d'efficience. Pas de guidance chiffrée de CA/EPS (non fournie par la société).",
+      "pointsCles": [
+        "Résultat net franchit 1,1 Md$ pour la première fois (+49% YoY, +17% QoQ), ROE record de 33%, NIM ajusté au risque record à 12,4% (vs 9,5% au T1), expliqué pour ~1/3 par Desenrola et ~2/3 par la performance crédit sous-jacente.",
+        "Lancement de Chroma (juillet 2026) ciblant le segment \"super core\" (abonnement incluant ChatGPT Gold, épargne accélérée) ; licence bancaire obtenue au Mexique début juillet.",
+        "David Vélez nommé au board d'OpenAI, positionné par le management comme accès privilégié au développement de l'IA de pointe plutôt que comme initiative commerciale directe.",
+        "Expansion US maintenue prudente et mesurée : impact plafonné à <100 pb sur le ratio d'efficience, 12 à 30 mois nécessaires pour construire la confiance du modèle de crédit avant d'accélérer."
+      ]
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-13",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Ratio d'efficience ~20% en moyenne annuelle ; NIM ajusté au risque attendu dans la zone des 12,4% actuels ; pas de guidance chiffrée de CA/EPS."
+      }
+    ],
+    "guidanceLongTerme": "Objectif ROE structurellement élevé et poursuite de l'expansion Brésil/Mexique/Colombie + optionnalité US à coût plafonné (<100 pb d'impact sur le ratio d'efficience 2026-2027) ; pas de cible chiffrée pluriannuelle de CA/EPS communiquée par le management à ce jour.",
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "historique": [],
+      "PY": [
+        {"label": "T1", "eps": 0.11, "actual": true},
+        {"label": "T2", "eps": 0.13, "actual": true},
+        {"label": "T3", "eps": 0.16, "actual": true},
+        {"label": "T4", "eps": 0.19, "actual": true}
+      ],
+      "CY": [
+        {"label": "T1", "eps": 0.18, "actual": true},
+        {"label": "T2", "eps": 0.22, "actual": true},
+        {"label": "T3", "eps": 0.25, "actual": false},
+        {"label": "T4", "eps": 0.26, "actual": false}
+      ],
+      "NY": [
+        {"label": "T1", "eps": 0.25, "actual": false},
+        {"label": "T2", "eps": 0.31, "actual": false},
+        {"label": "T3", "eps": 0.35, "actual": false},
+        {"label": "T4", "eps": 0.36, "actual": false}
+      ],
+      "epsForward12m": 1.07,
+      "forwardPeriodLabel": "T3 26 -> T2 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
+    },
+    "summary": "Neobanque leader en Amérique Latine ; T2 26 confirme et renforce la thèse (résultat net record >1,1 Md$, ROE 33%, NIM ajusté au risque record 12,4%) - EPS ajusté Omnium 2026 relevé de 0,88$ à 0,91$ (+3,7%) pour refléter le beat S1, restant au-dessus du consensus sell-side actuel (~0,85$) sur l'hypothèse d'une poursuite du momentum plutôt qu'un aplatissement du S2.",
+    "text": "== SYNTHESE DE LA THESE ==\nNu Holdings reste la neobanque leader en Amérique Latine (Brésil, Mexique, Colombie), en hypercroissance rentable (résultat net T2 26 >1,1 Md$ pour la première fois, ROE record 33%). La thèse à trois piliers reste intacte et renforcée par le T2 : le Brésil déjà très rentable et générateur de cash (taux d'activité franchissant 86% pour la première fois), le Mexique qui accélère post-point mort (licence bancaire obtenue début juillet, ARPAC déjà à 12,3$ contre 5,6$ pour le Brésil à un stade comparable), et l'expansion US en option gratuite au coût plafonné (<100 pb d'impact sur le ratio d'efficience). Le NIM ajusté au risque record de 12,4% (vs 9,5% au T1, vs guidance initiale T1 de 10,5-10,8%) est le fait marquant du trimestre : ~1/3 expliqué par Desenrola (programme de renégociation de dette gouvernemental, largement one-off), ~2/3 par une performance crédit sous-jacente durable et la montée en charge de la croissance du bilan du T1 vers les revenus du T2 - un moteur jugé structurel et non ponctuel par le management (\"dans la zone\" des 12,4% attendu en continu). L'EPS ajusté Omnium 2026 est relevé de 0,88$ à 0,91$ pour refléter ce beat, une hypothèse qui reste au-dessus du consensus sell-side actuel (~0,83-0,88$) : l'écart traduit un choix de modélisation assumé (poursuite de la trajectoire séquentielle T1->T2 plutôt qu'un aplatissement du S2 implicite dans le consensus), pas une divergence sur les faits.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Desenrola (programme gouvernemental de renégociation de dette) : ~5% du coût du crédit au T2, ~1,8M de clients affectés, impact additionnel attendu au T3 mais majoritairement déjà réalisé au T2, effet minime sur la provision pour pertes attendues (<10 M$). Traité comme quasi one-off dans la lecture du NIM ajusté au risque mais non retraité dans data/adjXXX (impact trop diffus et récurrent d'un trimestre à l'autre pour être isolé proprement, cf. E5-d).\n(ii) Lancement de Chroma (juillet 2026), offre par abonnement ciblant le segment \"super core\" (3 Brésiliens sur 5 déjà clients Nu) - levier d'ARPU plutôt que d'acquisition, inclut un abonnement ChatGPT Gold.\n(i) Licence bancaire obtenue au Mexique début juillet 2026 - accélère la feuille de route mexicaine, cohérent avec l'objectif de rejouer le \"playbook brésilien\" plus vite.\n(iii, qualitatif) Nomination de David Vélez au board d'OpenAI - accès privilégié au développement de l'IA de pointe selon le management, sans lien commercial direct annoncé ; asymétrie positive non quantifiable.\n(ii) Baisse des effectifs de 10 500 à 10 400, attribuée à l'attrition liée au retour au bureau (fin 2025) plutôt qu'à un plan de réduction ; réembauches ayant compensé la majorité des pertes.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase = résultat avant impôts (le coût de financement vit dans le produit net, comme pour une fintech, cf. méthodologie initiale). IS normatif managérial maintenu à ~32% (cohérent avec la guidance IFRS 2026 de 15-20% et managériale de 30-35% communiquée au T1, non révisée au T2). Ancrage \"beat_h1_2026\" : la totalité de la trajectoire adjCA/adjEBIT/adjNet/adjEPS 2026-2030 est relevée de +3,7% par rapport au refresh précédent (facteur uniforme), calé sur le dépassement du S1 26 (résultat net cumulé 1,971 Md$ sur H1, ROE record 33%) plutôt que sur un changement de guidance formelle (Nu n'en communique pas). adjND et adjShares laissés inchangés faute d'information nouvelle matérielle sur la trajectoire de capital ou de rachats (Nu ne mène pas de programme de rachat significatif). Note de sourcing : consensus CA du T2 (5 510 M$ vs 5 450 M$) sourcé sur base agrégateur (Zacks/comparable), possiblement sur un périmètre de revenu légèrement différent du \"chiffre d'affaires brut\" de 5,9 Md$ cité par le management sur le call - écart de définition documenté plutôt que réconcilié artificiellement.\nWATCH-LIST pour le refresh suivant : (1) confirmation que le NIM ajusté au risque se maintient \"dans la zone\" de 12,4% au T3 (validerait le caractère structurel plutôt que ponctuel du beat T2) ; (2) rythme réel d'accélération au Mexique post-licence bancaire ; (3) pénétration réelle de Chroma sur le segment \"super core\" ; (4) toute nouvelle communication chiffrée sur l'expansion US (actuellement sans calendrier précis, engagement structurant 12-30 mois en cours) ; (5) évolution du consensus sell-side externe (actuellement sous l'estimation Omnium, écart à surveiller plutôt qu'à absorber automatiquement) ; (6) prochain refresh utile après résultats T3 26, date non encore annoncée.\n\n== CATALYSEURS ==\nMexique post-licence bancaire (accélérateur 2027+), pénétration Chroma sur le segment \"super core\", expansion US en optionnalité gratuite, qualité de crédit résiliente (couverture NPL 90+ à 244%), poursuite de la croissance du portefeuille crédit (+37% YoY au T2).",
     "impact": "positif",
+    "ancrages": [
+      {
+        "id": "beat_h1_2026",
+        "moteur": "Résultat net H1 26 cumulé de 1,971 Md$ (871 M$ T1 + 1,1 Md$ T2, record), ROE record 33% et NIM ajusté au risque record 12,4% au T2 - relèvement uniforme de +3,7% de la trajectoire adjCA/adjEBIT/adjNet/adjEPS 2026-2030 vs le refresh précédent",
+        "applique": ["adjCA.2026", "adjCA.2027", "adjCA.2028", "adjCA.2029", "adjCA.2030", "adjEBIT.2026", "adjEBIT.2027", "adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030", "adjNet.2026", "adjNet.2027", "adjNet.2028", "adjNet.2029", "adjNet.2030"],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "is_normatif_managerial",
+        "moteur": "Taux d'imposition managérial maintenu à ~32% (guidance management IFRS 15-20% + managérial 30-35% communiquée au T1 26, non révisée au T2 26, cohérente avec les pairs régionaux)",
+        "applique": ["adjNet.2026", "adjNet.2027", "adjNet.2028", "adjNet.2029", "adjNet.2030"],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "efficience_20pct",
+        "moteur": "Ratio d'efficience consolidé visé ~20% en moyenne annuelle, réaffirmé au T2 26 malgré un T1 (17,6%) et un T2 (19,5%) sous cette cible - trajectoire de marge EBIT calée sur cette discipline plutôt que sur l'extrapolation des trimestres les plus favorables",
+        "applique": ["adjEBIT.2026", "adjEBIT.2027", "adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030"],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "expansion_us_plafonnee",
+        "moteur": "Impact de l'expansion US plafonné explicitement par le management à <100 pb sur le ratio d'efficience consolidé 2026-2027, approche \"option d'achat\" à faible mise de capital",
+        "applique": ["adjEBIT.2026", "adjEBIT.2027"],
+        "confiance": "haute"
+      },
+      {
+        "id": "actions_stables",
+        "moteur": "Pas de programme de rachat significatif ni de dilution matérielle nouvelle identifiée ce trimestre - trajectoire d'actions diluées reconduite à l'identique du refresh précédent (~4,9 Md d'actions 2026, légère décroissance graduelle 2027-2030 liée à la dynamique historique des plans d'actions)",
+        "applique": ["adjShares.2026", "adjShares.2027", "adjShares.2028", "adjShares.2029", "adjShares.2030"],
+        "confiance": "basse"
+      }
+    ],
     "adjEPS": {
-      "2026": 0.88,
-      "2027": 1.22,
-      "2028": 1.66,
-      "2029": 2.11,
-      "2030": 2.56
+      "2026": 0.91,
+      "2027": 1.27,
+      "2028": 1.72,
+      "2029": 2.19,
+      "2030": 2.65
     },
     "adjCA": {
-      "2026": 23500,
-      "2027": 30600,
-      "2028": 38300,
-      "2029": 45960,
-      "2030": 53300
+      "2026": 24400,
+      "2027": 31700,
+      "2028": 39700,
+      "2029": 47700,
+      "2030": 55300
     },
     "adjEBIT": {
-      "2026": 6324,
-      "2027": 8775,
-      "2028": 11828,
-      "2029": 14869,
-      "2030": 17871
+      "2026": 6560,
+      "2027": 9100,
+      "2028": 12270,
+      "2029": 15420,
+      "2030": 18530
     },
     "adjNet": {
-      "2026": 4300,
-      "2027": 5967,
-      "2028": 8043,
-      "2029": 10111,
-      "2030": 12152
+      "2026": 4460,
+      "2027": 6190,
+      "2028": 8340,
+      "2029": 10490,
+      "2030": 12600
     },
     "adjND": {
       "2026": -3500,
