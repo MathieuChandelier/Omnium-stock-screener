@@ -1,0 +1,31 @@
+name: Historique valorisation - snapshot P/E
+on:
+  schedule:
+    # Lundi et jeudi, 23h00 UTC : a cette heure les marches US et europeens
+    # sont fermes depuis longtemps (meme creneau que market-action-reset.yml,
+    # deja valide dans ce repo pour la meme raison), donc le prix capture
+    # via le proxy reflete bien la cloture DU JOUR MEME - pas besoin d'un
+    # decalage au lendemain. 2 captures/semaine (decision du 16/08/2026) :
+    # espacement 3 jours / 4 jours (incluant le week-end) en alternance,
+    # sans capturer deux fois la meme cloture.
+    - cron: '0 23 * * 1'
+    - cron: '0 23 * * 4'
+  workflow_dispatch: {}  # déclenchement manuel pour les tests
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python collectors/price_history.py
+      - name: Commit et push si changements
+        run: |
+          git config user.name "omnium-news-bot"
+          git config user.email "actions@github.com"
+          git add data/priceHistory.json
+          git diff --cached --quiet || git commit -m "Historique valorisation : snapshot $(date -u +%Y-%m-%d)"
+          git push

@@ -330,6 +330,52 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 #analyse-tbl tbody tr.proj-row td:first-child{background:var(--proj-bg);}
 #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
 
+/* Value Rankings + Historique de valorisation */
+.vr-entry{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
+.vr-entry:hover{box-shadow:0 4px 14px rgba(0,1,144,.12);transform:translateY(-1px);}
+.vr-entry-left{display:flex;align-items:center;gap:10px;min-width:0;}
+.vr-entry-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;}
+.vr-entry-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);}
+.vr-entry-sub{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--muted);margin-top:1px;}
+.vr-entry-arrow{flex-shrink:0;color:var(--navy);opacity:.6;}
+
+.vr-controls{padding:16px 20px;}
+.vr-control-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:9px;}
+.vr-control-row:last-child{margin-bottom:0;}
+.vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:52px;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:6px 13px;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
+.vr-pill:hover:not(:disabled){background:#dfe2fb;}
+.vr-pill.active{background:var(--navy);color:#fff;}
+.vr-pill:disabled{opacity:.4;cursor:not-allowed;}
+
+.vr-panel-title{margin-bottom:14px;}
+.vr-panel-title.vr-down b{color:#e05252;}
+.vr-panel-title.vr-up b{color:var(--teal-dark-text);}
+.vr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.vr-card{border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:box-shadow .15s,transform .1s;background:var(--surface);}
+.vr-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08);transform:translateY(-1px);}
+.vr-card-down{background:linear-gradient(180deg,rgba(224,82,82,.05),transparent 60%);}
+.vr-card-up{background:linear-gradient(180deg,rgba(37,207,180,.07),transparent 60%);}
+.vr-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px;}
+.vr-card-ticker{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);}
+.vr-card-name{font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px;}
+.vr-card-chart{line-height:0;}
+.vr-card-vals{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-top:4px;font-family:'Poppins',sans-serif;}
+.vr-card-vals b{color:var(--navy);font-size:12px;}
+.vr-empty,.vr-empty-mini{color:var(--muted);font-size:12.5px;padding:14px 4px;text-align:center;}
+.vr-empty-mini{padding:20px 4px;font-size:11px;}
+
+.vr-hist-controls{margin-bottom:10px;}
+.vr-hist-legend{display:flex;gap:16px;font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:600;margin-bottom:8px;}
+.vr-hist-legend span{display:inline-flex;align-items:center;gap:5px;}
+.vr-leg-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;}
+.vr-leg-dash{width:12px;height:0;border-top:1.5px dashed var(--muted);display:inline-block;}
+.vr-hist-chart{overflow-x:auto;}
+
+.valo-tooltip{position:absolute;transform:translate(-50%,-100%);background:var(--navy-dark);color:#fff;padding:8px 11px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:11px;line-height:1.5;pointer-events:none;z-index:10000;box-shadow:0 4px 14px rgba(0,0,0,.25);white-space:nowrap;display:none;}
+.valo-tooltip-date{font-weight:800;margin-bottom:2px;}
+.valo-tooltip-flag{color:var(--gold);font-weight:700;margin-top:2px;}
+
 @media(max-width:760px){
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
@@ -455,6 +501,20 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div class="container">
 
 <div id="tab-portefeuille" class="panel">
+  <div class="vr-entry" onclick="showTab('valuerankings', null)">
+    <div class="vr-entry-left">
+      <span class="vr-entry-icon">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg>
+      </span>
+      <div>
+        <div class="vr-entry-text">Value Rankings</div>
+        <div class="vr-entry-sub">Plus fortes hausses &amp; baisses de P/E du portefeuille</div>
+      </div>
+    </div>
+    <span class="vr-entry-arrow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </span>
+  </div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
@@ -490,6 +550,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
 
+  <div id="valo-hist-card" class="card" style="margin-bottom:18px;"></div>
+
   <div class="card" id="analyse-tbl-card">
     <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
     <div style="overflow-x:auto;">
@@ -516,6 +578,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div id="tab-news" class="panel">
   <div id="news-detail-content"></div>
 </div>
+
+<div id="tab-valuerankings" class="panel"></div>
 
 </div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
 
@@ -597,6 +661,9 @@ function normalizeState(s){
   if(!s.newsAll)s.newsAll=[];
   if(!s.dismissedNewsDates)s.dismissedNewsDates=new Set();
   if(!s.marketAction)s.marketAction=null;
+  if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
+  if(!s.priceHistory.tickers) s.priceHistory.tickers={};
+  if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
   Object.keys(s.tickers).forEach(key=>normalizeTicker(key,s.tickers[key]));
   return s;
 }
@@ -712,7 +779,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -729,12 +796,18 @@ async function loadState() {
       fetch('data/newsDigest.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       fetch('data/newsAll.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       fetchDismissedNewsDates(),
-      fetch('data/marketAction.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/marketAction.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      // Historique hebdo de prix/EPS pour "Value Rankings" et la section
+      // "Historique de valorisation" - absence graciable (feature encore
+      // recente, demarrage propre sans backfill) : null tant que le
+      // collecteur n'a pas tourne au moins une fois, l'UI degrade
+      // proprement plutot que de planter (voir normalizeState).
+      fetch('data/priceHistory.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -855,6 +928,7 @@ function showTab(id,btn,fromHistory){
   if(id==='analyse'){renderAnalyse();}
   if(id==='portefeuille'){renderPortfolio();refreshAllPrices();}
   if(id==='news'){renderNewsDetail();}
+  if(id==='valuerankings'){renderValueRankings();}
   saveLastView(id);
   if(!fromHistory){
     try{ history.pushState({omniumTab:id, omniumTicker:CT}, '', location.pathname+location.search); }
@@ -874,6 +948,8 @@ window.addEventListener('popstate', function(e){
     showTab('analyse', null, true);
   } else if(st && st.omniumTab==='news'){
     showTab('news', null, true);
+  } else if(st && st.omniumTab==='valuerankings'){
+    showTab('valuerankings', null, true);
   } else {
     showTab('portefeuille', document.getElementById('tab-btn-pf'), true);
   }
@@ -1118,6 +1194,7 @@ function renderAnalyse(){
   scrollAnalyseTblToDefault(last5.length);
   renderReturnBlock(CT,proj,cours);
   renderContextBullets(CT,proj,cours);
+  renderValoHistory(CT);
 }
 
 function scrollAnalyseTblToDefault(histCount){
@@ -1326,6 +1403,404 @@ function pctBadge(delta){
   const bg=delta>=0?'rgba(43,216,194,.14)':'rgba(224,82,82,.1)';
   return `<span style="font-size:10.5px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};background:${bg};border-radius:5px;padding:1px 6px;white-space:nowrap;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
 }
+
+// ══════════════════════════════════════════════════════════════
+// VALUE RANKINGS & HISTORIQUE DE VALORISATION
+// Alimente par data/priceHistory.json (collectors/price_history.py,
+// 2 captures/semaine, demarrage propre sans backfill - voir ce fichier).
+// Chaque snapshot fige {price, cyYear, nyYear, epsByYear, epsFwd} : le P/E
+// se lit soit PAR ANNEE ABSOLUE (ex. "P/E 2026", price/epsByYear["2026"]),
+// soit PAR ROLE GLISSANT (ex. "P/E annee en cours", price/epsByYear[cyYear]
+// - la cle regardee change chaque annee, ce qui rend deux annees civiles
+// comparables entre elles). Les deux lectures sont deliberement exposees
+// dans l'UI (E.3), pas une seule.
+// ══════════════════════════════════════════════════════════════
+
+function peFromRaw(price, eps){
+  return (price>0 && eps>0) ? price/eps : null;
+}
+function snapPEByYear(snap, year){
+  if(!snap || !snap.epsByYear) return null;
+  return peFromRaw(snap.price, snap.epsByYear[String(year)]);
+}
+function snapPERole(snap, role){ // role: 'cy' | 'ny'
+  if(!snap) return null;
+  const y = role==='ny' ? snap.nyYear : snap.cyYear;
+  return snapPEByYear(snap, y);
+}
+function snapPEFwd(snap){
+  return snap ? peFromRaw(snap.price, snap.epsFwd) : null;
+}
+// series : {kind:'role', role:'cy'|'ny'} | {kind:'fwd'} | {kind:'year', year:2026}
+function snapPEForSeries(snap, series){
+  if(!snap || !series) return null;
+  if(series.kind==='fwd') return snapPEFwd(snap);
+  if(series.kind==='year') return snapPEByYear(snap, series.year);
+  return snapPERole(snap, series.role);
+}
+function seriesRawEps(snap, series){
+  if(!snap) return null;
+  if(series.kind==='fwd') return (typeof snap.epsFwd==='number') ? snap.epsFwd : null;
+  const year = series.kind==='year' ? series.year : (series.role==='ny' ? snap.nyYear : snap.cyYear);
+  return snap.epsByYear ? (snap.epsByYear[String(year)] ?? null) : null;
+}
+
+const VALO_PERIOD_DAYS={'1s':7,'1m':30,'3m':91,'6m':182,'1y':365};
+const VALO_PERIOD_LABELS={'1s':'1 sem.','1m':'1 mois','3m':'3 mois','6m':'6 mois','1y':'1 an'};
+const VALO_GAP_TOLERANCE_DAYS=10; // ~1 capture manquee a raison de 2/semaine
+
+function formatFrDate(iso){
+  if(!iso) return '';
+  const p=String(iso).split('-');
+  if(p.length!==3) return iso;
+  return `${parseInt(p[2],10)} ${MONTH_ABBR_FR[parseInt(p[1],10)]||''} ${p[0]}`;
+}
+function isoDateMinusDays(dateStr, days){
+  const d=new Date(dateStr+'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate()-days);
+  return d.toISOString().slice(0,10);
+}
+function isoDatePlusDays(dateStr, days){
+  const d=new Date(dateStr+'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate()+days);
+  return d.toISOString().slice(0,10);
+}
+function dayDiffISO(a,b){
+  return Math.round((new Date(a+'T00:00:00Z')-new Date(b+'T00:00:00Z'))/86400000);
+}
+// snapshots supposes tries par date croissante (garanti par l'ecriture
+// append-only du collecteur) - renvoie le DERNIER snapshot dont la date
+// est <= targetDate, ou null.
+function nearestSnapshotBefore(snapshots, targetDate){
+  let best=null;
+  for(const s of snapshots){ if(s.date<=targetDate) best=s; else break; }
+  return best;
+}
+
+function valoEarliestDate(){
+  const ph=state.priceHistory;
+  if(!ph || !ph.tickers) return null;
+  let min=null;
+  Object.values(ph.tickers).forEach(entry=>{
+    (entry.snapshots||[]).forEach(s=>{ if(!min||s.date<min) min=s.date; });
+  });
+  return min;
+}
+function valoPeriodAvailableDate(periodKey){
+  const earliest=valoEarliestDate();
+  return earliest ? isoDatePlusDays(earliest, VALO_PERIOD_DAYS[periodKey]) : null;
+}
+
+function computeRankings(periodKey, seriesDesc, n){
+  const days=VALO_PERIOD_DAYS[periodKey];
+  const ph=state.priceHistory;
+  const out=[];
+  if(ph && ph.tickers && days){
+    Object.keys(ph.tickers).forEach(tk=>{
+      const snaps=ph.tickers[tk].snapshots||[];
+      if(snaps.length<2) return;
+      const latest=snaps[snaps.length-1];
+      const targetDate=isoDateMinusDays(latest.date, days);
+      const start=nearestSnapshotBefore(snaps, targetDate);
+      if(!start || start===latest) return;
+      if(dayDiffISO(targetDate, start.date) > VALO_GAP_TOLERANCE_DAYS) return;
+      const peStart=snapPEForSeries(start, seriesDesc);
+      const peEnd=snapPEForSeries(latest, seriesDesc);
+      if(peStart==null || peEnd==null) return;
+      out.push({ticker:tk, peStart, peEnd, deltaPct:(peEnd-peStart)/peStart*100, startDate:start.date, latestDate:latest.date});
+    });
+  }
+  // Filtre par signe AVANT de couper a N : avec un petit nombre de titres
+  // disposant d'assez d'historique, ne jamais faire remonter un titre en
+  // hausse dans la liste "baisses" (ou l'inverse) juste pour completer le
+  // quota - une liste plus courte que N est un resultat honnete valide.
+  const gainers=out.filter(r=>r.deltaPct>0).sort((a,b)=>b.deltaPct-a.deltaPct || a.ticker.localeCompare(b.ticker)).slice(0,n);
+  const losers=out.filter(r=>r.deltaPct<0).sort((a,b)=>a.deltaPct-b.deltaPct || a.ticker.localeCompare(b.ticker)).slice(0,n);
+  return {gainers, losers, total:out.length};
+}
+
+function valoFilterByPeriod(snapshots, periodKey){
+  if(!periodKey || periodKey==='all' || !VALO_PERIOD_DAYS[periodKey]) return snapshots;
+  const latest=snapshots[snapshots.length-1];
+  if(!latest) return snapshots;
+  const cutoff=isoDateMinusDays(latest.date, VALO_PERIOD_DAYS[periodKey]);
+  const filtered=snapshots.filter(s=>s.date>=cutoff);
+  // garde au moins les 2 derniers points si la fenetre est trop stricte,
+  // pour ne jamais afficher un graphique a 0/1 point alors que 2+ existent
+  return filtered.length>=2 ? filtered : snapshots.slice(-2);
+}
+
+function escAttr(s){
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+// Moteur de graphique SVG unique, partage entre les mini-cartes "Value
+// Rankings" (compact:true) et la vue detaillee "Historique de
+// valorisation" (compact:false) - voir plan de fonctionnalite. opts:
+// {mode:'pe'|'price', series, periodKey, compact}
+function buildValoChartSVG(ticker, opts){
+  const ph=state.priceHistory;
+  const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
+  const allSnaps=entry ? (entry.snapshots||[]) : [];
+  if(allSnaps.length<2) return null;
+
+  const mode=opts.mode||'pe';
+  const series=opts.series;
+  const compact=!!opts.compact;
+  const snaps=valoFilterByPeriod(allSnaps, opts.periodKey);
+  if(snaps.length<2) return null;
+
+  const yVal=(snap)=> mode==='price' ? snap.price : snapPEForSeries(snap, series);
+  const idxByDate=new Map(allSnaps.map((s,i)=>[s.date,i]));
+  const points=snaps
+    .map(s=>({snap:s, idx:idxByDate.get(s.date), y:yVal(s)}))
+    .filter(p=>p.y!=null && isFinite(p.y));
+  if(points.length<2) return null;
+
+  const W=compact?260:640, H=compact?90:220;
+  const padL=compact?4:42, padR=compact?4:46, padT=compact?10:16, padB=compact?12:26;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+
+  const t0=new Date(points[0].snap.date+'T00:00:00Z').getTime();
+  const t1=new Date(points[points.length-1].snap.date+'T00:00:00Z').getTime();
+  const tSpan=Math.max(1, t1-t0);
+  const xOf=(dateStr)=> padL + ((new Date(dateStr+'T00:00:00Z').getTime()-t0)/tSpan)*plotW;
+
+  const yVals=points.map(p=>p.y);
+  let yMin=Math.min(...yVals), yMax=Math.max(...yVals);
+  if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
+  const margin=(yMax-yMin)*0.1;
+  yMin-=margin; yMax+=margin;
+  const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
+
+  // Inflexion "refresh Omnium" : la valeur BRUTE de la serie affichee a
+  // change entre deux snapshots CONSECUTIFS (dans l'historique complet du
+  // titre, pas seulement la fenetre affichee) - detection precise, propre
+  // a CHAQUE courbe (un refresh qui revise epsNY sans toucher epsCY ne
+  // marque rien sur la courbe CY). Zero champ stocke a part, tout vient de
+  // epsByYear/epsFwd deja present sur chaque snapshot.
+  const inflexionIdx=new Set();
+  for(let i=1;i<allSnaps.length;i++){
+    const prevV=seriesRawEps(allSnaps[i-1], series), curV=seriesRawEps(allSnaps[i], series);
+    if(prevV!=null && curV!=null && Math.abs(curV-prevV)>1e-9) inflexionIdx.add(i);
+  }
+
+  const earningsDates=(ph.earningsDates && ph.earningsDates[ticker]) || [];
+  const winStart=points[0].snap.date, winEnd=points[points.length-1].snap.date;
+  const visibleEarnings=compact ? [] : earningsDates.filter(d=>d>=winStart && d<=winEnd);
+
+  const linePts=points.map(p=>`${xOf(p.snap.date).toFixed(1)},${yOf(p.y).toFixed(1)}`).join(' ');
+  const areaBase=(padT+plotH).toFixed(1);
+  const areaPath=`M${linePts.split(' ').join(' L')} L${xOf(points[points.length-1].snap.date).toFixed(1)},${areaBase} L${xOf(points[0].snap.date).toFixed(1)},${areaBase} Z`;
+
+  const earningsMarks=visibleEarnings.map(d=>{
+    const xd=xOf(d).toFixed(1);
+    return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Résultats – ${formatFrDate(d)}</title></line>`;
+  }).join('');
+
+  const dots=points.map(p=>{
+    const isInflexion=inflexionIdx.has(p.idx);
+    const cx=xOf(p.snap.date).toFixed(1), cy=yOf(p.y).toFixed(1);
+    const r=isInflexion?(compact?3.5:5):(compact?2:3);
+    return isInflexion
+      ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--gold)" stroke="var(--navy)" stroke-width="1"/>`
+      : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--navy)"/>`;
+  }).join('');
+
+  const hitTargets=compact ? '' : points.map((p,i)=>{
+    const cx=xOf(p.snap.date);
+    const bandW=points.length>1 ? plotW/(points.length-1) : plotW;
+    const rx=(cx-bandW/2).toFixed(1);
+    const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion:inflexionIdx.has(p.idx)};
+    return `<rect x="${rx}" y="${padT}" width="${Math.max(1,bandW).toFixed(1)}" height="${plotH}" fill="transparent" data-info="${escAttr(JSON.stringify(info))}" onmousemove="showValoTooltip(event)" onmouseleave="hideValoTooltip()" ontouchstart="showValoTooltip(event)"/>`;
+  }).join('');
+
+  const endLabel=compact ? '' : (()=>{
+    const last=points[points.length-1];
+    const txt=mode==='price' ? (fmtBigNum(last.y)||last.y.toFixed(2)) : last.y.toFixed(1)+'×';
+    return `<text x="${(xOf(last.snap.date)+6).toFixed(1)}" y="${yOf(last.y).toFixed(1)}" font-size="11" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" dominant-baseline="middle">${txt}</text>`;
+  })();
+
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;overflow:visible;">
+    <path d="${areaPath}" fill="var(--navy-light)" opacity=".5"/>
+    ${earningsMarks}
+    <polyline points="${linePts}" fill="none" stroke="var(--navy)" stroke-width="${compact?1.75:2}" stroke-linejoin="round" stroke-linecap="round"/>
+    ${dots}
+    ${endLabel}
+    ${hitTargets}
+  </svg>`;
+}
+
+function showValoTooltip(evt){
+  const rect=evt.currentTarget;
+  let info; try{ info=JSON.parse(rect.dataset.info); }catch(e){ return; }
+  let tip=document.getElementById('valo-tooltip');
+  if(!tip){
+    tip=document.createElement('div');
+    tip.id='valo-tooltip';
+    tip.className='valo-tooltip';
+    document.body.appendChild(tip);
+  }
+  const valTxt=info.mode==='price' ? (info.price!=null?info.price.toFixed(2):'—') : (info.val!=null?info.val.toFixed(1)+'×':'—');
+  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?'<div class="valo-tooltip-flag">↳ Révision Omnium (inflexion)</div>':''}`;
+  const r=rect.getBoundingClientRect();
+  tip.style.left=(r.left+r.width/2+window.scrollX)+'px';
+  tip.style.top=(r.top+window.scrollY-8)+'px';
+  tip.style.display='block';
+}
+function hideValoTooltip(){
+  const tip=document.getElementById('valo-tooltip');
+  if(tip) tip.style.display='none';
+}
+
+// ── Value Rankings (onglet) ──────────────────────────────────────
+let _valoRankState={n:5, period:'1m', role:'cy'};
+
+function seriesDescForRole(role){
+  return role==='fwd' ? {kind:'fwd'} : {kind:'role', role};
+}
+
+function renderValueRankings(){
+  const wrap=document.getElementById('tab-valuerankings');
+  if(!wrap) return;
+  const st=_valoRankState;
+  const seriesDesc=seriesDescForRole(st.role);
+  const {gainers, losers}=computeRankings(st.period, seriesDesc, st.n);
+
+  const pill=(group, key, label, active, disabled, title)=>
+    `<button class="vr-pill${active?' active':''}" ${disabled?'disabled':''} title="${escAttr(title||'')}" onclick="setValoRankParam('${group}',${typeof key==='number'?key:`'${key}'`})">${label}</button>`;
+
+  const nRow=[5,10,15].map(v=>pill('n', v, v, st.n===v, false)).join('');
+  const pRow=Object.keys(VALO_PERIOD_DAYS).map(pk=>{
+    const avail=computeRankings(pk, seriesDesc, st.n).total>0;
+    const availDate=!avail?valoPeriodAvailableDate(pk):null;
+    const title=!avail?`Historique insuffisant${availDate?` — disponible à partir du ${formatFrDate(availDate)}`:''}`:'';
+    return pill('period', pk, VALO_PERIOD_LABELS[pk], st.period===pk, !avail, title);
+  }).join('');
+  const rRow=[['cy','Année en cours'],['ny','Année prochaine'],['fwd','12m Forward']]
+    .map(([k,label])=>pill('role', k, label, st.role===k, false)).join('');
+
+  const grid=(list)=> list.length
+    ? `<div class="vr-grid">${list.map(r=>renderValueRankingCard(r, seriesDesc)).join('')}</div>`
+    : `<div class="vr-empty">Pas assez d'historique pour cette période — la collecte vient de démarrer, revenez plus tard.</div>`;
+
+  wrap.innerHTML=`
+    <div class="card vr-controls">
+      <div class="vr-control-row"><span class="vr-control-lbl">Titres</span>${nRow}</div>
+      <div class="vr-control-row"><span class="vr-control-lbl">Période</span>${pRow}</div>
+      <div class="vr-control-row"><span class="vr-control-lbl">P/E</span>${rRow}</div>
+    </div>
+    <div class="card">
+      <div class="card-title vr-panel-title vr-down"><b>Plus fortes baisses de P/E</b></div>
+      ${grid(losers)}
+    </div>
+    <div class="card">
+      <div class="card-title vr-panel-title vr-up"><b>Plus fortes hausses de P/E</b></div>
+      ${grid(gainers)}
+    </div>
+  `;
+}
+
+function setValoRankParam(group, value){
+  if(group==='n') _valoRankState.n=+value;
+  else if(group==='period') _valoRankState.period=value;
+  else if(group==='role') _valoRankState.role=value;
+  renderValueRankings();
+}
+
+function renderValueRankingCard(result, seriesDesc){
+  const d=state.tickers[result.ticker];
+  const name=((d && d.name) || result.ticker).replace(/</g,'&lt;');
+  const tone=result.deltaPct>=0?'up':'down';
+  const chart=buildValoChartSVG(result.ticker, {mode:'pe', series:seriesDesc, periodKey:_valoRankState.period, compact:true});
+  return `<div class="vr-card vr-card-${tone}" onclick="openValoFromRanking('${result.ticker}')">
+    <div class="vr-card-head">
+      <span class="vr-card-ticker">${result.ticker}</span>
+      ${pctBadge(result.deltaPct)}
+    </div>
+    <div class="vr-card-name">${name}</div>
+    <div class="vr-card-chart">${chart || '<div class="vr-empty-mini">—</div>'}</div>
+    <div class="vr-card-vals"><span>${result.peStart.toFixed(1)}×</span><span>→</span><span><b>${result.peEnd.toFixed(1)}×</b></span></div>
+  </div>`;
+}
+
+let _valoHistPending=null;
+function openValoFromRanking(ticker){
+  _valoHistPending={period:_valoRankState.period, role:_valoRankState.role};
+  const d=state.tickers[ticker];
+  pfOpenTicker(ticker, d ? d.cours : 0);
+}
+
+// ── Historique de valorisation (fiche titre) ─────────────────────
+let _valoHistState={mode:'pe', seriesKind:'role', role:'cy', year:null, period:'all'};
+
+function renderValoHistory(ticker){
+  const card=document.getElementById('valo-hist-card');
+  if(!card) return;
+  const ph=state.priceHistory;
+  const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
+  const snaps=entry ? (entry.snapshots||[]) : [];
+
+  if(_valoHistPending){
+    _valoHistState.period=_valoHistPending.period;
+    if(_valoHistPending.role==='fwd'){ _valoHistState.mode='pe'; _valoHistState.seriesKind='fwd'; }
+    else { _valoHistState.mode='pe'; _valoHistState.seriesKind='role'; _valoHistState.role=_valoHistPending.role; }
+    _valoHistPending=null;
+  }
+
+  if(snaps.length<2){
+    const msg=snaps.length===1
+      ? `Historique de valorisation disponible à partir du ${formatFrDate(snaps[0].date)} (collecte en cours, revenez après la prochaine capture).`
+      : `Historique de valorisation pas encore disponible pour ce titre — la collecte démarre au prochain snapshot (2 fois/semaine).`;
+    card.innerHTML=`<div class="card-title"><b>Historique de valorisation</b></div><div class="vr-empty">${msg}</div>`;
+    return;
+  }
+
+  const latest=snaps[snaps.length-1];
+  const earliest=snaps[0].date;
+  const years=latest.epsByYear ? Object.keys(latest.epsByYear).map(Number).sort((a,b)=>a-b) : [];
+  const st=_valoHistState;
+  const seriesDesc=st.mode!=='pe' ? null
+    : st.seriesKind==='fwd' ? {kind:'fwd'}
+    : st.seriesKind==='year' ? {kind:'year', year: years.includes(st.year) ? st.year : years[0]}
+    : {kind:'role', role:st.role};
+
+  const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
+  const yearBtn=(y)=>`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='year'&&st.year===y?' active':''}" onclick="setValoHistSeries('year',${y})">P/E ${y}</button>`;
+  const roleBtn=(r,label)=>`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='role'&&st.role===r?' active':''}" onclick="setValoHistSeries('role','${r}')">${label}</button>`;
+  const fwdBtn=`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='fwd'?' active':''}" onclick="setValoHistSeries('fwd')">P/E 12m Fwd</button>`;
+
+  const periodBtn=(pk,label)=>{
+    const avail=dayDiffISO(latest.date, earliest)>=VALO_PERIOD_DAYS[pk];
+    const availDate=!avail?isoDatePlusDays(earliest, VALO_PERIOD_DAYS[pk]):null;
+    const title=!avail?`Disponible à partir du ${formatFrDate(availDate)}`:'';
+    return `<button class="vr-pill${st.period===pk?' active':''}" ${avail?'':'disabled'} title="${escAttr(title)}" onclick="setValoHistPeriod('${pk}')">${label}</button>`;
+  };
+  const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">Tout</button>`;
+
+  const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
+
+  card.innerHTML=`
+    <div class="card-title"><b>Historique de valorisation</b></div>
+    <div class="vr-hist-controls">
+      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Prix')}</div>
+      ${st.mode==='pe' ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Année en cours')}${roleBtn('ny','Année prochaine')}${fwdBtn}</div>` : ''}
+      <div class="vr-control-row">${Object.keys(VALO_PERIOD_DAYS).map(pk=>periodBtn(pk,VALO_PERIOD_LABELS[pk])).join('')}${allBtn}</div>
+    </div>
+    <div class="vr-hist-legend"><span><span class="vr-leg-dot"></span>Révision Omnium (refresh)</span><span><span class="vr-leg-dash"></span>Résultats</span></div>
+    <div class="vr-hist-chart">${chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>'}</div>
+  `;
+}
+
+function setValoHistMode(m){ _valoHistState.mode=m; renderValoHistory(CT); }
+function setValoHistSeries(kind, val){
+  _valoHistState.mode='pe';
+  _valoHistState.seriesKind=kind;
+  if(kind==='role') _valoHistState.role=val;
+  if(kind==='year') _valoHistState.year=+val;
+  renderValoHistory(CT);
+}
+function setValoHistPeriod(p){ _valoHistState.period=p; renderValoHistory(CT); }
 
 function renderDernierCall(hyp, ticker, opts={}){
   const dc=hyp?.dernierCall||null;
