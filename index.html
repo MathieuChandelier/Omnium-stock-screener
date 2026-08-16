@@ -1959,34 +1959,63 @@ function renderCoherenceQualitative(cq, ticker){
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const statut=cq.statut||'coherent';
   const points=(cq.points||[]).filter(p=>p&&p.sujet);
+  const suivi=(cq.suiviNarratif||[]).filter(s=>typeof s==='string'&&s.trim());
   const MATERIALITE_COLOR={haute:'#c0392b',moyenne:'var(--gold-text)'};
-  if(statut==='coherent'||!points.length){
-    return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Cohérence des propos qualitatifs${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
-      <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;color:var(--text);">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"></path></svg>
-        Propos qualitatifs cohérents avec les derniers transcripts.
-      </div>
-    </div>`;
-  }
-  const pointsBlock=points.map(p=>{
+  const SENS_COLOR={positif:'var(--teal-dark-text)',negatif:'#c0392b',neutre:'var(--muted)'};
+  const SENS_LABEL={positif:'positif',negatif:'négatif',neutre:'neutre'};
+
+  // Icone + libelle d'entete selon les 3 etats (rouge = incoherence,
+  // dore = rupture materielle mais positive/non tranchee, vert = aucune
+  // rupture materielle - le detail vient toujours de suiviNarratif,
+  // jamais d'une phrase generique).
+  const HEADER_BY_STATUT={
+    incoherences_detectees:{
+      color:'#c0392b',
+      icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`,
+      label:`${points.length} point${points.length>1?'s':''} en tension avec les évènements précédents`
+    },
+    rupture_positive:{
+      color:'var(--gold-text)',
+      icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-text)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 15l6-6 4 4 6-8M20 5h-4v4"/></svg>`,
+      label:`${points.length} rupture${points.length>1?'s':''} positive${points.length>1?'s':''} à surveiller vs trajectoire antérieure`
+    },
+    coherent:{
+      color:'var(--ok)',
+      icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"></path></svg>`,
+      label:'Aucune rupture matérielle détectée'
+    }
+  };
+  const head=HEADER_BY_STATUT[statut]||HEADER_BY_STATUT.coherent;
+
+  const suiviBlock=suivi.length?`<ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:5px;">
+    ${suivi.map(s=>`<li style="font-size:11.5px;color:var(--text);line-height:1.5;padding-left:12px;position:relative;">
+      <span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--muted);"></span>
+      ${esc(s)}
+    </li>`).join('')}
+  </ul>`:'';
+
+  const pointsBlock=points.length?points.map(p=>{
     const col=MATERIALITE_COLOR[p.materialite]||'var(--muted)';
+    const sensCol=SENS_COLOR[p.sens]||'var(--muted)';
     return `<div style="margin-top:8px;padding:8px 10px;background:var(--gold-light);border-radius:8px;border-left:3px solid ${col};">
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
         <span style="font-size:12px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(p.sujet)}</span>
         ${p.materialite?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};text-transform:uppercase;letter-spacing:.03em;">${esc(p.materialite)}</span>`:''}
+        ${p.sens?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:${sensCol};text-transform:uppercase;letter-spacing:.03em;">${esc(SENS_LABEL[p.sens]||p.sens)}</span>`:''}
       </div>
       ${p.ancienPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:4px;"><b>Avant :</b> ${esc(p.ancienPropos)}</div>`:''}
       ${p.nouveauPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:2px;"><b>Maintenant :</b> ${esc(p.nouveauPropos)}</div>`:''}
       ${p.justification?`<div style="font-size:10.5px;color:var(--muted);font-style:italic;line-height:1.4;margin-top:4px;">${esc(p.justification)}</div>`:''}
     </div>`;
-  }).join('');
+  }).join(''):'';
+
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Cohérence des propos qualitatifs${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
-    <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;font-weight:700;color:#c0392b;">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>
-      ${points.length} point${points.length>1?'s':''} en tension avec les derniers transcripts
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Suivi narratif &amp; cohérence${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;font-weight:700;color:${head.color};">
+      ${head.icon}
+      ${head.label}
     </div>
+    ${suiviBlock}
     ${pointsBlock}
   </div>`;
 }

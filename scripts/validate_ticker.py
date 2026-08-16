@@ -48,7 +48,10 @@ CQ_NATURE_ECART_VALUES = {
     "inversion_narratif_structurant",
 }
 CQ_MATERIALITE_VALUES = {"haute", "moyenne"}
+CQ_SENS_VALUES = {"positif", "negatif", "neutre"}
+CQ_STATUT_VALUES = {"coherent", "rupture_positive", "incoherences_detectees"}
 CQ_HISTORIQUE_FORMAT_VALUES = {"brut", "compresse"}
+CQ_HISTORIQUE_TYPE_VALUES = {"resultats", "evenement_annexe"}
 CQ_ENGAGEMENT_STATUT_VALUES = {"en_cours", "confirme", "contredit", "echeance_depassee_sans_suite"}
 
 
@@ -221,15 +224,46 @@ def validate_coherence_qualitative(d, errors):
     if len(points) > 3:
         errors.add(f"coherenceQualitative.points a {len(points)} entrees (plafond 3).")
     statut = cq.get("statut")
+    if statut is not None and statut not in CQ_STATUT_VALUES:
+        errors.add(f"coherenceQualitative.statut invalide : {statut!r}.")
     if statut == "coherent" and points:
         errors.add("coherenceQualitative.statut='coherent' mais points non vide.")
-    if statut == "incoherences_detectees" and not points:
-        errors.add("coherenceQualitative.statut='incoherences_detectees' mais points vide.")
+    if statut in ("rupture_positive", "incoherences_detectees") and not points:
+        errors.add(f"coherenceQualitative.statut={statut!r} mais points vide.")
+    # 'sens' est absent sur les entrees ecrites avant l'introduction de ce
+    # champ (voir INSTRUCTIONS.md, non-alteration retroactive) - le
+    # croisement statut/sens ne s'applique QUE si TOUS les points portent
+    # deja un 'sens' explicite ; un tableau partiellement/jamais modernise
+    # n'est pas une erreur, juste une donnee heritee non re-derivable.
+    dict_points = [p for p in points if isinstance(p, dict)]
+    all_have_sens = bool(dict_points) and all("sens" in p for p in dict_points)
+    has_negatif = any(p.get("sens") == "negatif" for p in dict_points)
+    if all_have_sens:
+        if statut == "incoherences_detectees" and not has_negatif:
+            errors.add("coherenceQualitative.statut='incoherences_detectees' mais aucun point n'a sens='negatif' (devrait etre 'rupture_positive').")
+        if statut == "rupture_positive" and has_negatif:
+            errors.add("coherenceQualitative.statut='rupture_positive' mais au moins un point a sens='negatif' (devrait etre 'incoherences_detectees').")
     for i, p in enumerate(points):
+        if not isinstance(p, dict):
+            errors.add(f"coherenceQualitative.points[{i}] doit etre un objet.")
+            continue
         if p.get("natureEcart") not in CQ_NATURE_ECART_VALUES:
             errors.add(f"coherenceQualitative.points[{i}].natureEcart invalide : {p.get('natureEcart')!r}.")
         if p.get("materialite") not in CQ_MATERIALITE_VALUES:
             errors.add(f"coherenceQualitative.points[{i}].materialite invalide : {p.get('materialite')!r}.")
+        # 'sens' tolere absent (entree heritee) mais valide si present.
+        if "sens" in p and p.get("sens") not in CQ_SENS_VALUES:
+            errors.add(f"coherenceQualitative.points[{i}].sens invalide : {p.get('sens')!r}.")
+    suivi = cq.get("suiviNarratif")
+    if suivi is not None:
+        if not isinstance(suivi, list):
+            errors.add("coherenceQualitative.suiviNarratif doit etre un tableau.")
+        else:
+            if not (1 <= len(suivi) <= 4):
+                errors.add(f"coherenceQualitative.suiviNarratif a {len(suivi)} entrees (attendu 1 a 4).")
+            for i, s in enumerate(suivi):
+                if not isinstance(s, str) or not s.strip():
+                    errors.add(f"coherenceQualitative.suiviNarratif[{i}] doit etre une chaine non vide.")
     hist = cq.get("historique", [])
     if isinstance(hist, list):
         if len(hist) > 4:
@@ -240,6 +274,10 @@ def validate_coherence_qualitative(d, errors):
         for i, h in enumerate(hist):
             if h.get("format") not in CQ_HISTORIQUE_FORMAT_VALUES:
                 errors.add(f"coherenceQualitative.historique[{i}].format invalide : {h.get('format')!r}.")
+            # 'type' tolere absent (entrees heritees d'avant l'introduction du
+            # champ, voir INSTRUCTIONS.md) mais valide s'il est present.
+            if "type" in h and h.get("type") not in CQ_HISTORIQUE_TYPE_VALUES:
+                errors.add(f"coherenceQualitative.historique[{i}].type invalide : {h.get('type')!r}.")
     eng = cq.get("engagementsStructurants", [])
     if isinstance(eng, list):
         en_cours = [e for e in eng if e.get("statut") == "en_cours"]
