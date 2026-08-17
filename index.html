@@ -37,6 +37,15 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .h-tagline span{font-size:27px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:1;font-family:'Poppins',sans-serif;}
 .h-logo{height:79px;width:auto;display:block;}
 
+.header-access-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:7px 14px;color:rgba(255,255,255,.85);font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;text-decoration:none;transition:background .12s,border-color .12s,color .12s;}
+.header-access-btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.36);color:#fff;}
+.header-access-btn svg{flex-shrink:0;}
+
+.access-gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);}
+.access-gate-card{max-width:360px;text-align:center;}
+.access-gate-title{font-family:'Poppins',sans-serif;font-size:19px;font-weight:800;color:#fff;margin-bottom:10px;}
+.access-gate-msg{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.75);line-height:1.6;}
+
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
 .back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px 8px 15px;cursor:pointer;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.08);transition:background .15s,border-color .15s,transform .12s,box-shadow .15s;}
 .back-btn:hover{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 3px 10px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);transform:translateY(-1px);}
@@ -387,6 +396,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .h-logo{height:55px;}
   .h-tagline{gap:5px;margin-top:0;}
   .h-tagline span{font-size:18px;}
+  .header-access-btn{padding:6px 9px;font-size:10px;gap:4px;}
+  .header-access-btn svg{width:13px;height:13px;}
   .tab-bar{padding:8px 12px;}
   .back-btn{padding:7px 15px 7px 12px;font-size:12px;gap:6px;}
   .container{padding:10px 13px 30px;}
@@ -502,6 +513,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </svg>
     <div class="h-tagline"><span>Screening Model</span></div>
   </div>
+  <a class="header-access-btn" href="admin.html" title="Générer un accès invité">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5L19 11"/></svg>
+    <span>Accès invité</span>
+  </a>
 </header>
 
 <div class="tab-bar" id="tab-bar" style="display:none;">
@@ -693,6 +708,49 @@ function fingerprint(str){
 // injoignable, l'app degrade silencieusement vers "rien n'est jamais
 // ignore" plutot que de planter.
 const DISMISS_ENDPOINT='https://model.omnium-capital.com/dismiss.php';
+
+// ══════════════════════════════════════════════════════════════
+// ACCES INVITE — lien a duree limitee genere depuis admin.html (bouton
+// "Accès invité" du header). Le token (horodatage d'expiration + signature
+// HMAC) est verifie cote serveur (verify.php, cle secrete jamais exposee
+// au navigateur) : impossible de le forger ou d'en prolonger la duree
+// depuis le client. Un lien recu via ?access=... est memorise en
+// sessionStorage (efface a la fermeture de l'onglet, jamais persistant) et
+// revalide a CHAQUE chargement de page - un lien expire entre deux visites
+// bloque donc bien l'acces au rechargement suivant, pas seulement au
+// moment de la premiere ouverture.
+// ══════════════════════════════════════════════════════════════
+const ACCESS_VERIFY_ENDPOINT='https://model.omnium-capital.com/verify.php';
+const ACCESS_TOKEN_KEY='omniumAccessToken';
+
+async function ensureAccessGranted(){
+  const params=new URLSearchParams(location.search);
+  const urlToken=params.get('access');
+  if(urlToken){
+    try{ sessionStorage.setItem(ACCESS_TOKEN_KEY, urlToken); }catch(e){}
+    try{ history.replaceState({}, '', location.pathname); }catch(e){}
+  }
+  let token=urlToken;
+  if(!token){ try{ token=sessionStorage.getItem(ACCESS_TOKEN_KEY); }catch(e){ token=null; } }
+  if(!token){
+    showAccessScreen('Cette application nécessite un lien d’invitation. Contactez Mathieu Chandelier pour y accéder.');
+    return false;
+  }
+  try{
+    const r=await fetch(ACCESS_VERIFY_ENDPOINT+'?token='+encodeURIComponent(token),{signal:AbortSignal.timeout(8000)});
+    const j=await r.json();
+    if(j && j.valid)return true;
+    showAccessScreen('Ce lien d’accès a expiré. Contactez Mathieu Chandelier pour en obtenir un nouveau.');
+    return false;
+  }catch(e){
+    showAccessScreen('Impossible de vérifier l’accès pour le moment. Merci de réessayer dans un instant.');
+    return false;
+  }
+}
+
+function showAccessScreen(msg){
+  document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
+}
 
 // ══════════════════════════════════════════════════════════════
 // IDENTITE UTILISATEUR (leger, sans mot de passe) — permet de scoper la
@@ -2691,6 +2749,8 @@ function startPricePoll(){
 }
 
 document.addEventListener('DOMContentLoaded', async function(){
+  const accessGranted=await ensureAccessGranted();
+  if(!accessGranted)return;
   await ensureUserIdentity();
   state = await loadState();
   const keys = Object.keys(state.tickers);
