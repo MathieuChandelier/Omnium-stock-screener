@@ -181,6 +181,10 @@ def validate_quarterly_eps(d, errors):
         return
     adj_eps = d.get("hypothese", {}).get("adjEPS", {})
     years = sorted(adj_eps.keys(), key=lambda y: int(y)) if isinstance(adj_eps, dict) else []
+    ancrage_ids = {
+        a.get("id") for a in (d.get("hypothese", {}).get("ancrages") or [])
+        if isinstance(a, dict) and a.get("id")
+    }
     def validate_retraitements(period_key, i, p):
         r = p.get("retraitements")
         if r is None:
@@ -192,8 +196,15 @@ def validate_quarterly_eps(d, errors):
             if not isinstance(item, dict) or set(item.keys()) != {"raison", "impact"}:
                 errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}] doit avoir exactement les cles raison/impact.")
                 continue
-            if not isinstance(item.get("raison"), str) or not item["raison"].strip():
+            raison = item.get("raison")
+            if not isinstance(raison, str) or not raison.strip():
                 errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].raison doit etre une chaine non vide.")
+            elif any(aid and aid in raison for aid in ancrage_ids) or "voir AN-" in raison or "(voir " in raison:
+                errors.add(
+                    f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].raison={raison!r} contient un renvoi "
+                    "interne (id d'ancrage ou 'voir ...') - la legende doit etre une phrase autonome et limpide "
+                    "pour le lecteur, jamais un pointeur vers un autre champ (voir SCHEMA, regle du 18/08/2026)."
+                )
             if not isinstance(item.get("impact"), (int, float)):
                 errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].impact doit etre un nombre.")
 

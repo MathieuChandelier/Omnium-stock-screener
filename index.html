@@ -352,6 +352,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-chip-dot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
 .qs-retrait-legend{margin-top:6px;}
 .qs-retrait-line{font-size:9.5px;font-weight:400;color:var(--muted);line-height:1.5;}
+.qs-retrait-raison{color:var(--gold-text);font-weight:700;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -1449,7 +1450,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         const sign=e.impact>=0?'+':'';
         return `${esc(e.label)} ${sign}${(+e.impact).toFixed(2)}`;
       }).join(', ');
-      return `<div class="qs-retrait-line">${esc(raison)} : ${items}</div>`;
+      return `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b> : ${items}</div>`;
     }).join('');
     return `<div class="qs-retrait-legend">${lines}</div>`;
   };
