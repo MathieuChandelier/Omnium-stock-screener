@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Accès invité — Omnium</title>
+<title>Gérer l'accès — Omnium</title>
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#000190;--navy-dark:#00004a;--navy-light:#eeeffe;--teal:#2BD8C2;--teal-text:#25CFB4;--muted:#64748b;--border:#e6e6f0;}
 *{box-sizing:border-box;}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);font-family:'Poppins',sans-serif;}
-.card{width:100%;max-width:400px;background:#fff;border-radius:16px;padding:28px 26px 26px;box-shadow:0 20px 60px rgba(0,0,20,.35);}
-.card-title{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px;}
-.card-sub{font-size:12.5px;font-weight:500;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+body{margin:0;min-height:100vh;padding:24px;background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%);font-family:'Poppins',sans-serif;display:flex;flex-direction:column;align-items:center;gap:18px;}
+.card{width:100%;max-width:420px;background:#fff;border-radius:16px;padding:26px 26px 24px;box-shadow:0 20px 60px rgba(0,0,20,.35);}
+.card-title{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.card-sub{font-size:12px;font-weight:500;color:var(--muted);margin-bottom:18px;line-height:1.5;}
 label{display:block;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
-.field{margin-bottom:16px;}
-input[type=password],select{width:100%;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--navy);background:var(--navy-light);border:1.5px solid transparent;border-radius:10px;padding:11px 13px;outline:none;transition:border-color .12s;}
-input[type=password]:focus,select:focus{border-color:var(--navy);}
-button{width:100%;font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:700;color:#fff;background:var(--navy);border:none;border-radius:10px;padding:12px;cursor:pointer;transition:background .12s,opacity .12s;}
+.field{margin-bottom:14px;}
+input[type=password],input[type=text],select{width:100%;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--navy);background:var(--navy-light);border:1.5px solid transparent;border-radius:10px;padding:11px 13px;outline:none;transition:border-color .12s;}
+input[type=password]:focus,input[type=text]:focus,select:focus{border-color:var(--navy);}
+button{width:100%;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:#fff;background:var(--navy);border:none;border-radius:10px;padding:11px;cursor:pointer;transition:background .12s,opacity .12s;}
 button:hover{background:var(--navy-dark);}
 button:disabled{opacity:.5;cursor:not-allowed;}
-.error{margin-top:12px;font-size:12.5px;font-weight:600;color:#c0392b;display:none;}
-.result{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);display:none;}
+button.secondary{background:var(--navy-light);color:var(--navy);}
+button.secondary:hover{background:#dfe2fb;}
+.error{margin-top:10px;font-size:12px;font-weight:600;color:#c0392b;display:none;}
+.result{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:none;}
 .result-lbl{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;}
 .result-row{display:flex;gap:8px;}
 .result-row input{flex:1;font-size:12px;font-weight:600;color:var(--navy);background:var(--navy-light);border:none;border-radius:8px;padding:9px 10px;font-family:'Poppins',sans-serif;}
@@ -30,23 +32,25 @@ button:disabled{opacity:.5;cursor:not-allowed;}
 .copy-btn:hover{background:#1cb89f;}
 .copy-btn.copied{background:#10b981;}
 .result-exp{margin-top:8px;font-size:12px;font-weight:600;color:var(--muted);}
-.back-link{display:block;text-align:center;margin-top:18px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;}
-.back-link:hover{color:var(--navy);}
-.owner-check{display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:18px;}
-.owner-check input{width:16px;height:16px;accent-color:var(--navy);flex-shrink:0;cursor:pointer;}
-.owner-check span{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.4;}
-.owner-check small{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:1px;}
+.back-link{display:block;text-align:center;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;}
+.back-link:hover{color:#fff;}
+.greet{font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:16px;}
+.addrow{display:flex;gap:8px;margin-top:10px;}
+.addrow input{flex:1;}
+.addrow button{width:auto;flex-shrink:0;padding:11px 16px;}
+.userlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
+.userlist li{display:flex;align-items:center;justify-content:space-between;background:var(--navy-light);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--navy);}
+.userlist .rm{width:auto;flex-shrink:0;padding:4px 10px;font-size:11px;background:transparent;color:#c0392b;border:1px solid #f0c4c4;}
+.userlist .rm:hover{background:#fdecec;}
+.empty-note{font-size:12px;color:var(--muted);text-align:center;padding:8px 0;}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="card-title">Accès invité</div>
-  <div class="card-sub">Génère un lien temporaire vers l'app, à usage unique par destinataire. Le lien expire automatiquement à l'heure indiquée — inutile d'y repenser après l'avoir envoyé.</div>
 
-  <div class="field">
-    <label for="pw">Mot de passe admin</label>
-    <input type="password" id="pw" autocomplete="current-password" placeholder="•••••••••">
-  </div>
+<div class="card" id="guestCard" style="display:none;">
+  <div class="card-title">Lien invité</div>
+  <div class="greet" id="greetLine"></div>
+  <div class="card-sub">Génère un lien temporaire vers l'app pour un prospect. Il expire automatiquement à l'heure indiquée.</div>
 
   <div class="field">
     <label for="dur">Durée de validité</label>
@@ -56,17 +60,11 @@ button:disabled{opacity:.5;cursor:not-allowed;}
       <option value="24">24 heures</option>
       <option value="48">48 heures</option>
       <option value="168">7 jours</option>
-      <option value="8760">1 an</option>
     </select>
   </div>
 
-  <label class="owner-check">
-    <input type="checkbox" id="isOwner">
-    <span>Ce lien est pour moi<small>Sinon : bouton admin masqué et bandeau "accès temporaire" affichés côté destinataire</small></span>
-  </label>
-
   <button id="genBtn" type="button">Générer le lien</button>
-  <div class="error" id="errBox"></div>
+  <div class="error" id="genErrBox"></div>
 
   <div class="result" id="resultBox">
     <div class="result-lbl">Lien à partager</div>
@@ -76,86 +74,269 @@ button:disabled{opacity:.5;cursor:not-allowed;}
     </div>
     <div class="result-exp" id="expOut"></div>
   </div>
-
-  <a class="back-link" href="index.html">← Retour à l'app</a>
 </div>
+
+<div class="card" id="identityCard">
+  <div class="card-title">Identifiant requis</div>
+  <div class="card-sub">Entrez votre identifiant pour générer un lien invité.</div>
+  <div class="field">
+    <label for="idInput">Identifiant</label>
+    <input type="text" id="idInput" autocomplete="off" placeholder="Votre identifiant">
+  </div>
+  <button id="idBtn" type="button">Continuer</button>
+  <div class="error" id="idErrBox"></div>
+</div>
+
+<div class="card" id="adminCard">
+  <div class="card-title">Zone admin</div>
+  <div class="card-sub">Réservée à Mathieu — gestion des utilisateurs internes autorisés.</div>
+
+  <div id="adminLocked">
+    <div class="field">
+      <label for="adminPw">Mot de passe admin</label>
+      <input type="password" id="adminPw" autocomplete="current-password" placeholder="•••••••••">
+    </div>
+    <button class="secondary" id="unlockBtn" type="button">Déverrouiller</button>
+    <div class="error" id="adminErrBox"></div>
+  </div>
+
+  <div id="adminUnlocked" style="display:none;">
+    <label>Utilisateurs internes autorisés</label>
+    <ul class="userlist" id="userList"></ul>
+    <div class="empty-note" id="emptyNote" style="display:none;">Aucun utilisateur pour le moment.</div>
+    <div class="addrow">
+      <input type="text" id="newUserInput" autocomplete="off" placeholder="Nouvel identifiant">
+      <button id="addUserBtn" type="button">Ajouter</button>
+    </div>
+    <div class="error" id="userErrBox"></div>
+  </div>
+</div>
+
+<a class="back-link" href="index.html">← Retour à l'app</a>
 
 <script>
 const GENERATE_ENDPOINT='https://model.omnium-capital.com/generate.php';
-const PW_SESSION_KEY='omniumAdminPw';
+const USERS_ENDPOINT='https://model.omnium-capital.com/users.php';
+const USER_ID_KEY='omniumUserId';
+const ADMIN_PW_SESSION_KEY='omniumAdminPw';
 
-const pwInput=document.getElementById('pw');
+function slugify(name){
+  return String(name||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'').trim();
+}
+const USER_ID_SET_AT_KEY='omniumUserIdSetAt';
+const USER_ID_MAX_AGE_MS=30*24*60*60*1000; // ~1 mois, meme logique que index.html
+function getUserId(){ try{ return localStorage.getItem(USER_ID_KEY)||''; }catch(e){ return ''; } }
+function setUserId(id){
+  try{
+    localStorage.setItem(USER_ID_KEY, id);
+    localStorage.setItem(USER_ID_SET_AT_KEY, String(Date.now()));
+  }catch(e){}
+}
+function userIdIsFresh(){
+  try{
+    const setAt=+localStorage.getItem(USER_ID_SET_AT_KEY);
+    return !!setAt && (Date.now()-setAt)<USER_ID_MAX_AGE_MS;
+  }catch(e){ return false; }
+}
+
+const guestCard=document.getElementById('guestCard');
+const identityCard=document.getElementById('identityCard');
+const greetLine=document.getElementById('greetLine');
 const durSelect=document.getElementById('dur');
-const isOwnerCheck=document.getElementById('isOwner');
 const genBtn=document.getElementById('genBtn');
-const errBox=document.getElementById('errBox');
+const genErrBox=document.getElementById('genErrBox');
 const resultBox=document.getElementById('resultBox');
 const linkOut=document.getElementById('linkOut');
 const expOut=document.getElementById('expOut');
 const copyBtn=document.getElementById('copyBtn');
 
-try{
-  const saved=sessionStorage.getItem(PW_SESSION_KEY);
-  if(saved)pwInput.value=saved;
-}catch(e){}
+let currentUserId=null;
 
-function showError(msg){
-  errBox.textContent=msg;
-  errBox.style.display='block';
-  resultBox.style.display='none';
+async function checkIdentifierApproved(slug){
+  try{
+    const r=await fetch(USERS_ENDPOINT+'?action=check&id='+encodeURIComponent(slug),{signal:AbortSignal.timeout(8000)});
+    const j=await r.json();
+    return typeof j?.allowed==='boolean' ? j.allowed : null;
+  }catch(e){ return null; }
 }
-function clearError(){
+
+async function initIdentity(){
+  const existing=getUserId();
+  if(existing && userIdIsFresh()){
+    const ok=await checkIdentifierApproved(existing);
+    if(ok===true){
+      currentUserId=existing;
+      greetLine.textContent='Connecté en tant que '+existing;
+      identityCard.style.display='none';
+      guestCard.style.display='block';
+      return;
+    }
+    if(ok===false)setUserId('');
+  } else if(existing){
+    document.getElementById('idInput').value=existing; // perime, reconfirmation
+  }
+  identityCard.style.display='block';
+  guestCard.style.display='none';
+}
+
+document.getElementById('idBtn').addEventListener('click', async ()=>{
+  const input=document.getElementById('idInput');
+  const errBox=document.getElementById('idErrBox');
+  const btn=document.getElementById('idBtn');
+  const slug=slugify(input.value);
+  if(!slug){ input.focus(); return; }
   errBox.style.display='none';
-}
+  btn.disabled=true; btn.textContent='Vérification…';
+  const ok=await checkIdentifierApproved(slug);
+  btn.disabled=false; btn.textContent='Continuer';
+  if(ok===true){
+    setUserId(slug);
+    initIdentity();
+    return;
+  }
+  errBox.textContent=ok===false
+    ? 'Identifiant non reconnu. Contactez Mathieu Chandelier pour y être ajouté.'
+    : 'Impossible de vérifier votre identifiant. Réessayez.';
+  errBox.style.display='block';
+});
+document.getElementById('idInput').addEventListener('keydown', e=>{ if(e.key==='Enter')document.getElementById('idBtn').click(); });
 
 async function generate(){
-  const password=pwInput.value;
+  if(!currentUserId)return;
   const hours=+durSelect.value;
-  if(!password){ showError('Entrez le mot de passe admin.'); pwInput.focus(); return; }
-  clearError();
+  genErrBox.style.display='none';
   genBtn.disabled=true;
   genBtn.textContent='Génération…';
   try{
     const r=await fetch(GENERATE_ENDPOINT,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({password, hours, kind: isOwnerCheck.checked ? 'owner' : 'guest'}),
+      body:JSON.stringify({id: currentUserId, hours}),
       signal:AbortSignal.timeout(10000)
     });
     const j=await r.json();
     if(!r.ok || j.error){
-      if(j.error==='invalid_password')showError('Mot de passe incorrect.');
-      else showError('Une erreur est survenue. Réessayez.');
+      genErrBox.textContent='Une erreur est survenue. Réessayez.';
+      genErrBox.style.display='block';
       return;
     }
-    try{ sessionStorage.setItem(PW_SESSION_KEY, password); }catch(e){}
     linkOut.value=j.url;
     expOut.textContent='Expire le '+j.expires_at;
     resultBox.style.display='block';
     copyBtn.textContent='Copier';
     copyBtn.classList.remove('copied');
   }catch(e){
-    showError('Impossible de contacter le serveur. Vérifiez votre connexion.');
+    genErrBox.textContent='Impossible de contacter le serveur. Vérifiez votre connexion.';
+    genErrBox.style.display='block';
   }finally{
     genBtn.disabled=false;
     genBtn.textContent='Générer le lien';
   }
 }
-
 genBtn.addEventListener('click', generate);
-pwInput.addEventListener('keydown', e=>{ if(e.key==='Enter')generate(); });
 
 copyBtn.addEventListener('click', async ()=>{
-  try{
-    await navigator.clipboard.writeText(linkOut.value);
-  }catch(e){
-    linkOut.select();
-    document.execCommand('copy');
-  }
-  copyBtn.textContent='Copié ✓';
+  try{ await navigator.clipboard.writeText(linkOut.value); }
+  catch(e){ linkOut.select(); document.execCommand('copy'); }
+  copyBtn.textContent='Copié !';
   copyBtn.classList.add('copied');
   setTimeout(()=>{ copyBtn.textContent='Copier'; copyBtn.classList.remove('copied'); },2000);
 });
+
+// ── Zone admin (Mathieu uniquement) ──
+const adminLocked=document.getElementById('adminLocked');
+const adminUnlocked=document.getElementById('adminUnlocked');
+const adminPwInput=document.getElementById('adminPw');
+const userListEl=document.getElementById('userList');
+const emptyNote=document.getElementById('emptyNote');
+
+try{
+  const savedPw=sessionStorage.getItem(ADMIN_PW_SESSION_KEY);
+  if(savedPw)adminPwInput.value=savedPw;
+}catch(e){}
+
+function renderUserList(users){
+  userListEl.innerHTML='';
+  emptyNote.style.display=users.length ? 'none' : 'block';
+  users.forEach(u=>{
+    const li=document.createElement('li');
+    const nameSpan=document.createElement('span');
+    nameSpan.textContent=u;
+    const rmBtn=document.createElement('button');
+    rmBtn.className='rm';
+    rmBtn.type='button';
+    rmBtn.textContent='Retirer';
+    rmBtn.addEventListener('click', ()=>removeUser(u));
+    li.appendChild(nameSpan);
+    li.appendChild(rmBtn);
+    userListEl.appendChild(li);
+  });
+}
+
+async function unlockAdmin(){
+  const pw=adminPwInput.value;
+  const errBox=document.getElementById('adminErrBox');
+  const btn=document.getElementById('unlockBtn');
+  if(!pw){ errBox.textContent='Entrez le mot de passe admin.'; errBox.style.display='block'; adminPwInput.focus(); return; }
+  errBox.style.display='none';
+  btn.disabled=true; btn.textContent='Vérification…';
+  try{
+    const r=await fetch(USERS_ENDPOINT+'?action=list&password='+encodeURIComponent(pw),{signal:AbortSignal.timeout(8000)});
+    const j=await r.json();
+    btn.disabled=false; btn.textContent='Déverrouiller';
+    if(!r.ok || j.error){
+      errBox.textContent='Mot de passe incorrect.';
+      errBox.style.display='block';
+      return;
+    }
+    try{ sessionStorage.setItem(ADMIN_PW_SESSION_KEY, pw); }catch(e){}
+    adminLocked.style.display='none';
+    adminUnlocked.style.display='block';
+    renderUserList(j.users||[]);
+  }catch(e){
+    btn.disabled=false; btn.textContent='Déverrouiller';
+    errBox.textContent='Impossible de contacter le serveur.';
+    errBox.style.display='block';
+  }
+}
+document.getElementById('unlockBtn').addEventListener('click', unlockAdmin);
+adminPwInput.addEventListener('keydown', e=>{ if(e.key==='Enter')unlockAdmin(); });
+
+async function userAction(action, id){
+  const pw=adminPwInput.value;
+  const errBox=document.getElementById('userErrBox');
+  errBox.style.display='none';
+  try{
+    const r=await fetch(USERS_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action, id, password: pw}),
+      signal:AbortSignal.timeout(8000)
+    });
+    const j=await r.json();
+    if(!r.ok || j.error){
+      errBox.textContent='Une erreur est survenue.';
+      errBox.style.display='block';
+      return;
+    }
+    renderUserList(j.users||[]);
+  }catch(e){
+    errBox.textContent='Impossible de contacter le serveur.';
+    errBox.style.display='block';
+  }
+}
+function removeUser(id){ userAction('remove', id); }
+
+document.getElementById('addUserBtn').addEventListener('click', ()=>{
+  const input=document.getElementById('newUserInput');
+  const slug=slugify(input.value);
+  if(!slug){ input.focus(); return; }
+  userAction('add', slug);
+  input.value='';
+});
+document.getElementById('newUserInput').addEventListener('keydown', e=>{ if(e.key==='Enter')document.getElementById('addUserBtn').click(); });
+
+initIdentity();
 </script>
 </body>
 </html>

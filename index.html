@@ -263,6 +263,7 @@ thead th .fy-month-tag{color:#8be9dc;}
 .uid-modal-title{font-family:'Poppins',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px;}
 .uid-modal-sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:18px;}
 .uid-modal-input{width:100%;border:1.5px solid var(--border);border-radius:9px;padding:10px 12px;font-size:14px;font-family:'Poppins',sans-serif;margin-bottom:12px;}
+.uid-modal-err{display:none;font-size:12px;font-weight:600;color:#c0392b;margin:-6px 0 12px;line-height:1.5;}
 .uid-modal-input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,216,194,.15);}
 .uid-modal-btn{width:100%;text-align:center;}
 
@@ -516,9 +517,9 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </svg>
     <div class="h-tagline"><span>Screening Model</span></div>
   </div>
-  <a class="header-access-btn" href="admin.html" title="Générer un accès invité">
+  <a class="header-access-btn" href="admin.html" title="Gérer l'accès">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5L19 11"/></svg>
-    <span>Accès invité</span>
+    <span>Gérer l'accès</span>
   </a>
 </header>
 
@@ -713,21 +714,58 @@ function fingerprint(str){
 const DISMISS_ENDPOINT='https://model.omnium-capital.com/dismiss.php';
 
 // ══════════════════════════════════════════════════════════════
-// ACCES INVITE — lien a duree limitee genere depuis admin.html (bouton
-// "Accès invité" du header). Le token (horodatage d'expiration + signature
-// HMAC) est verifie cote serveur (verify.php, cle secrete jamais exposee
-// au navigateur) : impossible de le forger ou d'en prolonger la duree
-// depuis le client. Un lien recu via ?access=... est memorise en
-// sessionStorage (efface a la fermeture de l'onglet, jamais persistant) et
-// revalide a CHAQUE chargement de page - un lien expire entre deux visites
-// bloque donc bien l'acces au rechargement suivant, pas seulement au
-// moment de la premiere ouverture.
+// ACCES A L'APP — trois profils, deux mecanismes :
+// 1. UTILISATEUR INTERNE (identifiant, persistant) : approuve par
+//    Mathieu via la zone admin de admin.html. Identifiant stocke en
+//    localStorage (survit a la fermeture du navigateur, contrairement a
+//    sessionStorage) et REVALIDE cote serveur a CHAQUE chargement - si
+//    Mathieu retire l'identifiant de la liste, l'acces est coupe des le
+//    prochain chargement. Pas de mot de passe individuel. Un utilisateur
+//    interne peut generer des liens invites (admin.html) mais n'a jamais
+//    acces a la liste des utilisateurs.
+// 2. MATHIEU (mot de passe) : c'est un utilisateur interne comme les
+//    autres cote app (meme identifiant/localStorage), avec en plus le
+//    mot de passe admin qui deverrouille la gestion de la liste.
+// 3. INVITE (lien temporaire) : token signe (horodatage d'expiration +
+//    HMAC, cle secrete jamais exposee au navigateur) genere depuis
+//    admin.html. Masque le bouton "Gérer l'accès" et affiche un bandeau
+//    "acces temporaire" avec l'heure d'expiration exacte.
 // ══════════════════════════════════════════════════════════════
 const ACCESS_VERIFY_ENDPOINT='https://model.omnium-capital.com/verify.php';
+const USERS_ENDPOINT='https://model.omnium-capital.com/users.php';
 const ACCESS_TOKEN_KEY='omniumAccessToken';
-const ACCESS_KIND_KEY='omniumAccessKind';
 
-async function ensureAccessGranted(){
+// true = approuve, false = explicitement refuse, null = erreur reseau
+// (a distinguer : un refus explicite doit bloquer, une panne reseau ne
+// doit pas locker definitivement un identifiant deja approuve avant).
+async function checkIdentifierApproved(slug){
+  try{
+    const r=await fetch(USERS_ENDPOINT+'?action=check&id='+encodeURIComponent(slug),{signal:AbortSignal.timeout(8000)});
+    const j=await r.json();
+    return typeof j?.allowed==='boolean' ? j.allowed : null;
+  }catch(e){ return null; }
+}
+
+function showAccessScreen(msg){
+  document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
+}
+
+function applyGuestUI(expiresAtUnix){
+  const btn=document.querySelector('.header-access-btn');
+  if(btn)btn.style.display='none';
+  if(expiresAtUnix){
+    const d=new Date(expiresAtUnix*1000);
+    const dateTxt=d.toLocaleDateString('fr-FR')+' à '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const banner=document.createElement('div');
+    banner.className='guest-banner';
+    banner.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Accès temporaire — expire le ${dateTxt}`;
+    document.body.insertBefore(banner, document.body.firstChild);
+  }
+}
+
+// Retourne 'valid' | 'invalid' | 'error' | 'none' (aucun lien present, on
+// passera au parcours identifiant interne).
+async function checkGuestLink(){
   const params=new URLSearchParams(location.search);
   const urlToken=params.get('access');
   if(urlToken){
@@ -736,101 +774,102 @@ async function ensureAccessGranted(){
   }
   let token=urlToken;
   if(!token){ try{ token=sessionStorage.getItem(ACCESS_TOKEN_KEY); }catch(e){ token=null; } }
-  if(!token){
-    showAccessScreen('Cette application nécessite un lien d’invitation. Contactez Mathieu Chandelier pour y accéder.');
-    return false;
-  }
+  if(!token)return 'none';
   try{
     const r=await fetch(ACCESS_VERIFY_ENDPOINT+'?token='+encodeURIComponent(token),{signal:AbortSignal.timeout(8000)});
     const j=await r.json();
-    if(j && j.valid){
-      try{ sessionStorage.setItem(ACCESS_KIND_KEY, j.kind||'guest'); }catch(e){}
-      applyAccessKindUI(j.kind||'guest', j.expires_at);
-      return true;
-    }
-    showAccessScreen('Ce lien d’accès a expiré. Contactez Mathieu Chandelier pour en obtenir un nouveau.');
-    return false;
-  }catch(e){
-    showAccessScreen('Impossible de vérifier l’accès pour le moment. Merci de réessayer dans un instant.');
-    return false;
-  }
-}
-
-function showAccessScreen(msg){
-  document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
-}
-
-// Lien "invité" (kind=guest) : masque le bouton admin dans le header (un
-// prospect n'a pas a savoir que cette porte existe) et affiche un bandeau
-// rappelant que l'acces est temporaire, avec l'heure d'expiration exacte -
-// transparence commerciale plutot qu'un acces qui s'interrompt sans
-// prevenir. Lien "owner" (Mathieu lui-meme) : app strictement normale.
-function applyAccessKindUI(kind, expiresAtUnix){
-  const btn=document.querySelector('.header-access-btn');
-  if(kind!=='owner'){
-    if(btn)btn.style.display='none';
-    if(expiresAtUnix){
-      const d=new Date(expiresAtUnix*1000);
-      const dateTxt=d.toLocaleDateString('fr-FR')+' à '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-      const banner=document.createElement('div');
-      banner.className='guest-banner';
-      banner.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Accès temporaire — expire le ${dateTxt}`;
-      document.body.insertBefore(banner, document.body.firstChild);
-    }
-  }
+    if(j && j.valid){ applyGuestUI(j.expires_at); return 'valid'; }
+    try{ sessionStorage.removeItem(ACCESS_TOKEN_KEY); }catch(e){}
+    return 'invalid';
+  }catch(e){ return 'error'; }
 }
 
 // ══════════════════════════════════════════════════════════════
-// IDENTITE UTILISATEUR (leger, sans mot de passe) — permet de scoper la
-// dismissal des news PAR PERSONNE plutot que globalement pour tout le
-// monde qui charge la page. Demande le prenom UNE SEULE FOIS par appareil
-// (stocke ensuite en localStorage, jamais redemande sur ce meme appareil).
-// NORMALISATION : le nom saisi est reduit a un identifiant stable
-// (minuscules, sans accents, sans espaces/ponctuation) - "Mathieu" et
-// "mathieu " donnent le meme identifiant "mathieu", donc taper le meme
-// prenom sur desktop et mobile pointe vers le MEME compte cote serveur,
-// sans jamais avoir besoin de mot de passe pour le prouver. Aucune
-// verification d'unicite/collision n'est faite (deux personnes au meme
-// prenom partageraient le meme compte) - limite assumee pour cette
-// premiere version "sans mot de passe".
+// IDENTIFIANT (localStorage) — sert DEUX buts : c'est le controle
+// d'acces des utilisateurs internes (voir bloc ci-dessus, revalide a
+// chaque chargement via checkIdentifierApproved) ET la cle qui scope la
+// dismissal des news PAR PERSONNE plutot que globalement. NORMALISATION :
+// le nom saisi est reduit a un identifiant stable (minuscules, sans
+// accents, sans espaces/ponctuation) - "MatChandelle" et "matchandelle "
+// donnent le meme identifiant, donc taper le meme identifiant sur
+// desktop et mobile pointe vers le MEME compte cote serveur.
 // ══════════════════════════════════════════════════════════════
 const USER_ID_KEY='omniumUserId';
 
 function slugifyUserName(name){
   return String(name||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'').trim();
 }
+const USER_ID_SET_AT_KEY='omniumUserIdSetAt';
+const USER_ID_MAX_AGE_MS=30*24*60*60*1000; // ~1 mois - redemande periodique de l'identifiant (confort/hygiene, en plus de la revalidation serveur a chaque chargement)
+
 function getUserId(){
   try{ return localStorage.getItem(USER_ID_KEY)||''; }catch(e){ return ''; }
 }
 function setUserId(id){
-  try{ localStorage.setItem(USER_ID_KEY, id); }catch(e){}
+  try{
+    localStorage.setItem(USER_ID_KEY, id);
+    localStorage.setItem(USER_ID_SET_AT_KEY, String(Date.now()));
+  }catch(e){}
+}
+function userIdIsFresh(){
+  try{
+    const setAt=+localStorage.getItem(USER_ID_SET_AT_KEY);
+    return !!setAt && (Date.now()-setAt)<USER_ID_MAX_AGE_MS;
+  }catch(e){ return false; }
 }
 
-// Bloque le demarrage de l'app UNIQUEMENT si aucun identifiant n'est deja
-// stocke sur cet appareil (premiere visite) - affiche un mini-formulaire
-// plein ecran, resout des que le prenom est saisi et valide.
+// Bloque le demarrage de l'app tant qu'aucun identifiant interne approuve
+// et RECENT (< 1 mois) n'est etabli. Un identifiant frais est revalide
+// silencieusement (checkIdentifierApproved) ; un identifiant perime ou
+// absent declenche un mini-formulaire plein ecran (pre-rempli si on a
+// juste besoin d'une reconfirmation), avec message d'erreur et nouvelle
+// tentative en cas de refus.
 function ensureUserIdentity(){
-  return new Promise(resolve=>{
+  return new Promise(async resolve=>{
     const existing=getUserId();
-    if(existing){ resolve(existing); return; }
+    let prefill='';
+    if(existing){
+      if(userIdIsFresh()){
+        const ok=await checkIdentifierApproved(existing);
+        if(ok!==false){ resolve(existing); return; } // true ou null (panne reseau) : on ne locke pas un acces deja etabli
+        setUserId(''); // revoque - on n'en propose pas la reprise
+      } else {
+        prefill=existing; // perime (>1 mois) mais pas revoque - reconfirmation, pas ressaisie complete
+      }
+    }
     const overlay=document.createElement('div');
     overlay.id='uid-overlay';
     overlay.innerHTML=`
       <div class="uid-modal">
-        <div class="uid-modal-title">Qui êtes-vous ?</div>
-        <div class="uid-modal-sub">Pour synchroniser vos préférences (news déjà vues) entre vos appareils. Pas de mot de passe à ce stade.</div>
-        <input type="text" id="uid-input" class="uid-modal-input" placeholder="Votre prénom" autocomplete="off">
+        <div class="uid-modal-title">Accès restreint</div>
+        <div class="uid-modal-sub">Entrez votre identifiant pour accéder à l'application.</div>
+        <input type="text" id="uid-input" class="uid-modal-input" placeholder="Votre identifiant" autocomplete="off" value="${prefill.replace(/"/g,'&quot;')}">
+        <div class="uid-modal-err" id="uid-err"></div>
         <button class="btn btn-primary uid-modal-btn" id="uid-submit-btn" type="button">Continuer</button>
       </div>`;
     document.body.appendChild(overlay);
     const input=overlay.querySelector('#uid-input');
     const btn=overlay.querySelector('#uid-submit-btn');
-    const submit=()=>{
+    const errEl=overlay.querySelector('#uid-err');
+    const submit=async ()=>{
       const slug=slugifyUserName(input.value);
       if(!slug){ input.focus(); return; }
-      setUserId(slug);
-      overlay.remove();
-      resolve(slug);
+      errEl.style.display='none';
+      btn.disabled=true; btn.textContent='Vérification…';
+      const ok=await checkIdentifierApproved(slug);
+      btn.disabled=false; btn.textContent='Continuer';
+      if(ok===true){
+        setUserId(slug);
+        overlay.remove();
+        resolve(slug);
+        return;
+      }
+      errEl.textContent=ok===false
+        ? 'Identifiant non reconnu. Contactez Mathieu Chandelier pour y être ajouté.'
+        : 'Impossible de vérifier votre identifiant pour le moment. Réessayez.';
+      errEl.style.display='block';
+      input.focus();
+      input.select();
     };
     btn.addEventListener('click',submit);
     input.addEventListener('keydown',e=>{ if(e.key==='Enter')submit(); });
@@ -2777,9 +2816,18 @@ function startPricePoll(){
 }
 
 document.addEventListener('DOMContentLoaded', async function(){
-  const accessGranted=await ensureAccessGranted();
-  if(!accessGranted)return;
-  await ensureUserIdentity();
+  const guestStatus=await checkGuestLink();
+  if(guestStatus==='invalid'){
+    showAccessScreen('Ce lien d’accès a expiré. Contactez Mathieu Chandelier pour en obtenir un nouveau.');
+    return;
+  }
+  if(guestStatus==='error'){
+    showAccessScreen('Impossible de vérifier l’accès pour le moment. Merci de réessayer dans un instant.');
+    return;
+  }
+  if(guestStatus==='none'){
+    await ensureUserIdentity();
+  }
   state = await loadState();
   const keys = Object.keys(state.tickers);
   let lastView=null;
