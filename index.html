@@ -348,7 +348,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:8px;}
-.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;}
+.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;position:relative;}
+.qs-chip.has-retrait{cursor:pointer;}
+.qs-chip-dot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+.eps-retrait-tooltip{position:absolute;background:#fff;padding:0;font-family:'Poppins',sans-serif;text-align:left;z-index:10000;display:none;max-width:220px;}
+.eps-retrait-head{font-size:10px;font-weight:700;color:var(--teal-text);margin:0 0 3px;}
+.eps-retrait-line{font-size:10px;font-weight:400;color:var(--muted);margin:0;line-height:1.45;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -1417,7 +1422,12 @@ function refreshPriceOnly(ticker){
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const chip=(p,forceActual)=>`<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  const chip=(p,forceActual)=>{
+    const r=Array.isArray(p.retraitements)&&p.retraitements.length?p.retraitements:null;
+    const dot=r?'<span class="qs-chip-dot"></span>':'';
+    const info=r?` onclick="event.stopPropagation();showEpsRetraitementsTooltip(event,${JSON.stringify({label:p.label,eps:+p.eps,retraitements:r}).replace(/"/g,'&quot;')})"`:'';
+    return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}${r?' has-retrait':''}"${info}>${dot}<div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  };
   const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
   const colBlock=(arr,annual,note,opts={})=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
@@ -1910,6 +1920,38 @@ function showValoTooltip(evt){
 }
 function hideValoTooltip(){
   const tip=document.getElementById('valo-tooltip');
+  if(tip) tip.style.display='none';
+}
+
+// Detail au tap sur un chip EPS trimestriel marque d'un point turquoise -
+// jamais de cadre (design final valide le 17/08/2026) : "vs publie" en
+// turquoise gras, une ligne par retraitement en gris, meme taille.
+function showEpsRetraitementsTooltip(evt, info){
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  let tip=document.getElementById('eps-retrait-tooltip');
+  if(!tip){
+    tip=document.createElement('div');
+    tip.id='eps-retrait-tooltip';
+    tip.className='eps-retrait-tooltip';
+    document.body.appendChild(tip);
+  }
+  const sumImpact=info.retraitements.reduce((a,r)=>a+(+r.impact||0),0);
+  const published=info.eps-sumImpact;
+  const lines=info.retraitements.map(r=>{
+    const sign=r.impact>=0?'+':'';
+    return `<p class="eps-retrait-line">${esc(r.raison)} <b>${sign}${(+r.impact).toFixed(2)}</b></p>`;
+  }).join('');
+  tip.innerHTML=`<p class="eps-retrait-head">vs publié ${published.toFixed(2)}&nbsp;$</p>${lines}`;
+  tip.style.display='block';
+  const r=evt.currentTarget.getBoundingClientRect();
+  const tipW=tip.offsetWidth;
+  const maxLeft=window.innerWidth-tipW-8;
+  tip.style.left=Math.max(8,Math.min(r.left+window.scrollX,maxLeft))+'px';
+  tip.style.top=(r.bottom+window.scrollY+6)+'px';
+  setTimeout(()=>document.addEventListener('click',hideEpsRetraitementsTooltip,{once:true}),0);
+}
+function hideEpsRetraitementsTooltip(){
+  const tip=document.getElementById('eps-retrait-tooltip');
   if(tip) tip.style.display='none';
 }
 
