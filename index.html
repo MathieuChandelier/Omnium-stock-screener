@@ -518,7 +518,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     <div class="h-tagline"><span>Screening Model</span></div>
   </div>
   <a class="header-access-btn" href="admin.html" title="Gérer l'accès">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5L19 11"/></svg>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="4"/><line x1="11" y1="12" x2="20" y2="12"/><line x1="16.5" y1="12" x2="16.5" y2="15"/><line x1="19.5" y1="12" x2="19.5" y2="15"/></svg>
     <span>Gérer l'accès</span>
   </a>
 </header>
@@ -750,7 +750,9 @@ function showAccessScreen(msg){
   document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
 }
 
+let IS_GUEST_SESSION=false;
 function applyGuestUI(expiresAtUnix){
+  IS_GUEST_SESSION=true;
   const btn=document.querySelector('.header-access-btn');
   if(btn)btn.style.display='none';
   if(expiresAtUnix){
@@ -2441,7 +2443,14 @@ function formatNewsDayMonth(iso){
 // Liste des lignes actives a afficher : les jours non-dismisses (selon
 // l'etat PARTAGE cote serveur, state.dismissedNewsDates, voir loadState),
 // tries du plus recent au plus ancien, plafonnes a NEWS_MAX_LINES.
+// Vide pour une session INVITE : sans identifiant, aucun etat de
+// dismissal ne peut etre resolu pour cette personne (fetchDismissedNewsDates
+// renvoie systematiquement un Set vide), donc TOUT le back-log de la
+// semaine s'affichait comme "non lu" a chaque nouveau lien envoye - source
+// de bruit pour un prospect qui decouvre l'app, sans rapport avec le
+// suivi personnel de Mathieu que cette barre sert a l'origine.
 function newsBarLines(){
+  if(IS_GUEST_SESSION)return [];
   const digest=state.newsDigest||[];
   if(!digest.length)return [];
   const dismissed=state.dismissedNewsDates||new Set();
