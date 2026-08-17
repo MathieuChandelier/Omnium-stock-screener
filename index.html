@@ -342,18 +342,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-control-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:9px;}
 .vr-control-row:last-child{margin-bottom:0;}
 .vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:52px;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:6px 11px;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:7px 14px;min-width:34px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
 .vr-pill.active{background:var(--navy);color:#fff;}
 .vr-pill:disabled{opacity:.4;cursor:not-allowed;}
+.vr-pill.active:disabled{opacity:1;cursor:default;}
 
 .vr-panel-title{margin-bottom:14px;}
-.vr-panel-title.vr-down b{color:#e05252;}
+.vr-panel-title.vr-down b{color:var(--navy);}
 .vr-panel-title.vr-up b{color:var(--teal-dark-text);}
 .vr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
 .vr-card{border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:box-shadow .15s,transform .1s;background:var(--surface);}
 .vr-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08);transform:translateY(-1px);}
-.vr-card-down{background:linear-gradient(180deg,rgba(224,82,82,.05),transparent 60%);}
+.vr-card-down{background:linear-gradient(180deg,rgba(0,1,144,.05),transparent 60%);}
 .vr-card-up{background:linear-gradient(180deg,rgba(37,207,180,.07),transparent 60%);}
 .vr-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px;}
 .vr-card-ticker{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);}
@@ -447,7 +448,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .vr-controls{padding:12px 14px;}
   .vr-control-row{gap:4px;margin-bottom:7px;}
   .vr-control-lbl{min-width:0;font-size:9px;margin-right:2px;}
-  .vr-pill{padding:4px 8px;font-size:10.5px;}
+  .vr-pill{padding:7px 8px;min-width:28px;font-size:10.5px;}
 }
 </style>
 </head>
