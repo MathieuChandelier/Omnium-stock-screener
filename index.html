@@ -331,19 +331,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
 
 /* Value Rankings + Historique de valorisation */
-.vr-entry{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
+.vr-entry{display:flex;align-items:center;justify-content:space-between;padding:9px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
 .vr-entry:hover{box-shadow:0 4px 14px rgba(0,1,144,.12);transform:translateY(-1px);}
 .vr-entry-left{display:flex;align-items:center;gap:10px;min-width:0;}
 .vr-entry-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;}
 .vr-entry-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);}
-.vr-entry-sub{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--muted);margin-top:1px;}
 .vr-entry-arrow{flex-shrink:0;color:var(--navy);opacity:.6;}
 
 .vr-controls{padding:16px 20px;}
-.vr-control-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:9px;}
+.vr-control-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:9px;}
 .vr-control-row:last-child{margin-bottom:0;}
 .vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:52px;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:6px 13px;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:6px 11px;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
 .vr-pill.active{background:var(--navy);color:#fff;}
 .vr-pill:disabled{opacity:.4;cursor:not-allowed;}
@@ -444,6 +443,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .news-item-date{font-size:10px;}
   #context-card{padding:0}
   footer{padding:14px;font-size:9.5px;}
+  .vr-entry{padding:8px 14px;}
+  .vr-controls{padding:12px 14px;}
+  .vr-control-row{gap:4px;margin-bottom:7px;}
+  .vr-control-lbl{min-width:0;font-size:9px;margin-right:2px;}
+  .vr-pill{padding:4px 8px;font-size:10.5px;}
 }
 </style>
 </head>
@@ -507,8 +511,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg>
       </span>
       <div>
-        <div class="vr-entry-text">Value Rankings</div>
-        <div class="vr-entry-sub">Plus fortes hausses &amp; baisses de P/E du portefeuille</div>
+        <div class="vr-entry-text">P/E rankings</div>
       </div>
     </div>
     <span class="vr-entry-arrow">
@@ -1677,8 +1680,9 @@ function renderValueRankings(){
     const title=!avail?`Historique insuffisant${availDate?` — disponible à partir du ${formatFrDate(availDate)}`:''}`:'';
     return pill('period', pk, VALO_PERIOD_LABELS[pk], st.period===pk, !avail, title);
   }).join('');
-  const rRow=[['cy','Année en cours'],['ny','Année prochaine'],['fwd','12m Forward']]
-    .map(([k,label])=>pill('role', k, label, st.role===k, false)).join('');
+  const nowYear=new Date().getFullYear();
+  const rRow=[['cy',String(nowYear),'Année en cours'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Année prochaine']]
+    .map(([k,label,title])=>pill('role', k, label, st.role===k, false, title)).join('');
 
   const grid=(list)=> list.length
     ? `<div class="vr-grid">${list.map(r=>renderValueRankingCard(r, seriesDesc)).join('')}</div>`
