@@ -2989,6 +2989,22 @@ function startPricePoll(){
   setInterval(()=>{ if(CT) fetchLivePrice(CT); },PRICE_TTL);
 }
 
+// data/marketAction.json est reecrit par market_check.py en cours de
+// journee (voir docstring du script) - sans ce polling, la banniere ne
+// se met a jour qu'au chargement de la page, jamais en cours de
+// consultation (bug remonte le 17/08/2026 : ARGENX/IBKR passes >=2% sans
+// que la banniere apparaisse pour un onglet deja ouvert).
+const MARKET_ACTION_TTL=5*60*1000;
+async function pollMarketAction(){
+  try{
+    const r=await fetch('data/marketAction.json', NO_STORE);
+    if(r.ok){ state.marketAction=await r.json(); renderMarketActionBar(); }
+  }catch(e){}
+}
+function startMarketActionPoll(){
+  setInterval(pollMarketAction, MARKET_ACTION_TTL);
+}
+
 document.addEventListener('DOMContentLoaded', async function(){
   const guestStatus=await checkGuestLink();
   if(guestStatus==='invalid'){
@@ -3025,6 +3041,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   const gd=document.getElementById('gen-date');
   if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
   setTimeout(startPricePoll,1500);
+  startMarketActionPoll();
 });
   </script>
 </body></html>
