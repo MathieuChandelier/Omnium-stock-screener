@@ -331,30 +331,32 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 #analyse-tbl tbody tr.hist-last td:first-child{background:var(--navy-light);}
 
 /* Value Rankings + Historique de valorisation */
-.vr-entry{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
+.vr-entry{display:flex;align-items:center;justify-content:space-between;padding:9px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
 .vr-entry:hover{box-shadow:0 4px 14px rgba(0,1,144,.12);transform:translateY(-1px);}
 .vr-entry-left{display:flex;align-items:center;gap:10px;min-width:0;}
 .vr-entry-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;}
 .vr-entry-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);}
-.vr-entry-sub{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--muted);margin-top:1px;}
 .vr-entry-arrow{flex-shrink:0;color:var(--navy);opacity:.6;}
 
 .vr-controls{padding:16px 20px;}
-.vr-control-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-bottom:9px;}
+.vr-control-row{display:flex;align-items:center;flex-wrap:nowrap;gap:6px;margin-bottom:9px;}
 .vr-control-row:last-child{margin-bottom:0;}
-.vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:52px;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:6px 13px;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
+.vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:130px;flex-shrink:0;white-space:nowrap;}
+.vr-pill-scroll{display:flex;align-items:center;gap:6px;overflow-x:auto;flex:1 1 auto;min-width:0;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent 100%);mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent 100%);}
+.vr-pill-scroll::-webkit-scrollbar{display:none;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:8px 15px;min-width:38px;flex-shrink:0;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
 .vr-pill.active{background:var(--navy);color:#fff;}
 .vr-pill:disabled{opacity:.4;cursor:not-allowed;}
+.vr-pill.active:disabled{opacity:1;cursor:default;}
 
 .vr-panel-title{margin-bottom:14px;}
-.vr-panel-title.vr-down b{color:#e05252;}
+.vr-panel-title.vr-down b{color:var(--navy);}
 .vr-panel-title.vr-up b{color:var(--teal-dark-text);}
 .vr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
 .vr-card{border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:box-shadow .15s,transform .1s;background:var(--surface);}
 .vr-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08);transform:translateY(-1px);}
-.vr-card-down{background:linear-gradient(180deg,rgba(224,82,82,.05),transparent 60%);}
+.vr-card-down{background:linear-gradient(180deg,rgba(0,1,144,.05),transparent 60%);}
 .vr-card-up{background:linear-gradient(180deg,rgba(37,207,180,.07),transparent 60%);}
 .vr-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px;}
 .vr-card-ticker{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);}
@@ -444,6 +446,12 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .news-item-date{font-size:10px;}
   #context-card{padding:0}
   footer{padding:14px;font-size:9.5px;}
+  .vr-entry{padding:8px 14px;}
+  .vr-controls{padding:12px 14px;}
+  .vr-control-row{gap:8px;margin-bottom:9px;}
+  .vr-control-lbl{min-width:0;font-size:9px;margin-right:0;}
+  .vr-pill-scroll{gap:7px;margin:-2px 0;padding:2px 0;}
+  .vr-pill{padding:9px 14px;min-width:38px;font-size:11px;}
 }
 </style>
 </head>
@@ -507,8 +515,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg>
       </span>
       <div>
-        <div class="vr-entry-text">Value Rankings</div>
-        <div class="vr-entry-sub">Plus fortes hausses &amp; baisses de P/E du portefeuille</div>
+        <div class="vr-entry-text">P/E rankings</div>
       </div>
     </div>
     <span class="vr-entry-arrow">
@@ -1677,8 +1684,9 @@ function renderValueRankings(){
     const title=!avail?`Historique insuffisant${availDate?` — disponible à partir du ${formatFrDate(availDate)}`:''}`:'';
     return pill('period', pk, VALO_PERIOD_LABELS[pk], st.period===pk, !avail, title);
   }).join('');
-  const rRow=[['cy','Année en cours'],['ny','Année prochaine'],['fwd','12m Forward']]
-    .map(([k,label])=>pill('role', k, label, st.role===k, false)).join('');
+  const nowYear=new Date().getFullYear();
+  const rRow=[['cy',String(nowYear),'Année en cours'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Année prochaine']]
+    .map(([k,label,title])=>pill('role', k, label, st.role===k, false, title)).join('');
 
   const grid=(list)=> list.length
     ? `<div class="vr-grid">${list.map(r=>renderValueRankingCard(r, seriesDesc)).join('')}</div>`
@@ -1686,9 +1694,9 @@ function renderValueRankings(){
 
   wrap.innerHTML=`
     <div class="card vr-controls">
-      <div class="vr-control-row"><span class="vr-control-lbl">Titres</span>${nRow}</div>
-      <div class="vr-control-row"><span class="vr-control-lbl">Période</span>${pRow}</div>
-      <div class="vr-control-row"><span class="vr-control-lbl">P/E</span>${rRow}</div>
+      <div class="vr-control-row"><span class="vr-control-lbl">Nombre de titres</span><div class="vr-pill-scroll">${nRow}</div></div>
+      <div class="vr-control-row"><span class="vr-control-lbl">Période</span><div class="vr-pill-scroll">${pRow}</div></div>
+      <div class="vr-control-row"><span class="vr-control-lbl">P/E</span><div class="vr-pill-scroll">${rRow}</div></div>
     </div>
     <div class="card">
       <div class="card-title vr-panel-title vr-down"><b>Plus fortes baisses de P/E</b></div>
@@ -2528,9 +2536,13 @@ document.addEventListener('DOMContentLoaded', async function(){
   }
   refreshSelects();
   const wantAnalyse = lastView && lastView.tab==='analyse' && CT && state.tickers[CT];
-  try{ history.replaceState({omniumTab: wantAnalyse?'analyse':'portefeuille', omniumTicker: CT}, '', location.pathname+location.search); }catch(e){}
+  const wantOtherTab = lastView && ['valuerankings','news'].includes(lastView.tab) ? lastView.tab : null;
+  const restoredTab = wantAnalyse ? 'analyse' : (wantOtherTab || 'portefeuille');
+  try{ history.replaceState({omniumTab: restoredTab, omniumTicker: CT}, '', location.pathname+location.search); }catch(e){}
   if(wantAnalyse){
     showTab('analyse', null, true);
+  } else if(wantOtherTab){
+    showTab(wantOtherTab, null, true);
   } else {
     showTab('portefeuille', document.getElementById('tab-btn-pf'), true);
   }
