@@ -1799,6 +1799,93 @@ function openValoFromRanking(ticker){
   pfOpenTicker(ticker, d ? d.cours : 0);
 }
 
+// ── Courbe de projection (translation de la courbe EPS dans le temps) ──
+// A la difference de buildValoChartSVG (une metrique dans le temps, axe X
+// = dates), cette vue prend la courbe de projection ENTIERE (EPS par
+// annee fiscale, axe X = annee) telle qu'elle existait a differents
+// instants passes, et superpose plusieurs de ces courbes pour montrer
+// comment la projection elle-meme a bouge - translation vers le haut/bas,
+// changement de pente, revision concentree sur une annee precise.
+function distinctEpsByYearStates(snapshots){
+  // Un point par REVISION reelle, jamais un point par snapshot - la
+  // courbe est identique entre deux refresh, la dupliquer n'apporterait
+  // rien et surchargerait le graphique.
+  const out=[];
+  let lastKey=null;
+  snapshots.forEach(s=>{
+    if(!s.epsByYear) return;
+    const key=JSON.stringify(Object.keys(s.epsByYear).sort().map(y=>[y,s.epsByYear[y]]));
+    if(key!==lastKey){
+      out.push({date:s.date, epsByYear:s.epsByYear});
+      lastKey=key;
+    }
+  });
+  return out;
+}
+
+function buildValoProjectionCurvesSVG(ticker, maxCurves){
+  const ph=state.priceHistory;
+  const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
+  const snaps=entry ? (entry.snapshots||[]) : [];
+  const states=distinctEpsByYearStates(snaps);
+  if(!states.length) return null;
+  const shown=states.slice(-(maxCurves||6));
+
+  const allYears=new Set();
+  shown.forEach(s=>Object.keys(s.epsByYear).forEach(y=>allYears.add(+y)));
+  const years=Array.from(allYears).sort((a,b)=>a-b);
+  if(years.length<2) return null;
+
+  let yMin=Infinity, yMax=-Infinity;
+  shown.forEach(s=>years.forEach(y=>{
+    const v=s.epsByYear[String(y)];
+    if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; }
+  }));
+  if(!isFinite(yMin)||!isFinite(yMax)) return null;
+  if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
+  const margin=(yMax-yMin)*0.12;
+  yMin-=margin; yMax+=margin;
+
+  const W=640, H=260, padL=48, padR=20, padT=16, padB=32;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const yFirst=years[0], yLast=years[years.length-1];
+  const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
+  const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
+
+  const ticks=4;
+  const gridlines=Array.from({length:ticks+1},(_, i)=>{
+    const v=yMin+(yMax-yMin)*(i/ticks);
+    const y=yOf(v).toFixed(1);
+    return `<line x1="${padL}" x2="${W-padR}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/><text x="${(padL-6).toFixed(1)}" y="${y}" font-size="9" fill="var(--muted)" text-anchor="end" dominant-baseline="middle">${v.toFixed(1)}</text>`;
+  }).join('');
+  const xLabels=years.map(y=>`<text x="${xOf(y).toFixed(1)}" y="${H-8}" font-size="10" font-weight="700" fill="var(--muted)" text-anchor="middle">${y}</text>`).join('');
+
+  const n=shown.length;
+  const curvesSvg=shown.map((s,i)=>{
+    const isLast=i===n-1;
+    const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
+    const ptYears=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
+    const pts=ptYears.map(y=>`${xOf(y).toFixed(1)},${yOf(s.epsByYear[String(y)]).toFixed(1)}`).join(' ');
+    const dots=ptYears.map(y=>{
+      const v=s.epsByYear[String(y)];
+      const label=isLast?`<text x="${(xOf(y)+5).toFixed(1)}" y="${(yOf(v)-5).toFixed(1)}" font-size="9" font-weight="800" fill="var(--navy)">${v.toFixed(1)}</text>`:'';
+      return `<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(v).toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
+    }).join('');
+    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.5}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+  }).join('');
+
+  const legendHtml=shown.map((s,i)=>{
+    const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
+    return `<span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:11px;height:2.5px;background:var(--navy);opacity:${opacity};display:inline-block;border-radius:1px;"></span>${formatFrDate(s.date)}</span>`;
+  }).join('');
+
+  return {
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;overflow:visible;">${gridlines}${curvesSvg}${xLabels}</svg>`,
+    legendHtml,
+    single: n<2
+  };
+}
+
 // ── Historique de valorisation (fiche titre) ─────────────────────
 let _valoHistState={mode:'pe', seriesKind:'role', role:'cy', year:null, period:'all'};
 
@@ -1846,17 +1933,36 @@ function renderValoHistory(ticker){
   };
   const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">Tout</button>`;
 
-  const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
+  let chartHtml, legendHtml;
+  if(st.mode==='projection'){
+    const proj=buildValoProjectionCurvesSVG(ticker, 6);
+    if(!proj){
+      chartHtml='<div class="vr-empty">Pas encore assez d\'historique pour tracer une courbe de projection (au moins 2 années projetées requises).</div>';
+      legendHtml='';
+    }else{
+      chartHtml=proj.svg;
+      legendHtml=proj.single
+        ? '<span style="color:var(--muted);">Une seule courbe archivée pour l\'instant — revenez après une révision de la thèse.</span>'
+        : proj.legendHtml;
+    }
+  }else{
+    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
+    chartHtml=chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>';
+    legendHtml='<span><span class="vr-leg-dot"></span>Révision Omnium (refresh)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
+  }
+  const showSeriesRow=st.mode==='pe';
+  const showPeriodRow=st.mode!=='projection';
 
   card.innerHTML=`
     <div class="card-title"><b>Historique de valorisation</b></div>
     <div class="vr-hist-controls">
-      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Prix')}</div>
-      ${st.mode==='pe' ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Année en cours')}${roleBtn('ny','Année prochaine')}${fwdBtn}</div>` : ''}
-      <div class="vr-control-row">${Object.keys(VALO_PERIOD_DAYS).map(pk=>periodBtn(pk,VALO_PERIOD_LABELS[pk])).join('')}${allBtn}</div>
+      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Prix')}${modeBtn('projection','Courbe de projection')}</div>
+      ${showSeriesRow ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Année en cours')}${roleBtn('ny','Année prochaine')}${fwdBtn}</div>` : ''}
+      ${showPeriodRow ? `<div class="vr-control-row">${Object.keys(VALO_PERIOD_DAYS).map(pk=>periodBtn(pk,VALO_PERIOD_LABELS[pk])).join('')}${allBtn}</div>` : ''}
+      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Chaque courbe = une révision détectée de la projection EPS (2026→2030) ; les plus récentes en plus foncé.</div>' : ''}
     </div>
-    <div class="vr-hist-legend"><span><span class="vr-leg-dot"></span>Révision Omnium (refresh)</span><span><span class="vr-leg-dash"></span>Résultats</span></div>
-    <div class="vr-hist-chart">${chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>'}</div>
+    <div class="vr-hist-legend">${legendHtml}</div>
+    <div class="vr-hist-chart">${chartHtml}</div>
   `;
 }
 
