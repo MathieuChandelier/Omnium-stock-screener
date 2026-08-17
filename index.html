@@ -338,17 +338,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-entry-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:800;color:var(--navy);}
 .vr-entry-arrow{flex-shrink:0;color:var(--navy);opacity:.6;}
 
-.vr-controls{padding:16px 20px;}
-.vr-control-row{display:flex;align-items:center;flex-wrap:nowrap;gap:6px;margin-bottom:9px;}
-.vr-control-row:last-child{margin-bottom:0;}
-.vr-control-lbl{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-right:4px;min-width:130px;flex-shrink:0;white-space:nowrap;}
-.vr-pill-scroll{display:flex;align-items:center;gap:6px;overflow-x:auto;flex:1 1 auto;min-width:0;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent 100%);mask-image:linear-gradient(to right,#000 calc(100% - 20px),transparent 100%);}
-.vr-pill-scroll::-webkit-scrollbar{display:none;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:8px 15px;min-width:38px;flex-shrink:0;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,opacity .15s;}
+.vr-controls{padding:18px 20px 16px;}
+.vr-control-group{margin-bottom:16px;}
+.vr-control-group:last-child{margin-bottom:0;}
+.vr-control-lbl{display:block;font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.vr-pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:9px 16px;min-width:42px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,transform .08s,box-shadow .12s;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
-.vr-pill.active{background:var(--navy);color:#fff;}
+.vr-pill:active:not(:disabled){transform:scale(.95);}
+.vr-pill.active{background:var(--navy);color:#fff;box-shadow:0 3px 10px rgba(0,1,144,.28);}
 .vr-pill:disabled{opacity:.4;cursor:not-allowed;}
 .vr-pill.active:disabled{opacity:1;cursor:default;}
+.vr-hint{margin-top:9px;font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted);line-height:1.5;}
 
 .vr-panel-title{margin-bottom:14px;}
 .vr-panel-title.vr-down b{color:var(--navy);}
@@ -374,9 +375,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-leg-dash{width:12px;height:0;border-top:1.5px dashed var(--muted);display:inline-block;}
 .vr-hist-chart{overflow-x:auto;}
 
-.valo-tooltip{position:absolute;transform:translate(-50%,-100%);background:var(--navy-dark);color:#fff;padding:8px 11px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:11px;line-height:1.5;pointer-events:none;z-index:10000;box-shadow:0 4px 14px rgba(0,0,0,.25);white-space:nowrap;display:none;}
-.valo-tooltip-date{font-weight:800;margin-bottom:2px;}
-.valo-tooltip-flag{color:var(--gold);font-weight:700;margin-top:2px;}
+.valo-tooltip{position:absolute;transform:translate(-50%,calc(-100% - 9px));background:var(--navy-dark);color:#fff;padding:9px 12px;border-radius:9px;font-family:'Poppins',sans-serif;font-size:11.5px;line-height:1.5;pointer-events:none;z-index:10000;box-shadow:0 6px 18px rgba(0,0,74,.3);white-space:nowrap;display:none;}
+.valo-tooltip::after{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy-dark);}
+.valo-tooltip-date{font-weight:800;margin-bottom:2px;letter-spacing:.01em;}
+.valo-tooltip-flag{color:var(--gold);font-weight:700;margin-top:3px;}
 
 @media(max-width:760px){
   html,body{overflow-x:hidden;}
@@ -447,11 +449,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   #context-card{padding:0}
   footer{padding:14px;font-size:9.5px;}
   .vr-entry{padding:8px 14px;}
-  .vr-controls{padding:12px 14px;}
-  .vr-control-row{gap:8px;margin-bottom:9px;}
-  .vr-control-lbl{min-width:0;font-size:9px;margin-right:0;}
-  .vr-pill-scroll{gap:7px;margin:-2px 0;padding:2px 0;}
-  .vr-pill{padding:9px 14px;min-width:38px;font-size:11px;}
+  .vr-controls{padding:14px 14px 12px;}
+  .vr-control-group{margin-bottom:13px;}
+  .vr-control-lbl{font-size:9.5px;margin-bottom:7px;}
+  .vr-pill-row{gap:7px;}
+  .vr-pill{padding:9px 14px;min-width:40px;font-size:12px;}
 }
 </style>
 </head>
@@ -1545,6 +1547,22 @@ function escAttr(s){
 // Rankings" (compact:true) et la vue detaillee "Historique de
 // valorisation" (compact:false) - voir plan de fonctionnalite. opts:
 // {mode:'pe'|'price', series, periodKey, compact}
+// Catmull-Rom -> Bezier cubique : courbe lissee qui passe EXACTEMENT par
+// chaque point (pas d'overshoot visible sur des series courtes/eparses
+// comme nos 2 snapshots/semaine) - rendu "app boursière premium" plutot
+// que la ligne brisee d'un polyline brut.
+function smoothPathD(pts){
+  if(pts.length<2) return '';
+  let d=`M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+  for(let i=0;i<pts.length-1;i++){
+    const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+    const c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+    const c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+    d+=` C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+  }
+  return d;
+}
+
 function buildValoChartSVG(ticker, opts){
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
@@ -1554,6 +1572,10 @@ function buildValoChartSVG(ticker, opts){
   const mode=opts.mode||'pe';
   const series=opts.series;
   const compact=!!opts.compact;
+  // tone : accent de couleur pour les mini-cartes du Ranking (coherent
+  // avec les couleurs de marque baisses=navy / hausses=turquoise, voir
+  // .vr-panel-title) - null sur la fiche titre (courbe neutre navy).
+  const tone=opts.tone||null;
   const snaps=valoFilterByPeriod(allSnaps, opts.periodKey);
   if(snaps.length<2) return null;
 
@@ -1565,7 +1587,7 @@ function buildValoChartSVG(ticker, opts){
   if(points.length<2) return null;
 
   const W=compact?260:640, H=compact?90:220;
-  const padL=compact?4:42, padR=compact?4:46, padT=compact?10:16, padB=compact?12:26;
+  const padL=compact?4:46, padR=compact?4:50, padT=compact?10:18, padB=compact?12:28;
   const plotW=W-padL-padR, plotH=H-padT-padB;
 
   const t0=new Date(points[0].snap.date+'T00:00:00Z').getTime();
@@ -1579,6 +1601,11 @@ function buildValoChartSVG(ticker, opts){
   const margin=(yMax-yMin)*0.1;
   yMin-=margin; yMax+=margin;
   const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
+
+  const lineColor=tone==='up' ? 'var(--teal-dark-text)' : tone==='down' ? 'var(--navy)' : 'var(--navy)';
+  const areaColor=tone==='up' ? 'var(--teal)' : tone==='down' ? 'var(--navy)' : 'var(--navy-light)';
+  const areaOpacity=tone ? .12 : .5;
+  const dotColor=tone==='up' ? 'var(--teal-dark-text)' : 'var(--navy)';
 
   // Inflexion "refresh Omnium" : la valeur BRUTE de la serie affichee a
   // change entre deux snapshots CONSECUTIFS (dans l'historique complet du
@@ -1596,9 +1623,24 @@ function buildValoChartSVG(ticker, opts){
   const winStart=points[0].snap.date, winEnd=points[points.length-1].snap.date;
   const visibleEarnings=compact ? [] : earningsDates.filter(d=>d>=winStart && d<=winEnd);
 
-  const linePts=points.map(p=>`${xOf(p.snap.date).toFixed(1)},${yOf(p.y).toFixed(1)}`).join(' ');
+  const xyPts=points.map(p=>[xOf(p.snap.date), yOf(p.y)]);
+  const lineD=smoothPathD(xyPts);
   const areaBase=(padT+plotH).toFixed(1);
-  const areaPath=`M${linePts.split(' ').join(' L')} L${xOf(points[points.length-1].snap.date).toFixed(1)},${areaBase} L${xOf(points[0].snap.date).toFixed(1)},${areaBase} Z`;
+  const areaPath=`${lineD} L${xyPts[xyPts.length-1][0].toFixed(1)},${areaBase} L${xyPts[0][0].toFixed(1)},${areaBase} Z`;
+
+  // Axes (fiche titre uniquement - les mini-cartes du Ranking restent des
+  // sparklines epurees sans grille, cf. Apple Stocks/Robinhood watchlist).
+  const yAxis=compact ? '' : [yMax,(yMax+yMin)/2,yMin].map(v=>{
+    const y=yOf(v).toFixed(1);
+    const txt=mode==='price' ? (fmtBigNum(v)||v.toFixed(2)) : v.toFixed(1)+'×';
+    return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`+
+      `<text x="${(padL-8).toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end" dominant-baseline="middle">${txt}</text>`;
+  }).join('');
+  const xAxis=compact ? '' : (()=>{
+    const y=(padT+plotH+18).toFixed(1);
+    return `<text x="${xyPts[0][0].toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="start">${formatFrDate(points[0].snap.date)}</text>`+
+      `<text x="${xyPts[xyPts.length-1][0].toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end">${formatFrDate(points[points.length-1].snap.date)}</text>`;
+  })();
 
   const earningsMarks=visibleEarnings.map(d=>{
     const xd=xOf(d).toFixed(1);
@@ -1608,32 +1650,45 @@ function buildValoChartSVG(ticker, opts){
   const dots=points.map(p=>{
     const isInflexion=inflexionIdx.has(p.idx);
     const cx=xOf(p.snap.date).toFixed(1), cy=yOf(p.y).toFixed(1);
-    const r=isInflexion?(compact?3.5:5):(compact?2:3);
+    const r=isInflexion?(compact?3.5:5):(compact?2.25:3.5);
     return isInflexion
       ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--gold)" stroke="var(--navy)" stroke-width="1"/>`
-      : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--navy)"/>`;
+      : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${dotColor}"/>`;
   }).join('');
 
-  const hitTargets=compact ? '' : points.map((p,i)=>{
+  // Tooltip au survol : toujours actif sur la fiche titre (souris + tap) ;
+  // sur les mini-cartes du Ranking, SOURIS UNIQUEMENT (pas de touchstart)
+  // pour ne jamais interferer avec le tap-pour-ouvrir de la carte entiere
+  // sur mobile.
+  const hitTargets=points.map((p,i)=>{
     const cx=xOf(p.snap.date);
     const bandW=points.length>1 ? plotW/(points.length-1) : plotW;
     const rx=(cx-bandW/2).toFixed(1);
     const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion:inflexionIdx.has(p.idx)};
-    return `<rect x="${rx}" y="${padT}" width="${Math.max(1,bandW).toFixed(1)}" height="${plotH}" fill="transparent" data-info="${escAttr(JSON.stringify(info))}" onmousemove="showValoTooltip(event)" onmouseleave="hideValoTooltip()" ontouchstart="showValoTooltip(event)"/>`;
+    const touchAttr=compact ? '' : ' ontouchstart="showValoTooltip(event)"';
+    return `<rect x="${rx}" y="0" width="${Math.max(1,bandW).toFixed(1)}" height="${H}" fill="transparent" data-info="${escAttr(JSON.stringify(info))}" onmousemove="showValoTooltip(event)" onmouseleave="hideValoTooltip()"${touchAttr}/>`;
   }).join('');
 
-  const endLabel=compact ? '' : (()=>{
+  const endLabel=(()=>{
     const last=points[points.length-1];
     const txt=mode==='price' ? (fmtBigNum(last.y)||last.y.toFixed(2)) : last.y.toFixed(1)+'×';
-    return `<text x="${(xOf(last.snap.date)+6).toFixed(1)}" y="${yOf(last.y).toFixed(1)}" font-size="11" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" dominant-baseline="middle">${txt}</text>`;
+    const lx=xyPts[xyPts.length-1][0], ly=yOf(last.y);
+    if(compact){
+      return `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="2.5" fill="#fff" stroke="${dotColor}" stroke-width="1.5"/>`;
+    }
+    const tw=txt.length*6.4+10;
+    return `<rect x="${(lx+7).toFixed(1)}" y="${(ly-9).toFixed(1)}" width="${tw.toFixed(1)}" height="18" rx="5" fill="${lineColor}"/>`+
+      `<text x="${(lx+7+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="11" font-weight="700" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
   })();
 
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;overflow:visible;">
-    <path d="${areaPath}" fill="var(--navy-light)" opacity=".5"/>
+    <path d="${areaPath}" fill="${areaColor}" opacity="${areaOpacity}"/>
+    ${yAxis}
     ${earningsMarks}
-    <polyline points="${linePts}" fill="none" stroke="var(--navy)" stroke-width="${compact?1.75:2}" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="${lineD}" fill="none" stroke="${lineColor}" stroke-width="${compact?1.75:2.25}" stroke-linejoin="round" stroke-linecap="round"/>
     ${dots}
     ${endLabel}
+    ${xAxis}
     ${hitTargets}
   </svg>`;
 }
@@ -1678,12 +1733,17 @@ function renderValueRankings(){
     `<button class="vr-pill${active?' active':''}" ${disabled?'disabled':''} title="${escAttr(title||'')}" onclick="setValoRankParam('${group}',${typeof key==='number'?key:`'${key}'`})">${label}</button>`;
 
   const nRow=[5,10,15].map(v=>pill('n', v, v, st.n===v, false)).join('');
+  let anyPeriodUnavailable=false;
   const pRow=Object.keys(VALO_PERIOD_DAYS).map(pk=>{
     const avail=computeRankings(pk, seriesDesc, st.n).total>0;
+    if(!avail) anyPeriodUnavailable=true;
     const availDate=!avail?valoPeriodAvailableDate(pk):null;
     const title=!avail?`Historique insuffisant${availDate?` — disponible à partir du ${formatFrDate(availDate)}`:''}`:'';
     return pill('period', pk, VALO_PERIOD_LABELS[pk], st.period===pk, !avail, title);
   }).join('');
+  const periodHint=anyPeriodUnavailable
+    ? `<div class="vr-hint">Périodes grisées : historique encore insuffisant — elles se débloquent automatiquement à mesure que la collecte (2×/semaine) s'accumule.</div>`
+    : '';
   const nowYear=new Date().getFullYear();
   const rRow=[['cy',String(nowYear),'Année en cours'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Année prochaine']]
     .map(([k,label,title])=>pill('role', k, label, st.role===k, false, title)).join('');
@@ -1694,9 +1754,9 @@ function renderValueRankings(){
 
   wrap.innerHTML=`
     <div class="card vr-controls">
-      <div class="vr-control-row"><span class="vr-control-lbl">Nombre de titres</span><div class="vr-pill-scroll">${nRow}</div></div>
-      <div class="vr-control-row"><span class="vr-control-lbl">Période</span><div class="vr-pill-scroll">${pRow}</div></div>
-      <div class="vr-control-row"><span class="vr-control-lbl">P/E</span><div class="vr-pill-scroll">${rRow}</div></div>
+      <div class="vr-control-group"><span class="vr-control-lbl">Nombre de titres</span><div class="vr-pill-row">${nRow}</div></div>
+      <div class="vr-control-group"><span class="vr-control-lbl">Période</span><div class="vr-pill-row">${pRow}</div>${periodHint}</div>
+      <div class="vr-control-group"><span class="vr-control-lbl">P/E</span><div class="vr-pill-row">${rRow}</div></div>
     </div>
     <div class="card">
       <div class="card-title vr-panel-title vr-down"><b>Plus fortes baisses de P/E</b></div>
@@ -1720,7 +1780,7 @@ function renderValueRankingCard(result, seriesDesc){
   const d=state.tickers[result.ticker];
   const name=((d && d.name) || result.ticker).replace(/</g,'&lt;');
   const tone=result.deltaPct>=0?'up':'down';
-  const chart=buildValoChartSVG(result.ticker, {mode:'pe', series:seriesDesc, periodKey:_valoRankState.period, compact:true});
+  const chart=buildValoChartSVG(result.ticker, {mode:'pe', series:seriesDesc, periodKey:_valoRankState.period, compact:true, tone});
   return `<div class="vr-card vr-card-${tone}" onclick="openValoFromRanking('${result.ticker}')">
     <div class="vr-card-head">
       <span class="vr-card-ticker">${result.ticker}</span>
