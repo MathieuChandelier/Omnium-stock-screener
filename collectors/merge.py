@@ -1,13 +1,17 @@
 """
 collectors/merge.py
 
-Job de fusion (4e job du workflow, tourne après les 3 collecteurs même si
-un ou plusieurs ont échoué - if: always() côté GitHub Actions).
+Job de fusion du pipeline QUOTIDIEN (3e job du workflow, tourne après les 2
+collecteurs communiques/youtube même si l'un a échoué - if: always() côté
+GitHub Actions). Le collecteur web est passé hebdomadaire le 17/08/2026 et
+a son propre job de fusion (merge_web.py) - ce module lui reste néanmoins
+utile : merge_all_items()/write_per_ticker()/write_news_all()/notify() sont
+génériques (collector_names en paramètre) et réutilisées telles quelles par
+merge_conferences.py ET merge_web.py.
 
-Responsabilités :
-1. Lire les artifacts de communiques.json / web.json / youtube.json
-   (absence tolérée si un collecteur a échoué - cette source est juste
-   vide pour ce run).
+Responsabilités (pipeline quotidien) :
+1. Lire les artifacts de communiques.json / youtube.json (absence tolérée
+   si un collecteur a échoué - cette source est juste vide pour ce run).
 2. Dédoublonner : par id (mécanique) + fuzzy-match titre/ticker/jour
    résiduel pour le cas "plusieurs sources couvrent le même fait le même
    jour" (filet de sécurité, pas le mécanisme principal de fraîcheur).
@@ -91,7 +95,7 @@ def is_near_duplicate(item, existing_batch):
     return False
 
 
-def merge_all_items(collector_names=("communiques", "web", "youtube")):
+def merge_all_items(collector_names=("communiques", "youtube")):
     combined = []
     statuses = {}
     for name in collector_names:
