@@ -22,6 +22,11 @@ d'etre l'annee en cours) et "le P/E de l'annee en cours" (serie glissante,
 comparable entre deux annees calendaires differentes) depuis la MEME
 structure - voir le plan de fonctionnalite pour le detail des deux lectures.
 
+ndCY/shCY (ajoutes le 17/08/2026) : copie de hypothese.adjND/adjShares pour
+l'ANNEE EN COURS UNIQUEMENT (pas de NY/Fwd - inutile tant qu'aucun
+graphique ne les consomme), pour permettre a terme un P/E ex-cash
+historise en plus du P/E classique deja archive.
+
 earningsDates est un accumulateur PERMANENT (jamais purge) des dates de
 call reellement trouvees, fusionnees a chaque run depuis
 hypothese.guidanceHistory[].date / coherenceQualitative.historique[].date /
@@ -134,6 +139,13 @@ def snapshot_ticker(ticker: str, run_date_str: str):
     eps_by_year = build_eps_by_year(hyp)
     eps_fwd = (hyp.get("quarterlyEPS") or {}).get("epsForward12m")
     eps_fwd = round(float(eps_fwd), 4) if isinstance(eps_fwd, (int, float)) else None
+    # P/E ex-cash : ANNEE EN COURS UNIQUEMENT (decision du 17/08/2026) - pas
+    # de nd_ny/sh_ny, le graphique n'en a pas besoin pour l'instant et ca
+    # double le nombre de champs pour un usage non demande.
+    nd_cy = (hyp.get("adjND") or {}).get(str(cy))
+    sh_cy = (hyp.get("adjShares") or {}).get(str(cy))
+    nd_cy = round(float(nd_cy), 2) if isinstance(nd_cy, (int, float)) else None
+    sh_cy = round(float(sh_cy), 2) if isinstance(sh_cy, (int, float)) else None
 
     try:
         price = fetch_price(sym)
@@ -146,6 +158,10 @@ def snapshot_ticker(ticker: str, run_date_str: str):
         snap["epsByYear"] = eps_by_year
     if eps_fwd is not None:
         snap["epsFwd"] = eps_fwd
+    if nd_cy is not None:
+        snap["ndCY"] = nd_cy
+    if sh_cy is not None:
+        snap["shCY"] = sh_cy
 
     earnings_dates = collect_earnings_dates(tdata)
     return ticker, (snap, earnings_dates), "ok"
