@@ -32,6 +32,10 @@ button:disabled{opacity:.5;cursor:not-allowed;}
 .result-exp{margin-top:8px;font-size:12px;font-weight:600;color:var(--muted);}
 .back-link{display:block;text-align:center;margin-top:18px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:none;}
 .back-link:hover{color:var(--navy);}
+.owner-check{display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:18px;}
+.owner-check input{width:16px;height:16px;accent-color:var(--navy);flex-shrink:0;cursor:pointer;}
+.owner-check span{font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.4;}
+.owner-check small{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:1px;}
 </style>
 </head>
 <body>
@@ -52,9 +56,14 @@ button:disabled{opacity:.5;cursor:not-allowed;}
       <option value="24">24 heures</option>
       <option value="48">48 heures</option>
       <option value="168">7 jours</option>
-      <option value="8760">1 an (usage personnel)</option>
+      <option value="8760">1 an</option>
     </select>
   </div>
+
+  <label class="owner-check">
+    <input type="checkbox" id="isOwner">
+    <span>Ce lien est pour moi<small>Sinon : bouton admin masqué et bandeau "accès temporaire" affichés côté destinataire</small></span>
+  </label>
 
   <button id="genBtn" type="button">Générer le lien</button>
   <div class="error" id="errBox"></div>
@@ -77,6 +86,7 @@ const PW_SESSION_KEY='omniumAdminPw';
 
 const pwInput=document.getElementById('pw');
 const durSelect=document.getElementById('dur');
+const isOwnerCheck=document.getElementById('isOwner');
 const genBtn=document.getElementById('genBtn');
 const errBox=document.getElementById('errBox');
 const resultBox=document.getElementById('resultBox');
@@ -109,7 +119,7 @@ async function generate(){
     const r=await fetch(GENERATE_ENDPOINT,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({password, hours}),
+      body:JSON.stringify({password, hours, kind: isOwnerCheck.checked ? 'owner' : 'guest'}),
       signal:AbortSignal.timeout(10000)
     });
     const j=await r.json();

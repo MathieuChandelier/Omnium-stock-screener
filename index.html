@@ -46,6 +46,9 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .access-gate-title{font-family:'Poppins',sans-serif;font-size:19px;font-weight:800;color:#fff;margin-bottom:10px;}
 .access-gate-msg{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.75);line-height:1.6;}
 
+.guest-banner{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--gold-light);color:var(--gold-text);font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;padding:8px 14px;text-align:center;}
+.guest-banner svg{flex-shrink:0;}
+
 .tab-bar{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 75%,var(--navy-dark) 100%);align-items:center;padding:11px 24px;}
 .back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px 8px 15px;cursor:pointer;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;border-radius:22px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 1px 3px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.08);transition:background .15s,border-color .15s,transform .12s,box-shadow .15s;}
 .back-btn:hover{background:linear-gradient(160deg,#39e6d0,var(--teal) 65%);border-color:var(--teal);color:var(--navy);box-shadow:0 3px 10px rgba(43,216,194,.35),inset 0 1px 0 rgba(255,255,255,.5);transform:translateY(-1px);}
@@ -722,6 +725,7 @@ const DISMISS_ENDPOINT='https://model.omnium-capital.com/dismiss.php';
 // ══════════════════════════════════════════════════════════════
 const ACCESS_VERIFY_ENDPOINT='https://model.omnium-capital.com/verify.php';
 const ACCESS_TOKEN_KEY='omniumAccessToken';
+const ACCESS_KIND_KEY='omniumAccessKind';
 
 async function ensureAccessGranted(){
   const params=new URLSearchParams(location.search);
@@ -739,7 +743,11 @@ async function ensureAccessGranted(){
   try{
     const r=await fetch(ACCESS_VERIFY_ENDPOINT+'?token='+encodeURIComponent(token),{signal:AbortSignal.timeout(8000)});
     const j=await r.json();
-    if(j && j.valid)return true;
+    if(j && j.valid){
+      try{ sessionStorage.setItem(ACCESS_KIND_KEY, j.kind||'guest'); }catch(e){}
+      applyAccessKindUI(j.kind||'guest', j.expires_at);
+      return true;
+    }
     showAccessScreen('Ce lien d’accès a expiré. Contactez Mathieu Chandelier pour en obtenir un nouveau.');
     return false;
   }catch(e){
@@ -750,6 +758,26 @@ async function ensureAccessGranted(){
 
 function showAccessScreen(msg){
   document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
+}
+
+// Lien "invité" (kind=guest) : masque le bouton admin dans le header (un
+// prospect n'a pas a savoir que cette porte existe) et affiche un bandeau
+// rappelant que l'acces est temporaire, avec l'heure d'expiration exacte -
+// transparence commerciale plutot qu'un acces qui s'interrompt sans
+// prevenir. Lien "owner" (Mathieu lui-meme) : app strictement normale.
+function applyAccessKindUI(kind, expiresAtUnix){
+  const btn=document.querySelector('.header-access-btn');
+  if(kind!=='owner'){
+    if(btn)btn.style.display='none';
+    if(expiresAtUnix){
+      const d=new Date(expiresAtUnix*1000);
+      const dateTxt=d.toLocaleDateString('fr-FR')+' à '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+      const banner=document.createElement('div');
+      banner.className='guest-banner';
+      banner.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Accès temporaire — expire le ${dateTxt}`;
+      document.body.insertBefore(banner, document.body.firstChild);
+    }
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
