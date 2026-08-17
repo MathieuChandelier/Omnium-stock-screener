@@ -243,6 +243,38 @@ thead th .fy-month-tag{color:#8be9dc;}
 .market-action-row-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--navy);}
 .market-action-row-pct{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:#0a7a3d;}
 .market-action-modal-close{margin-top:16px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--navy-light);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;cursor:pointer;}
+.weekly-ai-bar-wrap{margin:0 0 8px;}
+.weekly-ai-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:linear-gradient(90deg,var(--gold-light) 0%,#fff8e6 100%);border:1px solid rgba(255,215,0,.35);border-radius:14px;gap:12px;}
+.weekly-ai-bar-badge{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);}
+.weekly-ai-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--gold-text);cursor:pointer;flex:1;min-width:0;display:flex;align-items:center;gap:10px;}
+.weekly-ai-bar-text b{font-weight:800;}
+.weekly-ai-bar-sub{font-weight:600;opacity:.75;}
+.weekly-ai-bar-close{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:var(--gold-text);opacity:.55;transition:opacity .12s,background .12s;padding:0;}
+.weekly-ai-bar-close:hover{opacity:1;background:rgba(160,120,0,.1);}
+.weekly-ai-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;}
+.weekly-ai-modal{background:#fff;border-radius:16px;padding:26px;max-width:560px;width:100%;max-height:82vh;overflow-y:auto;}
+.weekly-ai-modal-title{font-family:'Poppins',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.weekly-ai-modal-subtitle{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--navy);opacity:.6;margin-bottom:18px;}
+.weekly-ai-empty{font-family:'Poppins',sans-serif;font-size:13px;color:var(--navy);opacity:.6;padding:12px 0;}
+.weekly-ai-ticker-block{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #eee;}
+.weekly-ai-ticker-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.weekly-ai-ticker-name{font-family:'Quattrocento Sans',serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.weekly-ai-item{margin-bottom:10px;}
+.weekly-ai-item:last-child{margin-bottom:0;}
+.weekly-ai-item-hd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;}
+.materiality-pill{display:inline-flex;align-items:center;font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 9px;border-radius:9px;flex-shrink:0;}
+.materiality-pill.fort{background:#fde3e3;color:#b3261e;}
+.materiality-pill.moyen{background:var(--gold-light);color:var(--gold-text);}
+.materiality-pill.faible{background:#eef1f6;color:#5a6472;}
+.materiality-pill.nul{background:#f3f3f3;color:#9a9a9a;}
+.weekly-ai-item-title a{font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;}
+.weekly-ai-item-title a:hover{text-decoration:underline;}
+.weekly-ai-item-mecanisme{font-family:'Quattrocento Sans',serif;font-size:12px;color:var(--navy);opacity:.75;line-height:1.45;margin-top:2px;}
+.weekly-ai-calendar-section{margin-top:18px;padding-top:16px;border-top:1.5px dashed rgba(0,1,144,.15);}
+.weekly-ai-calendar-hd{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.weekly-ai-calendar-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--navy);}
+.weekly-ai-calendar-row b{font-weight:700;}
+.weekly-ai-modal-close{margin-top:20px;width:100%;padding:10px;border-radius:10px;border:none;background:var(--navy-light);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;cursor:pointer;}
 .news-section{margin-bottom:26px;}
 .news-section-hd{display:flex;align-items:center;gap:9px;margin:0 0 10px;}
 .news-section-hd svg{flex-shrink:0;}
@@ -543,6 +575,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
     </span>
   </div>
+  <div id="weekly-ai-bar-wrap"></div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
@@ -689,6 +722,8 @@ function normalizeState(s){
   if(!s.newsAll)s.newsAll=[];
   if(!s.dismissedNewsDates)s.dismissedNewsDates=new Set();
   if(!s.marketAction)s.marketAction=null;
+  if(!s.webState)s.webState=null;
+  if(!s.calendarProposals)s.calendarProposals=[];
   if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
   if(!s.priceHistory.tickers) s.priceHistory.tickers={};
   if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
@@ -915,7 +950,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -938,12 +973,20 @@ async function loadState() {
       // recente, demarrage propre sans backfill) : null tant que le
       // collecteur n'a pas tourne au moins une fois, l'UI degrade
       // proprement plutot que de planter (voir normalizeState).
-      fetch('data/priceHistory.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/priceHistory.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      // Etat du collecteur web hebdomadaire (voir collectors/merge_web.py) -
+      // sert uniquement a dater le dernier run reussi pour la notification
+      // "Veille IA hebdo" ci-dessous. Absence graciable (fichier cree au
+      // tout premier run reussi du pipeline hebdo, pas encore present avant
+      // ca) : null degrade proprement, la notification ne s'affiche
+      // simplement pas.
+      fetch('data/webState.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('data/calendarProposals.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => [])
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [] };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -2600,6 +2643,127 @@ function closeMarketActionDetail(){
   if(overlay)overlay.remove();
 }
 
+// ══════════════════════════════════════════════════════════════
+// VEILLE IA HEBDO - bandeau mettant en avant le run hebdomadaire du
+// collecteur web (Sonnet 5, classement par impact contre la these, voir
+// collectors/web.py) : c'est la vitrine de la fonctionnalite pour une demo,
+// donc un traitement visuel distinct (accent or) plutot que reutiliser le
+// bandeau news bleu classique. Meme pattern qu'un etat "du jour" (Market
+// Action) plutot qu'un digest multi-jours : un seul run pertinent a la fois
+// (le dernier), dismissal en localStorage uniquement (pas de sync serveur -
+// la valeur d'une synchro multi-appareils est faible ici, et ca reapparait
+// de toute facon automatiquement la semaine suivante des que la date change).
+// Volontairement PAS masque pour une session invite (contrairement a
+// newsBarLines()) : c'est exactement le public cible (visiteurs d'une demo).
+// ══════════════════════════════════════════════════════════════
+const WEEKLY_AI_DISMISS_KEY='omniumWeeklyAiDismissedDate';
+const MATERIALITE_LABEL={fort:'Fort',moyen:'Moyen',faible:'Faible',nul:'Nul'};
+const MATERIALITE_ORDER={fort:3,moyen:2,faible:1,nul:0};
+
+// Date (YYYY-MM-DD) du dernier run hebdo reussi, ou null si le pipeline n'a
+// pas encore tourne une seule fois (data/webState.json absent avant le
+// tout premier run reussi - voir collectors/merge_web.py).
+function weeklyAiRunDate(){
+  const iso=state.webState && state.webState.lastSuccessfulRun;
+  if(!iso)return null;
+  const d=String(iso).split('T')[0];
+  return d||null;
+}
+
+// Items du DERNIER run precisement (pas tout l'historique "web") : filtre
+// sur dateCollecte, meme logique que groupNewsAll() pour le digest quotidien
+// (le champ qui date le RUN, pas l'evenement sous-jacent).
+function weeklyAiItems(){
+  const runDate=weeklyAiRunDate();
+  if(!runDate)return [];
+  return (state.newsAll||[]).filter(it=>it && it.type==='web' && it.dateCollecte===runDate);
+}
+
+function weeklyAiCalendarProposals(){
+  const runDate=weeklyAiRunDate();
+  if(!runDate)return [];
+  return (state.calendarProposals||[]).filter(p=>p && p.dateProposition===runDate);
+}
+
+function isWeeklyAiDismissed(dateStr){
+  try{ return localStorage.getItem(WEEKLY_AI_DISMISS_KEY)===dateStr; }catch(e){ return false; }
+}
+function dismissWeeklyAi(dateStr){
+  try{ localStorage.setItem(WEEKLY_AI_DISMISS_KEY,dateStr); }catch(e){}
+  renderWeeklyAiBar();
+}
+
+function renderWeeklyAiBar(){
+  const wrap=document.getElementById('weekly-ai-bar-wrap');
+  if(!wrap)return;
+  const runDate=weeklyAiRunDate();
+  const items=weeklyAiItems();
+  if(!runDate || !items.length || isWeeklyAiDismissed(runDate)){ wrap.innerHTML=''; return; }
+  const materielCount=items.filter(it=>it.materialite==='fort'||it.materialite==='moyen').length;
+  const sub=materielCount>0?` <span class="weekly-ai-bar-sub">· ${materielCount} matérielle${materielCount>1?'s':''}</span>`:'';
+  wrap.innerHTML=`<div class="weekly-ai-bar-wrap"><div class="weekly-ai-bar">
+      <span class="weekly-ai-bar-text" onclick="openWeeklyAiDetail()">
+        <span class="weekly-ai-bar-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.9 5.8L20 9.5l-6.1 1.7L12 17l-1.9-5.8L4 9.5l6.1-1.7z"/></svg></span>
+        <span>Veille IA hebdo — ${formatNewsDayMonth(runDate)}&nbsp;: <b>${items.length}</b> actualité${items.length>1?'s':''} analysée${items.length>1?'s':''}${sub}</span>
+      </span>
+      <button class="weekly-ai-bar-close" title="Ignorer" onclick="event.stopPropagation();dismissWeeklyAi('${runDate}')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div></div>`;
+}
+
+function openWeeklyAiDetail(){
+  const runDate=weeklyAiRunDate();
+  const items=weeklyAiItems();
+  if(!runDate || !items.length)return;
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  const byTicker={};
+  items.forEach(it=>{
+    const key=it.ticker||it.name||'?';
+    if(!byTicker[key])byTicker[key]={name:it.name||it.ticker||'?', items:[]};
+    byTicker[key].items.push(it);
+  });
+  const tickerBlocks=Object.values(byTicker).map(t=>{
+    t.items.sort((a,b)=>(MATERIALITE_ORDER[b.materialite]||0)-(MATERIALITE_ORDER[a.materialite]||0));
+    return t;
+  }).sort((a,b)=>a.name.localeCompare(b.name,'fr',{sensitivity:'base'}));
+
+  const proposals=weeklyAiCalendarProposals();
+  const calendarSection=proposals.length?`<div class="weekly-ai-calendar-section">
+      <div class="weekly-ai-calendar-hd">Dates calendrier à valider (${proposals.length})</div>
+      ${proposals.map(p=>`<div class="weekly-ai-calendar-row"><span>${esc(p.ticker)} — ${esc(p.label)}</span><b>${esc(p.date)}</b></div>`).join('')}
+    </div>`:'';
+
+  const overlay=document.createElement('div');
+  overlay.className='weekly-ai-overlay';
+  overlay.id='weekly-ai-overlay';
+  overlay.innerHTML=`<div class="weekly-ai-modal">
+      <div class="weekly-ai-modal-title">Veille IA hebdo — ${esc(formatNewsDayMonth(runDate))}</div>
+      <div class="weekly-ai-modal-subtitle">Recherche + classement par matérialité contre la thèse, portefeuille complet (Sonnet 5)</div>
+      ${tickerBlocks.map(t=>`
+        <div class="weekly-ai-ticker-block">
+          <div class="weekly-ai-ticker-name">${esc(t.name)}</div>
+          ${t.items.map(it=>`
+            <div class="weekly-ai-item">
+              <div class="weekly-ai-item-hd">
+                <span class="materiality-pill ${esc(it.materialite||'nul')}">${esc(MATERIALITE_LABEL[it.materialite]||it.materialite||'?')}</span>
+                <span class="weekly-ai-item-title"><a href="${esc(it.url||'#')}" target="_blank" rel="noopener noreferrer">${esc(it.title||'')}</a></span>
+              </div>
+              ${it.mecanisme?`<div class="weekly-ai-item-mecanisme">${esc(it.mecanisme)}</div>`:''}
+            </div>`).join('')}
+        </div>`).join('')}
+      ${calendarSection}
+      <button class="weekly-ai-modal-close" onclick="closeWeeklyAiDetail()">Fermer</button>
+    </div>`;
+  overlay.addEventListener('click',e=>{ if(e.target===overlay)closeWeeklyAiDetail(); });
+  document.body.appendChild(overlay);
+}
+function closeWeeklyAiDetail(){
+  const overlay=document.getElementById('weekly-ai-overlay');
+  if(overlay)overlay.remove();
+}
+
 // filterDate : si fourni, ne conserve QUE les items dont dateCollecte
 // correspond exactement - PAS dateEvenement (correctif : le digest, voir
 // merge.py update_digest(), regroupe ses lignes par date de COLLECTE - le
@@ -2740,6 +2904,7 @@ function pfUpdateSortHeaderUI(){
 }
 
 function renderPortfolio(){
+  renderWeeklyAiBar();
   renderNewsBar();
   renderMarketActionBar();
   const list=document.getElementById('pf-list');
