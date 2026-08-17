@@ -185,7 +185,8 @@
           "adjNet.2029",
           "adjNet.2030"
         ],
-        "confiance": "haute"
+        "confiance": "haute",
+        "versusPublie": "Microsoft exclut deja cette meme ligne de son propre BPA non-GAAP (\"ajuste de l'impact OpenAI\") - Omnium CONVERGE avec ce choix, mais par decision independante justifiee ici (volatilite extreme non-operationnelle, confirmee sur 2 exercices de signe oppose), pas par simple reprise du non-GAAP du management. Le consensus Wall Street suit lui aussi le non-GAAP du groupe pour ce titre (voir epsConsensus.basis) - l'EPS clean Omnium reste donc proche du non-GAAP publie sur CETTE ligne precise, mais diverge encore sur les elements discrets episodiques (voir quarterlyEPS.PY.T4.retraitements) que le non-GAAP du groupe n'exclut pas."
       },
       {
         "id": "AN-IS",
@@ -231,7 +232,7 @@
         "epsAdj": {
           "actual": 4.74,
           "consensus": 4.24,
-          "basis": "Non-GAAP hors impact OpenAI - beat tres net de ~12%. Meme sur base GAAP brute (4,81$), le resultat depasse largement le consensus non-GAAP. Le management indique explicitement qu'hors elements exceptionnels (gain Anthropic 3,2 Md$, charge de retraite inferieure aux attentes, partiellement compenses par severance/depreciation Xbox), les resultats auraient depasse les attentes sur CA, resultat operationnel ET EPS dilue - beat large et non artificiellement gonfle par les one-off, contrairement a certains trimestres passes."
+          "basis": "non-GAAP"
         }
       },
       "guidanceProchainTrimestre": "T1 FY2027 : CA 89,85-90,95 Md$ (+16% au midpoint) ; Azure cc guide a ~45% (acceleration vs 43% au T4 FY26) ; capex T1 FY27 guide a plus de 50 Md$, la CFO qualifiant elle-meme ce chiffre de 'sous-estimation' compte tenu du changement comptable en cours sur la duree d'amortissement des batiments de datacenters.",
@@ -243,7 +244,9 @@
         "Amy Hood confirme explicitement que Microsoft restera en free cash flow POSITIF sur l'exercice FY2027 malgre la poursuite de la hausse du capex - reponse directe a la principale inquietude de marche identifiee a la creation.",
         "Effectifs attendus en baisse sur l'annee civile 2027 ('nous continuons de faire evoluer notre facon d'operer pour accroitre notre rythme et notre agilite' - Amy Hood) - nouveau signal de discipline de couts non present a la creation.",
         "Commandes commerciales ('commercial bookings') +18% hors OpenAI mais seulement +10% en incluant les engagements Azure d'OpenAI - suggere un ralentissement relatif de la contribution marginale d'OpenAI aux nouvelles commandes sur la periode, cohérent avec le theme de diversification."
-      ]
+      ],
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true
     },
     "guidanceHistory": [
       {
@@ -295,6 +298,102 @@
       "2028": 7393,
       "2029": 7365,
       "2030": 7340
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "historique": [],
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 4.13,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Effet mark-to-market participation OpenAI (voir AN-OPENAI-EXCL)",
+              "impact": 0.41
+            }
+          ]
+        },
+        {
+          "label": "T2",
+          "eps": 4.14,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Effet mark-to-market participation OpenAI (voir AN-OPENAI-EXCL)",
+              "impact": -1.02
+            }
+          ]
+        },
+        {
+          "label": "T3",
+          "eps": 4.28,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 4.47,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Effet mark-to-market participation OpenAI (voir AN-OPENAI-EXCL)",
+              "impact": -0.07
+            },
+            {
+              "raison": "Gain participation Anthropic net de charges except.",
+              "impact": -0.27
+            }
+          ]
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 4.72,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 4.99,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 5.16,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 5.39,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 5.55,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 5.87,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 6.07,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 6.35,
+          "actual": false
+        }
+      ],
+      "epsForward12m": 20.26,
+      "forwardPeriodLabel": "T1 27 -> T4 27",
+      "coherenceNoteCY": null,
+      "coherenceNoteNY": null
     }
   }
 }
