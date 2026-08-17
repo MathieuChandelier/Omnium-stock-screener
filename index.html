@@ -388,7 +388,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-control-group:last-child{margin-bottom:0;}
 .vr-control-lbl{display:block;font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
 .vr-pill-row{display:flex;flex-wrap:wrap;gap:8px;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:9px 16px;min-width:42px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,transform .08s,box-shadow .12s;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:9px 16px;min-width:42px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,transform .08s,box-shadow .12s;-webkit-tap-highlight-color:transparent;outline:none;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
 .vr-pill:active:not(:disabled){transform:scale(.95);}
 .vr-pill.active{background:var(--navy);color:#fff;box-shadow:0 3px 10px rgba(0,1,144,.28);}
@@ -1656,6 +1656,31 @@ function nearestSnapshotBefore(snapshots, targetDate){
   return best;
 }
 
+// Un point d'inflexion (EPS revise) doit toujours afficher l'EVENEMENT qui
+// l'explique (resultats, CMD...) et jamais un "refresh" generique - source
+// prioritaire coherenceQualitative.historique (type+quarter deja
+// disponibles), repli sur hypothese.guidanceHistory (quarter seul, type
+// suppose "resultats") si absent. Tolerance +/-5j : la capture a lieu
+// lundi/jeudi, pas forcement le jour exact du call.
+const VALO_EVENT_TOLERANCE_DAYS=5;
+function findRevisionEvent(ticker, dateStr){
+  const t=state.tickers && state.tickers[ticker];
+  if(!t) return null;
+  const candidates=[];
+  ((t.coherenceQualitative||{}).historique||[]).forEach(h=>{
+    if(h && h.date && h.quarter) candidates.push({date:h.date, label:h.quarter, type:h.type||'resultats'});
+  });
+  ((t.hypothese||{}).guidanceHistory||[]).forEach(g=>{
+    if(g && g.date && g.quarter && !candidates.some(c=>c.date===g.date)) candidates.push({date:g.date, label:g.quarter, type:'resultats'});
+  });
+  let best=null, bestGap=Infinity;
+  candidates.forEach(c=>{
+    const gap=Math.abs(dayDiffISO(dateStr, c.date));
+    if(gap<=VALO_EVENT_TOLERANCE_DAYS && gap<bestGap){ best=c; bestGap=gap; }
+  });
+  return best;
+}
+
 function valoEarliestDate(){
   const ph=state.priceHistory;
   if(!ph || !ph.tickers) return null;
@@ -1834,7 +1859,9 @@ function buildValoChartSVG(ticker, opts){
     const cx=xOf(p.snap.date);
     const bandW=points.length>1 ? plotW/(points.length-1) : plotW;
     const rx=(cx-bandW/2).toFixed(1);
-    const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion:inflexionIdx.has(p.idx)};
+    const isInflexion=inflexionIdx.has(p.idx);
+    const event=isInflexion ? findRevisionEvent(ticker, p.snap.date) : null;
+    const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion, eventLabel:event?event.label:null, eventType:event?event.type:null};
     const touchAttr=compact ? '' : ' ontouchstart="showValoTooltip(event)"';
     return `<rect x="${rx}" y="0" width="${Math.max(1,bandW).toFixed(1)}" height="${H}" fill="transparent" data-info="${escAttr(JSON.stringify(info))}" onmousemove="showValoTooltip(event)" onmouseleave="hideValoTooltip()"${touchAttr}/>`;
   }).join('');
@@ -1874,7 +1901,8 @@ function showValoTooltip(evt){
     document.body.appendChild(tip);
   }
   const valTxt=info.mode==='price' ? (info.price!=null?info.price.toFixed(2):'—') : (info.val!=null?info.val.toFixed(1)+'×':'—');
-  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?'<div class="valo-tooltip-flag">↳ Révision Omnium (inflexion)</div>':''}`;
+  const eventTxt=info.eventLabel ? (info.eventType==='resultats'?`Résultats ${info.eventLabel}`:info.eventLabel) : 'Estimation révisée';
+  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?`<div class="valo-tooltip-flag">↳ ${eventTxt}</div>`:''}`;
   const r=rect.getBoundingClientRect();
   tip.style.left=(r.left+r.width/2+window.scrollX)+'px';
   tip.style.top=(r.top+window.scrollY-8)+'px';
@@ -2118,7 +2146,7 @@ function renderValoHistory(ticker){
   }else{
     const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
     chartHtml=chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>';
-    legendHtml='<span><span class="vr-leg-dot"></span>Révision Omnium (refresh)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
+    legendHtml='<span><span class="vr-leg-dot"></span>Estimation révisée (survol : évènement)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
   }
   const showSeriesRow=st.mode==='pe';
   const showPeriodRow=st.mode!=='projection';
