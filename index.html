@@ -400,11 +400,23 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    resultat vers ses composants. L'horizon voyage sur le libelle du CAGR
    et l'hypothese de multiple constant, invisible jusqu'ici, est portee
    par une ligne grise uniforme. */
-.th-eq{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:2px 0 0;}
-.th-k{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;white-space:nowrap;}
-.th-v{font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);line-height:1;}
-.th-col.sub .th-v{font-size:15px;}
-.th-op{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--muted);padding-bottom:2px;}
+.th-hero{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:2px 0 0;}
+.th-hv{font-family:'Poppins',sans-serif;font-size:28px;font-weight:800;color:var(--navy);line-height:1;}
+.th-hk{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--muted);}
+/* Segment minuscule : min-width garantit qu'un dividende de 0,3% reste
+   visible comme un point plutot que de disparaitre du rendu. */
+.th-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--border);margin:12px 0 9px;max-width:620px;}
+.th-seg{min-width:5px;}
+.th-seg.g{background:var(--navy);}
+.th-seg.d{background:var(--teal);}
+.th-seg.s{background:var(--gold);}
+.th-leg{display:flex;gap:18px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:11px;color:var(--muted);}
+.th-leg b{color:var(--navy);font-weight:800;}
+.th-sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:-1px;}
+.th-sw.g{background:var(--navy);}
+.th-sw.d{background:var(--teal);}
+.th-sw.s{background:var(--gold);}
+.th-sw.neg{background:transparent;border:1.5px dashed var(--muted);}
 .th-assume{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:12px;padding-bottom:2px;}
 .eps-lbl-sm{display:none;}
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
@@ -1690,6 +1702,43 @@ function toggleEpsHistBlock(){
   if(content)content.classList.toggle('open',_epsHistOpen);
 }
 
+// These Omnium : le rendement attendu et la part de chacun de ses moteurs.
+// Regles d'affichage :
+// - un moteur a ZERO ne produit ni segment ni entree de legende (un titre
+//   sans dividende ne doit pas trainer une legende "dividend yield 0%") ;
+// - un moteur NON NUL mais minuscule garde une entree de legende ET un
+//   segment, borne a une largeur minimale pour rester visible ;
+// - le rendement du dividende en CASH et une eventuelle particularite
+//   (ex. Vidrala : distribution gratuite d'actions recurrente valorisee
+//   5%) sont deux moteurs SEPARES - les fondre masquerait que 5 des 7
+//   points de "rendement" ne sont pas du cash ;
+// - une particularite NEGATIVE (ex. perte d'exclusivite) ne peut pas se
+//   dessiner dans une barre empilee : elle n'a pas de segment mais reste
+//   listee en legende avec son signe.
+function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
+  const cashYield=(cours>0&&div>0)?(div/cours)*100:0;
+  const specials=(d.particularites||[]).filter(p=>p.valuePct!==null&&p.valuePct!==undefined&&p.valuePct!=='');
+  const specialPct=specials.reduce((s,p)=>s+(+p.valuePct||0),0);
+  const specialTitle=specials.map(p=>(p.text||'').toString()).join(' ');
+  const parts=[
+    {v:cagrEps,   cls:'g', label:`earnings growth ${String(CY).slice(2)}→${String(LY).slice(2)}`, title:''},
+    {v:cashYield, cls:'d', label:'dividend yield', title:''},
+    {v:specialPct,cls:'s', label:'special items',  title:specialTitle}
+  ].filter(p=>Math.abs(p.v)>=0.05);
+  const posSum=parts.filter(p=>p.v>0).reduce((s,p)=>s+p.v,0);
+  const bar=posSum>0
+    ? `<div class="th-bar">${parts.filter(p=>p.v>0).map(p=>
+        `<div class="th-seg ${p.cls}" style="flex:${(p.v/posSum).toFixed(4)};"></div>`).join('')}</div>`
+    : '';
+  const legend=parts.length
+    ? `<div class="th-leg">${parts.map(p=>
+        `<span${p.title?` title="${escAttr(p.title)}"`:''}><span class="th-sw ${p.cls}${p.v<0?' neg':''}"></span><b>${p.v>=0?'+':'−'}${Math.abs(p.v).toFixed(1)}%</b> ${p.label}</span>`).join('')}</div>`
+    : '';
+  return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span><span class="th-hk">expected annual return · ${CY} → ${LY}</span></div>
+    ${bar}${legend}
+    <div class="th-assume">At a constant multiple — no re-rating assumed.</div>`;
+}
+
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
@@ -1723,14 +1772,7 @@ function renderReturnBlock(ticker, proj, cours){
     <div class="rb-header">
       <div class="card-title" style="margin-bottom:0;">Omnium Thesis</div>
     </div>
-    <div class="th-eq">
-      <div class="th-col"><div class="th-k">Expected return p.a.</div><div class="th-v">${total>=0?'+':''}${total.toFixed(1)}%</div></div>
-      <div class="th-op">=</div>
-      <div class="th-col sub"><div class="th-k">EPS CAGR ${String(CY).slice(2)}→${String(LY).slice(2)}</div><div class="th-v">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div></div>
-      <div class="th-op">+</div>
-      <div class="th-col sub"><div class="th-k">Dividend yield</div><div class="th-v">+${yieldPct.toFixed(1)}%</div></div>
-    </div>
-    <div class="th-assume">At a constant multiple — no re-rating assumed.</div>
+    ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
