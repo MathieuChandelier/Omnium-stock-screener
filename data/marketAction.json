@@ -1,48 +1,48 @@
 {
   "date": "2026-08-18",
-  "computedAt": "2026-08-18T20:46:09.860936+02:00",
+  "computedAt": "2026-08-18T21:17:09.644481+02:00",
   "movers": [
+    {
+      "ticker": "INSULET",
+      "name": "Insulet Corporation",
+      "price": 147.98,
+      "basePrice": 139.7,
+      "changePercent": 5.93
+    },
     {
       "ticker": "SPOTIFY",
       "name": "Spotify Technology S.A.",
-      "price": 522.17,
+      "price": 521.6,
       "basePrice": 492.47,
-      "changePercent": 6.03
+      "changePercent": 5.92
     },
     {
       "ticker": "INTUIT",
       "name": "Intuit",
-      "price": 354.39,
+      "price": 353.66,
       "basePrice": 335.6,
-      "changePercent": 5.6
-    },
-    {
-      "ticker": "INSULET",
-      "name": "Insulet Corporation",
-      "price": 147.32,
-      "basePrice": 139.7,
-      "changePercent": 5.45
+      "changePercent": 5.38
     },
     {
       "ticker": "NIKE",
       "name": "Nike",
-      "price": 40.52,
+      "price": 40.39,
       "basePrice": 39.09,
-      "changePercent": 3.66
-    },
-    {
-      "ticker": "NETFLIX",
-      "name": "Netflix",
-      "price": 78.61,
-      "basePrice": 76.02,
-      "changePercent": 3.41
+      "changePercent": 3.33
     },
     {
       "ticker": "LILLY",
       "name": "Eli Lilly",
-      "price": 1220.55,
+      "price": 1221.33,
       "basePrice": 1183.16,
-      "changePercent": 3.16
+      "changePercent": 3.23
+    },
+    {
+      "ticker": "NETFLIX",
+      "name": "Netflix",
+      "price": 78.44,
+      "basePrice": 76.02,
+      "changePercent": 3.18
     },
     {
       "ticker": "NEMETSCHEK",
@@ -54,23 +54,16 @@
     {
       "ticker": "ABNB",
       "name": "Airbnb",
-      "price": 184.66,
+      "price": 184.51,
       "basePrice": 179.29,
-      "changePercent": 3.0
+      "changePercent": 2.91
     },
     {
       "ticker": "BOOKING",
       "name": "Booking Holdings",
-      "price": 210.24,
+      "price": 210.42,
       "basePrice": 204.76,
-      "changePercent": 2.68
-    },
-    {
-      "ticker": "ABT",
-      "name": "Abbott Laboratories",
-      "price": 113.24,
-      "basePrice": 110.37,
-      "changePercent": 2.6
+      "changePercent": 2.76
     },
     {
       "ticker": "ESSILORLUXOTTICA",
@@ -87,18 +80,25 @@
       "changePercent": 2.48
     },
     {
-      "ticker": "DEXCOM",
-      "name": "DexCom",
-      "price": 90.78,
-      "basePrice": 88.76,
-      "changePercent": 2.28
+      "ticker": "ABT",
+      "name": "Abbott Laboratories",
+      "price": 113.08,
+      "basePrice": 110.37,
+      "changePercent": 2.46
     },
     {
       "ticker": "COCACOLA",
       "name": "Coca-Cola",
-      "price": 88.89,
+      "price": 88.87,
       "basePrice": 86.98,
-      "changePercent": 2.2
+      "changePercent": 2.17
+    },
+    {
+      "ticker": "DEXCOM",
+      "name": "DexCom",
+      "price": 90.67,
+      "basePrice": 88.76,
+      "changePercent": 2.15
     }
   ]
 }
