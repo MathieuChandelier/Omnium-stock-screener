@@ -1734,7 +1734,7 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
     ? `<div class="th-leg">${parts.map(p=>
         `<span${p.title?` title="${escAttr(p.title)}"`:''}><span class="th-sw ${p.cls}${p.v<0?' neg':''}"></span><b>${p.v>=0?'+':'−'}${Math.abs(p.v).toFixed(1)}%</b> ${p.label}</span>`).join('')}</div>`
     : '';
-  return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span><span class="th-hk">expected annual return · ${CY} → ${LY}</span></div>
+  return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span></div>
     ${bar}${legend}
     <div class="th-assume">At a constant multiple — no re-rating assumed.</div>`;
 }
@@ -1770,7 +1770,7 @@ function renderReturnBlock(ticker, proj, cours){
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
     <div class="rb-header">
-      <div class="card-title" style="margin-bottom:0;">Omnium Thesis</div>
+      <div class="card-title" style="margin-bottom:0;">Expected annual return · ${CY} → ${LY}</div>
     </div>
     ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
