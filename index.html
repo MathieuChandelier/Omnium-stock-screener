@@ -2448,7 +2448,7 @@ function buildValoChartSVG(ticker, opts){
       `<text x="${(lx+7+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="11" font-weight="700" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
   })();
 
-  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;overflow:visible;">
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="${compact?'xMidYMid':'xMinYMid'} meet" style="display:block;overflow:visible;">
     <path d="${areaPath}" fill="${areaColor}" opacity="${areaOpacity}"/>
     ${yAxis}
     ${earningsMarks}
@@ -2736,8 +2736,8 @@ function renderValoHistory(ticker){
   // avec 3 points sur une semaine, proposer 1 mois / 3 mois / 1 an griss
   // n'apporte rien. Les boutons apparaissent au fur et a mesure que
   // l'historique les rend reellement selectionnables.
-  const spanDays=dayDiffISO(latest.date, earliest);
-  const availPeriods=Object.keys(VALO_PERIOD_DAYS).filter(pk=>spanDays>=VALO_PERIOD_DAYS[pk]);
+  const availPeriods=Object.keys(VALO_PERIOD_DAYS)
+    .filter(pk=>valoFilterByPeriod(snaps,pk).length<snaps.length);
   const periodBtn=(pk)=>`<button class="vr-pill${st.period===pk?' active':''}" onclick="setValoHistPeriod('${pk}')">${VALO_PERIOD_LABELS[pk]}</button>`;
   const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">All</button>`;
 
