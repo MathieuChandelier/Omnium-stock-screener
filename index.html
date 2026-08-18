@@ -450,9 +450,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-note b{color:var(--navy);font-weight:700;}
 /* Une cellule tracable se comporte comme un onglet : soulignee a l'etat
    actif, jamais un bouton - la table reste une table. */
-.pe-val.sel{cursor:pointer;border-bottom:2px solid transparent;transition:.12s;}
-.pe-val.sel:hover{border-bottom-color:var(--border);}
-.pe-val.on{border-bottom-color:var(--navy);}
+.pe-val.sel{cursor:pointer;transition:color .12s;}
+.pe-val.sel:hover{color:var(--teal-dark-text);}
 .pe-val.dead{color:var(--muted);opacity:.5;}
 .pe-gap{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);text-align:right;margin-left:10px;}
 .pe-gap.dead{opacity:.45;}
@@ -1777,7 +1776,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const on=st.mode==='pe' && st.seriesKind===r.key;
     const cls=`pe-val${plottable?' sel':''}${on?' on':''}${plottable?'':' dead'}`;
     const attrs=plottable
-      ? ` onclick="setValoHistSeries('${r.key}',null,${useEx?'true':'false'})"`
+      ? ` onclick="setValoHistSeries('${r.key}')"`
       : ` title="${escAttr('No history yet for this horizon — the chart needs at least two snapshots.')}"`;
     return `<div class="${cls}"${attrs}>${v.toFixed(1)}×</div>`;
   };
@@ -1863,7 +1862,7 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
     : '';
   return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span></div>
     ${bar}${legend}
-    <div class="th-assume">At a constant multiple — no re-rating assumed.</div>`;
+    <div class="th-assume">Assuming constant valuation.</div>`;
 }
 
 function renderReturnBlock(ticker, proj, cours){
@@ -2325,7 +2324,19 @@ function buildValoChartSVG(ticker, opts){
   // graduations restent des nombres nus - au lieu de repeter "×" ou la
   // devise sur chaque valeur.
   const fmtY=(v)=> v.toFixed(mode==='price'?2:1);
-  const axisUnit=mode==='price' ? `Price, in ${tickerCur(ticker)||'$'}` : (series&&series.exCash ? 'P/E ex-cash, in ×' : 'P/E, in ×');
+  const serieYear=(()=>{
+    const last=allSnaps[allSnaps.length-1];
+    if(!series||!last) return null;
+    return series.kind==='year' ? series.year : roleYear(last, series.role);
+  })();
+  // "ex-cash" ne s'ecrit que si le retraitement a REELLEMENT lieu : sur un
+  // emetteur sans dette nette (banque) le calcul retombe sur le cours brut,
+  // et annoncer ex-cash serait faux.
+  const exCashReel=!!(series&&series.exCash)
+    && typeof (allSnaps[allSnaps.length-1]||{}).ndCY==='number';
+  const axisUnit=mode==='price'
+    ? `Price, in ${tickerCur(ticker)||'$'}`
+    : `P/E${exCashReel?' ex-cash':''}${serieYear?' '+serieYear:''}, in ×`;
   const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
   // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
   // mediane reste un trait muet. Les deux etiquettes sont posees hors de
@@ -2699,7 +2710,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 }
 
 // ── Historique de valorisation (fiche titre) ─────────────────────
-let _valoHistState={mode:'pe', seriesKind:'cy', exCash:false, period:'all'};
+let _valoHistState={mode:'pe', seriesKind:'cy', period:'all'};
 
 function renderValoHistory(ticker){
   // Rendu dans le creneau ouvert par la table de multiples (fusion des deux
@@ -2714,7 +2725,6 @@ function renderValoHistory(ticker){
     _valoHistState.period=_valoHistPending.period;
     _valoHistState.mode='pe';
     _valoHistState.seriesKind=_valoHistPending.role;   // 'cy' | 'ny' | 'y2'
-    _valoHistState.exCash=false;
     _valoHistPending=null;
   }
 
@@ -2730,9 +2740,9 @@ function renderValoHistory(ticker){
   const earliest=snaps[0].date;
   const st=_valoHistState;
   const seriesDesc=st.mode!=='pe' ? null
-    : Object.assign(
-        {kind:'role', role:st.seriesKind},
-        st.exCash ? {exCash:true} : {});
+    // Toujours ex-cash : snapPEForSeries retombe seul sur le cours brut
+    // pour un emetteur sans dette nette (banque).
+    : {kind:'role', role:st.seriesKind, exCash:true};
 
   const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
 
@@ -2793,10 +2803,9 @@ function renderValoHistory(ticker){
 
 function setValoHistMode(m){ _valoHistState.mode=m; renderValoHistory(CT); }
 // kind : 'cy' | 'ny' | 'y2' (les trois lignes de la table de multiples)
-function setValoHistSeries(kind, _unused, exCash){
+function setValoHistSeries(kind){
   _valoHistState.mode='pe';
   _valoHistState.seriesKind=kind;
-  _valoHistState.exCash=!!exCash;
   // La table porte l'etat selectionne : elle doit se redessiner aussi.
   renderAnalyse();
 }
