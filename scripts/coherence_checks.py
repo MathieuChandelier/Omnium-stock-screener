@@ -27,7 +27,8 @@ for f in sorted(glob.glob('data/*.json')):
     try: t=json.load(open(f))
     except Exception: continue
     if isinstance(t,dict) and 'hypothese' in t: FICHES[b]=t
-PH=json.load(open('data/priceHistory.json'))['tickers']
+PH_RAW=json.load(open('data/priceHistory.json'))
+PH=PH_RAW['tickers']
 
 def cy_of(t):
     d=t.get('data') or []
@@ -205,6 +206,37 @@ def c12():
         if gs.get('appliedToProjection') is not True:
             bad.append((tk,f"weightedBeatPct={gs['weightedBeatPct']} non repercute "
                            f"(appliedToProjection={gs.get('appliedToProjection')!r})"))
+    return bad
+
+@check("C13 revision d'EPS : doit correspondre a un evenement date")
+def c13():
+    # Une projection ne bouge pas toute seule : elle bouge a des resultats,
+    # un CMD, une revision de guidance. La pastille du graphique se pose
+    # d'ailleurs sur CET evenement et non sur la capture qui la revele
+    # (index.html, buildValoChartSVG). Une revision sans evenement dans
+    # l'intervalle est donc soit une date d'evenement manquante dans
+    # earningsDates, soit une projection modifiee sans cause tracee -
+    # dans les deux cas le graphique ne peut pas la situer.
+    ED=PH_RAW.get('earningsDates',{})
+    bad=[]
+    for tk,e in PH.items():
+        snaps=e.get('snapshots') or []
+        dates=ED.get(tk,[])
+        for i in range(1,len(snaps)):
+            a,b=snaps[i-1],snaps[i]
+            ea,eb=a.get('epsByYear') or {}, b.get('epsByYear') or {}
+            chg=[y for y in set(ea)&set(eb)
+                 if abs(float(ea[y])-float(eb[y]))/max(abs(float(eb[y])),1e-9)>0.005]
+            if not chg: continue
+            # Un millesime reconstruit porte la date du COMMIT : si le refresh
+            # de resultats est tombe le meme jour, l'evenement est sur la
+            # borne gauche, qu'il faut alors inclure.
+            incl=bool(a.get('epsOnly'))
+            evs=[d for d in dates
+                 if (d>=a['date'] if incl else d>a['date']) and d<=b['date']]
+            if not evs:
+                bad.append((tk,f"{a['date']} -> {b['date']} : {len(chg)} annee(s) "
+                               f"revisee(s), aucun evenement date dans l'intervalle"))
     return bad
 
 def main():
