@@ -128,6 +128,22 @@ td input[type=number]::-webkit-outer-spin-button,td input[type=number]::-webkit-
 td input[type=number]:focus{border-color:var(--teal);background:var(--teal-light);outline:none;}
 td input[type=number]:hover{border-color:var(--border);}
 
+.act-entry{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;
+  background:var(--gold-light);border-radius:12px;padding:10px 13px;margin-bottom:8px;}
+.act-entry:hover{filter:brightness(.98);}
+.act-left{display:flex;align-items:center;gap:9px;min-width:0;}
+.act-txt{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--gold-text);}
+.act-n{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--gold-text);
+  background:rgba(146,112,10,.16);border-radius:10px;padding:2px 8px;}
+.act-panel{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
+.act-grp+.act-grp{margin-top:12px;border-top:1px solid var(--border);padding-top:11px;}
+.act-grp-t{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
+.act-grp-w{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.5;margin:3px 0 7px;}
+.act-tk{display:flex;flex-wrap:wrap;gap:4px;}
+.act-tk span{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--navy);
+  background:var(--navy-light);border-radius:6px;padding:2px 7px;}
+.act-req{margin-top:9px;background:#f8f8fc;border:1px solid var(--border);border-radius:8px;padding:8px 10px;
+  font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--text);line-height:1.55;white-space:pre-wrap;}
 .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;}
 .badge-up{background:#dcfce7;color:var(--ok);}
 .badge-dn{background:#fee2e2;color:var(--err);}
@@ -713,6 +729,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="weekly-ai-bar-wrap"></div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
+  <div id="actions-bar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
@@ -3959,8 +3976,63 @@ function pfUpdateSortHeaderUI(){
   if(sel && sel.value!==pfSort.key) sel.value=pfSort.key;
 }
 
+
+// ── Actions a faire (vue portefeuille) ───────────────────────────
+// La file est DERIVEE de l'etat des fiches a chaque rendu, jamais stockee :
+// des qu'un refresh pose etatsFinanciers.analyse=true, le titre en sort de
+// lui-meme. Rien a invalider, rien a resynchroniser.
+let _actOpen=false;
+function toggleActionsPanel(){ _actOpen=!_actOpen; renderActionsBar(); }
+
+function actionQueues(){
+  const attente=[], horsEnum=[];
+  Object.entries(state.tickers).forEach(([tk,d])=>{
+    const dc=d?.hypothese?.dernierCall;
+    if(!dc) return;
+    // Champ absent == false : etat par defaut de toute fiche anterieure a la
+    // regle. Ce n'est pas une anomalie, c'est une file d'attente.
+    const ef=dc.etatsFinanciers;
+    if(!ef || ef.analyse!==true) attente.push(tk);
+    const b=(dc.resultatsVsConsensus||{}).epsAdj?.basis;
+    if(typeof b==='string' && !['GAAP','non-GAAP'].includes(b.trim())) horsEnum.push(tk);
+  });
+  return {attente:attente.sort(), horsEnum:horsEnum.sort()};
+}
+
+function renderActionsBar(){
+  const wrap=document.getElementById('actions-bar-wrap');
+  if(!wrap) return;
+  const q=actionQueues();
+  const total=q.attente.length+q.horsEnum.length;
+  if(!total){ wrap.innerHTML=''; return; }
+  const grp=(titre,pourquoi,tks,requete)=>!tks.length?'':`<div class="act-grp">
+      <div class="act-grp-t">${titre}</div>
+      <div class="act-grp-w">${pourquoi}</div>
+      <div class="act-tk">${tks.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="act-req">${requete.replace(/</g,'&lt;')}\n\n${tks.join(', ')}</div>
+    </div>`;
+  const panel=!_actOpen?'':`<div class="act-panel">
+    ${grp('Projections provisoires — awaiting GAAP/IFRS statements',
+          'Earnings refreshed from the press release and transcript, but no reporting-standard financial statements recorded as used. Projections stand until they are.',
+          q.attente,
+          'Refresh comptable groupé — pour les titres ci-dessous, reprends les états financiers en référentiel (US GAAP ou IFRS), désormais disponibles, applique les retraitements Omnium, et renseigne dernierCall.etatsFinanciers {analyse, referentiel, source, date} :')}
+    ${grp('epsAdj.basis hors énumération',
+          'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent and the Accounting basis paragraph disappears. It also drives epsConsensus.basis.',
+          q.horsEnum,
+          'Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l\'énumération GAAP / non-GAAP (ou null si la métrique n\'est ni l\'une ni l\'autre) et déplace la justification vers pointsCles :')}
+  </div>`;
+  wrap.innerHTML=`<div class="act-entry" onclick="toggleActionsPanel()">
+      <div class="act-left">
+        <span class="act-txt">Actions to take</span>
+        <span class="act-n">${total}</span>
+      </div>
+      <span class="vr-entry-arrow">${_actOpen?'&#9650;':'&#9660;'}</span>
+    </div>${panel}`;
+}
+
 function renderPortfolio(){
   renderWeeklyAiBar();
+  renderActionsBar();
   renderNewsBar();
   renderMarketActionBar();
   const list=document.getElementById('pf-list');
