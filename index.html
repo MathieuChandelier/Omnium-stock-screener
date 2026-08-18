@@ -2677,7 +2677,11 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // Meme geometrie que le graphique P/E : viewBox a la largeur reelle du
   // conteneur (sinon preserveAspectRatio centre le trace), depart a x=0,
   // unite portee par une etiquette en tete d'axe.
-  const W=chartW||640, H=260, padL=0, padR=34, padT=40, padB=32;
+  // padR loge les etiquettes de millesime posees au bout de chaque courbe.
+  // Il doit tenir la plus longue ("30 Oct '26"), sinon le libelle est rogne
+  // par le viewBox - defaut constate en sandbox a 375px.
+  const narrow=(chartW||640)<430;
+  const W=chartW||640, H=260, padL=0, padR=narrow?58:66, padT=40, padB=32;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const yFirst=years[0], yLast=years[years.length-1];
   const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
@@ -2738,14 +2742,59 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.5}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
 
-  const legendHtml=shown.map((s,i)=>{
-    const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
-    return `<span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:11px;height:2.5px;background:var(--navy);opacity:${opacity};display:inline-block;border-radius:1px;"></span>${formatFrDate(s.date)}</span>`;
+  // ETIQUETTES DE MILLESIME POSEES SUR LE GRAPHIQUE
+  //
+  // Chaque millesime porte son horizon PROPRE : la borne gauche avance quand
+  // un exercice se cloture (2026 sort de la projection une fois le FY26
+  // publie), la borne droite avance au roulement annuel du plan (2030 -> 2031).
+  // Les deux bougent independamment. En ancrant l'etiquette au bout de SA
+  // courbe, les horizons differents s'etagent donc horizontalement : la
+  // collision verticale ne peut plus survenir qu'entre millesimes de MEME
+  // horizon, ce qui divise le probleme par le nombre d'horizons presents.
+  // C'est le roulement lui-meme qui libere la place - une colonne unique au
+  // bord droit saturait des 5 courbes (verifie en sandbox jusqu'a 16).
+  const endYearOf=(s)=>{
+    const ys=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
+    return ys.length?ys[ys.length-1]:null;
+  };
+  const shortDate=(iso)=>{
+    const d=new Date(iso+'T00:00:00Z');
+    if(isNaN(d)) return iso;
+    const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
+    return `${d.getUTCDate()} ${m} '${String(d.getUTCFullYear()).slice(2)}`;
+  };
+  const MAX_LAB=narrow?1:2;   // un nom par horizon sur mobile, deux sur desktop
+  const groups={};
+  shown.forEach((s,i)=>{ const e=endYearOf(s); if(e!=null) (groups[e]=groups[e]||[]).push(i); });
+  const vintageLabels=Object.keys(groups).map(Number).sort((a,b)=>a-b).map(end=>{
+    const idx=groups[end], keep=idx.slice(-MAX_LAB);
+    const ideal=keep.map(i=>yOf(shown[i].epsByYear[String(end)]));
+    // Anti-chevauchement vertical, puis rabattement dans le cadre.
+    const ord=ideal.map((y,j)=>({y,j})).sort((a,b)=>a.y-b.y);
+    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+11); cur=o.ny; });
+    const over=ord.length?ord[ord.length-1].ny-(padT+plotH):0;
+    if(over>0) ord.forEach(o=>o.ny-=over);
+    const pos=[]; ord.forEach(o=>pos[o.j]=o.ny);
+    const x0=xOf(end);
+    let out=keep.map((i,j)=>{
+      const iy=yOf(shown[i].epsByYear[String(end)]);
+      const isLast=i===n-1;
+      // Filet de rappel quand l'etiquette a du etre decalee de son ancrage.
+      const lead=Math.abs(pos[j]-iy)>1.5
+        ? `<path d="M${(x0+1).toFixed(1)} ${iy.toFixed(1)} C${(x0+4).toFixed(1)} ${iy.toFixed(1)} ${(x0+3).toFixed(1)} ${pos[j].toFixed(1)} ${(x0+5).toFixed(1)} ${pos[j].toFixed(1)}" fill="none" stroke="var(--navy)" stroke-width="1" opacity=".4"/>`
+        : '';
+      // paint-order:stroke = halo blanc : une etiquette d'horizon
+      // intermediaire se pose forcement sur les courbes qui vont plus loin
+      // a droite, le halo la detache sans la deplacer de son ancrage.
+      return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shortDate(shown[i].date)}</text>`;
+    }).join('');
+    if(idx.length>keep.length)
+      out+=`<text x="${(x0+7).toFixed(1)}" y="${(Math.max(...pos)+14).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">+${idx.length-keep.length}</text>`;
+    return out;
   }).join('');
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${curvesSvg}${xLabels}</svg>`,
-    legendHtml,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${curvesSvg}${xLabels}${vintageLabels}</svg>`,
     single: n<2
   };
 }
@@ -2810,9 +2859,11 @@ function renderValoHistory(ticker){
       legendHtml='';
     }else{
       chartHtml=proj.svg;
+      // Plus de legende de correspondance : chaque courbe porte sa date au
+      // bout d'elle-meme. Seul le cas "une seule courbe" merite un mot.
       legendHtml=proj.single
         ? '<span style="color:var(--muted);">Only one curve archived so far — check back after a thesis revision.</span>'
-        : proj.legendHtml;
+        : '';
     }
   }else{
     // La legende se construit APRES le trace, a partir de ce qu'il
@@ -2835,7 +2886,7 @@ function renderValoHistory(ticker){
     <div class="vr-hist-controls">
       <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('projection','EPS')}</div>
       ${showPeriodRow ? `<div class="vr-control-row">${availPeriods.map(periodBtn).join('')}${allBtn}</div>` : ''}
-      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Each curve = a detected revision of the EPS projection; more recent ones are darker.</div>' : ''}
+      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:9.5px;">Each curve = a revision of the EPS projection</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
     <div class="vr-hist-chart">${chartHtml}</div>
