@@ -2830,11 +2830,11 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
         if(ny>0){ nx=-nx; ny=-ny; }
         // Bornage horizontal : sur le premier/dernier point, le decalage
         // perpendiculaire peut sortir du viewBox - on rabat l'ancrage.
-        const ox=px+nx*14, oy=py+ny*14;
-        const txt=v.toFixed(1), halfW=txt.length*2.6;
+        const ox=px+nx*17, oy=py+ny*17;
+        const txt=v.toFixed(1), halfW=txt.length*3.7;
         const anchor=(ox-halfW<padL)?'start':((ox+halfW>padL+plotW)?'end':'middle');
         const cx=anchor==='start'?Math.max(ox,padL):(anchor==='end'?Math.min(ox,padL+plotW):ox);
-        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="9" font-weight="800" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
+        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
       }
       return `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
     }).join('');
