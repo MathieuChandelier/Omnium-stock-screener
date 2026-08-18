@@ -425,7 +425,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .coherence svg{flex-shrink:0;margin-top:2px;}
 .pe-stack{padding:14px 0 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
 .pe-stack{grid-template-columns:max-content max-content max-content;}
-.pe-stack.has-ex{grid-template-columns:max-content max-content max-content max-content;}
+.pe-note{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);line-height:1.5;margin:-4px 0 12px;max-width:640px;}
+.pe-note b{color:var(--navy);font-weight:700;}
 /* Une cellule tracable se comporte comme un onglet : soulignee a l'etat
    actif, jamais un bouton - la table reste une table. */
 .pe-val.sel{cursor:pointer;border-bottom:2px solid transparent;transition:.12s;}
@@ -1453,7 +1454,7 @@ function renderAnalyse(){
     {lbl:`Net income (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net)},
     {lbl:'Shares (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
     {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
-    {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1):'—';}},
+    {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;const px=exCashPriceForYear(d,cours,y);return(px>0&&e>0)?(px/e).toFixed(1):'—';}},
     {lbl:`Net debt (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
     {lbl:'Debt / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     {lbl:`Dividend (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—'},
@@ -1520,6 +1521,20 @@ function refreshPriceOnly(ticker){
     const e=proj[y]?.eps;
     if(cells[i]) cells[i].textContent=(cours>0&&e>0)?(cours/e).toFixed(1):'—';
   });
+}
+
+// Cours retraite de la tresorerie/dette nette de l'annee visee - base de
+// reference des P/E depuis le 18/08/2026. adjND NEGATIF = tresorerie nette
+// (le cours baisse), POSITIF = dette nette (le cours monte). Repli sur le
+// cours brut quand la donnee manque : pour une banque la dette nette n'a
+// pas de sens economique, adjND y est volontairement absent.
+function exCashPriceForYear(d, cours, year){
+  if(!(cours>0)) return null;
+  const nd=d?.hypothese?.adjND?.[year];
+  const sh=d?.hypothese?.adjShares?.[year];
+  if(typeof nd!=='number' || !(sh>0)) return cours;
+  const p=cours+(nd/sh);
+  return p>0 ? p : cours;
 }
 
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY, consInfo){
@@ -1682,7 +1697,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peExCY=(priceExCY!=null&&epsCY>0)?(priceExCY/epsCY):null;
   const peExFwd=(priceExCY!=null&&qe.epsForward12m>0)?(priceExCY/qe.epsForward12m):null;
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
-  const hasExCash=peExCY!=null||peExFwd!=null||peExNY!=null;
+  const hasNdData=(ndCY!=null&&shCY>0)||(ndNY!=null&&shNY>0);
   // "->" vient des donnees (forwardPeriodLabel, formats heterogenes selon
   // les titres) : on le rend proprement a l'affichage sans toucher au JSON.
   const fwdLbl=qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel).replace(/\s*->\s*/g,' → '):'';
@@ -1692,36 +1707,65 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // dans une rangee de pastilles sous le graphique. Une cellule cliquee
   // choisit a la fois l'echeance ET la base (publiee ou ex-cash) ; une
   // cellule sans historique reste affichee mais n'est pas selectionnable.
+  // ── P/E : l'ex-cash EST la reference (decision du 18/08/2026) ──
+  // Le multiple retenu retraite le cours de la tresorerie/dette nette :
+  // (cours + detteNette/actions) / BNA. Motif : un multiple doit refleter
+  // la capacite d'une societe a completer sa croissance par du M&A ou des
+  // rachats, ce que la seule capitalisation masque. Une seule colonne
+  // desormais - le P/E sur capitalisation n'apparait plus que dans la note
+  // des cas ou l'ecart depasse le seuil, la ou il manquerait vraiment.
+  // REPLI : quand la dette nette n'existe pas (banques - BNP n'a aucun
+  // adjND, et c'est methodologiquement juste : la dette y est la matiere
+  // premiere, pas un financement a retrancher), on retombe sur le P/E de
+  // capitalisation, en le disant.
   const st=_valoHistState;
   const rows=[
-    {key:'cy',  label:`${CY}`,      series:{kind:'role',role:'cy'}, pe:peCY,  ex:peExCY},
-    {key:'fwd', label:`12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}`, series:{kind:'fwd'}, pe:peFwd, ex:peExFwd},
-    {key:'ny',  label:`${CY+1}`,    series:{kind:'role',role:'ny'}, pe:peNY,  ex:peExNY}
+    {key:'cy',  label:`${CY}`, series:{kind:'role',role:'cy'}, std:peCY,  ex:peExCY},
+    {key:'fwd', label:`12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}`, series:{kind:'fwd'}, std:peFwd, ex:peExFwd},
+    {key:'ny',  label:`${CY+1}`, series:{kind:'role',role:'ny'}, std:peNY, ex:peExNY}
   ];
-  const cell=(r,exCash)=>{
-    const v=exCash?r.ex:r.pe;
-    if(v==null) return `<div class="pe-val${exCash?' pe-exval':''} dead">—</div>`;
-    const desc=Object.assign({}, r.series, exCash?{exCash:true}:{});
+  const cell=(r)=>{
+    const useEx=r.ex!=null;
+    const v=useEx?r.ex:r.std;
+    if(v==null) return `<div class="pe-val dead">—</div>`;
+    const desc=Object.assign({}, r.series, useEx?{exCash:true}:{});
     const plottable=valoSeriesHasHistory(CT, desc);
-    const on=st.mode==='pe' && st.seriesKind===r.key && !!st.exCash===!!exCash;
-    const cls=`pe-val${exCash?' pe-exval':''}${plottable?' sel':''}${on?' on':''}${plottable?'':' dead'}`;
+    const on=st.mode==='pe' && st.seriesKind===r.key;
+    const cls=`pe-val${plottable?' sel':''}${on?' on':''}${plottable?'':' dead'}`;
     const attrs=plottable
-      ? ` onclick="setValoHistSeries('${r.key}',null,${exCash?'true':'false'})"`
-      : ` title="${escAttr('No history yet — net debt for this horizon is only archived from 18/08/2026 onward')}"`;
+      ? ` onclick="setValoHistSeries('${r.key}',null,${useEx?'true':'false'})"`
+      : ` title="${escAttr('No history yet for this horizon — the chart needs at least two snapshots.')}"`;
     return `<div class="${cls}"${attrs}>${v.toFixed(1)}×</div>`;
   };
-  // Toujours sur le P/E PUBLIE, jamais sur l'ex-cash : un ecart a la moyenne
-  // qui changerait de base selon la cellule selectionnee melangerait deux
-  // referentiels dans une meme colonne.
   const gapCell=(r)=>{
-    const g=valoSeriesAvgGap(CT, r.series);
+    const useEx=r.ex!=null;
+    const g=valoSeriesAvgGap(CT, Object.assign({}, r.series, useEx?{exCash:true}:{}));
     if(g==null) return `<div class="pe-gap dead">—</div>`;
     return `<div class="pe-gap">${g>=0?'+':'−'}${Math.abs(g).toFixed(1)}%</div>`;
   };
-  const peStack=`<div class="pe-stack${hasExCash?' has-ex':''}">
-      <div></div><div class="pe-colhead">Reported</div>${hasExCash?`<div class="pe-colhead pe-exhead">Ex-cash</div>`:''}<div class="pe-colhead">vs. avg</div>
-      ${rows.map(r=>`<div class="pe-lbl">${r.label}</div>${cell(r,false)}${hasExCash?cell(r,true):''}${gapCell(r)}`).join('')}
-    </div>`;
+
+  // Note conditionnelle. Seuil a 15% d'ecart avec le P/E de capitalisation :
+  // en dessous, la precision serait du bruit (l'ecart mediane du
+  // portefeuille est de quelques points) ; au-dela, le multiple affiche
+  // surprend et doit s'expliquer, en rendant le chiffre sur capitalisation.
+  const PE_NOTE_SEUIL=15;
+  const peNote=(()=>{
+    if(peExCY==null){
+      return hasNdData
+        ? ''
+        : `<div class="pe-note">Net debt is not meaningful for this issuer — multiples above are on market cap.</div>`;
+    }
+    if(!(peCY>0)) return '';
+    const ecart=(peExCY-peCY)/peCY*100;
+    if(Math.abs(ecart)<PE_NOTE_SEUIL) return '';
+    const sens=ndCY>0?'net debt':'net cash';
+    return `<div class="pe-note">Significant ${sens} — Omnium prices the business on enterprise value. On market cap alone: <b>${peCY.toFixed(1)}×</b>.</div>`;
+  })();
+
+  const peStack=`<div class="pe-stack">
+      <div></div><div class="pe-colhead">P/E</div><div class="pe-colhead">vs. avg</div>
+      ${rows.map(r=>`<div class="pe-lbl">${r.label}</div>${cell(r)}${gapCell(r)}`).join('')}
+    </div>${peNote}`;
   return {
     pyBlock,
     historiqueBlocks,
@@ -1885,12 +1929,21 @@ function snapPEFwd(snap){
 // captures posterieures a cet ajout (renvoie null avant, ce qui retire
 // proprement le point de la courbe plutot que de le calculer a faux).
 function snapExCashPrice(snap, role){
-  if(!snap) return null;
+  if(!snap || !(snap.price>0)) return null;
   const nd=role==='ny' ? snap.ndNY : snap.ndCY;
   const sh=role==='ny' ? snap.shNY : snap.shCY;
-  if(typeof nd!=='number' || !(sh>0) || !(snap.price>0)) return null;
-  const p=snap.price+(nd/sh);
-  return p>0 ? p : null;
+  if(typeof nd==='number' && sh>0){
+    const p=snap.price+(nd/sh);
+    return p>0 ? p : null;
+  }
+  // Emetteur SANS AUCUNE donnee de dette nette (banque) : l'ex-cash n'a pas
+  // de sens, on retombe sur le cours brut - c'est le repli assume, et il est
+  // homogene sur toute la serie.
+  if(typeof snap.ndCY!=='number') return snap.price;
+  // La donnee existe pour ce titre mais pas pour CETTE echeance (ndNY n'est
+  // archive que depuis le 18/08/2026) : surtout PAS de repli ici, il
+  // melangerait deux bases au sein d'une meme courbe. Pas de point.
+  return null;
 }
 // series : {kind:'role', role:'cy'|'ny'} | {kind:'fwd'} | {kind:'year', year}
 //          + exCash:true pour lire le multiple net de tresorerie.
@@ -2389,8 +2442,11 @@ function hideValoTooltip(){
 // ── Value Rankings (onglet) ──────────────────────────────────────
 let _valoRankState={n:5, period:'1m', role:'cy'};
 
+// Le classement se fait sur la MEME base que les fiches (ex-cash), sinon il
+// contredirait le multiple affiche sur chaque titre. snapPEForSeries retombe
+// tout seul sur le cours brut quand le snapshot n'a pas de dette nette.
 function seriesDescForRole(role){
-  return role==='fwd' ? {kind:'fwd'} : {kind:'role', role};
+  return role==='fwd' ? {kind:'fwd', exCash:true} : {kind:'role', role, exCash:true};
 }
 
 function renderValueRankings(){
