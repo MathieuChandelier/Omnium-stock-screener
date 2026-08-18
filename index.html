@@ -601,14 +601,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
      forme courte. */
   .eps-row{gap:9px;}
   .eps-head{flex:0 0 76px;flex-direction:column;gap:1px;}
-  .eps-lbl{flex:0 0 auto;font-size:11px;line-height:1.25;}
-  .eps-tot{font-size:12px;line-height:1.25;white-space:normal;}
+  .eps-lbl{flex:0 0 auto;font-size:13px;line-height:1.25;}
+  .eps-tot{font-size:13px;line-height:1.25;white-space:normal;}
   .eps-tot .eps-analysts{display:none;}
   .eps-lbl-lg{display:none;}
   .eps-lbl-sm{display:inline;}
   .eps-cells{gap:5px;}
   .eps-cells .qs-chip{padding:5px 1px;}
-  .eps-adj{font-size:10.5px;padding:5px 1px;}
+  .eps-adj{font-size:13px;padding:5px 1px;}
   .eps-adj.has{min-height:44px;padding:4px 1px;}
   .eps-ct{width:13px;height:13px;line-height:13px;font-size:8px;margin-left:4px;}
   .eps-detail{font-size:10px;padding:8px 10px;margin-top:9px;}
@@ -1691,7 +1691,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         <div class="eps-row adj">
           <div class="eps-head">
             <span class="eps-lbl">${lbl('Adjustments','Adjust.')}</span>
-            <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal):''}</span>
+            <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal)+(cur||'$'):''}</span>
           </div>
           <div class="eps-cells">${arr.map((p,i)=>{
             const a=adjOf(p);
@@ -2576,23 +2576,28 @@ function buildValoChartSVG(ticker, opts){
         y:yOf(e.pts[e.pts.length-1].y), col:EXTRA_TONES[i]||EXTRA_TONES[1], w:700
       })));
     const ord=items.map((it,i)=>({y:it.y,i})).sort((a,b)=>a.y-b.y);
-    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+21); cur=o.ny; });
+    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+27); cur=o.ny; });
     const over=ord[ord.length-1].ny-(padT+plotH);
     if(over>0) ord.forEach(o=>o.ny-=over);
     ord.forEach(o=>{ items[o.i].ny=Math.max(o.ny,padT+7); });
-    // Intitule de la colonne de valeurs, pose sur la MEME ligne de base que
-    // l'unite d'axe a gauche : les deux se repondent en tete de graphique.
-    // "Today" plutot que "Current" - la moyenne s'appelle deja "current-year
-    // average", et deux "current" voisins se confondraient ; "Today" dit
-    // sans ambiguite que ces trois multiples sont ceux du dernier cours.
-    const head=`<text x="${(lx+7).toFixed(1)}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--muted)" letter-spacing=".04em">TODAY</text>`;
+    // Intitule de la colonne, ancre SUR la colonne (juste au-dessus de la
+    // premiere valeur) et non sur une ligne de base lointaine : pose en
+    // haut du cadre il flottait sans rattachement visible aux chiffres
+    // qu'il annonce. "Today" plutot que "Current" - la moyenne s'appelle
+    // deja "current-year average" et deux "current" voisins se
+    // confondraient.
+    const topY=Math.min(...items.map(it=>it.ny));
+    const head=`<text x="${(lx+7).toFixed(1)}" y="${Math.max(11,topY-13).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" letter-spacing=".04em">TODAY</text>`;
     return head+items.map(it=>{
       const lead=Math.abs(it.ny-it.y)>1.5
         ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
       return lead
         +`<circle cx="${lx.toFixed(1)}" cy="${it.y.toFixed(1)}" r="3" fill="${it.col}"/>`
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-1).toFixed(1)}" font-size="9.5" font-weight="${it.w}" font-family="Poppins,sans-serif" fill="${it.col}">${it.lab}</text>`
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+9.5).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}" opacity=".8">${it.val}</text>`;
+        // L'annee garde la teinte de SA courbe (c'est ce qui rattache
+        // l'etiquette au trace) ; la valeur passe en navy gras pour tous,
+        // c'est le chiffre qu'on vient chercher et il doit ressortir.
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-1).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}">${it.lab}</text>`
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+10).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">${it.val}</text>`;
     }).join('');
   })();
 
@@ -2857,7 +2862,14 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
     return `${d.getUTCDate()} ${m} '${String(d.getUTCFullYear()).slice(2)}`;
   };
-  const MAX_LAB=narrow?1:2;   // un nom par horizon sur mobile, deux sur desktop
+  // Combien de dates nommer par horizon. Tant qu'elles tiennent, on les
+  // affiche TOUTES - masquer une date alors que la place existe n'apporte
+  // rien. Le plafond n'est donc pas arbitraire : c'est le nombre
+  // d'etiquettes que la hauteur de trace peut porter sans les tasser,
+  // borne a 3/5 pour rester lisible quand l'historique sera long. Au-dela,
+  // ce sont les PLUS RECENTES qui restent nommees, les anterieures etant
+  // comptees - c'est le millesime courant qu'on cherche en premier.
+  const MAX_LAB=Math.max(2, Math.min(narrow?3:5, Math.floor(plotH/26)));
   const groups={};
   shown.forEach((s,i)=>{ const e=endYearOf(s); if(e!=null) (groups[e]=groups[e]||[]).push(i); });
   const vintageLabels=Object.keys(groups).map(Number).sort((a,b)=>a-b).map(end=>{
@@ -2943,7 +2955,12 @@ function renderValoHistory(ticker){
   // Largeur reelle disponible : le viewBox s'y cale au pixel pres, ce qui
   // supprime a la fois la mise a l'echelle du texte et la gouttiere de
   // centrage laissee par preserveAspectRatio.
-  const chartW=Math.max(280, Math.round(card.clientWidth||640));
+  // Plafond de largeur sur desktop : au-dela, une serie encore courte
+  // s'etire sur toute la carte et chaque intervalle devient une immense
+  // enjambee. Le viewBox reste a 1:1 avec le conteneur (pas de mise a
+  // l'echelle du texte), donc on plafonne LES DEUX ensemble.
+  const VALO_CHART_MAX_W=560;
+  const chartW=Math.min(VALO_CHART_MAX_W, Math.max(280, Math.round(card.clientWidth||640)));
 
   let chartHtml, legendHtml;
   if(st.mode==='projection'){
@@ -2994,7 +3011,7 @@ function renderValoHistory(ticker){
       ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:9.5px;">Each curve = a revision of the EPS projection</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
-    <div class="vr-hist-chart">${chartHtml}</div>
+    <div class="vr-hist-chart" style="max-width:${chartW}px;">${chartHtml}</div>
   `;
 }
 
