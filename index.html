@@ -379,6 +379,27 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .eps-cells .qs-chip{padding:7px 3px;}
 .eps-adj{flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-text);padding:7px 3px;}
 .eps-adj.nil{color:#c9cede;font-weight:600;}
+/* Montant retraite cliquable : puce turquoise pale (meme langage que les
+   puces de trimestre), compteur du nombre de causes - affiche MEME a 1,
+   sinon un trimestre a cause unique n'aurait aucune invite - et languette
+   qui designe l'endroit ou le detail va s'ouvrir. */
+.eps-adj.has{position:relative;display:flex;align-items:center;justify-content:center;min-height:34px;
+  padding:4px 3px;border-radius:7px;background:var(--teal-light);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:background .12s;}
+.eps-adj.has:hover{background:#cdf1eb;}
+.eps-adj.has::after{content:'';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);
+  border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid rgba(37,207,180,.45);}
+.eps-adj.has.open{background:#cdf1eb;}
+.eps-adj.has.open::after{border-top-color:#cdf1eb;bottom:-6px;border-left-width:7px;border-right-width:7px;border-top-width:7px;}
+.eps-ct{font-size:9px;font-weight:800;color:var(--teal-dark-text);background:rgba(37,207,180,.28);
+  border-radius:50%;width:14px;height:14px;line-height:14px;margin-left:6px;display:inline-block;text-align:center;}
+.eps-detail{display:none;background:#cdf1eb;border-radius:8px;padding:9px 12px;margin-top:8px;
+  font-family:'Poppins',sans-serif;font-size:11px;line-height:1.55;color:var(--muted);}
+.eps-detail.open{display:block;}
+.ad-line{display:flex;justify-content:space-between;gap:14px;}
+.ad-line+.ad-line{margin-top:3px;}
+.ad-q{font-weight:800;color:var(--teal-dark-text);margin-right:6px;}
+.ad-amt{font-weight:700;color:var(--teal-dark-text);white-space:nowrap;}
 .eps-row.pub .eps-lbl,.eps-row.pub .eps-tot{color:var(--muted);}
 .eps-row.adj .eps-lbl,.eps-row.adj .eps-tot{color:var(--teal-text);}
 .eps-row.base .eps-lbl,.eps-row.base .eps-tot{color:var(--navy);}
@@ -587,6 +608,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .eps-cells{gap:5px;}
   .eps-cells .qs-chip{padding:5px 1px;}
   .eps-adj{font-size:10.5px;padding:5px 1px;}
+  .eps-adj.has{min-height:44px;padding:4px 1px;}
+  .eps-ct{width:13px;height:13px;line-height:13px;font-size:8px;margin-left:4px;}
+  .eps-detail{font-size:10px;padding:8px 10px;margin-top:9px;}
+  .ad-line{gap:10px;}
   .qs-retrait-line{font-size:9px;line-height:1.45;}
   .coherence{font-size:8px;margin-top:5px;}
   .pe-stack{padding:10px 0 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
@@ -1528,6 +1553,30 @@ function refreshPriceOnly(ticker){
 // (le cours baisse), POSITIF = dette nette (le cours monte). Repli sur le
 // cours brut quand la donnee manque : pour une banque la dette nette n'a
 // pas de sens economique, adjND y est volontairement absent.
+// Detail des retraitements, ouvert a la demande : un seul trimestre a la
+// fois, dans le flux (jamais en surcouche flottante, qui demanderait un
+// positionnement et pourrait sortir de l'ecran sur mobile).
+let _adjDetails={}, _adjOpen=null;
+function toggleAdjDetail(blockId, idx){
+  const box=document.getElementById(blockId+'-d');
+  if(!box) return;
+  document.querySelectorAll('.eps-adj.open').forEach(c=>c.classList.remove('open'));
+  const key=blockId+':'+idx;
+  if(_adjOpen===key){ _adjOpen=null; box.classList.remove('open'); box.innerHTML=''; return; }
+  const per=(_adjDetails[blockId]||[])[idx];
+  if(!per||!per.items.length) return;
+  _adjOpen=key;
+  const cell=document.getElementById(blockId+'-c'+idx);
+  if(cell) cell.classList.add('open');
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  box.innerHTML=per.items.map(it=>{
+    const v=it.impact, sgn=v>=0?'+':'−';
+    return `<div class="ad-line"><span><span class="ad-q">${esc(per.q)}</span>${esc(it.raison)}</span>`
+      +`<span class="ad-amt">${sgn}${Math.abs(v).toFixed(2)}</span></div>`;
+  }).join('');
+  box.classList.add('open');
+}
+
 function exCashPriceForYear(d, cours, year){
   if(!(cours>0)) return null;
   const nd=d?.hypothese?.adjND?.[year];
@@ -1539,6 +1588,10 @@ function exCashPriceForYear(d, cours, year){
 
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY, consInfo){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
+  // Les blocs sont reconstruits a neuf : l'etat d'ouverture d'un detail ne
+  // doit pas survivre au re-rendu, sinon le clic suivant sur la meme
+  // cellule "referme" un panneau qui n'existe deja plus.
+  _adjDetails={}; _adjOpen=null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const chip=(p,forceActual,valueOverride)=>{
     const v=valueOverride!=null?valueOverride:(+p.eps);
@@ -1584,27 +1637,6 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b></div>`).join('');
     return `<div class="qs-retrait-legend">${lines}</div>`;
   };
-  // Quand un exercice porte PLUSIEURS causes distinctes, la ligne
-  // "Adjustments" n'en montre que le NET par trimestre - un T4 a -0.34
-  // sans dire qu'il agrege -0.07 et -0.27. On eclate alors en une
-  // sous-ligne par cause, calee sur la MEME grille de trimestres : chaque
-  // montant se lit sous son trimestre, sans renvoi a une legende.
-  const reasonRows=(arr)=>{
-    const names=[];
-    arr.forEach(p=>(p.retraitements||[]).forEach(r=>{ if(!names.includes(r.raison)) names.push(r.raison); }));
-    if(names.length<2) return '';
-    return names.map(nm=>{
-      const cells=arr.map(p=>{
-        const hits=(p.retraitements||[]).filter(r=>r.raison===nm);
-        const v=hits.reduce((a,r)=>a+(+r.impact||0),0);
-        return `<div class="eps-adj sub${hits.length?'':' nil'}">${hits.length?fmtSigned(v):'\u00b7'}</div>`;
-      }).join('');
-      return `<div class="eps-row adj sub">
-        <div class="eps-head"><span class="eps-lbl reason">${esc(nm)}</span></div>
-        <div class="eps-cells">${cells}</div>
-      </div>`;
-    }).join('');
-  };
   const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
 
   // Un bloc d'annee = un rang par nature de chiffre, chaque rang sur UNE
@@ -1614,6 +1646,13 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // meme gabarit, pas une seconde mise en page.
   const yearBlock=(arr,opts={})=>{
     const consHtml=opts.consensusHtml||'';
+    // Identifiant stable du bloc : le detail ouvert doit pouvoir viser SON
+    // exercice, la fiche en affichant plusieurs.
+    const blockId=`adj-${(opts.label||'').replace(/[^0-9A-Za-z]/g,'')}`;
+    _adjDetails[blockId]=arr.map(p=>({
+      q:p.label,
+      items:(p.retraitements||[]).map(r=>({raison:r.raison, impact:+r.impact||0}))
+    }));
     const totalTxt=v=>`${v.toFixed(2)}${cur||'$'}`;
     const cells=(fn)=>`<div class="eps-cells">${arr.map(fn).join('')}</div>`;
     if(!hasAdj(arr)){
@@ -1649,12 +1688,18 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
             <span class="eps-lbl">${lbl('Adjustments','Adjust.')}</span>
             <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal):''}</span>
           </div>
-          <div class="eps-cells">${arr.map(p=>{
+          <div class="eps-cells">${arr.map((p,i)=>{
             const a=adjOf(p);
-            return `<div class="eps-adj${a===0?' nil':''}">${a===0?'—':fmtSigned(a)}</div>`;
+            const n=(p.retraitements||[]).length;
+            if(!n) return `<div class="eps-adj nil">—</div>`;
+            // Le compteur s'affiche MEME a 1 : sans lui, un trimestre a
+            // cause unique n'aurait aucune invite au clic. La languette
+            // designe l'endroit ou le detail va s'ouvrir.
+            return `<div class="eps-adj has" onclick="toggleAdjDetail('${blockId}',${i})" id="${blockId}-c${i}">`
+              +`${fmtSigned(a)}<span class="eps-ct">${n}</span></div>`;
           }).join('')}</div>
         </div>
-        ${reasonRows(arr)}
+        <div class="eps-detail" id="${blockId}-d"></div>
         <div class="eps-row base">
           <div class="eps-head">
             <span class="eps-lbl">${lbl('Omnium basis','Omnium')}</span>
@@ -1662,7 +1707,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
           </div>
           ${cells(p=>chip(p,opts.forceActual))}
         </div>
-      </div>${opts.legend?legendRow:''}${retraitLegend(arr)}</div>`;
+      </div>${opts.legend?legendRow:''}</div>`;
   };
   // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
   // "Published" : un consensus sell-side est etabli hors elements non
@@ -1759,7 +1804,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const ecart=(peExCY-peCY)/peCY*100;
     if(Math.abs(ecart)<PE_NOTE_SEUIL) return '';
     const sens=ndCY>0?'net debt':'net cash';
-    return `<div class="pe-note">Significant ${sens} — Omnium prices the business on enterprise value. On market cap alone: <b>${peCY.toFixed(1)}×</b>.</div>`;
+    return `<div class="pe-note">Significant ${sens} — Omnium prices the business on enterprise value. The standard P/E is <b>${peCY.toFixed(1)}×</b> for ${CY}.</div>`;
   })();
 
   const peStack=`<div class="pe-stack">
