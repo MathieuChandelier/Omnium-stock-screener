@@ -1,7 +1,7 @@
-<html lang="fr"><head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Omnium — Modèle d'investissement</title>
+<title>Omnium — Investment Model</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -553,14 +553,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </svg>
     <div class="h-tagline"><span>Screening Model</span></div>
   </div>
-  <a class="header-access-btn" href="admin.html" title="Gérer l'accès">
+  <a class="header-access-btn" href="admin.html" title="Manage access">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="4"/><line x1="11" y1="12" x2="20" y2="12"/><line x1="16.5" y1="12" x2="16.5" y2="15"/><line x1="19.5" y1="12" x2="19.5" y2="15"/></svg>
-    <span>Gérer l'accès</span>
+    <span>Manage access</span>
   </a>
 </header>
 
 <div class="tab-bar" id="tab-bar" style="display:none;">
-  <button class="back-btn" id="tab-btn-pf" onclick="showTab('portefeuille',this)"><span class="back-btn-arrow">←</span> Retour au portefeuille</button>
+  <button class="back-btn" id="tab-btn-pf" onclick="showTab('portefeuille',this)"><span class="back-btn-arrow">←</span> Back to portfolio</button>
 </div>
 
 <div class="container">
@@ -585,7 +585,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
-        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Rechercher un titre…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeyup="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
+        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Search for a ticker…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeyup="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
       </div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl pf-col-sortable pf-metric-return" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
@@ -618,7 +618,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="valo-hist-card" style="margin-bottom:18px;padding-top:20px;border-top:1px solid var(--border);"></div>
 
   <div class="card" id="analyse-tbl-card">
-    <div class="card-title" id="analyse-tbl-title"><b>Données historiques &amp; Projections</b></div>
+    <div class="card-title" id="analyse-tbl-title"><b>Historical Data &amp; Projections</b></div>
     <div style="overflow-x:auto;">
     <table id="analyse-tbl">
       <thead><tr id="analyse-head"></tr></thead>
@@ -629,11 +629,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div class="card" id="context-card" style="margin-bottom:18px;">
     <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-      <b>Dernières hypothèses</b>
+      <b>Latest assumptions</b>
     </div>
     <div id="last-event-trace" style="display:block;"></div>
     <div id="context-bullets-wrap" style="margin-top: 14px; display: none;">
-      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Poppins',sans-serif;margin-bottom:8px;">Contexte &amp; trajectoire</div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Poppins',sans-serif;margin-bottom:8px;">Context &amp; trajectory</div>
       <ul id="context-bullets" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"></ul>
     </div>
   </div>
@@ -646,13 +646,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 <div id="tab-valuerankings" class="panel"></div>
 
-</div><footer>OMNIUM Invest · Modèle privé · <span id="gen-date"></span> · Empreinte données : <span id="data-fingerprint">—</span></footer>
+</div><footer>OMNIUM Invest · Private model · <span id="gen-date"></span> · Data fingerprint: <span id="data-fingerprint">—</span></footer>
 
 <script>
 let state = { tickers: {} };
 let CT = "";
 
-const MONTH_ABBR_FR = ['','janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+const MONTH_ABBR_FR = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 function fyEndMonth(ticker){
   const d = state.tickers[ticker];
@@ -786,7 +786,7 @@ async function checkIdentifierApproved(slug){
 }
 
 function showAccessScreen(msg){
-  document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Accès restreint</div><div class="access-gate-msg">${msg}</div></div></div>`;
+  document.body.innerHTML=`<div class="access-gate"><div class="access-gate-card"><div class="access-gate-title">Access restricted</div><div class="access-gate-msg">${msg}</div></div></div>`;
 }
 
 let IS_GUEST_SESSION=false;
@@ -796,10 +796,10 @@ function applyGuestUI(expiresAtUnix){
   if(btn)btn.style.display='none';
   if(expiresAtUnix){
     const d=new Date(expiresAtUnix*1000);
-    const dateTxt=d.toLocaleDateString('fr-FR')+' à '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const dateTxt=d.toLocaleDateString('fr-FR')+' at '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
     const banner=document.createElement('div');
     banner.className='guest-banner';
-    banner.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Accès temporaire — expire le ${dateTxt}`;
+    banner.innerHTML=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Temporary access — expires ${dateTxt}`;
     document.body.insertBefore(banner, document.body.firstChild);
   }
 }
@@ -882,11 +882,11 @@ function ensureUserIdentity(){
     overlay.id='uid-overlay';
     overlay.innerHTML=`
       <div class="uid-modal">
-        <div class="uid-modal-title">Accès restreint</div>
-        <div class="uid-modal-sub">Entrez votre identifiant pour accéder à l'application.</div>
-        <input type="text" id="uid-input" class="uid-modal-input" placeholder="Votre identifiant" autocomplete="off" value="${prefill.replace(/"/g,'&quot;')}">
+        <div class="uid-modal-title">Access restricted</div>
+        <div class="uid-modal-sub">Enter your identifier to access the application.</div>
+        <input type="text" id="uid-input" class="uid-modal-input" placeholder="Your identifier" autocomplete="off" value="${prefill.replace(/"/g,'&quot;')}">
         <div class="uid-modal-err" id="uid-err"></div>
-        <button class="btn btn-primary uid-modal-btn" id="uid-submit-btn" type="button">Continuer</button>
+        <button class="btn btn-primary uid-modal-btn" id="uid-submit-btn" type="button">Continue</button>
       </div>`;
     document.body.appendChild(overlay);
     const input=overlay.querySelector('#uid-input');
@@ -896,9 +896,9 @@ function ensureUserIdentity(){
       const slug=slugifyUserName(input.value);
       if(!slug){ input.focus(); return; }
       errEl.style.display='none';
-      btn.disabled=true; btn.textContent='Vérification…';
+      btn.disabled=true; btn.textContent='Verifying…';
       const ok=await checkIdentifierApproved(slug);
-      btn.disabled=false; btn.textContent='Continuer';
+      btn.disabled=false; btn.textContent='Continue';
       if(ok===true){
         setUserId(slug);
         overlay.remove();
@@ -906,8 +906,8 @@ function ensureUserIdentity(){
         return;
       }
       errEl.textContent=ok===false
-        ? 'Identifiant non reconnu. Contactez Mathieu Chandelier pour y être ajouté.'
-        : 'Impossible de vérifier votre identifiant pour le moment. Réessayez.';
+        ? 'Identifier not recognized. Contact Mathieu Chandelier to be added.'
+        : 'Unable to verify your identifier right now. Please try again.';
       errEl.style.display='block';
       input.focus();
       input.select();
@@ -963,7 +963,7 @@ async function loadState() {
           return [code, obj];
         } catch (e) {
           console.error(`loadState: data/${code}.json illisible -`, e);
-          showToast(`⚠ Titre ${code} illisible (data/${code}.json) - ignore.`, 6000);
+          showToast(`⚠ Ticker ${code} unreadable (data/${code}.json) - skipped.`, 6000);
           return null;
         }
       })),
@@ -999,7 +999,7 @@ async function loadState() {
     return normalizeState(jsonData);
   } catch (e) {
     console.error('loadState:', e);
-    showToast('⚠ Impossible de charger data/manifest.json. Verifiez sa presence.', 8000);
+    showToast('⚠ Unable to load data/manifest.json. Check that it exists.', 8000);
     return normalizeState({tickers:{}});
   }
 }
@@ -1272,8 +1272,8 @@ function renderAnalyse(){
   if(idWrap){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const fyBadge=isOffCalendar
-      ? `<span class="fy-pill" title="Cette societe cloture son exercice fiscal en ${MONTH_ABBR_FR[fyEnd]} et non en decembre : les annees du tableau ci-dessous designent des exercices decales, pas des annees civiles.">
-           <span class="fy-dot"></span>Exercice décalé · clôture ${MONTH_ABBR_FR[fyEnd]}
+      ? `<span class="fy-pill" title="This company closes its fiscal year in ${MONTH_ABBR_FR[fyEnd]} rather than December: the years in the table below denote offset fiscal years, not calendar years.">
+           <span class="fy-dot"></span>Offset fiscal year · closes ${MONTH_ABBR_FR[fyEnd]}
          </span>`
       : '';
     idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${fyBadge}`;
@@ -1283,14 +1283,14 @@ function renderAnalyse(){
     const hyp=d.hypothese;
     if(hyp && hyp.date){
       refreshLine.style.display='block';
-      refreshLine.innerHTML=`Dernière mise à jour des données : <span style="color:var(--navy);">${hyp.date}</span>`;
+      refreshLine.innerHTML=`Last data update: <span style="color:var(--navy);">${hyp.date}</span>`;
     } else {
       refreshLine.style.display='none';
     }
   }
   if(!d.data || d.data.length<2){
     const tb=document.getElementById('analyse-body');
-    if(tb) tb.innerHTML=`<tr><td colspan="12" style="color:var(--muted);padding:20px;">Sélectionnez ou ajoutez un titre valide.</td></tr>`;
+    if(tb) tb.innerHTML=`<tr><td colspan="12" style="color:var(--muted);padding:20px;">Select or add a valid ticker.</td></tr>`;
     return;
   }
   const cours=+document.getElementById('cours').value||1.0;
@@ -1313,12 +1313,12 @@ function renderAnalyse(){
   const last5=d.data.slice(-5);
 
   const yearHeaderHtml=(year)=> isOffCalendar
-    ? `${year}<span class="fy-month-tag">clôt. ${MONTH_ABBR_FR[fyEnd]}</span>`
+    ? `${year}<span class="fy-month-tag">close ${MONTH_ABBR_FR[fyEnd]}</span>`
     : `${year}`;
 
   const headRow=document.getElementById('analyse-head');
   if(headRow){
-    headRow.innerHTML=`<th>Indicateur</th>`
+    headRow.innerHTML=`<th>Indicator</th>`
       +last5.map(r=>`<th>${yearHeaderHtml(r.year)}</th>`).join('')
       +PY.map(y=>`<th style="${y===CY?'font-weight:900;':'font-weight:700;'}">${yearHeaderHtml(y)}</th>`).join('');
   }
@@ -1342,17 +1342,17 @@ function renderAnalyse(){
   };
 
   const metrics=[
-    {lbl:`CA (${bigUnit}${cur})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca)},
-    {lbl:'Croissance %',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
+    {lbl:`Revenue (${bigUnit}${cur})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca)},
+    {lbl:'Growth %',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
     {lbl:`EBIT (${bigUnit}${cur})`,      sep:false, hFn:r=>fBigTbl(r.ebit),  pFn:y=>fBigTbl(proj[y].ebit)},
-    {lbl:'Marge EBIT',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
-    {lbl:`Résultat net (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net)},
-    {lbl:'Actions (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
+    {lbl:'EBIT margin',          sep:false, hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
+    {lbl:`Net income (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net)},
+    {lbl:'Shares (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
     {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;return(cours>0&&e>0)?(cours/e).toFixed(1):'—';}},
-    {lbl:`Dette nette (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
-    {lbl:'Dette / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
-    {lbl:`Dividende (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—'},
+    {lbl:`Net debt (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
+    {lbl:'Debt / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
+    {lbl:`Dividend (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—'},
     {lbl:'Div. yield',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
   ];
 
@@ -1467,7 +1467,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
       }
     }
-    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}${retraitLegend(arr)}</div>`;
+    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`:''}${sumHtml}${noteHtml}${retraitLegend(arr)}</div>`;
   };
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
@@ -1549,7 +1549,7 @@ function renderReturnBlock(ticker, proj, cours){
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
     <div class="rb-header">
-      <div class="card-title" style="margin-bottom:0;">Thèse Omnium</div>
+      <div class="card-title" style="margin-bottom:0;">Omnium Thesis</div>
     </div>
     <div class="rb-total-row">
       <div class="rb-eps-val" style="color:var(--navy);">Total Return ${total>=0?'+':''}${total.toFixed(1)}%</div>
@@ -1563,10 +1563,10 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
-    ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Ratios de Price-to-Earning</div>${qeBlock.peStack}`:''}
+    ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}`:''}
     ${qeBlock?.historiqueBlocks?.length?`
     <div class="rb-eps-py-toggle" id="eps-hist-toggle" onclick="toggleEpsHistBlock()">
-      <span class="lbl">Historique (avant ${qeBlock.pyBlock?qeBlock.pyBlock.year:CY-1})</span>
+      <span class="lbl">History (before ${qeBlock.pyBlock?qeBlock.pyBlock.year:CY-1})</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="eps-hist-content">
@@ -1576,7 +1576,7 @@ function renderReturnBlock(ticker, proj, cours){
         ${h.html}
       </div>`).join('')}
     </div>`:''}
-    <div class="card-title" style="margin:16px 0 10px;">Earning-Per-Share</div>
+    <div class="card-title" style="margin:16px 0 10px;">Earnings Per Share</div>
     <div class="rb-eps-grid">
       ${qeBlock?.pyBlock?`
       <div class="rb-eps-block">
@@ -1589,14 +1589,14 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY}</span>
-          <span class="rb-eps-annualval">${epsCY>0?epsCY.toFixed(2)+cur:'—'}${cons?.eps?`<span class="rb-eps-annualsep">/</span>Consensus ${cons.eps.toFixed(2)+cur}${analystsCY?` <span class="rb-eps-analysts">(${analystsCY} analystes)</span>`:''}`:''}</span>
+          <span class="rb-eps-annualval">${epsCY>0?epsCY.toFixed(2)+cur:'—'}${cons?.eps?`<span class="rb-eps-annualsep">/</span>Consensus ${cons.eps.toFixed(2)+cur}${analystsCY?` <span class="rb-eps-analysts">(${analystsCY} analysts)</span>`:''}`:''}</span>
         </div>
         ${qeBlock?qeBlock.chipsCY:''}
       </div>
       <div class="rb-eps-block">
         <div class="rb-eps-headline">
           <span class="rb-eps-year">EPS ${CY+1}</span>
-          <span class="rb-eps-annualval">${epsNY>0?epsNY.toFixed(2)+cur:'—'}${consNY>0?`<span class="rb-eps-annualsep">/</span>Consensus ${consNY.toFixed(2)+cur}${analystsNY?` <span class="rb-eps-analysts">(${analystsNY} analystes)</span>`:''}`:''}</span>
+          <span class="rb-eps-annualval">${epsNY>0?epsNY.toFixed(2)+cur:'—'}${consNY>0?`<span class="rb-eps-annualsep">/</span>Consensus ${consNY.toFixed(2)+cur}${analystsNY?` <span class="rb-eps-analysts">(${analystsNY} analysts)</span>`:''}`:''}</span>
         </div>
         ${qeBlock?qeBlock.chipsNY:''}
       </div>
@@ -1662,7 +1662,7 @@ function seriesRawEps(snap, series){
 }
 
 const VALO_PERIOD_DAYS={'1s':7,'1m':30,'3m':91,'6m':182,'1y':365};
-const VALO_PERIOD_LABELS={'1s':'1 sem.','1m':'1 mois','3m':'3 mois','6m':'6 mois','1y':'1 an'};
+const VALO_PERIOD_LABELS={'1s':'1 wk','1m':'1 mo','3m':'3 mo','6m':'6 mo','1y':'1 yr'};
 const VALO_GAP_TOLERANCE_DAYS=10; // ~1 capture manquee a raison de 2/semaine
 
 function formatFrDate(iso){
@@ -1879,7 +1879,7 @@ function buildValoChartSVG(ticker, opts){
 
   const earningsMarks=visibleEarnings.map(d=>{
     const xd=xOf(d).toFixed(1);
-    return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Résultats – ${formatFrDate(d)}</title></line>`;
+    return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Earnings – ${formatFrDate(d)}</title></line>`;
   }).join('');
 
   const dots=points.map(p=>{
@@ -1941,8 +1941,8 @@ function showValoTooltip(evt){
     document.body.appendChild(tip);
   }
   const valTxt=info.mode==='price' ? (info.price!=null?info.price.toFixed(2):'—') : (info.val!=null?info.val.toFixed(1)+'×':'—');
-  const eventTxt=info.eventLabel ? (info.eventType==='resultats'?`Résultats ${info.eventLabel}`:info.eventLabel) : 'Estimation révisée';
-  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?`<div class="valo-tooltip-flag">↳ ${eventTxt}</div>`:''}`;
+  const eventTxt=info.eventLabel ? (info.eventType==='resultats'?`Earnings ${info.eventLabel}`:info.eventLabel) : 'Revised estimate';
+  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Price':'P/E'}: <b>${valTxt}</b></div>${info.isInflexion?`<div class="valo-tooltip-flag">↳ ${eventTxt}</div>`:''}`;
   const r=rect.getBoundingClientRect();
   tip.style.left=(r.left+r.width/2+window.scrollX)+'px';
   tip.style.top=(r.top+window.scrollY-8)+'px';
@@ -1976,32 +1976,32 @@ function renderValueRankings(){
     const avail=computeRankings(pk, seriesDesc, st.n).total>0;
     if(!avail) anyPeriodUnavailable=true;
     const availDate=!avail?valoPeriodAvailableDate(pk):null;
-    const title=!avail?`Historique insuffisant${availDate?` — disponible à partir du ${formatFrDate(availDate)}`:''}`:'';
+    const title=!avail?`Insufficient history${availDate?` — available from ${formatFrDate(availDate)}`:''}`:'';
     return pill('period', pk, VALO_PERIOD_LABELS[pk], st.period===pk, !avail, title);
   }).join('');
   const periodHint=anyPeriodUnavailable
-    ? `<div class="vr-hint">Périodes grisées : historique encore insuffisant — elles se débloquent automatiquement à mesure que la collecte (2×/semaine) s'accumule.</div>`
+    ? `<div class="vr-hint">Greyed-out periods: not enough history yet — they unlock automatically as collection (2×/week) accumulates.</div>`
     : '';
   const nowYear=new Date().getFullYear();
-  const rRow=[['cy',String(nowYear),'Année en cours'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Année prochaine']]
+  const rRow=[['cy',String(nowYear),'Current year'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Next year']]
     .map(([k,label,title])=>pill('role', k, label, st.role===k, false, title)).join('');
 
   const grid=(list)=> list.length
     ? `<div class="vr-grid">${list.map(r=>renderValueRankingCard(r, seriesDesc)).join('')}</div>`
-    : `<div class="vr-empty">Pas assez d'historique pour cette période — la collecte vient de démarrer, revenez plus tard.</div>`;
+    : `<div class="vr-empty">Not enough history for this period — collection has just started, check back later.</div>`;
 
   wrap.innerHTML=`
     <div class="card vr-controls">
-      <div class="vr-control-group"><span class="vr-control-lbl">Nombre de titres</span><div class="vr-pill-row">${nRow}</div></div>
-      <div class="vr-control-group"><span class="vr-control-lbl">Période</span><div class="vr-pill-row">${pRow}</div>${periodHint}</div>
+      <div class="vr-control-group"><span class="vr-control-lbl">Number of tickers</span><div class="vr-pill-row">${nRow}</div></div>
+      <div class="vr-control-group"><span class="vr-control-lbl">Period</span><div class="vr-pill-row">${pRow}</div>${periodHint}</div>
       <div class="vr-control-group"><span class="vr-control-lbl">P/E</span><div class="vr-pill-row">${rRow}</div></div>
     </div>
     <div class="card">
-      <div class="card-title vr-panel-title vr-down"><b>Plus fortes baisses de P/E</b></div>
+      <div class="card-title vr-panel-title vr-down"><b>Biggest P/E declines</b></div>
       ${grid(losers)}
     </div>
     <div class="card">
-      <div class="card-title vr-panel-title vr-up"><b>Plus fortes hausses de P/E</b></div>
+      <div class="card-title vr-panel-title vr-up"><b>Biggest P/E gains</b></div>
       ${grid(gainers)}
     </div>
   `;
@@ -2143,9 +2143,9 @@ function renderValoHistory(ticker){
 
   if(snaps.length<2){
     const msg=snaps.length===1
-      ? `Historique de valorisation disponible à partir du ${formatFrDate(snaps[0].date)} (collecte en cours, revenez après la prochaine capture).`
-      : `Historique de valorisation pas encore disponible pour ce titre — la collecte démarre au prochain snapshot (2 fois/semaine).`;
-    card.innerHTML=`<div class="card-title" style="text-align:left;"><b>Historique de valorisation</b></div><div class="vr-empty">${msg}</div>`;
+      ? `Valuation history available from ${formatFrDate(snaps[0].date)} (collection in progress, check back after the next capture).`
+      : `Valuation history not yet available for this ticker — collection starts at the next snapshot (2 times/week).`;
+    card.innerHTML=`<div class="card-title" style="text-align:left;"><b>Valuation history</b></div><div class="vr-empty">${msg}</div>`;
     return;
   }
 
@@ -2166,38 +2166,38 @@ function renderValoHistory(ticker){
   const periodBtn=(pk,label)=>{
     const avail=dayDiffISO(latest.date, earliest)>=VALO_PERIOD_DAYS[pk];
     const availDate=!avail?isoDatePlusDays(earliest, VALO_PERIOD_DAYS[pk]):null;
-    const title=!avail?`Disponible à partir du ${formatFrDate(availDate)}`:'';
+    const title=!avail?`Available from ${formatFrDate(availDate)}`:'';
     return `<button class="vr-pill${st.period===pk?' active':''}" ${avail?'':'disabled'} title="${escAttr(title)}" onclick="setValoHistPeriod('${pk}')">${label}</button>`;
   };
-  const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">Tout</button>`;
+  const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">All</button>`;
 
   let chartHtml, legendHtml;
   if(st.mode==='projection'){
     const proj=buildValoProjectionCurvesSVG(ticker, 6);
     if(!proj){
-      chartHtml='<div class="vr-empty">Pas encore assez d\'historique pour tracer une courbe de projection (au moins 2 années projetées requises).</div>';
+      chartHtml='<div class="vr-empty">Not enough history yet to plot a projection curve (at least 2 projected years required).</div>';
       legendHtml='';
     }else{
       chartHtml=proj.svg;
       legendHtml=proj.single
-        ? '<span style="color:var(--muted);">Une seule courbe archivée pour l\'instant — revenez après une révision de la thèse.</span>'
+        ? '<span style="color:var(--muted);">Only one curve archived so far — check back after a thesis revision.</span>'
         : proj.legendHtml;
     }
   }else{
     const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
-    chartHtml=chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>';
-    legendHtml='<span><span class="vr-leg-dot"></span>Estimation révisée (survol : évènement)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
+    chartHtml=chart || '<div class="vr-empty">Not enough data points for this period.</div>';
+    legendHtml='<span><span class="vr-leg-dot"></span>Revised estimate (hover: event)</span><span><span class="vr-leg-dash"></span>Earnings</span>';
   }
   const showSeriesRow=st.mode==='pe';
   const showPeriodRow=st.mode!=='projection';
 
   card.innerHTML=`
-    <div class="card-title" style="text-align:left;"><b>Historique de valorisation</b></div>
+    <div class="card-title" style="text-align:left;"><b>Valuation history</b></div>
     <div class="vr-hist-controls">
-      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Prix')}${modeBtn('projection','Courbe de projection')}</div>
-      ${showSeriesRow ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Année en cours')}${roleBtn('ny','Année prochaine')}${fwdBtn}</div>` : ''}
+      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Price')}${modeBtn('projection','Projection curve')}</div>
+      ${showSeriesRow ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Current year')}${roleBtn('ny','Next year')}${fwdBtn}</div>` : ''}
       ${showPeriodRow ? `<div class="vr-control-row">${Object.keys(VALO_PERIOD_DAYS).map(pk=>periodBtn(pk,VALO_PERIOD_LABELS[pk])).join('')}${allBtn}</div>` : ''}
-      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Chaque courbe = une révision détectée de la projection EPS (2026→2030) ; les plus récentes en plus foncé.</div>' : ''}
+      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Each curve = a detected revision of the EPS projection (2026→2030); more recent ones are darker.</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
     <div class="vr-hist-chart">${chartHtml}</div>
@@ -2233,7 +2233,7 @@ function renderDernierCall(hyp, ticker, opts={}){
   const epsDelta=eps?fmtPctDelta(eps.actual,eps.consensus):null;
 
   const caLine=caActual?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
-      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">CA</span>
+      <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">Revenue</span>
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${caActual}${cur}</span>
       ${caCons?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${caCons}${cur}</span>`:''}
       ${pctBadge(caDelta)}
@@ -2248,35 +2248,35 @@ function renderDernierCall(hyp, ticker, opts={}){
   const crossIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>`;
   const srcBadge=(label,analyzed)=>`<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;color:${analyzed?'var(--teal-text)':'var(--muted)'};">${analyzed?checkIcon:crossIcon}${label}</span>`;
   const sourcesHeading=q?`<div style="display:flex;align-items:center;justify-content:flex-start;gap:14px;flex-wrap:wrap;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Résultats ${esc(q)}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Earnings ${esc(q)}</div>
       <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-        ${srcBadge('Communiqué',!!dc.communiqueAnalyse)}
+        ${srcBadge('Press release',!!dc.communiqueAnalyse)}
         ${srcBadge('Transcript',!!dc.transcriptAnalyse)}
       </div>
     </div>`:'';
   const resultsBlock=(caLine||epsLine)?`<div>${caLine}${epsLine}</div>`:'';
   const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance prochain trimestre</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Next quarter guidance</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
     </div>`:'';
   const gHist=(hyp?.guidanceHistory||[]).filter(h=>h&&h.guidanceAnnuelle);
   const gHistPrev=gHist.slice(0,-1).reverse();
-  const guidTrend=gHistPrev.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;line-height:1.5;">Précédemment : ${gHistPrev.map(h=>`${esc(h.quarter||'')} : ${esc(h.guidanceAnnuelle)}`).join(' → ')}</div>`:'';
+  const guidTrend=gHistPrev.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;line-height:1.5;">Previously: ${gHistPrev.map(h=>`${esc(h.quarter||'')}: ${esc(h.guidanceAnnuelle)}`).join(' → ')}</div>`:'';
   const guidFY=dc.guidanceAnnuelle?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance annuelle</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Annual guidance</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceAnnuelle)}</div>
       ${guidTrend}
     </div>`:'';
   const ltHist=(hyp?.guidanceLongTermeHistory||[]).filter(h=>h&&h.text);
-  const ltTrail=ltHist.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:3px;">Précédemment : ${ltHist.map(h=>`${esc(h.text)}${h.asOf?` (${fmtShortDate(h.asOf)})`:''}`).join(' → ')}</div>`:'';
+  const ltTrail=ltHist.length?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:3px;">Previously: ${ltHist.map(h=>`${esc(h.text)}${h.asOf?` (${fmtShortDate(h.asOf)})`:''}`).join(' → ')}</div>`:'';
   const guidLT=hyp?.guidanceLongTerme?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Guidance long terme</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Long-term guidance</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(hyp.guidanceLongTerme)}</div>
       ${ltTrail}
     </div>`:'';
   const points=(dc.pointsCles||[]).filter(Boolean);
   const pointsBlock=points.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Points clés du call</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Key points from the call</div>
       ${points.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">• ${esc(p)}</div>`).join('')}
     </div>`:'';
 
@@ -2298,7 +2298,7 @@ function renderOwnership(own, ticker){
   const hist=(own.history||[]).filter(h=>h&&h.insiderPct!=null&&h.insiderPct!=='');
   const lastHist=hist.length?hist[hist.length-1]:null;
   const deltaPt=(hasInsider&&lastHist)?(+own.insiderPct-+lastHist.insiderPct):null;
-  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% au ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:700;font-family:'Poppins',sans-serif;color:var(--muted);white-space:nowrap;">(${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt)</span>`:'';
+  const deltaBadge=deltaPt!=null?`<span title="vs ${(+lastHist.insiderPct).toFixed(1)}% as of ${fmtShortDate(lastHist.asOf)}" style="font-size:10.5px;font-weight:700;font-family:'Poppins',sans-serif;color:var(--muted);white-space:nowrap;">(${deltaPt>=0?'+':''}${deltaPt.toFixed(1)}pt)</span>`:'';
 
   const insiderLine=hasInsider?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
       <span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:700;">Insiders</span>
@@ -2309,11 +2309,11 @@ function renderOwnership(own, ticker){
   const insiderSrc=own.insiderSource?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:1px;">${esc(own.insiderSource)}</div>`:'';
 
   const trail=hist.concat(hasInsider?[{asOf:own.asOf,insiderPct:own.insiderPct}]:[]);
-  const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">Historique : ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
+  const trailLine=trail.length>1?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:4px;">History: ${trail.map(h=>`${(+h.insiderPct).toFixed(1)}% (${fmtShortDate(h.asOf)})`).join(' → ')}</div>`:'';
 
   const holders=(own.notableHolders||[]).filter(h=>h&&h.investor);
   const holdersBlock=holders.length?`<div style="margin-top:8px;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Fonds notables (13F)</div>
+      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Notable holders (13F)</div>
       ${holders.map(h=>`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
         <span style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;">${esc(h.investor)}</span>
         ${h.pct!=null?`<span style="font-size:11.5px;color:var(--text);">${(+h.pct).toFixed(1)}%</span>`:''}
@@ -2325,7 +2325,7 @@ function renderOwnership(own, ticker){
 
   if(!insiderLine&&!holdersBlock&&!coverageNote)return '';
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Actionnariat${own.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(own.asOf)}</span>`:''}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Ownership${own.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· research as of ${esc(own.asOf)}</span>`:''}</div>
     ${insiderLine}${insiderSrc}${trailLine}${holdersBlock}${coverageNote}
   </div>`;
 }
@@ -2334,13 +2334,13 @@ function renderCompliance(comp, ticker){
   if(!comp)return '';
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const STATUS_LABEL={
-    sollicitation:'Sollicitation d\'avocats',
-    enquete_en_cours:'Enquête en cours',
-    plainte_deposee:'Plainte déposée',
-    reglee:'Réglée',
-    classee_sans_suite:'Classée sans suite',
-    condamnation:'Condamnation',
-    non_fondee:'Non fondée'
+    sollicitation:'Law firm solicitation',
+    enquete_en_cours:'Investigation ongoing',
+    plainte_deposee:'Complaint filed',
+    reglee:'Settled',
+    classee_sans_suite:'Dismissed',
+    condamnation:'Conviction',
+    non_fondee:'Unfounded'
   };
   const items=(comp.items||[]).filter(it=>it&&it.title);
   const itemsBlock=items.length?items.map(it=>{
@@ -2351,7 +2351,7 @@ function renderCompliance(comp, ticker){
         ${statusLbl?`<span style="font-size:9.5px;font-weight:800;font-family:'Poppins',sans-serif;color:var(--navy);background:var(--navy-light);border-radius:5px;padding:1px 7px;text-transform:uppercase;letter-spacing:.03em;">${statusLbl}</span>`:''}
       </div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:3px;">${esc(it.title)}</div>
-      ${it.allegedBy?`<div style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:2px;">Par : ${esc(it.allegedBy)}</div>`:''}
+      ${it.allegedBy?`<div style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;margin-top:2px;">By: ${esc(it.allegedBy)}</div>`:''}
       ${it.outcome?`<div style="font-size:11.5px;color:var(--text);font-style:italic;margin-top:2px;">${esc(it.outcome)}</div>`:''}
       ${it.source?`<div style="font-size:9.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;margin-top:2px;">${esc(it.source)}${it.date?' · '+esc(it.date):''}</div>`:''}
     </div>`;
@@ -2361,7 +2361,7 @@ function renderCompliance(comp, ticker){
 
   if(!itemsBlock&&!note)return '';
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Compliance${comp.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· recherche du ${esc(comp.asOf)}</span>`:''}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Compliance${comp.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· research as of ${esc(comp.asOf)}</span>`:''}</div>
     ${note}${itemsBlock}
   </div>`;
 }
@@ -2374,7 +2374,7 @@ function renderCoherenceQualitative(cq, ticker){
   const suivi=(cq.suiviNarratif||[]).filter(s=>typeof s==='string'&&s.trim());
   const MATERIALITE_COLOR={haute:'#c0392b',moyenne:'var(--gold-text)'};
   const SENS_COLOR={positif:'var(--teal-dark-text)',negatif:'#c0392b',neutre:'var(--muted)'};
-  const SENS_LABEL={positif:'positif',negatif:'négatif',neutre:'neutre'};
+  const SENS_LABEL={positif:'positive',negatif:'negative',neutre:'neutral'};
 
   // Icone + libelle d'entete selon les 3 etats (rouge = incoherence,
   // dore = rupture materielle mais positive/non tranchee, vert = aucune
@@ -2384,17 +2384,17 @@ function renderCoherenceQualitative(cq, ticker){
     incoherences_detectees:{
       color:'#c0392b',
       icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>`,
-      label:`${points.length} point${points.length>1?'s':''} en tension avec les évènements précédents`
+      label:`${points.length} point${points.length>1?'s':''} in tension with prior events`
     },
     rupture_positive:{
       color:'var(--gold-text)',
       icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold-text)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 15l6-6 4 4 6-8M20 5h-4v4"/></svg>`,
-      label:`${points.length} rupture${points.length>1?'s':''} positive${points.length>1?'s':''} à surveiller vs trajectoire antérieure`
+      label:`${points.length} positive break${points.length>1?'s':''} to watch vs. prior trajectory`
     },
     coherent:{
       color:'var(--ok)',
       icon:`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 6L9 17l-5-5"></path></svg>`,
-      label:'Aucune rupture matérielle détectée'
+      label:'No material break detected'
     }
   };
   const head=HEADER_BY_STATUT[statut]||HEADER_BY_STATUT.coherent;
@@ -2415,14 +2415,14 @@ function renderCoherenceQualitative(cq, ticker){
         ${p.materialite?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:${col};text-transform:uppercase;letter-spacing:.03em;">${esc(p.materialite)}</span>`:''}
         ${p.sens?`<span style="font-size:9px;font-weight:800;font-family:'Poppins',sans-serif;color:${sensCol};text-transform:uppercase;letter-spacing:.03em;">${esc(SENS_LABEL[p.sens]||p.sens)}</span>`:''}
       </div>
-      ${p.ancienPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:4px;"><b>Avant :</b> ${esc(p.ancienPropos)}</div>`:''}
-      ${p.nouveauPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:2px;"><b>Maintenant :</b> ${esc(p.nouveauPropos)}</div>`:''}
+      ${p.ancienPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:4px;"><b>Before:</b> ${esc(p.ancienPropos)}</div>`:''}
+      ${p.nouveauPropos?`<div style="font-size:11.5px;color:var(--text);line-height:1.5;margin-top:2px;"><b>Now:</b> ${esc(p.nouveauPropos)}</div>`:''}
       ${p.justification?`<div style="font-size:10.5px;color:var(--muted);font-style:italic;line-height:1.4;margin-top:4px;">${esc(p.justification)}</div>`:''}
     </div>`;
   }).join(''):'';
 
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Suivi narratif &amp; cohérence${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
+    <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Narrative &amp; coherence tracking${cq.asOf?` <span style="font-weight:400;opacity:.75;text-transform:none;letter-spacing:0;">· ${esc(cq.asOf)}</span>`:''}</div>
     <div style="display:flex;align-items:center;gap:6px;margin-top:4px;font-size:12px;font-weight:700;color:${head.color};">
       ${head.icon}
       ${head.label}
@@ -2481,13 +2481,13 @@ function renderContextBullets(ticker, proj, cours){
   const displayText=fullAnalysis||fullSumm;
   const partList=d.particularites||[];
   const partBanner=partList.length?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Particularité(s) prise(s) en compte</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Special item(s) factored in</div>
     ${partList.map(p=>`<div style="font-size:12px;color:var(--text);line-height:1.5;">• ${(p.text||'').replace(/</g,'&lt;')}</div>`).join('')}
   </div>`:'';
   const incoh=checkEpsCoherence(d);
   const cohBanner=incoh.length?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">⚠ Incohérence interne de l'hypothèse</div>
-    ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y} : EPS fourni ${b.eps.toFixed(2)} ≠ Net/Actions ${b.implied.toFixed(2)}</div>`).join('')}
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">⚠ Internal inconsistency in the assumption</div>
+    ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y}: EPS provided ${b.eps.toFixed(2)} ≠ Net income/Shares ${b.implied.toFixed(2)}</div>`).join('')}
   </div>`:'';
 
   const {CY:_CYforCons}=yearsFor(ticker);
@@ -2495,13 +2495,13 @@ function renderContextBullets(ticker, proj, cours){
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
   const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
   const consSourceBanner=srcLine?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Source consensus EPS</div>
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">EPS consensus source</div>
     <div style="font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;line-height:1.4;">${srcLine.replace(/</g,'&lt;')}</div>
   </div>`:'';
 
   traceEl.style.display='block';
   const isEarningsRefresh=!!(d.hypothese?.dernierCall?.quarter);
-  const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Mise à jour'}</div>`;
+  const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Update'}</div>`;
   traceEl.innerHTML=`<div>
     ${dcBanner}
     ${cqBanner}
@@ -2535,7 +2535,7 @@ const NEWS_DISMISSED_KEY='omniumDismissedNewsDates';
 const NEWS_MAX_LINES=10;
 const NEWS_COUNT_CAP=40;
 const NEWS_TYPE_ORDER=['communique','web','conference','youtube'];
-const NEWS_TYPE_LABEL={communique:'Communiqués',web:'Web',youtube:'Vidéos',conference:'Conférences'};
+const NEWS_TYPE_LABEL={communique:'Press releases',web:'Web',youtube:'Videos',conference:'Conferences'};
 const NEWS_TYPE_ICON={
   communique:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 12V5a2 2 0 0 1 2-2h7l5 5v4"/><path d="M5 15h14"/><path d="M5 19h14"/></svg>',
   web:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000190" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>',
@@ -2581,8 +2581,8 @@ function renderNewsBar(){
   wrap.innerHTML=`<div class="news-bar-wrap">${lines.map(l=>{
     const countTxt=(+l.total||0)>NEWS_COUNT_CAP?NEWS_COUNT_CAP+'+':l.total;
     return `<div class="news-bar">
-      <span class="news-bar-text" onclick="openNewsDetailForDate('${esc(l.date)}')">News au ${formatNewsDayMonth(l.date)}&nbsp;: <b>${countTxt}</b></span>
-      <button class="news-bar-close" title="Ignorer cette ligne" onclick="event.stopPropagation();dismissNewsLine('${esc(l.date)}')">
+      <span class="news-bar-text" onclick="openNewsDetailForDate('${esc(l.date)}')">News for ${formatNewsDayMonth(l.date)}&nbsp;: <b>${countTxt}</b></span>
+      <button class="news-bar-close" title="Dismiss this line" onclick="event.stopPropagation();dismissNewsLine('${esc(l.date)}')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>`;
@@ -2677,10 +2677,10 @@ function renderMarketActionBar(){
   if(!ma){ wrap.innerHTML=''; return; }
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const n=ma.movers.length;
-  const label=n>1?`${n} titres`:`${n} titre`;
+  const label=n>1?`${n} tickers`:`${n} ticker`;
   wrap.innerHTML=`<div class="market-action-bar">
-      <span class="market-action-bar-text" onclick="openMarketActionDetail()">${esc(formatNewsDayMonth(ma.date))} — Progression significative : <b>${label}</b></span>
-      <button class="market-action-bar-close" title="Ignorer" onclick="event.stopPropagation();dismissMarketAction('${esc(ma.date)}')">
+      <span class="market-action-bar-text" onclick="openMarketActionDetail()">${esc(formatNewsDayMonth(ma.date))} — Significant move: <b>${label}</b></span>
+      <button class="market-action-bar-close" title="Dismiss" onclick="event.stopPropagation();dismissMarketAction('${esc(ma.date)}')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>`;
@@ -2699,9 +2699,9 @@ function openMarketActionDetail(){
   overlay.className='market-action-overlay';
   overlay.id='market-action-overlay';
   overlay.innerHTML=`<div class="market-action-modal">
-      <div class="market-action-modal-title">Progression significative — ${esc(formatNewsDayMonth(ma.date))}</div>
+      <div class="market-action-modal-title">Significant move — ${esc(formatNewsDayMonth(ma.date))}</div>
       ${rows}
-      <button class="market-action-modal-close" onclick="closeMarketActionDetail()">Fermer</button>
+      <button class="market-action-modal-close" onclick="closeMarketActionDetail()">Close</button>
     </div>`;
   overlay.addEventListener('click',e=>{ if(e.target===overlay)closeMarketActionDetail(); });
   document.body.appendChild(overlay);
@@ -2725,7 +2725,7 @@ function closeMarketActionDetail(){
 // newsBarLines()) : c'est exactement le public cible (visiteurs d'une demo).
 // ══════════════════════════════════════════════════════════════
 const WEEKLY_AI_DISMISS_KEY='omniumWeeklyAiDismissedDate';
-const MATERIALITE_LABEL={fort:'Fort',moyen:'Moyen',faible:'Faible',nul:'Nul'};
+const MATERIALITE_LABEL={fort:'High',moyen:'Medium',faible:'Low',nul:'None'};
 const MATERIALITE_ORDER={fort:3,moyen:2,faible:1,nul:0};
 
 // Date (YYYY-MM-DD) du dernier run hebdo reussi, ou null si le pipeline n'a
@@ -2768,13 +2768,13 @@ function renderWeeklyAiBar(){
   const items=weeklyAiItems();
   if(!runDate || !items.length || isWeeklyAiDismissed(runDate)){ wrap.innerHTML=''; return; }
   const materielCount=items.filter(it=>it.materialite==='fort'||it.materialite==='moyen').length;
-  const sub=materielCount>0?` <span class="weekly-ai-bar-sub">· ${materielCount} matérielle${materielCount>1?'s':''}</span>`:'';
+  const sub=materielCount>0?` <span class="weekly-ai-bar-sub">· ${materielCount} material</span>`:'';
   wrap.innerHTML=`<div class="weekly-ai-bar-wrap"><div class="weekly-ai-bar">
       <span class="weekly-ai-bar-text" onclick="openWeeklyAiDetail()">
         <span class="weekly-ai-bar-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.9 5.8L20 9.5l-6.1 1.7L12 17l-1.9-5.8L4 9.5l6.1-1.7z"/></svg></span>
-        <span>Veille IA hebdo — ${formatNewsDayMonth(runDate)}&nbsp;: <b>${items.length}</b> actualité${items.length>1?'s':''} analysée${items.length>1?'s':''}${sub}</span>
+        <span>Weekly AI scan — ${formatNewsDayMonth(runDate)}&nbsp;: <b>${items.length}</b> item${items.length>1?'s':''} analyzed${sub}</span>
       </span>
-      <button class="weekly-ai-bar-close" title="Ignorer" onclick="event.stopPropagation();dismissWeeklyAi('${runDate}')">
+      <button class="weekly-ai-bar-close" title="Dismiss" onclick="event.stopPropagation();dismissWeeklyAi('${runDate}')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div></div>`;
@@ -2799,7 +2799,7 @@ function openWeeklyAiDetail(){
 
   const proposals=weeklyAiCalendarProposals();
   const calendarSection=proposals.length?`<div class="weekly-ai-calendar-section">
-      <div class="weekly-ai-calendar-hd">Dates calendrier à valider (${proposals.length})</div>
+      <div class="weekly-ai-calendar-hd">Calendar dates to confirm (${proposals.length})</div>
       ${proposals.map(p=>`<div class="weekly-ai-calendar-row"><span>${esc(p.ticker)} — ${esc(p.label)}</span><b>${esc(p.date)}</b></div>`).join('')}
     </div>`:'';
 
@@ -2807,8 +2807,8 @@ function openWeeklyAiDetail(){
   overlay.className='weekly-ai-overlay';
   overlay.id='weekly-ai-overlay';
   overlay.innerHTML=`<div class="weekly-ai-modal">
-      <div class="weekly-ai-modal-title">Veille IA hebdo — ${esc(formatNewsDayMonth(runDate))}</div>
-      <div class="weekly-ai-modal-subtitle">Recherche + classement par matérialité contre la thèse, portefeuille complet (Sonnet 5)</div>
+      <div class="weekly-ai-modal-title">Weekly AI scan — ${esc(formatNewsDayMonth(runDate))}</div>
+      <div class="weekly-ai-modal-subtitle">Research + materiality ranking against the thesis, full portfolio (Sonnet 5)</div>
       ${tickerBlocks.map(t=>`
         <div class="weekly-ai-ticker-block">
           <div class="weekly-ai-ticker-name">${esc(t.name)}</div>
@@ -2822,7 +2822,7 @@ function openWeeklyAiDetail(){
             </div>`).join('')}
         </div>`).join('')}
       ${calendarSection}
-      <button class="weekly-ai-modal-close" onclick="closeWeeklyAiDetail()">Fermer</button>
+      <button class="weekly-ai-modal-close" onclick="closeWeeklyAiDetail()">Close</button>
     </div>`;
   overlay.addEventListener('click',e=>{ if(e.target===overlay)closeWeeklyAiDetail(); });
   document.body.appendChild(overlay);
@@ -2875,11 +2875,11 @@ function renderNewsDetail(){
   // rend visible et reversible le fait que la vue est restreinte a ce
   // jour-la, plutot qu'un filtrage silencieux.
   const filterBanner=newsDetailDateFilter?`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding:10px 16px;background:var(--navy-light);border-radius:10px;">
-      <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">Actualités du ${esc(formatNewsDayMonth(newsDetailDateFilter))}</span>
-      <span style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;text-decoration:underline;" onclick="clearNewsDetailFilter()">Voir toutes les actualités</span>
+      <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">News for ${esc(formatNewsDayMonth(newsDetailDateFilter))}</span>
+      <span style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;text-decoration:underline;" onclick="clearNewsDetailFilter()">View all news</span>
     </div>`:'';
   if(!sections.length){
-    el.innerHTML=filterBanner+'<div class="news-empty">Aucune actualité disponible pour le moment.</div>';
+    el.innerHTML=filterBanner+'<div class="news-empty">No news available at the moment.</div>';
     return;
   }
   el.innerHTML=filterBanner+sections.map(sec=>`
@@ -3005,8 +3005,8 @@ function renderPortfolio(){
   if(hdr) hdr.style.display = items.length ? 'flex' : 'none';
 
   if(!items.length){
-    if(countEl)countEl.textContent='0 titre';
-    list.innerHTML='<div class="pf-empty">Aucun titre. database.json est peut-être vide ou non configuré.</div>';
+    if(countEl)countEl.textContent='0 tickers';
+    list.innerHTML='<div class="pf-empty">No tickers. database.json may be empty or not configured.</div>';
     pfLastFilteredItems=[];
     return;
   }
@@ -3015,8 +3015,8 @@ function renderPortfolio(){
   const filtered=q?items.filter(({tk,d})=>pfNormalize(d.name||tk).startsWith(q)||pfNormalize(tk).startsWith(q)):items;
 
   if(countEl)countEl.textContent=q
-    ? filtered.length+' titre'+(filtered.length!==1?'s':'')+' (sur '+items.length+')'
-    : items.length+' titre'+(items.length!==1?'s':'');
+    ? filtered.length+' ticker'+(filtered.length!==1?'s':'')+' (of '+items.length+')'
+    : items.length+' ticker'+(items.length!==1?'s':'');
 
   const sorted=q
     ? filtered.slice().sort((a,b)=>(a.d.name||a.tk).localeCompare(b.d.name||b.tk,'fr',{sensitivity:'base'}))
@@ -3024,7 +3024,7 @@ function renderPortfolio(){
   pfLastFilteredItems=sorted;
 
   if(!sorted.length){
-    list.innerHTML='<div class="pf-empty">Aucun titre ne correspond à « '+esc(pfNameFilter)+' ».</div>';
+    list.innerHTML='<div class="pf-empty">No ticker matches "'+esc(pfNameFilter)+'".</div>';
     return;
   }
 
@@ -3076,11 +3076,11 @@ function startMarketActionPoll(){
 document.addEventListener('DOMContentLoaded', async function(){
   const guestStatus=await checkGuestLink();
   if(guestStatus==='invalid'){
-    showAccessScreen('Ce lien d’accès a expiré. Contactez Mathieu Chandelier pour en obtenir un nouveau.');
+    showAccessScreen('This access link has expired. Contact Mathieu Chandelier to get a new one.');
     return;
   }
   if(guestStatus==='error'){
-    showAccessScreen('Impossible de vérifier l’accès pour le moment. Merci de réessayer dans un instant.');
+    showAccessScreen('Unable to verify access right now. Please try again shortly.');
     return;
   }
   if(guestStatus==='none'){
