@@ -3388,27 +3388,12 @@ function buildGuidanceScorecard(ticker){
         <span>${formatFrDate(beats[0].d)}</span><span>${formatFrDate(beats[beats.length-1].d)}</span>
       </div>`;
   })();
-  const single=beats.length===1
-    ? `<p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Single publication measured so far — ${formatFrDate(beats[0].d)}</p>` : '';
 
-  // appliedToProjection : le fait le plus decisionnel du bloc - cette tenue
-  // de guidance a-t-elle ete repercutee dans les projections ? - et il
-  // n'etait affiche nulle part.
-  const applied=typeof gs.appliedToProjection==='boolean' ? (()=>{
-    const yes=gs.appliedToProjection;
-    return `<div style="display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;border-radius:20px;padding:3px 9px;margin-top:10px;`
-      +`background:${yes?'var(--navy-light)':'#f4f5f7'};color:${yes?'var(--navy)':'var(--muted)'};">`
-      // Le libelle doit dire CE QUI est applique et A QUOI : le champ vaut
-      // true uniquement si weightedBeatPct a reellement ete integre dans
-      // adjEPS/adjCA de l'annee en cours (INSTRUCTIONS.md). "Applied to
-      // projections" ne nommait ni la quantite ni sa cible.
-      +`${yes?'◆ Factored into current-year EPS':'◇ Not factored into current-year EPS'}</div>`;
-  })() : '';
 
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     ${hero||`<div style="font-size:13px;color:var(--navy);">${summary}</div>`}
     <p style="font-size:9.5px;color:var(--muted);margin:5px 0 0;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
-    ${track}${single}${applied}
+    ${track}
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:10px;">
       <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">Track record</span>
       <span class="rb-eps-py-chevron">▼</span>

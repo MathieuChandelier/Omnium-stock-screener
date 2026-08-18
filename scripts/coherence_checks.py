@@ -189,6 +189,24 @@ def c11():
                                f"sur {len(futur)} annees projetees"))
     return bad
 
+@check("C12 scorecard : la tenue de guidance doit etre integree aux projections")
+def c12():
+    # appliedToProjection n'est pas une option : des lors qu'un
+    # weightedBeatPct exploitable existe, il DOIT etre repercute dans
+    # adjEPS/adjCA de l'annee en cours (INSTRUCTIONS.md l.717). Un false
+    # signale donc une projection qui ignore le comportement observe de
+    # l'emetteur - une anomalie a corriger au refresh, pas un etat a
+    # afficher sur la fiche.
+    bad=[]
+    for tk,t in FICHES.items():
+        gs=t['hypothese'].get('guidanceScorecard')
+        if not isinstance(gs,dict): continue
+        if gs.get('weightedBeatPct') is None: continue
+        if gs.get('appliedToProjection') is not True:
+            bad.append((tk,f"weightedBeatPct={gs['weightedBeatPct']} non repercute "
+                           f"(appliedToProjection={gs.get('appliedToProjection')!r})"))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0
