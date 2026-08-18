@@ -432,10 +432,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-val.sel:hover{border-bottom-color:var(--border);}
 .pe-val.on{border-bottom-color:var(--navy);}
 .pe-val.dead{color:var(--muted);opacity:.5;}
-.pe-gap{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-align:right;margin-left:10px;}
-.pe-gap.up{color:var(--gold-text);}
-.pe-gap.down{color:var(--teal-dark-text);}
-.pe-gap.dead{color:var(--muted);opacity:.45;}
+.pe-gap{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);text-align:right;margin-left:10px;}
+.pe-gap.dead{opacity:.45;}
 .pe-colhead{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:right;margin-bottom:3px;}
 .pe-exhead{grid-column:3;margin-left:10px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
@@ -1712,11 +1710,13 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       : ` title="${escAttr('No history yet — net debt for this horizon is only archived from 18/08/2026 onward')}"`;
     return `<div class="${cls}"${attrs}>${v.toFixed(1)}×</div>`;
   };
+  // Toujours sur le P/E PUBLIE, jamais sur l'ex-cash : un ecart a la moyenne
+  // qui changerait de base selon la cellule selectionnee melangerait deux
+  // referentiels dans une meme colonne.
   const gapCell=(r)=>{
-    const desc=Object.assign({}, r.series, st.exCash?{exCash:true}:{});
-    const g=valoSeriesAvgGap(CT, desc);
+    const g=valoSeriesAvgGap(CT, r.series);
     if(g==null) return `<div class="pe-gap dead">—</div>`;
-    return `<div class="pe-gap ${g>=0?'up':'down'}">${g>=0?'+':'−'}${Math.abs(g).toFixed(1)}%</div>`;
+    return `<div class="pe-gap">${g>=0?'+':'−'}${Math.abs(g).toFixed(1)}%</div>`;
   };
   const peStack=`<div class="pe-stack${hasExCash?' has-ex':''}">
       <div></div><div class="pe-colhead">Reported</div>${hasExCash?`<div class="pe-colhead pe-exhead">Ex-cash</div>`:''}<div class="pe-colhead">vs. avg</div>
