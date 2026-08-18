@@ -3353,14 +3353,63 @@ function buildGuidanceScorecard(ticker){
   // resume au fil du texte, comme une ligne de plus dans la carte, pas
   // une section qui s'annonce. Le detail (cadence, metrique, timeline)
   // reste accessible au clic, dans le contenu deplie.
+  // Le chiffre porte l'information, la phrase le qualifie : la tenue de
+  // guidance etait noyee au fil d'une ligne de texte alors que c'est le
+  // premier element qu'on vient chercher.
+  const pct=gs.weightedBeatPct;
+  const beat=pct==null || pct>=0;
+  const heroColor=beat?'var(--navy)':'var(--gold-text)';
+  const hero=pct==null ? '' : `<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+      <span style="font-size:22px;font-weight:800;line-height:1;color:${heroColor};">${pct>=0?'+':'−'}${Math.abs(pct).toFixed(1)}%</span>
+      <span style="font-size:13px;color:var(--text);">${beat?'above':'below'} ${gs.comparedAgainst==='guidance'?'guidance':'consensus'} on average</span>
+    </div>`;
+
+  // Barre de tenue : une graduation par publication mesuree, de part et
+  // d'autre d'une ligne de zero MEDIANE - un depassement monte, un manque
+  // descend. Elle n'apparait qu'a partir de DEUX mesures : une seule ne
+  // fait pas un historique, et une barre isolee laisserait croire le
+  // contraire. La timeline est stockee du plus recent au plus ancien.
+  const beats=(gs.timeline||[]).filter(e=>typeof e.beatPct==='number')
+    .slice().reverse().map(e=>({v:e.beatPct, d:e.date}));
+  const track=beats.length<2 ? '' : (()=>{
+    const m=Math.max(...beats.map(b=>Math.abs(b.v)),1);
+    const cols=beats.map(b=>{
+      const h=Math.max(8, Math.abs(b.v)/m*100);
+      const bar=`<div style="width:100%;height:${h}%;background:${b.v<0?'var(--gold-text)':'var(--navy)'};opacity:.9;border-radius:${b.v<0?'0 0 2px 2px':'2px 2px 0 0'};"></div>`;
+      return `<div style="flex:1;min-width:5px;display:flex;flex-direction:column;justify-content:center;" title="${formatFrDate(b.d)} : ${b.v>=0?'+':''}${b.v}%">`
+        +`<div style="height:50%;display:flex;align-items:flex-end;">${b.v>=0?bar:''}</div>`
+        +`<div style="height:50%;display:flex;">${b.v<0?bar:''}</div></div>`;
+    }).join('');
+    return `<div style="position:relative;display:flex;align-items:stretch;gap:3px;height:38px;margin:12px 0 3px;">
+        <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border);"></div>${cols}
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted);">
+        <span>${formatFrDate(beats[0].d)}</span><span>${formatFrDate(beats[beats.length-1].d)}</span>
+      </div>`;
+  })();
+  const single=beats.length===1
+    ? `<p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Single publication measured so far — ${formatFrDate(beats[0].d)}</p>` : '';
+
+  // appliedToProjection : le fait le plus decisionnel du bloc - cette tenue
+  // de guidance a-t-elle ete repercutee dans les projections ? - et il
+  // n'etait affiche nulle part.
+  const applied=typeof gs.appliedToProjection==='boolean' ? (()=>{
+    const yes=gs.appliedToProjection;
+    return `<div style="display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;border-radius:20px;padding:3px 9px;margin-top:10px;`
+      +`background:${yes?'var(--navy-light)':'#f4f5f7'};color:${yes?'var(--navy)':'var(--muted)'};">`
+      +`${yes?'◆ Applied to Omnium projections':'◇ Not applied to projections'}</div>`;
+  })() : '';
+
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()">
-      <span class="lbl" style="text-transform:none;font-size:13px;font-weight:400;color:var(--navy);">${summary}</span>
+    ${hero||`<div style="font-size:13px;color:var(--navy);">${summary}</div>`}
+    <p style="font-size:9.5px;color:var(--muted);margin:5px 0 0;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
+    ${track}${single}${applied}
+    <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:10px;">
+      <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">Track record</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
-      <p style="font-size:9.5px;color:var(--muted);margin:10px 0 8px;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
-      <div>${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
+      <div style="margin-top:9px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
     </div>
   </div>`;
 }
