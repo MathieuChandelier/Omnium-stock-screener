@@ -26,9 +26,10 @@ ndCY/shCY (ajoutes le 17/08/2026) puis ndNY/shNY (ajoutes le 18/08/2026) :
 copie de hypothese.adjND/adjShares pour l'annee en cours ET l'annee
 suivante, pour permettre un P/E ex-cash historise en plus du P/E classique
 deja archive. On s'arrete a CY+1 : la table de multiples cote app n'expose
-l'ex-cash que sur ces deux echeances (plus le 12m fwd, qui se calcule sur
-la tresorerie de l'annee en cours), archiver CY+2 et au-dela ne servirait
-aucun affichage. NON RETROACTIF comme le reste du fichier : les snapshots
+l'ex-cash que sur ces echeances. ndY2/shY2 ajoutes le 18/08/2026 avec le
+retrait du 12 mois glissant, remplace par le millesime N+2 dans la table de
+multiples : trois echeances affichees, donc trois echeances archivees. Au-dela
+de CY+2 rien n'est archive, aucun affichage ne le consomme. NON RETROACTIF comme le reste du fichier : les snapshots
 deja pris restent sans ndNY/shNY, l'historique ex-cash de l'annee suivante
 demarre donc a la premiere capture posterieure a cet ajout.
 
@@ -158,6 +159,8 @@ def snapshot_ticker(ticker: str, run_date_str: str):
     sh_cy = _adj("adjShares", cy)
     nd_ny = _adj("adjND", ny)
     sh_ny = _adj("adjShares", ny)
+    nd_y2 = _adj("adjND", cy + 2)
+    sh_y2 = _adj("adjShares", cy + 2)
 
     try:
         price = fetch_price(sym)
@@ -178,6 +181,10 @@ def snapshot_ticker(ticker: str, run_date_str: str):
         snap["ndNY"] = nd_ny
     if sh_ny is not None:
         snap["shNY"] = sh_ny
+    if nd_y2 is not None:
+        snap["ndY2"] = nd_y2
+    if sh_y2 is not None:
+        snap["shY2"] = sh_y2
 
     earnings_dates = collect_earnings_dates(tdata)
     return ticker, (snap, earnings_dates), "ok"

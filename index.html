@@ -1586,7 +1586,7 @@ function exCashPriceForYear(d, cours, year){
   return p>0 ? p : cours;
 }
 
-function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY, consInfo){
+function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY, consInfo, proj2Eps, ndY2, shY2){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   // Les blocs sont reconstruits a neuf : l'etat d'ouverture d'un detail ne
   // doit pas survivre au re-rendu, sinon le clic suivant sur la meme
@@ -1731,7 +1731,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     }));
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
-  const peFwd=(cours>0&&qe.epsForward12m>0)?(cours/qe.epsForward12m):null;
+  const epsY2=proj2Eps!=null?proj2Eps:null;
+  const peY2=(cours>0&&epsY2>0)?(cours/epsY2):null;
   const exCashPrice=(nd,sh)=>{
     if(nd==null||!(sh>0))return null;
     const p=cours+(nd/sh);
@@ -1740,12 +1741,10 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const priceExCY=exCashPrice(ndCY,shCY);
   const priceExNY=exCashPrice(ndNY,shNY);
   const peExCY=(priceExCY!=null&&epsCY>0)?(priceExCY/epsCY):null;
-  const peExFwd=(priceExCY!=null&&qe.epsForward12m>0)?(priceExCY/qe.epsForward12m):null;
+  const priceExY2=exCashPrice(ndY2,shY2);
+  const peExY2=(priceExY2!=null&&epsY2>0)?(priceExY2/epsY2):null;
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
-  const hasNdData=(ndCY!=null&&shCY>0)||(ndNY!=null&&shNY>0);
-  // "->" vient des donnees (forwardPeriodLabel, formats heterogenes selon
-  // les titres) : on le rend proprement a l'affichage sans toucher au JSON.
-  const fwdLbl=qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel).replace(/\s*->\s*/g,' → '):'';
+  const hasNdData=(ndCY!=null&&shCY>0)||(ndNY!=null&&shNY>0)||(ndY2!=null&&shY2>0);
 
   // La table de multiples EST le selecteur du graphique qui la suit : les
   // trois series y etaient nommees une premiere fois, et une seconde fois
@@ -1766,8 +1765,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const st=_valoHistState;
   const rows=[
     {key:'cy',  label:`${CY}`, series:{kind:'role',role:'cy'}, std:peCY,  ex:peExCY},
-    {key:'fwd', label:`12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}`, series:{kind:'fwd'}, std:peFwd, ex:peExFwd},
-    {key:'ny',  label:`${CY+1}`, series:{kind:'role',role:'ny'}, std:peNY, ex:peExNY}
+    {key:'ny',  label:`${CY+1}`, series:{kind:'role',role:'ny'}, std:peNY, ex:peExNY},
+    {key:'y2',  label:`${CY+2}`, series:{kind:'role',role:'y2'}, std:peY2, ex:peExY2}
   ];
   const cell=(r)=>{
     const useEx=r.ex!=null;
@@ -1892,8 +1891,11 @@ function renderReturnBlock(ticker, proj, cours){
   const shCY=d.hypothese?.adjShares?.[CY];
   const ndNY=d.hypothese?.adjND?.[CY+1];
   const shNY=d.hypothese?.adjShares?.[CY+1];
+  const ndY2=d.hypothese?.adjND?.[CY+2];
+  const shY2=d.hypothese?.adjShares?.[CY+2];
   const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY,
-    {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)});
+    {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)},
+    proj[CY+2]?.eps, ndY2, shY2);
 
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
@@ -1945,7 +1947,7 @@ function pctBadge(delta){
 // VALUE RANKINGS & HISTORIQUE DE VALORISATION
 // Alimente par data/priceHistory.json (collectors/price_history.py,
 // 2 captures/semaine, demarrage propre sans backfill - voir ce fichier).
-// Chaque snapshot fige {price, cyYear, nyYear, epsByYear, epsFwd} : le P/E
+// Chaque snapshot fige {price, cyYear, nyYear, epsByYear, ndCY/NY/Y2} : le P/E
 // se lit soit PAR ANNEE ABSOLUE (ex. "P/E 2026", price/epsByYear["2026"]),
 // soit PAR ROLE GLISSANT (ex. "P/E annee en cours", price/epsByYear[cyYear]
 // - la cle regardee change chaque annee, ce qui rend deux annees civiles
@@ -1960,13 +1962,19 @@ function snapPEByYear(snap, year){
   if(!snap || !snap.epsByYear) return null;
   return peFromRaw(snap.price, snap.epsByYear[String(year)]);
 }
-function snapPERole(snap, role){ // role: 'cy' | 'ny'
+// role: 'cy' | 'ny' | 'y2' (N+2). Le 12 mois glissant a ete retire le
+// 18/08/2026 : il n'existait que sur 43 des 60 fiches (il suppose un bloc
+// quarterlyEPS renseigne) et faisait doublon avec l'annee en cours en
+// debut d'exercice. Trois millesimes pleins le remplacent.
+function roleYear(snap, role){
   if(!snap) return null;
-  const y = role==='ny' ? snap.nyYear : snap.cyYear;
-  return snapPEByYear(snap, y);
+  if(role==='ny') return snap.nyYear;
+  if(role==='y2') return (typeof snap.cyYear==='number') ? snap.cyYear+2 : null;
+  return snap.cyYear;
 }
-function snapPEFwd(snap){
-  return snap ? peFromRaw(snap.price, snap.epsFwd) : null;
+function snapPERole(snap, role){
+  if(!snap) return null;
+  return snapPEByYear(snap, roleYear(snap, role));
 }
 // Prix retraite de la tresorerie nette pour l'echeance visee. Les snapshots
 // portent ndCY/shCY depuis le 17/08/2026 et ndNY/shNY depuis le 18/08 :
@@ -1975,8 +1983,8 @@ function snapPEFwd(snap){
 // proprement le point de la courbe plutot que de le calculer a faux).
 function snapExCashPrice(snap, role){
   if(!snap || !(snap.price>0)) return null;
-  const nd=role==='ny' ? snap.ndNY : snap.ndCY;
-  const sh=role==='ny' ? snap.shNY : snap.shCY;
+  const nd=role==='ny' ? snap.ndNY : role==='y2' ? snap.ndY2 : snap.ndCY;
+  const sh=role==='ny' ? snap.shNY : role==='y2' ? snap.shY2 : snap.shCY;
   if(typeof nd==='number' && sh>0){
     const p=snap.price+(nd/sh);
     return p>0 ? p : null;
@@ -1990,29 +1998,25 @@ function snapExCashPrice(snap, role){
   // melangerait deux bases au sein d'une meme courbe. Pas de point.
   return null;
 }
-// series : {kind:'role', role:'cy'|'ny'} | {kind:'fwd'} | {kind:'year', year}
+// series : {kind:'role', role:'cy'|'ny'|'y2'} | {kind:'year', year}
 //          + exCash:true pour lire le multiple net de tresorerie.
 function snapPEForSeries(snap, series){
   if(!snap || !series) return null;
   if(series.exCash){
-    // Le 12m fwd chevauche les deux exercices : on l'ajuste de la
-    // tresorerie de l'annee en cours, comme le fait la table de multiples.
     const role=series.kind==='role' ? series.role
-             : series.kind==='year' ? (series.year===snap.nyYear?'ny':'cy')
+             : series.kind==='year' ? (series.year===snap.nyYear?'ny':(series.year===roleYear(snap,'y2')?'y2':'cy'))
              : 'cy';
     const px=snapExCashPrice(snap, role);
     if(px==null) return null;
     const eps=seriesRawEps(snap, series);
     return (eps>0) ? px/eps : null;
   }
-  if(series.kind==='fwd') return snapPEFwd(snap);
   if(series.kind==='year') return snapPEByYear(snap, series.year);
   return snapPERole(snap, series.role);
 }
 function seriesRawEps(snap, series){
   if(!snap || !series) return null;
-  if(series.kind==='fwd') return (typeof snap.epsFwd==='number') ? snap.epsFwd : null;
-  const year = series.kind==='year' ? series.year : (series.role==='ny' ? snap.nyYear : snap.cyYear);
+  const year = series.kind==='year' ? series.year : roleYear(snap, series.role);
   return snap.epsByYear ? (snap.epsByYear[String(year)] ?? null) : null;
 }
 
@@ -2299,7 +2303,7 @@ function buildValoChartSVG(ticker, opts){
   // titre, pas seulement la fenetre affichee) - detection precise, propre
   // a CHAQUE courbe (un refresh qui revise epsNY sans toucher epsCY ne
   // marque rien sur la courbe CY). Zero champ stocke a part, tout vient de
-  // epsByYear/epsFwd deja present sur chaque snapshot.
+  // epsByYear deja present sur chaque snapshot.
   const inflexionIdx=new Set();
   for(let i=1;i<allSnaps.length;i++){
     const prevV=seriesRawEps(allSnaps[i-1], series), curV=seriesRawEps(allSnaps[i], series);
@@ -2491,7 +2495,7 @@ let _valoRankState={n:5, period:'1m', role:'cy'};
 // contredirait le multiple affiche sur chaque titre. snapPEForSeries retombe
 // tout seul sur le cours brut quand le snapshot n'a pas de dette nette.
 function seriesDescForRole(role){
-  return role==='fwd' ? {kind:'fwd', exCash:true} : {kind:'role', role, exCash:true};
+  return {kind:'role', role, exCash:true};
 }
 
 function renderValueRankings(){
@@ -2517,7 +2521,7 @@ function renderValueRankings(){
     ? `<div class="vr-hint">Greyed-out periods: not enough history yet — they unlock automatically as collection (2×/week) accumulates.</div>`
     : '';
   const nowYear=new Date().getFullYear();
-  const rRow=[['cy',String(nowYear),'Current year'],['fwd','12m Forward',''],['ny',String(nowYear+1),'Next year']]
+  const rRow=[['cy',String(nowYear),'Current year'],['ny',String(nowYear+1),'Next year'],['y2',String(nowYear+2),'Two years out']]
     .map(([k,label,title])=>pill('role', k, label, st.role===k, false, title)).join('');
 
   const grid=(list)=> list.length
@@ -2709,7 +2713,7 @@ function renderValoHistory(ticker){
   if(_valoHistPending){
     _valoHistState.period=_valoHistPending.period;
     _valoHistState.mode='pe';
-    _valoHistState.seriesKind=_valoHistPending.role;   // 'cy' | 'ny' | 'fwd'
+    _valoHistState.seriesKind=_valoHistPending.role;   // 'cy' | 'ny' | 'y2'
     _valoHistState.exCash=false;
     _valoHistPending=null;
   }
@@ -2727,7 +2731,7 @@ function renderValoHistory(ticker){
   const st=_valoHistState;
   const seriesDesc=st.mode!=='pe' ? null
     : Object.assign(
-        st.seriesKind==='fwd' ? {kind:'fwd'} : {kind:'role', role:st.seriesKind},
+        {kind:'role', role:st.seriesKind},
         st.exCash ? {exCash:true} : {});
 
   const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
@@ -2788,7 +2792,7 @@ function renderValoHistory(ticker){
 }
 
 function setValoHistMode(m){ _valoHistState.mode=m; renderValoHistory(CT); }
-// kind : 'cy' | 'fwd' | 'ny' (les trois lignes de la table de multiples)
+// kind : 'cy' | 'ny' | 'y2' (les trois lignes de la table de multiples)
 function setValoHistSeries(kind, _unused, exCash){
   _valoHistState.mode='pe';
   _valoHistState.seriesKind=kind;
