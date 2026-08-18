@@ -438,7 +438,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .th-sw.d{background:var(--teal);}
 .th-sw.s{background:var(--gold);}
 .th-sw.neg{background:transparent;border:1.5px dashed var(--muted);}
-.th-assume{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:12px;padding-bottom:2px;}
+.th-assume{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:400;font-style:italic;color:var(--muted);margin-top:10px;padding-bottom:2px;}
 .eps-lbl-sm{display:none;}
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
@@ -1852,7 +1852,7 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
     : '';
   return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span></div>
     ${bar}${legend}
-    <div class="th-assume">Assuming constant valuation.</div>`;
+    <div class="th-assume">Assuming constant valuation</div>`;
 }
 
 function renderReturnBlock(ticker, proj, cours){
