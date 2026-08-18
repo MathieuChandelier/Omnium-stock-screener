@@ -1777,12 +1777,11 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const useEx=r.ex!=null;
     const v=useEx?r.ex:r.std;
     if(v==null) return `<div class="pe-item dead"><span class="pe-lbl">${r.label}</span><span class="pe-val">—</span></div>`;
-    const plottable=valoSeriesHasHistory(CT, Object.assign({}, r.series, useEx?{exCash:true}:{}));
-    const attrs=plottable
-      ? ` onclick="setValoHistSeries('${r.key}')"`
-      : ` title="${escAttr('No history yet for this horizon — the chart needs at least two snapshots.')}"`;
-    const on=plottable && st.mode==='pe' && st.seriesKind===r.key;
-    return `<div class="pe-item${plottable?' sel':' dead'}${on?' on':''}"${attrs}>`
+    // Plus de selection : les trois echeances sont tracees ensemble sur le
+    // graphique et s'y nomment elles-memes. Cette table redevient un simple
+    // rappel chiffre - elle etait un controle sans affordance, signale par
+    // un seul survol, donc totalement invisible au doigt sur mobile.
+    return `<div class="pe-item">`
       +`<span class="pe-lbl">${r.label}</span><span class="pe-val">${v.toFixed(1)}×</span></div>`;
   };
 
@@ -1804,7 +1803,11 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     return `<div class="pe-note">Significant ${sens} — Omnium prices the business on enterprise value. The standard P/E is <b>${peCY.toFixed(1)}×</b> for ${CY}.</div>`;
   })();
 
-  const peStack=`<div class="pe-stack">${rows.map(item).join('')}</div>${peNote}`;
+  // La rangee de multiples n'est plus rendue : le dernier point de chaque
+  // courbe porte deja sa valeur, sous un intitule commun. La note
+  // conditionnelle (>15% d'ecart avec le P/E de capitalisation), elle,
+  // reste - elle explique un chiffre surprenant et ne double rien.
+  const peStack=peNote;
   return {
     pyBlock,
     historiqueBlocks,
@@ -2319,9 +2322,20 @@ function buildValoChartSVG(ticker, opts){
   // des le 2e point (pas d'option a activer). Pour la courbe "annee en
   // cours" (role glissant), elle s'accumule naturellement d'une annee
   // civile a l'autre puisque la serie elle-meme est continue.
+  // Series secondaires (les autres echeances de la table de multiples) :
+  // tracees ensemble plutot que choisies une par une. Elles n'ont ni
+  // moyenne ni points - juste un trait fin et leur nom en bout, sinon
+  // trois courbes plus trois moyennes feraient six lignes.
+  const extras=(compact?[]:(opts.extraSeries||[])).map(ex=>({
+    label: ex.label,
+    pts: snaps.map(s=>({snap:s, y:snapPEForSeries(s, ex.series)}))
+              .filter(p=>p.y!=null && isFinite(p.y))
+  })).filter(e=>e.pts.length>=2);
+
   const yVals=points.map(p=>p.y);
   const avg=compact?null:yVals.reduce((a,b)=>a+b,0)/yVals.length;
   let yMin=Math.min(...yVals), yMax=Math.max(...yVals);
+  extras.forEach(e=>e.pts.forEach(p=>{ if(p.y<yMin)yMin=p.y; if(p.y>yMax)yMax=p.y; }));
   if(avg!=null){ yMin=Math.min(yMin,avg); yMax=Math.max(yMax,avg); }
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
   // Marge plus genereuse hors mini-carte : les graduations chiffrees sont
@@ -2345,13 +2359,25 @@ function buildValoChartSVG(ticker, opts){
   // a CHAQUE courbe (un refresh qui revise epsNY sans toucher epsCY ne
   // marque rien sur la courbe CY). Zero champ stocke a part, tout vient de
   // epsByYear deja present sur chaque snapshot.
-  const inflexionIdx=new Set();
+  const earningsDates=(ph.earningsDates && ph.earningsDates[ticker]) || [];
+
+  // REVISIONS : rattachees a l'EVENEMENT qui les cause, pas au snapshot qui
+  // les revele. Une revision est constatee entre deux captures, mais elle a
+  // eu lieu a une date precise et connue - resultats, CMD - archivee dans
+  // earningsDates. Marquer la capture (ex. MSFT : projection revisee aux
+  // resultats du 30/07, premiere capture posterieure le 10/08) placait la
+  // pastille dix jours trop tard, sur une date ou rien ne s'est produit.
+  // Sans evenement identifie dans l'intervalle, aucune pastille : on ne
+  // sait pas dater la revision, donc on ne la situe pas.
+  const revisionDates=[];
   for(let i=1;i<allSnaps.length;i++){
     const prevV=seriesRawEps(allSnaps[i-1], series), curV=seriesRawEps(allSnaps[i], series);
-    if(prevV!=null && curV!=null && Math.abs(curV-prevV)>1e-9) inflexionIdx.add(i);
+    if(prevV==null || curV==null || Math.abs(curV-prevV)<=1e-9) continue;
+    const a=allSnaps[i-1].date, b=allSnaps[i].date;
+    const evs=earningsDates.filter(d=>d>a && d<=b);
+    if(evs.length) revisionDates.push(evs[evs.length-1]);
   }
-
-  const earningsDates=(ph.earningsDates && ph.earningsDates[ticker]) || [];
+  const inflexionIdx=new Set();   // conserve pour les mini-cartes (compact)
   const winStart=points[0].snap.date, winEnd=points[points.length-1].snap.date;
   const visibleEarnings=compact ? [] : earningsDates.filter(d=>d>=winStart && d<=winEnd);
 
@@ -2376,9 +2402,12 @@ function buildValoChartSVG(ticker, opts){
   // et annoncer ex-cash serait faux.
   const exCashReel=!!(series&&series.exCash)
     && typeof (allSnaps[allSnaps.length-1]||{}).ndCY==='number';
+  // L'annee ne figure dans l'unite que si UNE seule echeance est tracee :
+  // des que les trois le sont, chacune se nomme au bout de sa courbe et
+  // titrer l'axe "P/E 2027" designerait a tort l'ensemble du graphique.
   const axisUnit=mode==='price'
     ? `Price, in ${tickerCur(ticker)||'$'}`
-    : `P/E${exCashReel?' ex-cash':''}${serieYear?' '+serieYear:''}, in ×`;
+    : `P/E${exCashReel?' ex-cash':''}${(serieYear&&!extras.length)?' '+serieYear:''}, in ×`;
   const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
   // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
   // mediane reste un trait muet. Les deux etiquettes sont posees hors de
@@ -2411,13 +2440,37 @@ function buildValoChartSVG(ticker, opts){
     return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Earnings – ${formatFrDate(d)}</title></line>`;
   }).join('');
 
+  // Pastille de revision posee A LA DATE DE L'EVENEMENT, projetee sur le
+  // trace par interpolation lineaire (l'evenement ne tombe pas forcement un
+  // jour de capture). Hors fenetre affichee, rien n'est dessine.
+  const revisionMarks=compact ? '' : revisionDates
+    .filter(d=>d>=winStart && d<=winEnd)
+    .map(d=>{
+      const x=xOf(d);
+      let y=xyPts[0][1];
+      for(let i=1;i<xyPts.length;i++){
+        if(x<=xyPts[i][0]){
+          const [x0,y0]=xyPts[i-1], [x1,y1]=xyPts[i];
+          y=y0+(y1-y0)*((x-x0)/((x1-x0)||1));
+          break;
+        }
+        y=xyPts[i][1];
+      }
+      const ev=findRevisionEvent(ticker, d);
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="var(--gold)" stroke="var(--navy)" stroke-width="1"><title>Estimates revised – ${ev?ev.label+' ':''}${formatFrDate(d)}</title></circle>`;
+    }).join('');
+
   // Moyenne : pointille gris discret, etiquette POSEE AU-DESSUS du trait
   // (jamais a cheval, elle serait barree) et sans aplat de fond. En
   // graisse normale, comme les graduations.
   const avgMark=(compact||avg==null) ? '' : (()=>{
     const y=yOf(avg);
     const n=points.length;
-    const lbl=`average ${fmtY(avg)}`;
+    // Nomme la SERIE, pas la periode couverte : la serie est un role
+    // glissant qui s'accumule d'une annee civile a l'autre, donc
+    // "2027 average" deviendrait faux en 2028 sur la meme courbe. Pas de
+    // date de depart non plus - l'axe la porte deja, la repeter embrouille.
+    const lbl=`current-year average ${fmtY(avg)}${mode==='price'?'':'\u00d7'}`;
     const lblW=lbl.length*5.2+10;
     // Ordonnee du trace pour un x quelconque (interpolation lineaire sur
     // la polyligne - suffisamment proche de la courbe lissee).
@@ -2473,7 +2526,7 @@ function buildValoChartSVG(ticker, opts){
   // Remonte a l'appelant ce qui est REELLEMENT trace, pour que la legende
   // n'annonce jamais un marqueur absent de l'ecran.
   if(opts.out){
-    opts.out.hasRevision=points.some(p=>inflexionIdx.has(p.idx));
+    opts.out.hasRevision=revisionDates.some(d=>d>=winStart && d<=winEnd);
     opts.out.hasEarnings=visibleEarnings.length>0;
     opts.out.hasAvg=avg!=null;
   }
@@ -2492,6 +2545,14 @@ function buildValoChartSVG(ticker, opts){
     return '';
   }).join('');
 
+  // Traces des echeances secondaires : trait fin, aucun point, aucune
+  // moyenne. Nuances de navy decroissantes = echeance plus lointaine.
+  const EXTRA_TONES=['#4d4eb8','#9a9bd6'];
+  const extrasSvg=extras.map((e,i)=>{
+    const d=e.pts.map((p,j)=>`${j?'L':'M'}${xOf(p.snap.date).toFixed(1)} ${yOf(p.y).toFixed(1)}`).join(' ');
+    return `<path d="${d}" fill="none" stroke="${EXTRA_TONES[i]||EXTRA_TONES[1]}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>`;
+  }).join('');
+
   const endLabel=(()=>{
     const last=points[points.length-1];
     const txt=mode==='price' ? fmtPrice(last.y) : last.y.toFixed(1)+'×';
@@ -2499,18 +2560,51 @@ function buildValoChartSVG(ticker, opts){
     if(compact){
       return `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="2.5" fill="#fff" stroke="${dotColor}" stroke-width="1.5"/>`;
     }
-    const tw=txt.length*6.0+10;
-    return `<rect x="${(lx+7).toFixed(1)}" y="${(ly-8.5).toFixed(1)}" width="${tw.toFixed(1)}" height="17" rx="5" fill="${lineColor}"/>`+
-      `<text x="${(lx+7+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
+    // Sans echeance secondaire, la pastille historique suffit : une seule
+    // courbe, aucune ambiguite sur ce que designe le chiffre.
+    if(!extras.length){
+      const tw=txt.length*6.0+10;
+      return `<rect x="${(lx+7).toFixed(1)}" y="${(ly-8.5).toFixed(1)}" width="${tw.toFixed(1)}" height="17" rx="5" fill="${lineColor}"/>`+
+        `<text x="${(lx+7+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
+    }
+    // Trois echeances tracees ensemble : chacune se nomme au bout de sa
+    // propre courbe (annee au-dessus, multiple en dessous), ce qui rend le
+    // selecteur inutile. Anti-chevauchement vertical sur les trois.
+    const items=[{lab:opts.seriesLabel||'', val:txt, y:ly, col:lineColor, w:800}]
+      .concat(extras.map((e,i)=>({
+        lab:e.label, val:e.pts[e.pts.length-1].y.toFixed(1)+'×',
+        y:yOf(e.pts[e.pts.length-1].y), col:EXTRA_TONES[i]||EXTRA_TONES[1], w:700
+      })));
+    const ord=items.map((it,i)=>({y:it.y,i})).sort((a,b)=>a.y-b.y);
+    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+21); cur=o.ny; });
+    const over=ord[ord.length-1].ny-(padT+plotH);
+    if(over>0) ord.forEach(o=>o.ny-=over);
+    ord.forEach(o=>{ items[o.i].ny=Math.max(o.ny,padT+7); });
+    // Intitule de la colonne de valeurs, pose sur la MEME ligne de base que
+    // l'unite d'axe a gauche : les deux se repondent en tete de graphique.
+    // "Today" plutot que "Current" - la moyenne s'appelle deja "current-year
+    // average", et deux "current" voisins se confondraient ; "Today" dit
+    // sans ambiguite que ces trois multiples sont ceux du dernier cours.
+    const head=`<text x="${(lx+7).toFixed(1)}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--muted)" letter-spacing=".04em">TODAY</text>`;
+    return head+items.map(it=>{
+      const lead=Math.abs(it.ny-it.y)>1.5
+        ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
+      return lead
+        +`<circle cx="${lx.toFixed(1)}" cy="${it.y.toFixed(1)}" r="3" fill="${it.col}"/>`
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-1).toFixed(1)}" font-size="9.5" font-weight="${it.w}" font-family="Poppins,sans-serif" fill="${it.col}">${it.lab}</text>`
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+9.5).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}" opacity=".8">${it.val}</text>`;
+    }).join('');
   })();
 
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="${compact?'xMidYMid':'xMinYMid'} meet" style="display:block;overflow:visible;">
     <path d="${areaPath}" fill="${areaColor}" opacity="${areaOpacity}"/>
     ${yAxis}
     ${earningsMarks}
+    ${extrasSvg}
     <path d="${lineD}" fill="none" stroke="${lineColor}" stroke-width="${compact?1.75:2.25}" stroke-linejoin="round" stroke-linecap="round"/>
     ${avgMark}
     ${dots}
+    ${revisionMarks}
     ${endLabel}
     ${xAxis}
     ${hitTargets}
@@ -2870,7 +2964,18 @@ function renderValoHistory(ticker){
     // contient reellement : annoncer "Revised estimate" alors qu'aucun
     // point or n'est a l'ecran etait le principal defaut de lecture.
     const out={};
-    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false, width:chartW, out});
+    // Les trois echeances de la table de multiples sont tracees ENSEMBLE,
+    // chacune nommee au bout de sa courbe. Il n'y a donc plus de selection
+    // a operer : la table redevient un rappel chiffre au lieu d'etre un
+    // controle sans affordance (invisible au doigt, faute de survol).
+    const lastSnap=(state.priceHistory?.tickers?.[ticker]?.snapshots||[]).slice(-1)[0];
+    const yrOf=(role)=>lastSnap?roleYear(lastSnap,role):null;
+    const extraSeries=st.mode==='pe' ? ['ny','y2']
+      .map(r=>({series:{kind:'role', role:r, exCash:true}, label:String(yrOf(r)||'')}))
+      .filter(e=>e.label) : [];
+    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period,
+      compact:false, width:chartW, out, extraSeries,
+      seriesLabel:String(yrOf(st.seriesKind)||'')});
     chartHtml=chart || '<div class="vr-empty">Not enough data points for this period.</div>';
     const legs=[];
     if(out.hasRevision) legs.push('<span><span class="vr-leg-dot"></span>Revised estimate</span>');
