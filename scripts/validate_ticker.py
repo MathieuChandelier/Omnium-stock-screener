@@ -339,6 +339,79 @@ def validate_compliance(d, errors):
             errors.add(f"compliance.items[{i}].status invalide : {item.get('status')!r}.")
 
 
+GS_CADENCES = {"quarterly", "annual", "annual_kpi", "none"}
+GS_COMPARED_AGAINST = {"guidance", "consensus"}
+GS_TIMELINE_TYPES = {"guidance_revision", "vs_consensus", "vs_guidance"}
+
+
+def validate_guidance_scorecard(d, errors):
+    gs = d.get("hypothese", {}).get("guidanceScorecard")
+    if gs is None:
+        return
+    if not isinstance(gs, dict):
+        errors.add("hypothese.guidanceScorecard doit etre un objet.")
+        return
+
+    if gs.get("cadence") not in GS_CADENCES:
+        errors.add(f"guidanceScorecard.cadence={gs.get('cadence')!r} invalide (attendu {sorted(GS_CADENCES)}).")
+    if gs.get("comparedAgainst") not in GS_COMPARED_AGAINST:
+        errors.add(f"guidanceScorecard.comparedAgainst={gs.get('comparedAgainst')!r} invalide (attendu {sorted(GS_COMPARED_AGAINST)}).")
+    if not isinstance(gs.get("basisAligned"), bool):
+        errors.add("guidanceScorecard.basisAligned doit etre un booleen.")
+    else:
+        note = gs.get("basisNote")
+        if gs["basisAligned"] and note is not None:
+            errors.add("guidanceScorecard.basisNote doit etre null quand basisAligned est true.")
+        if not gs["basisAligned"] and not (isinstance(note, str) and note.strip()):
+            errors.add("guidanceScorecard.basisNote doit etre une chaine non vide quand basisAligned est false.")
+
+    timeline = gs.get("timeline")
+    n_realized = 0
+    if not isinstance(timeline, list):
+        errors.add("guidanceScorecard.timeline doit etre un tableau.")
+        timeline = []
+    for i, ev in enumerate(timeline):
+        if not isinstance(ev, dict):
+            errors.add(f"guidanceScorecard.timeline[{i}] n'est pas un objet.")
+            continue
+        etype = ev.get("type")
+        if etype not in GS_TIMELINE_TYPES:
+            errors.add(f"guidanceScorecard.timeline[{i}].type={etype!r} invalide (attendu {sorted(GS_TIMELINE_TYPES)}).")
+            continue
+        if not isinstance(ev.get("detail"), str) or not ev["detail"].strip():
+            errors.add(f"guidanceScorecard.timeline[{i}].detail doit etre une chaine non vide.")
+        if etype == "guidance_revision":
+            if ev.get("flag") not in (None, "warning"):
+                errors.add(f"guidanceScorecard.timeline[{i}].flag={ev.get('flag')!r} invalide (attendu null ou 'warning').")
+        else:
+            n_realized += 1
+            if not isinstance(ev.get("beatPct"), (int, float)):
+                errors.add(f"guidanceScorecard.timeline[{i}].beatPct doit etre un nombre pour un type {etype!r}.")
+            expected_type = "vs_guidance" if gs.get("comparedAgainst") == "guidance" else "vs_consensus"
+            if gs.get("comparedAgainst") in GS_COMPARED_AGAINST and etype != expected_type:
+                errors.add(
+                    f"guidanceScorecard.timeline[{i}].type={etype!r} incoherent avec "
+                    f"comparedAgainst={gs.get('comparedAgainst')!r} (attendu {expected_type!r})."
+                )
+
+    pace = gs.get("paceCheckpoint")
+    if pace is not None:
+        if not isinstance(pace, str) or not pace.strip():
+            errors.add("guidanceScorecard.paceCheckpoint doit etre une chaine non vide si present.")
+        if gs.get("cadence") == "quarterly":
+            errors.add("guidanceScorecard.paceCheckpoint ne doit jamais etre renseigne pour cadence='quarterly' (deja couvert par timeline chaque trimestre).")
+
+    wbp = gs.get("weightedBeatPct")
+    if wbp is not None:
+        if not isinstance(wbp, (int, float)):
+            errors.add("guidanceScorecard.weightedBeatPct doit etre un nombre si present.")
+        if n_realized == 0:
+            errors.add("guidanceScorecard.weightedBeatPct est renseigne mais timeline ne contient aucune entree vs_consensus/vs_guidance realisee.")
+
+    if not isinstance(gs.get("appliedToProjection"), bool):
+        errors.add("guidanceScorecard.appliedToProjection doit etre un booleen.")
+
+
 def validate_file(path: Path) -> list:
     errors = Errors()
     try:
@@ -358,6 +431,7 @@ def validate_file(path: Path) -> list:
     validate_quarterly_eps(d, errors)
     validate_coherence_qualitative(d, errors)
     validate_compliance(d, errors)
+    validate_guidance_scorecard(d, errors)
     return errors
 
 

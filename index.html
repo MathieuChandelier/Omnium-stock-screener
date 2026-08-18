@@ -2835,6 +2835,73 @@ function formatThesisText(txt, insertAfterFirst){
   return html;
 }
 
+let _gsOpen=false;
+function toggleGuidanceScorecard(){
+  _gsOpen=!_gsOpen;
+  const toggle=document.getElementById('gs-toggle');
+  const content=document.getElementById('gs-content');
+  if(toggle)toggle.classList.toggle('open',_gsOpen);
+  if(content)content.classList.toggle('open',_gsOpen);
+}
+
+// Resume TOUJOURS calcule cote client depuis les champs structures -
+// jamais stocke separement dans le JSON (memes risques de
+// desynchronisation que publishedEps, voir quarterlyEPS.retraitements).
+// Palette navy/gris uniquement, aucun code couleur (decision du
+// 18/08/2026 apres plusieurs iterations visuelles - chaque ligne de
+// cette carte est deja significative par construction, pas de bruit de
+// fond a distinguer par la couleur).
+function buildGuidanceScorecardSummary(gs){
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const latest=(gs.timeline||[])[0]||null;
+  const latestIsWarning=latest&&latest.type==='guidance_revision'&&latest.flag==='warning';
+  if(gs.weightedBeatPct!=null){
+    const verb=gs.weightedBeatPct>=0?'Beats':'Misses';
+    const against=gs.comparedAgainst==='guidance'?'guidance':'consensus';
+    const warnSuffix=latestIsWarning?' · guidance warning this cycle':'';
+    return `${verb} ${against} by ${Math.abs(gs.weightedBeatPct).toFixed(1)}% on average${warnSuffix}`;
+  }
+  if(gs.paceCheckpoint) return esc(gs.paceCheckpoint);
+  if(latest&&latest.type==='guidance_revision'){
+    return `Guidance ${latest.flag==='warning'?'cut':'revised'} ${formatFrDate(latest.date)}${latestIsWarning?' · warning':''}`;
+  }
+  return 'No guidance or consensus track record yet.';
+}
+
+function buildGuidanceScorecard(ticker){
+  const d=state.tickers[ticker];
+  const gs=d?.hypothese?.guidanceScorecard;
+  if(!gs) return '';
+  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const cadenceLabel={quarterly:'Quarterly guidance',annual:'Annual guidance',annual_kpi:'Annual guidance (KPI)',none:'No guidance'}[gs.cadence]||gs.cadence;
+  const summary=buildGuidanceScorecardSummary(gs);
+
+  const timelineHtml=(gs.timeline||[]).map(ev=>{
+    const label=ev.type==='guidance_revision'?`Guidance ${ev.flag==='warning'?'cut':'revised'}${ev.flag==='warning'?' (warning)':''}`
+      :ev.type==='vs_guidance'?'vs guidance':'vs consensus';
+    return `<div style="padding-bottom:10px;">
+        <p style="font-size:11px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
+        <p style="font-size:10.5px;color:var(--muted);margin:2px 0 0;">${esc(ev.detail)}</p>
+      </div>`;
+  }).join('');
+
+  const paceHtml=gs.paceCheckpoint&&gs.weightedBeatPct==null?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.paceCheckpoint)}</p>`:'';
+  const basisHtml=gs.basisAligned===false&&gs.basisNote?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.basisNote)}</p>`:'';
+  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` — ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
+
+  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Guidance scorecard</div>
+    <p style="font-size:9.5px;color:var(--muted);margin:0 0 8px;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
+    <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()">
+      <span class="lbl" style="text-transform:none;font-size:11.5px;font-weight:400;color:var(--navy);">${summary}</span>
+      <span class="rb-eps-py-chevron">▼</span>
+    </div>
+    <div class="rb-eps-py-content" id="gs-content">
+      <div style="padding-top:10px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
+    </div>
+  </div>`;
+}
+
 function renderContextBullets(ticker, proj, cours){
   const d=state.tickers[ticker];
   const wrap=document.getElementById('context-bullets-wrap');
@@ -2843,6 +2910,7 @@ function renderContextBullets(ticker, proj, cours){
   if(!traceEl)return;
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
+  _gsOpen=false;
   const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
@@ -2861,21 +2929,38 @@ function renderContextBullets(ticker, proj, cours){
     ${incoh.map(b=>`<div style="font-size:11.5px;color:var(--gold-text);line-height:1.5;">${b.y}: EPS provided ${b.eps.toFixed(2)} ≠ Net income/Shares ${b.implied.toFixed(2)}</div>`).join('')}
   </div>`:'';
 
-  const {CY:_CYforCons}=yearsFor(ticker);
-  const cons=(d.epsConsensus?.year===_CYforCons)?d.epsConsensus:null;
-  const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
-  const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
-  const consSourceBanner=srcLine?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">EPS consensus source</div>
-    <div style="font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;line-height:1.4;">${srcLine.replace(/</g,'&lt;')}</div>
-  </div>`:'';
+  // guidanceScorecard, quand present, absorbe la citation de source
+  // consensus (voir SCHEMA) - repli sur l'ancien fragment autonome pour
+  // tout titre qui n'a pas encore ce champ (pas retroactif, voir
+  // INSTRUCTIONS.md).
+  const gsBanner=buildGuidanceScorecard(ticker);
+  let consSourceBanner='';
+  if(!gsBanner){
+    const {CY:_CYforCons}=yearsFor(ticker);
+    const cons=(d.epsConsensus?.year===_CYforCons)?d.epsConsensus:null;
+    const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
+    const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
+    consSourceBanner=srcLine?`<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">EPS consensus source</div>
+      <div style="font-size:11px;color:var(--muted);font-family:'Poppins',sans-serif;font-style:italic;line-height:1.4;">${srcLine.replace(/</g,'&lt;')}</div>
+    </div>`:'';
+  }
 
   traceEl.style.display='block';
   const isEarningsRefresh=!!(d.hypothese?.dernierCall?.quarter);
   const dateSourceLine=isEarningsRefresh?'':`<div style="font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;margin-top:4px;margin-bottom:8px;">${lastEvt.date||''} · ${lastEvt.source||'Update'}</div>`;
+  // "The central bet" (rubrique 1 renommee/remontee) N'EST PAS encore
+  // isolable ici : hypothese.text est aujourd'hui LE DOCUMENT COMPLET a 5
+  // rubriques avec ses propres en-tetes "== RUBRIQUE ==" internes au
+  // texte - ajouter un header ici l'encapsulerait TOUT ENTIER (y compris
+  // les rubriques dont la reorganisation reste a discuter), pas
+  // seulement la synthese. Isoler vraiment la rubrique 1 suppose de
+  // parser `displayText` sur ses delimiteurs de rubrique - reporte au
+  // meme chantier que la reorganisation des sections suivantes.
   traceEl.innerHTML=`<div>
     ${dcBanner}
     ${cqBanner}
+    ${gsBanner}
     ${consSourceBanner}
     ${dateSourceLine}
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
