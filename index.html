@@ -424,6 +424,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
 .pe-stack{padding:14px 0 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
+.pe-stack{grid-template-columns:max-content max-content max-content;}
+.pe-stack.has-ex{grid-template-columns:max-content max-content max-content max-content;}
+/* Une cellule tracable se comporte comme un onglet : soulignee a l'etat
+   actif, jamais un bouton - la table reste une table. */
+.pe-val.sel{cursor:pointer;border-bottom:2px solid transparent;transition:.12s;}
+.pe-val.sel:hover{border-bottom-color:var(--border);}
+.pe-val.on{border-bottom-color:var(--navy);}
+.pe-val.dead{color:var(--muted);opacity:.5;}
+.pe-gap{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-align:right;margin-left:10px;}
+.pe-gap.up{color:var(--gold-text);}
+.pe-gap.down{color:var(--teal-dark-text);}
+.pe-gap.dead{color:var(--muted);opacity:.45;}
 .pe-colhead{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:right;margin-bottom:3px;}
 .pe-exhead{grid-column:3;margin-left:10px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
@@ -709,7 +721,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
   <div id="return-block" class="card" style="margin-bottom:18px;padding:0;overflow:hidden;"></div>
 
-  <div id="valo-hist-card" style="margin-bottom:18px;padding-top:20px;border-top:1px solid var(--border);"></div>
+
 
   <div class="card" id="analyse-tbl-card">
     <div class="card-title" id="analyse-tbl-title"><b>Historical Data &amp; Projections</b></div>
@@ -1673,15 +1685,42 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peExFwd=(priceExCY!=null&&qe.epsForward12m>0)?(priceExCY/qe.epsForward12m):null;
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
   const hasExCash=peExCY!=null||peExFwd!=null||peExNY!=null;
-  const exCell=v=>hasExCash?`<div class="pe-exval">${v!=null?v.toFixed(1)+'×':'—'}</div>`:'';
   // "->" vient des donnees (forwardPeriodLabel, formats heterogenes selon
   // les titres) : on le rend proprement a l'affichage sans toucher au JSON.
   const fwdLbl=qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel).replace(/\s*->\s*/g,' → '):'';
-  const peStack=`<div class="pe-stack">
-      <div></div><div class="pe-colhead">Reported</div>${hasExCash?`<div class="pe-colhead pe-exhead">Ex-cash</div>`:''}
-      <div class="pe-lbl">${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}
-      <div class="pe-lbl">12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}
-      <div class="pe-lbl">${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}
+
+  // La table de multiples EST le selecteur du graphique qui la suit : les
+  // trois series y etaient nommees une premiere fois, et une seconde fois
+  // dans une rangee de pastilles sous le graphique. Une cellule cliquee
+  // choisit a la fois l'echeance ET la base (publiee ou ex-cash) ; une
+  // cellule sans historique reste affichee mais n'est pas selectionnable.
+  const st=_valoHistState;
+  const rows=[
+    {key:'cy',  label:`${CY}`,      series:{kind:'role',role:'cy'}, pe:peCY,  ex:peExCY},
+    {key:'fwd', label:`12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}`, series:{kind:'fwd'}, pe:peFwd, ex:peExFwd},
+    {key:'ny',  label:`${CY+1}`,    series:{kind:'role',role:'ny'}, pe:peNY,  ex:peExNY}
+  ];
+  const cell=(r,exCash)=>{
+    const v=exCash?r.ex:r.pe;
+    if(v==null) return `<div class="pe-val${exCash?' pe-exval':''} dead">—</div>`;
+    const desc=Object.assign({}, r.series, exCash?{exCash:true}:{});
+    const plottable=valoSeriesHasHistory(CT, desc);
+    const on=st.mode==='pe' && st.seriesKind===r.key && !!st.exCash===!!exCash;
+    const cls=`pe-val${exCash?' pe-exval':''}${plottable?' sel':''}${on?' on':''}${plottable?'':' dead'}`;
+    const attrs=plottable
+      ? ` onclick="setValoHistSeries('${r.key}',null,${exCash?'true':'false'})"`
+      : ` title="${escAttr('No history yet — net debt for this horizon is only archived from 18/08/2026 onward')}"`;
+    return `<div class="${cls}"${attrs}>${v.toFixed(1)}×</div>`;
+  };
+  const gapCell=(r)=>{
+    const desc=Object.assign({}, r.series, st.exCash?{exCash:true}:{});
+    const g=valoSeriesAvgGap(CT, desc);
+    if(g==null) return `<div class="pe-gap dead">—</div>`;
+    return `<div class="pe-gap ${g>=0?'up':'down'}">${g>=0?'+':'−'}${Math.abs(g).toFixed(1)}%</div>`;
+  };
+  const peStack=`<div class="pe-stack${hasExCash?' has-ex':''}">
+      <div></div><div class="pe-colhead">Reported</div>${hasExCash?`<div class="pe-colhead pe-exhead">Ex-cash</div>`:''}<div class="pe-colhead">vs. avg</div>
+      ${rows.map(r=>`<div class="pe-lbl">${r.label}</div>${cell(r,false)}${hasExCash?cell(r,true):''}${gapCell(r)}`).join('')}
     </div>`;
   return {
     pyBlock,
@@ -1777,7 +1816,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
-    ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}`:''}
+    ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}<div id="valo-hist-slot"></div>`:''}
     ${qeBlock?.historiqueBlocks?.length?`
     <div class="rb-eps-py-toggle" id="eps-hist-toggle" onclick="toggleEpsHistBlock()">
       <span class="lbl">History (before ${qeBlock.pyBlock?qeBlock.pyBlock.year:CY-1})</span>
@@ -1840,9 +1879,34 @@ function snapPERole(snap, role){ // role: 'cy' | 'ny'
 function snapPEFwd(snap){
   return snap ? peFromRaw(snap.price, snap.epsFwd) : null;
 }
-// series : {kind:'role', role:'cy'|'ny'} | {kind:'fwd'} | {kind:'year', year:2026}
+// Prix retraite de la tresorerie nette pour l'echeance visee. Les snapshots
+// portent ndCY/shCY depuis le 17/08/2026 et ndNY/shNY depuis le 18/08 :
+// l'ex-cash de l'annee SUIVANTE n'a donc d'historique qu'a partir des
+// captures posterieures a cet ajout (renvoie null avant, ce qui retire
+// proprement le point de la courbe plutot que de le calculer a faux).
+function snapExCashPrice(snap, role){
+  if(!snap) return null;
+  const nd=role==='ny' ? snap.ndNY : snap.ndCY;
+  const sh=role==='ny' ? snap.shNY : snap.shCY;
+  if(typeof nd!=='number' || !(sh>0) || !(snap.price>0)) return null;
+  const p=snap.price+(nd/sh);
+  return p>0 ? p : null;
+}
+// series : {kind:'role', role:'cy'|'ny'} | {kind:'fwd'} | {kind:'year', year}
+//          + exCash:true pour lire le multiple net de tresorerie.
 function snapPEForSeries(snap, series){
   if(!snap || !series) return null;
+  if(series.exCash){
+    // Le 12m fwd chevauche les deux exercices : on l'ajuste de la
+    // tresorerie de l'annee en cours, comme le fait la table de multiples.
+    const role=series.kind==='role' ? series.role
+             : series.kind==='year' ? (series.year===snap.nyYear?'ny':'cy')
+             : 'cy';
+    const px=snapExCashPrice(snap, role);
+    if(px==null) return null;
+    const eps=seriesRawEps(snap, series);
+    return (eps>0) ? px/eps : null;
+  }
   if(series.kind==='fwd') return snapPEFwd(snap);
   if(series.kind==='year') return snapPEByYear(snap, series.year);
   return snapPERole(snap, series.role);
@@ -1909,6 +1973,31 @@ function findRevisionEvent(ticker, dateStr){
     if(gap<=VALO_EVENT_TOLERANCE_DAYS && gap<bestGap){ best=c; bestGap=gap; }
   });
   return best;
+}
+
+// Une serie n'est tracable que si l'historique porte au moins 2 points
+// exploitables pour ELLE : l'ex-cash de l'annee suivante, par exemple,
+// n'existe qu'a partir des snapshots posterieurs a l'ajout de ndNY/shNY.
+function valoSeriesPoints(ticker, seriesDesc){
+  const ph=state.priceHistory;
+  const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
+  return (entry ? (entry.snapshots||[]) : [])
+    .map(s=>snapPEForSeries(s, seriesDesc))
+    .filter(v=>v!=null && isFinite(v));
+}
+function valoSeriesHasHistory(ticker, seriesDesc){
+  return valoSeriesPoints(ticker, seriesDesc).length>=2;
+}
+// Ecart du multiple courant a la moyenne de sa PROPRE serie. Null tant que
+// l'historique est trop court - la colonne affiche alors un tiret plutot
+// qu'un 0% trompeur (avec 3 captures, la moyenne vaut quasiment le spot).
+function valoSeriesAvgGap(ticker, seriesDesc){
+  const pts=valoSeriesPoints(ticker, seriesDesc);
+  if(pts.length<2) return null;
+  const avg=pts.reduce((a,b)=>a+b,0)/pts.length;
+  const last=pts[pts.length-1];
+  if(!(avg>0)) return null;
+  return (last-avg)/avg*100;
 }
 
 function valoEarliestDate(){
@@ -2134,7 +2223,7 @@ function buildValoChartSVG(ticker, opts){
   // graduations restent des nombres nus - au lieu de repeter "×" ou la
   // devise sur chaque valeur.
   const fmtY=(v)=> v.toFixed(mode==='price'?2:1);
-  const axisUnit=mode==='price' ? `Price, in ${tickerCur(ticker)||'$'}` : 'P/E, in ×';
+  const axisUnit=mode==='price' ? `Price, in ${tickerCur(ticker)||'$'}` : (series&&series.exCash ? 'P/E ex-cash, in ×' : 'P/E, in ×');
   const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
   // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
   // mediane reste un trait muet. Les deux etiquettes sont posees hors de
@@ -2505,10 +2594,12 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 }
 
 // ── Historique de valorisation (fiche titre) ─────────────────────
-let _valoHistState={mode:'pe', seriesKind:'role', role:'cy', year:null, period:'all'};
+let _valoHistState={mode:'pe', seriesKind:'cy', exCash:false, period:'all'};
 
 function renderValoHistory(ticker){
-  const card=document.getElementById('valo-hist-card');
+  // Rendu dans le creneau ouvert par la table de multiples (fusion des deux
+  // sections) ; repli sur l'ancien conteneur si le bloc n'est pas encore la.
+  const card=document.getElementById('valo-hist-slot')||document.getElementById('valo-hist-card');
   if(!card) return;
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
@@ -2516,8 +2607,9 @@ function renderValoHistory(ticker){
 
   if(_valoHistPending){
     _valoHistState.period=_valoHistPending.period;
-    if(_valoHistPending.role==='fwd'){ _valoHistState.mode='pe'; _valoHistState.seriesKind='fwd'; }
-    else { _valoHistState.mode='pe'; _valoHistState.seriesKind='role'; _valoHistState.role=_valoHistPending.role; }
+    _valoHistState.mode='pe';
+    _valoHistState.seriesKind=_valoHistPending.role;   // 'cy' | 'ny' | 'fwd'
+    _valoHistState.exCash=false;
     _valoHistPending=null;
   }
 
@@ -2525,42 +2617,19 @@ function renderValoHistory(ticker){
     const msg=snaps.length===1
       ? `Valuation history available from ${formatFrDate(snaps[0].date)} (collection in progress, check back after the next capture).`
       : `Valuation history not yet available for this ticker — collection starts at the next snapshot (2 times/week).`;
-    card.innerHTML=`<div class="card-title" style="text-align:left;"><b>Valuation history</b></div><div class="vr-empty">${msg}</div>`;
+    card.innerHTML=`<div class="vr-empty">${msg}</div>`;
     return;
   }
 
   const latest=snaps[snaps.length-1];
   const earliest=snaps[0].date;
-  const years=latest.epsByYear ? Object.keys(latest.epsByYear).map(Number).sort((a,b)=>a-b) : [];
   const st=_valoHistState;
   const seriesDesc=st.mode!=='pe' ? null
-    : st.seriesKind==='fwd' ? {kind:'fwd'}
-    : st.seriesKind==='year' ? {kind:'year', year: years.includes(st.year) ? st.year : years[0]}
-    : {kind:'role', role:st.role};
+    : Object.assign(
+        st.seriesKind==='fwd' ? {kind:'fwd'} : {kind:'role', role:st.seriesKind},
+        st.exCash ? {exCash:true} : {});
 
-  // Le millesime de l'annee EN COURS ne selectionne pas la serie absolue
-  // mais le ROLE glissant : c'est la seule courbe continue d'une annee
-  // civile a l'autre (au roll de janvier elle enchaine sur le nouveau
-  // millesime), donc la seule dont la moyenne s'accumule vraiment.
-  const curYear=latest.cyYear;
-  const isCurSel=st.mode==='pe'&&st.seriesKind==='role'&&st.role==='cy';
   const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
-  const yearBtn=(y)=>{
-    if(y===curYear){
-      return `<button class="vr-pill${isCurSel?' active':''}" title="Current year — continuous series across the January roll" onclick="setValoHistSeries('role','cy')">${y}<span class="vr-cy-dot"></span></button>`;
-    }
-    const on=st.mode==='pe'&&st.seriesKind==='year'&&st.year===y;
-    return `<button class="vr-pill${on?' active':''}" onclick="setValoHistSeries('year',${y})">${y}</button>`;
-  };
-  const fwdBtn=`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='fwd'?' active':''}" onclick="setValoHistSeries('fwd')">12m fwd</button>`;
-  // 12m fwd s'intercale entre l'annee en cours et la suivante : c'est
-  // chronologiquement sa place, un 12 mois glissant etant un melange des deux.
-  const seriesBtns=(()=>{
-    const out=[];
-    years.forEach(y=>{ out.push(yearBtn(y)); if(y===curYear) out.push(fwdBtn); });
-    if(!years.includes(curYear)) out.push(fwdBtn);
-    return out.join('');
-  })();
 
   // Ligne "periode" masquee tant qu'aucune fenetre n'est atteignable :
   // avec 3 points sur une semaine, proposer 1 mois / 3 mois / 1 an griss
@@ -2601,14 +2670,14 @@ function renderValoHistory(ticker){
     if(out.hasAvg) legs.push('<span><span class="vr-leg-avg"></span>Average P/E</span>');
     legendHtml=legs.join('');
   }
-  const showSeriesRow=st.mode==='pe';
   const showPeriodRow=st.mode!=='projection' && availPeriods.length>0;
 
+  // Plus de titre ni de rangee de series : la section est celle de la table
+  // de multiples juste au-dessus, qui nomme deja les series et sert de
+  // selecteur.
   card.innerHTML=`
-    <div class="card-title" style="text-align:left;"><b>Valuation history</b></div>
     <div class="vr-hist-controls">
       <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('projection','EPS')}</div>
-      ${showSeriesRow ? `<div class="vr-control-row vr-series-row"><span class="vr-row-lbl">P/E</span>${seriesBtns}</div>` : ''}
       ${showPeriodRow ? `<div class="vr-control-row">${availPeriods.map(periodBtn).join('')}${allBtn}</div>` : ''}
       ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Each curve = a detected revision of the EPS projection; more recent ones are darker.</div>' : ''}
     </div>
@@ -2618,12 +2687,13 @@ function renderValoHistory(ticker){
 }
 
 function setValoHistMode(m){ _valoHistState.mode=m; renderValoHistory(CT); }
-function setValoHistSeries(kind, val){
+// kind : 'cy' | 'fwd' | 'ny' (les trois lignes de la table de multiples)
+function setValoHistSeries(kind, _unused, exCash){
   _valoHistState.mode='pe';
   _valoHistState.seriesKind=kind;
-  if(kind==='role') _valoHistState.role=val;
-  if(kind==='year') _valoHistState.year=+val;
-  renderValoHistory(CT);
+  _valoHistState.exCash=!!exCash;
+  // La table porte l'etat selectionne : elle doit se redessiner aussi.
+  renderAnalyse();
 }
 function setValoHistPeriod(p){ _valoHistState.period=p; renderValoHistory(CT); }
 

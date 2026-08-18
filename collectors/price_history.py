@@ -22,10 +22,15 @@ d'etre l'annee en cours) et "le P/E de l'annee en cours" (serie glissante,
 comparable entre deux annees calendaires differentes) depuis la MEME
 structure - voir le plan de fonctionnalite pour le detail des deux lectures.
 
-ndCY/shCY (ajoutes le 17/08/2026) : copie de hypothese.adjND/adjShares pour
-l'ANNEE EN COURS UNIQUEMENT (pas de NY/Fwd - inutile tant qu'aucun
-graphique ne les consomme), pour permettre a terme un P/E ex-cash
-historise en plus du P/E classique deja archive.
+ndCY/shCY (ajoutes le 17/08/2026) puis ndNY/shNY (ajoutes le 18/08/2026) :
+copie de hypothese.adjND/adjShares pour l'annee en cours ET l'annee
+suivante, pour permettre un P/E ex-cash historise en plus du P/E classique
+deja archive. On s'arrete a CY+1 : la table de multiples cote app n'expose
+l'ex-cash que sur ces deux echeances (plus le 12m fwd, qui se calcule sur
+la tresorerie de l'annee en cours), archiver CY+2 et au-dela ne servirait
+aucun affichage. NON RETROACTIF comme le reste du fichier : les snapshots
+deja pris restent sans ndNY/shNY, l'historique ex-cash de l'annee suivante
+demarre donc a la premiere capture posterieure a cet ajout.
 
 earningsDates est un accumulateur PERMANENT (jamais purge) des dates de
 call reellement trouvees, fusionnees a chaque run depuis
@@ -139,13 +144,20 @@ def snapshot_ticker(ticker: str, run_date_str: str):
     eps_by_year = build_eps_by_year(hyp)
     eps_fwd = (hyp.get("quarterlyEPS") or {}).get("epsForward12m")
     eps_fwd = round(float(eps_fwd), 4) if isinstance(eps_fwd, (int, float)) else None
-    # P/E ex-cash : ANNEE EN COURS UNIQUEMENT (decision du 17/08/2026) - pas
-    # de nd_ny/sh_ny, le graphique n'en a pas besoin pour l'instant et ca
-    # double le nombre de champs pour un usage non demande.
-    nd_cy = (hyp.get("adjND") or {}).get(str(cy))
-    sh_cy = (hyp.get("adjShares") or {}).get(str(cy))
-    nd_cy = round(float(nd_cy), 2) if isinstance(nd_cy, (int, float)) else None
-    sh_cy = round(float(sh_cy), 2) if isinstance(sh_cy, (int, float)) else None
+    # P/E ex-cash : annee en cours ET annee suivante (nd_ny/sh_ny ajoutes le
+    # 18/08/2026). La table de multiples cote app expose l'ex-cash sur les
+    # deux, mais seule l'annee en cours en avait un HISTORIQUE - la cellule
+    # ex-cash de l'annee suivante affichait donc une valeur du jour qu'on ne
+    # pouvait pas tracer. On s'arrete la : les annees au-dela (CY+2 et plus)
+    # ne sont pas exposees dans cette table, les archiver ne servirait rien.
+    def _adj(field, year):
+        v = (hyp.get(field) or {}).get(str(year))
+        return round(float(v), 2) if isinstance(v, (int, float)) else None
+
+    nd_cy = _adj("adjND", cy)
+    sh_cy = _adj("adjShares", cy)
+    nd_ny = _adj("adjND", ny)
+    sh_ny = _adj("adjShares", ny)
 
     try:
         price = fetch_price(sym)
@@ -162,6 +174,10 @@ def snapshot_ticker(ticker: str, run_date_str: str):
         snap["ndCY"] = nd_cy
     if sh_cy is not None:
         snap["shCY"] = sh_cy
+    if nd_ny is not None:
+        snap["ndNY"] = nd_ny
+    if sh_ny is not None:
+        snap["shNY"] = sh_ny
 
     earnings_dates = collect_earnings_dates(tdata)
     return ticker, (snap, earnings_dates), "ok"
