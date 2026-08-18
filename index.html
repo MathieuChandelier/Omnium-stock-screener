@@ -1898,7 +1898,9 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
   const specialPct=specials.reduce((s,p)=>s+(+p.valuePct||0),0);
   const specialTitle=specials.map(p=>(p.text||'').toString()).join(' ');
   const parts=[
-    {v:cagrEps,   cls:'g', label:`earnings growth ${String(CY).slice(2)}→${String(LY).slice(2)}`, title:''},
+    // Pas de periode ici : le titre de section porte deja "· CY → LY", la
+    // repeter sur le driver ajoute une lecture sans ajouter d'information.
+    {v:cagrEps,   cls:'g', label:'earnings growth', title:''},
     {v:cashYield, cls:'d', label:'dividend yield', title:''},
     {v:specialPct,cls:'s', label:'special items',  title:specialTitle}
   ].filter(p=>Math.abs(p.v)>=0.05);
