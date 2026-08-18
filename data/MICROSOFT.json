@@ -492,6 +492,38 @@
       "forwardPeriodLabel": "T1 27 -> T4 27",
       "coherenceNoteCY": null,
       "coherenceNoteNY": null
+    },
+    "guidanceScorecard": {
+      "cadence": "quarterly",
+      "metric": "Revenue, GAAP",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-29",
+          "type": "guidance_revision",
+          "detail": "T1 FY27 revenue guided at $89.85-90.95B (+16% at midpoint); Azure cc guided ~45% (vs 43% actual in T4 FY26); capex guided above $50B.",
+          "flag": null
+        },
+        {
+          "date": "2026-07-29",
+          "type": "vs_guidance",
+          "detail": "Revenue $90.01B vs $87.25B guided midpoint (T4 FY26)",
+          "beatPct": 3.2
+        },
+        {
+          "date": "2026-04-29",
+          "type": "guidance_revision",
+          "detail": "T4 FY26 revenue guided at $86.7-87.8B; Azure cc guided 39-40%; operating margin expansion ~+1pt for FY26 despite a ~$900M Q4 pension charge.",
+          "flag": null
+        }
+      ],
+      "paceCheckpoint": null,
+      "weightedBeatPct": 3.2,
+      "appliedToProjection": false,
+      "consensusSource": "WallStreetZen/S&P Global",
+      "consensusDate": "2026-07-15"
     }
   }
 }
