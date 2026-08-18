@@ -444,21 +444,18 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
-.pe-stack{padding:14px 0 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
-.pe-stack{grid-template-columns:max-content max-content max-content;}
+.pe-stack{display:flex;flex-wrap:wrap;gap:28px;padding:12px 0 14px;align-items:baseline;}
+.pe-item{display:flex;align-items:baseline;gap:8px;border-radius:7px;padding:3px 6px;margin:0 -6px;
+  -webkit-tap-highlight-color:transparent;transition:background .12s;}
+.pe-item.sel{cursor:pointer;}
+.pe-item.sel:hover{background:var(--navy-light);}
+.pe-item.dead{opacity:.5;}
 .pe-note{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);line-height:1.5;margin:-4px 0 12px;max-width:640px;}
 .pe-note b{color:var(--navy);font-weight:700;}
 /* Une cellule tracable se comporte comme un onglet : soulignee a l'etat
    actif, jamais un bouton - la table reste une table. */
-.pe-val.sel{cursor:pointer;transition:color .12s;}
-.pe-val.sel:hover{color:var(--teal-dark-text);}
-.pe-val.dead{color:var(--muted);opacity:.5;}
-.pe-gap{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);text-align:right;margin-left:10px;}
-.pe-gap.dead{opacity:.45;}
-.pe-colhead{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:right;margin-bottom:3px;}
-.pe-exhead{grid-column:3;margin-left:10px;}
-.pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
-.pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;}
+.pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;}
+.pe-val{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;margin-left:10px;}
 
@@ -1539,6 +1536,10 @@ function refreshPriceOnly(ticker){
   let proj;
   try{({proj}=getProj(ticker));}catch(e){return;}
   renderReturnBlock(ticker,proj,cours);
+  // Depuis la fusion des deux sections, le graphique vit DANS le bloc que
+  // renderReturnBlock vient de reconstruire : sans ce rappel, chaque
+  // rafraichissement de cours le faisait disparaitre silencieusement.
+  renderValoHistory(ticker);
   const {PY}=yearsFor(ticker);
   const cells=peRow.querySelectorAll('td.proj-row');
   PY.forEach((y,i)=>{
@@ -1701,7 +1702,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         <div class="eps-detail" id="${blockId}-d"></div>
         <div class="eps-row base">
           <div class="eps-head">
-            <span class="eps-lbl">${lbl('Omnium basis','Omnium')}</span>
+            <span class="eps-lbl">${lbl('Omnium','Omnium')}</span>
             <span class="eps-tot">${totalTxt(cleanTotal)}${consHtml}</span>
           </div>
           ${cells(p=>chip(p,opts.forceActual))}
@@ -1767,24 +1768,16 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     {key:'ny',  label:`${CY+1}`, series:{kind:'role',role:'ny'}, std:peNY, ex:peExNY},
     {key:'y2',  label:`${CY+2}`, series:{kind:'role',role:'y2'}, std:peY2, ex:peExY2}
   ];
-  const cell=(r)=>{
+  const item=(r)=>{
     const useEx=r.ex!=null;
     const v=useEx?r.ex:r.std;
-    if(v==null) return `<div class="pe-val dead">—</div>`;
-    const desc=Object.assign({}, r.series, useEx?{exCash:true}:{});
-    const plottable=valoSeriesHasHistory(CT, desc);
-    const on=st.mode==='pe' && st.seriesKind===r.key;
-    const cls=`pe-val${plottable?' sel':''}${on?' on':''}${plottable?'':' dead'}`;
+    if(v==null) return `<div class="pe-item dead"><span class="pe-lbl">${r.label}</span><span class="pe-val">—</span></div>`;
+    const plottable=valoSeriesHasHistory(CT, Object.assign({}, r.series, useEx?{exCash:true}:{}));
     const attrs=plottable
       ? ` onclick="setValoHistSeries('${r.key}')"`
       : ` title="${escAttr('No history yet for this horizon — the chart needs at least two snapshots.')}"`;
-    return `<div class="${cls}"${attrs}>${v.toFixed(1)}×</div>`;
-  };
-  const gapCell=(r)=>{
-    const useEx=r.ex!=null;
-    const g=valoSeriesAvgGap(CT, Object.assign({}, r.series, useEx?{exCash:true}:{}));
-    if(g==null) return `<div class="pe-gap dead">—</div>`;
-    return `<div class="pe-gap">${g>=0?'+':'−'}${Math.abs(g).toFixed(1)}%</div>`;
+    return `<div class="pe-item${plottable?' sel':' dead'}"${attrs}>`
+      +`<span class="pe-lbl">${r.label}</span><span class="pe-val">${v.toFixed(1)}×</span></div>`;
   };
 
   // Note conditionnelle. Seuil a 15% d'ecart avec le P/E de capitalisation :
@@ -1805,10 +1798,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     return `<div class="pe-note">Significant ${sens} — Omnium prices the business on enterprise value. The standard P/E is <b>${peCY.toFixed(1)}×</b> for ${CY}.</div>`;
   })();
 
-  const peStack=`<div class="pe-stack">
-      <div></div><div class="pe-colhead">P/E</div><div class="pe-colhead">vs. avg</div>
-      ${rows.map(r=>`<div class="pe-lbl">${r.label}</div>${cell(r)}${gapCell(r)}`).join('')}
-    </div>${peNote}`;
+  const peStack=`<div class="pe-stack">${rows.map(item).join('')}</div>${peNote}`;
   return {
     pyBlock,
     historiqueBlocks,
@@ -2089,18 +2079,6 @@ function valoSeriesPoints(ticker, seriesDesc){
 function valoSeriesHasHistory(ticker, seriesDesc){
   return valoSeriesPoints(ticker, seriesDesc).length>=2;
 }
-// Ecart du multiple courant a la moyenne de sa PROPRE serie. Null tant que
-// l'historique est trop court - la colonne affiche alors un tiret plutot
-// qu'un 0% trompeur (avec 3 captures, la moyenne vaut quasiment le spot).
-function valoSeriesAvgGap(ticker, seriesDesc){
-  const pts=valoSeriesPoints(ticker, seriesDesc);
-  if(pts.length<2) return null;
-  const avg=pts.reduce((a,b)=>a+b,0)/pts.length;
-  const last=pts[pts.length-1];
-  if(!(avg>0)) return null;
-  return (last-avg)/avg*100;
-}
-
 function valoEarliestDate(){
   const ph=state.priceHistory;
   if(!ph || !ph.tickers) return null;
