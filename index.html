@@ -349,17 +349,45 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:8px;}
 .qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;position:relative;}
-.qs-chip-dot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
-.qs-retrait-legend{margin-top:6px;}
-.qs-retrait-line{font-size:9.5px;font-weight:400;color:var(--muted);line-height:1.5;}
-.qs-retrait-raison{color:var(--gold-text);font-weight:700;}
+.qs-retrait-legend{margin-top:8px;}
+.qs-retrait-line{font-size:10px;font-weight:400;color:var(--muted);line-height:1.5;font-family:'Poppins',sans-serif;}
+.qs-retrait-raison{color:var(--teal-dark-text);font-weight:700;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
-.chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
+.chip-q{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
 .qs-chip.actual .chip-q{color:var(--navy);opacity:.7;}
-.chip-v{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;}
+.chip-v{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;}
 .qs-chip.actual .chip-v{color:var(--navy);}
 .qs-chip.estim .chip-v{color:var(--muted);}
+
+/* ══ Pont "publie -> base Omnium" (EPS trimestriels) ══
+   Un rang = UNE ligne : libelle + total a gauche, puces a droite. Le
+   total est ainsi a hauteur des puces qu'il additionne, au lieu de
+   flotter entre deux blocs. Sur mobile, libelle et total se replient en
+   colonne etroite - le rang reste sur une seule ligne jusqu'a 320px.
+   Echelle typo volontairement pauvre : 13px pour TOUS les nombres et
+   libelles de rang, la hierarchie se fait a la couleur seule. */
+.eps-rows{display:flex;flex-direction:column;gap:7px;}
+.eps-row{display:flex;align-items:center;gap:12px;}
+.eps-head{display:flex;align-items:baseline;gap:12px;flex:0 0 268px;min-width:0;}
+.eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex:0 0 134px;}
+.eps-tot{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;white-space:nowrap;}
+.eps-tot .eps-cons{font-weight:600;color:var(--muted);}
+.eps-tot .eps-analysts{font-weight:600;color:var(--muted);font-size:10.5px;}
+.eps-cells{flex:1;display:flex;gap:8px;min-width:0;}
+.eps-cells .qs-chip{padding:7px 3px;}
+.eps-adj{flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-dark-text);padding:7px 3px;}
+.eps-adj.nil{color:#c9cede;font-weight:600;}
+.eps-row.pub .eps-lbl,.eps-row.pub .eps-tot{color:var(--muted);}
+.eps-row.adj .eps-lbl,.eps-row.adj .eps-tot{color:var(--teal-dark-text);}
+.eps-row.base .eps-lbl,.eps-row.base .eps-tot{color:var(--navy);}
+/* Rangee "publie" : puces blanches bordees - le fond bleute est reserve
+   a la base Omnium, qui est desormais le chiffre retenu. Le trait plein
+   (vs pointille) continue de distinguer publie et estime. */
+.eps-row.pub .qs-chip.actual{background:#fff;border-color:var(--border);}
+.eps-row.pub .qs-chip.actual .chip-v,.eps-row.pub .qs-chip.actual .chip-q{color:var(--muted);opacity:1;}
+.eps-yr-solo{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+.eps-lbl-sm{display:none;}
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
@@ -418,6 +446,25 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-empty-mini{padding:20px 4px;font-size:11px;}
 
 .vr-hist-controls{margin-bottom:10px;}
+/* Le mot "P/E" devient le titre de la ligne au lieu d'etre repete sur
+   chaque bouton ; la pastille turquoise marque l'annee en cours. */
+.vr-series-row{align-items:center;}
+.vr-row-lbl{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);flex-shrink:0;margin-right:2px;}
+/* Contexte fiche titre uniquement : commandes nettement plus fines que
+   les pilules du panneau Value Rankings, qui partagent la classe mais
+   gardent leur poids propre. 1re ligne = segment de mode, 2e/3e = liens
+   textuels soulignes a l'etat actif. */
+.vr-control-row{display:flex;flex-wrap:wrap;gap:8px;}
+.vr-hist-controls .vr-control-row{gap:16px;margin-bottom:9px;align-items:baseline;}
+.vr-hist-controls .vr-control-row:first-child{display:inline-flex;background:var(--navy-light);border-radius:7px;padding:2px;gap:2px;margin-bottom:12px;}
+.vr-hist-controls .vr-control-row:first-child .vr-pill{padding:5px 14px;border-radius:5px;background:transparent;font-size:11px;box-shadow:none;min-width:0;}
+.vr-hist-controls .vr-control-row:first-child .vr-pill.active{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,1,144,.16);}
+.vr-hist-controls .vr-control-row:not(:first-child) .vr-pill{background:none;border:none;border-radius:0;padding:2px 0;min-width:0;font-size:12px;font-weight:700;color:var(--muted);border-bottom:2px solid transparent;box-shadow:none;}
+.vr-hist-controls .vr-control-row:not(:first-child) .vr-pill:hover:not(:disabled){background:none;color:var(--navy);}
+.vr-hist-controls .vr-control-row:not(:first-child) .vr-pill.active{background:none;color:var(--navy);border-bottom-color:var(--navy);box-shadow:none;}
+.vr-cy-dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--teal-text);margin-left:5px;vertical-align:middle;}
+.vr-pill.active .vr-cy-dot{background:var(--teal);}
+.vr-leg-avg{width:14px;height:0;border-top:1.5px dashed #9aa3b2;display:inline-block;}
 .vr-hist-legend{display:flex;gap:16px;font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:600;margin-bottom:8px;}
 .vr-hist-legend span{display:inline-flex;align-items:center;gap:5px;}
 .vr-leg-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;}
@@ -480,9 +527,24 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .rb-eps-headline{gap:14px;}
   .qs-chips-row{gap:6px;}
   .qs-chip{padding:4px 1px;}
-  .chip-q{font-size:7px;}
-  .chip-v{font-size:9.5px;}
+  .chip-q{font-size:8px;}
+  .chip-v{font-size:10.5px;}
   .qs-sum{font-size:8px;}
+  /* Pont EPS : libelle + total passent en colonne etroite pour que le
+     rang tienne TOUJOURS sur une ligne (verifie sans debordement
+     jusqu'a 320px de large). Les libelles longs cedent la place a leur
+     forme courte. */
+  .eps-row{gap:9px;}
+  .eps-head{flex:0 0 76px;flex-direction:column;gap:1px;}
+  .eps-lbl{flex:0 0 auto;font-size:11px;line-height:1.25;}
+  .eps-tot{font-size:12px;line-height:1.25;white-space:normal;}
+  .eps-tot .eps-analysts{display:none;}
+  .eps-lbl-lg{display:none;}
+  .eps-lbl-sm{display:inline;}
+  .eps-cells{gap:5px;}
+  .eps-cells .qs-chip{padding:5px 1px;}
+  .eps-adj{font-size:10.5px;padding:5px 1px;}
+  .qs-retrait-line{font-size:9.5px;}
   .coherence{font-size:8px;margin-top:5px;}
   .pe-stack{padding:10px 0 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
   .pe-lbl{font-size:11.5px;}
@@ -1418,15 +1480,22 @@ function refreshPriceOnly(ticker){
   });
 }
 
-function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
+function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY, consInfo){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const chip=(p,forceActual)=>{
-    const r=Array.isArray(p.retraitements)&&p.retraitements.length?p.retraitements:null;
-    const dot=r?'<span class="qs-chip-dot"></span>':'';
-    return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}${r?' has-retrait':''}">${dot}<div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  const chip=(p,forceActual,valueOverride)=>{
+    const v=valueOverride!=null?valueOverride:(+p.eps);
+    return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${v.toFixed(2)}</div></div>`;
   };
   const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
+  // Somme des retraitements portes par un trimestre. Convention du
+  // SCHEMA : `impact` est le montant de l'element non recurrent CONTENU
+  // dans le chiffre publie - la base Omnium vaut donc publie - impact
+  // (un gain exceptionnel de +0.41 gonfle le publie, on le retire).
+  const adjOf=p=>(Array.isArray(p.retraitements)?p.retraitements:[]).reduce((a,r)=>a+(+r.impact||0),0);
+  const hasAdj=arr=>arr.some(p=>Array.isArray(p.retraitements)&&p.retraitements.length);
+  const fmtSigned=v=>`${v>=0?'+':'−'}${Math.abs(v).toFixed(2)}`;
+  const lbl=(long,short)=>`<span class="eps-lbl-lg">${long}</span><span class="eps-lbl-sm">${short}</span>`;
   // Legende statique, discrete, toujours visible sous la ligne de chips -
   // jamais une interaction au tap/clic (revu le 17/08/2026 : l'utilisateur
   // n'avait pas identifie la pastille comme cliquable, l'info doit etre
@@ -1450,35 +1519,84 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         const sign=e.impact>=0?'+':'';
         return `${esc(e.label)} ${sign}${(+e.impact).toFixed(2)}`;
       }).join(', ');
-      return `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b> : ${items}</div>`;
+      return `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b> · ${items}</div>`;
     }).join('');
     return `<div class="qs-retrait-legend">${lines}</div>`;
   };
-  const colBlock=(arr,annual,note,opts={})=>{
-    const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
-    let sumHtml='', noteHtml='';
-    if(!opts.hideSum){
-      if(opts.hideDelta){
-        sumHtml=`<div class="qs-sum">Σ ${sum.toFixed(2)}${cur||'$'}</div>`;
-      }else{
-        const delta=(annual>0)?((sum-annual)/annual*100):null;
-        const material=delta!=null&&Math.abs(delta)>=3;
-        const deltaTxt=delta!=null?` (${delta>=0?'+':''}${delta.toFixed(1)}%)`:'';
-        sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
-      }
+  const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
+
+  // Un bloc d'annee = un rang par nature de chiffre, chaque rang sur UNE
+  // ligne (libelle + total a gauche, puces a droite). Sans retraitement,
+  // publie et base Omnium se confondent : il ne reste qu'un rang, donc
+  // exactement l'entete d'avant - le cas courant est le cas degenere du
+  // meme gabarit, pas une seconde mise en page.
+  const yearBlock=(arr,opts={})=>{
+    const consHtml=opts.consensusHtml||'';
+    const totalTxt=v=>`${v.toFixed(2)}${cur||'$'}`;
+    const cells=(fn)=>`<div class="eps-cells">${arr.map(fn).join('')}</div>`;
+    if(!hasAdj(arr)){
+      const shown=opts.annual!=null?opts.annual:arr.reduce((a,p)=>a+(+p.eps||0),0);
+      return `<div class="qs-qtr-block"><div class="eps-rows">
+        <div class="eps-row base">
+          <div class="eps-head">
+            <span class="eps-lbl" style="flex:0 0 auto;">${opts.label}</span>
+            <span class="eps-tot">${shown>0?totalTxt(shown):'—'}${consHtml}</span>
+          </div>
+          ${cells(p=>chip(p,opts.forceActual))}
+        </div>
+      </div>${opts.legend?legendRow:''}</div>`;
     }
-    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`:''}${sumHtml}${noteHtml}${retraitLegend(arr)}</div>`;
+    const pubTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
+    const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
+    const nAdj=arr.filter(p=>adjOf(p)!==0).length;
+    return `<div class="qs-qtr-block">
+      <div class="eps-yr-solo">${opts.label}</div>
+      <div class="eps-rows">
+        <div class="eps-row pub">
+          <div class="eps-head">
+            <span class="eps-lbl">${lbl('Published','Published')}</span>
+            <span class="eps-tot">${totalTxt(pubTotal)}</span>
+          </div>
+          ${cells(p=>chip(p,opts.forceActual))}
+        </div>
+        <div class="eps-row adj">
+          <div class="eps-head">
+            <span class="eps-lbl">${lbl('incl. non-recurring','non-recur.')}</span>
+            <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal):''}</span>
+          </div>
+          <div class="eps-cells">${arr.map(p=>{
+            const a=adjOf(p);
+            return `<div class="eps-adj${a===0?' nil':''}">${a===0?'—':fmtSigned(a)}</div>`;
+          }).join('')}</div>
+        </div>
+        <div class="eps-row base">
+          <div class="eps-head">
+            <span class="eps-lbl">${lbl('Omnium basis','Omnium')}</span>
+            <span class="eps-tot">${totalTxt(pubTotal-adjTotal)}${consHtml}</span>
+          </div>
+          ${cells(p=>chip(p,opts.forceActual,(+p.eps)-adjOf(p)))}
+        </div>
+      </div>${opts.legend?legendRow:''}${retraitLegend(arr)}</div>`;
+  };
+  // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
+  // "Published" : un consensus sell-side est etabli hors elements non
+  // recurrents, le comparer au chiffre publie brut ferait lire un
+  // manquement (ou un depassement) qui n'existe pas.
+  const consHtmlOf=(c)=>{
+    if(!c||!(c.eps>0)) return '';
+    return `<span class="eps-cons"> / ${lbl('Consensus','Cons.')} ${c.eps.toFixed(2)}${cur||'$'}</span>`
+      +(c.analysts?`<span class="eps-analysts"> (${c.analysts} analysts)</span>`:'');
   };
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
     annualEps: qe.PY.reduce((a,p)=>a+(+p.eps||0),0),
-    html: colBlock(qe.PY, null, null, {forceActual:true, hideSum:true})
+    html: yearBlock(qe.PY, {label:`EPS ${CY-1}`, forceActual:true})
   }:null;
   const historiqueBlocks=(Array.isArray(qe.historique)?qe.historique:[])
     .filter(h=>h && Array.isArray(h.periods) && h.periods.length)
     .map(h=>({
       year: h.year,
-      html: colBlock(h.periods, null, null, {forceActual:true})
+      html: yearBlock(h.periods, {label:`EPS ${h.year}`, forceActual:true})
     }));
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
@@ -1504,8 +1622,9 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   return {
     pyBlock,
     historiqueBlocks,
-    chipsCY: colBlock(qe.CY,epsCY,qe.coherenceNoteCY,{legend:true,hideSum:true}),
-    chipsNY: colBlock(qe.NY,epsNY,qe.coherenceNoteNY,{hideSum:true}),
+    legendRow,
+    chipsCY: yearBlock(qe.CY,{label:`EPS ${CY}`, annual:epsCY, consensusHtml:consHtmlOf(consInfo&&consInfo.cy)}),
+    chipsNY: yearBlock(qe.NY,{label:`EPS ${CY+1}`, annual:epsNY, consensusHtml:consHtmlOf(consInfo&&consInfo.ny)}),
     peStack
   };
 }
@@ -1544,7 +1663,8 @@ function renderReturnBlock(ticker, proj, cours){
   const shCY=d.hypothese?.adjShares?.[CY];
   const ndNY=d.hypothese?.adjND?.[CY+1];
   const shNY=d.hypothese?.adjShares?.[CY+1];
-  const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY);
+  const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY,
+    {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)});
 
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
@@ -1571,35 +1691,14 @@ function renderReturnBlock(ticker, proj, cours){
     </div>
     <div class="rb-eps-py-content" id="eps-hist-content">
       ${qeBlock.historiqueBlocks.map(h=>`
-      <div class="rb-eps-block rb-eps-block-py" style="margin-bottom:12px;">
-        <div class="rb-eps-year-py" style="margin-bottom:6px;">EPS ${h.year}</div>
-        ${h.html}
-      </div>`).join('')}
+      <div class="rb-eps-block rb-eps-block-py" style="margin-bottom:12px;">${h.html}</div>`).join('')}
     </div>`:''}
-    <div class="card-title" style="margin:16px 0 10px;">Earnings Per Share</div>
+    <div class="card-title" style="margin:16px 0 6px;">Earnings Per Share</div>
+    ${qeBlock?qeBlock.legendRow:''}
     <div class="rb-eps-grid">
-      ${qeBlock?.pyBlock?`
-      <div class="rb-eps-block">
-        <div class="rb-eps-headline">
-          <span class="rb-eps-year">EPS ${qeBlock.pyBlock.year}</span>
-          <span class="rb-eps-annualval">${qeBlock.pyBlock.annualEps>0?qeBlock.pyBlock.annualEps.toFixed(2)+cur:'—'}</span>
-        </div>
-        ${qeBlock.pyBlock.html}
-      </div>`:''}
-      <div class="rb-eps-block">
-        <div class="rb-eps-headline">
-          <span class="rb-eps-year">EPS ${CY}</span>
-          <span class="rb-eps-annualval">${epsCY>0?epsCY.toFixed(2)+cur:'—'}${cons?.eps?`<span class="rb-eps-annualsep">/</span>Consensus ${cons.eps.toFixed(2)+cur}${analystsCY?` <span class="rb-eps-analysts">(${analystsCY} analysts)</span>`:''}`:''}</span>
-        </div>
-        ${qeBlock?qeBlock.chipsCY:''}
-      </div>
-      <div class="rb-eps-block">
-        <div class="rb-eps-headline">
-          <span class="rb-eps-year">EPS ${CY+1}</span>
-          <span class="rb-eps-annualval">${epsNY>0?epsNY.toFixed(2)+cur:'—'}${consNY>0?`<span class="rb-eps-annualsep">/</span>Consensus ${consNY.toFixed(2)+cur}${analystsNY?` <span class="rb-eps-analysts">(${analystsNY} analysts)</span>`:''}`:''}</span>
-        </div>
-        ${qeBlock?qeBlock.chipsNY:''}
-      </div>
+      ${qeBlock?.pyBlock?`<div class="rb-eps-block">${qeBlock.pyBlock.html}</div>`:''}
+      <div class="rb-eps-block">${qeBlock?qeBlock.chipsCY:''}</div>
+      <div class="rb-eps-block">${qeBlock?qeBlock.chipsNY:''}</div>
     </div>
   `;
 }
@@ -1795,6 +1894,56 @@ function smoothPathD(pts){
   return d;
 }
 
+// Graduations de l'axe des dates, adaptees a l'amplitude affichee. Le
+// PREMIER libelle porte toujours son millesime : sans ca, une suite
+// "T4 T2 T4 T2" ne dit jamais de quelle annee on parle. L'echantillonnage
+// se fait en UNE fois avec un pas calcule - un elagage repete un sur deux
+// supprimerait tous les millesimes de janvier une fois sur deux.
+function buildValoXTicks(dates, maxTicks){
+  const ms=d=>new Date(d+'T00:00:00Z').getTime();
+  const t0=ms(dates[0]), t1=ms(dates[dates.length-1]);
+  const spanDays=(t1-t0)/86400000;
+  const shortDate=iso=>{const p=iso.split('-');return parseInt(p[2],10)+' '+(MONTH_ABBR_FR[parseInt(p[1],10)]||'');};
+  const ticks=[];
+  if(spanDays<=95){
+    const n=Math.min(4, dates.length);
+    for(let i=0;i<n;i++){
+      const idx=Math.round(i*(dates.length-1)/(n-1||1));
+      ticks.push({t:ms(dates[idx]), label:shortDate(dates[idx])});
+    }
+  }else if(spanDays<=550){
+    const step=spanDays<=200?1:(spanDays<=380?2:3);
+    const d=new Date(t0); d.setUTCDate(1);
+    if(d.getTime()<t0) d.setUTCMonth(d.getUTCMonth()+1);
+    let prevYear=null;
+    while(d.getTime()<=t1){
+      const m=d.getUTCMonth()+1, y=d.getUTCFullYear();
+      ticks.push({t:d.getTime(), label:(prevYear!==null&&y!==prevYear)?`${MONTH_ABBR_FR[m]} ${String(y).slice(2)}`:MONTH_ABBR_FR[m]});
+      prevYear=y; d.setUTCMonth(d.getUTCMonth()+step);
+    }
+  }else{
+    const stepMonths=spanDays>1460?12:6;
+    const d=new Date(t0); d.setUTCDate(1);
+    while(d.getUTCMonth()%stepMonths!==0) d.setUTCMonth(d.getUTCMonth()+1);
+    if(d.getTime()<t0) d.setUTCMonth(d.getUTCMonth()+stepMonths);
+    while(d.getTime()<=t1){
+      const m=d.getUTCMonth()+1, y=d.getUTCFullYear();
+      ticks.push({t:d.getTime(), label:m===1?String(y):`${MONTH_ABBR_FR[m]} ${String(y).slice(2)}`});
+      d.setUTCMonth(d.getUTCMonth()+stepMonths);
+    }
+  }
+  const cap=maxTicks||6;
+  if(ticks.length>cap){
+    const step=Math.ceil(ticks.length/cap);
+    const kept=ticks.filter((_,i)=>i%step===0);
+    ticks.length=0; kept.forEach(k=>ticks.push(k));
+  }
+  if(ticks.length && !/\d{2}$/.test(ticks[0].label)){
+    ticks[0].label+=' '+String(new Date(ticks[0].t).getUTCFullYear()).slice(2);
+  }
+  return ticks;
+}
+
 function buildValoChartSVG(ticker, opts){
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
@@ -1818,19 +1967,36 @@ function buildValoChartSVG(ticker, opts){
     .filter(p=>p.y!=null && isFinite(p.y));
   if(points.length<2) return null;
 
-  const W=compact?260:640, H=compact?90:220;
-  const padL=compact?4:46, padR=compact?4:50, padT=compact?10:18, padB=compact?12:28;
+  // Fiche titre : le trace demarre a x=0 (aucune gouttiere d'axe), les
+  // graduations chiffrees vivant DANS le cadre - c'est ce qui colle le
+  // graphique au bord gauche comme le reste de la section. Sur mobile on
+  // retrecit le viewBox au lieu de laisser le SVG se reduire a 60% :
+  // sinon un texte declare a 9.5px tombe a ~5.5px effectifs et devient
+  // illisible.
+  const narrow=!compact && typeof window!=='undefined' && window.innerWidth<620;
+  const W=compact?260:(narrow?380:640), H=compact?90:(narrow?250:220);
+  const padL=compact?4:0, padR=compact?4:54, padT=compact?10:26, padB=compact?12:30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
 
   const t0=new Date(points[0].snap.date+'T00:00:00Z').getTime();
   const t1=new Date(points[points.length-1].snap.date+'T00:00:00Z').getTime();
   const tSpan=Math.max(1, t1-t0);
-  const xOf=(dateStr)=> padL + ((new Date(dateStr+'T00:00:00Z').getTime()-t0)/tSpan)*plotW;
+  const xOfT=(t)=> padL + ((t-t0)/tSpan)*plotW;
+  const xOf=(dateStr)=> xOfT(new Date(dateStr+'T00:00:00Z').getTime());
 
+  // Moyenne de la serie affichee : attribut permanent de CHAQUE courbe,
+  // des le 2e point (pas d'option a activer). Pour la courbe "annee en
+  // cours" (role glissant), elle s'accumule naturellement d'une annee
+  // civile a l'autre puisque la serie elle-meme est continue.
   const yVals=points.map(p=>p.y);
+  const avg=compact?null:yVals.reduce((a,b)=>a+b,0)/yVals.length;
   let yMin=Math.min(...yVals), yMax=Math.max(...yVals);
+  if(avg!=null){ yMin=Math.min(yMin,avg); yMax=Math.max(yMax,avg); }
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
-  const margin=(yMax-yMin)*0.1;
+  // Marge plus genereuse hors mini-carte : les graduations chiffrees sont
+  // posees dans ces bandes haute/basse, qu'aucun point n'atteint - c'est
+  // ce qui leur evite tout aplat de fond (qui decouperait le trace).
+  const margin=(yMax-yMin)*(compact?0.1:0.16);
   yMin-=margin; yMax+=margin;
   const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
 
@@ -1865,16 +2031,31 @@ function buildValoChartSVG(ticker, opts){
 
   // Axes (fiche titre uniquement - les mini-cartes du Ranking restent des
   // sparklines epurees sans grille, cf. Apple Stocks/Robinhood watchlist).
-  const yAxis=compact ? '' : [yMax,(yMax+yMin)/2,yMin].map(v=>{
-    const y=yOf(v).toFixed(1);
-    const txt=mode==='price' ? fmtPrice(v) : v.toFixed(1)+'×';
-    return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`+
-      `<text x="${(padL-8).toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end" dominant-baseline="middle">${txt}</text>`;
-  }).join('');
+  const fmtY=(v)=> mode==='price' ? fmtPrice(v) : v.toFixed(1)+'×';
+  const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
+  // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
+  // mediane reste un trait muet. Les deux etiquettes sont posees hors de
+  // la bande occupee par la courbe, donc SANS aucun aplat de fond.
+  const vTop=yMax-margin*0.62, vBot=yMin+margin*0.62;
+  const yAxis=compact ? '' : (
+    [vTop,(yMax+yMin)/2,vBot].map(v=>{
+      const y=yOf(v).toFixed(1);
+      return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`;
+    }).join('')
+    + axText(padL, yOf(vTop)-6, fmtY(vTop), 'start')
+    + axText(padL, yOf(vBot)+12, fmtY(vBot), 'start')
+  );
+  // Abscisses adaptatives : dates courtes en dessous de ~3 mois, mois
+  // ensuite (millesime au changement d'annee), semestres/annees au-dela
+  // de 18 mois - et jamais plus de ~5 etiquettes. Sans ca, a 2 captures
+  // par semaine, l'axe devient illisible en quelques mois.
   const xAxis=compact ? '' : (()=>{
-    const y=(padT+plotH+18).toFixed(1);
-    return `<text x="${xyPts[0][0].toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="start">${formatFrDate(points[0].snap.date)}</text>`+
-      `<text x="${xyPts[xyPts.length-1][0].toFixed(1)}" y="${y}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end">${formatFrDate(points[points.length-1].snap.date)}</text>`;
+    const yb=(padT+plotH+17);
+    const ticks=buildValoXTicks(points.map(p=>p.snap.date), narrow?4:6);
+    return ticks.map((tk,i)=>{
+      const anchor=i===0?'start':(i===ticks.length-1?'end':'middle');
+      return axText(xOfT(tk.t), yb, tk.label, anchor);
+    }).join('');
   })();
 
   const earningsMarks=visibleEarnings.map(d=>{
@@ -1882,14 +2063,38 @@ function buildValoChartSVG(ticker, opts){
     return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Earnings – ${formatFrDate(d)}</title></line>`;
   }).join('');
 
+  // Moyenne : pointille gris discret, etiquette POSEE AU-DESSUS du trait
+  // (jamais a cheval, elle serait barree) et sans aplat de fond. En
+  // graisse normale, comme les graduations.
+  const avgMark=(compact||avg==null) ? '' : (()=>{
+    const y=yOf(avg);
+    const n=points.length;
+    const lbl=`average ${fmtY(avg)}${n<10?`  ·  ${n} pts`:''}`;
+    return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#9aa3b2" stroke-width="1.25" stroke-dasharray="4,4"/>`
+      +`<text x="${(padL+plotW*0.5).toFixed(1)}" y="${(y-5).toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle">${lbl}</text>`;
+  })();
+
+  // Au-dela de ~40 points, les pastilles individuelles se touchent et le
+  // trace devient une chenille : on ne garde alors que les marqueurs de
+  // revision. A 2 captures/semaine ce seuil tombe vers 5 mois d'historique.
+  const dense=!compact && points.length>40;
   const dots=points.map(p=>{
     const isInflexion=inflexionIdx.has(p.idx);
+    if(dense && !isInflexion) return '';
     const cx=xOf(p.snap.date).toFixed(1), cy=yOf(p.y).toFixed(1);
     const r=isInflexion?(compact?3.5:5):(compact?2.25:3.5);
     return isInflexion
       ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--gold)" stroke="var(--navy)" stroke-width="1"/>`
       : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${dotColor}"/>`;
   }).join('');
+
+  // Remonte a l'appelant ce qui est REELLEMENT trace, pour que la legende
+  // n'annonce jamais un marqueur absent de l'ecran.
+  if(opts.out){
+    opts.out.hasRevision=points.some(p=>inflexionIdx.has(p.idx));
+    opts.out.hasEarnings=visibleEarnings.length>0;
+    opts.out.hasAvg=avg!=null;
+  }
 
   // Tooltip au survol : toujours actif sur la fiche titre (souris + tap) ;
   // sur les mini-cartes du Ranking, SOURIS UNIQUEMENT (pas de touchstart)
@@ -1923,6 +2128,7 @@ function buildValoChartSVG(ticker, opts){
     ${yAxis}
     ${earningsMarks}
     <path d="${lineD}" fill="none" stroke="${lineColor}" stroke-width="${compact?1.75:2.25}" stroke-linejoin="round" stroke-linecap="round"/>
+    ${avgMark}
     ${dots}
     ${endLabel}
     ${xAxis}
@@ -2158,17 +2364,37 @@ function renderValoHistory(ticker){
     : st.seriesKind==='year' ? {kind:'year', year: years.includes(st.year) ? st.year : years[0]}
     : {kind:'role', role:st.role};
 
+  // Le millesime de l'annee EN COURS ne selectionne pas la serie absolue
+  // mais le ROLE glissant : c'est la seule courbe continue d'une annee
+  // civile a l'autre (au roll de janvier elle enchaine sur le nouveau
+  // millesime), donc la seule dont la moyenne s'accumule vraiment.
+  const curYear=latest.cyYear;
+  const isCurSel=st.mode==='pe'&&st.seriesKind==='role'&&st.role==='cy';
   const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
-  const yearBtn=(y)=>`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='year'&&st.year===y?' active':''}" onclick="setValoHistSeries('year',${y})">P/E ${y}</button>`;
-  const roleBtn=(r,label)=>`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='role'&&st.role===r?' active':''}" onclick="setValoHistSeries('role','${r}')">${label}</button>`;
-  const fwdBtn=`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='fwd'?' active':''}" onclick="setValoHistSeries('fwd')">P/E 12m Fwd</button>`;
-
-  const periodBtn=(pk,label)=>{
-    const avail=dayDiffISO(latest.date, earliest)>=VALO_PERIOD_DAYS[pk];
-    const availDate=!avail?isoDatePlusDays(earliest, VALO_PERIOD_DAYS[pk]):null;
-    const title=!avail?`Available from ${formatFrDate(availDate)}`:'';
-    return `<button class="vr-pill${st.period===pk?' active':''}" ${avail?'':'disabled'} title="${escAttr(title)}" onclick="setValoHistPeriod('${pk}')">${label}</button>`;
+  const yearBtn=(y)=>{
+    if(y===curYear){
+      return `<button class="vr-pill${isCurSel?' active':''}" title="Current year — continuous series across the January roll" onclick="setValoHistSeries('role','cy')">${y}<span class="vr-cy-dot"></span></button>`;
+    }
+    const on=st.mode==='pe'&&st.seriesKind==='year'&&st.year===y;
+    return `<button class="vr-pill${on?' active':''}" onclick="setValoHistSeries('year',${y})">${y}</button>`;
   };
+  const fwdBtn=`<button class="vr-pill${st.mode==='pe'&&st.seriesKind==='fwd'?' active':''}" onclick="setValoHistSeries('fwd')">12m fwd</button>`;
+  // 12m fwd s'intercale entre l'annee en cours et la suivante : c'est
+  // chronologiquement sa place, un 12 mois glissant etant un melange des deux.
+  const seriesBtns=(()=>{
+    const out=[];
+    years.forEach(y=>{ out.push(yearBtn(y)); if(y===curYear) out.push(fwdBtn); });
+    if(!years.includes(curYear)) out.push(fwdBtn);
+    return out.join('');
+  })();
+
+  // Ligne "periode" masquee tant qu'aucune fenetre n'est atteignable :
+  // avec 3 points sur une semaine, proposer 1 mois / 3 mois / 1 an griss
+  // n'apporte rien. Les boutons apparaissent au fur et a mesure que
+  // l'historique les rend reellement selectionnables.
+  const spanDays=dayDiffISO(latest.date, earliest);
+  const availPeriods=Object.keys(VALO_PERIOD_DAYS).filter(pk=>spanDays>=VALO_PERIOD_DAYS[pk]);
+  const periodBtn=(pk)=>`<button class="vr-pill${st.period===pk?' active':''}" onclick="setValoHistPeriod('${pk}')">${VALO_PERIOD_LABELS[pk]}</button>`;
   const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">All</button>`;
 
   let chartHtml, legendHtml;
@@ -2184,20 +2410,28 @@ function renderValoHistory(ticker){
         : proj.legendHtml;
     }
   }else{
-    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
+    // La legende se construit APRES le trace, a partir de ce qu'il
+    // contient reellement : annoncer "Revised estimate" alors qu'aucun
+    // point or n'est a l'ecran etait le principal defaut de lecture.
+    const out={};
+    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false, out});
     chartHtml=chart || '<div class="vr-empty">Not enough data points for this period.</div>';
-    legendHtml='<span><span class="vr-leg-dot"></span>Revised estimate (hover: event)</span><span><span class="vr-leg-dash"></span>Earnings</span>';
+    const legs=[];
+    if(out.hasRevision) legs.push('<span><span class="vr-leg-dot"></span>Revised estimate (hover: event)</span>');
+    if(out.hasEarnings) legs.push('<span><span class="vr-leg-dash"></span>Earnings</span>');
+    if(out.hasAvg) legs.push('<span><span class="vr-leg-avg"></span>Average P/E</span>');
+    legendHtml=legs.join('');
   }
   const showSeriesRow=st.mode==='pe';
-  const showPeriodRow=st.mode!=='projection';
+  const showPeriodRow=st.mode!=='projection' && availPeriods.length>0;
 
   card.innerHTML=`
     <div class="card-title" style="text-align:left;"><b>Valuation history</b></div>
     <div class="vr-hist-controls">
-      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('price','Price')}${modeBtn('projection','Projection curve')}</div>
-      ${showSeriesRow ? `<div class="vr-control-row">${years.map(yearBtn).join('')}${roleBtn('cy','Current year')}${roleBtn('ny','Next year')}${fwdBtn}</div>` : ''}
-      ${showPeriodRow ? `<div class="vr-control-row">${Object.keys(VALO_PERIOD_DAYS).map(pk=>periodBtn(pk,VALO_PERIOD_LABELS[pk])).join('')}${allBtn}</div>` : ''}
-      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Each curve = a detected revision of the EPS projection (2026→2030); more recent ones are darker.</div>' : ''}
+      <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('projection','EPS')}</div>
+      ${showSeriesRow ? `<div class="vr-control-row vr-series-row"><span class="vr-row-lbl">P/E</span>${seriesBtns}</div>` : ''}
+      ${showPeriodRow ? `<div class="vr-control-row">${availPeriods.map(periodBtn).join('')}${allBtn}</div>` : ''}
+      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:10.5px;">Each curve = a detected revision of the EPS projection; more recent ones are darker.</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
     <div class="vr-hist-chart">${chartHtml}</div>
