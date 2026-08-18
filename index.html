@@ -452,6 +452,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-item.dead{opacity:.5;}
 .pe-note{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);line-height:1.5;margin:-4px 0 12px;max-width:640px;}
 .pe-note b{color:var(--navy);font-weight:700;}
+.acct-basis{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);line-height:1.55;margin-top:8px;max-width:640px;}
 /* Une cellule tracable se comporte comme un onglet : soulignee a l'etat
    actif, jamais un bouton - la table reste une table. */
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;}
@@ -1809,6 +1810,61 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   };
 }
 
+// Accounting basis : paragraphe TOUJOURS calcule cote client, jamais
+// stocke (meme logique que buildGuidanceScorecardSummary) - donc valide
+// immediatement pour tout titre deja conforme au SCHEMA, sans aucune
+// etape d'ecriture supplementaire a chaque refresh. Synthetise en une
+// phrase les trois bases comptables potentiellement en jeu (Omnium,
+// communication du groupe, consensus) et le pourquoi d'un ecart eventuel
+// - jamais les chiffres eux-memes, deja portes par Earnings Per Share
+// juste au-dessus (Published/Adjustments/Omnium/Consensus).
+function buildAccountingBasisNote(d, CY){
+  const hyp=d.hypothese||{};
+  const qe=hyp.quarterlyEPS||null;
+  // Enum strict (voir E8-bis) : un JSON heritee peut porter une phrase a la
+  // place du tag attendu (piege deja identifie le 17/08/2026 sur un autre
+  // champ) - une valeur hors {GAAP, non-GAAP} est traitee comme absente
+  // plutot que mal-affichee comme "non-GAAP" par defaut.
+  const asBasis=v=>(v==='GAAP'||v==='non-GAAP')?v:null;
+  const mgmtBasis=asBasis(hyp.dernierCall?.resultatsVsConsensus?.epsAdj?.basis);
+  const consBasis=asBasis(d.epsConsensus?.basis);
+  const note=hyp.guidanceScorecard?.basisNote||null;
+
+  // Motifs de retraitement : un retraitement ne vit que sur un trimestre
+  // REALISE (actual:true) - en debut d'exercice, ces trimestres sont
+  // encore dans PY (le nouvel exercice, CY, n'a que des projections sans
+  // retraitement tant qu'aucun trimestre n'est publie). On regroupe donc
+  // PY+CY plutot que CY seul, dedupliques.
+  const reasons=[...new Set([...(Array.isArray(qe?.PY)?qe.PY:[]), ...(Array.isArray(qe?.CY)?qe.CY:[])]
+    .flatMap(p=>Array.isArray(p.retraitements)?p.retraitements.map(r=>r.raison):[])
+    .filter(Boolean))];
+
+  const escTxt=s=>(s||'').toString().replace(/</g,'&lt;');
+  let omniumPart=`Omnium bases its EPS on published GAAP/IFRS`;
+  if(reasons.length) omniumPart+=`, adjusted this year for ${reasons.map(escTxt).join(', ')}`;
+  omniumPart+='.';
+
+  let peersPart;
+  if(!mgmtBasis&&!consBasis){
+    peersPart=' No comparable EPS guidance or consensus exists for this name.';
+  } else if(mgmtBasis&&consBasis&&mgmtBasis===consBasis){
+    peersPart=mgmtBasis==='GAAP'
+      ? ' The company and consensus both report on the same GAAP basis.'
+      : ' The company and consensus both report on an adjusted non-GAAP basis.';
+  } else {
+    peersPart='';
+    if(mgmtBasis) peersPart+=mgmtBasis==='GAAP'
+      ? ' The company reports on a GAAP basis.'
+      : ' The company communicates on an adjusted non-GAAP basis.';
+    if(consBasis) peersPart+=consBasis==='GAAP'
+      ? ' Consensus follows the GAAP basis.'
+      : ' Consensus follows the adjusted non-GAAP basis.';
+  }
+
+  const notePart=note?` ${note.toString().replace(/</g,'&lt;')}`:'';
+  return `${omniumPart}${peersPart}${notePart}`;
+}
+
 let _epsHistOpen=false;
 function toggleEpsHistBlock(){
   _epsHistOpen=!_epsHistOpen;
@@ -1913,6 +1969,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsCY:''}</div>
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsNY:''}</div>
     </div>
+    <div class="acct-basis">${buildAccountingBasisNote(d, CY)}</div>
   `;
 }
 
