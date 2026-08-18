@@ -36,6 +36,7 @@ HYPOTHESE_ONLY_FIELDS = [
 ADJ_FIELDS = ["adjCA", "adjEBIT", "adjNet", "adjND", "adjShares", "adjEPS"]
 
 ANCRAGE_KEYS = {"id", "moteur", "applique", "confiance"}
+ANCRAGE_OPTIONAL_KEYS = {"versusPublie"}
 ANCRAGE_CONFIANCE_VALUES = {"haute", "moyenne", "basse"}
 
 COMPLIANCE_STATUS_VALUES = {
@@ -133,11 +134,15 @@ def validate_ancrages(d, errors):
             errors.add(f"ancrages[{i}] n'est pas un objet.")
             continue
         keys = set(a.keys())
-        if keys != ANCRAGE_KEYS:
+        extra_keys = keys - ANCRAGE_KEYS - ANCRAGE_OPTIONAL_KEYS
+        missing_keys = ANCRAGE_KEYS - keys
+        if extra_keys or missing_keys:
             errors.add(
                 f"ancrages[{i}] (id={a.get('id')!r}) a les cles {sorted(keys)} "
-                f"au lieu de exactement {sorted(ANCRAGE_KEYS)}."
+                f"au lieu de {sorted(ANCRAGE_KEYS)} (+ {sorted(ANCRAGE_OPTIONAL_KEYS)} optionnel)."
             )
+        if "versusPublie" in a and not isinstance(a["versusPublie"], str):
+            errors.add(f"ancrages[{i}].versusPublie doit etre une chaine si present.")
         if not isinstance(a.get("applique"), list):
             errors.add(f"ancrages[{i}].applique doit etre une liste de chaines 'champ.annee'.")
         if a.get("confiance") not in ANCRAGE_CONFIANCE_VALUES:
@@ -159,6 +164,12 @@ def validate_dernier_call(d, errors):
             errors.add(f"hypothese.dernierCall.{b} est absent (booleen attendu).")
         elif not isinstance(dc[b], bool):
             errors.add(f"hypothese.dernierCall.{b} n'est pas un booleen : {dc[b]!r}.")
+    basis = ((dc.get("resultatsVsConsensus") or {}).get("epsAdj") or {}).get("basis")
+    if basis is not None and basis not in ("GAAP", "non-GAAP"):
+        errors.add(
+            f"hypothese.dernierCall.resultatsVsConsensus.epsAdj.basis={basis!r} invalide - "
+            "doit etre exactement 'GAAP' ou 'non-GAAP', jamais une phrase explicative."
+        )
 
 
 def validate_quarterly_eps(d, errors):
@@ -170,6 +181,33 @@ def validate_quarterly_eps(d, errors):
         return
     adj_eps = d.get("hypothese", {}).get("adjEPS", {})
     years = sorted(adj_eps.keys(), key=lambda y: int(y)) if isinstance(adj_eps, dict) else []
+    ancrage_ids = {
+        a.get("id") for a in (d.get("hypothese", {}).get("ancrages") or [])
+        if isinstance(a, dict) and a.get("id")
+    }
+    def validate_retraitements(period_key, i, p):
+        r = p.get("retraitements")
+        if r is None:
+            return
+        if not isinstance(r, list) or not r:
+            errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements doit etre un tableau non vide si present.")
+            return
+        for j, item in enumerate(r):
+            if not isinstance(item, dict) or set(item.keys()) != {"raison", "impact"}:
+                errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}] doit avoir exactement les cles raison/impact.")
+                continue
+            raison = item.get("raison")
+            if not isinstance(raison, str) or not raison.strip():
+                errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].raison doit etre une chaine non vide.")
+            elif any(aid and aid in raison for aid in ancrage_ids) or "voir AN-" in raison or "(voir " in raison:
+                errors.add(
+                    f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].raison={raison!r} contient un renvoi "
+                    "interne (id d'ancrage ou 'voir ...') - la legende doit etre une phrase autonome et limpide "
+                    "pour le lecteur, jamais un pointeur vers un autre champ (voir SCHEMA, regle du 18/08/2026)."
+                )
+            if not isinstance(item.get("impact"), (int, float)):
+                errors.add(f"quarterlyEPS.{period_key}[{i}].retraitements[{j}].impact doit etre un nombre.")
+
     for label, key in (("CY", "CY"), ("NY", "NY")):
         arr = qe.get(key)
         if arr is None:
@@ -178,13 +216,17 @@ def validate_quarterly_eps(d, errors):
             errors.add(f"hypothese.quarterlyEPS.{key} doit etre un tableau, pas un objet.")
             continue
         for i, p in enumerate(arr):
-            if set(p.keys()) - {"label", "eps", "actual"}:
+            if set(p.keys()) - {"label", "eps", "actual", "retraitements"}:
                 errors.add(f"quarterlyEPS.{key}[{i}] a des cles inattendues : {sorted(p.keys())}.")
+            validate_retraitements(key, i, p)
     py = qe.get("PY")
     if isinstance(py, list):
         for i, p in enumerate(py):
             if p.get("actual") is not True:
                 errors.add(f"quarterlyEPS.PY[{i}] doit avoir actual=true (annee deja cloturee).")
+            if set(p.keys()) - {"label", "eps", "actual", "retraitements"}:
+                errors.add(f"quarterlyEPS.PY[{i}] a des cles inattendues : {sorted(p.keys())}.")
+            validate_retraitements("PY", i, p)
     if qe.get("coherenceNoteCY") is not None:
         errors.add("hypothese.quarterlyEPS.coherenceNoteCY doit etre null (champ deprecie).")
     if qe.get("coherenceNoteNY") is not None:

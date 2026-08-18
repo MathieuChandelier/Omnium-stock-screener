@@ -348,7 +348,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qtr-legend{display:flex;align-items:center;gap:14px;font-weight:400;font-size:9px;color:var(--muted);font-family:'Poppins',sans-serif;}
 .leg-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;}
 .qs-chips-row{display:flex;gap:8px;}
-.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;}
+.qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;position:relative;}
+.qs-chip-dot{position:absolute;top:3px;right:4px;width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.qs-retrait-legend{margin-top:6px;}
+.qs-retrait-line{font-size:9.5px;font-weight:400;color:var(--muted);line-height:1.5;}
+.qs-retrait-raison{color:var(--gold-text);font-weight:700;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -388,7 +392,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .vr-control-group:last-child{margin-bottom:0;}
 .vr-control-lbl{display:block;font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
 .vr-pill-row{display:flex;flex-wrap:wrap;gap:8px;}
-.vr-pill{font-family:'Poppins',sans-serif;padding:9px 16px;min-width:42px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,transform .08s,box-shadow .12s;}
+.vr-pill{font-family:'Poppins',sans-serif;padding:9px 16px;min-width:42px;text-align:center;border:none;border-radius:20px;cursor:pointer;font-size:12.5px;font-weight:700;background:var(--navy-light);color:var(--navy);transition:background .12s,color .12s,transform .08s,box-shadow .12s;-webkit-tap-highlight-color:transparent;outline:none;}
 .vr-pill:hover:not(:disabled){background:#dfe2fb;}
 .vr-pill:active:not(:disabled){transform:scale(.95);}
 .vr-pill.active{background:var(--navy);color:#fff;box-shadow:0 3px 10px rgba(0,1,144,.28);}
@@ -1417,8 +1421,39 @@ function refreshPriceOnly(ticker){
 function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY){
   if(!qe || !Array.isArray(qe.CY) || !Array.isArray(qe.NY) || !qe.CY.length || !qe.NY.length) return null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const chip=(p,forceActual)=>`<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  const chip=(p,forceActual)=>{
+    const r=Array.isArray(p.retraitements)&&p.retraitements.length?p.retraitements:null;
+    const dot=r?'<span class="qs-chip-dot"></span>':'';
+    return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}${r?' has-retrait':''}">${dot}<div class="chip-q">${esc(p.label)}</div><div class="chip-v">${(+p.eps).toFixed(2)}</div></div>`;
+  };
   const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
+  // Legende statique, discrete, toujours visible sous la ligne de chips -
+  // jamais une interaction au tap/clic (revu le 17/08/2026 : l'utilisateur
+  // n'avait pas identifie la pastille comme cliquable, l'info doit etre
+  // lisible d'emblee, en petits caracteres).
+  const retraitLegend=(arr)=>{
+    // Regroupe PAR RAISON (pas par trimestre) - un meme retraitement
+    // recurrent-mais-variable (ex. mark-to-market OpenAI) qui touche
+    // plusieurs trimestres n'affiche le libelle qu'UNE fois, suivi de
+    // chaque trimestre concerne (revu le 17/08/2026, evite de repeter le
+    // meme libelle 3 fois pour 3 chiffres differents).
+    const byRaison=new Map();
+    arr.forEach(p=>{
+      (p.retraitements||[]).forEach(r=>{
+        if(!byRaison.has(r.raison)) byRaison.set(r.raison, []);
+        byRaison.get(r.raison).push({label:p.label, impact:r.impact});
+      });
+    });
+    if(!byRaison.size) return '';
+    const lines=[...byRaison.entries()].map(([raison,entries])=>{
+      const items=entries.map(e=>{
+        const sign=e.impact>=0?'+':'';
+        return `${esc(e.label)} ${sign}${(+e.impact).toFixed(2)}`;
+      }).join(', ');
+      return `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b> : ${items}</div>`;
+    }).join('');
+    return `<div class="qs-retrait-legend">${lines}</div>`;
+  };
   const colBlock=(arr,annual,note,opts={})=>{
     const sum=arr.reduce((a,p)=>a+(+p.eps||0),0);
     let sumHtml='', noteHtml='';
@@ -1432,7 +1467,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         sumHtml=`<div class="qs-sum${material?' ecart':''}">Σ ${sum.toFixed(2)}${cur||'$'}${deltaTxt}</div>`;
       }
     }
-    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}</div>`;
+    return `<div class="qs-qtr-block">${chipsRow(arr,opts.forceActual)}${opts.legend?`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Publié</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimé</span></span></div>`:''}${sumHtml}${noteHtml}${retraitLegend(arr)}</div>`;
   };
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
@@ -1658,6 +1693,31 @@ function nearestSnapshotBefore(snapshots, targetDate){
   return best;
 }
 
+// Un point d'inflexion (EPS revise) doit toujours afficher l'EVENEMENT qui
+// l'explique (resultats, CMD...) et jamais un "refresh" generique - source
+// prioritaire coherenceQualitative.historique (type+quarter deja
+// disponibles), repli sur hypothese.guidanceHistory (quarter seul, type
+// suppose "resultats") si absent. Tolerance +/-5j : la capture a lieu
+// lundi/jeudi, pas forcement le jour exact du call.
+const VALO_EVENT_TOLERANCE_DAYS=5;
+function findRevisionEvent(ticker, dateStr){
+  const t=state.tickers && state.tickers[ticker];
+  if(!t) return null;
+  const candidates=[];
+  ((t.coherenceQualitative||{}).historique||[]).forEach(h=>{
+    if(h && h.date && h.quarter) candidates.push({date:h.date, label:h.quarter, type:h.type||'resultats'});
+  });
+  ((t.hypothese||{}).guidanceHistory||[]).forEach(g=>{
+    if(g && g.date && g.quarter && !candidates.some(c=>c.date===g.date)) candidates.push({date:g.date, label:g.quarter, type:'resultats'});
+  });
+  let best=null, bestGap=Infinity;
+  candidates.forEach(c=>{
+    const gap=Math.abs(dayDiffISO(dateStr, c.date));
+    if(gap<=VALO_EVENT_TOLERANCE_DAYS && gap<bestGap){ best=c; bestGap=gap; }
+  });
+  return best;
+}
+
 function valoEarliestDate(){
   const ph=state.priceHistory;
   if(!ph || !ph.tickers) return null;
@@ -1839,7 +1899,9 @@ function buildValoChartSVG(ticker, opts){
     const cx=xOf(p.snap.date);
     const bandW=points.length>1 ? plotW/(points.length-1) : plotW;
     const rx=(cx-bandW/2).toFixed(1);
-    const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion:inflexionIdx.has(p.idx)};
+    const isInflexion=inflexionIdx.has(p.idx);
+    const event=isInflexion ? findRevisionEvent(ticker, p.snap.date) : null;
+    const info={date:p.snap.date, price:p.snap.price, val:p.y, mode, isInflexion, eventLabel:event?event.label:null, eventType:event?event.type:null};
     const touchAttr=compact ? '' : ' ontouchstart="showValoTooltip(event)"';
     return `<rect x="${rx}" y="0" width="${Math.max(1,bandW).toFixed(1)}" height="${H}" fill="transparent" data-info="${escAttr(JSON.stringify(info))}" onmousemove="showValoTooltip(event)" onmouseleave="hideValoTooltip()"${touchAttr}/>`;
   }).join('');
@@ -1879,7 +1941,8 @@ function showValoTooltip(evt){
     document.body.appendChild(tip);
   }
   const valTxt=info.mode==='price' ? (info.price!=null?info.price.toFixed(2):'—') : (info.val!=null?info.val.toFixed(1)+'×':'—');
-  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?'<div class="valo-tooltip-flag">↳ Révision Omnium (inflexion)</div>':''}`;
+  const eventTxt=info.eventLabel ? (info.eventType==='resultats'?`Résultats ${info.eventLabel}`:info.eventLabel) : 'Estimation révisée';
+  tip.innerHTML=`<div class="valo-tooltip-date">${formatFrDate(info.date)}</div><div>${info.mode==='price'?'Prix':'P/E'} : <b>${valTxt}</b></div>${info.isInflexion?`<div class="valo-tooltip-flag">↳ ${eventTxt}</div>`:''}`;
   const r=rect.getBoundingClientRect();
   tip.style.left=(r.left+r.width/2+window.scrollX)+'px';
   tip.style.top=(r.top+window.scrollY-8)+'px';
@@ -2123,7 +2186,7 @@ function renderValoHistory(ticker){
   }else{
     const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false});
     chartHtml=chart || '<div class="vr-empty">Pas assez de points sur cette période.</div>';
-    legendHtml='<span><span class="vr-leg-dot"></span>Révision Omnium (refresh)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
+    legendHtml='<span><span class="vr-leg-dot"></span>Estimation révisée (survol : évènement)</span><span><span class="vr-leg-dash"></span>Résultats</span>';
   }
   const showSeriesRow=st.mode==='pe';
   const showPeriodRow=st.mode!=='projection';
@@ -2994,6 +3057,22 @@ function startPricePoll(){
   setInterval(()=>{ if(CT) fetchLivePrice(CT); },PRICE_TTL);
 }
 
+// data/marketAction.json est reecrit par market_check.py en cours de
+// journee (voir docstring du script) - sans ce polling, la banniere ne
+// se met a jour qu'au chargement de la page, jamais en cours de
+// consultation (bug remonte le 17/08/2026 : ARGENX/IBKR passes >=2% sans
+// que la banniere apparaisse pour un onglet deja ouvert).
+const MARKET_ACTION_TTL=5*60*1000;
+async function pollMarketAction(){
+  try{
+    const r=await fetch('data/marketAction.json', NO_STORE);
+    if(r.ok){ state.marketAction=await r.json(); renderMarketActionBar(); }
+  }catch(e){}
+}
+function startMarketActionPoll(){
+  setInterval(pollMarketAction, MARKET_ACTION_TTL);
+}
+
 document.addEventListener('DOMContentLoaded', async function(){
   const guestStatus=await checkGuestLink();
   if(guestStatus==='invalid'){
@@ -3030,6 +3109,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   const gd=document.getElementById('gen-date');
   if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
   setTimeout(startPricePoll,1500);
+  startMarketActionPoll();
 });
   </script>
 </body></html>
