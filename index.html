@@ -1472,6 +1472,9 @@ function renderAnalyse(){
     return bigUnit==='Md' ? (+v/1000).toFixed(2) : fM(v);
   };
 
+  // Contrainte de capital : presente uniquement pour un emetteur dont la
+  // dette nette n'est pas une mesure de levier (banque, assureur).
+  const cc=(d.issuerType && d.issuerType!=='industrial' && d.capitalConstraint) ? d.capitalConstraint : null;
   const metrics=[
     {lbl:`Revenue (${bigUnit}${cur})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca)},
     {lbl:'Growth %',       sep:false, hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
@@ -1481,8 +1484,25 @@ function renderAnalyse(){
     {lbl:'Shares (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
     {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;const px=exCashPriceForYear(d,cours,y);return(px>0&&e>0)?(px/e).toFixed(1):'—';}},
-    {lbl:`Net debt (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
-    {lbl:'Debt / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
+    // Le garde-fou de la projection, dont la METRIQUE depend de l'emetteur.
+    // Pour un industriel c'est la dette nette : un rachat d'actions qui
+    // ferait deriver le levier se voit tout de suite. Pour une banque ou un
+    // assureur la dette nette est le metier, pas un levier - ces deux
+    // lignes afficheraient des zeros - et la contrainte reelle est le
+    // capital reglementaire. Meme emplacement, autre mesure.
+    ...(cc ? [
+      {lbl:`${cc.metric} (${cc.unit||'%'})`, sep:false, cls:'row-emph',
+        hFn:r=>'—',
+        pFn:y=>y===Object.keys(proj)[0] && typeof cc.current==='number'
+          ? cc.current.toFixed(2).replace(/\.00$/,'')+(cc.unit||'%') : '—'},
+      {lbl:`vs ${cc.requirementLabel||'requirement'}`, sep:false,
+        hFn:r=>'—',
+        pFn:y=>y===Object.keys(proj)[0] && typeof cc.current==='number' && typeof cc.requirement==='number'
+          ? '+'+(cc.current-cc.requirement).toFixed(2).replace(/\.00$/,'')+' pt' : '—'},
+    ] : [
+      {lbl:`Net debt (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
+      {lbl:'Debt / EBIT',        sep:false, hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
+    ]),
     {lbl:`Dividend (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—'},
     {lbl:'Div. yield',      sep:false, hFn:r=>'—', pFn:y=>divPY[y]>0&&cours>0?((divPY[y]/cours)*100).toFixed(1)+'%':'—'},
   ];

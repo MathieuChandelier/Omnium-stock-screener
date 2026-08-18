@@ -279,6 +279,81 @@ def c16():
                 bad.append((tk,f'{k} ({year}) : {n} point(s) archive(s), courbe absente du trace'))
     return bad
 
+@check("C16 epsAdj.basis : doit valoir GAAP ou non-GAAP, jamais une phrase")
+def c16():
+    # Signale par une session parallele, verifie ici : quand ce champ porte
+    # une phrase au lieu de l'enum, le traitement defensif cote app le traite
+    # comme ABSENT - la fiche perd donc silencieusement son paragraphe
+    # "Accounting basis". Aucune casse visible, juste une information qui
+    # disparait, ce qu'aucun controle de forme ne voyait.
+    ENUM={'GAAP','non-GAAP'}
+    bad=[]
+    for tk,t in FICHES.items():
+        dc=t['hypothese'].get('dernierCall') or {}
+        ea=((dc.get('resultatsVsConsensus') or {}).get('epsAdj') or {})
+        if 'basis' not in ea: continue
+        b=ea['basis']
+        if not (isinstance(b,str) and b.strip() in ENUM):
+            apercu=(b if isinstance(b,str) else repr(b))[:48].replace('\n',' ')
+            bad.append((tk,f'hors enum : "{apercu}..."'))
+    return bad
+
+@check("X1  relution projetee : doit etre gagee par une contrainte chiffree")
+def x1():
+    # Pour un industriel, adjND borne ce qui est finançable : un rachat qui
+    # ferait deriver le levier se voit. Pour une banque ce garde-fou est
+    # absent, et le modele peut projeter une relution que rien ne gage.
+    # Cas BNP : -1,8%/an ferme alors que la fiche ecrit que la distribution
+    # de l'exces de CET1 "sera determinee annuellement a partir de 2027,
+    # non chiffree a ce stade".
+    bad=[]
+    for tk,t in FICHES.items():
+        it=t.get('issuerType') or 'industrial'
+        if it=='industrial': continue
+        sh_=t['hypothese'].get('adjShares') or {}
+        ys=sorted(y for y in sh_ if isinstance(sh_[y],(int,float)))
+        if len(ys)<2: continue
+        cagr=((sh_[ys[-1]]/sh_[ys[0]])**(1/(len(ys)-1))-1)*100
+        if cagr>-1: continue
+        cc=t.get('capitalConstraint') or {}
+        if cc.get('fundsBuyback') is not True:
+            bad.append((tk,f'actions {cagr:+.1f}%/an mais fundsBuyback='
+                           f'{cc.get("fundsBuyback")!r} : relution non gagee'))
+    return bad
+
+@check("X2  emetteur non industriel : capitalConstraint obligatoire")
+def x2():
+    ATTENDU={'bank':'CET1','insurer':'SCR','reit':'NAV'}
+    bad=[]
+    for tk,t in FICHES.items():
+        it=t.get('issuerType') or 'industrial'
+        if it=='industrial': continue
+        cc=t.get('capitalConstraint')
+        if not isinstance(cc,dict):
+            bad.append((tk,f"issuerType={it} sans capitalConstraint")); continue
+        att=ATTENDU.get(it)
+        if att and cc.get('metric')!=att:
+            bad.append((tk,f"issuerType={it} attend metric={att}, trouve {cc.get('metric')!r}"))
+        for k in ('current','requirement'):
+            if not isinstance(cc.get(k),(int,float)):
+                bad.append((tk,f"capitalConstraint.{k} non chiffre"))
+    return bad
+
+@check("X3  contrainte de capital : le niveau doit couvrir l'exigence")
+def x3():
+    # En dessous de l'exigence reglementaire, la projection n'est pas
+    # seulement optimiste : elle n'est pas finançable.
+    bad=[]
+    for tk,t in FICHES.items():
+        cc=t.get('capitalConstraint')
+        if not isinstance(cc,dict): continue
+        cur,req=cc.get('current'),cc.get('requirement')
+        if not all(isinstance(x,(int,float)) for x in (cur,req)): continue
+        if cur<req:
+            bad.append((tk,f"{cc.get('metric')} {cur}{cc.get('unit','')} < "
+                           f"{cc.get('requirementLabel','exigence')} {req}{cc.get('unit','')}"))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0
