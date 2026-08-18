@@ -352,7 +352,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .qs-chip{box-sizing:border-box;flex:1;text-align:center;border-radius:6px;padding:6px 2px;border:1.5px solid transparent;position:relative;}
 .qs-retrait-legend{margin-top:8px;}
 .qs-retrait-line{font-size:10px;font-weight:400;color:var(--muted);line-height:1.5;font-family:'Poppins',sans-serif;}
-.qs-retrait-raison{color:var(--teal-dark-text);font-weight:700;}
+.qs-retrait-raison{color:var(--teal-text);font-weight:700;}
 .qs-chip.actual{background:var(--navy-light);}
 .qs-chip.estim{background:#fff;border-color:var(--border);border-style:dashed;}
 .chip-q{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
@@ -377,28 +377,47 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .eps-tot .eps-analysts{font-weight:600;color:var(--muted);font-size:10.5px;}
 .eps-cells{flex:1;display:flex;gap:8px;min-width:0;}
 .eps-cells .qs-chip{padding:7px 3px;}
-.eps-adj{flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-dark-text);padding:7px 3px;}
+.eps-adj{flex:1;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--teal-text);padding:7px 3px;}
 .eps-adj.nil{color:#c9cede;font-weight:600;}
 .eps-row.pub .eps-lbl,.eps-row.pub .eps-tot{color:var(--muted);}
-.eps-row.adj .eps-lbl,.eps-row.adj .eps-tot{color:var(--teal-dark-text);}
+.eps-row.adj .eps-lbl,.eps-row.adj .eps-tot{color:var(--teal-text);}
 .eps-row.base .eps-lbl,.eps-row.base .eps-tot{color:var(--navy);}
 /* Rangee "publie" : puces blanches bordees - le fond bleute est reserve
    a la base Omnium, qui est desormais le chiffre retenu. Le trait plein
    (vs pointille) continue de distinguer publie et estime. */
 .eps-row.pub .qs-chip.actual{background:#fff;border-color:var(--border);}
 .eps-row.pub .qs-chip.actual .chip-v,.eps-row.pub .qs-chip.actual .chip-q{color:var(--muted);opacity:1;}
+/* Sous-lignes de detail par cause : meme grille, registre secondaire. */
+.eps-row.adj.sub{margin-top:-3px;}
+.eps-lbl.reason{font-size:10.5px;font-weight:600;line-height:1.3;color:var(--teal-text);white-space:normal;}
+.eps-adj.sub{font-size:11px;font-weight:600;padding:3px 3px;}
+.eps-adj.sub.nil{color:#d7dbe8;}
 .eps-yr-solo{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+
+/* ══ These Omnium : l'equation posee ══
+   Le rendement attendu est la SOMME de ses deux moteurs - on l'ecrit
+   donc avec de vrais operateurs, au lieu d'une fleche qui pointait du
+   resultat vers ses composants. L'horizon voyage sur le libelle du CAGR
+   et l'hypothese de multiple constant, invisible jusqu'ici, est portee
+   par une ligne grise uniforme. */
+.th-eq{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;padding:2px 0 0;}
+.th-k{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;white-space:nowrap;}
+.th-v{font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:var(--navy);line-height:1;}
+.th-col.sub .th-v{font-size:15px;}
+.th-op{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--muted);padding-bottom:2px;}
+.th-assume{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:12px;padding-bottom:2px;}
 .eps-lbl-sm{display:none;}
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
 .coherence svg{flex-shrink:0;margin-top:2px;}
 .pe-stack{padding:14px 0 16px;border-bottom:1px solid var(--border);margin-top:2px;display:grid;grid-template-columns:max-content max-content max-content;column-gap:20px;row-gap:5px;align-items:baseline;}
-.pe-exhead{grid-column:3;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:uppercase;letter-spacing:.03em;text-align:center;margin-bottom:1px;margin-left:10px;}
+.pe-colhead{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:right;margin-bottom:3px;}
+.pe-exhead{grid-column:3;margin-left:10px;}
 .pe-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;}
-.pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);}
+.pe-val{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;}
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
-.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:center;margin-left:10px;}
+.pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;margin-left:10px;}
 
 #analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
   position:sticky;left:0;z-index:2;
@@ -545,7 +564,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .eps-cells{gap:5px;}
   .eps-cells .qs-chip{padding:5px 1px;}
   .eps-adj{font-size:10.5px;padding:5px 1px;}
-  .qs-retrait-line{font-size:9.5px;}
+  .qs-retrait-line{font-size:9px;line-height:1.45;}
   .coherence{font-size:8px;margin-top:5px;}
   .pe-stack{padding:10px 0 12px;margin-top:0;row-gap:4px;column-gap:12px;grid-template-columns:max-content max-content max-content;}
   .pe-lbl{font-size:11.5px;}
@@ -1336,7 +1355,7 @@ function renderAnalyse(){
     const _nm=(d.name||CT||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     const fyBadge=isOffCalendar
       ? `<span class="fy-pill" title="This company closes its fiscal year in ${MONTH_ABBR_FR[fyEnd]} rather than December: the years in the table below denote offset fiscal years, not calendar years.">
-           <span class="fy-dot"></span>Offset fiscal year · closes ${MONTH_ABBR_FR[fyEnd]}
+           <span class="fy-dot"></span>FY ends ${MONTH_ABBR_FR[fyEnd]}
          </span>`
       : '';
     idWrap.innerHTML=`<span class="analyse-name">${_nm}</span>${fyBadge}`;
@@ -1489,11 +1508,15 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${v.toFixed(2)}</div></div>`;
   };
   const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
-  // Somme des retraitements portes par un trimestre. Convention du
-  // SCHEMA : `impact` est le montant de l'element non recurrent CONTENU
-  // dans le chiffre publie - la base Omnium vaut donc publie - impact
-  // (un gain exceptionnel de +0.41 gonfle le publie, on le retire).
+  // Convention du SCHEMA, sans exception :
+  //     eps (clean Omnium) = publishedEps + SOMME(impact)
+  // Donc `eps` STOCKE EST DEJA la base Omnium, et le chiffre publie se
+  // DEDUIT : publishedEps = eps - somme(impact). `impact` n'est pas le
+  // montant contenu dans le publie, c'est la CORRECTION a lui appliquer :
+  // exclure un gain ponctuel donne un impact NEGATIF (la base Omnium
+  // baisse), exclure une charge un impact POSITIF.
   const adjOf=p=>(Array.isArray(p.retraitements)?p.retraitements:[]).reduce((a,r)=>a+(+r.impact||0),0);
+  const publishedOf=p=>(+p.eps)-adjOf(p);
   const hasAdj=arr=>arr.some(p=>Array.isArray(p.retraitements)&&p.retraitements.length);
   const fmtSigned=v=>`${v>=0?'+':'−'}${Math.abs(v).toFixed(2)}`;
   const lbl=(long,short)=>`<span class="eps-lbl-lg">${long}</span><span class="eps-lbl-sm">${short}</span>`;
@@ -1515,14 +1538,35 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       });
     });
     if(!byRaison.size) return '';
-    const lines=[...byRaison.entries()].map(([raison,entries])=>{
-      const items=entries.map(e=>{
-        const sign=e.impact>=0?'+':'';
-        return `${esc(e.label)} ${sign}${(+e.impact).toFixed(2)}`;
-      }).join(', ');
-      return `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b> · ${items}</div>`;
-    }).join('');
+    // Les montants ne sont PLUS repetes ici : ils vivent desormais dans la
+    // ligne "Adjustments", calee sous chaque trimestre. Et des qu'il y a
+    // plusieurs causes, chacune a sa propre sous-ligne chiffree (voir
+    // reasonRows) - cette legende n'aurait alors plus rien a apprendre.
+    if(byRaison.size>1) return '';
+    const lines=[...byRaison.keys()].map(raison=>
+      `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b></div>`).join('');
     return `<div class="qs-retrait-legend">${lines}</div>`;
+  };
+  // Quand un exercice porte PLUSIEURS causes distinctes, la ligne
+  // "Adjustments" n'en montre que le NET par trimestre - un T4 a -0.34
+  // sans dire qu'il agrege -0.07 et -0.27. On eclate alors en une
+  // sous-ligne par cause, calee sur la MEME grille de trimestres : chaque
+  // montant se lit sous son trimestre, sans renvoi a une legende.
+  const reasonRows=(arr)=>{
+    const names=[];
+    arr.forEach(p=>(p.retraitements||[]).forEach(r=>{ if(!names.includes(r.raison)) names.push(r.raison); }));
+    if(names.length<2) return '';
+    return names.map(nm=>{
+      const cells=arr.map(p=>{
+        const hits=(p.retraitements||[]).filter(r=>r.raison===nm);
+        const v=hits.reduce((a,r)=>a+(+r.impact||0),0);
+        return `<div class="eps-adj sub${hits.length?'':' nil'}">${hits.length?fmtSigned(v):'\u00b7'}</div>`;
+      }).join('');
+      return `<div class="eps-row adj sub">
+        <div class="eps-head"><span class="eps-lbl reason">${esc(nm)}</span></div>
+        <div class="eps-cells">${cells}</div>
+      </div>`;
+    }).join('');
   };
   const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
 
@@ -1547,8 +1591,11 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         </div>
       </div>${opts.legend?legendRow:''}</div>`;
     }
-    const pubTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
+    // Le pont se lit vers le BAS comme une addition :
+    //     publie  +  corrections Omnium  =  base Omnium
+    const cleanTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
+    const pubTotal=cleanTotal-adjTotal;
     const nAdj=arr.filter(p=>adjOf(p)!==0).length;
     return `<div class="qs-qtr-block">
       <div class="eps-yr-solo">${opts.label}</div>
@@ -1558,11 +1605,11 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
             <span class="eps-lbl">${lbl('Published','Published')}</span>
             <span class="eps-tot">${totalTxt(pubTotal)}</span>
           </div>
-          ${cells(p=>chip(p,opts.forceActual))}
+          ${cells(p=>chip(p,opts.forceActual,publishedOf(p)))}
         </div>
         <div class="eps-row adj">
           <div class="eps-head">
-            <span class="eps-lbl">${lbl('incl. non-recurring','non-recur.')}</span>
+            <span class="eps-lbl">${lbl('Adjustments','Adjust.')}</span>
             <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal):''}</span>
           </div>
           <div class="eps-cells">${arr.map(p=>{
@@ -1570,12 +1617,13 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
             return `<div class="eps-adj${a===0?' nil':''}">${a===0?'—':fmtSigned(a)}</div>`;
           }).join('')}</div>
         </div>
+        ${reasonRows(arr)}
         <div class="eps-row base">
           <div class="eps-head">
             <span class="eps-lbl">${lbl('Omnium basis','Omnium')}</span>
-            <span class="eps-tot">${totalTxt(pubTotal-adjTotal)}${consHtml}</span>
+            <span class="eps-tot">${totalTxt(cleanTotal)}${consHtml}</span>
           </div>
-          ${cells(p=>chip(p,opts.forceActual,(+p.eps)-adjOf(p)))}
+          ${cells(p=>chip(p,opts.forceActual))}
         </div>
       </div>${opts.legend?legendRow:''}${retraitLegend(arr)}</div>`;
   };
@@ -1614,11 +1662,14 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const peExNY=(priceExNY!=null&&epsNY>0)?(priceExNY/epsNY):null;
   const hasExCash=peExCY!=null||peExFwd!=null||peExNY!=null;
   const exCell=v=>hasExCash?`<div class="pe-exval">${v!=null?v.toFixed(1)+'×':'—'}</div>`:'';
+  // "->" vient des donnees (forwardPeriodLabel, formats heterogenes selon
+  // les titres) : on le rend proprement a l'affichage sans toucher au JSON.
+  const fwdLbl=qe.forwardPeriodLabel?esc(qe.forwardPeriodLabel).replace(/\s*->\s*/g,' → '):'';
   const peStack=`<div class="pe-stack">
-      ${hasExCash?`<div></div><div></div><div class="pe-exhead">P/E ex-cash</div>`:''}
-      <div class="pe-lbl">P/E ${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}
-      <div class="pe-lbl">P/E 1Y FWD${qe.forwardPeriodLabel?` <span class="pe-sub">(${esc(qe.forwardPeriodLabel)})</span>`:''}</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}
-      <div class="pe-lbl">P/E ${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}
+      <div></div><div class="pe-colhead">Reported</div>${hasExCash?`<div class="pe-colhead pe-exhead">Ex-cash</div>`:''}
+      <div class="pe-lbl">${CY}</div><div class="pe-val">${peCY?peCY.toFixed(1)+'×':'—'}</div>${exCell(peExCY)}
+      <div class="pe-lbl">12m fwd${fwdLbl?` <span class="pe-sub">(${fwdLbl})</span>`:''}</div><div class="pe-val">${peFwd?peFwd.toFixed(1)+'×':'—'}</div>${exCell(peExFwd)}
+      <div class="pe-lbl">${CY+1}</div><div class="pe-val">${peNY?peNY.toFixed(1)+'×':'—'}</div>${exCell(peExNY)}
     </div>`;
   return {
     pyBlock,
@@ -1672,14 +1723,14 @@ function renderReturnBlock(ticker, proj, cours){
     <div class="rb-header">
       <div class="card-title" style="margin-bottom:0;">Omnium Thesis</div>
     </div>
-    <div class="rb-total-row">
-      <div class="rb-eps-val" style="color:var(--navy);">Total Return ${total>=0?'+':''}${total.toFixed(1)}%</div>
-      <span style="font-size:18px;color:var(--muted);flex-shrink:0;">→</span>
-      <div style="font-family:'Poppins',sans-serif;flex:1;line-height:1.8;">
-        <div class="rb-eps-val" style="color:var(--navy);">EPS CAGR ${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div>
-        <div class="rb-eps-val" style="color:var(--navy);margin-top:5px;">Div. yield +${yieldPct.toFixed(1)}%</div>
-      </div>
+    <div class="th-eq">
+      <div class="th-col"><div class="th-k">Expected return p.a.</div><div class="th-v">${total>=0?'+':''}${total.toFixed(1)}%</div></div>
+      <div class="th-op">=</div>
+      <div class="th-col sub"><div class="th-k">EPS CAGR ${String(CY).slice(2)}→${String(LY).slice(2)}</div><div class="th-v">${cagrEps>=0?'+':''}${cagrEps.toFixed(1)}%</div></div>
+      <div class="th-op">+</div>
+      <div class="th-col sub"><div class="th-k">Dividend yield</div><div class="th-v">+${yieldPct.toFixed(1)}%</div></div>
     </div>
+    <div class="th-assume">At a constant multiple — no re-rating assumed.</div>
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
       <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
@@ -1975,8 +2026,13 @@ function buildValoChartSVG(ticker, opts){
   // sinon un texte declare a 9.5px tombe a ~5.5px effectifs et devient
   // illisible.
   const narrow=!compact && typeof window!=='undefined' && window.innerWidth<620;
-  const W=compact?260:(narrow?380:640), H=compact?90:(narrow?250:220);
-  const padL=compact?4:0, padR=compact?4:54, padT=compact?10:26, padB=compact?12:30;
+  // Le viewBox epouse la largeur REELLE du conteneur : a hauteur fixe et
+  // largeur 100%, un viewBox de rapport different aurait ete mis a
+  // l'echelle sur la hauteur puis CENTRE par preserveAspectRatio, d'ou
+  // une large gouttiere vide a gauche. A 1:1 il n'y a ni mise a
+  // l'echelle (le texte garde son corps declare) ni centrage.
+  const W=compact?260:(opts.width||(narrow?380:640)), H=compact?90:(narrow?250:220);
+  const padL=compact?4:0, padR=compact?4:54, padT=compact?10:40, padB=compact?12:30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
 
   const t0=new Date(points[0].snap.date+'T00:00:00Z').getTime();
@@ -2032,14 +2088,19 @@ function buildValoChartSVG(ticker, opts){
 
   // Axes (fiche titre uniquement - les mini-cartes du Ranking restent des
   // sparklines epurees sans grille, cf. Apple Stocks/Robinhood watchlist).
-  const fmtY=(v)=> mode==='price' ? fmtPrice(v) : v.toFixed(1)+'×';
+  // L'unite est portee UNE fois par une etiquette en tete d'axe, les
+  // graduations restent des nombres nus - au lieu de repeter "×" ou la
+  // devise sur chaque valeur.
+  const fmtY=(v)=> v.toFixed(mode==='price'?2:1);
+  const axisUnit=mode==='price' ? `Price, in ${tickerCur(ticker)||'$'}` : 'P/E, in ×';
   const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
   // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
   // mediane reste un trait muet. Les deux etiquettes sont posees hors de
   // la bande occupee par la courbe, donc SANS aucun aplat de fond.
   const vTop=yMax-margin*0.62, vBot=yMin+margin*0.62;
   const yAxis=compact ? '' : (
-    [vTop,(yMax+yMin)/2,vBot].map(v=>{
+    `<text x="${padL}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="start">${axisUnit}</text>`
+    + [vTop,(yMax+yMin)/2,vBot].map(v=>{
       const y=yOf(v).toFixed(1);
       return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`;
     }).join('')
@@ -2071,8 +2132,42 @@ function buildValoChartSVG(ticker, opts){
     const y=yOf(avg);
     const n=points.length;
     const lbl=`average ${fmtY(avg)}${n<10?`  ·  ${n} pts`:''}`;
+    const lblW=lbl.length*5.2+10;
+    // Ordonnee du trace pour un x quelconque (interpolation lineaire sur
+    // la polyligne - suffisamment proche de la courbe lissee).
+    const curveYAt=(x)=>{
+      if(x<=xyPts[0][0]) return xyPts[0][1];
+      const last=xyPts[xyPts.length-1];
+      if(x>=last[0]) return last[1];
+      for(let i=1;i<xyPts.length;i++){
+        if(x<=xyPts[i][0]){
+          const [x0,y0]=xyPts[i-1], [x1,y1]=xyPts[i];
+          return y0+(y1-y0)*((x-x0)/((x1-x0)||1));
+        }
+      }
+      return last[1];
+    };
+    // Balayage : on retient la fenetre horizontale ou le trace s'ecarte
+    // le PLUS de la ligne de moyenne, puis on pose l'etiquette du cote
+    // oppose au trace. Elle ne peut donc jamais se retrouver dessus,
+    // quelle que soit la forme de la courbe.
+    let bestCx=padL+plotW/2, bestGap=-1, bestAbove=true;
+    if(plotW>lblW){
+      for(let i=0;i<=48;i++){
+        const cx=padL+lblW/2+(plotW-lblW)*(i/48);
+        let minD=Infinity, sum=0;
+        for(let k=0;k<=8;k++){
+          const cy=curveYAt(cx-lblW/2+lblW*k/8);
+          minD=Math.min(minD, Math.abs(cy-y)); sum+=cy;
+        }
+        // sum/9 > y : le trace est EN DESSOUS de la moyenne sur cette
+        // fenetre (l'axe y croit vers le bas), on pose donc au-dessus.
+        if(minD>bestGap){ bestGap=minD; bestCx=cx; bestAbove=(sum/9)>y; }
+      }
+    }
+    const ly=bestAbove ? y-5 : y+12;
     return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#9aa3b2" stroke-width="1.25" stroke-dasharray="4,4"/>`
-      +`<text x="${(padL+plotW*0.5).toFixed(1)}" y="${(y-5).toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle">${lbl}</text>`;
+      +`<text x="${bestCx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle">${lbl}</text>`;
   })();
 
   // Au-dela de ~40 points, les pastilles individuelles se touchent et le
@@ -2268,7 +2363,7 @@ function distinctEpsByYearStates(snapshots){
   return out;
 }
 
-function buildValoProjectionCurvesSVG(ticker, maxCurves){
+function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
   const snaps=entry ? (entry.snapshots||[]) : [];
@@ -2291,7 +2386,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves){
   const margin=(yMax-yMin)*0.12;
   yMin-=margin; yMax+=margin;
 
-  const W=640, H=260, padL=48, padR=20, padT=16, padB=32;
+  // Meme geometrie que le graphique P/E : viewBox a la largeur reelle du
+  // conteneur (sinon preserveAspectRatio centre le trace), depart a x=0,
+  // unite portee par une etiquette en tete d'axe.
+  const W=chartW||640, H=260, padL=0, padR=34, padT=40, padB=32;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const yFirst=years[0], yLast=years[years.length-1];
   const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
@@ -2301,9 +2399,22 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves){
   const gridlines=Array.from({length:ticks+1},(_, i)=>{
     const v=yMin+(yMax-yMin)*(i/ticks);
     const y=yOf(v).toFixed(1);
-    return `<line x1="${padL}" x2="${W-padR}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/><text x="${(padL-6).toFixed(1)}" y="${y}" font-size="9" fill="var(--muted)" text-anchor="end" dominant-baseline="middle">${v.toFixed(1)}</text>`;
+    return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`;
   }).join('');
-  const xLabels=years.map(y=>`<text x="${xOf(y).toFixed(1)}" y="${H-8}" font-size="10" font-weight="700" fill="var(--muted)" text-anchor="middle">${y}</text>`).join('');
+  // Seuls le haut et le bas sont chiffres, dans les bandes de marge que
+  // le trace n'atteint jamais - donc sans aplat de fond.
+  const vHi=yMax-margin*0.55, vLo=yMin+margin*0.55;
+  const yLabels=`<text x="${padL}" y="${(yOf(vHi)-6).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vHi.toFixed(1)}</text>`
+    +`<text x="${padL}" y="${(yOf(vLo)+12).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vLo.toFixed(1)}</text>`;
+  const unitTxt=`EPS, in ${tickerCur(ticker)||'$'}`;
+  const unitLabel=`<text x="${padL}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)">${unitTxt}</text>`;
+  // Le trace demarrant a x=0, une etiquette centree sur le premier (ou le
+  // dernier) point deborderait du viewBox et serait rognee : on ancre ces
+  // deux-la sur leur bord.
+  const xLabels=years.map((y,i)=>{
+    const anchor=i===0?'start':(i===years.length-1?'end':'middle');
+    return `<text x="${xOf(y).toFixed(1)}" y="${H-8}" font-size="10" font-weight="700" fill="var(--muted)" text-anchor="${anchor}">${y}</text>`;
+  }).join('');
 
   const n=shown.length;
   const curvesSvg=shown.map((s,i)=>{
@@ -2311,10 +2422,30 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves){
     const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
     const ptYears=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
     const pts=ptYears.map(y=>`${xOf(y).toFixed(1)},${yOf(s.epsByYear[String(y)]).toFixed(1)}`).join(' ');
-    const dots=ptYears.map(y=>{
+    const dots=ptYears.map((y,j)=>{
       const v=s.epsByYear[String(y)];
-      const label=isLast?`<text x="${(xOf(y)+5).toFixed(1)}" y="${(yOf(v)-5).toFixed(1)}" font-size="9" font-weight="800" fill="var(--navy)">${v.toFixed(1)}</text>`:'';
-      return `<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(v).toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
+      const px=xOf(y), py=yOf(v);
+      let label='';
+      if(isLast){
+        // L'etiquette est decalee PERPENDICULAIREMENT a la pente locale,
+        // toujours du cote superieur : elle ne peut donc jamais se poser
+        // sur le trace, quelle que soit son inclinaison.
+        const pv=ptYears[j-1], nv=ptYears[j+1];
+        const ax=pv!=null?xOf(pv):px, ay=pv!=null?yOf(s.epsByYear[String(pv)]):py;
+        const bx=nv!=null?xOf(nv):px, by=nv!=null?yOf(s.epsByYear[String(nv)]):py;
+        let dx=bx-ax, dy=by-ay;
+        const len=Math.hypot(dx,dy)||1; dx/=len; dy/=len;
+        let nx=-dy, ny=dx;
+        if(ny>0){ nx=-nx; ny=-ny; }
+        // Bornage horizontal : sur le premier/dernier point, le decalage
+        // perpendiculaire peut sortir du viewBox - on rabat l'ancrage.
+        const ox=px+nx*14, oy=py+ny*14;
+        const txt=v.toFixed(1), halfW=txt.length*2.6;
+        const anchor=(ox-halfW<padL)?'start':((ox+halfW>padL+plotW)?'end':'middle');
+        const cx=anchor==='start'?Math.max(ox,padL):(anchor==='end'?Math.min(ox,padL+plotW):ox);
+        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="9" font-weight="800" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
+      }
+      return `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
     }).join('');
     return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.5}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
@@ -2325,7 +2456,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves){
   }).join('');
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;overflow:visible;">${gridlines}${curvesSvg}${xLabels}</svg>`,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${curvesSvg}${xLabels}</svg>`,
     legendHtml,
     single: n<2
   };
@@ -2398,9 +2529,14 @@ function renderValoHistory(ticker){
   const periodBtn=(pk)=>`<button class="vr-pill${st.period===pk?' active':''}" onclick="setValoHistPeriod('${pk}')">${VALO_PERIOD_LABELS[pk]}</button>`;
   const allBtn=`<button class="vr-pill${st.period==='all'?' active':''}" onclick="setValoHistPeriod('all')">All</button>`;
 
+  // Largeur reelle disponible : le viewBox s'y cale au pixel pres, ce qui
+  // supprime a la fois la mise a l'echelle du texte et la gouttiere de
+  // centrage laissee par preserveAspectRatio.
+  const chartW=Math.max(280, Math.round(card.clientWidth||640));
+
   let chartHtml, legendHtml;
   if(st.mode==='projection'){
-    const proj=buildValoProjectionCurvesSVG(ticker, 6);
+    const proj=buildValoProjectionCurvesSVG(ticker, 6, chartW);
     if(!proj){
       chartHtml='<div class="vr-empty">Not enough history yet to plot a projection curve (at least 2 projected years required).</div>';
       legendHtml='';
@@ -2415,7 +2551,7 @@ function renderValoHistory(ticker){
     // contient reellement : annoncer "Revised estimate" alors qu'aucun
     // point or n'est a l'ecran etait le principal defaut de lecture.
     const out={};
-    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false, out});
+    const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period, compact:false, width:chartW, out});
     chartHtml=chart || '<div class="vr-empty">Not enough data points for this period.</div>';
     const legs=[];
     if(out.hasRevision) legs.push('<span><span class="vr-leg-dot"></span>Revised estimate (hover: event)</span>');
