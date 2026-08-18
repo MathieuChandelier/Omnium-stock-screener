@@ -2807,29 +2807,45 @@ function renderDernierCall(hyp, ticker, opts={}){
   const caDelta=ca?fmtPctDelta(ca.actual,ca.consensus):null;
   const epsDelta=eps?fmtPctDelta(eps.actual,eps.consensus):null;
 
+  // Delta minimal - texte seul, meme taille que "cons. $X", turquoise/
+  // rouge, jamais gras, jamais de pastille coloree (decision du
+  // 18/08/2026 : l'ancien pctBadge - fond colore + gras - "attirait trop
+  // l'oeil" sur un chiffre secondaire). Volontairement PAS pctBadge (qui
+  // reste utilise tel quel par Value Rankings, design deja arbitre
+  // separement - ne jamais coupler les deux).
+  const plainDelta=(delta)=>{
+    if(delta==null)return '';
+    const col=delta>=0?'var(--teal-text)':'#e05252';
+    return `<span style="font-size:10.5px;font-weight:400;color:${col};font-family:'Poppins',sans-serif;">${delta>=0?'+':''}${delta.toFixed(1)}%</span>`;
+  };
   const caLine=caActual?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">Revenue</span>
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${caActual}${cur}</span>
       ${caCons?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${caCons}${cur}</span>`:''}
-      ${pctBadge(caDelta)}
+      ${plainDelta(caDelta)}
     </div>`:'';
   const epsLine=(eps&&eps.actual!=null)?`<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px;">
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">EPS${eps.basis?' ('+eps.basis+')':''}</span>
       <span style="font-size:13px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;">${(+eps.actual).toFixed(2)}${cur}</span>
       ${eps.consensus!=null?`<span style="font-size:10.5px;color:var(--muted);font-family:'Poppins',sans-serif;">cons. ${(+eps.consensus).toFixed(2)}${cur}</span>`:''}
-      ${pctBadge(epsDelta)}
+      ${plainDelta(epsDelta)}
     </div>`:'';
-  const checkIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>`;
-  const crossIcon=`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>`;
-  const srcBadge=(label,analyzed)=>`<span style="display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;color:${analyzed?'var(--teal-text)':'var(--muted)'};">${analyzed?checkIcon:crossIcon}${label}</span>`;
-  const sourcesHeading=q?`<div style="display:flex;align-items:center;justify-content:flex-start;gap:14px;flex-wrap:wrap;">
-      <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Earnings ${esc(q)}</div>
-      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-        ${srcBadge('Press release',!!dc.communiqueAnalyse)}
-        ${srcBadge('Transcript',!!dc.transcriptAnalyse)}
-      </div>
-    </div>`:'';
+  // Badges Press release/Transcript retires (decision du 18/08/2026) :
+  // le protocole exige deja les deux a chaque refresh earnings (E8-bis),
+  // le rare cas ou l'un manque est deja signale dans le texte/watch-list -
+  // le badge n'apportait rien de plus dans 95% des cas.
+  const sourcesHeading=q?`<div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Earnings ${esc(q)}</div>`:'';
   const resultsBlock=(caLine||epsLine)?`<div>${caLine}${epsLine}</div>`:'';
+  // Colonne de droite optionnelle (le resume du Guidance Scorecard,
+  // discret - voir buildGuidanceScorecard) : n'occupe une grille a deux
+  // colonnes QUE quand elle existe ET qu'il y a des chiffres a gauche,
+  // sinon repli sur l'affichage pleine largeur d'avant (titre seul,
+  // titre absent, etc. - tous les cas geres par renderContextBullets
+  // avant cette fonction ne changent pas).
+  const earningsRow=(sourcesHeading||resultsBlock)?(opts.rightColumn?`<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:12px;align-items:start;">
+      <div>${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}</div>
+      <div style="padding-top:2px;">${opts.rightColumn}</div>
+    </div>`:`${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}`):'';
   const guidQ=dc.guidanceProchainTrimestre?`<div style="margin-top:8px;">
       <div style="font-size:10px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.05em;">Next quarter guidance</div>
       <div style="font-size:12px;color:var(--text);line-height:1.5;margin-top:1px;">${esc(dc.guidanceProchainTrimestre)}</div>
@@ -2857,7 +2873,7 @@ function renderDernierCall(hyp, ticker, opts={}){
 
   if(!sourcesHeading&&!resultsBlock&&!guidQ&&!guidFY&&!guidLT&&!pointsBlock)return '';
   return `<div style="${opts.first?'':'border-top:1px solid var(--border);margin-top:10px;'}padding-top:${opts.first?'0':'10px'};">
-    ${sourcesHeading}${resultsBlock?`<div style="margin-top:${sourcesHeading?'8px':'0'};">${resultsBlock}</div>`:''}${guidQ}${guidFY}${guidLT}${pointsBlock}
+    ${earningsRow}${guidQ}${guidFY}${guidLT}${pointsBlock}
   </div>`;
 }
 
@@ -3119,7 +3135,12 @@ function renderContextBullets(ticker, proj, cours){
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
   if(!lastEvt){traceEl.style.display='none';return;}
   _gsOpen=false;
-  const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true});
+  // Le resume du Guidance Scorecard se calcule AVANT dernierCall pour
+  // pouvoir se glisser dans sa colonne de droite (a cote des chiffres
+  // earnings, decision du 18/08/2026) plutot que d'apparaitre en bloc
+  // separe plus bas.
+  const gsBanner=buildGuidanceScorecard(ticker);
+  const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true, rightColumn:gsBanner});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
   const cqBanner=renderCoherenceQualitative(d.coherenceQualitative||null, ticker);
@@ -3140,8 +3161,8 @@ function renderContextBullets(ticker, proj, cours){
   // guidanceScorecard, quand present, absorbe la citation de source
   // consensus (voir SCHEMA) - repli sur l'ancien fragment autonome pour
   // tout titre qui n'a pas encore ce champ (pas retroactif, voir
-  // INSTRUCTIONS.md).
-  const gsBanner=buildGuidanceScorecard(ticker);
+  // INSTRUCTIONS.md). gsBanner deja calcule plus haut (colonne de droite
+  // de dernierCall).
   let consSourceBanner='';
   if(!gsBanner){
     const {CY:_CYforCons}=yearsFor(ticker);
@@ -3165,10 +3186,15 @@ function renderContextBullets(ticker, proj, cours){
   // seulement la synthese. Isoler vraiment la rubrique 1 suppose de
   // parser `displayText` sur ses delimiteurs de rubrique - reporte au
   // meme chantier que la reorganisation des sections suivantes.
+  // Repli : si dernierCall est absent, renderDernierCall renvoie '' et
+  // laisse tomber silencieusement le rightColumn qu'on lui a passe -
+  // sans ce repli, un titre avec guidanceScorecard mais sans dernierCall
+  // perdrait purement et simplement l'affichage du scorecard.
+  const gsFallback=(!dcBanner&&gsBanner)?gsBanner:'';
   traceEl.innerHTML=`<div>
     ${dcBanner}
     ${cqBanner}
-    ${gsBanner}
+    ${gsFallback}
     ${consSourceBanner}
     ${dateSourceLine}
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>
