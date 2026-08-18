@@ -131,6 +131,104 @@
     "items": [],
     "note": "Aucune allegation de fraude comptable ou de tromperie des investisseurs identifiee a ce jour. Recours collectifs en valeurs mobilieres deposes par plusieurs cabinets (mai 2025-janv. 2026, mentionnes a la creation) restent a un stade precoce, aucune provision connue - a suivre mais hors perimetre de ce champ tant qu'il ne s'agit pas d'une allegation de fraude etablie."
   },
+  "coherenceQualitative": {
+    "asOf": "2026-08-18",
+    "statut": "coherent",
+    "suiviNarratif": [
+      "Azure's acceleration, already visible in Q1 FY26 (+39-40% CC, with capacity constraints already flagged by the CFO), has continued to strengthen across all four quarters, reaching +43% in Q4 FY26 with Q1 FY27 guidance of ~45% CC - an unusually sustained upward trajectory for a hyperscaler of this size, never walked back or softened over the period.",
+      "The OpenAI concentration narrative, dominant in Q1 FY26 (commercial bookings +112%, driven by OpenAI's Azure commitments; OpenAI representing ~45% of RPO in Q2 FY26), has been increasingly balanced by management's emphasis on diversification away from OpenAI across subsequent quarters (RPO ex-OpenAI +25% in Q4 FY26, ~90% of FY26 cloud revenue coming from customers outside the frontier AI labs) - a rebalancing of emphasis rather than a reversal, with OpenAI's marginal contribution to new bookings relatively slowing (+18% ex-OpenAI vs +10% including OpenAI in Q4) without management presenting this as a concern.",
+      "The capex trajectory, rising sharply throughout the period ($34.9B in Q1 FY26, Q1 FY27 guidance above $50B), fed market concerns over free cash flow that the quarterly numbers themselves illustrated unevenly (FCF dropping to $5.9B in Q2 FY26 from $25.7B in Q1); the CFO explicitly confirmed at the Q4 FY26 call that free cash flow is expected to remain positive for the full FY2027 fiscal year, a direct and new response to this recurring concern since Q1.",
+      "Microsoft Cloud gross margin has eroded gradually and in a controlled manner over the period (68% in Q1 FY26, ~66-67% guided/delivered in Q2-Q3, 65% in Q4 FY26), consistent with management's steady message about the impact of Azure mix and AI investment - no inflection in this narrative of gradual compression across the four quarters, consistent with the FY26 operating margin actually delivered (46.8%), which landed almost exactly on the original thesis assumption."
+    ],
+    "points": [],
+    "historique": [
+      {
+        "quarter": "T4 FY26",
+        "date": "2026-07-29",
+        "type": "resultats",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Karl Keirstead (UBS) - model choice and enterprise IP protection: Nadella notes that enterprises are building their own \"learning machines\" rather than outsourcing knowledge extraction, with an architecture that keeps the model harness separate from memory/context so the model can be swapped at any time; a multi-model approach is described as necessary for resilience.",
+          "Q Brent Thill (Jefferies) - Azure growth accelerating toward the mid-40s: Hood attributes the performance to persistent constraints (demand exceeding supply) and to efficiency gains on the CPU/GPU fleet quickly monetized, plus process improvements shortening capacity delivery lead times.",
+          "Q Mark Moerdler (Bernstein) - overcapacity risk and rising component prices: Hood says demand still exceeds supply and cites several mitigants (shifting capex toward short-lived assets, a diversified customer/geography portfolio, late binding on costly components); Nadella adds that a balanced portfolio and continuous operating-efficiency discipline are needed.",
+          "Q Adam Wood (Morgan Stanley) - M365 Copilot monetization: Nadella describes the product evolving from chat toward Cowork/Autopilot/Code into a single \"super app,\" with adoption time shrinking to days; Hood points to ARPU growth from E5+Copilot licensing and rising consumption.",
+          "Q Brad Zelnick (Deutsche Bank) - impact of frontier models on cybersecurity (Project Perception): Nadella describes an \"intelligence-first\" transformation with red/blue/green-team agents in continuous agentic defense, with the multi-model approach enabling lower cost and resilience (Cyber-1-Flash matches larger models' performance at 50% of the cost).",
+          "Q Gabriela Borges (Goldman Sachs) - capex ROI: Hood says the ROI calculation methodology is evolving, with growing confidence driven by TAM expansion, margin levers (proprietary silicon, model diversification, a broad portfolio) and efficiency gains on the Azure side."
+        ]
+      },
+      {
+        "quarter": "T3 FY26",
+        "date": "2026-04-29",
+        "type": "resultats",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Keith Weiss (Morgan Stanley) - translating demand into bookings, who is paying for AI: Nadella describes a business model shifting from \"per user\" to \"per user plus usage,\" particularly visible in code, driven by measurable business outcomes rather than seat coverage alone; Hood confirms the shift from pure licensing to consumption-based pricing similar to Azure.",
+          "Q Karl Keirstead (UBS) - confidence in capex guidance and third-party/first-party capacity allocation: Hood reaffirms the ~$190B CY2026 capex guidance (including ~$25B tied to component prices), with roughly two-thirds allocated to short-lived assets (GPU/CPU) and one-third to long-lived infrastructure.",
+          "Q Brent Thill (Jefferies) - why AI margins are better than expected despite heavy investment: Hood cites consumption-based pricing (underappreciated by investors), leverage from partner IP at no added cost, margin extraction from the first-party hardware stack, and efficiency gains from accelerated capacity deployment.",
+          "Q Mark Moerdler (Bernstein) - reconciling rapid capex growth with revenue growth: Hood notes that Azure's 39-40% growth on a large base requires substantial investment in short-lived assets directly correlated with revenue, with the $627B RPO offering strong visibility; Nadella cites the structural TAM and the need to keep capacity ready to capitalize on breakout moments.",
+          "Q Gabriela Borges (Goldman Sachs) - learnings on Copilot adoption and product evolution: Nadella describes Copilot evolving across several form factors - chat grounded in Work IQ, specialized agents, interactive artifact generation, and new asynchronous delegated tasks via Cowork - with weekly engagement now matching Outlook.",
+          "Q Kirk Materne (Evercore ISI) - evolution of the OpenAI partnership and model diversification: Nadella expresses satisfaction with how the partnership has evolved (royalty-free access to frontier model IP through 2032, OpenAI remaining a large customer); Hood confirms revenue sharing continuing through 2030 and a favorable adjustment on certain obligations.",
+          "Q Rishi Jaluria (RBC) - balancing seat-based and consumption-based models: Nadella characterizes seat-based pricing as bundled \"consumption rights,\" with overages feeding consumption metering, and appropriate discounts on long-term consumption commitments."
+        ]
+      },
+      {
+        "quarter": "T2 FY26",
+        "date": "2026-01-28",
+        "type": "resultats",
+        "format": "compresse",
+        "clesRetenues": [
+          "CapEx and ROI: management defends its capex allocation priority order (first-party apps, AI R&D, then Azure) and states that Azure growth would have exceeded 40% had all recent GPU capacity been allocated to it.",
+          "Asset life vs. RPO: most GPU/CPU spending is already contracted over its useful life; Azure's own RPO alone exceeds the overall 2.5-year average, with margins improving as the fleet ages through software optimization.",
+          "OpenAI concentration in RPO (~45%): management redirects attention to the remaining $350B (55%), described as diversified across customers/sectors/geographies, and calls the OpenAI partnership a success without walking back the diversification narrative.",
+          "Proprietary silicon (Maya 200, Cobalt 200): presented as a long-term differentiation and margin lever, complementing (not replacing) the NVIDIA/AMD partnerships, with internal testing underway.",
+          "Capacity constraints: demand systematically exceeds supply, close to one gigawatt of capacity added in the quarter alone, target to double total capacity within 2 years."
+        ]
+      },
+      {
+        "quarter": "T1 FY26",
+        "date": "2025-10-29",
+        "type": "resultats",
+        "format": "compresse",
+        "clesRetenues": [
+          "AGI risk and \"jagged intelligence\": Nadella argues that jagged intelligence will persist for a long time and is counting on agentic systems (GitHub, M365) to smooth out the rough edges, expressing high confidence in the platform's positioning.",
+          "OpenAI deal finalized October 28, 2025: Azure exclusivity until AGI or through 2030, extended model/product IP rights through 2032, $250B of incremental Azure services contracted (not reflected in this quarter's results); a $4.1B loss tied to equity-method accounting for OpenAI's losses, unrelated to the new agreement.",
+          "Customer commitment selectivity: Nadella states Microsoft turns down deals seen as \"too concentrated\" by customer/location/type, relying on full-stack differentiation (databases, Foundry, platform layer) for long-term margin advantage.",
+          "Azure capacity constraints: Hood points to lost revenue for Azure from the constraints, with priority given to M365 Copilot/security/GitHub/product R&D in capacity allocation; the precise magnitude is not quantified (\"the number could be higher\").",
+          "Capacity and infrastructure: target to double the total data center footprint within 2 years, total AI capacity expansion of more than 80% this year, deployment of the first large-scale NVIDIA GB300 cluster."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "MSFT-DC-DOUBLE",
+        "quarterOrigine": "T1 FY26",
+        "engagement": "Target to double the total data center footprint/AI capacity within 2 years, announced in Q1 FY26 and reaffirmed in Q4 FY26 (+1 GW added in the quarter alone).",
+        "echeance": "2027-Q4",
+        "statut": "confirme"
+      },
+      {
+        "id": "MSFT-OPENAI-TERMS",
+        "quarterOrigine": "T1 FY26",
+        "engagement": "OpenAI deal finalized 10/28/2025: Azure exclusivity until AGI or through 2030, model IP rights extended through 2032, revenue sharing through 2030 (terms reaffirmed unchanged in Q3 FY26).",
+        "echeance": "2032",
+        "statut": "confirme"
+      },
+      {
+        "id": "MSFT-FY27-FCF-POSITIF",
+        "quarterOrigine": "T4 FY26",
+        "engagement": "Free cash flow expected to remain positive for the full FY2027 fiscal year despite continued capex growth, an explicit confirmation from the CFO in response to the market's main concern.",
+        "echeance": "FY2027",
+        "statut": "en_cours"
+      },
+      {
+        "id": "MSFT-HEADCOUNT-CY27",
+        "quarterOrigine": "T4 FY26",
+        "engagement": "Headcount expected to decline over calendar year 2027, a cost-discipline signal articulated by the CFO in Q4 FY26.",
+        "echeance": "CY2027",
+        "statut": "en_cours"
+      }
+    ]
+  },
   "hypothese": {
     "date": "2026-07-30",
     "priorEPS": {
