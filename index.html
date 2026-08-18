@@ -1954,7 +1954,7 @@ function renderReturnBlock(ticker, proj, cours){
     </div>
     ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
     ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
-      <div style="font-size:11.5px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
+      <div style="font-size:13px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
     </div>`:''}
     <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
     ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}<div id="valo-hist-slot"></div>`:''}
@@ -3160,9 +3160,12 @@ function buildGuidanceScorecard(ticker){
   const timelineHtml=(gs.timeline||[]).map(ev=>{
     const label=ev.type==='guidance_revision'?`Guidance ${ev.flag==='warning'?'cut':'revised'}${ev.flag==='warning'?' (warning)':''}`
       :ev.type==='vs_guidance'?'vs guidance':'vs consensus';
-    return `<div style="padding-bottom:10px;">
-        <p style="font-size:11px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
-        <p style="font-size:10.5px;color:var(--muted);margin:2px 0 0;">${esc(ev.detail)}</p>
+    // Filet vertical continu (pas de puce par evenement) : la timeline se
+    // lit comme une seule sequence, le filet porte la continuite et evite
+    // d'introduire un marqueur qui redeviendrait un code visuel a decoder.
+    return `<div style="padding:0 0 9px 10px;border-left:1px solid var(--border);">
+        <p style="font-size:13px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
+        <p style="font-size:9.5px;color:var(--muted);margin:2px 0 0;">${esc(ev.detail)}</p>
       </div>`;
   }).join('');
 
@@ -3177,7 +3180,7 @@ function buildGuidanceScorecard(ticker){
   // reste accessible au clic, dans le contenu deplie.
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()">
-      <span class="lbl" style="text-transform:none;font-size:11.5px;font-weight:400;color:var(--navy);">${summary}</span>
+      <span class="lbl" style="text-transform:none;font-size:13px;font-weight:400;color:var(--navy);">${summary}</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
