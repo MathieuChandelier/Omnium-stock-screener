@@ -3093,15 +3093,19 @@ function buildGuidanceScorecard(ticker){
   const basisHtml=gs.basisAligned===false&&gs.basisNote?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.basisNote)}</p>`:'';
   const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` — ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
 
+  // Discret par decision explicite du 18/08/2026 : ni titre "Guidance
+  // scorecard" ni ligne cadence/metrique affiches par defaut - juste le
+  // resume au fil du texte, comme une ligne de plus dans la carte, pas
+  // une section qui s'annonce. Le detail (cadence, metrique, timeline)
+  // reste accessible au clic, dans le contenu deplie.
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    <div style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Guidance scorecard</div>
-    <p style="font-size:9.5px;color:var(--muted);margin:0 0 8px;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()">
       <span class="lbl" style="text-transform:none;font-size:11.5px;font-weight:400;color:var(--navy);">${summary}</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
-      <div style="padding-top:10px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
+      <p style="font-size:9.5px;color:var(--muted);margin:10px 0 8px;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
+      <div>${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
     </div>
   </div>`;
 }
