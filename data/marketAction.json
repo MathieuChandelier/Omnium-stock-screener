@@ -1,20 +1,20 @@
 {
   "date": "2026-08-18",
-  "computedAt": "2026-08-18T21:43:34.662864+02:00",
+  "computedAt": "2026-08-18T21:59:32.829277+02:00",
   "movers": [
-    {
-      "ticker": "SPOTIFY",
-      "name": "Spotify Technology S.A.",
-      "price": 521.0,
-      "basePrice": 492.47,
-      "changePercent": 5.79
-    },
     {
       "ticker": "INSULET",
       "name": "Insulet Corporation",
       "price": 147.78,
       "basePrice": 139.7,
       "changePercent": 5.78
+    },
+    {
+      "ticker": "SPOTIFY",
+      "name": "Spotify Technology S.A.",
+      "price": 520.18,
+      "basePrice": 492.47,
+      "changePercent": 5.63
     },
     {
       "ticker": "INTUIT",
@@ -31,13 +31,6 @@
       "changePercent": 3.47
     },
     {
-      "ticker": "NETFLIX",
-      "name": "Netflix",
-      "price": 78.47,
-      "basePrice": 76.02,
-      "changePercent": 3.22
-    },
-    {
       "ticker": "NIKE",
       "name": "Nike",
       "price": 40.34,
@@ -52,18 +45,25 @@
       "changePercent": 3.14
     },
     {
-      "ticker": "ABNB",
-      "name": "Airbnb",
-      "price": 184.34,
-      "basePrice": 179.29,
-      "changePercent": 2.82
-    },
-    {
       "ticker": "BOOKING",
       "name": "Booking Holdings",
       "price": 210.48,
       "basePrice": 204.76,
       "changePercent": 2.79
+    },
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb",
+      "price": 184.03,
+      "basePrice": 179.29,
+      "changePercent": 2.64
+    },
+    {
+      "ticker": "NETFLIX",
+      "name": "Netflix",
+      "price": 78.0,
+      "basePrice": 76.02,
+      "changePercent": 2.6
     },
     {
       "ticker": "ESSILORLUXOTTICA",
@@ -82,16 +82,9 @@
     {
       "ticker": "ABT",
       "name": "Abbott Laboratories",
-      "price": 112.98,
+      "price": 112.64,
       "basePrice": 110.37,
-      "changePercent": 2.36
-    },
-    {
-      "ticker": "COCACOLA",
-      "name": "Coca-Cola",
-      "price": 88.78,
-      "basePrice": 86.98,
-      "changePercent": 2.07
+      "changePercent": 2.06
     }
   ]
 }
