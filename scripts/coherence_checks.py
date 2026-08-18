@@ -239,6 +239,46 @@ def c13():
                                f"revisee(s), aucun evenement date dans l'intervalle"))
     return bad
 
+@check("C14 libelle 'ex-cash' : interdit sans donnee de dette nette")
+def c14():
+    # snapExCashPrice retombe sur le cours BRUT quand aucune donnee de dette
+    # nette n'existe (cas banque). Le graphique ne doit alors pas s'intituler
+    # ex-cash - il afficherait un multiple sur capitalisation sous un nom qui
+    # promet l'inverse. index.html teste exactement ndCY, on verifie donc que
+    # la fiche et la capture disent la meme chose.
+    bad=[]
+    for tk,t in FICHES.items():
+        sn=[x for x in (PH.get(tk,{}).get('snapshots') or []) if x.get('price')]
+        if not sn: continue
+        last=sn[-1]
+        cy=str(last.get('cyYear'))
+        fiche_nd=(t['hypothese'].get('adjND') or {}).get(cy)
+        capture_nd='ndCY' in last
+        if isinstance(fiche_nd,(int,float)) and not capture_nd:
+            bad.append((tk,f"fiche porte adjND[{cy}]={fiche_nd} mais la capture "
+                           f"n'a pas ndCY : libelle ex-cash impossible a honorer"))
+    return bad
+
+@check("C15 les trois echeances tracees doivent avoir >=2 points archives")
+def c16():
+    # Le graphique P/E trace CY, CY+1 et CY+2 ensemble. Une echeance dont
+    # l'archive ne porte pas deux points exploitables disparait du trace sans
+    # que rien ne le signale : la colonne TODAY annonce alors moins de lignes
+    # qu'il n'y a d'echeances dans la fiche.
+    bad=[]
+    for tk,t in FICHES.items():
+        cy=cy_of(t)
+        if not cy: continue
+        sn=[x for x in (PH.get(tk,{}).get('snapshots') or []) if x.get('price')]
+        if len(sn)<2: continue
+        for k,year in (('CY',cy),('NY',cy+1),('Y2',cy+2)):
+            fiche_eps=(t['hypothese'].get('adjEPS') or {}).get(str(year))
+            if not isinstance(fiche_eps,(int,float)): continue
+            n=sum(1 for x in sn if isinstance((x.get('epsByYear') or {}).get(str(year)),(int,float)))
+            if n<2:
+                bad.append((tk,f'{k} ({year}) : {n} point(s) archive(s), courbe absente du trace'))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0
