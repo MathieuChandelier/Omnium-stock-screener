@@ -163,6 +163,32 @@ def c10():
             if n>len(arr)/2: bad.append((tk,f'{k}: {n}/{len(arr)} periodes retraitees'))
     return bad
 
+@check("C11 millesime EPS reconstruit : doit montrer une revision reelle")
+def c11():
+    # Un millesime archive (epsOnly) qui ne differe du suivant que sur des
+    # annees DEJA ECOULEES trace une courbe exactement superposee a la
+    # courbe vivante : l'utilisateur voit une amorce pale puis une seule
+    # ligne, sans l'effet de translation qui justifie l'affichage. Soit le
+    # millesime capture le mauvais etat (pris APRES le refresh de resultats
+    # au lieu d'avant), soit aucune revision n'a eu lieu et la courbe n'a
+    # rien a dire. Dans les deux cas elle ne doit pas etre tracee.
+    bad=[]
+    for tk,e in PH.items():
+        snaps=e.get('snapshots') or []
+        for r in [x for x in snaps if x.get('epsOnly')]:
+            suite=snaps[snaps.index(r)+1:]
+            nx=next((x for x in suite if x.get('epsByYear')),None)
+            if not nx: continue
+            a,b,cy=r['epsByYear'],nx['epsByYear'],nx.get('cyYear')
+            if not cy: continue
+            futur=[y for y in set(a)&set(b) if int(y)>=cy]
+            revise=[y for y in futur
+                    if abs(float(a[y])-float(b[y]))/max(abs(float(b[y])),1e-9)>0.005]
+            if futur and not revise:
+                bad.append((tk,f"millesime {r['date']} identique a {nx['date']} "
+                               f"sur {len(futur)} annees projetees"))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0
