@@ -2576,7 +2576,7 @@ function buildValoChartSVG(ticker, opts){
         y:yOf(e.pts[e.pts.length-1].y), col:EXTRA_TONES[i]||EXTRA_TONES[1], w:700
       })));
     const ord=items.map((it,i)=>({y:it.y,i})).sort((a,b)=>a.y-b.y);
-    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+27); cur=o.ny; });
+    let cur=-1e9; ord.forEach(o=>{ o.ny=Math.max(o.y,cur+32); cur=o.ny; });
     const over=ord[ord.length-1].ny-(padT+plotH);
     if(over>0) ord.forEach(o=>o.ny-=over);
     ord.forEach(o=>{ items[o.i].ny=Math.max(o.ny,padT+7); });
@@ -2586,8 +2586,11 @@ function buildValoChartSVG(ticker, opts){
     // qu'il annonce. "Today" plutot que "Current" - la moyenne s'appelle
     // deja "current-year average" et deux "current" voisins se
     // confondraient.
-    const topY=Math.min(...items.map(it=>it.ny));
-    const head=`<text x="${(lx+7).toFixed(1)}" y="${Math.max(11,topY-13).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" letter-spacing=".04em">TODAY</text>`;
+    // Pose sur la MEME ligne de base que l'unite d'axe a gauche : les deux
+    // forment la ligne de tete du graphique, ce qui vaut mieux qu'un
+    // intitule flottant a quelques pixels du premier chiffre - il y etait
+    // trop pres et ecrasait la colonne.
+    const head=`<text x="${(lx+7).toFixed(1)}" y="13" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" letter-spacing=".06em">TODAY</text>`;
     return head+items.map(it=>{
       const lead=Math.abs(it.ny-it.y)>1.5
         ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
@@ -2596,8 +2599,11 @@ function buildValoChartSVG(ticker, opts){
         // L'annee garde la teinte de SA courbe (c'est ce qui rattache
         // l'etiquette au trace) ; la valeur passe en navy gras pour tous,
         // c'est le chiffre qu'on vient chercher et il doit ressortir.
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-1).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}">${it.lab}</text>`
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+10).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">${it.val}</text>`;
+        // L'annee respire au-dessus de son multiple (16px d'ecart de ligne
+        // de base, contre 11 auparavant ou les deux se touchaient) et
+        // s'allege : elle situe, elle n'est pas ce qu'on vient lire.
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-5).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}" opacity=".85" letter-spacing=".03em">${it.lab}</text>`
+        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+11).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">${it.val}</text>`;
     }).join('');
   })();
 
@@ -2955,12 +2961,7 @@ function renderValoHistory(ticker){
   // Largeur reelle disponible : le viewBox s'y cale au pixel pres, ce qui
   // supprime a la fois la mise a l'echelle du texte et la gouttiere de
   // centrage laissee par preserveAspectRatio.
-  // Plafond de largeur sur desktop : au-dela, une serie encore courte
-  // s'etire sur toute la carte et chaque intervalle devient une immense
-  // enjambee. Le viewBox reste a 1:1 avec le conteneur (pas de mise a
-  // l'echelle du texte), donc on plafonne LES DEUX ensemble.
-  const VALO_CHART_MAX_W=560;
-  const chartW=Math.min(VALO_CHART_MAX_W, Math.max(280, Math.round(card.clientWidth||640)));
+  const chartW=Math.max(280, Math.round(card.clientWidth||640));
 
   let chartHtml, legendHtml;
   if(st.mode==='projection'){
@@ -3011,7 +3012,7 @@ function renderValoHistory(ticker){
       ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:9.5px;">Each curve = a revision of the EPS projection</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
-    <div class="vr-hist-chart" style="max-width:${chartW}px;">${chartHtml}</div>
+    <div class="vr-hist-chart">${chartHtml}</div>
   `;
 }
 
@@ -3397,7 +3398,11 @@ function buildGuidanceScorecard(ticker){
     const yes=gs.appliedToProjection;
     return `<div style="display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;border-radius:20px;padding:3px 9px;margin-top:10px;`
       +`background:${yes?'var(--navy-light)':'#f4f5f7'};color:${yes?'var(--navy)':'var(--muted)'};">`
-      +`${yes?'◆ Applied to Omnium projections':'◇ Not applied to projections'}</div>`;
+      // Le libelle doit dire CE QUI est applique et A QUOI : le champ vaut
+      // true uniquement si weightedBeatPct a reellement ete integre dans
+      // adjEPS/adjCA de l'annee en cours (INSTRUCTIONS.md). "Applied to
+      // projections" ne nommait ni la quantite ni sa cible.
+      +`${yes?'◆ Factored into current-year EPS':'◇ Not factored into current-year EPS'}</div>`;
   })() : '';
 
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
