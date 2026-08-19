@@ -4498,10 +4498,9 @@ function renderMarketCalendar(){
   const peRow=(r)=>{
     const disc_=r.devPct<0;
     const col=disc_?'var(--teal-text)':'var(--navy)';
-    return `<div style="display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid #f2f3f9;">
+    return `<div title="${r.pe.toFixed(1)}× vs ${r.avg.toFixed(1)}× avg" style="display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid #f2f3f9;">
       <span onclick="CT='${r.ticker}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.ticker}</span>
-      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};line-height:1.25;">${r.devPct>=0?'+':'\u2212'}${Math.abs(r.devPct).toFixed(0)}%
-        <small style="display:block;font-size:9.5px;font-weight:500;color:var(--muted);">${r.pe.toFixed(1)}\u00d7 vs ${r.avg.toFixed(1)}\u00d7 avg</small></span>
+      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};">${r.devPct>=0?'+':'−'}${Math.abs(r.devPct).toFixed(0)}%</span>
     </div>`;
   };
   const peBody=(disc.length||stretch.length)
