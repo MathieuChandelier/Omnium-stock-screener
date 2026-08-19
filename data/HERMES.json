@@ -118,11 +118,11 @@
         "id": "surtaxe_fiscale_temporaire_2025_2026",
         "moteur": "ANCRAGE CLE identifié dans le transcript S1 2026 : la contribution exceptionnelle sur les bénéfices des grandes entreprises françaises (surtaxe de 41,2% sur la moyenne de l'IS 2025-2026, ~360 M€ de coût estimé sur FY2026) est explicitement décrite par le CFO comme limitée aux SEULS exercices 2025 et 2026. Taux d'IS normatif retenu à 35% pour 2026 (cohérent avec le taux S1 2026 réel de 35,4%) puis RAMENE A 27,5% des 2027 (retour au taux normatif hors surtaxe) - generateur d'un rebond mecanique important du resultat net en 2027, independant de toute amelioration operationnelle sous-jacente. Point de vigilance : aucune reconduction legislative de la surtaxe au-dela de 2026 n'est identifiee a ce stade, mais reste un risque politique a surveiller (le gouvernement francais pourrait la prolonger).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -130,11 +130,11 @@
         "id": "resultat_financier_normatif",
         "moteur": "Résultat financier net et quote-part de résultat des sociétés associées maintenus à un niveau modeste et stable (respectivement ~180-230 M€ et ~46-56 M€ sur l'horizon), cohérent avec le S1 2026 réel (90 M€ de résultat financier, 23 M€ de quote-part des associées, principalement Moyen-Orient hors Emirats) et la position de trésorerie nette très élevée mais des taux d'intérêt et des coûts de couverture de change qui pèsent modérément.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -218,7 +218,7 @@
       "2029": 8299,
       "2030": 8902
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 4464,
       "2027": 5397,
       "2028": 5812,

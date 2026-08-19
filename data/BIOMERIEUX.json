@@ -246,11 +246,11 @@
         "id": "is-normatif",
         "moteur": "TEI normatif maintenu à 23,4% (taux effectif réel S1 2026, cohérent avec le taux FY2025 de 24,5% jugé propre - légère révision à la baisse par rapport à l'hypothèse retenue au refresh de création).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -258,11 +258,11 @@
         "id": "resultat-financier-tension-e5abis",
         "moteur": "TENSION MÉTHODOLOGIQUE NON RÉSOLUE : société en position de trésorerie nette croissante sans programme de rachat actif et régulier au sens du protocole, ce qui pointerait mécaniquement vers un produit financier Bund 10 ans (3,20%) + 2 pts. Mais le résultat financier net S1 2026 réel est négatif (-5 M€, vs +4 M€ au S1 2025), la direction l'attribuant à l'effet défavorable du renforcement de l'euro sur les positions de trésorerie en devises plutôt qu'à un manque de rendement structurel. Retenu par prudence proche de zéro en 2026 (-8 M€, extrapolation du rythme S1) puis normalisation progressive et modeste (0 M€ en 2027, +5/+8/+10 M€ en 2028-2030) plutôt que le taux théorique Bund+2pts, qui donnerait un résultat sensiblement plus élevé compte tenu de la trésorerie nette croissante - à trancher au prochain refresh selon la persistance ou non de l'effet change.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "basse"
       },
@@ -309,7 +309,7 @@
       "2029": 814,
       "2030": 863
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 512,
       "2027": 552,
       "2028": 592,

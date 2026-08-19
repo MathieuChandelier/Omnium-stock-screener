@@ -191,11 +191,11 @@
         "id": "is_normatif",
         "moteur": "Taux d'IS explicitement guidé et appliqué par le management pour le calcul des résultats intermédiaires : 26% (identique 2025 et 2026), reconduit sur tout l'horizon de projection à défaut d'information contraire",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030",
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030",
           "omniumEPS.2026",
           "omniumEPS.2027",
           "omniumEPS.2028",
@@ -208,11 +208,11 @@
         "id": "resultat_financier_net",
         "moteur": "Résultat financier S1 26 publié -57,5 M€ (vs -62,2 M€ S1 25), amélioration liée à la baisse des charges d'intérêt et aux effets de change/valorisation positifs. Refinancement obligataire de mai 2026 (tranche 2023 refinancée via Sartorius Finance B.V. à un coupon explicite de 3,75%, priorité 1 E5-a-bis) réduit le coût de financement prospectif - trajectoire d'amélioration retenue jusqu'en 2030 à mesure du désendettement",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -232,11 +232,11 @@
         "id": "rachat_cellgenix_2026",
         "moteur": "Exercice de l'option d'achat des 24% minoritaires restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%) - légèrement relutif sur le résultat net part du groupe (suppression de la quote-part minoritaire), effet mineur mais retenu dans le résultat net projeté",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -249,11 +249,11 @@
           "adjEBIT.2028",
           "adjEBIT.2029",
           "adjEBIT.2030",
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       }
@@ -279,7 +279,7 @@
       "2029": 987,
       "2030": 1130
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 400,
       "2027": 486,
       "2028": 580,

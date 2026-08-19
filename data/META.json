@@ -126,11 +126,11 @@
         "id": "is_normatif_post_effet_ponctuel",
         "moteur": "CORRECTION apres verification (le calcul initial de ce refresh appliquait par erreur le taux d'imposition REEL du S1 2026, lui-meme distordu par le benefice fiscal ponctuel de 8,03 Md$ du T1 2026 deja identifie a la creation - le S1 2026 publie affiche une PROVISION D'IMPOT NEGATIVE de -2 113 M$, soit un ETR implicite de -5,2%, contre ~16% au T2 seul hors cet effet). Taux d'imposition normatif desormais applique de maniere COHERENTE sur l'ensemble de FY2026 (17%, aligne sur le T2 seul et la guidance officielle 15-17%), plutot que de melanger le taux S1 reel distordu avec un taux S2 normatif - evite de reconduire artificiellement l'effet ponctuel T1 dans la projection annuelle. Taux maintenu a 17% pour 2027 puis 17,5% (2028-2030).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -212,7 +212,7 @@
       "2029": 129997,
       "2030": 159250
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 72510,
       "2027": 75248,
       "2028": 83607,

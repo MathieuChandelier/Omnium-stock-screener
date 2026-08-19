@@ -295,7 +295,7 @@
         "id": "is_normatif_2026",
         "moteur": "Guidance management explicite au call T2 26 : IS 2026 désormais en haut de fourchette 16-19% (Pillar Two safe-harbor non actif avant fin d'année + limitation californienne des crédits R&D actée le 29/06/2026) - retenu à 19%, contre 17% utilisé au refresh précédent",
         "applique": [
-          "adjNet.2026",
+          "omniumNet.2026",
           "omniumEPS.2026"
         ],
         "confiance": "haute"
@@ -304,10 +304,10 @@
         "id": "is_normatif_2027plus",
         "moteur": "A défaut de clarté législative supplémentaire sur Pillar Two/crédits R&D californiens, IS normatif maintenu prudemment à 18% sur 2027-2030",
         "applique": [
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030",
           "omniumEPS.2027",
           "omniumEPS.2028",
           "omniumEPS.2029",
@@ -319,11 +319,11 @@
         "id": "resultat_financier_net",
         "moteur": "Cash net 2,3 Md$ au 30/06/26 + programme de rachat actif/régulier : rendement financier net quasi-nul retenu sur les exercices projetés 2027-2030 (application stricte E5-a-bis) ; 2026 retient ~95 M$ reflétant le résultat financier déjà publié au S1 26 (63,5 M$) prolongé sur un S2 plus faible",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -360,11 +360,11 @@
           "adjEBIT.2028",
           "adjEBIT.2029",
           "adjEBIT.2030",
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       }
@@ -390,7 +390,7 @@
       "2029": 2745,
       "2030": 3093
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 1624,
       "2027": 1785,
       "2028": 2016,

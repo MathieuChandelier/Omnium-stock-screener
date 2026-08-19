@@ -272,8 +272,8 @@
         "id": "brazil_credit_provisioning",
         "moteur": "Allongement de la duree moyenne des prets au Bresil (5 a 8 mois) et hausse des provisions signales au T1 26 : NORMALISATION CONFIRMEE au T2 26 (NIMAL consolide ameliore de 18% a 21%, NPL Bresil stables a proches de leurs plus bas). Evenement desormais resolu positivement - ancrage reconduit avec un mecanisme revise (risque a la baisse leve pour le resultat net projete, contrairement au refresh precedent) ; NIMAL carte de credit reste negatif (-2,5%) mais juge transitoire (cohortes atteignant le point mort en 12-18 mois).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027"
+          "omniumNet.2026",
+          "omniumNet.2027"
         ],
         "confiance": "moyenne"
       },
@@ -281,11 +281,11 @@
         "id": "netfin_rate_2026",
         "moteur": "Regle E5-a bis : dette nette positive et croissante (6 425 M$ au 30/06/26, financement du portefeuille de credit en forte expansion +75% YoY), pas de programme de rachat actif -> charges financieres nettes projetees = Treasury US 10Y (4,68% au 07/08/2026) + 2pts = 6,68%, appliquees a la dette nette moyenne projetee de chaque annee.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -293,11 +293,11 @@
         "id": "etr_2026_2030",
         "moteur": "Taux effectif d'imposition revise de 29,7% (base FY2025, incluant un one-off ponctuel deja documente) a ~24%, ancre sur le taux effectif S1 26 reellement observe (302/1185=25,5% au S1, 140/606=23,1% au seul T2 - plus recent et sans one-off connu que la base FY2025).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -325,7 +325,7 @@
       "2029": 9258,
       "2030": 12350
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 1910,
       "2027": 3086,
       "2028": 4655,

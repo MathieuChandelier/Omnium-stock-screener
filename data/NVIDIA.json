@@ -80,8 +80,8 @@
         "applique": [
           "omniumEPS.2027",
           "omniumEPS.2028",
-          "adjNet.2027",
-          "adjNet.2028"
+          "omniumNet.2027",
+          "omniumNet.2028"
         ],
         "confiance": "moyenne"
       },
@@ -92,9 +92,9 @@
           "omniumEPS.2029",
           "omniumEPS.2030",
           "omniumEPS.2031",
-          "adjNet.2029",
-          "adjNet.2030",
-          "adjNet.2031"
+          "omniumNet.2029",
+          "omniumNet.2030",
+          "omniumNet.2031"
         ],
         "confiance": "basse"
       },
@@ -114,11 +114,11 @@
         "id": "etr_normatif",
         "moteur": "Taux d'imposition normatif de 17%, au milieu de la fourchette de guidance officielle FY27 (16-18%), reconduit par simplification sur tout l'horizon de projection.",
         "applique": [
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030",
-          "adjNet.2031"
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030",
+          "omniumNet.2031"
         ],
         "confiance": "moyenne"
       },
@@ -168,7 +168,7 @@
       "2030": 648705,
       "2031": 746295
     },
-    "adjNet": {
+    "omniumNet": {
       "2027": 220220,
       "2028": 314160,
       "2029": 432900,

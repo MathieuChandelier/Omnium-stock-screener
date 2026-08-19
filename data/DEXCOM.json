@@ -203,11 +203,11 @@
         "id": "AN-RATIO-CONV",
         "moteur": "Ratio de conversion Net/EBIT calibre sur les T1-T2 26 reels (~78%), ameliore legerement a 80% a partir de FY27 a mesure que les produits financiers sur la position de cash croissante contribuent positivement - methodologie de la creation inchangee.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -257,7 +257,7 @@
       "2029": 2099,
       "2030": 2469
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 990,
       "2027": 1207,
       "2028": 1425,

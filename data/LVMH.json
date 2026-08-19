@@ -167,7 +167,7 @@
         "id": "mtm_financier_exclu",
         "moteur": "Le résultat financier S1 2026 a été flatté par un gain de réévaluation mark-to-market du portefeuille de placements financiers, explicitement qualifié par la direction de purement théorique et sans traduction en profit réel ; ce gain n'est pas reconduit dans le ratio de conversion Net/EBIT normatif 2026, qui retient un taux proche de celui de FY2025 (61-62%) plutôt que le taux S1 2026 flatté (65,6%).",
         "applique": [
-          "adjNet.2026"
+          "omniumNet.2026"
         ],
         "confiance": "haute"
       },
@@ -175,11 +175,11 @@
         "id": "taux_financement_normatif",
         "moteur": "adjND projeté positif sur tout l'horizon : charge financière normative = ND moyen projeté x (Bund 10 ans allemand 3,20% au 28/07/2026 + 2 pts de spread), taux recalculé à ce refresh (vs refresh précédent, hausse du Bund de l'ordre de +50-70 pb reflétant la remontée des taux souverains européens en 2026).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -219,8 +219,8 @@
         "id": "surtaxe_fiscale_fr_2026",
         "moteur": "Surtaxe fiscale française exceptionnelle confirmée sur l'exercice 2026 (charge d'impôt totale ~5,5 Md€, taux effectif ~30% au S1 2026) ; hypothèse de normalisation progressive du taux effectif à partir de 2027 maintenue en l'absence de confirmation contraire du législateur.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027"
+          "omniumNet.2026",
+          "omniumNet.2027"
         ],
         "confiance": "basse"
       }
@@ -239,7 +239,7 @@
       "2029": 21900,
       "2030": 23600
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 11100,
       "2027": 11900,
       "2028": 13000,

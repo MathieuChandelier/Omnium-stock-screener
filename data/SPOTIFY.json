@@ -229,11 +229,11 @@
         "id": "ANC-FIN",
         "moteur": "Produits financiers nets ~3,5% sur position de cash net croissante (9,4 Md€ au 30/06/26, aucune dette hors obligations locatives), desormais entierement post-remboursement des Exchangeable Notes (mars 2026) - plus aucune volatilite de juste valeur liee a la dette convertible, variations de la participation TME exclues (optionnalite pure).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -241,11 +241,11 @@
         "id": "ANC-IS",
         "moteur": "ETR normatif 23%, confirme par les taux effectifs T1 26 (23,1%) et T2 26 (24,3%) reellement observes - aucun credit d'impot ponctuel identifie ce semestre contrairement au T4 2025.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -284,7 +284,7 @@
       "2029": 5738,
       "2030": 7216
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 2539,
       "2027": 3146,
       "2028": 3904,

@@ -200,11 +200,11 @@
         "id": "AN-IS-CONVERSION",
         "moteur": "Taux d'IS normatif glissant maintenu (15% en 2026 -> 19% en 2030, demarrant pres du taux effectif reel 2025 pour eviter une fausse marche) et ratio de conversion Net/EBIT normalise maintenu a ~85%, methodologie de la creation inchangee faute d'element nouveau la remettant en cause.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -236,7 +236,7 @@
         "id": "AN-RVI-ONEOFF",
         "moteur": "CORRECTION post-lecture complete du communique T2 2026 (E5 d-bis) : le resultat net publie (573 M$, EPS 0,62$) inclut 129 M$ de gain non-operationnel lie a la deconsolidation de Robinhood Ventures Fund I (RVI, ex-filiale consolidee dont Robinhood ne detient plus la majorite suite a son introduction en bourse), soit 0,14$/action. Ce gain est un element ponctuel et comptable (reevaluation de la participation residuelle a la juste valeur au moment de la perte de controle), sans rapport avec la performance operationnelle du trimestre. Il n'est PAS reconduit dans la projection FY2026-2030, qui reste construite a partir de la marge EBITDA ajustee (deja hors cet element) plutot que d'une extrapolation de l'EPS GAAP publie - mais il doit etre explicitement exclu de toute lecture du beat T2 comme preuve d'un effet de levier operationnel superieur aux attentes.",
         "applique": [
-          "adjNet.2026"
+          "omniumNet.2026"
         ],
         "confiance": "haute"
       }
@@ -296,7 +296,7 @@
       "2029": 3992,
       "2030": 4517
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 2109,
       "2027": 2541,
       "2028": 3061,

@@ -86,14 +86,14 @@
       {"id":"revenue_deceleration_LT","moteur":"Ralentissement progressif attendu de la croissance publicitaire a mesure que la base de comparaison grossit, Specs devenant le principal catalyseur incrementiel non chiffre au-dela de 2027","applique":["adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"moyenne"},
       {"id":"ebit_margin_expansion","moteur":"Restructuration d'avril 2026 (plus de 500 M$ d'economies annualisees, pleinement reflechies a partir du T3 26 donc en base pleine des 2027) et effet de levier operationnel deja observe (CA +19% vs couts ajustes +4% au T2 26)","applique":["adjEBIT.2026","adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"haute"},
       {"id":"restructuration_recurrente","moteur":"Les charges de restructuration (2019 : 100 M$ ; 2022 : 189 M$ ; 2026 : 128,5 M$ au 1S) survenant a intervalles reguliers depuis l'IPO sont traitees comme une composante recurrente-deguisee du cout operationnel, non retraitee dans data ni exclue des adjXXX","applique":["adjEBIT.2026"],"confiance":"haute"},
-      {"id":"fin_result_snap","moteur":"Charges/produits financiers projetes sur la base du rythme net trimestriel recent (quasi a l'equilibre, obligations convertibles a coupon tres faible 0-0,75% emises 2019-2023) plutot que la regle normative Treasury 10 ans +2pts","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
-      {"id":"IS_normatif_snap","moteur":"Taux d'IS effectif maintenu bas et croissant progressivement du fait des importants deficits reportables (NOL) accumules depuis l'introduction en bourse en 2017","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"moyenne"},
+      {"id":"fin_result_snap","moteur":"Charges/produits financiers projetes sur la base du rythme net trimestriel recent (quasi a l'equilibre, obligations convertibles a coupon tres faible 0-0,75% emises 2019-2023) plutot que la regle normative Treasury 10 ans +2pts","applique":["omniumNet.2026","omniumNet.2027","omniumNet.2028","omniumNet.2029","omniumNet.2030"],"confiance":"moyenne"},
+      {"id":"IS_normatif_snap","moteur":"Taux d'IS effectif maintenu bas et croissant progressivement du fait des importants deficits reportables (NOL) accumules depuis l'introduction en bourse en 2017","applique":["omniumNet.2026","omniumNet.2027","omniumNet.2028","omniumNet.2029","omniumNet.2030"],"confiance":"moyenne"},
       {"id":"dilution_mgmt_program","moteur":"Nouveau programme pluriannuel de gestion de la dilution finance par le free cash flow a partir de 2027, apres achevement du programme de rachat actuel au T4 2026","applique":["adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"moyenne"}
     ],
     "omniumEPS":{"2026":-0.09,"2027":0.18,"2028":0.34,"2029":0.47,"2030":0.59},
     "adjCA":{"2026":6818,"2027":7775,"2028":8708,"2029":9579,"2030":10441},
     "adjEBIT":{"2026":-140,"2027":311,"2028":610,"2029":862,"2030":1096},
-    "adjNet":{"2026":-156,"2027":291,"2028":547,"2029":753,"2030":935},
+    "omniumNet":{"2026":-156,"2027":291,"2028":547,"2029":753,"2030":935},
     "adjND":{"2026":1250,"2027":1100,"2028":900,"2029":650,"2030":400},
     "adjShares":{"2026":1670,"2027":1650,"2028":1630,"2029":1610,"2030":1590}
   }

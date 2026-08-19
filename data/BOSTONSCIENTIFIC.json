@@ -229,7 +229,7 @@
         "applique": [
           "adjCA.2026",
           "adjEBIT.2026",
-          "adjNet.2026"
+          "omniumNet.2026"
         ],
         "confiance": "haute"
       },
@@ -239,7 +239,7 @@
         "applique": [
           "adjCA.2027",
           "adjEBIT.2027",
-          "adjNet.2027",
+          "omniumNet.2027",
           "omniumEPS.2027"
         ],
         "confiance": "haute"
@@ -270,11 +270,11 @@
         "id": "tax_normalise_14pct_confirme",
         "moteur": "Taux d'IS normatif maintenu a 14% (coherent avec le taux effectif FY2025 reel de 14,57% - 493/3385 - une fois les elements fiscaux differes/discrets neutralises), inchange vs these precedente.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -312,7 +312,7 @@
       "2029": 6880,
       "2030": 7770
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 4050,
       "2027": 4230,
       "2028": 4780,

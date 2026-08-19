@@ -183,11 +183,11 @@
         "id": "etr_normatif",
         "moteur": "Taux d'imposition normatif de 22.5%, milieu de la fourchette de guidance FY26 (22-23%), reconduit par simplification sur tout l'horizon de projection - inchange ce refresh.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -197,7 +197,7 @@
         "applique": [
           "adjCA.2027",
           "adjEBIT.2027",
-          "adjNet.2027",
+          "omniumNet.2027",
           "adjND.2027",
           "adjShares.2027"
         ],
@@ -236,7 +236,7 @@
       "2029": 147,
       "2030": 166
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 87,
       "2027": 101,
       "2028": 117,

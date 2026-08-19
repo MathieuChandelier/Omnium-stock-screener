@@ -95,14 +95,14 @@
       {"id":"growth_cmd_2030","moteur":"Cible CMD du 25/11/2025 : ~10% de CAGR de croissance organique du CA sur l'horizon 2026-2030, extrapolee au meme rythme que le consensus sell-side au-dela de 2028.","applique":["adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],"confiance":"moyenne"},
       {"id":"margin_2026_raise","moteur":"Relevement de la marge EBIT core de +140/170 pb annonce le 17/06/2026 (vs +30/60 pb initial), traduit sur la base IFRS retraitee Omnium (hors amortissement PPA et restructuration recurrente, reintegres par politique) en une expansion d'environ +90 pb de la marge EBIT retraitee 2026.","applique":["adjEBIT.2026"],"confiance":"moyenne"},
       {"id":"margin_cmd_trend","moteur":"Cible CMD de +40/50 pb de marge EBIT core par an sur 2026-2030, traduite en ~+55/60 pb de marge EBIT retraitee par an pour 2027-2030, avec normalisation progressive attendue de la charge de restructuration 2025 (exceptionnellement elevee, presente dans les 4 regions de vente + Operations).","applique":["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],"confiance":"basse"},
-      {"id":"tax_normatif","moteur":"IS normatif retenu a 20%, coherent avec le taux effectif IFRS 2025 (21,3%) et 2024 (17,9%), ajustements Pilier 2 deja en vigueur pour les entites suisses.","applique":["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],"confiance":"haute"},
+      {"id":"tax_normatif","moteur":"IS normatif retenu a 20%, coherent avec le taux effectif IFRS 2025 (21,3%) et 2024 (17,9%), ajustements Pilier 2 deja en vigueur pour les entites suisses.","applique":["omniumNet.2026","omniumNet.2027","omniumNet.2028","omniumNet.2029","omniumNet.2030"],"confiance":"haute"},
       {"id":"financial_result_cash_net","moteur":"Position de cash net (CHF -136 M en 2025, tresorerie nette positive), sans programme de rachat d'actions actif et regulier identifie -> produit financier net calcule au taux suisse 10 ans + 2 pts de spread normatif (~2,5%), impact marginal (<10 M CHF/an) compte tenu du faible montant.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"moyenne"},
       {"id":"shares_flat","moteur":"Nombre d'actions diluees stable historiquement (~159,1-159,6 M sur 2021-2025), aucun programme de rachat massif identifie -> maintenu constant sur l'horizon de projection.","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"haute"}
     ],
     "omniumEPS": {"2026":3.00,"2027":3.38,"2028":3.82,"2029":4.32,"2030":4.88},
     "adjCA": {"2026":2748,"2027":3010,"2028":3302,"2029":3632,"2030":3995},
     "adjEBIT": {"2026":613,"2027":689,"2028":776,"2029":875,"2030":987},
-    "adjNet": {"2026":479,"2027":540,"2028":610,"2029":689,"2030":779},
+    "omniumNet": {"2026":479,"2027":540,"2028":610,"2029":689,"2030":779},
     "adjND": {"2026":-180,"2027":-260,"2028":-360,"2029":-480,"2030":-620},
     "adjShares": {"2026":159.6,"2027":159.6,"2028":159.6,"2029":159.6,"2030":159.6}
   }

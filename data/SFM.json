@@ -60,7 +60,7 @@
       {
         "id": "etr_normatif",
         "moteur": "Taux d'imposition effectif normatif retenu a 25,5%, confirme explicitement par la guidance FY26 officielle publiee au T2 (le taux effectif reel du T2 seul etait de 26%, proche de la guidance annuelle).",
-        "applique": ["adjNet.2026","adjNet.2027","adjNet.2028","adjNet.2029","adjNet.2030"],
+        "applique": ["omniumNet.2026","omniumNet.2027","omniumNet.2028","omniumNet.2029","omniumNet.2030"],
         "confiance": "haute"
       },
       {
@@ -105,7 +105,7 @@
     "omniumEPS": {"2026":5.57,"2027":6.22,"2028":7.03,"2029":7.93,"2030":8.92},
     "adjCA": {"2026":9534,"2027":9894,"2028":10488,"2029":11117,"2030":11784},
     "adjEBIT": {"2026":708,"2027":762,"2028":839,"2029":923,"2030":1013},
-    "adjNet": {"2026":521,"2027":568,"2028":625,"2029":687,"2030":755},
+    "omniumNet": {"2026":521,"2027":568,"2028":625,"2029":687,"2030":755},
     "adjND": {"2026":-110,"2027":-60,"2028":-10,"2029":30,"2030":60},
     "adjShares": {"2026":93.5,"2027":91.2,"2028":88.9,"2029":86.7,"2030":84.6}
   }

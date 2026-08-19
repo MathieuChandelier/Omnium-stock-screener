@@ -33,7 +33,7 @@ HYPOTHESE_ONLY_FIELDS = [
     "guidanceLongTermeHistory", "quarterlyEPS", "priorEPS", "ancrages",
 ]
 
-ADJ_FIELDS = ["adjCA", "adjEBIT", "adjNet", "adjND", "adjShares", "omniumEPS"]
+ADJ_FIELDS = ["adjCA", "adjEBIT", "omniumNet", "adjND", "adjShares", "omniumEPS"]
 
 ANCRAGE_KEYS = {"id", "moteur", "applique", "confiance"}
 ANCRAGE_OPTIONAL_KEYS = {"versusPublie"}
@@ -101,7 +101,7 @@ def validate_adj_fields(d, errors):
 
 def validate_eps_coherence(d, errors):
     hyp = d.get("hypothese", {})
-    adj_net = hyp.get("adjNet")
+    adj_net = hyp.get("omniumNet")
     adj_shares = hyp.get("adjShares")
     adj_eps = hyp.get("omniumEPS")
     if not all(isinstance(x, dict) for x in (adj_net, adj_shares, adj_eps)):
@@ -112,13 +112,13 @@ def validate_eps_coherence(d, errors):
         shares = adj_shares[year]
         if not shares:
             continue
-        # adjNet et adjShares sont tous deux en millions -> le ratio direct est l'EPS.
+        # omniumNet et adjShares sont tous deux en millions -> le ratio direct est l'EPS.
         implied = adj_net[year] / shares
         given = adj_eps[year]
         if given and abs(implied - given) / abs(given) > 0.02:
             errors.add(
                 f"Incoherence EPS {year} : omniumEPS={given} mais "
-                f"adjNet/adjShares={implied:.3f} (ecart > 2%)."
+                f"omniumNet/adjShares={implied:.3f} (ecart > 2%)."
             )
 
 

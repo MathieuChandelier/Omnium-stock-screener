@@ -245,11 +245,11 @@
         "id": "anthropic_mtm_exclu_h1_2026",
         "moteur": "Gains de marque-a-marche sur la participation Anthropic (53,4 Md$ avant impot au seul T2 26, ~69,4 Md$ cumules sur le S1 2026) demeurent non-operationnels, hautement volatils et symetriquement reversibles -> exclusion integrale maintenue des adjXXX sur tout l'horizon.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -281,11 +281,11 @@
         "id": "financial_rate_treasury_2pts_202607",
         "moteur": "Aucun taux de financement explicite communique par le management ce trimestre -> regle par defaut appliquee : Treasury americain 10 ans (4,67% au 30/07/2026) + 2pts de spread normatif = 6,67%, applique symetriquement au ND moyen projete (positif ou negatif) chaque annee ; aucun programme de rachat regulier identifie donc pas d'exception a taux zero sur le cash net.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -293,11 +293,11 @@
         "id": "tax_normalise_21pct",
         "moteur": "Taux d'IS normatif maintenu a 21% ; le taux effectif implicite FY2025 (nettement plus bas, conjugue a un effet financier net favorable alors que la societe etait en cash net) n'est pas reconduit car non representatif d'une base normalisee (regle E5-b, taux anormal jamais reconduit tel quel).",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -369,7 +369,7 @@
       "2029": 172500,
       "2030": 199000
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 86800,
       "2027": 99300,
       "2028": 117600,

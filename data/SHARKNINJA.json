@@ -21,15 +21,15 @@
     "omniumEPS": {"2026":5.51,"2027":6.32,"2028":7.06,"2029":7.76,"2030":8.38},
     "adjCA": {"2026":7167,"2027":7884,"2028":8515,"2029":9111,"2030":9658},
     "adjEBIT": {"2026":1061,"2027":1198,"2028":1320,"2029":1431,"2030":1526},
-    "adjNet": {"2026":789,"2027":894,"2028":988,"2029":1074,"2030":1148},
+    "omniumNet": {"2026":789,"2027":894,"2028":988,"2029":1074,"2030":1148},
     "adjND": {"2026":400,"2027":450,"2028":420,"2029":400,"2030":380},
     "adjShares": {"2026":143.0,"2027":141.5,"2028":140.0,"2029":138.5,"2030":137.0},
     "ancrages": [
       {"id":"revenue-growth-2026","mechanism":"Guidance FY2026 relevee au T1'26 : CA +11,5% a +12,5%, midpoint 12,0% retenu","scope":"adjCA 2026","confidence":"haute"},
       {"id":"revenue-deceleration-2027-2030","mechanism":"Deceleration progressive 10%->6%, coherente avec la maturation post-hypercroissance et la croissance revenu consensus ~9,6%/an sur 3 ans (Simply Wall St)","scope":"adjCA 2027-2030","confidence":"basse"},
       {"id":"ebit-margin-leverage","mechanism":"Expansion de la marge EBIT GAAP de +40 a +50pb/an, coherente avec le levier operationnel guide sur l'Adjusted EBITDA (+32pb en 2026), moderee par les pressions tarifaires","scope":"adjEBIT 2026-2030","confidence":"moyenne"},
-      {"id":"tax-rate-normalized","mechanism":"Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025","scope":"adjNet 2026-2030","confidence":"haute"},
-      {"id":"sbc-intangible-reintegration","mechanism":"adjNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)","scope":"adjNet/omniumEPS 2026-2030","confidence":"moyenne"},
+      {"id":"tax-rate-normalized","mechanism":"Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025","scope":"omniumNet 2026-2030","confidence":"haute"},
+      {"id":"sbc-intangible-reintegration","mechanism":"omniumNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)","scope":"omniumNet/omniumEPS 2026-2030","confidence":"moyenne"},
       {"id":"buyback-net-debt","mechanism":"Programme de rachat d'actions de 750M$ autorise fev.2026, demarre au T1'26 (deja +117M$ de dette nette sur le trimestre) ; inverse la tendance de desendettement 2023-2025","scope":"adjND 2026-2030","confidence":"basse"},
       {"id":"separation-oneoff-2022-2023","mechanism":"Correction des couts de transaction lies a la separation JS Global (2023 : 82,3M$ pretax), de la retenue a la source sur le dividende special (2023 : 19,5M$) et du bonus discretionnaire exceptionnel (2022 : 34,0M$ pretax) ; IS normalise a 22% sur les additions pretax","scope":"data 2022-2023 (ebit, net)","confidence":"haute"}
     ]

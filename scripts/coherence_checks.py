@@ -70,11 +70,11 @@ def c3():
             if qe.get(k): bad.append((tk,f'{k} non nul'))
     return bad
 
-@check("C4  omniumEPS == adjNet / adjShares (>1% ET >1 cent)")
+@check("C4  omniumEPS == omniumNet / adjShares (>1% ET >1 cent)")
 def c4():
     bad=[]
     for tk,t in FICHES.items():
-        h=t['hypothese']; eps=h.get('omniumEPS') or {}; net=h.get('adjNet') or {}; sh_=h.get('adjShares') or {}
+        h=t['hypothese']; eps=h.get('omniumEPS') or {}; net=h.get('omniumNet') or {}; sh_=h.get('adjShares') or {}
         for y,v in eps.items():
             n,s=net.get(y),sh_.get(y)
             if not all(isinstance(x,(int,float)) for x in (v,n,s)) or not s: continue
@@ -367,8 +367,8 @@ def c17():
         if not d: continue
         ly=d[-1]['year']
         a=h.get('omniumEPS') or {}
-        aN=h.get('adjNet') or {}; aS=h.get('adjShares') or {}
-        # getProj derive l'EPS de adjNet/adjShares quand omniumEPS manque :
+        aN=h.get('omniumNet') or {}; aS=h.get('adjShares') or {}
+        # getProj derive l'EPS de omniumNet/adjShares quand omniumEPS manque :
         # une annee n'est en defaut que si AUCUNE des deux voies n'existe.
         couvert=lambda y:(isinstance(a.get(str(y)),(int,float))
             or (isinstance(aN.get(str(y)),(int,float)) and isinstance(aS.get(str(y)),(int,float))))
@@ -392,7 +392,7 @@ def w1():
         hist=[n/e for n,e in hist if isinstance(n,(int,float)) and isinstance(e,(int,float)) and e>0]
         if len(hist)<2: continue
         rh=sum(hist)/len(hist); ly=d[-1]['year']
-        aN=h.get('adjNet') or {}; aE=h.get('adjEBIT') or {}
+        aN=h.get('omniumNet') or {}; aE=h.get('adjEBIT') or {}
         ys=[y for y in range(ly+1,ly+6)
             if isinstance(aN.get(str(y)),(int,float)) and isinstance(aE.get(str(y)),(int,float)) and aE[str(y)]>0]
         if not ys: continue
@@ -436,7 +436,7 @@ def w3():
         ys=sorted(int(y) for y in aND if isinstance(aND[y],(int,float)))
         if not ys or aND[str(ys[-1])]<nd0*1.3: continue
         n0,e0=d[-1].get('net'),d[-1].get('ebit')
-        aN=h.get('adjNet') or {}; aE=h.get('adjEBIT') or {}
+        aN=h.get('omniumNet') or {}; aE=h.get('adjEBIT') or {}
         k=str(ys[-1])
         if not all(isinstance(x,(int,float)) for x in (n0,e0,aN.get(k),aE.get(k))) or e0<=0 or aE[k]<=0: continue
         if aN[k]/aE[k] >= n0/e0-0.01:
@@ -445,15 +445,16 @@ def w3():
                            f'financiere integree ? (ou emetteur a reclasser en financier)'))
     return bad
 
-@check("C18 cle legacy adjEPS interdite (renommee omniumEPS le 18/08/2026)")
+@check("C18 cles legacy adjEPS/adjNet interdites (renommees omniumXXX le 18/08/2026)")
 def c18():
     # Une session de refresh partie d'une doctrine perimee reintroduirait
-    # la cle sous son ancien nom : l'app ne la lirait plus, la fiche
+    # ces cles sous leur ancien nom : l'app ne les lirait plus, la fiche
     # basculerait silencieusement sur la base CAGR automatique.
     bad=[]
     for tk,t in FICHES.items():
-        if 'adjEPS' in (t.get('hypothese') or {}):
-            bad.append((tk,'cle adjEPS presente : ecrire omniumEPS'))
+        h=t.get('hypothese') or {}
+        for old_,new_ in (('adjEPS','omniumEPS'),('adjNet','omniumNet')):
+            if old_ in h: bad.append((tk,f'cle {old_} presente : ecrire {new_}'))
     return bad
 
 def _num(x): return isinstance(x,(int,float))
@@ -482,18 +483,18 @@ def c19():
                     bad.append((tk,f'{y}: residual {b["residual"]} vs netPub-netCalc {b["netPub"]-b["netCalc"]:.0f}'))
     return bad
 
-@check("C20 bridge : netCalc projete == adjNet (pas deux verites)")
+@check("C20 bridge : netCalc projete == omniumNet (pas deux verites)")
 def c20():
     bad=[]
     for tk,t in FICHES.items():
         br=t['hypothese'].get('bridge')
         if not isinstance(br,dict): continue
-        aN=t['hypothese'].get('adjNet') or {}
+        aN=t['hypothese'].get('omniumNet') or {}
         for y,b in br.items():
             if not isinstance(b,dict) or _num(b.get('netPub')): continue   # publie = reconciliation
             if _num(b.get('netCalc')) and _num(aN.get(y)):
                 if abs(b['netCalc']-aN[y])>max(1,abs(aN[y])*0.02):
-                    bad.append((tk,f'{y}: bridge.netCalc {b["netCalc"]} vs adjNet {aN[y]}'))
+                    bad.append((tk,f'{y}: bridge.netCalc {b["netCalc"]} vs omniumNet {aN[y]}'))
     return bad
 
 @check("C21 bridge : residu materiel du publie sans residualNote")

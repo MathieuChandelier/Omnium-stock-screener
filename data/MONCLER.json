@@ -172,11 +172,11 @@
         "id": "resultat_financier_ifrs16",
         "moteur": "Le résultat financier net groupe reste structurellement négatif malgré une position de cash net (hors dette locative) du fait des intérêts sur dettes locatives IFRS16 (25,0 M EUR au S1 2026, en hausse avec l'expansion du réseau, notamment le flagship New York) ; la règle standard de rendement Bund+2pts sur cash net (E5-a bis, cas cash sans rachat actif documenté) est écartée au profit d'une projection ancrée sur la trajectoire observée des charges locatives.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -195,11 +195,11 @@
         "id": "is_normatif_294",
         "moteur": "Taux d'IS normatif maintenu à 29,4%, stable et cohérent sur FY2024/FY2025/H1 2026 (29,7%/29,4%/29,4%), sans élément ponctuel identifié.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -255,7 +255,7 @@
       "2029": 1204,
       "2030": 1289
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 664,
       "2027": 716,
       "2028": 770,

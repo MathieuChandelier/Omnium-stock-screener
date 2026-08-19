@@ -213,7 +213,7 @@
         "id": "data_2024_eu_state_aid_retraite",
         "moteur": "Net income FY2024 publie (93 736 M$) incluait une charge fiscale exceptionnelle unique de 10,2 Md$ liee au reversement de la decision 'State Aid' UE-Irlande (confirmee par la Cour de Justice europeenne le 10/09/2024) - vrai one-off fiscal, non recurrent -> data 2024 retraite a 103 936 M$ (E5 d-bis) pour eviter une fausse marche dans la lecture de la trajectoire historique.",
         "applique": [
-          "adjNet.2026"
+          "omniumNet.2026"
         ],
         "confiance": "haute"
       },
@@ -238,11 +238,11 @@
         "id": "buyback_actif_rendement_zero_cash_net",
         "moteur": "Programme de rachats d'actions actif et regulier depuis plus d'une decennie (62,1 Md$ sur les 9 premiers mois du seul FY2026, historique de plusieurs annees consecutives) -> regle E5-a bis, branche 'rendement 0%' appliquee : le cash net (~62 Md$ a fin juin 2026) est traite comme consomme par les rachats, aucun produit financier modelise sur l'horizon de projection.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "haute"
       },
@@ -250,11 +250,11 @@
         "id": "tax_normalise_16_5pct",
         "moteur": "Taux d'IS normatif retenu a 16,5%, coherent avec la guidance explicite du CFO pour le T4 FY26 et le taux effectif recent (15,61% FY2025 publie, 17,58% sur les 9 premiers mois de FY2026) - milieu de fourchette retenu pour l'ensemble de l'horizon de projection.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030"
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
         ],
         "confiance": "moyenne"
       },
@@ -301,7 +301,7 @@
       "2029": 200300,
       "2030": 220700
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 128590,
       "2027": 136105,
       "2028": 150718,

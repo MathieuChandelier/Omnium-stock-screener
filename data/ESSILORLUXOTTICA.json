@@ -254,11 +254,11 @@
         "id": "amortissement_ppa_recurrent",
         "moteur": "Amortissement récurrent des actifs incorporels issus des allocations de prix d'acquisition (combinaison Essilor-Luxottica + acquisition GrandVision), environ 900 M€/an avant impôt, maintenu dans la base GAAP du modèle (jamais retiré, contrairement à la mesure 'ajustée' du management) - explique l'essentiel de l'écart structurel entre l'EPS GAAP du modèle et le consensus de marché, généralement suivi sur base ajustée/non-GAAP.",
         "applique": [
-          "adjNet.2026",
-          "adjNet.2027",
-          "adjNet.2028",
-          "adjNet.2029",
-          "adjNet.2030",
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030",
           "omniumEPS.2026",
           "omniumEPS.2027",
           "omniumEPS.2028",
@@ -334,7 +334,7 @@
       "2029": 5530,
       "2030": 5880
     },
-    "adjNet": {
+    "omniumNet": {
       "2026": 2918,
       "2027": 3255,
       "2028": 3528,

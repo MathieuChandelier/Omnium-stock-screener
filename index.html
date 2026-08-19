@@ -1214,7 +1214,7 @@ function getProj(ticker){
     };
   });
   const hyp=d.hypothese;
-  const hasAdj=hyp&&['omniumEPS','adjCA','adjEBIT','adjNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
+  const hasAdj=hyp&&['omniumEPS','adjCA','adjEBIT','omniumNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
   if(!hasAdj)return{proj:base,date:null,evtName:null};
   const out={};
   PY.forEach(y=>{ out[y]={...base[y]}; });
@@ -1222,11 +1222,11 @@ function getProj(ticker){
   PY.forEach(y=>{
     if(has(hyp.adjCA,y))     out[y].ca    =+hyp.adjCA[y];
     if(has(hyp.adjEBIT,y))   out[y].ebit  =+hyp.adjEBIT[y];
-    if(has(hyp.adjNet,y))    out[y].net   =+hyp.adjNet[y];
+    if(has(hyp.omniumNet,y))    out[y].net   =+hyp.omniumNet[y];
     if(has(hyp.adjND,y))     out[y].nd    =+hyp.adjND[y];
     if(has(hyp.adjShares,y)) out[y].shares=+hyp.adjShares[y];
     if(has(hyp.omniumEPS,y))    out[y].eps   =+hyp.omniumEPS[y];
-    else if((has(hyp.adjNet,y)||has(hyp.adjShares,y))&&out[y].shares>0)
+    else if((has(hyp.omniumNet,y)||has(hyp.adjShares,y))&&out[y].shares>0)
       out[y].eps=out[y].net/out[y].shares;
   });
   return{proj:out,date:hyp.date,evtName:hyp.source||null};
@@ -1237,7 +1237,7 @@ function checkEpsCoherence(d){
   if(!hyp)return [];
   const bad=[];
   Object.keys(hyp.omniumEPS||{}).forEach(y=>{
-    const eps=+hyp.omniumEPS[y],net=+(hyp.adjNet?.[y]),sh=+(hyp.adjShares?.[y]);
+    const eps=+hyp.omniumEPS[y],net=+(hyp.omniumNet?.[y]),sh=+(hyp.adjShares?.[y]);
     if(!eps||!net||!sh)return;
     const implied=net/sh;
     if(Math.abs(eps-implied)/Math.abs(implied)>0.02)
@@ -1970,7 +1970,7 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
 }
 
 // Derniere annee de l'horizon affiche couverte par l'ANALYSE (omniumEPS,
-// ou le couple adjNet+adjShares dont getProj derive l'EPS), en partant de
+// ou le couple omniumNet+adjShares dont getProj derive l'EPS), en partant de
 // CY sans trou. Le CAGR de tete de fiche ne doit jamais s'appuyer sur une
 // annee servie par la base CAGR automatique (~37% d'erreur mediane sur le
 // net au back-test du 18/08/2026) - cas MSFT : 2031 non couvert apres la
@@ -1981,7 +1981,7 @@ function analysisLY(ticker){
   const h=d?.hypothese;
   if(!h) return LY;
   const num=x=>typeof x==='number';
-  const ok=y=>num(h.omniumEPS?.[y])||(num(h.adjNet?.[y])&&num(h.adjShares?.[y]));
+  const ok=y=>num(h.omniumEPS?.[y])||(num(h.omniumNet?.[y])&&num(h.adjShares?.[y]));
   let last=null;
   for(let y=CY;y<=LY;y++){ if(ok(y)) last=y; else break; }
   return last===null?LY:last;
