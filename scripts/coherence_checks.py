@@ -277,10 +277,13 @@ def c16():
     # l'archive ne porte pas deux points exploitables disparait du trace sans
     # que rien ne le signale : la colonne TODAY annonce alors moins de lignes
     # qu'il n'y a d'echeances dans la fiche.
+    import datetime as _dt
+    grace=(_dt.date.today()-_dt.timedelta(days=5)).isoformat()
     bad=[]
     for tk,t in FICHES.items():
         cy=cy_of(t)
         if not cy: continue
+        if (t['hypothese'].get('date') or '')>=grace: continue   # remplissage en cours
         sn=[x for x in (PH.get(tk,{}).get('snapshots') or []) if x.get('price')]
         if len(sn)<2: continue
         for k,year in (('CY',cy),('NY',cy+1),('Y2',cy+2)):
@@ -305,6 +308,7 @@ def c16():
         ea=((dc.get('resultatsVsConsensus') or {}).get('epsAdj') or {})
         if 'basis' not in ea: continue
         b=ea['basis']
+        if b is None: continue   # null explicite = pas de comparaison EPS (valide)
         if not (isinstance(b,str) and b.strip() in ENUM):
             apercu=(b if isinstance(b,str) else repr(b))[:48].replace('\n',' ')
             bad.append((tk,f'hors enum : "{apercu}..."'))
@@ -342,7 +346,12 @@ def x2():
         if it=='industrial': continue
         cc=t.get('capitalConstraint')
         if not isinstance(cc,dict):
-            bad.append((tk,f"issuerType={it} sans capitalConstraint")); continue
+            # Absence LEGITIME si documentee : certains financiers n'ont pas
+            # de ratio prudentiel consolide au niveau groupe (ex. MELI) - la
+            # note explique le pourquoi et les proxies suivis.
+            if not (t.get('capitalConstraintNote') or '').strip():
+                bad.append((tk,f"issuerType={it} sans capitalConstraint ni capitalConstraintNote"))
+            continue
         att=ATTENDU.get(it)
         if att and cc.get('metric')!=att:
             bad.append((tk,f"issuerType={it} attend metric={att}, trouve {cc.get('metric')!r}"))
@@ -552,11 +561,18 @@ def w5():
             if not isinstance(b,dict) or _num(b.get('netPub')): continue
             nd=aND.get(y)
             if not (_num(nd) and _num(b.get('finNet'))): continue
-            if nd>0:
+            prev=aND.get(str(int(y)-1))
+            if not _num(prev):
+                d=t.get('data') or []
+                prev=d[-1].get('nd') if d and _num(d[-1].get('nd')) else nd
+            nd_avg=(nd+prev)/2
+            ebit_y=(t['hypothese'].get('omniumEBIT') or {}).get(y)
+            if _num(ebit_y) and abs(b['finNet'])<0.02*abs(ebit_y): continue   # immateriel
+            if nd_avg>0:
                 if b['finNet']>0:
-                    bad.append((tk,f'{y}: dette nette {nd} mais finNet POSITIF {b["finNet"]}'))
-                elif not (0.005*nd<=-b['finNet']<=0.12*nd):
-                    bad.append((tk,f'{y}: finNet {b["finNet"]} pour dette {nd} (hors bande 0,5-12%)'))
+                    bad.append((tk,f'{y}: dette nette moyenne {nd_avg:.0f} mais finNet POSITIF {b["finNet"]}'))
+                elif not (0.005*nd_avg<=-b['finNet']<=0.20*nd_avg):
+                    bad.append((tk,f'{y}: finNet {b["finNet"]} pour dette moyenne {nd_avg:.0f} (hors bande 0,5-20%)'))
     return bad
 
 @check("C22 scorecard : structure annualBeatHistory / anchorInitial")

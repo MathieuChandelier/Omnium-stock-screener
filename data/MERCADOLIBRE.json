@@ -188,15 +188,18 @@
     "engagementsStructurants": []
   },
   "hypothese": {
-    "date": "2026-08-07",
+    "date": "2026-08-18",
     "priorEPS": {
-      "date": "2026-07-22",
+      "date": "2026-08-07",
       "eps": {
-        "2026": 37.25,
-        "2027": 60.08
+        "2026": 37.52,
+        "2027": 60.39,
+        "2028": 90.74,
+        "2029": 127.63,
+        "2030": 171.99
       }
     },
-    "source": "Refresh T2 2026 - Communique + transcript T2 2026 (05/08/2026), migration structurelle complete vers le schema courant (champ name ajoute, fyEndMonth retire, dernierCall/ancrages restructures au format actuel, guidanceLongTermeHistory et quarterlyEPS ajoutes, coherenceQualitative peuple pour la premiere fois).",
+    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript T2 2026 lu depuis l'archive Drive ; bridge etabli (ETR 24% + funding du livre de credit), scorecard cree (maison sans guidance : ancre own_vintage, historique non mesurable), capitalConstraintNote documentee (pas de ratio prudentiel groupe - proxies NPL/NIMAL suivis), cles depreciees purgees. Projections inchangees (etat du 07/08 confirme, corrections de donnees 2025 deja faites a ce refresh-la).",
     "dernierCall": {
       "quarter": "T2 26",
       "communiqueAnalyse": true,
@@ -219,13 +222,19 @@
         "La marge operationnelle (6,7%) reste stable en sequentiel malgre une nouvelle compression du gross margin liee aux rabais Pix/baisse des take rates au Bresil et a la hausse des couts de devices au Mexique (en partie un surstock ponctuel) - compensee par la normalisation des provisions sur le credit consommateur bresilien.",
         "Le portefeuille de credit atteint 16,4 Md$ (+75% YoY), avec des NPL proches de leurs plus bas historiques (7,0% a 15-90j, 4,6% carte de credit) ; le NIMAL carte de credit reste negatif (-2,5%) du fait de l'acceleration de l'emission (2,6M nouvelles cartes vs 1,6M un an plus tot), phenomene juge transitoire par le management (chaque cohorte atteint le point mort NIMAL en 12-18 mois).",
         "Investissement IA d'environ 80 M$ au T2 (vs l'an dernier), avec des gains de productivite mesurables (depenses de R&D produit ramenees de 8,4% a 7,2% du CA en glissement annuel, 90% des interactions du service client automatisees) - presente par le management comme un accelerateur de la these plutot qu'une ligne de cout a optimiser."
-      ]
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US-GAAP",
+        "source": "communique",
+        "date": "2026-08-05"
+      }
     },
     "guidanceHistory": [],
     "guidanceLongTerme": null,
     "guidanceLongTermeHistory": [],
     "summary": "Leader incontestable du e-commerce et de la fintech en Amerique latine, franchit pour la premiere fois les 10 Md$ de CA trimestriel (+50% YoY). Marge operationnelle maintenue par choix deliberé a ~6,7% (vs ~11% en 2025 restate), le management reaffirmant ne jamais piloter ses investissements par les comparables. Recuperation de marge attendue progressivement a mesure que les investissements (seuil de livraison Bresil, carte de credit, IA, CBT) arrivent a maturite.",
-    "text": "== SYNTHESE DE LA THESE ==\nLa these de compounder de croissance rentable en Amerique latine se confirme au T2 2026 : le CA franchit pour la premiere fois le seuil des 10 Md$ sur un trimestre (10 169 M$, +50% YoY, +43% a change constant), et le modele ecosystemique (utilisateurs actifs sur commerce ET fintech, +37% YoY) continue de se renforcer comme moteur structurel de rentabilite - un utilisateur ecosystemique genere 70% de GMV en plus et une contribution multipliee (pas simplement additionnee) par rapport a la somme d'un utilisateur marketplace-seul et fintech-seul. Un an apres l'abaissement du seuil de livraison gratuite au Bresil, l'effet se confirme durable et non promotionnel (frequence d'achat +19% YoY, conversion +1,1pt, retention des nouvelles cohortes superieure aux precedentes) - validant l'ancrage central de la these. La marge operationnelle reste deliberement comprimee a 6,7% (stable en sequentiel), le management reaffirmant explicitement ne jamais piloter ses decisions d'investissement par les bases de comparaison, meme lorsque celles-ci deviennent plus exigeantes. Nouveaute de ce trimestre : l'IA devient un vecteur mesurable d'efficacite operationnelle (frais de R&D produit ramenes de 8,4% a 7,2% du CA, 90% des interactions service client automatisees), presentee comme un accelerateur structurel plutot qu'une simple ligne de cout - un premier element concret venant nourrir la these de recuperation de marge 2027-2030, jusqu'ici fondee uniquement sur la maturation des investissements engages.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) CA trimestriel franchit pour la premiere fois les 10 Md$, avec Bresil (+59% YoY courant, +42% a change constant), Mexique (+55%/+38% cc) et Argentine (+20%/+48% cc, effet devise favorable inverse a la tendance des annees precedentes) - deja dans les chiffres, alimente directement l'ancrage brazil_shipping_threshold reconduit.\n(ii) Compression sequentielle de la marge brute au T2, attribuee par le CFO a trois facteurs distincts : rabais Pix/baisse des take rates au Bresil (initiative deliberee, deja vue en 2024-2025), hausse du cout des devices au Mexique (en partie un surstock ponctuel qui devrait s'attenuer au S2, en partie une hausse structurelle du prix des puces memoire), et hausse des couts logistiques lies a l'energie - integre dans la revision de l'ancrage margin_dial_2026.\n(ii) Normalisation des provisions sur le credit consommateur bresilien apres le pic signale au T1 26 - NIMAL consolide ameliore de 18% (T1 26) a 21% (T2 26) - resolution positive de l'evenement qui avait declenche les enquetes de cabinets d'avocats plaignants en mai 2026 (voir compliance), integre dans la revision de l'ancrage brazil_credit_provisioning.\n(ii) Investissement IA quantifie a ~80 M$ au T2 26 (vs T2 25), avec un premier effet mesurable et positif sur les couts de R&D produit (8,4% -> 7,2% du CA) - nouvel ancrage ai_productivity_margin_tailwind, distinct de la maturation des investissements historiques.\n(iii) Carte de credit en Argentine (lancee il y a ~9 mois) : adoption jugee solide par le management, trop tot pour conclure sur les paybacks - optionnalite non chiffree.\n(iii) Programme d'affiliation en acceleration sur tous les marches, economie unitaire stable en % des ventes malgre l'investissement croissant - optionnalite positive non chiffree separement (deja dans la croissance CA globale).\n(iii) Poursuite de l'enquete des cabinets d'avocats plaignants (Kirby McInerney, Frank R. Cruz, Glancy Prongay) ouverte depuis mai-juin 2026 sur l'allongement des durees de credit bresilien - statut inchange (sollicitation, aucune plainte deposee) malgre plus de trois mois ecoules et la normalisation confirmee du sujet sous-jacent ce trimestre (voir compliance).\n(iii) CEO Ariel Szarfsztejn en poste depuis le 1er janvier 2026 : ce trimestre est son deuxieme complet a la tete du groupe, la transition de gouvernance evoquee a la creation est desormais pleinement effective, plus traitee comme un evenement en cours.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nCORRECTION DE DONNEES HISTORIQUES (E1) : deux erreurs identifiees dans le JSON precedent sur l'exercice 2025 corrigees a l'occasion de ce refresh - net income 2025 : 1 927 -> 1 997 M$ (chiffre officiel confirme par l'EPS dilue publie de 39,40$ x 50,70M actions, et par plusieurs sources tierces citant explicitement 1 997 M$) ; EBIT 2025 : 3 102 -> 3 201 M$ (somme des resultats d'exploitation trimestriels officiels : 2 312 M$ sur les 9 premiers mois + 889 M$ au T4, coherente avec la croissance officielle de +22% vs 2024). Base comptable inchangee par ailleurs : \"ca\" = net revenues and financial income, \"ebit\" = income from operations publie (GAAP), reporte en USD. ETR normatif revise de 29,7% (base FY2025, incluant un one-off) a ~24% (base observee S1 26 : 302/1185, plus recente et sans one-off connu) - voir ancrage etr_2026_2030 revise. Taux de financement normatif (netfin_rate_2026) recalcule sur le Treasury 10 ans americain a ~4,68% (07/08/2026) + 2pts = ~6,68%. omniumShares : dilution quasi nulle confirmee, actions en circulation quasi stables (50 696 802 au 30/06/26 vs 50 697 182 fin 2025, leger rachat net). WATCH-LIST pour le prochain refresh : (1) la marge operationnelle du S2 26 confirme-t-elle le maintien du \"dial\" bas malgre des comparables plus durs, ou amorce-t-elle deja une reprise ? (2) trajectoire des NPL a 90+ jours (en legere hausse ce trimestre, jugee non preoccupante par le management - a reverifier) ; (3) suite de l'enquete des cabinets d'avocats plaignants, desormais plus de trois mois sans escalade en plainte formelle malgre la normalisation confirmee du sujet sous-jacent (credit bresilien) ; (4) premiers indicateurs de payback sur la carte de credit argentine (lancee il y a ~9 mois, encore trop tot pour juger) ; (5) attenuation attendue du surstock de devices au Mexique et son effet sur la marge acquiring au S2.\n\n== CATALYSEURS ==\nResultats T3 2026 le 28 octobre 2026 - premier test de la resilience de la marge operationnelle face a des comparables nettement plus durs qu'au S1 (le S2 25 avait deja beneficie de l'acceleration post-abaissement du seuil de livraison bresilien), et confirmation ou non d'une inflexion de rentabilite sur la carte de credit et le cross-border trade.",
+    "text": "== THESIS SUMMARY ==\nMercadoLibre is the Latin American profitable-growth compounder: Q2 26 revenue crossed 10bn$ for the first time (10.17bn$, +50% reported, +43% cc) and the ecosystem flywheel keeps strengthening - a commerce+fintech user generates a MULTIPLE of the standalone contributions, and ecosystem users grew +37%. One year after the Brazil free-shipping threshold cut, the effect is proven durable and non-promotional (purchase frequency +19%, conversion +1.1pt, better cohort retention) - the central thesis anchor validated. Operating margin stays deliberately dialed down at 6.7% (flat sequentially, -550bp YoY) as management reinvests in Brazil delivery thresholds and credit-card issuance, explicitly refusing to steer by comparison bases. New this quarter: AI became a measured efficiency vector (product-dev cost 8.4% -> 7.2% of revenue, 90% of customer-service interactions automated, ~80M$/quarter invested) - the first concrete support for the 2027-2030 margin-recovery leg of the thesis. Classified as a financial issuer (bank): the credit book (16.4bn$, +75%) makes net debt a funding line, not leverage - multiples read on market cap.\n\n== THESIS READ ==\n- Revenue through 10bn$/quarter with Brazil +42% cc and Mexico +38% cc: growth is broad, not base-effect driven.\n- Margin dial confirmed at 6.7% with the reinvestment explicitly deliberate - the recovery option (2027-2030) stays intact and now has an AI-efficiency down-payment.\n- Brazil credit normalization delivered: NIMAL back to 20.7% (from 18% at the Q1 provisioning peak) - the event behind the May plaintiff-firm inquiries has resolved favorably (no complaint filed, >3 months).\n- Credit book +75% to 16.4bn$ with NPL 15-90d at 7.0%: the growth/risk balance holds, tracked via the guided proxies (no group prudential ratio exists - see capitalConstraintNote).\n- Watch: H2 margin against much tougher comps - management says the dial stays down; any early recovery would be pure upside to the modeled path.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP ('ca' = net revenues incl. financial income; 'ebit' = income from operations), USD. Data 2025 corrections (net 1,997, EBIT 3,201) were made at the 07/08 refresh from official figures. Bridge (c-ter): ETR 24% normative (S1 26 observed, ex one-off - ancrage etr_2026_2030) with finNet scaling with the credit-book funding (-275 -> -650M$; financial issuer: E5 a-bis industrial rules not applicable, funding is the business). Scorecard: no-guidance house - FY26 anchor posed on the own 22/07 vintage (imperfect, re-anchor Feb 2027), history not measurable, application suspended (documented); quarterly consensus beats tracked in the timeline (+2.7% Q2). Deprecated keys purged (C23). WATCH-LIST: (1) H2 operating margin vs tougher comps; (2) 90d+ NPL trajectory (slightly up, management unconcerned - verify); (3) plaintiff-firm inquiries (quiet >3 months); (4) Argentina credit-card paybacks (~9 months in, too early); (5) Mexico device-cost overstock fading in H2. Next useful refresh: Q3 results (28 Oct).\n\n== CATALYSTS ==\nQ3 2026 (28 Oct): margin resilience against hard comps; credit-card and cross-border (GMV +60% cc, China fulfillment +170% QoQ) profitability signals.",
     "impact": "positif",
     "ancrages": [
       {
@@ -421,11 +430,105 @@
           "eps": 18.44,
           "actual": false
         }
+      ]
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -360,
+        "other": 0,
+        "taxRate": 0.297,
+        "minorities": 0,
+        "netCalc": 1997,
+        "netPub": 1997,
+        "residual": 0,
+        "residualNote": "FY25 reconciles at the published effective rate (29.7%, includes a one-off tax item - see ancrage oneoff_q4_tax_credit); finNet -360 = net interest + FX on the funding of the credit book (first-pass, to split from the 10-K)."
+      },
+      "2026": {
+        "finNet": -275,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1910
+      },
+      "2027": {
+        "finNet": -445,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 3086
+      },
+      "2028": {
+        "finNet": -525,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 4655
+      },
+      "2029": {
+        "finNet": -609,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 6573
+      },
+      "2030": {
+        "finNet": -650,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 8892
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "none",
+      "metric": "None (no-guidance policy)",
+      "comparedAgainst": "consensus",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-08-05",
+          "type": "vs_consensus",
+          "detail": "Q2 26: GAAP EPS 9.19$ vs consensus 8.95$ (+2.7%); revenue crosses 10bn$ for the first time (+50%).",
+          "beatPct": 2.7
+        }
       ],
-      "epsForward12m": 48.14,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
+      "paceCheckpoint": "H1 26 GAAP EPS 17.42$ of a modeled 37.52$ year: consistent with the usual H2-heavier seasonality.",
+      "weightedBeatPct": 2.7,
+      "annualBeatPct": null,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": null,
+          "source": "initial_consensus",
+          "excluded": true,
+          "note": "No guidance policy; initial FY25 consensus not reliably reconstructed at setup."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_consensus",
+          "excluded": true,
+          "note": "Same limitation."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 37.25,
+        "source": "own_vintage",
+        "date": "2026-07-22",
+        "note": "First own archived projection (22/07/2026) - mid-year, imperfect as an 'initial' anchor; re-anchor at the FY27 open (Feb 2027 post-FY26 results). Initial FY26 consensus not sourced."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct null (no-guidance house, no measurable closed FY at setup). First measurable observation at FY2026 close vs the own-vintage anchor.",
+      "consensusSource": "InvestingPro/MarketBeat (GAAP)",
+      "consensusDate": "2026-08-05"
+    },
+    "revisionEvent": {
+      "date": "2026-08-05",
+      "label": "T2 26",
+      "type": "earnings"
     }
-  }
+  },
+  "capitalConstraintNote": "MELI group is not a prudentially consolidated bank: no group-level CET1/solvency ratio is published. Credit risk is tracked through the guided proxies instead - NPL 15-90d (7.0% Q2 26), NIMAL (20.7%), Brazil provisioning (see ancrage brazil_credit_provisioning). Subsidiary licenses (Mexico bank, Brazil SCFI) publish local ratios that do not consolidate at group level. Revisit if prudential consolidation ever applies."
 }
