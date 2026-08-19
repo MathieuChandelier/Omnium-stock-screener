@@ -151,8 +151,11 @@
     "Les Services (30,7 Md$) sont ressortis legerement sous le consensus (~31,3 Md$), le CFO evoquant une faiblesse du mobile gaming et des changements de modele App Store, la Chine (18,8 Md$) etant egalement en-dessous des attentes (~19,5 Md$)."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q3 FY26 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "Form 10-Q (trimestre clos 27/06/2026, MarketScreener) + 8-K EX-99.1 du 30/07/2026 (EDGAR)",
+    "date": "2026-08-19",
+    "note": "Croises vs fiche : CA 109,4 Md$ (+16%), marge brute 50,1% (dont ~2pts remboursements tarifaires), EPS dilue 2,02$ (+0,11$ d'effet tarifaire un-off) - conformes a la base normalisee qui exclut cet effet."
    }
   },
   "guidanceHistory": [],
@@ -389,16 +392,16 @@
     {
      "fy": 2025,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "note": "Searched 19/08/2026: no dated INITIAL (Nov-2024) FY25 consensus snapshot found - only late-year pre-print figures. Realized FY25 GAAP diluted EPS 7.46 (fiche base 7.47)."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Searched 19/08/2026: only an END-of-year pre-print consensus exists as a dated snapshot (6.65, Oct-2024, Barchart) - not an initial-year anchor. Realized FY24 6.75 (retreated of the 10.2bn State-Aid charge)."
     }
    ],
    "anchorInitial": {

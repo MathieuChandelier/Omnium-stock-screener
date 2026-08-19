@@ -113,8 +113,11 @@
     "Couts de decommissionnement du data center de secours (post-migration cloud, site d'Erding) traites en elements non-recurrents jusqu'a fin d'annee - produit de cession potentiel des serveurs evoque (appetit de marche pour l'infrastructure IA) mais non chiffre."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 reviewed via earnings-call summary (GuruFocus) and company disclosures; full IFRS interim statements not directly exploited at this refresh."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "H1 2026 Management Review + etats intermediaires condenses (amadeus.com IR)",
+    "date": "2026-08-19",
+    "note": "Croises vs fiche : CA H1 3 334,9 M EUR (+2,3%, +5,1% cc), adj EBIT 1 011,5 M EUR, dette financiere nette 2 577,5 M EUR au 30/06 (1,0x EBITDA) - la trajectoire omniumND 2026 (1 950) suppose le desendettement H2 par FCF, hypothese de la fiche confirmee comme hypothese."
    }
   },
   "guidanceHistory": [
@@ -353,21 +356,27 @@
    ],
    "paceCheckpoint": "H1 real: revenue +5% cc, adjusted EBIT +5%, adjusted diluted EPS +7% - pace consistent with the LOWERED range, below the initial anchor.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": -1.7,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
+     "beatPct": -4.4,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+     "excluded": false,
+     "anchorValue": null,
+     "initialDisplay": "6,815M EUR revenue (initial mid)",
+     "realizedDisplay": "6,517M EUR",
+     "note": "Initial FY25 guidance (PR 28/02/2025): revenue 6.69-6.94bn (+9/13%), EBITDA 2.49-2.61bn; realized revenue 6,517M (+6.1%, Middle-East shock year) - level MISS -4.4% vs the initial mid. Metric mismatch with the EPS anchor declared (revenue-guided years)."
     },
     {
      "fy": 2024,
-     "beatPct": null,
+     "beatPct": 0.1,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+     "excluded": false,
+     "anchorValue": null,
+     "initialDisplay": "+12.75% revenue (initial mid)",
+     "realizedDisplay": "+12.9%",
+     "note": "Initial FY24 guidance (FY23 PR, 28/02/2024): revenue growth 11-14.5% (mid 12.75%); realized +12.9% (6,141.7M) - on the mid (+0.1% level)."
     }
    ],
    "anchorInitial": {
@@ -378,9 +387,17 @@
     "note": "Quantified from 'low-double-digit' adjusted-EPS growth (~+11%) on FY25 adjusted EPS 2.965 -> ~3.29, matching pre-cut consensus. Earliest ARCHIVED guidance (the February FY25-results statement was not captured); guidance was CUT on 31/07 to high-SD-to-low-DD - the anchor stays initial for the FY26 close measurement."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (initial anchors not archived for FY24/FY25). First measurement at the FY26 close - note the in-year CUT argues prudence, not uplift.",
+   "applicationNote": "annualBeatPct -1.7% BLENDED (FY26 in-progress -1.2 x1/2; closed FY25 -4.4 and FY24 +0.1 equal-shared). NOT applied to projections: the 2026 build already sits on the LOWERED guidance (applying the negative blend would double-count the cut), and closed years are measured on REVENUE while the anchor is EPS (declared mismatch).",
    "consensusSource": "Google Finance / sell-side (adjusted EPS reference)",
-   "consensusDate": "2026-07-01"
+   "consensusDate": "2026-07-01",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 3.29,
+    "currentValue": 3.25,
+    "deltaPct": -1.2,
+    "asOf": "2026-07-31",
+    "note": "Initial 'low-double-digit' adjusted-EPS growth (~+11% -> 3.29 on 2.965); guidance CUT 31/07 to 'high-SD-to-low-DD' (mid ~+9.5% -> ~3.25). Projected -1.2% vs the initial anchor."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-31",

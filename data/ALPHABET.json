@@ -212,8 +212,11 @@
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "8-K EX-99.1 Q2 2026 (EDGAR, googexhibit991q22026)",
+    "date": "2026-08-19",
+    "note": "Etats condenses GAAP du communique Q2 2026 verifies (operating income +30% - coherent avec Cloud +82%/marge 35,6% de la fiche)."
    }
   },
   "guidanceHistory": [
@@ -463,21 +466,24 @@
    ],
    "paceCheckpoint": "Q2 real: Cloud +82% (vs +63% Q1), backlog 514bn, Cloud operating margin 35.6% (3x YoY); Search +17% and YouTube +13% show no AI cannibalization.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 15.5,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "beatPct": 15.5,
+     "source": "initial_consensus",
+     "excluded": false,
+     "anchorValue": 8.03,
+     "initialDisplay": "8.03$ (Jan-2025 consensus)",
+     "realizedDisplay": "9.28$ (retreated GAAP)",
+     "note": "Initial FY25 consensus 8.03$ (dated snapshot, MarketBeat 22/01/2025); realized 9.28$ on the RETREATED base (ex-securities-revaluation gains - reported GAAP was higher), conservative +15.5%."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Searched 19/08/2026: no dated Jan-2024 initial consensus snapshot found. Realized FY24 8.04$."
     }
    ],
    "anchorInitial": {
@@ -488,7 +494,7 @@
     "note": "Alphabet guides capex, not earnings - the anchor is the consensus snapshot (earliest archived, 22/07; the post-FY25 initial print was not captured). Omnium 2026 (11.90) sits WELL BELOW this anchor: the Omnium base excludes unrealized securities-revaluation gains and carries the preferred-dividend drag - the gap is basis-driven, documented, not a hidden bearish call."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY vs initial consensus at setup. First measurement at the FY26 close - and the consensus anchor is on a broader basis than the Omnium base (see anchor note).",
+   "applicationNote": "annualBeatPct +15.5% (single measured FY, equal-weighted; no in-progress reading - Alphabet guides nothing and the only consensus snapshot IS the anchor). NOT applied to projections: single observation on a consensus anchor with a declared basis wedge (retreated realized vs street basis).",
    "consensusSource": "Simply Wall St / S&P Global (Visible Alpha)",
    "consensusDate": "2026-07-22"
   },

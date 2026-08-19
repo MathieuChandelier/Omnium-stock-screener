@@ -182,11 +182,20 @@
     "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), malgre l'amelioration tangible de la visibilite propre a Arista (remboursements tarifaires et mix favorable ayant soutenu la marge brute du T2 a 63,4%, +100pb sequentiel)."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via transcript + release + 10-Q references; statements not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "Form 10-Q Q2 2026 (consulte au refresh du 05/08 - cite en source primaire de la fiche) + communique 04/08",
+    "date": "2026-08-19",
+    "note": "Le 10-Q T2 2026 figurait deja dans les sources exploitees du refresh (RESULTATS, SOURCES & GUIDANCE) ; chiffres croises : CA T2 3 035,7 M$ (+37,7%), GM 63,4%."
    }
   },
   "guidanceHistory": [
+   {
+    "date": "2026-02-12",
+    "quarter": "Q4 25",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance annuelle INITIALE FY26 : CA ~11,25 Md$ (+25%), posee au rapport Q4-2025."
+   },
    {
     "quarter": "T2 26",
     "date": "2026-08-04",
@@ -434,34 +443,48 @@
    ],
    "paceCheckpoint": "Q2 real: revenue 3,035.7M (+37.7%, vs 2,830M consensus), non-GAAP EPS 1.02 vs 0.89 (+15% beat); >100 Etherlink AI-fabric customers; multi-year purchase commitments 9.7bn (vs 3.6bn a year ago).",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 10.4,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
+     "beatPct": 9.8,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "excluded": false,
+     "anchorValue": null,
+     "initialDisplay": "8.2bn$ revenue (initial, +17%)",
+     "realizedDisplay": "9.006bn$ (+28.6%)",
+     "note": "Initial FY25 guidance 8.2bn (+17%, Q4-2024 report 18/02/2025); realized 9,006M - level beat +9.8%. Raised in-year to +25%/8.75bn."
     },
     {
      "fy": 2024,
-     "beatPct": null,
+     "beatPct": 7.7,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+     "excluded": false,
+     "anchorValue": null,
+     "initialDisplay": "+11% revenue (initial mid 10-12%)",
+     "realizedDisplay": "+19.5% (7,003M$)",
+     "note": "Initial FY24 guidance 10-12% (attested by the CEO on the Q4-2024 call: 'started 2024 with an initial guidance of 10 to 12%'); realized +19.5% - level beat +7.7%."
     }
    ],
    "anchorInitial": {
     "fy": 2026,
-    "value": 12600,
+    "value": 11250,
     "source": "initial_guidance",
-    "date": "2026-08-04",
-    "note": "FY26 guided at ~12.6bn (+40%), non-GAAP GM 62-64%, non-GAAP OM 48-49% - the THIRD raise of the year (11.5bn guided in May). Dated at the latest raise (earliest fully archived); the initial early-2026 frame was not captured - the FY26 close will measure against this raised bar, so the observation will UNDERSTATE the true initial beat."
+    "date": "2026-02-12",
+    "note": "TRUE initial FY26 annual guidance: ~11.25bn (+25%), set at the Q4-2025 report (12/02/2026 - press coverage frames it as a raise vs earlier soft indications, but it is the first formal FY26 range). Then 11.5bn (May), 12.6bn (Aug). The prior anchor (12.6bn, the Aug raise) understated the in-year overdelivery - corrected 19/08/2026."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (initial anchors not archived). First measurement at the FY26 close - against a thrice-raised bar (see anchor note).",
+   "applicationNote": "annualBeatPct +10.4% BLENDED (in-progress +12.0 x1/2; FY25 +9.8, FY24 +7.7 equal-shared). NOT applied to projections: revenue-level beats vs EPS projections (declared wedge), and the 2026 build already sits on the raised guidance - applying would double-count.",
    "consensusSource": "Zacks consensus (non-GAAP)",
-   "consensusDate": "2026-08-04"
+   "consensusDate": "2026-08-04",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 11250,
+    "currentValue": 12600,
+    "deltaPct": 12.0,
+    "asOf": "2026-08-04",
+    "note": "Guided 12.6bn (third raise, 04/08) vs the initial 11.25bn - projected +12.0%. Revenue metric (Arista guides revenue/margins, not EPS)."
+   }
   },
   "revisionEvent": {
    "date": "2026-08-04",

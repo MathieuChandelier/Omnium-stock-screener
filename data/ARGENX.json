@@ -192,8 +192,11 @@
     "Les deux binaires majeurs de la these (lecture topline ALKIVIA en myositis au T3 26, lecture topline EMPASSION en MMN au T4 26) restent confirmes sur le calendrier annonce, toujours non resolus et hors modele au moment du call (NDLR : ALKIVIA a depuis ete publiee le 17/08/2026, voir EVENEMENTS & INFLEXIONS - ce point reste inchange en tant que RECORD de ce qui a ete dit le 30/07)."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via release/call at the 03/08 refresh; the 17/08 pass was event-driven (no new statements)."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "2026 Half-Year Financial Report (IAS 34, argenx.com) + 6-K",
+    "date": "2026-08-19",
+    "note": "Croises vs fiche : resultat operationnel H1 887 M$, resultat net 838 M$, ventes produit 2,8 Md$ - coherents avec la marge operationnelle 31,1% et les ventes 2 813 M$ de la fiche."
    }
   },
   "guidanceHistory": [],
@@ -445,16 +448,16 @@
     {
      "fy": 2025,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "note": "Searched 19/08/2026: no dated early-2025 initial consensus snapshot found (a May-2025 '3.13$' quote exists but its basis/unit is inconsistent with realized GAAP ~19.5$ - unusable). Realized FY25: product sales 4.2bn (+90%)."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Same limitation (and FY24 P&L dominated by DTA mechanics - net 832M on -30M EBIT - a consensus comparison would be uninterpretable)."
     }
    ],
    "anchorInitial": {

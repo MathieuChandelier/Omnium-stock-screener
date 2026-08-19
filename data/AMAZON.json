@@ -221,8 +221,11 @@
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "8-K EX-99.1 Q2 2026 (EDGAR, amzn-20260630xex991) + Form 10-Q",
+    "date": "2026-08-19",
+    "note": "Croises vs fiche : CA Q2 200,6 Md$ (+20%), resultat operationnel 27,5 Md$, resultat net publie 62,6 Md$ DONT 53,4 Md$ de gains non operationnels (Anthropic) - exclus de la base normalisee, conformement a la fiche."
    }
   },
   "ancrages": [
@@ -504,21 +507,24 @@
    ],
    "paceCheckpoint": "Q2 real: AWS reaccelerated to +36.7% (backlog 496bn; AI and in-house silicon each >25bn run-rate); AWS margin EXPANDED to 39.4% (from 37.7%), contradicting the compression risk flagged at the prior refresh.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 26.7,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "beatPct": 26.7,
+     "source": "initial_consensus",
+     "excluded": false,
+     "anchorValue": 5.39,
+     "initialDisplay": "5.39$ (Jan-2025 consensus)",
+     "realizedDisplay": "6.83$ (normalized)",
+     "note": "Initial FY25 consensus 5.39$ (dated snapshot, MarketBeat Jan-2025); realized 6.83$ on the NORMALIZED base (ex-Anthropic gain and one-offs - reported GAAP far higher on the 53bn+ gains), conservative +26.7%."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Not searched this pass (bounded effort 19/08/2026) - to backfill: look for a dated Jan-2024 consensus snapshot."
     }
    ],
    "anchorInitial": {
@@ -529,7 +535,7 @@
     "note": "Amazon gives no annual guidance (quarterly revenue/OI ranges only) - the anchor is the sell-side consensus. Earliest ARCHIVED snapshot (29/07, adjusted non-GAAP basis); the post-FY25 initial print was not captured."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY vs initial consensus at setup. First measurement at the FY26 close vs the 8.71 anchor (basis wedge documented).",
+   "applicationNote": "annualBeatPct +26.7% (single measured FY, equal-weighted; no in-progress reading - Amazon guides only quarterly and the consensus snapshot IS the anchor). NOT applied: single observation, consensus anchor, declared basis wedge (normalized realized vs street adjusted).",
    "consensusSource": "S&P Global consensus (adjusted non-GAAP)",
    "consensusDate": "2026-07-29"
   },

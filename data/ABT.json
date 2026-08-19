@@ -187,8 +187,11 @@
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited; post-Exact-Sciences balance sheet to be verified at next refresh (flagged)."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "Form 10-Q Q2 2026 (periode close 30/06) + 8-K EX-99.1",
+    "date": "2026-08-19",
+    "note": "Croises vs fiche : CA 12 593 M$ (+13,0%), EPS GAAP 0,53$ / ajuste 1,31$ (1 362 M$ de charges specifiees apres impot dont 658 M$ d'amortissement d'incorporels) - coherent avec la base Omnium qui les conserve."
    }
   },
   "summary": "BPA ajusté T2 26 au-dessus du consensus et guidance FY26 relevée, mais écart GAAP/ajusté considérablement élargi par l'intégration d'Exact Sciences (amortissement, coûts d'intégration, provision légale). Thèse intacte : accélération attendue au S2 avec dissipation progressive des coûts ponctuels liés à l'acquisition.",
