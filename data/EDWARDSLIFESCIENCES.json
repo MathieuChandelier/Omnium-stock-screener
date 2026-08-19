@@ -533,21 +533,23 @@
       ],
       "paceCheckpoint": "Q1+Q2 26 adjusted actuals 0.78$+0.78$ of the 2.95-3.05$ guided year - on pace, H2 carries the guided tax headwind.",
       "weightedBeatPct": null,
-      "annualBeatPct": null,
+      "annualBeatPct": 3.0,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": 6.1,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "EW guides annual adjusted EPS; the initial Feb-2025 range was not reliably sourced at setup - backfill opportunistically."
+          "excluded": false,
+          "initialDisplay": "2.40-2.50$ adj EPS (mid 2.45)",
+          "realizedDisplay": "~2.60$ (final range 2.56-2.62)",
+          "note": "Initial FY25 guidance (Q4-2024 release, 11/02/2025): adjusted EPS 2.40-2.50$ (mid 2.45); raised in-year and delivered within the final 2.56-2.62 range (mid 2.60 used - the release reports quarterly EPS, not the FY figure) - level +6.1%, medium precision."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_guidance",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "PERIMETER CHANGE: the initial FY24 guidance (2.70-2.80$, Feb 2024) included Critical Care, spun off mid-2024; no clean initial-equivalent continuing-ops figure was published - excluded per the perimeter rule rather than estimated."
         }
       ],
       "anchorInitial": {
@@ -558,9 +560,17 @@
         "note": "Initial FY26 guidance midpoint (2.90-3.05$, from the fiche's guidanceHistory), management-adjusted basis - the basis offset vs Omnium (~5%) is declared in basisNote."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup). First measurable observation at FY26 close vs 2.975$ (management basis).",
+      "applicationNote": "annualBeatPct +3.0% BLENDED (in-progress 0.0 x1/2; FY25 +6.1 single measurable closed year - FY24 excluded on the Critical Care perimeter change). Beats on management's adjusted EPS.",
       "consensusSource": "Sell-side aggregate post-T2",
-      "consensusDate": "2026-07-24"
+      "consensusDate": "2026-07-24",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 2.975,
+        "currentValue": 2.975,
+        "deltaPct": 0.0,
+        "asOf": "2026-02-10",
+        "note": "FY26 frame 2.90-3.05$ (mid 2.975), 'increased confidence' at the Feb release - unrevised in the archive; verify the Q2/Q3 statements at the next refresh."
+      }
     },
     "revisionEvent": {
       "date": "2026-07-23",

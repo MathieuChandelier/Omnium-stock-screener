@@ -389,21 +389,25 @@
       ],
       "paceCheckpoint": "H1 26 adjusted EPS +14.9% - already at the top of the low-to-mid-teens FY guide.",
       "weightedBeatPct": 3.7,
-      "annualBeatPct": null,
+      "annualBeatPct": 3.3,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": 6.1,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Directional annual guidance existed but the initial Feb-2025 wording/level was not reliably sourced at setup."
+          "excluded": false,
+          "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
+          "realizedDisplay": "+22% (228.06$, pre-split)",
+          "note": "Initial FY25 frame (Q4-2024 release, 20/02/2025): the reconducted long-term ambition of >=15% cc adjusted-EPS growth as the annual floor; realized +22% (adj EPS 228.06$ pre-split) - level +6.1% vs the guided floor."
         },
         {
           "fy": 2024,
-          "beatPct": null,
+          "beatPct": 7.0,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same limitation."
+          "excluded": false,
+          "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
+          "realizedDisplay": "+23%",
+          "note": "Initial FY24 frame (Feb 2024): same >=15% cc adjusted-EPS-growth floor; realized +23% - level +7.0% vs the floor. Both closed years beat a floor, not a point estimate - beats vs floor are structurally positive, read with that bias in mind."
         }
       ],
       "anchorInitial": {
@@ -414,9 +418,17 @@
         "note": "Quantified from the initial directional guide: 'low-to-mid-teens adjusted EPS growth' on 9.12$ realized 2025, midpoint +13.5% -> 10.35$ (guidance-qualitative-to-hard rule, E2). Post-split basis."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup). Note the CY model (10.65$) already sits at the TOP of the guided range per the CFO's own framing - applying a beat uplift on top would double-count the same signal.",
+      "applicationNote": "annualBeatPct +3.3% BLENDED (in-progress 0.0 x1/2; FY25 +6.1 and FY24 +7.0 equal-shared). Closed beats are measured vs a guided FLOOR (>=15%), not a mid - structurally flattering; apply with that discount.",
       "consensusSource": "Forward P/E-derived, post-split",
-      "consensusDate": "2026-07-01"
+      "consensusDate": "2026-07-01",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 10.35,
+        "currentValue": 10.35,
+        "deltaPct": 0.0,
+        "asOf": "2026-08-04",
+        "note": "Initial FY26 guide 'low-to-mid-teens adj EPS growth' (mid +13.5% -> 10.35$ post-split); maintained verbatim at Q2 (04/08, gross-bookings mix trimmed but EPS frame intact) - projected 0.0."
+      }
     },
     "revisionEvent": {
       "date": "2026-08-04",

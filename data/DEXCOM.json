@@ -416,21 +416,25 @@
       ],
       "paceCheckpoint": "H1 GAAP EPS 1.15$ actual of the 2.50$ modeled year; Irish plant ramp is the guided H2 gross-margin headwind.",
       "weightedBeatPct": 14.75,
-      "annualBeatPct": null,
+      "annualBeatPct": -0.8,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": 1.3,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Revenue guidance existed; the initial Feb-2025 range was not reliably sourced at setup."
+          "excluded": false,
+          "initialDisplay": "revenue 4.60bn$ (initial)",
+          "realizedDisplay": "4.662bn$ (+16%)",
+          "note": "Initial FY25 guidance (prelim FY24 release, 13/01/2025): revenue ~4.60bn$ (+14%); realized 4.662bn (+16%) - level +1.3%."
         },
         {
           "fy": 2024,
-          "beatPct": null,
+          "beatPct": -5.1,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same limitation (the 2024 execution accident makes that year regime-atypical anyway)."
+          "excluded": false,
+          "initialDisplay": "revenue 4.15-4.35bn$ (mid 4.25)",
+          "realizedDisplay": "4.032bn$ (+11%)",
+          "note": "Initial FY24 guidance (prelim FY23 release, Jan 2024): revenue 4.15-4.35bn$ (mid 4.25, +16/21%); CUT in July 2024 (salesforce/channel missteps) and realized 4.032bn - level -5.1% vs the initial frame."
         }
       ],
       "anchorInitial": {
@@ -441,9 +445,17 @@
         "note": "Initial FY26 guidance midpoint, REVENUE metric in M$ (5.16-5.25bn) - taken directly from the fiche's guidanceHistory. Metric mismatch with the EPS target DECLARED: DexCom guides revenue/margins, not EPS."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup) + anchor metric is revenue (declared mismatch). First measurable observation at FY26 close vs 5,205M$.",
+      "applicationNote": "annualBeatPct -0.8% BLENDED (in-progress +0.2 x1/2; FY25 +1.3 and FY24 -5.1 equal-shared). The FY24 miss was execution-driven (channel), not demand - metric is revenue (no EPS guidance), directional only.",
       "consensusSource": "Management non-GAAP consensus base",
-      "consensusDate": "2026-07-31"
+      "consensusDate": "2026-07-31",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 5205,
+        "currentValue": 5215,
+        "deltaPct": 0.2,
+        "asOf": "2026-07-30",
+        "note": "Initial FY26 revenue ~5.205bn$; Q2 raised the midpoint to 5.18-5.25bn (mid 5.215) - projected +0.2%."
+      }
     },
     "revisionEvent": {
       "date": "2026-07-30",

@@ -468,14 +468,14 @@
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "No guidance (policy); initial FY25 consensus not reliably reconstructed at setup."
+          "note": "Copart never guides (no metric, no frame); no dated early-FY25 consensus snapshot archived - excluded structurally."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "Same structural limitation for FY24."
         }
       ],
       "anchorInitial": {
@@ -486,9 +486,10 @@
         "note": "Own projection archived 24/07 (bottom-up on 9M actuals) - close to FY end (fiscal year closes July); the FY27 anchor should be posed at the September FY26 results."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no-guidance house, no measurable closed FY at setup). First measurable observation at the FY26 close (09/09/2026).",
+      "applicationNote": "No measurable fiscal year: no-guidance company. The own-vintage anchor (1.65, 24/07) is near the July FY close - pose the FY27 anchor at the September FY26 results.",
       "consensusSource": "Sell-side post-Q3 FY26 (GAAP)",
-      "consensusDate": "2026-07-24"
+      "consensusDate": "2026-07-24",
+      "inProgress": null
     },
     "revisionEvent": {
       "date": "2026-05-21",

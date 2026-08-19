@@ -367,14 +367,14 @@
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "No numeric guidance (policy); initial FY25 consensus not reliably reconstructed at setup."
+          "note": "Hermes gives no numeric guidance ('ambitious revenue growth' language only); no dated early-2025 consensus snapshot archived - excluded structurally."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "Same structural limitation for FY24."
         }
       ],
       "anchorInitial": {
@@ -385,9 +385,10 @@
         "note": "Best available anchor at setup: implicit P/E-derived consensus (20/07/2026) - mid-year and indirect, therefore imperfect; re-anchor at the FY27 open (Feb 2027 post-FY26 results)."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no-guidance house, no measurable closed FY at setup). First measurable observation at FY2026 close vs the 41.0 EUR anchor.",
+      "applicationNote": "No measurable fiscal year: no-numeric-guidance company. The P/E-derived consensus anchor (41.0, 20/07 - imperfect per its note) starts the archive; re-anchor at the FY27 open (Feb 2027).",
       "consensusSource": "Implicit sell-side consensus (rendementbourse, P/E-derived)",
-      "consensusDate": "2026-07-20"
+      "consensusDate": "2026-07-20",
+      "inProgress": null
     },
     "revisionEvent": {
       "date": "2026-07-29",

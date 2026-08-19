@@ -382,21 +382,25 @@
       ],
       "paceCheckpoint": "S1 26 beia margin +55bp with all five global brands growing - mid-range pace on the +2-6% guide.",
       "weightedBeatPct": null,
-      "annualBeatPct": null,
+      "annualBeatPct": 0.4,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": -1.5,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Realized FY25 beia operating profit +4.4% (11/02/2026 release); the initial Feb-2025 guidance range was not reliably sourced at setup - excluded rather than estimated."
+          "excluded": false,
+          "initialDisplay": "+4/8% op profit beia organic (mid 6)",
+          "realizedDisplay": "+4.4%",
+          "note": "Initial FY25 guidance (FY24 release, 12/02/2025): operating profit (beia) organic growth +4/+8% (mid 6.0); realized +4.4% (margin +41bp to 15.2%) - level -1.5%, low end of the band."
         },
         {
           "fy": 2024,
-          "beatPct": null,
+          "beatPct": 3.1,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same limitation."
+          "excluded": false,
+          "initialDisplay": "low-to-high single-digit (mid ~5)",
+          "realizedDisplay": "+8.3%",
+          "note": "Initial FY24 guidance (FY23 release, Feb 2024): operating profit (beia) organic growth low-to-high single-digit (quantified mid ~5.0); realized +8.3% - level +3.1%, top of the band."
         }
       ],
       "anchorInitial": {
@@ -407,9 +411,17 @@
         "note": "Initial FY26 guidance: operating profit (beia) growth +2% to +6% on the 4,385M EUR realized 2025 -> midpoint ~4,560M EUR. Metric is beia operating profit (M EUR), mismatch with the EPS target declared."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup) + anchor metric is beia operating profit (declared mismatch). First measurable observation at FY26 close vs 4,560M EUR.",
+      "applicationNote": "annualBeatPct +0.4% BLENDED (in-progress 0.0 x1/2; FY25 -1.5 and FY24 +3.1 equal-shared). Metric is beia operating profit growth (no EPS guidance) - directional only vs the EPS projections (declared mismatch).",
       "consensusSource": "Sell-side (beia basis)",
-      "consensusDate": "2026-08-05"
+      "consensusDate": "2026-08-05",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 4560,
+        "currentValue": 4560,
+        "deltaPct": 0.0,
+        "asOf": "2026-08-05",
+        "note": "Initial FY26: op profit (beia) organic +2/+6% (mid 4 -> ~4,560M); reiterated at H1 (05/08, H1 ran +6.7%) - projected 0.0 on the guided mid."
+      }
     },
     "revisionEvent": {
       "date": "2026-08-05",

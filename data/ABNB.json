@@ -425,14 +425,14 @@
           "beatPct": null,
           "source": "initial_guidance",
           "excluded": true,
-          "note": "FY-level guidance is directional and revenue-based; the initial Feb-2025 wording was not reliably sourced at setup."
+          "note": "Airbnb guides one quarter of revenue plus a directional FY margin comment - no annual initial frame to measure; no dated early-2025 consensus snapshot archived - excluded structurally."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_guidance",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "Same structural limitation for FY24."
         }
       ],
       "anchorInitial": {
@@ -443,9 +443,10 @@
         "note": "First own archived projection (22/07, pre-Q2 upgrade) - mid-year and taken under strict Option A economics; re-anchor at the FY27 open. The subsequent internal revision to 5.25$ (guidance upgrades + margin + buyback) makes this anchor a LOW baseline."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no measurable closed FY at setup). Note also that FY guidance is revenue-directional while the target is EPS.",
+      "applicationNote": "No measurable fiscal year: quarterly-only guider. The own-vintage anchor (3.97, 22/07 - a LOW baseline per its note) starts the archive; first verdict at the FY26 close, re-anchor at the FY27 open.",
       "consensusSource": "WallStreetZen",
-      "consensusDate": "2026-07-17"
+      "consensusDate": "2026-07-17",
+      "inProgress": null
     },
     "revisionEvent": {
       "date": "2026-08-06",
