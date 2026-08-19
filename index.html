@@ -4267,10 +4267,19 @@ function actionQueues(){
 // ══════════════════════════════════════════════════════════════
 const CAL_ENDPOINT='https://model.omnium-capital.com/calendar.php';
 let _calRemote=null;                       // null=inconnu, true/false apres 1er contact
-let _calData={selected:[],lastTriaged:null};
+let _calData={selected:[],dismissed:[],lastTriaged:null};
+// Un id de candidat embarque sa date (TICKER-YYYY-MM-DD-slug) : on purge
+// des refus tout ce qui est passe, la liste ne peut pas enfler sans fin.
+function _calPruneDismissed(){
+  const today=new Date().toISOString().slice(0,10);
+  _calData.dismissed=(_calData.dismissed||[]).filter(id=>{
+    const m=/(\d{4}-\d{2}-\d{2})/.exec(id||'');
+    return m && m[1]>=today;
+  });
+}
 let _calDueOpen=false, _calTriageOpen=false;
 
-function _calLocal(){ try{ return JSON.parse(localStorage.getItem('omniumCalSel')||'{"selected":[],"lastTriaged":null}'); }catch(e){ return {selected:[],lastTriaged:null}; } }
+function _calLocal(){ try{ return JSON.parse(localStorage.getItem('omniumCalSel')||'{"selected":[],"dismissed":[],"lastTriaged":null}'); }catch(e){ return {selected:[],dismissed:[],lastTriaged:null}; } }
 function _calLocalSave(){ try{ localStorage.setItem('omniumCalSel',JSON.stringify(_calData)); }catch(e){} }
 
 async function calFetch(){
@@ -4281,6 +4290,8 @@ async function calFetch(){
       if(r.ok){
         _calData=await r.json(); _calRemote=true;
         if(!Array.isArray(_calData.selected))_calData.selected=[];
+        if(!Array.isArray(_calData.dismissed))_calData.dismissed=[];
+        _calPruneDismissed();
         // Migration douce : selections faites hors-ligne poussees au serveur.
         const loc=_calLocal();
         const ids=new Set(_calData.selected.map(e=>e.id));
@@ -4293,6 +4304,8 @@ async function calFetch(){
   }
   _calRemote=false; _calData=_calLocal();
   if(!Array.isArray(_calData.selected))_calData.selected=[];
+  if(!Array.isArray(_calData.dismissed))_calData.dismissed=[];
+  _calPruneDismissed();
 }
 
 async function calPost(action,payload){
@@ -4327,7 +4340,8 @@ function calPillState(){
     const lim=new Date(new Date(gen.slice(0,10)+'T00:00:00Z').getTime()+15*86400e3).toISOString().slice(0,10);
     cands=cands.filter(e=>e.date<=lim);
   }
-  cands=cands.filter(e=>!calIsSelected(e.id));
+  const dism=new Set(_calData.dismissed||[]);
+  cands=cands.filter(e=>!calIsSelected(e.id) && !dism.has(e.id));
   const actions=(gen && cands.length && (!_calData.lastTriaged || _calData.lastTriaged<gen)) ? cands.length : 0;
   return {due, actions, gen, cands};
 }
@@ -4355,9 +4369,15 @@ function calToggleEvent(id){
   renderActionsBar(); renderMarketCalendar();
 }
 function calTriageDone(){
+  // "Vu = tranche" (decision 19/08) : ce qui reste non coche a la cloture
+  // du tri est marque REFUSE et ne sera jamais re-propose (l'utilisateur
+  // a eu l'occasion d'accepter et ne l'a pas voulu).
   const st=calPillState();
+  const rejected=(st.cands||[]).map(e=>e.id);
+  _calData.dismissed=Array.from(new Set([...(_calData.dismissed||[]),...rejected]));
+  _calPruneDismissed();
   _calData.lastTriaged=st.gen||new Date().toISOString();
-  calPost('triaged',{generatedAt:_calData.lastTriaged});
+  calPost('triaged',{generatedAt:_calData.lastTriaged, dismissedIds:_calData.dismissed});
   _calTriageOpen=false;
   renderActionsBar(); renderMarketCalendar();
 }

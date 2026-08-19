@@ -45,8 +45,10 @@ REGLES :
 - Les evenements passes sortent du fichier ; les selections utilisateur
   vivent cote serveur (calendar.php), PAS ici. Le run n'a PAS a connaitre
   les selections : il regenere toute la fenetre, et c'est l'app qui
-  masque du tri les evenements DEJA ACCEPTES (dedup par `id` stable -
-  d'ou l'importance de la convention d'id).
+  masque du tri les evenements deja TRANCHES - acceptes OU refuses
+  ("vu = tranche" : a la cloture du tri, les lignes non cochees sont
+  marquees refusees et ne reviennent jamais). Dedup par `id` stable -
+  d'ou l'importance de la convention d'id.
 - Compacite : `label` <= 60 caracteres, `note` une ligne.
 
 ## LIVRABLES (deux fichiers, un commit)

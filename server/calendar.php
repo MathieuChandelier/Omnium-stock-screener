@@ -6,7 +6,8 @@
 //   GET  ?user=slug&ics=1        -> flux text/calendar (abonnement Google "From URL")
 //   POST ?user=slug&action=add     body {"event":{id,ticker,date,label,type,source,status}}
 //   POST ?user=slug&action=remove  body {"id":"..."}
-//   POST ?user=slug&action=triaged body {"generatedAt":"ISO du run trie"}
+//   POST ?user=slug&action=triaged body {"generatedAt":"ISO du run trie","dismissedIds":["..."]}
+//        (dismissedIds = evenements VUS et non acceptes : jamais re-proposes)
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -19,9 +20,9 @@ if (!$user) { http_response_code(400); header('Content-Type: application/json');
 $f = "$dir/$user.json";
 
 $load = function () use ($f) {
-  if (!file_exists($f)) return ['selected' => [], 'lastTriaged' => null];
+  if (!file_exists($f)) return ['selected' => [], 'dismissed' => [], 'lastTriaged' => null];
   $j = json_decode(file_get_contents($f), true);
-  return is_array($j) ? $j + ['selected' => [], 'lastTriaged' => null] : ['selected' => [], 'lastTriaged' => null];
+  return is_array($j) ? $j + ['selected' => [], 'dismissed' => [], 'lastTriaged' => null] : ['selected' => [], 'dismissed' => [], 'lastTriaged' => null];
 };
 $save = function ($d) use ($f) { file_put_contents($f, json_encode($d, JSON_UNESCAPED_UNICODE), LOCK_EX); };
 
@@ -54,6 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $d['selected'] = array_values(array_filter($d['selected'], fn($e) => ($e['id'] ?? '') !== $body['id']));
   } elseif ($action === 'triaged') {
     $d['lastTriaged'] = $body['generatedAt'] ?? gmdate('c');
+    if (isset($body['dismissedIds']) && is_array($body['dismissedIds'])) {
+      $d['dismissed'] = array_values(array_unique(array_merge($d['dismissed'] ?? [], array_filter($body['dismissedIds'], 'is_string'))));
+    }
   } else { http_response_code(400); echo '{"error":"bad action"}'; exit; }
   $save($d); echo '{"ok":true}'; exit;
 }
