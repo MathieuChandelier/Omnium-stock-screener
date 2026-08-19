@@ -734,6 +734,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
   <div id="actions-bar-wrap"></div>
+  <div id="market-calendar-wrap"></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
@@ -885,6 +886,7 @@ function normalizeState(s){
   if(!s.marketAction)s.marketAction=null;
   if(!s.webState)s.webState=null;
   if(!s.calendarProposals)s.calendarProposals=[];
+  if(!('calendarCandidates' in s))s.calendarCandidates=null;
   if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
   if(!s.priceHistory.tickers) s.priceHistory.tickers={};
   if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
@@ -1111,7 +1113,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -1142,12 +1144,15 @@ async function loadState() {
       // ca) : null degrade proprement, la notification ne s'affiche
       // simplement pas.
       fetch('data/webState.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
-      fetch('data/calendarProposals.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => [])
+      fetch('data/calendarProposals.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
+      // Market Calendar hebdomadaire (INSTRUCTIONS_CALENDAR.md) : candidats
+      // du dernier run manuel - absence graciable avant le premier run.
+      fetch('data/calendarCandidates.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [] };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -3591,10 +3596,12 @@ function buildGuidanceScorecard(ticker){
         <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:var(--muted);">—</span>
         <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">no fiscal year measured yet</span>
       </div>`;
+  // Pas de jargon de ponderation en surface ("weighted 3/2" illisible,
+  // retour 19/08) - la methode s'explique en clair dans les archives.
   const heroSub=ip
-    ? `FY${String(ip.fy).slice(2)} in progress + ${hist.length} closed fiscal year${hist.length>1?'s':''}, weighted 3/${hist.slice(0,2).map((_,i)=>2-i).join('/')}`
+    ? `FY${String(ip.fy).slice(2)} in progress + ${hist.length} closed fiscal year${hist.length>1?'s':''}`
     : measured
-      ? `${hist.length} fiscal year${hist.length>1?'s':''} measured vs ${against}${hist.length>=3?', weighted 3/2/1':hist.length===2?', weighted 3/2':''}`
+      ? `${hist.length} fiscal year${hist.length>1?'s':''} measured vs ${against}`
       : (ai.fy?`First verdict at the FY${String(ai.fy).slice(2)} close`:'No measurable closed fiscal year');
 
   const maxAbs=Math.max(...hist.map(e=>Math.abs(e.beatPct)), ip?Math.abs(ip.deltaPct):0, 1);
@@ -3605,39 +3612,40 @@ function buildGuidanceScorecard(ticker){
 
   // Ancre de l'exercice en cours : seulement si la ligne inProgress ne la
   // porte pas deja (sinon redondant). Detail applicationNote en infobulle.
-  const anchorLine=(!ip&&ai.fy)?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} in progress${ai.value!=null?` · anchor <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b> ${srcLbl[ai.source]||esc(ai.source)}`:''}</div>`:'';
+  const anchorLine=(!ip&&ai.fy)?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} initial ${srcLbl[ai.source]||esc(ai.source)}${ai.value!=null?`: <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b>`:''} · expected beat/miss to assess at the next refresh</div>`:'';
 
-  // Archives : tout en 9,5, details de guidance sur UNE ligne (l'infobulle
-  // porte le texte complet) - la section reste directe, les raisons
-  // detaillees vivent dans Latest assumptions.
+  // "Details" (retour 19/08, exemple Insulet) : PAS d'historique verbeux -
+  // une ligne par exercice "initiale -> realise" (ou "-> guide" pour
+  // l'exercice en cours), et un complement UNIQUEMENT si necessaire
+  // (changement de perimetre, decalage de metrique...) porte par les
+  // notes structurees. Les timelines detaillees restent en donnee.
   const olderRows=older.length?`<div style="max-width:520px;display:flex;flex-direction:column;gap:8px;margin-top:9px;">${older.map(e=>rowHtml(e,{maxAbs})).join('')}</div>`:'';
-  const exclRows=excl.length?excl.map(e=>`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">FY${String(e.fy).slice(2)} — excluded${e.note?`: ${esc(e.note)}`:''}</p>`).join(''):'';
-  const timelineHtml=(gs.timeline||[]).map(ev=>{
-    const label=ev.type==='guidance_revision'||ev.type==='guidance_revised'
-      ? `Guidance ${ev.flag==='warning'?'cut':'move'}`
-      : ev.type==='vs_guidance'?'vs guidance':'vs consensus';
-    return `<div style="padding:0 0 7px 10px;border-left:1px solid var(--border);" title="${esc(ev.detail)}">
-        <p style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
-        <p style="font-size:9.5px;color:var(--muted);margin:1px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(ev.detail)}</p>
-      </div>`;
-  }).join('');
-  const paceHtml=gs.paceCheckpoint?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.paceCheckpoint)}</p>`:'';
-  const basisHtml=gs.basisAligned===false&&gs.basisNote?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.basisNote)}</p>`:'';
-  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` — ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
-  const archLabel=older.length?`History & archives — ${older.length} earlier fiscal year${older.length>1?'s':''}`:'History & archives';
+  const line=(txt)=>`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;line-height:1.6;">${txt}</p>`;
+  const fyLine=(e)=>{
+    const init=e.initialDisplay?esc(e.initialDisplay):(e.anchorValue!=null?fmtAnchor(e.anchorValue):srcLbl[e.source]||esc(e.source));
+    const real=e.realizedDisplay?esc(e.realizedDisplay):(e.anchorValue!=null?fmtAnchor(e.anchorValue*(1+e.beatPct/100)):null);
+    const sign=`${e.beatPct>0?'+':e.beatPct<0?'\u2212':''}${Math.abs(e.beatPct).toFixed(1)}%`;
+    return line(`<b style="color:var(--navy);">FY${String(e.fy).slice(2)}</b> \u2014 initial ${init}${real?` \u2192 realized ${real}`:''} (${sign})`);
+  };
+  const ipLine=ip?line(`<b style="color:var(--navy);">FY${String(ip.fy).slice(2)}</b> \u2014 initial ${fmtAnchor(ip.initialValue)} \u2192 guided ${fmtAnchor(ip.currentValue)}${ip.asOf?` as of ${formatFrDate(ip.asOf)}`:''} (${ip.deltaPct>0?'+':ip.deltaPct<0?'\u2212':''}${Math.abs(ip.deltaPct).toFixed(1)}% projected)`)
+    +(ip.note?line(esc(ip.note)):''):'';
+  const histLines=hist.map(fyLine).join('');
+  const exclRows=excl.length?excl.map(e=>line(`FY${String(e.fy).slice(2)} \u2014 excluded${e.note?`: ${esc(e.note)}`:''}`)).join(''):'';
+  const basisHtml=gs.basisAligned===false&&gs.basisNote?line(esc(gs.basisNote)):'';
+  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` \u2014 ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
 
   return `${hero}
     <p style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin:4px 0 0;">${esc(heroSub)}</p>
     ${rows}
     ${anchorLine}
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:11px;">
-      <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">${archLabel}</span>
-      <span class="rb-eps-py-chevron">▼</span>
+      <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">Details</span>
+      <span class="rb-eps-py-chevron">\u25bc</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
-      ${olderRows}${exclRows}
-      <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)}${gs.metric?` · ${esc(gs.metric)}`:''}</p>
-      <div style="margin-top:9px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
+      ${olderRows}
+      <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Average: the year in progress counts most (weight 3), then the last two closed years (2, then 1).</p>
+      ${ipLine}${histLines}${exclRows}${basisHtml}${consLine}
     </div>`;
 }
 
@@ -4237,6 +4245,205 @@ function actionQueues(){
           own13f:own13f.sort(), dl13f:dlIso, nextEventsDu, lastRunNE:lastRun};
 }
 
+// ══════════════════════════════════════════════════════════════
+// MARKET CALENDAR (19/08/2026) - boucle hebdomadaire MANUELLE :
+// pastille NAVY "Refresh calendar" le jeudi (action due) -> run manuel
+// (INSTRUCTIONS_CALENDAR.md) -> pastille TEAL "Calendar actions" (tri)
+// -> selections stockees cote serveur (calendar.php, meme infra que
+// dismiss.php) avec repli localStorage transparent tant que l'endpoint
+// n'est pas deploye -> carte "Market Calendar" du dashboard + agenda
+// Google (ajout instantane par ligne + flux ics abonnable).
+// ══════════════════════════════════════════════════════════════
+const CAL_ENDPOINT='https://model.omnium-capital.com/calendar.php';
+let _calRemote=null;                       // null=inconnu, true/false apres 1er contact
+let _calData={selected:[],lastTriaged:null};
+let _calDueOpen=false, _calTriageOpen=false;
+
+function _calLocal(){ try{ return JSON.parse(localStorage.getItem('omniumCalSel')||'{"selected":[],"lastTriaged":null}'); }catch(e){ return {selected:[],lastTriaged:null}; } }
+function _calLocalSave(){ try{ localStorage.setItem('omniumCalSel',JSON.stringify(_calData)); }catch(e){} }
+
+async function calFetch(){
+  const u=getUserId();
+  if(u){
+    try{
+      const r=await fetch(CAL_ENDPOINT+'?user='+encodeURIComponent(u),{signal:AbortSignal.timeout(5000)});
+      if(r.ok){
+        _calData=await r.json(); _calRemote=true;
+        if(!Array.isArray(_calData.selected))_calData.selected=[];
+        // Migration douce : selections faites hors-ligne poussees au serveur.
+        const loc=_calLocal();
+        const ids=new Set(_calData.selected.map(e=>e.id));
+        const pending=(loc.selected||[]).filter(e=>e&&e.id&&!ids.has(e.id));
+        for(const e of pending){ await calPost('add',{event:e}); _calData.selected.push(e); }
+        if(pending.length){ try{localStorage.removeItem('omniumCalSel');}catch(err){} }
+        return;
+      }
+    }catch(e){}
+  }
+  _calRemote=false; _calData=_calLocal();
+  if(!Array.isArray(_calData.selected))_calData.selected=[];
+}
+
+async function calPost(action,payload){
+  if(_calRemote){
+    try{
+      await fetch(CAL_ENDPOINT+'?user='+encodeURIComponent(getUserId())+'&action='+action,
+        {method:'POST',body:JSON.stringify(payload||{}),signal:AbortSignal.timeout(5000)});
+      return;
+    }catch(e){ _calRemote=false; }
+  }
+  _calLocalSave();
+}
+
+// Jeudi 00:00 le plus recent (aujourd'hui inclus) - pivot de la cadence.
+function lastThursday(){
+  const d=new Date(); d.setHours(0,0,0,0);
+  d.setDate(d.getDate()-((d.getDay()-4+7)%7));
+  return d;
+}
+function calUpcoming(list){
+  const today=new Date().toISOString().slice(0,10);
+  return (list||[]).filter(e=>e&&e.date&&e.date>=today).sort((a,b)=>a.date<b.date?-1:1);
+}
+function calPillState(){
+  const cc=state.calendarCandidates||null;
+  const gen=cc&&cc._meta&&cc._meta.generatedAt||null;
+  const due=!gen || new Date(gen)<lastThursday();
+  const cands=calUpcoming(cc&&cc.events);
+  const actions=(gen && cands.length && (!_calData.lastTriaged || _calData.lastTriaged<gen)) ? cands.length : 0;
+  return {due, actions, gen, cands};
+}
+function gcalUrl(e){
+  const d=(e.date||'').replace(/-/g,'');
+  const end=new Date(new Date(e.date+'T00:00:00Z').getTime()+86400e3).toISOString().slice(0,10).replace(/-/g,'');
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    +'&text='+encodeURIComponent((e.ticker||'')+' — '+(e.label||''))
+    +'&dates='+d+'/'+end
+    +'&details='+encodeURIComponent([(e.type||''),(e.status||''),(e.source||'')].filter(Boolean).join(' · '));
+}
+function calIsSelected(id){ return (_calData.selected||[]).some(e=>e&&e.id===id); }
+function calToggleEvent(id){
+  const st=calPillState();
+  const ev=(st.cands||[]).find(e=>e.id===id)||( _calData.selected||[]).find(e=>e.id===id);
+  if(!ev) return;
+  if(calIsSelected(id)){
+    _calData.selected=_calData.selected.filter(e=>e.id!==id);
+    calPost('remove',{id});
+  } else {
+    _calData.selected.push(ev);
+    calPost('add',{event:ev});
+    // Ajout instantane cote Google : brouillon pre-rempli, l'utilisateur valide.
+    try{ window.open(gcalUrl(ev),'_blank','noopener'); }catch(e){}
+  }
+  renderActionsBar(); renderMarketCalendar();
+}
+function calTriageDone(){
+  const st=calPillState();
+  _calData.lastTriaged=st.gen||new Date().toISOString();
+  calPost('triaged',{generatedAt:_calData.lastTriaged});
+  _calTriageOpen=false;
+  renderActionsBar(); renderMarketCalendar();
+}
+function toggleCalDue(){ _calDueOpen=!_calDueOpen; if(_calDueOpen)_calTriageOpen=false; renderActionsBar(); }
+function toggleCalTriage(){ _calTriageOpen=!_calTriageOpen; if(_calTriageOpen)_calDueOpen=false; renderActionsBar(); }
+
+// Rangee de pastilles + panneaux (requete / tri). Codes du fichier :
+// navy-light/navy = action due, teal-light/teal-dark = resultat a trier.
+function renderCalendarPills(){
+  const st=calPillState();
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  const pill=(cls,txt,n,onclick)=>`<span onclick="${onclick}()" style="display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:20px;padding:5px 12px;cursor:pointer;${cls==='due'?'background:var(--navy-light);color:var(--navy);':'background:#e6faf6;color:var(--teal-dark-text);'}">
+      <span style="width:7px;height:7px;border-radius:50%;${cls==='due'?'background:var(--navy);':'background:var(--teal);'}"></span>${txt}${n!=null?`<span style="background:#fff;border-radius:10px;padding:0 6px;">${n}</span>`:''}
+    </span>`;
+  let pills='';
+  if(st.due) pills+=pill('due','Refresh calendar',null,'toggleCalDue');
+  if(st.actions) pills+=pill('act','Calendar actions',st.actions,'toggleCalTriage');
+  if(!pills) return '';
+
+  let panel='';
+  if(_calDueOpen&&st.due){
+    panel=`<div style="border:1px solid var(--border);border-left:3px solid var(--navy);border-radius:11px;padding:11px 13px;margin-top:8px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);">Refresh calendar — weekly (Thursday)</div>
+      <div style="font-size:9.5px;color:var(--muted);margin-top:4px;line-height:1.6;">${st.gen?`Last run: ${formatFrDate(st.gen.slice(0,10))}. `:'No run recorded yet. '}Scans ALL upcoming company events (earnings, roadshows, presentations, CMD, AGM…) over the next 10 weeks. Spec file: <b style="color:var(--navy);">INSTRUCTIONS_CALENDAR.md</b></div>
+      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_CALENDAR.md — scan hebdomadaire des événements à venir sur tout le portefeuille, livre data/calendarCandidates.json + data/nextEvents.json et pousse.</div>
+    </div>`;
+  }
+  if(_calTriageOpen&&st.actions){
+    const rows=st.cands.map(e=>{
+      const sel=calIsSelected(e.id);
+      const dd=new Date(e.date+'T00:00:00Z');
+      const MOIS_C=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return `<div style="display:grid;grid-template-columns:52px 86px 1fr 30px;gap:10px;align-items:center;padding:8px 13px;border-top:1px solid var(--border);">
+        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);white-space:nowrap;">${dd.getUTCDate()} ${MOIS_C[dd.getUTCMonth()]}</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:5px;padding:2px 0;text-align:center;overflow:hidden;text-overflow:ellipsis;">${esc(e.ticker)}</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--text);line-height:1.35;">${esc(e.label)}
+          <small style="display:block;font-size:9.5px;color:${e.status==='estimated'?'var(--gold-text)':'var(--muted)'};font-weight:500;">${esc(e.source)} · ${e.status==='estimated'?'estimated':'confirmed'}</small></span>
+        <button onclick="calToggleEvent('${esc(e.id)}')" title="${sel?'Remove from my calendar':'Add to my calendar (Google)'}" style="width:26px;height:26px;border-radius:7px;border:1px solid ${sel?'var(--navy)':'var(--border)'};background:${sel?'var(--navy)':'#fff'};color:${sel?'#fff':'var(--navy)'};font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;line-height:1;">${sel?'✓':'+'}</button>
+      </div>`;
+    }).join('');
+    panel=`<div style="border:1px solid var(--teal);border-radius:11px;margin-top:8px;overflow:hidden;">
+      <div style="display:flex;justify-content:space-between;align-items:center;background:#e6faf6;padding:9px 13px;">
+        <b style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--teal-dark-text);">Calendar actions — ${st.actions} upcoming event${st.actions>1?'s':''}</b>
+        <span style="font-size:9.5px;color:var(--teal-dark-text);">run of ${st.gen?formatFrDate(st.gen.slice(0,10)):''}</span>
+      </div>
+      ${rows}
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 13px;border-top:1px solid var(--border);background:#fafaff;">
+        <span style="font-size:9.5px;color:var(--muted);">+ adds to your Google Calendar and to the dashboard below · unchecked lines are archived, not lost</span>
+        <button onclick="calTriageDone()" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--teal-dark-text);border:none;border-radius:8px;padding:6px 14px;cursor:pointer;">Done</button>
+      </div>
+    </div>`;
+  }
+  return `<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:2px 0 10px;">${pills}</div>${panel}`;
+}
+
+// Carte "Market Calendar" du dashboard : uniquement les evenements COCHES,
+// agenda par semaine sur 8 semaines glissantes, lien d'abonnement ics.
+function renderMarketCalendar(){
+  const wrap=document.getElementById('market-calendar-wrap');
+  if(!wrap) return;
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  const sel=calUpcoming(_calData.selected);
+  if(!sel.length){ wrap.innerHTML=''; return; }
+  const tag=(tp)=>{
+    const m={earnings:['#e6faf6','var(--teal-dark-text)','Earnings'],cmd:['#fdf3d8','var(--gold-text)','CMD'],
+             conference:['var(--navy-light)','var(--navy)','Conference'],agm:['var(--navy-light)','var(--navy)','AGM']};
+    const [bg,col,lbl]=m[tp]||['var(--navy-light)','var(--navy)',tp||'Event'];
+    return `<span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:${bg};color:${col};white-space:nowrap;">${lbl}</span>`;
+  };
+  const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
+  const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
+  const groups=[];
+  sel.forEach(e=>{
+    const wk=mondayOf(e.date);
+    let g=groups.find(x=>x.wk===wk);
+    if(!g){ g={wk,items:[]}; groups.push(g); }
+    g.items.push(e);
+  });
+  const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const rows=(items)=>items.map(e=>{
+    const d=new Date(e.date+'T00:00:00Z');
+    return `<div style="display:grid;grid-template-columns:46px 86px 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid #f2f3f9;">
+      <div style="text-align:center;"><div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);line-height:1;">${d.getUTCDate()}</div><div style="font-size:9.5px;color:var(--muted);">${MOIS[d.getUTCMonth()]}</div></div>
+      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:5px;padding:2px 0;text-align:center;overflow:hidden;text-overflow:ellipsis;">${esc(e.ticker)}</span>
+      <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--text);line-height:1.35;">${esc(e.label)}${e.status==='estimated'?` <small style="font-size:9.5px;color:var(--gold-text);font-weight:600;">estimated</small>`:''}</span>
+      ${tag(e.type)}
+    </div>`;
+  }).join('');
+  const body=groups.map(g=>{
+    const head=g.wk===thisMonday
+      ? `<div style="display:flex;align-items:center;gap:8px;margin:10px 0 2px;"><span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--teal-dark-text);letter-spacing:.08em;">THIS WEEK</span><div style="flex:1;height:1px;background:var(--teal);"></div></div>`
+      : `<div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:4px;">Week of ${formatFrDate(g.wk)}</div>`;
+    return head+rows(g.items);
+  }).join('');
+  const gcLink=_calRemote===true
+    ? `<a href="https://model.omnium-capital.com/calendar.php?user=${encodeURIComponent(getUserId())}&ics=1" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--teal-dark-text);text-decoration:none;text-transform:none;letter-spacing:0;" title="Subscribe once in Google Calendar: Settings → Add calendar → From URL, paste this address - your picks then sync on their own.">⚭ Google Calendar feed</a>`
+    : `<span style="font-size:9.5px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;" title="Selections stored on this device for now - deploy server/calendar.php next to dismiss.php to sync across devices and feed Google Calendar.">local only</span>`;
+  wrap.innerHTML=`<div class="card" style="margin-bottom:12px;">
+    <div class="card-title" style="display:flex;justify-content:space-between;align-items:baseline;"><b>Market Calendar</b>${gcLink}</div>
+    ${body}
+  </div>`;
+}
+
 function renderActionsBar(){
   const wrap=document.getElementById('actions-bar-wrap');
   if(!wrap) return;
@@ -4252,7 +4459,7 @@ function renderActionsBar(){
       <div class="act-left"><span class="act-txt">${label}</span>${n!=null?`<span class="act-n">${n}</span>`:''}</div>
       <span class="vr-entry-arrow">${open?'&#9650;':'&#9660;'}</span>
     </div>${open?`<div class="act-panel">${panel}</div>`:''}`;
-  let html='';
+  let html=renderCalendarPills();
   // 1) Remediation derivee des fiches - s'eteint titre par titre au fil
   //    des refreshes qui posent les champs attendus.
   const totalAct=q.attente.length+q.horsEnum.length;
@@ -4265,13 +4472,8 @@ function renderActionsBar(){
         'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent and the Accounting basis paragraph disappears.',
         q.horsEnum,
         "Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l'énumération GAAP / non-GAAP (ou null si la métrique n'est ni l'une ni l'autre) et déplace la justification vers pointsCles :"));
-  // 2) Alerte calendaire mensuelle - Operation C (1er du mois).
-  if(q.nextEventsDu) html+=bar('Adjust earnings calendar',null,_calOpen,'toggleCalPanel',
-    grp('Monthly pass — Operation C',
-        q.lastRunNE?`Last pass: ${q.lastRunNE}. Runs every 1st of the month to keep upcoming earnings dates fresh across the portfolio.`
-                   :'No pass recorded yet (_meta.lastRun absent). Runs every 1st of the month.',
-        null,
-        "Opération C — mise à jour des prochains événements : suis INSTRUCTIONS_NEXTEVENTS.md pour tout le portefeuille (fournis le contenu actuel de data/nextEvents.json), livre le fichier complet avec _meta.lastRun à la date du jour."));
+  // 2) L'alerte mensuelle Operation C est remplacee par la boucle
+  //    hebdomadaire Market Calendar (pastilles ci-dessus, 19/08/2026).
   // 3) Alerte calendaire trimestrielle - Operation D. Les depots 13F sont
   //    DUS 45 jours apres la cloture (14-15 fev/mai/aout/nov) : l'alerte
   //    s'ouvre le ~17 du DEUXIEME mois apres le trimestre - au 17 du
@@ -4287,6 +4489,7 @@ function renderActionsBar(){
 function renderPortfolio(){
   renderWeeklyAiBar();
   renderActionsBar();
+  renderMarketCalendar();
   renderNewsBar();
   renderMarketActionBar();
   const list=document.getElementById('pf-list');
@@ -4425,6 +4628,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   if(gd)gd.textContent=new Date().toLocaleDateString('fr-FR');
   setTimeout(startPricePoll,1500);
   startMarketActionPoll();
+  calFetch().then(()=>{ try{renderActionsBar();renderMarketCalendar();}catch(e){} });
 });
   </script>
 </body></html>
