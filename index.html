@@ -621,14 +621,14 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
      forme courte. */
   .eps-row{gap:9px;}
   .eps-head{flex:0 0 76px;flex-direction:column;gap:1px;}
-  .eps-lbl{flex:0 0 auto;font-size:13px;line-height:1.25;}
-  .eps-tot{font-size:13px;line-height:1.25;white-space:normal;}
+  .eps-lbl{flex:0 0 auto;font-size:11.5px;line-height:1.25;}
+  .eps-tot{font-size:11.5px;line-height:1.25;white-space:normal;}
   .eps-tot .eps-analysts{display:none;}
   .eps-lbl-lg{display:none;}
   .eps-lbl-sm{display:inline;}
   .eps-cells{gap:5px;}
   .eps-cells .qs-chip{padding:5px 1px;}
-  .eps-adj{font-size:13px;padding:5px 1px;}
+  .eps-adj{font-size:11.5px;padding:5px 1px;}
   .eps-adj.has{min-height:44px;padding:4px 1px;}
   .eps-ct{width:13px;height:13px;line-height:13px;font-size:8px;margin-left:4px;}
   .eps-detail{font-size:10px;padding:8px 10px;margin-top:9px;}
@@ -777,6 +777,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       <tbody id="analyse-body"></tbody>
     </table>
     </div>
+  </div>
+
+  <div class="card" id="scorecard-card" style="display:none;">
+    <div class="card-title"><b id="scorecard-title">EPS Guidance Scorecard</b></div>
+    <div id="scorecard-body"></div>
   </div>
 
   <div class="card" id="context-card" style="margin-bottom:18px;">
@@ -2419,8 +2424,12 @@ function buildValoChartSVG(ticker, opts){
   // Marge plus genereuse hors mini-carte : les graduations chiffrees sont
   // posees dans ces bandes haute/basse, qu'aucun point n'atteint - c'est
   // ce qui leur evite tout aplat de fond (qui decouperait le trace).
-  const margin=(yMax-yMin)*(compact?0.1:0.16);
-  yMin-=margin; yMax+=margin;
+  // Marges ASYMETRIQUES hors mini-carte : la bande haute loge les intitules
+  // d'evenements, l'etiquette de moyenne et la graduation - a 16% le trace
+  // culminait a ~11% du bord et tout s'y ecrasait (constat ABT mobile).
+  const marginTop=(yMax-yMin)*(compact?0.1:0.30);
+  const marginBot=(yMax-yMin)*(compact?0.1:0.12);
+  yMin-=marginBot; yMax+=marginTop;
   const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
 
   const priceCur=mode==='price' ? tickerCur(ticker) : '';
@@ -2477,7 +2486,7 @@ function buildValoChartSVG(ticker, opts){
   // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
   // mediane reste un trait muet. Les deux etiquettes sont posees hors de
   // la bande occupee par la courbe, donc SANS aucun aplat de fond.
-  const vTop=yMax-margin*0.62, vBot=yMin+margin*0.62;
+  const vTop=yMax-marginTop*0.62, vBot=yMin+marginBot*0.62;
   const yAxis=compact ? '' : (
     `<text x="${padL}" y="15" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="start">${axisUnit}</text>`
     + [vTop,(yMax+yMin)/2,vBot].map(v=>{
@@ -2542,7 +2551,10 @@ function buildValoChartSVG(ticker, opts){
     // glissant qui s'accumule d'une annee civile a l'autre, donc
     // "2027 average" deviendrait faux en 2028 sur la meme courbe. Pas de
     // date de depart non plus - l'axe la porte deja, la repeter embrouille.
-    const lbl=`current-year average ${fmtY(avg)}${mode==='price'?'':'\u00d7'}`;
+    // Sur ecran etroit le libelle long occupait ~45% du trace et finissait
+    // colle a la courbe : forme courte, meme information (l'axe et le
+    // pointille portent deja le contexte).
+    const lbl=`${narrow?'avg':'current-year average'} ${fmtY(avg)}${mode==='price'?'':'\u00d7'}`;
     const lblW=lbl.length*5.2+10;
     // Ordonnee du trace pour un x quelconque (interpolation lineaire sur
     // la polyligne - suffisamment proche de la courbe lissee).
@@ -2558,25 +2570,46 @@ function buildValoChartSVG(ticker, opts){
       }
       return last[1];
     };
-    // Balayage : on retient la fenetre horizontale ou le trace s'ecarte
-    // le PLUS de la ligne de moyenne, puis on pose l'etiquette du cote
-    // oppose au trace. Elle ne peut donc jamais se retrouver dessus,
-    // quelle que soit la forme de la courbe.
-    let bestCx=padL+plotW/2, bestGap=-1, bestAbove=true;
+    // Balayage (fenetre x, cote) : la degagement est mesure entre la BANDE
+    // DU TEXTE (a sa position reelle, au-dessus ou en dessous du trait) et
+    // TOUTES les courbes tracees (principale + series secondaires) - l'ancien
+    // critere ne regardait que l'ecart trace/ligne et posait le texte a 5px
+    // du trait, ou la courbe pouvait passer (constat ABT mobile).
+    const allCurves=[xyPts].concat(extras.map(e=>
+      e.pts.map(p=>[xOf(p.snap.date), yOf(p.y)])));
+    const anyCurveYAt=(x)=>allCurves.map(pts=>{
+      if(!pts.length) return null;
+      if(x<=pts[0][0]) return pts[0][1];
+      const last=pts[pts.length-1];
+      if(x>=last[0]) return last[1];
+      for(let i=1;i<pts.length;i++){
+        if(x<=pts[i][0]){
+          const [x0,y0]=pts[i-1],[x1,y1]=pts[i];
+          return y0+(y1-y0)*((x-x0)/((x1-x0)||1));
+        }
+      }
+      return last[1];
+    }).filter(v=>v!=null);
+    let best={cx:padL+plotW/2, above:true, gap:-1};
     if(plotW>lblW){
       for(let i=0;i<=48;i++){
         const cx=padL+lblW/2+(plotW-lblW)*(i/48);
-        let minD=Infinity, sum=0;
-        for(let k=0;k<=8;k++){
-          const cy=curveYAt(cx-lblW/2+lblW*k/8);
-          minD=Math.min(minD, Math.abs(cy-y)); sum+=cy;
+        for(const above of [true,false]){
+          const yLc=above ? y-10 : y+10;   // centre vertical du texte
+          if(yLc-6<padT+4 || yLc+6>padT+plotH-2) continue;
+          let minD=Infinity;
+          for(let k=0;k<=8;k++){
+            anyCurveYAt(cx-lblW/2+lblW*k/8).forEach(cy=>{
+              minD=Math.min(minD, Math.abs(cy-yLc));
+            });
+          }
+          const score=minD+(above?0.5:0);   // a egalite, au-dessus
+          if(score>best.gap) best={cx, above, gap:score};
         }
-        // sum/9 > y : le trace est EN DESSOUS de la moyenne sur cette
-        // fenetre (l'axe y croit vers le bas), on pose donc au-dessus.
-        if(minD>bestGap){ bestGap=minD; bestCx=cx; bestAbove=(sum/9)>y; }
       }
     }
-    const ly=bestAbove ? y-5 : y+12;
+    const bestCx=best.cx;
+    const ly=best.above ? y-6 : y+13;
     return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#9aa3b2" stroke-width="1.25" stroke-dasharray="4,4"/>`
       +`<text x="${bestCx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${lbl}</text>`;
   })();
@@ -3492,102 +3525,120 @@ function buildGuidanceScorecardSummary(gs){
 }
 
 function buildGuidanceScorecard(ticker){
+  // SECTION DEDIEE (19/08/2026, variante B "barres divergentes") : le
+  // scorecard quitte la colonne de droite de dernierCall pour une carte
+  // a part entiere juste avant Latest assumptions. Principes : 3 corps
+  // de texte seulement (22 heros / 11,5 libelles-valeurs / 9,5 contexte),
+  // chaque exercice mesure = une barre autour d'un axe zero central
+  // (navy = beat, dore = miss, pastille cerclee = pile sur l'ancre),
+  // seuls les DEUX derniers exercices affiches, le reste en archives
+  // depliables - on conserve tout, on ne montre que le recent.
   const d=state.tickers[ticker];
   const gs=d?.hypothese?.guidanceScorecard;
   if(!gs) return '';
-  const esc=s=>(s||'').toString().replace(/</g,'&lt;');
+  const esc=v=>(v||'').toString().replace(/</g,'&lt;');
   const cadenceLabel={quarterly:'Quarterly guidance',annual:'Annual guidance',annual_kpi:'Annual guidance (KPI)',none:'No guidance'}[gs.cadence]||gs.cadence;
-  const summary=buildGuidanceScorecardSummary(gs);
+  const srcLbl={initial_guidance:'initial guidance',initial_consensus:'initial consensus',outlook_quantifie:'quantified outlook',own_vintage:'own vintage'};
+  const fmtAnchor=v=>v==null?'':(Math.abs(v)>=1000?Math.round(v).toLocaleString('fr-FR'):(+v).toFixed(2)+'$');
 
+  const allHist=(gs.annualBeatHistory||[]).filter(e=>e);
+  const hist=allHist.filter(e=>!e.excluded&&typeof e.beatPct==='number').sort((a,b)=>b.fy-a.fy);
+  const excl=allHist.filter(e=>e.excluded||typeof e.beatPct!=='number');
+  const shown=hist.slice(0,2), older=hist.slice(2);
+  const maxAbs=Math.max(...hist.map(e=>Math.abs(e.beatPct)),1);
+
+  // Une ligne d'exercice : FY / piste a axe central / valeur signee.
+  const rowHtml=(e)=>{
+    const miss=e.beatPct<0;
+    const w=Math.max(4, Math.abs(e.beatPct)/maxAbs*46);   // % de la demi-piste
+    const bar= e.beatPct===0
+      ? `<span style="position:absolute;top:50%;left:50%;width:7px;height:7px;border-radius:50%;background:#fff;border:2px solid var(--navy);transform:translate(-50%,-50%);"></span>`
+      : `<div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;background:${miss?'var(--gold-text)':'var(--navy)'};opacity:.92;"></div>`;
+    const vsTxt=`${e.beatPct===0?'on the':'vs'} ${srcLbl[e.source]||esc(e.source)}${e.anchorValue!=null?' '+fmtAnchor(e.anchorValue):''}`;
+    return `<div style="display:grid;grid-template-columns:36px 1fr 122px;align-items:center;gap:9px;" title="${esc(e.note)}">
+      <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--muted);">FY${String(e.fy).slice(2)}</span>
+      <div style="position:relative;height:14px;"><span style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#c9cede;"></span>${bar}</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${miss?'var(--gold-text)':'var(--navy)'};line-height:1.25;">${e.beatPct>0?'+':e.beatPct<0?'\u2212':''}${Math.abs(e.beatPct).toFixed(1)}%
+        <small style="display:block;font-size:9.5px;font-weight:500;color:var(--muted);">${vsTxt}</small></div>
+    </div>`;
+  };
+
+  // Heros : annualBeatPct signe, ou etat "rien de mesure" assume.
+  const against=(()=>{const ss=hist.map(e=>e.source);
+    return ss.length&&ss.every(x=>x==='initial_guidance')?'initial guidance'
+      :ss.length&&ss.every(x=>x==='initial_consensus')?'initial consensus':'initial anchors';})();
+  const measured=typeof gs.annualBeatPct==='number';
+  const beat=!measured||gs.annualBeatPct>=0;
+  const ai=gs.anchorInitial||{};
+  const hero=measured
+    ? `<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;">
+        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:${beat?'var(--navy)':'var(--gold-text)'};">${gs.annualBeatPct>=0?'+':'\u2212'}${Math.abs(gs.annualBeatPct).toFixed(1)}%</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--text);">${beat?'above':'below'} ${against} on average</span>
+      </div>`
+    : `<div style="display:flex;align-items:baseline;gap:9px;">
+        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:var(--muted);">\u2014</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--text);">no fiscal year measured yet</span>
+      </div>`;
+  const weights=hist.length>=3?', weighted 3/2/1':hist.length===2?', weighted 3/2':'';
+  const heroSub=measured
+    ? `${hist.length} fiscal year${hist.length>1?'s':''} measured vs ${against}${weights}`
+    : (ai.fy?`First verdict at the FY${ai.fy} close`:'No measurable closed fiscal year');
+
+  const rows=shown.length?`<div style="margin-top:13px;display:flex;flex-direction:column;gap:8px;">${shown.map(rowHtml).join('')}</div>`:'';
+
+  // Ancre de l'exercice en cours. Pas de pastille de statut d'application
+  // (decision 19/08/2026 : elle ajoutait de la confusion) - le detail
+  // applicationNote reste dans la donnee, lisible en infobulle.
+  const anchorLine=ai.fy?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} in progress${ai.value!=null?` \u00b7 anchor <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b> ${srcLbl[ai.source]||esc(ai.source)}`:''}</div>`:'';
+
+  // Archives : exercices anterieurs, exclusions documentees, timeline
+  // des mouvements de guidance de l'annee, base et source consensus.
+  const olderRows=older.length?`<div style="display:flex;flex-direction:column;gap:8px;margin-top:9px;">${older.map(rowHtml).join('')}</div>`:'';
+  const exclRows=excl.length?excl.map(e=>`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">FY${String(e.fy).slice(2)} \u2014 excluded${e.note?`: ${esc(e.note)}`:''}</p>`).join(''):'';
   const timelineHtml=(gs.timeline||[]).map(ev=>{
-    const label=ev.type==='guidance_revision'?`Guidance ${ev.flag==='warning'?'cut':'revised'}${ev.flag==='warning'?' (warning)':''}`
-      :ev.type==='vs_guidance'?'vs guidance':'vs consensus';
-    // Filet vertical continu (pas de puce par evenement) : la timeline se
-    // lit comme une seule sequence, le filet porte la continuite et evite
-    // d'introduire un marqueur qui redeviendrait un code visuel a decoder.
+    const label=ev.type==='guidance_revision'||ev.type==='guidance_revised'
+      ? `Guidance ${ev.flag==='warning'?'cut (warning)':'move'}`
+      : ev.type==='vs_guidance'?'vs guidance':'vs consensus';
     return `<div style="padding:0 0 9px 10px;border-left:1px solid var(--border);">
-        <p style="font-size:13px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
+        <p style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} \u2014 ${label}</p>
         <p style="font-size:9.5px;color:var(--muted);margin:2px 0 0;">${esc(ev.detail)}</p>
       </div>`;
   }).join('');
-
-  const paceHtml=gs.paceCheckpoint&&gs.weightedBeatPct==null?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.paceCheckpoint)}</p>`:'';
+  const paceHtml=gs.paceCheckpoint?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.paceCheckpoint)}</p>`:'';
   const basisHtml=gs.basisAligned===false&&gs.basisNote?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.basisNote)}</p>`:'';
-  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` — ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
+  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` \u2014 ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
+  const archLabel=older.length?`History & archives \u2014 ${older.length} earlier fiscal year${older.length>1?'s':''}`:'History & archives';
 
-  // Discret par decision explicite du 18/08/2026 : ni titre "Guidance
-  // scorecard" ni ligne cadence/metrique affiches par defaut - juste le
-  // resume au fil du texte, comme une ligne de plus dans la carte, pas
-  // une section qui s'annonce. Le detail (cadence, metrique, timeline)
-  // reste accessible au clic, dans le contenu deplie.
-  // Le chiffre porte l'information, la phrase le qualifie : la tenue de
-  // guidance etait noyee au fil d'une ligne de texte alors que c'est le
-  // premier element qu'on vient chercher.
-  // Le heros = annualBeatPct (pilote la projection) ; weightedBeatPct
-  // (suivi trimestriel) ne sert qu'en repli pre-architecture.
-  const annual=typeof gs.annualBeatPct==='number';
-  const pct=annual?gs.annualBeatPct:gs.weightedBeatPct;
-  const beat=pct==null || pct>=0;
-  const heroColor=beat?'var(--navy)':'var(--gold-text)';
-  // Le libelle annuel vient de la SOURCE des ancres (annualBeatHistory),
-  // pas de comparedAgainst qui decrit le regime trimestriel de suivi.
-  const srcs=(gs.annualBeatHistory||[]).filter(e=>e&&!e.excluded).map(e=>e.source);
-  const against=annual
-    ? (srcs.every(x=>x==='initial_guidance')?'guidance'
-       :srcs.every(x=>x==='initial_consensus')?'consensus':'anchors')
-    : (gs.comparedAgainst==='guidance'?'guidance':'consensus');
-  const hero=pct==null ? '' : `<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
-      <span style="font-size:22px;font-weight:800;line-height:1;color:${heroColor};">${pct>=0?'+':'−'}${Math.abs(pct).toFixed(1)}%</span>
-      <span style="font-size:13px;color:var(--text);">${beat?'above':'below'} ${annual?'initial annual '+against:against} on average</span>
-    </div>`;
-
-  // Barre de tenue : une graduation par publication mesuree, de part et
-  // d'autre d'une ligne de zero MEDIANE - un depassement monte, un manque
-  // descend. Elle n'apparait qu'a partir de DEUX mesures : une seule ne
-  // fait pas un historique, et une barre isolee laisserait croire le
-  // contraire. La timeline est stockee du plus recent au plus ancien.
-  const beats=(gs.timeline||[]).filter(e=>typeof e.beatPct==='number')
-    .slice().reverse().map(e=>({v:e.beatPct, d:e.date}));
-  const track=beats.length<2 ? '' : (()=>{
-    const m=Math.max(...beats.map(b=>Math.abs(b.v)),1);
-    const cols=beats.map(b=>{
-      const h=Math.max(8, Math.abs(b.v)/m*100);
-      const bar=`<div style="width:100%;height:${h}%;background:${b.v<0?'var(--gold-text)':'var(--navy)'};opacity:.9;border-radius:${b.v<0?'0 0 2px 2px':'2px 2px 0 0'};"></div>`;
-      return `<div style="flex:1;min-width:5px;display:flex;flex-direction:column;justify-content:center;" title="${formatFrDate(b.d)} : ${b.v>=0?'+':''}${b.v}%">`
-        +`<div style="height:50%;display:flex;align-items:flex-end;">${b.v>=0?bar:''}</div>`
-        +`<div style="height:50%;display:flex;">${b.v<0?bar:''}</div></div>`;
-    }).join('');
-    return `<div style="position:relative;display:flex;align-items:stretch;gap:3px;height:38px;margin:12px 0 3px;">
-        <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--border);"></div>${cols}
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted);">
-        <span>${formatFrDate(beats[0].d)}</span><span>${formatFrDate(beats[beats.length-1].d)}</span>
-      </div>`;
-  })();
-
-
-  // Sous-titre : en regime annuel, decrire la MESURE (exercices comptes,
-  // nature d'ancre, ancre de l'exercice en cours) - "Quarterly guidance"
-  // decrivait le suivi trimestriel et contredisait le heros annuel. Le
-  // detail cadence/metrique reste accessible dans le contenu deplie.
-  const ai=gs.anchorInitial;
-  const nFY=(gs.annualBeatHistory||[]).filter(e=>e&&!e.excluded).length;
-  const sub=annual
-    ? `${nFY} fiscal year${nFY>1?'s':''} measured vs initial ${against}${ai&&ai.value!=null?` · FY${ai.fy} anchor ${(+ai.value).toFixed(2)}$`:''}`
-    : `${cadenceLabel} · ${gs.metric||''}`;
-  return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
-    ${hero||`<div style="font-size:13px;color:var(--navy);">${summary}</div>`}
-    <p style="font-size:9.5px;color:var(--muted);margin:5px 0 0;">${esc(sub)}</p>
-    ${track}
-    <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:10px;">
-      <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">Track record</span>
-      <span class="rb-eps-py-chevron">▼</span>
+  return `${hero}
+    <p style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin:4px 0 0;">${esc(heroSub)}</p>
+    ${rows}
+    ${anchorLine}
+    <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:11px;">
+      <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">${archLabel}</span>
+      <span class="rb-eps-py-chevron">\u25bc</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
-      ${annual?`<p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>`:''}
+      ${olderRows}${exclRows}
+      <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)}${gs.metric?` \u00b7 ${esc(gs.metric)}`:''}</p>
       <div style="margin-top:9px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
-    </div>
-  </div>`;
+    </div>`;
+}
+
+function renderScorecardCard(ticker){
+  const card=document.getElementById('scorecard-card');
+  const body=document.getElementById('scorecard-body');
+  if(!card||!body) return;
+  _gsOpen=false;
+  const gs=state.tickers[ticker]?.hypothese?.guidanceScorecard;
+  const html=gs?buildGuidanceScorecard(ticker):'';
+  if(!html){ card.style.display='none'; body.innerHTML=''; return; }
+  const tEl=document.getElementById('scorecard-title');
+  if(tEl){
+    const m=gs.metric||'';
+    tEl.textContent=/eps/i.test(m)?'EPS Guidance Scorecard':('Guidance Scorecard \u2014 '+(m.split('(')[0].trim()||'annual anchors'));
+  }
+  body.innerHTML=html;
+  card.style.display='block';
 }
 
 function renderContextBullets(ticker, proj, cours){
@@ -3597,14 +3648,12 @@ function renderContextBullets(ticker, proj, cours){
   const traceEl=document.getElementById('last-event-trace');
   if(!traceEl)return;
   const lastEvt=(d.hypothese&&d.hypothese.summary)?d.hypothese:null;
-  if(!lastEvt){traceEl.style.display='none';return;}
-  _gsOpen=false;
-  // Le resume du Guidance Scorecard se calcule AVANT dernierCall pour
-  // pouvoir se glisser dans sa colonne de droite (a cote des chiffres
-  // earnings, decision du 18/08/2026) plutot que d'apparaitre en bloc
-  // separe plus bas.
-  const gsBanner=buildGuidanceScorecard(ticker);
-  const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true, rightColumn:gsBanner});
+  if(!lastEvt){renderScorecardCard(ticker);traceEl.style.display='none';return;}
+  // Scorecard : carte dediee juste avant cette carte (19/08/2026) - la
+  // colonne de droite de dernierCall redevient mono-colonne.
+  renderScorecardCard(ticker);
+  const hasGS=!!(d.hypothese&&d.hypothese.guidanceScorecard);
+  const dcBanner=renderDernierCall(d.hypothese||null, ticker, {first:true});
   const ownBanner=renderOwnership(d.ownership||null, ticker);
   const compBanner=renderCompliance(d.compliance||null, ticker);
   const cqBanner=renderCoherenceQualitative(d.coherenceQualitative||null, ticker);
@@ -3623,12 +3672,10 @@ function renderContextBullets(ticker, proj, cours){
   </div>`:'';
 
   // guidanceScorecard, quand present, absorbe la citation de source
-  // consensus (voir SCHEMA) - repli sur l'ancien fragment autonome pour
-  // tout titre qui n'a pas encore ce champ (pas retroactif, voir
-  // INSTRUCTIONS.md). gsBanner deja calcule plus haut (colonne de droite
-  // de dernierCall).
+  // consensus (dans les archives de sa carte dediee) - repli sur
+  // l'ancien fragment autonome pour tout titre sans ce champ.
   let consSourceBanner='';
-  if(!gsBanner){
+  if(!hasGS){
     const {CY:_CYforCons}=yearsFor(ticker);
     const cons=(d.epsConsensus?.year===_CYforCons)?d.epsConsensus:null;
     const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
@@ -3650,15 +3697,9 @@ function renderContextBullets(ticker, proj, cours){
   // seulement la synthese. Isoler vraiment la rubrique 1 suppose de
   // parser `displayText` sur ses delimiteurs de rubrique - reporte au
   // meme chantier que la reorganisation des sections suivantes.
-  // Repli : si dernierCall est absent, renderDernierCall renvoie '' et
-  // laisse tomber silencieusement le rightColumn qu'on lui a passe -
-  // sans ce repli, un titre avec guidanceScorecard mais sans dernierCall
-  // perdrait purement et simplement l'affichage du scorecard.
-  const gsFallback=(!dcBanner&&gsBanner)?gsBanner:'';
   traceEl.innerHTML=`<div>
     ${dcBanner}
     ${cqBanner}
-    ${gsFallback}
     ${consSourceBanner}
     ${dateSourceLine}
     <div${isEarningsRefresh?' style="margin-top:10px;"':''}>${formatThesisText(displayText)}</div>

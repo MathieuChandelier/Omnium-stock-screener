@@ -185,7 +185,11 @@
     "Taux d'imposition GAAP anormalement élevé au T2 (39.1%) du fait d'éléments fiscaux discrets (~$110M de résolution de positions fiscales antérieures + ~$240M d'ajustement lié à la reconnaissance antérieure d'un avantage fiscal différé non monétaire significatif) ; taux normatif hors éléments spécifiés ~15.2%."
    ],
    "communiqueAnalyse": true,
-   "transcriptAnalyse": true
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": false,
+    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited; post-Exact-Sciences balance sheet to be verified at next refresh (flagged)."
+   }
   },
   "summary": "BPA ajusté T2 26 au-dessus du consensus et guidance FY26 relevée, mais écart GAAP/ajusté considérablement élargi par l'intégration d'Exact Sciences (amortissement, coûts d'intégration, provision légale). Thèse intacte : accélération attendue au S2 avec dissipation progressive des coûts ponctuels liés à l'acquisition.",
   "text": "== THESIS SUMMARY ==\nDiversified four-legged healthcare portfolio (Nutrition, Diagnostics, Established Pharma, Medical Devices) compounding mid-single-digit organic, with a structural accelerator: Exact Sciences (closed 23/03/2026, ~3bn incremental 2026 revenue) makes Abbott the leader in colorectal-cancer screening via Cologuard - a mid-teens-growth recurring market. Q2 26 showed classic year-1 acquisition mechanics: margin dilution and one-off integration costs, with FY26 adjusted-EPS guidance nonetheless RAISED to 5.45-5.60.\n\n== THESIS READ ==\n- Integration-fade is the 2027 earnings driver: one-off costs dissipate, synergies ramp - the model's margin-expansion spine. Watch: quarterly integration-cost disclosures shrinking on schedule.\n- Cancer-screening growth (Cologuard mid-teens+) re-rates the Diagnostics leg. Watch: Cologuard volume prints and competitive blood-based entrants.\n- Balance sheet: ~20bn bridge facility took net debt from 4.4bn to a ~24bn peak; deleveraging on ~9-10bn/yr operating cash flow. Watch: post-closing balance sheet confirmation - the modeling decision flagged at setup.\n\n== SPECIAL FACTORS ==\nBase = GAAP retreated for true one-offs only; Abbott's 'adjusted' (guidance metric) excludes intangible amortization/integration costs - basis mismatch documented (Omnium 4.30 vs guided 5.48+ for 2026). Comparable-sales guidance includes Exact Sciences in both bases. priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 49.3bn, EBIT 9.1bn, net 7.5bn (ETR 16% normative; FY25 actual ~14% documented). 2027-2030: ~7.5%/yr revenue, margin rebuild post-integration, net debt 24 -> 10bn. finNet modest (facility interest net of cash income) - to firm up post-closing. Watch: Libre franchise momentum; China VBP pressure on Established Pharma.\n\n== CATALYSTS ==\nQ3 (Oct); integration-cost fade evidence; Cologuard prints; 2027 guidance (Jan) - first clean combined-year frame.",
@@ -295,6 +299,18 @@
    "2030": 1700
   },
   "guidanceHistory": [
+   {
+    "date": "2026-01-22",
+    "quarter": "Q4 25 / FY25",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance INITIALE FY26 : croissance comparable +6,5/7,5%, EPS dilue ajuste 5,55-5,80$ (+10% au mid). FY25 clos a 5,15$ ajuste - exactement le mid de la guidance initiale FY25 (5,05-5,25 du 22/01/2025)."
+   },
+   {
+    "date": "2026-04-16",
+    "quarter": "Q1 26",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "RECADRAGE Exact Sciences (close 23/03) : EPS ajuste 5,38-5,58$, integrant -0,20$ de dilution liee a l'acquisition (5,675-0,20=5,475 : recadrage de perimetre pur, pas une revision operationnelle). Croissance comparable 6,5/7,5% inchangee."
+   },
    {
     "quarter": "Q2 26",
     "date": "2026-07-16",
@@ -426,42 +442,54 @@
    "metric": "Adjusted EPS (guided range)",
    "comparedAgainst": "guidance",
    "basisAligned": false,
-   "basisNote": "Omnium 2026 EPS (4.30, retreated GAAP) sits structurally below the guided adjusted EPS (5.48+): Abbott's 'adjusted' excludes intangible amortization and integration costs that the Omnium base keeps. The beat is measured on the company's own adjusted metric.",
+   "basisNote": "Omnium 2026 EPS (4.30, retreated GAAP) sits structurally below the guided adjusted EPS: Abbott's 'adjusted' excludes intangible amortization and integration costs that the Omnium base keeps. Beats are measured on the company's own adjusted metric (initial mids: 4.60 FY24, 5.15 FY25, 5.675 FY26 pre-Exact).",
    "timeline": [
     {
      "date": "2026-07-16",
      "type": "guidance_revised",
-     "detail": "FY26 RAISED: adjusted EPS to 5.45-5.60 (from 5.38-5.58); comparable sales growth reaffirmed 6.5-7.5% (Exact Sciences in comparable base both years)."
+     "detail": "FY26 RAISED: adjusted EPS to 5.45-5.60 (from the rebased 5.38-5.58); comparable sales growth reaffirmed 6.5-7.5%."
+    },
+    {
+     "date": "2026-04-16",
+     "type": "guidance_revised",
+     "detail": "Exact Sciences rebase: adjusted EPS to 5.38-5.58 incl. -0.20 acquisition dilution - perimeter restatement, not an operating revision."
+    },
+    {
+     "date": "2026-01-22",
+     "type": "guidance_revised",
+     "detail": "Initial FY26: adjusted EPS 5.55-5.80 (+10% at mid), comparable growth 6.5-7.5%."
     }
    ],
-   "paceCheckpoint": "H1 real: integration-year mechanics as expected - margin dilution from Exact Sciences plus one-off integration costs, comparable growth on track.",
+   "paceCheckpoint": "H1 real: integration-year mechanics as expected; the 16/07 raise puts the operative mid (5.525) ~0.8% above the Exact-rebased initial equivalent (5.48).",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 0.6,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
+     "beatPct": 0.0,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "excluded": false,
+     "note": "Initial FY25 guidance 5.05-5.25 (22/01/2025, mid 5.15); actual adjusted EPS 5.15 - landed exactly on the initial mid.",
+     "anchorValue": 5.15
     },
     {
      "fy": 2024,
-     "beatPct": null,
+     "beatPct": 1.5,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+     "excluded": false,
+     "note": "Initial FY24 guidance 4.50-4.70 (24/01/2024, mid 4.60); actual adjusted EPS 4.67 - top of the initial range.",
+     "anchorValue": 4.6
     }
    ],
    "anchorInitial": {
     "fy": 2026,
-    "value": 5.48,
+    "value": 5.675,
     "source": "initial_guidance",
-    "date": "2026-07-16",
-    "note": "Initial FY26 adjusted-EPS guidance 5.38-5.58 (mid 5.48), evidenced by the 16/07 RAISE which cites it ('vs 5.38-5.58 previously'); the January initial statement itself was not captured. Raised to 5.45-5.60 at Q2 - the anchor stays at the initial mid."
+    "date": "2026-01-22",
+    "note": "TRUE initial FY26 guidance: adjusted EPS 5.55-5.80 (mid 5.675, +10%), issued 22/01/2026 PRE-Exact. The 16/04 rebase to 5.38-5.58 is pure Exact-Sciences dilution (-0.20): the FY26 close will be measured vs the initial-EQUIVALENT 5.48 (5.675 - 0.20), perimeter change documented. Backfilled 19/08/2026 from the public initial-guidance releases."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (young fiche, priorEPS null by construction). First measurement at the FY26 close vs the 5.48 initial mid - the July raise already signals a modest beat.",
+   "applicationNote": "annualBeatPct +0.6% (FY25 0.0 x3, FY24 +1.5 x2): below the ~1% materiality floor - not applied to projections. History backfilled 19/08/2026 from public initial-guidance releases (the prior 'not archived' exclusion was unjustified: January releases are public record).",
    "consensusSource": "ChartMill/TipRanks consensus (adjusted)",
    "consensusDate": "2026-07-17"
   },
@@ -469,10 +497,6 @@
    "date": "2026-07-16",
    "label": "Q2 2026",
    "type": "earnings"
-  },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited; post-Exact-Sciences balance sheet to be verified at next refresh (flagged)."
   }
  }
 }

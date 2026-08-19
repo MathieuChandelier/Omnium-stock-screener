@@ -272,7 +272,11 @@
     "Reaction boursiere negative malgre le beat headline (-3,33% en seance, jusqu'a -4% supplementaires apres cloture selon les sources) - explication la plus probable, plus precise que la seule hypothese de valorisation deja avancee : le marche a rapidement identifie que 0,14$ des 0,62$ d'EPS provenaient d'un gain ponctuel de deconsolidation (RVI, 129 M$), non reconductible et sans lien avec l'activite - le beat 'propre' (~0,48$, +14% vs consensus) est nettement moins spectaculaire que le +47,6% brut, ce qui explique une bonne partie du scepticisme du marche malgre des metriques operationnelles (Rothera, comptes finances, depots nets) tres solides."
    ],
    "communiqueAnalyse": true,
-   "transcriptAnalyse": true
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": false,
+    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+   }
   },
   "guidanceHistory": [
    {
@@ -502,10 +506,6 @@
    "date": "2026-07-29",
    "label": "Q2 2026",
    "type": "earnings"
-  },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
   }
  }
 }

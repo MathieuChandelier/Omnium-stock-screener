@@ -219,7 +219,11 @@
     "Le free cash flow TTM continue de se degrader (-7,6 Md$ contre +18,2 Md$ un an plus tot) et le bilan a bascule en dette nette positive des le T2, apres 67 Md$ de nouvelle dette long terme emise au S1."
    ],
    "communiqueAnalyse": true,
-   "transcriptAnalyse": true
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": false,
+    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+   }
   },
   "ancrages": [
    {
@@ -533,10 +537,6 @@
    "date": "2026-07-30",
    "label": "Q2 2026",
    "type": "earnings"
-  },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
   }
  },
  "coherenceQualitative": {

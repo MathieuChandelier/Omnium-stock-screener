@@ -149,7 +149,11 @@
     "Dossier compliance Government Services desormais chiffre : provision de 32,0 M€ comptabilisee, qualifiee d''evenement clarificateur' par RBC apres plusieurs mois d'incertitude ; sortie du sous-segment quasi achevee fin 2026.",
     "Dette nette ajustee en forte hausse sequentielle (1 688,6 M€ vs 1 253,3 M€ fin 2025) mais explicable par l'effet calendaire du dividende, restant dans la fourchette cible LEAP 28 (ratio 1,45x vs plage 1,0x-2,0x).",
     "Le vent contraire de change s'attenue nettement trimestre apres trimestre (-5,2% au T1 -> -0,6% au T2, le seul mois de juin redevenant meme legerement accretif) - le CFO evoque explicitement une perspective plus favorable sur le change pour le reste de l'annee, un element de soutien pour la construction du S2 2026."
-   ]
+   ],
+   "etatsFinanciers": {
+    "analyse": false,
+    "note": "H1 2026 exploited via release/call; IFRS interim statements not line-by-line exploited at this refresh."
+   }
   },
   "quarterlyEPS": {
    "cadence": "semestriel",
@@ -403,10 +407,6 @@
    "date": "2026-07-29",
    "label": "H1 2026",
    "type": "earnings"
-  },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "H1 2026 exploited via release/call; IFRS interim statements not line-by-line exploited at this refresh."
   }
  },
  "coherenceQualitative": {

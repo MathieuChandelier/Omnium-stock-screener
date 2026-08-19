@@ -210,7 +210,11 @@
     "Le management a ete interroge sur le retard rapporte du modele Gemini 3.5 Pro (article Bloomberg du 16/07) et sur les departs de chercheurs IA seniors, sans remise en cause de la trajectoire produit annoncee ; Search & other reste resilient a +17% et YouTube Ads a +13%, sans signe de cannibalisation par l'IA generative."
    ],
    "communiqueAnalyse": true,
-   "transcriptAnalyse": true
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": false,
+    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+   }
   },
   "guidanceHistory": [
    {
@@ -492,10 +496,6 @@
    "date": "2026-07-22",
    "label": "Q2 2026",
    "type": "earnings"
-  },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
   }
  },
  "coherenceQualitative": {
