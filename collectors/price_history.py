@@ -3,19 +3,19 @@ collectors/price_history.py
 
 Snapshot de valorisation (voir .github/workflows/price-history-collector.yml) :
 2 fois par semaine (lundi et jeudi soir, apres cloture), capture le prix de
-chaque ticker ET une copie complete de hypothese.adjEPS/epsForward12m au
+chaque ticker ET une copie complete de hypothese.omniumEPS/epsForward12m au
 meme instant, pour alimenter data/priceHistory.json (courbes P/E dans le
 temps, classements de mouvements "Value Rankings").
 
 Demarrage propre (aout 2026) : AUCUN backfill, on accumule uniquement a
 partir de maintenant. Chaque snapshot est fige definitivement (prix ET EPS
-en vigueur ce jour-la) - une revision future d'adjEPS lors d'un refresh ne
+en vigueur ce jour-la) - une revision future d'omniumEPS lors d'un refresh ne
 doit JAMAIS re-ecrire retroactivement le P/E d'une semaine passee, sinon un
 classement "P/E en forte hausse" confondrait une vraie re-rating de marche
 avec une simple revision d'estimation. Meme logique de non-alteration
 retroactive que guidanceHistory/priorEPS (voir INSTRUCTIONS.md).
 
-epsByYear est une copie INTEGRALE de hypothese.adjEPS (toutes les annees
+epsByYear est une copie INTEGRALE de hypothese.omniumEPS (toutes les annees
 projetees, pas seulement CY/NY) : ca permet de tracer a la fois "le P/E de
 l'annee civile 2026" (courbe qui garde son identite meme quand 2026 cesse
 d'etre l'annee en cours) et "le P/E de l'annee en cours" (serie glissante,
@@ -107,7 +107,7 @@ def compute_cy_ny(ticker_data: dict):
 
 
 def build_eps_by_year(hyp: dict):
-    raw = hyp.get("adjEPS") or {}
+    raw = hyp.get("omniumEPS") or {}
     out = {}
     for year_key, value in raw.items():
         if isinstance(value, (int, float)):

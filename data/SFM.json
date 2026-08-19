@@ -54,7 +54,7 @@
       {
         "id": "week53_2026",
         "moteur": "CONFIRME A L'IDENTIQUE ce refresh par le communique officiel T2 2026 : la 53e semaine fiscale (T4 26) ajoute ponctuellement environ 200 M$ de CA, 28 M$ d'EBIT et 0,21$ de BPA dilue au-dessus de la guidance FY26 explicitement communiquee sur base 52 semaines - aucun ecart avec l'hypothese de creation. Cet effet ne se reproduit pas en 2027, ce qui comprime mecaniquement la croissance de CA affichee l'annee suivante si elle n'est pas retraitee (voir PARAMETRES).",
-        "applique": ["adjCA.2026","adjEBIT.2026","adjEPS.2026"],
+        "applique": ["adjCA.2026","adjEBIT.2026","omniumEPS.2026"],
         "confiance": "haute"
       },
       {
@@ -102,7 +102,7 @@
       }
     ],
     "guidanceLongTerme": "Aucun objectif chiffre au-dela de FY2026 communique formellement. Orientation qualitative : retour a 'l'algorithme' de croissance une fois les comparaisons difficiles derriere (implicitement, un comp positif soutenu par le pipeline de magasins et l'amelioration continue du trafic/des unites). Expansion geographique planifiee incluant Chicago a partir de 2027 (objectif 10 magasins en 12-18 mois).",
-    "adjEPS": {"2026":5.57,"2027":6.22,"2028":7.03,"2029":7.93,"2030":8.92},
+    "omniumEPS": {"2026":5.57,"2027":6.22,"2028":7.03,"2029":7.93,"2030":8.92},
     "adjCA": {"2026":9534,"2027":9894,"2028":10488,"2029":11117,"2030":11784},
     "adjEBIT": {"2026":708,"2027":762,"2028":839,"2029":923,"2030":1013},
     "adjNet": {"2026":521,"2027":568,"2028":625,"2029":687,"2030":755},

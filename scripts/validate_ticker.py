@@ -33,7 +33,7 @@ HYPOTHESE_ONLY_FIELDS = [
     "guidanceLongTermeHistory", "quarterlyEPS", "priorEPS", "ancrages",
 ]
 
-ADJ_FIELDS = ["adjCA", "adjEBIT", "adjNet", "adjND", "adjShares", "adjEPS"]
+ADJ_FIELDS = ["adjCA", "adjEBIT", "adjNet", "adjND", "adjShares", "omniumEPS"]
 
 ANCRAGE_KEYS = {"id", "moteur", "applique", "confiance"}
 ANCRAGE_OPTIONAL_KEYS = {"versusPublie"}
@@ -103,7 +103,7 @@ def validate_eps_coherence(d, errors):
     hyp = d.get("hypothese", {})
     adj_net = hyp.get("adjNet")
     adj_shares = hyp.get("adjShares")
-    adj_eps = hyp.get("adjEPS")
+    adj_eps = hyp.get("omniumEPS")
     if not all(isinstance(x, dict) for x in (adj_net, adj_shares, adj_eps)):
         return
     for year in adj_eps:
@@ -117,7 +117,7 @@ def validate_eps_coherence(d, errors):
         given = adj_eps[year]
         if given and abs(implied - given) / abs(given) > 0.02:
             errors.add(
-                f"Incoherence EPS {year} : adjEPS={given} mais "
+                f"Incoherence EPS {year} : omniumEPS={given} mais "
                 f"adjNet/adjShares={implied:.3f} (ecart > 2%)."
             )
 
@@ -179,7 +179,7 @@ def validate_quarterly_eps(d, errors):
     if not isinstance(qe, dict):
         errors.add("hypothese.quarterlyEPS doit etre un objet.")
         return
-    adj_eps = d.get("hypothese", {}).get("adjEPS", {})
+    adj_eps = d.get("hypothese", {}).get("omniumEPS", {})
     years = sorted(adj_eps.keys(), key=lambda y: int(y)) if isinstance(adj_eps, dict) else []
     ancrage_ids = {
         a.get("id") for a in (d.get("hypothese", {}).get("ancrages") or [])
@@ -237,7 +237,7 @@ def validate_quarterly_eps(d, errors):
             errors.add("hypothese.quarterlyEPS.historique doit etre un tableau.")
         elif len(hist) > 5:
             errors.add(f"hypothese.quarterlyEPS.historique a {len(hist)} entrees (plafond 5).")
-    # Somme CY/NY vs adjEPS correspondant (les 2 premieres annees de projection).
+    # Somme CY/NY vs omniumEPS correspondant (les 2 premieres annees de projection).
     for idx, key in enumerate(("CY", "NY")):
         arr = qe.get(key)
         if not isinstance(arr, list) or idx >= len(years):
@@ -247,7 +247,7 @@ def validate_quarterly_eps(d, errors):
         target = adj_eps.get(year)
         if isinstance(target, (int, float)) and abs(total - target) > 0.05:
             errors.add(
-                f"quarterlyEPS.{key} somme a {total:.2f} mais adjEPS['{year}']={target} "
+                f"quarterlyEPS.{key} somme a {total:.2f} mais omniumEPS['{year}']={target} "
                 f"(ecart > 0,05 - tout ecart doit avoir ete arbitre avant livraison, voir E5 ter point 4)."
             )
 

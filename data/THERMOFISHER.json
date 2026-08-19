@@ -15,7 +15,7 @@
     {"year":2024,"ca":42879,"ebit":7338,"net":6335,"shares":383,"nd":22000,"div":1.45},
     {"year":2025,"ca":44556,"ebit":7747,"net":6704,"shares":378,"nd":36000,"div":1.76}
   ],
-  "epsConsensus": {"year":2026,"eps":25.13,"epsNY":27.90,"date":"2026-07-23","source":"Guidance societe relevee au call T2 26 (23/07/2026) : EPS ajuste 24,93-25,33$ (base non-GAAP, exclut amortissement d'acquisitions/restructuration), CA 47,4-48,1 Mds$. NON comparable a adjEPS Omnium (base GAAP, voir hypothese.text)."},
+  "epsConsensus": {"year":2026,"eps":25.13,"epsNY":27.90,"date":"2026-07-23","source":"Guidance societe relevee au call T2 26 (23/07/2026) : EPS ajuste 24,93-25,33$ (base non-GAAP, exclut amortissement d'acquisitions/restructuration), CA 47,4-48,1 Mds$. NON comparable a omniumEPS Omnium (base GAAP, voir hypothese.text)."},
   "particularites": [],
   "nextEvent": {"label":"Q3 26","date":"2026-10-22"},
   "ownership": {
@@ -60,7 +60,7 @@
       {"id":"AN-ND","moteur":"Dette nette de mi-annee (~38,5 Mds$ au 30/06/2026) deja inferieure au pic de 42 Mds$ attendu pour la fin d'annee dans le modele de creation, malgre le decaissement complet de Clario - trajectoire de desendettement meilleure que prevu.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"moyenne (revisee a la hausse depuis basse, la trajectoire etant desormais confirmee par un point de donnee reel)"},
       {"id":"AN-MICROBIO-DIVEST","moteur":"Divestiture de l'activite microbiologie annoncee au T2 2026, montant et calendrier de cloture non precises a ce stade - optionnalite positive pure sur l'allocation de capital et le desendettement, exclue des adjXXX tant que les termes ne sont pas connus.","applique":[],"confiance":"haute sur l'occurrence, nulle sur le montant"}
     ],
-    "adjEPS": {"2026":19.97,"2027":22.55,"2028":25.29,"2029":28.22,"2030":31.10},
+    "omniumEPS": {"2026":19.97,"2027":22.55,"2028":25.29,"2029":28.22,"2030":31.10},
     "adjCA": {"2026":48700,"2027":51600,"2028":54200,"2029":56900,"2030":59450},
     "adjEBIT": {"2026":8600,"2027":9650,"2028":10350,"2029":11100,"2030":11780},
     "adjNet": {"2026":7270,"2027":8050,"2028":8850,"2029":9680,"2030":10450},

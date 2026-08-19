@@ -99,7 +99,7 @@
       {"id":"financial_result_cash_net","moteur":"Position de cash net (CHF -136 M en 2025, tresorerie nette positive), sans programme de rachat d'actions actif et regulier identifie -> produit financier net calcule au taux suisse 10 ans + 2 pts de spread normatif (~2,5%), impact marginal (<10 M CHF/an) compte tenu du faible montant.","applique":["adjND.2026","adjND.2027","adjND.2028","adjND.2029","adjND.2030"],"confiance":"moyenne"},
       {"id":"shares_flat","moteur":"Nombre d'actions diluees stable historiquement (~159,1-159,6 M sur 2021-2025), aucun programme de rachat massif identifie -> maintenu constant sur l'horizon de projection.","applique":["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],"confiance":"haute"}
     ],
-    "adjEPS": {"2026":3.00,"2027":3.38,"2028":3.82,"2029":4.32,"2030":4.88},
+    "omniumEPS": {"2026":3.00,"2027":3.38,"2028":3.82,"2029":4.32,"2030":4.88},
     "adjCA": {"2026":2748,"2027":3010,"2028":3302,"2029":3632,"2030":3995},
     "adjEBIT": {"2026":613,"2027":689,"2028":776,"2029":875,"2030":987},
     "adjNet": {"2026":479,"2027":540,"2028":610,"2029":689,"2030":779},

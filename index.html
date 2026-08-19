@@ -1214,7 +1214,7 @@ function getProj(ticker){
     };
   });
   const hyp=d.hypothese;
-  const hasAdj=hyp&&['adjEPS','adjCA','adjEBIT','adjNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
+  const hasAdj=hyp&&['omniumEPS','adjCA','adjEBIT','adjNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
   if(!hasAdj)return{proj:base,date:null,evtName:null};
   const out={};
   PY.forEach(y=>{ out[y]={...base[y]}; });
@@ -1225,7 +1225,7 @@ function getProj(ticker){
     if(has(hyp.adjNet,y))    out[y].net   =+hyp.adjNet[y];
     if(has(hyp.adjND,y))     out[y].nd    =+hyp.adjND[y];
     if(has(hyp.adjShares,y)) out[y].shares=+hyp.adjShares[y];
-    if(has(hyp.adjEPS,y))    out[y].eps   =+hyp.adjEPS[y];
+    if(has(hyp.omniumEPS,y))    out[y].eps   =+hyp.omniumEPS[y];
     else if((has(hyp.adjNet,y)||has(hyp.adjShares,y))&&out[y].shares>0)
       out[y].eps=out[y].net/out[y].shares;
   });
@@ -1236,8 +1236,8 @@ function checkEpsCoherence(d){
   const hyp=d&&d.hypothese;
   if(!hyp)return [];
   const bad=[];
-  Object.keys(hyp.adjEPS||{}).forEach(y=>{
-    const eps=+hyp.adjEPS[y],net=+(hyp.adjNet?.[y]),sh=+(hyp.adjShares?.[y]);
+  Object.keys(hyp.omniumEPS||{}).forEach(y=>{
+    const eps=+hyp.omniumEPS[y],net=+(hyp.adjNet?.[y]),sh=+(hyp.adjShares?.[y]);
     if(!eps||!net||!sh)return;
     const implied=net/sh;
     if(Math.abs(eps-implied)/Math.abs(implied)>0.02)
@@ -1619,8 +1619,19 @@ function toggleAdjDetail(blockId, idx){
   box.classList.add('open');
 }
 
+// Emetteur financier : la dette nette est le metier (depots, funding du
+// livre de credit), pas un levier - le retraitement ex-cash n'a pas de
+// sens et les multiples se lisent sur la capitalisation. BNP porte nd=0
+// donc le calcul retombait deja juste ; MERCADOLIBRE (classe bank le
+// 18/08/2026) porte un nd REEL de funding, que l'ex-cash ajoutait a tort
+// a la valeur d'entreprise.
+function isFinancialIssuer(d){
+  return !!d && ['bank','insurer','broker'].includes(d.issuerType);
+}
+
 function exCashPriceForYear(d, cours, year){
   if(!(cours>0)) return null;
+  if(isFinancialIssuer(d)) return cours;
   const nd=d?.hypothese?.adjND?.[year];
   const sh=d?.hypothese?.adjShares?.[year];
   if(typeof nd!=='number' || !(sh>0)) return cours;
@@ -1958,18 +1969,37 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
     <div class="th-assume">Assuming constant valuation</div>`;
 }
 
+// Derniere annee de l'horizon affiche couverte par l'ANALYSE (omniumEPS,
+// ou le couple adjNet+adjShares dont getProj derive l'EPS), en partant de
+// CY sans trou. Le CAGR de tete de fiche ne doit jamais s'appuyer sur une
+// annee servie par la base CAGR automatique (~37% d'erreur mediane sur le
+// net au back-test du 18/08/2026) - cas MSFT : 2031 non couvert apres la
+// cloture FY26, le titre affichait un CAGR contamine par l'extrapolation.
+function analysisLY(ticker){
+  const d=state.tickers[ticker];
+  const {CY,LY}=yearsFor(ticker);
+  const h=d?.hypothese;
+  if(!h) return LY;
+  const num=x=>typeof x==='number';
+  const ok=y=>num(h.omniumEPS?.[y])||(num(h.adjNet?.[y])&&num(h.adjShares?.[y]));
+  let last=null;
+  for(let y=CY;y<=LY;y++){ if(ok(y)) last=y; else break; }
+  return last===null?LY:last;
+}
+
 function renderReturnBlock(ticker, proj, cours){
   const el=document.getElementById('return-block');
   if(!el)return;
   _epsHistOpen=false;
   const d=state.tickers[ticker];
-  const {CY,LY}=yearsFor(ticker);
+  const {CY}=yearsFor(ticker);
+  const LY=analysisLY(ticker);
   const cur=tickerCur(ticker)||'€';
   const div=d.dividende||0;
   const epsCY=proj[CY]?.eps||0;
   const epsNY=proj[CY+1]?.eps||0;
   const epsLY=proj[LY]?.eps||0;
-  const cagrEps=(epsCY>0&&epsLY>0)?((Math.pow(epsLY/epsCY,0.25))-1)*100:0;
+  const cagrEps=(epsCY>0&&epsLY>0&&LY>CY)?((Math.pow(epsLY/epsCY,1/(LY-CY)))-1)*100:0;
   const bonusYield=particulariteYieldPct(d);
   const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+bonusYield;
   const total=cagrEps+yieldPct;
@@ -1979,11 +2009,15 @@ function renderReturnBlock(ticker, proj, cours){
   const analystsNY=d.epsConsensus?.analystsCountNY||cons?.analystsCount||null;
   const rawSrc=(cons?.source||'').replace(/consensus sell-side[,\s]*/i,'').trim();
   const srcLine=[rawSrc,cons?.date].filter(Boolean).join(' · ');
-  const ndCY=d.hypothese?.adjND?.[CY];
-  const shCY=d.hypothese?.adjShares?.[CY];
-  const ndNY=d.hypothese?.adjND?.[CY+1];
-  const shNY=d.hypothese?.adjShares?.[CY+1];
-  const ndY2=d.hypothese?.adjND?.[CY+2];
+  // Financier : nd/sh non transmis -> peEx nul -> la note "Net debt is
+  // not meaningful for this issuer" s'affiche et les multiples restent
+  // sur capitalisation.
+  const finIss=isFinancialIssuer(d);
+  const ndCY=finIss?null:d.hypothese?.adjND?.[CY];
+  const shCY=finIss?null:d.hypothese?.adjShares?.[CY];
+  const ndNY=finIss?null:d.hypothese?.adjND?.[CY+1];
+  const shNY=finIss?null:d.hypothese?.adjShares?.[CY+1];
+  const ndY2=finIss?null:d.hypothese?.adjND?.[CY+2];
   const shY2=d.hypothese?.adjShares?.[CY+2];
   const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY,
     {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)},
@@ -2210,8 +2244,11 @@ function computeRankings(periodKey, seriesDesc, n){
       const start=nearestSnapshotBefore(snaps, targetDate);
       if(!start || start===latest) return;
       if(dayDiffISO(targetDate, start.date) > VALO_GAP_TOLERANCE_DAYS) return;
-      const peStart=snapPEForSeries(start, seriesDesc);
-      const peEnd=snapPEForSeries(latest, seriesDesc);
+      // Meme gate financier que la fiche : les multiples d'un emetteur
+      // financier se comparent sur capitalisation.
+      const sd=isFinancialIssuer(state.tickers[tk]) ? {...seriesDesc, exCash:false} : seriesDesc;
+      const peStart=snapPEForSeries(start, sd);
+      const peEnd=snapPEForSeries(latest, sd);
       if(peStart==null || peEnd==null) return;
       out.push({ticker:tk, peStart, peEnd, deltaPct:(peEnd-peStart)/peStart*100, startDate:start.date, latestDate:latest.date});
     });
@@ -2978,10 +3015,12 @@ function renderValoHistory(ticker){
   const latest=snaps[snaps.length-1];
   const earliest=snaps[0].date;
   const st=_valoHistState;
+  const finIss=isFinancialIssuer(state.tickers[ticker]);
   const seriesDesc=st.mode!=='pe' ? null
-    // Toujours ex-cash : snapPEForSeries retombe seul sur le cours brut
-    // pour un emetteur sans dette nette (banque).
-    : {kind:'role', role:st.seriesKind, exCash:true};
+    // Ex-cash par defaut ; sur capitalisation PAR DECLARATION pour un
+    // emetteur financier (issuerType), meme si l'archive porte un nd reel
+    // (MERCADOLIBRE : funding du livre de credit, pas un levier).
+    : {kind:'role', role:st.seriesKind, exCash:!finIss};
 
   const modeBtn=(m,label)=>`<button class="vr-pill${st.mode===m?' active':''}" onclick="setValoHistMode('${m}')">${label}</button>`;
 
@@ -3026,7 +3065,7 @@ function renderValoHistory(ticker){
     const lastSnap=(state.priceHistory?.tickers?.[ticker]?.snapshots||[]).slice(-1)[0];
     const yrOf=(role)=>lastSnap?roleYear(lastSnap,role):null;
     const extraSeries=st.mode==='pe' ? ['ny','y2']
-      .map(r=>({series:{kind:'role', role:r, exCash:true}, label:String(yrOf(r)||'')}))
+      .map(r=>({series:{kind:'role', role:r, exCash:!finIss}, label:String(yrOf(r)||'')}))
       .filter(e=>e.label) : [];
     const chart=buildValoChartSVG(ticker, {mode:st.mode, series:seriesDesc, periodKey:st.period,
       compact:false, width:chartW, out, extraSeries,
@@ -3525,10 +3564,11 @@ function calcScore(ticker){
   if(!d||!d.data||d.data.length<2)return 0;
   const cours=d.cours||100;
   const{proj}=getProj(ticker);
-  const {CY,LY}=yearsFor(ticker);
+  const {CY}=yearsFor(ticker);
+  const LY=analysisLY(ticker);
   const epsCY=proj[CY]?.eps||0,eps30=proj[LY]?.eps||0;
-  if(epsCY<=0||eps30<=0)return 0;
-  const cagrEps=((Math.pow(eps30/epsCY,0.25))-1)*100;
+  if(epsCY<=0||eps30<=0||LY<=CY)return 0;
+  const cagrEps=((Math.pow(eps30/epsCY,1/(LY-CY)))-1)*100;
   const div=d.dividende||0;
   const yieldPct=(cours>0&&div>0?(div/cours)*100:0)+particulariteYieldPct(d);
   const peFwd=cours>0?cours/epsCY:null;
@@ -4046,10 +4086,11 @@ function renderPortfolio(){
       try{
         const cours=d.cours||100;
         const{proj}=getProj(tk);
-        const {CY,LY}=yearsFor(tk);
+        const {CY}=yearsFor(tk);
+        const LY=analysisLY(tk);
         const div=d.dividende||0;
         const epsCY=proj[CY]?.eps||0,eps27=proj[CY+1]?.eps||0,eps30=proj[LY]?.eps||0;
-        const cagrEps=(epsCY>0&&eps30>0)?((Math.pow(eps30/epsCY,0.25))-1)*100:0;
+        const cagrEps=(epsCY>0&&eps30>0&&LY>CY)?((Math.pow(eps30/epsCY,1/(LY-CY)))-1)*100:0;
         const yieldPct=((cours>0&&div>0)?(div/cours)*100:0)+particulariteYieldPct(d);
         const totalReturn=cagrEps+yieldPct;
         const peFwd=(cours>0&&epsCY>0)?cours/epsCY:null;

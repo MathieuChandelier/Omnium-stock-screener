@@ -78,8 +78,8 @@
         "id": "consensus_eps_fy27_fy28",
         "moteur": "Consensus sell-side recoupe (Seeking Alpha, Goldman Sachs, JPMorgan, BofA) pour l'EPS FY27 (~9.10$) et FY28 (~13.20$), utilise comme ancrage direct plutot qu'un retrofit CA->EBIT->Net bottom-up, compte tenu de l'ampleur des incertitudes sur le mix Data Center/Networking a cet horizon.",
         "applique": [
-          "adjEPS.2027",
-          "adjEPS.2028",
+          "omniumEPS.2027",
+          "omniumEPS.2028",
           "adjNet.2027",
           "adjNet.2028"
         ],
@@ -89,9 +89,9 @@
         "id": "deceleration_fy29_fy31",
         "moteur": "Extrapolation d'un ralentissement progressif du taux de croissance de l'EPS (de +45% FY28 vers +17% FY31) au-dela de l'horizon consensus fiable (FY27-28), par simple loi des grands nombres - aucune source specifique au-dela de FY28/29, confiance nettement plus faible.",
         "applique": [
-          "adjEPS.2029",
-          "adjEPS.2030",
-          "adjEPS.2031",
+          "omniumEPS.2029",
+          "omniumEPS.2030",
+          "omniumEPS.2031",
           "adjNet.2029",
           "adjNet.2030",
           "adjNet.2031"
@@ -147,7 +147,7 @@
         "confiance": "basse"
       }
     ],
-    "adjEPS": {
+    "omniumEPS": {
       "2027": 9.1,
       "2028": 13.2,
       "2029": 18.5,

@@ -106,7 +106,7 @@
       "coherenceNoteCY": null,
       "coherenceNoteNY": null
     },
-    "source":"Création - T2 2026 (communiqué de résultats + transcript du 21 juillet 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS (base EPS dilue ajuste/non-GAAP, coherent avec la base utilisee pour dernierCall.resultatsVsConsensus.epsAdj) - PY (FY2025 T1 0.47/T2 0.51/T3 0.57/T4 0.65, sources communiques 8-K trimestriels retraites du split 4-pour-1, somme 2.20 proche de data[2025].net/shares=2.21), CY (T1 26 0.60 et T2 26 0.69 actuals, T3/T4 26 estimes par repartition saisonniere de adjNet/adjShares 2026), NY (2027 estime par la meme repartition saisonniere de adjNet/adjShares 2027). Ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript Motley Fool du 21/04/2026, 6 analystes/11 echanges) compare au T2 2026 (transcript Motley Fool du 21/07/2026, 7 analystes/13 echanges avec relances) - aucune incoherence materielle identifiee (prudence marketing/croissance de comptes constante entre les deux trimestres, surveillance du risque de levier sur marge constante, sujets IA et crypto en expansion coherente sans reniement d'un engagement anterieur). Corrections incidentes (schema requis absent depuis la creation) : ajout hypothese.adjEPS (derive de adjNet/adjShares, coherent a moins de 2% par annee) et ajout des booleens dernierCall.communiqueAnalyse/transcriptAnalyse (les deux sources ayant ete effectivement analysees a la creation).",
+    "source":"Création - T2 2026 (communiqué de résultats + transcript du 21 juillet 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS (base EPS dilue ajuste/non-GAAP, coherent avec la base utilisee pour dernierCall.resultatsVsConsensus.epsAdj) - PY (FY2025 T1 0.47/T2 0.51/T3 0.57/T4 0.65, sources communiques 8-K trimestriels retraites du split 4-pour-1, somme 2.20 proche de data[2025].net/shares=2.21), CY (T1 26 0.60 et T2 26 0.69 actuals, T3/T4 26 estimes par repartition saisonniere de adjNet/adjShares 2026), NY (2027 estime par la meme repartition saisonniere de adjNet/adjShares 2027). Ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript Motley Fool du 21/04/2026, 6 analystes/11 echanges) compare au T2 2026 (transcript Motley Fool du 21/07/2026, 7 analystes/13 echanges avec relances) - aucune incoherence materielle identifiee (prudence marketing/croissance de comptes constante entre les deux trimestres, surveillance du risque de levier sur marge constante, sujets IA et crypto en expansion coherente sans reniement d'un engagement anterieur). Corrections incidentes (schema requis absent depuis la creation) : ajout hypothese.omniumEPS (derive de adjNet/adjShares, coherent a moins de 2% par annee) et ajout des booleens dernierCall.communiqueAnalyse/transcriptAnalyse (les deux sources ayant ete effectivement analysees a la creation).",
     "dernierCall":{
       "quarter":"Q2 26",
       "communiqueAnalyse": true,
@@ -136,7 +136,7 @@
     "adjCA":{"2026":7150,"2027":8080,"2028":9020,"2029":9920,"2030":10810},
     "adjEBIT":{"2026":5541,"2027":6262,"2028":7018,"2029":7738,"2030":8454},
     "adjNet":{"2026":1191,"2027":1390,"2028":1600,"2029":1803,"2030":2004},
-    "adjEPS":{"2026":2.55,"2027":2.86,"2028":3.19,"2029":3.49,"2030":3.80},
+    "omniumEPS":{"2026":2.55,"2027":2.86,"2028":3.19,"2029":3.49,"2030":3.80},
     "adjND":{"2026":-8500,"2027":-9800,"2028":-11200,"2029":-12700,"2030":-14300},
     "adjShares":{"2026":467,"2027":486,"2028":502,"2029":516,"2030":528}
   }

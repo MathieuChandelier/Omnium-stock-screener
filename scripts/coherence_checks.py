@@ -39,23 +39,23 @@ def check(nom):
     def deco(fn): CHECKS[nom]=fn; return fn
     return deco
 
-@check("C1  somme des BNA trimestriels CY == adjEPS[CY]")
+@check("C1  somme des BNA trimestriels CY == omniumEPS[CY]")
 def c1():
     bad=[]
     for tk,t in FICHES.items():
         h=t['hypothese']; cy=cy_of(t); qe=h.get('quarterlyEPS') or {}
-        arr=qe.get('CY'); tgt=(h.get('adjEPS') or {}).get(str(cy))
+        arr=qe.get('CY'); tgt=(h.get('omniumEPS') or {}).get(str(cy))
         if not arr or not isinstance(tgt,(int,float)): continue
         s=sum(p.get('eps',0) for p in arr)
         if abs(s-tgt)>0.05: bad.append((tk,f'{s:.2f} vs {tgt:.2f} (ecart {s-tgt:+.2f})'))
     return bad
 
-@check("C2  somme des BNA trimestriels NY == adjEPS[CY+1]")
+@check("C2  somme des BNA trimestriels NY == omniumEPS[CY+1]")
 def c2():
     bad=[]
     for tk,t in FICHES.items():
         h=t['hypothese']; cy=cy_of(t); qe=h.get('quarterlyEPS') or {}
-        arr=qe.get('NY'); tgt=(h.get('adjEPS') or {}).get(str(cy+1)) if cy else None
+        arr=qe.get('NY'); tgt=(h.get('omniumEPS') or {}).get(str(cy+1)) if cy else None
         if not arr or not isinstance(tgt,(int,float)): continue
         s=sum(p.get('eps',0) for p in arr)
         if abs(s-tgt)>0.05: bad.append((tk,f'{s:.2f} vs {tgt:.2f} (ecart {s-tgt:+.2f})'))
@@ -70,11 +70,11 @@ def c3():
             if qe.get(k): bad.append((tk,f'{k} non nul'))
     return bad
 
-@check("C4  adjEPS == adjNet / adjShares (>1% ET >1 cent)")
+@check("C4  omniumEPS == adjNet / adjShares (>1% ET >1 cent)")
 def c4():
     bad=[]
     for tk,t in FICHES.items():
-        h=t['hypothese']; eps=h.get('adjEPS') or {}; net=h.get('adjNet') or {}; sh_=h.get('adjShares') or {}
+        h=t['hypothese']; eps=h.get('omniumEPS') or {}; net=h.get('adjNet') or {}; sh_=h.get('adjShares') or {}
         for y,v in eps.items():
             n,s=net.get(y),sh_.get(y)
             if not all(isinstance(x,(int,float)) for x in (v,n,s)) or not s: continue
@@ -101,13 +101,13 @@ def c6():
         if len(fys)>1: bad.append((tk,f'fyGuided heterogenes : {sorted(fys)}'))
     return bad
 
-@check("C7  derniere capture : epsByYear == adjEPS courant")
+@check("C7  derniere capture : epsByYear == omniumEPS courant")
 def c7():
     bad=[]
     for tk,t in FICHES.items():
         sn=[s for s in (PH.get(tk,{}).get('snapshots') or []) if s.get('price')]
         if not sn: continue
-        last=sn[-1]; eps=t['hypothese'].get('adjEPS') or {}
+        last=sn[-1]; eps=t['hypothese'].get('omniumEPS') or {}
         for y,v in (last.get('epsByYear') or {}).items():
             cur=eps.get(y)
             if isinstance(cur,(int,float)) and abs(cur-v)>0.005:
@@ -146,10 +146,10 @@ def c9():
             if d<debut: break
             try: j=json.loads(sh(f"git show {h}:data/{tk}.json"))
             except Exception: continue
-            e={k:round(float(v),4) for k,v in ((j.get('hypothese') or {}).get('adjEPS') or {}).items()}
+            e={k:round(float(v),4) for k,v in ((j.get('hypothese') or {}).get('omniumEPS') or {}).items()}
             if e and json.dumps(e,sort_keys=True)!=etats[-1]: revision_depuis=True; break
         if revision_depuis and nb_courbes<2:
-            bad.append((tk,'adjEPS revise pendant la fenetre mais 1 seule courbe'))
+            bad.append((tk,'omniumEPS revise pendant la fenetre mais 1 seule courbe'))
     return bad
 
 @check("C10 retraitements : jamais sur une majorite de periodes (regle de porte)")
@@ -194,7 +194,7 @@ def c11():
 def c12():
     # appliedToProjection n'est pas une option : des lors qu'un
     # weightedBeatPct exploitable existe, il DOIT etre repercute dans
-    # adjEPS/adjCA de l'annee en cours (INSTRUCTIONS.md l.717). Un false
+    # omniumEPS/adjCA de l'annee en cours (INSTRUCTIONS.md l.717). Un false
     # signale donc une projection qui ignore le comportement observe de
     # l'emetteur - une anomalie a corriger au refresh, pas un etat a
     # afficher sur la fiche.
@@ -272,7 +272,7 @@ def c16():
         sn=[x for x in (PH.get(tk,{}).get('snapshots') or []) if x.get('price')]
         if len(sn)<2: continue
         for k,year in (('CY',cy),('NY',cy+1),('Y2',cy+2)):
-            fiche_eps=(t['hypothese'].get('adjEPS') or {}).get(str(year))
+            fiche_eps=(t['hypothese'].get('omniumEPS') or {}).get(str(year))
             if not isinstance(fiche_eps,(int,float)): continue
             n=sum(1 for x in sn if isinstance((x.get('epsByYear') or {}).get(str(year)),(int,float)))
             if n<2:
@@ -357,23 +357,23 @@ def x3():
 @check("C17 horizon adjXXX : les 5 annees affichees doivent etre couvertes")
 def c17():
     # yearsFor() affiche CY..CY+4 et l'Expected annual return se calcule
-    # jusqu'a LY=CY+4. Toute annee non couverte par adjEPS est servie par la
+    # jusqu'a LY=CY+4. Toute annee non couverte par omniumEPS est servie par la
     # base CAGR "stupide" (getProj) - back-testee a ~37% d'erreur mediane
-    # sur le net a 2 ans. Cas reel : MSFT 2031 absent d'adjEPS, donc le
+    # sur le net a 2 ans. Cas reel : MSFT 2031 absent d'omniumEPS, donc le
     # chiffre de tete de fiche reposait sur l'extrapolation, pas l'analyse.
     bad=[]
     for tk,t in FICHES.items():
         h=t['hypothese']; d=t.get('data') or []
         if not d: continue
         ly=d[-1]['year']
-        a=h.get('adjEPS') or {}
+        a=h.get('omniumEPS') or {}
         aN=h.get('adjNet') or {}; aS=h.get('adjShares') or {}
-        # getProj derive l'EPS de adjNet/adjShares quand adjEPS manque :
+        # getProj derive l'EPS de adjNet/adjShares quand omniumEPS manque :
         # une annee n'est en defaut que si AUCUNE des deux voies n'existe.
         couvert=lambda y:(isinstance(a.get(str(y)),(int,float))
             or (isinstance(aN.get(str(y)),(int,float)) and isinstance(aS.get(str(y)),(int,float))))
         manq=[y for y in range(ly+1,ly+6) if not couvert(y)]
-        if manq: bad.append((tk,f'adjEPS absent pour {manq} : base CAGR servie '
+        if manq: bad.append((tk,f'omniumEPS absent pour {manq} : base CAGR servie '
                                 f'a l\'affichage (dont le CAGR de tete de fiche '
                                 f'si {ly+5} manque)'))
     return bad
@@ -443,6 +443,17 @@ def w3():
             bad.append((tk,f'adjND {nd0:.0f} -> {aND[k]:.0f} (+{(aND[k]/nd0-1)*100:.0f}%) mais '
                            f'conversion {n0/e0*100:.0f}% -> {aN[k]/aE[k]*100:.0f}% : charge '
                            f'financiere integree ? (ou emetteur a reclasser en financier)'))
+    return bad
+
+@check("C18 cle legacy adjEPS interdite (renommee omniumEPS le 18/08/2026)")
+def c18():
+    # Une session de refresh partie d'une doctrine perimee reintroduirait
+    # la cle sous son ancien nom : l'app ne la lirait plus, la fiche
+    # basculerait silencieusement sur la base CAGR automatique.
+    bad=[]
+    for tk,t in FICHES.items():
+        if 'adjEPS' in (t.get('hypothese') or {}):
+            bad.append((tk,'cle adjEPS presente : ecrire omniumEPS'))
     return bad
 
 def main():

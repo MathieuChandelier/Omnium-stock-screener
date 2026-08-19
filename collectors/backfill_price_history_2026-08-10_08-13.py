@@ -14,12 +14,12 @@ cloture - a partir de donnees dejq figees :
   - prix de cloture : recupere directement via l'API historique publique
     Yahoo Finance (query1.finance.yahoo.com/v8/finance/chart), PAS via le
     proxy price.php (qui n'expose que le prix courant, pas d'historique).
-  - EPS (epsByYear/epsFwd) : copie de hypothese.adjEPS/epsForward12m tel
+  - EPS (epsByYear/epsFwd) : copie de hypothese.omniumEPS/epsForward12m tel
     qu'en vigueur CE JOUR-LA. Pour la quasi-totalite des titres, identique
     a la valeur actuelle (aucun refresh n'a eu lieu entre le 10/08 et
     aujourd'hui). SEULE EXCEPTION : NUBANK, dont le call du 13/08 AU SOIR
     (apres cloture - voir hypothese.dernierCall/guidanceHistory) a
-    entraine un refresh le 15/08 (adjEPS releve de 0.88/1.22/1.66/2.11/
+    entraine un refresh le 15/08 (omniumEPS releve de 0.88/1.22/1.66/2.11/
     2.56 a 0.91/1.27/1.72/2.19/2.65$, ajout du bloc quarterlyEPS qui
     n'existait pas avant). Consequence : les DEUX points de cette semaine
     (10/08 ET 13/08, cloture - donc avant l'annonce du 13/08 au soir)
@@ -60,7 +60,7 @@ HISTORY_PATH = "data/priceHistory.json"
 YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
 TARGET_DATES = ["2026-08-10", "2026-08-13"]  # lundi, jeudi - cloture
 
-# NUBANK seul : valeurs adjEPS/quarterlyEPS EN VIGUEUR au 10/08 et au
+# NUBANK seul : valeurs omniumEPS/quarterlyEPS EN VIGUEUR au 10/08 et au
 # 13/08 (avant cloture), soit AVANT le refresh du 15/08 post-call du
 # 13/08 au soir (voir docstring). Source : git show b97f154:data/NUBANK.json
 NUBANK_PRE_REFRESH_EPS_BY_YEAR = {
@@ -109,7 +109,7 @@ def compute_cy_ny(ticker_data: dict):
 
 
 def build_eps_by_year(hyp: dict):
-    raw = hyp.get("adjEPS") or {}
+    raw = hyp.get("omniumEPS") or {}
     out = {}
     for year_key, value in raw.items():
         if isinstance(value, (int, float)):

@@ -9,7 +9,7 @@ price_history.py. Le run automatique de ce soir (23h00 UTC) capturera
 ndCY/shCY nativement pour le 3e point - ce script ne concerne QUE le
 rattrapage des 2 premiers.
 
-adjND/adjShares ne changent PAS aussi souvent que adjEPS (aucun des deux
+adjND/adjShares ne changent PAS aussi souvent que omniumEPS (aucun des deux
 n'a bouge pour NUBANK malgre son refresh du 15/08 - verifie : memes
 valeurs avant/apres), donc contrairement a epsByYear, pas de cas
 particulier a gerer ici - la valeur actuelle convient pour les deux dates.
