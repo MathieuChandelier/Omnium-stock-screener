@@ -195,21 +195,23 @@
       ],
       "paceCheckpoint": "H1 EBIT EUR 260M of a 460-480M year: comfortably on pace, but management itself flags H2 normalization.",
       "weightedBeatPct": null,
-      "annualBeatPct": null,
+      "annualBeatPct": -0.5,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": -5.4,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "FUCHS guides annual EBIT, but the initial FY25 range (Feb 2025) was not reliably sourced at setup - excluded rather than estimated."
+          "excluded": false,
+          "initialDisplay": "EBIT ~460M EUR (initial)",
+          "realizedDisplay": "435M EUR",
+          "note": "Initial FY25 EBIT guidance ~460M EUR (held into early 2025); cut mid-year (~434M) and realized 435M - level -5.4%."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_guidance",
           "excluded": true,
-          "note": "Same limitation as FY2025."
+          "note": "Searched 19/08/2026: the initial (Feb-2024) FY24 EBIT range did not surface - excluded rather than estimated."
         }
       ],
       "anchorInitial": {
@@ -220,9 +222,17 @@
         "note": "Earliest sourced FY26 EBIT guidance (~EUR 450M at the Q1 call); the true February initial to backfill opportunistically. Metric is EBIT (FUCHS gives no EPS guidance) - mismatch with the EPS target declared."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no measurable closed FY at setup) and the anchor metric is EBIT, not EPS (declared mismatch). First measurable observation at FY2026 close vs the EUR 450M initial anchor.",
+      "applicationNote": "annualBeatPct -0.5% BLENDED (in-progress +4.4 x1/2; FY25 -5.4 single closed). Metric is EBIT (no EPS guidance) - directional only vs the EPS projections (declared mismatch).",
       "consensusSource": "Stockopedia/Vara Research, ~19 analysts",
-      "consensusDate": "2026-07-08"
+      "consensusDate": "2026-07-08",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 450,
+        "currentValue": 470,
+        "deltaPct": 4.4,
+        "asOf": "2026-07-31",
+        "note": "Initial FY26: EBIT ~450M EUR (earliest sourced, Q1 call; Feb true initial to backfill); RAISED 31/07 to 460-480M (mid 470) on record H1 - projected +4.4%."
+      }
     },
     "dernierCall": {
       "quarter": "H1 26",
@@ -249,10 +259,11 @@
       "communiqueAnalyse": false,
       "transcriptAnalyse": true,
       "etatsFinanciers": {
-        "analyse": false,
-        "referentiel": null,
-        "source": null,
-        "date": null
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "Rapport semestriel H1 2026 + communique (31/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA S1 2 003 M EUR (+11%), EBIT 260 M (marge 13,0% vs 11,6% N-1) - record S1. Effets de pre-achats (Moyen-Orient) et defaillances concurrentes cites; guidance EBIT relevee a 460-480M."
       }
     },
     "ancrages": [

@@ -1,459 +1,472 @@
 {
- "name": "Diasorin",
- "cours": 63.0,
- "yahooSymbol": "DIA.MI",
- "dividende": 1.3,
- "data": [
-  {
-   "year": 2021,
-   "ca": 1090,
-   "ebit": 310,
-   "net": 240,
-   "shares": 56,
-   "nd": 950,
-   "div": 1.0
-  },
-  {
-   "year": 2022,
-   "ca": 1186,
-   "ebit": 290,
-   "net": 220,
-   "shares": 55.5,
-   "nd": 870,
-   "div": 1.1
-  },
-  {
-   "year": 2023,
-   "ca": 1151,
-   "ebit": 233,
-   "net": 187,
-   "shares": 55,
-   "nd": 776,
-   "div": 1.15
-  },
-  {
-   "year": 2024,
-   "ca": 1185,
-   "ebit": 245,
-   "net": 190,
-   "shares": 54,
-   "nd": 618,
-   "div": 1.2
-  },
-  {
-   "year": 2025,
-   "ca": 1195,
-   "ebit": 213,
-   "net": 150,
-   "shares": 52,
-   "nd": 580,
-   "div": 1.3
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": null,
-  "epsNY": null,
-  "date": null,
-  "source": "Aucun consensus sell-side fiable identifie a cette date - non renseigne plutot qu'estime (inchange depuis la creation)."
- },
- "particularites": [
-  {
-   "text": "Segment Licensed Technologies (~14% du CA) fonctionne sur un modele de redevances/licences (notamment le partenariat QIAGEN pour la technologie QuantiFERON), distinct du modele produit propre des deux autres segments - source de revenu recurrente mais non pilotable par Diasorin elle-meme.",
-   "valuePct": null
-  }
- ],
- "nextEvent": {
-  "label": "Q3 2026",
-  "date": null
- },
- "ownership": {
-  "asOf": null,
-  "insiderPct": null,
-  "insiderDesc": "Non renseigne - champ absent de la creation, non traite dans le cadre de ce refresh evenementiel S1/T2 26. A completer au prochain refresh.",
-  "insiderSource": null,
-  "notableHolders": [],
-  "coverageNote": "Titre cote a titre principal sur Borsa Italiana - champ ownership non renseigne a ce stade.",
-  "history": []
- },
- "compliance": {
-  "asOf": null,
-  "items": [],
-  "note": "Champ absent de la creation, non renseigne a ce refresh evenementiel faute de recherche dediee. A auditer au prochain refresh."
- },
- "coherenceQualitative": {
-  "asOf": "2026-08-10",
-  "statut": "coherent",
-  "points": [],
-  "historique": [
-   {
-    "quarter": "Q1 2026",
-    "date": "2026-05-08",
-    "format": "brut",
-    "clesRetenues": [
-     "Q Aisyah Noor (Morgan Stanley) - comparaison de croissance QuantiFERON vs QIAGEN et quantification du destockage : le management explique que Diasorin ne reporte que les resultats CLIA alors que QIAGEN inclut l'ELISA, rendant la comparaison directe invalide ; le destockage est reconnu mais non quantifie, l'analyste est invite a le calculer lui-meme.",
-     "Q Aisyah Noor - ventes d'instruments vs consommables : 80% des placements actuels sont en location d'agent (agent rental), les ventes d'instruments representant un CA minimal, attribue a l'incapacite des clients a predire leurs revenus saisonniers.",
-     "Q Odysseas Manesiotis (BNP Paribas) - mouvements de la ligne de couts et changements de disclosure : trois moteurs de cout detailles - hausses salariales (un tiers de la croissance), investissements de lancement NES depassant 10 M EUR/an (un tiers), inflation normale (le solde).",
-     "Q Odysseas Manesiotis - differenciation de la plateforme LIAISON NES : simplicite mise en avant ('2 elements vs 8', '17 minutes vs 40') comparee aux concurrents, fonctionnement mains-libres pour les laboratoires de proximite.",
-     "Q Kavya Deshpande (UBS) - implications de la guidance et soutenabilite de la marge : marges brutes attendues stables avec amelioration EBITDA via levier operationnel, compense par la dilution du mix molecular et la deterioration Chine, equilibre par les benefices de la fermeture de l'usine allemande.",
-     "Q Kavya Deshpande - clarification de l'impact Chine : le declin Chine pourrait atteindre 7 M EUR plutot que les 5 M EUR precedemment guides, expansion VBP et pricing concurrentiel agressif decrits comme moteur.",
-     "Q Jan Koch (Deutsche Bank) - hypotheses d'attenuation des vents contraires : progression trimestrielle deja communiquee montrant un T2 attendu legerement positif contre un T1 negatif.",
-     "Q Jan Koch - effets du calendrier de commandes LTG : H1 2025 avait montre +15% puis H2 -14%, le declin T1 actuel de -7% etant lie a des patterns de commande qui devraient se normaliser au H2.",
-     "Q Jan Koch - calendrier d'investissement NES : moins de 2 M EUR des 10 M EUR prevus ont ete depenses au T1.",
-     "Q Anna Vaktis (BofA) - positionnement dans la fourchette de guidance (haut vs bas) : le management refuse de preciser, se dit confortable pour atteindre la fourchette, les resultats du T2 apporteront plus de clarte directionnelle.",
-     "Q Anna Vaktis - exposition Moyen-Orient et attenuation de l'impact petrole : 5 M EUR d'impact annualise confirme lie a la chaine d'approvisionnement/couts matieres avec le petrole >100$/baril, exclu de la guidance car non materiel au T1.",
-     "Q Natalia Webster (RBC) - croissance immuno US hors meteo et QuantiFERON : l'activite US sous-jacente a livre en ligne avec les trimestres precedents hors effets meteo, normalisation observee en mars.",
-     "Q Natalia Webster - statut de normalisation des volumes Europe : croissance actuelle 0,5%-2% par trimestre contre 6% historiquement, retour vers un niveau normalise pre-COVID autour de 1,5%.",
-     "Q Natalia Webster - soutenabilite de l'attenuation Moyen-Orient : Iran identifie comme exposition de 3-4 M EUR avec incertitude de distribution, autres regions principalement confrontees a des defis logistiques via les perturbations du port de Dubai.",
-     "Q Philip Omnu (JPMorgan) - guidance D&A sous le lancement NES : Alberto anticipe une hausse des amortissements liee aux installations d'instruments NES et a l'amortissement des incorporels du panel GI a partir des mois suivants.",
-     "Q Philip Omnu - impact de la nouvelle concurrence sur la guidance : la guidance n'integre pas la concurrence du test TB Roche attendue fin 2026, aucun impact concurrentiel materiel anticipe pour 2026."
-    ]
-   },
-   {
-    "quarter": "Q2 2026",
-    "date": "2026-07-31",
-    "format": "brut",
-    "clesRetenues": [
-     "Q Aisyah Noor (Morgan Stanley) - comment atteindre ~27% de croissance Molecular au S2 vu la faiblesse du S1, signaux d'adoption NES : saison grippale normalisee, base LIAISON PLEX absente l'an dernier, placements NES pas encore contributeurs materiels au CA.",
-     "Q Aisyah Noor - remboursements tarifaires comptabilises au T2, solde restant : 2,5 M EUR de remboursements recus au T2, calendrier du solde incertain (H2 2026 ou 2027).",
-     "Q David Westenberg (Piper Sandler) - tendances de momentum T3, confiance dans des comps grippe plus faciles et les lancements produits : immunodiagnostics croissance continue attendue, destockage T1 juge exceptionnel, molecular depend de la normalisation grippale, LTG anticipe une performance 'mid-double-digit'.",
-     "Q David Westenberg - mix panels syndromiques vs tests uniques et changements de remboursement : le management refuse une reponse detaillee, renvoie la discussion au T4.",
-     "Q Ankit Verma (JPMorgan) - calendrier du remboursement tarifaire H2 et guidance FX annuelle : ~2,5 M EUR recus au T2, solde 'sans visibilite', hypothese EUR/USD 1,15-1,16 impliquant ~25 M EUR d'impact change annuel.",
-     "Q Ankit Verma - couleur directionnelle sur les placements NES : trop tot pour des chiffres precis, retours distributeurs decrits comme 'tres bons'.",
-     "Q Anna Ratcliffe (BofA) - la force QuantiFERON au T2 est-elle un rattrapage du destockage T1 ou un momentum sous-jacent : 'pas un rattrapage', le destockage T1 par les grands laboratoires prives s'est normalise, les volumes 'continuent d'augmenter' aux US.",
-     "Q Anna Ratcliffe - clarification de la guidance LTG (slides low-single-digit mais commentaire mid-to-high-single-digit) : LTG pourrait 'apporter une surprise positive', les placements d'instruments se retablissant plus vite que prevu.",
-     "Q Charles Pitman-King (Barclays) - strategie de prix NES et visibilite economique : refus de divulguer le pricing concurrentiel, remboursement de 140 USD note pour les panels respiratoires a quatre tests avec des refus minimes.",
-     "Q Charles Pitman-King - les economies de couts S&M du S1 etaient-elles ponctuelles ou operationnelles : trois facteurs - levier operationnel, mix LTG favorable (+7%), remboursement tarifaire compensant partiellement les couts de tarifs.",
-     "Q Odysseas Manesiotis (BNP Paribas) - mix outpatient/inpatient de LIAISON PLEX et impact de l'expansion MolDX : placements initiaux laboratoires prives (100% outpatient), mix hopitaux 60-70% inpatient, preoccupations MolDX adressees via une strategie de mini-panels alignee sur les tendances de remboursement.",
-     "Q Odysseas Manesiotis - opportunite QuantiFERON sur les marches secondaires et expansion Chine : Chine confrontee a 26 fournisseurs ELISA locaux, opportunite marches secondaires via des kits LIAISON a plus haut debit.",
-     "Q Odysseas Manesiotis - confirmation du nombre de clients PLEX inchange T1-T2 : plus de 150 clients, le T2 incluant des placements et activations de panel sanguin dans des comptes respiratoires existants.",
-     "Q Jan Koch (Deutsche Bank) - quantifier les moteurs de croissance LTG (calendrier de commandes vs reprise life science) : effets non separables, recommande de suivre les commentaires des partenaires ('activite B2B').",
-     "Q Jan Koch - progres du lancement du panel GI et benefice de l'epidemie actuelle : tout juste lance, deux comptes valides, 'aucun effet du GI encore' dans les chiffres du T2.",
-     "Q Jan Koch - le nombre de clients PLEX sera-t-il communique a l'avenir : plus de 150 clients, le focus se deplacant vers les installations et modules complementaires.",
-     "Q Natalia Webster (RBC) - mix de revenus respiratoire vs non-respiratoire attendu pour PLEX : le respiratoire reste >70% du marche syndromique, la guidance 2026 suppose le respiratoire a 'plus de la moitie' des revenus.",
-     "Q Natalia Webster - les delais d'implementation de 6-12 mois peuvent-ils s'accelerer : calendrier inchange, complexite de validation/integration IT necessitant les 6-12 mois habituels.",
-     "Q Natalia Webster - impact inflation Moyen-Orient de 8-10 M EUR dans la guidance 2026 : impact minimal a ce jour, clause de reserve retiree de la guidance, sera reevaluee pour 2027.",
-     "Q Kavya Deshpande (UBS) - marge brute QuantiFERON haut debit vs version standard : 'structure de marge exactement identique' a la version precedente.",
-     "Q Kavya Deshpande - potentiel de conversion de la base client vers le haut debit : conversion visee a '100%', 30-35% deja convertis, achevement attendu d'ici la fin d'annee."
-    ]
-   }
+  "name": "Diasorin",
+  "cours": 63.0,
+  "yahooSymbol": "DIA.MI",
+  "dividende": 1.3,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 1090,
+      "ebit": 310,
+      "net": 240,
+      "shares": 56,
+      "nd": 950,
+      "div": 1.0
+    },
+    {
+      "year": 2022,
+      "ca": 1186,
+      "ebit": 290,
+      "net": 220,
+      "shares": 55.5,
+      "nd": 870,
+      "div": 1.1
+    },
+    {
+      "year": 2023,
+      "ca": 1151,
+      "ebit": 233,
+      "net": 187,
+      "shares": 55,
+      "nd": 776,
+      "div": 1.15
+    },
+    {
+      "year": 2024,
+      "ca": 1185,
+      "ebit": 245,
+      "net": 190,
+      "shares": 54,
+      "nd": 618,
+      "div": 1.2
+    },
+    {
+      "year": 2025,
+      "ca": 1195,
+      "ebit": 213,
+      "net": 150,
+      "shares": 52,
+      "nd": 580,
+      "div": 1.3
+    }
   ],
-  "engagementsStructurants": []
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-09",
-   "eps": {
-    "2026": 3.1,
-    "2027": 3.38,
-    "2028": 3.88,
-    "2029": 4.52,
-    "2030": 5.24
-   }
+  "epsConsensus": {
+    "year": 2026,
+    "eps": null,
+    "epsNY": null,
+    "date": null,
+    "source": "Aucun consensus sell-side fiable identifie a cette date - non renseigne plutot qu'estime (inchange depuis la creation)."
   },
-  "source": "Refresh S1/T2 2026 - Transcript integral du call T2 2026 (Carlo Rosa CEO / Alberto Donati CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 09/07/2026 (transcript T1 + Investor Day 2026-2030 du 20/05/2026, deja integres, non rouverts par ce refresh sauf ou indique). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS.PY (FY2025 S1 1.62 EUR / S2 1.27 EUR, derive du ratio management adjusted net profit H1 125 M EUR / FY 223 M EUR applique a la base restated Omnium 150 M EUR / 52 M titres) ; ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript investing.com du 08/05/2026, 7 analystes/~14 echanges) compare au T2 2026 (transcript investing.com du 31/07/2026, deja lu lors du refresh precedent, 9 analystes/~22 echanges) - aucune incoherence materielle identifiee (revision guidance Chine 5->7 M EUR justifiee par VBP/pricing concurrentiel, clarification risque Moyen-Orient est une precision et non un retournement, reponses destockage QuantiFERON coherentes T1/T2). Correction incidente : confiance de l'ancrage nes-toujours-non-chiffre normalisee sur l'enum standard (basse).",
-  "dernierCall": {
-   "quarter": "Q2 2026",
-   "communiqueAnalyse": false,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": null,
-     "consensus": null,
-     "basis": null
-    },
-    "epsAdj": {
-     "actual": null,
-     "consensus": null,
-     "basis": null,
-     "basisNote": "Aucun chiffre de CA absolu, EBIT/EBITDA en valeur absolue publie ou de consensus explicitement rappele dans le transcript fourni au-dela des pourcentages de croissance cites ; H1 CA absolu (602 M EUR) et EBIT/EBITDA H1 absolus sont bien donnes par le CFO, retenus ci-dessous, mais pas de consensus externe recoupe pour ce refresh (aucun communique de presse officiel fourni, seulement le transcript)."
+  "particularites": [
+    {
+      "text": "Segment Licensed Technologies (~14% du CA) fonctionne sur un modele de redevances/licences (notamment le partenariat QIAGEN pour la technologie QuantiFERON), distinct du modele produit propre des deux autres segments - source de revenu recurrente mais non pilotable par Diasorin elle-meme.",
+      "valuePct": null
     }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement). Signal qualitatif fort sur Molecular : le management confirme qu'il faudra environ +27% organique au S2 pour atteindre l'objectif 'low double-digit' annuel sur ce segment, explique par la normalisation de la saison grippale et la montee en charge de PLEX/NES (quasi nuls au S2 2025).",
-   "guidanceAnnuelle": "Guidance FY2026 REAFFIRMEE INTEGRALEMENT malgre un S1 flat a cambi costanti : CA +5% a +6% cc, marge EBITDA ajustee 32%-33%.",
-   "pointsCles": [
-    "T2 26 CA +4% cc (+5% cc hors Chine et hors respiratoire moleculaire), confirmant la progression trimestrielle attendue communiquee en mars lors des resultats FY2025 - Immunodiagnostics +4% (+5% hors Chine, porte par un retour a une croissance historique aux Etats-Unis), Molecular +1% (+4% hors respiratoire), LTG +7% (bonne surprise, recuperation plus rapide que prevu en Life Science).",
-    "H1 26 CA 602 M EUR, flat a cambi costanti (-3% a cours courants, effet de change -20 M EUR sur le semestre, dont seulement -3 M EUR au T2 seul contre -17 M EUR au T1) ; EBIT ajuste H1 149 M EUR (-10% cc), marge EBIT 24% cc/25% cours courants ; EBITDA H1 194 M EUR (-7% cc), marge EBITDA 32% (conforme guidance), avec une nette amelioration sequentielle de 31% au T1 a 33% au T2 - operating leverage demontre.",
-    "Position financiere nette a -844 M EUR au 30/06/2026 (contre -580 M EUR fin 2025, deterioration de 265 M EUR) sous l'effet cumule de 233 M EUR de rachats d'actions et 65 M EUR de dividendes verses au S1, partiellement compenses par un FCF H1 positif mais en repli (58 M EUR contre 83 M EUR au S1 25, du fait d'un stockage de precaution d'inventaire lie au lancement de LIAISON NES).",
-    "Programme de rachat d'actions de 250 M EUR quasi acheve : ~3,6M d'actions rachetees (~6,5% du capital) pour 236 M EUR, soit ~95% du programme, a la date du call.",
-    "LIAISON NES : commercialisation demarree via les distributeurs, aucun chiffre communique a ce stade ('pas significatif'), mais approbation FDA 510(k) obtenue pour le second test (Group A strep), completant le panel complet - visibilite attendue aux calls T3/T4 avec la saison grippale. LIAISON PLEX : plus de 150 clients (frontiere depassee depuis le Q4), lancement du panel GI en cours (2 comptes valides a ce stade, funnel en forte expansion), delai d'activation clients toujours 6-12 mois (inchange)."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2/H1 2026 exploited via user-provided call transcript; IFRS interim statements not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "FY25",
-    "date": "2026-03-20",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance initiale FY2026 : CA +5%-6% a change constant (hypothese EUR/USD 1,18), marge EBITDA ajustee 32%-33%."
-   },
-   {
-    "quarter": "Q1 2026",
-    "date": "2026-05-08",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance FY2026 reiteree integralement malgre un T1 faible (-3% cc) juge transitoire (saison grippale molle, destockage QuantiFERON, meteo US)."
-   },
-   {
-    "quarter": "Q2 2026",
-    "date": "2026-07-31",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance FY2026 reaffirmee integralement malgre un H1 flat a cambi constants : CA +5%-6% cc, marge EBITDA ajustee 32%-33%."
-   }
   ],
-  "guidanceLongTerme": "Plan strategique 2026-2030 devoile a l'Investor Day du 20/05/2026 (inchange depuis la creation) : CAGR CA vise 6%-8% (2026-2030, change constant EUR/USD 1,20), marge EBITDA ajustee visee 34%-35% en 2030 (contre 32%-33% guide pour 2026), FCF cumule 2027-2030 vise a ~1 Md EUR. Repose explicitement sur l'execution commerciale de NES et PLEX. Aucune mise a jour chiffree de ce plan communiquee lors du call T2 26.",
-  "guidanceLongTermeHistory": [],
-  "summary": "H1 2026 flat a cambi constants (T1 faible -3%, T2 en retour a la croissance +4% cc, conforme a la trajectoire trimestrielle annoncee en mars), guidance FY2026 integralement reaffirmee. Revision MAJEURE a la hausse des adjXXX ce refresh : la marge EBIT reelle du H1 (24% cc) est nettement superieure a ce qu'impliquait le modele de creation (base sur le seul T1, plus faible) - omniumEBIT 2026 releve de 215 a ~300 M EUR (+40%), omniumEPS (champ desormais ajoute, absent de la creation) a 4,37 EUR. NES toujours sans chiffre communique, le vrai test commercial reste la saison grippale S2.",
-  "text": "== THESIS SUMMARY ==\nH1 2026 came in flat at constant FX exactly on the quarterly path management laid out in March (Q1 -3%, Q2 +4%), earning a second integral reaffirmation of FY26 guidance (revenue +5/+6% cc, adjusted EBITDA margin 32-33%). The major event of this refresh is a margin-driven correction: H1 EBIT of 149M on the Omnium base forced a rebuild of FY26 EBIT to ~300M (vs 215M at setup, +40%) - carried through the whole 2026-2030 trajectory. LIAISON PLEX traction is now real (150+ clients, GI panel just launched); LIAISON NES is commercial but still without a single disclosed number.\n\n== THESIS READ ==\n- Credibility signal: the quarterly progression matched the plan twice - supporting the H2 acceleration (molecular ramp) the guidance requires. Watch: Q3 molecular print.\n- The +40% EBIT correction is extrapolated from H1 margin holding, not from explicit guidance at that granularity - medium confidence by construction. Watch: H2 margin confirmation.\n- NES is the key unpriced optionality, two quarters into commercialization without numbers. Watch: first NES disclosure.\n\n== SPECIAL FACTORS ==\nOmnium base reintegrates the recurring Luminex acquired-intangible amortization (~35-40M/yr) that Diasorin excludes from its 'adjusted' metrics (rule E5e) - hence Omnium EBIT sits structurally below management figures. Buyback nearly complete (shares 52 -> 49M). No reliable sell-side consensus (basis null). Iran/Middle-East exposure bounded.\n\n== PARAMETERS & WATCH-LIST ==\nFY26 bottom-up: H1 EBIT actual 149M + H2 at held margin -> ~300M. 2027-2030: scale factors from the 2026 correction (EBIT x1.395, Net x1.381) applied to the Investor-Day plan (revenue CAGR 6-8%, adjusted EBITDA margin 34-35% by 2030). Bridge: ETR 25%, finNet -15 to -11M with deleveraging (net debt 750 -> 60M); published 2025 reconciles at zero residual. Watch: EUR/USD (guidance assumes 1.18); QuantiFERON restocking; net-debt bump from the buyback.\n\n== CATALYSTS ==\nQ3 results (Nov); first NES quantification; PLEX GI panel ramp; FY27 guidance (Mar 2027).",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "h1-margin-beat-correction-majeure",
-    "moteur": "REVISION MAJEURE ce refresh : le modele de creation (09/07/2026), base sur le seul T1 26 (EBIT ajuste -17% cc), impliquait un EBIT FY2026 d'environ 215 M EUR (marge ~17%). Le H1 26 reel montre un EBIT ajuste de 149 M EUR sur une marge de 24% cc/25% courants - nettement superieur a l'hypothese de creation. Reconstruction bottom-up retenue : H1 reel (EBIT 149 M EUR) + H2 estime par maintien approximatif de la marge H1 (le management ne signale aucune degradation attendue, seulement une acceleration du CA portee par NES/PLEX en pleine saison), donnant un FY2026 EBIT ~300-310 M EUR (retenu a 300 M EUR par prudence, la trajectoire S2 restant en partie une extrapolation).",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumNet.2026"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "guidance-reaffirmee-integralement",
-    "moteur": "Guidance FY2026 (CA +5%-6% cc, marge EBITDA 32%-33%) reaffirmee sans aucune modification pour la 2e fois consecutive (apres le T1 puis le T2), malgre un H1 flat a cambi constants - le management indique explicitement rester confiant compte tenu de la normalisation attendue des effets de base T1 (grippe, destockage QuantiFERON, meteo) et de la montee en charge NES/PLEX au S2.",
-    "applique": [
-     "omniumCA.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "molecular-h2-acceleration-requise",
-    "moteur": "Le management confirme explicitement qu'environ +27% de croissance organique est necessaire au S2 sur Molecular pour atteindre l'objectif annuel 'low double-digit', explique par une base de comparaison quasi nulle sur PLEX/NES au S2 2025 (produits pas encore lances) plutot que par une hypothese heroique de croissance organique sous-jacente - risque d'execution a suivre mais mecanisme de construction juge credible par le management lui-meme.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "nes-toujours-non-chiffre",
-    "moteur": "LIAISON NES reste sans aucun chiffre de vente communique par le management ('trop tot', 'pas significatif') - deuxieme trimestre consecutif sans traction chiffrable. Le panel complet est desormais disponible (2e test Group A strep approuve en 510(k)), la vraie visibilite commerciale est attendue aux calls T3/T4 avec la saison grippale - point de friction majeur avec le marche (note Deutsche Bank du 15 juin, potentiel NES 2030 estime a 97-126 M EUR contre 125-200 M EUR implicites dans la guidance groupe) reste non tranche.",
-    "applique": [],
-    "confiance": "basse"
-   },
-   {
-    "id": "buyback-quasi-acheve",
-    "moteur": "Programme de rachat d'actions de 250 M EUR execute a ~95% au moment du call (236 M EUR, ~6,5% du capital, ~3,6M actions) - nombre d'actions diluees revise legerement a la baisse vs la creation (49M pour 2026 contre 50M), la dilution du financement de ce programme (endettement net accru) etant deja integree dans omniumND.",
-    "applique": [
-     "omniumShares.2026",
-     "omniumShares.2027",
-     "omniumShares.2028",
-     "omniumShares.2029",
-     "omniumShares.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "net-debt-hausse-buyback",
-    "moteur": "Position financiere nette degradee a -844 M EUR au 30/06/2026 (contre -580 M EUR fin 2025) sous l'effet cumule du programme de rachat (233 M EUR) et des dividendes (65 M EUR), partiellement compense par un FCF H1 positif mais en repli (58 M EUR vs 83 M EUR, lie au stockage d'inventaire NES) - trajectoire de desendettement 2026 revisee, le pic de dette nette etant desormais confirme plus eleve que l'hypothese de creation.",
-    "applique": [
-     "omniumND.2026",
-     "omniumND.2027"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "iran-moyen-orient-borne",
-    "moteur": "Exposition Iran confirmee proche de zero au T2 26 (contre 1,5 M EUR de revenus au T2 25, effet attendu persister sur le reste de 2026 selon le CFO) - impact isole et borne, coherent avec l'estimation de 3-4 M EUR annuels retenue a la creation, sans extension identifiee au-dela.",
-    "applique": [
-     "omniumCA.2026"
-    ],
-    "confiance": "moyenne"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 4.37,
-   "2027": 4.71,
-   "2028": 5.47,
-   "2029": 6.43,
-   "2030": 7.54
+  "nextEvent": {
+    "label": "Q3 2026",
+    "date": null
   },
-  "omniumCA": {
-   "2026": 1261,
-   "2027": 1343,
-   "2028": 1444,
-   "2029": 1560,
-   "2030": 1685
+  "ownership": {
+    "asOf": null,
+    "insiderPct": null,
+    "insiderDesc": "Non renseigne - champ absent de la creation, non traite dans le cadre de ce refresh evenementiel S1/T2 26. A completer au prochain refresh.",
+    "insiderSource": null,
+    "notableHolders": [],
+    "coverageNote": "Titre cote a titre principal sur Borsa Italiana - champ ownership non renseigne a ce stade.",
+    "history": []
   },
-  "omniumEBIT": {
-   "2026": 300,
-   "2027": 328,
-   "2028": 374,
-   "2029": 430,
-   "2030": 494
+  "compliance": {
+    "asOf": null,
+    "items": [],
+    "note": "Champ absent de la creation, non renseigne a ce refresh evenementiel faute de recherche dediee. A auditer au prochain refresh."
   },
-  "omniumNet": {
-   "2026": 214,
-   "2027": 233,
-   "2028": 268,
-   "2029": 312,
-   "2030": 362
+  "coherenceQualitative": {
+    "asOf": "2026-08-10",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "Q1 2026",
+        "date": "2026-05-08",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Aisyah Noor (Morgan Stanley) - comparaison de croissance QuantiFERON vs QIAGEN et quantification du destockage : le management explique que Diasorin ne reporte que les resultats CLIA alors que QIAGEN inclut l'ELISA, rendant la comparaison directe invalide ; le destockage est reconnu mais non quantifie, l'analyste est invite a le calculer lui-meme.",
+          "Q Aisyah Noor - ventes d'instruments vs consommables : 80% des placements actuels sont en location d'agent (agent rental), les ventes d'instruments representant un CA minimal, attribue a l'incapacite des clients a predire leurs revenus saisonniers.",
+          "Q Odysseas Manesiotis (BNP Paribas) - mouvements de la ligne de couts et changements de disclosure : trois moteurs de cout detailles - hausses salariales (un tiers de la croissance), investissements de lancement NES depassant 10 M EUR/an (un tiers), inflation normale (le solde).",
+          "Q Odysseas Manesiotis - differenciation de la plateforme LIAISON NES : simplicite mise en avant ('2 elements vs 8', '17 minutes vs 40') comparee aux concurrents, fonctionnement mains-libres pour les laboratoires de proximite.",
+          "Q Kavya Deshpande (UBS) - implications de la guidance et soutenabilite de la marge : marges brutes attendues stables avec amelioration EBITDA via levier operationnel, compense par la dilution du mix molecular et la deterioration Chine, equilibre par les benefices de la fermeture de l'usine allemande.",
+          "Q Kavya Deshpande - clarification de l'impact Chine : le declin Chine pourrait atteindre 7 M EUR plutot que les 5 M EUR precedemment guides, expansion VBP et pricing concurrentiel agressif decrits comme moteur.",
+          "Q Jan Koch (Deutsche Bank) - hypotheses d'attenuation des vents contraires : progression trimestrielle deja communiquee montrant un T2 attendu legerement positif contre un T1 negatif.",
+          "Q Jan Koch - effets du calendrier de commandes LTG : H1 2025 avait montre +15% puis H2 -14%, le declin T1 actuel de -7% etant lie a des patterns de commande qui devraient se normaliser au H2.",
+          "Q Jan Koch - calendrier d'investissement NES : moins de 2 M EUR des 10 M EUR prevus ont ete depenses au T1.",
+          "Q Anna Vaktis (BofA) - positionnement dans la fourchette de guidance (haut vs bas) : le management refuse de preciser, se dit confortable pour atteindre la fourchette, les resultats du T2 apporteront plus de clarte directionnelle.",
+          "Q Anna Vaktis - exposition Moyen-Orient et attenuation de l'impact petrole : 5 M EUR d'impact annualise confirme lie a la chaine d'approvisionnement/couts matieres avec le petrole >100$/baril, exclu de la guidance car non materiel au T1.",
+          "Q Natalia Webster (RBC) - croissance immuno US hors meteo et QuantiFERON : l'activite US sous-jacente a livre en ligne avec les trimestres precedents hors effets meteo, normalisation observee en mars.",
+          "Q Natalia Webster - statut de normalisation des volumes Europe : croissance actuelle 0,5%-2% par trimestre contre 6% historiquement, retour vers un niveau normalise pre-COVID autour de 1,5%.",
+          "Q Natalia Webster - soutenabilite de l'attenuation Moyen-Orient : Iran identifie comme exposition de 3-4 M EUR avec incertitude de distribution, autres regions principalement confrontees a des defis logistiques via les perturbations du port de Dubai.",
+          "Q Philip Omnu (JPMorgan) - guidance D&A sous le lancement NES : Alberto anticipe une hausse des amortissements liee aux installations d'instruments NES et a l'amortissement des incorporels du panel GI a partir des mois suivants.",
+          "Q Philip Omnu - impact de la nouvelle concurrence sur la guidance : la guidance n'integre pas la concurrence du test TB Roche attendue fin 2026, aucun impact concurrentiel materiel anticipe pour 2026."
+        ]
+      },
+      {
+        "quarter": "Q2 2026",
+        "date": "2026-07-31",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Aisyah Noor (Morgan Stanley) - comment atteindre ~27% de croissance Molecular au S2 vu la faiblesse du S1, signaux d'adoption NES : saison grippale normalisee, base LIAISON PLEX absente l'an dernier, placements NES pas encore contributeurs materiels au CA.",
+          "Q Aisyah Noor - remboursements tarifaires comptabilises au T2, solde restant : 2,5 M EUR de remboursements recus au T2, calendrier du solde incertain (H2 2026 ou 2027).",
+          "Q David Westenberg (Piper Sandler) - tendances de momentum T3, confiance dans des comps grippe plus faciles et les lancements produits : immunodiagnostics croissance continue attendue, destockage T1 juge exceptionnel, molecular depend de la normalisation grippale, LTG anticipe une performance 'mid-double-digit'.",
+          "Q David Westenberg - mix panels syndromiques vs tests uniques et changements de remboursement : le management refuse une reponse detaillee, renvoie la discussion au T4.",
+          "Q Ankit Verma (JPMorgan) - calendrier du remboursement tarifaire H2 et guidance FX annuelle : ~2,5 M EUR recus au T2, solde 'sans visibilite', hypothese EUR/USD 1,15-1,16 impliquant ~25 M EUR d'impact change annuel.",
+          "Q Ankit Verma - couleur directionnelle sur les placements NES : trop tot pour des chiffres precis, retours distributeurs decrits comme 'tres bons'.",
+          "Q Anna Ratcliffe (BofA) - la force QuantiFERON au T2 est-elle un rattrapage du destockage T1 ou un momentum sous-jacent : 'pas un rattrapage', le destockage T1 par les grands laboratoires prives s'est normalise, les volumes 'continuent d'augmenter' aux US.",
+          "Q Anna Ratcliffe - clarification de la guidance LTG (slides low-single-digit mais commentaire mid-to-high-single-digit) : LTG pourrait 'apporter une surprise positive', les placements d'instruments se retablissant plus vite que prevu.",
+          "Q Charles Pitman-King (Barclays) - strategie de prix NES et visibilite economique : refus de divulguer le pricing concurrentiel, remboursement de 140 USD note pour les panels respiratoires a quatre tests avec des refus minimes.",
+          "Q Charles Pitman-King - les economies de couts S&M du S1 etaient-elles ponctuelles ou operationnelles : trois facteurs - levier operationnel, mix LTG favorable (+7%), remboursement tarifaire compensant partiellement les couts de tarifs.",
+          "Q Odysseas Manesiotis (BNP Paribas) - mix outpatient/inpatient de LIAISON PLEX et impact de l'expansion MolDX : placements initiaux laboratoires prives (100% outpatient), mix hopitaux 60-70% inpatient, preoccupations MolDX adressees via une strategie de mini-panels alignee sur les tendances de remboursement.",
+          "Q Odysseas Manesiotis - opportunite QuantiFERON sur les marches secondaires et expansion Chine : Chine confrontee a 26 fournisseurs ELISA locaux, opportunite marches secondaires via des kits LIAISON a plus haut debit.",
+          "Q Odysseas Manesiotis - confirmation du nombre de clients PLEX inchange T1-T2 : plus de 150 clients, le T2 incluant des placements et activations de panel sanguin dans des comptes respiratoires existants.",
+          "Q Jan Koch (Deutsche Bank) - quantifier les moteurs de croissance LTG (calendrier de commandes vs reprise life science) : effets non separables, recommande de suivre les commentaires des partenaires ('activite B2B').",
+          "Q Jan Koch - progres du lancement du panel GI et benefice de l'epidemie actuelle : tout juste lance, deux comptes valides, 'aucun effet du GI encore' dans les chiffres du T2.",
+          "Q Jan Koch - le nombre de clients PLEX sera-t-il communique a l'avenir : plus de 150 clients, le focus se deplacant vers les installations et modules complementaires.",
+          "Q Natalia Webster (RBC) - mix de revenus respiratoire vs non-respiratoire attendu pour PLEX : le respiratoire reste >70% du marche syndromique, la guidance 2026 suppose le respiratoire a 'plus de la moitie' des revenus.",
+          "Q Natalia Webster - les delais d'implementation de 6-12 mois peuvent-ils s'accelerer : calendrier inchange, complexite de validation/integration IT necessitant les 6-12 mois habituels.",
+          "Q Natalia Webster - impact inflation Moyen-Orient de 8-10 M EUR dans la guidance 2026 : impact minimal a ce jour, clause de reserve retiree de la guidance, sera reevaluee pour 2027.",
+          "Q Kavya Deshpande (UBS) - marge brute QuantiFERON haut debit vs version standard : 'structure de marge exactement identique' a la version precedente.",
+          "Q Kavya Deshpande - potentiel de conversion de la base client vers le haut debit : conversion visee a '100%', 30-35% deja convertis, achevement attendu d'ici la fin d'annee."
+        ]
+      }
+    ],
+    "engagementsStructurants": []
   },
-  "omniumND": {
-   "2026": 750,
-   "2027": 580,
-   "2028": 400,
-   "2029": 230,
-   "2030": 60
-  },
-  "omniumShares": {
-   "2026": 49,
-   "2027": 49.5,
-   "2028": 49,
-   "2029": 48.5,
-   "2030": 48
-  },
-  "quarterlyEPS": {
-   "cadence": "semestriel",
-   "historique": [],
-   "PY": [
-    {
-     "label": "S1",
-     "eps": 1.62,
-     "actual": true
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-09",
+      "eps": {
+        "2026": 3.1,
+        "2027": 3.38,
+        "2028": 3.88,
+        "2029": 4.52,
+        "2030": 5.24
+      }
     },
-    {
-     "label": "S2",
-     "eps": 1.27,
-     "actual": true
-    }
-   ],
-   "CY": [
-    {
-     "label": "S1",
-     "eps": 2.13,
-     "actual": true
+    "source": "Refresh S1/T2 2026 - Transcript integral du call T2 2026 (Carlo Rosa CEO / Alberto Donati CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 09/07/2026 (transcript T1 + Investor Day 2026-2030 du 20/05/2026, deja integres, non rouverts par ce refresh sauf ou indique). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS.PY (FY2025 S1 1.62 EUR / S2 1.27 EUR, derive du ratio management adjusted net profit H1 125 M EUR / FY 223 M EUR applique a la base restated Omnium 150 M EUR / 52 M titres) ; ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript investing.com du 08/05/2026, 7 analystes/~14 echanges) compare au T2 2026 (transcript investing.com du 31/07/2026, deja lu lors du refresh precedent, 9 analystes/~22 echanges) - aucune incoherence materielle identifiee (revision guidance Chine 5->7 M EUR justifiee par VBP/pricing concurrentiel, clarification risque Moyen-Orient est une precision et non un retournement, reponses destockage QuantiFERON coherentes T1/T2). Correction incidente : confiance de l'ancrage nes-toujours-non-chiffre normalisee sur l'enum standard (basse).",
+    "dernierCall": {
+      "quarter": "Q2 2026",
+      "communiqueAnalyse": false,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": null,
+          "consensus": null,
+          "basis": null
+        },
+        "epsAdj": {
+          "actual": null,
+          "consensus": null,
+          "basis": null,
+          "basisNote": "Aucun chiffre de CA absolu, EBIT/EBITDA en valeur absolue publie ou de consensus explicitement rappele dans le transcript fourni au-dela des pourcentages de croissance cites ; H1 CA absolu (602 M EUR) et EBIT/EBITDA H1 absolus sont bien donnes par le CFO, retenus ci-dessous, mais pas de consensus externe recoupe pour ce refresh (aucun communique de presse officiel fourni, seulement le transcript)."
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement). Signal qualitatif fort sur Molecular : le management confirme qu'il faudra environ +27% organique au S2 pour atteindre l'objectif 'low double-digit' annuel sur ce segment, explique par la normalisation de la saison grippale et la montee en charge de PLEX/NES (quasi nuls au S2 2025).",
+      "guidanceAnnuelle": "Guidance FY2026 REAFFIRMEE INTEGRALEMENT malgre un S1 flat a cambi costanti : CA +5% a +6% cc, marge EBITDA ajustee 32%-33%.",
+      "pointsCles": [
+        "T2 26 CA +4% cc (+5% cc hors Chine et hors respiratoire moleculaire), confirmant la progression trimestrielle attendue communiquee en mars lors des resultats FY2025 - Immunodiagnostics +4% (+5% hors Chine, porte par un retour a une croissance historique aux Etats-Unis), Molecular +1% (+4% hors respiratoire), LTG +7% (bonne surprise, recuperation plus rapide que prevu en Life Science).",
+        "H1 26 CA 602 M EUR, flat a cambi costanti (-3% a cours courants, effet de change -20 M EUR sur le semestre, dont seulement -3 M EUR au T2 seul contre -17 M EUR au T1) ; EBIT ajuste H1 149 M EUR (-10% cc), marge EBIT 24% cc/25% cours courants ; EBITDA H1 194 M EUR (-7% cc), marge EBITDA 32% (conforme guidance), avec une nette amelioration sequentielle de 31% au T1 a 33% au T2 - operating leverage demontre.",
+        "Position financiere nette a -844 M EUR au 30/06/2026 (contre -580 M EUR fin 2025, deterioration de 265 M EUR) sous l'effet cumule de 233 M EUR de rachats d'actions et 65 M EUR de dividendes verses au S1, partiellement compenses par un FCF H1 positif mais en repli (58 M EUR contre 83 M EUR au S1 25, du fait d'un stockage de precaution d'inventaire lie au lancement de LIAISON NES).",
+        "Programme de rachat d'actions de 250 M EUR quasi acheve : ~3,6M d'actions rachetees (~6,5% du capital) pour 236 M EUR, soit ~95% du programme, a la date du call.",
+        "LIAISON NES : commercialisation demarree via les distributeurs, aucun chiffre communique a ce stade ('pas significatif'), mais approbation FDA 510(k) obtenue pour le second test (Group A strep), completant le panel complet - visibilite attendue aux calls T3/T4 avec la saison grippale. LIAISON PLEX : plus de 150 clients (frontiere depassee depuis le Q4), lancement du panel GI en cours (2 comptes valides a ce stade, funnel en forte expansion), delai d'activation clients toujours 6-12 mois (inchange)."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "Communique H1 2026 (31/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA S1 602 M EUR (-3% publie, T2 +4% cc), adj EBITDA 194 M (32%), resultat net 84 M (-15%). Guidance FY26 confirmee (+5/+6% cc, marge 32-33%) - execution H2 a surveiller."
+      }
     },
-    {
-     "label": "S2",
-     "eps": 2.24,
-     "actual": false
-    }
-   ],
-   "NY": [
-    {
-     "label": "S1",
-     "eps": 2.3,
-     "actual": false
+    "guidanceHistory": [
+      {
+        "quarter": "FY25",
+        "date": "2026-03-20",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance initiale FY2026 : CA +5%-6% a change constant (hypothese EUR/USD 1,18), marge EBITDA ajustee 32%-33%."
+      },
+      {
+        "quarter": "Q1 2026",
+        "date": "2026-05-08",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance FY2026 reiteree integralement malgre un T1 faible (-3% cc) juge transitoire (saison grippale molle, destockage QuantiFERON, meteo US)."
+      },
+      {
+        "quarter": "Q2 2026",
+        "date": "2026-07-31",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance FY2026 reaffirmee integralement malgre un H1 flat a cambi constants : CA +5%-6% cc, marge EBITDA ajustee 32%-33%."
+      }
+    ],
+    "guidanceLongTerme": "Plan strategique 2026-2030 devoile a l'Investor Day du 20/05/2026 (inchange depuis la creation) : CAGR CA vise 6%-8% (2026-2030, change constant EUR/USD 1,20), marge EBITDA ajustee visee 34%-35% en 2030 (contre 32%-33% guide pour 2026), FCF cumule 2027-2030 vise a ~1 Md EUR. Repose explicitement sur l'execution commerciale de NES et PLEX. Aucune mise a jour chiffree de ce plan communiquee lors du call T2 26.",
+    "guidanceLongTermeHistory": [],
+    "summary": "H1 2026 flat a cambi constants (T1 faible -3%, T2 en retour a la croissance +4% cc, conforme a la trajectoire trimestrielle annoncee en mars), guidance FY2026 integralement reaffirmee. Revision MAJEURE a la hausse des adjXXX ce refresh : la marge EBIT reelle du H1 (24% cc) est nettement superieure a ce qu'impliquait le modele de creation (base sur le seul T1, plus faible) - omniumEBIT 2026 releve de 215 a ~300 M EUR (+40%), omniumEPS (champ desormais ajoute, absent de la creation) a 4,37 EUR. NES toujours sans chiffre communique, le vrai test commercial reste la saison grippale S2.",
+    "text": "== THESIS SUMMARY ==\nH1 2026 came in flat at constant FX exactly on the quarterly path management laid out in March (Q1 -3%, Q2 +4%), earning a second integral reaffirmation of FY26 guidance (revenue +5/+6% cc, adjusted EBITDA margin 32-33%). The major event of this refresh is a margin-driven correction: H1 EBIT of 149M on the Omnium base forced a rebuild of FY26 EBIT to ~300M (vs 215M at setup, +40%) - carried through the whole 2026-2030 trajectory. LIAISON PLEX traction is now real (150+ clients, GI panel just launched); LIAISON NES is commercial but still without a single disclosed number.\n\n== THESIS READ ==\n- Credibility signal: the quarterly progression matched the plan twice - supporting the H2 acceleration (molecular ramp) the guidance requires. Watch: Q3 molecular print.\n- The +40% EBIT correction is extrapolated from H1 margin holding, not from explicit guidance at that granularity - medium confidence by construction. Watch: H2 margin confirmation.\n- NES is the key unpriced optionality, two quarters into commercialization without numbers. Watch: first NES disclosure.\n\n== SPECIAL FACTORS ==\nOmnium base reintegrates the recurring Luminex acquired-intangible amortization (~35-40M/yr) that Diasorin excludes from its 'adjusted' metrics (rule E5e) - hence Omnium EBIT sits structurally below management figures. Buyback nearly complete (shares 52 -> 49M). No reliable sell-side consensus (basis null). Iran/Middle-East exposure bounded.\n\n== PARAMETERS & WATCH-LIST ==\nFY26 bottom-up: H1 EBIT actual 149M + H2 at held margin -> ~300M. 2027-2030: scale factors from the 2026 correction (EBIT x1.395, Net x1.381) applied to the Investor-Day plan (revenue CAGR 6-8%, adjusted EBITDA margin 34-35% by 2030). Bridge: ETR 25%, finNet -15 to -11M with deleveraging (net debt 750 -> 60M); published 2025 reconciles at zero residual. Watch: EUR/USD (guidance assumes 1.18); QuantiFERON restocking; net-debt bump from the buyback.\n\n== CATALYSTS ==\nQ3 results (Nov); first NES quantification; PLEX GI panel ramp; FY27 guidance (Mar 2027).",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "h1-margin-beat-correction-majeure",
+        "moteur": "REVISION MAJEURE ce refresh : le modele de creation (09/07/2026), base sur le seul T1 26 (EBIT ajuste -17% cc), impliquait un EBIT FY2026 d'environ 215 M EUR (marge ~17%). Le H1 26 reel montre un EBIT ajuste de 149 M EUR sur une marge de 24% cc/25% courants - nettement superieur a l'hypothese de creation. Reconstruction bottom-up retenue : H1 reel (EBIT 149 M EUR) + H2 estime par maintien approximatif de la marge H1 (le management ne signale aucune degradation attendue, seulement une acceleration du CA portee par NES/PLEX en pleine saison), donnant un FY2026 EBIT ~300-310 M EUR (retenu a 300 M EUR par prudence, la trajectoire S2 restant en partie une extrapolation).",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumNet.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "guidance-reaffirmee-integralement",
+        "moteur": "Guidance FY2026 (CA +5%-6% cc, marge EBITDA 32%-33%) reaffirmee sans aucune modification pour la 2e fois consecutive (apres le T1 puis le T2), malgre un H1 flat a cambi constants - le management indique explicitement rester confiant compte tenu de la normalisation attendue des effets de base T1 (grippe, destockage QuantiFERON, meteo) et de la montee en charge NES/PLEX au S2.",
+        "applique": [
+          "omniumCA.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "molecular-h2-acceleration-requise",
+        "moteur": "Le management confirme explicitement qu'environ +27% de croissance organique est necessaire au S2 sur Molecular pour atteindre l'objectif annuel 'low double-digit', explique par une base de comparaison quasi nulle sur PLEX/NES au S2 2025 (produits pas encore lances) plutot que par une hypothese heroique de croissance organique sous-jacente - risque d'execution a suivre mais mecanisme de construction juge credible par le management lui-meme.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "nes-toujours-non-chiffre",
+        "moteur": "LIAISON NES reste sans aucun chiffre de vente communique par le management ('trop tot', 'pas significatif') - deuxieme trimestre consecutif sans traction chiffrable. Le panel complet est desormais disponible (2e test Group A strep approuve en 510(k)), la vraie visibilite commerciale est attendue aux calls T3/T4 avec la saison grippale - point de friction majeur avec le marche (note Deutsche Bank du 15 juin, potentiel NES 2030 estime a 97-126 M EUR contre 125-200 M EUR implicites dans la guidance groupe) reste non tranche.",
+        "applique": [],
+        "confiance": "basse"
+      },
+      {
+        "id": "buyback-quasi-acheve",
+        "moteur": "Programme de rachat d'actions de 250 M EUR execute a ~95% au moment du call (236 M EUR, ~6,5% du capital, ~3,6M actions) - nombre d'actions diluees revise legerement a la baisse vs la creation (49M pour 2026 contre 50M), la dilution du financement de ce programme (endettement net accru) etant deja integree dans omniumND.",
+        "applique": [
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "net-debt-hausse-buyback",
+        "moteur": "Position financiere nette degradee a -844 M EUR au 30/06/2026 (contre -580 M EUR fin 2025) sous l'effet cumule du programme de rachat (233 M EUR) et des dividendes (65 M EUR), partiellement compense par un FCF H1 positif mais en repli (58 M EUR vs 83 M EUR, lie au stockage d'inventaire NES) - trajectoire de desendettement 2026 revisee, le pic de dette nette etant desormais confirme plus eleve que l'hypothese de creation.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "iran-moyen-orient-borne",
+        "moteur": "Exposition Iran confirmee proche de zero au T2 26 (contre 1,5 M EUR de revenus au T2 25, effet attendu persister sur le reste de 2026 selon le CFO) - impact isole et borne, coherent avec l'estimation de 3-4 M EUR annuels retenue a la creation, sans extension identifiee au-dela.",
+        "applique": [
+          "omniumCA.2026"
+        ],
+        "confiance": "moyenne"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 4.37,
+      "2027": 4.71,
+      "2028": 5.47,
+      "2029": 6.43,
+      "2030": 7.54
     },
-    {
-     "label": "S2",
-     "eps": 2.41,
-     "actual": false
-    }
-   ]
-  },
-  "bridge": {
-   "2025": {
-    "finNet": -13,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 150.0,
-    "netPub": 150,
-    "residual": 0,
-    "residualNote": "Reconciles cleanly on the Omnium base (Luminex acquired-intangible amortization reintegrated): ~13M net financial charges, ETR 25%."
-   },
-   "2026": {
-    "finNet": -15,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 213.8
-   },
-   "2027": {
-    "finNet": -17,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 233.3
-   },
-   "2028": {
-    "finNet": -17,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 267.8
-   },
-   "2029": {
-    "finNet": -14,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 312.0
-   },
-   "2030": {
-    "finNet": -11,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 362.3
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Revenue growth at constant FX (guided range, %)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-05-08",
-     "type": "guidance_revised",
-     "detail": "FY26 reiterated integrally despite Q1 -3% cc, judged transitory (soft flu season, QuantiFERON destocking, US weather)."
+    "omniumCA": {
+      "2026": 1261,
+      "2027": 1343,
+      "2028": 1444,
+      "2029": 1560,
+      "2030": 1685
     },
-    {
-     "date": "2026-07-31",
-     "type": "guidance_revised",
-     "detail": "FY26 reaffirmed integrally on a flat cc H1 (Q2 +4%) - quarterly progression exactly as management laid out in March."
-    }
-   ],
-   "paceCheckpoint": "H1 real: flat cc (Q1 -3%, Q2 +4%), margin ahead of plan (H1 EBIT 149M actual) - revenue needs a strong H2 to reach the +5/+6% range; margin already overdelivering.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+    "omniumEBIT": {
+      "2026": 300,
+      "2027": 328,
+      "2028": 374,
+      "2029": 430,
+      "2030": 494
     },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+    "omniumNet": {
+      "2026": 214,
+      "2027": 233,
+      "2028": 268,
+      "2029": 312,
+      "2030": 362
+    },
+    "omniumND": {
+      "2026": 750,
+      "2027": 580,
+      "2028": 400,
+      "2029": 230,
+      "2030": 60
+    },
+    "omniumShares": {
+      "2026": 49,
+      "2027": 49.5,
+      "2028": 49,
+      "2029": 48.5,
+      "2030": 48
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "historique": [],
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 1.62,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 1.27,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 2.13,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 2.24,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 2.3,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 2.41,
+          "actual": false
+        }
+      ]
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -13,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 150.0,
+        "netPub": 150,
+        "residual": 0,
+        "residualNote": "Reconciles cleanly on the Omnium base (Luminex acquired-intangible amortization reintegrated): ~13M net financial charges, ETR 25%."
+      },
+      "2026": {
+        "finNet": -15,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 213.8
+      },
+      "2027": {
+        "finNet": -17,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 233.3
+      },
+      "2028": {
+        "finNet": -17,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 267.8
+      },
+      "2029": {
+        "finNet": -14,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 312.0
+      },
+      "2030": {
+        "finNet": -11,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 362.3
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Revenue growth at constant FX (guided range, %)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-05-08",
+          "type": "guidance_revised",
+          "detail": "FY26 reiterated integrally despite Q1 -3% cc, judged transitory (soft flu season, QuantiFERON destocking, US weather)."
+        },
+        {
+          "date": "2026-07-31",
+          "type": "guidance_revised",
+          "detail": "FY26 reaffirmed integrally on a flat cc H1 (Q2 +4%) - quarterly progression exactly as management laid out in March."
+        }
+      ],
+      "paceCheckpoint": "H1 real: flat cc (Q1 -3%, Q2 +4%), margin ahead of plan (H1 EBIT 149M actual) - revenue needs a strong H2 to reach the +5/+6% range; margin already overdelivering.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 0.0,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 0.0,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "FY25 revenue-growth guidance (cc)",
+          "realizedDisplay": "+4% CER / +5% ex-COVID - in line",
+          "note": "Realized FY25: +4% CER (+5% ex-COVID), presented by Diasorin itself as in line with the FY25 guidance (the H1-2025 release is titled 'FY 2025 guidance confirmed' and the FY close confirmed delivery). Scored 0.0 - in-line, medium confidence (initial range not independently re-derived)."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Searched 19/08/2026: the initial (Mar-2024) FY24 guidance did not surface - excluded rather than estimated."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 5.5,
+        "source": "initial_guidance",
+        "date": "2026-03-20",
+        "note": "Initial FY26 guidance at FY25 results: revenue +5/+6% cc (EUR/USD 1.18 assumption), adjusted EBITDA margin 32-33%. Reaffirmed integrally in May and July despite a flat cc H1 - the guidance requires a marked H2 acceleration (molecular ramp)."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct 0.0% BLENDED (in-progress 0.0 x1/2; FY25 0.0 single closed). Metric is cc revenue growth (no EPS guidance) - directional only; the H2-loaded FY26 guide is the watch item.",
+      "consensusSource": "No reliable sell-side consensus identified",
+      "consensusDate": null,
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 5.5,
+        "currentValue": 5.5,
+        "deltaPct": 0.0,
+        "asOf": "2026-07-31",
+        "note": "Initial FY26: revenue +5/+6% cc (mid 5.5), adj EBITDA margin 32-33%; reaffirmed in May and confirmed again at H1 (31/07) despite a flat cc H1 - projected 0.0 (requires a marked H2 acceleration)."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-31",
+      "label": "Q2 2026",
+      "type": "earnings"
     }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 5.5,
-    "source": "initial_guidance",
-    "date": "2026-03-20",
-    "note": "Initial FY26 guidance at FY25 results: revenue +5/+6% cc (EUR/USD 1.18 assumption), adjusted EBITDA margin 32-33%. Reaffirmed integrally in May and July despite a flat cc H1 - the guidance requires a marked H2 acceleration (molecular ramp)."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup and no reliable sell-side consensus identified. FY26 will deliver the first observation vs the +5/+6% cc anchor.",
-   "consensusSource": "No reliable sell-side consensus identified",
-   "consensusDate": null
-  },
-  "revisionEvent": {
-   "date": "2026-07-31",
-   "label": "Q2 2026",
-   "type": "earnings"
   }
- }
 }

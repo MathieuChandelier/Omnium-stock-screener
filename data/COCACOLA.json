@@ -1,330 +1,345 @@
 {
- "name": "Coca-Cola",
- "cours": 82.81,
- "yahooSymbol": "KO",
- "dividende": 2.04,
- "data": [
-  {
-   "year": 2021,
-   "ca": 38655,
-   "ebit": 10308,
-   "net": 9771,
-   "shares": 4340,
-   "nd": 30000
-  },
-  {
-   "year": 2022,
-   "ca": 43004,
-   "ebit": 10909,
-   "net": 9542,
-   "shares": 4330,
-   "nd": 32000
-  },
-  {
-   "year": 2023,
-   "ca": 45754,
-   "ebit": 11311,
-   "net": 10714,
-   "shares": 4324,
-   "nd": 31000
-  },
-  {
-   "year": 2024,
-   "ca": 47061,
-   "ebit": 9992,
-   "net": 10631,
-   "shares": 4315,
-   "nd": 33000,
-   "div": 1.94
-  },
-  {
-   "year": 2025,
-   "ca": 47900,
-   "ebit": 14300,
-   "net": 13100,
-   "shares": 4310,
-   "nd": 33300,
-   "div": 2.04
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 3.29,
-  "epsNY": 3.54,
-  "date": "2026-07-28",
-  "source": "Guidance FY2026 comparable EPS +9-10% vs 3,00$ (RELEVEE de +8-9% au T1) = ~3,27-3,30$. Base comparable propre. P/E ~25x. Prochaine publication T3 26 fin octobre 2026"
- },
- "particularites": [],
- "nextEvent": {
-  "label": "T3 26",
-  "date": "2026-10-27"
- },
- "compliance": {
-  "asOf": "2026-08-04",
-  "items": [
-   {
+  "name": "Coca-Cola",
+  "cours": 82.81,
+  "yahooSymbol": "KO",
+  "dividende": 2.04,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 38655,
+      "ebit": 10308,
+      "net": 9771,
+      "shares": 4340,
+      "nd": 30000
+    },
+    {
+      "year": 2022,
+      "ca": 43004,
+      "ebit": 10909,
+      "net": 9542,
+      "shares": 4330,
+      "nd": 32000
+    },
+    {
+      "year": 2023,
+      "ca": 45754,
+      "ebit": 11311,
+      "net": 10714,
+      "shares": 4324,
+      "nd": 31000
+    },
+    {
+      "year": 2024,
+      "ca": 47061,
+      "ebit": 9992,
+      "net": 10631,
+      "shares": 4315,
+      "nd": 33000,
+      "div": 1.94
+    },
+    {
+      "year": 2025,
+      "ca": 47900,
+      "ebit": 14300,
+      "net": 13100,
+      "shares": 4310,
+      "nd": 33300,
+      "div": 2.04
+    }
+  ],
+  "epsConsensus": {
     "year": 2026,
-    "title": "Litige fiscal transfer pricing avec l'IRS (annees fiscales 2010-2025) : plaidoiries orales presentees devant la Cour d'appel du 11e circuit fin juin 2026, decision attendue sous 6 a 12 mois. Exposition potentielle desormais chiffree par la societe a environ 14 Md$ d'impot et interets cumules selon la methodologie retenue par le Tax Court ; 6,0 Md$ deja verses en depot de garantie (IRS Tax Litigation Deposit). Le management se dit confiant de l'emporter en appel.",
-    "allegedBy": "Internal Revenue Service (IRS)",
-    "date": "2020-11-18",
-    "status": "en_appel",
-    "outcome": null,
-    "source": "10-Q T2 2026 (SEC) + transcript earnings call 28/07/2026 (reponse John Murphy, CFO)"
-   }
-  ],
-  "note": "Il ne s'agit pas d'une allegation de fraude comptable mais d'un differend de methodologie de prix de transfert (repartition des profits entre filiales) - de nature recurrente dans l'industrie pour les multinationales de cette taille. Le passif reste NON provisionne au bilan au-dela du depot de garantie deja verse ; en cas de defaite en appel, l'impact potentiel (~14 Md$) serait tres significatif rapporte a la capitalisation. Traite comme risque idiosyncratique hors base centrale (aucun adjXXX ne l'integre). (Recherche du 2026-08-04)"
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-07",
-   "eps": {
-    "2026": 3.25,
-    "2027": 3.51
-   }
-  },
-  "source": "Refresh T2 2026 - Communique de resultats (28/07/2026) + Transcript conference (28/07/2026, 8h30 ET)",
-  "dernierCall": {
-   "quarter": "T2 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 13380,
-     "consensus": 13100
-    },
-    "epsAdj": {
-     "actual": 0.97,
-     "consensus": 0.93,
-     "basis": "non-GAAP",
-     "basisNote": "comparable non-GAAP"
-    }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (guidance annuelle uniquement). Elements qualitatifs T3 26 : expeditions de concentre en retard d'1 point sur les volumes unitaires (effet de timing).",
-   "guidanceAnnuelle": "Organique ~5% (haut de la fourchette 4-5% precedente), comparable EPS all-in +9-10% vs 3,00$ en 2025 (releve de +8-9%), comparable EPS change constant hors M&A +7-8% (releve de +6-7%), ETR sous-jacent maintenu a 19,9%. Cession CCBA supposee cloturee fin T3/T4 26 (headwind 2-3pts CA comparable, ~1pt EPS comparable), tailwind devises desormais ~3pts sur l'EPS comparable annuel. T4 26 : 6 jours de vente en moins vs T4 25 (effet calendaire).",
-   "pointsCles": [
-    "Volume unitaire mondial +5%, meilleur trimestre depuis environ 17 ans, largement porte par l'activation Coupe du Monde FIFA (Trademark Coca-Cola +5%, Powerade +8%) - effet a fort caractere non recurrent, a ne pas extrapoler tel quel sur les trimestres suivants.",
-    "Litige IRS desormais chiffre pour la premiere fois : exposition potentielle ~14 Md$ (impot + interets 2010-2025), 6,0 Md$ deja verses en depot ; plaidoiries orales tenues fin juin devant le 11e circuit, decision attendue sous 6 a 12 mois, management confiant de l'emporter.",
-    "Perte de parts de valeur en Asie-Pacifique, concentree en Inde (gains compenses en partie par le Japon et la Chine) : price/mix regional -9%, explique a parts egales par le timing des investissements, des initiatives d'accessibilite prix et le mix geographique (Inde/Chine croissant plus vite que les marches developpes) - strategie d'investissement deliberee selon le management, pas une perte de competitivite.",
-    "Cession CCBA : charges de depreciation anterieures partiellement reprises en 2026, cloture attendue fin T3/debut T4, benefice structurel de marge attendu des le T4."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call coverage; full 10-Q not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T1 26",
-    "date": "2026-04-28",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Organique +4-5%, comparable EPS +8-9% vs 3,00$, ETR sous-jacent 19,9%."
-   },
-   {
-    "quarter": "T2 26",
+    "eps": 3.29,
+    "epsNY": 3.54,
     "date": "2026-07-28",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Organique ~5% (haut de fourchette), comparable EPS +9-10% vs 3,00$ (releve), ETR sous-jacent maintenu 19,9%, tailwind devises ~3pts sur EPS, headwind cession CCBA ~1pt EPS / 2-3pts CA."
-   }
-  ],
-  "guidanceLongTerme": "Algorithme long terme reaffirme : organique 4-6%/an, ambition de se situer au haut de cette fourchette de facon soutenue (citation CFO John Murphy) ; expansion de marge structurelle liee au modele asset-light.",
-  "guidanceLongTermeHistory": [],
-  "summary": "Leader mondial boissons non-alcoolisees, modele concentre asset-light, FCF ~12 Md$, machine RGM (parts de valeur +20 trimestres, mais premiere fissure localisee en Inde). GUIDANCE RELEVEE une 2e fois (comparable EPS +9-10%, apres +8-9% au T1). Cession CCBA en cours de finalisation (S2 2026). Litige IRS desormais CHIFFRE (~14 Md$ d'exposition) = risque toujours ouvert mais mieux caracterise. omniumEPS 3,29->4,40.",
-  "text": "== THESIS SUMMARY ==\nWorld leader in non-alcoholic beverages with an asset-light concentrate model (comparable operating margin 35.6% in Q2, FCF ~12bn/yr) behind 32 billion-dollar brands and an unreplicable bottling system. A defensive-quality holding, reinforced this quarter: guidance raised for the second consecutive time (comparable EPS +9/10% vs +8/9%), on unit volume +5% - the best quarter in ~17 years, largely FIFA World Cup activation, a powerful but NON-recurring catalyst that must not be extrapolated.\n\n== THESIS READ ==\n- The raise is real but flattered by the World Cup and ~3pts FX tailwind; underlying algorithm remains organic 4-6% / EPS high-single-digit. Watch: H2 volume ex-event.\n- Portfolio pruning continues (CCBA disposal: ~1pt EPS, 2-3pts revenue headwind absorbed within the raised guidance). Watch: further refranchising.\n- Balance sheet gradually deleveraging (net debt 33.3bn to ~9bn by 2030 in the model) while equity income from bottling investees grows - both feed the below-EBIT line. Watch: 11th-circuit appeal decision on the tax litigation.\n\n== SPECIAL FACTORS ==\nBase = COMPARABLE (management/consensus metric, unchanged since setup; comparable/GAAP gap dominated by punctual non-operating items). The bridge carries a large positive 'other' (+2.6-3.7bn): equity income from bottling investees below EBIT - structural to KO, documented, not a red flag. Underlying ETR 19.9% per guidance; the tax litigation is the tail risk on that line.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue by explicit bridge (2025 x (1 + 5% organic + 1% FX - 2.5% CCBA) = 49,580); EPS anchored on the raised guidance mid (+9.5% -> 3.29). 2027-2030: organic mid-single-digit, margin drift, shares -0.2%/yr. Bridge: ETR 19.9% flat, finNet improving with deleveraging, equity income growing. Published 2025 reconciles at ~0 residual. Watch: ownership field still absent (out of refresh scope); World Cup comp in 2027.\n\n== CATALYSTS ==\nQ3 (Oct); FY26 guidance for 2027 (Feb); tax-litigation appeal decision; refranchising steps.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "GUIDANCE_RAISE_Q2",
-    "moteur": "Guidance FY26 relevee pour la 2e fois consecutive au T2 : comparable EPS +9-10% (vs +8-9% au T1) vs 3,00$ en 2025, organique porte a ~5% (haut de fourchette 4-5%), tailwind devises annuel desormais estime a 3 points sur l'EPS comparable.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026",
-     "omniumNet.2026",
-     "omniumEPS.2026"
+    "source": "Guidance FY2026 comparable EPS +9-10% vs 3,00$ (RELEVEE de +8-9% au T1) = ~3,27-3,30$. Base comparable propre. P/E ~25x. Prochaine publication T3 26 fin octobre 2026"
+  },
+  "particularites": [],
+  "nextEvent": {
+    "label": "T3 26",
+    "date": "2026-10-27"
+  },
+  "compliance": {
+    "asOf": "2026-08-04",
+    "items": [
+      {
+        "year": 2026,
+        "title": "Litige fiscal transfer pricing avec l'IRS (annees fiscales 2010-2025) : plaidoiries orales presentees devant la Cour d'appel du 11e circuit fin juin 2026, decision attendue sous 6 a 12 mois. Exposition potentielle desormais chiffree par la societe a environ 14 Md$ d'impot et interets cumules selon la methodologie retenue par le Tax Court ; 6,0 Md$ deja verses en depot de garantie (IRS Tax Litigation Deposit). Le management se dit confiant de l'emporter en appel.",
+        "allegedBy": "Internal Revenue Service (IRS)",
+        "date": "2020-11-18",
+        "status": "en_appel",
+        "outcome": null,
+        "source": "10-Q T2 2026 (SEC) + transcript earnings call 28/07/2026 (reponse John Murphy, CFO)"
+      }
     ],
-    "confiance": "haute"
-   },
-   {
-    "id": "CCBA_DIVESTITURE",
-    "moteur": "Cession CCBA desormais quantifiee : headwind 2026 de 2-3pts sur le CA comparable et ~1pt sur l'EPS comparable, cloture attendue fin T3/T4 26 ; benefice structurel de marge attendu des le T4 (sortie d'une activite d'embouteillage a basse marge), charges de depreciation anterieures deja partiellement reprises en 2026.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026",
-     "omniumEBIT.2027"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "IRS_LITIGATION_RISK",
-    "moteur": "Litige transfer pricing IRS desormais chiffre par la societe : exposition potentielle ~14 Md$ (impot+interets 2010-2025), 6,0 Md$ deja verses en depot de garantie, decision d'appel attendue sous 6-12 mois (plaidoiries tenues fin juin 2026). Risque idiosyncratique majeur volontairement maintenu HORS base centrale (non provisionne), a traiter comme asymetrie baissiere non chiffree dans les adjXXX plutot qu'integre.",
-    "applique": [],
-    "confiance": "haute"
-   },
-   {
-    "id": "WORLD_CUP_ONEOFF",
-    "moteur": "Volume T2 +5% (meilleur trimestre depuis ~17 ans) largement tire par l'activation Coupe du Monde FIFA, evenement non recurrent ; base de comparaison plus difficile attendue au S2 2026 et en 2027, combinee a 6 jours de vente en moins au T4 26 (effet calendaire).",
-    "applique": [
-     "omniumCA.2027"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "APAC_INDIA_SHARE_LOSS",
-    "moteur": "Perte de parts de valeur en Asie-Pacifique concentree sur l'Inde (price/mix regional -9%), assumee par le management comme investissement deliberement multi-decennal (accessibilite prix, mix geographique) plutot que perte de competitivite - watch-list plutot que retraitement chiffre a ce stade, impact potentiel modeste si la lecture du management se confirme.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027"
-    ],
-    "confiance": "basse"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 3.29,
-   "2027": 3.54,
-   "2028": 3.8,
-   "2029": 4.09,
-   "2030": 4.4
+    "note": "Il ne s'agit pas d'une allegation de fraude comptable mais d'un differend de methodologie de prix de transfert (repartition des profits entre filiales) - de nature recurrente dans l'industrie pour les multinationales de cette taille. Le passif reste NON provisionne au bilan au-dela du depot de garantie deja verse ; en cas de defaite en appel, l'impact potentiel (~14 Md$) serait tres significatif rapporte a la capitalisation. Traite comme risque idiosyncratique hors base centrale (aucun adjXXX ne l'integre). (Recherche du 2026-08-04)"
   },
-  "omniumCA": {
-   "2026": 49580,
-   "2027": 52150,
-   "2028": 54750,
-   "2029": 57400,
-   "2030": 60100
-  },
-  "omniumEBIT": {
-   "2026": 15200,
-   "2027": 16072,
-   "2028": 17211,
-   "2029": 18481,
-   "2030": 19835
-  },
-  "omniumNet": {
-   "2026": 14147,
-   "2027": 15187,
-   "2028": 16264,
-   "2029": 17464,
-   "2030": 18744
-  },
-  "omniumND": {
-   "2026": 30000,
-   "2027": 26000,
-   "2028": 21000,
-   "2029": 15000,
-   "2030": 9000
-  },
-  "omniumShares": {
-   "2026": 4300,
-   "2027": 4290,
-   "2028": 4280,
-   "2029": 4270,
-   "2030": 4260
-  },
-  "bridge": {
-   "2025": {
-    "finNet": -545,
-    "other": 2600,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 13100.4,
-    "netPub": 13100,
-    "residual": -0.4,
-    "residualNote": "Reconciles cleanly on the comparable base: 'other' (+2.6bn) is equity income from bottling investees plus other non-operating income sitting below EBIT; underlying ETR 19.9% per guidance."
-   },
-   "2026": {
-    "finNet": -540,
-    "other": 3000,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 14145.7
-   },
-   "2027": {
-    "finNet": -450,
-    "other": 3340,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 15188.6
-   },
-   "2028": {
-    "finNet": -350,
-    "other": 3445,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 16265.1
-   },
-   "2029": {
-    "finNet": -250,
-    "other": 3570,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 17462.6
-   },
-   "2030": {
-    "finNet": -150,
-    "other": 3715,
-    "taxRate": 0.199,
-    "minorities": 0,
-    "netCalc": 18743.4
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Comparable EPS growth (guided range on 3.00 USD base)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-07-28",
-     "type": "guidance_revised",
-     "detail": "FY26 raised: organic ~5% (top of range), comparable EPS +9/+10% (from +8/+9%); underlying ETR held 19.9%; ~3pts FX tailwind, ~1pt CCBA-disposal headwind on EPS."
-    }
-   ],
-   "paceCheckpoint": "Q2 real: unit volume +5% (best quarter in ~17 years, FIFA World Cup activation - explicitly non-recurring), guidance raised a second consecutive time.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-07",
+      "eps": {
+        "2026": 3.25,
+        "2027": 3.51
+      }
     },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+    "source": "Refresh T2 2026 - Communique de resultats (28/07/2026) + Transcript conference (28/07/2026, 8h30 ET)",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 13380,
+          "consensus": 13100
+        },
+        "epsAdj": {
+          "actual": 0.97,
+          "consensus": 0.93,
+          "basis": "non-GAAP",
+          "basisNote": "comparable non-GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (guidance annuelle uniquement). Elements qualitatifs T3 26 : expeditions de concentre en retard d'1 point sur les volumes unitaires (effet de timing).",
+      "guidanceAnnuelle": "Organique ~5% (haut de la fourchette 4-5% precedente), comparable EPS all-in +9-10% vs 3,00$ en 2025 (releve de +8-9%), comparable EPS change constant hors M&A +7-8% (releve de +6-7%), ETR sous-jacent maintenu a 19,9%. Cession CCBA supposee cloturee fin T3/T4 26 (headwind 2-3pts CA comparable, ~1pt EPS comparable), tailwind devises desormais ~3pts sur l'EPS comparable annuel. T4 26 : 6 jours de vente en moins vs T4 25 (effet calendaire).",
+      "pointsCles": [
+        "Volume unitaire mondial +5%, meilleur trimestre depuis environ 17 ans, largement porte par l'activation Coupe du Monde FIFA (Trademark Coca-Cola +5%, Powerade +8%) - effet a fort caractere non recurrent, a ne pas extrapoler tel quel sur les trimestres suivants.",
+        "Litige IRS desormais chiffre pour la premiere fois : exposition potentielle ~14 Md$ (impot + interets 2010-2025), 6,0 Md$ deja verses en depot ; plaidoiries orales tenues fin juin devant le 11e circuit, decision attendue sous 6 a 12 mois, management confiant de l'emporter.",
+        "Perte de parts de valeur en Asie-Pacifique, concentree en Inde (gains compenses en partie par le Japon et la Chine) : price/mix regional -9%, explique a parts egales par le timing des investissements, des initiatives d'accessibilite prix et le mix geographique (Inde/Chine croissant plus vite que les marches developpes) - strategie d'investissement deliberee selon le management, pas une perte de competitivite.",
+        "Cession CCBA : charges de depreciation anterieures partiellement reprises en 2026, cloture attendue fin T3/debut T4, benefice structurel de marge attendu des le T4."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "10-Q Q2 2026 + press release (22/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 13,4 Md$ (+7%), EPS comparable 0,97$ (+11%), resultat net GAAP 4,43 Md$ (EPS 1,03$). Guidance FY26 relevee a +9/+10% comparable EPS le 28/07."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-04-28",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Organique +4-5%, comparable EPS +8-9% vs 3,00$, ETR sous-jacent 19,9%."
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-28",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Organique ~5% (haut de fourchette), comparable EPS +9-10% vs 3,00$ (releve), ETR sous-jacent maintenu 19,9%, tailwind devises ~3pts sur EPS, headwind cession CCBA ~1pt EPS / 2-3pts CA."
+      }
+    ],
+    "guidanceLongTerme": "Algorithme long terme reaffirme : organique 4-6%/an, ambition de se situer au haut de cette fourchette de facon soutenue (citation CFO John Murphy) ; expansion de marge structurelle liee au modele asset-light.",
+    "guidanceLongTermeHistory": [],
+    "summary": "Leader mondial boissons non-alcoolisees, modele concentre asset-light, FCF ~12 Md$, machine RGM (parts de valeur +20 trimestres, mais premiere fissure localisee en Inde). GUIDANCE RELEVEE une 2e fois (comparable EPS +9-10%, apres +8-9% au T1). Cession CCBA en cours de finalisation (S2 2026). Litige IRS desormais CHIFFRE (~14 Md$ d'exposition) = risque toujours ouvert mais mieux caracterise. omniumEPS 3,29->4,40.",
+    "text": "== THESIS SUMMARY ==\nWorld leader in non-alcoholic beverages with an asset-light concentrate model (comparable operating margin 35.6% in Q2, FCF ~12bn/yr) behind 32 billion-dollar brands and an unreplicable bottling system. A defensive-quality holding, reinforced this quarter: guidance raised for the second consecutive time (comparable EPS +9/10% vs +8/9%), on unit volume +5% - the best quarter in ~17 years, largely FIFA World Cup activation, a powerful but NON-recurring catalyst that must not be extrapolated.\n\n== THESIS READ ==\n- The raise is real but flattered by the World Cup and ~3pts FX tailwind; underlying algorithm remains organic 4-6% / EPS high-single-digit. Watch: H2 volume ex-event.\n- Portfolio pruning continues (CCBA disposal: ~1pt EPS, 2-3pts revenue headwind absorbed within the raised guidance). Watch: further refranchising.\n- Balance sheet gradually deleveraging (net debt 33.3bn to ~9bn by 2030 in the model) while equity income from bottling investees grows - both feed the below-EBIT line. Watch: 11th-circuit appeal decision on the tax litigation.\n\n== SPECIAL FACTORS ==\nBase = COMPARABLE (management/consensus metric, unchanged since setup; comparable/GAAP gap dominated by punctual non-operating items). The bridge carries a large positive 'other' (+2.6-3.7bn): equity income from bottling investees below EBIT - structural to KO, documented, not a red flag. Underlying ETR 19.9% per guidance; the tax litigation is the tail risk on that line.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue by explicit bridge (2025 x (1 + 5% organic + 1% FX - 2.5% CCBA) = 49,580); EPS anchored on the raised guidance mid (+9.5% -> 3.29). 2027-2030: organic mid-single-digit, margin drift, shares -0.2%/yr. Bridge: ETR 19.9% flat, finNet improving with deleveraging, equity income growing. Published 2025 reconciles at ~0 residual. Watch: ownership field still absent (out of refresh scope); World Cup comp in 2027.\n\n== CATALYSTS ==\nQ3 (Oct); FY26 guidance for 2027 (Feb); tax-litigation appeal decision; refranchising steps.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "GUIDANCE_RAISE_Q2",
+        "moteur": "Guidance FY26 relevee pour la 2e fois consecutive au T2 : comparable EPS +9-10% (vs +8-9% au T1) vs 3,00$ en 2025, organique porte a ~5% (haut de fourchette 4-5%), tailwind devises annuel desormais estime a 3 points sur l'EPS comparable.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumNet.2026",
+          "omniumEPS.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "CCBA_DIVESTITURE",
+        "moteur": "Cession CCBA desormais quantifiee : headwind 2026 de 2-3pts sur le CA comparable et ~1pt sur l'EPS comparable, cloture attendue fin T3/T4 26 ; benefice structurel de marge attendu des le T4 (sortie d'une activite d'embouteillage a basse marge), charges de depreciation anterieures deja partiellement reprises en 2026.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumEBIT.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "IRS_LITIGATION_RISK",
+        "moteur": "Litige transfer pricing IRS desormais chiffre par la societe : exposition potentielle ~14 Md$ (impot+interets 2010-2025), 6,0 Md$ deja verses en depot de garantie, decision d'appel attendue sous 6-12 mois (plaidoiries tenues fin juin 2026). Risque idiosyncratique majeur volontairement maintenu HORS base centrale (non provisionne), a traiter comme asymetrie baissiere non chiffree dans les adjXXX plutot qu'integre.",
+        "applique": [],
+        "confiance": "haute"
+      },
+      {
+        "id": "WORLD_CUP_ONEOFF",
+        "moteur": "Volume T2 +5% (meilleur trimestre depuis ~17 ans) largement tire par l'activation Coupe du Monde FIFA, evenement non recurrent ; base de comparaison plus difficile attendue au S2 2026 et en 2027, combinee a 6 jours de vente en moins au T4 26 (effet calendaire).",
+        "applique": [
+          "omniumCA.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "APAC_INDIA_SHARE_LOSS",
+        "moteur": "Perte de parts de valeur en Asie-Pacifique concentree sur l'Inde (price/mix regional -9%), assumee par le management comme investissement deliberement multi-decennal (accessibilite prix, mix geographique) plutot que perte de competitivite - watch-list plutot que retraitement chiffre a ce stade, impact potentiel modeste si la lecture du management se confirme.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027"
+        ],
+        "confiance": "basse"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 3.29,
+      "2027": 3.54,
+      "2028": 3.8,
+      "2029": 4.09,
+      "2030": 4.4
+    },
+    "omniumCA": {
+      "2026": 49580,
+      "2027": 52150,
+      "2028": 54750,
+      "2029": 57400,
+      "2030": 60100
+    },
+    "omniumEBIT": {
+      "2026": 15200,
+      "2027": 16072,
+      "2028": 17211,
+      "2029": 18481,
+      "2030": 19835
+    },
+    "omniumNet": {
+      "2026": 14147,
+      "2027": 15187,
+      "2028": 16264,
+      "2029": 17464,
+      "2030": 18744
+    },
+    "omniumND": {
+      "2026": 30000,
+      "2027": 26000,
+      "2028": 21000,
+      "2029": 15000,
+      "2030": 9000
+    },
+    "omniumShares": {
+      "2026": 4300,
+      "2027": 4290,
+      "2028": 4280,
+      "2029": 4270,
+      "2030": 4260
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -545,
+        "other": 2600,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 13100.4,
+        "netPub": 13100,
+        "residual": -0.4,
+        "residualNote": "Reconciles cleanly on the comparable base: 'other' (+2.6bn) is equity income from bottling investees plus other non-operating income sitting below EBIT; underlying ETR 19.9% per guidance."
+      },
+      "2026": {
+        "finNet": -540,
+        "other": 3000,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 14145.7
+      },
+      "2027": {
+        "finNet": -450,
+        "other": 3340,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 15188.6
+      },
+      "2028": {
+        "finNet": -350,
+        "other": 3445,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 16265.1
+      },
+      "2029": {
+        "finNet": -250,
+        "other": 3570,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 17462.6
+      },
+      "2030": {
+        "finNet": -150,
+        "other": 3715,
+        "taxRate": 0.199,
+        "minorities": 0,
+        "netCalc": 18743.4
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Comparable EPS growth (guided range on 3.00 USD base)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-28",
+          "type": "guidance_revised",
+          "detail": "FY26 raised: organic ~5% (top of range), comparable EPS +9/+10% (from +8/+9%); underlying ETR held 19.9%; ~3pts FX tailwind, ~1pt CCBA-disposal headwind on EPS."
+        }
+      ],
+      "paceCheckpoint": "Q2 real: unit volume +5% (best quarter in ~17 years, FIFA World Cup activation - explicitly non-recurring), guidance raised a second consecutive time.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 1.4,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 1.6,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "+2/3% comparable EPS (mid 2.952$)",
+          "realizedDisplay": "3.00$ comparable (+4.2%)",
+          "note": "Initial FY25 guidance (FY24-results release, Feb 2025): comparable currency-neutral EPS +2/+3% on the 2.88$ base - mid 2.952$; realized comparable EPS 3.00$ (the base KO itself uses for the FY26 guide) - level +1.6%."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 2.5,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "+4/5% comparable EPS (mid 2.811$)",
+          "realizedDisplay": "2.88$ comparable (+7.1%)",
+          "note": "Initial FY24 guidance (FY23-results release, 13/02/2024): comparable EPS +4/+5% on the 2.69$ base - mid 2.811$; realized 2.88$ - level +2.5%."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 3.26,
+        "source": "initial_guidance",
+        "date": "2026-04-28",
+        "note": "Quantified from the +8/+9% comparable-EPS guidance on the 3.00 FY25 base (mid +8.5% -> 3.26). Earliest ARCHIVED statement (Q1 call); the original February FY25-results guidance was not captured. Raised on 28/07 to +9/+10% - the anchor stays initial."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +1.4% BLENDED (in-progress +0.8 x1/2; FY25 +1.6 and FY24 +2.5 equal-shared). Measured on KO's comparable (non-GAAP) EPS - the Omnium base follows the same comparable definition, wedge immaterial.",
+      "consensusSource": "Company guidance mid (comparable EPS +9/10% on 3.00)",
+      "consensusDate": "2026-07-28",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 3.26,
+        "currentValue": 3.285,
+        "deltaPct": 0.8,
+        "asOf": "2026-07-28",
+        "note": "Initial FY26: comparable EPS +8/+9% on 3.00$ (mid 3.26); raised 28/07 to +9/+10% (mid 3.285) - projected +0.8% level beat."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-28",
+      "label": "Q2 2026",
+      "type": "earnings"
     }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 3.26,
-    "source": "initial_guidance",
-    "date": "2026-04-28",
-    "note": "Quantified from the +8/+9% comparable-EPS guidance on the 3.00 FY25 base (mid +8.5% -> 3.26). Earliest ARCHIVED statement (Q1 call); the original February FY25-results guidance was not captured. Raised on 28/07 to +9/+10% - the anchor stays initial."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (FY24/FY25 initial anchors not archived). First measurement at FY26 close vs the +8/+9% initial anchor.",
-   "consensusSource": "Company guidance mid (comparable EPS +9/10% on 3.00)",
-   "consensusDate": "2026-07-28"
   },
-  "revisionEvent": {
-   "date": "2026-07-28",
-   "label": "Q2 2026",
-   "type": "earnings"
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-28",
+        "source": "Q2 release/call (as exploited at the 04/08 refresh)",
+        "message": "Second consecutive guidance raise (comparable EPS to +9/10%, organic ~5% top of range) on unit volume +5% - the best quarter in ~17 years, driven by FIFA World Cup activation which management and the fiche both flag as NON-recurring; comparable operating margin 35.6%; ETR steady at 19.9%; CCBA disposal trims ~1pt EPS / 2-3pts revenue."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q2 26",
-    "date": "2026-07-28",
-    "source": "Q2 release/call (as exploited at the 04/08 refresh)",
-    "message": "Second consecutive guidance raise (comparable EPS to +9/10%, organic ~5% top of range) on unit volume +5% - the best quarter in ~17 years, driven by FIFA World Cup activation which management and the fiche both flag as NON-recurring; comparable operating margin 35.6%; ETR steady at 19.9%; CCBA disposal trims ~1pt EPS / 2-3pts revenue."
-   }
-  ]
- }
 }
