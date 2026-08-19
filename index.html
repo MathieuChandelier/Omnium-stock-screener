@@ -85,9 +85,11 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 .pf-col-name-spacer{flex:1 1 auto;max-width:360px;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;}
 .pf-name-sort-lbl{cursor:pointer;user-select:none;transition:color .12s;white-space:nowrap;flex-shrink:0;}
 .pf-name-sort-lbl:hover{color:var(--teal-text);}
-.pf-name-filter{flex:0 0 auto;width:118px;min-width:0;border:none;border-bottom:1.5px solid rgba(0,1,144,.18);background:transparent;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:none;letter-spacing:normal;line-height:1;padding:0 1px 1px;margin:0;height:14px;cursor:text;transition:border-color .12s;}
+.pf-search-wrap{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:9px;padding:5px 10px;color:var(--muted);background:#fff;transition:border-color .12s;flex:0 1 190px;min-width:0;}
+.pf-search-wrap:focus-within{border-color:var(--navy);color:var(--navy);}
+.pf-name-filter{flex:1 1 auto;width:100%;min-width:0;border:none;background:transparent;color:var(--navy);font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:none;letter-spacing:normal;line-height:1;padding:0;margin:0;cursor:text;}
 .pf-name-filter::placeholder{color:var(--muted);font-weight:500;}
-.pf-name-filter:focus{outline:none;border-bottom-color:var(--teal-text);}
+.pf-name-filter:focus{outline:none;}
 .pf-col-labels{display:flex;gap:28px;flex-shrink:0;}
 .pf-col-lbl{min-width:60px;text-align:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;}
 .pf-col-lbl.pf-col-sortable{cursor:pointer;user-select:none;position:relative;display:block;transition:color .12s;}
@@ -580,7 +582,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .card{padding:14px 12px;border-radius:11px;margin-bottom:12px;}
   .pf-col-header{padding:0 8px 6px;gap:8px;}
   .pf-col-name-spacer{font-size:9px;gap:6px;}
-  .pf-name-filter{font-size:10px;width:64px;height:12px;padding:0 1px;}
+  .pf-search-wrap{flex:1 1 130px;min-width:120px;padding:4px 9px;}
+  .pf-name-filter{font-size:10px;}
   .pf-col-labels{gap:5px;}
   .pf-col-lbl{font-size:8.5px;letter-spacing:.03em;}
   .pf-list{gap:0;}
@@ -726,11 +729,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="news-bar-wrap"></div>
   <div id="market-calendar-wrap"></div>
   <div id="actions-bar-wrap"></div>
-  <div class="card-title" style="margin-bottom:10px;"><b style="color:var(--teal-text);">All tickers</b></div>
+  <div class="card-title" style="margin-bottom:22px;"><b style="color:var(--teal-text);">All tickers</b></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
-        <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
-        <input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Search for a ticker…" autocomplete="off" oninput="pfFilterByName(this.value)" onkeyup="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)">
+        <span class="pf-search-wrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="text" id="pf-name-filter" class="pf-name-filter" placeholder="Search a ticker" autocomplete="off" oninput="pfFilterByName(this.value)" onkeyup="pfFilterByName(this.value)" onkeydown="pfNameFilterKeydown(event)"></span>
       </div>
       <div class="pf-col-labels">
         <div class="pf-col-lbl pf-col-sortable pf-metric-return" onclick="pfSortBy('return')">5Y CAGR <span class="pf-sort-arrow" data-key="return"></span></div>
@@ -4211,24 +4213,9 @@ function pfUpdateSortHeaderUI(){
 let _actOpen=false, _calOpen=false, _13fOpen=false;
 // toggles des anciennes barres jaunes supprimes (section Actions, 19/08)
 
-// Echeances 13F : depots dus ~45 jours apres chaque cloture trimestrielle
-// (14-15 fev/mai/aout/nov). L'alerte s'ouvre 2-3 jours apres (le ~17) et
-// se derive des fiches : elle liste les titres dont ownership.asOf est
-// anterieur a la derniere echeance, et s'eteint a mesure que l'Operation D
-// les met a jour. Rien n'est stocke.
-function last13FDeadline(today){
-  const y=today.getFullYear();
-  const dls=[[y-1,10,14],[y,1,14],[y,4,15],[y,7,14],[y,10,14]]
-    .map(([yy,m,d])=>new Date(Date.UTC(yy,m,d)));
-  let last=null;
-  dls.forEach(d=>{ if(today>=new Date(d.getTime()+3*86400000)) last=d; });
-  return last;
-}
 function actionQueues(){
-  const attente=[], horsEnum=[], own13f=[];
+  const attente=[], horsEnum=[];
   const today=new Date();
-  const dl=last13FDeadline(today);
-  const dlIso=dl?dl.toISOString().slice(0,10):null;
   Object.entries(state.tickers).forEach(([tk,d])=>{
     const dc=d?.hypothese?.dernierCall;
     if(!dc) return;
@@ -4239,19 +4226,12 @@ function actionQueues(){
     const b=(dc.resultatsVsConsensus||{}).epsAdj?.basis;
     if(typeof b==='string' && !['GAAP','non-GAAP'].includes(b.trim())) horsEnum.push(tk);
   });
-  if(dlIso){
-    Object.entries(state.tickers).forEach(([tk,d])=>{
-      const asOf=d?.ownership?.asOf;
-      if(!asOf || asOf<dlIso) own13f.push(tk);
-    });
-  }
   // nextEvents : passage mensuel (Operation C). L'alerte s'ouvre le 1er du
   // mois et s'eteint quand _meta.lastRun passe dans le mois courant.
   const lastRun=state.nextEvents?._meta?.lastRun||null;
   const moisCourant=today.toISOString().slice(0,7);
   const nextEventsDu=!lastRun || lastRun.slice(0,7)<moisCourant;
-  return {attente:attente.sort(), horsEnum:horsEnum.sort(),
-          own13f:own13f.sort(), dl13f:dlIso, nextEventsDu, lastRunNE:lastRun};
+  return {attente:attente.sort(), horsEnum:horsEnum.sort(), nextEventsDu, lastRunNE:lastRun};
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -4537,11 +4517,8 @@ function renderActionsBar(){
       'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent.',
       q.horsEnum,
       "Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l'énumération GAAP / non-GAAP (ou null) et déplace la justification vers pointsCles :"):'')});
-  if(q.own13f.length) items.push({k:'13f',dot:'#c2c8d4',lbl:'13F sweep — ownership to refresh',cnt:String(q.own13f.length),
-    panel:grp('Quarterly 13F sweep — Operation D',
-      `Filings were due ${q.dl13f} (45 days after quarter end). Tickers below have ownership.asOf older than that deadline. One grouped pass replaces per-refresh lookups; the alert clears itself as asOf dates catch up.`,
-      q.own13f,
-      "Opération D — balayage 13F groupé : suis INSTRUCTIONS_13F.md (méthode, watchlist des gérants actifs, snapshot history) et mets à jour le seul champ ownership de chaque fiche ci-dessous, asOf à la date du jour, un commit dédié :")});
+  // Boucle 13F ABANDONNEE (19/08/2026) - le champ ownership des fiches
+  // reste de la donnee, mais plus aucune file ni operation dediee.
 
   if(!items.length){ wrap.innerHTML=''; return; }
   const rows=items.map(it=>{

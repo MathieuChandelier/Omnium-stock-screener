@@ -8,6 +8,7 @@ fichier `INSTRUCTIONS.md` (synchronise localement dans `~/Mon Drive/
 OMNIUM-DOCTRINE/INSTRUCTIONS.md`).
 
 Toute session qui execute une operation A/B doit lire la doctrine a cet
-emplacement. Les specs operationnelles autonomes (INSTRUCTIONS_CALENDAR.md,
-INSTRUCTIONS_13F.md) restent dans le depot : elles decrivent des
-mecaniques, pas la methodologie.
+emplacement. La spec operationnelle autonome INSTRUCTIONS_CALENDAR.md reste dans le
+depot : elle decrit une mecanique, pas la methodologie. (La boucle 13F
+a ete abandonnee le 19/08/2026 - le champ ownership des fiches reste de
+la donnee, sans operation dediee.)
