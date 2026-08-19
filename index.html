@@ -726,7 +726,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="news-bar-wrap"></div>
   <div id="actions-bar-wrap"></div>
   <div id="market-calendar-wrap"></div>
-  <div class="card-title" style="margin-bottom:10px;"><b>All tickers</b></div>
+  <div class="card-title" style="margin-bottom:10px;color:var(--teal-text);"><b>All tickers</b></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
@@ -4511,7 +4511,7 @@ function renderMarketCalendar(){
     </div>`;
   };
   const colHead=`<div style="display:grid;grid-template-columns:1fr 62px 52px;gap:10px;margin:14px 0 -8px;">
-      <span></span><span style="text-align:center;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);white-space:nowrap;">Current value</span><span></span>
+      <span></span><span style="text-align:right;padding-right:0;transform:translateX(9px);font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);white-space:nowrap;">Current value</span><span></span>
     </div>`;
   const peBody=(disc.length||stretch.length)
     ? `${colHead}${disc.length?weekHead('Deepest discounts vs average')+disc.map(peRow).join(''):''}
@@ -4520,12 +4520,12 @@ function renderMarketCalendar(){
 
   wrap.innerHTML=`<div class="dash-head">
     <div>
-      <div class="card-title" style="margin-bottom:0;"><b>Market Calendar</b></div>
+      <div class="card-title" style="margin-bottom:0;color:var(--teal-text);"><b>Market Calendar</b></div>
       ${calBody}
     </div>
     <div class="dash-vr"></div>
     <div>
-      <div class="card-title" style="margin-bottom:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b>P/E Rankings</b>
+      <div class="card-title" style="margin-bottom:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b style="color:var(--teal-text);">P/E Rankings</b>
         <span onclick="showTab('valuerankings', null)" style="cursor:pointer;display:inline-flex;align-items:center;gap:3px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);text-transform:none;letter-spacing:0;">Full rankings<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
       </div>
       ${peBody}
