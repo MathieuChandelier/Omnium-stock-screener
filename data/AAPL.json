@@ -1,326 +1,432 @@
 {
-  "name": "Apple",
-  "cours": 308.0,
-  "yahooSymbol": "AAPL",
-  "dividende": 1.08,
-  "fyEndMonth": 9,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 365817,
-      "ebit": 108949,
-      "net": 94680,
-      "shares": 16865,
-      "nd": -48000
-    },
-    {
-      "year": 2022,
-      "ca": 394328,
-      "ebit": 119437,
-      "net": 99803,
-      "shares": 16326,
-      "nd": -35000
-    },
-    {
-      "year": 2023,
-      "ca": 383285,
-      "ebit": 114301,
-      "net": 96995,
-      "shares": 15813,
-      "nd": -55000
-    },
-    {
-      "year": 2024,
-      "ca": 391035,
-      "ebit": 123216,
-      "net": 103936,
-      "shares": 15408,
-      "nd": -47000
-    },
-    {
-      "year": 2025,
-      "ca": 416161,
-      "ebit": 133050,
-      "net": 112010,
-      "shares": 15005,
-      "nd": -33800
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 8.74,
-    "epsNY": 9.57,
-    "date": "2026-07-27",
-    "source": "GAAP - S&P Global Market Intelligence/TipRanks via Yahoo Finance/Barchart (~30 analystes)"
+ "name": "Apple",
+ "cours": 308.0,
+ "yahooSymbol": "AAPL",
+ "dividende": 1.08,
+ "fyEndMonth": 9,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 365817,
+   "ebit": 108949,
+   "net": 94680,
+   "shares": 16865,
+   "nd": -48000
   },
-  "particularites": [
-    {
-      "text": "Transition de direction majeure : Tim Cook quitte la fonction de CEO le 31/08/2026 (dernier call de resultats le 30/07/26) et devient President executif du board ; John Ternus (SVP Hardware Engineering, chez Apple depuis pres de 20 ans) devient CEO le 01/09/2026 - soit au tout debut de l'exercice fiscal 2027. Transition presentee comme le fruit d'une planification de succession de long terme, approuvee a l'unanimite par le board. Aucun changement de strategie annonce a ce stade ; a suivre de pres au prochain refresh (premier trimestre complet sous la direction de Ternus).",
-      "valuePct": null
-    },
-    {
-      "text": "Programme de rachats d'actions actif et regulier depuis plus d'une decennie (62,1 Md$ rachetes sur les 9 premiers mois du seul exercice 2026) couple a un dividende trimestriel etabli (0,27$/action) - justifie l'application de la branche 'rendement 0%' de la regle E5-a bis sur le cash net (le cash est traite comme consomme par les rachats plutot que generateur d'un produit financier modelise).",
-      "valuePct": null
-    }
-  ],
-  "ownership": {
-    "asOf": "2026-Q1",
-    "insiderPct": 0.07,
-    "insiderDesc": "Tres faible, typique d'une mega-capitalisation sans fondateur au capital. Tim Cook (CEO sortant) detient ~3,3M actions (~1 Md$ au cours actuel), tres largement issues de RSU de performance ; ventes periodiques pour diversification/fiscalite. Nouveau CEO John Ternus : participation non encore documentee publiquement a ce stade.",
-    "insiderSource": "Compilation proxy statement / Form 4 (RevenueMemo, GuruFocus).",
-    "notableHolders": [
-      {
-        "investor": "Berkshire Hathaway (Warren Buffett / Greg Abel)",
-        "tier": "T1",
-        "pct": 2.0,
-        "asOf": "2026-Q1",
-        "movement": "stable - reste la plus grosse ligne actions de Berkshire (~23% du portefeuille cote) malgre des ventes partielles anterieures ; passation du CEO de Berkshire a Greg Abel en janvier 2026, Buffett reste President."
-      }
-    ],
-    "coverageNote": "Base actionnariale tres majoritairement institutionnelle/indicielle (Vanguard, BlackRock, State Street, etc.) - peu de gerants actifs de conviction distincts au-dela de Berkshire dans la liste de suivi Omnium.",
-    "history": []
+  {
+   "year": 2022,
+   "ca": 394328,
+   "ebit": 119437,
+   "net": 99803,
+   "shares": 16326,
+   "nd": -35000
   },
-  "compliance": {
-    "asOf": "2026-07-31",
-    "items": [
-      {
-        "year": 2024,
-        "status": "enquete_en_cours",
-        "title": "DOJ v. Apple - plainte antitrust federale (21/03/2024) alleguant une monopolisation des marches des smartphones ('performance smartphones' et 'smartphones') via les regles App Store, restrictions developpeurs et controle de fonctionnalites cles de l'iPhone.",
-        "allegedBy": "US Department of Justice + plusieurs Etats/procureurs generaux",
-        "outcome": "Discovery en cours depuis avril 2026 ; negociations preliminaires de reglement engagees (juillet 2026), Apple ayant fait plusieurs propositions couvrant 4 des 5 categories de griefs du DOJ - l'interoperabilite Apple Watch/Android reste le point de blocage principal. Issue non determinable a ce stade ; potentiellement resolu avant la transition de CEO du 01/09/26.",
-        "source": "Depot judiciaire federal (New Jersey), TechTimes, 10-Q T2 2026",
-        "date": "2026-07-19"
-      },
-      {
-        "year": 2025,
-        "status": "enquete_en_cours",
-        "title": "Amende DMA de la Commission europeenne (500 M euros, 23/04/2025) pour avoir restreint les developpeurs App Store de rediriger les utilisateurs vers des achats moins chers hors App Store ; designation 'gatekeeper' DMA confirmee par le Tribunal de l'UE le 08/07/2026 (appel d'Apple rejete).",
-        "allegedBy": "Commission europeenne",
-        "outcome": "Amende en appel devant les juridictions europeennes, toujours pendante. La confirmation du statut de gatekeeper (07/2026) ferme une partie des options de contestation d'Apple sur l'interoperabilite exigee par le DMA.",
-        "source": "Commission europeenne, TechTimes",
-        "date": "2026-07-08"
-      },
-      {
-        "year": 2021,
-        "status": "enquete_en_cours",
-        "title": "Epic Games v. Apple - procedure pour outrage devant la Cour supreme americaine, liee a l'execution de l'injonction anti-steering App Store.",
-        "allegedBy": "Epic Games",
-        "outcome": "Procedure toujours active ; s'ajoute a la pile de contentieux reglementaire (DOJ, DMA, class action UK) heritee par le nouveau CEO.",
-        "source": "TechTimes",
-        "date": "2026-07-19"
-      }
-    ],
-    "note": "Pile reglementaire inhabituellement dense pour ce refresh (DOJ + DMA + Epic + class action UK simultanement) - a suivre en priorite au prochain refresh, en particulier une eventuelle resolution DOJ avant/apres la prise de fonction de John Ternus."
+  {
+   "year": 2023,
+   "ca": 383285,
+   "ebit": 114301,
+   "net": 96995,
+   "shares": 15813,
+   "nd": -55000
   },
-  "nextEvent": {
-    "label": "Q4 FY26",
-    "date": null
+  {
+   "year": 2024,
+   "ca": 391035,
+   "ebit": 123216,
+   "net": 103936,
+   "shares": 15408,
+   "nd": -47000
   },
-  "hypothese": {
-    "date": "2026-07-31",
-    "priorEPS": {
-      "date": "2026-07-31",
-      "eps": {
-        "2026": 8.78,
-        "2027": 9.58
-      }
-    },
-    "source": "Creation - Communique complet des resultats T3 FY2026 (30/07/2026, exercice clos le 27/06/2026) + transcript integral du call du meme jour (dernier call de Tim Cook comme CEO, avec John Ternus CEO entrant present) + 10-K FY2025 + 10-Q T2 FY2026 + recherche publique complementaire (consensus, gouvernance, contentieux reglementaire).",
-    "dernierCall": {
-      "quarter": "Q3 FY26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 109420,
-          "consensus": 108800
-        },
-        "epsAdj": {
-          "actual": 2.02,
-          "consensus": 1.89,
-          "basis": "GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T4 FY26 (sept.) guide a CA +9-11% YoY (~111,7-113,8 Md$ vs 102,5 Md$ un an plus tot), marge brute 47-48% (dont ~1pt de remboursements tarifaires), opex 19,1-19,4 Md$, taux d'IS ~16,5%, avec un vent contraire de change sequentiel de ~2,5pts sur la croissance.",
-      "guidanceAnnuelle": "Apple ne fournit pas de guidance annuelle chiffree formelle ; seule la guidance trimestrielle ci-dessus est communiquee, conformement a sa pratique historique de guidance trimestre par trimestre uniquement.",
-      "pointsCles": [
-        "Le CFO Kevan Parekh a chiffre que l'inflation des couts memoire (DRAM/NAND) explique plus de 100% de la compression sequentielle de la marge brute hors tarifs (49,3% au T2 vers 48,1% au T3), avec une nouvelle baisse guidee a 46,5% hors tarifs au T4 - un phenomene que Tim Cook a qualifie de 'crue du siecle'.",
-        "C'etait le dernier call de resultats de Tim Cook comme CEO : il quitte ses fonctions le 31 aout 2026 pour devenir President executif, John Ternus (SVP Hardware Engineering) prenant la direction le 1er septembre 2026, sans changement de strategie annonce.",
-        "Cook a attribue les contraintes d'approvisionnement affectant iPhone, Mac et iPad au T4 a une demande superieure aux attentes plutot qu'a un probleme fournisseur, evoquant la necessite de 'jongler' entre les gammes de produits.",
-        "Les Services (30,7 Md$) sont ressortis legerement sous le consensus (~31,3 Md$), le CFO evoquant une faiblesse du mobile gaming et des changements de modele App Store, la Chine (18,8 Md$) etant egalement en-dessous des attentes (~19,5 Md$)."
-      ]
-    },
-    "guidanceHistory": [],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 2.84,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 2.01,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 1.91,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 2.02,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 3.1,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 2.19,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 2.09,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 2.2,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 9.4,
-      "forwardPeriodLabel": "Q4 FY26 -> Q3 FY27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    },
-    "summary": "Trimestre juin recorde sur tous les fronts (CA 109,4 Md$ +16%, EPS 2,02$ +29%, porte par iPhone +22% et Mac +29%), mais deux signaux structurels a surveiller : (1) une inflation des couts memoire qualifiee de 'crue du siecle' par Tim Cook qui va comprimer la marge brute au T4 FY26 (guidee a 47-48% contre 50,1% publie, dont ~1pt de remboursements tarifaires non recurrents) et potentiellement au-dela ; (2) une transition de direction historique - c'etait le dernier call de Tim Cook comme CEO, John Ternus prenant le relais le 01/09/2026. Le modele Omnium exclut le benefice tarifaire ponctuel (0,11$ au T3) et traite le cash net comme consomme par les rachats reguliers (E5-a bis, pas de produit financier modelise). omniumEPS 8,78->14,21 (FY2026-FY2030).",
-    "text": "== SYNTHESE DE LA THESE ==\nApple cree ce refresh sur un trimestre juin (T3 FY2026) recorde a tous les niveaux : CA 109,4 Md$ (+16% YoY), iPhone 54,3 Md$ (+22%, record), Mac 10,4 Md$ (+29%, nouveau MacBook Neo), Services 30,7 Md$ (+12%, record mais legerement sous consensus), EPS dilue 2,02$ (+29%). La marge brute publiee de 50,1% inclut ~2pts de remboursements tarifaires ponctuels (impact EPS +0,11$) - le modele Omnium exclut ce benefice non recurrent de sa base normalisee. Le signal le plus important du trimestre est prospectif : le CFO Kevan Parekh chiffre que l'inflation des couts memoire (DRAM/NAND, tiree par la demande des datacenters IA) explique plus de 100% de la compression sequentielle de marge (49,3% en mars -> 48,1% en juin hors tarifs), et guide une nouvelle baisse a 46,5% hors tarifs pour le trimestre de septembre - un phenomene qualifie de 'crue du siecle' par Tim Cook, qui pourrait peser au-dela d'un seul trimestre compte tenu de la concentration du marche DRAM (trois fournisseurs principaux seulement). Deuxieme evenement majeur : c'etait le DERNIER call de resultats de Tim Cook comme CEO - John Ternus (chef de l'ingenierie hardware depuis 2021, chez Apple depuis pres de 20 ans) prend la direction le 01/09/2026, Cook devenant President executif. Transition presentee comme le fruit d'une planification de succession de long terme, sans changement de strategie annonce.\n\n== EVENEMENTS & INFLEXIONS (T3 FY2026, publie 30/07) ==\n1. INFLATION DES COUTS MEMOIRE - RISQUE STRUCTUREL [classe iii, partiellement quantifie] : Parekh chiffre que le cout memoire explique >100% de la baisse sequentielle de marge brute (49,3%->48,1% hors tarifs, T2->T3 FY26) ; guidance T4 a 46,5% hors tarifs (nouvelle baisse). Cook parle d'une 'crue du siecle' avec des hausses exponentielles, ayant deja force des hausses de prix sur iPad et Mac. Marche DRAM concentre a trois fournisseurs principaux - Apple 'evalue toutes les options' de diversification. Duree du phenomene incertaine - possible pression multi-trimestres plutot qu'un choc isole, contrairement a un one-off classique.\n2. CONTRAINTES D'APPROVISIONNEMENT SUR NOEUDS AVANCES [classe i] : Cook attribue les contraintes de capacite (affectant iPhone/Mac/iPad au T4) a une demande superieure aux attentes plutot qu'a un probleme fournisseur - 'nous allons devoir jongler' au T4. Pas de guidance au-dela du trimestre de septembre.\n3. TRANSITION DE CEO - DERNIER CALL DE TIM COOK [classe i, evenement de gouvernance majeur] : Tim Cook quitte la fonction de CEO le 31/08/2026 apres pres de 15 ans, devient President executif (engagement avec les regulateurs/decideurs publics). John Ternus devient CEO le 01/09/2026 - au tout debut de l'exercice fiscal 2027. Arthur Levinson devient administrateur independant principal. Aucun changement de strategie annonce a ce stade ; premier trimestre complet sous Ternus = T1 FY2027 (Oct-Dec 2026), a suivre en priorite absolue au prochain refresh.\n4. REMBOURSEMENTS TARIFAIRES - EXCEPTIONNEL RECURRENT CE CYCLE [classe i, exclu] : ~2pts de marge brute et +0,11$ d'EPS au T3 FY26, ~1pt guide au T4 FY26. Meme type d'element ponctuel deja identifie chez Amazon et Boston Scientific ce trimestre (remboursements lies aux tarifs IEEPA) - exclu de la base normalisee Omnium sur les deux trimestres identifies.\n5. PILE REGLEMENTAIRE DENSE [classe iii, non quantifiable] : negociations preliminaires DOJ (reglement possible avant la transition de CEO, interoperabilite Apple Watch/Android en point de blocage), amende DMA 500 M euros en appel, designation 'gatekeeper' confirmee par le Tribunal UE (08/07/26), procedure Epic Games pour outrage toujours active. Voir compliance.\n6. Services legerement sous consensus [classe ii] : 30,7 Md$ vs ~31,3 Md$ attendus ; Chine 18,8 Md$ vs ~19,5 Md$ attendus. Guidance T4 Services : croissance publiee similaire au T3 une fois retire un vent contraire de change sequentiel de ~2,5pts ; faiblesse mobile gaming et changements de modele App Store evoques par le CFO.\n\n== PARTICULARITES ==\nTransition de CEO (voir tableau particularites) et programme de rachats/dividende etabli justifiant la regle du rendement 0% sur le cash net (E5-a bis) - voir ancrages.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase normalisee GAAP, retraitee des remboursements tarifaires ponctuels (T3+T4 FY26 guide). Correction apportee a data : le net income FY2024 publie (93 736 M$) incluait une charge fiscale exceptionnelle unique de 10,2 Md$ (reversement de la decision 'State Aid' UE-Irlande, confirmee par la Cour de Justice europeenne en septembre 2024) - retraite a 103 936 M$ pour ne pas polluer la lecture de la trajectoire historique (E5 d-bis). Taux d'IS normalise a 16,5% (coherent avec la guidance T4 et le taux effectif recent 15,6-17,6%). Regle du cash net : programme de rachats actif et regulier depuis plus d'une decennie -> rendement 0% applique (E5-a bis), aucun produit financier modelise sur le cash net (~62 Md$ a fin juin 2026). omniumShares -3%/an (rythme de rachats recent, ~62 Md$ sur les 9 premiers mois du seul FY2026).\nA suivre : (1) premier trimestre complet sous la direction de John Ternus (T1 FY2027) - tout signal de changement de strategie ; (2) duree et ampleur reelles de l'inflation memoire au-dela du T4 FY26 ; (3) issue des negociations DOJ (reglement possible avant la transition de CEO) ; (4) monetisation de Siri AI (deploiement retarde en UE et Chine pour raisons reglementaires) ; (5) rythme des contraintes d'approvisionnement sur noeuds avances au T4 et au-dela (cycle iPhone de decembre) ; (6) prochain refresh utile : resultats T4 FY2026 / annee fiscale complete, publication attendue fin octobre/debut novembre 2026 - premiere communication officielle sous la presidence de John Ternus.\n\n== CATALYSEURS ==\nCycle iPhone 17 toujours porteur (records dans toutes les zones geographiques, record d'upgraders) ; Mac en forte acceleration (MacBook Neo) ; Services toujours en croissance a deux chiffres malgre la maturation ; nouveau CEO orientation produit/ingenierie (continuite plutot que rupture) ; contrepoids a surveiller : inflation memoire pluri-trimestrielle possible, contraintes d'approvisionnement s'intensifiant au T4, pile reglementaire dense (DOJ/DMA/Epic).",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "data_2024_eu_state_aid_retraite",
-        "moteur": "Net income FY2024 publie (93 736 M$) incluait une charge fiscale exceptionnelle unique de 10,2 Md$ liee au reversement de la decision 'State Aid' UE-Irlande (confirmee par la Cour de Justice europeenne le 10/09/2024) - vrai one-off fiscal, non recurrent -> data 2024 retraite a 103 936 M$ (E5 d-bis) pour eviter une fausse marche dans la lecture de la trajectoire historique.",
-        "applique": [
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "memory_cost_inflation_2026",
-        "moteur": "Inflation des couts memoire (DRAM/NAND) qualifiee de 'crue du siecle' par le CEO, expliquant >100% de la compression sequentielle de marge brute au T3 FY26 (49,3%->48,1% hors tarifs) et guidee en nouvelle baisse au T4 (46,5% hors tarifs) - marche DRAM concentre a 3 fournisseurs, duree incertaine -> trajectoire de marge FY2026-2027 construite avec une pression continue, recuperation graduelle supposee a partir de FY2028 a mesure que l'offre memoire s'ajuste.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "tariff_refunds_exclus_t3_t4_fy26",
-        "moteur": "Remboursements tarifaires ponctuels identifies au T3 FY26 (~2pts de marge, +0,11$ EPS) et guides au T4 FY26 (~1pt de marge) - meme type d'element non recurrent deja exclu chez Amazon et Boston Scientific ce cycle -> exclu de la base normalisee Omnium FY2026.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "buyback_actif_rendement_zero_cash_net",
-        "moteur": "Programme de rachats d'actions actif et regulier depuis plus d'une decennie (62,1 Md$ sur les 9 premiers mois du seul FY2026, historique de plusieurs annees consecutives) -> regle E5-a bis, branche 'rendement 0%' appliquee : le cash net (~62 Md$ a fin juin 2026) est traite comme consomme par les rachats, aucun produit financier modelise sur l'horizon de projection.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "tax_normalise_16_5pct",
-        "moteur": "Taux d'IS normatif retenu a 16,5%, coherent avec la guidance explicite du CFO pour le T4 FY26 et le taux effectif recent (15,61% FY2025 publie, 17,58% sur les 9 premiers mois de FY2026) - milieu de fourchette retenu pour l'ensemble de l'horizon de projection.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "omniumShares_rachats_3pct_an",
-        "moteur": "Rythme de rachats recent (62,1 Md$ sur 9 mois FY2026, cadence annualisee tres proche des dernieres annees) -> extrapole a -3%/an sur omniumShares pour tout l'horizon, coherent avec la tendance observee FY2023-FY2026 (15 813M -> ~14 650M).",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "ceo_transition_ternus_neutre",
-        "moteur": "Transition de CEO (Cook -> Ternus, 01/09/2026) traitee comme neutre sur la trajectoire chiffree a ce stade : succession de long terme planifiee, profil ingenieur/produit proche de la culture Apple existante, aucun changement de strategie annonce. A reevaluer au prochain refresh une fois le premier trimestre complet sous Ternus publie (T1 FY2027).",
-        "applique": [
-          "omniumCA.2027",
-          "omniumEBIT.2027"
-        ],
-        "confiance": "basse"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 8.78,
-      "2027": 9.58,
-      "2028": 10.93,
-      "2029": 12.51,
-      "2030": 14.21
-    },
-    "omniumCA": {
-      "2026": 477000,
-      "2027": 510000,
-      "2028": 551000,
-      "2029": 598000,
-      "2030": 649000
-    },
-    "omniumEBIT": {
-      "2026": 154000,
-      "2027": 163000,
-      "2028": 180500,
-      "2029": 200300,
-      "2030": 220700
-    },
-    "omniumNet": {
-      "2026": 128590,
-      "2027": 136105,
-      "2028": 150718,
-      "2029": 167250,
-      "2030": 184285
-    },
-    "omniumND": {
-      "2026": -48000,
-      "2027": -45000,
-      "2028": -42000,
-      "2029": -40000,
-      "2030": -38000
-    },
-    "omniumShares": {
-      "2026": 14650,
-      "2027": 14211,
-      "2028": 13785,
-      "2029": 13372,
-      "2030": 12971
-    }
+  {
+   "year": 2025,
+   "ca": 416161,
+   "ebit": 133050,
+   "net": 112010,
+   "shares": 15005,
+   "nd": -33800
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 8.74,
+  "epsNY": 9.57,
+  "date": "2026-07-27",
+  "source": "GAAP - S&P Global Market Intelligence/TipRanks via Yahoo Finance/Barchart (~30 analystes)"
+ },
+ "particularites": [
+  {
+   "text": "Transition de direction majeure : Tim Cook quitte la fonction de CEO le 31/08/2026 (dernier call de resultats le 30/07/26) et devient President executif du board ; John Ternus (SVP Hardware Engineering, chez Apple depuis pres de 20 ans) devient CEO le 01/09/2026 - soit au tout debut de l'exercice fiscal 2027. Transition presentee comme le fruit d'une planification de succession de long terme, approuvee a l'unanimite par le board. Aucun changement de strategie annonce a ce stade ; a suivre de pres au prochain refresh (premier trimestre complet sous la direction de Ternus).",
+   "valuePct": null
+  },
+  {
+   "text": "Programme de rachats d'actions actif et regulier depuis plus d'une decennie (62,1 Md$ rachetes sur les 9 premiers mois du seul exercice 2026) couple a un dividende trimestriel etabli (0,27$/action) - justifie l'application de la branche 'rendement 0%' de la regle E5-a bis sur le cash net (le cash est traite comme consomme par les rachats plutot que generateur d'un produit financier modelise).",
+   "valuePct": null
+  }
+ ],
+ "ownership": {
+  "asOf": "2026-Q1",
+  "insiderPct": 0.07,
+  "insiderDesc": "Tres faible, typique d'une mega-capitalisation sans fondateur au capital. Tim Cook (CEO sortant) detient ~3,3M actions (~1 Md$ au cours actuel), tres largement issues de RSU de performance ; ventes periodiques pour diversification/fiscalite. Nouveau CEO John Ternus : participation non encore documentee publiquement a ce stade.",
+  "insiderSource": "Compilation proxy statement / Form 4 (RevenueMemo, GuruFocus).",
+  "notableHolders": [
+   {
+    "investor": "Berkshire Hathaway (Warren Buffett / Greg Abel)",
+    "tier": "T1",
+    "pct": 2.0,
+    "asOf": "2026-Q1",
+    "movement": "stable - reste la plus grosse ligne actions de Berkshire (~23% du portefeuille cote) malgre des ventes partielles anterieures ; passation du CEO de Berkshire a Greg Abel en janvier 2026, Buffett reste President."
+   }
+  ],
+  "coverageNote": "Base actionnariale tres majoritairement institutionnelle/indicielle (Vanguard, BlackRock, State Street, etc.) - peu de gerants actifs de conviction distincts au-dela de Berkshire dans la liste de suivi Omnium.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-31",
+  "items": [
+   {
+    "year": 2024,
+    "status": "enquete_en_cours",
+    "title": "DOJ v. Apple - plainte antitrust federale (21/03/2024) alleguant une monopolisation des marches des smartphones ('performance smartphones' et 'smartphones') via les regles App Store, restrictions developpeurs et controle de fonctionnalites cles de l'iPhone.",
+    "allegedBy": "US Department of Justice + plusieurs Etats/procureurs generaux",
+    "outcome": "Discovery en cours depuis avril 2026 ; negociations preliminaires de reglement engagees (juillet 2026), Apple ayant fait plusieurs propositions couvrant 4 des 5 categories de griefs du DOJ - l'interoperabilite Apple Watch/Android reste le point de blocage principal. Issue non determinable a ce stade ; potentiellement resolu avant la transition de CEO du 01/09/26.",
+    "source": "Depot judiciaire federal (New Jersey), TechTimes, 10-Q T2 2026",
+    "date": "2026-07-19"
+   },
+   {
+    "year": 2025,
+    "status": "enquete_en_cours",
+    "title": "Amende DMA de la Commission europeenne (500 M euros, 23/04/2025) pour avoir restreint les developpeurs App Store de rediriger les utilisateurs vers des achats moins chers hors App Store ; designation 'gatekeeper' DMA confirmee par le Tribunal de l'UE le 08/07/2026 (appel d'Apple rejete).",
+    "allegedBy": "Commission europeenne",
+    "outcome": "Amende en appel devant les juridictions europeennes, toujours pendante. La confirmation du statut de gatekeeper (07/2026) ferme une partie des options de contestation d'Apple sur l'interoperabilite exigee par le DMA.",
+    "source": "Commission europeenne, TechTimes",
+    "date": "2026-07-08"
+   },
+   {
+    "year": 2021,
+    "status": "enquete_en_cours",
+    "title": "Epic Games v. Apple - procedure pour outrage devant la Cour supreme americaine, liee a l'execution de l'injonction anti-steering App Store.",
+    "allegedBy": "Epic Games",
+    "outcome": "Procedure toujours active ; s'ajoute a la pile de contentieux reglementaire (DOJ, DMA, class action UK) heritee par le nouveau CEO.",
+    "source": "TechTimes",
+    "date": "2026-07-19"
+   }
+  ],
+  "note": "Pile reglementaire inhabituellement dense pour ce refresh (DOJ + DMA + Epic + class action UK simultanement) - a suivre en priorite au prochain refresh, en particulier une eventuelle resolution DOJ avant/apres la prise de fonction de John Ternus."
+ },
+ "nextEvent": {
+  "label": "Q4 FY26",
+  "date": null
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-31",
+   "eps": {
+    "2026": 8.78,
+    "2027": 9.58
+   }
+  },
+  "source": "Creation - Communique complet des resultats T3 FY2026 (30/07/2026, exercice clos le 27/06/2026) + transcript integral du call du meme jour (dernier call de Tim Cook comme CEO, avec John Ternus CEO entrant present) + 10-K FY2025 + 10-Q T2 FY2026 + recherche publique complementaire (consensus, gouvernance, contentieux reglementaire).",
+  "dernierCall": {
+   "quarter": "Q3 FY26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 109420,
+     "consensus": 108800
+    },
+    "epsAdj": {
+     "actual": 2.02,
+     "consensus": 1.89,
+     "basis": "GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T4 FY26 (sept.) guide a CA +9-11% YoY (~111,7-113,8 Md$ vs 102,5 Md$ un an plus tot), marge brute 47-48% (dont ~1pt de remboursements tarifaires), opex 19,1-19,4 Md$, taux d'IS ~16,5%, avec un vent contraire de change sequentiel de ~2,5pts sur la croissance.",
+   "guidanceAnnuelle": "Apple ne fournit pas de guidance annuelle chiffree formelle ; seule la guidance trimestrielle ci-dessus est communiquee, conformement a sa pratique historique de guidance trimestre par trimestre uniquement.",
+   "pointsCles": [
+    "Le CFO Kevan Parekh a chiffre que l'inflation des couts memoire (DRAM/NAND) explique plus de 100% de la compression sequentielle de la marge brute hors tarifs (49,3% au T2 vers 48,1% au T3), avec une nouvelle baisse guidee a 46,5% hors tarifs au T4 - un phenomene que Tim Cook a qualifie de 'crue du siecle'.",
+    "C'etait le dernier call de resultats de Tim Cook comme CEO : il quitte ses fonctions le 31 aout 2026 pour devenir President executif, John Ternus (SVP Hardware Engineering) prenant la direction le 1er septembre 2026, sans changement de strategie annonce.",
+    "Cook a attribue les contraintes d'approvisionnement affectant iPhone, Mac et iPad au T4 a une demande superieure aux attentes plutot qu'a un probleme fournisseur, evoquant la necessite de 'jongler' entre les gammes de produits.",
+    "Les Services (30,7 Md$) sont ressortis legerement sous le consensus (~31,3 Md$), le CFO evoquant une faiblesse du mobile gaming et des changements de modele App Store, la Chine (18,8 Md$) etant egalement en-dessous des attentes (~19,5 Md$)."
+   ]
+  },
+  "guidanceHistory": [],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 2.84,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 2.01,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 1.91,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 2.02,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 3.1,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 2.19,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 2.09,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 2.2,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Trimestre juin recorde sur tous les fronts (CA 109,4 Md$ +16%, EPS 2,02$ +29%, porte par iPhone +22% et Mac +29%), mais deux signaux structurels a surveiller : (1) une inflation des couts memoire qualifiee de 'crue du siecle' par Tim Cook qui va comprimer la marge brute au T4 FY26 (guidee a 47-48% contre 50,1% publie, dont ~1pt de remboursements tarifaires non recurrents) et potentiellement au-dela ; (2) une transition de direction historique - c'etait le dernier call de Tim Cook comme CEO, John Ternus prenant le relais le 01/09/2026. Le modele Omnium exclut le benefice tarifaire ponctuel (0,11$ au T3) et traite le cash net comme consomme par les rachats reguliers (E5-a bis, pas de produit financier modelise). omniumEPS 8,78->14,21 (FY2026-FY2030).",
+  "text": "== THESIS SUMMARY ==\nRefresh on a record June quarter (Q3 FY26): revenue 109.4bn (+16%), iPhone 54.3bn (+22%, record), Mac +29% (MacBook Neo), Services 30.7bn (+12%, record though slightly under consensus), EPS 2.02 (+29%). Published gross margin 50.1% includes ~2pts of one-off tariff refunds (EPS +0.11) which the Omnium normalized base EXCLUDES. The key prospective signal: the CFO quantified AI-driven memory-cost inflation (DRAM/NAND) as the main FY27 margin headwind.\n\n== THESIS READ ==\n- The iPhone supercycle is real (foldable + AI features), but FY27 margins face the memory-cost wall management itself quantified. Watch: gross-margin guidance each quarter as the headwind lands.\n- Services growth (+12%) slightly under consensus for a second time - the multiple's key support. Watch: App Store regulatory outcomes and Google-TAC dependency.\n- First full quarter under John Ternus's leadership approaches. Watch: capital-allocation and AI-strategy signals.\n\n== SPECIAL FACTORS ==\nFiscal year ends September (FY26 = Oct 25-Sep 26). Base = normalized GAAP: tariff refunds excluded; FY24 net retreated +10.2bn (EU State Aid reversal, E5 d-bis). E5-a bis convention: 0% yield on the ~62bn net cash (perpetual-buyback issuer) - finNet=0 by construction in the bridge.\n\n== PARAMETERS & WATCH-LIST ==\nRevenue +9/10%/yr; EBIT margin ~32.3% held (memory headwind vs mix); ETR 16.5% normative (FY25 actual 15.8%, +0.9bn documented residual); shares -3%/yr (~62bn bought back in 9M FY26). Watch: memory-cost pass-through; Services deceleration; Vision/wearables contribution.\n\n== CATALYSTS ==\nQ4 FY26 (Oct) + FY27 framing; iPhone cycle sell-through; App Store rulings; Ternus's first strategic moves.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "data_2024_eu_state_aid_retraite",
+    "moteur": "Net income FY2024 publie (93 736 M$) incluait une charge fiscale exceptionnelle unique de 10,2 Md$ liee au reversement de la decision 'State Aid' UE-Irlande (confirmee par la Cour de Justice europeenne le 10/09/2024) - vrai one-off fiscal, non recurrent -> data 2024 retraite a 103 936 M$ (E5 d-bis) pour eviter une fausse marche dans la lecture de la trajectoire historique.",
+    "applique": [
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "memory_cost_inflation_2026",
+    "moteur": "Inflation des couts memoire (DRAM/NAND) qualifiee de 'crue du siecle' par le CEO, expliquant >100% de la compression sequentielle de marge brute au T3 FY26 (49,3%->48,1% hors tarifs) et guidee en nouvelle baisse au T4 (46,5% hors tarifs) - marche DRAM concentre a 3 fournisseurs, duree incertaine -> trajectoire de marge FY2026-2027 construite avec une pression continue, recuperation graduelle supposee a partir de FY2028 a mesure que l'offre memoire s'ajuste.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "tariff_refunds_exclus_t3_t4_fy26",
+    "moteur": "Remboursements tarifaires ponctuels identifies au T3 FY26 (~2pts de marge, +0,11$ EPS) et guides au T4 FY26 (~1pt de marge) - meme type d'element non recurrent deja exclu chez Amazon et Boston Scientific ce cycle -> exclu de la base normalisee Omnium FY2026.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "buyback_actif_rendement_zero_cash_net",
+    "moteur": "Programme de rachats d'actions actif et regulier depuis plus d'une decennie (62,1 Md$ sur les 9 premiers mois du seul FY2026, historique de plusieurs annees consecutives) -> regle E5-a bis, branche 'rendement 0%' appliquee : le cash net (~62 Md$ a fin juin 2026) est traite comme consomme par les rachats, aucun produit financier modelise sur l'horizon de projection.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "tax_normalise_16_5pct",
+    "moteur": "Taux d'IS normatif retenu a 16,5%, coherent avec la guidance explicite du CFO pour le T4 FY26 et le taux effectif recent (15,61% FY2025 publie, 17,58% sur les 9 premiers mois de FY2026) - milieu de fourchette retenu pour l'ensemble de l'horizon de projection.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "omniumShares_rachats_3pct_an",
+    "moteur": "Rythme de rachats recent (62,1 Md$ sur 9 mois FY2026, cadence annualisee tres proche des dernieres annees) -> extrapole a -3%/an sur omniumShares pour tout l'horizon, coherent avec la tendance observee FY2023-FY2026 (15 813M -> ~14 650M).",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "ceo_transition_ternus_neutre",
+    "moteur": "Transition de CEO (Cook -> Ternus, 01/09/2026) traitee comme neutre sur la trajectoire chiffree a ce stade : succession de long terme planifiee, profil ingenieur/produit proche de la culture Apple existante, aucun changement de strategie annonce. A reevaluer au prochain refresh une fois le premier trimestre complet sous Ternus publie (T1 FY2027).",
+    "applique": [
+     "omniumCA.2027",
+     "omniumEBIT.2027"
+    ],
+    "confiance": "basse"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 8.78,
+   "2027": 9.58,
+   "2028": 10.93,
+   "2029": 12.51,
+   "2030": 14.21
+  },
+  "omniumCA": {
+   "2026": 477000,
+   "2027": 510000,
+   "2028": 551000,
+   "2029": 598000,
+   "2030": 649000
+  },
+  "omniumEBIT": {
+   "2026": 154000,
+   "2027": 163000,
+   "2028": 180500,
+   "2029": 200300,
+   "2030": 220700
+  },
+  "omniumNet": {
+   "2026": 128590,
+   "2027": 136105,
+   "2028": 150718,
+   "2029": 167250,
+   "2030": 184285
+  },
+  "omniumND": {
+   "2026": -48000,
+   "2027": -45000,
+   "2028": -42000,
+   "2029": -40000,
+   "2030": -38000
+  },
+  "omniumShares": {
+   "2026": 14650,
+   "2027": 14211,
+   "2028": 13785,
+   "2029": 13372,
+   "2030": 12971
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 111096.8,
+    "netPub": 112010,
+    "residual": 913.2,
+    "residualNote": "FY25 effective tax 15.8% vs 16.5% normative (+0.9bn favorable gap). No financial income is modeled on the net cash (~62bn) per the E5-a bis rule (0% yield convention for perpetual-buyback issuers) - finNet=0 by construction. FY24 'data' net already retreated +10.2bn for the EU State Aid one-off (documented in-fiche)."
+   },
+   "2026": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 128590.0
+   },
+   "2027": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 136105.0
+   },
+   "2028": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 150717.5
+   },
+   "2029": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 167250.5
+   },
+   "2030": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 184284.5
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS, GAAP diluted (Apple guides quarterly qualitatively, no annual guidance)",
+   "comparedAgainst": "consensus",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-30",
+     "type": "vs_consensus",
+     "detail": "Q3 FY26 (June qtr): revenue 109.4bn (+16%), iPhone +22% (record), EPS 2.02 (+29%); published gross margin 50.1% includes ~2pts one-off tariff refunds (EPS +0.11) excluded from the Omnium normalized base."
+    }
+   ],
+   "paceCheckpoint": "9M FY26: record across segments; the model excludes the one-off tariff-refund margin benefit from its normalized base.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 8.74,
+    "source": "initial_consensus",
+    "date": "2026-07-27",
+    "note": "Apple gives quarterly qualitative guidance only (revenue growth bands, gross margin), never an annual EPS frame - the anchor is the GAAP consensus. Earliest ARCHIVED snapshot (27/07, pre-Q3 print); FY26 closes in September, so the first measurement lands at the Oct/Nov 2026 report. Omnium 2026 (8.78) sits essentially ON consensus."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY vs initial consensus at setup. First measurement at the FY26 close (Oct/Nov 2026) vs the 8.74 anchor.",
+   "consensusSource": "S&P Global Market Intelligence (GAAP)",
+   "consensusDate": "2026-07-27"
+  },
+  "revisionEvent": {
+   "date": "2026-07-30",
+   "label": "Q3 FY26",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "Q3 FY26 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "Q3 FY26",
+    "date": "2026-07-30",
+    "source": "Q3 release/call (as exploited at the 31/07 refresh)",
+    "message": "Record June quarter (revenue 109.4bn +16%, iPhone 54.3bn +22%, Mac +29% on MacBook Neo, Services 30.7bn +12% record but slightly under consensus, EPS 2.02 +29%); published gross margin 50.1% carries ~2pts of one-off tariff refunds (EPS +0.11) that the Omnium base excludes; CFO quantified memory-cost inflation (DRAM/NAND, AI-driven) as the key FY27 margin headwind - the prospective signal of the quarter."
+   }
+  ]
+ }
 }

@@ -1,382 +1,478 @@
 {
-  "name": "Abbott Laboratories",
-  "cours": 100.71,
-  "yahooSymbol": "ABT",
-  "dividende": 2.52,
-  "data": [
-    {
-      "year": 2016,
-      "ca": 20853,
-      "ebit": 3026,
-      "net": 1400,
-      "shares": 1554,
-      "nd": 13000,
-      "div": 1.04
-    },
-    {
-      "year": 2017,
-      "ca": 27390,
-      "ebit": 1564,
-      "net": 477,
-      "shares": 1730,
-      "nd": 19000,
-      "div": 1.06
-    },
-    {
-      "year": 2018,
-      "ca": 30578,
-      "ebit": 3650,
-      "net": 2368,
-      "shares": 1752,
-      "nd": 17000,
-      "div": 1.08
-    },
-    {
-      "year": 2019,
-      "ca": 31904,
-      "ebit": 4532,
-      "net": 3687,
-      "shares": 1754,
-      "nd": 13500,
-      "div": 1.2
-    },
-    {
-      "year": 2020,
-      "ca": 34608,
-      "ebit": 5357,
-      "net": 4495,
-      "shares": 1757,
-      "nd": 10500,
-      "div": 1.32
-    },
-    {
-      "year": 2021,
-      "ca": 43075,
-      "ebit": 8425,
-      "net": 7071,
-      "shares": 1766,
-      "nd": 8000,
-      "div": 1.53
-    },
-    {
-      "year": 2022,
-      "ca": 43653,
-      "ebit": 8362,
-      "net": 6933,
-      "shares": 1759,
-      "nd": 9300,
-      "div": 1.8
-    },
-    {
-      "year": 2023,
-      "ca": 40109,
-      "ebit": 6478,
-      "net": 5723,
-      "shares": 1755,
-      "nd": 8900,
-      "div": 2.04
-    },
-    {
-      "year": 2024,
-      "ca": 41950,
-      "ebit": 6825,
-      "net": 5905,
-      "shares": 1748,
-      "nd": 6600,
-      "div": 2.2
-    },
-    {
-      "year": 2025,
-      "ca": 44328,
-      "ebit": 8218,
-      "net": 7204,
-      "shares": 1749,
-      "nd": 4400,
-      "div": 2.44
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 5.54,
-    "epsNY": 6.05,
-    "date": "2026-07-17",
-    "source": "Consensus sell-side (ChartMill/TipRanks, adjusted diluted EPS non-GAAP)"
+ "name": "Abbott Laboratories",
+ "cours": 100.71,
+ "yahooSymbol": "ABT",
+ "dividende": 2.52,
+ "data": [
+  {
+   "year": 2016,
+   "ca": 20853,
+   "ebit": 3026,
+   "net": 1400,
+   "shares": 1554,
+   "nd": 13000,
+   "div": 1.04
   },
-  "particularites": [
-    {
-      "text": "Abbott est un « Dividend King » historique (54 ans consécutifs d'augmentation du dividende, S&P 500 Dividend Aristocrats). Politique de distribution structurelle et prioritaire dans l'allocation de capital, indépendamment du cycle M&A.",
-      "valuePct": null
-    }
-  ],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2017,
+   "ca": 27390,
+   "ebit": 1564,
+   "net": 477,
+   "shares": 1730,
+   "nd": 19000,
+   "div": 1.06
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-10",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q1 26",
-        "date": "2026-04-16",
-        "format": "brut",
-        "clesRetenues": [
-          "Q David Roman (Goldman Sachs) - philosophie de guidance et niveau de de-risque de l'outlook : le management explique avoir integre Exact Sciences en base comparable pour la transparence, fait des choix conservateurs sur la saison respiratoire, et cite trois moteurs de croissance (soutenabilite MedTech/pharma, redressement Core Lab/Nutrition, integration Exact Sciences).",
-          "Q Robbie Marcus (JPMorgan) - deceleration de la croissance organique hors Exact Sciences : Ford repond que dispositifs et pharma restent solides, reconnait des defis ponctuels dans le portefeuille diversifie, souligne la capacite a tenir les engagements globaux malgre des variations par activite.",
-          "Q Larry Biegelsen (Wells Fargo) - faiblesse du marche CGM, tendances de prescription, croissance Libre, calendrier des capteurs type 2 non-insulino-dependant et double cetone/glucose : le management affiche une vision haussiere long terme (70-80M de patients potentiels vs 10-12M actuels), cite plusieurs catalyseurs de remboursement a venir dont la couverture CMS type 2 non-insulino-dependant.",
-          "Q Vijay Kumar (Evercore ISI) - soutenabilite de la croissance Cologuard et expansion internationale : Ford souligne une forte demande, une sous-penetration (50M d'Americains non depistes), des plans d'expansion internationale, des contraintes de capacite en coloscopie, et des retests croissants (25% des tests, 500K par an).",
-          "Q Matt Taylor (Jefferies) - tendances Structural Heart et impact du programme d'occlusion de l'auricule gauche : le management note le transfert des dispositifs LAA vers l'activite EP, une intensite concurrentielle dans le mitral, une croissance annuelle attendue a haut simple chiffre, et la fin de l'enrolement de l'essai Catalyst.",
-          "Q Travis Steed (BofA) - confiance dans la reprise des volumes Nutrition et strategie de portefeuille : Ford explique des baisses de prix ciblees avec analyse d'elasticite des volumes, des premiers signes positifs sur Ensure, un suivi hebdomadaire, et un engagement sur la creation de valeur long terme.",
-          "Q Joanne Wuensch (Citi) - risques macro lies au conflit au Moyen-Orient sur les couts et les volumes patients : le management indique un impact actuel minime, des equipes de suivi des couts actives, aucune baisse de demande observee, et des contraintes logistiques necessitant un meilleur positionnement regional des stocks.",
-          "Q Josh Jennings (TD Cowen) - details sur la franchise EP, performance internationale de Volt et calendrier de lancement US : Ford decrit des phases de lancement limite pour Volt et TactiFlex Duo, met en avant les avantages de sedation consciente et de durabilite, et projette une acceleration depassant la croissance du marche (mid-to-high-teens).",
-          "Q Marie Thibault (BTIG) - trajectoire Core Lab par geographie et dynamique de gains de parts de marche : le management rapporte une Chine stable (vs -15% a -30% precedemment), une croissance a haut simple chiffre aux US avec des taux de renouvellement >90% et de gain >55%, l'Europe a moyen/haut simple chiffre, et une attente annuelle a moyen simple chiffre."
-        ]
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-16",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Robbie Marcus (JPMorgan) - risque de deceleration des volumes de procedures US face aux inquietudes du secteur hospitalier : Ford ecarte ce risque, notant que c'est Medicare (pas Medicaid) qui pilote les procedures de dispositifs, une demande inelastique sur les produits a forte acuite, et des volumes de tests diagnostiques stables dans tous les Etats.",
-          "Q Robbie Marcus (JPMorgan) - niveau de confiance sur l'acceleration du S2 et moteurs cles : Ford exprime une forte confiance, citant quatre moteurs principaux (nutrition, electrophysiologie, diagnostics de laboratoire central, diagnostics du cancer) representant collectivement 80% de l'acceleration projetee.",
-          "Q Larry Biegelsen (Wells Fargo) - tendances Libre US/international, outlook CGM, calendrier des capteurs double cetone-glucose et couverture type 2 : Ford confirme que l'expansion du remboursement est le catalyseur principal, la couverture Medicare type 2 US pourrait debloquer 10 millions de beneficiaires, et une 5e usine de fabrication est prevue.",
-          "Q Vijay Kumar (Evercore ISI) - visibilite sur la croissance Exact Sciences, contribution des programmes care gap, positionnement face au depistage colorectal par prise de sang : Ford confirme une croissance annuelle a mi-adolescence (mid-teens), les programmes care gap montant en puissance au S2, et un portefeuille test selles + sang complementaire.",
-          "Q Matt Taylor (Jefferies) - dynamique du marche EP, ambitions de croissance, trajectoire du marche AF, potentiel de gain de parts : Ford evite des objectifs de parts precis mais s'engage a surperformer le marche au S2, l'adoption de Volt 2.0 et le deploiement international de TactiFlex Duo pilotant la croissance.",
-          "Q Travis Steed (BofA) - positionnement du portefeuille pour la croissance 2027 compte tenu de comps plus faciles et de lancements produits : Ford reaffirme un objectif de croissance du chiffre d'affaires total durable de 7%, notant que seulement cinq societes de sante depassant 30 Md$ de CA y parviennent.",
-          "Q Josh Jennings (TD Cowen) - calendrier de redressement de Structural Heart, initiatives strategiques pour la franchise US, outlook 2027 : Ford attend une croissance a moyen/haut simple chiffre d'ici la fin d'annee via des changements de personnel et un repositionnement, l'equipe internationale affichant deja une croissance a deux chiffres.",
-          "Q Joanne Wuensch (Citi) - trajectoire d'acceleration Nutrition, mises a jour des contrats WIC, nouveaux lancements produits : Ford note 125 M$ de croissance sequentielle trimestrielle, la meilleure performance pediatrique internationale en deux ans, et de nouveaux lancements (shake proteine collagene, formules enrichies en creatine).",
-          "Q Marie Thibault (BTIG) - appetit du marche pour Amulet 360, defis concurrentiels en occlusion de l'auricule gauche : Ford met l'accent sur la capture de parts de marche plutot que la croissance du marche, et le transfert du portefeuille LAA vers la division EP pour une offre procedurale complete."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "croissance_ca_7pct_2027",
-        "quarterOrigine": "Q2 26",
-        "engagement": "Objectif de croissance du chiffre d'affaires total consolide durable a ~7% vise pour 2027 malgre une base plus large (management cite seulement 5 societes de sante >30 Md$ de CA atteignant ce rythme).",
-        "echeance": "2027-Q4",
-        "statut": "en_cours"
-      }
-    ]
+  {
+   "year": 2018,
+   "ca": 30578,
+   "ebit": 3650,
+   "net": 2368,
+   "shares": 1752,
+   "nd": 17000,
+   "div": 1.08
   },
-  "hypothese": {
-    "date": "2026-08-10",
-    "source": "Refresh cible (04/08/2026) - construction de hypothese.quarterlyEPS selon E5 ter, a partir des tableaux \"Details of Specified Items\" des communiques T1 26 (16/04/2026) et T2 26 (16/07/2026). Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025) ajoute - EPS ajuste management par trimestre (1,09$/1,26$/1,30$/1,50$, communiques trimestriels 2025) mis a l'echelle uniformement (ratio 4,12/5,15) pour boucler exactement sur la base Omnium retraitee 2025 deja figee (data[2025].net/shares = 7204/1749 = 4,12$) plutot que sur l'ajuste management (5,15$, qui exclut a tort l'amortissement par rapport a la methodologie Omnium) - approximation par mise a l'echelle uniforme de la saisonnalite publiee, PAS une ventilation fine trimestre par trimestre des \"Details of Specified Items\" 2025 comme cela a ete fait pour T1/T2 26 (a affiner si un futur refresh en a l'usage). coherenceQualitative renseigne pour la premiere fois - transcript Q2 26 (16/07/2026) relu integralement, et transcript Q1 26 (16/04/2026) retrouve et lu retroactivement (E2 ter point 1 bis, aucune entree brute anterieure disponible) pour amorcer la comparaison des ce passage. Aucune contradiction materielle detectee (statut coherent) ; un engagement structurant ajoute (objectif de croissance CA ~7% en 2027). Aucune nouvelle publication de resultats depuis le refresh du 20/07/2026 (Q2 26) - these, ancrages et adjXXX inchanges, non rouverts par cette passe.",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 12593,
-          "consensus": 12620
-        },
-        "epsAdj": {
-          "actual": 1.31,
-          "consensus": 1.28,
-          "basis": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 26 : BPA ajusté guidé $1.38-$1.46 (consensus pré-publication $1.42).",
-      "guidanceAnnuelle": "FY26 relevée : BPA ajusté $5.45-$5.60 (vs $5.38-$5.58 précédemment) ; croissance des ventes comparables réaffirmée à 6.5%-7.5% (inclut Exact Sciences en base comparable des deux années).",
-      "pointsCles": [
-        "Clôture de l'acquisition d'Exact Sciences le 23 mars 2026 (cancer diagnostics, ~$3Md de CA incrémental attendu en 2026) ; Cologuard affiche une croissance à mi-adolescence aux US et à deux chiffres à l'international, nouveaux et anciens utilisateurs en hausse.",
-        "Écart massif GAAP ($0.53) vs ajusté ($1.31) au T2, principalement lié à l'amortissement d'intangibles (quasi doublé à $658M avec Exact Sciences), aux coûts d'intégration/step-up d'inventaire liés à l'acquisition, et à une provision légale de $385M pour un règlement de principe.",
-        "Electrophysiology en croissance à faible double chiffre, Rhythm Management/Diabetes Care/Heart Failure en hausse à haut simple chiffre ; le management évoque une accélération attendue des ventes et du BPA au second semestre.",
-        "Taux d'imposition GAAP anormalement élevé au T2 (39.1%) du fait d'éléments fiscaux discrets (~$110M de résolution de positions fiscales antérieures + ~$240M d'ajustement lié à la reconnaissance antérieure d'un avantage fiscal différé non monétaire significatif) ; taux normatif hors éléments spécifiés ~15.2%."
-      ],
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true
-    },
-    "summary": "BPA ajusté T2 26 au-dessus du consensus et guidance FY26 relevée, mais écart GAAP/ajusté considérablement élargi par l'intégration d'Exact Sciences (amortissement, coûts d'intégration, provision légale). Thèse intacte : accélération attendue au S2 avec dissipation progressive des coûts ponctuels liés à l'acquisition.",
-    "text": "== SYNTHESE DE LA THESE ==\nAbbott est un pari sur un portefeuille de santé diversifié à quatre pattes (Nutrition, Diagnostics, Pharma Établie, Dispositifs Médicaux) capable de générer une croissance organique régulière à mi-simple chiffre, avec un accélérateur structurel du côté Diagnostics : l'acquisition d'Exact Sciences (clôturée le 23 mars 2026, ~$3Md de CA incrémental 2026) positionne Abbott en leader du dépistage du cancer colorectal via Cologuard, un marché à croissance forte (mid-teens+) et récurrente. Le T2 26 illustre la mécanique classique d'une acquisition transformationnelle en année 1 : dilution de marge et du BPA GAAP le temps que l'amortissement d'intangibles acquis, les coûts d'intégration et le step-up d'inventaire se normalisent, avant que les synergies et la pleine contribution organique de la cible ne matérialisent l'accélération promise par le management pour le S2 26 et au-delà. Abbott reste par ailleurs un « Dividend King » (54 ans d'augmentations consécutives), ce qui ancre une discipline de capital-allocation stricte y compris pendant les phases d'intégration M&A lourdes. Le risque principal de la thèse est l'exécution de l'intégration (dette d'acquisition significative, ~$20Md de facility-relais mobilisée) et la capacité du management à livrer l'accélération S2 promise sans nouveau dérapage de marge.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) RETRAITEMENT MAJEUR EXERCICE 2024 - avantage fiscal exceptionnel non-cash : le résultat net GAAP 2024 publié ($13.402Md, BPA $7.64) inclut un ajustement de provision pour moins-value fiscale (« valuation allowance ») de $7.497Md lié à une restructuration de filiales étrangères et à la confirmation de positions fiscales - explicitement isolé par le management lui-même comme non-cash et non-récurrent (signal d'alerte E5-e : GAAP largement supérieur à l'ajusté management, $7.64 vs $4.67). Calcul de retraitement : résultat avant impôts inchangé $7.013Md ; impôt GAAP retraité de -$6.389Md (bénéfice) à +$1.108Md (charge normative, en excluant les $7.497Md) ; net retraité dans `data[2024]` = $7.013Md - $1.108Md = $5.905Md (vs $13.402Md publié brut, tracé ici pour audit). (i) RETRAITEMENT 2025 - bruit fiscal discret résiduel : la reconnaissance de l'avantage 2024 génère des ajustements de \"true-up\" trimestriels récurrents (~$610M sur FY25, + ~$70M net de résolutions de positions antérieures) qui gonflent artificiellement le taux effectif 2025 (22.9% GAAP vs ~16.0% normatif management) - retraité en cohérence avec l'exclusion 2024 pour éviter une distorsion inverse. Provision légale de $165M (T4 25, réglement à l'amiable) également retraitée hors `data[2025].ebit`/`net`. Net retraité 2025 = $6.524Md (GAAP) + $0.140Md (provision légale, après impôt) + $0.540Md (bruit fiscal) = $7.204Md. (iii) Ces mêmes ajustements fiscaux discrets se poursuivent au S1 26 (~$500M sur les 6 premiers mois) et seront à re-solder au prochain refresh une fois l'exercice 2026 clos. (ii) Acquisition Exact Sciences (23 mars 2026, ~$23Md) : coûts d'intégration et step-up d'inventaire ($532M pretax au S1 26) et provision légale ($385M, T2 26) traités comme événements ponctuels non reconduits, contrairement à l'amortissement d'intangibles (permanent, réintégré dans la base). LIMITE DE PÉRIMÈTRE ASSUMÉE : les exercices 2016-2018 (acquisitions St Jude Medical et Alere) portent des coûts d'intégration ponctuels significatifs non individuellement retraités dans ce passage de création faute de détail disponible - le BPA GAAP 2017 ($0.28) est notoirement déprimé par ces coûts one-off ; à auditer si un futur refresh nécessite une base longue précise.\n\n== PARTICULARITES ==\nStatut de Dividend King (54 ans consécutifs d'augmentation), contexte permanent de lecture de la politique de capital-allocation, sans effet chiffrable direct sur les projections.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : transcript et communiqué du call T2 26 (16 juillet 2026) ; sources secondaires : 10-K FY2025, communiqués T4/FY24 et T4/FY25 pour les retraitements fiscaux, consensus ChartMill/TipRanks. Guidance directionnelle dure : le management vise une accélération séquentielle des ventes et du BPA au S2 26 - contrainte vérifiée en E7 (omniumNet et omniumEPS croissants chaque année malgré la dilution 2026). Prochain refresh utile : après publication du T3 26 (date encore non confirmée officiellement, estimée mi-octobre 2026 par les agrégateurs de marché).\n\n== PARAMETRES & POINTS DE SUIVI ==\nMoteurs de projection portés par `ancrages` : `exact_integration_fade` (dissipation des coûts ponctuels d'intégration), `cancer_dx_growth` (relais de croissance Diagnostics), `margin_synergy_ramp` (expansion de marge post-intégration 2027+), `deleveraging` (désendettement post-acquisition), `etr_normatif` (16%). Paramètre hors ancrages à noter : `omniumND` bondit fortement en 2026 (facility-relais ~$20Md mobilisée pour financer l'acquisition Exact Sciences, portant la dette nette d'environ $4.4Md fin 2025 à un pic estimé ~$24Md en 2026) puis se désendette progressivement via le free cash-flow (~$9-10Md/an de cash-flow opérationnel) sur l'horizon de projection - décision de modélisation non triviale, à confirmer précisément au prochain refresh une fois le bilan post-clôture 2026 publié. Base comptable : `data` et `adjXXX` sur GAAP retraité des seuls vrais one-offs identifiés (fiscal 2024/2025, provisions légales, coûts d'intégration Exact Sciences) - amortissement d'intangibles, stock-based compensation et restructuration récurrente intégralement conservés, contrairement à l'ajusté du management qui les exclut tous. WATCH-LIST : (1) le S2 26 délivre-t-il l'accélération de marge promise ? (2) le taux d'imposition GAAP revient-il vers la fourchette normative ~15-16% une fois les ajustements fiscaux discrets épuisés ? (3) rythme réel de désendettement post-Exact Sciences ; (4) opportunité d'auditer finement les exercices 2016-2018 (intégration St Jude/Alere) lors d'un refresh futur si la profondeur historique devient un enjeu de précision.\n\n== HARMONISATION STRUCTURELLE (03/08/2026) ==\nPassage technique sans nouvelle publication ni revision de these. Trois champs manquants du JSON de creation ont ete completes : (1) communiqueAnalyse/transcriptAnalyse (les deux documents avaient bien ete lus a la creation) ; (2) guidanceHistory, absent du JSON initial (defaut de conformite au protocole jamais corrige), desormais initialise avec l'unique ligne du call Q2 26 deja couvert par la these ; (3) guidanceLongTerme, egalement absent - une recherche ciblee a ete menee lors de cette harmonisation mais n'a pas identifie de cible pluriannuelle chiffree formellement communiquee par le management (type Investor Day/Capital Markets Day) au-dela de la guidance FY26 deja dans dernierCall ; laisse a null plutot que de forcer une formulation non sourcee, avec guidanceLongTermeHistory initialise a []. quarterlyEPS N'A PAS ete construit ce refresh (E5 ter point 5, geometrie variable) : l'ecart GAAP/base Omnium T1-T2 26 est domine par des one-offs lies a l'integration Exact Sciences (couts d'integration et step-up d'inventaire de 532 M$ pretax cumules sur le S1, provision legale de 385 M$ au seul T2, bruit fiscal discret d'environ 500 M$ sur le S1) dont la ventilation precise entre T1 et T2 n'est pas disponible dans les sources consultees a ce stade - une decomposition trimestrielle construite sur cette base serait peu fiable. Point a reprendre au prochain refresh (T3 26) une fois le 10-Q T2 26 depouille en detail pour la repartition exacte des elements retraites par trimestre. adjXXX, ancrages restent ceux du refresh du 20/07/2026 et n'ont pas ete rouverts par cette passe.\n\n== DECOMPOSITION TRIMESTRIELLE DE L'EPS (04/08/2026) ==\nConstruction de hypothese.quarterlyEPS selon E5 ter, en reprise du point laisse ouvert lors de l'harmonisation du 03/08/2026 : les communiques T1 26 (16 avril) et T2 26 (16 juillet) publient chacun un tableau \"Details of Specified Items\" ventilant precisement les elements retraites par categorie (acquisition/integration, restructuration, amortissement, autre), ce qui permet desormais la ventilation par trimestre qui manquait la semaine derniere.\n\nMETHODE : EPS Omnium trimestriel = EPS ajuste management - (amortissement + restructuration + residu \"autre\" hors provision legale) net d'impot au taux effectif hors elements specifies du trimestre, coherent avec la base annuelle deja retenue plus haut (amortissement et restructuration conserves ; seuls les couts d'integration/step-up Exact Sciences, la provision legale de 385 M$ et le bruit fiscal discret restent exclus). T1 26 publie : EPS ajuste management 1,15$, retraitement de 0,24$ (amortissement 422 M$ + restructuration 52 M$ + residu \"autre\" 13 M$, apres impot a 15,2%) => EPS Omnium 0,91$. T2 26 publie : EPS ajuste management 1,31$, retraitement de 0,35$ (amortissement 658 M$ + restructuration 6 M$ + residu \"autre\" hors provision legale ~45 M$, apres impot a 15,2%) => EPS Omnium 0,96$. T3 26 estime par application de la guidance management (1,38-1,46$, point median 1,42$) minoree du meme type de retraitement (~0,30$) => 1,12$ avant calage. T4 26 calcule en residu pour boucler exactement sur omniumEPS[2026]=4,30$ deja fige (ecart de calage <5%, absorbe silencieusement en preservant la forme saisonniere croissante, conformement a E5 ter point 4) => 1,31$. FY27 (NY) : aucune guidance management disponible au-dela de T3 26 a ce stade - saisonnalite estimee par une ponderation moyenne entre le profil trimestriel FY25 observe (pre-Exact Sciences, plus plat : ~20/27/25/27%) et le profil FY26 (skewe S2 par la dissipation des couts d'integration : ~21/22/26/30%), scalee pour boucler sur omniumEPS[2027]=4,92$ deja fige. P/E 12 mois glissants (T3 26 -> T2 27) base sur epsForward12m=4,67$.\n\n== CATALYSEURS ==\nPublication T3 26 (mi-octobre 2026, non confirmée), qui testera la crédibilité de l'accélération S2 promise et la normalisation du taux d'imposition GAAP.",
-    "impact": "neutre",
-    "ancrages": [
-      {
-        "id": "exact_integration_fade",
-        "moteur": "Les coûts ponctuels d'intégration et de step-up d'inventaire liés à l'acquisition Exact Sciences ($532M pretax au S1 26) se dissipent progressivement à mesure que l'intégration avance, sans reconduction au-delà de 2026-2027.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumNet.2026",
-          "omniumNet.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "cancer_dx_growth",
-        "moteur": "Cologuard et le segment Cancer Diagnostics (ex-Exact Sciences) croissent à un rythme structurellement supérieur (~13% comparable) au reste du portefeuille Diagnostics, tirant la croissance consolidée du CA sur tout l'horizon de projection.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "margin_synergy_ramp",
-        "moteur": "Une fois les coûts ponctuels d'intégration Exact Sciences dissipés (à partir de 2027), les synergies d'échelle et l'effet de levier opérationnel du portefeuille Medical Devices/Diagnostics restaurent une trajectoire d'expansion de marge EBIT graduelle.",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "deleveraging",
-        "moteur": "Le pic de dette nette lié au financement de l'acquisition Exact Sciences (facility-relais ~$20Md) est progressivement remboursé via le free cash-flow généré (~$9-10Md/an de cash-flow opérationnel), au détriment temporaire des rachats d'actions.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030",
-          "omniumShares.2026",
-          "omniumShares.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "etr_normatif",
-        "moteur": "Taux d'imposition effectif normatif retenu à 16%, conforme au taux hors éléments spécifiés communiqué par le management sur plusieurs trimestres consécutifs (15.0%-16.6%).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 4.3,
-      "2027": 4.92,
-      "2028": 5.54,
-      "2029": 6.23,
-      "2030": 6.99
-    },
-    "omniumCA": {
-      "2026": 49300,
-      "2027": 53000,
-      "2028": 56975,
-      "2029": 61248,
-      "2030": 65842
-    },
-    "omniumEBIT": {
-      "2026": 9100,
-      "2027": 10335,
-      "2028": 11566,
-      "2029": 12862,
-      "2030": 14288
-    },
-    "omniumNet": {
-      "2026": 7502,
-      "2027": 8555,
-      "2028": 9590,
-      "2029": 10678,
-      "2030": 11876
-    },
-    "omniumND": {
-      "2026": 24000,
-      "2027": 20000,
-      "2028": 16500,
-      "2029": 13000,
-      "2030": 10000
-    },
-    "omniumShares": {
-      "2026": 1745,
-      "2027": 1740,
-      "2028": 1730,
-      "2029": 1715,
-      "2030": 1700
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-16",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "FY26 relevée : BPA ajusté $5.45-$5.60 (vs $5.38-$5.58 précédemment) ; croissance des ventes comparables réaffirmée à 6.5%-7.5% (inclut Exact Sciences en base comparable des deux années)."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.87,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 1.01,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.04,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 1.2,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.91,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.96,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.12,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.31,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 1.02,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 1.22,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 1.26,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.42,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 4.67,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    }
+  {
+   "year": 2019,
+   "ca": 31904,
+   "ebit": 4532,
+   "net": 3687,
+   "shares": 1754,
+   "nd": 13500,
+   "div": 1.2
+  },
+  {
+   "year": 2020,
+   "ca": 34608,
+   "ebit": 5357,
+   "net": 4495,
+   "shares": 1757,
+   "nd": 10500,
+   "div": 1.32
+  },
+  {
+   "year": 2021,
+   "ca": 43075,
+   "ebit": 8425,
+   "net": 7071,
+   "shares": 1766,
+   "nd": 8000,
+   "div": 1.53
+  },
+  {
+   "year": 2022,
+   "ca": 43653,
+   "ebit": 8362,
+   "net": 6933,
+   "shares": 1759,
+   "nd": 9300,
+   "div": 1.8
+  },
+  {
+   "year": 2023,
+   "ca": 40109,
+   "ebit": 6478,
+   "net": 5723,
+   "shares": 1755,
+   "nd": 8900,
+   "div": 2.04
+  },
+  {
+   "year": 2024,
+   "ca": 41950,
+   "ebit": 6825,
+   "net": 5905,
+   "shares": 1748,
+   "nd": 6600,
+   "div": 2.2
+  },
+  {
+   "year": 2025,
+   "ca": 44328,
+   "ebit": 8218,
+   "net": 7204,
+   "shares": 1749,
+   "nd": 4400,
+   "div": 2.44
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 5.54,
+  "epsNY": 6.05,
+  "date": "2026-07-17",
+  "source": "Consensus sell-side (ChartMill/TipRanks, adjusted diluted EPS non-GAAP)"
+ },
+ "particularites": [
+  {
+   "text": "Abbott est un « Dividend King » historique (54 ans consécutifs d'augmentation du dividende, S&P 500 Dividend Aristocrats). Politique de distribution structurelle et prioritaire dans l'allocation de capital, indépendamment du cycle M&A.",
+   "valuePct": null
+  }
+ ],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-10",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q1 26",
+    "date": "2026-04-16",
+    "format": "brut",
+    "clesRetenues": [
+     "Q David Roman (Goldman Sachs) - philosophie de guidance et niveau de de-risque de l'outlook : le management explique avoir integre Exact Sciences en base comparable pour la transparence, fait des choix conservateurs sur la saison respiratoire, et cite trois moteurs de croissance (soutenabilite MedTech/pharma, redressement Core Lab/Nutrition, integration Exact Sciences).",
+     "Q Robbie Marcus (JPMorgan) - deceleration de la croissance organique hors Exact Sciences : Ford repond que dispositifs et pharma restent solides, reconnait des defis ponctuels dans le portefeuille diversifie, souligne la capacite a tenir les engagements globaux malgre des variations par activite.",
+     "Q Larry Biegelsen (Wells Fargo) - faiblesse du marche CGM, tendances de prescription, croissance Libre, calendrier des capteurs type 2 non-insulino-dependant et double cetone/glucose : le management affiche une vision haussiere long terme (70-80M de patients potentiels vs 10-12M actuels), cite plusieurs catalyseurs de remboursement a venir dont la couverture CMS type 2 non-insulino-dependant.",
+     "Q Vijay Kumar (Evercore ISI) - soutenabilite de la croissance Cologuard et expansion internationale : Ford souligne une forte demande, une sous-penetration (50M d'Americains non depistes), des plans d'expansion internationale, des contraintes de capacite en coloscopie, et des retests croissants (25% des tests, 500K par an).",
+     "Q Matt Taylor (Jefferies) - tendances Structural Heart et impact du programme d'occlusion de l'auricule gauche : le management note le transfert des dispositifs LAA vers l'activite EP, une intensite concurrentielle dans le mitral, une croissance annuelle attendue a haut simple chiffre, et la fin de l'enrolement de l'essai Catalyst.",
+     "Q Travis Steed (BofA) - confiance dans la reprise des volumes Nutrition et strategie de portefeuille : Ford explique des baisses de prix ciblees avec analyse d'elasticite des volumes, des premiers signes positifs sur Ensure, un suivi hebdomadaire, et un engagement sur la creation de valeur long terme.",
+     "Q Joanne Wuensch (Citi) - risques macro lies au conflit au Moyen-Orient sur les couts et les volumes patients : le management indique un impact actuel minime, des equipes de suivi des couts actives, aucune baisse de demande observee, et des contraintes logistiques necessitant un meilleur positionnement regional des stocks.",
+     "Q Josh Jennings (TD Cowen) - details sur la franchise EP, performance internationale de Volt et calendrier de lancement US : Ford decrit des phases de lancement limite pour Volt et TactiFlex Duo, met en avant les avantages de sedation consciente et de durabilite, et projette une acceleration depassant la croissance du marche (mid-to-high-teens).",
+     "Q Marie Thibault (BTIG) - trajectoire Core Lab par geographie et dynamique de gains de parts de marche : le management rapporte une Chine stable (vs -15% a -30% precedemment), une croissance a haut simple chiffre aux US avec des taux de renouvellement >90% et de gain >55%, l'Europe a moyen/haut simple chiffre, et une attente annuelle a moyen simple chiffre."
+    ]
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-16",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Robbie Marcus (JPMorgan) - risque de deceleration des volumes de procedures US face aux inquietudes du secteur hospitalier : Ford ecarte ce risque, notant que c'est Medicare (pas Medicaid) qui pilote les procedures de dispositifs, une demande inelastique sur les produits a forte acuite, et des volumes de tests diagnostiques stables dans tous les Etats.",
+     "Q Robbie Marcus (JPMorgan) - niveau de confiance sur l'acceleration du S2 et moteurs cles : Ford exprime une forte confiance, citant quatre moteurs principaux (nutrition, electrophysiologie, diagnostics de laboratoire central, diagnostics du cancer) representant collectivement 80% de l'acceleration projetee.",
+     "Q Larry Biegelsen (Wells Fargo) - tendances Libre US/international, outlook CGM, calendrier des capteurs double cetone-glucose et couverture type 2 : Ford confirme que l'expansion du remboursement est le catalyseur principal, la couverture Medicare type 2 US pourrait debloquer 10 millions de beneficiaires, et une 5e usine de fabrication est prevue.",
+     "Q Vijay Kumar (Evercore ISI) - visibilite sur la croissance Exact Sciences, contribution des programmes care gap, positionnement face au depistage colorectal par prise de sang : Ford confirme une croissance annuelle a mi-adolescence (mid-teens), les programmes care gap montant en puissance au S2, et un portefeuille test selles + sang complementaire.",
+     "Q Matt Taylor (Jefferies) - dynamique du marche EP, ambitions de croissance, trajectoire du marche AF, potentiel de gain de parts : Ford evite des objectifs de parts precis mais s'engage a surperformer le marche au S2, l'adoption de Volt 2.0 et le deploiement international de TactiFlex Duo pilotant la croissance.",
+     "Q Travis Steed (BofA) - positionnement du portefeuille pour la croissance 2027 compte tenu de comps plus faciles et de lancements produits : Ford reaffirme un objectif de croissance du chiffre d'affaires total durable de 7%, notant que seulement cinq societes de sante depassant 30 Md$ de CA y parviennent.",
+     "Q Josh Jennings (TD Cowen) - calendrier de redressement de Structural Heart, initiatives strategiques pour la franchise US, outlook 2027 : Ford attend une croissance a moyen/haut simple chiffre d'ici la fin d'annee via des changements de personnel et un repositionnement, l'equipe internationale affichant deja une croissance a deux chiffres.",
+     "Q Joanne Wuensch (Citi) - trajectoire d'acceleration Nutrition, mises a jour des contrats WIC, nouveaux lancements produits : Ford note 125 M$ de croissance sequentielle trimestrielle, la meilleure performance pediatrique internationale en deux ans, et de nouveaux lancements (shake proteine collagene, formules enrichies en creatine).",
+     "Q Marie Thibault (BTIG) - appetit du marche pour Amulet 360, defis concurrentiels en occlusion de l'auricule gauche : Ford met l'accent sur la capture de parts de marche plutot que la croissance du marche, et le transfert du portefeuille LAA vers la division EP pour une offre procedurale complete."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "croissance_ca_7pct_2027",
+    "quarterOrigine": "Q2 26",
+    "engagement": "Objectif de croissance du chiffre d'affaires total consolide durable a ~7% vise pour 2027 malgre une base plus large (management cite seulement 5 societes de sante >30 Md$ de CA atteignant ce rythme).",
+    "echeance": "2027-Q4",
+    "statut": "en_cours"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Refresh cible (04/08/2026) - construction de hypothese.quarterlyEPS selon E5 ter, a partir des tableaux \"Details of Specified Items\" des communiques T1 26 (16/04/2026) et T2 26 (16/07/2026). Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025) ajoute - EPS ajuste management par trimestre (1,09$/1,26$/1,30$/1,50$, communiques trimestriels 2025) mis a l'echelle uniformement (ratio 4,12/5,15) pour boucler exactement sur la base Omnium retraitee 2025 deja figee (data[2025].net/shares = 7204/1749 = 4,12$) plutot que sur l'ajuste management (5,15$, qui exclut a tort l'amortissement par rapport a la methodologie Omnium) - approximation par mise a l'echelle uniforme de la saisonnalite publiee, PAS une ventilation fine trimestre par trimestre des \"Details of Specified Items\" 2025 comme cela a ete fait pour T1/T2 26 (a affiner si un futur refresh en a l'usage). coherenceQualitative renseigne pour la premiere fois - transcript Q2 26 (16/07/2026) relu integralement, et transcript Q1 26 (16/04/2026) retrouve et lu retroactivement (E2 ter point 1 bis, aucune entree brute anterieure disponible) pour amorcer la comparaison des ce passage. Aucune contradiction materielle detectee (statut coherent) ; un engagement structurant ajoute (objectif de croissance CA ~7% en 2027). Aucune nouvelle publication de resultats depuis le refresh du 20/07/2026 (Q2 26) - these, ancrages et adjXXX inchanges, non rouverts par cette passe.",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 12593,
+     "consensus": 12620
+    },
+    "epsAdj": {
+     "actual": 1.31,
+     "consensus": 1.28,
+     "basis": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 26 : BPA ajusté guidé $1.38-$1.46 (consensus pré-publication $1.42).",
+   "guidanceAnnuelle": "FY26 relevée : BPA ajusté $5.45-$5.60 (vs $5.38-$5.58 précédemment) ; croissance des ventes comparables réaffirmée à 6.5%-7.5% (inclut Exact Sciences en base comparable des deux années).",
+   "pointsCles": [
+    "Clôture de l'acquisition d'Exact Sciences le 23 mars 2026 (cancer diagnostics, ~$3Md de CA incrémental attendu en 2026) ; Cologuard affiche une croissance à mi-adolescence aux US et à deux chiffres à l'international, nouveaux et anciens utilisateurs en hausse.",
+    "Écart massif GAAP ($0.53) vs ajusté ($1.31) au T2, principalement lié à l'amortissement d'intangibles (quasi doublé à $658M avec Exact Sciences), aux coûts d'intégration/step-up d'inventaire liés à l'acquisition, et à une provision légale de $385M pour un règlement de principe.",
+    "Electrophysiology en croissance à faible double chiffre, Rhythm Management/Diabetes Care/Heart Failure en hausse à haut simple chiffre ; le management évoque une accélération attendue des ventes et du BPA au second semestre.",
+    "Taux d'imposition GAAP anormalement élevé au T2 (39.1%) du fait d'éléments fiscaux discrets (~$110M de résolution de positions fiscales antérieures + ~$240M d'ajustement lié à la reconnaissance antérieure d'un avantage fiscal différé non monétaire significatif) ; taux normatif hors éléments spécifiés ~15.2%."
+   ],
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true
+  },
+  "summary": "BPA ajusté T2 26 au-dessus du consensus et guidance FY26 relevée, mais écart GAAP/ajusté considérablement élargi par l'intégration d'Exact Sciences (amortissement, coûts d'intégration, provision légale). Thèse intacte : accélération attendue au S2 avec dissipation progressive des coûts ponctuels liés à l'acquisition.",
+  "text": "== THESIS SUMMARY ==\nDiversified four-legged healthcare portfolio (Nutrition, Diagnostics, Established Pharma, Medical Devices) compounding mid-single-digit organic, with a structural accelerator: Exact Sciences (closed 23/03/2026, ~3bn incremental 2026 revenue) makes Abbott the leader in colorectal-cancer screening via Cologuard - a mid-teens-growth recurring market. Q2 26 showed classic year-1 acquisition mechanics: margin dilution and one-off integration costs, with FY26 adjusted-EPS guidance nonetheless RAISED to 5.45-5.60.\n\n== THESIS READ ==\n- Integration-fade is the 2027 earnings driver: one-off costs dissipate, synergies ramp - the model's margin-expansion spine. Watch: quarterly integration-cost disclosures shrinking on schedule.\n- Cancer-screening growth (Cologuard mid-teens+) re-rates the Diagnostics leg. Watch: Cologuard volume prints and competitive blood-based entrants.\n- Balance sheet: ~20bn bridge facility took net debt from 4.4bn to a ~24bn peak; deleveraging on ~9-10bn/yr operating cash flow. Watch: post-closing balance sheet confirmation - the modeling decision flagged at setup.\n\n== SPECIAL FACTORS ==\nBase = GAAP retreated for true one-offs only; Abbott's 'adjusted' (guidance metric) excludes intangible amortization/integration costs - basis mismatch documented (Omnium 4.30 vs guided 5.48+ for 2026). Comparable-sales guidance includes Exact Sciences in both bases. priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 49.3bn, EBIT 9.1bn, net 7.5bn (ETR 16% normative; FY25 actual ~14% documented). 2027-2030: ~7.5%/yr revenue, margin rebuild post-integration, net debt 24 -> 10bn. finNet modest (facility interest net of cash income) - to firm up post-closing. Watch: Libre franchise momentum; China VBP pressure on Established Pharma.\n\n== CATALYSTS ==\nQ3 (Oct); integration-cost fade evidence; Cologuard prints; 2027 guidance (Jan) - first clean combined-year frame.",
+  "impact": "neutre",
+  "ancrages": [
+   {
+    "id": "exact_integration_fade",
+    "moteur": "Les coûts ponctuels d'intégration et de step-up d'inventaire liés à l'acquisition Exact Sciences ($532M pretax au S1 26) se dissipent progressivement à mesure que l'intégration avance, sans reconduction au-delà de 2026-2027.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumNet.2026",
+     "omniumNet.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "cancer_dx_growth",
+    "moteur": "Cologuard et le segment Cancer Diagnostics (ex-Exact Sciences) croissent à un rythme structurellement supérieur (~13% comparable) au reste du portefeuille Diagnostics, tirant la croissance consolidée du CA sur tout l'horizon de projection.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "margin_synergy_ramp",
+    "moteur": "Une fois les coûts ponctuels d'intégration Exact Sciences dissipés (à partir de 2027), les synergies d'échelle et l'effet de levier opérationnel du portefeuille Medical Devices/Diagnostics restaurent une trajectoire d'expansion de marge EBIT graduelle.",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "deleveraging",
+    "moteur": "Le pic de dette nette lié au financement de l'acquisition Exact Sciences (facility-relais ~$20Md) est progressivement remboursé via le free cash-flow généré (~$9-10Md/an de cash-flow opérationnel), au détriment temporaire des rachats d'actions.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030",
+     "omniumShares.2026",
+     "omniumShares.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "etr_normatif",
+    "moteur": "Taux d'imposition effectif normatif retenu à 16%, conforme au taux hors éléments spécifiés communiqué par le management sur plusieurs trimestres consécutifs (15.0%-16.6%).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 4.3,
+   "2027": 4.92,
+   "2028": 5.54,
+   "2029": 6.23,
+   "2030": 6.99
+  },
+  "omniumCA": {
+   "2026": 49300,
+   "2027": 53000,
+   "2028": 56975,
+   "2029": 61248,
+   "2030": 65842
+  },
+  "omniumEBIT": {
+   "2026": 9100,
+   "2027": 10335,
+   "2028": 11566,
+   "2029": 12862,
+   "2030": 14288
+  },
+  "omniumNet": {
+   "2026": 7502,
+   "2027": 8555,
+   "2028": 9590,
+   "2029": 10678,
+   "2030": 11876
+  },
+  "omniumND": {
+   "2026": 24000,
+   "2027": 20000,
+   "2028": 16500,
+   "2029": 13000,
+   "2030": 10000
+  },
+  "omniumShares": {
+   "2026": 1745,
+   "2027": 1740,
+   "2028": 1730,
+   "2029": 1715,
+   "2030": 1700
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-16",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "FY26 relevée : BPA ajusté $5.45-$5.60 (vs $5.38-$5.58 précédemment) ; croissance des ventes comparables réaffirmée à 6.5%-7.5% (inclut Exact Sciences en base comparable des deux années)."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.87,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.01,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.04,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 1.2,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.91,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.96,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.12,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.31,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 1.02,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 1.22,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 1.26,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.42,
+     "actual": false
+    }
+   ]
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -200,
+    "other": 360,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 7205.1,
+    "netPub": 7204,
+    "residual": -1.1,
+    "residualNote": "FY25 reconciles at ~14% effective (excess tax benefits) vs 16% normative, with a positive 'other' (investment income and non-operating items). From 2026 the normative 16% applies and finNet reflects the Exact Sciences facility (~20bn bridge) net of interest income - to firm up once the post-closing balance sheet is published."
+   },
+   "2026": {
+    "finNet": -169,
+    "other": 0,
+    "taxRate": 0.16,
+    "minorities": 0,
+    "netCalc": 7501.6
+   },
+   "2027": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.16,
+    "minorities": 0,
+    "netCalc": 8555.4
+   },
+   "2028": {
+    "finNet": -149,
+    "other": 0,
+    "taxRate": 0.16,
+    "minorities": 0,
+    "netCalc": 9590.3
+   },
+   "2029": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.16,
+    "minorities": 0,
+    "netCalc": 10678.1
+   },
+   "2030": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.16,
+    "minorities": 0,
+    "netCalc": 11875.9
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Adjusted EPS (guided range)",
+   "comparedAgainst": "guidance",
+   "basisAligned": false,
+   "basisNote": "Omnium 2026 EPS (4.30, retreated GAAP) sits structurally below the guided adjusted EPS (5.48+): Abbott's 'adjusted' excludes intangible amortization and integration costs that the Omnium base keeps. The beat is measured on the company's own adjusted metric.",
+   "timeline": [
+    {
+     "date": "2026-07-16",
+     "type": "guidance_revised",
+     "detail": "FY26 RAISED: adjusted EPS to 5.45-5.60 (from 5.38-5.58); comparable sales growth reaffirmed 6.5-7.5% (Exact Sciences in comparable base both years)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: integration-year mechanics as expected - margin dilution from Exact Sciences plus one-off integration costs, comparable growth on track.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 5.48,
+    "source": "initial_guidance",
+    "date": "2026-07-16",
+    "note": "Initial FY26 adjusted-EPS guidance 5.38-5.58 (mid 5.48), evidenced by the 16/07 RAISE which cites it ('vs 5.38-5.58 previously'); the January initial statement itself was not captured. Raised to 5.45-5.60 at Q2 - the anchor stays at the initial mid."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (young fiche, priorEPS null by construction). First measurement at the FY26 close vs the 5.48 initial mid - the July raise already signals a modest beat.",
+   "consensusSource": "ChartMill/TipRanks consensus (adjusted)",
+   "consensusDate": "2026-07-17"
+  },
+  "revisionEvent": {
+   "date": "2026-07-16",
+   "label": "Q2 2026",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited; post-Exact-Sciences balance sheet to be verified at next refresh (flagged)."
+  }
+ }
 }

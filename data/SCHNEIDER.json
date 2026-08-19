@@ -1,256 +1,367 @@
 {
-  "name": "Schneider Electric",
-  "cours": 284.6,
-  "yahooSymbol": "SU.PA",
-  "dividende": 4.2,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 28905,
-      "ebit": 4987,
-      "net": 3204,
-      "shares": 556.0,
-      "nd": 7303,
-      "div": 2.9
-    },
-    {
-      "year": 2022,
-      "ca": 34176,
-      "ebit": 6017,
-      "net": 3477,
-      "shares": 558.1,
-      "nd": 11225,
-      "div": 3.15
-    },
-    {
-      "year": 2023,
-      "ca": 35902,
-      "ebit": 6412,
-      "net": 4003,
-      "shares": 560.1,
-      "nd": 9367,
-      "div": 3.5
-    },
-    {
-      "year": 2024,
-      "ca": 38153,
-      "ebit": 7083,
-      "net": 4269,
-      "shares": 560.6,
-      "nd": 8147,
-      "div": 3.9
-    },
-    {
-      "year": 2025,
-      "ca": 40152,
-      "ebit": 7520,
-      "net": 4163,
-      "shares": 562.2,
-      "nd": 13721,
-      "div": 4.2
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 9.45,
-    "epsNY": null,
-    "date": "2026-08-02",
-    "source": "Simply Wall St (22 analystes), estimation post-S1 2026 (relevement de guidance du 30/07 deja integre, EPS ajuste FY26 releve de 9,29 a 9,45 apres publication). Consensus 2027 non retrouve de facon fiable et recente a ce stade (une valeur de 9,83 trouvee sur Stockopedia est anterieure/ambigue quant a l'exercice vise, non retenue) - a rafraichir au prochain point avec Visible Alpha/Stockopedia."
+ "name": "Schneider Electric",
+ "cours": 284.6,
+ "yahooSymbol": "SU.PA",
+ "dividende": 4.2,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 28905,
+   "ebit": 4987,
+   "net": 3204,
+   "shares": 556.0,
+   "nd": 7303,
+   "div": 2.9
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26 (CA)",
-    "date": "2026-10-15"
+  {
+   "year": 2022,
+   "ca": 34176,
+   "ebit": 6017,
+   "net": 3477,
+   "shares": 558.1,
+   "nd": 11225,
+   "div": 3.15
   },
-  "ownership": {
-    "asOf": "2026-07-30",
-    "insiderPct": 3.7,
-    "insiderDesc": "Schneider Electric n'a AUCUN actionnaire de controle - actionnariat large et disperse, contrairement a Hermes ou Campari dans ce portefeuille. Actionnariat salarie (WESOP, Worldwide Employee Share Ownership Plan, lance en 1995 et reconduit chaque annee) estime a ~3,7% du capital (source secondaire, voir insiderSource) - ce chiffre represente une base d'actionnaires salaries stables et non un bloc de controle. Investisseurs institutionnels ~50% du capital (BlackRock, MFS, Vanguard et autres grands gestionnaires figurant parmi les plus gros detenteurs, sans qu'aucun ne depasse individuellement quelques pourcents), flottant public/retail estime ~45%. Gouvernance de type SE (Societas Europaea) avec President du Conseil (Jean-Pascal Tricoire) et Directeur General (Olivier Blum) distincts depuis 2023.",
-    "insiderSource": "Simply Wall St (ownership breakdown, estimation ~3,74% pour l'Employee Share Scheme) recoupe avec Fintel/TipRanks pour la liste des principaux detenteurs institutionnels - pas de source primaire AMF/URD directement consultee pour le pourcentage exact a cette creation, a confirmer au prochain refresh avec le document d'enregistrement universel (URD) le plus recent.",
-    "notableHolders": [],
-    "coverageNote": "Titre cote a titre principal sur Euronext Paris, hors perimetre 13F (qui ne couvre que les valeurs cotees aux Etats-Unis) - notableHolders non renseigne par choix assume, voir PERIMETRE 13F.",
-    "history": []
+  {
+   "year": 2023,
+   "ca": 35902,
+   "ebit": 6412,
+   "net": 4003,
+   "shares": 560.1,
+   "nd": 9367,
+   "div": 3.5
   },
-  "compliance": {
-    "asOf": "2026-07-30",
-    "items": [
-      {
-        "text": "Sanction de l'Autorite de la concurrence francaise (decision du 29/10/2024) : amende de 207 M€ visant plusieurs acteurs de la distribution electrique en France, dont Schneider Electric, pour avoir limite l'autonomie tarifaire de certains distributeurs (pratiques anticoncurrentielles sur le marche de la distribution commerciale). Amende payee en avril 2025. Schneider Electric conteste fermement les conclusions de l'Autorite et a fait appel devant la Cour d'appel de Paris - procedure en cours, issue non connue a ce stade. Provision de 104 M€ maintenue au bilan (ecart avec le montant paye, lie a la contestation), actif financier de 207 M€ comptabilise dans l'attente de l'issue de l'appel. Egalement : mise en examen par un juge d'instruction le 07/10/2022 dans le meme dossier (garantie bancaire de 20 M€ desormais expiree, garantie en especes de 80 M€ maintenue) - procedure contestee, en cours.",
-        "valuePct": null
-      }
-    ],
-    "note": "Il s'agit d'une sanction pour pratiques anticoncurrentielles (droit de la distribution/concurrence), PAS d'une allegation de fraude comptable ou de tromperie des investisseurs/consommateurs au sens strict du champ compliance tel que defini pour ce portefeuille - inclus ici par prudence et transparence compte tenu de son caractere financierement quantifie et toujours conteste en appel. A retirer de ce champ si le protocole considere que ce type de contentieux de droit de la concurrence est hors perimetre ; conserve pour l'instant en 'cumulative ledger' par analogie avec le traitement applique au litige fiscal Lagfin sur le ticker Campari (matiere connexe mais distincte de l'entite elle-meme)."
+  {
+   "year": 2024,
+   "ca": 38153,
+   "ebit": 7083,
+   "net": 4269,
+   "shares": 560.6,
+   "nd": 8147,
+   "div": 3.9
   },
-  "hypothese": {
-    "date": "2026-08-04",
-    "source": "Creation (04/08/2026) suite a la perte des donnees d'origine du ticker (voir NOTE DE CREATION dans le texte) - TRANSCRIPT INTEGRAL et communique officiel complet du call S1 2026 (30/07/2026, Olivier Blum CEO / Nathan Fast CFO, Q&A complete), recoupes avec les communiques annuels officiels FY2021-FY2025 (se.com) pour la reconstruction de la serie historique `data` et les tableaux de pont Adjusted EBITA / Adjusted Net Income & EPS.",
-    "dernierCall": {
-      "quarter": "S1 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 21226,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": 4.79,
-          "consensus": null,
-          "basis": "BPA dilue ajuste S1 26 publie (4,79€, +21% publie / +28,5% organique vs S1 25). Consensus specifique au S1 non retrouve de facon fiable dans les sources consultees (une estimation pre-publication de 5,16€ trouvee sur ChartMill semble porter sur un perimetre trimestriel different, non cadree avec les chiffres publies - non retenue). Le marche a globalement salue la publication (action +6 a +7% le jour meme) et plusieurs commentateurs (Simply Wall St notamment) notent des resultats 'conformes aux attentes deja relevees', suggerant un beat modeste plutot qu'une surprise majeure."
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (le groupe guide sur l'annee pleine). Signal qualitatif du CFO : marge EBITA ajustee S2 26 attendue 'relativement stable' en organique vs S2 25 (l'essentiel du benefice de phasage des couts/marge du S1 ne se repetant pas a l'identique au S2).",
-      "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee de 7-10% a 10-13% ; expansion organique de la marge EBITA ajustee portee de 50-80pb a 70-100pb (marge implicite ~19,4%-19,7% perimetre et change inclus, contre 19,1%-19,4% en fevrier). Taux d'imposition effectif attendu 23-25% (inchange). Cible moyen terme 2026-2030 (CMD 2025) confirmee sans changement : croissance organique du CA +7% a +10%/an, expansion cumulee de la marge EBITA ajustee de +250pb sur la periode, conversion de cash-flow ~100% en moyenne sur le cycle.",
-      "pointsCles": [
-        "Croissance organique record au S1 26 (+14,0%, CA 21 226 M€) avec acceleration au T2 (+16,5% organique, record trimestriel) - Energy Management +15,4% (demande datacenters/IA toujours tres forte), Industrial Automation +7,7% (reprise du Discrete automation, AVEVA en croissance a un chiffre eleve, ARR +11%).",
-        "Guidance FY26 relevee des le S1 sur la croissance ET la marge - signal de confiance fort du management, la marge EBITA ajustee S1 26 (19,3%, +120pb organique) ayant deja depasse les attentes malgre un mix defavorable (forte croissance des Systems, moins margee que les Products/Software a court terme).",
-        "Deux acquisitions structurantes annoncees fin juin 2026 : Cognite (plateforme IA/donnees industrielles, 3,1 Md$, integration a AVEVA/Industrial Automation) et AiDASH (IA climatique/vegetation pour infrastructures critiques, ~350 M$ EV, integration a Energy Management) - toutes deux financees par la dette, clotures attendues 'dans les prochains trimestres'.",
-        "Operation de gestion de passif sur les OCEANE : rachat de 94% de l'encours OCEANE 2030 concomitant a l'emission d'une nouvelle OCEANE 2034 (850 M€ a 0,25%) - allongement du profil de maturite de la dette convertible.",
-        "Contentieux avec l'Autorite de la concurrence francaise toujours en appel (amende de 207 M€ payee en 2025, provision de 104 M€ inchangee) - Schneider Electric maintient sa contestation.",
-        "Restructuration en acceleration attendue (pic cumule de 500 M€ vise sur 2025-2027, au-dessus du rythme normatif de 100-150 M€/an) - lie a la simplification du portefeuille d'offres Industrial Automation, 127 M€ deja constates au S1 26."
-      ]
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "FY25",
-        "date": "2026-02-26",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "FY26 Target initial : croissance organique du CA de +7% a +10%, expansion organique de la marge EBITA ajustee de +50pb a +80pb, soit une marge implicite ~19,1%-19,4%. Taux d'imposition effectif attendu 23-25%."
-      },
-      {
-        "quarter": "S1 26",
-        "date": "2026-07-30",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee a +10% a +13% ; expansion organique de la marge EBITA ajustee portee a +70pb a +100pb (marge implicite ~19,4%-19,7%). Guidance moyen terme 2026-2030 (CMD 2025) reconfirmee sans changement."
-      }
-    ],
-    "guidanceLongTerme": "Cible 2026-2030 annoncee au Capital Markets Day 2025 (confirmee sans changement au S1 26) : croissance organique du chiffre d'affaires de +7% a +10% par an (CAGR 2025-2030) ; expansion organique cumulee de la marge EBITA ajustee de +250 points de base sur la periode 2026-2030 ; ratio de conversion de cash-flow (Free Cash Flow / Net Income Group Share) autour de 100% en moyenne sur le cycle.",
-    "guidanceLongTermeHistory": [],
-    "summary": "Creation suite a la perte des donnees d'origine (voir note dans le texte). S1 2026 record : croissance organique +14% (T2 +16,5%), marge EBITA ajustee 19,3% (+120pb organique), resultat net +30% a 2,5 Md€. Guidance FY26 relevee des le S1 sur croissance (10-13% vs 7-10%) et marge (+70-100pb vs +50-80pb). Deux acquisitions financees par la dette annoncees fin juin (Cognite 3,1 Md$, AiDASH ~350 M$) - deleveraging temporairement interrompu en 2026. Cible moyen terme 2026-2030 (CMD 2025) inchangee : +7-10% CA organique/an, +250pb de marge cumulee.",
-    "text": "== SYNTHESE DE LA THESE ==\nSchneider Electric est un leader mondial de la gestion de l'énergie et de l'automatisation industrielle, organisé en deux métiers - Energy Management (~83% du CA, distribution électrique basse/moyenne tension, datacenters, infrastructure, bâtiments) et Industrial Automation (~17% du CA, automatismes discrets et process, logiciel AVEVA) - vendus au travers de quatre marchés finaux (Data Center & Networks, Buildings, Industry, Infrastructure). Le groupe a connu une accélération structurelle nette depuis 2023, portée par la demande explosive des datacenters (IA, hyperscalers, colocation) qui tire la croissance d'Energy Management, combinée à une discipline de pricing et de productivité industrielle qui a permis une expansion de marge quasi continue (17,3% de marge EBITA ajustée en 2021 à 18,7% en 2025). Le S1 2026 marque une nouvelle inflexion : croissance organique de 14% (record), marge EBITA ajustée en hausse de 120pb à 19,3%, résultat net part du groupe en hausse de 30% à 2,5 Md€ - une performance suffisamment forte pour que le management relève sa guidance FY26 dès la publication semestrielle (croissance organique portée de 7-10% à 10-13%, expansion de marge EBITA de 50-80pb à 70-100pb). Deux acquisitions structurantes ont été annoncées fin juin 2026 : Cognite (plateforme de données industrielles et IA, 3,1 Md$) et AiDASH (intelligence climatique/végétation pour infrastructures critiques, ~350 M$ EV) - toutes deux financées par la dette, ce qui va temporairement faire remonter le levier avant reprise du désendettement. Le groupe a par ailleurs fixé au Capital Markets Day 2025 une trajectoire 2026-2030 ambitieuse : croissance organique du CA de 7-10%/an et expansion cumulée de la marge EBITA ajustée de 250pb sur la période, avec un objectif de conversion de cash-flow autour de 100% en moyenne sur le cycle.\n\n== EVENEMENTS & INFLEXIONS (S1 2026, communiqué + transcript du 30/07/2026) ==\n(i) Croissance organique record au S1 2026 : +14,0% (CA publié 21 226 M€, +9,8% en données publiées, écart de change de -747 M€ lié principalement à la faiblesse du dollar US et de la roupie indienne). Energy Management +15,4% organique (17 641 M€), Industrial Automation +7,7% organique (3 585 M€). T2 seul : +16,5% organique (11 460 M€, record trimestriel), en accélération vs T1.\n(i) Guidance FY26 relevée dès le S1 : croissance organique du CA portée de 7-10% à 10-13% ; expansion organique de la marge EBITA ajustée portée de 50-80pb à 70-100pb (soit une marge EBITA ajustée FY26 implicite d'environ 19,4%-19,7% en intégrant périmètre et change, contre 19,1%-19,4% dans la guidance initiale de février). Le CFO Nathan Fast précise que le S2 sera \"relativement stable\" en marge organique vs S2 2025 (l'essentiel du bénéfice de phasage des coûts/marge ayant été capté au S1).\n(i) Résultat net part du groupe S1 2026 : 2 488 M€ (+30,1% publié) ; résultat net ajusté 2 736 M€ (+21%, +29% à change constant) ; BPA dilué ajusté 4,79€ (+21% publié, +28,5% organique). Marge EBITA ajustée à 19,3% (+120pb organique), soutenue par un mix défavorable (forte croissance des Systems) compensé par la productivité industrielle et le levier opérationnel sur les coûts de structure.\n(ii) Acquisition de Cognite annoncée le 30/06/2026 (plateforme de données et logiciels IA industriels, valorisation 3,1 Md$, CA 2025 >170 M$) - transaction 100% cash, clôture attendue \"dans les prochains trimestres\", intégration prévue au sein d'AVEVA/Industrial Automation.\n(ii) Acquisition d'AiDASH annoncée le 20/06/2026 (~90% du capital, EV implicite 350 M$, logiciel IA de gestion des risques climatiques/végétation pour infrastructures critiques) - clôture également attendue \"dans les prochains trimestres\", intégration prévue au sein d'Energy Management.\n(ii) Rachat d'obligations OCEANE 2030 (reverse bookbuilding, ~886 M€ pour ~611 M€ de nominal, soit 94% de l'encours) concomitant à l'émission de nouvelles OCEANE 2034 pour 850 M€ à 0,25% - opération de gestion de passif visant à allonger la maturité de la dette convertible, perte financière de 8 M€ constatée.\n(ii) Augmentation de capital réservée aux salariés (WESOP) le 20/04/2026 : 1,5 million d'actions souscrites à 210,45€ (décote de 15% sur le cours de référence de 247,59€), augmentant les capitaux propres de 307 M€ net de frais - opération classique récurrente du groupe, dilution marginale.\n(iii) Contentieux avec l'Autorité de la concurrence française (voir COMPLIANCE) : amende de 207 M€ payée en avril 2025 suite à une décision d'octobre 2024 sanctionnant des pratiques de distribution en France (autonomie tarifaire de distributeurs jugée limitée) - Schneider Electric conteste et a fait appel devant la Cour d'appel de Paris ; provision de 104 M€ maintenue inchangée au 30/06/2026 (écart entre l'amende payée et la provision comptabilisée, lié à la contestation en cours) ; un actif financier de 207 M€ correspondant au montant payé est comptabilisé en attendant l'issue de l'appel.\n(iii) Coûts de restructuration en hausse attendue : le groupe vise un pic cumulé de 500 M€ sur 2025-2027 (au-dessus du rythme normatif de 100-150 M€/an), lié à la simplification du portefeuille d'offres Industrial Automation - 127 M€ déjà constatés au S1 2026 (vs 63 M€ au S1 2025).\n\n== PARTICULARITES ==\nAucun mécanisme capitalistique atypique récurrent identifié au-delà de l'augmentation de capital salariale annuelle (WESOP) et du programme d'OCEANE convertibles, tous deux courants pour ce profil d'émetteur. Absence de tout actionnaire de contrôle (contrairement à Hermès ou Campari dans ce portefeuille) - actionnariat large et dispersé, gouvernance de type SE (Societas Europaea) avec Président du Conseil et Directeur Général distincts depuis 2023.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources primaires : communiqué officiel des résultats S1 2026 (Half-Year Financial Report, 30/07/2026, incluant le compte de résultat IFRS complet et les notes annexes) et transcript intégral du call du même jour (Olivier Blum CEO, Nathan Fast CFO, session Q&A complète) - trouvés et confrontés. Communiqués annuels FY2021 à FY2025 (se.com, incluant les tableaux de pont Adjusted EBITA et Adjusted Net Income/EPS) en secondaire pour la construction de la série historique `data`. Guidance FY26 : croissance organique du CA 10-13% (relevée), expansion de marge EBITA ajustée organique +70 à +100pb (relevée), soit une marge implicite ~19,4%-19,7% périmètre et change inclus. Cible moyen terme 2026-2030 (CMD 2025, confirmée) : croissance organique du CA +7% à +10%/an, expansion cumulée de la marge EBITA ajustée de +250pb sur la période, conversion de cash-flow ~100% en moyenne sur le cycle. Prochain refresh utile : chiffre d'affaires T3 2026 (15/10/2026, revenus uniquement, pas de résultat détaillé).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable adjXXX : `ebit` = Adjusted EBITA (indicateur de pilotage principal du groupe, explicitement défini par le management comme la mesure de référence pour l'allocation de ressources) ; `net` = Net Income (Group share) publié GAAP/IFRS (pas de retraitement supplémentaire, cohérent avec le principe déjà appliqué aux autres tickers de ce portefeuille où l'indicateur ajusté du management sert de référence). Séries historiques 2021-2025 reconstituées directement depuis les tableaux \"Key figures\" des communiqués annuels officiels (aucune estimation, chiffres publiés bruts). Nombre d'actions (`shares`) dérivé du nombre moyen pondéré dilué implicite dans le calcul du BPA ajusté publié par le groupe chaque année (Adjusted Net Income / Adjusted EPS) - cohérent d'une année sur l'autre, croissance légère et régulière (~556M en 2021 à ~562M en 2025) reflétant les augmentations de capital salariales nettes des rachats d'actions. `nd` (dette nette) : figure \"incluant les engagements d'achat sur intérêts minoritaires\" telle que communiquée par le groupe chaque année (méthodologie constante sur la série).\nConstruction omniumCA/omniumEBIT/omniumNet FY2026-2030 : FY2026 calé sur la guidance relevée post-S1 (croissance organique ~11,5% au point médian de la fourchette 10-13%, FX/périmètre ~neutre à légèrement négatif selon les indications du groupe) => CA FY26 ~44,3 Md€, cohérent avec le consensus analystes post-S1 (~44,4 Md€ selon Simply Wall St, 22 analystes). Marge EBITA ajustée FY26 calée au point médian de la fourchette relevée (~19,4-19,7%) => ~19,55%. FY2027-2030 : croissance organique retenue au point médian de la cible CMD 2026-2030 (+8,5%/an), expansion de marge organique répartie sur la période pour respecter la cible cumulée de +250pb 2026-2030 (dont l'essentiel du relèvement 2026 lui-même y contribue déjà, laissant ~+40pb/an en moyenne pour 2027-2030). Pont omniumEBITA -> omniumNet : ratio de conversion Adjusted Net Income / Adjusted EBITA retenu constant au niveau FY2025 (~64,2%, dernier point observé) et appliqué à l'identique sur tout l'horizon - simplification assumée qui ne modélise pas séparément la hausse attendue des charges financières nettes liée au financement par la dette des acquisitions Cognite/AiDASH (~3,45 Md$ cumulés) ; à affiner lors d'un prochain refresh une fois ces transactions closes et leur financement précisé. `omniumND` intègre une remontée temporaire en 2026 (financement Cognite/AiDASH) avant reprise de la trajectoire de désendettement portée par un free cash-flow structurellement élevé (~5 Md€/an).\nWATCH-LIST pour le prochain refresh : (1) confirmer la clôture effective des acquisitions Cognite et AiDASH et leur mode de financement précis (dette bancaire, obligataire, ou mix) - actuellement modélisé de façon simplifiée dans `omniumND` ; (2) suivre l'évolution du litige avec l'Autorité de la concurrence française (décision de la Cour d'appel de Paris) ; (3) confirmer si le S2 26 délivre bien une marge \"relativement stable\" en organique comme guidé, ou si le relèvement du S1 se prolonge ; (4) suivre le niveau de charges financières nettes une fois les nouvelles dettes d'acquisition en place, potentiel ajustement du ratio de conversion EBITA->Net retenu ; (5) consensus EPS 2027 non trouvé de façon fiable et récente (post-relèvement S1) - à rafraîchir ; (6) actualiser epsConsensus.eps 2026 (9,45€, daté du 02/08/2026, Simply Wall St/22 analystes) avec une source primaire (Visible Alpha/Stockopedia) au prochain point.\n\n== NOTE DE CREATION - ORIGINE DU TICKER ==\nCe ticker recrée intégralement le titre Schneider Electric dans le portefeuille suite à un incident de données : le fichier `data/SCHNEIDER.json` précédemment déployé contenait par erreur le contenu du ticker DexCom (nom, series financières, hypothèses), provoquant un doublon visible dans la vue portefeuille (DexCom apparaissant deux fois, avec les événements `nextEvents.json` de SCHNEIDER et de DEXCOM respectivement). La these Schneider Electric d'origine est considérée comme perdue (aucune sauvegarde antérieure identifiée à ce stade) - ce document constitue donc une création complète (E1-E8), et non un refresh, construite à partir des résultats S1 2026 (30/07/2026) et de la série historique 2021-2025 des communiqués officiels.\n\n== CATALYSEURS ==\nPublication du chiffre d'affaires T3 2026 (15 octobre 2026) - test de la tenue de la guidance relevée et de la marge \"relativement stable\" guidée pour le S2 ; clôtures attendues des acquisitions Cognite et AiDASH \"dans les prochains trimestres\" ; issue de l'appel du contentieux avec l'Autorité de la concurrence française ; poursuite de l'accélération de la demande datacenters/IA, moteur principal de la croissance du groupe depuis 2024.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "guidance_ca_2026_relevee",
-        "moteur": "Guidance FY26 de croissance organique du CA relevee de 7-10% a 10-13% lors de la publication S1 26, apres un S1 deja a +14% organique (T2 +16,5%). Point median retenu (~11,5%) applique au CA FY25 (40 152 M€), avec FX/perimetre estimes legerement negatifs selon les indications du groupe - CA FY26 ~44,3 Md€, coherent avec le consensus analystes post-S1 (~44,4 Md€, Simply Wall St).",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "marge_ebita_2026_relevee",
-        "moteur": "Guidance FY26 de marge EBITA ajustee relevee de +50-80pb a +70-100pb organique (marge implicite ~19,4%-19,7% perimetre/change inclus), le S1 26 ayant deja delivre 19,3% (+120pb organique). Point median retenu (~19,55%) applique au CA FY26 retenu.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "trajectoire_cmd_2026_2030",
-        "moteur": "Cible moyen terme du Capital Markets Day 2025 (confirmee sans changement au S1 26) : croissance organique du CA +7% a +10%/an (point median 8,5% retenu pour 2027-2030) et expansion cumulee de la marge EBITA ajustee de +250pb sur 2026-2030 (dont l'essentiel du relevement 2026 lui-meme contribue deja, laissant ~+40pb/an en moyenne modelise pour 2027-2030, portant la marge a ~21,15% en 2030).",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "pont_ebita_net_ratio_2025",
-        "moteur": "Conversion Adjusted EBITA -> Adjusted Net Income (Group share) retenue constante au ratio observe en FY2025 (4 829 / 7 520 = 64,2%), applique a l'identique sur tout l'horizon de projection - simplification assumee qui ne modelise pas separement la hausse attendue des charges financieres nettes liee au financement par la dette des acquisitions Cognite/AiDASH (~3,45 Md$ cumules, clotures non encore intervenues). Point de vigilance explicite, a affiner au prochain refresh une fois ces transactions closes.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "dette_nette_acquisitions_2026",
-        "moteur": "Remontee temporaire de la dette nette en 2026 liee au financement par la dette des acquisitions Cognite (3,1 Md$) et AiDASH (~350 M$ EV) annoncees fin juin 2026 mais non encore closes, partiellement compensee par un free cash-flow toujours eleve (~5 Md€ estime) et l'absence d'autre operation de M&A majeure connue - reprise de la trajectoire de desendettement des 2027 en l'absence de nouvelle acquisition significative.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "actions_dilution_moderee",
-        "moteur": "Croissance legere et reguliere du nombre d'actions dilue (WESOP annuel + OCEANE convertibles, partiellement compense par des rachats d'actions limites), coherente avec la tendance observee 2021-2025 (~556M a ~562M actions), extrapolee a un rythme similaire (~+0,4%/an) sur l'horizon de projection.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "tax_rate_normatif",
-        "moteur": "Taux d'imposition effectif normatif retenu dans la fourchette 23-25% guidee par le management pour FY26 (23,5% observe en FY25), implicitement integre dans le ratio de conversion EBITA->Net retenu constant (voir ancrage dedie) plutot que modelise separement.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumCA": {
-      "2026": 44300,
-      "2027": 48070,
-      "2028": 52156,
-      "2029": 56589,
-      "2030": 61399
-    },
-    "omniumEBIT": {
-      "2026": 8661,
-      "2027": 9590,
-      "2028": 10614,
-      "2029": 11742,
-      "2030": 12986
-    },
-    "omniumNet": {
-      "2026": 5560,
-      "2027": 6157,
-      "2028": 6814,
-      "2029": 7538,
-      "2030": 8337
-    },
-    "omniumEPS": {
-      "2026": 9.86,
-      "2027": 10.88,
-      "2028": 12.0,
-      "2029": 13.22,
-      "2030": 14.58
-    },
-    "omniumND": {
-      "2026": 14700,
-      "2027": 13500,
-      "2028": 12000,
-      "2029": 10300,
-      "2030": 8500
-    },
-    "omniumShares": {
-      "2026": 564,
-      "2027": 566,
-      "2028": 568,
-      "2029": 570,
-      "2030": 572
-    }
+  {
+   "year": 2025,
+   "ca": 40152,
+   "ebit": 7520,
+   "net": 4163,
+   "shares": 562.2,
+   "nd": 13721,
+   "div": 4.2
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 9.45,
+  "epsNY": null,
+  "date": "2026-08-02",
+  "source": "Simply Wall St (22 analystes), estimation post-S1 2026 (relevement de guidance du 30/07 deja integre, EPS ajuste FY26 releve de 9,29 a 9,45 apres publication). Consensus 2027 non retrouve de facon fiable et recente a ce stade (une valeur de 9,83 trouvee sur Stockopedia est anterieure/ambigue quant a l'exercice vise, non retenue) - a rafraichir au prochain point avec Visible Alpha/Stockopedia."
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26 (CA)",
+  "date": "2026-10-15"
+ },
+ "ownership": {
+  "asOf": "2026-07-30",
+  "insiderPct": 3.7,
+  "insiderDesc": "Schneider Electric n'a AUCUN actionnaire de controle - actionnariat large et disperse, contrairement a Hermes ou Campari dans ce portefeuille. Actionnariat salarie (WESOP, Worldwide Employee Share Ownership Plan, lance en 1995 et reconduit chaque annee) estime a ~3,7% du capital (source secondaire, voir insiderSource) - ce chiffre represente une base d'actionnaires salaries stables et non un bloc de controle. Investisseurs institutionnels ~50% du capital (BlackRock, MFS, Vanguard et autres grands gestionnaires figurant parmi les plus gros detenteurs, sans qu'aucun ne depasse individuellement quelques pourcents), flottant public/retail estime ~45%. Gouvernance de type SE (Societas Europaea) avec President du Conseil (Jean-Pascal Tricoire) et Directeur General (Olivier Blum) distincts depuis 2023.",
+  "insiderSource": "Simply Wall St (ownership breakdown, estimation ~3,74% pour l'Employee Share Scheme) recoupe avec Fintel/TipRanks pour la liste des principaux detenteurs institutionnels - pas de source primaire AMF/URD directement consultee pour le pourcentage exact a cette creation, a confirmer au prochain refresh avec le document d'enregistrement universel (URD) le plus recent.",
+  "notableHolders": [],
+  "coverageNote": "Titre cote a titre principal sur Euronext Paris, hors perimetre 13F (qui ne couvre que les valeurs cotees aux Etats-Unis) - notableHolders non renseigne par choix assume, voir PERIMETRE 13F.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-30",
+  "items": [
+   {
+    "text": "Sanction de l'Autorite de la concurrence francaise (decision du 29/10/2024) : amende de 207 M€ visant plusieurs acteurs de la distribution electrique en France, dont Schneider Electric, pour avoir limite l'autonomie tarifaire de certains distributeurs (pratiques anticoncurrentielles sur le marche de la distribution commerciale). Amende payee en avril 2025. Schneider Electric conteste fermement les conclusions de l'Autorite et a fait appel devant la Cour d'appel de Paris - procedure en cours, issue non connue a ce stade. Provision de 104 M€ maintenue au bilan (ecart avec le montant paye, lie a la contestation), actif financier de 207 M€ comptabilise dans l'attente de l'issue de l'appel. Egalement : mise en examen par un juge d'instruction le 07/10/2022 dans le meme dossier (garantie bancaire de 20 M€ desormais expiree, garantie en especes de 80 M€ maintenue) - procedure contestee, en cours.",
+    "valuePct": null
+   }
+  ],
+  "note": "Il s'agit d'une sanction pour pratiques anticoncurrentielles (droit de la distribution/concurrence), PAS d'une allegation de fraude comptable ou de tromperie des investisseurs/consommateurs au sens strict du champ compliance tel que defini pour ce portefeuille - inclus ici par prudence et transparence compte tenu de son caractere financierement quantifie et toujours conteste en appel. A retirer de ce champ si le protocole considere que ce type de contentieux de droit de la concurrence est hors perimetre ; conserve pour l'instant en 'cumulative ledger' par analogie avec le traitement applique au litige fiscal Lagfin sur le ticker Campari (matiere connexe mais distincte de l'entite elle-meme)."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Creation (04/08/2026) suite a la perte des donnees d'origine du ticker (voir NOTE DE CREATION dans le texte) - TRANSCRIPT INTEGRAL et communique officiel complet du call S1 2026 (30/07/2026, Olivier Blum CEO / Nathan Fast CFO, Q&A complete), recoupes avec les communiques annuels officiels FY2021-FY2025 (se.com) pour la reconstruction de la serie historique `data` et les tableaux de pont Adjusted EBITA / Adjusted Net Income & EPS.",
+  "dernierCall": {
+   "quarter": "S1 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 21226,
+     "consensus": null
+    },
+    "epsAdj": {
+     "actual": 4.79,
+     "consensus": null,
+     "basis": "non-GAAP",
+     "basisNote": "BPA dilue ajuste S1 26 publie (4,79€, +21% publie / +28,5% organique vs S1 25). Consensus specifique au S1 non retrouve de facon fiable dans les sources consultees (une estimation pre-publication de 5,16€ trouvee sur ChartMill semble porter sur un perimetre trimestriel different, non cadree avec les chiffres publies - non retenue). Le marche a globalement salue la publication (action +6 a +7% le jour meme) et plusieurs commentateurs (Simply Wall St notamment) notent des resultats 'conformes aux attentes deja relevees', suggerant un beat modeste plutot qu'une surprise majeure."
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (le groupe guide sur l'annee pleine). Signal qualitatif du CFO : marge EBITA ajustee S2 26 attendue 'relativement stable' en organique vs S2 25 (l'essentiel du benefice de phasage des couts/marge du S1 ne se repetant pas a l'identique au S2).",
+   "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee de 7-10% a 10-13% ; expansion organique de la marge EBITA ajustee portee de 50-80pb a 70-100pb (marge implicite ~19,4%-19,7% perimetre et change inclus, contre 19,1%-19,4% en fevrier). Taux d'imposition effectif attendu 23-25% (inchange). Cible moyen terme 2026-2030 (CMD 2025) confirmee sans changement : croissance organique du CA +7% a +10%/an, expansion cumulee de la marge EBITA ajustee de +250pb sur la periode, conversion de cash-flow ~100% en moyenne sur le cycle.",
+   "pointsCles": [
+    "Croissance organique record au S1 26 (+14,0%, CA 21 226 M€) avec acceleration au T2 (+16,5% organique, record trimestriel) - Energy Management +15,4% (demande datacenters/IA toujours tres forte), Industrial Automation +7,7% (reprise du Discrete automation, AVEVA en croissance a un chiffre eleve, ARR +11%).",
+    "Guidance FY26 relevee des le S1 sur la croissance ET la marge - signal de confiance fort du management, la marge EBITA ajustee S1 26 (19,3%, +120pb organique) ayant deja depasse les attentes malgre un mix defavorable (forte croissance des Systems, moins margee que les Products/Software a court terme).",
+    "Deux acquisitions structurantes annoncees fin juin 2026 : Cognite (plateforme IA/donnees industrielles, 3,1 Md$, integration a AVEVA/Industrial Automation) et AiDASH (IA climatique/vegetation pour infrastructures critiques, ~350 M$ EV, integration a Energy Management) - toutes deux financees par la dette, clotures attendues 'dans les prochains trimestres'.",
+    "Operation de gestion de passif sur les OCEANE : rachat de 94% de l'encours OCEANE 2030 concomitant a l'emission d'une nouvelle OCEANE 2034 (850 M€ a 0,25%) - allongement du profil de maturite de la dette convertible.",
+    "Contentieux avec l'Autorite de la concurrence francaise toujours en appel (amende de 207 M€ payee en 2025, provision de 104 M€ inchangee) - Schneider Electric maintient sa contestation.",
+    "Restructuration en acceleration attendue (pic cumule de 500 M€ vise sur 2025-2027, au-dessus du rythme normatif de 100-150 M€/an) - lie a la simplification du portefeuille d'offres Industrial Automation, 127 M€ deja constates au S1 26."
+   ]
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "FY25",
+    "date": "2026-02-26",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "FY26 Target initial : croissance organique du CA de +7% a +10%, expansion organique de la marge EBITA ajustee de +50pb a +80pb, soit une marge implicite ~19,1%-19,4%. Taux d'imposition effectif attendu 23-25%."
+   },
+   {
+    "quarter": "S1 26",
+    "date": "2026-07-30",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee a +10% a +13% ; expansion organique de la marge EBITA ajustee portee a +70pb a +100pb (marge implicite ~19,4%-19,7%). Guidance moyen terme 2026-2030 (CMD 2025) reconfirmee sans changement."
+   }
+  ],
+  "guidanceLongTerme": "Cible 2026-2030 annoncee au Capital Markets Day 2025 (confirmee sans changement au S1 26) : croissance organique du chiffre d'affaires de +7% a +10% par an (CAGR 2025-2030) ; expansion organique cumulee de la marge EBITA ajustee de +250 points de base sur la periode 2026-2030 ; ratio de conversion de cash-flow (Free Cash Flow / Net Income Group Share) autour de 100% en moyenne sur le cycle.",
+  "guidanceLongTermeHistory": [],
+  "summary": "Creation suite a la perte des donnees d'origine (voir note dans le texte). S1 2026 record : croissance organique +14% (T2 +16,5%), marge EBITA ajustee 19,3% (+120pb organique), resultat net +30% a 2,5 Md€. Guidance FY26 relevee des le S1 sur croissance (10-13% vs 7-10%) et marge (+70-100pb vs +50-80pb). Deux acquisitions financees par la dette annoncees fin juin (Cognite 3,1 Md$, AiDASH ~350 M$) - deleveraging temporairement interrompu en 2026. Cible moyen terme 2026-2030 (CMD 2025) inchangee : +7-10% CA organique/an, +250pb de marge cumulee.",
+  "text": "== THESIS SUMMARY ==\nGlobal leader in energy management (~83% of revenue: LV/MV distribution, datacenters, buildings, infrastructure) and industrial automation (~17%, incl. AVEVA software), riding a structural acceleration since 2023 on explosive datacenter demand (AI, hyperscalers). H1 2026 delivered a double guidance RAISE: organic revenue to +10/13% (from +7/10%) and adjusted-EBITA margin expansion to +70/100bp; H1 adjusted EPS 4.79, +28.5% organic.\n\n== THESIS READ ==\n- Datacenter demand is the engine and it is accelerating, not normalizing. Watch: Data Center & Networks order intake and backlog coverage.\n- Margin expansion is guided AND raised - pricing plus mix, not just volume. Watch: Industrial Automation recovery (the lagging leg, AVEVA aside).\n- Balance sheet carries the AVEVA-era debt (nd 13.7bn 2025); deleveraging to 8.5bn by 2030 modeled with light share creep (SBC), no big buyback assumed. Watch: capital-allocation signals.\n\n== SPECIAL FACTORS ==\nBase: 'ebit' = Adjusted EBITA (management's steering metric); 'net' = IFRS group share. The below-EBITA wedge (PPA amortization, restructuring, one-offs) is explicit in the bridge 'other' line (~-700M growing with scale); 2025 carried ~160M extra one-offs (documented residual). Historical series rebuilt from official Key-figures tables; shares derived from published adjusted EPS. priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 44.3bn (raised guidance mid), adj EBITA 8.66bn (19.55% implied mid); 2027-2030: ~8.5%/yr revenue, margin +40bp/yr, ETR 26%, finNet declining with deleveraging. Watch: consensus (9.45 adjusted) vs Omnium 9.86 - Omnium sits ABOVE street on the raised frame; arbitrate at Q3.\n\n== CATALYSTS ==\nQ3 revenue (Oct); Capital Markets Day signals; datacenter capex prints from hyperscalers; Industrial Automation inflection.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "guidance_ca_2026_relevee",
+    "moteur": "Guidance FY26 de croissance organique du CA relevee de 7-10% a 10-13% lors de la publication S1 26, apres un S1 deja a +14% organique (T2 +16,5%). Point median retenu (~11,5%) applique au CA FY25 (40 152 M€), avec FX/perimetre estimes legerement negatifs selon les indications du groupe - CA FY26 ~44,3 Md€, coherent avec le consensus analystes post-S1 (~44,4 Md€, Simply Wall St).",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "marge_ebita_2026_relevee",
+    "moteur": "Guidance FY26 de marge EBITA ajustee relevee de +50-80pb a +70-100pb organique (marge implicite ~19,4%-19,7% perimetre/change inclus), le S1 26 ayant deja delivre 19,3% (+120pb organique). Point median retenu (~19,55%) applique au CA FY26 retenu.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "trajectoire_cmd_2026_2030",
+    "moteur": "Cible moyen terme du Capital Markets Day 2025 (confirmee sans changement au S1 26) : croissance organique du CA +7% a +10%/an (point median 8,5% retenu pour 2027-2030) et expansion cumulee de la marge EBITA ajustee de +250pb sur 2026-2030 (dont l'essentiel du relevement 2026 lui-meme contribue deja, laissant ~+40pb/an en moyenne modelise pour 2027-2030, portant la marge a ~21,15% en 2030).",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "pont_ebita_net_ratio_2025",
+    "moteur": "Conversion Adjusted EBITA -> Adjusted Net Income (Group share) retenue constante au ratio observe en FY2025 (4 829 / 7 520 = 64,2%), applique a l'identique sur tout l'horizon de projection - simplification assumee qui ne modelise pas separement la hausse attendue des charges financieres nettes liee au financement par la dette des acquisitions Cognite/AiDASH (~3,45 Md$ cumules, clotures non encore intervenues). Point de vigilance explicite, a affiner au prochain refresh une fois ces transactions closes.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "dette_nette_acquisitions_2026",
+    "moteur": "Remontee temporaire de la dette nette en 2026 liee au financement par la dette des acquisitions Cognite (3,1 Md$) et AiDASH (~350 M$ EV) annoncees fin juin 2026 mais non encore closes, partiellement compensee par un free cash-flow toujours eleve (~5 Md€ estime) et l'absence d'autre operation de M&A majeure connue - reprise de la trajectoire de desendettement des 2027 en l'absence de nouvelle acquisition significative.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "actions_dilution_moderee",
+    "moteur": "Croissance legere et reguliere du nombre d'actions dilue (WESOP annuel + OCEANE convertibles, partiellement compense par des rachats d'actions limites), coherente avec la tendance observee 2021-2025 (~556M a ~562M actions), extrapolee a un rythme similaire (~+0,4%/an) sur l'horizon de projection.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "tax_rate_normatif",
+    "moteur": "Taux d'imposition effectif normatif retenu dans la fourchette 23-25% guidee par le management pour FY26 (23,5% observe en FY25), implicitement integre dans le ratio de conversion EBITA->Net retenu constant (voir ancrage dedie) plutot que modelise separement.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumCA": {
+   "2026": 44300,
+   "2027": 48070,
+   "2028": 52156,
+   "2029": 56589,
+   "2030": 61399
+  },
+  "omniumEBIT": {
+   "2026": 8661,
+   "2027": 9590,
+   "2028": 10614,
+   "2029": 11742,
+   "2030": 12986
+  },
+  "omniumNet": {
+   "2026": 5560,
+   "2027": 6157,
+   "2028": 6814,
+   "2029": 7538,
+   "2030": 8337
+  },
+  "omniumEPS": {
+   "2026": 9.86,
+   "2027": 10.88,
+   "2028": 12.0,
+   "2029": 13.22,
+   "2030": 14.58
+  },
+  "omniumND": {
+   "2026": 14700,
+   "2027": 13500,
+   "2028": 12000,
+   "2029": 10300,
+   "2030": 8500
+  },
+  "omniumShares": {
+   "2026": 564,
+   "2027": 566,
+   "2028": 568,
+   "2029": 570,
+   "2030": 572
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -480,
+    "other": -1200,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 4321.6,
+    "netPub": 4163,
+    "residual": -158.6,
+    "residualNote": "'other' is the wedge between Adjusted EBITA (the 'ebit' base) and IFRS operating income: PPA amortization, restructuring and one-offs. 2025 carried a heavier below-EBITA block than the normative wedge (AVEVA integration, restructuring) - ~160M residual one-off."
+   },
+   "2026": {
+    "finNet": -450,
+    "other": -700,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 5558.1
+   },
+   "2027": {
+    "finNet": -420,
+    "other": -850,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 6156.8
+   },
+   "2028": {
+    "finNet": -380,
+    "other": -1026,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 6813.9
+   },
+   "2029": {
+    "finNet": -330,
+    "other": -1226,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 7537.6
+   },
+   "2030": {
+    "finNet": -280,
+    "other": -1440,
+    "taxRate": 0.26,
+    "minorities": 0,
+    "netCalc": 8336.8
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Organic revenue growth (guided range, %) + adj EBITA margin expansion",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-30",
+     "type": "guidance_revised",
+     "detail": "FY26 RAISED: organic revenue to +10/+13% (from +7/+10%); organic adj-EBITA margin expansion to +70/+100bp (implied ~19.4-19.7%)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: adjusted diluted EPS 4.79 (+21% published / +28.5% organic) - tracking well above the initial +7/+10% anchor.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 8.5,
+    "source": "initial_guidance",
+    "date": "2026-02-26",
+    "note": "Initial FY26 Target at FY25 results: organic revenue +7/+10% (mid +8.5), organic adjusted-EBITA margin expansion +50/+80bp (implied ~19.1-19.4%). RAISED on 30/07 to +10/+13% and +70/+100bp - a fully archived initial anchor; the FY26 close measures the overdelivery."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (fiche created 2026; FY25/FY24 initial anchors not archived). FY26 will deliver the first observation - the July raise already signals a large beat vs the initial mid.",
+   "consensusSource": "Simply Wall St (22 analysts, adjusted)",
+   "consensusDate": "2026-08-02"
+  },
+  "revisionEvent": {
+   "date": "2026-07-30",
+   "label": "H1 2026",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "H1 2026 exploited via communique + transcript; full IFRS interim statements not line-by-line exploited at this refresh."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-30",
+    "source": "Communique + transcript (as exploited at the 04/08 refresh)",
+    "message": "FY26 guidance RAISED on both axes (organic revenue to +10/13% from +7/10%; adj-EBITA margin expansion to +70/100bp) on datacenter-driven demand; H1 adjusted diluted EPS 4.79, +21% published / +28.5% organic; the 'ebit' base is Adjusted EBITA (management's explicit steering metric), net is IFRS group share - the below-EBITA wedge (PPA, restructuring) is carried explicitly in the bridge."
+   }
+  ]
+ }
 }
