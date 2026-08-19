@@ -441,6 +441,8 @@ def w2():
         if len(rs)<5: continue
         med=sorted(r for _,r in rs)[len(rs)//2]
         yL,rL=rs[-1]
+        brY=(t.get('hypothese',{}).get('bridge') or {}).get(str(yL)) or {}
+        if brY.get('residualNote'): continue   # arbitrage d-bis porte par le pont
         if abs(rL-med)>0.10:
             bad.append((tk,f'{yL} : Net/EBIT {rL*100:.0f}% vs mediane {med*100:.0f}% '
                            f'- one-off non retraite dans data ? (E5 d-bis)'))
