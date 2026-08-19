@@ -4024,8 +4024,24 @@ function pfUpdateSortHeaderUI(){
 let _actOpen=false;
 function toggleActionsPanel(){ _actOpen=!_actOpen; renderActionsBar(); }
 
+// Echeances 13F : depots dus ~45 jours apres chaque cloture trimestrielle
+// (14-15 fev/mai/aout/nov). L'alerte s'ouvre 2-3 jours apres (le ~17) et
+// se derive des fiches : elle liste les titres dont ownership.asOf est
+// anterieur a la derniere echeance, et s'eteint a mesure que l'Operation D
+// les met a jour. Rien n'est stocke.
+function last13FDeadline(today){
+  const y=today.getFullYear();
+  const dls=[[y-1,10,14],[y,1,14],[y,4,15],[y,7,14],[y,10,14]]
+    .map(([yy,m,d])=>new Date(Date.UTC(yy,m,d)));
+  let last=null;
+  dls.forEach(d=>{ if(today>=new Date(d.getTime()+3*86400000)) last=d; });
+  return last;
+}
 function actionQueues(){
-  const attente=[], horsEnum=[];
+  const attente=[], horsEnum=[], own13f=[];
+  const today=new Date();
+  const dl=last13FDeadline(today);
+  const dlIso=dl?dl.toISOString().slice(0,10):null;
   Object.entries(state.tickers).forEach(([tk,d])=>{
     const dc=d?.hypothese?.dernierCall;
     if(!dc) return;
@@ -4036,20 +4052,37 @@ function actionQueues(){
     const b=(dc.resultatsVsConsensus||{}).epsAdj?.basis;
     if(typeof b==='string' && !['GAAP','non-GAAP'].includes(b.trim())) horsEnum.push(tk);
   });
-  return {attente:attente.sort(), horsEnum:horsEnum.sort()};
+  if(dlIso){
+    Object.entries(state.tickers).forEach(([tk,d])=>{
+      const asOf=d?.ownership?.asOf;
+      if(!asOf || asOf<dlIso) own13f.push(tk);
+    });
+  }
+  // nextEvents : passage mensuel (Operation C). L'alerte s'ouvre le 1er du
+  // mois et s'eteint quand _meta.lastRun passe dans le mois courant.
+  const lastRun=state.nextEvents?._meta?.lastRun||null;
+  const moisCourant=today.toISOString().slice(0,7);
+  const nextEventsDu=!lastRun || lastRun.slice(0,7)<moisCourant;
+  return {attente:attente.sort(), horsEnum:horsEnum.sort(),
+          own13f:own13f.sort(), dl13f:dlIso, nextEventsDu, lastRunNE:lastRun};
 }
 
 function renderActionsBar(){
   const wrap=document.getElementById('actions-bar-wrap');
   if(!wrap) return;
   const q=actionQueues();
-  const total=q.attente.length+q.horsEnum.length;
+  const total=q.attente.length+q.horsEnum.length+q.own13f.length+(q.nextEventsDu?1:0);
   if(!total){ wrap.innerHTML=''; return; }
   const grp=(titre,pourquoi,tks,requete)=>!tks.length?'':`<div class="act-grp">
       <div class="act-grp-t">${titre}</div>
       <div class="act-grp-w">${pourquoi}</div>
       <div class="act-tk">${tks.map(t=>`<span>${t}</span>`).join('')}</div>
       <div class="act-req">${requete.replace(/</g,'&lt;')}\n\n${tks.join(', ')}</div>
+    </div>`;
+  const grpSansTitres=(titre,pourquoi,requete)=>`<div class="act-grp">
+      <div class="act-grp-t">${titre}</div>
+      <div class="act-grp-w">${pourquoi}</div>
+      <div class="act-req">${requete.replace(/</g,'&lt;')}</div>
     </div>`;
   const panel=!_actOpen?'':`<div class="act-panel">
     ${grp('Projections provisoires — awaiting GAAP/IFRS statements',
@@ -4060,6 +4093,13 @@ function renderActionsBar(){
           'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent and the Accounting basis paragraph disappears. It also drives epsConsensus.basis.',
           q.horsEnum,
           'Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l\'énumération GAAP / non-GAAP (ou null si la métrique n\'est ni l\'une ni l\'autre) et déplace la justification vers pointsCles :')}
+    ${grp('13F ownership sweep due — Operation D',
+          `New 13F filings were due ${q.dl13f||''} (45 days after quarter end). The tickers below have ownership.asOf older than that deadline. One grouped pass replaces per-refresh lookups.`,
+          q.own13f,
+          'Opération D — balayage 13F groupé : suis INSTRUCTIONS_13F.md (méthode, watchlist des gérants actifs, snapshot history) et mets à jour le seul champ ownership de chaque fiche ci-dessous, asOf à la date du jour, un commit dédié :')}
+    ${q.nextEventsDu?grpSansTitres('Monthly earnings-calendar pass — Operation C',
+          q.lastRunNE?`Last nextEvents pass: ${q.lastRunNE}. A monthly pass keeps upcoming earnings dates fresh across the portfolio.`:'No nextEvents pass recorded yet (_meta.lastRun absent).',
+          'Opération C — mise à jour des prochains événements : suis INSTRUCTIONS_NEXTEVENTS.md pour tout le portefeuille (fournis le contenu actuel de data/nextEvents.json), livre le fichier complet avec _meta.lastRun à la date du jour :'):''}
   </div>`;
   wrap.innerHTML=`<div class="act-entry" onclick="toggleActionsPanel()">
       <div class="act-left">
