@@ -291,8 +291,11 @@
     "ROI attendu en amelioration dans les prochaines annees selon le CEO : le capex devrait DECLINER (le pic d'investissement recent touchant a sa fin) tandis que l'EBIT devrait croitre - signal qualitatif coherent avec la these de desendettement/expansion de marge a moyen terme."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via full call transcript; IFRS interim statements not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Relazione semestrale H1 2026 (rapport publie, syntheses Quartr/officiel 29/07)",
+    "date": "2026-08-19",
+    "note": "Croises : CA H1 1,92 Md EUR (+2,1% - fiche 1 920,4 exacte), resultat net 117,6 M EUR (+20,1%), marge EBITDA 16,5%, guidance relevee +5% cc confirmee."
    }
   },
   "guidanceHistory": [
@@ -496,21 +499,23 @@
    ],
    "paceCheckpoint": "H1 real: +4.4% organic, Q2 +6.4% published ('almost 7%' cc) - tracking ABOVE even the raised +5% guidance.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 4.3,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
+     "beatPct": 3.6,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+     "excluded": false,
+     "initialDisplay": "-5% lfl revenue (initial)",
+     "realizedDisplay": "-1.6% cc lfl",
+     "note": "Initial FY25 guidance (FY24 PR, 18/03/2025): revenue ~-5% like-for-like cc (with a CONDITIONAL upside 'in line with 2024' incl. Ohlins if geopolitics stabilised); realized -1.6% cc lfl (3,703M total) - level +3.6% on the same lfl basis. The conditional scenario is documented, the unconditional organic range is the anchor."
     },
     {
      "fy": 2024,
      "beatPct": null,
      "source": "initial_guidance",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Searched 19/08/2026: the initial (Mar-2024) FY24 range did not surface - only the outcome language ('revenues substantially stable', 3,840.6M). To backfill if the FY23 release is read."
     }
    ],
    "anchorInitial": {
@@ -521,9 +526,17 @@
     "note": "Initial FY26 guidance at FY25 results: revenue and EBITDA margin 'in line with FY2025 at constant FX' (~0% growth). Raised twice in-year (+3% in May, +5% in July) - the anchor stays initial; the FY26 close will measure the full overdelivery."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. FY26 will deliver the first observation - in-year raises (0 -> +3 -> +5) already signal a large beat vs the initial anchor, but per doctrine it enters the average only at close.",
+   "applicationNote": "annualBeatPct +4.3% BLENDED (in-progress +5.0 x1/2; FY25 +3.6 single closed). NOT applied: revenue-level beats vs EPS projections (declared wedge) and the 2026 build already sits on the raised guidance.",
    "consensusSource": "No reliable sell-side consensus - reconstructed on guidance",
-   "consensusDate": "2026-07-07"
+   "consensusDate": "2026-07-07",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 0.0,
+    "currentValue": 5.0,
+    "deltaPct": 5.0,
+    "asOf": "2026-07-29",
+    "note": "Initial FY26: revenue in line with FY25 cc (0%); raised twice to +5% cc - projected +5.0% (cc revenue metric)."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-29",

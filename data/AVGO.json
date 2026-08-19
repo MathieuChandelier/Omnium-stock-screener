@@ -163,8 +163,11 @@
     "Départ en retraite annoncé de la CFO Kirsten Spears ; création d'une plateforme AI SPV avec Apollo et Blackstone pour déployer 20 GW+ de capacité de compute d'ici 2028 (première tranche ~35 Md$)."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 FY26 exploited via release/call; 10-Q not line-by-line exploited at this refresh. Q3 FY26 report expected early September - next refresh anchor."
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "Form 10-Q Q2 FY26 (trimestre clos 03/05/2026) + 8-K EX-99.1 (EDGAR)",
+    "date": "2026-08-19",
+    "note": "Croises : CA 22 187 M$ (+48%), resultat operationnel GAAP 10 788 M$ (marge 48,6% - la fiche modelise 46% FY26, coherent), net GAAP 9 310 M$ / EPS 1,91$. ETR effectif ~11% vs 24% normatif : le coin fiscal documente au pont persiste - residu attendu au publie FY26."
    }
   },
   "summary": "Pari sur la poursuite de l'explosion du CA semi-conducteurs IA custom (accélérateurs + networking) chez une poignée d'hyperscalers, adossée au socle très rentable et récurrent du software d'infrastructure (VMware) ; valorisation élevée qui laisse peu de marge d'erreur sur l'exécution du pipeline IA.",
@@ -399,16 +402,16 @@
     {
      "fy": 2025,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "note": "Searched 19/08/2026: no dated initial (Dec-2024) FY25 consensus snapshot found. Realized FY25 GAAP diluted EPS 4.77 (MacroTrends) - the GAAP base the fiche tracks."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Same limitation; FY24 GAAP also carries the retreated tax one-off (see bridge)."
     }
    ],
    "anchorInitial": {

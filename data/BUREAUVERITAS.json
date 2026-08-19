@@ -151,8 +151,11 @@
     "Le vent contraire de change s'attenue nettement trimestre apres trimestre (-5,2% au T1 -> -0,6% au T2, le seul mois de juin redevenant meme legerement accretif) - le CFO evoque explicitement une perspective plus favorable sur le change pour le reste de l'annee, un element de soutien pour la construction du S2 2026."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via release/call; IFRS interim statements not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Rapport Financier Semestriel 2026 (publie 29/07, GlobeNewswire/groupe)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 3 258,4 M EUR (+5,0% organique, T2 +5,5%), resultat operationnel ajuste 506,5 M EUR (marge 15,5%), BPA ajuste 0,68 EUR - l'Omnium H1 0,647 (amortissement conserve) reste ~5% dessous, coherent avec la base."
    }
   },
   "quarterlyEPS": {
@@ -374,19 +377,19 @@
    ],
    "paceCheckpoint": "H1 real: organic +5.0% accelerating to +5.5% in Q2, adjusted margin +29bp cc; market +7-8% on publication despite lower absolute revenue (disposals).",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 1.4,
    "annualBeatHistory": [
     {
      "fy": 2025,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+     "note": "Qualitative guider - measurement would need a dated initial consensus snapshot; not searched this pass (bounded 19/08/2026), to backfill."
     },
     {
      "fy": 2024,
      "beatPct": null,
-     "source": "initial_guidance",
+     "source": "initial_consensus",
      "excluded": true,
      "note": "Same limitation."
     }
@@ -399,9 +402,17 @@
     "note": "BV guides qualitatively only (organic growth band + margin direction + cash) - no quantifiable guidance anchor exists; the anchor falls back to the official BV-compiled consensus (earliest archived snapshot, 29/07 pre-publication). Omnium 2026 (1.42) deliberately sits BELOW: the consensus did not yet integrate the Government-Services compliance charge nor the disposal-reduced revenue base."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (qualitative guider, initial consensus not archived for FY24/25). First measurement at the FY26 close vs the 1.58 snapshot.",
+   "applicationNote": "annualBeatPct +1.4% (in-progress reading alone - no measured closed FY yet). NOT applied: language-derived quantification on a qualitative guider, no closed observation.",
    "consensusSource": "BV-compiled official consensus (pre-publication)",
-   "consensusDate": "2026-07-29"
+   "consensusDate": "2026-07-29",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 5.0,
+    "currentValue": 6.5,
+    "deltaPct": 1.4,
+    "asOf": "2026-07-29",
+    "note": "Qualitative bands quantified: initial 'moderate single-digit' organic (~+5%) raised to 'moderate-to-high single-digit' (~+6.5%) at H1 - projected level +1.4%. Language-derived, medium confidence."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-29",

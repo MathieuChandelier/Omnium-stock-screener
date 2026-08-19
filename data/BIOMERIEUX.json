@@ -166,8 +166,11 @@
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via call transcript and company communique; full IFRS interim statements not line-by-line exploited at this refresh."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Communique et etats S1 2026 (PR 28/07/2026, biomerieux.com)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 1 964,6 M EUR (+0,2% organique), resultat operationnel 299 M EUR (+43,3%), net 226,1 M EUR / BPA 1,92 EUR, guidance FY26 confirmee (+3/+5% ; CEBIT 0/+10%)."
    }
   },
   "guidanceHistory": [
@@ -450,21 +453,25 @@
    ],
    "paceCheckpoint": "H1 real: Q2 +5% organic (+7.3% ex-respiratory) after Q1 -3% - FY26 pace credible within the lowered range.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": -0.4,
    "annualBeatHistory": [
     {
      "fy": 2025,
-     "beatPct": null,
+     "beatPct": -0.7,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+     "excluded": false,
+     "initialDisplay": ">=+7% organic (initial floor)",
+     "realizedDisplay": "+6.2%",
+     "note": "Initial FY25 guidance (Mar 2025): organic sales at least +7%, CEBIT at least +10%; realized +6.2% organic (China drag) - level -0.7% vs the floor. CEBIT side EXCEEDED (+16% cc), documented but the anchor metric is sales."
     },
     {
      "fy": 2024,
-     "beatPct": null,
+     "beatPct": 3.1,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+     "excluded": false,
+     "initialDisplay": "+7% organic (initial mid 6-8%)",
+     "realizedDisplay": "+10.3%",
+     "note": "Initial FY24 guidance (Mar 2024): organic +6/+8% (mid 7%), CEBIT >=+10%; realized +10.3% organic - level +3.1%. Raised in September 2024."
     }
    ],
    "anchorInitial": {
@@ -475,9 +482,17 @@
     "note": "Initial FY26 guidance was organic revenue +5% to +7% (mid +6%), evidenced by the 23/04 warning communique which cut it to +3/+5% ('vs +5-7% avant warning'). The initial statement itself (Feb/Mar 2026) was not captured; the anchor is dated at its earliest archived evidence."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. FY26 will be measured against the initial +5/+7% anchor at close - the in-year warning makes a MISS vs initial anchor likely; no uplift applied.",
+   "applicationNote": "annualBeatPct -0.4% BLENDED (in-progress -1.9 x1/2; FY25 -0.7 and FY24 +3.1 equal-shared). NOT applied: the 2026 build already sits on the lowered guidance, and beats are on ORGANIC REVENUE while the anchor is EPS-adjacent (declared mismatch).",
    "consensusSource": "Simply Wall St (analyst consensus, adjusted EPS)",
-   "consensusDate": "2026-06-01"
+   "consensusDate": "2026-06-01",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 6.0,
+    "currentValue": 4.0,
+    "deltaPct": -1.9,
+    "asOf": "2026-07-28",
+    "note": "Initial FY26 organic +5/+7% (mid +6, evidenced by the 23/04 warning); guided +3/+5% since (mid +4, confirmed twice) - projected level -1.9%. Revenue metric."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-28",

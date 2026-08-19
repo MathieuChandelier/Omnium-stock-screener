@@ -113,8 +113,11 @@
     "Marché allemand toujours difficile (pression sur le pouvoir d'achat du consommateur, pas un problème spécifique de distributeur) ; Etats-Unis toujours qualifiés de marché 'tricky' mais surperformance continue sur Aperol et Espolon, sans lecture négative significative identifiée sur une éventuelle guerre des prix dans la tequila à ce stade."
    ],
    "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via call summary (GuruFocus/Investing) and guidance disclosures; official interim release to be cross-checked next refresh (S1 revenue was derived from EBIT/margin, not read directly)."
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Half-Year Report at 30 June 2026 (camparigroup.com, publie 29/07)",
+    "date": "2026-08-19",
+    "note": "Croises : ventes nettes S1 1,51 Md EUR (+2,7% organique) - la valeur DERIVEE de la fiche (1 511 M) est CONFIRMEE par le rapport officiel, point de vigilance du refresh solde ; adj EBIT 358 M (23,7%), net 226 M (+4,7%)."
    }
   },
   "guidanceHistory": [
@@ -346,21 +349,21 @@
    ],
    "paceCheckpoint": "H1 real: +2.7% organic (5th consecutive positive quarter, Q2 +2.5%), adjusted EBIT margin 23.7% (+130bp) - slightly below the +3% revenue anchor, well ahead on margin.",
    "weightedBeatPct": null,
-   "annualBeatPct": null,
+   "annualBeatPct": 0.0,
    "annualBeatHistory": [
     {
      "fy": 2025,
      "beatPct": null,
      "source": "initial_guidance",
      "excluded": true,
-     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+     "note": "Searched 19/08/2026: the initial (early-2025) FY25 numeric range did not surface - only the year-END consensus (organic +1.6%, Visible Alpha) vs realized +2.4% organic (3,051M, Q4 acceleration +4.7%). Excluded rather than measured against a non-initial anchor."
     },
     {
      "fy": 2024,
      "beatPct": null,
      "source": "initial_guidance",
      "excluded": true,
-     "note": "Same limitation."
+     "note": "Same limitation (2024 also carries the Courvoisier-era perimeter noise)."
     }
    ],
    "anchorInitial": {
@@ -371,9 +374,17 @@
     "note": "Initial FY26 guidance at FY25 results: organic revenue growth ~3%, 'contained' organic adjusted-EBIT margin expansion. Margin component raised in July (tariff impact cut to ~20M from ~30M); the revenue anchor stays at +3% for the FY26 close measurement."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. FY26 will deliver the first observation vs the +3% initial anchor; margin overdelivery is tariff-driven and 2026-specific, so no uplift applied to 2027+.",
+   "applicationNote": "annualBeatPct 0.0% (in-progress reading alone: guidance confirmed on the anchor metric; margin raise documented separately). NOT applied: nothing to apply - tracking on plan.",
    "consensusSource": "Stockopedia (FY26 0.31 EUR), cross-checked sell-side",
-   "consensusDate": "2026-07-10"
+   "consensusDate": "2026-07-10",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 3.0,
+    "currentValue": 3.0,
+    "deltaPct": 0.0,
+    "asOf": "2026-07-29",
+    "note": "Organic ~3% confirmed unchanged since the initial (04/03) - projected 0.0 on the revenue metric; the MARGIN axis was raised (tariff relief ~10M) but the anchor metric is organic growth."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-29",
