@@ -1,136 +1,432 @@
 {
-  "name": "Broadcom",
-  "cours": 371.00,
-  "yahooSymbol": "AVGO",
-  "dividende": 2.60,
-  "fyEndMonth": 11,
-  "data": [
-    {"year":2020,"ca":23888,"ebit":4014,"net":2960,"shares":4050,"nd":30580,"div":1.46},
-    {"year":2021,"ca":27450,"ebit":8519,"net":6736,"shares":4240,"nd":24450,"div":1.61},
-    {"year":2022,"ca":33203,"ebit":14225,"net":11495,"shares":4320,"nd":22850,"div":1.83},
-    {"year":2023,"ca":35819,"ebit":16207,"net":14082,"shares":4260,"nd":25520,"div":2.05},
-    {"year":2024,"ca":51574,"ebit":13463,"net":10395,"shares":4760,"nd":58100,"div":2.10},
-    {"year":2025,"ca":63887,"ebit":26076,"net":23126,"shares":4880,"nd":49600,"div":2.36}
-  ],
-  "epsConsensus": {"year":2026,"eps":8.30,"epsNY":11.00,"date":"2026-06-05","source":"Consensus sell-side post-Q2 FY26 (non-GAAP), ordre de grandeur - S&P Global / LSEG"},
-  "particularites": [
-    {"text":"Exercice fiscal décalé : Broadcom clôture son année fiscale début novembre (le dimanche le plus proche du 31 octobre), pas en décembre. Les années du tableau désignent donc des exercices fiscaux (ex. 'FY2025' = exercice clos le 2 novembre 2025), pas des années civiles - géré par le champ fyEndMonth=11.","valuePct":null},
-    {"text":"Concentration client extrême sur le segment IA : une poignée de méga-clients (Google, Meta, et désormais Anthropic, OpenAI via des accords pluriannuels custom silicon) concentre l'essentiel de la croissance du chiffre d'affaires semi-conducteurs IA. Cette dépendance est une source d'asymétrie majeure (upside si les commandes se matérialisent, downside si un hyperscaler internalise ou décale ses investissements) - facteur de risque idiosyncratique porté dans hypothese.text plutôt que quantifié dans les adjXXX.","valuePct":null}
-  ],
-  "nextEvent": {"label":"Q3 FY 26","date":null},
-  "coherenceQualitative": {
-    "asOf": "2026-08-10",
-    "statut": "incoherences_detectees",
-    "points": [
-      {
-        "sujet": "Resilience de la marge brute face au mix TPU/racks bas-marge",
-        "ancienPropos": "Q1 FY26 (04/03/2026, reponse directe a une question sur le risque de compression de marge lie aux racks bas-marge (45-50% de marge brute), Timothy Arcuri UBS) : Hock Tan ecarte categoriquement le risque, affirmant que 'les produits IA ne seront pas affectes par la marge brute' ; la CFO Kirsten Spears ajoute que l'impact du mix 'ne sera pas substantiel'.",
-        "nouveauPropos": "Q2 FY26 (03/06/2026, reponse a une question sur les moteurs de marge brute, Ross Seymore Deutsche Bank) : le CFO confirme explicitement que les produits TPU/ASIC portent des marges INFERIEURES a celles du networking (qualifie de 'tres riche en marge'), et bien que le CEO qualifie les marges du segment semi-conducteurs de 'structurellement tres stables et solides', il attribue desormais une compression consolidee observee au 'glissement de mix software vers semi-conducteurs' - une nuance absente du discours de mars, qui ecartait categoriquement tout impact de mix sur la marge.",
-        "natureEcart": "contradiction_non_expliquee",
-        "materialite": "haute",
-        "justification": "La marge est un pilier central de la these (ancrage marginLeverage) ; le passage d'un dementi categorique ('pas affecte', 'pas substantiel') a une reconnaissance explicite que le TPU/ASIC est structurellement moins marge-riche que le networking et qu'un glissement de mix comprime deja les marges consolidees, sans que le management ne revienne sur son propos de mars, merite d'etre trace - la modelisation actuelle (ancrage marginLeverage, confiance moyenne, expansion de marge progressive plutot qu'immediate) reste compatible avec les deux discours mais le CFO nuance desormais un risque qu'il ecartait entierement trois mois plus tot."
-      }
-    ],
-    "historique": [
-      {
-        "quarter": "Q1 FY2026",
-        "date": "2026-03-04",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Blayne Curtis (Jefferies) - l'objectif '>100 Md$' IA 2027 exclut-il le networking et les racks, pessimisme des investisseurs sur le ROI des hyperscalers vu la trajectoire de croissance : Hock Tan precise que le chiffre porte sur les puces silicium (XPU, switches, DSP), souligne que les clients ne sont pas que des hyperscalers mais aussi des developpeurs de LLM construisant des plateformes, demande forte tiree par l'entrainement ET l'inference.",
-          "Q Harlan Sur (JPMorgan) - les initiatives de puces maison (COT) des clients menacent-elles la position de Broadcom, comment maintenir une avance techno de 12-18 mois : Hock souligne la complexite du design silicium, le packaging avance et l'echelle de fabrication comme barrieres, aucun concurrent ne peut egaler le 'track record' de livraison de XPU en gros volumes avec des rendements tres eleves.",
-          "Q Ross Seymore (Deutsche Bank) - moteurs de la part du networking IA a 40% du CA IA, le networking est-il inclus dans le '>100 Md$', comment le leadership networking renforce le positionnement XPU : Hock cite la demande pour les switches Tomahawk 6 et le SerDes 200G, projette une part networking IA de 33 a 40% du CA IA total, clients visant du 200G puis 400G.",
-          "Q Christopher Muse (Cantor Fitzgerald) - desagregation des charges de travail (separation prefill/decode) et bascule potentielle GPU vs silicium custom : Hock explique que les XPU sont de plus en plus adaptes a des charges specifiques (ex. mixture-of-experts), contrairement aux GPU en multiplication matricielle dense, ce qui ameliore l'efficacite.",
-          "Q Timothy Arcuri (UBS) - crainte qu'un mix de racks bas-marge (45-50% de marge brute) ne fasse chuter la marge consolidee de 500 points de base, quel est le plancher de marge brute : Hock ecarte la premisse, affirme que les rendements et couts ont ete optimises et que 'les produits IA ne seront pas affectes par la marge brute' ; Kirsten Spears ajoute que l'impact de mix 'ne sera pas substantiel'.",
-          "Q Stacy Rasgon (Bernstein) - tentative de reconstituer le calcul de l'objectif '>100 Md$' 2027 via les deploiements en gigawatts et le contenu $/GW (~20 Md$/GW), la methode est-elle correcte : Hock confirme l'approche, reconnait une forte variabilite du $/GW selon les clients, indique environ 10 GW de deploiement attendus en 2027.",
-          "Q Benjamin Reitzes (Melius Research) - comment Broadcom a securise la capacite composants jusqu'en 2028 (substrats, HBM, wafers) avant ses concurrents, la visibilite est-elle suffisante pour la croissance 2028 : Hock souligne la reservation precoce de substrats avances et des partenariats ; Charlie Kawwas ajoute que les engagements pluriannuels avec les six clients silicium custom offrent une visibilite de 2 a 4 ans sur leurs feuilles de route.",
-          "Q Vivek Arya (BofA) - repartition du deal Anthropic 20 Md$/GW entre puces et racks, comment Broadcom maintient sa visibilite de part de marche dans un environnement multi-fournisseurs fragmente : Hock distingue les programmes XPU custom strategiques du business GPU cloud transactionnel, souligne que ces six clients considerent le developpement XPU comme 'strategique, pas optionnel', avec une visibilite tres claire sur leurs feuilles de route.",
-          "Q Tom O'Malley (Barclays) - pourquoi Broadcom met en avant le cuivre a attache directe (DAC) via SerDes 400G malgre son leadership en optique co-packagee (CPO), adoption du protocole Ethernet scale-up : Hock explique que le DAC offre la latence, la consommation et le cout les plus bas pour les clusters scale-up ; Charlie Kawwas confirme qu'Ethernet est le standard de facto pour le scale-out et un choix emergent pour le scale-up XPU.",
-          "Q Jim Schneider (Goldman Sachs) - les engagements XPU custom hors TPU ciblent-ils principalement l'inference, avantages performance/cout vs GPU justifiant les previsions a grande echelle : Hock note que les clients demarrent souvent par l'inference (besoins de calcul et cout moindres), mais indique que la majorite developpe desormais des puces distinctes pour l'entrainement et l'inference simultanement.",
-          "Q Joshua Buchalter (TD Cowen) - comment la visibilite s'est-elle amelioree sur 1-2 trimestres pour permettre des previsions clients plus detaillees, l'annonce OpenAI '>1 GW en 2027' implique-t-elle une inflexion brutale en 2028 vu le deal 10 GW/2029 : Hock attribue l'amelioration de la visibilite a la confiance croissante des clients a mesure que les XPU prouvent leurs capacites et s'alignent sur les feuilles de route strategiques, reaffirme que le XPU est un 'pari strategique durable' plutot que transactionnel."
-        ]
-      },
-      {
-        "quarter": "Q2 FY2026",
-        "date": "2026-06-03",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Harlan Sur (JPMorgan) - reconciliation de la guidance CA IA FY26 de 56 Md$ avec un S2 annonce a 2x le S1, le carnet de commandes a 18 mois depasse-t-il desormais 200 Md$ : le management precise un CA IA S1 d'environ 19 Md$, un S2 a 2x donnant ~38 Md$ (total ~56 Md$) ; pour 2027 le CEO reitere l'objectif '>100 Md$' sans detail trimestriel, notant un momentum intact voire renforce.",
-          "Q Blayne Curtis (Jefferies) - perimetre de l'accord long terme avec Google (volume fixe ou upside possible), confiance sur la part de marche chez ce client : Hock souligne un 'montant en dollars tres substantiel', reconnait que Google s'approvisionnera probablement aupres de plusieurs fournisseurs vu la croissance de la consommation IA, mais l'engagement de Broadcom reste 'tres substantiel'.",
-          "Q Ross Seymore (Deutsche Bank) - moteurs de marge brute au sein des semi-conducteurs (XPU vs networking), la pression sur la marge se poursuit-elle en 2027 : le CFO explique que les produits TPU/ASIC portent des marges inferieures au networking (qualifie de 'tres riche en marge') ; le CEO insiste sur des marges semi-conducteurs 'structurellement tres stables et solides', la compression consolidee etant attribuee au glissement de mix software vers semi-conducteurs.",
-          "Q Benjamin Reitzes (Melius) - evolution du TAM par gigawatt a mesure que le contenu de calcul augmente, cela accelere-t-il au-dela de la guidance actuelle : le CEO indique un $/GW 'relativement stable' (les puces plus puissantes reduisant les volumes unitaires) mais une demande en gigawatts elle-meme en forte acceleration, trajectoires 2027-2028 suggerant une croissance au-dela des previsions actuelles.",
-          "Q Timothy Arcuri (UBS) - securite d'approvisionnement en wafers et HBM si les clients demandent un volume incremental, alternatives de fonderie envisagees : le CEO affirme etre a l'aise sur la securisation de l'approvisionnement jusqu'en 2028-2029 et confirme la capacite a repondre a des demandes incrementales de capacite, sans detailler de strategie de fonderie alternative.",
-          "Q Stacy Rasgon (Bernstein) - objectifs de livraison en gigawatts pour 2027 vs la guidance precedente, la repartition penche-t-elle vers le second semestre : le CEO confirme un objectif de planification 2027 d'environ 10 GW, inchange vs le trimestre precedent, avec une ponderation S2, ouvrant une trajectoire 'interessante' vers 2028 avec des volumes nettement plus eleves.",
-          "Q Jim Schneider (Goldman Sachs) - profil de la part du networking dans le CA IA sur 2026-2027, calendrier de materialisation du CA optique/CPO : le CEO indique que la part networking actuelle de 40% represente un pic 'anormal', attend une normalisation 'plutot autour de 30%' a mesure que la montee en puissance des XPU s'accelere.",
-          "Q Tom O'Malley (Barclays) - Broadcom joue-t-il un role de 'backstop' puces dans de futurs deals clients, futurs modeles de financement de l'infrastructure IA : le CEO corrige la caracterisation, precisant que Broadcom fournit directement les puces TPU et le compute a des clients comme Anthropic plutot que de jouer un role de garantie tierce.",
-          "Q CJ Muse (Cantor Fitzgerald) - interet pour des marches XPU derives de niche (interconnexion, stockage) vs les plateformes coeur a grande echelle : le CEO reaffirme un modele focalise : fournir accelerateurs XPU et composants de clustering critiques (switches, PCIe, DSP, lasers) exclusivement aux developpeurs de LLM, les vehicules de financement soutenant les labos de modeles frontier plutot que des acheteurs entreprise disperses.",
-          "Q AT Malik (Citi) - impact de l'IA/IA generative sur la croissance du software d'infrastructure, renouvellements et trajectoire long terme : le CEO ne rapporte aucun impact negatif, au contraire une croissance VMware acceleree par le deploiement de volumes CPU/GPU, attend un momentum VMware soutenu plusieurs trimestres, isolation structurelle liee au positionnement de la couche hyperviseur.",
-          "Q Edward Snyder (Charter Equity Research) - l'adoption de l'IA en entreprise et l'acces aux modeles via le cloud (Bedrock, Vertex) representent-ils une seconde vague de demande distincte des charges internes des hyperscalers : le CEO reconnait une consommation IA entreprise emergente mais souligne que les tokens achetes transitent par les plateformes API des memes labos frontier (Anthropic, OpenAI, Google), l'essentiel de la demande provenant in fine de ces developpeurs centralises plutot que d'un deploiement entreprise disperse.",
-          "Q Joe Moore (Morgan Stanley) - explication des 30 Md$ de bookings vs le rythme d'expedition court terme, moteurs de la visibilite etendue jusqu'en 2028 : le CEO attribue les bookings a une planification anticipee couvrant compute, memoire, HBM, energie et infrastructure, souligne des clients 'passant commande tot' en 'forte demande', etendant la visibilite a '2028 desormais' contre 2027 precedemment.",
-          "Q Joshua Buchalter (TD Cowen) - evolution du revenu par gigawatt vu la guidance anterieure de 15-20 Md$, comment prix et contenu evoluent de generation en generation : le CEO projette un contenu par gigawatt en forte hausse porte par la montee des prix XPU, l'integration de coeurs CPU, les architectures multi-die et l'integration HBM, ces changements se manifestant de generation en generation plutot que trimestre par trimestre."
-        ]
-      }
-    ],
-    "engagementsStructurants": []
+ "name": "Broadcom",
+ "cours": 371.0,
+ "yahooSymbol": "AVGO",
+ "dividende": 2.6,
+ "fyEndMonth": 11,
+ "data": [
+  {
+   "year": 2020,
+   "ca": 23888,
+   "ebit": 4014,
+   "net": 2960,
+   "shares": 4050,
+   "nd": 30580,
+   "div": 1.46
   },
-  "hypothese": {
-    "date":"2026-08-10",
-    "source":"Création - Q2 FY2026 (communiqué de résultats + transcript du 3 juin 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS en base GAAP (coherente avec la base adjXXX du fichier) - PY (FY2025 T1 1.14/T2 1.03/T3 0.85/T4 1.74, EPS dilue GAAP publie par trimestre, somme 4.76 proche de data[2025].net/shares=4.74), CY (T1 26 1.50 et T2 26 1.91 GAAP actuals, T3/T4 26 estimes par repartition saisonniere de omniumNet/omniumShares FY26), NY (FY2027 estime par la meme methode). Ajout coherenceQualitative avec reconstruction retroactive du T1 FY26 (transcript Motley Fool du 04/03/2026, 11 analystes/11 echanges) compare au T2 FY26 (transcript Motley Fool du 03/06/2026, 13 analystes/13 echanges) - 1 point d'incoherence identifie (statut incoherences_detectees) : la resilience de la marge brute face au mix TPU/racks bas-marge, categoriquement ecartee au T1 ('pas affecte', 'pas substantiel') puis nuancee au T2 (TPU/ASIC confirme structurellement moins marge-riche que le networking, compression consolidee attribuee au mix software/semi) sans reconciliation explicite (materialite haute). Correction incidente : ajout de hypothese.omniumEPS (derive de omniumNet/omniumShares) et des booleens dernierCall.communiqueAnalyse/transcriptAnalyse, absents depuis la creation.",
-    "dernierCall":{
-      "quarter":"Q2 FY 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus":{
-        "ca":{"actual":22187,"consensus":22270},
-        "epsAdj":{"actual":2.44,"consensus":2.40,"basis":"non-GAAP"}
-      },
-      "guidanceProchainTrimestre":"Q3 FY26 guidé à ~29,4 Md$ de CA (+84% a/a), dont ~16,0 Md$ de CA semi IA (+200%+ a/a) ; marge opérationnelle non-GAAP ~67% et EBITDA ajusté ~68% du CA.",
-      "guidanceAnnuelle":"Pas de guidance annuelle chiffrée formelle de CA total, mais objectif CA semi IA FY26 ~56 Md$ (+180% vs FY25) et réitération d'un CA semi IA FY27 >100 Md$.",
-      "pointsCles":[
-        "Le CA semi-conducteurs IA atteint 10,8 Md$ (+143% a/a), au-dessus des prévisions du management, tiré par les accélérateurs IA custom et le networking IA ; les bookings IA du trimestre ont dépassé 30 Md$.",
-        "Annonce d'accords pluriannuels majeurs : TPU long terme avec Google, 5 GW de compute nouvelle génération avec Anthropic à partir de 2027, 1,3 GW avec OpenAI en 2027 (dans un deal 10 GW jusqu'en 2029), 3 GW avec Meta jusqu'à fin 2028.",
-        "Malgré des résultats records, le titre a fortement corrigé (~-15% le lendemain) car le CEO Hock Tan n'a pas relevé l'objectif annuel de 100 Md$+ de CA IA FY27 et a indiqué un basculement vers une offre 'chips only' plutôt que des systèmes IA intégrés complets.",
-        "Départ en retraite annoncé de la CFO Kirsten Spears ; création d'une plateforme AI SPV avec Apollo et Blackstone pour déployer 20 GW+ de capacité de compute d'ici 2028 (première tranche ~35 Md$)."
-      ]
-    },
-    "summary":"Pari sur la poursuite de l'explosion du CA semi-conducteurs IA custom (accélérateurs + networking) chez une poignée d'hyperscalers, adossée au socle très rentable et récurrent du software d'infrastructure (VMware) ; valorisation élevée qui laisse peu de marge d'erreur sur l'exécution du pipeline IA.",
-    "text":"== SYNTHESE DE LA THESE ==\nBroadcom est devenu, avec Nvidia, l'un des deux piliers de l'infrastructure de calcul IA, mais via un modèle différent : plutôt que des GPU standard, il conçoit des accélérateurs custom (ASIC) et le networking associé pour une poignée d'hyperscalers qui veulent réduire leur dépendance à Nvidia. Le pari central : la matérialisation d'un pipeline IA colossal (bookings IA >30 Md$ au seul Q2 FY26, objectif CA semi IA >100 Md$ en FY27) porté par des accords pluriannuels nommés (Google, Meta, Anthropic, OpenAI). Ce moteur est adossé à un second pilier beaucoup plus stable : le software d'infrastructure (VMware), très marge-riche et récurrent (~32% du CA, +9% a/a), qui amortit la cyclicité du semi. La modélisation retient une croissance forte mais en décélération progressive (l'effet de base devient énorme), une marge opérationnelle qui reste très élevée, et un pont EBIT->Net normalisé de la fiscalité anormale de FY24. Le risque n'est pas la thèse business mais la valorisation (P/E >60x TTM) et la concentration client : un décalage ou une internalisation par un seul méga-client déplacerait matériellement la trajectoire - c'est ce que le marché a sanctionné (-15%) au Q2 FY26 quand le management n'a pas relevé son objectif FY27.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) ONE-OFF FISCAL FY2024 - retraitement majeur : le résultat net GAAP publié de FY2024 (5 895 M$) était déprimé par une provision fiscale discrète, non-cash et exceptionnelle de ~4 500 M$ liée à un transfert intra-groupe de propriété intellectuelle (réorganisation post-acquisition VMware, comptabilisée principalement au Q3 FY24 où le groupe a affiché une perte nette GAAP de -1 875 M$). Ce vrai one-off est RETRAITE dans 'data' (règle E5 d-bis) : net FY2024 retenu = 5 895 (publié) + 4 500 (charge fiscale exceptionnelle) = 10 395 M$. Raison : laisser le chiffre publié brut dans 'data' polluerait durablement le CAGR automatique (base FY24 artificiellement basse gonflant toute croissance ultérieure). Le chiffre publié brut (5 895 M$) est tracé ici pour audit ; 'data' porte le chiffre retraité (10 395 M$).\n(ii) Accords pluriannuels IA nommés annoncés au Q2 FY26 (Google TPU, Anthropic 5 GW dès 2027, OpenAI 1,3 GW dans un deal 10 GW, Meta 3 GW) : sous-tendent la guidance IA déjà agressive, captés globalement via l'ancrage aiRampDecel plutôt que ligne à ligne (pas de ventilation client fiable par exercice).\n(iii) Optionnalité/risque non quantifiable : basculement stratégique vers une offre 'chips only' (vs systèmes intégrés) annoncé au Q2 FY26 - effet ambigu sur le CA par deal mais potentiellement positif sur la marge ; plateforme AI SPV avec Apollo/Blackstone (financement externe de 20 GW+ de compute) dont l'impact P&L direct reste à préciser. Exclus des adjXXX, portés comme asymétries.\n\n== PARTICULARITES ==\nDeux particularités qualitatives (voir tableau) : exercice fiscal décalé (clôture novembre, fyEndMonth=11) et concentration client extrême sur le segment IA.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communiqué Q2 FY2026 (PR Newswire / IR Broadcom, 3 juin 2026, exercice clos le 3 mai 2026) pour les chiffres officiels GAAP/non-GAAP ; transcript du call Q2 FY26 (Motley Fool, Perplexity Finance) pour la couleur qualitative et les accords clients. Guidance directionnelle dure : CA semi IA en forte croissance guidé explicitement (Q3 ~16 Md$, FY26 ~56 Md$, FY27 >100 Md$) -> contrainte de CA et de marge croissants sur l'horizon proche. Le management ne guide le CA total qu'au trimestre suivant (~29,4 Md$ au Q3 FY26), pas à l'année complète. Prochain refresh utile après la publication du Q3 FY2026, attendue début septembre 2026.\n\n== PARAMETRES & POINTS DE SUIVI ==\nMoteurs de projection : voir ancrages aiRampDecel (CA), marginLeverage (marge/EBIT), taxNormalization (pont Net) et sharesSlightDilution (actions). Base comptable : 'ebit'=résultat opérationnel GAAP publié (INCLUANT l'amortissement des intangibles d'acquisition ~7,9 Md$/an et le SBC ~8,5 Md$/an - RÉINTÉGRÉS conformément à E5, jamais exclus comme le fait le non-GAAP du management : Broadcom est un acquéreur en série (VMware) et ces charges sont structurellement récurrentes) ; 'net'=résultat net GAAP, retraité du seul vrai one-off fiscal FY24 (voir Événements classe i). ATTENTION cohérence omniumEPS : les adjXXX de ce fichier sont en base GAAP normalisée, donc l'omniumEPS Omnium (~net GAAP normalisé / actions) est STRUCTURELLEMENT INFÉRIEUR à l'EPS non-GAAP publié par Broadcom (~8,30$ consensus FY26) et au consensus sell-side qui suivent la base non-GAAP du management (SBC + amortissement PPA exclus). Cet écart est DÉLIBÉRÉ et documenté : epsConsensus est renseigné en base non-GAAP (la base réellement suivie par le marché pour ce titre) pour la comparaison affichée, mais les omniumEPS Omnium restent en GAAP normalisé - l'écart reflète le SBC (~1,80$/action) et l'amortissement PPA (~1,65$/action) réintégrés. ETR normatif : taux effectif GAAP normalisé retenu ~13-15% (hors one-off FY24), cohérent avec la structure fiscale post-VMware. Net financier : dette nette élevée post-VMware (~50 Md$), en désendettement graduel ; charge d'intérêts ~3,0 Md$/an intégrée au pont via le résultat opérationnel -> net. WATCH-LIST : (a) rythme réel de matérialisation du pipeline IA vs guidance (aiRampDecel) - le point le plus sensible de la thèse ; (b) évolution de la marge opérationnelle GAAP à mesure que le mix bascule vers 'chips only' ; (c) trajectoire de désendettement et de rachats d'actions ; (d) impact P&L de la plateforme AI SPV Apollo/Blackstone une fois précisé ; (e) transition CFO (départ Kirsten Spears) ; (f) sensibilité au risque géopolitique/export (exposition Chine historiquement ~30% du CA semi).\n\n== CATALYSEURS ==\nConversion des bookings IA (>30 Md$ au Q2 FY26) en CA sur FY27 + confirmation/relèvement de l'objectif CA semi IA FY27 >100 Md$ + expansion de marge liée au basculement 'chips only' + désendettement post-VMware libérant du capital pour rachats.",
-    "impact":"positif",
-    "ancrages":[
-      {"id":"aiRampDecel","moteur":"Montée en puissance du CA semi-conducteurs IA (accélérateurs custom + networking) portée par un pipeline pluriannuel nommé (Google, Meta, Anthropic, OpenAI) : croissance du CA total très forte à court terme (guidance Q3 FY26 +84% a/a) puis décélération progressive à mesure que la base grossit, d'environ +55% en FY26 vers ~+18% en FY30 ; le socle software VMware (~+8-9%/an, récurrent) amortit la cyclicité semi.","applique":["omniumCA.2026","omniumCA.2027","omniumCA.2028","omniumCA.2029","omniumCA.2030"],"confiance":"moyenne"},
-      {"id":"marginLeverage","moteur":"Fort levier opérationnel : marge opérationnelle GAAP en expansion continue avec la montée du mix IA et software haute-marge (guidance non-GAAP ~67% ; en base GAAP, marge opérationnelle projetée montant de ~46% en FY26 vers ~52% en FY30 à mesure que l'amortissement PPA se stabilise en % d'un CA croissant).","applique":["omniumEBIT.2026","omniumEBIT.2027","omniumEBIT.2028","omniumEBIT.2029","omniumEBIT.2030"],"confiance":"moyenne"},
-      {"id":"taxNormalization","moteur":"Pont EBIT->Net sur base fiscale normalisée : taux effectif GAAP normalisé ~13-15% retenu (hors one-off fiscal FY24 de ~4,5 Md$ retraité en amont), charge d'intérêts nette ~3,0 Md$/an en légère baisse avec le désendettement post-VMware ; ratio de conversion Net/EBIT projeté ~78-82%.","applique":["omniumNet.2026","omniumNet.2027","omniumNet.2028","omniumNet.2029","omniumNet.2030"],"confiance":"moyenne"},
-      {"id":"sharesSlightDilution","moteur":"Nombre d'actions diluées en légère hausse structurelle (SBC élevé ~8,5 Md$/an dépassant les rachats), historiquement ~+1%/an post-split 10-pour-1 (juillet 2024) ; projeté à ~+0,8%/an, atténué par un programme de rachat modéré.","applique":["omniumShares.2026","omniumShares.2027","omniumShares.2028","omniumShares.2029","omniumShares.2030"],"confiance":"haute"}
-    ],
-    "omniumCA":{"2026":74400,"2027":93000,"2028":110000,"2029":126500,"2030":149300},
-    "omniumEBIT":{"2026":34400,"2027":45600,"2028":56100,"2029":66000,"2030":77600},
-    "omniumNet":{"2026":25200,"2027":33200,"2028":41400,"2029":49500,"2030":58600},
-    "omniumEPS":{"2026":5.13,"2027":6.70,"2028":8.29,"2029":9.83,"2030":11.55},
-    "omniumND":{"2026":42000,"2027":32000,"2028":20000,"2029":6000,"2030":-10000},
-    "omniumShares":{"2026":4915,"2027":4954,"2028":4994,"2029":5034,"2030":5074},
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {"label":"T1","eps":1.14,"actual":true},
-        {"label":"T2","eps":1.03,"actual":true},
-        {"label":"T3","eps":0.85,"actual":true},
-        {"label":"T4","eps":1.74,"actual":true}
-      ],
-      "CY": [
-        {"label":"T1","eps":1.50,"actual":true},
-        {"label":"T2","eps":1.91,"actual":true},
-        {"label":"T3","eps":0.56,"actual":false},
-        {"label":"T4","eps":1.15,"actual":false}
-      ],
-      "NY": [
-        {"label":"T1","eps":1.96,"actual":false},
-        {"label":"T2","eps":2.50,"actual":false},
-        {"label":"T3","eps":0.73,"actual":false},
-        {"label":"T4","eps":1.51,"actual":false}
-      ],
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    }
+  {
+   "year": 2021,
+   "ca": 27450,
+   "ebit": 8519,
+   "net": 6736,
+   "shares": 4240,
+   "nd": 24450,
+   "div": 1.61
+  },
+  {
+   "year": 2022,
+   "ca": 33203,
+   "ebit": 14225,
+   "net": 11495,
+   "shares": 4320,
+   "nd": 22850,
+   "div": 1.83
+  },
+  {
+   "year": 2023,
+   "ca": 35819,
+   "ebit": 16207,
+   "net": 14082,
+   "shares": 4260,
+   "nd": 25520,
+   "div": 2.05
+  },
+  {
+   "year": 2024,
+   "ca": 51574,
+   "ebit": 13463,
+   "net": 10395,
+   "shares": 4760,
+   "nd": 58100,
+   "div": 2.1
+  },
+  {
+   "year": 2025,
+   "ca": 63887,
+   "ebit": 26076,
+   "net": 23126,
+   "shares": 4880,
+   "nd": 49600,
+   "div": 2.36
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 8.3,
+  "epsNY": 11.0,
+  "date": "2026-06-05",
+  "source": "Consensus sell-side post-Q2 FY26 (non-GAAP), ordre de grandeur - S&P Global / LSEG"
+ },
+ "particularites": [
+  {
+   "text": "Exercice fiscal décalé : Broadcom clôture son année fiscale début novembre (le dimanche le plus proche du 31 octobre), pas en décembre. Les années du tableau désignent donc des exercices fiscaux (ex. 'FY2025' = exercice clos le 2 novembre 2025), pas des années civiles - géré par le champ fyEndMonth=11.",
+   "valuePct": null
+  },
+  {
+   "text": "Concentration client extrême sur le segment IA : une poignée de méga-clients (Google, Meta, et désormais Anthropic, OpenAI via des accords pluriannuels custom silicon) concentre l'essentiel de la croissance du chiffre d'affaires semi-conducteurs IA. Cette dépendance est une source d'asymétrie majeure (upside si les commandes se matérialisent, downside si un hyperscaler internalise ou décale ses investissements) - facteur de risque idiosyncratique porté dans hypothese.text plutôt que quantifié dans les adjXXX.",
+   "valuePct": null
+  }
+ ],
+ "nextEvent": {
+  "label": "Q3 FY 26",
+  "date": null
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-10",
+  "statut": "incoherences_detectees",
+  "points": [
+   {
+    "sujet": "Resilience de la marge brute face au mix TPU/racks bas-marge",
+    "ancienPropos": "Q1 FY26 (04/03/2026, reponse directe a une question sur le risque de compression de marge lie aux racks bas-marge (45-50% de marge brute), Timothy Arcuri UBS) : Hock Tan ecarte categoriquement le risque, affirmant que 'les produits IA ne seront pas affectes par la marge brute' ; la CFO Kirsten Spears ajoute que l'impact du mix 'ne sera pas substantiel'.",
+    "nouveauPropos": "Q2 FY26 (03/06/2026, reponse a une question sur les moteurs de marge brute, Ross Seymore Deutsche Bank) : le CFO confirme explicitement que les produits TPU/ASIC portent des marges INFERIEURES a celles du networking (qualifie de 'tres riche en marge'), et bien que le CEO qualifie les marges du segment semi-conducteurs de 'structurellement tres stables et solides', il attribue desormais une compression consolidee observee au 'glissement de mix software vers semi-conducteurs' - une nuance absente du discours de mars, qui ecartait categoriquement tout impact de mix sur la marge.",
+    "natureEcart": "contradiction_non_expliquee",
+    "materialite": "haute",
+    "justification": "La marge est un pilier central de la these (ancrage marginLeverage) ; le passage d'un dementi categorique ('pas affecte', 'pas substantiel') a une reconnaissance explicite que le TPU/ASIC est structurellement moins marge-riche que le networking et qu'un glissement de mix comprime deja les marges consolidees, sans que le management ne revienne sur son propos de mars, merite d'etre trace - la modelisation actuelle (ancrage marginLeverage, confiance moyenne, expansion de marge progressive plutot qu'immediate) reste compatible avec les deux discours mais le CFO nuance desormais un risque qu'il ecartait entierement trois mois plus tot."
+   }
+  ],
+  "historique": [
+   {
+    "quarter": "Q1 FY2026",
+    "date": "2026-03-04",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Blayne Curtis (Jefferies) - l'objectif '>100 Md$' IA 2027 exclut-il le networking et les racks, pessimisme des investisseurs sur le ROI des hyperscalers vu la trajectoire de croissance : Hock Tan precise que le chiffre porte sur les puces silicium (XPU, switches, DSP), souligne que les clients ne sont pas que des hyperscalers mais aussi des developpeurs de LLM construisant des plateformes, demande forte tiree par l'entrainement ET l'inference.",
+     "Q Harlan Sur (JPMorgan) - les initiatives de puces maison (COT) des clients menacent-elles la position de Broadcom, comment maintenir une avance techno de 12-18 mois : Hock souligne la complexite du design silicium, le packaging avance et l'echelle de fabrication comme barrieres, aucun concurrent ne peut egaler le 'track record' de livraison de XPU en gros volumes avec des rendements tres eleves.",
+     "Q Ross Seymore (Deutsche Bank) - moteurs de la part du networking IA a 40% du CA IA, le networking est-il inclus dans le '>100 Md$', comment le leadership networking renforce le positionnement XPU : Hock cite la demande pour les switches Tomahawk 6 et le SerDes 200G, projette une part networking IA de 33 a 40% du CA IA total, clients visant du 200G puis 400G.",
+     "Q Christopher Muse (Cantor Fitzgerald) - desagregation des charges de travail (separation prefill/decode) et bascule potentielle GPU vs silicium custom : Hock explique que les XPU sont de plus en plus adaptes a des charges specifiques (ex. mixture-of-experts), contrairement aux GPU en multiplication matricielle dense, ce qui ameliore l'efficacite.",
+     "Q Timothy Arcuri (UBS) - crainte qu'un mix de racks bas-marge (45-50% de marge brute) ne fasse chuter la marge consolidee de 500 points de base, quel est le plancher de marge brute : Hock ecarte la premisse, affirme que les rendements et couts ont ete optimises et que 'les produits IA ne seront pas affectes par la marge brute' ; Kirsten Spears ajoute que l'impact de mix 'ne sera pas substantiel'.",
+     "Q Stacy Rasgon (Bernstein) - tentative de reconstituer le calcul de l'objectif '>100 Md$' 2027 via les deploiements en gigawatts et le contenu $/GW (~20 Md$/GW), la methode est-elle correcte : Hock confirme l'approche, reconnait une forte variabilite du $/GW selon les clients, indique environ 10 GW de deploiement attendus en 2027.",
+     "Q Benjamin Reitzes (Melius Research) - comment Broadcom a securise la capacite composants jusqu'en 2028 (substrats, HBM, wafers) avant ses concurrents, la visibilite est-elle suffisante pour la croissance 2028 : Hock souligne la reservation precoce de substrats avances et des partenariats ; Charlie Kawwas ajoute que les engagements pluriannuels avec les six clients silicium custom offrent une visibilite de 2 a 4 ans sur leurs feuilles de route.",
+     "Q Vivek Arya (BofA) - repartition du deal Anthropic 20 Md$/GW entre puces et racks, comment Broadcom maintient sa visibilite de part de marche dans un environnement multi-fournisseurs fragmente : Hock distingue les programmes XPU custom strategiques du business GPU cloud transactionnel, souligne que ces six clients considerent le developpement XPU comme 'strategique, pas optionnel', avec une visibilite tres claire sur leurs feuilles de route.",
+     "Q Tom O'Malley (Barclays) - pourquoi Broadcom met en avant le cuivre a attache directe (DAC) via SerDes 400G malgre son leadership en optique co-packagee (CPO), adoption du protocole Ethernet scale-up : Hock explique que le DAC offre la latence, la consommation et le cout les plus bas pour les clusters scale-up ; Charlie Kawwas confirme qu'Ethernet est le standard de facto pour le scale-out et un choix emergent pour le scale-up XPU.",
+     "Q Jim Schneider (Goldman Sachs) - les engagements XPU custom hors TPU ciblent-ils principalement l'inference, avantages performance/cout vs GPU justifiant les previsions a grande echelle : Hock note que les clients demarrent souvent par l'inference (besoins de calcul et cout moindres), mais indique que la majorite developpe desormais des puces distinctes pour l'entrainement et l'inference simultanement.",
+     "Q Joshua Buchalter (TD Cowen) - comment la visibilite s'est-elle amelioree sur 1-2 trimestres pour permettre des previsions clients plus detaillees, l'annonce OpenAI '>1 GW en 2027' implique-t-elle une inflexion brutale en 2028 vu le deal 10 GW/2029 : Hock attribue l'amelioration de la visibilite a la confiance croissante des clients a mesure que les XPU prouvent leurs capacites et s'alignent sur les feuilles de route strategiques, reaffirme que le XPU est un 'pari strategique durable' plutot que transactionnel."
+    ]
+   },
+   {
+    "quarter": "Q2 FY2026",
+    "date": "2026-06-03",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Harlan Sur (JPMorgan) - reconciliation de la guidance CA IA FY26 de 56 Md$ avec un S2 annonce a 2x le S1, le carnet de commandes a 18 mois depasse-t-il desormais 200 Md$ : le management precise un CA IA S1 d'environ 19 Md$, un S2 a 2x donnant ~38 Md$ (total ~56 Md$) ; pour 2027 le CEO reitere l'objectif '>100 Md$' sans detail trimestriel, notant un momentum intact voire renforce.",
+     "Q Blayne Curtis (Jefferies) - perimetre de l'accord long terme avec Google (volume fixe ou upside possible), confiance sur la part de marche chez ce client : Hock souligne un 'montant en dollars tres substantiel', reconnait que Google s'approvisionnera probablement aupres de plusieurs fournisseurs vu la croissance de la consommation IA, mais l'engagement de Broadcom reste 'tres substantiel'.",
+     "Q Ross Seymore (Deutsche Bank) - moteurs de marge brute au sein des semi-conducteurs (XPU vs networking), la pression sur la marge se poursuit-elle en 2027 : le CFO explique que les produits TPU/ASIC portent des marges inferieures au networking (qualifie de 'tres riche en marge') ; le CEO insiste sur des marges semi-conducteurs 'structurellement tres stables et solides', la compression consolidee etant attribuee au glissement de mix software vers semi-conducteurs.",
+     "Q Benjamin Reitzes (Melius) - evolution du TAM par gigawatt a mesure que le contenu de calcul augmente, cela accelere-t-il au-dela de la guidance actuelle : le CEO indique un $/GW 'relativement stable' (les puces plus puissantes reduisant les volumes unitaires) mais une demande en gigawatts elle-meme en forte acceleration, trajectoires 2027-2028 suggerant une croissance au-dela des previsions actuelles.",
+     "Q Timothy Arcuri (UBS) - securite d'approvisionnement en wafers et HBM si les clients demandent un volume incremental, alternatives de fonderie envisagees : le CEO affirme etre a l'aise sur la securisation de l'approvisionnement jusqu'en 2028-2029 et confirme la capacite a repondre a des demandes incrementales de capacite, sans detailler de strategie de fonderie alternative.",
+     "Q Stacy Rasgon (Bernstein) - objectifs de livraison en gigawatts pour 2027 vs la guidance precedente, la repartition penche-t-elle vers le second semestre : le CEO confirme un objectif de planification 2027 d'environ 10 GW, inchange vs le trimestre precedent, avec une ponderation S2, ouvrant une trajectoire 'interessante' vers 2028 avec des volumes nettement plus eleves.",
+     "Q Jim Schneider (Goldman Sachs) - profil de la part du networking dans le CA IA sur 2026-2027, calendrier de materialisation du CA optique/CPO : le CEO indique que la part networking actuelle de 40% represente un pic 'anormal', attend une normalisation 'plutot autour de 30%' a mesure que la montee en puissance des XPU s'accelere.",
+     "Q Tom O'Malley (Barclays) - Broadcom joue-t-il un role de 'backstop' puces dans de futurs deals clients, futurs modeles de financement de l'infrastructure IA : le CEO corrige la caracterisation, precisant que Broadcom fournit directement les puces TPU et le compute a des clients comme Anthropic plutot que de jouer un role de garantie tierce.",
+     "Q CJ Muse (Cantor Fitzgerald) - interet pour des marches XPU derives de niche (interconnexion, stockage) vs les plateformes coeur a grande echelle : le CEO reaffirme un modele focalise : fournir accelerateurs XPU et composants de clustering critiques (switches, PCIe, DSP, lasers) exclusivement aux developpeurs de LLM, les vehicules de financement soutenant les labos de modeles frontier plutot que des acheteurs entreprise disperses.",
+     "Q AT Malik (Citi) - impact de l'IA/IA generative sur la croissance du software d'infrastructure, renouvellements et trajectoire long terme : le CEO ne rapporte aucun impact negatif, au contraire une croissance VMware acceleree par le deploiement de volumes CPU/GPU, attend un momentum VMware soutenu plusieurs trimestres, isolation structurelle liee au positionnement de la couche hyperviseur.",
+     "Q Edward Snyder (Charter Equity Research) - l'adoption de l'IA en entreprise et l'acces aux modeles via le cloud (Bedrock, Vertex) representent-ils une seconde vague de demande distincte des charges internes des hyperscalers : le CEO reconnait une consommation IA entreprise emergente mais souligne que les tokens achetes transitent par les plateformes API des memes labos frontier (Anthropic, OpenAI, Google), l'essentiel de la demande provenant in fine de ces developpeurs centralises plutot que d'un deploiement entreprise disperse.",
+     "Q Joe Moore (Morgan Stanley) - explication des 30 Md$ de bookings vs le rythme d'expedition court terme, moteurs de la visibilite etendue jusqu'en 2028 : le CEO attribue les bookings a une planification anticipee couvrant compute, memoire, HBM, energie et infrastructure, souligne des clients 'passant commande tot' en 'forte demande', etendant la visibilite a '2028 desormais' contre 2027 precedemment.",
+     "Q Joshua Buchalter (TD Cowen) - evolution du revenu par gigawatt vu la guidance anterieure de 15-20 Md$, comment prix et contenu evoluent de generation en generation : le CEO projette un contenu par gigawatt en forte hausse porte par la montee des prix XPU, l'integration de coeurs CPU, les architectures multi-die et l'integration HBM, ces changements se manifestant de generation en generation plutot que trimestre par trimestre."
+    ]
+   }
+  ],
+  "engagementsStructurants": []
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Création - Q2 FY2026 (communiqué de résultats + transcript du 3 juin 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS en base GAAP (coherente avec la base adjXXX du fichier) - PY (FY2025 T1 1.14/T2 1.03/T3 0.85/T4 1.74, EPS dilue GAAP publie par trimestre, somme 4.76 proche de data[2025].net/shares=4.74), CY (T1 26 1.50 et T2 26 1.91 GAAP actuals, T3/T4 26 estimes par repartition saisonniere de omniumNet/omniumShares FY26), NY (FY2027 estime par la meme methode). Ajout coherenceQualitative avec reconstruction retroactive du T1 FY26 (transcript Motley Fool du 04/03/2026, 11 analystes/11 echanges) compare au T2 FY26 (transcript Motley Fool du 03/06/2026, 13 analystes/13 echanges) - 1 point d'incoherence identifie (statut incoherences_detectees) : la resilience de la marge brute face au mix TPU/racks bas-marge, categoriquement ecartee au T1 ('pas affecte', 'pas substantiel') puis nuancee au T2 (TPU/ASIC confirme structurellement moins marge-riche que le networking, compression consolidee attribuee au mix software/semi) sans reconciliation explicite (materialite haute). Correction incidente : ajout de hypothese.omniumEPS (derive de omniumNet/omniumShares) et des booleens dernierCall.communiqueAnalyse/transcriptAnalyse, absents depuis la creation.",
+  "dernierCall": {
+   "quarter": "Q2 FY 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 22187,
+     "consensus": 22270
+    },
+    "epsAdj": {
+     "actual": 2.44,
+     "consensus": 2.4,
+     "basis": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "Q3 FY26 guidé à ~29,4 Md$ de CA (+84% a/a), dont ~16,0 Md$ de CA semi IA (+200%+ a/a) ; marge opérationnelle non-GAAP ~67% et EBITDA ajusté ~68% du CA.",
+   "guidanceAnnuelle": "Pas de guidance annuelle chiffrée formelle de CA total, mais objectif CA semi IA FY26 ~56 Md$ (+180% vs FY25) et réitération d'un CA semi IA FY27 >100 Md$.",
+   "pointsCles": [
+    "Le CA semi-conducteurs IA atteint 10,8 Md$ (+143% a/a), au-dessus des prévisions du management, tiré par les accélérateurs IA custom et le networking IA ; les bookings IA du trimestre ont dépassé 30 Md$.",
+    "Annonce d'accords pluriannuels majeurs : TPU long terme avec Google, 5 GW de compute nouvelle génération avec Anthropic à partir de 2027, 1,3 GW avec OpenAI en 2027 (dans un deal 10 GW jusqu'en 2029), 3 GW avec Meta jusqu'à fin 2028.",
+    "Malgré des résultats records, le titre a fortement corrigé (~-15% le lendemain) car le CEO Hock Tan n'a pas relevé l'objectif annuel de 100 Md$+ de CA IA FY27 et a indiqué un basculement vers une offre 'chips only' plutôt que des systèmes IA intégrés complets.",
+    "Départ en retraite annoncé de la CFO Kirsten Spears ; création d'une plateforme AI SPV avec Apollo et Blackstone pour déployer 20 GW+ de capacité de compute d'ici 2028 (première tranche ~35 Md$)."
+   ]
+  },
+  "summary": "Pari sur la poursuite de l'explosion du CA semi-conducteurs IA custom (accélérateurs + networking) chez une poignée d'hyperscalers, adossée au socle très rentable et récurrent du software d'infrastructure (VMware) ; valorisation élevée qui laisse peu de marge d'erreur sur l'exécution du pipeline IA.",
+  "text": "== THESIS SUMMARY ==\nWith Nvidia, one of the two pillars of AI compute infrastructure - via a different model: custom accelerators (ASIC) plus the networking around them, for a handful of hyperscalers seeking Nvidia independence. The central bet is the materialization of a colossal AI pipeline (>30bn AI bookings in Q2 FY26 alone; >100bn AI semi revenue targeted for FY27) on named multi-year deals (Google, Meta, Anthropic, OpenAI), backed by the far more stable VMware-anchored infrastructure-software pillar.\n\n== THESIS READ ==\n- The FY27 >100bn AI target is the thesis fulcrum - Q3 (early Sept) and Q4 prints must show the ramp steepening. Watch: AI revenue per quarter vs the implied ramp.\n- Customer concentration is extreme by design (a handful of hyperscalers) - one program slip moves a year. Watch: any named-deal calendar change.\n- Deleveraging proceeds (net debt 49.6bn -> net cash by 2030 modeled) while dilution continues (+0.8%/yr, SBC). Watch: buyback resumption vs further M&A appetite.\n\n== SPECIAL FACTORS ==\nFiscal year ends late October. Base = NORMALIZED GAAP: acquisition-intangible amortization (~7.9bn/yr) and SBC (~8.5bn/yr) are REINTEGRATED per E5 (serial acquirer - these charges are structurally recurring), unlike the management non-GAAP. Omnium EPS is therefore structurally ~40% below the non-GAAP consensus - a definitional wedge, documented in the scorecard, not a divergence call. FY24 tax one-off retreated from 'data'; FY25 carries a ~+1.6bn tax one-off (ETR ~5-6% on IP onshoring), documented in the bridge.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: revenue 74.4bn, EBIT 34.4bn (GAAP base); FY27-FY30: AI ramp decelerating per aiRampDecel ancrage, margin leverage per marginLeverage; ETR 24% normative; finNet declining with deleveraging. Watch: Q3 FY26 (Sept) - first post-refresh anchor; AI bookings conversion; VMware renewal economics; tax-rate normalization pace.\n\n== CATALYSTS ==\nQ3 FY26 (early Sept); FY27 AI revenue framing at the Q4 report (Dec); new named ASIC customers; networking share gains (Tomahawk/Jericho).",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "aiRampDecel",
+    "moteur": "Montée en puissance du CA semi-conducteurs IA (accélérateurs custom + networking) portée par un pipeline pluriannuel nommé (Google, Meta, Anthropic, OpenAI) : croissance du CA total très forte à court terme (guidance Q3 FY26 +84% a/a) puis décélération progressive à mesure que la base grossit, d'environ +55% en FY26 vers ~+18% en FY30 ; le socle software VMware (~+8-9%/an, récurrent) amortit la cyclicité semi.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "marginLeverage",
+    "moteur": "Fort levier opérationnel : marge opérationnelle GAAP en expansion continue avec la montée du mix IA et software haute-marge (guidance non-GAAP ~67% ; en base GAAP, marge opérationnelle projetée montant de ~46% en FY26 vers ~52% en FY30 à mesure que l'amortissement PPA se stabilise en % d'un CA croissant).",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "taxNormalization",
+    "moteur": "Pont EBIT->Net sur base fiscale normalisée : taux effectif GAAP normalisé ~13-15% retenu (hors one-off fiscal FY24 de ~4,5 Md$ retraité en amont), charge d'intérêts nette ~3,0 Md$/an en légère baisse avec le désendettement post-VMware ; ratio de conversion Net/EBIT projeté ~78-82%.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "sharesSlightDilution",
+    "moteur": "Nombre d'actions diluées en légère hausse structurelle (SBC élevé ~8,5 Md$/an dépassant les rachats), historiquement ~+1%/an post-split 10-pour-1 (juillet 2024) ; projeté à ~+0,8%/an, atténué par un programme de rachat modéré.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumCA": {
+   "2026": 74400,
+   "2027": 93000,
+   "2028": 110000,
+   "2029": 126500,
+   "2030": 149300
+  },
+  "omniumEBIT": {
+   "2026": 34400,
+   "2027": 45600,
+   "2028": 56100,
+   "2029": 66000,
+   "2030": 77600
+  },
+  "omniumNet": {
+   "2026": 25200,
+   "2027": 33200,
+   "2028": 41400,
+   "2029": 49500,
+   "2030": 58600
+  },
+  "omniumEPS": {
+   "2026": 5.13,
+   "2027": 6.7,
+   "2028": 8.29,
+   "2029": 9.83,
+   "2030": 11.55
+  },
+  "omniumND": {
+   "2026": 42000,
+   "2027": 32000,
+   "2028": 20000,
+   "2029": 6000,
+   "2030": -10000
+  },
+  "omniumShares": {
+   "2026": 4915,
+   "2027": 4954,
+   "2028": 4994,
+   "2029": 5034,
+   "2030": 5074
+  },
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 1.14,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.03,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.85,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 1.74,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 1.5,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.91,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.56,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.15,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 1.96,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 2.5,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 0.73,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.51,
+     "actual": false
+    }
+   ]
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -1600,
+    "other": 0,
+    "taxRate": 0.12,
+    "minorities": 0,
+    "netCalc": 21538.9,
+    "netPub": 23126,
+    "residual": 1587.1,
+    "residualNote": "FY25 effective GAAP tax ran ~5-6% (IP-onshoring deferred-tax effects) vs the 12% used here - the +1.6bn residual is a documented tax one-off, consistent with the FY24 tax one-off already retreated from 'data'. Projections use 24% normative GAAP."
+   },
+   "2026": {
+    "finNet": -1242,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 25200.1
+   },
+   "2027": {
+    "finNet": -1916,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 33199.8
+   },
+   "2028": {
+    "finNet": -1626,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 41400.2
+   },
+   "2029": {
+    "finNet": -868,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 49500.3
+   },
+   "2030": {
+    "finNet": -495,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 58599.8
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS (Broadcom guides quarterly revenue/adj-EBITDA only)",
+   "comparedAgainst": "consensus",
+   "basisAligned": false,
+   "basisNote": "Omnium adjXXX are NORMALIZED GAAP - acquisition-intangible amortization (~7.9bn/yr) and SBC (~8.5bn/yr) are KEPT per E5 (serial acquirer: structurally recurring charges) - so Omnium EPS (5.13 for FY26) is STRUCTURALLY below the non-GAAP consensus (8.30) that excludes both. The wedge is definitional, tracked, and must not be read as a miss.",
+   "timeline": [
+    {
+     "date": "2026-06-03",
+     "type": "vs_consensus",
+     "detail": "Q2 FY26: AI bookings >30bn in the single quarter; AI semi revenue target >100bn for FY27 reaffirmed on named multi-year deals (Google, Meta, Anthropic, OpenAI)."
+    }
+   ],
+   "paceCheckpoint": "H1 FY26 real: AI momentum on plan; VMware software pillar stable and accretive.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 8.3,
+    "source": "initial_consensus",
+    "date": "2026-06-05",
+    "note": "Broadcom guides one quarter at a time (revenue + adjusted EBITDA margin) - the anchor is the post-Q2 consensus snapshot (earliest archived; fiscal year ends late October 2026, so the first measurement lands at the December 2026 report). The consensus is NON-GAAP; see basisNote."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY vs initial consensus at setup (young fiche, priorEPS null by construction). First measurement at the FY26 close (Dec 2026 report).",
+   "consensusSource": "Sell-side consensus post-Q2 FY26 (non-GAAP)",
+   "consensusDate": "2026-06-05"
+  },
+  "revisionEvent": {
+   "date": "2026-06-03",
+   "label": "Q2 FY26",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "Q2 FY26 exploited via release/call; 10-Q not line-by-line exploited at this refresh. Q3 FY26 report expected early September - next refresh anchor."
+  }
+ }
 }

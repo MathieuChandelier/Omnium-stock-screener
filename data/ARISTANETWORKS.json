@@ -1,376 +1,482 @@
 {
-  "name": "Arista Networks",
-  "cours": 184.96,
-  "yahooSymbol": "ANET",
-  "dividende": 0,
-  "data": [
-    {
-      "year": 2015,
-      "ca": 838,
-      "ebit": 180,
-      "net": 130,
-      "shares": 260,
-      "nd": -700
-    },
-    {
-      "year": 2016,
-      "ca": 1129,
-      "ebit": 220,
-      "net": 184,
-      "shares": 295,
-      "nd": -900
-    },
-    {
-      "year": 2017,
-      "ca": 1646,
-      "ebit": 460,
-      "net": 423,
-      "shares": 316,
-      "nd": -1400
-    },
-    {
-      "year": 2018,
-      "ca": 2151,
-      "ebit": 380,
-      "net": 328,
-      "shares": 323,
-      "nd": -1700
-    },
-    {
-      "year": 2019,
-      "ca": 2411,
-      "ebit": 490,
-      "net": 402,
-      "shares": 328,
-      "nd": -2100
-    },
-    {
-      "year": 2020,
-      "ca": 2318,
-      "ebit": 700,
-      "net": 635,
-      "shares": 1271,
-      "nd": -2800
-    },
-    {
-      "year": 2021,
-      "ca": 2948,
-      "ebit": 925,
-      "net": 841,
-      "shares": 1277,
-      "nd": -3900
-    },
-    {
-      "year": 2022,
-      "ca": 4381,
-      "ebit": 1527,
-      "net": 1352,
-      "shares": 1266,
-      "nd": -4400
-    },
-    {
-      "year": 2023,
-      "ca": 5860,
-      "ebit": 2257,
-      "net": 2087,
-      "shares": 1269,
-      "nd": -6500
-    },
-    {
-      "year": 2024,
-      "ca": 7003,
-      "ebit": 2945,
-      "net": 2852,
-      "shares": 1281,
-      "nd": -9700
-    },
-    {
-      "year": 2025,
-      "ca": 9006,
-      "ebit": 3856,
-      "net": 3511,
-      "shares": 1276,
-      "nd": -12400
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 3.64,
-    "epsNY": 4.45,
-    "date": "2026-08-04",
-    "source": "Non-GAAP - Zacks Consensus (2026, immediatement post-publication, pas encore pleinement revise pour la guidance a $12,6Md) ; WallStreetZen (2027, ~26 analystes, anterieur au T2 - probablement sous-estime vu les relevements de price targets post-publication).",
-    "analystsCount": 34,
-    "analystsCountNY": 26
+ "name": "Arista Networks",
+ "cours": 184.96,
+ "yahooSymbol": "ANET",
+ "dividende": 0,
+ "data": [
+  {
+   "year": 2015,
+   "ca": 838,
+   "ebit": 180,
+   "net": 130,
+   "shares": 260,
+   "nd": -700
   },
-  "particularites": [
-    {
-      "text": "Concentration client structurelle : Microsoft et Meta representent chacun potentiellement plus de 10% du chiffre d'affaires (CEO : \"un, voire deux clients a 10%\" selon le mix de livraisons). Lecture permanente du dossier - un ralentissement capex chez l'un de ces deux clients aurait un impact disproportionne par rapport a un fournisseur diversifie.",
-      "valuePct": null
-    }
-  ],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2016,
+   "ca": 1129,
+   "ebit": 220,
+   "net": 184,
+   "shares": 295,
+   "nd": -900
   },
-  "ownership": {
-    "asOf": "2026-08-05",
-    "insiderPct": 17.5,
-    "insiderDesc": "Actionnariat fondateur tres concentre : Andreas (Andy) Bechtolsheim, co-fondateur et Chief Development Officer/Chief Architect, ~15,3% du capital (10% owner statutaire, estimations d'agregateurs entre 10% et 15,3%) ; Jayshree Ullal (CEO, Chairperson) ~2,2%.",
-    "insiderSource": "Wikipedia (infobox, 15,3% Bechtolsheim) corrobore par agregateurs GuruFocus/MatrixBCG/BusinessModelCanvasTemplate (fourchette 10-15,3% Bechtolsheim, ~2,2-2,5% Ullal) - proxy DEF 14A non consulte directement, agregateurs en source principale.",
-    "notableHolders": [],
-    "coverageNote": null,
-    "history": []
+  {
+   "year": 2017,
+   "ca": 1646,
+   "ebit": 460,
+   "net": 423,
+   "shares": 316,
+   "nd": -1400
   },
-  "compliance": {
-    "asOf": "2026-08-05",
-    "items": [
-      {
-        "year": 2024,
-        "title": "Charges de la SEC pour delit d'initie contre Andreas Bechtolsheim (co-fondateur, alors chairman d'Arista), pour avoir tradé des options Acacia Communications en 2019 sur la base d'informations non publiques concernant son acquisition imminente par Cisco.",
-        "allegedBy": "SEC",
-        "date": "2024-03-26",
-        "status": "reglee",
-        "outcome": "Jugement final par consentement le 30/05/2024 : penalite civile de 923 740$, interdiction de servir comme dirigeant/administrateur d'une societe cotee pendant 5 ans (sans reconnaissance ni contestation des faits) - explique le changement de titre de Bechtolsheim (de Chairman a Chief Development Officer/Chief Architect).",
-        "source": "SEC Litigation Release No. 25955 (26/03/2024) et No. 26014 (03/06/2024)"
-      },
-      {
-        "year": 2019,
-        "title": "Sollicitation du cabinet Pomerantz sur un possible manquement de dirigeants et administrateurs, en lien avec l'annonce d'un ralentissement soudain chez un \"cloud titan\" (identifie comme Facebook/Meta par les analystes) ayant fait chuter le titre de 24% en une seance.",
-        "allegedBy": "Pomerantz LLP (cabinet d'avocats plaignant)",
-        "date": "2019-11-04",
-        "status": "sollicitation",
-        "outcome": null,
-        "source": "Communique Pomerantz LLP via GlobeNewswire, 04/11/2019 - aucune escalade (plainte deposee, enquete reglementaire) identifiee depuis"
-      }
-    ],
-    "note": "Aucune fraude comptable ou tromperie des investisseurs averee touchant la societe elle-meme. Le seul dossier regle concerne un delit d'initie individuel d'un co-fondateur (2019, regle en 2024), sans lien avec les etats financiers d'Arista. La sollicitation de 2019 sur la communication autour d'un client cloud n'a pas ete suivie d'escalade identifiable."
+  {
+   "year": 2018,
+   "ca": 2151,
+   "ebit": 380,
+   "net": 328,
+   "shares": 323,
+   "nd": -1700
   },
-  "hypothese": {
-    "date": "2026-08-05",
-    "priorEPS": {
-      "date": "2026-07-09",
-      "eps": {
-        "2026": 3.43,
-        "2027": 4.4,
-        "2028": 5.47,
-        "2029": 6.6,
-        "2030": 7.81
-      }
-    },
-    "source": "Refresh T2 2026 - Communique de resultats + Transcript T2 2026 (04/08/2026)",
-    "dernierCall": {
-      "quarter": "T2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 3035.7,
-          "consensus": 2830
-        },
-        "epsAdj": {
-          "actual": 1.02,
-          "consensus": 0.89,
-          "basis": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 2026 : CA ~3,3 Md$ (vs consensus 2,94-2,95Md$), marge operationnelle non-GAAP ~48-49%, EPS non-GAAP 1,06-1,08$ (vs consensus 0,91-0,92$ pre-publication).",
-      "guidanceAnnuelle": "CA FY26 releve a ~12,6 Md$ (+40%, 3e relevement de l'annee, +1,1Md$ vs la guidance de mai a 11,5Md$), marge brute non-GAAP 62-64% (inchangee), marge operationnelle non-GAAP 48-49%. Cible IA maintenue a au moins 3,5 Md$, cible campus maintenue a au moins 1,25 Md$.",
-      "pointsCles": [
-        "Premier trimestre a plus de 3 Md$ de CA, porte par une demande large (IA, data center, campus, routage) et par un mix client international en forte hausse (23% du CA vs 13,5% au T1).",
-        "Base de clients Etherlink AI fabric passee de 4-5 (debut 2024) a plus de 100 fin T2 26 ; engagements d'achat pluriannuels quasi tripes a 9,7 Md$ (vs 3,6 Md$ un an plus tot), memoire securisee jusqu'en 2027, chaine de refroidissement liquide etablie.",
-        "Lancement de la plateforme 7060X-E7 (1,6 Tbps, 100 Tbps de bande passante systeme, options refroidies par liquide) ; essais du portefeuille 1,6T aupres d'un nombre restreint de tres gros clients au S2 26, production reelle attendue en 2027 (meme cadence que le cycle 800G).",
-        "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), malgre l'amelioration tangible de la visibilite propre a Arista (remboursements tarifaires et mix favorable ayant soutenu la marge brute du T2 a 63,4%, +100pb sequentiel)."
-      ]
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T2 26",
-        "date": "2026-08-04",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "CA ~12,6 Md$ (+40%), marge brute non-GAAP 62-64%, marge operationnelle non-GAAP 48-49%."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.68,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.73,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.75,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 0.82,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.87,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 1.02,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.07,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.09,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 1.07,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 1.26,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 1.32,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.34,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 4.49,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    },
-    "summary": "Leader du switching haute vitesse pleinement engage dans la vague de networking IA : T2 26 marque le premier trimestre a plus de 3 Md$ de CA (+37,7%), avec une guidance FY26 relevee pour la 3e fois de l'annee (~12,6 Md$, marge operationnelle 48-49%). Plus de 100 clients Etherlink AI fabric (vs 4-5 en 2024) et des engagements d'achat pluriannuels quasi tries (9,7 Md$) confirment la trajectoire de demande, tempere par une contrainte d'approvisionnement sectorielle que le CEO juge durable jusqu'en 2028. omniumEPS 4,05->8,52 (2026-2030).",
-    "cagrBridge": null,
-    "text": "== EVENEMENTS & INFLEXIONS (T2 2026) ==\n1. GUIDANCE FY2026 RELEVEE POUR LA 3E FOIS [classe i, deja dans les chiffres] : CA guide desormais a ~12,6 Md$ (+40%, contre 11,5 Md$ guides en mai, soit +1,1Md$), marge operationnelle non-GAAP 48-49%. Le CEO indique que l'increment provient de tous les segments (IA, entreprise, campus, routage), pas seulement de l'IA.\n2. BASE DE CLIENTS AI FABRIC EN FORTE EXPANSION [classe ii, quantifie] : plus de 100 clients Etherlink AI fabric fin T2 26 (vs 4-5 debut 2024), engagements d'achat pluriannuels quasi tries a 9,7 Md$ (vs 3,6 Md$ un an plus tot) - visibilite memoire securisee jusqu'en 2027, chaine de refroidissement liquide etablie.\n3. RACHATS D'ACTIONS SUSPENDUS AU S1 2026 [classe ii, quantifie] : 0$ de rachats au S1 2026 contre 983 M$ au S1 2025, la societe preservant sa tresorerie face a l'ampleur des engagements d'achat pluriannuels.\n4. CONTRAINTE D'APPROVISIONNEMENT QUALIFIEE DE \"PROBLEME DE DEUX ANS\" [classe iii, non quantifie separement] : le CEO estime que l'industrie ne sortira pas de la tension sur les composants avant 2028, malgre une amelioration tangible propre a Arista (remboursements tarifaires, nouveaux fournisseurs qualifies) ayant deja soutenu la marge brute du T2 (63,4%, +100pb sequentiel).\n5. NOUVEAUX PRODUITS ET MARCHE ADRESSABLE [classe iii, non quantifie] : plateforme 7060X-E7 (1,6 Tbps) lancee, essais aupres d'un nombre restreint de tres gros clients au S2 26, production reelle visee en 2027. Marche du \"scale-across\" evalue par le management a 3-4 Md$ aujourd'hui, 15-20 Md$ d'ici 2030 (Arista viserait ~1,2 Md$ en 2026, soit ~30% de sa cible IA).\n\n== PARTICULARITES ==\nConcentration client (Microsoft, Meta) - voir tableau particularites, inchangee.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : primaire = transcript T2 2026 (04/08/26) ; secondaires = communique T2 2026 (04/08/26), communique T4/FY2025 (12/02/26), 10-Q T2 2026, consensus Zacks/Benzinga Pro (04/08/26).\nT2 26 actual : CA 3 035,7 M$ (+37,7%, vs consensus 2 830 M$), EPS non-GAAP 1,02$ (vs consensus 0,89$, beat de +15%).\nGuidance T3 2026 : CA ~3,3 Md$, marge operationnelle non-GAAP 48-49%, EPS non-GAAP 1,06-1,08$.\nGuidance FY2026 : CA ~12,6 Md$ (+40%), marge brute non-GAAP 62-64%, marge operationnelle non-GAAP 48-49%.\nProchain refresh utile : resultats T3 2026, date non encore confirmee publiquement (attendue debut novembre 2026 sur la base du calendrier historique).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase GAAP publiee pour \"data\", adjXXX sur une base proche du non-GAAP (coherent avec la pratique de guidance de la societe, qui ne communique qu'en non-GAAP). Rachats d'actions suspendus au S1 2026, reprise graduelle supposee a partir de 2027 - a confirmer au T3/T4 26.\nWatch-list : (1) la marge operationnelle se maintient-elle sur la fourchette haute (49%) ou se degrade-t-elle vers le bas de fourchette (48%) si les couts composants se retendent ? (2) part reelle de l'increment de 1,1 Md$ provenant de l'IA vs des autres segments (non detaillee par le management) ; (3) rythme de production reelle du portefeuille 1,6T en 2027 ; (4) reprise ou non des rachats d'actions au S2 26/2027 ; (5) evolution de la concentration Microsoft/Meta.\n\n== CATALYSEURS ==\nBase de clients Etherlink AI fabric en forte expansion (>100) et engagements d'achat pluriannuels quasi tries (9,7 Md$) ; marche scale-across en forte croissance (3-4 Md$ aujourd'hui -> 15-20 Md$ en 2030) ; nouveaux produits (1,6T, XPO, spine IA 7800) ; tresorerie nette >13,3 Md$ sans dette ; risques a surveiller : contrainte d'approvisionnement sectorielle jugee durable jusqu'en 2028 par le CEO lui-meme, concentration client, concurrence Nvidia/white-box (jugee tactique et limitee aux cas d'usage simples selon le management).",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "guidance_fy26_relevee",
-        "moteur": "Guidance FY26 relevee pour la 3e fois de l'annee au T2 26 (CA ~12,6 Md$, +1,1Md$ vs mai ; marge operationnelle non-GAAP 48-49%), increment provenant de tous les segments produits selon le CEO.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumEPS.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "ai_fabric_scaling_100_clients",
-        "moteur": "Base de clients Etherlink AI fabric passee de 4-5 (2024) a plus de 100 fin T2 26, engagements d'achat pluriannuels quasi tries a 9,7 Md$ (vs 3,6 Md$ un an plus tot) - visibilite de demande forte sur 2027-2028.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "supply_chain_two_year_problem",
-        "moteur": "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), plafonnant la marge en dessous d'une normalisation complete malgre l'amelioration deja tangible propre a Arista (remboursements tarifaires, nouveaux fournisseurs qualifies).",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "buyback_suspendu_2026",
-        "moteur": "Rachats d'actions suspendus au S1 2026 (0$ vs 983 M$ au S1 2025) pour preserver la tresorerie face aux engagements d'achat pluriannuels de 9,7 Md$ - reprise graduelle supposee a partir de 2027 a mesure que la visibilite sur les paiements s'ameliore.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "scale_across_tam_2030",
-        "moteur": "Marche du \"scale-across\" evalue par le management a 3-4 Md$ aujourd'hui, en expansion vers 15-20 Md$ d'ici 2030 (Arista viserait ~1,2 Md$ en 2026, soit ~30% de sa cible IA) - moteur de croissance additionnel non encore pleinement reflete dans la cible IA officielle.",
-        "applique": [
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "cash_yield_croissant",
-        "moteur": "Tresorerie et titres negociables depassant desormais 13,3 Md$ (vs 10,7 Md$ fin 2025), sans dette - produits financiers croissants avec l'accumulation de FCF nette d'une reprise graduelle des rachats.",
-        "applique": [
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 4.05,
-      "2027": 4.99,
-      "2028": 5.99,
-      "2029": 7.24,
-      "2030": 8.52
-    },
-    "omniumCA": {
-      "2026": 12600,
-      "2027": 15750,
-      "2028": 18900,
-      "2029": 22113,
-      "2030": 25430
-    },
-    "omniumEBIT": {
-      "2026": 6111,
-      "2027": 7481,
-      "2028": 8883,
-      "2029": 10614,
-      "2030": 12334
-    },
-    "omniumNet": {
-      "2026": 5172,
-      "2027": 6359,
-      "2028": 7595,
-      "2029": 9128,
-      "2030": 10669
-    },
-    "omniumND": {
-      "2026": -16000,
-      "2027": -20500,
-      "2028": -25500,
-      "2029": -31000,
-      "2030": -37000
-    },
-    "omniumShares": {
-      "2026": 1277,
-      "2027": 1274,
-      "2028": 1268,
-      "2029": 1260,
-      "2030": 1252
-    }
+  {
+   "year": 2019,
+   "ca": 2411,
+   "ebit": 490,
+   "net": 402,
+   "shares": 328,
+   "nd": -2100
+  },
+  {
+   "year": 2020,
+   "ca": 2318,
+   "ebit": 700,
+   "net": 635,
+   "shares": 1271,
+   "nd": -2800
+  },
+  {
+   "year": 2021,
+   "ca": 2948,
+   "ebit": 925,
+   "net": 841,
+   "shares": 1277,
+   "nd": -3900
+  },
+  {
+   "year": 2022,
+   "ca": 4381,
+   "ebit": 1527,
+   "net": 1352,
+   "shares": 1266,
+   "nd": -4400
+  },
+  {
+   "year": 2023,
+   "ca": 5860,
+   "ebit": 2257,
+   "net": 2087,
+   "shares": 1269,
+   "nd": -6500
+  },
+  {
+   "year": 2024,
+   "ca": 7003,
+   "ebit": 2945,
+   "net": 2852,
+   "shares": 1281,
+   "nd": -9700
+  },
+  {
+   "year": 2025,
+   "ca": 9006,
+   "ebit": 3856,
+   "net": 3511,
+   "shares": 1276,
+   "nd": -12400
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 3.64,
+  "epsNY": 4.45,
+  "date": "2026-08-04",
+  "source": "Non-GAAP - Zacks Consensus (2026, immediatement post-publication, pas encore pleinement revise pour la guidance a $12,6Md) ; WallStreetZen (2027, ~26 analystes, anterieur au T2 - probablement sous-estime vu les relevements de price targets post-publication).",
+  "analystsCount": 34,
+  "analystsCountNY": 26
+ },
+ "particularites": [
+  {
+   "text": "Concentration client structurelle : Microsoft et Meta representent chacun potentiellement plus de 10% du chiffre d'affaires (CEO : \"un, voire deux clients a 10%\" selon le mix de livraisons). Lecture permanente du dossier - un ralentissement capex chez l'un de ces deux clients aurait un impact disproportionne par rapport a un fournisseur diversifie.",
+   "valuePct": null
+  }
+ ],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "ownership": {
+  "asOf": "2026-08-05",
+  "insiderPct": 17.5,
+  "insiderDesc": "Actionnariat fondateur tres concentre : Andreas (Andy) Bechtolsheim, co-fondateur et Chief Development Officer/Chief Architect, ~15,3% du capital (10% owner statutaire, estimations d'agregateurs entre 10% et 15,3%) ; Jayshree Ullal (CEO, Chairperson) ~2,2%.",
+  "insiderSource": "Wikipedia (infobox, 15,3% Bechtolsheim) corrobore par agregateurs GuruFocus/MatrixBCG/BusinessModelCanvasTemplate (fourchette 10-15,3% Bechtolsheim, ~2,2-2,5% Ullal) - proxy DEF 14A non consulte directement, agregateurs en source principale.",
+  "notableHolders": [],
+  "coverageNote": null,
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-08-05",
+  "items": [
+   {
+    "year": 2024,
+    "title": "Charges de la SEC pour delit d'initie contre Andreas Bechtolsheim (co-fondateur, alors chairman d'Arista), pour avoir tradé des options Acacia Communications en 2019 sur la base d'informations non publiques concernant son acquisition imminente par Cisco.",
+    "allegedBy": "SEC",
+    "date": "2024-03-26",
+    "status": "reglee",
+    "outcome": "Jugement final par consentement le 30/05/2024 : penalite civile de 923 740$, interdiction de servir comme dirigeant/administrateur d'une societe cotee pendant 5 ans (sans reconnaissance ni contestation des faits) - explique le changement de titre de Bechtolsheim (de Chairman a Chief Development Officer/Chief Architect).",
+    "source": "SEC Litigation Release No. 25955 (26/03/2024) et No. 26014 (03/06/2024)"
+   },
+   {
+    "year": 2019,
+    "title": "Sollicitation du cabinet Pomerantz sur un possible manquement de dirigeants et administrateurs, en lien avec l'annonce d'un ralentissement soudain chez un \"cloud titan\" (identifie comme Facebook/Meta par les analystes) ayant fait chuter le titre de 24% en une seance.",
+    "allegedBy": "Pomerantz LLP (cabinet d'avocats plaignant)",
+    "date": "2019-11-04",
+    "status": "sollicitation",
+    "outcome": null,
+    "source": "Communique Pomerantz LLP via GlobeNewswire, 04/11/2019 - aucune escalade (plainte deposee, enquete reglementaire) identifiee depuis"
+   }
+  ],
+  "note": "Aucune fraude comptable ou tromperie des investisseurs averee touchant la societe elle-meme. Le seul dossier regle concerne un delit d'initie individuel d'un co-fondateur (2019, regle en 2024), sans lien avec les etats financiers d'Arista. La sollicitation de 2019 sur la communication autour d'un client cloud n'a pas ete suivie d'escalade identifiable."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-09",
+   "eps": {
+    "2026": 3.43,
+    "2027": 4.4,
+    "2028": 5.47,
+    "2029": 6.6,
+    "2030": 7.81
+   }
+  },
+  "source": "Refresh T2 2026 - Communique de resultats + Transcript T2 2026 (04/08/2026)",
+  "dernierCall": {
+   "quarter": "T2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 3035.7,
+     "consensus": 2830
+    },
+    "epsAdj": {
+     "actual": 1.02,
+     "consensus": 0.89,
+     "basis": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 2026 : CA ~3,3 Md$ (vs consensus 2,94-2,95Md$), marge operationnelle non-GAAP ~48-49%, EPS non-GAAP 1,06-1,08$ (vs consensus 0,91-0,92$ pre-publication).",
+   "guidanceAnnuelle": "CA FY26 releve a ~12,6 Md$ (+40%, 3e relevement de l'annee, +1,1Md$ vs la guidance de mai a 11,5Md$), marge brute non-GAAP 62-64% (inchangee), marge operationnelle non-GAAP 48-49%. Cible IA maintenue a au moins 3,5 Md$, cible campus maintenue a au moins 1,25 Md$.",
+   "pointsCles": [
+    "Premier trimestre a plus de 3 Md$ de CA, porte par une demande large (IA, data center, campus, routage) et par un mix client international en forte hausse (23% du CA vs 13,5% au T1).",
+    "Base de clients Etherlink AI fabric passee de 4-5 (debut 2024) a plus de 100 fin T2 26 ; engagements d'achat pluriannuels quasi tripes a 9,7 Md$ (vs 3,6 Md$ un an plus tot), memoire securisee jusqu'en 2027, chaine de refroidissement liquide etablie.",
+    "Lancement de la plateforme 7060X-E7 (1,6 Tbps, 100 Tbps de bande passante systeme, options refroidies par liquide) ; essais du portefeuille 1,6T aupres d'un nombre restreint de tres gros clients au S2 26, production reelle attendue en 2027 (meme cadence que le cycle 800G).",
+    "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), malgre l'amelioration tangible de la visibilite propre a Arista (remboursements tarifaires et mix favorable ayant soutenu la marge brute du T2 a 63,4%, +100pb sequentiel)."
+   ]
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T2 26",
+    "date": "2026-08-04",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "CA ~12,6 Md$ (+40%), marge brute non-GAAP 62-64%, marge operationnelle non-GAAP 48-49%."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.68,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.73,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.75,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.82,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.87,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.02,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.07,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.09,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 1.07,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 1.26,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 1.32,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.34,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Leader du switching haute vitesse pleinement engage dans la vague de networking IA : T2 26 marque le premier trimestre a plus de 3 Md$ de CA (+37,7%), avec une guidance FY26 relevee pour la 3e fois de l'annee (~12,6 Md$, marge operationnelle 48-49%). Plus de 100 clients Etherlink AI fabric (vs 4-5 en 2024) et des engagements d'achat pluriannuels quasi tries (9,7 Md$) confirment la trajectoire de demande, tempere par une contrainte d'approvisionnement sectorielle que le CEO juge durable jusqu'en 2028. omniumEPS 4,05->8,52 (2026-2030).",
+  "cagrBridge": null,
+  "text": "== THESIS SUMMARY ==\nArista is the switching layer of the AI build-out: FY26 revenue guidance raised for the THIRD time this year to ~12.6bn (+40%; 11.5bn guided in May), with the increment coming from all segments per the CEO - AI, enterprise, campus, routing - not just AI fabric. Q2: revenue 3,035.7M (+37.7%, well above consensus), non-GAAP EPS 1.02 (+15% beat), GM 63.4% (+100bp sequential). The AI customer base broadened to >100 Etherlink fabric customers (vs 4-5 early 2024) and multi-year purchase commitments reached 9.7bn (vs 3.6bn), securing memory supply into 2027.\n\n== THESIS READ ==\n- Breadth is the new signal: the raise is NOT AI-only - enterprise/campus/routing all contribute, de-risking the hyperscaler concentration story at the margin. Watch: Microsoft/Meta revenue share disclosure at 10-K.\n- Buybacks suspended (0 in H1 vs 983M) to fund supply commitments - cash preservation over EPS optics; graduated resumption assumed from 2027. Watch: Q3/Q4 buyback line.\n- Component tightness a 'two-year problem' (through 2028) per the CEO - Arista's secured supply is a competitive moat while it lasts. Watch: 1.6T (7060X-E7) real production ramp in 2027 and the scale-across market (3-4bn today, 15-20bn by 2030 per management).\n\n== SPECIAL FACTORS ==\n'data' = published GAAP; adjXXX close to non-GAAP (the company only guides non-GAAP) - basis wedge documented in the scorecard. Net cash 12.4bn growing to ~37bn by 2030 despite commitments; ETR 21% normative (FY25 actual ~18.5% on excess tax benefits, documented).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 12.6bn (guidance), OM ~48.5% non-GAAP; 2027-2030: +25%/yr fading to +15%, margin held ~47-48.5%; finNet = interest income on net cash (~3%); shares roughly flat then declining as buybacks resume. Watch: OM holding the 48-49% band if component costs re-tighten; AI vs non-AI increment split; concentration.\n\n== CATALYSTS ==\nQ3 (early Nov); 1.6T production milestones (2027); buyback resumption; hyperscaler capex prints.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "guidance_fy26_relevee",
+    "moteur": "Guidance FY26 relevee pour la 3e fois de l'annee au T2 26 (CA ~12,6 Md$, +1,1Md$ vs mai ; marge operationnelle non-GAAP 48-49%), increment provenant de tous les segments produits selon le CEO.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumEPS.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "ai_fabric_scaling_100_clients",
+    "moteur": "Base de clients Etherlink AI fabric passee de 4-5 (2024) a plus de 100 fin T2 26, engagements d'achat pluriannuels quasi tries a 9,7 Md$ (vs 3,6 Md$ un an plus tot) - visibilite de demande forte sur 2027-2028.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "supply_chain_two_year_problem",
+    "moteur": "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), plafonnant la marge en dessous d'une normalisation complete malgre l'amelioration deja tangible propre a Arista (remboursements tarifaires, nouveaux fournisseurs qualifies).",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "buyback_suspendu_2026",
+    "moteur": "Rachats d'actions suspendus au S1 2026 (0$ vs 983 M$ au S1 2025) pour preserver la tresorerie face aux engagements d'achat pluriannuels de 9,7 Md$ - reprise graduelle supposee a partir de 2027 a mesure que la visibilite sur les paiements s'ameliore.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "scale_across_tam_2030",
+    "moteur": "Marche du \"scale-across\" evalue par le management a 3-4 Md$ aujourd'hui, en expansion vers 15-20 Md$ d'ici 2030 (Arista viserait ~1,2 Md$ en 2026, soit ~30% de sa cible IA) - moteur de croissance additionnel non encore pleinement reflete dans la cible IA officielle.",
+    "applique": [
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "cash_yield_croissant",
+    "moteur": "Tresorerie et titres negociables depassant desormais 13,3 Md$ (vs 10,7 Md$ fin 2025), sans dette - produits financiers croissants avec l'accumulation de FCF nette d'une reprise graduelle des rachats.",
+    "applique": [
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 4.05,
+   "2027": 4.99,
+   "2028": 5.99,
+   "2029": 7.24,
+   "2030": 8.52
+  },
+  "omniumCA": {
+   "2026": 12600,
+   "2027": 15750,
+   "2028": 18900,
+   "2029": 22113,
+   "2030": 25430
+  },
+  "omniumEBIT": {
+   "2026": 6111,
+   "2027": 7481,
+   "2028": 8883,
+   "2029": 10614,
+   "2030": 12334
+  },
+  "omniumNet": {
+   "2026": 5172,
+   "2027": 6359,
+   "2028": 7595,
+   "2029": 9128,
+   "2030": 10669
+  },
+  "omniumND": {
+   "2026": -16000,
+   "2027": -20500,
+   "2028": -25500,
+   "2029": -31000,
+   "2030": -37000
+  },
+  "omniumShares": {
+   "2026": 1277,
+   "2027": 1274,
+   "2028": 1268,
+   "2029": 1260,
+   "2030": 1252
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 452,
+    "other": 0,
+    "taxRate": 0.185,
+    "minorities": 0,
+    "netCalc": 3511.0,
+    "netPub": 3511,
+    "residual": 0,
+    "residualNote": "Reconciles cleanly: interest income on the ~11bn average net cash, FY25 effective ~18.5% (excess tax benefits) vs 21% normative used in projections."
+   },
+   "2026": {
+    "finNet": 436,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 5172.1
+   },
+   "2027": {
+    "finNet": 568,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 6358.7
+   },
+   "2028": {
+    "finNet": 731,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 7595.1
+   },
+   "2029": {
+    "finNet": 940,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 9127.7
+   },
+   "2030": {
+    "finNet": 1170,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 10668.2
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Revenue (guided) + non-GAAP operating margin",
+   "comparedAgainst": "guidance",
+   "basisAligned": false,
+   "basisNote": "Guidance and consensus are non-GAAP; the Omnium adjXXX base is close to non-GAAP by construction (the company only communicates non-GAAP) while 'data' stays published GAAP - wedge documented.",
+   "timeline": [
+    {
+     "date": "2026-08-04",
+     "type": "guidance_revised",
+     "detail": "FY26 revenue raised a third time to ~12.6bn (+40%, from 11.5bn in May; increment from ALL segments per the CEO, not just AI); non-GAAP OM 48-49%."
+    }
+   ],
+   "paceCheckpoint": "Q2 real: revenue 3,035.7M (+37.7%, vs 2,830M consensus), non-GAAP EPS 1.02 vs 0.89 (+15% beat); >100 Etherlink AI-fabric customers; multi-year purchase commitments 9.7bn (vs 3.6bn a year ago).",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 12600,
+    "source": "initial_guidance",
+    "date": "2026-08-04",
+    "note": "FY26 guided at ~12.6bn (+40%), non-GAAP GM 62-64%, non-GAAP OM 48-49% - the THIRD raise of the year (11.5bn guided in May). Dated at the latest raise (earliest fully archived); the initial early-2026 frame was not captured - the FY26 close will measure against this raised bar, so the observation will UNDERSTATE the true initial beat."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (initial anchors not archived). First measurement at the FY26 close - against a thrice-raised bar (see anchor note).",
+   "consensusSource": "Zacks consensus (non-GAAP)",
+   "consensusDate": "2026-08-04"
+  },
+  "revisionEvent": {
+   "date": "2026-08-04",
+   "label": "Q2 2026",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "Q2 2026 exploited via transcript + release + 10-Q references; statements not line-by-line exploited at this refresh."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-08-04",
+    "source": "Q2 transcript + release (as exploited at the 05/08 refresh)",
+    "message": "Third FY26 guidance raise of the year (~12.6bn, +40%; increment from ALL segments per the CEO); >100 Etherlink AI-fabric customers (vs 4-5 early 2024) and multi-year purchase commitments at 9.7bn (vs 3.6bn) securing memory supply into 2027; buybacks suspended in H1 (0 vs 983M) to fund those commitments; CEO frames component tightness as a 'two-year problem' (through 2028) even as Arista's own supply improved (GM 63.4%, +100bp sequential); 7060X-E7 (1.6T) launched, real production targeted 2027."
+   }
+  ]
+ }
 }
