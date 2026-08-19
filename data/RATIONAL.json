@@ -1,496 +1,511 @@
 {
- "name": "Rational",
- "cours": 685.0,
- "yahooSymbol": "RAA.DE",
- "dividende": 20.0,
- "data": [
-  {
-   "year": 2019,
-   "ca": 844,
-   "ebit": 223,
-   "net": 172,
-   "shares": 11.4,
-   "nd": -273,
-   "div": 5.7
-  },
-  {
-   "year": 2020,
-   "ca": 650,
-   "ebit": 107,
-   "net": 80,
-   "shares": 11.4,
-   "nd": -252,
-   "div": 4.8
-  },
-  {
-   "year": 2021,
-   "ca": 780,
-   "ebit": 160,
-   "net": 124,
-   "shares": 11.4,
-   "nd": -336,
-   "div": 10.0
-  },
-  {
-   "year": 2022,
-   "ca": 1022,
-   "ebit": 237,
-   "net": 186,
-   "shares": 11.4,
-   "nd": -339,
-   "div": 13.5
-  },
-  {
-   "year": 2023,
-   "ca": 1126,
-   "ebit": 277,
-   "net": 216,
-   "shares": 11.4,
-   "nd": -403,
-   "div": 13.5
-  },
-  {
-   "year": 2024,
-   "ca": 1194,
-   "ebit": 314,
-   "net": 251,
-   "shares": 11.4,
-   "nd": -499,
-   "div": 15.0
-  },
-  {
-   "year": 2025,
-   "ca": 1260,
-   "ebit": 333,
-   "net": 254,
-   "shares": 11.4,
-   "nd": -544,
-   "div": 20.0
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 23.4,
-  "epsNY": 25.6,
-  "date": "2026-08-06",
-  "source": "GAAP - S&P Global Market Intelligence (via note Kepler Cheuvreux), T2 26 CA actual 323,9 M€ vs consensus 327 M€ ; EBIT actual 94,0 M€ vs consensus 87,0 M€ (+8%)",
-  "analystsCount": null,
-  "analystsCountNY": null
- },
- "particularites": [
-  {
-   "text": "Exposition change élevée (~50% du CA hors zone euro, notamment USD), sans couverture naturelle complète décrite : cause structurelle de volatilité du résultat publié d'une année sur l'autre.",
-   "valuePct": null
-  },
-  {
-   "text": "Modèle de vente propriétaire unique : plus de 630 anciens chefs employés comme force de vente directe (335 000 visites clients en 2025), créant un effet de \"pull\" difficilement réplicable par la concurrence (10x plus grande) et sécurisant la croissance organique indépendamment des réseaux de revendeurs.",
-   "valuePct": null
-  }
- ],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": "2026-11-05"
- },
- "ownership": {
-  "asOf": "2026-08-07",
-  "insiderPct": 55.2,
-  "insiderDesc": "Bloc de contrôle familial issu du fondateur Siegfried Meister (décédé en 2017, détenait 63,7%) : Franziska Würbser (15,99%, ayant reçu en 2025 les parts de sa mère Gabriella Meister), Gabriella Meister (15,76%), Ulrike Meister (15,59%), et Walter Kurtz (7,81%, cofondateur 1973, toujours au Conseil de surveillance avec son fils Moritz Graser). Franziska Würbser et Walter Kurtz/Siegfried Meister disposent statutairement d'un droit conjoint de nommer jusqu'à deux membres du Conseil de surveillance tant qu'ils sont actionnaires.",
-  "insiderSource": "Rapport annuel 2025 (Jahresfinanzbericht, 20/03/2026) et fiche actionnariat officielle RATIONAL AG, corroborés par onvista/marketscreener.",
-  "notableHolders": [],
-  "coverageNote": "Titre coté à Francfort (Xetra), hors périmètre 13F US - notableHolders non recherché pour ce titre (choix de périmètre assumé du modèle). Free float ~28,4%, PineStone Asset Management identifié comme investisseur institutionnel notable dans la fiche actionnariat mais hors watchlist de gérants actifs suivie par Omnium.",
-  "history": []
- },
- "compliance": {
-  "asOf": "2026-08-07",
-  "items": [],
-  "note": "Aucune fraude avérée ni allégation par un régulateur, un cabinet d'avocats plaignants ou un vendeur à découvert activiste identifiée à ce jour (recherche du 07/08/2026) - société non cotée aux États-Unis, hors du régime de sollicitation post-baisse de cours fréquent sur les valeurs US."
- },
- "coherenceQualitative": {
-  "asOf": "2026-08-07",
-  "statut": "coherent",
-  "points": [],
-  "historique": [
-   {
-    "quarter": "T2 26",
+  "name": "Rational",
+  "cours": 685.0,
+  "yahooSymbol": "RAA.DE",
+  "dividende": 20.0,
+  "data": [
+    {
+      "year": 2019,
+      "ca": 844,
+      "ebit": 223,
+      "net": 172,
+      "shares": 11.4,
+      "nd": -273,
+      "div": 5.7
+    },
+    {
+      "year": 2020,
+      "ca": 650,
+      "ebit": 107,
+      "net": 80,
+      "shares": 11.4,
+      "nd": -252,
+      "div": 4.8
+    },
+    {
+      "year": 2021,
+      "ca": 780,
+      "ebit": 160,
+      "net": 124,
+      "shares": 11.4,
+      "nd": -336,
+      "div": 10.0
+    },
+    {
+      "year": 2022,
+      "ca": 1022,
+      "ebit": 237,
+      "net": 186,
+      "shares": 11.4,
+      "nd": -339,
+      "div": 13.5
+    },
+    {
+      "year": 2023,
+      "ca": 1126,
+      "ebit": 277,
+      "net": 216,
+      "shares": 11.4,
+      "nd": -403,
+      "div": 13.5
+    },
+    {
+      "year": 2024,
+      "ca": 1194,
+      "ebit": 314,
+      "net": 251,
+      "shares": 11.4,
+      "nd": -499,
+      "div": 15.0
+    },
+    {
+      "year": 2025,
+      "ca": 1260,
+      "ebit": 333,
+      "net": 254,
+      "shares": 11.4,
+      "nd": -544,
+      "div": 20.0
+    }
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 23.4,
+    "epsNY": 25.6,
     "date": "2026-08-06",
-    "format": "brut",
-    "clesRetenues": [
-     "Q Investisseur (besoin de poursuivre le ramp-up de la force de vente) - le CEO confirme un processus continu et nécessaire pour alimenter la croissance, avec une causalité directe déjà montrée entre l'ajout de vendeurs et le développement des ventes (compacter les territoires commerciaux).",
-     "Q Investisseur (Chine, acceptation de l'iCombi One et retour en croissance) - le CEO indique ne pas publier de chiffres detailles sur l'iCombi One mais se dit satisfait de la progression a ce stade.",
-     "Q Investisseur (mise a jour iHexagon) - le CEO confirme ne pas publier de chiffres precis, se dit satisfait du developpement, et rapporte un nombre croissant de clients qui en percoivent un benefice reel.",
-     "Q Investisseur (region motrice de l'iVario au S1 et perspective S2) - le CFO indique que les Etats-Unis, la France et l'Iberie (Espagne/Portugal) ont porte l'essentiel de la croissance, et se dit confiant de maintenir un rythme de croissance de l'iVario deux fois superieur a celui de l'iCombi.",
-     "Q Investisseur (marche chinois, acceptation iCombi One, contrats grands comptes) - le CEO indique un sentiment consommateur chinois toujours deprime, le principal vent contraire etant le desengagement de Yum China (KFC) vers un sourcing local ; l'equipe commerciale dediee iCombi One est en place, de nouveaux revendeurs sont gagnes chaque mois, et un contrat avec un nouveau grand compte a deja ete securise.",
-     "Q Investisseur (concurrents americains augmentant leur production locale face aux tarifs, RATIONAL envisage-t-il d'investir aux US) - le CEO repond ne pas observer ce phenomene chez les concurrents et evaluer regulierement la situation globale pour une production US, sans plan concret a ce stade.",
-     "Q Investisseur (hausse du carnet de commandes fin T2, tendances de juillet) - le CFO attribue la hausse du carnet (10-15 M€ vs trimestres precedents) a un fort flux de commandes en juin (Etats-Unis, Allemagne, Canada en tete) non entierement livre avant la fin du trimestre, et s'attend a ce que ce carnet soutienne un developpement positif au S2.",
-     "Q Investisseur (Asie du Sud, ecart vs l'an dernier) - le CFO attribue l'ecart principalement a l'Australie et a un effet de timing lie au restockage d'un grand partenaire, sans changement structurel sur une periode plus longue.",
-     "Q Investisseur (raisons de la forte croissance en zone DACH) - le CFO explique la croissance allemande par des commandes de stock ponctuelles de plusieurs revendeurs au T1 (croissance T2 large et sans effet ponctuel notable), la croissance autrichienne par le regain d'un appel d'offres Aldi, et la Suisse par une execution commerciale solide sans facteur ponctuel specifique.",
-     "Q Investisseur (impact du conflit Moyen-Orient) - le CEO confirme un impact limite : la region pese ~2-3% du CA groupe, un recul d'environ 2 M€ enregistre au S1, des couts plus eleves mais aucune rupture d'approvisionnement materielle anticipee.",
-     "Q Investisseur (facteurs de la croissance nord-americaine >10% en change constant au S1) - le CEO reaffirme l'Amerique du Nord comme marche de croissance numero 1 du groupe compte tenu du potentiel encore tres ouvert, une croissance organique >10% etant le rythme attendu.",
-     "Q Investisseur (repartition volume/prix de la croissance T2 ~4%) - le CEO indique que la majorite de la croissance S1 (+6% publiee) provient du volume sous-jacent, une part plus faible du mix regional, et un impact mineur des hausses de prix ; au T2 specifiquement, le volume reste le moteur principal, les hausses de prix commencant a contribuer de facon modeste.",
-     "Q Investisseur (cout des tarifs douaniers attendu au S2) - le CFO chiffre l'impact tarifaire plein-annee a ~28-29 M€, avec un effet S2 legerement inferieur au S1 grace a la baisse des taux de tarifs.",
-     "Q Investisseur (trajectoire des couts d'approvisionnement hors remboursement tarifaire, ~9% de hausse au S1) - le CFO confirme un rythme de hausse comparable attendu au S2, tire par l'acier, la chimie et surtout le secteur electronique, sans detente attendue a court terme.",
-     "Q Investisseur (couts energetiques additionnels vs 2025) - le CFO chiffre un effet direct tres limite (~3 M€ gaz/electricite, ~2,5 M€ carburant flotte, effet net annuel ~0,5 M€), l'essentiel de la pression energetique se reportant sur les clients et fournisseurs plutot que sur RATIONAL directement.",
-     "Q Investisseur (trajectoire des couts salariaux) - le CFO confirme la revalorisation salariale annuelle de juillet a ~3,8% en moyenne en Allemagne, calee sur l'inflation et les negociations de la metallurgie.",
-     "Q Investisseur (le remboursement tarifaire ne se repetera pas en 2027, possibilite de hausses de prix pour compenser les couts plus eleves) - le CEO confirme plusieurs scenarios a l'etude, la preference historique allant a l'efficacite operationnelle plutot qu'aux hausses de prix, mais une hausse de prix modeste reste envisagee si l'ampleur des couts depasse ce que l'efficacite peut absorber.",
-     "Q Investisseur (validite du calcul tarifs 10% -> hausse de prix 6-7% pour preserver la contribution absolue) - le CFO confirme que le ratio mathematique reste valide, mais que l'hypothese de base de tarif a 10% n'est plus d'actualite : pour 2027, le taux moyen attendu est plutot de ~14%.",
-     "Q Investisseur (retour sur l'investissement pieces detachees a Landsberg, mix CA, CapEx 2027) - le CFO precise que la decision d'agrandir le batiment pieces detachees vise la croissance et la disponibilite du service, pas la reduction de couts (pas d'effet d'echelle attendu, plutot des couts de montee en charge, ~1,5-2 M€ de depreciation additionnelle une fois pleinement operationnel) ; achevement prevu debut 2027, avec en parallele le debut de construction d'un nouveau centre d'experience client a Landsberg a la mi-2027.",
-     "Q Investisseur (mise a jour de la guidance S2, couts d'intrants, tendances de demande, marches cles Allemagne/Amerique du Nord) - le CFO indique des couts d'intrants mixtes (acier de base stable, surcotes d'alliage plus elevees que prevu, fret eleve mais stabilise), une demande soutenue par un carnet de commandes sain, une Allemagne dont le momentum devrait se poursuivre sans certitude de reconduire le rythme exceptionnel du S1, et une Amerique du Nord maintenue dans la fourchette de croissance 10-15% attendue sur l'annee.",
-     "Q Investisseur (forte hausse des stocks, ~10%) - le CFO attribue la hausse a l'ouverture d'un nouvel entrepot a Dubai et a une augmentation saisonniere des stocks dans les marches outre-mer pour securiser les delais de livraison.",
-     "Q Investisseur (trajectoire des comptes fournisseurs) - le CFO indique que ce poste reste de taille limitee et globalement stable, les variations trimestrielles etant des effets de timing sans sujet specifique identifie de leur cote.",
-     "Q Investisseur (ratio de fonds propres eleve, ~80%, ouverture a des rachats d'actions face au niveau du cours) - le CFO ecarte l'option des rachats d'actions (flottant deja faible, ne pas le reduire davantage), reaffirme la politique de distribution non ecrite de ~70% de payout plus dividende exceptionnel si la liquidite le permet, et evoque la possibilite d'un nouveau dividende exceptionnel a l'avenir si le niveau de tresorerie le justifie.",
-     "Q Investisseur (impact tarifaire 2027 attendu ~28-29 M€ comme en 2026) - le CFO confirme un ordre de grandeur similaire, potentiellement 2-3 M€ plus eleve du fait de la croissance du volume d'affaires aux Etats-Unis.",
-     "Q Investisseur (intensite concurrentielle en Chine, concurrents locaux, iCombi One peut-il regagner des parts de marche) - le CEO identifie deux concurrents locaux principaux (Justa et un second acteur), positionnes sur une qualite/un service inferieurs et des prix plus bas ; l'iCombi One vise a etre competitif sur le prix face a eux tout en conservant une qualite de cuisson superieure, avec un positionnement legerement au-dessus en prix de catalogue."
+    "source": "GAAP - S&P Global Market Intelligence (via note Kepler Cheuvreux), T2 26 CA actual 323,9 M€ vs consensus 327 M€ ; EBIT actual 94,0 M€ vs consensus 87,0 M€ (+8%)",
+    "analystsCount": null,
+    "analystsCountNY": null
+  },
+  "particularites": [
+    {
+      "text": "Exposition change élevée (~50% du CA hors zone euro, notamment USD), sans couverture naturelle complète décrite : cause structurelle de volatilité du résultat publié d'une année sur l'autre.",
+      "valuePct": null
+    },
+    {
+      "text": "Modèle de vente propriétaire unique : plus de 630 anciens chefs employés comme force de vente directe (335 000 visites clients en 2025), créant un effet de \"pull\" difficilement réplicable par la concurrence (10x plus grande) et sécurisant la croissance organique indépendamment des réseaux de revendeurs.",
+      "valuePct": null
+    }
+  ],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": "2026-11-05"
+  },
+  "ownership": {
+    "asOf": "2026-08-07",
+    "insiderPct": 55.2,
+    "insiderDesc": "Bloc de contrôle familial issu du fondateur Siegfried Meister (décédé en 2017, détenait 63,7%) : Franziska Würbser (15,99%, ayant reçu en 2025 les parts de sa mère Gabriella Meister), Gabriella Meister (15,76%), Ulrike Meister (15,59%), et Walter Kurtz (7,81%, cofondateur 1973, toujours au Conseil de surveillance avec son fils Moritz Graser). Franziska Würbser et Walter Kurtz/Siegfried Meister disposent statutairement d'un droit conjoint de nommer jusqu'à deux membres du Conseil de surveillance tant qu'ils sont actionnaires.",
+    "insiderSource": "Rapport annuel 2025 (Jahresfinanzbericht, 20/03/2026) et fiche actionnariat officielle RATIONAL AG, corroborés par onvista/marketscreener.",
+    "notableHolders": [],
+    "coverageNote": "Titre coté à Francfort (Xetra), hors périmètre 13F US - notableHolders non recherché pour ce titre (choix de périmètre assumé du modèle). Free float ~28,4%, PineStone Asset Management identifié comme investisseur institutionnel notable dans la fiche actionnariat mais hors watchlist de gérants actifs suivie par Omnium.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-08-07",
+    "items": [],
+    "note": "Aucune fraude avérée ni allégation par un régulateur, un cabinet d'avocats plaignants ou un vendeur à découvert activiste identifiée à ce jour (recherche du 07/08/2026) - société non cotée aux États-Unis, hors du régime de sollicitation post-baisse de cours fréquent sur les valeurs US."
+  },
+  "coherenceQualitative": {
+    "asOf": "2026-08-07",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-06",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Investisseur (besoin de poursuivre le ramp-up de la force de vente) - le CEO confirme un processus continu et nécessaire pour alimenter la croissance, avec une causalité directe déjà montrée entre l'ajout de vendeurs et le développement des ventes (compacter les territoires commerciaux).",
+          "Q Investisseur (Chine, acceptation de l'iCombi One et retour en croissance) - le CEO indique ne pas publier de chiffres detailles sur l'iCombi One mais se dit satisfait de la progression a ce stade.",
+          "Q Investisseur (mise a jour iHexagon) - le CEO confirme ne pas publier de chiffres precis, se dit satisfait du developpement, et rapporte un nombre croissant de clients qui en percoivent un benefice reel.",
+          "Q Investisseur (region motrice de l'iVario au S1 et perspective S2) - le CFO indique que les Etats-Unis, la France et l'Iberie (Espagne/Portugal) ont porte l'essentiel de la croissance, et se dit confiant de maintenir un rythme de croissance de l'iVario deux fois superieur a celui de l'iCombi.",
+          "Q Investisseur (marche chinois, acceptation iCombi One, contrats grands comptes) - le CEO indique un sentiment consommateur chinois toujours deprime, le principal vent contraire etant le desengagement de Yum China (KFC) vers un sourcing local ; l'equipe commerciale dediee iCombi One est en place, de nouveaux revendeurs sont gagnes chaque mois, et un contrat avec un nouveau grand compte a deja ete securise.",
+          "Q Investisseur (concurrents americains augmentant leur production locale face aux tarifs, RATIONAL envisage-t-il d'investir aux US) - le CEO repond ne pas observer ce phenomene chez les concurrents et evaluer regulierement la situation globale pour une production US, sans plan concret a ce stade.",
+          "Q Investisseur (hausse du carnet de commandes fin T2, tendances de juillet) - le CFO attribue la hausse du carnet (10-15 M€ vs trimestres precedents) a un fort flux de commandes en juin (Etats-Unis, Allemagne, Canada en tete) non entierement livre avant la fin du trimestre, et s'attend a ce que ce carnet soutienne un developpement positif au S2.",
+          "Q Investisseur (Asie du Sud, ecart vs l'an dernier) - le CFO attribue l'ecart principalement a l'Australie et a un effet de timing lie au restockage d'un grand partenaire, sans changement structurel sur une periode plus longue.",
+          "Q Investisseur (raisons de la forte croissance en zone DACH) - le CFO explique la croissance allemande par des commandes de stock ponctuelles de plusieurs revendeurs au T1 (croissance T2 large et sans effet ponctuel notable), la croissance autrichienne par le regain d'un appel d'offres Aldi, et la Suisse par une execution commerciale solide sans facteur ponctuel specifique.",
+          "Q Investisseur (impact du conflit Moyen-Orient) - le CEO confirme un impact limite : la region pese ~2-3% du CA groupe, un recul d'environ 2 M€ enregistre au S1, des couts plus eleves mais aucune rupture d'approvisionnement materielle anticipee.",
+          "Q Investisseur (facteurs de la croissance nord-americaine >10% en change constant au S1) - le CEO reaffirme l'Amerique du Nord comme marche de croissance numero 1 du groupe compte tenu du potentiel encore tres ouvert, une croissance organique >10% etant le rythme attendu.",
+          "Q Investisseur (repartition volume/prix de la croissance T2 ~4%) - le CEO indique que la majorite de la croissance S1 (+6% publiee) provient du volume sous-jacent, une part plus faible du mix regional, et un impact mineur des hausses de prix ; au T2 specifiquement, le volume reste le moteur principal, les hausses de prix commencant a contribuer de facon modeste.",
+          "Q Investisseur (cout des tarifs douaniers attendu au S2) - le CFO chiffre l'impact tarifaire plein-annee a ~28-29 M€, avec un effet S2 legerement inferieur au S1 grace a la baisse des taux de tarifs.",
+          "Q Investisseur (trajectoire des couts d'approvisionnement hors remboursement tarifaire, ~9% de hausse au S1) - le CFO confirme un rythme de hausse comparable attendu au S2, tire par l'acier, la chimie et surtout le secteur electronique, sans detente attendue a court terme.",
+          "Q Investisseur (couts energetiques additionnels vs 2025) - le CFO chiffre un effet direct tres limite (~3 M€ gaz/electricite, ~2,5 M€ carburant flotte, effet net annuel ~0,5 M€), l'essentiel de la pression energetique se reportant sur les clients et fournisseurs plutot que sur RATIONAL directement.",
+          "Q Investisseur (trajectoire des couts salariaux) - le CFO confirme la revalorisation salariale annuelle de juillet a ~3,8% en moyenne en Allemagne, calee sur l'inflation et les negociations de la metallurgie.",
+          "Q Investisseur (le remboursement tarifaire ne se repetera pas en 2027, possibilite de hausses de prix pour compenser les couts plus eleves) - le CEO confirme plusieurs scenarios a l'etude, la preference historique allant a l'efficacite operationnelle plutot qu'aux hausses de prix, mais une hausse de prix modeste reste envisagee si l'ampleur des couts depasse ce que l'efficacite peut absorber.",
+          "Q Investisseur (validite du calcul tarifs 10% -> hausse de prix 6-7% pour preserver la contribution absolue) - le CFO confirme que le ratio mathematique reste valide, mais que l'hypothese de base de tarif a 10% n'est plus d'actualite : pour 2027, le taux moyen attendu est plutot de ~14%.",
+          "Q Investisseur (retour sur l'investissement pieces detachees a Landsberg, mix CA, CapEx 2027) - le CFO precise que la decision d'agrandir le batiment pieces detachees vise la croissance et la disponibilite du service, pas la reduction de couts (pas d'effet d'echelle attendu, plutot des couts de montee en charge, ~1,5-2 M€ de depreciation additionnelle une fois pleinement operationnel) ; achevement prevu debut 2027, avec en parallele le debut de construction d'un nouveau centre d'experience client a Landsberg a la mi-2027.",
+          "Q Investisseur (mise a jour de la guidance S2, couts d'intrants, tendances de demande, marches cles Allemagne/Amerique du Nord) - le CFO indique des couts d'intrants mixtes (acier de base stable, surcotes d'alliage plus elevees que prevu, fret eleve mais stabilise), une demande soutenue par un carnet de commandes sain, une Allemagne dont le momentum devrait se poursuivre sans certitude de reconduire le rythme exceptionnel du S1, et une Amerique du Nord maintenue dans la fourchette de croissance 10-15% attendue sur l'annee.",
+          "Q Investisseur (forte hausse des stocks, ~10%) - le CFO attribue la hausse a l'ouverture d'un nouvel entrepot a Dubai et a une augmentation saisonniere des stocks dans les marches outre-mer pour securiser les delais de livraison.",
+          "Q Investisseur (trajectoire des comptes fournisseurs) - le CFO indique que ce poste reste de taille limitee et globalement stable, les variations trimestrielles etant des effets de timing sans sujet specifique identifie de leur cote.",
+          "Q Investisseur (ratio de fonds propres eleve, ~80%, ouverture a des rachats d'actions face au niveau du cours) - le CFO ecarte l'option des rachats d'actions (flottant deja faible, ne pas le reduire davantage), reaffirme la politique de distribution non ecrite de ~70% de payout plus dividende exceptionnel si la liquidite le permet, et evoque la possibilite d'un nouveau dividende exceptionnel a l'avenir si le niveau de tresorerie le justifie.",
+          "Q Investisseur (impact tarifaire 2027 attendu ~28-29 M€ comme en 2026) - le CFO confirme un ordre de grandeur similaire, potentiellement 2-3 M€ plus eleve du fait de la croissance du volume d'affaires aux Etats-Unis.",
+          "Q Investisseur (intensite concurrentielle en Chine, concurrents locaux, iCombi One peut-il regagner des parts de marche) - le CEO identifie deux concurrents locaux principaux (Justa et un second acteur), positionnes sur une qualite/un service inferieurs et des prix plus bas ; l'iCombi One vise a etre competitif sur le prix face a eux tout en conservant une qualite de cuisson superieure, avec un positionnement legerement au-dessus en prix de catalogue."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "landsberg_service_parts_2027",
+        "quarterOrigine": "T2 26",
+        "engagement": "Achevement du nouveau batiment de pieces detachees a Landsberg vise pour le debut 2027, generant ~1,5-2 M€ de depreciation additionnelle une fois pleinement operationnel.",
+        "echeance": "2027-Q1",
+        "statut": "en_cours"
+      },
+      {
+        "id": "landsberg_customer_experience_center_2027",
+        "quarterOrigine": "T2 26",
+        "engagement": "Debut de construction d'un nouveau centre d'experience client a Landsberg (a cote des centres de formation existants) prevu a la mi-2027.",
+        "echeance": "2027-H1",
+        "statut": "en_cours"
+      },
+      {
+        "id": "cmd_2026_online",
+        "quarterOrigine": "T2 26",
+        "engagement": "Capital Markets Day 2026 annonce pour le 19 novembre 2026, format webinaire en ligne axe sur ConnectedCooking.",
+        "echeance": "2026-Q4",
+        "statut": "en_cours"
+      }
     ]
-   }
-  ],
-  "engagementsStructurants": [
-   {
-    "id": "landsberg_service_parts_2027",
-    "quarterOrigine": "T2 26",
-    "engagement": "Achevement du nouveau batiment de pieces detachees a Landsberg vise pour le debut 2027, generant ~1,5-2 M€ de depreciation additionnelle une fois pleinement operationnel.",
-    "echeance": "2027-Q1",
-    "statut": "en_cours"
-   },
-   {
-    "id": "landsberg_customer_experience_center_2027",
-    "quarterOrigine": "T2 26",
-    "engagement": "Debut de construction d'un nouveau centre d'experience client a Landsberg (a cote des centres de formation existants) prevu a la mi-2027.",
-    "echeance": "2027-H1",
-    "statut": "en_cours"
-   },
-   {
-    "id": "cmd_2026_online",
-    "quarterOrigine": "T2 26",
-    "engagement": "Capital Markets Day 2026 annonce pour le 19 novembre 2026, format webinaire en ligne axe sur ConnectedCooking.",
-    "echeance": "2026-Q4",
-    "statut": "en_cours"
-   }
-  ]
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-16",
-   "eps": {
-    "2026": 23.77,
-    "2027": 25.88
-   }
   },
-  "source": "Refresh T2/H1 2026 - Communique officiel H1 2026 (06/08/2026) + transcript IR Talk H1 2026 (meme jour), migration structurelle complete vers le schema courant (dernierCall/guidanceHistory/guidanceLongTermeHistory/quarterlyEPS/ownership/compliance/coherenceQualitative absents du JSON de creation, tous peuples pour la premiere fois a l'occasion de ce refresh).",
-  "dernierCall": {
-   "quarter": "T2 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 323.9,
-     "consensus": 327.0
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-16",
+      "eps": {
+        "2026": 23.77,
+        "2027": 25.88
+      }
     },
-    "epsAdj": {
-     "actual": 6.43,
-     "consensus": null,
-     "basis": "GAAP",
-     "basisNote": "GAAP"
-    }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (RATIONAL ne communique qu'une guidance annuelle).",
-   "guidanceAnnuelle": "Croissance CA maintenue en fourchette mid-to-high single-digit. Marge EBIT FY2026 desormais visee vers le haut de la fourchette 25-26% (contre une fourchette large sans positionnement precis lors du call T1), grace au remboursement de tarifs douaniers US comptabilise au T2.",
-   "pointsCles": [
-    "EBIT T2 26 a 94,0 M€ (+16% YoY), tres nettement au-dessus du consensus (87,0 M€), porte par le remboursement de ~14 M€ de tarifs douaniers US indument percus, comptabilise en produit operationnel extraordinaire ce trimestre - marge EBIT T2 a 29,0% (vs 26,1% un an plus tot, consensus 26,6%). Hors remboursement, la marge S1 se serait etablie a 24,3%, conforme a la guidance.",
-    "CA T2 26 legerement en dessous du consensus (323,9 M€ vs 327 M€ attendu), lie au reflux de l'effet de pre-achat americain du T1 (6-8 M€, lie a une hausse de prix de fevrier) qui ne s'est pas repete - dynamique sous-jacente jugee conforme aux attentes par le management, Amerique du Nord toujours a +10% en change constant sur le semestre.",
-    "Carnet de commandes en hausse de 10 a 15 M€ vs les trimestres precedents suite a un fort flux de commandes en juin (Etats-Unis, Allemagne, Canada en tete), non entierement livre avant la fin du trimestre - signal positif explicitement cite par le management pour le S2 2026.",
-    "Chine toujours en repli net (zone Asie -2% globalement, Chine -25% YoY), lie au desengagement de Yum China (KFC) vers un sourcing local ; lancement de l'iCombi One en cours avec equipe commerciale dediee en place et un premier contrat grand compte deja securise."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "H1 2026 exploited via release/call; IFRS interim statements not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T2 26",
-    "date": "2026-08-06",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Croissance CA mid-to-high single-digit ; marge EBIT visee vers le haut de la fourchette 25-26% (remboursement tarifaire US inclus)."
-   }
-  ],
-  "guidanceLongTerme": null,
-  "guidanceLongTermeHistory": [],
-  "summary": "Leader mondial incontesté (~50% de part de marché) du four combiné professionnel, guidance FY26 reconfirmée pour la troisième fois (call T1, IR Talk H1, et désormais communiqué officiel H1) : croissance CA mid-to-high single-digit et marge EBIT désormais visée vers le haut de la fourchette 25-26%, portée par un remboursement tarifaire US ponctuel de ~14 M€ comptabilisé au T2. Carnet de commandes en hausse en fin de semestre, signal positif pour le S2.",
-  "text": "== THESIS SUMMARY ==\nUncontested world leader in professional combi-ovens. H1 2026 confirms the thesis integrally: revenue +8% organic (641.5M), EBIT +11% (169.9M), record semi-annual margin 26.5% - 24.3% excluding the one-off ~14M US tariff refund, already fully on guidance without it. FY26 guidance reaffirmed for the third consecutive time (revenue mid-to-high SD, margin toward the top of the 25-26% band).\n\n== THESIS READ ==\n- The margin machine keeps compounding without capital: no dilution, no buybacks (float ~28.4% already thin - CFO explicit), ~70% payout with explicit special-dividend optionality. Watch: special-dividend decision as net cash builds toward ~1bn.\n- iVario penetration and North-America expansion carry the volume story. Watch: US market share vs tariff-era pricing.\n- The tariff refund is excluded from the underlying reading (documented) - underlying margin 24.3% is the honest run-rate. Watch: H2 margin ex-one-offs.\n\n== SPECIAL FACTORS ==\nFamily-controlled (~55.2% Meister/Wurbser heirs + Kurtz block); 11.4M shares constant across the whole horizon by design. Net cash growing 544 -> 970M with a modest placement yield in the bridge. First population of dernierCall/guidanceHistory/quarterlyEPS/ownership/compliance/coherenceQualitative happened at this cycle's earlier refresh - schema now complete.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 1,350M (+7%), EBIT 349M (25.9%), EPS 23.86; 2027-2030: revenue +8.5%/yr, margin ~26-26.7%, conversion ~78% (ETR 24%), shares constant. Watch: Germany/Europe institutional demand; input costs; China localization progress.\n\n== CATALYSTS ==\nQ3 (Nov); special-dividend announcement window (Mar 2027); iVario milestones; US pricing normalization.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "guidance_midhigh_single_digit_2026",
-    "moteur": "Guidance officielle FY2026 desormais reaffirmee a trois reprises (call T1, IR Talk H1, communique officiel H1 du 06/08) : croissance CA mid-to-high single-digit et marge EBIT visee vers le haut de la fourchette 25-26%, confirmee par les chiffres H1 reels (CA +8% organique, marge S1 24,3% hors effet tarifaire).",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026"
+    "source": "Refresh T2/H1 2026 - Communique officiel H1 2026 (06/08/2026) + transcript IR Talk H1 2026 (meme jour), migration structurelle complete vers le schema courant (dernierCall/guidanceHistory/guidanceLongTermeHistory/quarterlyEPS/ownership/compliance/coherenceQualitative absents du JSON de creation, tous peuples pour la premiere fois a l'occasion de ce refresh).",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 323.9,
+          "consensus": 327.0
+        },
+        "epsAdj": {
+          "actual": 6.43,
+          "consensus": null,
+          "basis": "GAAP",
+          "basisNote": "GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (RATIONAL ne communique qu'une guidance annuelle).",
+      "guidanceAnnuelle": "Croissance CA maintenue en fourchette mid-to-high single-digit. Marge EBIT FY2026 desormais visee vers le haut de la fourchette 25-26% (contre une fourchette large sans positionnement precis lors du call T1), grace au remboursement de tarifs douaniers US comptabilise au T2.",
+      "pointsCles": [
+        "EBIT T2 26 a 94,0 M€ (+16% YoY), tres nettement au-dessus du consensus (87,0 M€), porte par le remboursement de ~14 M€ de tarifs douaniers US indument percus, comptabilise en produit operationnel extraordinaire ce trimestre - marge EBIT T2 a 29,0% (vs 26,1% un an plus tot, consensus 26,6%). Hors remboursement, la marge S1 se serait etablie a 24,3%, conforme a la guidance.",
+        "CA T2 26 legerement en dessous du consensus (323,9 M€ vs 327 M€ attendu), lie au reflux de l'effet de pre-achat americain du T1 (6-8 M€, lie a une hausse de prix de fevrier) qui ne s'est pas repete - dynamique sous-jacente jugee conforme aux attentes par le management, Amerique du Nord toujours a +10% en change constant sur le semestre.",
+        "Carnet de commandes en hausse de 10 a 15 M€ vs les trimestres precedents suite a un fort flux de commandes en juin (Etats-Unis, Allemagne, Canada en tete), non entierement livre avant la fin du trimestre - signal positif explicitement cite par le management pour le S2 2026.",
+        "Chine toujours en repli net (zone Asie -2% globalement, Chine -25% YoY), lie au desengagement de Yum China (KFC) vers un sourcing local ; lancement de l'iCombi One en cours avec equipe commerciale dediee en place et un premier contrat grand compte deja securise."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "Rapport semestriel H1 2026 + communique (06/08/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA S1 642 M EUR (+6% publie, +8% organique; T2 +4%, Chine faible), EBIT 170 M (+11%), marge 26,5% - 24,3% hors remboursement de tarifs US de 14 M (one-off declare). Guidance FY26 inchangee."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-06",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Croissance CA mid-to-high single-digit ; marge EBIT visee vers le haut de la fourchette 25-26% (remboursement tarifaire US inclus)."
+      }
     ],
-    "confiance": "haute"
-   },
-   {
-    "id": "tariff_refund_cost_offset",
-    "moteur": "Remboursement de tarifs douaniers US indument percus confirme en chiffres reels a ~14 M€, comptabilise en produit operationnel extraordinaire au T2 2026, largement compensateur du cout tarifaire Section 232 attendu sur l'annee (~28-29 M€) - effet net deja materialise dans la marge EBIT S1 26 observee (26,5% publiee, 24,3% hors effet), plus une estimation a confirmer desormais un chiffre reel.",
-    "applique": [
-     "omniumEBIT.2026"
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "summary": "Leader mondial incontesté (~50% de part de marché) du four combiné professionnel, guidance FY26 reconfirmée pour la troisième fois (call T1, IR Talk H1, et désormais communiqué officiel H1) : croissance CA mid-to-high single-digit et marge EBIT désormais visée vers le haut de la fourchette 25-26%, portée par un remboursement tarifaire US ponctuel de ~14 M€ comptabilisé au T2. Carnet de commandes en hausse en fin de semestre, signal positif pour le S2.",
+    "text": "== THESIS SUMMARY ==\nUncontested world leader in professional combi-ovens. H1 2026 confirms the thesis integrally: revenue +8% organic (641.5M), EBIT +11% (169.9M), record semi-annual margin 26.5% - 24.3% excluding the one-off ~14M US tariff refund, already fully on guidance without it. FY26 guidance reaffirmed for the third consecutive time (revenue mid-to-high SD, margin toward the top of the 25-26% band).\n\n== THESIS READ ==\n- The margin machine keeps compounding without capital: no dilution, no buybacks (float ~28.4% already thin - CFO explicit), ~70% payout with explicit special-dividend optionality. Watch: special-dividend decision as net cash builds toward ~1bn.\n- iVario penetration and North-America expansion carry the volume story. Watch: US market share vs tariff-era pricing.\n- The tariff refund is excluded from the underlying reading (documented) - underlying margin 24.3% is the honest run-rate. Watch: H2 margin ex-one-offs.\n\n== SPECIAL FACTORS ==\nFamily-controlled (~55.2% Meister/Wurbser heirs + Kurtz block); 11.4M shares constant across the whole horizon by design. Net cash growing 544 -> 970M with a modest placement yield in the bridge. First population of dernierCall/guidanceHistory/quarterlyEPS/ownership/compliance/coherenceQualitative happened at this cycle's earlier refresh - schema now complete.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 1,350M (+7%), EBIT 349M (25.9%), EPS 23.86; 2027-2030: revenue +8.5%/yr, margin ~26-26.7%, conversion ~78% (ETR 24%), shares constant. Watch: Germany/Europe institutional demand; input costs; China localization progress.\n\n== CATALYSTS ==\nQ3 (Nov); special-dividend announcement window (Mar 2027); iVario milestones; US pricing normalization.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "guidance_midhigh_single_digit_2026",
+        "moteur": "Guidance officielle FY2026 desormais reaffirmee a trois reprises (call T1, IR Talk H1, communique officiel H1 du 06/08) : croissance CA mid-to-high single-digit et marge EBIT visee vers le haut de la fourchette 25-26%, confirmee par les chiffres H1 reels (CA +8% organique, marge S1 24,3% hors effet tarifaire).",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "tariff_refund_cost_offset",
+        "moteur": "Remboursement de tarifs douaniers US indument percus confirme en chiffres reels a ~14 M€, comptabilise en produit operationnel extraordinaire au T2 2026, largement compensateur du cout tarifaire Section 232 attendu sur l'annee (~28-29 M€) - effet net deja materialise dans la marge EBIT S1 26 observee (26,5% publiee, 24,3% hors effet), plus une estimation a confirmer desormais un chiffre reel.",
+        "applique": [
+          "omniumEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "operational_leverage_h2",
+        "moteur": "Saisonnalite structurelle du groupe (T1 toujours le trimestre le plus faible, T4 le plus fort, ~28-29% de marge EBIT en T4 les annees precedentes) confirmee par la sequence T1 23,9% -> T2 29,0% (dope par le remboursement tarifaire) : le levier operationnel du S2 reste attendu, appuye par un carnet de commandes en hausse de 10-15 M€ fin juin.",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "untapped_market_replacement_cycle",
+        "moteur": "Marche potentiel tres peu penetre (75% du marche iCombi et 96% du marche iVario non adresses) et base installee de plus de 800 000 appareils generant une demande de renouvellement recurrente : soutient une croissance CA mid-to-high single-digit au-dela de 2026 sans dependre d'un seul moteur produit. Inchange depuis la creation.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "china_ihexagon_rollout_optionality",
+        "moteur": "Lancement de l'iCombi One en Chine (produit local a prix plus accessible, equipe commerciale dediee en place, premier contrat grand compte deja securise ce trimestre) et deploiement geographique de l'iHexagon : upside toujours non quantifie par le management, traite comme optionnalite positive non integree au coeur de la projection CA.",
+        "applique": [],
+        "confiance": "basse"
+      },
+      {
+        "id": "net_cash_generation_payout",
+        "moteur": "Politique de distribution stable (payout ratio ~70%, rachats d'actions explicitement ecartes par le CFO du fait du flottant deja faible) associee a une generation de free cash-flow croissante : la position de tresorerie nette continue de croitre mecaniquement sur l'horizon de projection.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "price_increase_2027_consideration",
+        "moteur": "Nouvel ancrage (T2 26) : le remboursement tarifaire ne se repetera pas en 2027 (tarif moyen attendu ~14% contre l'hypothese anterieure de 10%) ; le management etudie plusieurs scenarios incluant une hausse de prix modeste si l'efficacite operationnelle ne suffit pas a absorber la hausse des couts d'intrants - aucun chiffre precis communique, traite avec prudence comme un risque/une optionnalite sur la marge 2027 plutot qu'integre au coeur de la projection.",
+        "applique": [
+          "omniumEBIT.2027"
+        ],
+        "confiance": "basse"
+      }
     ],
-    "confiance": "haute"
-   },
-   {
-    "id": "operational_leverage_h2",
-    "moteur": "Saisonnalite structurelle du groupe (T1 toujours le trimestre le plus faible, T4 le plus fort, ~28-29% de marge EBIT en T4 les annees precedentes) confirmee par la sequence T1 23,9% -> T2 29,0% (dope par le remboursement tarifaire) : le levier operationnel du S2 reste attendu, appuye par un carnet de commandes en hausse de 10-15 M€ fin juin.",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "untapped_market_replacement_cycle",
-    "moteur": "Marche potentiel tres peu penetre (75% du marche iCombi et 96% du marche iVario non adresses) et base installee de plus de 800 000 appareils generant une demande de renouvellement recurrente : soutient une croissance CA mid-to-high single-digit au-dela de 2026 sans dependre d'un seul moteur produit. Inchange depuis la creation.",
-    "applique": [
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "china_ihexagon_rollout_optionality",
-    "moteur": "Lancement de l'iCombi One en Chine (produit local a prix plus accessible, equipe commerciale dediee en place, premier contrat grand compte deja securise ce trimestre) et deploiement geographique de l'iHexagon : upside toujours non quantifie par le management, traite comme optionnalite positive non integree au coeur de la projection CA.",
-    "applique": [],
-    "confiance": "basse"
-   },
-   {
-    "id": "net_cash_generation_payout",
-    "moteur": "Politique de distribution stable (payout ratio ~70%, rachats d'actions explicitement ecartes par le CFO du fait du flottant deja faible) associee a une generation de free cash-flow croissante : la position de tresorerie nette continue de croitre mecaniquement sur l'horizon de projection.",
-    "applique": [
-     "omniumND.2026",
-     "omniumND.2027",
-     "omniumND.2028",
-     "omniumND.2029",
-     "omniumND.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "price_increase_2027_consideration",
-    "moteur": "Nouvel ancrage (T2 26) : le remboursement tarifaire ne se repetera pas en 2027 (tarif moyen attendu ~14% contre l'hypothese anterieure de 10%) ; le management etudie plusieurs scenarios incluant une hausse de prix modeste si l'efficacite operationnelle ne suffit pas a absorber la hausse des couts d'intrants - aucun chiffre precis communique, traite avec prudence comme un risque/une optionnalite sur la marge 2027 plutot qu'integre au coeur de la projection.",
-    "applique": [
-     "omniumEBIT.2027"
-    ],
-    "confiance": "basse"
-   }
-  ],
-  "omniumCA": {
-   "2026": 1350,
-   "2027": 1470,
-   "2028": 1600,
-   "2029": 1740,
-   "2030": 1885
-  },
-  "omniumEBIT": {
-   "2026": 349,
-   "2027": 378,
-   "2028": 421,
-   "2029": 462,
-   "2030": 503
-  },
-  "omniumNet": {
-   "2026": 272,
-   "2027": 295,
-   "2028": 328,
-   "2029": 360,
-   "2030": 392
-  },
-  "omniumShares": {
-   "2026": 11.4,
-   "2027": 11.4,
-   "2028": 11.4,
-   "2029": 11.4,
-   "2030": 11.4
-  },
-  "omniumEPS": {
-   "2026": 23.86,
-   "2027": 25.88,
-   "2028": 28.77,
-   "2029": 31.58,
-   "2030": 34.39
-  },
-  "omniumND": {
-   "2026": -550,
-   "2027": -640,
-   "2028": -740,
-   "2029": -850,
-   "2030": -970
-  },
-  "quarterlyEPS": {
-   "cadence": "trimestriel",
-   "historique": [],
-   "PY": [
-    {
-     "label": "T1",
-     "eps": 5.0,
-     "actual": true
+    "omniumCA": {
+      "2026": 1350,
+      "2027": 1470,
+      "2028": 1600,
+      "2029": 1740,
+      "2030": 1885
     },
-    {
-     "label": "T2",
-     "eps": 5.58,
-     "actual": true
+    "omniumEBIT": {
+      "2026": 349,
+      "2027": 378,
+      "2028": 421,
+      "2029": 462,
+      "2030": 503
     },
-    {
-     "label": "T3",
-     "eps": 5.53,
-     "actual": true
+    "omniumNet": {
+      "2026": 272,
+      "2027": 295,
+      "2028": 328,
+      "2029": 360,
+      "2030": 392
     },
-    {
-     "label": "T4",
-     "eps": 6.16,
-     "actual": true
+    "omniumShares": {
+      "2026": 11.4,
+      "2027": 11.4,
+      "2028": 11.4,
+      "2029": 11.4,
+      "2030": 11.4
+    },
+    "omniumEPS": {
+      "2026": 23.86,
+      "2027": 25.88,
+      "2028": 28.77,
+      "2029": 31.58,
+      "2030": 34.39
+    },
+    "omniumND": {
+      "2026": -550,
+      "2027": -640,
+      "2028": -740,
+      "2029": -850,
+      "2030": -970
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "historique": [],
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 5.0,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 5.58,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 5.53,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 6.16,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 5.21,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 6.43,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 5.78,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 6.44,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 5.65,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 6.97,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 6.27,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 6.99,
+          "actual": false
+        }
+      ]
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 6,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 254.3,
+        "netPub": 254,
+        "residual": -0.3,
+        "residualNote": "Reconciles cleanly: modest interest income on the net cash (short-duration placements), ETR ~25% actual vs 24% normative projected."
+      },
+      "2026": {
+        "finNet": 9,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 272.1
+      },
+      "2027": {
+        "finNet": 10,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 294.9
+      },
+      "2028": {
+        "finNet": 11,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 328.3
+      },
+      "2029": {
+        "finNet": 12,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 360.2
+      },
+      "2030": {
+        "finNet": 13,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 392.2
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Revenue growth (guided band) + EBIT margin (25-26% band)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-08-06",
+          "type": "guidance_revised",
+          "detail": "FY26 reaffirmed (3rd time): revenue mid-to-high SD; EBIT margin toward the top of 25-26% (incl. ~14M US tariff refund booked in Q2)."
+        }
+      ],
+      "paceCheckpoint": "H1 real: revenue +8% organic (641.5M), EBIT +11% (169.9M), margin 26.5% record (24.3% ex-tariff refund - already fully on guidance without the one-off).",
+      "weightedBeatPct": null,
+      "annualBeatPct": 0.1,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 1.0,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "mid-single-digit growth (~+5), EBIT ~26%",
+          "realizedDisplay": "+6% (+8% cc), EBIT 26.4%",
+          "note": "Initial FY25 guidance (annual report, Mar 2025): mid-single-digit sales growth (~+5%), EBIT margin ~26%; realized +6% reported (+8% cc) to 1.26bn EUR, EBIT margin 26.4% - level +1.0%, margin above."
+        },
+        {
+          "fy": 2024,
+          "beatPct": -0.5,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "mid-to-high single-digit (~+6.5)",
+          "realizedDisplay": "+6% , EBIT 26.3%",
+          "note": "Initial FY24 guidance (annual report, Mar 2024): mid-to-high single-digit organic growth (~+6.5%), EBIT margin close to prior year; realized +6.0% (1.194bn), margin 26.3% held - level -0.5% (low end of the guided band, margin delivered)."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 7.0,
+        "source": "initial_guidance",
+        "date": "2026-08-06",
+        "note": "FY26 guided: mid-to-high single-digit revenue growth (quantified mid ~+7%), EBIT margin toward the TOP of the 25-26% band (US tariff refund included). Reaffirmed THREE consecutive times since the March initial statement (not captured; terms identical per the reaffirmations) - dated at the latest archived confirmation."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +0.1% BLENDED (in-progress 0.0 x1/2; FY25 +1.0 and FY24 -0.5 equal-shared). Rational guides qualitative bands quantified at mid - a guider that lands where it points; metric is revenue growth (no EPS guidance), directional only.",
+      "consensusSource": "S&P Global Market Intelligence (GAAP)",
+      "consensusDate": "2026-08-06",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 7.0,
+        "currentValue": 7.0,
+        "deltaPct": 0.0,
+        "asOf": "2026-08-06",
+        "note": "FY26 frame (mid-to-high single-digit, EBIT 25-26%) maintained unchanged at H1 (06/08) - fourth consecutive reaffirmation; H1 ran at +8% organic."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-08-06",
+      "label": "Q2 2026",
+      "type": "earnings"
     }
-   ],
-   "CY": [
-    {
-     "label": "T1",
-     "eps": 5.21,
-     "actual": true
-    },
-    {
-     "label": "T2",
-     "eps": 6.43,
-     "actual": true
-    },
-    {
-     "label": "T3",
-     "eps": 5.78,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 6.44,
-     "actual": false
-    }
-   ],
-   "NY": [
-    {
-     "label": "T1",
-     "eps": 5.65,
-     "actual": false
-    },
-    {
-     "label": "T2",
-     "eps": 6.97,
-     "actual": false
-    },
-    {
-     "label": "T3",
-     "eps": 6.27,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 6.99,
-     "actual": false
-    }
-   ]
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 6,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 254.3,
-    "netPub": 254,
-    "residual": -0.3,
-    "residualNote": "Reconciles cleanly: modest interest income on the net cash (short-duration placements), ETR ~25% actual vs 24% normative projected."
-   },
-   "2026": {
-    "finNet": 9,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 272.1
-   },
-   "2027": {
-    "finNet": 10,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 294.9
-   },
-   "2028": {
-    "finNet": 11,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 328.3
-   },
-   "2029": {
-    "finNet": 12,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 360.2
-   },
-   "2030": {
-    "finNet": 13,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 392.2
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Revenue growth (guided band) + EBIT margin (25-26% band)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-08-06",
-     "type": "guidance_revised",
-     "detail": "FY26 reaffirmed (3rd time): revenue mid-to-high SD; EBIT margin toward the top of 25-26% (incl. ~14M US tariff refund booked in Q2)."
-    }
-   ],
-   "paceCheckpoint": "H1 real: revenue +8% organic (641.5M), EBIT +11% (169.9M), margin 26.5% record (24.3% ex-tariff refund - already fully on guidance without the one-off).",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
-    },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 7.0,
-    "source": "initial_guidance",
-    "date": "2026-08-06",
-    "note": "FY26 guided: mid-to-high single-digit revenue growth (quantified mid ~+7%), EBIT margin toward the TOP of the 25-26% band (US tariff refund included). Reaffirmed THREE consecutive times since the March initial statement (not captured; terms identical per the reaffirmations) - dated at the latest archived confirmation."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. First measurement at the FY26 close vs the ~+7% mid.",
-   "consensusSource": "S&P Global Market Intelligence (GAAP)",
-   "consensusDate": "2026-08-06"
-  },
-  "revisionEvent": {
-   "date": "2026-08-06",
-   "label": "Q2 2026",
-   "type": "earnings"
   }
- }
 }

@@ -1,377 +1,392 @@
 {
- "name": "Repligen",
- "cours": 142.4,
- "yahooSymbol": "RGEN",
- "dividende": 0.0,
- "data": [
-  {
-   "year": 2021,
-   "ca": 670.5,
-   "ebit": 167.2,
-   "net": 129,
-   "shares": 57.5,
-   "nd": -70,
-   "div": 0
-  },
-  {
-   "year": 2022,
-   "ca": 801.5,
-   "ebit": 224.7,
-   "net": 186.0,
-   "shares": 57.4,
-   "nd": -95,
-   "div": 0
-  },
-  {
-   "year": 2023,
-   "ca": 638.8,
-   "ebit": 54.6,
-   "net": 41.6,
-   "shares": 57.5,
-   "nd": -116,
-   "div": 0
-  },
-  {
-   "year": 2024,
-   "ca": 634,
-   "ebit": 12,
-   "net": 12,
-   "shares": 57.8,
-   "nd": -177,
-   "div": 0
-  },
-  {
-   "year": 2025,
-   "ca": 738,
-   "ebit": 55,
-   "net": 49,
-   "shares": 57.0,
-   "nd": -178,
-   "div": 0
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 2.06,
-  "epsNY": 2.36,
-  "date": "2026-07-28",
-  "source": "Guidance officielle Repligen (Adjusted non-GAAP, relevee au T2 2026, 28/07/2026, communique complet avec tableaux de reconciliation) : EPS FY26 2.03-2.09$ (retenu au midpoint 2.06$, en hausse vs 1.97-2.05$ au T1). EPS FY27 estime par extrapolation d'une croissance ~15% (pas de consensus externe propre et fiable trouve). ATTENTION : cette base Adjusted EXCLUT l'amortissement des intangibles d'acquisition (19.3 M$ au S1 2026 seul, confirme par la reconciliation officielle), les couts d'acquisition/integration/cession, la restructuration, les couts de transformation et la variation de juste valeur des earn-outs - contrairement a la base propre du modele Omnium qui REINTEGRE uniquement l'amortissement des intangibles (omniumEPS.2026 = 1.52$, cf. ancrages) - les deux chiffres ne sont PAS directement comparables. Guidance EXCLUT explicitement tout impact de l'acquisition BioLife (non close a ce stade)."
- },
- "particularites": [],
- "nextEvent": {
-  "label": "T3 2026",
-  "date": null
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-10",
-   "eps": {
-    "2026": 1.49,
-    "2027": 1.79,
-    "2028": 2.07,
-    "2029": 2.34,
-    "2030": 2.6
-   }
-  },
-  "source": "Refresh T2 2026 - Communique complet des resultats T2 2026 (28/07/2026, incluant les etats financiers condenses et les tableaux de reconciliation GAAP/Adjusted detailles) + transcript integral du call T2 2026 (28/07/2026, Olivier Loeillot/Jason Garland, incluant la session Q&A complete) + 8-K/communique de l'annonce de l'acquisition definitive de BioLife Solutions (22/07/2026) + presse financiere specialisee (BioSpace, StockTitan, Citybiz, Yahoo Finance/BigGo, ChartMill) pour la couleur BioLife. Sources primaires completes (communique + transcript) desormais mobilisees pour ce refresh.",
-  "dernierCall": {
-   "quarter": "T2 26",
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 204.13,
-     "consensus": 205.5
+  "name": "Repligen",
+  "cours": 142.4,
+  "yahooSymbol": "RGEN",
+  "dividende": 0.0,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 670.5,
+      "ebit": 167.2,
+      "net": 129,
+      "shares": 57.5,
+      "nd": -70,
+      "div": 0
     },
-    "epsAdj": {
-     "actual": 0.54,
-     "consensus": 0.46,
-     "basis": "non-GAAP",
-     "basisNote": "Adjusted (non-GAAP) - beat net d'environ 18% ; CA quasi in line (ecart <1%, 204.13M$ vs 205.5M$ attendus). L'EPS GAAP, lui, s'est nettement degrade (0.09$ vs 0.26$ au T2 2025), l'ecart GAAP/Adjusted se creusant fortement au T2 - voir EVENEMENTS pour l'analyse de cet ecart."
+    {
+      "year": 2022,
+      "ca": 801.5,
+      "ebit": 224.7,
+      "net": 186.0,
+      "shares": 57.4,
+      "nd": -95,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 638.8,
+      "ebit": 54.6,
+      "net": 41.6,
+      "shares": 57.5,
+      "nd": -116,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 634,
+      "ebit": 12,
+      "net": 12,
+      "shares": 57.8,
+      "nd": -177,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 738,
+      "ebit": 55,
+      "net": 49,
+      "shares": 57.0,
+      "nd": -178,
+      "div": 0
     }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree explicite au-dela de l'indication que le T3 2026 sera le trimestre a plus faible marge de l'annee (saisonnalite habituelle) et que le T4 beneficiera d'un effet de levier volumes plus favorable.",
-   "guidanceAnnuelle": "Guidance FY2026 RELEVEE au T2 (base Adjusted non-GAAP, hors impact de l'acquisition BioLife Solutions non close) : CA 813-835 M$ (10-13% publie, 10.5-13.5% organique) vs 803-833 M$ precedemment ; resultat operationnel ajuste 128-134 M$ (marge 15.7-16.0%) vs 124-132 M$ precedemment ; marge EBITDA ajustee 20.3-21.0% ; EPS ajuste 2.03-2.09$ vs 1.97-2.05$ precedemment. CapEx attendu a 3-4% du CA 2026. Guidance FY26 explicitement hors impact de l'acquisition BioLife (non close a ce stade) et hors fluctuations de change futures.",
-   "pointsCles": [
-    "EVENEMENT MAJEUR DU REFRESH : annonce le 22/07/2026 d'un accord definitif pour l'acquisition de BioLife Solutions (NASDAQ: BLFS) pour une valeur d'entreprise d'environ 1.5 Md$ (31.00$/action BioLife, soit 11.25$ cash + 0.1442 action Repligen par action BioLife, mix ~64% actions / 36% cash, prime de 24% sur le VWAP 90 jours). Cloture attendue au T4 2026, sous reserve de l'approbation des actionnaires BioLife et des autorites de la concurrence. BioLife est le leader de la biopreservation cellulaire (media CryoStor, utilisee dans ~90% des therapies cellulaires commerciales approuvees selon un analyste cite dans la presse), activite tres recurrente/consommable et fortement margee.",
-    "Accretion annoncee par le management : au moins +0.05$ d'EPS ajuste en annee 1 (2027 si cloture T4 2026), au moins +0.25$ en annee 2 (2028) ; synergies de couts visees a au moins 20 M$ en annee 1 et 30 M$ en annee 2. Position de tresorerie pro forma post-cloture attendue superieure a 300 M$ (vs 810 M$ au 30/06/2026), avec un levier net vise autour de 1x - implique un decaissement cash de l'ordre de 500 M$+ pour la partie cash de la transaction, finance sur la tresorerie existante (pas de nouvelle dette annoncee a ce stade).",
-    "CORRECTION post-lecture du communique complet (E6-a/E6-b) : l'ecart GAAP/Adjusted du T2 n'est PAS principalement lie a BioLife (les couts d'acquisition/integration/cession ressortent a seulement 2.1 M$ au T2 2026, EN BAISSE vs 4.3 M$ au T2 2025 - la transaction, signee le 22/07, est trop recente pour avoir pese sur le trimestre clos le 30/06). Le resultat d'exploitation GAAP est en realite quasi stable en dollars (14.0 M$ vs 13.9 M$, marge GAAP 6.8% vs 7.6% du fait de la hausse du CA), porte par une performance operationnelle sous-jacente solide malgre un basculement defavorable de ~10 M$ de la variation de juste valeur des earn-outs (charge de 2.3 M$ au T2 2026 contre un gain de 7.9 M$ au T2 2025 - un element hors tresorerie, volatil et non previsible). La VRAIE explication du recul du resultat net GAAP (5.0 M$ vs 14.9 M$, EPS dilue 0.09$ vs 0.26$) est un taux d'imposition effectif ponctuellement tres eleve au T2 (env. 65%, contre ~18% un an plus tot et 22% de guidance normative), sans explication detaillee fournie par la societe - traite comme un element discret non recurrent, exclu de la projection normative (ETR reconduit a 22.5%).",
-    "Croissance organique T2 confirmee a deux chiffres (+13%, apres +11% au T1), portee par Proteins (~+50%) et Analytics (>+30%) ; croissance equilibree par geographie (APAC +40%, Amerique du Nord 'high teens', EMEA en repli 'mid-single-digit', Chine +60% au S1 seul selon le transcript).",
-    "Transcript desormais disponible et exploite : le CFO ne commente au T2 que le taux d'imposition AJUSTE (21.5%, tendance vers le bas de la fourchette 22-23%) - aucune mention ni question analyste sur le taux GAAP anormalement eleve (~65%), ce qui CONFIRME le traitement retenu (element discret non explique, exclu de la projection normative).",
-    "Selon le CEO, la guidance relevee (midpoint organique 12%) correspond exactement a la croissance organique deja realisee au S1 2026 (12%) : 'nous n'avons besoin d'aucune acceleration' pour atteindre le midpoint - signal de confiance elevee sur l'atteignabilite ; le haut de fourchette (13.5%) suppose en revanche un rebond ATF plus marque.",
-    "Signal positif pour 2027 non encore dans les chiffres : book-to-bill sur les equipements de capital 'significativement superieur a 1' au T2, deuxieme appel d'offres (RFP) d'onshoring remporte (un troisieme attendu 'dans les prochaines semaines'), pipeline ATF en nette amelioration (plus de nouveaux programmes/clients gagnes au S1 2026 que sur tout le S1 2025) - la direction indique que l'essentiel de ce backlog se traduira en revenus a partir de 2027, ce qui conforte sans le modifier davantage l'ancrage 'croissance_ca_post_2026'. Les deux clients a l'origine du ralentissement ATF 2026 (gestion de stocks chez l'un, site pas pret chez l'autre) sont explicitement attendus en normalisation/retour en 2027.",
-    "Guidance par franchise relevee au T2 : Proteins a 'mid-teens' pour l'annee (vs 'low double digits' avant, T2 exceptionnel a +50% porte par le partenariat Purolite, le portefeuille Avitide et les facteurs de croissance) ; Analytics a 'au moins +25%' ; Chromatography maintenu a '+20% et plus' (T2 a +12% sur base de comparaison tres elevee) ; Filtration maintenu 'mid-single-digit' (penalise par le headwind gene therapie deja connu, la cession Polymem et les deux clients ATF specifiques).",
-    "Nouvelle cible long terme mentionnee par le CEO : marge EBITDA ajustee de 30% visee d'ici 2030 (reaffirmee) - a noter dans guidanceLongTerme.",
-    "Cadence T3 2026 a surveiller : OpEx attendu en hausse sequentielle au T3 et T4 (le T2 a beneficie d'un avantage ponctuel non recurrent sur les couts de remuneration) ; marge brute ajustee attendue en repli sequentiel au T3 (plus bas point de marge de l'annee) ; marge operationnelle T3 attendue 'globalement stable' vs T3 2025 (expansion de marge nettement moins forte qu'au S1)."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T4/FY25",
-    "date": "2026-02-24",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA FY26 803-833 M$ ; resultat operationnel ajuste 124-132 M$ ; EPS ajuste 1.97-2.05$."
-   },
-   {
-    "quarter": "T1 26",
-    "date": "2026-05-05",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance de fevrier reconduite sans changement chiffre."
-   },
-   {
-    "quarter": "T2 26",
-    "date": "2026-07-28",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance RELEVEE : CA 813-835 M$ ; resultat operationnel ajuste 128-134 M$ ; EPS ajuste 2.03-2.09$. Explicitement hors impact de l'acquisition BioLife Solutions (non close)."
-   }
   ],
-  "guidanceLongTerme": "Transformation Office (annonce T1 2026) : objectif d'au moins +1pt de marge annualisee cumulee d'ici fin 2027. Cible reaffirmee lors du call T2 2026 : marge EBITDA ajustee de 30% visee d'ici 2030 (CEO, transcript T2 2026). Acquisition BioLife Solutions (annoncee juillet 2026, cloture attendue T4 2026) : accretion EPS ajuste visee a au moins +0.05$ en annee 1, +0.25$ en annee 2 ; synergies de couts visees a au moins 20 M$ puis 30 M$. Ces cibles ne sont PAS integrees dans les adjXXX de ce refresh (transaction non close, termes potentiellement encore sujets a evolution - voir tension methodologique documentee dans ancrages et PARAMETRES).",
-  "summary": "Le T2 2026 confirme la reacceleration organique (+13%, apres +11% au T1) et un beat tres net sur la profitabilite ajustee, mais le fait marquant du refresh est ailleurs : l'annonce le 22/07/2026 d'un accord definitif pour acquerir BioLife Solutions pour ~1.5 Md$, une operation transformante (quasiment le double du CA annuel de Repligen en valeur d'entreprise) qui n'est pas close et n'est donc PAS integree aux adjXXX de ce refresh, mais qui dominera largement la these au prochain cycle.",
-  "text": "== THESIS SUMMARY ==\nBioprocessing consumables platform in confirmed organic reacceleration: +11% Q1, +13% Q2, adjusted operating margin 16.7% (vs 12.0% a year ago), FY26 guidance raised (revenue 813-835M, adjusted EPS 2.03-2.09). The structuring event is the definitive agreement (22/07) to acquire BioLife Solutions - biopreservation leader present in nearly all approved commercial cell therapies - for ~1.5bn EV, nearly twice Repligen's annual revenue, ~64% paid in shares, closing expected Q4 2026.\n\n== THESIS READ ==\n- Organic engine healthy and margin inflecting - the standalone thesis needs no M&A to work. Watch: Q3 organic print and margin follow-through.\n- BioLife is NOT in the numbers (unclosed, per protocol): omniumND and omniumShares 2027-2030 do not reflect the ~500M+ cash outlay nor the share issuance. A FULL model rebuild is mandatory at closing. Watch: closing timeline/terms; regulatory clearances.\n- Guidance discipline is exemplary (initial -> reconducted -> raised, all archived) - the cleanest scorecard anchor chain in the portfolio. Watch: FY26 close vs the 2.01 initial anchor.\n\n== SPECIAL FACTORS ==\nMAJOR METHODOLOGICAL TENSION (documented, deliberate): announced-but-unclosed BioLife excluded from projections while being potentially transformative. Basis mismatch documented: Omnium base keeps intangible amortization/SBC that the company's 'adjusted' excludes (Omnium 1.52 vs guided 2.06 for 2026). Net cash balance sheet (-178M growing to -530M standalone).\n\n== PARAMETERS & WATCH-LIST ==\nStandalone: revenue +11%/yr to 1,197M in 2030, EBIT margin 11.2% -> 13.9% (Omnium base), ETR 15% GAAP (credits on thin pretax), interest income ~+9-10M/yr. Published 2025 reconciles at ~0 residual. Watch: BioLife closing (Q4 26) -> rebuild; CDMO capex cycle; China exposure.\n\n== CATALYSTS ==\nBioLife closing (Q4 26); Q3 results (Oct); FY27 guidance (Feb) - first combined-entity frame if closed.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "retraitement_fy24_restructuration",
-    "moteur": "Charges de restructuration/inventaire de 47 M$ (FY2024), explicitement quantifiees et qualifiees de non-recurrentes par le management (severance + rationalisation industrielle), retraitees directement dans data.2024 conformement a E5 d-bis pour ne pas polluer la base CAGR automatique du moteur. Inchange ce refresh.",
-    "applique": [
-     "data.2024.ebit",
-     "data.2024.net"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "guidance_fy26_relevee",
-    "moteur": "Guidance officielle FY26 RELEVEE au T2 (28/07/2026, hors impact BioLife) : CA 813-835 M$ (vs 803-833 M$ precedemment), resultat operationnel ajuste 128-134 M$ (vs 124-132 M$), EPS ajuste 2.03-2.09$ (vs 1.97-2.05$). Utilisee comme ancrage direct du chiffre d'affaires (omniumCA.2026) au midpoint (824 M$).",
-    "applique": [
-     "omniumCA.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "reintegration_amortissement",
-    "moteur": "FIABILISE ce refresh grace au communique complet T2 2026 (tableaux de reconciliation officiels) : amortissement des intangibles d'acquisition mesure a 19.3 M$ sur le S1 2026 (stable vs 19.3 M$ S1 2025), extrapole a ~39 M$ pour FY26 complet (proche de l'estimation de creation, ~37 M$ - hypothese initiale globalement validee par la donnee reelle). Reste REINTEGRE dans la base propre du modele (E5e), exclu par le management de son Adjusted EPS. omniumEBIT.2026 = resultat operationnel ajuste guide (131 M$ midpoint, guidance relevee) - 39 M$ = 92 M$, soit une marge de 11.2% au lieu des 15.9% suggeres par la guidance Adjusted. Confiance relevee a MOYENNE (S1 mesure, S2 extrapole).",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "transformation_office_marge",
-    "moteur": "Transformation Office (annonce T1 2026) visant au moins +1pt de marge annualisee cumulee d'ici fin 2027 - integre a une trajectoire d'expansion graduelle de la marge EBIT propre (10.4% 2026 -> 11.6% 2027 -> 14.0% 2030), en plus du levier operationnel normal lie a la croissance du CA. Trajectoire legerement revisee a la baisse en fin d'horizon vs la creation (14.5% -> 14.0% en 2030) compte tenu de la reevaluation a la hausse de l'amortissement recurrent.",
-    "applique": [
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "basse"
-   },
-   {
-    "id": "croissance_ca_post_2026",
-    "moteur": "Deceleration graduelle de la croissance organique au-dela de la guidance FY26 relevee, vers un regime plus mature (+11% 2027, +10% 2028, +9% 2029-2030) - inchange vs la creation, la reacceleration confirmee au T2 (+13% organique) ne modifiant pas la logique de deceleration progressive a plus long terme en l'absence de guidance explicite au-dela de FY26.",
-    "applique": [
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "basse"
-   },
-   {
-    "id": "etr_normatif",
-    "moteur": "Taux d'imposition normatif de 22.5%, milieu de la fourchette de guidance FY26 (22-23%), reconduit par simplification sur tout l'horizon de projection - inchange ce refresh.",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "biolife_exclu_adjxxx",
-    "moteur": "TENSION METHODOLOGIQUE DOCUMENTEE : l'acquisition definitive de BioLife Solutions (~1.5 Md$ EV, annoncee 22/07/2026, cloture attendue T4 2026) N'EST PAS integree aux adjXXX 2026-2030 de ce refresh, en coherence avec la discipline du protocole (seuls les evenements confirmes/clos sont quantifies). Consequence assumee : omniumND et omniumShares ne refletent pas le decaissement cash (~500M$+) ni la dilution actionnariale (~64% de la consideration en actions) attendus a la cloture, ni l'accretion EPS ajuste visee par le management (+0.05$ annee 1, +0.25$ annee 2) ni les synergies de couts (>=20M$ puis >=30M$). Refonte complete requise au prochain refresh des que la cloture est confirmee (ou si le calendrier/les termes evoluent).",
-    "applique": [
-     "omniumCA.2027",
-     "omniumEBIT.2027",
-     "omniumNet.2027",
-     "omniumND.2027",
-     "omniumShares.2027"
-    ],
-    "confiance": "basse"
-   },
-   {
-    "id": "convertibles_2028",
-    "moteur": "Notes convertibles de 600 M$ (1.00%, echeance 2028) supposees refinancees plutot que remboursees cash a maturite - hypothese non confirmee par la societe, potentiellement complexifiee par le financement de l'acquisition BioLife (utilisation de tresorerie existante annoncee pour la partie cash de la transaction, sans nouvelle dette mentionnee a ce stade). A traiter comme un point de vigilance renforce plutot qu'une certitude.",
-    "applique": [
-     "omniumND.2027",
-     "omniumND.2028",
-     "omniumND.2029",
-     "omniumND.2030"
-    ],
-    "confiance": "basse"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 1.52,
-   "2027": 1.77,
-   "2028": 2.04,
-   "2029": 2.3,
-   "2030": 2.57
-  },
-  "omniumCA": {
-   "2026": 824,
-   "2027": 915,
-   "2028": 1007,
-   "2029": 1098,
-   "2030": 1197
-  },
-  "omniumEBIT": {
-   "2026": 92,
-   "2027": 110,
-   "2028": 129,
-   "2029": 147,
-   "2030": 166
-  },
-  "omniumNet": {
-   "2026": 87,
-   "2027": 101,
-   "2028": 117,
-   "2029": 133,
-   "2030": 149
-  },
-  "omniumND": {
-   "2026": -250,
-   "2027": -320,
-   "2028": -390,
-   "2029": -460,
-   "2030": -530
-  },
-  "omniumShares": {
-   "2026": 56.8,
-   "2027": 57.1,
-   "2028": 57.4,
-   "2029": 57.7,
-   "2030": 58.0
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 3,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 49.3,
-    "netPub": 49,
-    "residual": -0.3,
-    "residualNote": "Reconciles on the Omnium base (GAAP-leaning, heavy intangible amortization kept in): small interest income on net cash, low effective GAAP tax (~15%, credits on a thin pretax base)."
-   },
-   "2026": {
-    "finNet": 10,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 86.7
-   },
-   "2027": {
-    "finNet": 9,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 101.15
-   },
-   "2028": {
-    "finNet": 9,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 117.3
-   },
-   "2029": {
-    "finNet": 9,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 132.6
-   },
-   "2030": {
-    "finNet": 9,
-    "other": 0,
-    "taxRate": 0.15,
-    "minorities": 0,
-    "netCalc": 148.75
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Adjusted EPS (guided range)",
-   "comparedAgainst": "guidance",
-   "basisAligned": false,
-   "basisNote": "Omnium EPS (1.52 for 2026) sits structurally BELOW the guided adjusted EPS (2.06): the Omnium base keeps intangible amortization and SBC that Repligen excludes from 'adjusted'. The beat is measured on the company's own adjusted metric.",
-   "timeline": [
-    {
-     "date": "2026-05-05",
-     "type": "guidance_revised",
-     "detail": "February guidance reconducted unchanged."
-    },
-    {
-     "date": "2026-07-28",
-     "type": "guidance_revised",
-     "detail": "RAISED: revenue 813-835M, adjusted operating income 128-134M, adjusted EPS 2.03-2.09 - explicitly excluding BioLife (not closed)."
-    }
-   ],
-   "paceCheckpoint": "Q2 real: organic +13% (after +11% Q1), adjusted operating margin 16.7% (vs 12.0% a year ago); adjusted EPS beat ~18%.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
-    },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 2.01,
-    "source": "initial_guidance",
-    "date": "2026-02-24",
-    "note": "Initial FY26 guidance at FY25 results: revenue 803-833M, adjusted operating income 124-132M, adjusted EPS 1.97-2.05 (mid 2.01). Reconducted in May, RAISED on 28/07 to 2.03-2.09 (explicitly ex-BioLife). A clean, fully archived anchor chain - the best in the portfolio."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (FY25 initial guidance not archived). FY26 will deliver the first observation vs the 2.01 initial anchor - in-year raise already signals a beat.",
-   "consensusSource": "Company guidance (adjusted, ex-BioLife)",
-   "consensusDate": "2026-07-28"
-  },
-  "revisionEvent": {
-   "date": "2026-07-28",
-   "label": "Q2 2026",
-   "type": "earnings"
-  }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q2 26",
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 2.06,
+    "epsNY": 2.36,
     "date": "2026-07-28",
-    "source": "Q2 release/call (as exploited at the 29/07 refresh)",
-    "message": "Organic reacceleration confirmed (+11% Q1, +13% Q2), adjusted operating margin 16.7% vs 12.0% a year ago, guidance raised (813-835M / adjusted EPS 2.03-2.09, ex-BioLife). The structural event is the 22/07 definitive agreement to acquire BioLife Solutions (~1.5bn EV, ~64% of consideration in Repligen shares, closing expected Q4 26) - NOT integrated in projections per protocol (unclosed); a full model rebuild is required at closing (share count, cash outflow, combined P&L)."
-   }
-  ]
- }
+    "source": "Guidance officielle Repligen (Adjusted non-GAAP, relevee au T2 2026, 28/07/2026, communique complet avec tableaux de reconciliation) : EPS FY26 2.03-2.09$ (retenu au midpoint 2.06$, en hausse vs 1.97-2.05$ au T1). EPS FY27 estime par extrapolation d'une croissance ~15% (pas de consensus externe propre et fiable trouve). ATTENTION : cette base Adjusted EXCLUT l'amortissement des intangibles d'acquisition (19.3 M$ au S1 2026 seul, confirme par la reconciliation officielle), les couts d'acquisition/integration/cession, la restructuration, les couts de transformation et la variation de juste valeur des earn-outs - contrairement a la base propre du modele Omnium qui REINTEGRE uniquement l'amortissement des intangibles (omniumEPS.2026 = 1.52$, cf. ancrages) - les deux chiffres ne sont PAS directement comparables. Guidance EXCLUT explicitement tout impact de l'acquisition BioLife (non close a ce stade)."
+  },
+  "particularites": [],
+  "nextEvent": {
+    "label": "T3 2026",
+    "date": null
+  },
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-10",
+      "eps": {
+        "2026": 1.49,
+        "2027": 1.79,
+        "2028": 2.07,
+        "2029": 2.34,
+        "2030": 2.6
+      }
+    },
+    "source": "Refresh T2 2026 - Communique complet des resultats T2 2026 (28/07/2026, incluant les etats financiers condenses et les tableaux de reconciliation GAAP/Adjusted detailles) + transcript integral du call T2 2026 (28/07/2026, Olivier Loeillot/Jason Garland, incluant la session Q&A complete) + 8-K/communique de l'annonce de l'acquisition definitive de BioLife Solutions (22/07/2026) + presse financiere specialisee (BioSpace, StockTitan, Citybiz, Yahoo Finance/BigGo, ChartMill) pour la couleur BioLife. Sources primaires completes (communique + transcript) desormais mobilisees pour ce refresh.",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 204.13,
+          "consensus": 205.5
+        },
+        "epsAdj": {
+          "actual": 0.54,
+          "consensus": 0.46,
+          "basis": "non-GAAP",
+          "basisNote": "Adjusted (non-GAAP) - beat net d'environ 18% ; CA quasi in line (ecart <1%, 204.13M$ vs 205.5M$ attendus). L'EPS GAAP, lui, s'est nettement degrade (0.09$ vs 0.26$ au T2 2025), l'ecart GAAP/Adjusted se creusant fortement au T2 - voir EVENEMENTS pour l'analyse de cet ecart."
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree explicite au-dela de l'indication que le T3 2026 sera le trimestre a plus faible marge de l'annee (saisonnalite habituelle) et que le T4 beneficiera d'un effet de levier volumes plus favorable.",
+      "guidanceAnnuelle": "Guidance FY2026 RELEVEE au T2 (base Adjusted non-GAAP, hors impact de l'acquisition BioLife Solutions non close) : CA 813-835 M$ (10-13% publie, 10.5-13.5% organique) vs 803-833 M$ precedemment ; resultat operationnel ajuste 128-134 M$ (marge 15.7-16.0%) vs 124-132 M$ precedemment ; marge EBITDA ajustee 20.3-21.0% ; EPS ajuste 2.03-2.09$ vs 1.97-2.05$ precedemment. CapEx attendu a 3-4% du CA 2026. Guidance FY26 explicitement hors impact de l'acquisition BioLife (non close a ce stade) et hors fluctuations de change futures.",
+      "pointsCles": [
+        "EVENEMENT MAJEUR DU REFRESH : annonce le 22/07/2026 d'un accord definitif pour l'acquisition de BioLife Solutions (NASDAQ: BLFS) pour une valeur d'entreprise d'environ 1.5 Md$ (31.00$/action BioLife, soit 11.25$ cash + 0.1442 action Repligen par action BioLife, mix ~64% actions / 36% cash, prime de 24% sur le VWAP 90 jours). Cloture attendue au T4 2026, sous reserve de l'approbation des actionnaires BioLife et des autorites de la concurrence. BioLife est le leader de la biopreservation cellulaire (media CryoStor, utilisee dans ~90% des therapies cellulaires commerciales approuvees selon un analyste cite dans la presse), activite tres recurrente/consommable et fortement margee.",
+        "Accretion annoncee par le management : au moins +0.05$ d'EPS ajuste en annee 1 (2027 si cloture T4 2026), au moins +0.25$ en annee 2 (2028) ; synergies de couts visees a au moins 20 M$ en annee 1 et 30 M$ en annee 2. Position de tresorerie pro forma post-cloture attendue superieure a 300 M$ (vs 810 M$ au 30/06/2026), avec un levier net vise autour de 1x - implique un decaissement cash de l'ordre de 500 M$+ pour la partie cash de la transaction, finance sur la tresorerie existante (pas de nouvelle dette annoncee a ce stade).",
+        "CORRECTION post-lecture du communique complet (E6-a/E6-b) : l'ecart GAAP/Adjusted du T2 n'est PAS principalement lie a BioLife (les couts d'acquisition/integration/cession ressortent a seulement 2.1 M$ au T2 2026, EN BAISSE vs 4.3 M$ au T2 2025 - la transaction, signee le 22/07, est trop recente pour avoir pese sur le trimestre clos le 30/06). Le resultat d'exploitation GAAP est en realite quasi stable en dollars (14.0 M$ vs 13.9 M$, marge GAAP 6.8% vs 7.6% du fait de la hausse du CA), porte par une performance operationnelle sous-jacente solide malgre un basculement defavorable de ~10 M$ de la variation de juste valeur des earn-outs (charge de 2.3 M$ au T2 2026 contre un gain de 7.9 M$ au T2 2025 - un element hors tresorerie, volatil et non previsible). La VRAIE explication du recul du resultat net GAAP (5.0 M$ vs 14.9 M$, EPS dilue 0.09$ vs 0.26$) est un taux d'imposition effectif ponctuellement tres eleve au T2 (env. 65%, contre ~18% un an plus tot et 22% de guidance normative), sans explication detaillee fournie par la societe - traite comme un element discret non recurrent, exclu de la projection normative (ETR reconduit a 22.5%).",
+        "Croissance organique T2 confirmee a deux chiffres (+13%, apres +11% au T1), portee par Proteins (~+50%) et Analytics (>+30%) ; croissance equilibree par geographie (APAC +40%, Amerique du Nord 'high teens', EMEA en repli 'mid-single-digit', Chine +60% au S1 seul selon le transcript).",
+        "Transcript desormais disponible et exploite : le CFO ne commente au T2 que le taux d'imposition AJUSTE (21.5%, tendance vers le bas de la fourchette 22-23%) - aucune mention ni question analyste sur le taux GAAP anormalement eleve (~65%), ce qui CONFIRME le traitement retenu (element discret non explique, exclu de la projection normative).",
+        "Selon le CEO, la guidance relevee (midpoint organique 12%) correspond exactement a la croissance organique deja realisee au S1 2026 (12%) : 'nous n'avons besoin d'aucune acceleration' pour atteindre le midpoint - signal de confiance elevee sur l'atteignabilite ; le haut de fourchette (13.5%) suppose en revanche un rebond ATF plus marque.",
+        "Signal positif pour 2027 non encore dans les chiffres : book-to-bill sur les equipements de capital 'significativement superieur a 1' au T2, deuxieme appel d'offres (RFP) d'onshoring remporte (un troisieme attendu 'dans les prochaines semaines'), pipeline ATF en nette amelioration (plus de nouveaux programmes/clients gagnes au S1 2026 que sur tout le S1 2025) - la direction indique que l'essentiel de ce backlog se traduira en revenus a partir de 2027, ce qui conforte sans le modifier davantage l'ancrage 'croissance_ca_post_2026'. Les deux clients a l'origine du ralentissement ATF 2026 (gestion de stocks chez l'un, site pas pret chez l'autre) sont explicitement attendus en normalisation/retour en 2027.",
+        "Guidance par franchise relevee au T2 : Proteins a 'mid-teens' pour l'annee (vs 'low double digits' avant, T2 exceptionnel a +50% porte par le partenariat Purolite, le portefeuille Avitide et les facteurs de croissance) ; Analytics a 'au moins +25%' ; Chromatography maintenu a '+20% et plus' (T2 a +12% sur base de comparaison tres elevee) ; Filtration maintenu 'mid-single-digit' (penalise par le headwind gene therapie deja connu, la cession Polymem et les deux clients ATF specifiques).",
+        "Nouvelle cible long terme mentionnee par le CEO : marge EBITDA ajustee de 30% visee d'ici 2030 (reaffirmee) - a noter dans guidanceLongTerme.",
+        "Cadence T3 2026 a surveiller : OpEx attendu en hausse sequentielle au T3 et T4 (le T2 a beneficie d'un avantage ponctuel non recurrent sur les couts de remuneration) ; marge brute ajustee attendue en repli sequentiel au T3 (plus bas point de marge de l'annee) ; marge operationnelle T3 attendue 'globalement stable' vs T3 2025 (expansion de marge nettement moins forte qu'au S1)."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "10-Q T2 2026 + communique (28/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 204,1 M$ (+12%, +13% organique), adj EPS 0,54$, resultat operationnel GAAP 14,0 M$ vs 34,0 M$ ajuste (ecart amortissements/one-offs conforme a l'ancrage). Guidance relevee (croissance organique 10,5-13,5%, EPS 2,03-2,09$); acquisition BioLife Solutions annoncee."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T4/FY25",
+        "date": "2026-02-24",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA FY26 803-833 M$ ; resultat operationnel ajuste 124-132 M$ ; EPS ajuste 1.97-2.05$."
+      },
+      {
+        "quarter": "T1 26",
+        "date": "2026-05-05",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance de fevrier reconduite sans changement chiffre."
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-28",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Guidance RELEVEE : CA 813-835 M$ ; resultat operationnel ajuste 128-134 M$ ; EPS ajuste 2.03-2.09$. Explicitement hors impact de l'acquisition BioLife Solutions (non close)."
+      }
+    ],
+    "guidanceLongTerme": "Transformation Office (annonce T1 2026) : objectif d'au moins +1pt de marge annualisee cumulee d'ici fin 2027. Cible reaffirmee lors du call T2 2026 : marge EBITDA ajustee de 30% visee d'ici 2030 (CEO, transcript T2 2026). Acquisition BioLife Solutions (annoncee juillet 2026, cloture attendue T4 2026) : accretion EPS ajuste visee a au moins +0.05$ en annee 1, +0.25$ en annee 2 ; synergies de couts visees a au moins 20 M$ puis 30 M$. Ces cibles ne sont PAS integrees dans les adjXXX de ce refresh (transaction non close, termes potentiellement encore sujets a evolution - voir tension methodologique documentee dans ancrages et PARAMETRES).",
+    "summary": "Le T2 2026 confirme la reacceleration organique (+13%, apres +11% au T1) et un beat tres net sur la profitabilite ajustee, mais le fait marquant du refresh est ailleurs : l'annonce le 22/07/2026 d'un accord definitif pour acquerir BioLife Solutions pour ~1.5 Md$, une operation transformante (quasiment le double du CA annuel de Repligen en valeur d'entreprise) qui n'est pas close et n'est donc PAS integree aux adjXXX de ce refresh, mais qui dominera largement la these au prochain cycle.",
+    "text": "== THESIS SUMMARY ==\nBioprocessing consumables platform in confirmed organic reacceleration: +11% Q1, +13% Q2, adjusted operating margin 16.7% (vs 12.0% a year ago), FY26 guidance raised (revenue 813-835M, adjusted EPS 2.03-2.09). The structuring event is the definitive agreement (22/07) to acquire BioLife Solutions - biopreservation leader present in nearly all approved commercial cell therapies - for ~1.5bn EV, nearly twice Repligen's annual revenue, ~64% paid in shares, closing expected Q4 2026.\n\n== THESIS READ ==\n- Organic engine healthy and margin inflecting - the standalone thesis needs no M&A to work. Watch: Q3 organic print and margin follow-through.\n- BioLife is NOT in the numbers (unclosed, per protocol): omniumND and omniumShares 2027-2030 do not reflect the ~500M+ cash outlay nor the share issuance. A FULL model rebuild is mandatory at closing. Watch: closing timeline/terms; regulatory clearances.\n- Guidance discipline is exemplary (initial -> reconducted -> raised, all archived) - the cleanest scorecard anchor chain in the portfolio. Watch: FY26 close vs the 2.01 initial anchor.\n\n== SPECIAL FACTORS ==\nMAJOR METHODOLOGICAL TENSION (documented, deliberate): announced-but-unclosed BioLife excluded from projections while being potentially transformative. Basis mismatch documented: Omnium base keeps intangible amortization/SBC that the company's 'adjusted' excludes (Omnium 1.52 vs guided 2.06 for 2026). Net cash balance sheet (-178M growing to -530M standalone).\n\n== PARAMETERS & WATCH-LIST ==\nStandalone: revenue +11%/yr to 1,197M in 2030, EBIT margin 11.2% -> 13.9% (Omnium base), ETR 15% GAAP (credits on thin pretax), interest income ~+9-10M/yr. Published 2025 reconciles at ~0 residual. Watch: BioLife closing (Q4 26) -> rebuild; CDMO capex cycle; China exposure.\n\n== CATALYSTS ==\nBioLife closing (Q4 26); Q3 results (Oct); FY27 guidance (Feb) - first combined-entity frame if closed.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "retraitement_fy24_restructuration",
+        "moteur": "Charges de restructuration/inventaire de 47 M$ (FY2024), explicitement quantifiees et qualifiees de non-recurrentes par le management (severance + rationalisation industrielle), retraitees directement dans data.2024 conformement a E5 d-bis pour ne pas polluer la base CAGR automatique du moteur. Inchange ce refresh.",
+        "applique": [
+          "data.2024.ebit",
+          "data.2024.net"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "guidance_fy26_relevee",
+        "moteur": "Guidance officielle FY26 RELEVEE au T2 (28/07/2026, hors impact BioLife) : CA 813-835 M$ (vs 803-833 M$ precedemment), resultat operationnel ajuste 128-134 M$ (vs 124-132 M$), EPS ajuste 2.03-2.09$ (vs 1.97-2.05$). Utilisee comme ancrage direct du chiffre d'affaires (omniumCA.2026) au midpoint (824 M$).",
+        "applique": [
+          "omniumCA.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "reintegration_amortissement",
+        "moteur": "FIABILISE ce refresh grace au communique complet T2 2026 (tableaux de reconciliation officiels) : amortissement des intangibles d'acquisition mesure a 19.3 M$ sur le S1 2026 (stable vs 19.3 M$ S1 2025), extrapole a ~39 M$ pour FY26 complet (proche de l'estimation de creation, ~37 M$ - hypothese initiale globalement validee par la donnee reelle). Reste REINTEGRE dans la base propre du modele (E5e), exclu par le management de son Adjusted EPS. omniumEBIT.2026 = resultat operationnel ajuste guide (131 M$ midpoint, guidance relevee) - 39 M$ = 92 M$, soit une marge de 11.2% au lieu des 15.9% suggeres par la guidance Adjusted. Confiance relevee a MOYENNE (S1 mesure, S2 extrapole).",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "transformation_office_marge",
+        "moteur": "Transformation Office (annonce T1 2026) visant au moins +1pt de marge annualisee cumulee d'ici fin 2027 - integre a une trajectoire d'expansion graduelle de la marge EBIT propre (10.4% 2026 -> 11.6% 2027 -> 14.0% 2030), en plus du levier operationnel normal lie a la croissance du CA. Trajectoire legerement revisee a la baisse en fin d'horizon vs la creation (14.5% -> 14.0% en 2030) compte tenu de la reevaluation a la hausse de l'amortissement recurrent.",
+        "applique": [
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "croissance_ca_post_2026",
+        "moteur": "Deceleration graduelle de la croissance organique au-dela de la guidance FY26 relevee, vers un regime plus mature (+11% 2027, +10% 2028, +9% 2029-2030) - inchange vs la creation, la reacceleration confirmee au T2 (+13% organique) ne modifiant pas la logique de deceleration progressive a plus long terme en l'absence de guidance explicite au-dela de FY26.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "etr_normatif",
+        "moteur": "Taux d'imposition normatif de 22.5%, milieu de la fourchette de guidance FY26 (22-23%), reconduit par simplification sur tout l'horizon de projection - inchange ce refresh.",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "biolife_exclu_adjxxx",
+        "moteur": "TENSION METHODOLOGIQUE DOCUMENTEE : l'acquisition definitive de BioLife Solutions (~1.5 Md$ EV, annoncee 22/07/2026, cloture attendue T4 2026) N'EST PAS integree aux adjXXX 2026-2030 de ce refresh, en coherence avec la discipline du protocole (seuls les evenements confirmes/clos sont quantifies). Consequence assumee : omniumND et omniumShares ne refletent pas le decaissement cash (~500M$+) ni la dilution actionnariale (~64% de la consideration en actions) attendus a la cloture, ni l'accretion EPS ajuste visee par le management (+0.05$ annee 1, +0.25$ annee 2) ni les synergies de couts (>=20M$ puis >=30M$). Refonte complete requise au prochain refresh des que la cloture est confirmee (ou si le calendrier/les termes evoluent).",
+        "applique": [
+          "omniumCA.2027",
+          "omniumEBIT.2027",
+          "omniumNet.2027",
+          "omniumND.2027",
+          "omniumShares.2027"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "convertibles_2028",
+        "moteur": "Notes convertibles de 600 M$ (1.00%, echeance 2028) supposees refinancees plutot que remboursees cash a maturite - hypothese non confirmee par la societe, potentiellement complexifiee par le financement de l'acquisition BioLife (utilisation de tresorerie existante annoncee pour la partie cash de la transaction, sans nouvelle dette mentionnee a ce stade). A traiter comme un point de vigilance renforce plutot qu'une certitude.",
+        "applique": [
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
+        ],
+        "confiance": "basse"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 1.52,
+      "2027": 1.77,
+      "2028": 2.04,
+      "2029": 2.3,
+      "2030": 2.57
+    },
+    "omniumCA": {
+      "2026": 824,
+      "2027": 915,
+      "2028": 1007,
+      "2029": 1098,
+      "2030": 1197
+    },
+    "omniumEBIT": {
+      "2026": 92,
+      "2027": 110,
+      "2028": 129,
+      "2029": 147,
+      "2030": 166
+    },
+    "omniumNet": {
+      "2026": 87,
+      "2027": 101,
+      "2028": 117,
+      "2029": 133,
+      "2030": 149
+    },
+    "omniumND": {
+      "2026": -250,
+      "2027": -320,
+      "2028": -390,
+      "2029": -460,
+      "2030": -530
+    },
+    "omniumShares": {
+      "2026": 56.8,
+      "2027": 57.1,
+      "2028": 57.4,
+      "2029": 57.7,
+      "2030": 58.0
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 3,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 49.3,
+        "netPub": 49,
+        "residual": -0.3,
+        "residualNote": "Reconciles on the Omnium base (GAAP-leaning, heavy intangible amortization kept in): small interest income on net cash, low effective GAAP tax (~15%, credits on a thin pretax base)."
+      },
+      "2026": {
+        "finNet": 10,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 86.7
+      },
+      "2027": {
+        "finNet": 9,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 101.15
+      },
+      "2028": {
+        "finNet": 9,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 117.3
+      },
+      "2029": {
+        "finNet": 9,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 132.6
+      },
+      "2030": {
+        "finNet": 9,
+        "other": 0,
+        "taxRate": 0.15,
+        "minorities": 0,
+        "netCalc": 148.75
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted EPS (guided range)",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Omnium EPS (1.52 for 2026) sits structurally BELOW the guided adjusted EPS (2.06): the Omnium base keeps intangible amortization and SBC that Repligen excludes from 'adjusted'. The beat is measured on the company's own adjusted metric.",
+      "timeline": [
+        {
+          "date": "2026-05-05",
+          "type": "guidance_revised",
+          "detail": "February guidance reconducted unchanged."
+        },
+        {
+          "date": "2026-07-28",
+          "type": "guidance_revised",
+          "detail": "RAISED: revenue 813-835M, adjusted operating income 128-134M, adjusted EPS 2.03-2.09 - explicitly excluding BioLife (not closed)."
+        }
+      ],
+      "paceCheckpoint": "Q2 real: organic +13% (after +11% Q1), adjusted operating margin 16.7% (vs 12.0% a year ago); adjusted EPS beat ~18%.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 3.3,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": -0.3,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "1.67-1.76$ adj EPS (mid 1.715)",
+          "realizedDisplay": "1.71$ adj",
+          "note": "Initial FY25 guidance (Q4-2024 release, 20/02/2025): adjusted EPS 1.67-1.76$ (mid 1.715); realized 1.71$ - level -0.3%, essentially on the mid (revenue beat: 738M vs 685-710 guided)."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 8.6,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "1.42-1.49$ adj EPS (mid 1.455)",
+          "realizedDisplay": "1.58$ adj",
+          "note": "Initial FY24 guidance (Q4-2023 release, 21/02/2024): adjusted EPS 1.42-1.49$ (mid 1.455); realized 1.58$ - level +8.6%, well above the top of the initial range."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 2.01,
+        "source": "initial_guidance",
+        "date": "2026-02-24",
+        "note": "Initial FY26 guidance at FY25 results: revenue 803-833M, adjusted operating income 124-132M, adjusted EPS 1.97-2.05 (mid 2.01). Reconducted in May, RAISED on 28/07 to 2.03-2.09 (explicitly ex-BioLife). A clean, fully archived anchor chain - the best in the portfolio."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +3.3% BLENDED (in-progress +2.5 x1/2; FY25 -0.3 and FY24 +8.6 equal-shared). Beats on management's adjusted EPS - the Omnium base wedge (amortization kept) is declared in basisNote.",
+      "consensusSource": "Company guidance (adjusted, ex-BioLife)",
+      "consensusDate": "2026-07-28",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 2.01,
+        "currentValue": 2.06,
+        "deltaPct": 2.5,
+        "asOf": "2026-07-28",
+        "note": "Initial 1.97-2.05$ (mid 2.01); raised 28/07 to 2.03-2.09$ (mid 2.06, ex-BioLife) - projected +2.5%."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-28",
+      "label": "Q2 2026",
+      "type": "earnings"
+    }
+  },
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-28",
+        "source": "Q2 release/call (as exploited at the 29/07 refresh)",
+        "message": "Organic reacceleration confirmed (+11% Q1, +13% Q2), adjusted operating margin 16.7% vs 12.0% a year ago, guidance raised (813-835M / adjusted EPS 2.03-2.09, ex-BioLife). The structural event is the 22/07 definitive agreement to acquire BioLife Solutions (~1.5bn EV, ~64% of consideration in Repligen shares, closing expected Q4 26) - NOT integrated in projections per protocol (unclosed); a full model rebuild is required at closing (share count, cash outflow, combined P&L)."
+      }
+    ]
+  }
 }

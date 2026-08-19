@@ -1,368 +1,383 @@
 {
- "name": "Sprouts Farmers Market",
- "cours": 73.67,
- "yahooSymbol": "SFM",
- "dividende": 0,
- "data": [
-  {
-   "year": 2018,
-   "ca": 5207,
-   "ebit": 223,
-   "net": 159,
-   "shares": 130.3,
-   "nd": 578,
-   "div": 0
-  },
-  {
-   "year": 2019,
-   "ca": 5635,
-   "ebit": 217,
-   "net": 150,
-   "shares": 120.0,
-   "nd": 464,
-   "div": 0
-  },
-  {
-   "year": 2020,
-   "ca": 6469,
-   "ebit": 392,
-   "net": 287,
-   "shares": 118.3,
-   "nd": 80,
-   "div": 0
-  },
-  {
-   "year": 2021,
-   "ca": 6100,
-   "ebit": 334,
-   "net": 244,
-   "shares": 116.3,
-   "nd": 15,
-   "div": 0
-  },
-  {
-   "year": 2022,
-   "ca": 6404,
-   "ebit": 358,
-   "net": 261,
-   "shares": 109.3,
-   "nd": -33,
-   "div": 0
-  },
-  {
-   "year": 2023,
-   "ca": 6837,
-   "ebit": 350,
-   "net": 259,
-   "shares": 103.6,
-   "nd": -67,
-   "div": 0
-  },
-  {
-   "year": 2024,
-   "ca": 7719,
-   "ebit": 504,
-   "net": 381,
-   "shares": 101.4,
-   "nd": -257,
-   "div": 0
-  },
-  {
-   "year": 2025,
-   "ca": 8806,
-   "ebit": 686,
-   "net": 524,
-   "shares": 98.7,
-   "nd": -174,
-   "div": 0
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 5.57,
-  "epsNY": 5.72,
-  "date": "2026-07-10",
-  "source": "Zacks Consensus (via Yahoo Finance / MarketBeat) - ANTERIEUR au T2 2026 (publie 29/07/2026). Coincidence notable : ce chiffre converge exactement avec l'EPS FY2026 reconstruit post-T2 (guidance officielle 52 semaines + effet 53e semaine), a recouper neanmoins au prochain refresh une fois un consensus post-resultats disponible."
- },
- "particularites": [],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": null
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-17",
-   "eps": {
-    "2026": 5.62,
-    "2027": 6.29,
-    "2028": 7.1,
-    "2029": 8.0,
-    "2030": 9.01
-   }
-  },
-  "source": "Refresh T2 2026 - Communique officiel complet des resultats T2 2026 (29/07/2026, etats financiers detailles) + transcript integral du call du meme jour (Jack Sinclair CEO / Curtis Valentine CFO / Nick Konat COO, incluant la session Q&A complete), trouves et confrontes.",
-  "summary": "T2 2026 en ligne avec les attentes du management (EPS 1,37$ bat le consensus de 2,2%, CA legerement manque de 0,4%) : comp sales -1,0% (amelioration sequentielle vs -1,7% au T1, conforme a la guidance). Guidance FY26 CA relevee (5,5-6,5% vs 4,5-6,5%) mais fourchette d'EPS resserree avec le plafond ABAISSE (5,40$ vs 5,48$ precedemment) - nuance importante : plus de confiance sur le CA, un peu moins sur la marge, entierement attribuable a des couts carburant non budgetes (~5M$ sur le midpoint EBIT). Nouveau risque emergent identifie au call : episode Cyclospora affectant les laitues/salades du secteur, impact modeste et suivi en temps reel par le management.",
-  "text": "== THESIS SUMMARY ==\nSprouts is a unit-growth + buyback compounder in specialty grocery. Q2 2026 tracked the setup path: comps -1.0% (sequential improvement from -1.7%, as guided), EPS 1.37 beating consensus +2.2% - but the beat is INTEGRALLY buyback-driven: EBIT and net slightly declined YoY, with diluted shares down 4.4%. Guidance: revenue raised (+5.5/6.5%), yet EBIT and EPS CEILINGS lowered - margin pressure is real while the top line holds.\n\n== THESIS READ ==\n- The EPS algorithm currently runs on the share count, not operating growth - acceptable transitionally, not durably. Watch: EBIT growth turning positive again (H2 comparisons ease).\n- Comps recovery is on the guided glide path (-1.7% -> -1.0% -> guided -0.5/+0.5% FY). Watch: traffic vs basket split in Q3.\n- Unit growth intact (42 new stores FY26, capex at top of range) - the long-term engine. Watch: new-store productivity cohort data.\n\n== SPECIAL FACTORS ==\n53rd week in FY2026: revenue +200M, EBIT +28M, EPS +0.21 - the 2027 comparison base must be RETREATED to 52-week equivalent before applying organic growth (documented at setup, reconfirmed). GAAP basis throughout; net cash eroding to slightly net debt by 2029 as buybacks outrun FCF.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: revenue ~9,534M (guidance mid + 53rd week), EBIT ~708M, EPS ~5.57. 2027-2030: ~6%/yr organic on the 52-week base, EBIT margin 7.7% -> 8.6%, ETR 25.5% (guided), shares -2.5%/yr. Bridge trivial (near-zero finNet). Watch: the guidance-ceiling cuts as an early margin-pressure signal; competitive intensity in fresh/natural.\n\n== CATALYSTS ==\nQ3 (Oct/Nov); comps inflection to positive; FY27 guidance (Feb) on the retreated 52-week base.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "reaccel_units",
-    "moteur": "Pipeline de plus de 110 baux executes et 155 magasins approuves (vs ~150/105+ a la creation, en progression) soutient 42 nouveaux magasins nets en FY26 (record trimestriel de 15+ ouvertures prevu au T3 seul). RENFORCE ce refresh : les 4 dernieres cohortes de magasins comparent TOUTES positivement (nouveau data point confirme au T2), et la cannibalisation observee est actuellement au bas de la fourchette historique 100-150pb - signal que le pipeline reste un moteur structurel sain du CA au-dela du comp.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "margin_scale",
-    "moteur": "Maturation des nouveaux magasins et auto-distribution (viande desormais a ~85% des magasins via le nouveau DC Californie du Nord, extension prudente vers d'autres categories marque propre evoquee sur plusieurs annees) soutiennent un effet de levier operationnel progressif sur la marge EBIT au-dela de 2026. Trajectoire legerement revisee a la baisse vs la creation (7,7%->8,6% sur 2027-2030 au lieu de 7,8%->8,7%), compte tenu de la guidance FY26 EPS resserree avec un plafond abaisse (couts carburant non budgetes).",
-    "applique": [
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "buyback_1bn",
-    "moteur": "Autorisation de rachat d'actions de 1 Md$ (solde 626 M$ apres 210 M$ deja utilises au S1 26, dont 70 M$ au seul T2) finance une reduction du nombre d'actions diluees d'environ 2,5%/an - le CFO confirme un objectif d'au moins 300 M$ de rachats sur l'annee complete (deja 210 M$ au S1, donc au moins 90 M$ supplementaires attendus au S2). Coherent avec le rythme observe depuis 2015. La hausse de l'EPS T2 (+1,5%) malgre un EBIT et un resultat net en LEGER RECUL illustre concretement ce mecanisme.",
-    "applique": [
-     "omniumShares.2026",
-     "omniumShares.2027",
-     "omniumShares.2028",
-     "omniumShares.2029",
-     "omniumShares.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "week53_2026",
-    "moteur": "CONFIRME A L'IDENTIQUE ce refresh par le communique officiel T2 2026 : la 53e semaine fiscale (T4 26) ajoute ponctuellement environ 200 M$ de CA, 28 M$ d'EBIT et 0,21$ de BPA dilue au-dessus de la guidance FY26 explicitement communiquee sur base 52 semaines - aucun ecart avec l'hypothese de creation. Cet effet ne se reproduit pas en 2027, ce qui comprime mecaniquement la croissance de CA affichee l'annee suivante si elle n'est pas retraitee (voir PARAMETRES).",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026",
-     "omniumEPS.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "etr_normatif",
-    "moteur": "Taux d'imposition effectif normatif retenu a 25,5%, confirme explicitement par la guidance FY26 officielle publiee au T2 (le taux effectif reel du T2 seul etait de 26%, proche de la guidance annuelle).",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "cyclospora_risque_non_quantifie",
-    "moteur": "NOUVEL ANCRAGE ce refresh : episode Cyclospora affectant les laitues/salades a l'echelle du secteur, tres recent (dernieres 2 semaines avant le call), aucun rappel chez Sprouts a ce jour. Impact juge modeste par le CFO (inferieur a l'estimation d'un analyste de 80-120pb), mais duree et ampleur encore incertaines au moment du call. Non quantifie et non integre aux adjXXX - risque a la baisse pur pour le T3 2026, a suivre explicitement au prochain refresh.",
-    "applique": [
-     "omniumEBIT.2026"
-    ],
-    "confiance": "basse"
-   }
-  ],
-  "dernierCall": {
-   "quarter": "Q2 26",
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 2325.8,
-     "consensus": 2330
-    },
-    "epsAdj": {
-     "actual": 1.37,
-     "consensus": 1.34,
-     "basis": "GAAP",
-     "basisNote": "GAAP - beat de 2,2%, mais integralement porte par la baisse du nombre d'actions diluees (-4,4% sur un an) : l'EBIT (174,2 M$) et le resultat net (129,2 M$) sont tous deux en LEGER RECUL sur un an (-2,9% et -3,4% respectivement). Le CA a legerement manque le consensus (-0,4%)."
-    }
-   },
-   "guidanceProchainTrimestre": "T3 26 : comp sales -0,5% a +1,5%, EPS dilue 1,20-1,24$. Pression de marge EBIT attendue a environ -50pb (deleverage des couts fixes lie au comp plus faible et a un nombre d'ouvertures de magasins superieur au T3 2025), de forme similaire au T2 (marge brute et SG&A tous deux legerement negatifs, pression additionnelle sur la D&A). Ouvertures : au moins 15 nouveaux magasins prevus au T3, le rythme trimestriel le plus eleve de l'histoire de la societe. Juillet deja tracking legerement negatif, dans la fourchette de guidance.",
-   "guidanceAnnuelle": "FY26 (base 52 semaines) : CA +5,5% a +6,5% (releve vs +4,5%/+6,5%), comp -0,5%/+0,5% (resserre et ameliore vs -1%/+1%), EBIT 675-685 M$ (plafond abaisse de 695 a 685 M$), EPS dilue 5,32-5,40$ (plafond abaisse de 5,48 a 5,40$), capex net ~310 M$ (haut de fourchette), 42 nouveaux magasins nets, rachats d'actions >=300 M$, IS ~25,5%. Le CFO attribue le delta EBIT midpoint (~5 M$) exclusivement a des couts carburant non couverts et non budgetes au S2 (2,5 M$/trimestre).",
-   "pointsCles": [
-    "Le CEO Jack Sinclair affirme explicitement que 'nos comparaisons les plus difficiles sont desormais derriere nous' - le T2 a ete le dernier trimestre a lapper les effets de base 2025 (forte saison des produits frais, disruption de la chaine d'approvisionnement bio/naturel qui avait dope le trafic Sprouts) ; juin a ete le mois le plus dur du trimestre pour cette raison, juillet est deja revenu 'en ligne avec les attentes'.",
-    "La hausse de l'EPS T2 (+1,5%) masque un EBIT et un resultat net tous deux en LEGER RECUL sur un an - le beat provient integralement de la reduction du nombre d'actions diluees (-4,4%), pas d'une amelioration operationnelle. Point de vigilance sur la lecture superficielle du 'beat' du trimestre.",
-    "Nouveau risque emergent : episode Cyclospora sectoriel sur les laitues/salades, suivi en temps reel, impact juge modeste par le CFO (inferieur aux estimations d'un analyste) mais non quantifie precisement ; aucun rappel de produit chez Sprouts a ce jour.",
-    "Cannibalisation des nouveaux magasins actuellement au bas de la fourchette historique (100-150pb), et les 4 dernieres cohortes de magasins comparent toutes positivement - preuves tangibles citees par le management de la sante persistante du modele malgre la pression sur le comp du parc existant.",
-    "Rattrapage de marge explicitement identifie pour le T4 2026 : cyclage favorable du programme de fidelite (seuil passe de 2$ a 1$ en janvier 2026, donc T4 2026 en rythme plein a 1$ contre un T4 2025 encore a 2$) - effet ponctuel non reconduit en 2027.",
-    "Nouvelle approche pour les marches recents : densification rapide plutot que dispersion (Chicago vise a 10 magasins en 12-18 mois a partir de 2027) - changement de strategie vs les ouvertures plus etalees precedentes (Long Island). Aucune faiblesse specifique constatee sur la Cote Ouest, contrairement a certains commentaires sectoriels sur les epiciers traditionnels."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via full transcript; 10-Q not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "Q1 26",
-    "date": "2026-04-29",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA +4,5% a +6,5% (base 52 semaines), comp -1%/+1%, EBIT 675-695 M$, EPS dilue 5,32-5,48$, capex net 280-310 M$, 40+ nouveaux magasins."
-   },
-   {
-    "quarter": "Q2 26",
-    "date": "2026-07-29",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA relevee a +5,5%/+6,5% ; comp resserre a -0,5%/+0,5% ; EBIT 675-685 M$ (plafond abaisse) ; EPS 5,32-5,40$ (plafond abaisse) ; capex net ~310 M$ (haut de fourchette) ; 42 nouveaux magasins nets ; rachats >=300 M$."
-   }
-  ],
-  "guidanceLongTerme": "Aucun objectif chiffre au-dela de FY2026 communique formellement. Orientation qualitative : retour a 'l'algorithme' de croissance une fois les comparaisons difficiles derriere (implicitement, un comp positif soutenu par le pipeline de magasins et l'amelioration continue du trafic/des unites). Expansion geographique planifiee incluant Chicago a partir de 2027 (objectif 10 magasins en 12-18 mois).",
-  "omniumEPS": {
-   "2026": 5.57,
-   "2027": 6.22,
-   "2028": 7.03,
-   "2029": 7.93,
-   "2030": 8.92
-  },
-  "omniumCA": {
-   "2026": 9534,
-   "2027": 9894,
-   "2028": 10488,
-   "2029": 11117,
-   "2030": 11784
-  },
-  "omniumEBIT": {
-   "2026": 708,
-   "2027": 762,
-   "2028": 839,
-   "2029": 923,
-   "2030": 1013
-  },
-  "omniumNet": {
-   "2026": 521,
-   "2027": 568,
-   "2028": 625,
-   "2029": 687,
-   "2030": 755
-  },
-  "omniumND": {
-   "2026": -110,
-   "2027": -60,
-   "2028": -10,
-   "2029": 30,
-   "2030": 60
-  },
-  "omniumShares": {
-   "2026": 93.5,
-   "2027": 91.2,
-   "2028": 88.9,
-   "2029": 86.7,
-   "2030": 84.6
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 3,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 523.6,
-    "netPub": 524,
-    "residual": 0.4,
-    "residualNote": "Reconciles cleanly: slight interest income on net cash, 2025 effective tax ~24%."
-   },
-   "2026": {
-    "finNet": -9,
-    "other": 0,
-    "taxRate": 0.255,
-    "minorities": 0,
-    "netCalc": 520.8
-   },
-   "2027": {
-    "finNet": 0,
-    "other": 0,
-    "taxRate": 0.255,
-    "minorities": 0,
-    "netCalc": 567.7
-   },
-   "2028": {
-    "finNet": 0,
-    "other": 0,
-    "taxRate": 0.255,
-    "minorities": 0,
-    "netCalc": 625.1
-   },
-   "2029": {
-    "finNet": -1,
-    "other": 0,
-    "taxRate": 0.255,
-    "minorities": 0,
-    "netCalc": 686.9
-   },
-   "2030": {
-    "finNet": 0,
-    "other": 0,
-    "taxRate": 0.255,
-    "minorities": 0,
-    "netCalc": 754.7
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Diluted EPS (guided range)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
+  "name": "Sprouts Farmers Market",
+  "cours": 73.67,
+  "yahooSymbol": "SFM",
+  "dividende": 0,
+  "data": [
     {
-     "date": "2026-07-29",
-     "type": "guidance_revised",
-     "detail": "Revenue raised to +5.5/6.5% but EBIT ceiling lowered (675-685M) and EPS ceiling lowered (5.32-5.40); comps tightened to -0.5/+0.5%; capex to the top (~310M); 42 new stores."
-    }
-   ],
-   "paceCheckpoint": "Q2 real: EPS 1.37 beat consensus +2.2% - but EBIT and net DECLINED YoY; the entire EPS growth comes from the -4.4% diluted share count. Comps -1.0% improving sequentially from -1.7%.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+      "year": 2018,
+      "ca": 5207,
+      "ebit": 223,
+      "net": 159,
+      "shares": 130.3,
+      "nd": 578,
+      "div": 0
     },
     {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+      "year": 2019,
+      "ca": 5635,
+      "ebit": 217,
+      "net": 150,
+      "shares": 120.0,
+      "nd": 464,
+      "div": 0
+    },
+    {
+      "year": 2020,
+      "ca": 6469,
+      "ebit": 392,
+      "net": 287,
+      "shares": 118.3,
+      "nd": 80,
+      "div": 0
+    },
+    {
+      "year": 2021,
+      "ca": 6100,
+      "ebit": 334,
+      "net": 244,
+      "shares": 116.3,
+      "nd": 15,
+      "div": 0
+    },
+    {
+      "year": 2022,
+      "ca": 6404,
+      "ebit": 358,
+      "net": 261,
+      "shares": 109.3,
+      "nd": -33,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 6837,
+      "ebit": 350,
+      "net": 259,
+      "shares": 103.6,
+      "nd": -67,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 7719,
+      "ebit": 504,
+      "net": 381,
+      "shares": 101.4,
+      "nd": -257,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 8806,
+      "ebit": 686,
+      "net": 524,
+      "shares": 98.7,
+      "nd": -174,
+      "div": 0
     }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 5.4,
-    "source": "initial_guidance",
-    "date": "2026-04-29",
-    "note": "FY26 guidance at Q1: revenue +4.5/6.5% (52-week base), comps -1/+1%, EBIT 675-695M, diluted EPS 5.32-5.48 (mid 5.40). Earliest ARCHIVED statement; the February initial was not captured. Q2 LOWERED the tops (EPS 5.32-5.40) - the anchor stays at the April terms."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. FY26 will deliver the first observation vs the 5.40 April anchor - in-year signal is a slight NEGATIVE revision (ceilings lowered).",
-   "consensusSource": "Zacks Consensus (GAAP)",
-   "consensusDate": "2026-07-10"
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 5.57,
+    "epsNY": 5.72,
+    "date": "2026-07-10",
+    "source": "Zacks Consensus (via Yahoo Finance / MarketBeat) - ANTERIEUR au T2 2026 (publie 29/07/2026). Coincidence notable : ce chiffre converge exactement avec l'EPS FY2026 reconstruit post-T2 (guidance officielle 52 semaines + effet 53e semaine), a recouper neanmoins au prochain refresh une fois un consensus post-resultats disponible."
   },
-  "revisionEvent": {
-   "date": "2026-07-29",
-   "label": "Q2 2026",
-   "type": "earnings"
+  "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": null
+  },
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-17",
+      "eps": {
+        "2026": 5.62,
+        "2027": 6.29,
+        "2028": 7.1,
+        "2029": 8.0,
+        "2030": 9.01
+      }
+    },
+    "source": "Refresh T2 2026 - Communique officiel complet des resultats T2 2026 (29/07/2026, etats financiers detailles) + transcript integral du call du meme jour (Jack Sinclair CEO / Curtis Valentine CFO / Nick Konat COO, incluant la session Q&A complete), trouves et confrontes.",
+    "summary": "T2 2026 en ligne avec les attentes du management (EPS 1,37$ bat le consensus de 2,2%, CA legerement manque de 0,4%) : comp sales -1,0% (amelioration sequentielle vs -1,7% au T1, conforme a la guidance). Guidance FY26 CA relevee (5,5-6,5% vs 4,5-6,5%) mais fourchette d'EPS resserree avec le plafond ABAISSE (5,40$ vs 5,48$ precedemment) - nuance importante : plus de confiance sur le CA, un peu moins sur la marge, entierement attribuable a des couts carburant non budgetes (~5M$ sur le midpoint EBIT). Nouveau risque emergent identifie au call : episode Cyclospora affectant les laitues/salades du secteur, impact modeste et suivi en temps reel par le management.",
+    "text": "== THESIS SUMMARY ==\nSprouts is a unit-growth + buyback compounder in specialty grocery. Q2 2026 tracked the setup path: comps -1.0% (sequential improvement from -1.7%, as guided), EPS 1.37 beating consensus +2.2% - but the beat is INTEGRALLY buyback-driven: EBIT and net slightly declined YoY, with diluted shares down 4.4%. Guidance: revenue raised (+5.5/6.5%), yet EBIT and EPS CEILINGS lowered - margin pressure is real while the top line holds.\n\n== THESIS READ ==\n- The EPS algorithm currently runs on the share count, not operating growth - acceptable transitionally, not durably. Watch: EBIT growth turning positive again (H2 comparisons ease).\n- Comps recovery is on the guided glide path (-1.7% -> -1.0% -> guided -0.5/+0.5% FY). Watch: traffic vs basket split in Q3.\n- Unit growth intact (42 new stores FY26, capex at top of range) - the long-term engine. Watch: new-store productivity cohort data.\n\n== SPECIAL FACTORS ==\n53rd week in FY2026: revenue +200M, EBIT +28M, EPS +0.21 - the 2027 comparison base must be RETREATED to 52-week equivalent before applying organic growth (documented at setup, reconfirmed). GAAP basis throughout; net cash eroding to slightly net debt by 2029 as buybacks outrun FCF.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: revenue ~9,534M (guidance mid + 53rd week), EBIT ~708M, EPS ~5.57. 2027-2030: ~6%/yr organic on the 52-week base, EBIT margin 7.7% -> 8.6%, ETR 25.5% (guided), shares -2.5%/yr. Bridge trivial (near-zero finNet). Watch: the guidance-ceiling cuts as an early margin-pressure signal; competitive intensity in fresh/natural.\n\n== CATALYSTS ==\nQ3 (Oct/Nov); comps inflection to positive; FY27 guidance (Feb) on the retreated 52-week base.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "reaccel_units",
+        "moteur": "Pipeline de plus de 110 baux executes et 155 magasins approuves (vs ~150/105+ a la creation, en progression) soutient 42 nouveaux magasins nets en FY26 (record trimestriel de 15+ ouvertures prevu au T3 seul). RENFORCE ce refresh : les 4 dernieres cohortes de magasins comparent TOUTES positivement (nouveau data point confirme au T2), et la cannibalisation observee est actuellement au bas de la fourchette historique 100-150pb - signal que le pipeline reste un moteur structurel sain du CA au-dela du comp.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "margin_scale",
+        "moteur": "Maturation des nouveaux magasins et auto-distribution (viande desormais a ~85% des magasins via le nouveau DC Californie du Nord, extension prudente vers d'autres categories marque propre evoquee sur plusieurs annees) soutiennent un effet de levier operationnel progressif sur la marge EBIT au-dela de 2026. Trajectoire legerement revisee a la baisse vs la creation (7,7%->8,6% sur 2027-2030 au lieu de 7,8%->8,7%), compte tenu de la guidance FY26 EPS resserree avec un plafond abaisse (couts carburant non budgetes).",
+        "applique": [
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "buyback_1bn",
+        "moteur": "Autorisation de rachat d'actions de 1 Md$ (solde 626 M$ apres 210 M$ deja utilises au S1 26, dont 70 M$ au seul T2) finance une reduction du nombre d'actions diluees d'environ 2,5%/an - le CFO confirme un objectif d'au moins 300 M$ de rachats sur l'annee complete (deja 210 M$ au S1, donc au moins 90 M$ supplementaires attendus au S2). Coherent avec le rythme observe depuis 2015. La hausse de l'EPS T2 (+1,5%) malgre un EBIT et un resultat net en LEGER RECUL illustre concretement ce mecanisme.",
+        "applique": [
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "week53_2026",
+        "moteur": "CONFIRME A L'IDENTIQUE ce refresh par le communique officiel T2 2026 : la 53e semaine fiscale (T4 26) ajoute ponctuellement environ 200 M$ de CA, 28 M$ d'EBIT et 0,21$ de BPA dilue au-dessus de la guidance FY26 explicitement communiquee sur base 52 semaines - aucun ecart avec l'hypothese de creation. Cet effet ne se reproduit pas en 2027, ce qui comprime mecaniquement la croissance de CA affichee l'annee suivante si elle n'est pas retraitee (voir PARAMETRES).",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumEPS.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "etr_normatif",
+        "moteur": "Taux d'imposition effectif normatif retenu a 25,5%, confirme explicitement par la guidance FY26 officielle publiee au T2 (le taux effectif reel du T2 seul etait de 26%, proche de la guidance annuelle).",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "cyclospora_risque_non_quantifie",
+        "moteur": "NOUVEL ANCRAGE ce refresh : episode Cyclospora affectant les laitues/salades a l'echelle du secteur, tres recent (dernieres 2 semaines avant le call), aucun rappel chez Sprouts a ce jour. Impact juge modeste par le CFO (inferieur a l'estimation d'un analyste de 80-120pb), mais duree et ampleur encore incertaines au moment du call. Non quantifie et non integre aux adjXXX - risque a la baisse pur pour le T3 2026, a suivre explicitement au prochain refresh.",
+        "applique": [
+          "omniumEBIT.2026"
+        ],
+        "confiance": "basse"
+      }
+    ],
+    "dernierCall": {
+      "quarter": "Q2 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 2325.8,
+          "consensus": 2330
+        },
+        "epsAdj": {
+          "actual": 1.37,
+          "consensus": 1.34,
+          "basis": "GAAP",
+          "basisNote": "GAAP - beat de 2,2%, mais integralement porte par la baisse du nombre d'actions diluees (-4,4% sur un an) : l'EBIT (174,2 M$) et le resultat net (129,2 M$) sont tous deux en LEGER RECUL sur un an (-2,9% et -3,4% respectivement). Le CA a legerement manque le consensus (-0,4%)."
+        }
+      },
+      "guidanceProchainTrimestre": "T3 26 : comp sales -0,5% a +1,5%, EPS dilue 1,20-1,24$. Pression de marge EBIT attendue a environ -50pb (deleverage des couts fixes lie au comp plus faible et a un nombre d'ouvertures de magasins superieur au T3 2025), de forme similaire au T2 (marge brute et SG&A tous deux legerement negatifs, pression additionnelle sur la D&A). Ouvertures : au moins 15 nouveaux magasins prevus au T3, le rythme trimestriel le plus eleve de l'histoire de la societe. Juillet deja tracking legerement negatif, dans la fourchette de guidance.",
+      "guidanceAnnuelle": "FY26 (base 52 semaines) : CA +5,5% a +6,5% (releve vs +4,5%/+6,5%), comp -0,5%/+0,5% (resserre et ameliore vs -1%/+1%), EBIT 675-685 M$ (plafond abaisse de 695 a 685 M$), EPS dilue 5,32-5,40$ (plafond abaisse de 5,48 a 5,40$), capex net ~310 M$ (haut de fourchette), 42 nouveaux magasins nets, rachats d'actions >=300 M$, IS ~25,5%. Le CFO attribue le delta EBIT midpoint (~5 M$) exclusivement a des couts carburant non couverts et non budgetes au S2 (2,5 M$/trimestre).",
+      "pointsCles": [
+        "Le CEO Jack Sinclair affirme explicitement que 'nos comparaisons les plus difficiles sont desormais derriere nous' - le T2 a ete le dernier trimestre a lapper les effets de base 2025 (forte saison des produits frais, disruption de la chaine d'approvisionnement bio/naturel qui avait dope le trafic Sprouts) ; juin a ete le mois le plus dur du trimestre pour cette raison, juillet est deja revenu 'en ligne avec les attentes'.",
+        "La hausse de l'EPS T2 (+1,5%) masque un EBIT et un resultat net tous deux en LEGER RECUL sur un an - le beat provient integralement de la reduction du nombre d'actions diluees (-4,4%), pas d'une amelioration operationnelle. Point de vigilance sur la lecture superficielle du 'beat' du trimestre.",
+        "Nouveau risque emergent : episode Cyclospora sectoriel sur les laitues/salades, suivi en temps reel, impact juge modeste par le CFO (inferieur aux estimations d'un analyste) mais non quantifie precisement ; aucun rappel de produit chez Sprouts a ce jour.",
+        "Cannibalisation des nouveaux magasins actuellement au bas de la fourchette historique (100-150pb), et les 4 dernieres cohortes de magasins comparent toutes positivement - preuves tangibles citees par le management de la sante persistante du modele malgre la pression sur le comp du parc existant.",
+        "Rattrapage de marge explicitement identifie pour le T4 2026 : cyclage favorable du programme de fidelite (seuil passe de 2$ a 1$ en janvier 2026, donc T4 2026 en rythme plein a 1$ contre un T4 2025 encore a 2$) - effet ponctuel non reconduit en 2027.",
+        "Nouvelle approche pour les marches recents : densification rapide plutot que dispersion (Chicago vise a 10 magasins en 12-18 mois a partir de 2027) - changement de strategie vs les ouvertures plus etalees precedentes (Long Island). Aucune faiblesse specifique constatee sur la Cote Ouest, contrairement a certains commentaires sectoriels sur les epiciers traditionnels."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "10-Q T2 2026 + communique (29/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 2,3 Md$ (+5%), comps -1,0%, EPS dilue 1,37$ (vs 1,35$), 490 magasins (7 ouvertures), 224 M$ de cash, revolver 600 M$ non tire. Guidance FY26 EPS resserree 5,32-5,40$."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "Q1 26",
+        "date": "2026-04-29",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA +4,5% a +6,5% (base 52 semaines), comp -1%/+1%, EBIT 675-695 M$, EPS dilue 5,32-5,48$, capex net 280-310 M$, 40+ nouveaux magasins."
+      },
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-29",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA relevee a +5,5%/+6,5% ; comp resserre a -0,5%/+0,5% ; EBIT 675-685 M$ (plafond abaisse) ; EPS 5,32-5,40$ (plafond abaisse) ; capex net ~310 M$ (haut de fourchette) ; 42 nouveaux magasins nets ; rachats >=300 M$."
+      }
+    ],
+    "guidanceLongTerme": "Aucun objectif chiffre au-dela de FY2026 communique formellement. Orientation qualitative : retour a 'l'algorithme' de croissance une fois les comparaisons difficiles derriere (implicitement, un comp positif soutenu par le pipeline de magasins et l'amelioration continue du trafic/des unites). Expansion geographique planifiee incluant Chicago a partir de 2027 (objectif 10 magasins en 12-18 mois).",
+    "omniumEPS": {
+      "2026": 5.57,
+      "2027": 6.22,
+      "2028": 7.03,
+      "2029": 7.93,
+      "2030": 8.92
+    },
+    "omniumCA": {
+      "2026": 9534,
+      "2027": 9894,
+      "2028": 10488,
+      "2029": 11117,
+      "2030": 11784
+    },
+    "omniumEBIT": {
+      "2026": 708,
+      "2027": 762,
+      "2028": 839,
+      "2029": 923,
+      "2030": 1013
+    },
+    "omniumNet": {
+      "2026": 521,
+      "2027": 568,
+      "2028": 625,
+      "2029": 687,
+      "2030": 755
+    },
+    "omniumND": {
+      "2026": -110,
+      "2027": -60,
+      "2028": -10,
+      "2029": 30,
+      "2030": 60
+    },
+    "omniumShares": {
+      "2026": 93.5,
+      "2027": 91.2,
+      "2028": 88.9,
+      "2029": 86.7,
+      "2030": 84.6
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 3,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 523.6,
+        "netPub": 524,
+        "residual": 0.4,
+        "residualNote": "Reconciles cleanly: slight interest income on net cash, 2025 effective tax ~24%."
+      },
+      "2026": {
+        "finNet": -9,
+        "other": 0,
+        "taxRate": 0.255,
+        "minorities": 0,
+        "netCalc": 520.8
+      },
+      "2027": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.255,
+        "minorities": 0,
+        "netCalc": 567.7
+      },
+      "2028": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.255,
+        "minorities": 0,
+        "netCalc": 625.1
+      },
+      "2029": {
+        "finNet": -1,
+        "other": 0,
+        "taxRate": 0.255,
+        "minorities": 0,
+        "netCalc": 686.9
+      },
+      "2030": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.255,
+        "minorities": 0,
+        "netCalc": 754.7
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Diluted EPS (guided range)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-29",
+          "type": "guidance_revised",
+          "detail": "Revenue raised to +5.5/6.5% but EBIT ceiling lowered (675-685M) and EPS ceiling lowered (5.32-5.40); comps tightened to -0.5/+0.5%; capex to the top (~310M); 42 new stores."
+        }
+      ],
+      "paceCheckpoint": "Q2 real: EPS 1.37 beat consensus +2.2% - but EBIT and net DECLINED YoY; the entire EPS growth comes from the -4.4% diluted share count. Comps -1.0% improving sequentially from -1.7%.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 11.2,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 15.4,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "4.52-4.68$ adj diluted EPS (mid 4.60)",
+          "realizedDisplay": "5.31$ diluted",
+          "note": "Initial FY25 guidance (Q4-2024 release, 20/02/2025): adjusted diluted EPS 4.52-4.68$ (mid 4.60), comps +4.5/6.5%; realized 5.31$ (comps +7.3%) - level +15.4%, a second consecutive outsized beat year."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 29.3,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "2.85-2.95$ adj diluted EPS (mid 2.90)",
+          "realizedDisplay": "3.75$ diluted",
+          "note": "Initial FY24 guidance (Q4-2023 release, Feb 2024): adjusted diluted EPS 2.85-2.95$ (mid 2.90); realized 3.75$ (comps +7.6%) - level +29.3%: the guidance was set before the traffic inflection and never caught up."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 5.36,
+        "source": "initial_guidance",
+        "date": "2026-02-19",
+        "note": "TRUE initial FY26 guidance (Q4-2025 release, 19/02/2026): diluted EPS 5.28-5.44$ (mid 5.36, 52-week basis; 53rd week adds ~0.21$). Q1 statement ran 5.32-5.48, Q2 trimmed the tops back to 5.32-5.40 - mid unchanged at 5.36. Replaces the April-dated anchor (5.40)."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +11.2% BLENDED (in-progress 0.0 x1/2; FY25 +15.4 and FY24 +29.3 equal-shared). The two closed beats are traffic-inflection years unlikely to repeat mechanically - the blend already halves them via the flat 2026 leg; apply with judgment, not mechanically.",
+      "consensusSource": "Zacks Consensus (GAAP)",
+      "consensusDate": "2026-07-10",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 5.36,
+        "currentValue": 5.36,
+        "deltaPct": 0.0,
+        "asOf": "2026-07-29",
+        "note": "Initial mid 5.36$ (52-week); after a Q1 nudge up and a Q2 trim (5.32-5.40) the mid is back exactly on the initial - projected 0.0. History says SFM sets low bars, but 2026 comps are negative (-1.0% in Q2)."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-29",
+      "label": "Q2 2026",
+      "type": "earnings"
+    }
+  },
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-29",
+        "source": "Full transcript (as exploited at the 30/07 refresh)",
+        "message": "Comps -1.0%, improving sequentially from -1.7% exactly as guided; the +2.2% EPS beat is INTEGRALLY buyback-driven (diluted shares -4.4% YoY) while EBIT (174.2 vs 179.4M) and net (129.2 vs 133.7M) slightly declined - flagged in-fiche as the key quality nuance; guidance revenue raised but EBIT/EPS ceilings LOWERED; 42 new stores confirm the unit-growth engine."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q2 26",
-    "date": "2026-07-29",
-    "source": "Full transcript (as exploited at the 30/07 refresh)",
-    "message": "Comps -1.0%, improving sequentially from -1.7% exactly as guided; the +2.2% EPS beat is INTEGRALLY buyback-driven (diluted shares -4.4% YoY) while EBIT (174.2 vs 179.4M) and net (129.2 vs 133.7M) slightly declined - flagged in-fiche as the key quality nuance; guidance revenue raised but EBIT/EPS ceilings LOWERED; 42 new stores confirm the unit-growth engine."
-   }
-  ]
- }
 }
