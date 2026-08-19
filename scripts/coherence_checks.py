@@ -207,8 +207,12 @@ def c12():
                            "(ancre initiale + 3 exercices) au prochain refresh"))
             continue
         if isinstance(gs.get('annualBeatPct'),(int,float)) and gs.get('appliedToProjection') is not True:
-            bad.append((tk,f"annualBeatPct={gs['annualBeatPct']} non repercute "
-                           f"(appliedToProjection={gs.get('appliedToProjection')!r})"))
+            # Non-application LEGITIME si documentee (E-scorecard f : rupture
+            # de regime, warning ce trimestre...) - la note est obligatoire.
+            if not (gs.get('applicationNote') or '').strip():
+                bad.append((tk,f"annualBeatPct={gs['annualBeatPct']} non repercute "
+                               f"sans applicationNote (appliedToProjection="
+                               f"{gs.get('appliedToProjection')!r})"))
     return bad
 
 @check("C13 revision d'EPS : doit correspondre a un evenement date")
@@ -584,7 +588,7 @@ def c22():
                     bad.append((tk,f"anchorInitial.fy {ai.get('fy')} != annee en cours {cy}"))
     return bad
 
-RULE_DATE='2026-08-19'   # les regles de compactage et depreciations du 18/08
+RULE_DATE='2026-08-18'   # les regles de compactage et depreciations du 18/08
                          # s'appliquent aux refreshes STRICTEMENT posterieurs
 
 @check("C23 cles depreciees : absentes de tout refresh post-18/08/2026")

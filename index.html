@@ -3392,6 +3392,15 @@ function buildGuidanceScorecardSummary(gs){
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
   const latest=(gs.timeline||[])[0]||null;
   const latestIsWarning=latest&&latest.type==='guidance_revision'&&latest.flag==='warning';
+  // annualBeatPct (architecture du 18/08/2026) prime : c'est la metrique
+  // qui pilote la projection. weightedBeatPct (trimestriel) n'est qu'un
+  // indicateur de suivi, servi en repli pour les fiches pre-architecture.
+  if(typeof gs.annualBeatPct==='number'){
+    const verb=gs.annualBeatPct>=0?'Beats':'Misses';
+    const against=gs.comparedAgainst==='guidance'?'initial annual guidance':'initial annual consensus';
+    const warnSuffix=latestIsWarning?' · guidance warning this cycle':'';
+    return `${verb} ${against} by ${Math.abs(gs.annualBeatPct).toFixed(1)}% on average${warnSuffix}`;
+  }
   if(gs.weightedBeatPct!=null){
     const verb=gs.weightedBeatPct>=0?'Beats':'Misses';
     const against=gs.comparedAgainst==='guidance'?'guidance':'consensus';
@@ -3437,12 +3446,22 @@ function buildGuidanceScorecard(ticker){
   // Le chiffre porte l'information, la phrase le qualifie : la tenue de
   // guidance etait noyee au fil d'une ligne de texte alors que c'est le
   // premier element qu'on vient chercher.
-  const pct=gs.weightedBeatPct;
+  // Le heros = annualBeatPct (pilote la projection) ; weightedBeatPct
+  // (suivi trimestriel) ne sert qu'en repli pre-architecture.
+  const annual=typeof gs.annualBeatPct==='number';
+  const pct=annual?gs.annualBeatPct:gs.weightedBeatPct;
   const beat=pct==null || pct>=0;
   const heroColor=beat?'var(--navy)':'var(--gold-text)';
+  // Le libelle annuel vient de la SOURCE des ancres (annualBeatHistory),
+  // pas de comparedAgainst qui decrit le regime trimestriel de suivi.
+  const srcs=(gs.annualBeatHistory||[]).filter(e=>e&&!e.excluded).map(e=>e.source);
+  const against=annual
+    ? (srcs.every(x=>x==='initial_guidance')?'guidance'
+       :srcs.every(x=>x==='initial_consensus')?'consensus':'anchors')
+    : (gs.comparedAgainst==='guidance'?'guidance':'consensus');
   const hero=pct==null ? '' : `<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
       <span style="font-size:22px;font-weight:800;line-height:1;color:${heroColor};">${pct>=0?'+':'−'}${Math.abs(pct).toFixed(1)}%</span>
-      <span style="font-size:13px;color:var(--text);">${beat?'above':'below'} ${gs.comparedAgainst==='guidance'?'guidance':'consensus'} on average</span>
+      <span style="font-size:13px;color:var(--text);">${beat?'above':'below'} ${annual?'initial annual '+against:against} on average</span>
     </div>`;
 
   // Barre de tenue : une graduation par publication mesuree, de part et

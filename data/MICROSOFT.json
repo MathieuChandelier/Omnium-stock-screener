@@ -230,19 +230,19 @@
     ]
   },
   "hypothese": {
-    "date": "2026-07-30",
+    "date": "2026-08-18",
     "priorEPS": {
-      "date": "2026-07-13",
+      "date": "2026-07-30",
       "eps": {
-        "2027": 19.6,
-        "2028": 22.37,
-        "2029": 25.31,
-        "2030": 28.3
+        "2027": 20.26,
+        "2028": 23.84,
+        "2029": 27.55,
+        "2030": 31.56
       }
     },
-    "source": "Refresh apres resultats T4/FY2026 complets (29/07/2026, exercice clos le 30/06/2026) - communique officiel complet (etats financiers, reconciliation GAAP/non-GAAP OpenAI) trouve et exploite comme source primaire ; transcript integral du call non localise a ce refresh (a rechercher explicitement au prochain refresh) - couverture de presse detaillee (CNBC, Fortune, InfotechLead, citations directes d'Amy Hood) mobilisee en complement pour la guidance et la couleur qualitative.",
+    "source": "Deep refresh 18/08/2026 (protocole complet post-refonte) : transcript integral du call T4 FY26 LU depuis l'archive Drive (transcript/MICROSOFT/) - il manquait au refresh du 30/07. Guidance FY2027 annuelle qualitative relevee (croissance a deux chiffres CA et EBIT, marges -<1pt, IS ~20%, FCF positif). Bridge, scorecard annuel et extension 2031 etablis.",
     "summary": "Premier jeu de donnees reelles completes depuis la creation (T3 FY26) : la these centrale se confirme largement - Azure accelere (+43% au T4, guidance T1 FY27 a ~45%), la marge operationnelle FY26 (46,8%) atterrit quasiment pile sur l'hypothese de creation (46,8% modelisee), et le mecanisme de mise en equivalence OpenAI s'avere, cette annee, un GAIN net (+4,96 Md$) plutot qu'une perte - confirmant la volatilite bidirectionnelle de cette ligne et la pertinence de son exclusion systematique. Nouveaute a integrer : un gain ponctuel de 3,2 Md$ lie a une participation dans Anthropic (distincte d'OpenAI), traite selon le meme principe d'exclusion que les autres participations Anthropic du portefeuille (Amazon, Alphabet). Point de vigilance majeur releve par la presse mais NON confirme par les sources officielles consultees : une guidance capex FY2027 chiffree a 255-260 Md$ evoquee en amont de la publication n'apparait dans aucune source post-resultats fiable - Microsoft n'a donne, selon les sources disponibles, qu'une orientation qualitative (capex FY27 'en hausse', T1 FY27 guide a plus de 50 Md$, complexifie par un changement comptable qui reduit le capex CY2026 rapporte de 190 a ~175 Md$ SANS changement de l'investissement reel).",
-    "text": "NOTE DE RECLASSIFICATION (30/07/2026) : l'exercice FY2026 (clos le 30/06/2026) est desormais un exercice REALISE et non plus projete - ses valeurs reelles (CA 331 839 M$, resultat operationnel 155 237 M$, resultat net GAAP 133 749 M$) ont ete deplacees du bloc de projection (adjXXX) vers le bloc historique (data), conformement a la cloture d'exercice. Les projections adjXXX debutent desormais a FY2027. Le resultat net GAAP FY2026 integre a titre informatif les elements non recurrents deja documentes ce refresh (gain net OpenAI +4 963 M$, gain Anthropic +3,2 Md$ pretax au T4) - preserve tel quel dans data conformement a E5 d-bis (traçabilite d'audit), la base normalisee (hors ces elements) ayant ete utilisee uniquement pour construire les projections 2027+.\n\n== SYNTHESE DE LA THESE ==\nLe refresh post-FY2026 valide largement la these de creation : Microsoft delivre une annee record (CA 331,8 Md$ +18%, resultat operationnel 155,2 Md$ +21%, marge operationnelle 46,8% quasi identique a l'hypothese de creation de 46,8%) tout en confirmant le mecanisme de decalage cash/comptable identifie a la creation - le capex continue de peser sur le free cash flow (FCF FY26 ~67 Md$, en repli d'environ 6% malgre la forte croissance du resultat, capex FY26 a 116 Md$ contre 65 Md$ en FY25, +80%). La bonne nouvelle du trimestre : la CFO Amy Hood confirme explicitement que le FCF restera POSITIF sur l'exercice FY2027 malgre la poursuite de la hausse du capex - le scenario du marche craignant une compression severe du cash ne se materialise pas a ce stade. Azure continue d'accelerer au lieu de ralentir (43% au T4 vs 40% au T3, guidance T1 FY27 a ~45%), et le RPO (backlog) croit de 84% a 678 Md$ - mais avec un signal de diversification important : hors OpenAI, le RPO ne croit que de 25% et la quasi-totalite (90%) du CA cloud FY26 provient de clients hors des grands laboratoires IA frontieres, attenuant (sans l'eliminer) le risque de concentration client identifie a la creation. Point de vigilance nouveau et non tranche a ce refresh : la presse pre-resultats evoquait une guidance capex FY2027 chiffree a 255-260 Md$, mais cette information n'est corroboree par aucune source officielle post-publication consultee - Microsoft semble n'avoir donne qu'une indication qualitative (hausse vs FY26, T1 FY27 > 50 Md$) complexifiee par un changement de methode comptable (extension de la duree d'amortissement des batiments de datacenters de 15 a 25 ans, reclassifiant une partie des futurs contrats de location-financement en location simple) qui reduit le capex RAPPORTE sans changer l'investissement REEL.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Resultats FY2026 (exercice clos 30/06/2026) en ligne voire au-dessus de la these de creation : CA 331 839 M$ (+18% publie, +16% cc), resultat operationnel 155 237 M$ (+21%, marge 46,8% - quasi identique a l'hypothese de creation de 46,8%), resultat net GAAP 133 749 M$ (+31%), resultat net non-GAAP hors impact OpenAI 128 786 M$ (+22%). T4 seul : CA 90 007 M$ (+18%), tres au-dessus de la guidance (86,7-87,8 Md$) et du consensus (~87,4-87,7 Md$).\n(i) Mise en equivalence OpenAI CONFIRMEE COMME GAIN net sur l'exercice complet (+4 963 M$ sur FY2026, +0,67$ d'EPS), a l'oppose de la perte nette de -3 620 M$ enregistree en FY2025 - validation directe du mecanisme identifie a la creation (ligne extremement volatile, pouvant basculer de perte a gain d'un exercice sur l'autre sans rapport avec la performance operationnelle). Exclusion confirmee et maintenue de l'omniumNet/omniumEPS sur tout l'horizon (ancrage AN-OPENAI-EXCL inchange dans son principe, mis a jour avec les chiffres reels).\n(i) NOUVEL ELEMENT : gain ponctuel de 3,2 Md$ au T4 FY2026 lie a une participation dans Anthropic (distincte de l'investissement OpenAI, non couverte par l'exclusion non-GAAP officielle de Microsoft qui ne porte que sur OpenAI). Conformement au traitement deja applique aux autres participations Anthropic du portefeuille (Amazon, Alphabet), ce gain est traite comme non-operationnel et volatil et EXCLU de l'omniumNet.2026 Omnium, en plus de l'exclusion OpenAI deja pratiquee par Microsoft elle-meme - retraitement supplementaire par rapport au non-GAAP officiel de la societe (voir ancrage dedie).\n(ii) Guidance T1 FY2027 : CA 89,85-90,95 Md$ (+16% au midpoint), Azure guide a ~45% cc (acceleration vs 43% au T4). Capex T1 FY27 guide a plus de 50 Md$ (Amy Hood qualifiant elle-meme ce chiffre de 'sous-estimation' compte tenu du changement comptable en cours). CHANGEMENT COMPTABLE MATERIEL : extension de la duree d'amortissement des batiments de datacenters de 15 a 25 ans, reclassifiant une partie des futurs contrats de location de type financement vers de la location simple - reduit le capex CY2026 RAPPORTE de 190 a environ 175 Md$ SANS changement de l'investissement reel sous-jacent selon le management. Effectifs attendus en baisse sur l'annee civile 2027 (nouveau signal de discipline de couts).\n(ii) AUCUNE guidance capex FY2027 chiffree et confirmee identifiee dans les sources officielles/presse post-resultats consultees a ce refresh, malgre une rumeur pre-resultats (ProActive Investors, 27/07/2026) evoquant 255-260 Md$ - cette rumeur N'EST PAS reprise ni confirmee par la couverture post-call (CNBC, Fortune, InfotechLead), qui rapportent seulement une orientation qualitative ('le capex FY27 va continuer d'augmenter en reponse a la demande'). A verifier explicitement au prochain refresh via le transcript complet du call (non localise a ce refresh).\n(i) Diversification du backlog au-dela d'OpenAI : RPO total 678 Md$ (+84%), mais RPO hors OpenAI +25% seulement ; ~90% du CA cloud FY26 provient de clients hors laboratoires IA frontieres ; toute la croissance sequentielle du RPO au T4 proviendrait de clients hors labos frontieres selon le management - atténue partiellement (sans l'eliminer) le risque de concentration client OpenAI identifie a la creation (toujours ~45% du RPO total selon les donnees disponibles au T3).\n(iii) FCF T4 FY2026 en repli de 23% a 19,64 Md$ (capex T4 a 35,8 Md$ sur la base des ajouts aux immobilisations) ; FCF FY2026 complet ~67 Md$ (vs ~72 Md$ FY2025, -6%) malgre la forte croissance du resultat - confirme le decalage cash/comptable de la these de creation. La CFO Amy Hood confirme explicitement que le FCF restera POSITIF sur FY2027 malgre la poursuite de la hausse du capex - signal rassurant sur l'ampleur du risque de compression du cash.\n(iii) Charge de retraite (Voluntary Retirement Program) T4 FY26 finalement INFERIEURE aux ~900 M$ guides a la creation, partiellement compensee par des charges de severance et une depreciation dans Xbox - element deja identifie a la creation (ancrage AN-Q4-ONEOFF), confirme comme net legerement favorable au benefice de la societe au final.\n\n== PARTICULARITES ==\nAucune particularite structurelle recurrente identifiee.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSources : communique officiel complet des resultats T4/FY2026 (29/07/2026, incluant etats financiers detailles et tableau de reconciliation GAAP/non-GAAP OpenAI), trouve et exploite comme source primaire. Transcript integral du call NON localise a ce refresh - couverture de presse detaillee mobilisee en complement (CNBC avec citations directes d'Amy Hood, Fortune, InfotechLead). CA T4 90 007 M$ tres au-dessus de la guidance (86,7-87,8 Md$) et du consensus (~87,4-87,7 Md$, EPS non-GAAP consensus 4,24$ vs 4,74$ realise, beat de ~12%). Guidance T1 FY2027 : CA 89,85-90,95 Md$, Azure cc ~45%, capex >50 Md$ (avec avertissement explicite sur l'ampleur du changement comptable useful-life). Prochain refresh utile : resultats T1 FY2027 (date non confirmee dans les sources consultees, generalement fin octobre - a verifier), qui devra clarifier la guidance capex FY2027 complete non obtenue a ce refresh.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase retenue : GAAP avec les deux corrections historiques deja documentees dans data (E5 d-bis, FY2018 TCJA et FY2019 benefice fiscal ponctuel IP, inchangees). Sur la projection, exclusion desormais confirmee par des donnees reelles bidirectionnelles des mises en equivalence OpenAI (gain FY26 vs perte FY25), PLUS exclusion nouvelle du gain ponctuel Anthropic (3,2 Md$ pretax, ~2,6 Md$ post-impot) au T4 FY26, non couverte par le non-GAAP officiel de Microsoft (qui n'exclut qu'OpenAI) - omniumNet.2026 Omnium (126 200 M$) est donc INFERIEUR au non-GAAP officiel de Microsoft (128 786 M$), retraitement supplementaire documente explicitement. IS normatif RELEVE a 19% (vs 18% a la creation), aligne sur le taux effectif reel FY2026 (32 185/165 934 = 19,4%). Nombre d'actions dilue FY2026 reel (7 453M) confirme une decroissance plus lente que l'hypothese de creation (-0,16% vs -0,4/0,5% suppose) - trajectoire omniumShares 2027-2030 legerement revisee a la hausse (decroissance plus lente) en consequence. Position de tresorerie nette FY2026 reelle : 36 549 M$ de cash net (cash+placements court terme 76 843 M$ moins dette totale 40 294 M$) - en baisse vs FY2025 (51 414 M$) du fait du capex massif, mais nettement moins degradee que ce que redoutait le marche ; omniumND.2026 recalibre sur cette base reelle.\nWATCH-LIST pour le prochain refresh : (1) PRIORITE - obtenir la guidance capex FY2027 complete (non trouvee a ce refresh malgre une rumeur pre-resultats de 255-260 Md$ non confirmee) via le transcript integral du call, non localise cette fois ; (2) confirmer si le changement comptable useful-life (15->25 ans) a un impact materiel sur la charge de D&A projetee (pourrait la reduire structurellement, favorable a la marge) ; (3) suivre le maintien de la promesse de FCF positif FY2027 formulee par Amy Hood ; (4) rythme reel de poursuite de la diversification du RPO hors OpenAI ; (5) Azure cc growth T1 FY27 (guide ~45%) comme confirmation ou non de l'acceleration ; (6) issue des recours collectifs en valeurs mobilieres.\n\n== CATALYSEURS ==\nResultats T1 FY2027 (date a confirmer, generalement fin octobre) - premiere clarification attendue de la guidance capex FY2027 complete, confirmation ou non de l'acceleration Azure a ~45% ; tout signal supplementaire de diversification du backlog hors OpenAI ; confirmation du maintien d'un FCF positif sur l'exercice.",
+    "text": "== SYNTHESE DE LA THESE ==\nMicrosoft is the portfolio's core compounding position: a hyperscaler whose FY26 (revenue $331.8B +18%, operating income $155.2B +21%, margin 46.8% exactly on the creation hypothesis) validated the central bet - AI demand converts into durable, high-margin growth - while confirming the cash/accounting timing gap identified at creation: capex $116B (+80%) keeps FCF (~$67B, -6%) well below earnings, deliberately accepted as long as returns on that capex stay visible. Azure accelerates instead of decelerating (43% in Q4, ~45% guided for Q1 FY27, >$100B for the year) and the CFO now commits explicitly to positive FCF through FY2027 - the market's cash-compression fear does not materialize at this stage. Concentration risk is easing but not gone: RPO $678B (+84%) is still ~45% OpenAI, though ex-OpenAI RPO grows +25% and ~90% of FY26 cloud revenue comes from customers outside frontier AI labs.\n\n== LECTURE DE THESE ==\n- Azure accelerated to +43% in Q4 and is guided ~45% for Q1 FY27 - an unusually steep trajectory for a hyperscaler at this scale.\n- OpenAI concentration receding: RPO ex-OpenAI +25% vs +84% total; ~90% of FY26 cloud revenue outside frontier AI labs.\n- Full-year FY27 outlook given qualitatively on the call (double-digit revenue and operating income growth, margins down <1pt, tax ~20%, positive FCF) - hard directional constraints now embedded in the projection (tax raised to 20%).\n- Full FY26 call transcript read this refresh (missing on 30/07): confirms no quantified FY27 capex guidance exists - the 255-260B$ pre-earnings rumor is NOT corroborated.\n- A surveiller : quantified FY27 capex still pending; useful-life change (15->25y) may structurally lower reported D&A and capex without changing real investment.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & WATCH-LIST ==\nBase: published US GAAP, with the two historical one-off corrections already carried in data (FY2018 TCJA, FY2019 IP tax benefit - E5 d-bis, unchanged). Omnium basis excludes OpenAI equity-method swings (FY26: +$4,963M gain vs FY25 -$3,620M loss - bidirectional volatility now demonstrated) AND the one-off $3.2B Anthropic gain (Q4 FY26, not covered by Microsoft's own non-GAAP which only excludes OpenAI): published GAAP net FY26 $133,749M / company non-GAAP $128,786M / Omnium $126,200M (traced here per d-bis). Bridge established (c-ter): FY26 reconciles GAAP within $6M; projections carry tax 20% (AN-IS, FY27 guidance), finNet 0 while net cash + active buybacks (E5 a-bis), turning to a small charge as omniumND goes positive from 2030. Scorecard applied: +3% (capped) on 2027 only (AN-SCORECARD-CY). Diluted shares 7,453M FY26, decay -0.16%/yr observed (slower than creation hypothesis, trajectory already adjusted). Net cash $36,549M FY26. Horizon extended to 2031 (AN-2031-EXTENSION). WATCH-LIST: (1) quantified FY27 capex guidance (transcript confirms none given); (2) D&A impact of the useful-life change; (3) FCF-positive commitment holding; (4) RPO diversification pace; (5) Azure ~45% Q1 FY27 confirmation; (6) securities class actions. Next useful refresh: Q1 FY27 results (late October, date unconfirmed).\n\n== CATALYSEURS ==\nQ1 FY27 results (late Oct): first FY27 capex clarification, Azure ~45% confirmation, RPO diversification signal.",
     "impact": "positif",
     "ancrages": [
       {
@@ -288,12 +288,10 @@
       },
       {
         "id": "AN-IS",
-        "moteur": "Taux d'IS normatif RELEVE a 19% (vs 18% a la creation), aligne sur le taux effectif reel FY2026 (32 185/165 934 = 19,4%), tenu constant sur l'horizon faute de guidance explicite au-dela de FY26.",
+        "moteur": "Normative tax rate raised to 20% from FY2027 (was 19%): management guided ~20% for both Q1 FY27 and full FY2027 on the Q4 call - guidance prevails over the FY26 effective rate of 19.4% (E5-b). Applied to the whole projection horizon via the bridge.",
         "applique": [
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
+          "omniumNet.2027-2031",
+          "bridge.taxRate"
         ],
         "confiance": "moyenne"
       },
@@ -318,6 +316,28 @@
           "omniumND.2030"
         ],
         "confiance": "basse"
+      },
+      {
+        "id": "AN-SCORECARD-CY",
+        "moteur": "Guidance track record: management beat its initial annual anchors by +5.0% (FY26) and +7.4% (FY25); weighted annualBeatPct +6.0%, capped at +3.0% annual effect, applied to CA/EBIT/Net/EPS 2027 only - decays as FY27 quarters get published.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumEBIT.2027",
+          "omniumNet.2027",
+          "omniumEPS.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "AN-2031-EXTENSION",
+        "moteur": "FY2031 added at horizon roll (C17): revenue +12.0% (gentle taper from +13.0% in 2030), EBIT margin held at 48.0% (2030 level, no further expansion assumed beyond the guided trajectory), tax 20%, buybacks continuing (-0.33%/yr shares).",
+        "applique": [
+          "omniumCA.2031",
+          "omniumEBIT.2031",
+          "omniumNet.2031",
+          "omniumEPS.2031"
+        ],
+        "confiance": "moyenne"
       }
     ],
     "dernierCall": {
@@ -344,15 +364,15 @@
         "Commandes commerciales ('commercial bookings') +18% hors OpenAI mais seulement +10% en incluant les engagements Azure d'OpenAI - suggere un ralentissement relatif de la contribution marginale d'OpenAI aux nouvelles commandes sur la periode, cohérent avec le theme de diversification."
       ],
       "communiqueAnalyse": true,
-      "transcriptAnalyse": true
+      "transcriptAnalyse": true,
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US-GAAP",
+        "source": "communique",
+        "date": "2026-07-29"
+      }
     },
     "guidanceHistory": [
-      {
-        "quarter": "T3 FY26",
-        "date": "2026-04-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "T4 FY26 CA 86,7-87,8 Md$ ; Azure cc T4 39-40% ; expansion de marge operationnelle FY26 ~+1pt malgre le capex et une charge de retraite T4 ~900 M$."
-      },
       {
         "quarter": "T4 FY26",
         "date": "2026-07-29",
@@ -362,40 +382,46 @@
     ],
     "guidanceLongTerme": "Aucun objectif chiffre a moyen terme (au-dela du trimestre suivant) communique par Microsoft dans les sources consultees. Orientation qualitative confirmee : croissance a deux chiffres attendue sur Azure/cloud, poursuite de la hausse du capex FY2027 'en reponse a la demande', engagement explicite de la CFO sur un free cash flow positif malgre cette hausse.",
     "omniumCA": {
-      "2027": 395000,
+      "2027": 406850,
       "2028": 458200,
       "2029": 522348,
-      "2030": 590253
+      "2030": 590253,
+      "2031": 661000
     },
     "omniumEBIT": {
-      "2027": 183675,
+      "2027": 189185,
       "2028": 215354,
       "2029": 248115,
-      "2030": 283321
+      "2030": 283321,
+      "2031": 317300
     },
     "omniumNet": {
-      "2027": 150397,
-      "2028": 176219,
-      "2029": 202917,
-      "2030": 231596
+      "2027": 151348,
+      "2028": 172283,
+      "2029": 198492,
+      "2030": 226537,
+      "2031": 253200
     },
     "omniumEPS": {
-      "2027": 20.26,
-      "2028": 23.84,
-      "2029": 27.55,
-      "2030": 31.56
+      "2027": 20.39,
+      "2028": 23.3,
+      "2029": 26.95,
+      "2030": 30.86,
+      "2031": 34.61
     },
     "omniumND": {
       "2027": -25000,
       "2028": -15000,
       "2029": -5000,
-      "2030": 10000
+      "2030": 10000,
+      "2031": 25000
     },
     "omniumShares": {
       "2027": 7423,
       "2028": 7393,
       "2029": 7365,
-      "2030": 7340
+      "2030": 7340,
+      "2031": 7316
     },
     "quarterlyEPS": {
       "cadence": "trimestriel",
@@ -447,51 +473,47 @@
       "CY": [
         {
           "label": "T1",
-          "eps": 4.72,
+          "eps": 4.75,
           "actual": false
         },
         {
           "label": "T2",
-          "eps": 4.99,
+          "eps": 5.02,
           "actual": false
         },
         {
           "label": "T3",
-          "eps": 5.16,
+          "eps": 5.19,
           "actual": false
         },
         {
           "label": "T4",
-          "eps": 5.39,
+          "eps": 5.43,
           "actual": false
         }
       ],
       "NY": [
         {
           "label": "T1",
-          "eps": 5.55,
+          "eps": 5.42,
           "actual": false
         },
         {
           "label": "T2",
-          "eps": 5.87,
+          "eps": 5.74,
           "actual": false
         },
         {
           "label": "T3",
-          "eps": 6.07,
+          "eps": 5.93,
           "actual": false
         },
         {
           "label": "T4",
-          "eps": 6.35,
+          "eps": 6.21,
           "actual": false
         }
-      ],
-      "epsForward12m": 20.26,
-      "forwardPeriodLabel": "T1 27 -> T4 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
+      ]
     },
     "guidanceScorecard": {
       "cadence": "quarterly",
@@ -521,9 +543,88 @@
       ],
       "paceCheckpoint": null,
       "weightedBeatPct": 3.2,
-      "appliedToProjection": false,
+      "appliedToProjection": true,
       "consensusSource": "WallStreetZen/S&P Global",
-      "consensusDate": "2026-07-15"
+      "consensusDate": "2026-07-15",
+      "annualBeatHistory": [
+        {
+          "fy": 2026,
+          "beatPct": 5.0,
+          "source": "initial_consensus",
+          "excluded": false,
+          "note": "Initial consensus Jul-2025 16.46$ (adj., +20.7% on FY25 13.64$) vs realized 17.28$ on the Omnium basis (non-GAAP ex-OpenAI 128,786M$/7,453M)."
+        },
+        {
+          "fy": 2025,
+          "beatPct": 7.4,
+          "source": "initial_consensus",
+          "excluded": false,
+          "note": "Initial consensus Jul-2024 13.06$ vs realized ~14.03$ on the Omnium basis (GAAP 13.64$ + OpenAI equity loss add-back post-tax)."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_consensus",
+          "excluded": true,
+          "note": "Initial FY24 consensus (Jul-2023) not reliably sourced at setup - excluded rather than estimated."
+        }
+      ],
+      "annualBeatPct": 6.0,
+      "anchorInitial": {
+        "fy": 2027,
+        "value": 20.26,
+        "source": "own_vintage",
+        "date": "2026-07-30",
+        "note": "No post-publication FY27 consensus available at setup (last consensus 19.80$ dated 2026-07-15, PRE-FY26 results, invalid as anchor); first own projection established after FY26 results used instead."
+      },
+      "applicationNote": "annualBeatPct +6.0% x 100% of FY27 unpublished, capped at +3.0% annual effect (E-scorecard e). Applied uniformly to omniumCA/EBIT/Net/EPS 2027 (see AN-SCORECARD-CY). No regime break this quarter (beat and raise)."
+    },
+    "bridge": {
+      "2026": {
+        "finNet": 2534,
+        "other": 8163,
+        "taxRate": 0.194,
+        "minorities": 0,
+        "netCalc": 133743,
+        "netPub": 133749,
+        "residual": 6,
+        "residualNote": "GAAP reconciles: other = OpenAI equity gain +4,963 and Anthropic gain +3,200 (both pretax), excluded from the Omnium basis via quarterlyEPS retraitements; finNet = recurring net interest/investment income (exact 10-K split to refine)."
+      },
+      "2027": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 151348
+      },
+      "2028": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 172283
+      },
+      "2029": {
+        "finNet": 0,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 198492
+      },
+      "2030": {
+        "finNet": -150,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 226537
+      },
+      "2031": {
+        "finNet": -800,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 253200
+      }
     }
   }
 }
