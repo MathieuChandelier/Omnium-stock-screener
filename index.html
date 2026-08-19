@@ -388,7 +388,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .eps-row{display:flex;align-items:center;gap:12px;}
 .eps-head{display:flex;align-items:baseline;gap:12px;flex:0 0 268px;min-width:0;}
 .eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex:0 0 134px;}
-.eps-tot{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;white-space:nowrap;}
+.eps-tot{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;white-space:normal;}
+/* Pont : les trois totaux annuels (Published / Adjustments / Omnium)
+   s'alignent a droite d'une meme colonne - sans quoi le signe du
+   total d'ajustements decale ses chiffres de ceux des deux autres. */
+.bridge .eps-head .eps-tot{flex:1 1 auto;text-align:right;align-self:stretch;}
 .eps-tot .eps-cons{font-weight:600;color:var(--muted);}
 .eps-tot .eps-analysts{font-weight:700;color:var(--muted);font-size:9.5px;}
 .eps-cells{flex:1;display:flex;gap:8px;min-width:0;}
@@ -1726,7 +1730,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
     const pubTotal=cleanTotal-adjTotal;
     const nAdj=arr.filter(p=>adjOf(p)!==0).length;
-    return `<div class="qs-qtr-block">
+    return `<div class="qs-qtr-block bridge">
       <div class="eps-yr-solo">${opts.label}</div>
       <div class="eps-rows">
         <div class="eps-row pub">
@@ -2488,7 +2492,7 @@ function buildValoChartSVG(ticker, opts){
   // la bande occupee par la courbe, donc SANS aucun aplat de fond.
   const vTop=yMax-margin*0.62, vBot=yMin+margin*0.62;
   const yAxis=compact ? '' : (
-    `<text x="${padL}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="start">${axisUnit}</text>`
+    `<text x="${padL}" y="15" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="start">${axisUnit}</text>`
     + [vTop,(yMax+yMin)/2,vBot].map(v=>{
       const y=yOf(v).toFixed(1);
       return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`;
@@ -2580,7 +2584,7 @@ function buildValoChartSVG(ticker, opts){
     }
     const ly=bestAbove ? y-5 : y+12;
     return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#9aa3b2" stroke-width="1.25" stroke-dasharray="4,4"/>`
-      +`<text x="${bestCx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle">${lbl}</text>`;
+      +`<text x="${bestCx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="#6b7280" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${lbl}</text>`;
   })();
 
   // Au-dela de ~40 points, les pastilles individuelles se touchent et le
@@ -2664,7 +2668,7 @@ function buildValoChartSVG(ticker, opts){
     // forment la ligne de tete du graphique, ce qui vaut mieux qu'un
     // intitule flottant a quelques pixels du premier chiffre - il y etait
     // trop pres et ecrasait la colonne.
-    const head=`<text x="${(lx+7).toFixed(1)}" y="13" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" letter-spacing=".06em">TODAY</text>`;
+    const head=`<text x="${(lx+7).toFixed(1)}" y="15" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">TODAY</text>`;
     return head+items.map(it=>{
       const lead=Math.abs(it.ny-it.y)>1.5
         ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
@@ -2878,7 +2882,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const yLabels=`<text x="${padL}" y="${(yOf(vHi)-6).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vHi.toFixed(1)}</text>`
     +`<text x="${padL}" y="${(yOf(vLo)+12).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vLo.toFixed(1)}</text>`;
   const unitTxt=`EPS, in ${tickerCur(ticker)||'$'}`;
-  const unitLabel=`<text x="${padL}" y="13" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)">${unitTxt}</text>`;
+  const unitLabel=`<text x="${padL}" y="15" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)">${unitTxt}</text>`;
   // Le trace demarrant a x=0, une etiquette centree sur le premier (ou le
   // dernier) point deborderait du viewBox et serait rognee : on ancre ces
   // deux-la sur leur bord.
@@ -2910,11 +2914,11 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
         if(ny>0){ nx=-nx; ny=-ny; }
         // Bornage horizontal : sur le premier/dernier point, le decalage
         // perpendiculaire peut sortir du viewBox - on rabat l'ancrage.
-        const ox=px+nx*17, oy=py+ny*17;
-        const txt=v.toFixed(1), halfW=txt.length*3.7;
+        const ox=px+nx*15, oy=py+ny*15;
+        const txt=v.toFixed(1), halfW=txt.length*3.2;
         const anchor=(ox-halfW<padL)?'start':((ox+halfW>padL+plotW)?'end':'middle');
         const cx=anchor==='start'?Math.max(ox,padL):(anchor==='end'?Math.min(ox,padL+plotW):ox);
-        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
+        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="11" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
       }
       return `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
     }).join('');
@@ -4021,8 +4025,10 @@ function pfUpdateSortHeaderUI(){
 // La file est DERIVEE de l'etat des fiches a chaque rendu, jamais stockee :
 // des qu'un refresh pose etatsFinanciers.analyse=true, le titre en sort de
 // lui-meme. Rien a invalider, rien a resynchroniser.
-let _actOpen=false;
+let _actOpen=false, _calOpen=false, _13fOpen=false;
 function toggleActionsPanel(){ _actOpen=!_actOpen; renderActionsBar(); }
+function toggleCalPanel(){ _calOpen=!_calOpen; renderActionsBar(); }
+function toggle13fPanel(){ _13fOpen=!_13fOpen; renderActionsBar(); }
 
 // Echeances 13F : depots dus ~45 jours apres chaque cloture trimestrielle
 // (14-15 fev/mai/aout/nov). L'alerte s'ouvre 2-3 jours apres (le ~17) et
@@ -4071,43 +4077,47 @@ function renderActionsBar(){
   const wrap=document.getElementById('actions-bar-wrap');
   if(!wrap) return;
   const q=actionQueues();
-  const total=q.attente.length+q.horsEnum.length+q.own13f.length+(q.nextEventsDu?1:0);
-  if(!total){ wrap.innerHTML=''; return; }
-  const grp=(titre,pourquoi,tks,requete)=>!tks.length?'':`<div class="act-grp">
+  const esc=t=>t.replace(/</g,'&lt;');
+  const grp=(titre,pourquoi,tks,requete)=>`<div class="act-grp">
       <div class="act-grp-t">${titre}</div>
       <div class="act-grp-w">${pourquoi}</div>
-      <div class="act-tk">${tks.map(t=>`<span>${t}</span>`).join('')}</div>
-      <div class="act-req">${requete.replace(/</g,'&lt;')}\n\n${tks.join(', ')}</div>
+      ${tks&&tks.length?`<div class="act-tk">${tks.map(t=>`<span>${t}</span>`).join('')}</div>`:''}
+      <div class="act-req">${esc(requete)}${tks&&tks.length?'\n\n'+tks.join(', '):''}</div>
     </div>`;
-  const grpSansTitres=(titre,pourquoi,requete)=>`<div class="act-grp">
-      <div class="act-grp-t">${titre}</div>
-      <div class="act-grp-w">${pourquoi}</div>
-      <div class="act-req">${requete.replace(/</g,'&lt;')}</div>
-    </div>`;
-  const panel=!_actOpen?'':`<div class="act-panel">
-    ${grp('Projections provisoires — awaiting GAAP/IFRS statements',
-          'Earnings refreshed from the press release and transcript, but no reporting-standard financial statements recorded as used. Projections stand until they are.',
-          q.attente,
-          'Refresh comptable groupé — pour les titres ci-dessous, reprends les états financiers en référentiel (US GAAP ou IFRS), désormais disponibles, applique les retraitements Omnium, et renseigne dernierCall.etatsFinanciers {analyse, referentiel, source, date} :')}
-    ${grp('epsAdj.basis hors énumération',
-          'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent and the Accounting basis paragraph disappears. It also drives epsConsensus.basis.',
-          q.horsEnum,
-          'Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l\'énumération GAAP / non-GAAP (ou null si la métrique n\'est ni l\'une ni l\'autre) et déplace la justification vers pointsCles :')}
-    ${grp('13F ownership sweep due — Operation D',
-          `New 13F filings were due ${q.dl13f||''} (45 days after quarter end). The tickers below have ownership.asOf older than that deadline. One grouped pass replaces per-refresh lookups.`,
-          q.own13f,
-          'Opération D — balayage 13F groupé : suis INSTRUCTIONS_13F.md (méthode, watchlist des gérants actifs, snapshot history) et mets à jour le seul champ ownership de chaque fiche ci-dessous, asOf à la date du jour, un commit dédié :')}
-    ${q.nextEventsDu?grpSansTitres('Monthly earnings-calendar pass — Operation C',
-          q.lastRunNE?`Last nextEvents pass: ${q.lastRunNE}. A monthly pass keeps upcoming earnings dates fresh across the portfolio.`:'No nextEvents pass recorded yet (_meta.lastRun absent).',
-          'Opération C — mise à jour des prochains événements : suis INSTRUCTIONS_NEXTEVENTS.md pour tout le portefeuille (fournis le contenu actuel de data/nextEvents.json), livre le fichier complet avec _meta.lastRun à la date du jour :'):''}
-  </div>`;
-  wrap.innerHTML=`<div class="act-entry" onclick="toggleActionsPanel()">
-      <div class="act-left">
-        <span class="act-txt">Actions to take</span>
-        <span class="act-n">${total}</span>
-      </div>
-      <span class="vr-entry-arrow">${_actOpen?'&#9650;':'&#9660;'}</span>
-    </div>${panel}`;
+  const bar=(label,n,open,toggle,panel)=>`<div class="act-entry" onclick="${toggle}()">
+      <div class="act-left"><span class="act-txt">${label}</span>${n!=null?`<span class="act-n">${n}</span>`:''}</div>
+      <span class="vr-entry-arrow">${open?'&#9650;':'&#9660;'}</span>
+    </div>${open?`<div class="act-panel">${panel}</div>`:''}`;
+  let html='';
+  // 1) Remediation derivee des fiches - s'eteint titre par titre au fil
+  //    des refreshes qui posent les champs attendus.
+  const totalAct=q.attente.length+q.horsEnum.length;
+  if(totalAct) html+=bar('Actions to take',totalAct,_actOpen,'toggleActionsPanel',
+    grp('Projections provisoires — awaiting GAAP/IFRS statements',
+        'Earnings refreshed from the press release and transcript, but no reporting-standard financial statements recorded as used. Projections stand until they are.',
+        q.attente,
+        'Refresh comptable groupé — pour les titres ci-dessous, reprends les états financiers en référentiel (US GAAP ou IFRS), désormais disponibles, applique les retraitements Omnium, et renseigne dernierCall.etatsFinanciers {analyse, referentiel, source, date} :')
+    +grp('epsAdj.basis hors énumération',
+        'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent and the Accounting basis paragraph disappears.',
+        q.horsEnum,
+        "Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l'énumération GAAP / non-GAAP (ou null si la métrique n'est ni l'une ni l'autre) et déplace la justification vers pointsCles :"));
+  // 2) Alerte calendaire mensuelle - Operation C (1er du mois).
+  if(q.nextEventsDu) html+=bar('Adjust earnings calendar',null,_calOpen,'toggleCalPanel',
+    grp('Monthly pass — Operation C',
+        q.lastRunNE?`Last pass: ${q.lastRunNE}. Runs every 1st of the month to keep upcoming earnings dates fresh across the portfolio.`
+                   :'No pass recorded yet (_meta.lastRun absent). Runs every 1st of the month.',
+        null,
+        "Opération C — mise à jour des prochains événements : suis INSTRUCTIONS_NEXTEVENTS.md pour tout le portefeuille (fournis le contenu actuel de data/nextEvents.json), livre le fichier complet avec _meta.lastRun à la date du jour."));
+  // 3) Alerte calendaire trimestrielle - Operation D. Les depots 13F sont
+  //    DUS 45 jours apres la cloture (14-15 fev/mai/aout/nov) : l'alerte
+  //    s'ouvre le ~17 du DEUXIEME mois apres le trimestre - au 17 du
+  //    premier mois, la plupart des gerants n'ont pas encore depose.
+  if(q.own13f.length) html+=bar('Fund managers — new 13F filings',q.own13f.length,_13fOpen,'toggle13fPanel',
+    grp('Quarterly 13F sweep — Operation D',
+        `Filings were due ${q.dl13f} (45 days after quarter end). Tickers below have ownership.asOf older than that deadline. One grouped pass replaces per-refresh lookups; the alert clears itself as asOf dates catch up.`,
+        q.own13f,
+        "Opération D — balayage 13F groupé : suis INSTRUCTIONS_13F.md (méthode, watchlist des gérants actifs, snapshot history) et mets à jour le seul champ ownership de chaque fiche ci-dessous, asOf à la date du jour, un commit dédié :"));
+  wrap.innerHTML=html;
 }
 
 function renderPortfolio(){
