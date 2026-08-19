@@ -190,21 +190,24 @@ def c11():
                                f"sur {len(futur)} annees projetees"))
     return bad
 
-@check("C12 scorecard : la tenue de guidance doit etre integree aux projections")
+@check("C12 scorecard : annualBeatPct etabli ET integre aux projections")
 def c12():
-    # appliedToProjection n'est pas une option : des lors qu'un
-    # weightedBeatPct exploitable existe, il DOIT etre repercute dans
-    # omniumEPS/adjCA de l'annee en cours (INSTRUCTIONS.md l.717). Un false
-    # signale donc une projection qui ignore le comportement observe de
-    # l'emetteur - une anomalie a corriger au refresh, pas un etat a
-    # afficher sur la fiche.
+    # Architecture du 18/08/2026 : le raffinement CY est pilote par
+    # annualBeatPct (realise vs ancre initiale, fenetre 3 exercices) - le
+    # weightedBeatPct trimestriel n'est plus qu'un indicateur de suivi.
+    # Deux etats anormaux : un scorecard sans annualBeatPct etabli (travail
+    # en attente au prochain refresh), et un annualBeatPct chiffre non
+    # repercute dans omniumEPS/adjCA de l'annee en cours.
     bad=[]
     for tk,t in FICHES.items():
         gs=t['hypothese'].get('guidanceScorecard')
         if not isinstance(gs,dict): continue
-        if gs.get('weightedBeatPct') is None: continue
-        if gs.get('appliedToProjection') is not True:
-            bad.append((tk,f"weightedBeatPct={gs['weightedBeatPct']} non repercute "
+        if 'annualBeatPct' not in gs:
+            bad.append((tk,"scorecard pre-architecture : annualBeatPct a etablir "
+                           "(ancre initiale + 3 exercices) au prochain refresh"))
+            continue
+        if isinstance(gs.get('annualBeatPct'),(int,float)) and gs.get('appliedToProjection') is not True:
+            bad.append((tk,f"annualBeatPct={gs['annualBeatPct']} non repercute "
                            f"(appliedToProjection={gs.get('appliedToProjection')!r})"))
     return bad
 
@@ -545,6 +548,40 @@ def w5():
                     bad.append((tk,f'{y}: dette nette {nd} mais finNet POSITIF {b["finNet"]}'))
                 elif not (0.005*nd<=-b['finNet']<=0.12*nd):
                     bad.append((tk,f'{y}: finNet {b["finNet"]} pour dette {nd} (hors bande 0,5-12%)'))
+    return bad
+
+@check("C22 scorecard : structure annualBeatHistory / anchorInitial")
+def c22():
+    # Validation structurelle des champs de l'architecture annuelle :
+    # sources dans l'enum, exclusion documentee, fenetre bornee a 3,
+    # anchorInitial sur l'exercice en cours et jamais sans date.
+    SRC={'initial_guidance','initial_consensus','outlook_quantifie','own_vintage'}
+    bad=[]
+    for tk,t in FICHES.items():
+        gs=t['hypothese'].get('guidanceScorecard')
+        if not isinstance(gs,dict): continue
+        hist=gs.get('annualBeatHistory')
+        if hist is not None:
+            if not isinstance(hist,list) or len(hist)>3:
+                bad.append((tk,'annualBeatHistory : liste de 3 exercices maximum'))
+            else:
+                for e in hist:
+                    if not isinstance(e,dict): bad.append((tk,'entree non-objet')); continue
+                    if e.get('source') not in SRC:
+                        bad.append((tk,f"fy {e.get('fy')} : source {e.get('source')!r} hors enum"))
+                    if e.get('excluded') and not (e.get('note') or '').strip():
+                        bad.append((tk,f"fy {e.get('fy')} : exclu sans note (rupture non documentee)"))
+                    if not e.get('excluded') and not isinstance(e.get('beatPct'),(int,float)):
+                        bad.append((tk,f"fy {e.get('fy')} : beatPct non chiffre sans exclusion"))
+        ai=gs.get('anchorInitial')
+        if ai is not None:
+            if not isinstance(ai,dict) or ai.get('source') not in SRC \
+               or not isinstance(ai.get('value'),(int,float)) or not ai.get('date'):
+                bad.append((tk,'anchorInitial incomplet (value/source/date)'))
+            else:
+                cy=cy_of(t)
+                if cy and ai.get('fy')!=cy:
+                    bad.append((tk,f"anchorInitial.fy {ai.get('fy')} != annee en cours {cy}"))
     return bad
 
 def main():
