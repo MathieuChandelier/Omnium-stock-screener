@@ -2047,9 +2047,6 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="card-title" style="margin-bottom:0;">Expected annual return · ${CY} → ${LY}</div>
     </div>
     ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
-    ${d.hypothese?.cagrBridge?`<div class="rb-bridge-wrap">
-      <div style="font-size:13px;color:var(--text);font-family:'Quattrocento Sans',serif;line-height:1.5;background:var(--navy-light);border-radius:8px;padding:8px 12px;">${(d.hypothese.cagrBridge||'').toString().replace(/</g,'&lt;')}</div>
-    </div>`:''}
     <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
     ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}<div id="valo-hist-slot"></div>`:''}
     ${qeBlock?.historiqueBlocks?.length?`
@@ -3596,10 +3593,7 @@ function buildGuidanceScorecard(ticker){
         <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:${beat?'var(--navy)':'var(--gold-text)'};">${gs.annualBeatPct>=0?'+':'−'}${Math.abs(gs.annualBeatPct).toFixed(1)}%</span>
         <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">${beat?'above':'below'} ${against} on average</span>
       </div>`
-    : `<div style="display:flex;align-items:baseline;gap:9px;">
-        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:var(--muted);">—</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">no fiscal year measured yet</span>
-      </div>`;
+    : `<div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">No fiscal year measured yet</div>`;
   // Pas de jargon de ponderation en surface ("weighted 3/2" illisible,
   // retour 19/08) - la methode s'explique en clair dans les archives.
   const heroSub=ip
@@ -3616,7 +3610,7 @@ function buildGuidanceScorecard(ticker){
 
   // Ancre de l'exercice en cours : seulement si la ligne inProgress ne la
   // porte pas deja (sinon redondant). Detail applicationNote en infobulle.
-  const anchorLine=(!ip&&ai.fy)?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} initial ${srcLbl[ai.source]||esc(ai.source)}${ai.value!=null?`: <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b>`:''} · expected beat/miss to assess at the next refresh</div>`:'';
+  const anchorLine='';   // ancre releguee dans Details (retour CPRT 19/08)
 
   // "Details" (retour 19/08, exemple Insulet) : PAS d'historique verbeux -
   // une ligne par exercice "initiale -> realise" (ou "-> guide" pour
@@ -3631,6 +3625,7 @@ function buildGuidanceScorecard(ticker){
     const sign=`${e.beatPct>0?'+':e.beatPct<0?'\u2212':''}${Math.abs(e.beatPct).toFixed(1)}%`;
     return line(`<b style="color:var(--navy);">FY${String(e.fy).slice(2)}</b> \u2014 initial ${init}${real?` \u2192 realized ${real}`:''} (${sign})`);
   };
+  const anchorDetail=(!ip&&ai.fy&&ai.value!=null)?line(`<b style="color:var(--navy);">FY${String(ai.fy).slice(2)}</b> — anchor ${fmtAnchor(ai.value)} (${srcLbl[ai.source]||esc(ai.source)})`):'';
   const ipLine=ip?line(`<b style="color:var(--navy);">FY${String(ip.fy).slice(2)}</b> \u2014 initial ${fmtAnchor(ip.initialValue)} \u2192 guided ${fmtAnchor(ip.currentValue)}${ip.asOf?` as of ${formatFrDate(ip.asOf)}`:''} (${ip.deltaPct>0?'+':ip.deltaPct<0?'\u2212':''}${Math.abs(ip.deltaPct).toFixed(1)}% projected)`)
     +(ip.note?line(esc(ip.note)):''):'';
   const histLines=hist.map(fyLine).join('');
@@ -3655,7 +3650,7 @@ function buildGuidanceScorecard(ticker){
     <div class="rb-eps-py-content" id="gs-content">
       ${olderRows}
       <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Average: the year in progress counts for half, closed years share the rest equally.</p>
-      ${ipLine}${histLines}${exclRows}${basisHtml}${consLine}
+      ${ipLine}${anchorDetail}${histLines}${exclRows}${basisHtml}${consLine}
     </div>`;
 }
 
@@ -3670,7 +3665,10 @@ function renderScorecardCard(ticker){
   const tEl=document.getElementById('scorecard-title');
   if(tEl){
     const m=gs.metric||'';
-    tEl.textContent=/eps/i.test(m)?'EPS Guidance Scorecard':('Guidance Scorecard \u2014 '+(m.split('(')[0].trim()||'annual anchors'));
+    const short=m.split('(')[0].trim();
+    tEl.textContent=(/eps/i.test(m)||!short||/^none$/i.test(short))
+      ? 'EPS Guidance Scorecard'
+      : ('Guidance Scorecard — '+short);
   }
   body.innerHTML=html;
   card.style.display='block';
