@@ -1,10 +1,20 @@
 {
  "_meta": {
   "generatedAt": "2026-08-19T14:30:00Z",
-  "window": "J+15",
-  "note": "Seed initial (harvest de nextEvents.json), fenetre jusqu au 2026-09-03 - premier vrai run hebdomadaire a lancer via la pastille Refresh calendar."
+  "window": "1m",
+  "note": "Seed initial (harvest de nextEvents.json) - premier vrai run hebdomadaire a lancer via la pastille Refresh calendar."
  },
  "events": [
+  {
+   "id": "CPRT-2026-09-10-earnings",
+   "ticker": "CPRT",
+   "date": "2026-09-10",
+   "label": "Q4 FY 26 results",
+   "type": "earnings",
+   "source": "monthly pass (seed)",
+   "status": "estimated",
+   "note": "Seeded from the last monthly pass - to reconfirm at the first weekly Calendar run."
+  },
   {
    "id": "INTUIT-2026-08-20-earnings",
    "ticker": "INTUIT",

@@ -4339,11 +4339,11 @@ function calPillState(){
   const cc=state.calendarCandidates||null;
   const gen=cc&&cc._meta&&cc._meta.generatedAt||null;
   const due=!gen || new Date(gen)<lastThursday();
-  // Fenetre stricte J+15 (jeudi du run -> vendredi de la 2e semaine) et
-  // DEDUP : un evenement deja accepte ne se re-propose JAMAIS (id stable).
+  // Fenetre stricte d'UN MOIS (J+31 depuis le run) et DEDUP : un
+  // evenement deja accepte ne se re-propose JAMAIS (id stable).
   let cands=calUpcoming(cc&&cc.events);
   if(gen){
-    const lim=new Date(new Date(gen.slice(0,10)+'T00:00:00Z').getTime()+15*86400e3).toISOString().slice(0,10);
+    const lim=new Date(new Date(gen.slice(0,10)+'T00:00:00Z').getTime()+31*86400e3).toISOString().slice(0,10);
     cands=cands.filter(e=>e.date<=lim);
   }
   const dism=new Set(_calData.dismissed||[]);
@@ -4355,7 +4355,7 @@ function calFeedUrl(){ return 'https://model.omnium-capital.com/calendar.php?use
 function calGoogleLink(cls){
   if(_calRemote!==true) return '';
   const href='https://calendar.google.com/calendar/render?cid='+encodeURIComponent(calFeedUrl());
-  return `<a href="${href}" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--teal-dark-text);text-decoration:none;text-transform:none;letter-spacing:0;" title="One-time: adds the Omnium Market Calendar feed to your Google Calendar. Every event you tick then syncs on its own.">Add to Google Calendar</a>`;
+  return `<a href="${href}" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--teal-text);text-decoration:none;text-transform:none;letter-spacing:0;" title="One-time: adds the Omnium Market Calendar feed to your Google Calendar. Every event you tick then syncs on its own.">Add to Google Calendar</a>`;
 }
 function calIsSelected(id){ return (_calData.selected||[]).some(e=>e&&e.id===id); }
 function calToggleEvent(id){
@@ -4395,7 +4395,7 @@ function toggleCalTriage(){ _calTriageOpen=!_calTriageOpen; if(_calTriageOpen)_c
 function renderCalendarPills(){
   const st=calPillState();
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
-  const pill=(cls,txt,n,onclick)=>`<span onclick="${onclick}()" style="display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:20px;padding:5px 12px;cursor:pointer;${cls==='due'?'background:var(--navy-light);color:var(--navy);':'background:#e6faf6;color:var(--teal-dark-text);'}">
+  const pill=(cls,txt,n,onclick)=>`<span onclick="${onclick}()" style="display:inline-flex;align-items:center;gap:7px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:20px;padding:5px 12px;cursor:pointer;${cls==='due'?'background:var(--navy-light);color:var(--navy);':'background:var(--teal-light);color:var(--teal-text);'}">
       <span style="width:7px;height:7px;border-radius:50%;${cls==='due'?'background:var(--navy);':'background:var(--teal);'}"></span>${txt}${n!=null?`<span style="background:#fff;border-radius:10px;padding:0 6px;">${n}</span>`:''}
     </span>`;
   let pills='';
@@ -4416,21 +4416,22 @@ function renderCalendarPills(){
     const rows=st.cands.map(e=>{
       const dd=new Date(e.date+'T00:00:00Z');
       const MOIS_C=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return `<div title="${esc(e.source)}" style="display:grid;grid-template-columns:48px 92px 1fr 32px;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #f2f3f9;">
-        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);white-space:nowrap;">${dd.getUTCDate()} ${MOIS_C[dd.getUTCMonth()]}</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--navy);line-height:1.35;">${esc(e.label)}${e.status==='estimated'?` <small style="font-size:9.5px;color:var(--muted);font-style:italic;font-weight:500;">estimated</small>`:''}</span>
+      const cell='font-family:\'Poppins\',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);';
+      return `<div title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}" style="display:grid;grid-template-columns:56px 100px 1fr 32px;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #f2f3f9;">
+        <span style="${cell}white-space:nowrap;">${dd.getUTCDate()} ${MOIS_C[dd.getUTCMonth()]}</span>
+        <span style="${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
+        <span style="${cell}line-height:1.35;">${esc(e.label)}</span>
         <button onclick="calToggleEvent('${esc(e.id)}')" title="Add to my calendar" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;">${calIco}</button>
       </div>`;
     }).join('');
-    panel=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 2px;margin-top:8px;">
+    panel=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 2px;margin-top:8px;max-width:560px;">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:6px;">
-        <b style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--teal-dark-text);">Calendar actions — ${st.actions} upcoming event${st.actions>1?'s':''}</b>
+        <b style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--teal-text);">Calendar actions — ${st.actions} upcoming event${st.actions>1?'s':''}</b>
         ${calGoogleLink()}
       </div>
       ${rows}
       <div style="display:flex;justify-content:flex-end;padding-top:10px;">
-        <button onclick="calTriageDone()" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--teal-dark-text);border:none;border-radius:8px;padding:6px 14px;cursor:pointer;">Done</button>
+        <button onclick="calTriageDone()" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--teal-text);border:none;border-radius:8px;padding:6px 14px;cursor:pointer;">Done</button>
       </div>
     </div>`;
   }
@@ -4445,9 +4446,9 @@ function renderMarketCalendar(){
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
   const sel=calUpcoming(_calData.selected);
   if(!sel.length){ wrap.innerHTML=''; return; }
-  // Discipline (19/08) : 3 corps (titre / 11,5 / 9,5), 3 couleurs
-  // (navy / teal / gris), AUCUN cadre ombre - section nue entre filets.
-  const TYPE_LBL={earnings:'Earnings',cmd:'CMD',conference:'Conference',agm:'AGM',other:'Event'};
+  // Sobriete (19/08) : bloc borne, typo de ligne UNIQUE (11,5/600 navy),
+  // en-tetes de semaine uniformes (style THIS WEEK, turquoise), ni type,
+  // ni statut, ni lien - juste l'agenda choisi.
   const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
   const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
   const groups=[];
@@ -4458,25 +4459,20 @@ function renderMarketCalendar(){
     g.items.push(e);
   });
   const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const cell="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);";
   const rows=(items)=>items.map(e=>{
     const d=new Date(e.date+'T00:00:00Z');
-    return `<div title="${esc(e.source)}" style="display:grid;grid-template-columns:46px 92px 1fr auto 20px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #f2f3f9;">
-      <div style="text-align:center;"><div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);line-height:1;">${d.getUTCDate()}</div><div style="font-size:9.5px;color:var(--muted);">${MOIS[d.getUTCMonth()]}</div></div>
-      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
-      <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--navy);line-height:1.35;">${esc(e.label)}${e.status==='estimated'?` <small style="font-size:9.5px;color:var(--muted);font-style:italic;font-weight:500;">estimated</small>`:''}</span>
-      <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);white-space:nowrap;">${TYPE_LBL[e.type]||'Event'}</span>
+    return `<div title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}" style="display:grid;grid-template-columns:56px 100px 1fr 20px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #f2f3f9;">
+      <span style="${cell}white-space:nowrap;">${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}</span>
+      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
+      <span style="${cell}line-height:1.35;">${esc(e.label)}</span>
       <span onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar" style="cursor:pointer;font-size:11.5px;color:var(--muted);text-align:center;line-height:1;">×</span>
     </div>`;
   }).join('');
-  const body=groups.map(g=>{
-    const head=g.wk===thisMonday
-      ? `<div style="display:flex;align-items:center;gap:8px;margin:10px 0 2px;"><span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--teal-dark-text);letter-spacing:.08em;">THIS WEEK</span><div style="flex:1;height:1px;background:var(--teal);"></div></div>`
-      : `<div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:4px;">Week of ${formatFrDate(g.wk)}</div>`;
-    return head+rows(g.items);
-  }).join('');
-  const gcLink=calGoogleLink()||`<span style="font-size:9.5px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;" title="Selections stored on this device for now - deploy server/calendar.php next to dismiss.php to sync across devices and feed Google Calendar.">local only</span>`;
-  wrap.innerHTML=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 2px 12px;margin:0 0 14px;">
-    <div class="card-title" style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b>Market Calendar</b>${gcLink}</div>
+  const weekHead=(txt)=>`<div style="display:flex;align-items:center;gap:8px;margin:12px 0 2px;"><span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--teal-text);letter-spacing:.08em;text-transform:uppercase;">${txt}</span><div style="flex:1;height:1px;background:var(--teal);"></div></div>`;
+  const body=groups.map(g=>weekHead(g.wk===thisMonday?'This week':`Week of ${formatFrDate(g.wk)}`)+rows(g.items)).join('');
+  wrap.innerHTML=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 2px 12px;margin:0 0 14px;max-width:560px;">
+    <div class="card-title"><b>Market Calendar</b></div>
     ${body}
   </div>`;
 }
