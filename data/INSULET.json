@@ -437,7 +437,7 @@
    ],
    "paceCheckpoint": "H1 2026 adjusted EPS $3.08 of a >=6.46$ implied year: pace consistent with the raised >=30% growth guidance.",
    "weightedBeatPct": null,
-   "annualBeatPct": 5.4,
+   "annualBeatPct": 5.6,
    "annualBeatHistory": [
     {
      "fy": 2025,
@@ -450,10 +450,12 @@
     },
     {
      "fy": 2024,
-     "beatPct": null,
+     "beatPct": 6.6,
      "source": "initial_guidance",
-     "excluded": true,
-     "note": "Revenue guidance existed but the initial Feb-2024 range was not reliably sourced at setup - excluded rather than estimated. Realized adjusted EPS $3.24 (+17.8%)."
+     "excluded": false,
+     "note": "Initial FY24 guidance (Q4-2023 release, 22/02/2024): total revenue growth 12-17% (mid 14.5%), raised to 14-18% at Q1; realized +22% - level beat +6.6% vs the initial mid. Backfilled 19/08/2026 from the public release (the earlier 'not reliably sourced' exclusion was unjustified). Same revenue-vs-EPS metric caveat as FY25.",
+     "initialDisplay": "+14.5% revenue (initial mid)",
+     "realizedDisplay": "+22%"
     }
    ],
    "anchorInitial": {
@@ -464,7 +466,7 @@
     "note": "Floor anchor: initial FY26 guidance 'adjusted EPS growth >=25%' on realized 2025 of $4.97. Guidance since raised to >=30% (Q2); the anchor stays the INITIAL floor."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct +5.4% BLENDED (FY26 in-progress +4.0 x3, FY25 +7.5 x2). Application still SUSPENDED (E-scorecard f): the FY25 observation is on a REVENUE anchor (declared metric mismatch, floor proxy), single closed observation, and the in-year revision is mixed (US cut / EPS floor raised).",
+   "applicationNote": "annualBeatPct +5.6% BLENDED (FY26 in-progress +4.0 x3, FY25 +7.5 x2, FY24 +6.6 x1). Application still SUSPENDED (E-scorecard f): the closed observations are on REVENUE anchors while the FY26 anchor is EPS (declared metric mismatch), and the in-year revision is mixed (US cut / EPS floor raised).",
    "consensusSource": "S&P Global, 24 analysts (adjusted EPS)",
    "consensusDate": "2026-07-01",
    "inProgress": {

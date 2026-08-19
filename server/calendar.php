@@ -8,6 +8,8 @@
 //   POST ?user=slug&action=remove  body {"id":"..."}
 //   POST ?user=slug&action=triaged body {"generatedAt":"ISO du run trie","dismissedIds":["..."]}
 //        (dismissedIds = evenements VUS et non acceptes : jamais re-proposes)
+//   POST ?user=slug&action=reset   -> vide selections/refus (tests) ; le
+//        calendrier Google abonne se videra au prochain rafraichissement du flux
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -53,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $d['selected'][] = $body['event'];
   } elseif ($action === 'remove' && isset($body['id'])) {
     $d['selected'] = array_values(array_filter($d['selected'], fn($e) => ($e['id'] ?? '') !== $body['id']));
+  } elseif ($action === 'reset') {
+    $d = ['selected' => [], 'dismissed' => [], 'lastTriaged' => null];
   } elseif ($action === 'triaged') {
     $d['lastTriaged'] = $body['generatedAt'] ?? gmdate('c');
     if (isset($body['dismissedIds']) && is_array($body['dismissedIds'])) {
