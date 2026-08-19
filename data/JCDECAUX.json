@@ -136,11 +136,11 @@
         "id": "h1-beat-organique-confirme",
         "moteur": "CA H1 26 +5,7% organique (T1 et T2 tous deux a +5,7%), tres au-dessus de la guidance T2 donnee au call FY25/T1 26 (~+3%) - la resilience du modele face au conflit Moyen-Orient (mieux absorbe que redoute selon le management) et l'effet Coupe du Monde FIFA (+30 M EUR incrementaux, superieurs aux attentes initiales) expliquent l'essentiel de ce beat. Reconstruction bottom-up retenue : H1 reel (1 953,9 M EUR) + H2 estime par application de la guidance T3 (~+5% organique) au comparant H2 2025, donnant un FY2026 CA ~4 160 M EUR (vs 4 030 M EUR a la creation, +3,2%).",
         "applique": [
-          "adjCA.2026",
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "haute"
       },
@@ -156,11 +156,11 @@
         "id": "levier-operationnel-superieur",
         "moteur": "EBIT recurrent H1 26 +53,5% (marge +220pb a 7%), operating margin H1 +16,8% (marge +190pb a 18,4%) - effet de ciseaux tres favorable (loyers/redevances +3,4% seulement vs CA +4,6%, autres couts operationnels +0,9% seulement) nettement superieur a l'hypothese de creation. Le management previent neanmoins explicitement d'un ralentissement du rythme de progression de marge au S2 du fait du demarrage de nouveaux contrats (dilutif en phase de lancement) et de l'attenuation du tailwind Coupe du Monde - trajectoire de marge 2026-2030 revisee a la hausse mais de facon moins prononcee que le seul H1 ne le suggererait.",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "moyenne"
       },
@@ -174,11 +174,11 @@
         "id": "fcf-positif-h1-inhabituel",
         "moteur": "FCF H1 26 devenu positif (26,2 M EUR, amelioration de 91,1 M EUR sur un an) malgre la saisonnalite habituellement defavorable du premier semestre - trajectoire de desendettement 2026-2030 revisee legerement a la hausse (dette nette FY2026 estimee legerement inferieure a l'hypothese de creation).",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "moyenne"
       },
@@ -186,10 +186,10 @@
         "id": "programmatique-acceleration",
         "moteur": "Programmatique +30,9% organique au H1 (12,3% du CA digital, contre 10,1% un an plus tot), VIOOH desormais breakeven cash-on-cash en standalone et deja rentable en EBIT au niveau groupe - confirme et amplifie l'ancrage de croissance digitale deja retenu a la creation.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "moyenne"
       }
@@ -201,14 +201,14 @@
       "2029": 2.0,
       "2030": 2.17
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 4160,
       "2027": 4355,
       "2028": 4541,
       "2029": 4727,
       "2030": 4912
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 480,
       "2027": 513,
       "2028": 550,
@@ -222,14 +222,14 @@
       "2029": 424,
       "2030": 460
     },
-    "adjND": {
+    "omniumND": {
       "2026": 470,
       "2027": 380,
       "2028": 290,
       "2029": 200,
       "2030": 110
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 213,
       "2027": 213,
       "2028": 212.5,

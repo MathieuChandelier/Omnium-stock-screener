@@ -141,8 +141,8 @@
         "id": "AN-GUIDANCE-REITEREE",
         "moteur": "Guidance FY2026 reiteree sans changement au S1 26 (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec une acceleration attendue de la generation de cash au S2 explicitement mentionnee par le management. Le CEO reconnait en Q&A (question Kepler Cheuvreux) que le consensus EBITDA (~450-451 M€) pourrait sembler conservateur compte tenu du rythme S1, mais maintient une position prudente ('trop tot', 'garder un oeil sur l'annee prochaine') sans relever formellement la guidance - retenu tel quel dans le modele, aucun ajustement a la hausse injecte sur la base d'une declaration non chiffree.",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026",
+          "omniumCA.2026",
+          "omniumEBIT.2026",
           "omniumNet.2026"
         ],
         "confiance": "haute"
@@ -151,9 +151,9 @@
         "id": "AN-AMSUD-ACCELERATION",
         "moteur": "Amerique du Sud (Chili) en forte croissance confirmee : ventes S1 26 +14% pro forma, marge EBITDA 37,6% (la plus elevee des trois zones, quoique en repli vs 38,5% un an plus tot), volumes T2 +4%+ et prix +3,5% (inflation locale) - moteur de croissance et de marge le plus solide du groupe. Le CEO confirme etre encore en phase de construction de la plateforme (entree il y a ~2 ans), avec des opportunites de M&A regionales explorees mais non engagees a ce stade.",
         "applique": [
-          "adjCA.2026",
-          "adjCA.2027",
-          "adjCA.2028"
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028"
         ],
         "confiance": "haute"
       },
@@ -161,8 +161,8 @@
         "id": "AN-EUROPE-UK-FAIBLESSE",
         "moteur": "Demande europeenne et britannique toujours atone mais en amelioration sequentielle : volumes Europe +1,5% au T2 (prix -3%), volumes UK&Irlande -7% au T2 mais en nette amelioration vs T1 (-9%), le CEO anticipant une recuperation progressive des volumes perdus etalee sur 2026-2027 (pas totalement cette annee) grace a une concurrence moins intense des importateurs, eux-memes sous pression inflationniste.",
         "applique": [
-          "adjCA.2026",
-          "adjCA.2027"
+          "omniumCA.2026",
+          "omniumCA.2027"
         ],
         "confiance": "moyenne"
       },
@@ -170,7 +170,7 @@
         "id": "AN-DILUTION-ACTIONS-GRATUITES",
         "moteur": "Nombre d'actions moyen pondere S1 26 (~34,9M, calcule a partir du BPA et du benefice net publies) nettement superieur a l'hypothese de creation (33,8M pour l'annee complete) - effet de l'emission d'actions gratuites de novembre 2025 sous-estime initialement.",
         "applique": [
-          "adjShares.2026"
+          "omniumShares.2026"
         ],
         "confiance": "haute"
       },
@@ -178,10 +178,10 @@
         "id": "AN-RACHAT-ANNULATION-EXTENDED",
         "moteur": "Extension extraordinaire du programme de rachat d'actions a 3% du capital (annoncee avec les resultats S1 26, en deux etapes depuis 1% initial), avec objectif d'annulation - enveloppe totale de remuneration actionnariale >150 M€ en 2026, consommant une part significative du FCF attendu et reduisant progressivement le nombre d'actions sur l'horizon de projection (effet compensateur partiel de la dilution des actions gratuites).",
         "applique": [
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "moyenne"
       },
@@ -189,11 +189,11 @@
         "id": "AN-DETTE-DESENDETTEMENT-RALENTI",
         "moteur": "Dette nette au 30/06/2026 a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable depuis fin mars (273 M€) malgre un FCF positif, du fait de la hausse du dividende (+15%) et de l'extension du programme de rachat - le narratif 'quasiment sans dette' evoque au T1 26 est invalide par ce refresh ; trajectoire de desendettement revisee nettement a la hausse (moins de baisse) sur tout l'horizon de projection. CapEx volontairement eleve (~8% du CA, vs ~4% de maintenance normative) confirme intentionnel par le CEO, sans normalisation avant 2027 au plus tot - ne compromet pas la trajectoire de FCF si les profits operationnels continuent de croitre.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "haute"
       }
@@ -205,14 +205,14 @@
       "2029": 8.13,
       "2030": 8.54
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 1500,
       "2027": 1545,
       "2028": 1595,
       "2029": 1645,
       "2030": 1695
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 288,
       "2027": 299,
       "2028": 312,
@@ -226,14 +226,14 @@
       "2029": 268,
       "2030": 278
     },
-    "adjND": {
+    "omniumND": {
       "2026": 200,
       "2027": 170,
       "2028": 140,
       "2029": 110,
       "2030": 80
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 34.5,
       "2027": 34.0,
       "2028": 33.5,

@@ -156,7 +156,7 @@
         "id": "deceleration_t2_buy_now_wear_now",
         "moteur": "Ralentissement confirmé du T2 (CA groupe +5% cFX vs +12% cFX au T1, EMEA Moncler -8% cFX) lié à la baisse du tourisme européen et au comportement 'buy now wear now' ; le CA H2 2026 est modélisé avec une décélération supplémentaire du rythme publié (~+4% vs H2 2025) plutôt qu'une réaccélération, contrairement à l'hypothèse implicite de la thèse T1.",
         "applique": [
-          "adjCA.2026"
+          "omniumCA.2026"
         ],
         "confiance": "moyenne"
       },
@@ -164,7 +164,7 @@
         "id": "one_off_gouvernance_reintegre",
         "moteur": "One-off de 8 M EUR (S1) / ~10 M EUR (exercice) lié à la nouvelle structure de gouvernance (transition CEO/board), traité comme un vrai one-off et neutralisé de la marge EBIT normative (ex-one-off, marge H1 sous-jacente ~19,6% vs 19,0% publié).",
         "applique": [
-          "adjEBIT.2026"
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
@@ -184,10 +184,10 @@
         "id": "marge_expansion_graduelle",
         "moteur": "Expansion graduelle de la marge EBIT au rythme historique (+30 à 40 pb/an), portée par le mix DTC croissant des deux marques et la montée en puissance de Stone Island, modérée au-delà de l'ambition long terme du management dans la zone des 29%+ (déjà atteinte en 2025 à 29,2%) faute de cible chiffrée plus haute.",
         "applique": [
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "moyenne"
       },
@@ -207,11 +207,11 @@
         "id": "dividende_croissance_net",
         "moteur": "Dividende projeté au rythme de la croissance du résultat net (dividende FY2025 de 1,40 EUR/action, 374,1 M EUR versés en mai 2026, base de départ pour la trajectoire de cash net) ; pas de programme de rachat régulier documenté (treasury shares stables à ~1% du capital), d'où l'absence de rendement nul sur le cash net dans le calcul du résultat financier normatif (voir ancrage resultat_financier_ifrs16).",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "moyenne"
       },
@@ -219,9 +219,9 @@
         "id": "segments_divergents_SI",
         "moteur": "Stone Island (16% du CA H1, 4e trimestre consécutif de croissance à deux chiffres, +11% cFX au T2 et sur le H1) continue de croître nettement plus vite que la marque Moncler (+9% en H1 mais seulement +3% cFX au T2) ; le mix groupe intègre une part Stone Island légèrement croissante sur l'horizon de projection, sans extrapoler indéfiniment son rythme actuel.",
         "applique": [
-          "adjCA.2026",
-          "adjCA.2027",
-          "adjCA.2028"
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028"
         ],
         "confiance": "moyenne"
       },
@@ -229,7 +229,7 @@
         "id": "flagship_ny_2027",
         "moteur": "Ouverture du flagship de la Cinquième Avenue à New York en septembre 2026 : impact de coûts (loyers/personnel) déjà en partie intégré aux charges de vente 2026, contribution significative au CA et à la densité de vente attendue à partir de 2027, sans levier majeur sur les projections 2026.",
         "applique": [
-          "adjCA.2027"
+          "omniumCA.2027"
         ],
         "confiance": "basse"
       }
@@ -241,14 +241,14 @@
       "2029": 3.03,
       "2030": 3.24
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 3273,
       "2027": 3498,
       "2028": 3725,
       "2029": 3949,
       "2030": 4186
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 970,
       "2027": 1046,
       "2028": 1125,
@@ -262,14 +262,14 @@
       "2029": 823,
       "2030": 881
     },
-    "adjND": {
+    "omniumND": {
       "2026": -1320,
       "2027": -1480,
       "2028": -1660,
       "2029": -1850,
       "2030": -2050
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 272,
       "2027": 272,
       "2028": 272,

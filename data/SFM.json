@@ -36,25 +36,25 @@
       {
         "id": "reaccel_units",
         "moteur": "Pipeline de plus de 110 baux executes et 155 magasins approuves (vs ~150/105+ a la creation, en progression) soutient 42 nouveaux magasins nets en FY26 (record trimestriel de 15+ ouvertures prevu au T3 seul). RENFORCE ce refresh : les 4 dernieres cohortes de magasins comparent TOUTES positivement (nouveau data point confirme au T2), et la cannibalisation observee est actuellement au bas de la fourchette historique 100-150pb - signal que le pipeline reste un moteur structurel sain du CA au-dela du comp.",
-        "applique": ["adjCA.2026","adjCA.2027","adjCA.2028","adjCA.2029","adjCA.2030"],
+        "applique": ["omniumCA.2026","omniumCA.2027","omniumCA.2028","omniumCA.2029","omniumCA.2030"],
         "confiance": "haute"
       },
       {
         "id": "margin_scale",
         "moteur": "Maturation des nouveaux magasins et auto-distribution (viande desormais a ~85% des magasins via le nouveau DC Californie du Nord, extension prudente vers d'autres categories marque propre evoquee sur plusieurs annees) soutiennent un effet de levier operationnel progressif sur la marge EBIT au-dela de 2026. Trajectoire legerement revisee a la baisse vs la creation (7,7%->8,6% sur 2027-2030 au lieu de 7,8%->8,7%), compte tenu de la guidance FY26 EPS resserree avec un plafond abaisse (couts carburant non budgetes).",
-        "applique": ["adjEBIT.2027","adjEBIT.2028","adjEBIT.2029","adjEBIT.2030"],
+        "applique": ["omniumEBIT.2027","omniumEBIT.2028","omniumEBIT.2029","omniumEBIT.2030"],
         "confiance": "moyenne"
       },
       {
         "id": "buyback_1bn",
         "moteur": "Autorisation de rachat d'actions de 1 Md$ (solde 626 M$ apres 210 M$ deja utilises au S1 26, dont 70 M$ au seul T2) finance une reduction du nombre d'actions diluees d'environ 2,5%/an - le CFO confirme un objectif d'au moins 300 M$ de rachats sur l'annee complete (deja 210 M$ au S1, donc au moins 90 M$ supplementaires attendus au S2). Coherent avec le rythme observe depuis 2015. La hausse de l'EPS T2 (+1,5%) malgre un EBIT et un resultat net en LEGER RECUL illustre concretement ce mecanisme.",
-        "applique": ["adjShares.2026","adjShares.2027","adjShares.2028","adjShares.2029","adjShares.2030"],
+        "applique": ["omniumShares.2026","omniumShares.2027","omniumShares.2028","omniumShares.2029","omniumShares.2030"],
         "confiance": "haute"
       },
       {
         "id": "week53_2026",
         "moteur": "CONFIRME A L'IDENTIQUE ce refresh par le communique officiel T2 2026 : la 53e semaine fiscale (T4 26) ajoute ponctuellement environ 200 M$ de CA, 28 M$ d'EBIT et 0,21$ de BPA dilue au-dessus de la guidance FY26 explicitement communiquee sur base 52 semaines - aucun ecart avec l'hypothese de creation. Cet effet ne se reproduit pas en 2027, ce qui comprime mecaniquement la croissance de CA affichee l'annee suivante si elle n'est pas retraitee (voir PARAMETRES).",
-        "applique": ["adjCA.2026","adjEBIT.2026","omniumEPS.2026"],
+        "applique": ["omniumCA.2026","omniumEBIT.2026","omniumEPS.2026"],
         "confiance": "haute"
       },
       {
@@ -66,7 +66,7 @@
       {
         "id": "cyclospora_risque_non_quantifie",
         "moteur": "NOUVEL ANCRAGE ce refresh : episode Cyclospora affectant les laitues/salades a l'echelle du secteur, tres recent (dernieres 2 semaines avant le call), aucun rappel chez Sprouts a ce jour. Impact juge modeste par le CFO (inferieur a l'estimation d'un analyste de 80-120pb), mais duree et ampleur encore incertaines au moment du call. Non quantifie et non integre aux adjXXX - risque a la baisse pur pour le T3 2026, a suivre explicitement au prochain refresh.",
-        "applique": ["adjEBIT.2026"],
+        "applique": ["omniumEBIT.2026"],
         "confiance": "basse"
       }
     ],
@@ -103,10 +103,10 @@
     ],
     "guidanceLongTerme": "Aucun objectif chiffre au-dela de FY2026 communique formellement. Orientation qualitative : retour a 'l'algorithme' de croissance une fois les comparaisons difficiles derriere (implicitement, un comp positif soutenu par le pipeline de magasins et l'amelioration continue du trafic/des unites). Expansion geographique planifiee incluant Chicago a partir de 2027 (objectif 10 magasins en 12-18 mois).",
     "omniumEPS": {"2026":5.57,"2027":6.22,"2028":7.03,"2029":7.93,"2030":8.92},
-    "adjCA": {"2026":9534,"2027":9894,"2028":10488,"2029":11117,"2030":11784},
-    "adjEBIT": {"2026":708,"2027":762,"2028":839,"2029":923,"2030":1013},
+    "omniumCA": {"2026":9534,"2027":9894,"2028":10488,"2029":11117,"2030":11784},
+    "omniumEBIT": {"2026":708,"2027":762,"2028":839,"2029":923,"2030":1013},
     "omniumNet": {"2026":521,"2027":568,"2028":625,"2029":687,"2030":755},
-    "adjND": {"2026":-110,"2027":-60,"2028":-10,"2029":30,"2030":60},
-    "adjShares": {"2026":93.5,"2027":91.2,"2028":88.9,"2029":86.7,"2030":84.6}
+    "omniumND": {"2026":-110,"2027":-60,"2028":-10,"2029":30,"2030":60},
+    "omniumShares": {"2026":93.5,"2027":91.2,"2028":88.9,"2029":86.7,"2030":84.6}
   }
 }

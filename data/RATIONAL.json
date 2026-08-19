@@ -219,8 +219,8 @@
         "id": "guidance_midhigh_single_digit_2026",
         "moteur": "Guidance officielle FY2026 desormais reaffirmee a trois reprises (call T1, IR Talk H1, communique officiel H1 du 06/08) : croissance CA mid-to-high single-digit et marge EBIT visee vers le haut de la fourchette 25-26%, confirmee par les chiffres H1 reels (CA +8% organique, marge S1 24,3% hors effet tarifaire).",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026"
+          "omniumCA.2026",
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
@@ -228,7 +228,7 @@
         "id": "tariff_refund_cost_offset",
         "moteur": "Remboursement de tarifs douaniers US indument percus confirme en chiffres reels a ~14 M€, comptabilise en produit operationnel extraordinaire au T2 2026, largement compensateur du cout tarifaire Section 232 attendu sur l'annee (~28-29 M€) - effet net deja materialise dans la marge EBIT S1 26 observee (26,5% publiee, 24,3% hors effet), plus une estimation a confirmer desormais un chiffre reel.",
         "applique": [
-          "adjEBIT.2026"
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
@@ -236,8 +236,8 @@
         "id": "operational_leverage_h2",
         "moteur": "Saisonnalite structurelle du groupe (T1 toujours le trimestre le plus faible, T4 le plus fort, ~28-29% de marge EBIT en T4 les annees precedentes) confirmee par la sequence T1 23,9% -> T2 29,0% (dope par le remboursement tarifaire) : le levier operationnel du S2 reste attendu, appuye par un carnet de commandes en hausse de 10-15 M€ fin juin.",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027"
+          "omniumEBIT.2026",
+          "omniumEBIT.2027"
         ],
         "confiance": "haute"
       },
@@ -245,10 +245,10 @@
         "id": "untapped_market_replacement_cycle",
         "moteur": "Marche potentiel tres peu penetre (75% du marche iCombi et 96% du marche iVario non adresses) et base installee de plus de 800 000 appareils generant une demande de renouvellement recurrente : soutient une croissance CA mid-to-high single-digit au-dela de 2026 sans dependre d'un seul moteur produit. Inchange depuis la creation.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "moyenne"
       },
@@ -262,11 +262,11 @@
         "id": "net_cash_generation_payout",
         "moteur": "Politique de distribution stable (payout ratio ~70%, rachats d'actions explicitement ecartes par le CFO du fait du flottant deja faible) associee a une generation de free cash-flow croissante : la position de tresorerie nette continue de croitre mecaniquement sur l'horizon de projection.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "moyenne"
       },
@@ -274,19 +274,19 @@
         "id": "price_increase_2027_consideration",
         "moteur": "Nouvel ancrage (T2 26) : le remboursement tarifaire ne se repetera pas en 2027 (tarif moyen attendu ~14% contre l'hypothese anterieure de 10%) ; le management etudie plusieurs scenarios incluant une hausse de prix modeste si l'efficacite operationnelle ne suffit pas a absorber la hausse des couts d'intrants - aucun chiffre precis communique, traite avec prudence comme un risque/une optionnalite sur la marge 2027 plutot qu'integre au coeur de la projection.",
         "applique": [
-          "adjEBIT.2027"
+          "omniumEBIT.2027"
         ],
         "confiance": "basse"
       }
     ],
-    "adjCA": {
+    "omniumCA": {
       "2026": 1350,
       "2027": 1470,
       "2028": 1600,
       "2029": 1740,
       "2030": 1885
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 349,
       "2027": 378,
       "2028": 421,
@@ -300,7 +300,7 @@
       "2029": 360,
       "2030": 392
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 11.4,
       "2027": 11.4,
       "2028": 11.4,
@@ -314,7 +314,7 @@
       "2029": 31.58,
       "2030": 34.39
     },
-    "adjND": {
+    "omniumND": {
       "2026": -550,
       "2027": -640,
       "2028": -740,

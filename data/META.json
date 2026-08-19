@@ -97,11 +97,11 @@
         "id": "da_recalibree_donnees_reelles",
         "moteur": "CORRECTION MAJEURE ce refresh (E6-a/E6-b) : la D&A reelle du S1 2026 (12,4 Md$, dont 6,36 Md$ au T2 seul) est nettement inferieure a la trajectoire du modele de creation (~18 Md$ attendus sur la meme periode selon le ratio de 50% du capex n-1 avec un an de decalage). Extrapolation FY2026 revisee a ~27 Md$ (vs ~36 Md$ a la creation), le decalage de mise en service des datacenters etant plus long qu'initialement suppose. Rattrapage plus marque et plus tardif projete sur 2027-2028 (40 Md$ puis 55 Md$) avant deceleration 2029-2030 (62 Md$ puis 65 Md$).",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "moyenne"
       },
@@ -109,8 +109,8 @@
         "id": "guidance_fy26_ancree",
         "moteur": "EBIT FY2026 ancre directement sur la guidance officielle du T2 2026 : CA estime (~256 Md$, construit bottom-up S1 reel + guidance T3 + estimation T4) moins charges totales guidees (165-169 Md$, midpoint 167 Md$) = ~89 Md$ - methodologie plus robuste que la creation (qui partait d'une hypothese de marge independante). Coherent avec la reaffirmation explicite du management que le resultat d'exploitation FY2026 depassera FY2025 (83,28 Md$).",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026"
+          "omniumCA.2026",
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
@@ -118,7 +118,7 @@
         "id": "resultat_operationnel_sous_jacent_sain",
         "moteur": "La CFO confirme explicitement que hors charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel T2 2026 aurait progresse de +9% sur un an (au lieu du -8% publie) - la baisse affichee est integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier publicitaire (CA publicitaire toujours en croissance la plus rapide de l'industrie selon Zuckerberg). Element qualitatif confirmant la robustesse du socle operationnel sous-jacent au capex/D&A.",
         "applique": [
-          "adjEBIT.2026"
+          "omniumEBIT.2026"
         ],
         "confiance": "moyenne"
       },
@@ -138,11 +138,11 @@
         "id": "bascule_dette_nette_recalibree",
         "moteur": "Position de tresorerie/dette nette ENTIEREMENT RECALIBREE sur la base du bilan reel au 30/06/2026 (cash net residuel de 6,6 Md$ seulement, contre 22,9 Md$ modelise fin FY2025) : emission de 25 Md$ de dette long terme au seul T2 2026, rachats d'actions suspendus, CFO confirmant explicitement un virage structurel vers un financement davantage oriente dette. Bascule en dette nette projetee des fin FY2026 (compte tenu du capex S2 restant a engager pour atteindre la guidance 130-145 Md$), pic modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse avec la montee en charge de la D&A (non-cash) relativement au capex cash.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "basse"
       },
@@ -150,11 +150,11 @@
         "id": "actions_rachats_suspendus",
         "moteur": "Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) dans un contexte de priorisation du financement du capex - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance vs la creation (qui supposait une poursuite des rachats), nombre d'actions quasi stable a court terme avec une legere reprise de decroissance supposee a partir de 2028 une fois le pic du cycle d'investissement passe.",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "basse"
       }
@@ -198,14 +198,14 @@
       }
     ],
     "guidanceLongTerme": "Planification actuelle geree pour 'maximiser la capacite 2026 et 2027' (CFO, T2 2026) sans engagement chiffre au-dela de FY2026 - la flexibilite decisionnelle est explicitement reservee pour 2028 et au-dela, le management indiquant vouloir evaluer les besoins reels avant de s'engager sur des decisions de serveurs a plus long terme. Aucun objectif chiffre de marge ou de CA a moyen terme communique.",
-    "adjCA": {
+    "omniumCA": {
       "2026": 256000,
       "2027": 307200,
       "2028": 356352,
       "2029": 406241,
       "2030": 455000
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 89000,
       "2027": 92160,
       "2028": 103342,
@@ -226,14 +226,14 @@
       "2029": 42.07,
       "2030": 52.22
     },
-    "adjND": {
+    "omniumND": {
       "2026": 30000,
       "2027": 55000,
       "2028": 45000,
       "2029": 25000,
       "2030": 5000
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 2565,
       "2027": 2555,
       "2028": 2540,

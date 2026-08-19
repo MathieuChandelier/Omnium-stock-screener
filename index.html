@@ -1214,19 +1214,19 @@ function getProj(ticker){
     };
   });
   const hyp=d.hypothese;
-  const hasAdj=hyp&&['omniumEPS','adjCA','adjEBIT','omniumNet','adjND','adjShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
+  const hasAdj=hyp&&['omniumEPS','omniumCA','omniumEBIT','omniumNet','omniumND','omniumShares'].some(k=>hyp[k]&&Object.values(hyp[k]).some(v=>v!=null&&v!==''));
   if(!hasAdj)return{proj:base,date:null,evtName:null};
   const out={};
   PY.forEach(y=>{ out[y]={...base[y]}; });
   const has=(o,y)=>o&&o[y]!=null&&o[y]!=='';
   PY.forEach(y=>{
-    if(has(hyp.adjCA,y))     out[y].ca    =+hyp.adjCA[y];
-    if(has(hyp.adjEBIT,y))   out[y].ebit  =+hyp.adjEBIT[y];
+    if(has(hyp.omniumCA,y))     out[y].ca    =+hyp.omniumCA[y];
+    if(has(hyp.omniumEBIT,y))   out[y].ebit  =+hyp.omniumEBIT[y];
     if(has(hyp.omniumNet,y))    out[y].net   =+hyp.omniumNet[y];
-    if(has(hyp.adjND,y))     out[y].nd    =+hyp.adjND[y];
-    if(has(hyp.adjShares,y)) out[y].shares=+hyp.adjShares[y];
+    if(has(hyp.omniumND,y))     out[y].nd    =+hyp.omniumND[y];
+    if(has(hyp.omniumShares,y)) out[y].shares=+hyp.omniumShares[y];
     if(has(hyp.omniumEPS,y))    out[y].eps   =+hyp.omniumEPS[y];
-    else if((has(hyp.omniumNet,y)||has(hyp.adjShares,y))&&out[y].shares>0)
+    else if((has(hyp.omniumNet,y)||has(hyp.omniumShares,y))&&out[y].shares>0)
       out[y].eps=out[y].net/out[y].shares;
   });
   return{proj:out,date:hyp.date,evtName:hyp.source||null};
@@ -1237,7 +1237,7 @@ function checkEpsCoherence(d){
   if(!hyp)return [];
   const bad=[];
   Object.keys(hyp.omniumEPS||{}).forEach(y=>{
-    const eps=+hyp.omniumEPS[y],net=+(hyp.omniumNet?.[y]),sh=+(hyp.adjShares?.[y]);
+    const eps=+hyp.omniumEPS[y],net=+(hyp.omniumNet?.[y]),sh=+(hyp.omniumShares?.[y]);
     if(!eps||!net||!sh)return;
     const implied=net/sh;
     if(Math.abs(eps-implied)/Math.abs(implied)>0.02)
@@ -1591,10 +1591,10 @@ function refreshPriceOnly(ticker){
 }
 
 // Cours retraite de la tresorerie/dette nette de l'annee visee - base de
-// reference des P/E depuis le 18/08/2026. adjND NEGATIF = tresorerie nette
+// reference des P/E depuis le 18/08/2026. omniumND NEGATIF = tresorerie nette
 // (le cours baisse), POSITIF = dette nette (le cours monte). Repli sur le
 // cours brut quand la donnee manque : pour une banque la dette nette n'a
-// pas de sens economique, adjND y est volontairement absent.
+// pas de sens economique, omniumND y est volontairement absent.
 // Detail des retraitements, ouvert a la demande : un seul trimestre a la
 // fois, dans le flux (jamais en surcouche flottante, qui demanderait un
 // positionnement et pourrait sortir de l'ecran sur mobile).
@@ -1632,8 +1632,8 @@ function isFinancialIssuer(d){
 function exCashPriceForYear(d, cours, year){
   if(!(cours>0)) return null;
   if(isFinancialIssuer(d)) return cours;
-  const nd=d?.hypothese?.adjND?.[year];
-  const sh=d?.hypothese?.adjShares?.[year];
+  const nd=d?.hypothese?.omniumND?.[year];
+  const sh=d?.hypothese?.omniumShares?.[year];
   if(typeof nd!=='number' || !(sh>0)) return cours;
   const p=cours+(nd/sh);
   return p>0 ? p : cours;
@@ -1812,7 +1812,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // desormais - le P/E sur capitalisation n'apparait plus que dans la note
   // des cas ou l'ecart depasse le seuil, la ou il manquerait vraiment.
   // REPLI : quand la dette nette n'existe pas (banques - BNP n'a aucun
-  // adjND, et c'est methodologiquement juste : la dette y est la matiere
+  // omniumND, et c'est methodologiquement juste : la dette y est la matiere
   // premiere, pas un financement a retrancher), on retombe sur le P/E de
   // capitalisation, en le disant.
   const st=_valoHistState;
@@ -1970,7 +1970,7 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
 }
 
 // Derniere annee de l'horizon affiche couverte par l'ANALYSE (omniumEPS,
-// ou le couple omniumNet+adjShares dont getProj derive l'EPS), en partant de
+// ou le couple omniumNet+omniumShares dont getProj derive l'EPS), en partant de
 // CY sans trou. Le CAGR de tete de fiche ne doit jamais s'appuyer sur une
 // annee servie par la base CAGR automatique (~37% d'erreur mediane sur le
 // net au back-test du 18/08/2026) - cas MSFT : 2031 non couvert apres la
@@ -1981,7 +1981,7 @@ function analysisLY(ticker){
   const h=d?.hypothese;
   if(!h) return LY;
   const num=x=>typeof x==='number';
-  const ok=y=>num(h.omniumEPS?.[y])||(num(h.omniumNet?.[y])&&num(h.adjShares?.[y]));
+  const ok=y=>num(h.omniumEPS?.[y])||(num(h.omniumNet?.[y])&&num(h.omniumShares?.[y]));
   let last=null;
   for(let y=CY;y<=LY;y++){ if(ok(y)) last=y; else break; }
   return last===null?LY:last;
@@ -2013,12 +2013,12 @@ function renderReturnBlock(ticker, proj, cours){
   // not meaningful for this issuer" s'affiche et les multiples restent
   // sur capitalisation.
   const finIss=isFinancialIssuer(d);
-  const ndCY=finIss?null:d.hypothese?.adjND?.[CY];
-  const shCY=finIss?null:d.hypothese?.adjShares?.[CY];
-  const ndNY=finIss?null:d.hypothese?.adjND?.[CY+1];
-  const shNY=finIss?null:d.hypothese?.adjShares?.[CY+1];
-  const ndY2=finIss?null:d.hypothese?.adjND?.[CY+2];
-  const shY2=d.hypothese?.adjShares?.[CY+2];
+  const ndCY=finIss?null:d.hypothese?.omniumND?.[CY];
+  const shCY=finIss?null:d.hypothese?.omniumShares?.[CY];
+  const ndNY=finIss?null:d.hypothese?.omniumND?.[CY+1];
+  const shNY=finIss?null:d.hypothese?.omniumShares?.[CY+1];
+  const ndY2=finIss?null:d.hypothese?.omniumND?.[CY+2];
+  const shY2=d.hypothese?.omniumShares?.[CY+2];
   const qeBlock=buildQuarterlyEPS(d.hypothese?.quarterlyEPS||null, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, shNY,
     {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)},
     proj[CY+2]?.eps, ndY2, shY2);

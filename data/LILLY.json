@@ -235,37 +235,37 @@
       {
         "id": "guidance_2026_relevee",
         "moteur": "Guidance FY26 relevee au T2 (CA 85-87Md, marge de performance 49-50,5%, EPS non-GAAP 35,50-36,50$), tiree par la demande GLP-1 et par des ajustements favorables de rabais au S1, en partie non recurrents.",
-        "applique": ["adjCA.2026", "adjEBIT.2026", "omniumEPS.2026"],
+        "applique": ["omniumCA.2026", "omniumEBIT.2026", "omniumEPS.2026"],
         "confiance": "haute"
       },
       {
         "id": "deceleration_h2_technique",
         "moteur": "Repli implicite du rythme de croissance au S2 2026 du fait d'ajustements de rabais non recurrents au S1, d'une base de comparaison internationale elevee au S2 2025, et de la saisonnalite habituelle - pas un signal de ralentissement structurel de la demande.",
-        "applique": ["adjCA.2026"],
+        "applique": ["omniumCA.2026"],
         "confiance": "haute"
       },
       {
         "id": "medicare_bridge_ramp",
         "moteur": "Montee en charge du programme Medicare GLP-1 Bridge (actif depuis le 1er juillet 2026, +35% d'acces, 60-70% de patients nouveaux au traitement) sur l'annee pleine 2027.",
-        "applique": ["adjCA.2027", "adjCA.2028"],
+        "applique": ["omniumCA.2027", "omniumCA.2028"],
         "confiance": "moyenne"
       },
       {
         "id": "foundayo_inflexion",
         "moteur": "Inflexion du lancement US de Foundayo fin juillet 2026 (prescriptions doublees en un mois, prescripteurs de 8 000 a 36 000) et expansion internationale encore majoritairement a venir en 2027 (UAE, Arabie Saoudite, Mexique deja approuves).",
-        "applique": ["adjCA.2027", "adjCA.2028", "adjCA.2029"],
+        "applique": ["omniumCA.2027", "omniumCA.2028", "omniumCA.2029"],
         "confiance": "moyenne"
       },
       {
         "id": "bd_actif_dette",
         "moteur": "Rythme de fusions-acquisitions tres actif (Orna, Ajax, Centessa, Kelonia au T2 ; 3 acquisitions infectiologie et accord AtaiBeckley apres le T2 ; +4,5Md$ investis dans les sites Indiana), finance par la dette, qui retarde le desendettement par rapport a la trajectoire precedente.",
-        "applique": ["adjND.2026", "adjND.2027"],
+        "applique": ["omniumND.2026", "omniumND.2027"],
         "confiance": "moyenne"
       },
       {
         "id": "retatrutide_bla_decale",
         "moteur": "Depot de la BLA pour le retatrutide desormais vise au T1 2027 (litige en cours avec la FDA sur la voie reglementaire), soit une contribution au CA qui ne peut plus etre attendue avant 2028 au plus tot.",
-        "applique": ["adjCA.2028", "adjCA.2029"],
+        "applique": ["omniumCA.2028", "omniumCA.2029"],
         "confiance": "basse"
       }
     ],
@@ -276,14 +276,14 @@
       "2029": 65.11,
       "2030": 74.61
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 86000,
       "2027": 108500,
       "2028": 130500,
       "2029": 151500,
       "2030": 171000
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 40850,
       "2027": 50453,
       "2028": 60683,
@@ -297,14 +297,14 @@
       "2029": 57431,
       "2030": 65502
     },
-    "adjND": {
+    "omniumND": {
       "2026": 44000,
       "2027": 47000,
       "2028": 43000,
       "2029": 35000,
       "2030": 23000
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 894,
       "2027": 890,
       "2028": 886,

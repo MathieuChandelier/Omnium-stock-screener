@@ -23,7 +23,7 @@ comparable entre deux annees calendaires differentes) depuis la MEME
 structure - voir le plan de fonctionnalite pour le detail des deux lectures.
 
 ndCY/shCY (ajoutes le 17/08/2026) puis ndNY/shNY (ajoutes le 18/08/2026) :
-copie de hypothese.adjND/adjShares pour l'annee en cours ET l'annee
+copie de hypothese.omniumND/omniumShares pour l'annee en cours ET l'annee
 suivante, pour permettre un P/E ex-cash historise en plus du P/E classique
 deja archive. On s'arrete a CY+1 : la table de multiples cote app n'expose
 l'ex-cash que sur ces echeances. ndY2/shY2 ajoutes le 18/08/2026 avec le
@@ -155,12 +155,12 @@ def snapshot_ticker(ticker: str, run_date_str: str):
         v = (hyp.get(field) or {}).get(str(year))
         return round(float(v), 2) if isinstance(v, (int, float)) else None
 
-    nd_cy = _adj("adjND", cy)
-    sh_cy = _adj("adjShares", cy)
-    nd_ny = _adj("adjND", ny)
-    sh_ny = _adj("adjShares", ny)
-    nd_y2 = _adj("adjND", cy + 2)
-    sh_y2 = _adj("adjShares", cy + 2)
+    nd_cy = _adj("omniumND", cy)
+    sh_cy = _adj("omniumShares", cy)
+    nd_ny = _adj("omniumND", ny)
+    sh_ny = _adj("omniumShares", ny)
+    nd_y2 = _adj("omniumND", cy + 2)
+    sh_y2 = _adj("omniumShares", cy + 2)
 
     try:
         price = fetch_price(sym)

@@ -169,7 +169,7 @@
         "id": "AN-CA-2026",
         "moteur": "CA FY2026 reconstruit bottom-up : S1 2026 reel (2 378 M$, +23% vs S1 2025 estime) + S2 2026 estime a ~2 900 M$ (T3 porte par la saison NFL sur les prediction markets, T4 porte par les elections de mi-mandat de novembre 2026 et la saisonnalite de fin d'annee) - revise significativement a la hausse vs la creation (4 950 M$ -> 5 278 M$) du fait principalement de la trajectoire prediction markets/Rothera, qui a deja depasse la cible annuelle de creation (150 M$) des le seul T2 (156 M$).",
         "applique": [
-          "adjCA.2026"
+          "omniumCA.2026"
         ],
         "confiance": "haute"
       },
@@ -177,10 +177,10 @@
         "id": "AN-CA-2027-2030",
         "moteur": "Poursuite d'une croissance forte mais graduellement moins spectaculaire : +18%/an sur 2027-2028 (2028 etant une annee d'election presidentielle, catalyseur prediction markets potentiellement comparable a 2026), puis moderation a +12%/an sur 2029-2030 (annees sans grand catalyseur electoral). Hypothese de reconstruction faute de guidance chiffree au-dela du trimestre suivant.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "basse"
       },
@@ -188,11 +188,11 @@
         "id": "AN-MARGE",
         "moteur": "Marge EBIT retenue a 47% pour FY2026 (vs 45,7% a la creation), revisee a la hausse suite a la confirmation d'un effet de levier operationnel superieur aux attentes (marge EBITDA ajustee reelle de 57% au T2, guidance de couts resserree/abaissee malgre l'ajout de Rothera et WonderFi non budgetes initialement). Expansion graduelle poursuivie vers 48-49% sur l'horizon 2027-2030, l'effet mix Rothera (marge incrementale quasi 100% sur ce segment) continuant de tirer la marge consolidee vers le haut.",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "moyenne"
       },
@@ -212,11 +212,11 @@
         "id": "AN-SHARES",
         "moteur": "Nombre d'actions maintenu quasi stable (~907-908M en 2026, legere decroissance ensuite) : rachats d'actions poursuivis (7,5M d'actions pour 664 M$ YTD au T2) compensant la dilution SBC, la levee de 2,2 Md$ de notes convertibles a 0% de coupon ne generant aucune dilution nette tant que le cours reste sous 300$ (tres loin du cours actuel).",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "moyenne"
       },
@@ -224,11 +224,11 @@
         "id": "AN-TRESORERIE",
         "moteur": "Position de tresorerie nette renforcee par la levee de capital de 2,2 Md$ au T2 2026 (notes convertibles), partiellement compensee par la poursuite des rachats d'actions (664 M$ YTD) - trajectoire de tresorerie nette revisee a la hausse (plus negative, donc plus de cash net) vs la creation, avec poursuite de la generation de cash sur l'horizon de projection.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "basse"
       },
@@ -282,14 +282,14 @@
       }
     ],
     "guidanceLongTerme": "Objectif directionnel de tres long terme communique par le CFO lors du call T2 2026 : multiplier l'activite par 10 sur les 10 prochaines annees (vision d'une capitalisation boursiere pouvant atteindre 1 000 Md$, comparaison faite avec les actifs sous gestion des institutions financieres traditionnelles, plusieurs dizaines de milliers de milliards de dollars). Non chiffrable dans les adjXXX, traite comme contexte strategique qualitatif.",
-    "adjCA": {
+    "omniumCA": {
       "2026": 5278,
       "2027": 6228,
       "2028": 7349,
       "2029": 8231,
       "2030": 9219
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 2481,
       "2027": 2989,
       "2028": 3601,
@@ -310,14 +310,14 @@
       "2029": 3.78,
       "2030": 4.3
     },
-    "adjND": {
+    "omniumND": {
       "2026": -6500,
       "2027": -7500,
       "2028": -8800,
       "2029": -10200,
       "2030": -11800
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 908,
       "2027": 905,
       "2028": 901,

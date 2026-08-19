@@ -277,7 +277,7 @@ Items déjà connus pour ce ticker (ne les inclus pas à nouveau, même relayés
 
 CLASSEMENT PAR IMPACT - pour CHAQUE item retenu, confronte-le au contexte de thèse ci-dessous et assigne :
 - "materialite" : une valeur parmi "nul", "faible", "moyen", "fort" - à quel point ce fait remet en cause, confirme ou fait évoluer la thèse écrite (pas l'importance du fait en tant que tel dans l'absolu).
-- "mecanisme" : une phrase courte identifiant PRÉCISÉMENT quel ancrage, quelle ligne de projection (ex. adjEBIT.2027) ou quel engagement structurant est touché, ou "aucun mécanisme existant touché" si le fait est notable mais hors thèse.
+- "mecanisme" : une phrase courte identifiant PRÉCISÉMENT quel ancrage, quelle ligne de projection (ex. omniumEBIT.2027) ou quel engagement structurant est touché, ou "aucun mécanisme existant touché" si le fait est notable mais hors thèse.
 
 Contexte de thèse pour ce titre :
 {thesis_context}

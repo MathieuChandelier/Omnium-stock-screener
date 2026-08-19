@@ -87,7 +87,7 @@
         "id": "guidance_qualitative_ca_2026",
         "moteur": "Hermès ne communique JAMAIS d'objectif chiffré (politique constante depuis des années) - seulement un 'objectif ambitieux de progression du CA à taux de change constants' à moyen terme, reconfirmé sans changement au S1 2026. Reconstruit bottom-up : S1 2026 réel (~8 180 M€) + S2 2026 estimé à ~8 240 M€ (poursuite d'une croissance à taux constants proche du rythme du T2 2026, ~7%, avec un effet de change qui devrait se rapprocher de la neutralité en conversion sur l'année selon la CFO aux parités actuelles) - FY2026 total ~16 400 M€.",
         "applique": [
-          "adjCA.2026"
+          "omniumCA.2026"
         ],
         "confiance": "moyenne"
       },
@@ -95,10 +95,10 @@
         "id": "croissance_ca_post_2026",
         "moteur": "Poursuite d'une croissance à taux constants robuste mais graduellement moins spectaculaire que la période 2021-2024 (CAGR historique 2016-2026 de 13%/an revendiqué par la direction), cohérente avec la contrainte assumée par le management de privilégier la qualité/l'exclusivité artisanale à la maximisation des volumes (une nouvelle maroquinerie par an, ~300 emplois chacune, rythme volontairement mesuré) : croissance publiée retenue à +7%/an sur 2027-2028 puis +6,5%/an sur 2029-2030.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "basse"
       },
@@ -106,11 +106,11 @@
         "id": "marge_stable_amelioration_graduelle",
         "moteur": "Marge opérationnelle courante retenue à 40,5% en FY2026 (légèrement sous le S1 à 41%, effet de couverture de change s'alourdissant au S2 selon la CFO), puis amélioration graduelle vers 41,8% en 2030 - cohérent avec la trajectoire historique démontrée du groupe (39,3% en 2021 à 41,1% en 2025, amélioration quasi continue malgré les vents contraires de change), sans hypothèse de rupture positive ou négative.",
         "applique": [
-          "adjEBIT.2026",
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "moyenne"
       },
@@ -142,11 +142,11 @@
         "id": "actions_stables",
         "moteur": "Nombre d'actions maintenu stable à ~104,8M sur tout l'horizon - dilution historiquement quasi nulle chez Hermès (rachats d'actions limités au contrat de liquidité et aux plans d'actionnariat salarié, structure de gouvernance familiale à 66,7% peu encline à la dilution).",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "haute"
       },
@@ -154,11 +154,11 @@
         "id": "tresorerie_nette_croissante",
         "moteur": "Poursuite de la constitution de trésorerie nette (Hermès n'a jamais eu recours à l'endettement net) à un rythme d'environ 1,3-1,5 Md€/an, cohérent avec la trajectoire historique (7,07 Md€ fin 2021 à 12,8 Md€ fin 2025) et la génération de cash-flow disponible ajusté très élevée (2,2 Md€ au seul S1 2026, +18%) après investissements opérationnels (~1 Md€/an) et dividendes (variables, souvent >2 Md€/an) : position de trésorerie nette projetée à ~13,5 Md€ fin 2026, puis croissance continue vers ~19,5 Md€ fin 2030.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "basse"
       }
@@ -204,14 +204,14 @@
       }
     ],
     "guidanceLongTerme": "Hermès ne communique aucun objectif chiffré à moyen ou long terme, ni sur le CA ni sur la marge - politique constante et assumée du groupe depuis des années, réitérée à chaque publication ('objectif ambitieux de progression du chiffre d'affaires à taux de change constants'). Seul élément quasi quantifiable communiqué : un rythme d'ouverture d'environ une nouvelle maroquinerie par an jusqu'en 2030 (~300 emplois chacune), volontairement contraint pour préserver l'exclusivité artisanale plutôt que d'accélérer les volumes. Un nouveau site de production post-2030 est mentionné dans une région non précisée à ce stade.",
-    "adjCA": {
+    "omniumCA": {
       "2026": 16400,
       "2027": 17548,
       "2028": 18776,
       "2029": 19997,
       "2030": 21297
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 6642,
       "2027": 7195,
       "2028": 7754,
@@ -232,14 +232,14 @@
       "2029": 59.3,
       "2030": 63.6
     },
-    "adjND": {
+    "omniumND": {
       "2026": -13500,
       "2027": -15000,
       "2028": -16500,
       "2029": -18000,
       "2030": -19500
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 104.8,
       "2027": 104.8,
       "2028": 104.8,

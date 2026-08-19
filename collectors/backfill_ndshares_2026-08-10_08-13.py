@@ -9,7 +9,7 @@ price_history.py. Le run automatique de ce soir (23h00 UTC) capturera
 ndCY/shCY nativement pour le 3e point - ce script ne concerne QUE le
 rattrapage des 2 premiers.
 
-adjND/adjShares ne changent PAS aussi souvent que omniumEPS (aucun des deux
+omniumND/omniumShares ne changent PAS aussi souvent que omniumEPS (aucun des deux
 n'a bouge pour NUBANK malgre son refresh du 15/08 - verifie : memes
 valeurs avant/apres), donc contrairement a epsByYear, pas de cas
 particulier a gerer ici - la valeur actuelle convient pour les deux dates.
@@ -64,8 +64,8 @@ def main():
             if snap["date"] not in TARGET_DATES:
                 continue
             cy = snap.get("cyYear")
-            nd_cy = (hyp.get("adjND") or {}).get(str(cy))
-            sh_cy = (hyp.get("adjShares") or {}).get(str(cy))
+            nd_cy = (hyp.get("omniumND") or {}).get(str(cy))
+            sh_cy = (hyp.get("omniumShares") or {}).get(str(cy))
             if isinstance(nd_cy, (int, float)):
                 snap["ndCY"] = round(float(nd_cy), 2)
             if isinstance(sh_cy, (int, float)):

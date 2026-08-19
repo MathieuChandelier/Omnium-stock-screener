@@ -275,8 +275,8 @@
         "id": "guidance_fy26_relevee",
         "moteur": "Guidance FY26 relevee pour la 3e fois de l'annee au T2 26 (CA ~12,6 Md$, +1,1Md$ vs mai ; marge operationnelle non-GAAP 48-49%), increment provenant de tous les segments produits selon le CEO.",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026",
+          "omniumCA.2026",
+          "omniumEBIT.2026",
           "omniumEPS.2026"
         ],
         "confiance": "haute"
@@ -285,8 +285,8 @@
         "id": "ai_fabric_scaling_100_clients",
         "moteur": "Base de clients Etherlink AI fabric passee de 4-5 (2024) a plus de 100 fin T2 26, engagements d'achat pluriannuels quasi tries a 9,7 Md$ (vs 3,6 Md$ un an plus tot) - visibilite de demande forte sur 2027-2028.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028"
+          "omniumCA.2027",
+          "omniumCA.2028"
         ],
         "confiance": "haute"
       },
@@ -294,8 +294,8 @@
         "id": "supply_chain_two_year_problem",
         "moteur": "Le CEO qualifie la contrainte d'approvisionnement de \"probleme de deux ans\" au niveau de l'industrie (jusqu'en 2028), plafonnant la marge en dessous d'une normalisation complete malgre l'amelioration deja tangible propre a Arista (remboursements tarifaires, nouveaux fournisseurs qualifies).",
         "applique": [
-          "adjEBIT.2027",
-          "adjEBIT.2028"
+          "omniumEBIT.2027",
+          "omniumEBIT.2028"
         ],
         "confiance": "moyenne"
       },
@@ -303,8 +303,8 @@
         "id": "buyback_suspendu_2026",
         "moteur": "Rachats d'actions suspendus au S1 2026 (0$ vs 983 M$ au S1 2025) pour preserver la tresorerie face aux engagements d'achat pluriannuels de 9,7 Md$ - reprise graduelle supposee a partir de 2027 a mesure que la visibilite sur les paiements s'ameliore.",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027"
+          "omniumShares.2026",
+          "omniumShares.2027"
         ],
         "confiance": "moyenne"
       },
@@ -312,9 +312,9 @@
         "id": "scale_across_tam_2030",
         "moteur": "Marche du \"scale-across\" evalue par le management a 3-4 Md$ aujourd'hui, en expansion vers 15-20 Md$ d'ici 2030 (Arista viserait ~1,2 Md$ en 2026, soit ~30% de sa cible IA) - moteur de croissance additionnel non encore pleinement reflete dans la cible IA officielle.",
         "applique": [
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "moyenne"
       },
@@ -337,14 +337,14 @@
       "2029": 7.24,
       "2030": 8.52
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 12600,
       "2027": 15750,
       "2028": 18900,
       "2029": 22113,
       "2030": 25430
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 6111,
       "2027": 7481,
       "2028": 8883,
@@ -358,14 +358,14 @@
       "2029": 9128,
       "2030": 10669
     },
-    "adjND": {
+    "omniumND": {
       "2026": -16000,
       "2027": -20500,
       "2028": -25500,
       "2029": -31000,
       "2030": -37000
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 1277,
       "2027": 1274,
       "2028": 1268,

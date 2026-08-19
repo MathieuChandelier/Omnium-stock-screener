@@ -70,11 +70,11 @@ def c3():
             if qe.get(k): bad.append((tk,f'{k} non nul'))
     return bad
 
-@check("C4  omniumEPS == omniumNet / adjShares (>1% ET >1 cent)")
+@check("C4  omniumEPS == omniumNet / omniumShares (>1% ET >1 cent)")
 def c4():
     bad=[]
     for tk,t in FICHES.items():
-        h=t['hypothese']; eps=h.get('omniumEPS') or {}; net=h.get('omniumNet') or {}; sh_=h.get('adjShares') or {}
+        h=t['hypothese']; eps=h.get('omniumEPS') or {}; net=h.get('omniumNet') or {}; sh_=h.get('omniumShares') or {}
         for y,v in eps.items():
             n,s=net.get(y),sh_.get(y)
             if not all(isinstance(x,(int,float)) for x in (v,n,s)) or not s: continue
@@ -114,14 +114,14 @@ def c7():
                 bad.append((tk,f'{y}: capture {v} vs fiche {cur}')); break
     return bad
 
-@check("C8  derniere capture : ndCY/shCY == adjND/adjShares[cyYear]")
+@check("C8  derniere capture : ndCY/shCY == omniumND/omniumShares[cyYear]")
 def c8():
     bad=[]
     for tk,t in FICHES.items():
         sn=[s for s in (PH.get(tk,{}).get('snapshots') or []) if s.get('price')]
         if not sn: continue
         last=sn[-1]; cy=str(last.get('cyYear'))
-        nd=(t['hypothese'].get('adjND') or {}).get(cy); shh=(t['hypothese'].get('adjShares') or {}).get(cy)
+        nd=(t['hypothese'].get('omniumND') or {}).get(cy); shh=(t['hypothese'].get('omniumShares') or {}).get(cy)
         if isinstance(nd,(int,float)) and 'ndCY' in last and abs(last['ndCY']-nd)>0.5:
             bad.append((tk,f'ndCY {last["ndCY"]} vs fiche {nd}'))
         elif isinstance(shh,(int,float)) and 'shCY' in last and abs(last['shCY']-shh)>0.5:
@@ -197,7 +197,7 @@ def c12():
     # weightedBeatPct trimestriel n'est plus qu'un indicateur de suivi.
     # Deux etats anormaux : un scorecard sans annualBeatPct etabli (travail
     # en attente au prochain refresh), et un annualBeatPct chiffre non
-    # repercute dans omniumEPS/adjCA de l'annee en cours.
+    # repercute dans omniumEPS/omniumCA de l'annee en cours.
     bad=[]
     for tk,t in FICHES.items():
         gs=t['hypothese'].get('guidanceScorecard')
@@ -255,10 +255,10 @@ def c14():
         if not sn: continue
         last=sn[-1]
         cy=str(last.get('cyYear'))
-        fiche_nd=(t['hypothese'].get('adjND') or {}).get(cy)
+        fiche_nd=(t['hypothese'].get('omniumND') or {}).get(cy)
         capture_nd='ndCY' in last
         if isinstance(fiche_nd,(int,float)) and not capture_nd:
-            bad.append((tk,f"fiche porte adjND[{cy}]={fiche_nd} mais la capture "
+            bad.append((tk,f"fiche porte omniumND[{cy}]={fiche_nd} mais la capture "
                            f"n'a pas ndCY : libelle ex-cash impossible a honorer"))
     return bad
 
@@ -303,7 +303,7 @@ def c16():
 
 @check("X1  relution projetee : doit etre gagee par une contrainte chiffree")
 def x1():
-    # Pour un industriel, adjND borne ce qui est finançable : un rachat qui
+    # Pour un industriel, omniumND borne ce qui est finançable : un rachat qui
     # ferait deriver le levier se voit. Pour une banque ce garde-fou est
     # absent, et le modele peut projeter une relution que rien ne gage.
     # Cas BNP : -1,8%/an ferme alors que la fiche ecrit que la distribution
@@ -313,7 +313,7 @@ def x1():
     for tk,t in FICHES.items():
         it=t.get('issuerType') or 'industrial'
         if it=='industrial': continue
-        sh_=t['hypothese'].get('adjShares') or {}
+        sh_=t['hypothese'].get('omniumShares') or {}
         ys=sorted(y for y in sh_ if isinstance(sh_[y],(int,float)))
         if len(ys)<2: continue
         cagr=((sh_[ys[-1]]/sh_[ys[0]])**(1/(len(ys)-1))-1)*100
@@ -370,8 +370,8 @@ def c17():
         if not d: continue
         ly=d[-1]['year']
         a=h.get('omniumEPS') or {}
-        aN=h.get('omniumNet') or {}; aS=h.get('adjShares') or {}
-        # getProj derive l'EPS de omniumNet/adjShares quand omniumEPS manque :
+        aN=h.get('omniumNet') or {}; aS=h.get('omniumShares') or {}
+        # getProj derive l'EPS de omniumNet/omniumShares quand omniumEPS manque :
         # une annee n'est en defaut que si AUCUNE des deux voies n'existe.
         couvert=lambda y:(isinstance(a.get(str(y)),(int,float))
             or (isinstance(aN.get(str(y)),(int,float)) and isinstance(aS.get(str(y)),(int,float))))
@@ -395,7 +395,7 @@ def w1():
         hist=[n/e for n,e in hist if isinstance(n,(int,float)) and isinstance(e,(int,float)) and e>0]
         if len(hist)<2: continue
         rh=sum(hist)/len(hist); ly=d[-1]['year']
-        aN=h.get('omniumNet') or {}; aE=h.get('adjEBIT') or {}
+        aN=h.get('omniumNet') or {}; aE=h.get('omniumEBIT') or {}
         ys=[y for y in range(ly+1,ly+6)
             if isinstance(aN.get(str(y)),(int,float)) and isinstance(aE.get(str(y)),(int,float)) and aE[str(y)]>0]
         if not ys: continue
@@ -435,20 +435,20 @@ def w3():
         if not d: continue
         nd0=d[-1].get('nd')
         if not isinstance(nd0,(int,float)) or nd0<=0: continue
-        aND=h.get('adjND') or {}
+        aND=h.get('omniumND') or {}
         ys=sorted(int(y) for y in aND if isinstance(aND[y],(int,float)))
         if not ys or aND[str(ys[-1])]<nd0*1.3: continue
         n0,e0=d[-1].get('net'),d[-1].get('ebit')
-        aN=h.get('omniumNet') or {}; aE=h.get('adjEBIT') or {}
+        aN=h.get('omniumNet') or {}; aE=h.get('omniumEBIT') or {}
         k=str(ys[-1])
         if not all(isinstance(x,(int,float)) for x in (n0,e0,aN.get(k),aE.get(k))) or e0<=0 or aE[k]<=0: continue
         if aN[k]/aE[k] >= n0/e0-0.01:
-            bad.append((tk,f'adjND {nd0:.0f} -> {aND[k]:.0f} (+{(aND[k]/nd0-1)*100:.0f}%) mais '
+            bad.append((tk,f'omniumND {nd0:.0f} -> {aND[k]:.0f} (+{(aND[k]/nd0-1)*100:.0f}%) mais '
                            f'conversion {n0/e0*100:.0f}% -> {aN[k]/aE[k]*100:.0f}% : charge '
                            f'financiere integree ? (ou emetteur a reclasser en financier)'))
     return bad
 
-@check("C18 cles legacy adjEPS/adjNet interdites (renommees omniumXXX le 18/08/2026)")
+@check("C18 cles legacy adj* interdites (famille renommee omniumXXX le 18/08/2026)")
 def c18():
     # Une session de refresh partie d'une doctrine perimee reintroduirait
     # ces cles sous leur ancien nom : l'app ne les lirait plus, la fiche
@@ -456,8 +456,8 @@ def c18():
     bad=[]
     for tk,t in FICHES.items():
         h=t.get('hypothese') or {}
-        for old_,new_ in (('adjEPS','omniumEPS'),('adjNet','omniumNet')):
-            if old_ in h: bad.append((tk,f'cle {old_} presente : ecrire {new_}'))
+        for old_ in ('adjEPS','adjNet','adjCA','adjEBIT','adjND','adjShares'):
+            if old_ in h: bad.append((tk,f'cle legacy {old_} presente : ecrire omnium{old_[3:]}'))
     return bad
 
 def _num(x): return isinstance(x,(int,float))
@@ -472,7 +472,7 @@ def c19():
         br=t['hypothese'].get('bridge')
         if not isinstance(br,dict): continue
         d={str(r['year']):r for r in (t.get('data') or [])}
-        aE=t['hypothese'].get('adjEBIT') or {}
+        aE=t['hypothese'].get('omniumEBIT') or {}
         for y,b in br.items():
             if not isinstance(b,dict): continue
             ebit=(d.get(y) or {}).get('ebit') if y in d else aE.get(y)
@@ -528,7 +528,7 @@ def w4():
                 bad.append((tk,f'{y}: taxRate {b["taxRate"]*100:.0f}%'))
     return bad
 
-@check("W5  ~ bridge : charge financiere incoherente avec adjND (E5 a-bis)")
+@check("W5  ~ bridge : charge financiere incoherente avec omniumND (E5 a-bis)")
 def w5():
     # Dette nette projetee positive => finNet doit etre une charge, d'une
     # ampleur plausible (0,5% a 12% de la dette moyenne). L'inverse - un
@@ -537,7 +537,7 @@ def w5():
     bad=[]
     for tk,t in FICHES.items():
         if (t.get('issuerType') or 'industrial')!='industrial': continue
-        br=t['hypothese'].get('bridge'); aND=t['hypothese'].get('adjND') or {}
+        br=t['hypothese'].get('bridge'); aND=t['hypothese'].get('omniumND') or {}
         if not isinstance(br,dict): continue
         for y,b in br.items():
             if not isinstance(b,dict) or _num(b.get('netPub')): continue

@@ -152,25 +152,25 @@
       {
         "id": "AN-BIMZELX-RAMP",
         "moteur": "BIMZELX en hypercroissance confirmee : ventes plus que triplees en 2025 (>2,2 Md€), doublees a nouveau au S1 26 (1,5 Md€), objectif de pic de ventes releve a au moins 7 Md€ soutenu par un accord d'acces de premiere ligne avec un grand PBM americain (effectif juin 2026) et des donnees de superiorite clinique (etude BE BOLD).",
-        "applique": ["adjCA.2026", "adjCA.2027", "adjCA.2028", "adjEBIT.2027", "adjEBIT.2028"],
+        "applique": ["omniumCA.2026", "omniumCA.2027", "omniumCA.2028", "omniumEBIT.2027", "omniumEBIT.2028"],
         "confiance": "haute"
       },
       {
         "id": "AN-BRIVIACT-LOE",
         "moteur": "Perte d'exclusivite de BRIVIACT identifiee comme vent contraire du S2 26 (Europe des aout, declin US ~80% sur 12 mois) - effet transitoire de composition du chiffre d'affaires, distinct de la dynamique structurelle des 5 moteurs de croissance.",
-        "applique": ["adjCA.2026"],
+        "applique": ["omniumCA.2026"],
         "confiance": "haute"
       },
       {
         "id": "AN-OPERATING-LEVERAGE",
         "moteur": "Effet de ciseau operationnel confirme : marge d'EBITDA ajuste passee de 24% (2024) a 34% (2025), guidance 2026 pour une croissance de l'EBITDA superieure a celle des ventes ('mid-teens to low-20s' vs 'low-teens to mid-teens') - expansion de marge attendue poursuivie a mesure que les moteurs de croissance montent en echelle.",
-        "applique": ["adjEBIT.2026", "adjEBIT.2029", "adjEBIT.2030"],
+        "applique": ["omniumEBIT.2026", "omniumEBIT.2029", "omniumEBIT.2030"],
         "confiance": "haute"
       },
       {
         "id": "AN-BD-DELEVERAGING",
         "moteur": "Acquisitions Neurona Therapeutics et Candid Therapeutics (S1 26) ramenant la dette nette a 2,8 Md€ fin juin 2026 (contre une tresorerie nette quasi nulle fin 2025) ; desendettement attendu porte par la generation de cash croissante du groupe (effet de ciseau EBITDA/ventes), la direction se disant 'raisonnablement equipee jusqu'a 2035+' pour absorber du business development supplementaire cible sur des actifs en phase precoce.",
-        "applique": ["adjND.2026", "adjND.2027", "adjND.2028", "adjND.2029", "adjND.2030"],
+        "applique": ["omniumND.2026", "omniumND.2027", "omniumND.2028", "omniumND.2029", "omniumND.2030"],
         "confiance": "moyenne"
       },
       {
@@ -181,10 +181,10 @@
       }
     ],
     "omniumEPS": {"2026": 11.62, "2027": 13.93, "2028": 15.90, "2029": 18.00, "2030": 20.30},
-    "adjCA": {"2026": 8825, "2027": 10149, "2028": 11468, "2029": 12730, "2030": 14003},
-    "adjEBIT": {"2026": 2339, "2027": 2842, "2028": 3326, "2029": 3755, "2030": 4201},
+    "omniumCA": {"2026": 8825, "2027": 10149, "2028": 11468, "2029": 12730, "2030": 14003},
+    "omniumEBIT": {"2026": 2339, "2027": 2842, "2028": 3326, "2029": 3755, "2030": 4201},
     "omniumNet": {"2026": 2208, "2027": 2633, "2028": 2989, "2029": 3366, "2030": 3776},
-    "adjND": {"2026": 2400, "2027": 1400, "2028": 500, "2029": -400, "2030": -1500},
-    "adjShares": {"2026": 190, "2027": 189, "2028": 188, "2029": 187, "2030": 186}
+    "omniumND": {"2026": 2400, "2027": 1400, "2028": 500, "2029": -400, "2030": -1500},
+    "omniumShares": {"2026": 190, "2027": 189, "2028": 188, "2029": 187, "2030": 186}
   }
 }

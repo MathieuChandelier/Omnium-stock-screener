@@ -116,8 +116,8 @@
         "id": "AN-GUIDANCE-RELEVEE",
         "moteur": "Guidance FY2026 relevee pour la deuxieme fois consecutive au T2 26 : marge CORE EBITDA 33-34% (depuis >32%), croissance CER confirmee a 11-12% - execution operationnelle forte sur les trois Business Platforms, toutes a deux chiffres de croissance CER au S1.",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026"
+          "omniumCA.2026",
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
@@ -125,8 +125,8 @@
         "id": "AN-CHI-DIVESTITURE",
         "moteur": "Cession de Capsules & Health Ingredients (CHI) a Lone Star Funds pour 2,3 Md CHF, cloture attendue avant fin 2026 - CHI contribue encore au resultat 2026 (jusqu'a cloture) mais est totalement exclue des projections 2027+, creant une discontinuite de perimetre assumee dans le modele. Plus-value de cession attendue mais non chiffree, traitee comme vrai one-off exclu d'omniumNet.",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026",
+          "omniumCA.2026",
+          "omniumEBIT.2026",
           "omniumNet.2026"
         ],
         "confiance": "haute sur l'occurrence et le calendrier, basse sur le montant de la plus-value"
@@ -135,11 +135,11 @@
         "id": "AN-BUYBACK-500M",
         "moteur": "500 M CHF de capital excedentaire a retourner via un programme de rachat accelere des la cloture de la cession CHI, en complement du programme de rachat deja en cours depuis 2023 - reduction progressive du nombre d'actions sur l'horizon de projection.",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "moyenne"
       },
@@ -147,14 +147,14 @@
         "id": "AN-CAPEX-CROISSANCE-7MD",
         "moteur": "Plan d'investissement organique de plus de 7 Md CHF a horizon 2030 (extensions ADC a Stein et Visp, capacites mammalian, drug product, bioconjugues, cell & gene) - intensite de CapEx visee au milieu de la fourchette mid-to-high-teens en % des ventes pour 2026, avec normalisation et phasing 2026-2027 ; soutient la trajectoire de croissance CA/EBIT 2027-2030 mais maintient une pression sur le desendettement.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "moyenne"
       },
@@ -162,20 +162,20 @@
         "id": "AN-NORMALISATION-S2",
         "moteur": "Le management indique explicitement que la croissance et la marge du S2 26 seront plus normalisees que le S1 (phasing favorable au S1 chez Advanced Synthesis en particulier, base de comparaison 2025 plus elevee au S2) - modelise par une deceleration sequentielle de la croissance organique sur la deuxieme moitie de l'annee, sans remettre en cause la guidance annuelle globale.",
         "applique": [
-          "adjCA.2026",
-          "adjEBIT.2026"
+          "omniumCA.2026",
+          "omniumEBIT.2026"
         ],
         "confiance": "haute"
       },
       {
         "id": "AN-CHI-PROCEEDS-DEBT-FINANCIAL",
-        "moteur": "Produit net de cession CHI (2,3 Md CHF) affecte de facon coherente : 500 M CHF au rachat d'actions accelere (voir AN-BUYBACK-500M), le solde de 1,8 Md CHF applique au desendettement a la cloture (attendue fin 2026). Le groupe passe ainsi en position de cash net a fin 2026 et fin 2027 (adjND negatif), ce qui implique des charges financieres nettes quasi nulles voire un leger produit financier net sur ces deux annees (au lieu de la charge d'interet habituelle sur une dette nette positive) - omniumNet 2026-2027 revise a la hausse en consequence par rapport a un calcul qui aurait fige le ratio de conversion EBIT-net anterieur a la cession. La remontee progressive de la dette nette en territoire positif des 2029-2030 (financement du plan CapEx >7 Md CHF a horizon 2030) restaure une charge financiere nette modeste mais non negligeable.",
+        "moteur": "Produit net de cession CHI (2,3 Md CHF) affecte de facon coherente : 500 M CHF au rachat d'actions accelere (voir AN-BUYBACK-500M), le solde de 1,8 Md CHF applique au desendettement a la cloture (attendue fin 2026). Le groupe passe ainsi en position de cash net a fin 2026 et fin 2027 (omniumND negatif), ce qui implique des charges financieres nettes quasi nulles voire un leger produit financier net sur ces deux annees (au lieu de la charge d'interet habituelle sur une dette nette positive) - omniumNet 2026-2027 revise a la hausse en consequence par rapport a un calcul qui aurait fige le ratio de conversion EBIT-net anterieur a la cession. La remontee progressive de la dette nette en territoire positif des 2029-2030 (financement du plan CapEx >7 Md CHF a horizon 2030) restaure une charge financiere nette modeste mais non negligeable.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030",
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030",
           "omniumNet.2026",
           "omniumNet.2027",
           "omniumNet.2028",
@@ -192,14 +192,14 @@
       "2029": 21.3,
       "2030": 23.82
     },
-    "adjCA": {
+    "omniumCA": {
       "2026": 7118,
       "2027": 7830,
       "2028": 8535,
       "2029": 9218,
       "2030": 9863
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 1601,
       "2027": 1840,
       "2028": 2091,
@@ -213,14 +213,14 @@
       "2029": 1470,
       "2030": 1620
     },
-    "adjND": {
+    "omniumND": {
       "2026": -1000,
       "2027": -500,
       "2028": -200,
       "2029": 100,
       "2030": 300
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 72.0,
       "2027": 71.0,
       "2028": 70.0,

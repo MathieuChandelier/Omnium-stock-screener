@@ -87,7 +87,7 @@
         "id": "guidance_qualitative_ca_2026",
         "moteur": "Guidance officielle qualitative uniquement (pas de chiffrage précis) : croissance du CA en 2026 vs 2025 confirmée au S1. Reconstruit bottom-up : S1 2026 réel (7 220 M€) + S2 2026 estimé à ~7 580 M€ (T3 'flattish' comparable comme guidé par la direction avec un effet de change proche de neutre, T4 en accélération modérée portée par Primavera/Core Cruise sur une base de comparaison T4 2025 déjà moins dure) - retenu prudemment sous le rythme du T2 seul (+2% comparable) compte tenu de l'avertissement explicite de la direction sur un T3 flattish.",
         "applique": [
-          "adjCA.2026"
+          "omniumCA.2026"
         ],
         "confiance": "moyenne"
       },
@@ -95,10 +95,10 @@
         "id": "croissance_ca_post_2026",
         "moteur": "Poursuite d'une reconstruction progressive du CA à +5%/an sur 2027-2029 puis +5,5% en 2030, portée par la stabilisation attendue de Gucci, la poursuite de la forte dynamique de Kering Jewelry (+20% comparable au S1 2026) et Kering Eyewear (+8%), et l'anniversarisation des effets de change/comparaison difficiles de 2025-2026 - hypothèse de reconstruction linéaire faute de guidance chiffrée au-delà de 2026, à confiance basse par construction.",
         "applique": [
-          "adjCA.2027",
-          "adjCA.2028",
-          "adjCA.2029",
-          "adjCA.2030"
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
         ],
         "confiance": "basse"
       },
@@ -106,7 +106,7 @@
         "id": "marge_expansion_2026",
         "moteur": "Guidance officielle : marge S2 2026 supérieure à la marge S1 (12,8%). Retenue à ~14,5% au S2 (poursuite de la discipline de coûts, effet de levier volumes T4 mentionné par la direction), donnant une marge FY2026 consolidée de 13,6% (vs 11,1% en FY2025) - reconstruction bottom-up S1 réel + S2 estimé, cohérente avec les 190-220pb d'expansion de marge annuelle mentionnés par la direction sur le S1 seul.",
         "applique": [
-          "adjEBIT.2026"
+          "omniumEBIT.2026"
         ],
         "confiance": "moyenne"
       },
@@ -114,10 +114,10 @@
         "id": "marge_trajectoire_2027_2030",
         "moteur": "Poursuite d'une expansion graduelle de la marge opérationnelle courante vers 15,0% (2027), 16,3% (2028), 17,3% (2029) et 18,0% (2030) - trajectoire de reconstruction prudente et volontairement bien en-deçà des pics historiques du groupe (24,3% en 2023, 27,5% en 2022, 30,1% en 2019), reflétant l'absence de guidance chiffrée à moyen terme et une thèse de redressement mesuré plutôt qu'un retour rapide aux marges d'avant-crise.",
         "applique": [
-          "adjEBIT.2027",
-          "adjEBIT.2028",
-          "adjEBIT.2029",
-          "adjEBIT.2030"
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
         ],
         "confiance": "basse"
       },
@@ -149,11 +149,11 @@
         "id": "desendettement_rapide",
         "moteur": "Poursuite du désendettement à un rythme rapide porté par la génération de cash-flow libre (1,8 Md€ au S1 2026 hors éléments exceptionnels, +68% vs S1 2025) en l'absence de nouvelle cession majeure identifiée et de programme de rachat d'actions : dette nette projetée à ~2,5 Md€ fin 2026 (vs 3,3 Md€ au 30/06/2026), puis décroissance continue vers une position proche de la neutralité en 2030.",
         "applique": [
-          "adjND.2026",
-          "adjND.2027",
-          "adjND.2028",
-          "adjND.2029",
-          "adjND.2030"
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
         ],
         "confiance": "basse"
       },
@@ -161,11 +161,11 @@
         "id": "actions_stables",
         "moteur": "Nombre d'actions diluées maintenu stable à ~122,6M sur tout l'horizon - aucun programme de rachat d'actions prévu en 2026 selon la direction (priorité au désendettement et à l'investissement dans les maisons), dilution historique quasi nulle.",
         "applique": [
-          "adjShares.2026",
-          "adjShares.2027",
-          "adjShares.2028",
-          "adjShares.2029",
-          "adjShares.2030"
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
         ],
         "confiance": "moyenne"
       }
@@ -211,14 +211,14 @@
       }
     ],
     "guidanceLongTerme": "Capital Markets Day d'avril 2026 : plan de réduction du réseau de magasins de 250 fermetures nettes sur 2026-2030 (phasage 100/2026, ~100/2027-2028, 50/2029-2030) ; objectif de réduction progressive du ratio stocks/ventes des maisons Mode & Maroquinerie sur 5 ans ; retour graduel du taux d'IS normatif vers 27-28% sur 2-3 ans depuis le niveau élevé actuel (32,5% au S1 2026) ; pas d'objectif de marge ou de CA chiffré à moyen terme communiqué à ce stade - point de vigilance pour un futur point d'étape stratégique.",
-    "adjCA": {
+    "omniumCA": {
       "2026": 14800,
       "2027": 15540,
       "2028": 16472,
       "2029": 17460,
       "2030": 18420
     },
-    "adjEBIT": {
+    "omniumEBIT": {
       "2026": 2020,
       "2027": 2331,
       "2028": 2685,
@@ -239,14 +239,14 @@
       "2029": 16.68,
       "2030": 18.72
     },
-    "adjND": {
+    "omniumND": {
       "2026": 2500,
       "2027": 1600,
       "2028": 900,
       "2029": 400,
       "2030": 0
     },
-    "adjShares": {
+    "omniumShares": {
       "2026": 122.6,
       "2027": 122.6,
       "2028": 122.6,

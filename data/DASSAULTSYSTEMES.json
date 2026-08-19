@@ -72,19 +72,19 @@
       {
         "id": "sbc_reduction_guidee_2026",
         "moteur": "Charge de rémunération en actions (SBC) guidée par le management à ~115 M€ pour l'exercice 2026, contre 249,7 M€ réalisés en 2025 (quasi division par deux) - expliquant l'essentiel du bond de marge opérationnelle IFRS 2026 vs 2025, la marge non-IFRS (qui exclut déjà le SBC) restant stable ; retenu tel quel car explicitement guidé par le management, pas une estimation du modèle.",
-        "applique": ["adjEBIT.2026"],
+        "applique": ["omniumEBIT.2026"],
         "confiance": "haute"
       },
       {
         "id": "ppa_amortissement_croissant",
         "moteur": "Amortissement des intangibles acquis guidé à ~313-315 M€ pour 2026 (hors ArisGlobal, guidance antérieure à l'annonce) ; en tant qu'acquéreur en série (Medidata 2019, ArisGlobal 2026), cette charge est structurellement croissante et retenue dans la base IFRS récurrente (jamais exclue, contrairement au traitement non-IFRS du management) - vient modérer l'expansion de marge IFRS à partir de 2027 une fois ArisGlobal pleinement intégré en année pleine.",
-        "applique": ["adjEBIT.2027", "adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030"],
+        "applique": ["omniumEBIT.2027", "omniumEBIT.2028", "omniumEBIT.2029", "omniumEBIT.2030"],
         "confiance": "moyenne"
       },
       {
         "id": "arisglobal_acquisition",
-        "moteur": "Acquisition d'ArisGlobal (1,8 Md$ cash a la cloture, soit ~1 538 M EUR au taux de plan FY26 de 1,18 USD/EUR, hors earnout contingent de 200 M$ non inclus en base centrale), financee integralement par la tresorerie, clôture estimee en toute fin d'exercice 2026 : impact quasi nul sur le CA/EBIT 2026 (quelques semaines tout au plus) mais réduction mécanique et immédiate de la trésorerie nette fin 2026 (adjND) ; contribution en année pleine au CA a partir de 2027 (ArisGlobal ~175 M$ de CA 2026 attendu, soit ~150 M EUR, integree dans la croissance 2027 modelisee) ; le lien montant->adjND->adjCA/EBIT est trace ici pour eviter qu'un des deux effets soit ajuste sans l'autre lors d'un futur refresh.",
-        "applique": ["adjND.2026", "adjCA.2027"],
+        "moteur": "Acquisition d'ArisGlobal (1,8 Md$ cash a la cloture, soit ~1 538 M EUR au taux de plan FY26 de 1,18 USD/EUR, hors earnout contingent de 200 M$ non inclus en base centrale), financee integralement par la tresorerie, clôture estimee en toute fin d'exercice 2026 : impact quasi nul sur le CA/EBIT 2026 (quelques semaines tout au plus) mais réduction mécanique et immédiate de la trésorerie nette fin 2026 (omniumND) ; contribution en année pleine au CA a partir de 2027 (ArisGlobal ~175 M$ de CA 2026 attendu, soit ~150 M EUR, integree dans la croissance 2027 modelisee) ; le lien montant->omniumND->omniumCA/EBIT est trace ici pour eviter qu'un des deux effets soit ajuste sans l'autre lors d'un futur refresh.",
+        "applique": ["omniumND.2026", "omniumCA.2027"],
         "confiance": "moyenne"
       },
       {
@@ -102,15 +102,15 @@
       {
         "id": "marge_expansion_graduelle_dsy",
         "moteur": "Au-dela du bond 2026 lie au SBC, expansion graduelle et moderee de la marge IFRS (+30-40 pb/an) portee par la montee en puissance du Cloud/3DEXPERIENCE (+14% au T2 2026) et la discipline de couts, temperee par l'amortissement croissant des intangibles acquis (voir ppa_amortissement_croissant) et l'absence de guidance IFRS pluriannuelle chiffree par le management au-dela de FY2026.",
-        "applique": ["adjEBIT.2027", "adjEBIT.2028", "adjEBIT.2029", "adjEBIT.2030"],
+        "applique": ["omniumEBIT.2027", "omniumEBIT.2028", "omniumEBIT.2029", "omniumEBIT.2030"],
         "confiance": "basse"
       }
     ],
     "omniumEPS": {"2026": 0.99, "2027": 1.07, "2028": 1.16, "2029": 1.26, "2030": 1.37},
-    "adjCA": {"2026": 6356, "2027": 6740, "2028": 7178, "2029": 7645, "2030": 8142},
-    "adjEBIT": {"2026": 1557, "2027": 1671, "2028": 1802, "2029": 1950, "2030": 2109},
+    "omniumCA": {"2026": 6356, "2027": 6740, "2028": 7178, "2029": 7645, "2030": 8142},
+    "omniumEBIT": {"2026": 1557, "2027": 1671, "2028": 1802, "2029": 1950, "2030": 2109},
     "omniumNet": {"2026": 1318, "2027": 1422, "2028": 1541, "2029": 1673, "2030": 1814},
-    "adjND": {"2026": -1350, "2027": -1750, "2028": -2200, "2029": -2700, "2030": -3250},
-    "adjShares": {"2026": 1325, "2027": 1325, "2028": 1325, "2029": 1325, "2030": 1325}
+    "omniumND": {"2026": -1350, "2027": -1750, "2028": -2200, "2029": -2700, "2030": -3250},
+    "omniumShares": {"2026": 1325, "2027": 1325, "2028": 1325, "2029": 1325, "2030": 1325}
   }
 }
