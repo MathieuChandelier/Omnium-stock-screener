@@ -1,465 +1,469 @@
 {
- "name": "Snap Inc.",
- "cours": 5.04,
- "yahooSymbol": "SNAP",
- "dividende": 0,
- "data": [
-  {
-   "year": 2019,
-   "ca": 1716,
-   "ebit": -1103,
-   "net": -1034,
-   "shares": 1378,
-   "nd": -800,
-   "div": 0
-  },
-  {
-   "year": 2020,
-   "ca": 2507,
-   "ebit": -862,
-   "net": -945,
-   "shares": 1458,
-   "nd": -1150,
-   "div": 0
-  },
-  {
-   "year": 2021,
-   "ca": 4117,
-   "ebit": -702,
-   "net": -488,
-   "shares": 1574,
-   "nd": -1062,
-   "div": 0
-  },
-  {
-   "year": 2022,
-   "ca": 4602,
-   "ebit": -1395,
-   "net": -1430,
-   "shares": 1610,
-   "nd": 236,
-   "div": 0
-  },
-  {
-   "year": 2023,
-   "ca": 4606,
-   "ebit": -1398,
-   "net": -1322,
-   "shares": 1610,
-   "nd": 801,
-   "div": 0
-  },
-  {
-   "year": 2024,
-   "ca": 5361,
-   "ebit": -787,
-   "net": -698,
-   "shares": 1660,
-   "nd": 868,
-   "div": 0
-  },
-  {
-   "year": 2025,
-   "ca": 5931,
-   "ebit": -532,
-   "net": -460,
-   "shares": 1690,
-   "nd": 1203,
-   "div": 0
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": -0.17,
-  "epsNY": 0.06,
-  "date": "2026-08-03",
-  "source": "GAAP - consensus agrege ~40 analystes (Simply Wall St), aout 2026"
- },
- "particularites": [
-  {
-   "text": "Structure actionnariale a classes multiples (A/B/C) concentrant environ 99% du pouvoir de vote entre les mains des co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO) pour une detention economique combinee d'environ 20% du capital total - lecture permanente de gouvernance d'entreprise, sans impact sur un calcul de l'application.",
-   "valuePct": null
-  }
- ],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": "2026-11-04"
- },
- "ownership": {
-  "asOf": "2026-08-03",
-  "insiderPct": 19.8,
-  "insiderDesc": "Co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO), detenteurs quasi exclusifs des actions de Classe C (10 voix/action) leur conferant ensemble environ 99% du pouvoir de vote, pour une detention economique combinee estimee a environ 20% du capital total (classes A+B+C).",
-  "insiderSource": "Rapport SEC 2026 (10-K/proxy), repris par BGR (3 aout 2026) - detention economique calculee a partir de la repartition par classe d'actions divulguee.",
-  "notableHolders": [],
-  "coverageNote": "Aucun gerant de la watchlist Tier 1/2 identifie avec une position materielle et recente confirmee dans les derniers 13F disponibles (T1 2026). Coatue Management (Tier 1), historiquement actionnaire de Snap, n'apparait plus dans son top 10 13F au T1 2026 sans confirmation d'une sortie totale ou d'une position residuelle. Base d'actionnaires institutionnels dominee par des gerants passifs/indiciels (Vanguard, Fidelity/FMR, BlackRock, State Street, Capital World/International Investors) hors perimetre de la watchlist.",
-  "history": []
- },
- "compliance": {
-  "asOf": "2026-08-03",
-  "items": [
-   {
-    "year": 2024,
-    "title": "Le Nouveau-Mexique poursuit Snap pour manquement allegue a proteger les mineurs contre l'exploitation sexuelle en ligne (sextorsion).",
-    "allegedBy": "Procureur general du Nouveau-Mexique (Raul Torrez)",
-    "date": "2024-09-01",
-    "status": "plainte_deposee",
-    "outcome": null,
-    "source": "Couverture juridique specialisee (socialmediavictims.org, motleyrice.com), 2026"
-   },
-   {
-    "year": 2025,
-    "title": "Litige consolide (MDL n°3047, Californie du Nord) reunissant des milliers de plaignants (particuliers, districts scolaires, comtes) alleguant un design addictif de Snapchat nuisible a la sante mentale des mineurs ; premiers proces-temoins programmes devant la Cour superieure de Californie (comte de Los Angeles).",
-    "allegedBy": "Plaignants multiples - class actions et poursuites individuelles consolidees",
-    "date": "2025-03-01",
-    "status": "plainte_deposee",
-    "outcome": "Snap a annonce un accord transactionnel partiel en amont du proces, le 9 fevrier 2026 ; conditions financieres non divulguees.",
-    "source": "Bloomberg Law, fevrier 2026"
-   },
-   {
-    "year": 2025,
-    "title": "La Floride poursuit Snap pour violation alleguee de la loi HB 3 (acces des mineurs a la plateforme) et pratiques commerciales trompeuses (FDUTPA).",
-    "allegedBy": "Procureur general de Floride (James Uthmeier)",
-    "date": "2025-04-01",
-    "status": "plainte_deposee",
-    "outcome": null,
-    "source": "My Florida Legal, 2025-2026"
-   },
-   {
+  "name": "Snap Inc.",
+  "cours": 5.04,
+  "yahooSymbol": "SNAP",
+  "dividende": 0,
+  "data": [
+    {
+      "year": 2019,
+      "ca": 1716,
+      "ebit": -1103,
+      "net": -1034,
+      "shares": 1378,
+      "nd": -800,
+      "div": 0
+    },
+    {
+      "year": 2020,
+      "ca": 2507,
+      "ebit": -862,
+      "net": -945,
+      "shares": 1458,
+      "nd": -1150,
+      "div": 0
+    },
+    {
+      "year": 2021,
+      "ca": 4117,
+      "ebit": -702,
+      "net": -488,
+      "shares": 1574,
+      "nd": -1062,
+      "div": 0
+    },
+    {
+      "year": 2022,
+      "ca": 4602,
+      "ebit": -1395,
+      "net": -1430,
+      "shares": 1610,
+      "nd": 236,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 4606,
+      "ebit": -1398,
+      "net": -1322,
+      "shares": 1610,
+      "nd": 801,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 5361,
+      "ebit": -787,
+      "net": -698,
+      "shares": 1660,
+      "nd": 868,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 5931,
+      "ebit": -532,
+      "net": -460,
+      "shares": 1690,
+      "nd": 1203,
+      "div": 0
+    }
+  ],
+  "epsConsensus": {
     "year": 2026,
-    "title": "Le Texas poursuit Snap pour conception jugee addictive de l'application et defaut de protection des mineurs contre le contenu explicite.",
-    "allegedBy": "Procureur general du Texas (Ken Paxton)",
-    "date": "2026-02-10",
-    "status": "plainte_deposee",
-    "outcome": null,
-    "source": "Bloomberg Law, 10 fevrier 2026"
-   },
-   {
-    "year": 2026,
-    "title": "La Commission europeenne ouvre une procedure formelle au titre du Digital Services Act (DSA) visant la conformite de Snap sur l'evaluation des risques systemiques et la protection des mineurs dans l'UE.",
-    "allegedBy": "Commission europeenne",
-    "date": "2026-03-26",
-    "status": "enquete_en_cours",
-    "outcome": null,
-    "source": "Formulaire 10-Q de Snap (T1 2026), SEC"
-   }
-  ],
-  "note": "Aucune fraude financiere averee ni enquete SEC/DOJ identifiee a ce jour ; le registre porte essentiellement sur le contentieux reglementaire/civil lie a la protection des mineurs (design addictif, exploitation sexuelle, conformite DSA), tres repandu dans l'industrie des reseaux sociaux depuis 2024. Un accord transactionnel partiel a ete annonce en fevrier 2026 en amont d'un proces californien. (Recherche du 2026-08-04)"
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "source": "Creation - Communique + Transcript T2 2026 (3 aout 2026)",
-  "dernierCall": {
-   "quarter": "T2 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 1599,
-     "consensus": 1530
-    },
-    "epsAdj": {
-     "actual": -0.1,
-     "consensus": -0.12,
-     "basis": "non-GAAP",
-     "basisNote": "non-GAAP"
-    }
-   },
-   "guidanceProchainTrimestre": "CA guide a 1,70-1,74 Md$ (vs 1,507 Md$ au T3 25, soit +13% a +15%), Adjusted EBITDA guide a 300-350 M$.",
-   "guidanceAnnuelle": "Couts d'infrastructure FY26 releves a 1,65-1,70 Md$ (investissement IA/ML), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; direction confirme un retour a un resultat net positif de facon soutenue a partir de 2027.",
-   "pointsCles": [
-    "Restructuration d'avril 2026 (~1000 postes, -16% des effectifs) : charges de 128,5 M$ au T2, economies annualisees superieures a 500 M$ visees en 2S26, deja visibles (couts ajustes +4% seulement contre CA +19% au T2).",
-    "Free cash flow positif pour le 8e trimestre consecutif (121 M$ au T2) ; le free cash flow par action devient l'objectif financier prioritaire affiche par le management.",
-    "Lancement commercial des lunettes Specs prevu a l'automne 2026, evenement de lancement le 16 septembre a Los Angeles ; adoption de masse visee vers la fin de la decennie selon Evan Spiegel.",
-    "L'activiste Irenic Capital Management (environ 2,5% du capital) avait publiquement pousse pour la discipline de couts desormais engagee ; aucun commentaire du management sur une eventuelle cession de Specs lors du call."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T2 26",
+    "eps": -0.17,
+    "epsNY": 0.06,
     "date": "2026-08-03",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Couts d'infrastructure releves a 1,65-1,70 Md$ (vs 1,60-1,65 Md$ precedemment), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; retour a un resultat net positif soutenu vise a partir de 2027."
-   }
+    "source": "GAAP - consensus agrege ~40 analystes (Simply Wall St), aout 2026"
+  },
+  "particularites": [
+    {
+      "text": "Structure actionnariale a classes multiples (A/B/C) concentrant environ 99% du pouvoir de vote entre les mains des co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO) pour une detention economique combinee d'environ 20% du capital total - lecture permanente de gouvernance d'entreprise, sans impact sur un calcul de l'application.",
+      "valuePct": null
+    }
   ],
-  "guidanceLongTerme": null,
-  "guidanceLongTermeHistory": [],
-  "quarterlyEPS": {
-   "cadence": "trimestriel",
-   "CY": [
-    {
-     "label": "T1",
-     "eps": -0.05,
-     "actual": true
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": "2026-11-04"
+  },
+  "ownership": {
+    "asOf": "2026-08-03",
+    "insiderPct": 19.8,
+    "insiderDesc": "Co-fondateurs Evan Spiegel (CEO) et Bobby Murphy (CTO), detenteurs quasi exclusifs des actions de Classe C (10 voix/action) leur conferant ensemble environ 99% du pouvoir de vote, pour une detention economique combinee estimee a environ 20% du capital total (classes A+B+C).",
+    "insiderSource": "Rapport SEC 2026 (10-K/proxy), repris par BGR (3 aout 2026) - detention economique calculee a partir de la repartition par classe d'actions divulguee.",
+    "notableHolders": [],
+    "coverageNote": "Aucun gerant de la watchlist Tier 1/2 identifie avec une position materielle et recente confirmee dans les derniers 13F disponibles (T1 2026). Coatue Management (Tier 1), historiquement actionnaire de Snap, n'apparait plus dans son top 10 13F au T1 2026 sans confirmation d'une sortie totale ou d'une position residuelle. Base d'actionnaires institutionnels dominee par des gerants passifs/indiciels (Vanguard, Fidelity/FMR, BlackRock, State Street, Capital World/International Investors) hors perimetre de la watchlist.",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-08-03",
+    "items": [
+      {
+        "year": 2024,
+        "title": "Le Nouveau-Mexique poursuit Snap pour manquement allegue a proteger les mineurs contre l'exploitation sexuelle en ligne (sextorsion).",
+        "allegedBy": "Procureur general du Nouveau-Mexique (Raul Torrez)",
+        "date": "2024-09-01",
+        "status": "plainte_deposee",
+        "outcome": null,
+        "source": "Couverture juridique specialisee (socialmediavictims.org, motleyrice.com), 2026"
+      },
+      {
+        "year": 2025,
+        "title": "Litige consolide (MDL n°3047, Californie du Nord) reunissant des milliers de plaignants (particuliers, districts scolaires, comtes) alleguant un design addictif de Snapchat nuisible a la sante mentale des mineurs ; premiers proces-temoins programmes devant la Cour superieure de Californie (comte de Los Angeles).",
+        "allegedBy": "Plaignants multiples - class actions et poursuites individuelles consolidees",
+        "date": "2025-03-01",
+        "status": "plainte_deposee",
+        "outcome": "Snap a annonce un accord transactionnel partiel en amont du proces, le 9 fevrier 2026 ; conditions financieres non divulguees.",
+        "source": "Bloomberg Law, fevrier 2026"
+      },
+      {
+        "year": 2025,
+        "title": "La Floride poursuit Snap pour violation alleguee de la loi HB 3 (acces des mineurs a la plateforme) et pratiques commerciales trompeuses (FDUTPA).",
+        "allegedBy": "Procureur general de Floride (James Uthmeier)",
+        "date": "2025-04-01",
+        "status": "plainte_deposee",
+        "outcome": null,
+        "source": "My Florida Legal, 2025-2026"
+      },
+      {
+        "year": 2026,
+        "title": "Le Texas poursuit Snap pour conception jugee addictive de l'application et defaut de protection des mineurs contre le contenu explicite.",
+        "allegedBy": "Procureur general du Texas (Ken Paxton)",
+        "date": "2026-02-10",
+        "status": "plainte_deposee",
+        "outcome": null,
+        "source": "Bloomberg Law, 10 fevrier 2026"
+      },
+      {
+        "year": 2026,
+        "title": "La Commission europeenne ouvre une procedure formelle au titre du Digital Services Act (DSA) visant la conformite de Snap sur l'evaluation des risques systemiques et la protection des mineurs dans l'UE.",
+        "allegedBy": "Commission europeenne",
+        "date": "2026-03-26",
+        "status": "enquete_en_cours",
+        "outcome": null,
+        "source": "Formulaire 10-Q de Snap (T1 2026), SEC"
+      }
+    ],
+    "note": "Aucune fraude financiere averee ni enquete SEC/DOJ identifiee a ce jour ; le registre porte essentiellement sur le contentieux reglementaire/civil lie a la protection des mineurs (design addictif, exploitation sexuelle, conformite DSA), tres repandu dans l'industrie des reseaux sociaux depuis 2024. Un accord transactionnel partiel a ete annonce en fevrier 2026 en amont d'un proces californien. (Recherche du 2026-08-04)"
+  },
+  "hypothese": {
+    "date": "2026-08-19",
+    "source": "Creation - Communique + Transcript T2 2026 (3 aout 2026)",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 1599,
+          "consensus": 1530
+        },
+        "epsAdj": {
+          "actual": -0.1,
+          "consensus": -0.12,
+          "basis": "non-GAAP",
+          "basisNote": "non-GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "CA guide a 1,70-1,74 Md$ (vs 1,507 Md$ au T3 25, soit +13% a +15%), Adjusted EBITDA guide a 300-350 M$.",
+      "guidanceAnnuelle": "Couts d'infrastructure FY26 releves a 1,65-1,70 Md$ (investissement IA/ML), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; direction confirme un retour a un resultat net positif de facon soutenue a partir de 2027.",
+      "pointsCles": [
+        "Restructuration d'avril 2026 (~1000 postes, -16% des effectifs) : charges de 128,5 M$ au T2, economies annualisees superieures a 500 M$ visees en 2S26, deja visibles (couts ajustes +4% seulement contre CA +19% au T2).",
+        "Free cash flow positif pour le 8e trimestre consecutif (121 M$ au T2) ; le free cash flow par action devient l'objectif financier prioritaire affiche par le management.",
+        "Lancement commercial des lunettes Specs prevu a l'automne 2026, evenement de lancement le 16 septembre a Los Angeles ; adoption de masse visee vers la fin de la decennie selon Evan Spiegel.",
+        "L'activiste Irenic Capital Management (environ 2,5% du capital) avait publiquement pousse pour la discipline de couts desormais engagee ; aucun commentaire du management sur une eventuelle cession de Specs lors du call."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "10-Q T2 2026 + communique (03/08/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 1 599 M$ (+19%), perte nette -164 M$ (vs -263 M$ N-1), adjusted EBITDA 250 M$ (vs 41 M$), DAU 493 M (+5%), FCF 121 M$. Redressement publicitaire en cours - la trajectoire de retour au profit GAAP reste le point de suivi."
+      }
     },
-    {
-     "label": "T2",
-     "eps": -0.1,
-     "actual": true
+    "guidanceHistory": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-03",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Couts d'infrastructure releves a 1,65-1,70 Md$ (vs 1,60-1,65 Md$ precedemment), OPEX ajuste ~2,75 Md$, SBC ~1,05 Md$ ; retour a un resultat net positif soutenu vise a partir de 2027."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "CY": [
+        {
+          "label": "T1",
+          "eps": -0.05,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": -0.1,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.0,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.06,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 0.02,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 0.03,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 0.04,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.086,
+          "actual": false
+        }
+      ]
     },
-    {
-     "label": "T3",
-     "eps": 0.0,
-     "actual": false
+    "summary": "Redressement de marge deja engage (levier operationnel visible au T2 26) plutot que promesse de croissance ; retour a un resultat net positif soutenu attendu des 2027, Specs traite comme optionnalite de long terme non chiffree.",
+    "text": "== THESIS SUMMARY ==\nA measurable operating turnaround: Q2 26 showed revenue +19% against adjusted costs +4%, the direct result of the April 2026 restructuring (~1,000 roles, >500M annualized savings targeted in H2). The bet is NOT a miraculous ad acceleration (already solid via AI tools - Smart Campaigns, conversions +56%) but the cost discipline converting existing growth into a first full year of positive net income in 2027. Infrastructure-cost guidance was still RAISED (1.65-1.70bn) - the AI compute bill grows even under discipline.\n\n== THESIS READ ==\n- The 2026 -> 2027 sign flip (EPS -0.09 -> +0.18) is the entire thesis; every quarter of cost discipline is evidence. Watch: H2 opex prints vs the >500M savings target.\n- Restructuring is treated as a RECURRING cost in disguise (quasi-annual since IPO: 2019 legal, 2022, 2026) - deliberately NOT retreated; the model is honest about it. Watch: whether 2027 passes without another one.\n- Infrastructure inflation is the counterweight: raised guidance shows AI compute eats savings. Watch: infra cost per DAU trajectory.\n\n== SPECIAL FACTORS ==\nBase = published GAAP, restructuring kept in (ancrage restructuration_recurrente). Financial result: recent near-zero quarterly rhythm retained over the normative Treasury formula (low-coupon convertibles - ancrage fin_result_snap). Tax: low effective rising gradually (NOL carryforwards), 10% -> 16% across the plan. Loss-year bridge documented.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 6,818M (+15%), EBIT -140M (last loss year modeled), EPS -0.09; 2027-2030: revenue +11-14%/yr, EBIT margin 4% -> 10.5%, shares -1.2%/yr. Watch: DAU/engagement stability through the cost cuts; ad-pricing recovery; NOL utilization pace as profits arrive.\n\n== CATALYSTS ==\nQ3 (Oct) - first full savings quarter; 2027 profitability inflection; Smart Campaign adoption metrics; any restructuring recurrence (negative).",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "revenue_accel_2026",
+        "moteur": "Reprise de la croissance publicitaire portee par les outils IA (Smart Campaign, conversions +56%) et montee en puissance du revenu Other (Snapchat+, Lens+, Memories) qui pese desormais 20% du CA et croit a 85%",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "revenue_deceleration_LT",
+        "moteur": "Ralentissement progressif attendu de la croissance publicitaire a mesure que la base de comparaison grossit, Specs devenant le principal catalyseur incrementiel non chiffre au-dela de 2027",
+        "applique": [
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "ebit_margin_expansion",
+        "moteur": "Restructuration d'avril 2026 (plus de 500 M$ d'economies annualisees, pleinement reflechies a partir du T3 26 donc en base pleine des 2027) et effet de levier operationnel deja observe (CA +19% vs couts ajustes +4% au T2 26)",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "restructuration_recurrente",
+        "moteur": "Les charges de restructuration (2019 : 100 M$ ; 2022 : 189 M$ ; 2026 : 128,5 M$ au 1S) survenant a intervalles reguliers depuis l'IPO sont traitees comme une composante recurrente-deguisee du cout operationnel, non retraitee dans data ni exclue des adjXXX",
+        "applique": [
+          "omniumEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "fin_result_snap",
+        "moteur": "Charges/produits financiers projetes sur la base du rythme net trimestriel recent (quasi a l'equilibre, obligations convertibles a coupon tres faible 0-0,75% emises 2019-2023) plutot que la regle normative Treasury 10 ans +2pts",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "IS_normatif_snap",
+        "moteur": "Taux d'IS effectif maintenu bas et croissant progressivement du fait des importants deficits reportables (NOL) accumules depuis l'introduction en bourse en 2017",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "dilution_mgmt_program",
+        "moteur": "Nouveau programme pluriannuel de gestion de la dilution finance par le free cash flow a partir de 2027, apres achevement du programme de rachat actuel au T4 2026",
+        "applique": [
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
+        ],
+        "confiance": "moyenne"
+      }
+    ],
+    "omniumEPS": {
+      "2026": -0.09,
+      "2027": 0.18,
+      "2028": 0.34,
+      "2029": 0.47,
+      "2030": 0.59
     },
-    {
-     "label": "T4",
-     "eps": 0.06,
-     "actual": false
+    "omniumCA": {
+      "2026": 6818,
+      "2027": 7775,
+      "2028": 8708,
+      "2029": 9579,
+      "2030": 10441
+    },
+    "omniumEBIT": {
+      "2026": -140,
+      "2027": 311,
+      "2028": 610,
+      "2029": 862,
+      "2030": 1096
+    },
+    "omniumNet": {
+      "2026": -156,
+      "2027": 291,
+      "2028": 547,
+      "2029": 753,
+      "2030": 935
+    },
+    "omniumND": {
+      "2026": 1250,
+      "2027": 1100,
+      "2028": 900,
+      "2029": 650,
+      "2030": 400
+    },
+    "omniumShares": {
+      "2026": 1670,
+      "2027": 1650,
+      "2028": 1630,
+      "2029": 1610,
+      "2030": 1590
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 21,
+        "other": 0,
+        "taxRate": 0.1,
+        "minorities": 0,
+        "netCalc": -459.9,
+        "netPub": -460,
+        "residual": -0.1,
+        "residualNote": "Loss years carry near-zero effective tax; the 10% rate models the partial tax effect and small interest income on the cash portion (low-coupon convertibles keep the charge minimal - ancrage fin_result_snap: recent near-zero net quarterly rhythm retained over the Treasury+2pts rule, judged too punitive)."
+      },
+      "2026": {
+        "finNet": -33,
+        "other": 0,
+        "taxRate": 0.1,
+        "minorities": 0,
+        "netCalc": -155.7
+      },
+      "2027": {
+        "finNet": 12,
+        "other": 0,
+        "taxRate": 0.1,
+        "minorities": 0,
+        "netCalc": 290.7
+      },
+      "2028": {
+        "finNet": 12,
+        "other": 0,
+        "taxRate": 0.12,
+        "minorities": 0,
+        "netCalc": 547.4
+      },
+      "2029": {
+        "finNet": 14,
+        "other": 0,
+        "taxRate": 0.14,
+        "minorities": 0,
+        "netCalc": 753.4
+      },
+      "2030": {
+        "finNet": 17,
+        "other": 0,
+        "taxRate": 0.16,
+        "minorities": 0,
+        "netCalc": 934.9
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "EPS via consensus (Snap guides cost lines, not revenue/EPS)",
+      "comparedAgainst": "consensus",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-08-03",
+          "type": "guidance_revised",
+          "detail": "Q2 26: infrastructure costs raised to 1.65-1.70bn (from 1.60-1.65bn); adjusted OPEX ~2.75bn; SBC ~1.05bn; sustained positive net income targeted."
+        }
+      ],
+      "paceCheckpoint": "Q2 real: revenue +19% vs adjusted costs +4% - the April restructuring (~1,000 roles, >500M annualized savings targeted in H2) is landing in the numbers.",
+      "weightedBeatPct": null,
+      "annualBeatPct": null,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": null,
+          "source": "initial_consensus",
+          "excluded": true,
+          "note": "Snap guides cost lines (infra, adjusted OpEx, SBC) quarterly - no annual revenue/EPS frame ever existed, and no dated early-2025 consensus snapshot archived - excluded structurally."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_consensus",
+          "excluded": true,
+          "note": "Same structural limitation for FY24."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": -0.17,
+        "source": "initial_consensus",
+        "date": "2026-08-03",
+        "note": "Snap guides infrastructure costs, adjusted OPEX and SBC - never revenue or EPS; the anchor is the ~40-analyst GAAP consensus (earliest archived, 03/08). Omnium 2026 (-0.09) sits above: the restructuring savings phase in faster in the Omnium build."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "No measurable fiscal year and no in-progress leg (the -0.17 anchor is an August consensus snapshot): annualBeatPct not computed. First verdict at the FY26 close vs the archived anchor.",
+      "consensusSource": "GAAP aggregate (~40 analysts)",
+      "consensusDate": "2026-08-03",
+      "inProgress": null
+    },
+    "revisionEvent": {
+      "date": "2026-08-03",
+      "label": "Q2 2026",
+      "type": "earnings"
     }
-   ],
-   "NY": [
-    {
-     "label": "T1",
-     "eps": 0.02,
-     "actual": false
-    },
-    {
-     "label": "T2",
-     "eps": 0.03,
-     "actual": false
-    },
-    {
-     "label": "T3",
-     "eps": 0.04,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 0.086,
-     "actual": false
-    }
-   ]
   },
-  "summary": "Redressement de marge deja engage (levier operationnel visible au T2 26) plutot que promesse de croissance ; retour a un resultat net positif soutenu attendu des 2027, Specs traite comme optionnalite de long terme non chiffree.",
-  "text": "== THESIS SUMMARY ==\nA measurable operating turnaround: Q2 26 showed revenue +19% against adjusted costs +4%, the direct result of the April 2026 restructuring (~1,000 roles, >500M annualized savings targeted in H2). The bet is NOT a miraculous ad acceleration (already solid via AI tools - Smart Campaigns, conversions +56%) but the cost discipline converting existing growth into a first full year of positive net income in 2027. Infrastructure-cost guidance was still RAISED (1.65-1.70bn) - the AI compute bill grows even under discipline.\n\n== THESIS READ ==\n- The 2026 -> 2027 sign flip (EPS -0.09 -> +0.18) is the entire thesis; every quarter of cost discipline is evidence. Watch: H2 opex prints vs the >500M savings target.\n- Restructuring is treated as a RECURRING cost in disguise (quasi-annual since IPO: 2019 legal, 2022, 2026) - deliberately NOT retreated; the model is honest about it. Watch: whether 2027 passes without another one.\n- Infrastructure inflation is the counterweight: raised guidance shows AI compute eats savings. Watch: infra cost per DAU trajectory.\n\n== SPECIAL FACTORS ==\nBase = published GAAP, restructuring kept in (ancrage restructuration_recurrente). Financial result: recent near-zero quarterly rhythm retained over the normative Treasury formula (low-coupon convertibles - ancrage fin_result_snap). Tax: low effective rising gradually (NOL carryforwards), 10% -> 16% across the plan. Loss-year bridge documented.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 6,818M (+15%), EBIT -140M (last loss year modeled), EPS -0.09; 2027-2030: revenue +11-14%/yr, EBIT margin 4% -> 10.5%, shares -1.2%/yr. Watch: DAU/engagement stability through the cost cuts; ad-pricing recovery; NOL utilization pace as profits arrive.\n\n== CATALYSTS ==\nQ3 (Oct) - first full savings quarter; 2027 profitability inflection; Smart Campaign adoption metrics; any restructuring recurrence (negative).",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "revenue_accel_2026",
-    "moteur": "Reprise de la croissance publicitaire portee par les outils IA (Smart Campaign, conversions +56%) et montee en puissance du revenu Other (Snapchat+, Lens+, Memories) qui pese desormais 20% du CA et croit a 85%",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "revenue_deceleration_LT",
-    "moteur": "Ralentissement progressif attendu de la croissance publicitaire a mesure que la base de comparaison grossit, Specs devenant le principal catalyseur incrementiel non chiffre au-dela de 2027",
-    "applique": [
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "ebit_margin_expansion",
-    "moteur": "Restructuration d'avril 2026 (plus de 500 M$ d'economies annualisees, pleinement reflechies a partir du T3 26 donc en base pleine des 2027) et effet de levier operationnel deja observe (CA +19% vs couts ajustes +4% au T2 26)",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "restructuration_recurrente",
-    "moteur": "Les charges de restructuration (2019 : 100 M$ ; 2022 : 189 M$ ; 2026 : 128,5 M$ au 1S) survenant a intervalles reguliers depuis l'IPO sont traitees comme une composante recurrente-deguisee du cout operationnel, non retraitee dans data ni exclue des adjXXX",
-    "applique": [
-     "omniumEBIT.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "fin_result_snap",
-    "moteur": "Charges/produits financiers projetes sur la base du rythme net trimestriel recent (quasi a l'equilibre, obligations convertibles a coupon tres faible 0-0,75% emises 2019-2023) plutot que la regle normative Treasury 10 ans +2pts",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "IS_normatif_snap",
-    "moteur": "Taux d'IS effectif maintenu bas et croissant progressivement du fait des importants deficits reportables (NOL) accumules depuis l'introduction en bourse en 2017",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "dilution_mgmt_program",
-    "moteur": "Nouveau programme pluriannuel de gestion de la dilution finance par le free cash flow a partir de 2027, apres achevement du programme de rachat actuel au T4 2026",
-    "applique": [
-     "omniumShares.2027",
-     "omniumShares.2028",
-     "omniumShares.2029",
-     "omniumShares.2030"
-    ],
-    "confiance": "moyenne"
-   }
-  ],
-  "omniumEPS": {
-   "2026": -0.09,
-   "2027": 0.18,
-   "2028": 0.34,
-   "2029": 0.47,
-   "2030": 0.59
-  },
-  "omniumCA": {
-   "2026": 6818,
-   "2027": 7775,
-   "2028": 8708,
-   "2029": 9579,
-   "2030": 10441
-  },
-  "omniumEBIT": {
-   "2026": -140,
-   "2027": 311,
-   "2028": 610,
-   "2029": 862,
-   "2030": 1096
-  },
-  "omniumNet": {
-   "2026": -156,
-   "2027": 291,
-   "2028": 547,
-   "2029": 753,
-   "2030": 935
-  },
-  "omniumND": {
-   "2026": 1250,
-   "2027": 1100,
-   "2028": 900,
-   "2029": 650,
-   "2030": 400
-  },
-  "omniumShares": {
-   "2026": 1670,
-   "2027": 1650,
-   "2028": 1630,
-   "2029": 1610,
-   "2030": 1590
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 21,
-    "other": 0,
-    "taxRate": 0.1,
-    "minorities": 0,
-    "netCalc": -459.9,
-    "netPub": -460,
-    "residual": -0.1,
-    "residualNote": "Loss years carry near-zero effective tax; the 10% rate models the partial tax effect and small interest income on the cash portion (low-coupon convertibles keep the charge minimal - ancrage fin_result_snap: recent near-zero net quarterly rhythm retained over the Treasury+2pts rule, judged too punitive)."
-   },
-   "2026": {
-    "finNet": -33,
-    "other": 0,
-    "taxRate": 0.1,
-    "minorities": 0,
-    "netCalc": -155.7
-   },
-   "2027": {
-    "finNet": 12,
-    "other": 0,
-    "taxRate": 0.1,
-    "minorities": 0,
-    "netCalc": 290.7
-   },
-   "2028": {
-    "finNet": 12,
-    "other": 0,
-    "taxRate": 0.12,
-    "minorities": 0,
-    "netCalc": 547.4
-   },
-   "2029": {
-    "finNet": 14,
-    "other": 0,
-    "taxRate": 0.14,
-    "minorities": 0,
-    "netCalc": 753.4
-   },
-   "2030": {
-    "finNet": 17,
-    "other": 0,
-    "taxRate": 0.16,
-    "minorities": 0,
-    "netCalc": 934.9
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "EPS via consensus (Snap guides cost lines, not revenue/EPS)",
-   "comparedAgainst": "consensus",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-08-03",
-     "type": "guidance_revised",
-     "detail": "Q2 26: infrastructure costs raised to 1.65-1.70bn (from 1.60-1.65bn); adjusted OPEX ~2.75bn; SBC ~1.05bn; sustained positive net income targeted."
-    }
-   ],
-   "paceCheckpoint": "Q2 real: revenue +19% vs adjusted costs +4% - the April restructuring (~1,000 roles, >500M annualized savings targeted in H2) is landing in the numbers.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
-    },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": -0.17,
-    "source": "initial_consensus",
-    "date": "2026-08-03",
-    "note": "Snap guides infrastructure costs, adjusted OPEX and SBC - never revenue or EPS; the anchor is the ~40-analyst GAAP consensus (earliest archived, 03/08). Omnium 2026 (-0.09) sits above: the restructuring savings phase in faster in the Omnium build."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY vs initial consensus at setup (young fiche, priorEPS null by construction). First measurement at the FY26 close vs the -0.17 anchor.",
-   "consensusSource": "GAAP aggregate (~40 analysts)",
-   "consensusDate": "2026-08-03"
-  },
-  "revisionEvent": {
-   "date": "2026-08-03",
-   "label": "Q2 2026",
-   "type": "earnings"
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-08-03",
+        "source": "Q2 release/call (as exploited at the 03/08 refresh)",
+        "message": "The turnaround is measurable: revenue +19% vs adjusted costs +4%, direct result of the April restructuring (~1,000 roles cut, >500M annualized savings targeted in H2 26); AI ad tools driving performance (Smart Campaigns, conversions +56%); infrastructure-cost guidance nonetheless RAISED (1.65-1.70bn) - the AI compute bill grows even in a discipline regime; restructuring deliberately NOT retreated from the base (quasi-annual occurrence since IPO - a recurring cost in disguise, per the fiche's creation instruction)."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q2 26",
-    "date": "2026-08-03",
-    "source": "Q2 release/call (as exploited at the 03/08 refresh)",
-    "message": "The turnaround is measurable: revenue +19% vs adjusted costs +4%, direct result of the April restructuring (~1,000 roles cut, >500M annualized savings targeted in H2 26); AI ad tools driving performance (Smart Campaigns, conversions +56%); infrastructure-cost guidance nonetheless RAISED (1.65-1.70bn) - the AI compute bill grows even in a discipline regime; restructuring deliberately NOT retreated from the base (quasi-annual occurrence since IPO - a recurring cost in disguise, per the fiche's creation instruction)."
-   }
-  ]
- }
 }

@@ -1,405 +1,420 @@
 {
- "name": "Thermo Fisher Scientific",
- "cours": 513.41,
- "yahooSymbol": "TMO",
- "dividende": 1.92,
- "data": [
-  {
-   "year": 2016,
-   "ca": 18274,
-   "ebit": 2458,
-   "net": 2126,
-   "shares": 397,
-   "nd": 9000,
-   "div": 0.6
-  },
-  {
-   "year": 2017,
-   "ca": 20918,
-   "ebit": 2960,
-   "net": 2231,
-   "shares": 398,
-   "nd": 13000,
-   "div": 0.6
-  },
-  {
-   "year": 2018,
-   "ca": 24358,
-   "ebit": 3783,
-   "net": 2938,
-   "shares": 406,
-   "nd": 11000,
-   "div": 0.66
-  },
-  {
-   "year": 2019,
-   "ca": 25542,
-   "ebit": 4594,
-   "net": 3696,
-   "shares": 403,
-   "nd": 9000,
-   "div": 0.75
-  },
-  {
-   "year": 2020,
-   "ca": 32218,
-   "ebit": 7794,
-   "net": 6376,
-   "shares": 399,
-   "nd": 11000,
-   "div": 0.85
-  },
-  {
-   "year": 2021,
-   "ca": 39211,
-   "ebit": 10028,
-   "net": 7732,
-   "shares": 397,
-   "nd": 27000,
-   "div": 1.0
-  },
-  {
-   "year": 2022,
-   "ca": 44915,
-   "ebit": 8393,
-   "net": 6960,
-   "shares": 394,
-   "nd": 24000,
-   "div": 1.16
-  },
-  {
-   "year": 2023,
-   "ca": 42857,
-   "ebit": 6859,
-   "net": 5955,
-   "shares": 388,
-   "nd": 25000,
-   "div": 1.3
-  },
-  {
-   "year": 2024,
-   "ca": 42879,
-   "ebit": 7338,
-   "net": 6335,
-   "shares": 383,
-   "nd": 22000,
-   "div": 1.45
-  },
-  {
-   "year": 2025,
-   "ca": 44556,
-   "ebit": 7747,
-   "net": 6704,
-   "shares": 378,
-   "nd": 36000,
-   "div": 1.76
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 25.13,
-  "epsNY": 27.9,
-  "date": "2026-07-23",
-  "source": "Guidance societe relevee au call T2 26 (23/07/2026) : EPS ajuste 24,93-25,33$ (base non-GAAP, exclut amortissement d'acquisitions/restructuration), CA 47,4-48,1 Mds$. NON comparable a omniumEPS Omnium (base GAAP, voir hypothese.text)."
- },
- "particularites": [],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": "2026-10-22"
- },
- "ownership": {
-  "asOf": "2026-07-23",
-  "insiderPct": 0.33,
-  "insiderDesc": "Structure a classe unique (one share, one vote) - pas de verrou fondateur/familial. CEO Marc Casper detient ~155 000 actions en direct (~0,04% du capital) ; nouveau plan de retention massif annonce en mai 2026 (cliff vesting a 5 ans, livraison en 3 tranches entre 2033 et 2035) pour securiser sa direction jusqu'a au moins mai 2030. Gouvernance de facto dominee par les investisseurs institutionnels passifs (Vanguard, BlackRock, State Street en tete).",
-  "insiderSource": "GuruFocus insider holdings (T1 2026) + proxy additionnel mai 2026 (retention grant CEO) + synthese gouvernance businessmodelcanvastemplate.com",
-  "notableHolders": [],
-  "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie avec une position ou un mouvement notable sur ce titre a ce stade (le plus gros actionnaire est BlackRock, ~8,05% du capital, position institutionnelle passive - hors perimetre de la watchlist nominative).",
-  "history": []
- },
- "compliance": {
-  "asOf": "2026-07-23",
-  "items": [],
-  "note": "Aucune allegation de fraude identifiee. Point de gouvernance a noter (hors perimetre de ce champ, qui est reserve a la fraude) : le vote consultatif 'say-on-pay' sur la remuneration des dirigeants a ete rejete par les actionnaires lors de l'AG 2026 - signe de friction institutionnelle, documente ici a titre informatif et repris dans hypothese.text, sans lien avec une fraude quelconque."
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-13",
-   "eps": {
-    "2026": 18.43,
-    "2027": 20.97
-   }
-  },
-  "source": "Refresh Q2 2026 - Communique de resultats officiel (23/07/2026) + guidance annuelle relevee confirmee par recoupement de plusieurs sources secondaires du call (23/07/2026, 8h30 ET) ; transcript integral mot-a-mot non retrouve mais montants de guidance confirmes",
-  "dernierCall": {
-   "quarter": "Q2 26",
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 11994,
-     "consensus": 11720
+  "name": "Thermo Fisher Scientific",
+  "cours": 513.41,
+  "yahooSymbol": "TMO",
+  "dividende": 1.92,
+  "data": [
+    {
+      "year": 2016,
+      "ca": 18274,
+      "ebit": 2458,
+      "net": 2126,
+      "shares": 397,
+      "nd": 9000,
+      "div": 0.6
     },
-    "epsAdj": {
-     "actual": 6.03,
-     "consensus": 5.71,
-     "basis": "non-GAAP",
-     "basisNote": "non-GAAP"
+    {
+      "year": 2017,
+      "ca": 20918,
+      "ebit": 2960,
+      "net": 2231,
+      "shares": 398,
+      "nd": 13000,
+      "div": 0.6
+    },
+    {
+      "year": 2018,
+      "ca": 24358,
+      "ebit": 3783,
+      "net": 2938,
+      "shares": 406,
+      "nd": 11000,
+      "div": 0.66
+    },
+    {
+      "year": 2019,
+      "ca": 25542,
+      "ebit": 4594,
+      "net": 3696,
+      "shares": 403,
+      "nd": 9000,
+      "div": 0.75
+    },
+    {
+      "year": 2020,
+      "ca": 32218,
+      "ebit": 7794,
+      "net": 6376,
+      "shares": 399,
+      "nd": 11000,
+      "div": 0.85
+    },
+    {
+      "year": 2021,
+      "ca": 39211,
+      "ebit": 10028,
+      "net": 7732,
+      "shares": 397,
+      "nd": 27000,
+      "div": 1.0
+    },
+    {
+      "year": 2022,
+      "ca": 44915,
+      "ebit": 8393,
+      "net": 6960,
+      "shares": 394,
+      "nd": 24000,
+      "div": 1.16
+    },
+    {
+      "year": 2023,
+      "ca": 42857,
+      "ebit": 6859,
+      "net": 5955,
+      "shares": 388,
+      "nd": 25000,
+      "div": 1.3
+    },
+    {
+      "year": 2024,
+      "ca": 42879,
+      "ebit": 7338,
+      "net": 6335,
+      "shares": 383,
+      "nd": 22000,
+      "div": 1.45
+    },
+    {
+      "year": 2025,
+      "ca": 44556,
+      "ebit": 7747,
+      "net": 6704,
+      "shares": 378,
+      "nd": 36000,
+      "div": 1.76
     }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee dans le communique (le management donne generalement de la couleur de phasing lors du Q&A du call, non disponible dans les sources a la date de ce refresh).",
-   "guidanceAnnuelle": "Guidance FY2026 relevee au call du 23/07 : CA porte a 47,4-48,1 Mds$ (depuis 47,3-48,1 Mds$, relevement du bas de fourchette), EPS ajuste porte a 24,93-25,33$ (depuis 24,64-25,12$) - les deux au-dessus du consensus de marche selon la presse financiere (source secondaire agregeant le call, transcript integral non retrouve mot pour mot mais montants confirmes par recoupement de plusieurs sources).",
-   "pointsCles": [
-    "Croissance organique accélérée à 5% au T2 (contre 1% au T1), portee par un effet de base tres favorable en Analytical Instruments (marge segment 23,0% contre 18,8% un an plus tot, la comparaison difficile liee aux tarifs douaniers 2025 s'etant estompee) et par la poursuite de la forte dynamique Bioproduction/Clinical Research dans Laboratory Products and Biopharma Services.",
-    "Rachats d'actions tres actifs et au-dela du plan initial : 4,0 Mds$ sur le seul S1 2026 (dont 1,0 Md$ au T2), a comparer aux 3 Mds$ initialement assumes pour l'annee entiere lors du call T1 - trajectoire de reduction du nombre d'actions plus rapide que prevu.",
-    "Divestiture de l'activite microbiologie annoncee au T2 (montant et calendrier non precises a ce stade) - optionnalite positive sur l'allocation de capital, non chiffree dans le modele.",
-    "Les actionnaires ont rejete le vote consultatif 'say-on-pay' lors de l'AG 2026 : signal de friction institutionnelle sur la remuneration dirigeante, a rapprocher du nouveau plan de retention massif du CEO annonce le meme mois (vesting jusqu'en 2033-2035) - point de gouvernance a suivre, sans impact direct sur le modele financier."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 exploited via release/call; 10-Q not line-by-line exploited at this refresh."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "Q1 26",
-    "date": "2026-04-23",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA 47,3-48,1 Mds$ (6-8% croissance publiee, 3-4% organique), EPS ajuste 24,64-25,12$ (8-10% croissance) - relevee depuis 46,3-47,2 Mds$ / 24,22-24,80$ a la creation."
-   },
-   {
-    "quarter": "Q2 26",
-    "date": "2026-07-23",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA releve a 47,4-48,1 Mds$ (depuis 47,3-48,1 Mds$), EPS ajuste releve a 24,93-25,33$ (depuis 24,64-25,12$) - les deux au-dessus du consensus de marche."
-   }
   ],
-  "guidanceLongTerme": null,
-  "summary": "Croissance organique accélérée a 5% au T2 (vs 1% au T1), marges GAAP et non-GAAP en amelioration, rachats d'actions plus agressifs que prevu (4 Mds$ des le S1) et endettement net deja inferieur au pic attendu - la these de reprise post-COVID se confirme plus vite que prevu a la creation.",
-  "text": "== THESIS SUMMARY ==\nThe post-COVID-normalization turnaround is accelerating: organic growth went 1% (Q1) to 5% (Q2), driven by a very favorable Analytical Instruments base effect (segment margin nearly recovered: 23.0% vs 18.8% a year ago as the 2025 tariff comparison dissipated) and solid Bioproduction/Clinical Research momentum. FY26 guidance raised TWICE (adjusted EPS now 24.93-25.33, revenue 47.4-48.1bn), both times above street. Clario (closed) weighs on the financial line as anticipated.\n\n== THESIS READ ==\n- The organic reacceleration is broad, not just base effect - Bioproduction and Clinical Research carry underlying demand. Watch: Q3 organic vs the fading base tailwind.\n- The financial line is the quiet headwind: interest income down sharply (207 vs 297M in Q2) post-Clario cash drawdown, net debt peaked ~39bn - deleveraging (to 8bn by 2030) restores it. Watch: the AN-INTERET ancrage each quarter.\n- Buybacks run FASTER than the initial -2%/yr assumption - EPS support the model already partially captures (shares to 336M by 2030). Watch: pace vs deleveraging priority.\n\n== SPECIAL FACTORS ==\nBase = GAAP keeping acquisition amortization and restructuring (E5e) - structural gap vs adjusted guidance (Omnium 19.97 vs ~25.13 guided for 2026), documented. GAAP tax structurally very low: 9% normative, FY25 actual 6.5% (validated; the W4 check floor was widened to 6% for this profile). Clario acquisition consolidated - net debt 36bn (2025) peaking ~39bn (2026).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 48.7bn, EBIT 8.6bn (GAAP base), EPS 19.97; 2027-2030: revenue +5.5%/yr, margin drift, deleveraging 39 -> 8bn with finNet improving -611 -> -297; shares -2%/yr+. Watch: Clario integration economics; academic/government funding environment; China demand.\n\n== CATALYSTS ==\nQ3 (Oct); Clario synergy quantification; 2027 guidance (Jan); bioproduction order trends.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "AN-CA",
-    "moteur": "Croissance organique accélérée a 5% au T2 26 (contre 1% au T1), guidance FY2026 de nouveau relevee au call du 23/07 (montant exact non confirme, voir watch-list) - trajectoire au-dessus de l'estimation de creation.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028"
-    ],
-    "confiance": "haute (2026), moyenne (2027-2028), basse (2029-2030)"
-   },
-   {
-    "id": "AN-MARGE",
-    "moteur": "Marge operationnelle GAAP T2 26 a 17,4% (S1 26 : 17,2%), en ligne voire legerement au-dessus de la trajectoire de recuperation progressive anticipee a la creation (17,8% vise pour FY2026) ; marge Analytical Instruments quasi retrouvee (23,0% contre 18,8% un an plus tot) avec la dissipation de l'effet tarifs douaniers 2025.",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028"
-    ],
-    "confiance": "moyenne (chiffrage precis des couts d'integration Clario/Solventum restants toujours pas disponible)"
-   },
-   {
-    "id": "AN-IS",
-    "moteur": "Taux d'IS normatif ~9% valide par le taux effectif GAAP observe au S1 26 (6,5%, T2 seul 8,7%) - element structurel confirme, non retraite.",
-    "applique": [
-     "toutes annees 2026-2030"
-    ],
-    "confiance": "haute (revalidee ce refresh)"
-   },
-   {
-    "id": "AN-INTERET",
-    "moteur": "Charge d'interet quasi stable au T2 26 (401 M$ contre 404 M$ un an plus tot) mais produit d'interet en net repli (207 M$ contre 297 M$) du fait de la baisse de tresorerie post-decaissement Clario (8,87 Mds$ en mars 2026) - confirme la pression anticipee sur le resultat financier net, allegee progressivement via le desendettement.",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "AN-SHARES",
-    "moteur": "Rythme de rachats d'actions superieur au plan initial : 4,0 Mds$ decaisses des le S1 2026 (dont 1,0 Md$ au T2 seul) contre 3 Mds$ assumes pour l'annee complete lors du call T1 - reduction du nombre d'actions plus rapide que l'hypothese de ~2%/an retenue a la creation.",
-    "applique": [
-     "omniumShares.2026",
-     "omniumShares.2027",
-     "omniumShares.2028",
-     "omniumShares.2029",
-     "omniumShares.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "AN-ND",
-    "moteur": "Dette nette de mi-annee (~38,5 Mds$ au 30/06/2026) deja inferieure au pic de 42 Mds$ attendu pour la fin d'annee dans le modele de creation, malgre le decaissement complet de Clario - trajectoire de desendettement meilleure que prevu.",
-    "applique": [
-     "omniumND.2026",
-     "omniumND.2027",
-     "omniumND.2028",
-     "omniumND.2029",
-     "omniumND.2030"
-    ],
-    "confiance": "moyenne (revisee a la hausse depuis basse, la trajectoire etant desormais confirmee par un point de donnee reel)"
-   },
-   {
-    "id": "AN-MICROBIO-DIVEST",
-    "moteur": "Divestiture de l'activite microbiologie annoncee au T2 2026, montant et calendrier de cloture non precises a ce stade - optionnalite positive pure sur l'allocation de capital et le desendettement, exclue des adjXXX tant que les termes ne sont pas connus.",
-    "applique": [],
-    "confiance": "haute sur l'occurrence, nulle sur le montant"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 19.97,
-   "2027": 22.55,
-   "2028": 25.29,
-   "2029": 28.22,
-   "2030": 31.1
-  },
-  "omniumCA": {
-   "2026": 48700,
-   "2027": 51600,
-   "2028": 54200,
-   "2029": 56900,
-   "2030": 59450
-  },
-  "omniumEBIT": {
-   "2026": 8600,
-   "2027": 9650,
-   "2028": 10350,
-   "2029": 11100,
-   "2030": 11780
-  },
-  "omniumNet": {
-   "2026": 7270,
-   "2027": 8050,
-   "2028": 8850,
-   "2029": 9680,
-   "2030": 10450
-  },
-  "omniumND": {
-   "2026": 39000,
-   "2027": 32000,
-   "2028": 24000,
-   "2029": 16000,
-   "2030": 8000
-  },
-  "omniumShares": {
-   "2026": 364,
-   "2027": 357,
-   "2028": 350,
-   "2029": 343,
-   "2030": 336
-  },
-  "bridge": {
-   "2025": {
-    "finNet": -577,
-    "other": 0,
-    "taxRate": 0.065,
-    "minorities": 0,
-    "netCalc": 6703.9,
-    "netPub": 6704,
-    "residual": 0.1,
-    "residualNote": "Reconciles cleanly at the ACTUAL FY25 GAAP ETR of 6.5% (bottom of the historical range; the projections use 9% normative). The GAAP tax profile is structurally very low (amortization-heavy base, credits) - the W4 floor was widened to 6% to accommodate this validated profile."
-   },
-   "2026": {
-    "finNet": -611,
-    "other": 0,
-    "taxRate": 0.09,
-    "minorities": 0,
-    "netCalc": 7270.0
-   },
-   "2027": {
-    "finNet": -804,
-    "other": 0,
-    "taxRate": 0.09,
-    "minorities": 0,
-    "netCalc": 8049.9
-   },
-   "2028": {
-    "finNet": -625,
-    "other": 0,
-    "taxRate": 0.09,
-    "minorities": 0,
-    "netCalc": 8849.8
-   },
-   "2029": {
-    "finNet": -463,
-    "other": 0,
-    "taxRate": 0.09,
-    "minorities": 0,
-    "netCalc": 9679.7
-   },
-   "2030": {
-    "finNet": -297,
-    "other": 0,
-    "taxRate": 0.09,
-    "minorities": 0,
-    "netCalc": 10449.5
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Adjusted EPS (guided range) + revenue",
-   "comparedAgainst": "guidance",
-   "basisAligned": false,
-   "basisNote": "Guidance/consensus are adjusted (ex-acquisition amortization, ex-restructuring); the Omnium base is GAAP keeping both (E5e) - Omnium 19.97 vs guided ~25.13 for 2026, structural and expected.",
-   "timeline": [
-    {
-     "date": "2026-04-23",
-     "type": "guidance_revised",
-     "detail": "FY26 RAISED: revenue to 47.3-48.1bn (from 46.3-47.2), adjusted EPS to 24.64-25.12 (from 24.22-24.80)."
-    },
-    {
-     "date": "2026-07-23",
-     "type": "guidance_revised",
-     "detail": "FY26 RAISED again: revenue 47.4-48.1bn, adjusted EPS 24.93-25.33 - both above consensus."
-    }
-   ],
-   "paceCheckpoint": "Q2 real: organic growth accelerated 1% (Q1) -> 5% (Q2); Analytical Instruments margin nearly recovered (23.0% vs 18.8% a year ago) as the 2025 tariff comp dissipated.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
-    },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 24.51,
-    "source": "initial_guidance",
-    "date": "2026-04-23",
-    "note": "Initial FY26 guidance AT CREATION: revenue 46.3-47.2bn, adjusted EPS 24.22-24.80 (mid 24.51) - explicitly cited by the Q1 raise (the archive preserves the initial terms). Raised twice: 24.64-25.12 (Q1), 24.93-25.33 (Q2), both above street."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. First measurement at the FY26 close vs the 24.51 initial mid - two in-year raises already signal a solid beat.",
-   "consensusSource": "Company guidance (adjusted, raised at Q2 call)",
-   "consensusDate": "2026-07-23"
-  },
-  "revisionEvent": {
-   "date": "2026-07-23",
-   "label": "Q2 2026",
-   "type": "earnings"
-  }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q2 26",
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 25.13,
+    "epsNY": 27.9,
     "date": "2026-07-23",
-    "source": "Q2 release/call (as exploited at the 23/07 refresh)",
-    "message": "Post-COVID-normalization turnaround accelerating: organic 1% (Q1) -> 5% (Q2), Analytical Instruments margin nearly recovered (23.0% vs 18.8%) as the 2025 tariff comp dissipated; guidance raised a second time (24.93-25.33 adjusted EPS); interest INCOME in net retreat (207 vs 297M) on the post-Clario cash drawdown - confirming the financial-result pressure anticipated at creation (ancrage AN-INTERET); buyback pace running FASTER than the -2%/yr initial assumption."
-   }
-  ]
- }
+    "source": "Guidance societe relevee au call T2 26 (23/07/2026) : EPS ajuste 24,93-25,33$ (base non-GAAP, exclut amortissement d'acquisitions/restructuration), CA 47,4-48,1 Mds$. NON comparable a omniumEPS Omnium (base GAAP, voir hypothese.text)."
+  },
+  "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": "2026-10-22"
+  },
+  "ownership": {
+    "asOf": "2026-07-23",
+    "insiderPct": 0.33,
+    "insiderDesc": "Structure a classe unique (one share, one vote) - pas de verrou fondateur/familial. CEO Marc Casper detient ~155 000 actions en direct (~0,04% du capital) ; nouveau plan de retention massif annonce en mai 2026 (cliff vesting a 5 ans, livraison en 3 tranches entre 2033 et 2035) pour securiser sa direction jusqu'a au moins mai 2030. Gouvernance de facto dominee par les investisseurs institutionnels passifs (Vanguard, BlackRock, State Street en tete).",
+    "insiderSource": "GuruFocus insider holdings (T1 2026) + proxy additionnel mai 2026 (retention grant CEO) + synthese gouvernance businessmodelcanvastemplate.com",
+    "notableHolders": [],
+    "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie avec une position ou un mouvement notable sur ce titre a ce stade (le plus gros actionnaire est BlackRock, ~8,05% du capital, position institutionnelle passive - hors perimetre de la watchlist nominative).",
+    "history": []
+  },
+  "compliance": {
+    "asOf": "2026-07-23",
+    "items": [],
+    "note": "Aucune allegation de fraude identifiee. Point de gouvernance a noter (hors perimetre de ce champ, qui est reserve a la fraude) : le vote consultatif 'say-on-pay' sur la remuneration des dirigeants a ete rejete par les actionnaires lors de l'AG 2026 - signe de friction institutionnelle, documente ici a titre informatif et repris dans hypothese.text, sans lien avec une fraude quelconque."
+  },
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-13",
+      "eps": {
+        "2026": 18.43,
+        "2027": 20.97
+      }
+    },
+    "source": "Refresh Q2 2026 - Communique de resultats officiel (23/07/2026) + guidance annuelle relevee confirmee par recoupement de plusieurs sources secondaires du call (23/07/2026, 8h30 ET) ; transcript integral mot-a-mot non retrouve mais montants de guidance confirmes",
+    "dernierCall": {
+      "quarter": "Q2 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 11994,
+          "consensus": 11720
+        },
+        "epsAdj": {
+          "actual": 6.03,
+          "consensus": 5.71,
+          "basis": "non-GAAP",
+          "basisNote": "non-GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee dans le communique (le management donne generalement de la couleur de phasing lors du Q&A du call, non disponible dans les sources a la date de ce refresh).",
+      "guidanceAnnuelle": "Guidance FY2026 relevee au call du 23/07 : CA porte a 47,4-48,1 Mds$ (depuis 47,3-48,1 Mds$, relevement du bas de fourchette), EPS ajuste porte a 24,93-25,33$ (depuis 24,64-25,12$) - les deux au-dessus du consensus de marche selon la presse financiere (source secondaire agregeant le call, transcript integral non retrouve mot pour mot mais montants confirmes par recoupement de plusieurs sources).",
+      "pointsCles": [
+        "Croissance organique accélérée à 5% au T2 (contre 1% au T1), portee par un effet de base tres favorable en Analytical Instruments (marge segment 23,0% contre 18,8% un an plus tot, la comparaison difficile liee aux tarifs douaniers 2025 s'etant estompee) et par la poursuite de la forte dynamique Bioproduction/Clinical Research dans Laboratory Products and Biopharma Services.",
+        "Rachats d'actions tres actifs et au-dela du plan initial : 4,0 Mds$ sur le seul S1 2026 (dont 1,0 Md$ au T2), a comparer aux 3 Mds$ initialement assumes pour l'annee entiere lors du call T1 - trajectoire de reduction du nombre d'actions plus rapide que prevu.",
+        "Divestiture de l'activite microbiologie annoncee au T2 (montant et calendrier non precises a ce stade) - optionnalite positive sur l'allocation de capital, non chiffree dans le modele.",
+        "Les actionnaires ont rejete le vote consultatif 'say-on-pay' lors de l'AG 2026 : signal de friction institutionnelle sur la remuneration dirigeante, a rapprocher du nouveau plan de retention massif du CEO annonce le meme mois (vesting jusqu'en 2033-2035) - point de gouvernance a suivre, sans impact direct sur le modele financier."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "10-Q T2 2026 + communique (23/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 11,99 Md$ (+10% : +5% organique, +5% acquisitions), EPS GAAP 4,68$ (+9%), adj EPS 6,03$ (+13%). Guidance relevee : CA 47,4-48,1 Md$, adj EPS 24,93-25,33$."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "Q1 26",
+        "date": "2026-04-23",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA 47,3-48,1 Mds$ (6-8% croissance publiee, 3-4% organique), EPS ajuste 24,64-25,12$ (8-10% croissance) - relevee depuis 46,3-47,2 Mds$ / 24,22-24,80$ a la creation."
+      },
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-23",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA releve a 47,4-48,1 Mds$ (depuis 47,3-48,1 Mds$), EPS ajuste releve a 24,93-25,33$ (depuis 24,64-25,12$) - les deux au-dessus du consensus de marche."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "summary": "Croissance organique accélérée a 5% au T2 (vs 1% au T1), marges GAAP et non-GAAP en amelioration, rachats d'actions plus agressifs que prevu (4 Mds$ des le S1) et endettement net deja inferieur au pic attendu - la these de reprise post-COVID se confirme plus vite que prevu a la creation.",
+    "text": "== THESIS SUMMARY ==\nThe post-COVID-normalization turnaround is accelerating: organic growth went 1% (Q1) to 5% (Q2), driven by a very favorable Analytical Instruments base effect (segment margin nearly recovered: 23.0% vs 18.8% a year ago as the 2025 tariff comparison dissipated) and solid Bioproduction/Clinical Research momentum. FY26 guidance raised TWICE (adjusted EPS now 24.93-25.33, revenue 47.4-48.1bn), both times above street. Clario (closed) weighs on the financial line as anticipated.\n\n== THESIS READ ==\n- The organic reacceleration is broad, not just base effect - Bioproduction and Clinical Research carry underlying demand. Watch: Q3 organic vs the fading base tailwind.\n- The financial line is the quiet headwind: interest income down sharply (207 vs 297M in Q2) post-Clario cash drawdown, net debt peaked ~39bn - deleveraging (to 8bn by 2030) restores it. Watch: the AN-INTERET ancrage each quarter.\n- Buybacks run FASTER than the initial -2%/yr assumption - EPS support the model already partially captures (shares to 336M by 2030). Watch: pace vs deleveraging priority.\n\n== SPECIAL FACTORS ==\nBase = GAAP keeping acquisition amortization and restructuring (E5e) - structural gap vs adjusted guidance (Omnium 19.97 vs ~25.13 guided for 2026), documented. GAAP tax structurally very low: 9% normative, FY25 actual 6.5% (validated; the W4 check floor was widened to 6% for this profile). Clario acquisition consolidated - net debt 36bn (2025) peaking ~39bn (2026).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 48.7bn, EBIT 8.6bn (GAAP base), EPS 19.97; 2027-2030: revenue +5.5%/yr, margin drift, deleveraging 39 -> 8bn with finNet improving -611 -> -297; shares -2%/yr+. Watch: Clario integration economics; academic/government funding environment; China demand.\n\n== CATALYSTS ==\nQ3 (Oct); Clario synergy quantification; 2027 guidance (Jan); bioproduction order trends.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "AN-CA",
+        "moteur": "Croissance organique accélérée a 5% au T2 26 (contre 1% au T1), guidance FY2026 de nouveau relevee au call du 23/07 (montant exact non confirme, voir watch-list) - trajectoire au-dessus de l'estimation de creation.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028"
+        ],
+        "confiance": "haute (2026), moyenne (2027-2028), basse (2029-2030)"
+      },
+      {
+        "id": "AN-MARGE",
+        "moteur": "Marge operationnelle GAAP T2 26 a 17,4% (S1 26 : 17,2%), en ligne voire legerement au-dessus de la trajectoire de recuperation progressive anticipee a la creation (17,8% vise pour FY2026) ; marge Analytical Instruments quasi retrouvee (23,0% contre 18,8% un an plus tot) avec la dissipation de l'effet tarifs douaniers 2025.",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028"
+        ],
+        "confiance": "moyenne (chiffrage precis des couts d'integration Clario/Solventum restants toujours pas disponible)"
+      },
+      {
+        "id": "AN-IS",
+        "moteur": "Taux d'IS normatif ~9% valide par le taux effectif GAAP observe au S1 26 (6,5%, T2 seul 8,7%) - element structurel confirme, non retraite.",
+        "applique": [
+          "toutes annees 2026-2030"
+        ],
+        "confiance": "haute (revalidee ce refresh)"
+      },
+      {
+        "id": "AN-INTERET",
+        "moteur": "Charge d'interet quasi stable au T2 26 (401 M$ contre 404 M$ un an plus tot) mais produit d'interet en net repli (207 M$ contre 297 M$) du fait de la baisse de tresorerie post-decaissement Clario (8,87 Mds$ en mars 2026) - confirme la pression anticipee sur le resultat financier net, allegee progressivement via le desendettement.",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "AN-SHARES",
+        "moteur": "Rythme de rachats d'actions superieur au plan initial : 4,0 Mds$ decaisses des le S1 2026 (dont 1,0 Md$ au T2 seul) contre 3 Mds$ assumes pour l'annee complete lors du call T1 - reduction du nombre d'actions plus rapide que l'hypothese de ~2%/an retenue a la creation.",
+        "applique": [
+          "omniumShares.2026",
+          "omniumShares.2027",
+          "omniumShares.2028",
+          "omniumShares.2029",
+          "omniumShares.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "AN-ND",
+        "moteur": "Dette nette de mi-annee (~38,5 Mds$ au 30/06/2026) deja inferieure au pic de 42 Mds$ attendu pour la fin d'annee dans le modele de creation, malgre le decaissement complet de Clario - trajectoire de desendettement meilleure que prevu.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
+        ],
+        "confiance": "moyenne (revisee a la hausse depuis basse, la trajectoire etant desormais confirmee par un point de donnee reel)"
+      },
+      {
+        "id": "AN-MICROBIO-DIVEST",
+        "moteur": "Divestiture de l'activite microbiologie annoncee au T2 2026, montant et calendrier de cloture non precises a ce stade - optionnalite positive pure sur l'allocation de capital et le desendettement, exclue des adjXXX tant que les termes ne sont pas connus.",
+        "applique": [],
+        "confiance": "haute sur l'occurrence, nulle sur le montant"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 19.97,
+      "2027": 22.55,
+      "2028": 25.29,
+      "2029": 28.22,
+      "2030": 31.1
+    },
+    "omniumCA": {
+      "2026": 48700,
+      "2027": 51600,
+      "2028": 54200,
+      "2029": 56900,
+      "2030": 59450
+    },
+    "omniumEBIT": {
+      "2026": 8600,
+      "2027": 9650,
+      "2028": 10350,
+      "2029": 11100,
+      "2030": 11780
+    },
+    "omniumNet": {
+      "2026": 7270,
+      "2027": 8050,
+      "2028": 8850,
+      "2029": 9680,
+      "2030": 10450
+    },
+    "omniumND": {
+      "2026": 39000,
+      "2027": 32000,
+      "2028": 24000,
+      "2029": 16000,
+      "2030": 8000
+    },
+    "omniumShares": {
+      "2026": 364,
+      "2027": 357,
+      "2028": 350,
+      "2029": 343,
+      "2030": 336
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -577,
+        "other": 0,
+        "taxRate": 0.065,
+        "minorities": 0,
+        "netCalc": 6703.9,
+        "netPub": 6704,
+        "residual": 0.1,
+        "residualNote": "Reconciles cleanly at the ACTUAL FY25 GAAP ETR of 6.5% (bottom of the historical range; the projections use 9% normative). The GAAP tax profile is structurally very low (amortization-heavy base, credits) - the W4 floor was widened to 6% to accommodate this validated profile."
+      },
+      "2026": {
+        "finNet": -611,
+        "other": 0,
+        "taxRate": 0.09,
+        "minorities": 0,
+        "netCalc": 7270.0
+      },
+      "2027": {
+        "finNet": -804,
+        "other": 0,
+        "taxRate": 0.09,
+        "minorities": 0,
+        "netCalc": 8049.9
+      },
+      "2028": {
+        "finNet": -625,
+        "other": 0,
+        "taxRate": 0.09,
+        "minorities": 0,
+        "netCalc": 8849.8
+      },
+      "2029": {
+        "finNet": -463,
+        "other": 0,
+        "taxRate": 0.09,
+        "minorities": 0,
+        "netCalc": 9679.7
+      },
+      "2030": {
+        "finNet": -297,
+        "other": 0,
+        "taxRate": 0.09,
+        "minorities": 0,
+        "netCalc": 10449.5
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted EPS (guided range) + revenue",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Guidance/consensus are adjusted (ex-acquisition amortization, ex-restructuring); the Omnium base is GAAP keeping both (E5e) - Omnium 19.97 vs guided ~25.13 for 2026, structural and expected.",
+      "timeline": [
+        {
+          "date": "2026-04-23",
+          "type": "guidance_revised",
+          "detail": "FY26 RAISED: revenue to 47.3-48.1bn (from 46.3-47.2), adjusted EPS to 24.64-25.12 (from 24.22-24.80)."
+        },
+        {
+          "date": "2026-07-23",
+          "type": "guidance_revised",
+          "detail": "FY26 RAISED again: revenue 47.4-48.1bn, adjusted EPS 24.93-25.33 - both above consensus."
+        }
+      ],
+      "paceCheckpoint": "Q2 real: organic growth accelerated 1% (Q1) -> 5% (Q2); Analytical Instruments margin nearly recovered (23.0% vs 18.8% a year ago) as the 2025 tariff comp dissipated.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 1.2,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": -1.8,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "23.10-23.50$ adj EPS (mid 23.30)",
+          "realizedDisplay": "22.87$ adj",
+          "note": "Initial FY25 guidance (Q4-2024 release, 30/01/2025): adjusted EPS 23.10-23.50$ (mid 23.30), revenue 43.5-44.0bn; CUT in April on tariffs/US policy (21.76-22.84), then rebuilt in-year; realized 22.87$ - level -1.8% vs the initial frame."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 1.8,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "20.95-22.00$ adj EPS (mid 21.475)",
+          "realizedDisplay": "21.86$ adj",
+          "note": "Initial FY24 guidance (Q4-2023 release, Jan 2024): adjusted EPS 20.95-22.00$ (mid 21.475), revenue 42.1-43.3bn; realized 21.86$ - level +1.8%, near the top of the initial range."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 24.51,
+        "source": "initial_guidance",
+        "date": "2026-04-23",
+        "note": "Initial FY26 guidance AT CREATION: revenue 46.3-47.2bn, adjusted EPS 24.22-24.80 (mid 24.51) - explicitly cited by the Q1 raise (the archive preserves the initial terms). Raised twice: 24.64-25.12 (Q1), 24.93-25.33 (Q2), both above street."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +1.2% BLENDED (in-progress +2.5 x1/2; FY25 -1.8 and FY24 +1.8 equal-shared, netting to zero: the 2025 tariff shock was exogenous and symmetric to the 2024 delivery). Beats on management's adjusted EPS - the Omnium base wedge is declared in basisNote.",
+      "consensusSource": "Company guidance (adjusted, raised at Q2 call)",
+      "consensusDate": "2026-07-23",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 24.51,
+        "currentValue": 25.13,
+        "deltaPct": 2.5,
+        "asOf": "2026-07-23",
+        "note": "Initial 24.22-24.80$ (mid 24.51); raised twice to 24.93-25.33$ (mid 25.13) - projected +2.5%."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-23",
+      "label": "Q2 2026",
+      "type": "earnings"
+    }
+  },
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q2 26",
+        "date": "2026-07-23",
+        "source": "Q2 release/call (as exploited at the 23/07 refresh)",
+        "message": "Post-COVID-normalization turnaround accelerating: organic 1% (Q1) -> 5% (Q2), Analytical Instruments margin nearly recovered (23.0% vs 18.8%) as the 2025 tariff comp dissipated; guidance raised a second time (24.93-25.33 adjusted EPS); interest INCOME in net retreat (207 vs 297M) on the post-Clario cash drawdown - confirming the financial-result pressure anticipated at creation (ancrage AN-INTERET); buyback pace running FASTER than the -2%/yr initial assumption."
+      }
+    ]
+  }
 }
