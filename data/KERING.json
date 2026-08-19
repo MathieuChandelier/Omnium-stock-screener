@@ -204,10 +204,11 @@
         "Nouvelle licence beauté Gucci confiée à L'Oréal (accord du 7 juillet 2026, licence de 50 ans effective mi-2027, un an d'avance sur le calendrier initial) suite à la résiliation anticipée négociée avec Coty (~400 M$ de compensation) - transforme durablement le modèle économique de Gucci Beauty, non quantifié par le management à ce stade."
       ],
       "etatsFinanciers": {
-        "analyse": false,
-        "referentiel": null,
-        "source": null,
-        "date": null
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "Comptes semestriels condenses S1 2026 + communique (28/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA S1 7,2 Md EUR (+1% comparable, -3% publie - change), resultat operationnel courant 921 M (marge 12,8%, +40bp), resultat net part du groupe 189 M, RN courant des activites poursuivies 355 M. Dette nette divisee par deux (3,3 Md)."
       }
     },
     "guidanceHistory": [
@@ -353,14 +354,14 @@
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "No numeric guidance (directional only); initial FY25 consensus not reliably reconstructed at setup."
+          "note": "Searched 19/08/2026: Kering guides directionally only and no DATED early-2025 consensus snapshot surfaced (estimates found are mid-2026 vintage, post-revisions) - excluded rather than estimated."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "Same limitation (searched 19/08/2026): no dated early-2024 consensus snapshot archived."
         }
       ],
       "anchorInitial": {
@@ -371,9 +372,10 @@
         "note": "Best available anchor at setup: implicit sell-side consensus collected 23/06/2026 - MID-YEAR and PRE-S1-beat, therefore imperfect as an 'initial' anchor and almost certainly stale upward now. Re-anchor properly at the FY27 open (Feb 2027 post-FY26 results)."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no measurable closed FY: Kering guides direction, not numbers, and initial consensi were not reconstructable). Turnaround regime also makes any historical beat pattern non-representative (E-scorecard f).",
+      "applicationNote": "No measurable fiscal year and no in-progress leg (the 6.48 anchor is a mid-year, pre-S1-beat consensus - too stale to score against). annualBeatPct not computed; re-anchor properly at the FY27 open (Feb 2027).",
       "consensusSource": "Implicit sell-side consensus (ideal-investisseur, P/E-derived)",
-      "consensusDate": "2026-06-23"
+      "consensusDate": "2026-06-23",
+      "inProgress": null
     },
     "revisionEvent": {
       "date": "2026-07-28",

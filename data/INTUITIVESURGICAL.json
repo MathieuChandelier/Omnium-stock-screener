@@ -1,514 +1,529 @@
 {
- "name": "Intuitive Surgical",
- "cours": 356.66,
- "yahooSymbol": "ISRG",
- "dividende": 0,
- "data": [
-  {
-   "year": 2015,
-   "ca": 2384,
-   "ebit": 740,
-   "net": 589,
-   "shares": 360,
-   "nd": -2300,
-   "div": 0
+  "name": "Intuitive Surgical",
+  "cours": 356.66,
+  "yahooSymbol": "ISRG",
+  "dividende": 0,
+  "data": [
+    {
+      "year": 2015,
+      "ca": 2384,
+      "ebit": 740,
+      "net": 589,
+      "shares": 360,
+      "nd": -2300,
+      "div": 0
+    },
+    {
+      "year": 2016,
+      "ca": 2707,
+      "ebit": 950,
+      "net": 738,
+      "shares": 360,
+      "nd": -3000,
+      "div": 0
+    },
+    {
+      "year": 2017,
+      "ca": 3138,
+      "ebit": 1063,
+      "net": 989,
+      "shares": 361,
+      "nd": -2900,
+      "div": 0
+    },
+    {
+      "year": 2018,
+      "ca": 3724,
+      "ebit": 1199,
+      "net": 1128,
+      "shares": 361,
+      "nd": -4100,
+      "div": 0
+    },
+    {
+      "year": 2019,
+      "ca": 4479,
+      "ebit": 1375,
+      "net": 1379,
+      "shares": 362,
+      "nd": -4600,
+      "div": 0
+    },
+    {
+      "year": 2020,
+      "ca": 4358,
+      "ebit": 1050,
+      "net": 1061,
+      "shares": 362,
+      "nd": -6900,
+      "div": 0
+    },
+    {
+      "year": 2021,
+      "ca": 5710,
+      "ebit": 1821,
+      "net": 1705,
+      "shares": 366,
+      "nd": -8600,
+      "div": 0
+    },
+    {
+      "year": 2022,
+      "ca": 6222,
+      "ebit": 1577,
+      "net": 1322,
+      "shares": 362,
+      "nd": -6740,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 7124,
+      "ebit": 1767,
+      "net": 1798,
+      "shares": 357,
+      "nd": -7340,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 8352,
+      "ebit": 2349,
+      "net": 2323,
+      "shares": 362,
+      "nd": -8830,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 10065,
+      "ebit": 2946,
+      "net": 2856,
+      "shares": 363,
+      "nd": -9030,
+      "div": 0
+    }
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 10.41,
+    "epsNY": 11.7,
+    "date": "2026-07-14",
+    "source": "Zacks/Alphastreet, consensus non-GAAP anterieur au beat du T2 26 (publie 16/07/2026)"
   },
-  {
-   "year": 2016,
-   "ca": 2707,
-   "ebit": 950,
-   "net": 738,
-   "shares": 360,
-   "nd": -3000,
-   "div": 0
+  "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": "2026-10-20"
   },
-  {
-   "year": 2017,
-   "ca": 3138,
-   "ebit": 1063,
-   "net": 989,
-   "shares": 361,
-   "nd": -2900,
-   "div": 0
+  "coherenceQualitative": {
+    "asOf": "2026-08-07",
+    "statut": "coherent",
+    "points": [],
+    "historique": [
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-16",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Travis Steed (BofA) - part ACA vs maturation naturelle dans le ralentissement US : le management confirme une combinaison des deux effets (12% T2 vs 14% T1), sans isoler la part exacte de chacun.",
+          "Q Travis Steed (BofA) - retour des procedures differees au S2 : pas de reponse chiffree directe ; le management renvoie a la dynamique EUP 2027, decrite comme un impact PROGRESSIF sur 2027 (pas un effet de seuil), par analogie au cycle EUP 2020 deja assimile en interne.",
+          "Q Rick Wise (Stifel) - rationale et TAM du nouveau robot flexible GI : le management ne chiffre pas le TAM incremental a ce stade, evoque une serie de mises a jour \"standout\" prevues sur plusieurs annees a venir.",
+          "Q Lawrence Biggleson (Wells Fargo) - la robotique sera-t-elle incluse dans le nouveau programme VBP centralise chinois : le management confirme explicitement que \"nous pensons que la robotique en fera partie\", phase-in attendu sur les prochains trimestres, sans detail supplementaire.",
+          "Q Lawrence Biggleson (Wells Fargo) - benefice tangible du nouveau chiffrement des instruments : positionne comme un renforcement de la securite/qualite/disponibilite des produits, en reponse a la pression concurrentielle des instruments reconditionnes tiers.",
+          "Q Ryan Zimmerman (BTIG) - impact de la prudence clients sur l'ACA vs pipeline capex : le management confirme un signal de prudence de la part de certains clients sur les inscriptions ACA, mais precise que cela n'a PAS affecte le pipeline capital a ce jour.",
+          "Q Vic Koptra (BMO) - ampleur potentielle de la contribution du Japon post-remboursement : TAM non chiffre, le management identifie la hernie inguinale comme la plus grosse procedure couverte par le nouveau remboursement, promet une mise a jour ulterieure.",
+          "Q Michael Pollack (Wolf Research) - dynamique de mix/prix sur l'INA par procedure : le management confirme un effet de mix positif (produits a innovation incrementale, pricing plus eleve) partiellement compense par d'autres dynamiques, quantification differee au prochain call.",
+          "Q Vijay Kumar (Evercore) - exposition precise Medicaid/echanges ACA : le management n'a PAS d'estimation precise ; la majorite du CA vient de l'assurance privee/commerciale, Medicare et Medicaid representent des parts plus faibles.",
+          "Q Vijay Kumar (Evercore) - comparables T3 plus difficiles : confirme par le CFO, avec un double effet - comp US plus dur (deja note l'an dernier) ET un decalage calendaire international qui avait deplace de la croissance du T4 2025 vers le T3 2025, effet non repete a l'identique en 2026."
+        ]
+      }
+    ],
+    "engagementsStructurants": []
   },
-  {
-   "year": 2018,
-   "ca": 3724,
-   "ebit": 1199,
-   "net": 1128,
-   "shares": 361,
-   "nd": -4100,
-   "div": 0
-  },
-  {
-   "year": 2019,
-   "ca": 4479,
-   "ebit": 1375,
-   "net": 1379,
-   "shares": 362,
-   "nd": -4600,
-   "div": 0
-  },
-  {
-   "year": 2020,
-   "ca": 4358,
-   "ebit": 1050,
-   "net": 1061,
-   "shares": 362,
-   "nd": -6900,
-   "div": 0
-  },
-  {
-   "year": 2021,
-   "ca": 5710,
-   "ebit": 1821,
-   "net": 1705,
-   "shares": 366,
-   "nd": -8600,
-   "div": 0
-  },
-  {
-   "year": 2022,
-   "ca": 6222,
-   "ebit": 1577,
-   "net": 1322,
-   "shares": 362,
-   "nd": -6740,
-   "div": 0
-  },
-  {
-   "year": 2023,
-   "ca": 7124,
-   "ebit": 1767,
-   "net": 1798,
-   "shares": 357,
-   "nd": -7340,
-   "div": 0
-  },
-  {
-   "year": 2024,
-   "ca": 8352,
-   "ebit": 2349,
-   "net": 2323,
-   "shares": 362,
-   "nd": -8830,
-   "div": 0
-  },
-  {
-   "year": 2025,
-   "ca": 10065,
-   "ebit": 2946,
-   "net": 2856,
-   "shares": 363,
-   "nd": -9030,
-   "div": 0
+  "hypothese": {
+    "date": "2026-08-19",
+    "priorEPS": {
+      "date": "2026-07-17",
+      "eps": {
+        "2026": 9.06,
+        "2027": 10.81
+      }
+    },
+    "source": "Refresh T2 2026 (pure forme - T3 26 non encore publie, cf. verification de fraicheur) - Communique + Transcript T2 2026 relus integralement (Benzinga, 16/07/2026)",
+    "dernierCall": {
+      "quarter": "Q2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 2890,
+          "consensus": 2820
+        },
+        "epsAdj": {
+          "actual": 2.8,
+          "consensus": 2.51,
+          "basis": "non-GAAP",
+          "basisNote": "non-GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (pratique habituelle) ; le CFO signale explicitement un double vent contraire au T3 : comparable US plus dur, et un decalage calendaire international qui avait deplace de la croissance du T4 vers le T3 2025 (effet non repete a l'identique en 2026, donc favorable au T4).",
+      "guidanceAnnuelle": "Croissance procedures da Vinci 2026 maintenue a 13,5-15,5% (visee au point median, ralentissement assume vers ce point median en S2) ; marge brute non-GAAP relevee a 68-69% ; croissance opex non-GAAP 11-13% ; SBC 880-900 M$ ; autres revenus 315-335 M$ ; taux d'impot non-GAAP 22-23%.",
+      "pointsCles": [
+        "Ralentissement procedures US (12% T2 vs 14% T1) attribue par le management a une combinaison ACA + effet de loi des grands nombres sur la base installee, sans isoler la part de chacun ; aucun impact detecte a ce jour sur le pipeline de vente de systemes.",
+        "Extended Use Program 2027 toujours non quantifie par le management, mais decrit explicitement comme un deploiement PROGRESSIF sur l'annee (pas un effet de seuil), le management affichant sa confiance sur la base du precedent cycle EUP 2020 deja assimile en interne.",
+        "Risque Chine elargi : le management confirme pour la premiere fois que la robotique chirurgicale sera vraisemblablement incluse dans le nouveau programme de VBP (achat groupe centralise) chinois, phase-in attendu sur les prochains trimestres - risque politique nouveau, distinct de la pression tarifaire/concurrentielle deja connue.",
+        "Nouveau pipeline evoque : robot flexible endoscopique de nouvelle generation pour la GI, sans TAM ni calendrier chiffres a ce stade ; nouvelle technologie de chiffrement des instruments presentee comme un renforcement du moat face aux instruments reconditionnes tiers."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US GAAP",
+        "source": "Communique T2 2026 + 10-Q (16/07/2026)",
+        "date": "2026-08-19",
+        "note": "Croises : CA T2 2,89 Md$ (+19%), resultat net GAAP 818 M$ (EPS 2,29$), non-GAAP 1,00 Md$ (EPS 2,80$). Marge brute non-GAAP relevee a 68-69% ; croissance procedures maintenue 13,5-15,5%."
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-04-21",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Croissance procedures da Vinci 13,5-15,5% ; marge brute non-GAAP 67,5-68,5%."
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-07-16",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Croissance procedures da Vinci maintenue 13,5-15,5% ; marge brute non-GAAP relevee a 68-69%."
+      }
+    ],
+    "guidanceLongTerme": null,
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 1.92,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.81,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.95,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 2.21,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 2.28,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 2.21,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 2.09,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 2.66,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 2.72,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 2.64,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 2.49,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 3.17,
+          "actual": false
+        }
+      ]
+    },
+    "summary": "Leader mondial de la chirurgie robotique, bilan net-cash et recurrence de CA elevee (85%+) ; croissance procedurale US en tassement mais guidance de marge brute relevee. Refresh de pure forme (T3 26 non publie) : integre un rappel Classe I associe a un deces, un nouveau risque VBP en Chine, et la premiere decomposition trimestrielle de l'EPS.",
+    "text": "== THESIS SUMMARY ==\nUndisputed leader in robot-assisted surgery (da Vinci, Ion, SP): installed base >13,000 systems (+12% YoY) and ~85% recurring revenue (instruments/accessories/service). The thesis: surgical-robotics penetration compounds for a decade, powered by a still-early da Vinci 5 replacement cycle and international expansion. FY26 guided: procedures +13.5/15.5%, non-GAAP gross margin RAISED to 68-69% at Q2. The 07/08 refresh arbitrated the 2026 EPS DOWN from a naive seasonal extrapolation (~9.50) to 9.24: the 2025 H2/H1 ratio was contaminated by a calendar shift and management explicitly signaled deceleration.\n\n== THESIS READ ==\n- Procedure growth is the leading indicator and it held its band through H1. Watch: Q3 procedure print and any bariatric/international mix commentary.\n- The EPS arbitration (E5 ter): quarterly build confronted with the annual figure exposed the seasonal-ratio trap - the model deliberately sits below naive extrapolation. Watch: Q3 (20/10, confirmed) validates or invalidates the deceleration read.\n- da Vinci 5 rollout is still supply-gated with a rich upgrade backlog. Watch: dV5 placement mix and pricing capture.\n\n== SPECIAL FACTORS ==\nConsensus non-GAAP (10.41) vs Omnium base keeping SBC/amortization (9.24) - definitional wedge documented. Net cash ~9.5bn growing to ~13bn; interest income explicit in the bridge; ETR 20% normative (FY25 actual ~17% on excess SBC benefits, documented). Guides procedures/margin, never EPS.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 12.1bn (+20%), EBIT 3.75bn (31%), EPS 9.24 (arbitrated); 2027-2030: revenue +15%/yr fading, margin drift to 33.5%, shares -0.5%/yr. Watch: Q3 print (20/10); dV5 international regulatory clearances; competitive entries (Hugo, Ottava) in procedure share data.\n\n== CATALYSTS ==\nQ3 (20/10); dV5 ex-US approvals; new procedure clearances (Ion expansion); FY27 procedure guidance (Jan).",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "proc_growth_guidance",
+        "moteur": "Croissance procedures da Vinci+Ion guidee a 13,5-15,5% pour 2026 (visee au point median ~14,5%), ralentissant graduellement vers ~10% en 2030 sous l'effet de la loi des grands nombres sur la base installee.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "mix_asp_premium",
+        "moteur": "La croissance du CA depasse la croissance procedurale grace au mix da Vinci 5/SP et a l'ASP par procedure ; prime de ~4pts en 2026, s'attenuant vers ~2pts d'ici 2030 avec la maturation de la penetration da Vinci 5.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "gross_margin_guidance",
+        "moteur": "Marge brute non-GAAP 2026 relevee a 68-69% ; expansion GAAP graduelle de ~100-150 pb/an jusqu'en 2028 puis plateau.",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "opex_discipline",
+        "moteur": "Croissance opex non-GAAP guidee 11-13% pour 2026 (R&D > SG&A) ; decelaration graduelle vers le rythme de croissance du CA d'ici 2028-2029.",
+        "applique": [
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "tax_normalization",
+        "moteur": "Taux d'impot GAAP normalise a 18%, entre le taux historique recent anormalement bas (effet windfall SBC) et le taux non-GAAP guide (22-23%) qui exclut structurellement ce meme windfall.",
+        "applique": [
+          "omniumNet.2026",
+          "omniumNet.2027",
+          "omniumNet.2028",
+          "omniumNet.2029",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "eup_2027_haircut",
+        "moteur": "Extended Use Program (S1 2027) reduit intentionnellement le prix par procedure sur un sous-ensemble d'instruments ; impact toujours non quantifie par le management (confirme T2 26, deploiement decrit comme progressif), haircut prudent de ~1-1,5pt maintenu sur la prime de mix/ASP 2027-2028.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "net_cash_compounding",
+        "moteur": "Position nette de tresorerie croissante (zero dette financiere, ~9,0 Md$ fin 2025) genere des autres revenus croissants (guides 315-335 M$ pour 2026), continue de s'accroitre malgre les rachats d'actions.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "eps_h2_2026_arbitrage",
+        "moteur": "Arbitrage T2 26 (E5 ter point 4) : omniumEPS 2026 rebase de 9,06 a 9,24 (+2,0%) sur la base d'une prime saisonniere H2/H1 damped a +5,75% (moitie du ratio brut 2025, juge contamine par un decalage calendaire ponctuel et le signal de decelaration explicite du management) ; toute la trajectoire 2027-2030 rebasee proportionnellement, marges/ratios inchanges.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumNet.2026",
+          "omniumCA.2027",
+          "omniumEBIT.2027",
+          "omniumNet.2027",
+          "omniumCA.2028",
+          "omniumEBIT.2028",
+          "omniumNet.2028",
+          "omniumCA.2029",
+          "omniumEBIT.2029",
+          "omniumNet.2029",
+          "omniumCA.2030",
+          "omniumEBIT.2030",
+          "omniumNet.2030"
+        ],
+        "confiance": "moyenne"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 9.24,
+      "2027": 11.02,
+      "2028": 12.81,
+      "2029": 14.7,
+      "2030": 16.78
+    },
+    "omniumCA": {
+      "2026": 12116,
+      "2027": 13931,
+      "2028": 15879,
+      "2029": 17939,
+      "2030": 20091
+    },
+    "omniumEBIT": {
+      "2026": 3753,
+      "2027": 4457,
+      "2028": 5161,
+      "2029": 5915,
+      "2030": 6731
+    },
+    "omniumNet": {
+      "2026": 3325,
+      "2027": 3947,
+      "2028": 4559,
+      "2029": 5201,
+      "2030": 5905
+    },
+    "omniumND": {
+      "2026": -9500,
+      "2027": -10200,
+      "2028": -11000,
+      "2029": -11900,
+      "2030": -12900
+    },
+    "omniumShares": {
+      "2026": 360,
+      "2027": 358,
+      "2028": 356,
+      "2029": 354,
+      "2030": 352
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 495,
+        "other": 0,
+        "taxRate": 0.17,
+        "minorities": 0,
+        "netCalc": 2856.0,
+        "netPub": 2856,
+        "residual": 0,
+        "residualNote": "Reconciles cleanly: interest income on the ~9bn net cash, FY25 effective ~17% (excess SBC benefits) vs 20% normative used in projections."
+      },
+      "2026": {
+        "finNet": 403,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 3324.8
+      },
+      "2027": {
+        "finNet": 477,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 3947.2
+      },
+      "2028": {
+        "finNet": 538,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 4559.2
+      },
+      "2029": {
+        "finNet": 586,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 5200.8
+      },
+      "2030": {
+        "finNet": 650,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 5904.8
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "da Vinci procedure growth (guided range, %) + non-GAAP gross margin",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Consensus is non-GAAP (10.41 for 2026); the Omnium base keeps SBC/amortization (9.24) - definitional wedge, documented.",
+      "timeline": [
+        {
+          "date": "2026-07-16",
+          "type": "guidance_revised",
+          "detail": "Procedure growth held 13.5-15.5%; non-GAAP gross margin RAISED to 68-69% (from 67.5-68.5%)."
+        }
+      ],
+      "paceCheckpoint": "H1 real: installed base >13,000 systems (+12% YoY); recurring revenue ~85% of total; procedure pace within the guided band.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 1.5,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 3.1,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "+13/16% da Vinci procedures (mid 14.5)",
+          "realizedDisplay": "~+18%",
+          "note": "Initial FY25 guidance (Q4-2024 release, 15/01/2025): worldwide da Vinci procedure growth 13-16% (mid 14.5%); realized ~18% (FY25 release) - level beat +3.1% on the guided metric."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 2.2,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "+13/16% da Vinci procedures (mid 14.5)",
+          "realizedDisplay": "~+17%",
+          "note": "Initial FY24 guidance (Q4-2023 release, 23/01/2024): 13-16% (mid 14.5%); realized ~17% (2,683k procedures) - level beat +2.2%."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 14.0,
+        "source": "initial_guidance",
+        "date": "2026-01-14",
+        "note": "TRUE initial FY26 guidance (FY25 release, 14/01/2026): da Vinci procedure growth 13-15% (mid 14.0). Raised in April to 13.5-15.5 (mid 14.5, held at Q2) with non-GAAP GM raised to 68-69% in July. Replaces the April-dated anchor (which was already the raise)."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +1.5% BLENDED (in-progress +0.4 x1/2; FY25 +3.1 and FY24 +2.2 equal-shared). Metric is procedure growth (Intuitive guides no EPS) - directional only vs the EPS projections (declared mismatch).",
+      "consensusSource": "Zacks/Alphastreet (non-GAAP)",
+      "consensusDate": "2026-07-14",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 14.0,
+        "currentValue": 14.5,
+        "deltaPct": 0.4,
+        "asOf": "2026-07-16",
+        "note": "Initial 13-15% (mid 14.0); raised to 13.5-15.5% (mid 14.5) with GM raised twice - projected +0.4% on the guided procedure metric."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-16",
+      "label": "Q2 2026",
+      "type": "earnings"
+    }
   }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 10.41,
-  "epsNY": 11.7,
-  "date": "2026-07-14",
-  "source": "Zacks/Alphastreet, consensus non-GAAP anterieur au beat du T2 26 (publie 16/07/2026)"
- },
- "particularites": [],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": "2026-10-20"
- },
- "coherenceQualitative": {
-  "asOf": "2026-08-07",
-  "statut": "coherent",
-  "points": [],
-  "historique": [
-   {
-    "quarter": "T2 26",
-    "date": "2026-07-16",
-    "format": "brut",
-    "clesRetenues": [
-     "Q Travis Steed (BofA) - part ACA vs maturation naturelle dans le ralentissement US : le management confirme une combinaison des deux effets (12% T2 vs 14% T1), sans isoler la part exacte de chacun.",
-     "Q Travis Steed (BofA) - retour des procedures differees au S2 : pas de reponse chiffree directe ; le management renvoie a la dynamique EUP 2027, decrite comme un impact PROGRESSIF sur 2027 (pas un effet de seuil), par analogie au cycle EUP 2020 deja assimile en interne.",
-     "Q Rick Wise (Stifel) - rationale et TAM du nouveau robot flexible GI : le management ne chiffre pas le TAM incremental a ce stade, evoque une serie de mises a jour \"standout\" prevues sur plusieurs annees a venir.",
-     "Q Lawrence Biggleson (Wells Fargo) - la robotique sera-t-elle incluse dans le nouveau programme VBP centralise chinois : le management confirme explicitement que \"nous pensons que la robotique en fera partie\", phase-in attendu sur les prochains trimestres, sans detail supplementaire.",
-     "Q Lawrence Biggleson (Wells Fargo) - benefice tangible du nouveau chiffrement des instruments : positionne comme un renforcement de la securite/qualite/disponibilite des produits, en reponse a la pression concurrentielle des instruments reconditionnes tiers.",
-     "Q Ryan Zimmerman (BTIG) - impact de la prudence clients sur l'ACA vs pipeline capex : le management confirme un signal de prudence de la part de certains clients sur les inscriptions ACA, mais precise que cela n'a PAS affecte le pipeline capital a ce jour.",
-     "Q Vic Koptra (BMO) - ampleur potentielle de la contribution du Japon post-remboursement : TAM non chiffre, le management identifie la hernie inguinale comme la plus grosse procedure couverte par le nouveau remboursement, promet une mise a jour ulterieure.",
-     "Q Michael Pollack (Wolf Research) - dynamique de mix/prix sur l'INA par procedure : le management confirme un effet de mix positif (produits a innovation incrementale, pricing plus eleve) partiellement compense par d'autres dynamiques, quantification differee au prochain call.",
-     "Q Vijay Kumar (Evercore) - exposition precise Medicaid/echanges ACA : le management n'a PAS d'estimation precise ; la majorite du CA vient de l'assurance privee/commerciale, Medicare et Medicaid representent des parts plus faibles.",
-     "Q Vijay Kumar (Evercore) - comparables T3 plus difficiles : confirme par le CFO, avec un double effet - comp US plus dur (deja note l'an dernier) ET un decalage calendaire international qui avait deplace de la croissance du T4 2025 vers le T3 2025, effet non repete a l'identique en 2026."
-    ]
-   }
-  ],
-  "engagementsStructurants": []
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-17",
-   "eps": {
-    "2026": 9.06,
-    "2027": 10.81
-   }
-  },
-  "source": "Refresh T2 2026 (pure forme - T3 26 non encore publie, cf. verification de fraicheur) - Communique + Transcript T2 2026 relus integralement (Benzinga, 16/07/2026)",
-  "dernierCall": {
-   "quarter": "Q2 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 2890,
-     "consensus": 2820
-    },
-    "epsAdj": {
-     "actual": 2.8,
-     "consensus": 2.51,
-     "basis": "non-GAAP",
-     "basisNote": "non-GAAP"
-    }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (pratique habituelle) ; le CFO signale explicitement un double vent contraire au T3 : comparable US plus dur, et un decalage calendaire international qui avait deplace de la croissance du T4 vers le T3 2025 (effet non repete a l'identique en 2026, donc favorable au T4).",
-   "guidanceAnnuelle": "Croissance procedures da Vinci 2026 maintenue a 13,5-15,5% (visee au point median, ralentissement assume vers ce point median en S2) ; marge brute non-GAAP relevee a 68-69% ; croissance opex non-GAAP 11-13% ; SBC 880-900 M$ ; autres revenus 315-335 M$ ; taux d'impot non-GAAP 22-23%.",
-   "pointsCles": [
-    "Ralentissement procedures US (12% T2 vs 14% T1) attribue par le management a une combinaison ACA + effet de loi des grands nombres sur la base installee, sans isoler la part de chacun ; aucun impact detecte a ce jour sur le pipeline de vente de systemes.",
-    "Extended Use Program 2027 toujours non quantifie par le management, mais decrit explicitement comme un deploiement PROGRESSIF sur l'annee (pas un effet de seuil), le management affichant sa confiance sur la base du precedent cycle EUP 2020 deja assimile en interne.",
-    "Risque Chine elargi : le management confirme pour la premiere fois que la robotique chirurgicale sera vraisemblablement incluse dans le nouveau programme de VBP (achat groupe centralise) chinois, phase-in attendu sur les prochains trimestres - risque politique nouveau, distinct de la pression tarifaire/concurrentielle deja connue.",
-    "Nouveau pipeline evoque : robot flexible endoscopique de nouvelle generation pour la GI, sans TAM ni calendrier chiffres a ce stade ; nouvelle technologie de chiffrement des instruments presentee comme un renforcement du moat face aux instruments reconditionnes tiers."
-   ],
-   "etatsFinanciers": {
-    "analyse": false,
-    "note": "Q2 2026 transcript fully re-read at the 07/08 refresh (see dernierCall.transcriptAnalyse); 10-Q not line-by-line exploited."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T1 26",
-    "date": "2026-04-21",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Croissance procedures da Vinci 13,5-15,5% ; marge brute non-GAAP 67,5-68,5%."
-   },
-   {
-    "quarter": "T2 26",
-    "date": "2026-07-16",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "Croissance procedures da Vinci maintenue 13,5-15,5% ; marge brute non-GAAP relevee a 68-69%."
-   }
-  ],
-  "guidanceLongTerme": null,
-  "guidanceLongTermeHistory": [],
-  "quarterlyEPS": {
-   "cadence": "trimestriel",
-   "PY": [
-    {
-     "label": "T1",
-     "eps": 1.92,
-     "actual": true
-    },
-    {
-     "label": "T2",
-     "eps": 1.81,
-     "actual": true
-    },
-    {
-     "label": "T3",
-     "eps": 1.95,
-     "actual": true
-    },
-    {
-     "label": "T4",
-     "eps": 2.21,
-     "actual": true
-    }
-   ],
-   "CY": [
-    {
-     "label": "T1",
-     "eps": 2.28,
-     "actual": true
-    },
-    {
-     "label": "T2",
-     "eps": 2.21,
-     "actual": true
-    },
-    {
-     "label": "T3",
-     "eps": 2.09,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 2.66,
-     "actual": false
-    }
-   ],
-   "NY": [
-    {
-     "label": "T1",
-     "eps": 2.72,
-     "actual": false
-    },
-    {
-     "label": "T2",
-     "eps": 2.64,
-     "actual": false
-    },
-    {
-     "label": "T3",
-     "eps": 2.49,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 3.17,
-     "actual": false
-    }
-   ]
-  },
-  "summary": "Leader mondial de la chirurgie robotique, bilan net-cash et recurrence de CA elevee (85%+) ; croissance procedurale US en tassement mais guidance de marge brute relevee. Refresh de pure forme (T3 26 non publie) : integre un rappel Classe I associe a un deces, un nouveau risque VBP en Chine, et la premiere decomposition trimestrielle de l'EPS.",
-  "text": "== THESIS SUMMARY ==\nUndisputed leader in robot-assisted surgery (da Vinci, Ion, SP): installed base >13,000 systems (+12% YoY) and ~85% recurring revenue (instruments/accessories/service). The thesis: surgical-robotics penetration compounds for a decade, powered by a still-early da Vinci 5 replacement cycle and international expansion. FY26 guided: procedures +13.5/15.5%, non-GAAP gross margin RAISED to 68-69% at Q2. The 07/08 refresh arbitrated the 2026 EPS DOWN from a naive seasonal extrapolation (~9.50) to 9.24: the 2025 H2/H1 ratio was contaminated by a calendar shift and management explicitly signaled deceleration.\n\n== THESIS READ ==\n- Procedure growth is the leading indicator and it held its band through H1. Watch: Q3 procedure print and any bariatric/international mix commentary.\n- The EPS arbitration (E5 ter): quarterly build confronted with the annual figure exposed the seasonal-ratio trap - the model deliberately sits below naive extrapolation. Watch: Q3 (20/10, confirmed) validates or invalidates the deceleration read.\n- da Vinci 5 rollout is still supply-gated with a rich upgrade backlog. Watch: dV5 placement mix and pricing capture.\n\n== SPECIAL FACTORS ==\nConsensus non-GAAP (10.41) vs Omnium base keeping SBC/amortization (9.24) - definitional wedge documented. Net cash ~9.5bn growing to ~13bn; interest income explicit in the bridge; ETR 20% normative (FY25 actual ~17% on excess SBC benefits, documented). Guides procedures/margin, never EPS.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 12.1bn (+20%), EBIT 3.75bn (31%), EPS 9.24 (arbitrated); 2027-2030: revenue +15%/yr fading, margin drift to 33.5%, shares -0.5%/yr. Watch: Q3 print (20/10); dV5 international regulatory clearances; competitive entries (Hugo, Ottava) in procedure share data.\n\n== CATALYSTS ==\nQ3 (20/10); dV5 ex-US approvals; new procedure clearances (Ion expansion); FY27 procedure guidance (Jan).",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "proc_growth_guidance",
-    "moteur": "Croissance procedures da Vinci+Ion guidee a 13,5-15,5% pour 2026 (visee au point median ~14,5%), ralentissant graduellement vers ~10% en 2030 sous l'effet de la loi des grands nombres sur la base installee.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "mix_asp_premium",
-    "moteur": "La croissance du CA depasse la croissance procedurale grace au mix da Vinci 5/SP et a l'ASP par procedure ; prime de ~4pts en 2026, s'attenuant vers ~2pts d'ici 2030 avec la maturation de la penetration da Vinci 5.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "gross_margin_guidance",
-    "moteur": "Marge brute non-GAAP 2026 relevee a 68-69% ; expansion GAAP graduelle de ~100-150 pb/an jusqu'en 2028 puis plateau.",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "opex_discipline",
-    "moteur": "Croissance opex non-GAAP guidee 11-13% pour 2026 (R&D > SG&A) ; decelaration graduelle vers le rythme de croissance du CA d'ici 2028-2029.",
-    "applique": [
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "tax_normalization",
-    "moteur": "Taux d'impot GAAP normalise a 18%, entre le taux historique recent anormalement bas (effet windfall SBC) et le taux non-GAAP guide (22-23%) qui exclut structurellement ce meme windfall.",
-    "applique": [
-     "omniumNet.2026",
-     "omniumNet.2027",
-     "omniumNet.2028",
-     "omniumNet.2029",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "eup_2027_haircut",
-    "moteur": "Extended Use Program (S1 2027) reduit intentionnellement le prix par procedure sur un sous-ensemble d'instruments ; impact toujours non quantifie par le management (confirme T2 26, deploiement decrit comme progressif), haircut prudent de ~1-1,5pt maintenu sur la prime de mix/ASP 2027-2028.",
-    "applique": [
-     "omniumCA.2027",
-     "omniumCA.2028"
-    ],
-    "confiance": "basse"
-   },
-   {
-    "id": "net_cash_compounding",
-    "moteur": "Position nette de tresorerie croissante (zero dette financiere, ~9,0 Md$ fin 2025) genere des autres revenus croissants (guides 315-335 M$ pour 2026), continue de s'accroitre malgre les rachats d'actions.",
-    "applique": [
-     "omniumND.2026",
-     "omniumND.2027",
-     "omniumND.2028",
-     "omniumND.2029",
-     "omniumND.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "eps_h2_2026_arbitrage",
-    "moteur": "Arbitrage T2 26 (E5 ter point 4) : omniumEPS 2026 rebase de 9,06 a 9,24 (+2,0%) sur la base d'une prime saisonniere H2/H1 damped a +5,75% (moitie du ratio brut 2025, juge contamine par un decalage calendaire ponctuel et le signal de decelaration explicite du management) ; toute la trajectoire 2027-2030 rebasee proportionnellement, marges/ratios inchanges.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026",
-     "omniumNet.2026",
-     "omniumCA.2027",
-     "omniumEBIT.2027",
-     "omniumNet.2027",
-     "omniumCA.2028",
-     "omniumEBIT.2028",
-     "omniumNet.2028",
-     "omniumCA.2029",
-     "omniumEBIT.2029",
-     "omniumNet.2029",
-     "omniumCA.2030",
-     "omniumEBIT.2030",
-     "omniumNet.2030"
-    ],
-    "confiance": "moyenne"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 9.24,
-   "2027": 11.02,
-   "2028": 12.81,
-   "2029": 14.7,
-   "2030": 16.78
-  },
-  "omniumCA": {
-   "2026": 12116,
-   "2027": 13931,
-   "2028": 15879,
-   "2029": 17939,
-   "2030": 20091
-  },
-  "omniumEBIT": {
-   "2026": 3753,
-   "2027": 4457,
-   "2028": 5161,
-   "2029": 5915,
-   "2030": 6731
-  },
-  "omniumNet": {
-   "2026": 3325,
-   "2027": 3947,
-   "2028": 4559,
-   "2029": 5201,
-   "2030": 5905
-  },
-  "omniumND": {
-   "2026": -9500,
-   "2027": -10200,
-   "2028": -11000,
-   "2029": -11900,
-   "2030": -12900
-  },
-  "omniumShares": {
-   "2026": 360,
-   "2027": 358,
-   "2028": 356,
-   "2029": 354,
-   "2030": 352
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 495,
-    "other": 0,
-    "taxRate": 0.17,
-    "minorities": 0,
-    "netCalc": 2856.0,
-    "netPub": 2856,
-    "residual": 0,
-    "residualNote": "Reconciles cleanly: interest income on the ~9bn net cash, FY25 effective ~17% (excess SBC benefits) vs 20% normative used in projections."
-   },
-   "2026": {
-    "finNet": 403,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 3324.8
-   },
-   "2027": {
-    "finNet": 477,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 3947.2
-   },
-   "2028": {
-    "finNet": 538,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 4559.2
-   },
-   "2029": {
-    "finNet": 586,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 5200.8
-   },
-   "2030": {
-    "finNet": 650,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 5904.8
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "da Vinci procedure growth (guided range, %) + non-GAAP gross margin",
-   "comparedAgainst": "guidance",
-   "basisAligned": false,
-   "basisNote": "Consensus is non-GAAP (10.41 for 2026); the Omnium base keeps SBC/amortization (9.24) - definitional wedge, documented.",
-   "timeline": [
-    {
-     "date": "2026-07-16",
-     "type": "guidance_revised",
-     "detail": "Procedure growth held 13.5-15.5%; non-GAAP gross margin RAISED to 68-69% (from 67.5-68.5%)."
-    }
-   ],
-   "paceCheckpoint": "H1 real: installed base >13,000 systems (+12% YoY); recurring revenue ~85% of total; procedure pace within the guided band.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
-    },
-    {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 14.5,
-    "source": "initial_guidance",
-    "date": "2026-04-21",
-    "note": "FY26 guided: da Vinci procedure growth 13.5-15.5% (mid 14.5), non-GAAP gross margin 67.5-68.5%. Dated at the earliest archived statement (Q1 call, 21/04); the initial January frame was not captured. GM RAISED to 68-69% at Q2 while procedure growth held - Intuitive guides procedures/margin, never EPS."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. First measurement at the FY26 close vs the 14.5% procedure-growth mid (EPS via consensus as the secondary reading).",
-   "consensusSource": "Zacks/Alphastreet (non-GAAP)",
-   "consensusDate": "2026-07-14"
-  },
-  "revisionEvent": {
-   "date": "2026-07-16",
-   "label": "Q2 2026",
-   "type": "earnings"
-  }
- }
 }
