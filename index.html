@@ -561,7 +561,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .valo-tooltip-date{font-weight:800;margin-bottom:2px;letter-spacing:.01em;}
 .valo-tooltip-flag{color:var(--gold);font-weight:700;margin-top:3px;}
 
-.dash-head{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 26px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 2px 12px;margin:0 0 14px;}
+.dash-head{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 26px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 2px 12px;margin:0 0 34px;}
 .dash-vr{background:var(--border);}
 @media(max-width:760px){
   .dash-head{grid-template-columns:1fr;gap:18px 0;}
@@ -726,6 +726,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="news-bar-wrap"></div>
   <div id="actions-bar-wrap"></div>
   <div id="market-calendar-wrap"></div>
+  <div class="card-title" style="margin-bottom:10px;"><b>All tickers</b></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
       <div class="pf-col-name-spacer">
         <span class="pf-name-sort-lbl" onclick="pfSortBy('name')">Name <span class="pf-sort-arrow" data-key="name"></span></span>
@@ -4448,7 +4449,7 @@ function peVsAverageExtremes(nEach){
       const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
       const cur=vals[vals.length-1];
       if(!avg||!isFinite(avg)) return;
-      out.push({ticker:tk, pe:cur, devPct:(cur/avg-1)*100});
+      out.push({ticker:tk, pe:cur, avg, devPct:(cur/avg-1)*100});
     });
   }
   const disc=out.filter(r=>r.devPct<0).sort((a,b)=>a.devPct-b.devPct).slice(0,nEach);
@@ -4495,13 +4496,12 @@ function renderMarketCalendar(){
   const {disc, stretch}=peVsAverageExtremes(3);
   const maxDev=Math.max(...disc.map(r=>-r.devPct), ...stretch.map(r=>r.devPct), 1);
   const peRow=(r)=>{
-    const miss=r.devPct<0;
-    const w=Math.max(4, Math.abs(r.devPct)/maxDev*46);
-    return `<div title="${r.devPct>=0?'+':''}${r.devPct.toFixed(1)}% vs series average" style="display:grid;grid-template-columns:96px 1fr 58px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f2f3f9;">
+    const disc_=r.devPct<0;
+    const col=disc_?'var(--teal-text)':'var(--navy)';
+    return `<div style="display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid #f2f3f9;">
       <span onclick="CT='${r.ticker}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.ticker}</span>
-      <div style="position:relative;height:12px;"><span style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#c9cede;"></span>
-        <div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;background:${miss?'var(--teal)':'var(--navy)'};opacity:.92;"></div></div>
-      <span style="${cell}text-align:right;">${r.pe.toFixed(1)}×</span>
+      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};line-height:1.25;">${r.devPct>=0?'+':'\u2212'}${Math.abs(r.devPct).toFixed(0)}%
+        <small style="display:block;font-size:9.5px;font-weight:500;color:var(--muted);">${r.pe.toFixed(1)}\u00d7 vs ${r.avg.toFixed(1)}\u00d7 avg</small></span>
     </div>`;
   };
   const peBody=(disc.length||stretch.length)
