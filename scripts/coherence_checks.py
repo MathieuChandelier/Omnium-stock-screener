@@ -456,6 +456,96 @@ def c18():
             bad.append((tk,'cle adjEPS presente : ecrire omniumEPS'))
     return bad
 
+def _num(x): return isinstance(x,(int,float))
+
+@check("C19 bridge : arithmetique interne exacte")
+def c19():
+    # netCalc = (ebit + finNet + other) x (1 - taxRate) + minorities, et
+    # residual = netPub - netCalc. Un pont dont l'arithmetique ne tient pas
+    # ne peut rien detecter - on verifie le calcul avant de s'y fier.
+    bad=[]
+    for tk,t in FICHES.items():
+        br=t['hypothese'].get('bridge')
+        if not isinstance(br,dict): continue
+        d={str(r['year']):r for r in (t.get('data') or [])}
+        aE=t['hypothese'].get('adjEBIT') or {}
+        for y,b in br.items():
+            if not isinstance(b,dict): continue
+            ebit=(d.get(y) or {}).get('ebit') if y in d else aE.get(y)
+            if not all(_num(b.get(k)) for k in ('finNet','other','taxRate','minorities','netCalc')) or not _num(ebit):
+                bad.append((tk,f'{y}: composante manquante ou non numerique')); continue
+            calc=(ebit+b['finNet']+b['other'])*(1-b['taxRate'])+b['minorities']
+            if abs(calc-b['netCalc'])>max(1,abs(b['netCalc'])*0.01):
+                bad.append((tk,f'{y}: netCalc {b["netCalc"]} vs formule {calc:.0f}'))
+            if _num(b.get('netPub')) and _num(b.get('residual')):
+                if abs((b['netPub']-b['netCalc'])-b['residual'])>max(1,abs(b['netPub'])*0.01):
+                    bad.append((tk,f'{y}: residual {b["residual"]} vs netPub-netCalc {b["netPub"]-b["netCalc"]:.0f}'))
+    return bad
+
+@check("C20 bridge : netCalc projete == adjNet (pas deux verites)")
+def c20():
+    bad=[]
+    for tk,t in FICHES.items():
+        br=t['hypothese'].get('bridge')
+        if not isinstance(br,dict): continue
+        aN=t['hypothese'].get('adjNet') or {}
+        for y,b in br.items():
+            if not isinstance(b,dict) or _num(b.get('netPub')): continue   # publie = reconciliation
+            if _num(b.get('netCalc')) and _num(aN.get(y)):
+                if abs(b['netCalc']-aN[y])>max(1,abs(aN[y])*0.02):
+                    bad.append((tk,f'{y}: bridge.netCalc {b["netCalc"]} vs adjNet {aN[y]}'))
+    return bad
+
+@check("C21 bridge : residu materiel du publie sans residualNote")
+def c21():
+    # Le residu est le detecteur d'exceptionnels : non explique, il ne
+    # detecte rien. >2% du net publie ET >1 unite (calibrage C4).
+    bad=[]
+    for tk,t in FICHES.items():
+        br=t['hypothese'].get('bridge')
+        if not isinstance(br,dict): continue
+        for y,b in br.items():
+            if not isinstance(b,dict) or not _num(b.get('netPub')) or not _num(b.get('residual')): continue
+            if abs(b['residual'])>max(1,abs(b['netPub'])*0.02) and not (b.get('residualNote') or '').strip():
+                bad.append((tk,f'{y}: residu {b["residual"]} non explique'))
+    return bad
+
+@check("W4  ~ bridge : taux d'IS hors bande [10% ; 40%]")
+def w4():
+    # Hors bande = pas forcement faux (carry-back, windfall, juridiction)
+    # mais toujours a documenter - la doctrine E5-b interdit de reconduire
+    # un taux anormal sans justification.
+    bad=[]
+    for tk,t in FICHES.items():
+        br=t['hypothese'].get('bridge')
+        if not isinstance(br,dict): continue
+        for y,b in br.items():
+            if isinstance(b,dict) and _num(b.get('taxRate')) and not (0.10<=b['taxRate']<=0.40):
+                bad.append((tk,f'{y}: taxRate {b["taxRate"]*100:.0f}%'))
+    return bad
+
+@check("W5  ~ bridge : charge financiere incoherente avec adjND (E5 a-bis)")
+def w5():
+    # Dette nette projetee positive => finNet doit etre une charge, d'une
+    # ampleur plausible (0,5% a 12% de la dette moyenne). L'inverse - un
+    # produit financier sur une societe endettee - est le bug exact que la
+    # regle a-ter cherche a empecher apres une M&A.
+    bad=[]
+    for tk,t in FICHES.items():
+        if (t.get('issuerType') or 'industrial')!='industrial': continue
+        br=t['hypothese'].get('bridge'); aND=t['hypothese'].get('adjND') or {}
+        if not isinstance(br,dict): continue
+        for y,b in br.items():
+            if not isinstance(b,dict) or _num(b.get('netPub')): continue
+            nd=aND.get(y)
+            if not (_num(nd) and _num(b.get('finNet'))): continue
+            if nd>0:
+                if b['finNet']>0:
+                    bad.append((tk,f'{y}: dette nette {nd} mais finNet POSITIF {b["finNet"]}'))
+                elif not (0.005*nd<=-b['finNet']<=0.12*nd):
+                    bad.append((tk,f'{y}: finNet {b["finNet"]} pour dette {nd} (hors bande 0,5-12%)'))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0; warns=0
