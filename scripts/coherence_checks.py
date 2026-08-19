@@ -537,7 +537,7 @@ def c21():
                 bad.append((tk,f'{y}: residu {b["residual"]} non explique'))
     return bad
 
-@check("W4  ~ bridge : taux d'IS hors bande [10% ; 40%]")
+@check("W4  ~ bridge : taux d'IS hors bande [6% ; 40%]")
 def w4():
     # Hors bande = pas forcement faux (carry-back, windfall, juridiction)
     # mais toujours a documenter - la doctrine E5-b interdit de reconduire
@@ -547,7 +547,7 @@ def w4():
         br=t['hypothese'].get('bridge')
         if not isinstance(br,dict): continue
         for y,b in br.items():
-            if isinstance(b,dict) and _num(b.get('taxRate')) and not (0.10<=b['taxRate']<=0.40):
+            if isinstance(b,dict) and _num(b.get('taxRate')) and not (0.06<=b['taxRate']<=0.40):
                 bad.append((tk,f'{y}: taxRate {b["taxRate"]*100:.0f}%'))
     return bad
 

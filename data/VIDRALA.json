@@ -1,296 +1,403 @@
 {
-  "name": "Vidrala",
-  "cours": 88.7,
-  "yahooSymbol": "VID.MC",
-  "dividende": 1.7505,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 1080,
-      "ebit": 173,
-      "net": 145.2,
-      "shares": 33,
-      "nd": 150,
-      "div": 1.16
-    },
-    {
-      "year": 2022,
-      "ca": 1371,
-      "ebit": 167,
-      "net": 153.6,
-      "shares": 32.5,
-      "nd": 180,
-      "div": 1.24
-    },
-    {
-      "year": 2023,
-      "ca": 1590,
-      "ebit": 251,
-      "net": 233.4,
-      "shares": 32.3,
-      "nd": 220,
-      "div": 1.35
-    },
-    {
-      "year": 2024,
-      "ca": 1588,
-      "ebit": 300,
-      "net": 298,
-      "shares": 32.5,
-      "nd": 250,
-      "div": 1.45
-    },
-    {
-      "year": 2025,
-      "ca": 1465,
-      "ebit": 280,
-      "net": 220,
-      "shares": 33.5,
-      "nd": 230,
-      "div": 1.7
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 6.9,
-    "epsNY": 7.4,
-    "date": "2026-06-22",
-    "source": "Stocks Report, consensus 12 analystes (relevé 22/06/2026, pré-T2, snapshot à rafraîchir)."
+ "name": "Vidrala",
+ "cours": 88.7,
+ "yahooSymbol": "VID.MC",
+ "dividende": 1.7505,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 1080,
+   "ebit": 173,
+   "net": 145.2,
+   "shares": 33,
+   "nd": 150,
+   "div": 1.16
   },
-  "particularites": [
-    {
-      "text": "Distribution gratuite d'actions recurrente, qui doit se traiter comme un dividende et correspond a un dividende de 5%.",
-      "valuePct": 5
-    }
-  ],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": "2026-10-28"
+  {
+   "year": 2022,
+   "ca": 1371,
+   "ebit": 167,
+   "net": 153.6,
+   "shares": 32.5,
+   "nd": 180,
+   "div": 1.24
   },
-  "ownership": {
-    "asOf": "2026-07-23",
-    "insiderPct": null,
-    "insiderDesc": "Actionnariat historiquement concentre autour de plusieurs holdings familiales basques (URDALA 21 S.L., BIDAROA S.L., ADDVALIA CAPITAL, MUGARBURU S.L., SURAMAR S.L., AZPILU S.L., BAISEL S.L., entre autres, identifiees dans les rapports de gouvernance CNMV) - pourcentage cumule exact non retrouve dans cette recherche, portee reduite. A rafraichir avec le detail des participations significatives CNMV au prochain point.",
-    "insiderSource": "CNMV - Informe de Gobierno Corporativo Vidrala (structure des holdings familiales identifiees, pourcentages non extraits)",
-    "notableHolders": [],
-    "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie. Titre hors perimetre 13F (cote a Madrid, pas d'ADR US identifie) - recherche institutionnelle US non pertinente.",
-    "history": []
+  {
+   "year": 2023,
+   "ca": 1590,
+   "ebit": 251,
+   "net": 233.4,
+   "shares": 32.3,
+   "nd": 220,
+   "div": 1.35
   },
-  "compliance": {
-    "asOf": "2026-07-23",
-    "items": [],
-    "note": "Aucune allegation de fraude identifiee dans cette recherche (portee reduite, premiere population de ce champ a l'occasion de ce refresh)."
+  {
+   "year": 2024,
+   "ca": 1588,
+   "ebit": 300,
+   "net": 298,
+   "shares": 32.5,
+   "nd": 250,
+   "div": 1.45
   },
-  "hypothese": {
-    "date": "2026-07-23",
-    "priorEPS": {
-      "date": "2026-07-02",
-      "eps": {
-        "2026": 6.25,
-        "2027": 6.53
-      }
-    },
-    "source": "Refresh S1/T2 2026 - Rapport de gestion officiel 'Business Performance Q2 2026' (23/07/2026) + TRANSCRIPT INTEGRAL du call du meme jour (Raul Merino CEO / Inigo de la Rica Corporate Finance Director / Unai Garaizabal IR / Galo Alvarez, incluant la session Q&A complete avec 10 analystes - desormais consulte, contrairement au refresh precedent ou seul le rapport de gestion avait ete exploite)",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 386.4,
-          "consensus": 380.5
-        },
-        "epsAdj": {
-          "actual": null,
-          "consensus": null,
-          "basis": "GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du secteur, guidance annuelle uniquement).",
-      "guidanceAnnuelle": "Guidance FY2026 reiteree sans changement : EBITDA superieur a 450 M€ (au-dessus de 2025), croissance du BPA superieure a 5%, flux de tresorerie disponible d'environ 200 M€. Management souligne une acceleration attendue de la generation de cash au S2 pour atteindre l'objectif de FCF.",
-      "pointsCles": [
-        "Amelioration des marges malgre un environnement de couts defavorable : marge EBITDA S1 26 a 29,9% (+110 points de base sur un an), marge EBIT a 20,2% (+30pb) - discipline de couts confirmee malgre une demande toujours atone en Europe.",
-        "Detail regional des volumes/prix T2 confirme une reprise inegale : volumes Europe +1,5% (prix -3%), volumes UK&Irlande -7% mais en nette amelioration vs T1 (-9%, prix -0,4%), volumes Amerique du Sud +4%+ (prix +3,5%, inflation locale). Le CEO qualifie explicitement le T1 de 'non representatif' de l'annee complete.",
-        "Extension EXTRAORDINAIRE du programme de rachat d'actions jusqu'a 3% du capital (contre 2% annonce en mars, extension realisee en deux fois), avec pour objectif l'ANNULATION des actions rachetees - mesure complementaire au dividende en numeraire, portant l'enveloppe totale de remuneration actionnariale a plus de 150 M€. Ce point remet en cause la trajectoire de desendettement 'quasi sans dette' evoquee par le CEO au T1 26.",
-        "CapEx volontairement eleve (~8% du CA vise sur 2026, contre un niveau normatif de maintenance d'environ 4%) - le CEO confirme explicitement que ce surinvestissement est intentionnel (pas de normalisation avant 2027 au plus tot) et ne doit pas peser sur la trajectoire de FCF si les profits operationnels continuent de croitre.",
-        "Couverture energetique confirmee a des niveaux eleves : ~70% de l'exposition energetique 2026 et ~60% de celle de 2027 deja couverte par des instruments derives (Europe/UK), l'Amerique du Sud etant structurellement moins volatile (formules d'ajustement clients). Le CEO ne voit aucun risque de pression negative sur les prix ni de degradation de marge en 2027 malgre les tensions inflationnistes energetiques liees au conflit au Moyen-Orient/Iran.",
-        "Changement a la direction financiere : Inigo de la Rica, Directeur Financier Corporate depuis pres de 10 ans, quitte ses fonctions pour de nouvelles opportunites de carriere. La fonction Investor Relations est reorganisee et desormais integree au sein du pole developpement corporate dirige par Galo Alvarez, avec le support d'Unai Garaizabal.",
-        "Dividende complementaire 2025 verse le 15 juillet 2026 (0,4687€/action, +15% sur un an) ; remuneration totale en numeraire 2026 (interim + complementaire + prime AG) a 1,7505€/action, +15% vs 2025 (1,5959€)."
-      ]
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q1 26",
-        "date": "2026-04-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "EBITDA >450 M€, BPA +5%+, FCF ~200 M€ - guidance benchmarkee contre un 2025 pro forma incluant le Chili sur annee pleine."
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-23",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Guidance reiteree sans changement (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec mention explicite d'une acceleration attendue de la generation de cash au S2."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "summary": "Marges renforcees malgre une demande europeenne toujours atone (EBITDA S1 +4,4% publie, marge +110pb), guidance FY2026 reiteree - le CEO juge d'ailleurs le consensus EBITDA (~450-451 M€) potentiellement conservateur compte tenu du rythme S1, sans pour autant relever la guidance a ce stade. Extension extraordinaire du programme de rachat d'actions a 3% du capital (avec annulation) qui retarde significativement le desendettement complet evoque au T1. Changement a la direction financiere (depart du Corporate Finance Director apres 10 ans).",
-    "text": "== SYNTHESE DE LA THESE ==\nLa these d'un fabricant de verre d'emballage resilient a marge stable se confirme au S1 2026 : malgre une demande organique toujours en repli (-3,8% a change et perimetre constants), la discipline de couts permet une expansion de marge notable (EBITDA +110pb a 29,9%, EBIT +30pb a 20,2%), et le benefice net progresse de 8,9% (117,4 M€ contre 107,8 M€ au S1 25). L'Amerique du Sud (Chili) continue de surperformer nettement (ventes S1 +14% pro forma, marge EBITDA 37,6%, la plus elevee des trois zones), validant la logique de diversification geographique de la these. Le transcript, desormais consulte pour ce refresh, confirme la solidite du narratif de marge : le CEO exclut explicitement tout risque de pression negative sur les prix ou de degradation de marge en 2027, malgre les tensions inflationnistes energetiques liees au conflit au Moyen-Orient, grace a une couverture energetique deja etablie (~70% de 2026, ~60% de 2027). Le point le plus important de ce refresh concerne la politique de retour de capital : le Conseil a decide d'etendre EXTRAORDINAIREMENT le programme de rachat d'actions jusqu'a 3% du capital (contre 2% annonce en mars), avec pour objectif explicite d'ANNULER les actions rachetees, portant l'enveloppe totale de remuneration actionnariale a plus de 150 M€ pour 2026. Cette decision, conjuguee a la hausse de 15% du dividende, consomme une part significative du flux de tresorerie disponible attendu (~200 M€), ce qui invalide largement la declaration du CEO au T1 26 selon laquelle le groupe terminerait l'annee \"pratiquement sans dette\" : la dette nette au 30/06/2026 s'etablit a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable par rapport a fin mars 2026 (~273 M€ selon le T1) malgre un semestre beneficiaire - le desendettement se poursuit mais a un rythme bien plus lent que ce qu'anticipait le modele de creation. Enfin, changement notable a la direction financiere : Inigo de la Rica, Directeur Financier Corporate depuis pres de 10 ans, quitte ses fonctions - la fonction Investor Relations est reorganisee sous la responsabilite de Galo Alvarez.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Extension extraordinaire du programme de rachat d'actions a 3% du capital (annonce avec les resultats S1 26, en deux etapes depuis 1% initial), avec objectif d'annulation des actions rachetees - mesure complementaire au dividende, enveloppe totale de remuneration actionnariale portee a plus de 150 M€ pour 2026. Consequence directe : le narratif de desendettement quasi-total evoque au T1 26 est fortement attenue, la dette nette restant proche de 250 M€ a mi-annee au lieu de converger rapidement vers zero.\n(i) Amelioration continue des marges malgre un environnement de couts defavorable (\"adverse cost environment\" selon le management) - preuve de l'efficacite des actions de controle des couts internes. Couverture energetique deja elevee (~70% de l'exposition 2026, ~60% de 2027 via instruments derives en Europe/UK) soutient la confiance du CEO sur l'absence de risque de degradation de marge en 2027 malgre les tensions Moyen-Orient/Iran.\n(i) Reprise partielle des volumes en Europe au T2 (\"pockets of sales recovery\"), avec une contribution croissante de l'Amerique Latine qui compense la faiblesse persistante du Royaume-Uni/Irlande (ventes UK&Irlande S1 en repli a 249,8 M€ contre 280,6 M€, marge toutefois en hausse a 23,5%). Detail T2 par zone desormais disponible via le transcript : volumes Europe +1,5% (prix -3%), UK&Irlande -7% mais en amelioration vs T1 (-9%, prix -0,4%), Amerique du Sud +4%+ (prix +3,5%). Le CEO anticipe une recuperation des volumes UK etalee sur 2026-2027, pas totalement cette annee, portee par une concurrence moins intense des importateurs eux-memes sous pression inflationniste.\n(ii) CapEx volontairement eleve (~8% du CA vise sur 2026, contre ~4% de maintenance normative) - le CEO confirme qu'il s'agit d'un surinvestissement intentionnel pour la competitivite cout, sans normalisation avant 2027 au plus tot ; ne doit pas peser sur la trajectoire de FCF si les profits operationnels continuent de croitre.\n(ii) Dividende complementaire 2025 verse le 15 juillet 2026 (0,4687€/action, +15%), portant la remuneration totale en numeraire 2026 a 1,7505€/action (+15% vs 2025).\n(iii) Changement a la direction financiere : Inigo de la Rica (Directeur Financier Corporate, ~10 ans d'anciennete) quitte ses fonctions pour de nouvelles opportunites de carriere. La fonction Investor Relations est integree au pole developpement corporate dirige par Galo Alvarez, avec le support d'Unai Garaizabal - transition de gouvernance a surveiller mais sans signal d'alerte identifie dans le transcript (depart presente comme volontaire, remerciements explicites du CEO).\n\n== PARTICULARITES ==\nDistribution gratuite d'actions recurrente, traitee comme un dividende, correspond a un rendement de 5% (inchange, voir champ particularites).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase inchangee : \"ebit\" = EBIT (resultat operationnel apres amortissements, coherent avec la serie historique 2021-2025), et non l'EBITDA (mesure alternative >450 M€ visee pour 2026, superieure a l'EBIT d'environ 160 M€ compte tenu des amortissements). Pas de mise a jour de \"data\" a ce refresh (exercice fiscal 2026 non cloture). Nombre d'actions : revise nettement a la hausse par rapport au modele de creation (34,5M vs 33,8M pour 2026), le BPA S1 26 (3,36€) sur un benefice S1 de 117,4 M€ impliquant un nombre d'actions moyen pondere d'environ 34,9M sur le semestre - l'effet de l'emission d'actions gratuites de novembre 2025 avait ete sous-estime dans le modele de creation. Trajectoire de desendettement revisee a la hausse (moins de baisse) : le rythme de rachat d'actions etendu (3% du capital avec annulation) et la hausse du dividende consomment une part significative du FCF attendu (~200 M€), limitant la reduction de la dette nette sur l'horizon de projection par rapport a l'hypothese quasi-nulle retenue a la creation. Detail trimestriel EPS reconstruit ce refresh grace au T1 26 desormais publie (1,53€ reel, resultat net 53,7 M€) : T2 26 (1,83€) derive par soustraction H1-T1 ; T3/T4 estimes, calibres en residu sur omniumEPS.2026.\nWATCH-LIST pour le prochain refresh : (1) confirmation de l'acceleration de la generation de cash au S2 evoquee par le management ; (2) rythme reel d'execution et d'annulation du programme de rachat etendu a 3% ; (3) poursuite de la reprise des volumes europeens amorcee au T2, en particulier le rythme de recuperation des volumes UK sur 2026-2027 ; (4) trajectoire de la dette nette en fin d'annee face aux nouvelles priorites de retour de capital ; (5) si le consensus EBITDA (juge potentiellement conservateur par le CEO lui-meme) est finalement releve par le management au T3 ou reste inchange ; (6) suivre la transition a la direction financiere (successeur d'Inigo de la Rica) et toute evolution de la fonction Investor Relations sous Galo Alvarez ; (7) prochain refresh utile : resultats T3 2026 (28/10/2026, 8h00 CET).\n\n== CATALYSEURS ==\nResultats T3 2026 (28/10/2026) permettront de verifier si l'acceleration de la generation de cash annoncee pour le S2 se confirme, et de suivre le rythme d'execution du programme de rachat d'actions etendu a 3% du capital ; au-dela, la poursuite de la forte dynamique sud-americaine et la reprise progressive des volumes europeens conditionnent la trajectoire de marge sur l'horizon de projection.",
-    "impact": "neutre",
-    "ancrages": [
-      {
-        "id": "AN-GUIDANCE-REITEREE",
-        "moteur": "Guidance FY2026 reiteree sans changement au S1 26 (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec une acceleration attendue de la generation de cash au S2 explicitement mentionnee par le management. Le CEO reconnait en Q&A (question Kepler Cheuvreux) que le consensus EBITDA (~450-451 M€) pourrait sembler conservateur compte tenu du rythme S1, mais maintient une position prudente ('trop tot', 'garder un oeil sur l'annee prochaine') sans relever formellement la guidance - retenu tel quel dans le modele, aucun ajustement a la hausse injecte sur la base d'une declaration non chiffree.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-AMSUD-ACCELERATION",
-        "moteur": "Amerique du Sud (Chili) en forte croissance confirmee : ventes S1 26 +14% pro forma, marge EBITDA 37,6% (la plus elevee des trois zones, quoique en repli vs 38,5% un an plus tot), volumes T2 +4%+ et prix +3,5% (inflation locale) - moteur de croissance et de marge le plus solide du groupe. Le CEO confirme etre encore en phase de construction de la plateforme (entree il y a ~2 ans), avec des opportunites de M&A regionales explorees mais non engagees a ce stade.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-EUROPE-UK-FAIBLESSE",
-        "moteur": "Demande europeenne et britannique toujours atone mais en amelioration sequentielle : volumes Europe +1,5% au T2 (prix -3%), volumes UK&Irlande -7% au T2 mais en nette amelioration vs T1 (-9%), le CEO anticipant une recuperation progressive des volumes perdus etalee sur 2026-2027 (pas totalement cette annee) grace a une concurrence moins intense des importateurs, eux-memes sous pression inflationniste.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-DILUTION-ACTIONS-GRATUITES",
-        "moteur": "Nombre d'actions moyen pondere S1 26 (~34,9M, calcule a partir du BPA et du benefice net publies) nettement superieur a l'hypothese de creation (33,8M pour l'annee complete) - effet de l'emission d'actions gratuites de novembre 2025 sous-estime initialement.",
-        "applique": [
-          "omniumShares.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-RACHAT-ANNULATION-EXTENDED",
-        "moteur": "Extension extraordinaire du programme de rachat d'actions a 3% du capital (annoncee avec les resultats S1 26, en deux etapes depuis 1% initial), avec objectif d'annulation - enveloppe totale de remuneration actionnariale >150 M€ en 2026, consommant une part significative du FCF attendu et reduisant progressivement le nombre d'actions sur l'horizon de projection (effet compensateur partiel de la dilution des actions gratuites).",
-        "applique": [
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-DETTE-DESENDETTEMENT-RALENTI",
-        "moteur": "Dette nette au 30/06/2026 a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable depuis fin mars (273 M€) malgre un FCF positif, du fait de la hausse du dividende (+15%) et de l'extension du programme de rachat - le narratif 'quasiment sans dette' evoque au T1 26 est invalide par ce refresh ; trajectoire de desendettement revisee nettement a la hausse (moins de baisse) sur tout l'horizon de projection. CapEx volontairement eleve (~8% du CA, vs ~4% de maintenance normative) confirme intentionnel par le CEO, sans normalisation avant 2027 au plus tot - ne compromet pas la trajectoire de FCF si les profits operationnels continuent de croitre.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 6.86,
-      "2027": 7.27,
-      "2028": 7.71,
-      "2029": 8.13,
-      "2030": 8.54
-    },
-    "omniumCA": {
-      "2026": 1500,
-      "2027": 1545,
-      "2028": 1595,
-      "2029": 1645,
-      "2030": 1695
-    },
-    "omniumEBIT": {
-      "2026": 288,
-      "2027": 299,
-      "2028": 312,
-      "2029": 325,
-      "2030": 338
-    },
-    "omniumNet": {
-      "2026": 237,
-      "2027": 247,
-      "2028": 258,
-      "2029": 268,
-      "2030": 278
-    },
-    "omniumND": {
-      "2026": 200,
-      "2027": 170,
-      "2028": 140,
-      "2029": 110,
-      "2030": 80
-    },
-    "omniumShares": {
-      "2026": 34.5,
-      "2027": 34.0,
-      "2028": 33.5,
-      "2029": 33.0,
-      "2030": 32.5
-    },
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 1.53,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 1.83,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 1.85,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 1.65,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 1.62,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 1.94,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 1.97,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 1.74,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 7.06,
-      "forwardPeriodLabel": "Q3 26 -> Q2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    }
+  {
+   "year": 2025,
+   "ca": 1465,
+   "ebit": 280,
+   "net": 220,
+   "shares": 33.5,
+   "nd": 230,
+   "div": 1.7
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 6.9,
+  "epsNY": 7.4,
+  "date": "2026-06-22",
+  "source": "Stocks Report, consensus 12 analystes (relevé 22/06/2026, pré-T2, snapshot à rafraîchir)."
+ },
+ "particularites": [
+  {
+   "text": "Distribution gratuite d'actions recurrente, qui doit se traiter comme un dividende et correspond a un dividende de 5%.",
+   "valuePct": 5
+  }
+ ],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": "2026-10-28"
+ },
+ "ownership": {
+  "asOf": "2026-07-23",
+  "insiderPct": null,
+  "insiderDesc": "Actionnariat historiquement concentre autour de plusieurs holdings familiales basques (URDALA 21 S.L., BIDAROA S.L., ADDVALIA CAPITAL, MUGARBURU S.L., SURAMAR S.L., AZPILU S.L., BAISEL S.L., entre autres, identifiees dans les rapports de gouvernance CNMV) - pourcentage cumule exact non retrouve dans cette recherche, portee reduite. A rafraichir avec le detail des participations significatives CNMV au prochain point.",
+  "insiderSource": "CNMV - Informe de Gobierno Corporativo Vidrala (structure des holdings familiales identifiees, pourcentages non extraits)",
+  "notableHolders": [],
+  "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie. Titre hors perimetre 13F (cote a Madrid, pas d'ADR US identifie) - recherche institutionnelle US non pertinente.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-23",
+  "items": [],
+  "note": "Aucune allegation de fraude identifiee dans cette recherche (portee reduite, premiere population de ce champ a l'occasion de ce refresh)."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-02",
+   "eps": {
+    "2026": 6.25,
+    "2027": 6.53
+   }
+  },
+  "source": "Refresh S1/T2 2026 - Rapport de gestion officiel 'Business Performance Q2 2026' (23/07/2026) + TRANSCRIPT INTEGRAL du call du meme jour (Raul Merino CEO / Inigo de la Rica Corporate Finance Director / Unai Garaizabal IR / Galo Alvarez, incluant la session Q&A complete avec 10 analystes - desormais consulte, contrairement au refresh precedent ou seul le rapport de gestion avait ete exploite)",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 386.4,
+     "consensus": 380.5
+    },
+    "epsAdj": {
+     "actual": null,
+     "consensus": null,
+     "basis": "GAAP",
+     "basisNote": "GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du secteur, guidance annuelle uniquement).",
+   "guidanceAnnuelle": "Guidance FY2026 reiteree sans changement : EBITDA superieur a 450 M€ (au-dessus de 2025), croissance du BPA superieure a 5%, flux de tresorerie disponible d'environ 200 M€. Management souligne une acceleration attendue de la generation de cash au S2 pour atteindre l'objectif de FCF.",
+   "pointsCles": [
+    "Amelioration des marges malgre un environnement de couts defavorable : marge EBITDA S1 26 a 29,9% (+110 points de base sur un an), marge EBIT a 20,2% (+30pb) - discipline de couts confirmee malgre une demande toujours atone en Europe.",
+    "Detail regional des volumes/prix T2 confirme une reprise inegale : volumes Europe +1,5% (prix -3%), volumes UK&Irlande -7% mais en nette amelioration vs T1 (-9%, prix -0,4%), volumes Amerique du Sud +4%+ (prix +3,5%, inflation locale). Le CEO qualifie explicitement le T1 de 'non representatif' de l'annee complete.",
+    "Extension EXTRAORDINAIRE du programme de rachat d'actions jusqu'a 3% du capital (contre 2% annonce en mars, extension realisee en deux fois), avec pour objectif l'ANNULATION des actions rachetees - mesure complementaire au dividende en numeraire, portant l'enveloppe totale de remuneration actionnariale a plus de 150 M€. Ce point remet en cause la trajectoire de desendettement 'quasi sans dette' evoquee par le CEO au T1 26.",
+    "CapEx volontairement eleve (~8% du CA vise sur 2026, contre un niveau normatif de maintenance d'environ 4%) - le CEO confirme explicitement que ce surinvestissement est intentionnel (pas de normalisation avant 2027 au plus tot) et ne doit pas peser sur la trajectoire de FCF si les profits operationnels continuent de croitre.",
+    "Couverture energetique confirmee a des niveaux eleves : ~70% de l'exposition energetique 2026 et ~60% de celle de 2027 deja couverte par des instruments derives (Europe/UK), l'Amerique du Sud etant structurellement moins volatile (formules d'ajustement clients). Le CEO ne voit aucun risque de pression negative sur les prix ni de degradation de marge en 2027 malgre les tensions inflationnistes energetiques liees au conflit au Moyen-Orient/Iran.",
+    "Changement a la direction financiere : Inigo de la Rica, Directeur Financier Corporate depuis pres de 10 ans, quitte ses fonctions pour de nouvelles opportunites de carriere. La fonction Investor Relations est reorganisee et desormais integree au sein du pole developpement corporate dirige par Galo Alvarez, avec le support d'Unai Garaizabal.",
+    "Dividende complementaire 2025 verse le 15 juillet 2026 (0,4687€/action, +15% sur un an) ; remuneration totale en numeraire 2026 (interim + complementaire + prime AG) a 1,7505€/action, +15% vs 2025 (1,5959€)."
+   ]
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q1 26",
+    "date": "2026-04-29",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "EBITDA >450 M€, BPA +5%+, FCF ~200 M€ - guidance benchmarkee contre un 2025 pro forma incluant le Chili sur annee pleine."
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-23",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance reiteree sans changement (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec mention explicite d'une acceleration attendue de la generation de cash au S2."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "summary": "Marges renforcees malgre une demande europeenne toujours atone (EBITDA S1 +4,4% publie, marge +110pb), guidance FY2026 reiteree - le CEO juge d'ailleurs le consensus EBITDA (~450-451 M€) potentiellement conservateur compte tenu du rythme S1, sans pour autant relever la guidance a ce stade. Extension extraordinaire du programme de rachat d'actions a 3% du capital (avec annulation) qui retarde significativement le desendettement complet evoque au T1. Changement a la direction financiere (depart du Corporate Finance Director apres 10 ans).",
+  "text": "== THESIS SUMMARY ==\nResilient glass-packaging producer with stable margins: despite organic demand still in decline (-3.8% cc), H1 26 delivered EBITDA margin +110bp to 29.9%, EBIT +30bp to 20.2%, and net +8.9% (117.4M). South America (Chile) clearly outperforms (sales +14% pro forma, EBITDA margin 37.6% - the highest of the three zones). FY26 guidance reiterated: EBITDA >450M, EPS +5%+, FCF ~200M, with an explicit H2 cash-generation acceleration.\n\n== THESIS READ ==\n- Margin discipline through a volume trough is the thesis proof - pricing/cost control beats demand softness. Watch: volume inflection in core Iberia/UK.\n- Chile is becoming the growth and margin engine - the 2025 acquisition already carries the group print. Watch: Chile margin durability and any further LatAm build-out.\n- Share-count correction (Nov-2025 bonus issue undercounted at creation: 34.5M vs 33.8M) trims Omnium EPS 0.6% BELOW the guided +5% floor - an honest wedge, to re-arbitrate at Q3. Watch: weighted-average count at FY26.\n\n== SPECIAL FACTORS ==\n'ebit' = operating result after depreciation (NOT the guided EBITDA >450M, which sits ~160M above). 2024 published net (~= EBIT) carried the Italy-disposal gain - handled in the historical series. Low debt (230 -> 80M), near-zero financial result; ETR 18% blended (21% actual 2025). Buyback-driven count decline resumes from 2027 in the model.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 1,500M, EBIT 288M (19.2%), EPS 6.86; 2027-2030: revenue +3%/yr, EBIT margin ~19.3-20%, shares -1.5%/yr from 2027. Watch: share count; energy-cost hedges; UK consumer demand; Chile FX.\n\n== CATALYSTS ==\nQ3 trading update (Oct); H2 FCF acceleration proof; FY26 results (Feb 2027); LatAm expansion moves.",
+  "impact": "neutre",
+  "ancrages": [
+   {
+    "id": "AN-GUIDANCE-REITEREE",
+    "moteur": "Guidance FY2026 reiteree sans changement au S1 26 (EBITDA >450 M€, BPA +5%+, FCF ~200 M€), avec une acceleration attendue de la generation de cash au S2 explicitement mentionnee par le management. Le CEO reconnait en Q&A (question Kepler Cheuvreux) que le consensus EBITDA (~450-451 M€) pourrait sembler conservateur compte tenu du rythme S1, mais maintient une position prudente ('trop tot', 'garder un oeil sur l'annee prochaine') sans relever formellement la guidance - retenu tel quel dans le modele, aucun ajustement a la hausse injecte sur la base d'une declaration non chiffree.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-AMSUD-ACCELERATION",
+    "moteur": "Amerique du Sud (Chili) en forte croissance confirmee : ventes S1 26 +14% pro forma, marge EBITDA 37,6% (la plus elevee des trois zones, quoique en repli vs 38,5% un an plus tot), volumes T2 +4%+ et prix +3,5% (inflation locale) - moteur de croissance et de marge le plus solide du groupe. Le CEO confirme etre encore en phase de construction de la plateforme (entree il y a ~2 ans), avec des opportunites de M&A regionales explorees mais non engagees a ce stade.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-EUROPE-UK-FAIBLESSE",
+    "moteur": "Demande europeenne et britannique toujours atone mais en amelioration sequentielle : volumes Europe +1,5% au T2 (prix -3%), volumes UK&Irlande -7% au T2 mais en nette amelioration vs T1 (-9%), le CEO anticipant une recuperation progressive des volumes perdus etalee sur 2026-2027 (pas totalement cette annee) grace a une concurrence moins intense des importateurs, eux-memes sous pression inflationniste.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-DILUTION-ACTIONS-GRATUITES",
+    "moteur": "Nombre d'actions moyen pondere S1 26 (~34,9M, calcule a partir du BPA et du benefice net publies) nettement superieur a l'hypothese de creation (33,8M pour l'annee complete) - effet de l'emission d'actions gratuites de novembre 2025 sous-estime initialement.",
+    "applique": [
+     "omniumShares.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-RACHAT-ANNULATION-EXTENDED",
+    "moteur": "Extension extraordinaire du programme de rachat d'actions a 3% du capital (annoncee avec les resultats S1 26, en deux etapes depuis 1% initial), avec objectif d'annulation - enveloppe totale de remuneration actionnariale >150 M€ en 2026, consommant une part significative du FCF attendu et reduisant progressivement le nombre d'actions sur l'horizon de projection (effet compensateur partiel de la dilution des actions gratuites).",
+    "applique": [
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-DETTE-DESENDETTEMENT-RALENTI",
+    "moteur": "Dette nette au 30/06/2026 a 252,3 M€ (0,6x EBITDA pro forma LTM), quasiment stable depuis fin mars (273 M€) malgre un FCF positif, du fait de la hausse du dividende (+15%) et de l'extension du programme de rachat - le narratif 'quasiment sans dette' evoque au T1 26 est invalide par ce refresh ; trajectoire de desendettement revisee nettement a la hausse (moins de baisse) sur tout l'horizon de projection. CapEx volontairement eleve (~8% du CA, vs ~4% de maintenance normative) confirme intentionnel par le CEO, sans normalisation avant 2027 au plus tot - ne compromet pas la trajectoire de FCF si les profits operationnels continuent de croitre.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 6.86,
+   "2027": 7.27,
+   "2028": 7.71,
+   "2029": 8.13,
+   "2030": 8.54
+  },
+  "omniumCA": {
+   "2026": 1500,
+   "2027": 1545,
+   "2028": 1595,
+   "2029": 1645,
+   "2030": 1695
+  },
+  "omniumEBIT": {
+   "2026": 288,
+   "2027": 299,
+   "2028": 312,
+   "2029": 325,
+   "2030": 338
+  },
+  "omniumNet": {
+   "2026": 237,
+   "2027": 247,
+   "2028": 258,
+   "2029": 268,
+   "2030": 278
+  },
+  "omniumND": {
+   "2026": 200,
+   "2027": 170,
+   "2028": 140,
+   "2029": 110,
+   "2030": 80
+  },
+  "omniumShares": {
+   "2026": 34.5,
+   "2027": 34.0,
+   "2028": 33.5,
+   "2029": 33.0,
+   "2030": 32.5
+  },
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 1.53,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 1.83,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 1.85,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 1.65,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 1.62,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 1.94,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 1.97,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 1.74,
+     "actual": false
+    }
+   ]
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -1.5,
+    "other": 0,
+    "taxRate": 0.21,
+    "minorities": 0,
+    "netCalc": 220.0,
+    "netPub": 220,
+    "residual": 0,
+    "residualNote": "Reconciles cleanly: minimal net financial charge on the low debt, ETR ~21%. NOTE 2024: published net (298) nearly equals EBIT (300) - the Italy-disposal year, treated in the historical series; projections use 18% (Spanish group blended with UK/Brazil-Chile mix)."
+   },
+   "2026": {
+    "finNet": 1,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 237.3
+   },
+   "2027": {
+    "finNet": 2,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 247.1
+   },
+   "2028": {
+    "finNet": 3,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 258.1
+   },
+   "2029": {
+    "finNet": 2,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 268.1
+   },
+   "2030": {
+    "finNet": 1,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 277.9
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS growth (guided floor: +5%+) + EBITDA >450M / FCF ~200M",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-23",
+     "type": "guidance_revised",
+     "detail": "FY26 reiterated unchanged (EBITDA >450M, EPS +5%+, FCF ~200M) with H2 cash-generation acceleration explicitly flagged."
+    }
+   ],
+   "paceCheckpoint": "H1 real: organic demand still soft (-3.8% cc) but margin discipline delivered EBITDA +110bp (29.9%) and net +8.9% (117.4M); Chile outperforming (sales +14% pro forma, EBITDA margin 37.6%).",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 6.9,
+    "source": "initial_guidance",
+    "date": "2026-04-29",
+    "note": "FY26 guided: EBITDA >450M, EPS +5%+ (floor: 6.57 FY25 x 1.05 = 6.90), FCF ~200M - benchmarked against a 2025 PRO FORMA including Chile full-year. Reiterated unchanged at Q2. Omnium 2026 (6.86) sits MARGINALLY BELOW the guided floor: the share-count correction (the Nov-2025 bonus-share issue was undercounted at creation - 34.5M vs 33.8M) trims the Omnium EPS; flagged, to re-arbitrate at Q3."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. First measurement at the FY26 close vs the 6.90 floor - note Omnium's own build sits 0.6% below it on the share-count correction (see anchor note).",
+   "consensusSource": "Stocks Report (12 analysts)",
+   "consensusDate": "2026-06-22"
+  },
+  "revisionEvent": {
+   "date": "2026-07-23",
+   "label": "H1 2026",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "H1 2026 exploited via release/call; IFRS interim statements not line-by-line exploited at this refresh."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-23",
+    "source": "H1 release/call (as exploited at the 23/07 refresh)",
+    "message": "Resilient-margin thesis confirmed: organic demand still negative (-3.8% cc) yet EBITDA margin +110bp to 29.9% and net +8.9% (117.4M) on cost discipline; Chile the standout (sales +14% pro forma, EBITDA margin 37.6% - highest of the three zones); guidance reiterated (EBITDA >450M, EPS +5%+, FCF ~200M) with H2 cash acceleration flagged; share count corrected upward (Nov-2025 bonus issue undercounted at creation: H1 EPS 3.36 on 117.4M implies ~34.9M weighted average)."
+   }
+  ]
+ }
 }
