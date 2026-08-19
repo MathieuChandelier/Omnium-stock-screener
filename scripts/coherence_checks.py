@@ -241,6 +241,11 @@ def c13():
             incl=bool(a.get('epsOnly'))
             evs=[d for d in dates
                  if (d>=a['date'] if incl else d>a['date']) and d<=b['date']]
+            # Un revisionEvent declare sur le snapshot porteur vaut evenement
+            # causal meme si sa date precede l'intervalle de capture (cas :
+            # revision issue de la lecture tardive d'un transcript).
+            if not evs and (b.get('revisionEvent') or {}).get('date'):
+                continue
             if not evs:
                 bad.append((tk,f"{a['date']} -> {b['date']} : {len(chg)} annee(s) "
                                f"revisee(s), aucun evenement date dans l'intervalle"))
@@ -611,8 +616,8 @@ def w6():
     # nouvelles nomenclatures, budget total <= ~9000 car., Lecture de
     # these en 3-5 puces. Les fiches anterieures (ex. MSFT du 30/07 :
     # 10213 car., 6 rubriques anciennes) se compacteront a LEUR refresh.
-    ATTENDU=['SYNTHESE DE LA THESE','LECTURE DE THESE','PARTICULARITES',
-             'PARAMETRES & WATCH-LIST','CATALYSEURS']
+    ATTENDU=['THESIS SUMMARY','THESIS READ','SPECIAL FACTORS',
+             'PARAMETERS & WATCH-LIST','CATALYSTS']
     import re as _re
     bad=[]
     for tk,t in FICHES.items():
@@ -625,8 +630,8 @@ def w6():
         vieux=[r for r in rub if r not in ATTENDU]
         if manq: bad.append((tk,f'rubriques manquantes : {manq}'))
         if vieux: bad.append((tk,f'anciennes rubriques : {vieux}'))
-        m=_re.search(r'== LECTURE DE THESE ==\n(.*?)(?=\n== |$)',txt,_re.S)
-        if m and 'Aucune inflexion' not in m.group(1):
+        m=_re.search(r'== THESIS READ ==\n(.*?)(?=\n== |$)',txt,_re.S)
+        if m and 'No thesis inflection' not in m.group(1):
             n=sum(1 for l in m.group(1).splitlines() if l.strip().startswith('-'))
             if not 3<=n<=5: bad.append((tk,f'Lecture de these : {n} puce(s), attendu 3-5'))
     return bad

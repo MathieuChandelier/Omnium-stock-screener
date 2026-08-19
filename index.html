@@ -2439,25 +2439,12 @@ function buildValoChartSVG(ticker, opts){
   // epsByYear deja present sur chaque snapshot.
   const earningsDates=(ph.earningsDates && ph.earningsDates[ticker]) || [];
 
-  // REVISIONS : rattachees a l'EVENEMENT qui les cause, pas au snapshot qui
-  // les revele. Une revision est constatee entre deux captures, mais elle a
-  // eu lieu a une date precise et connue - resultats, CMD - archivee dans
-  // earningsDates. Marquer la capture (ex. MSFT : projection revisee aux
-  // resultats du 30/07, premiere capture posterieure le 10/08) placait la
-  // pastille dix jours trop tard, sur une date ou rien ne s'est produit.
-  // Sans evenement identifie dans l'intervalle, aucune pastille : on ne
-  // sait pas dater la revision, donc on ne la situe pas.
-  const revisionDates=[];
-  for(let i=1;i<allSnaps.length;i++){
-    const prevV=seriesRawEps(allSnaps[i-1], series), curV=seriesRawEps(allSnaps[i], series);
-    if(prevV==null || curV==null || Math.abs(curV-prevV)<=1e-9) continue;
-    const a=allSnaps[i-1].date, b=allSnaps[i].date;
-    const evs=earningsDates.filter(d=>d>a && d<=b);
-    if(evs.length) revisionDates.push(evs[evs.length-1]);
-  }
   const inflexionIdx=new Set();   // conserve pour les mini-cartes (compact)
   const winStart=points[0].snap.date, winEnd=points[points.length-1].snap.date;
-  const visibleEarnings=compact ? [] : earningsDates.filter(d=>d>=winStart && d<=winEnd);
+  const extraEvent=(state.tickers[ticker]?.hypothese||{}).revisionEvent;
+  const allEventDates=earningsDates.concat(
+    (extraEvent&&extraEvent.date&&!earningsDates.includes(extraEvent.date))?[extraEvent.date]:[]);
+  const visibleEarnings=compact ? [] : allEventDates.filter(d=>d>=winStart && d<=winEnd).sort();
 
   const xyPts=points.map(p=>[xOf(p.snap.date), yOf(p.y)]);
   const lineD=smoothPathD(xyPts);
@@ -2513,30 +2500,37 @@ function buildValoChartSVG(ticker, opts){
     }).join('');
   })();
 
-  const earningsMarks=visibleEarnings.map(d=>{
-    const xd=xOf(d).toFixed(1);
-    return `<line x1="${xd}" x2="${xd}" y1="${padT}" y2="${(padT+plotH).toFixed(1)}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2,3" opacity=".5"><title>Earnings – ${formatFrDate(d)}</title></line>`;
+  // Ordonnee du trace principal a un x quelconque (interpolation lineaire).
+  const curveYAtX=(x)=>{
+    if(!xyPts.length) return padT+plotH/2;
+    if(x<=xyPts[0][0]) return xyPts[0][1];
+    const last=xyPts[xyPts.length-1];
+    if(x>=last[0]) return last[1];
+    for(let i=1;i<xyPts.length;i++){
+      if(x<=xyPts[i][0]){
+        const [x0,y0]=xyPts[i-1],[x1,y1]=xyPts[i];
+        return y0+(y1-y0)*((x-x0)/((x1-x0)||1));
+      }
+    }
+    return last[1];
+  };
+  // MARQUEURS D'EVENEMENTS SOCIETE (E7 quinquies) : pastille teal =
+  // resultats, gold = evenement particulier (CMD, acquisition...), chacune
+  // DOCUMENTEE par son intitule au-dessus - donc aucune legende requise.
+  // L'intitule bascule sous la pastille si le haut du cadre le rognerait.
+  const evMapPE=compact?{}:companyEventsMap(ticker);
+  const earningsMarks=compact?'':visibleEarnings.map(d=>{
+    const ev=evMapPE[d]||{label:'Earnings',type:'earnings'};
+    const x=xOf(d), y=curveYAtX(x);
+    const col=ev.type==='earnings'?'var(--teal)':'var(--gold)';
+    const above=y-10>padT+8;
+    const ly=above?y-9:y+16;
+    const halfW=(ev.label||'').length*2.9;
+    const lx=Math.min(Math.max(x,padL+halfW),padL+plotW-halfW);
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${col}" stroke="var(--navy)" stroke-width="1"><title>${ev.label} – ${formatFrDate(d)}</title></circle>`
+      +`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${ev.label}</text>`;
   }).join('');
 
-  // Pastille de revision posee A LA DATE DE L'EVENEMENT, projetee sur le
-  // trace par interpolation lineaire (l'evenement ne tombe pas forcement un
-  // jour de capture). Hors fenetre affichee, rien n'est dessine.
-  const revisionMarks=compact ? '' : revisionDates
-    .filter(d=>d>=winStart && d<=winEnd)
-    .map(d=>{
-      const x=xOf(d);
-      let y=xyPts[0][1];
-      for(let i=1;i<xyPts.length;i++){
-        if(x<=xyPts[i][0]){
-          const [x0,y0]=xyPts[i-1], [x1,y1]=xyPts[i];
-          y=y0+(y1-y0)*((x-x0)/((x1-x0)||1));
-          break;
-        }
-        y=xyPts[i][1];
-      }
-      const ev=findRevisionEvent(ticker, d);
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="var(--gold)" stroke="var(--navy)" stroke-width="1"><title>Estimates revised – ${ev?ev.label+' ':''}${formatFrDate(d)}</title></circle>`;
-    }).join('');
 
   // Moyenne : pointille gris discret, etiquette POSEE AU-DESSUS du trait
   // (jamais a cheval, elle serait barree) et sans aplat de fond. En
@@ -2604,7 +2598,6 @@ function buildValoChartSVG(ticker, opts){
   // Remonte a l'appelant ce qui est REELLEMENT trace, pour que la legende
   // n'annonce jamais un marqueur absent de l'ecran.
   if(opts.out){
-    opts.out.hasRevision=revisionDates.some(d=>d>=winStart && d<=winEnd);
     opts.out.hasEarnings=visibleEarnings.length>0;
     opts.out.hasAvg=avg!=null;
   }
@@ -2668,7 +2661,11 @@ function buildValoChartSVG(ticker, opts){
     // forment la ligne de tete du graphique, ce qui vaut mieux qu'un
     // intitule flottant a quelques pixels du premier chiffre - il y etait
     // trop pres et ecrasait la colonne.
-    const head=`<text x="${(lx+7).toFixed(1)}" y="15" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">TODAY</text>`;
+    // Centre exactement au-dessus de la colonne de valeurs : ancre middle
+    // sur le milieu optique des libelles (les valeurs font ~34px a 13px de
+    // corps). Corps 11 : coiffe la colonne sans rivaliser avec les chiffres.
+    const colMid=lx+7+17;
+    const head=`<text x="${colMid.toFixed(1)}" y="15" font-size="11" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="middle">TODAY</text>`;
     return head+items.map(it=>{
       const lead=Math.abs(it.ny-it.y)>1.5
         ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
@@ -2693,7 +2690,6 @@ function buildValoChartSVG(ticker, opts){
     <path d="${lineD}" fill="none" stroke="${lineColor}" stroke-width="${compact?1.75:2.25}" stroke-linejoin="round" stroke-linecap="round"/>
     ${avgMark}
     ${dots}
-    ${revisionMarks}
     ${endLabel}
     ${xAxis}
     ${hitTargets}
@@ -2817,6 +2813,25 @@ function openValoFromRanking(ticker){
 // instants passes, et superpose plusieurs de ces courbes pour montrer
 // comment la projection elle-meme a bouge - translation vers le haut/bas,
 // changement de pente, revision concentree sur une annee precise.
+// Carte des EVENEMENTS SOCIETE d'un titre : dates declarees par la fiche
+// (guidanceHistory, coherenceQualitative.historique, revisionEvent). C'est
+// la seule source des marqueurs de graphique - jamais une date de refresh
+// interne Omnium (principe E7 quinquies).
+function companyEventsMap(ticker){
+  const t=state.tickers && state.tickers[ticker];
+  const map={};
+  if(!t) return map;
+  ((t.coherenceQualitative||{}).historique||[]).forEach(e=>{
+    if(e && e.date && e.quarter) map[e.date]={label:e.quarter,type:'earnings'};
+  });
+  ((t.hypothese||{}).guidanceHistory||[]).forEach(g=>{
+    if(g && g.date && !map[g.date]) map[g.date]={label:g.quarter||'Earnings',type:'earnings'};
+  });
+  const rev=(t.hypothese||{}).revisionEvent;
+  if(rev && rev.date && !map[rev.date]) map[rev.date]={label:rev.label||'Event',type:rev.type||'event'};
+  return map;
+}
+
 function distinctEpsByYearStates(snapshots){
   // Un point par REVISION reelle, jamais un point par snapshot - la
   // courbe est identique entre deux refresh, la dupliquer n'apporterait
@@ -2827,7 +2842,7 @@ function distinctEpsByYearStates(snapshots){
     if(!s.epsByYear) return;
     const key=JSON.stringify(Object.keys(s.epsByYear).sort().map(y=>[y,s.epsByYear[y]]));
     if(key!==lastKey){
-      out.push({date:s.date, epsByYear:s.epsByYear});
+      out.push({date:s.date, epsByYear:s.epsByYear, revisionEvent:s.revisionEvent||null});
       lastKey=key;
     }
   });
@@ -2838,8 +2853,34 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
   const snaps=entry ? (entry.snapshots||[]) : [];
-  const states=distinctEpsByYearStates(snaps);
-  if(!states.length) return null;
+  const rawStates=distinctEpsByYearStates(snaps);
+  if(!rawStates.length) return null;
+  // Chaque frontiere entre deux etats est rattachee a son EVENEMENT SOCIETE :
+  // revisionEvent du snapshot porteur, sinon un evenement declare dans
+  // l'intervalle. Sans evenement, ou si l'evenement est le meme que celui de
+  // la courbe precedente (revision interne affinant la meme publication),
+  // le nouvel etat ABSORBE le precedent : l'archive garde tout, l'affichage
+  // ne montre que les etats correspondant a la vie de la societe.
+  const evMap=companyEventsMap(ticker);
+  const evDates=Object.keys(evMap).sort();
+  const states=[];
+  rawStates.forEach((st,i)=>{
+    if(i===0){ states.push({...st, event:null}); return; }
+    let ev=null;
+    if(st.revisionEvent && st.revisionEvent.date)
+      ev={date:st.revisionEvent.date, label:st.revisionEvent.label, type:st.revisionEvent.type||'earnings'};
+    else{
+      const prev=rawStates[i-1].date;
+      const d=evDates.filter(x=>x>prev && x<=st.date).pop();
+      if(d) ev={date:d, label:evMap[d].label, type:evMap[d].type};
+    }
+    const last=states[states.length-1];
+    if(!ev || (last.event && last.event.date===ev.date)){
+      last.epsByYear=st.epsByYear; last.date=st.date;   // absorption
+    }else{
+      states.push({...st, event:ev});
+    }
+  });
   const shown=states.slice(-(maxCurves||6));
 
   const allYears=new Set();
@@ -2966,6 +3007,42 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     if(over>0) ord.forEach(o=>o.ny-=over);
     const pos=[]; ord.forEach(o=>pos[o.j]=o.ny);
     const x0=xOf(end);
+    // Une etiquette d'horizon intermediaire peut se poser SUR une courbe qui
+    // continue a droite (defaut constate : "10 Aug '26" sur la courbe 2031).
+    // Pour chaque etiquette : echantillonner l'ordonnee des AUTRES courbes
+    // sur la largeur du texte, et decaler verticalement vers le premier
+    // emplacement libre (le filet de rappel garde le lien avec l'ancre).
+    const yearAtX=(x)=> yFirst + ((x-padL)/plotW)*(yLast-yFirst);
+    const stateYAt=(st,x)=>{
+      const ys=years.filter(yy=>typeof st.epsByYear[String(yy)]==='number');
+      if(ys.length<2) return null;
+      const fy=yearAtX(x);
+      if(fy<ys[0]||fy>ys[ys.length-1]) return null;
+      let k=1; while(k<ys.length && ys[k]<fy) k++;
+      const a=ys[k-1], b=ys[Math.min(k,ys.length-1)];
+      const va=st.epsByYear[String(a)], vb=st.epsByYear[String(b)];
+      const f=(b>a)?(fy-a)/(b-a):0;
+      return yOf(va+(vb-va)*f);
+    };
+    keep.forEach((i,j)=>{
+      const labW=(shown[i].event?shown[i].event.label:shortDate(shown[i].date)).length*5.4+8;
+      const clash=(yy)=>shown.some((st,si)=>{
+        if(si===i) return false;
+        for(let k=0;k<=4;k++){
+          const cy=stateYAt(st, x0+7+labW*k/4);
+          if(cy!=null && Math.abs(cy-yy)<8) return true;
+        }
+        return false;
+      });
+      if(clash(pos[j])){
+        for(const off of [-13,13,-26,26]){
+          const cand=pos[j]+off;
+          if(cand<padT+6||cand>padT+plotH-2) continue;
+          if(keep.some((_,jj)=>jj!==j&&Math.abs((pos[jj]??-1e9)-cand)<11)) continue;
+          if(!clash(cand)){ pos[j]=cand; break; }
+        }
+      }
+    });
     let out=keep.map((i,j)=>{
       const iy=yOf(shown[i].epsByYear[String(end)]);
       const isLast=i===n-1;
@@ -2976,7 +3053,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       // paint-order:stroke = halo blanc : une etiquette d'horizon
       // intermediaire se pose forcement sur les courbes qui vont plus loin
       // a droite, le halo la detache sans la deplacer de son ancrage.
-      return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shortDate(shown[i].date)}</text>`;
+      return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shown[i].event?shown[i].event.label:shortDate(shown[i].date)}</text>`;
     }).join('');
     if(idx.length>keep.length)
       out+=`<text x="${(x0+7).toFixed(1)}" y="${(Math.max(...pos)+14).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">+${idx.length-keep.length}</text>`;
@@ -3075,10 +3152,10 @@ function renderValoHistory(ticker){
       compact:false, width:chartW, out, extraSeries,
       seriesLabel:String(yrOf(st.seriesKind)||'')});
     chartHtml=chart || '<div class="vr-empty">Not enough data points for this period.</div>';
-    const legs=[];
-    if(out.hasRevision) legs.push('<span><span class="vr-leg-dot"></span>Revised estimate</span>');
-    if(out.hasEarnings) legs.push('<span><span class="vr-leg-dash"></span>Earnings</span>');
-    legendHtml=legs.join('');
+    // Plus de legende : chaque marqueur porte son intitule au-dessus de
+    // lui (pastilles d'evenements documentees), une correspondance a
+    // decoder n'a plus d'objet.
+    legendHtml='';
   }
   const showPeriodRow=st.mode!=='projection' && availPeriods.length>0;
 
@@ -3489,15 +3566,25 @@ function buildGuidanceScorecard(ticker){
   })();
 
 
+  // Sous-titre : en regime annuel, decrire la MESURE (exercices comptes,
+  // nature d'ancre, ancre de l'exercice en cours) - "Quarterly guidance"
+  // decrivait le suivi trimestriel et contredisait le heros annuel. Le
+  // detail cadence/metrique reste accessible dans le contenu deplie.
+  const ai=gs.anchorInitial;
+  const nFY=(gs.annualBeatHistory||[]).filter(e=>e&&!e.excluded).length;
+  const sub=annual
+    ? `${nFY} fiscal year${nFY>1?'s':''} measured vs initial ${against}${ai&&ai.value!=null?` · FY${ai.fy} anchor ${(+ai.value).toFixed(2)}$`:''}`
+    : `${cadenceLabel} · ${gs.metric||''}`;
   return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
     ${hero||`<div style="font-size:13px;color:var(--navy);">${summary}</div>`}
-    <p style="font-size:9.5px;color:var(--muted);margin:5px 0 0;">${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>
+    <p style="font-size:9.5px;color:var(--muted);margin:5px 0 0;">${esc(sub)}</p>
     ${track}
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:10px;">
       <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">Track record</span>
       <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
+      ${annual?`<p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)} · ${esc(gs.metric||'')}</p>`:''}
       <div style="margin-top:9px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
     </div>
   </div>`;

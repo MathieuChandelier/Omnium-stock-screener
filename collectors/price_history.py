@@ -127,8 +127,10 @@ def collect_earnings_dates(ticker_data: dict):
         d = row.get("date")
         if d:
             dates.add(d)
-    if hyp.get("date"):
-        dates.add(hyp["date"])
+    # hypothese.date N'EST PLUS ajoute (18/08/2026) : une date de refresh
+    # interne n'est pas un evenement societe - principe d'affichage E7
+    # quinquies. Seules les dates declarees par la fiche (guidanceHistory,
+    # coherenceQualitative.historique) sont des evenements.
     return dates
 
 
@@ -171,6 +173,11 @@ def snapshot_ticker(ticker: str, run_date_str: str):
         return ticker, None, "fetch_error"
 
     snap = {"date": run_date_str, "price": round(price, 2), "cyYear": cy, "nyYear": ny}
+    # Evenement causal de la derniere revision (E7 quinquies) : copie tel
+    # quel pour que l'app rattache les millesimes aux evenements societe.
+    rev_event = hyp.get("revisionEvent")
+    if isinstance(rev_event, dict) and rev_event.get("date"):
+        snap["revisionEvent"] = rev_event
     if eps_by_year:
         snap["epsByYear"] = eps_by_year
     if eps_fwd is not None:
