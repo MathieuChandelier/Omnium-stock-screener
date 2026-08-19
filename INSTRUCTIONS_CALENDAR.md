@@ -15,7 +15,10 @@ C'est une boucle MANUELLE : l'utilisateur lance la session lui-meme
 ## OPERATION
 
 Pour CHAQUE ticker de `data/manifest.json`, rechercher les evenements
-publics a venir sur une fenetre de 10 SEMAINES glissantes :
+publics a venir sur une fenetre de 2 SEMAINES ET 1 JOUR : du jeudi du
+run au VENDREDI de la deuxieme semaine qui suit (J+15 inclus), pas plus -
+le calendrier ne couvre que le proche horizon, c'est le run suivant qui
+prolongera :
 - resultats trimestriels/annuels (la source primaire : page IR, calendrier
   d'earnings officiel) ;
 - conferences brokers et fireside chats (agendas des conferences sante/
@@ -40,13 +43,16 @@ REGLES :
 - JAMAIS de date inventee : `estimated` exige une logique de deduction
   citee dans `note` (cadence des communiques passes).
 - Les evenements passes sortent du fichier ; les selections utilisateur
-  vivent cote serveur (calendar.php), PAS ici.
+  vivent cote serveur (calendar.php), PAS ici. Le run n'a PAS a connaitre
+  les selections : il regenere toute la fenetre, et c'est l'app qui
+  masque du tri les evenements DEJA ACCEPTES (dedup par `id` stable -
+  d'ou l'importance de la convention d'id).
 - Compacite : `label` <= 60 caracteres, `note` une ligne.
 
 ## LIVRABLES (deux fichiers, un commit)
 
 1. `data/calendarCandidates.json` COMPLET :
-   `{"_meta":{"generatedAt":"<ISO UTC de ce run>","window":"10w"},
+   `{"_meta":{"generatedAt":"<ISO UTC de ce run>","window":"J+15"},
      "events":[...]}` - le fichier est REGENERE entierement a chaque run
    (les ids stables assurent la continuite des selections).
 2. `data/nextEvents.json` mis a jour (l'ancien livrable de l'Operation C,

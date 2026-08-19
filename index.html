@@ -1078,6 +1078,10 @@ function ensureUserIdentity(){
 }
 
 async function fetchDismissedNewsDates(){
+  // News masquees (19/08/2026) : plus aucun appel a dismiss.php - le
+  // fichier peut etre SUPPRIME du serveur (calendar.php le remplace
+  // comme seule brique cote model.omnium-capital.com).
+  return new Set();
   const userId=getUserId();
   if(!userId)return new Set();
   try{
@@ -1292,7 +1296,7 @@ window.addEventListener('popstate', function(e){
     syncAnalyseHeader(CT);
     showTab('analyse', null, true);
   } else if(st && st.omniumTab==='news'){
-    showTab('news', null, true);
+    showTab('portefeuille', document.getElementById('tab-btn-pf'), true);   // news masquees 19/08
   } else if(st && st.omniumTab==='valuerankings'){
     showTab('valuerankings', null, true);
   } else {
@@ -3794,6 +3798,10 @@ function newsBarLines(){
 }
 
 function renderNewsBar(){
+  // NEWS MASQUEES (decision 19/08/2026) : boucle auto supprimee, la
+  // nouvelle boucle news se concevra avec le dashboard - d'ici la, ni
+  // barre ni onglet. Code et donnees conserves pour la reconstruction.
+  const _w=document.getElementById('news-bar-wrap'); if(_w)_w.innerHTML=''; return;
   const wrap=document.getElementById('news-bar-wrap');
   if(!wrap)return;
   const lines=newsBarLines();
@@ -3985,6 +3993,9 @@ function dismissWeeklyAi(dateStr){
 function renderWeeklyAiBar(){
   const wrap=document.getElementById('weekly-ai-bar-wrap');
   if(!wrap)return;
+  // Masque avec le reste du volet news/veille (19/08/2026) - le collecteur
+  // web qui l'alimentait est supprime, la notification n'a plus de source.
+  wrap.innerHTML=''; return;
   const runDate=weeklyAiRunDate();
   const items=weeklyAiItems();
   if(!runDate || !items.length || isWeeklyAiDismissed(runDate)){ wrap.innerHTML=''; return; }
@@ -4309,17 +4320,22 @@ function calPillState(){
   const cc=state.calendarCandidates||null;
   const gen=cc&&cc._meta&&cc._meta.generatedAt||null;
   const due=!gen || new Date(gen)<lastThursday();
-  const cands=calUpcoming(cc&&cc.events);
+  // Fenetre stricte J+15 (jeudi du run -> vendredi de la 2e semaine) et
+  // DEDUP : un evenement deja accepte ne se re-propose JAMAIS (id stable).
+  let cands=calUpcoming(cc&&cc.events);
+  if(gen){
+    const lim=new Date(new Date(gen.slice(0,10)+'T00:00:00Z').getTime()+15*86400e3).toISOString().slice(0,10);
+    cands=cands.filter(e=>e.date<=lim);
+  }
+  cands=cands.filter(e=>!calIsSelected(e.id));
   const actions=(gen && cands.length && (!_calData.lastTriaged || _calData.lastTriaged<gen)) ? cands.length : 0;
   return {due, actions, gen, cands};
 }
-function gcalUrl(e){
-  const d=(e.date||'').replace(/-/g,'');
-  const end=new Date(new Date(e.date+'T00:00:00Z').getTime()+86400e3).toISOString().slice(0,10).replace(/-/g,'');
-  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-    +'&text='+encodeURIComponent((e.ticker||'')+' — '+(e.label||''))
-    +'&dates='+d+'/'+end
-    +'&details='+encodeURIComponent([(e.type||''),(e.status||''),(e.source||'')].filter(Boolean).join(' · '));
+function calFeedUrl(){ return 'https://model.omnium-capital.com/calendar.php?user='+encodeURIComponent(getUserId())+'&ics=1'; }
+function calGoogleLink(cls){
+  if(_calRemote!==true) return '';
+  const href='https://calendar.google.com/calendar/render?cid='+encodeURIComponent(calFeedUrl());
+  return `<a href="${href}" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--teal-dark-text);text-decoration:none;text-transform:none;letter-spacing:0;" title="One-time: adds the Omnium Market Calendar feed to your Google Calendar. Every event you tick then syncs on its own.">Add to Google Calendar</a>`;
 }
 function calIsSelected(id){ return (_calData.selected||[]).some(e=>e&&e.id===id); }
 function calToggleEvent(id){
@@ -4330,10 +4346,11 @@ function calToggleEvent(id){
     _calData.selected=_calData.selected.filter(e=>e.id!==id);
     calPost('remove',{id});
   } else {
+    // Silencieux par design (decision 19/08) : la coche part au serveur,
+    // le flux .ics se met a jour, Google le relit tout seul - aucune
+    // fenetre Google n'est ouverte.
     _calData.selected.push(ev);
     calPost('add',{event:ev});
-    // Ajout instantane cote Google : brouillon pre-rempli, l'utilisateur valide.
-    try{ window.open(gcalUrl(ev),'_blank','noopener'); }catch(e){}
   }
   renderActionsBar(); renderMarketCalendar();
 }
@@ -4369,26 +4386,26 @@ function renderCalendarPills(){
     </div>`;
   }
   if(_calTriageOpen&&st.actions){
+    const calIco=(sel)=>`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>${sel?'<path d="M9 16l2 2 4-4"/>':''}</svg>`;
     const rows=st.cands.map(e=>{
-      const sel=calIsSelected(e.id);
       const dd=new Date(e.date+'T00:00:00Z');
       const MOIS_C=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return `<div style="display:grid;grid-template-columns:52px 86px 1fr 30px;gap:10px;align-items:center;padding:8px 13px;border-top:1px solid var(--border);">
+      return `<div style="display:grid;grid-template-columns:48px 92px 1fr 32px;gap:10px;align-items:center;padding:8px 13px;border-top:1px solid var(--border);">
         <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);white-space:nowrap;">${dd.getUTCDate()} ${MOIS_C[dd.getUTCMonth()]}</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:5px;padding:2px 0;text-align:center;overflow:hidden;text-overflow:ellipsis;">${esc(e.ticker)}</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
         <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--text);line-height:1.35;">${esc(e.label)}
-          <small style="display:block;font-size:9.5px;color:${e.status==='estimated'?'var(--gold-text)':'var(--muted)'};font-weight:500;">${esc(e.source)} · ${e.status==='estimated'?'estimated':'confirmed'}</small></span>
-        <button onclick="calToggleEvent('${esc(e.id)}')" title="${sel?'Remove from my calendar':'Add to my calendar (Google)'}" style="width:26px;height:26px;border-radius:7px;border:1px solid ${sel?'var(--navy)':'var(--border)'};background:${sel?'var(--navy)':'#fff'};color:${sel?'#fff':'var(--navy)'};font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;line-height:1;">${sel?'✓':'+'}</button>
+          <small style="display:block;font-size:9.5px;color:var(--muted);font-weight:500;">${e.status==='estimated'?'<span style="color:var(--gold-text);font-weight:600;">estimated</span>':'confirmed'} · ${esc(e.source)}</small></span>
+        <button onclick="calToggleEvent('${esc(e.id)}')" title="Add to my calendar" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:#fff;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;">${calIco(false)}</button>
       </div>`;
     }).join('');
     panel=`<div style="border:1px solid var(--teal);border-radius:11px;margin-top:8px;overflow:hidden;">
-      <div style="display:flex;justify-content:space-between;align-items:center;background:#e6faf6;padding:9px 13px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--border);">
         <b style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--teal-dark-text);">Calendar actions — ${st.actions} upcoming event${st.actions>1?'s':''}</b>
-        <span style="font-size:9.5px;color:var(--teal-dark-text);">run of ${st.gen?formatFrDate(st.gen.slice(0,10)):''}</span>
+        ${calGoogleLink()}
       </div>
       ${rows}
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 13px;border-top:1px solid var(--border);background:#fafaff;">
-        <span style="font-size:9.5px;color:var(--muted);">+ adds to your Google Calendar and to the dashboard below · unchecked lines are archived, not lost</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 13px;border-top:1px solid var(--border);">
+        <span style="font-size:9.5px;color:var(--muted);">a ticked event lands in your Google Calendar on its own (subscribed feed) · unticked lines are archived, not lost</span>
         <button onclick="calTriageDone()" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--teal-dark-text);border:none;border-radius:8px;padding:6px 14px;cursor:pointer;">Done</button>
       </div>
     </div>`;
@@ -4404,12 +4421,10 @@ function renderMarketCalendar(){
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
   const sel=calUpcoming(_calData.selected);
   if(!sel.length){ wrap.innerHTML=''; return; }
-  const tag=(tp)=>{
-    const m={earnings:['#e6faf6','var(--teal-dark-text)','Earnings'],cmd:['#fdf3d8','var(--gold-text)','CMD'],
-             conference:['var(--navy-light)','var(--navy)','Conference'],agm:['var(--navy-light)','var(--navy)','AGM']};
-    const [bg,col,lbl]=m[tp]||['var(--navy-light)','var(--navy)',tp||'Event'];
-    return `<span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:${bg};color:${col};white-space:nowrap;">${lbl}</span>`;
-  };
+  // Discipline (19/08) : 2 corps (11,5 / 9,5), navy + un accent teal,
+  // dore reserve au statut estimated - un seul style de tag.
+  const TYPE_LBL={earnings:'Earnings',cmd:'CMD',conference:'Conference',agm:'AGM',other:'Event'};
+  const tag=(tp)=>`<span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;border-radius:5px;padding:2px 8px;background:var(--navy-light);color:var(--navy);white-space:nowrap;">${TYPE_LBL[tp]||'Event'}</span>`;
   const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
   const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
   const groups=[];
@@ -4422,11 +4437,12 @@ function renderMarketCalendar(){
   const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const rows=(items)=>items.map(e=>{
     const d=new Date(e.date+'T00:00:00Z');
-    return `<div style="display:grid;grid-template-columns:46px 86px 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid #f2f3f9;">
+    return `<div style="display:grid;grid-template-columns:46px 92px 1fr auto 20px;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid #f2f3f9;">
       <div style="text-align:center;"><div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);line-height:1;">${d.getUTCDate()}</div><div style="font-size:9.5px;color:var(--muted);">${MOIS[d.getUTCMonth()]}</div></div>
-      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--navy);border-radius:5px;padding:2px 0;text-align:center;overflow:hidden;text-overflow:ellipsis;">${esc(e.ticker)}</span>
+      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
       <span style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--text);line-height:1.35;">${esc(e.label)}${e.status==='estimated'?` <small style="font-size:9.5px;color:var(--gold-text);font-weight:600;">estimated</small>`:''}</span>
       ${tag(e.type)}
+      <span onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar" style="cursor:pointer;font-size:11.5px;color:var(--muted);text-align:center;line-height:1;">×</span>
     </div>`;
   }).join('');
   const body=groups.map(g=>{
@@ -4435,11 +4451,9 @@ function renderMarketCalendar(){
       : `<div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:4px;">Week of ${formatFrDate(g.wk)}</div>`;
     return head+rows(g.items);
   }).join('');
-  const gcLink=_calRemote===true
-    ? `<a href="https://model.omnium-capital.com/calendar.php?user=${encodeURIComponent(getUserId())}&ics=1" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--teal-dark-text);text-decoration:none;text-transform:none;letter-spacing:0;" title="Subscribe once in Google Calendar: Settings → Add calendar → From URL, paste this address - your picks then sync on their own.">⚭ Google Calendar feed</a>`
-    : `<span style="font-size:9.5px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;" title="Selections stored on this device for now - deploy server/calendar.php next to dismiss.php to sync across devices and feed Google Calendar.">local only</span>`;
+  const gcLink=calGoogleLink()||`<span style="font-size:9.5px;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;" title="Selections stored on this device for now - deploy server/calendar.php next to dismiss.php to sync across devices and feed Google Calendar.">local only</span>`;
   wrap.innerHTML=`<div class="card" style="margin-bottom:12px;">
-    <div class="card-title" style="display:flex;justify-content:space-between;align-items:baseline;"><b>Market Calendar</b>${gcLink}</div>
+    <div class="card-title" style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b>Market Calendar</b>${gcLink}</div>
     ${body}
   </div>`;
 }
@@ -4614,7 +4628,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   }
   refreshSelects();
   const wantAnalyse = lastView && lastView.tab==='analyse' && CT && state.tickers[CT];
-  const wantOtherTab = lastView && ['valuerankings','news'].includes(lastView.tab) ? lastView.tab : null;
+  const wantOtherTab = lastView && ['valuerankings'].includes(lastView.tab) ? lastView.tab : null;
   const restoredTab = wantAnalyse ? 'analyse' : (wantOtherTab || 'portefeuille');
   try{ history.replaceState({omniumTab: restoredTab, omniumTicker: CT}, '', location.pathname+location.search); }catch(e){}
   if(wantAnalyse){
