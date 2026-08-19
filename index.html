@@ -561,7 +561,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .valo-tooltip-date{font-weight:800;margin-bottom:2px;letter-spacing:.01em;}
 .valo-tooltip-flag{color:var(--gold);font-weight:700;margin-top:3px;}
 
+.dash-head{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 26px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 2px 12px;margin:0 0 14px;}
+.dash-vr{background:var(--border);}
 @media(max-width:760px){
+  .dash-head{grid-template-columns:1fr;gap:18px 0;}
+  .dash-vr{display:none;}
   html,body{overflow-x:hidden;}
   body{font-size:13px;}
   header{padding:20px 18px 22px;}
@@ -717,19 +721,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 <div class="container">
 
 <div id="tab-portefeuille" class="panel">
-  <div class="vr-entry" onclick="showTab('valuerankings', null)">
-    <div class="vr-entry-left">
-      <span class="vr-entry-icon">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-4 4"/></svg>
-      </span>
-      <div>
-        <div class="vr-entry-text">P/E rankings</div>
-      </div>
-    </div>
-    <span class="vr-entry-arrow">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </span>
-  </div>
   <div id="weekly-ai-bar-wrap"></div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
@@ -4438,40 +4429,98 @@ function renderCalendarPills(){
 
 // Carte "Market Calendar" du dashboard : uniquement les evenements COCHES,
 // agenda par semaine sur 8 semaines glissantes, lien d'abonnement ics.
+// ── TETE DE DASHBOARD (variante A, 19/08/2026) : un bandeau entre deux
+// filets, calendrier a gauche, tuile P/E a droite (extremes vs la moyenne
+// de leur PROPRE serie - la meme moyenne que la ligne pointillee du graphe
+// P/E annee-en-cours). L'ancienne carte d'entree "P/E rankings" est
+// remplacee par le lien "Open full rankings" de la tuile.
+function peVsAverageExtremes(nEach){
+  const ph=state.priceHistory; const out=[];
+  if(ph&&ph.tickers){
+    const seriesDesc=seriesDescForRole('cy');
+    Object.keys(ph.tickers).forEach(tk=>{
+      if(!state.tickers[tk]) return;
+      const snaps=ph.tickers[tk].snapshots||[];
+      if(snaps.length<2) return;
+      const sd=isFinancialIssuer(state.tickers[tk])?{...seriesDesc,exCash:false}:seriesDesc;
+      const vals=snaps.map(x=>snapPEForSeries(x,sd)).filter(v=>v!=null&&isFinite(v));
+      if(vals.length<2) return;
+      const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+      const cur=vals[vals.length-1];
+      if(!avg||!isFinite(avg)) return;
+      out.push({ticker:tk, pe:cur, devPct:(cur/avg-1)*100});
+    });
+  }
+  const disc=out.filter(r=>r.devPct<0).sort((a,b)=>a.devPct-b.devPct).slice(0,nEach);
+  const stretch=out.filter(r=>r.devPct>0).sort((a,b)=>b.devPct-a.devPct).slice(0,nEach);
+  return {disc, stretch};
+}
+
 function renderMarketCalendar(){
   const wrap=document.getElementById('market-calendar-wrap');
   if(!wrap) return;
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
-  const sel=calUpcoming(_calData.selected);
-  if(!sel.length){ wrap.innerHTML=''; return; }
-  // Sobriete (19/08) : bloc borne, typo de ligne UNIQUE (11,5/600 navy),
-  // en-tetes de semaine uniformes (style THIS WEEK, turquoise), ni type,
-  // ni statut, ni lien - juste l'agenda choisi.
-  const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
-  const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
-  const groups=[];
-  sel.forEach(e=>{
-    const wk=mondayOf(e.date);
-    let g=groups.find(x=>x.wk===wk);
-    if(!g){ g={wk,items:[]}; groups.push(g); }
-    g.items.push(e);
-  });
-  const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const cell="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);";
-  const rows=(items)=>items.map(e=>{
-    const d=new Date(e.date+'T00:00:00Z');
-    return `<div title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}" style="display:grid;grid-template-columns:56px 100px 1fr 20px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #f2f3f9;">
-      <span style="${cell}white-space:nowrap;">${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}</span>
-      <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
-      <span style="${cell}line-height:1.35;">${esc(e.label)}</span>
-      <span onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar" style="cursor:pointer;font-size:11.5px;color:var(--muted);text-align:center;line-height:1;">×</span>
-    </div>`;
-  }).join('');
   const weekHead=(txt)=>`<div style="display:flex;align-items:center;gap:8px;margin:12px 0 2px;"><span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--teal-text);letter-spacing:.08em;text-transform:uppercase;">${txt}</span><div style="flex:1;height:1px;background:var(--teal);"></div></div>`;
-  const body=groups.map(g=>weekHead(g.wk===thisMonday?'This week':`Week of ${formatFrDate(g.wk)}`)+rows(g.items)).join('');
-  wrap.innerHTML=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 2px 12px;margin:0 0 14px;max-width:560px;">
-    <div class="card-title"><b>Market Calendar</b></div>
-    ${body}
+
+  // ── Volet gauche : Market Calendar
+  const sel=calUpcoming(_calData.selected);
+  let calBody;
+  if(sel.length){
+    const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
+    const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
+    const groups=[];
+    sel.forEach(e=>{
+      const wk=mondayOf(e.date);
+      let g=groups.find(x=>x.wk===wk);
+      if(!g){ g={wk,items:[]}; groups.push(g); }
+      g.items.push(e);
+    });
+    const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const rows=(items)=>items.map(e=>{
+      const d=new Date(e.date+'T00:00:00Z');
+      return `<div title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}" style="display:grid;grid-template-columns:52px 96px 1fr 18px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f2f3f9;">
+        <span style="${cell}white-space:nowrap;">${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}</span>
+        <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
+        <span style="${cell}line-height:1.35;">${esc(e.label)}</span>
+        <span onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar" style="cursor:pointer;font-size:11.5px;color:var(--muted);text-align:center;line-height:1;">×</span>
+      </div>`;
+    }).join('');
+    calBody=groups.map(g=>weekHead(g.wk===thisMonday?'This week':`Week of ${formatFrDate(g.wk)}`)+rows(g.items)).join('');
+  } else {
+    calBody=`<p style="font-size:9.5px;color:var(--muted);margin:10px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
+  }
+
+  // ── Volet droit : extremes P/E vs moyenne de leur serie
+  const {disc, stretch}=peVsAverageExtremes(3);
+  const maxDev=Math.max(...disc.map(r=>-r.devPct), ...stretch.map(r=>r.devPct), 1);
+  const peRow=(r)=>{
+    const miss=r.devPct<0;
+    const w=Math.max(4, Math.abs(r.devPct)/maxDev*46);
+    return `<div title="${r.devPct>=0?'+':''}${r.devPct.toFixed(1)}% vs series average" style="display:grid;grid-template-columns:96px 1fr 58px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f2f3f9;">
+      <span onclick="CT='${r.ticker}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.ticker}</span>
+      <div style="position:relative;height:12px;"><span style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#c9cede;"></span>
+        <div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;background:${miss?'var(--teal)':'var(--navy)'};opacity:.92;"></div></div>
+      <span style="${cell}text-align:right;">${r.pe.toFixed(1)}×</span>
+    </div>`;
+  };
+  const peBody=(disc.length||stretch.length)
+    ? `${disc.length?weekHead('Deepest discounts vs average')+disc.map(peRow).join(''):''}
+       ${stretch.length?weekHead('Most stretched')+stretch.map(peRow).join(''):''}`
+    : `<p style="font-size:9.5px;color:var(--muted);margin:10px 0 0;">Not enough price history yet.</p>`;
+
+  wrap.innerHTML=`<div class="dash-head">
+    <div>
+      <div class="card-title" style="margin-bottom:0;"><b>Market Calendar</b></div>
+      ${calBody}
+    </div>
+    <div class="dash-vr"></div>
+    <div>
+      <div class="card-title" style="margin-bottom:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b>P/E Rankings</b>
+        <span onclick="showTab('valuerankings', null)" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--teal-text);text-transform:none;letter-spacing:0;">Open full rankings →</span>
+      </div>
+      ${peBody}
+    </div>
   </div>`;
 }
 
