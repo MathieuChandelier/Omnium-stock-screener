@@ -354,17 +354,110 @@ def x3():
                            f"{cc.get('requirementLabel','exigence')} {req}{cc.get('unit','')}"))
     return bad
 
+@check("C17 horizon adjXXX : les 5 annees affichees doivent etre couvertes")
+def c17():
+    # yearsFor() affiche CY..CY+4 et l'Expected annual return se calcule
+    # jusqu'a LY=CY+4. Toute annee non couverte par adjEPS est servie par la
+    # base CAGR "stupide" (getProj) - back-testee a ~37% d'erreur mediane
+    # sur le net a 2 ans. Cas reel : MSFT 2031 absent d'adjEPS, donc le
+    # chiffre de tete de fiche reposait sur l'extrapolation, pas l'analyse.
+    bad=[]
+    for tk,t in FICHES.items():
+        h=t['hypothese']; d=t.get('data') or []
+        if not d: continue
+        ly=d[-1]['year']
+        a=h.get('adjEPS') or {}
+        aN=h.get('adjNet') or {}; aS=h.get('adjShares') or {}
+        # getProj derive l'EPS de adjNet/adjShares quand adjEPS manque :
+        # une annee n'est en defaut que si AUCUNE des deux voies n'existe.
+        couvert=lambda y:(isinstance(a.get(str(y)),(int,float))
+            or (isinstance(aN.get(str(y)),(int,float)) and isinstance(aS.get(str(y)),(int,float))))
+        manq=[y for y in range(ly+1,ly+6) if not couvert(y)]
+        if manq: bad.append((tk,f'adjEPS absent pour {manq} : base CAGR servie '
+                                f'a l\'affichage (dont le CAGR de tete de fiche '
+                                f'si {ly+5} manque)'))
+    return bad
+
+# ── AVERTISSEMENTS : files de revue au prochain refresh, PAS des anomalies ──
+# (n'affectent pas le code de sortie - un invariant dur doit etre rare et
+#  certain ; une derive a expliquer est un travail d'analyste, pas un bug)
+
+@check("W1  ~ derive Net/EBIT >10pts entre historique et derniere projection")
+def w1():
+    bad=[]
+    for tk,t in FICHES.items():
+        if (t.get('issuerType') or 'industrial')!='industrial': continue
+        h=t['hypothese']; d=t.get('data') or []
+        hist=[(r.get('net'),r.get('ebit')) for r in d[-3:]]
+        hist=[n/e for n,e in hist if isinstance(n,(int,float)) and isinstance(e,(int,float)) and e>0]
+        if len(hist)<2: continue
+        rh=sum(hist)/len(hist); ly=d[-1]['year']
+        aN=h.get('adjNet') or {}; aE=h.get('adjEBIT') or {}
+        ys=[y for y in range(ly+1,ly+6)
+            if isinstance(aN.get(str(y)),(int,float)) and isinstance(aE.get(str(y)),(int,float)) and aE[str(y)]>0]
+        if not ys: continue
+        rp=aN[str(ys[-1])]/aE[str(ys[-1])]
+        if abs(rp-rh)*100>10:
+            bad.append((tk,f'conversion {rh*100:.0f}% (hist) -> {rp*100:.0f}% ({ys[-1]}) : '
+                           f'{(rp-rh)*100:+.0f}pts - verifier ancrage IS/financier (E5-c)'))
+    return bad
+
+@check("W2  ~ dernier exercice publie : ratio Net/EBIT aberrant (base CAGR polluee ?)")
+def w2():
+    # Regle E5 d-bis : un vrai one-off (impot exceptionnel, impairment,
+    # windfall) doit etre retraite DANS data, sinon il pollue le moteur de
+    # CAGR a chaque refresh futur. Un dernier exercice qui devie fortement
+    # de la mediane du titre est un candidat - a trancher au refresh
+    # (retraiter, ou documenter que c'est operationnel et non exceptionnel).
+    bad=[]
+    for tk,t in FICHES.items():
+        if (t.get('issuerType') or 'industrial')!='industrial': continue
+        rs=[(r['year'],r.get('net'),r.get('ebit')) for r in (t.get('data') or [])]
+        rs=[(y,n/e) for y,n,e in rs
+            if isinstance(n,(int,float)) and isinstance(e,(int,float)) and e>0]
+        if len(rs)<5: continue
+        med=sorted(r for _,r in rs)[len(rs)//2]
+        yL,rL=rs[-1]
+        if abs(rL-med)>0.10:
+            bad.append((tk,f'{yL} : Net/EBIT {rL*100:.0f}% vs mediane {med*100:.0f}% '
+                           f'- one-off non retraite dans data ? (E5 d-bis)'))
+    return bad
+
+@check("W3  ~ dette qui monte, conversion qui ne baisse pas (E5 a-ter)")
+def w3():
+    bad=[]
+    for tk,t in FICHES.items():
+        if (t.get('issuerType') or 'industrial')!='industrial': continue
+        h=t['hypothese']; d=t.get('data') or []
+        if not d: continue
+        nd0=d[-1].get('nd')
+        if not isinstance(nd0,(int,float)) or nd0<=0: continue
+        aND=h.get('adjND') or {}
+        ys=sorted(int(y) for y in aND if isinstance(aND[y],(int,float)))
+        if not ys or aND[str(ys[-1])]<nd0*1.3: continue
+        n0,e0=d[-1].get('net'),d[-1].get('ebit')
+        aN=h.get('adjNet') or {}; aE=h.get('adjEBIT') or {}
+        k=str(ys[-1])
+        if not all(isinstance(x,(int,float)) for x in (n0,e0,aN.get(k),aE.get(k))) or e0<=0 or aE[k]<=0: continue
+        if aN[k]/aE[k] >= n0/e0-0.01:
+            bad.append((tk,f'adjND {nd0:.0f} -> {aND[k]:.0f} (+{(aND[k]/nd0-1)*100:.0f}%) mais '
+                           f'conversion {n0/e0*100:.0f}% -> {aN[k]/aE[k]*100:.0f}% : charge '
+                           f'financiere integree ? (ou emetteur a reclasser en financier)'))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
-    total=0
+    total=0; warns=0
     for nom,fn in CHECKS.items():
         bad=fn()
-        total+=len(bad)
-        etat='OK' if not bad else f'{len(bad)} ANOMALIES'
+        is_warn=nom.startswith('W')
+        if is_warn: warns+=len(bad)
+        else: total+=len(bad)
+        etat='OK' if not bad else (f'{len(bad)} A REVOIR' if is_warn else f'{len(bad)} ANOMALIES')
         print(f'{nom}\n     -> {etat}')
         for tk,det in bad[:6]: print(f'        {tk:<20} {det}')
         if len(bad)>6: print(f'        ... et {len(bad)-6} autres')
-    print(f'\nTOTAL : {total} anomalies')
+    print(f'\nTOTAL : {total} anomalies, {warns} points a revoir au prochain refresh')
     return 1 if total else 0
 
 if __name__=='__main__':
