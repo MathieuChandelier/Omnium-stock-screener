@@ -462,7 +462,7 @@
    ],
    "paceCheckpoint": "H1 real: integration-year mechanics as expected; the 16/07 raise puts the operative mid (5.525) ~0.8% above the Exact-rebased initial equivalent (5.48).",
    "weightedBeatPct": null,
-   "annualBeatPct": 0.6,
+   "annualBeatPct": 0.7,
    "annualBeatHistory": [
     {
      "fy": 2025,
@@ -489,9 +489,17 @@
     "note": "TRUE initial FY26 guidance: adjusted EPS 5.55-5.80 (mid 5.675, +10%), issued 22/01/2026 PRE-Exact. The 16/04 rebase to 5.38-5.58 is pure Exact-Sciences dilution (-0.20): the FY26 close will be measured vs the initial-EQUIVALENT 5.48 (5.675 - 0.20), perimeter change documented. Backfilled 19/08/2026 from the public initial-guidance releases."
    },
    "appliedToProjection": false,
-   "applicationNote": "annualBeatPct +0.6% (FY25 0.0 x3, FY24 +1.5 x2): below the ~1% materiality floor - not applied to projections. History backfilled 19/08/2026 from public initial-guidance releases (the prior 'not archived' exclusion was unjustified: January releases are public record).",
+   "applicationNote": "annualBeatPct +0.7% BLENDED (19/08/2026 rule): FY26 in-progress projected +0.8% weighted 3, FY25 0.0% weighted 2, FY24 +1.5% weighted 1. Below materiality - not applied to projections.",
    "consensusSource": "ChartMill/TipRanks consensus (adjusted)",
-   "consensusDate": "2026-07-17"
+   "consensusDate": "2026-07-17",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 5.48,
+    "currentValue": 5.525,
+    "deltaPct": 0.8,
+    "asOf": "2026-07-16",
+    "note": "Initial equivalent 5.48 (true initial 5.675 of 22/01 minus 0.20 Exact-Sciences dilution, perimeter rebase of 16/04); guided 5.45-5.60 (mid 5.525) since the 16/07 raise - projected beat +0.8%."
+   }
   },
   "revisionEvent": {
    "date": "2026-07-16",

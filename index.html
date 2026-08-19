@@ -779,7 +779,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
     </div>
   </div>
 
-  <div class="card" id="scorecard-card" style="display:none;">
+  <div id="scorecard-card" style="display:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 2px 14px;margin:0 0 18px;">
     <div class="card-title"><b id="scorecard-title">EPS Guidance Scorecard</b></div>
     <div id="scorecard-body"></div>
   </div>
@@ -3545,69 +3545,86 @@ function buildGuidanceScorecard(ticker){
   const hist=allHist.filter(e=>!e.excluded&&typeof e.beatPct==='number').sort((a,b)=>b.fy-a.fy);
   const excl=allHist.filter(e=>e.excluded||typeof e.beatPct!=='number');
   const shown=hist.slice(0,2), older=hist.slice(2);
-  const maxAbs=Math.max(...hist.map(e=>Math.abs(e.beatPct)),1);
 
   // Une ligne d'exercice : FY / piste a axe central / valeur signee.
-  const rowHtml=(e)=>{
-    const miss=e.beatPct<0;
-    const w=Math.max(4, Math.abs(e.beatPct)/maxAbs*46);   // % de la demi-piste
-    const bar= e.beatPct===0
+  // Piste bornee (bloc 520px) : en pleine largeur desktop les barres
+  // devenaient des poutres. Barre PLEINE = exercice clos ; barre EVIDEE =
+  // lecture provisoire de l'exercice en cours (E-scorecard, 19/08/2026).
+  const rowHtml=(e,opts2)=>{
+    const prov=!!(opts2&&opts2.provisional);
+    const pct=prov?e.deltaPct:e.beatPct;
+    const miss=pct<0;
+    const col=miss?'var(--gold-text)':'var(--navy)';
+    const w=Math.max(4, Math.abs(pct)/((opts2&&opts2.maxAbs)||1)*46);
+    const bar= pct===0
       ? `<span style="position:absolute;top:50%;left:50%;width:7px;height:7px;border-radius:50%;background:#fff;border:2px solid var(--navy);transform:translate(-50%,-50%);"></span>`
-      : `<div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;background:${miss?'var(--gold-text)':'var(--navy)'};opacity:.92;"></div>`;
-    const vsTxt=`${e.beatPct===0?'on the':'vs'} ${srcLbl[e.source]||esc(e.source)}${e.anchorValue!=null?' '+fmtAnchor(e.anchorValue):''}`;
-    return `<div style="display:grid;grid-template-columns:36px 1fr 122px;align-items:center;gap:9px;" title="${esc(e.note)}">
-      <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--muted);">FY${String(e.fy).slice(2)}</span>
+      : prov
+        ? `<div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;border:1.5px solid ${col};background:transparent;"></div>`
+        : `<div style="position:absolute;top:2px;bottom:2px;${miss?'right':'left'}:50%;width:${w.toFixed(1)}%;border-radius:3px;background:${col};opacity:.92;"></div>`;
+    const small=prov
+      ? `initial ${fmtAnchor(e.initialValue)} → guided ${fmtAnchor(e.currentValue)}${e.asOf?` as of ${formatFrDate(e.asOf)}`:''}`
+      : `${e.beatPct===0?'on the':'vs'} ${srcLbl[e.source]||esc(e.source)}${e.anchorValue!=null?' '+fmtAnchor(e.anchorValue):''}`;
+    return `<div style="display:grid;grid-template-columns:44px 1fr 132px;align-items:center;gap:9px;" title="${esc(e.note)}">
+      <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">FY${String(e.fy).slice(2)}</span>
       <div style="position:relative;height:14px;"><span style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:#c9cede;"></span>${bar}</div>
-      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${miss?'var(--gold-text)':'var(--navy)'};line-height:1.25;">${e.beatPct>0?'+':e.beatPct<0?'\u2212':''}${Math.abs(e.beatPct).toFixed(1)}%
-        <small style="display:block;font-size:9.5px;font-weight:500;color:var(--muted);">${vsTxt}</small></div>
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};line-height:1.25;">${pct>0?'+':pct<0?'−':''}${Math.abs(pct).toFixed(1)}%${prov?' projected':''}
+        <small style="display:block;font-size:9.5px;font-weight:500;color:var(--muted);${prov?'':'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'}">${small}</small></div>
     </div>`;
   };
 
-  // Heros : annualBeatPct signe, ou etat "rien de mesure" assume.
+  // Heros : annualBeatPct (moyenne FONDUE des que inProgress existe -
+  // l'ecart previsionnel de l'exercice en cours pese 3, les exercices
+  // clos 2 puis 1). Qualificatif en NAVY, meme corps que les valeurs.
   const against=(()=>{const ss=hist.map(e=>e.source);
     return ss.length&&ss.every(x=>x==='initial_guidance')?'initial guidance'
       :ss.length&&ss.every(x=>x==='initial_consensus')?'initial consensus':'initial anchors';})();
+  const ip=(gs.inProgress&&typeof gs.inProgress.deltaPct==='number')?gs.inProgress:null;
   const measured=typeof gs.annualBeatPct==='number';
   const beat=!measured||gs.annualBeatPct>=0;
   const ai=gs.anchorInitial||{};
   const hero=measured
     ? `<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;">
-        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:${beat?'var(--navy)':'var(--gold-text)'};">${gs.annualBeatPct>=0?'+':'\u2212'}${Math.abs(gs.annualBeatPct).toFixed(1)}%</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--text);">${beat?'above':'below'} ${against} on average</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:${beat?'var(--navy)':'var(--gold-text)'};">${gs.annualBeatPct>=0?'+':'−'}${Math.abs(gs.annualBeatPct).toFixed(1)}%</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">${beat?'above':'below'} ${against} on average</span>
       </div>`
     : `<div style="display:flex;align-items:baseline;gap:9px;">
-        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:var(--muted);">\u2014</span>
-        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--text);">no fiscal year measured yet</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;line-height:1;color:var(--muted);">—</span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">no fiscal year measured yet</span>
       </div>`;
-  const weights=hist.length>=3?', weighted 3/2/1':hist.length===2?', weighted 3/2':'';
-  const heroSub=measured
-    ? `${hist.length} fiscal year${hist.length>1?'s':''} measured vs ${against}${weights}`
-    : (ai.fy?`First verdict at the FY${ai.fy} close`:'No measurable closed fiscal year');
+  const heroSub=ip
+    ? `FY${String(ip.fy).slice(2)} in progress + ${hist.length} closed fiscal year${hist.length>1?'s':''}, weighted 3/${hist.slice(0,2).map((_,i)=>2-i).join('/')}`
+    : measured
+      ? `${hist.length} fiscal year${hist.length>1?'s':''} measured vs ${against}${hist.length>=3?', weighted 3/2/1':hist.length===2?', weighted 3/2':''}`
+      : (ai.fy?`First verdict at the FY${String(ai.fy).slice(2)} close`:'No measurable closed fiscal year');
 
-  const rows=shown.length?`<div style="margin-top:13px;display:flex;flex-direction:column;gap:8px;">${shown.map(rowHtml).join('')}</div>`:'';
+  const maxAbs=Math.max(...hist.map(e=>Math.abs(e.beatPct)), ip?Math.abs(ip.deltaPct):0, 1);
+  const rowsArr=[];
+  if(ip) rowsArr.push(rowHtml(ip,{provisional:true,maxAbs}));
+  shown.forEach(e=>rowsArr.push(rowHtml(e,{maxAbs})));
+  const rows=rowsArr.length?`<div style="margin-top:13px;max-width:520px;display:flex;flex-direction:column;gap:8px;">${rowsArr.join('')}</div>`:'';
 
-  // Ancre de l'exercice en cours. Pas de pastille de statut d'application
-  // (decision 19/08/2026 : elle ajoutait de la confusion) - le detail
-  // applicationNote reste dans la donnee, lisible en infobulle.
-  const anchorLine=ai.fy?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} in progress${ai.value!=null?` \u00b7 anchor <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b> ${srcLbl[ai.source]||esc(ai.source)}`:''}</div>`:'';
+  // Ancre de l'exercice en cours : seulement si la ligne inProgress ne la
+  // porte pas deja (sinon redondant). Detail applicationNote en infobulle.
+  const anchorLine=(!ip&&ai.fy)?`<div title="${esc(gs.applicationNote)}" style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:9px;margin-top:12px;">FY${String(ai.fy).slice(2)} in progress${ai.value!=null?` · anchor <b style="color:var(--navy);font-size:11.5px;font-weight:800;">${fmtAnchor(ai.value)}</b> ${srcLbl[ai.source]||esc(ai.source)}`:''}</div>`:'';
 
-  // Archives : exercices anterieurs, exclusions documentees, timeline
-  // des mouvements de guidance de l'annee, base et source consensus.
-  const olderRows=older.length?`<div style="display:flex;flex-direction:column;gap:8px;margin-top:9px;">${older.map(rowHtml).join('')}</div>`:'';
-  const exclRows=excl.length?excl.map(e=>`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">FY${String(e.fy).slice(2)} \u2014 excluded${e.note?`: ${esc(e.note)}`:''}</p>`).join(''):'';
+  // Archives : tout en 9,5, details de guidance sur UNE ligne (l'infobulle
+  // porte le texte complet) - la section reste directe, les raisons
+  // detaillees vivent dans Latest assumptions.
+  const olderRows=older.length?`<div style="max-width:520px;display:flex;flex-direction:column;gap:8px;margin-top:9px;">${older.map(e=>rowHtml(e,{maxAbs})).join('')}</div>`:'';
+  const exclRows=excl.length?excl.map(e=>`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">FY${String(e.fy).slice(2)} — excluded${e.note?`: ${esc(e.note)}`:''}</p>`).join(''):'';
   const timelineHtml=(gs.timeline||[]).map(ev=>{
     const label=ev.type==='guidance_revision'||ev.type==='guidance_revised'
-      ? `Guidance ${ev.flag==='warning'?'cut (warning)':'move'}`
+      ? `Guidance ${ev.flag==='warning'?'cut':'move'}`
       : ev.type==='vs_guidance'?'vs guidance':'vs consensus';
-    return `<div style="padding:0 0 9px 10px;border-left:1px solid var(--border);">
-        <p style="font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--navy);margin:0;">${formatFrDate(ev.date)} \u2014 ${label}</p>
-        <p style="font-size:9.5px;color:var(--muted);margin:2px 0 0;">${esc(ev.detail)}</p>
+    return `<div style="padding:0 0 7px 10px;border-left:1px solid var(--border);" title="${esc(ev.detail)}">
+        <p style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);margin:0;">${formatFrDate(ev.date)} — ${label}</p>
+        <p style="font-size:9.5px;color:var(--muted);margin:1px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(ev.detail)}</p>
       </div>`;
   }).join('');
   const paceHtml=gs.paceCheckpoint?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.paceCheckpoint)}</p>`:'';
   const basisHtml=gs.basisAligned===false&&gs.basisNote?`<p style="font-size:9.5px;color:var(--muted);margin:8px 0 0;">${esc(gs.basisNote)}</p>`:'';
-  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` \u2014 ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
-  const archLabel=older.length?`History & archives \u2014 ${older.length} earlier fiscal year${older.length>1?'s':''}`:'History & archives';
+  const consLine=(gs.consensusSource||gs.consensusDate)?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source${gs.metric?` (${esc(gs.metric)})`:''}${gs.consensusSource?`<br>${esc(gs.consensusSource)}`:''}${gs.consensusDate?` — ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
+  const archLabel=older.length?`History & archives — ${older.length} earlier fiscal year${older.length>1?'s':''}`:'History & archives';
 
   return `${hero}
     <p style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin:4px 0 0;">${esc(heroSub)}</p>
@@ -3615,11 +3632,11 @@ function buildGuidanceScorecard(ticker){
     ${anchorLine}
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:11px;">
       <span class="lbl" style="text-transform:none;font-size:9.5px;font-weight:600;color:var(--muted);">${archLabel}</span>
-      <span class="rb-eps-py-chevron">\u25bc</span>
+      <span class="rb-eps-py-chevron">▼</span>
     </div>
     <div class="rb-eps-py-content" id="gs-content">
       ${olderRows}${exclRows}
-      <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)}${gs.metric?` \u00b7 ${esc(gs.metric)}`:''}</p>
+      <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Quarterly tracking: ${esc(cadenceLabel)}${gs.metric?` · ${esc(gs.metric)}`:''}</p>
       <div style="margin-top:9px;">${timelineHtml}${paceHtml}${basisHtml}${consLine}</div>
     </div>`;
 }

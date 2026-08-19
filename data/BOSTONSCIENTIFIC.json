@@ -1,527 +1,537 @@
 {
-  "name": "Boston Scientific",
-  "cours": 44.6,
-  "yahooSymbol": "BSX",
-  "dividende": 0,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 11888,
-      "ebit": 1800,
-      "net": 1040,
-      "shares": 1425,
-      "nd": 8900
-    },
-    {
-      "year": 2022,
-      "ca": 12682,
-      "ebit": 1250,
-      "net": 642,
-      "shares": 1435,
-      "nd": 9200
-    },
-    {
-      "year": 2023,
-      "ca": 14240,
-      "ebit": 2100,
-      "net": 1570,
-      "shares": 1455,
-      "nd": 8300
-    },
-    {
-      "year": 2024,
-      "ca": 16747,
-      "ebit": 2700,
-      "net": 1853,
-      "shares": 1475,
-      "nd": 9700
-    },
-    {
-      "year": 2025,
-      "ca": 20074,
-      "ebit": 4324,
-      "net": 3813,
-      "shares": 1495,
-      "nd": 9500
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 3.3,
-    "epsNY": 3.42,
-    "date": "2026-07-29",
-    "source": "Base management ADJUSTED (pas la base normalisee Omnium) : point median de la guidance FY2026 relevee/abaissee le 29/07 (3,28-3,32$), qui a immediatement remplace le consensus analystes pre-publication (~3,35$, desormais obsolete). epsNY = estimation Omnium d'une croissance limitee 2027 (~+4%) faute de consensus 2027 public frais a cette date ; a reverifier au prochain refresh."
+ "name": "Boston Scientific",
+ "cours": 44.6,
+ "yahooSymbol": "BSX",
+ "dividende": 0,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 11888,
+   "ebit": 1800,
+   "net": 1040,
+   "shares": 1425,
+   "nd": 8900
   },
-  "particularites": [],
-  "ownership": {
-    "asOf": "2026-Q1",
-    "insiderPct": 0.5,
-    "insiderDesc": "Tres faible, typique d'un CEO de tres grande capitalisation sans participation fondatrice (Mike Mahoney ~1,4M actions apres donation de 386 755 actions a un trust familial en mai 2026 ; vendeur net regulier, ex. 160 901 actions cedees le 02/02/2026).",
-    "insiderSource": "SEC Form 4 (compilation GuruFocus/MarketBeat/StockTitan).",
-    "notableHolders": [
-      {
-        "investor": "PRIMECAP Management",
-        "tier": "T2",
-        "pct": 2.23,
-        "asOf": "2026-Q1",
-        "movement": "reduit (-4,5%)"
-      },
-      {
-        "investor": "Capital World Investors",
-        "tier": "T2",
-        "pct": 1.8,
-        "asOf": "2026-Q1",
-        "movement": "n/d"
-      }
-    ],
-    "coverageNote": "Base actionnariale tres majoritairement passive/indicielle (Vanguard, Fidelity, BlackRock, State Street, Geode representent a eux seuls >27% du capital) - peu de gerants actifs de conviction identifies dans la liste de suivi Omnium.",
-    "history": []
+  {
+   "year": 2022,
+   "ca": 12682,
+   "ebit": 1250,
+   "net": 642,
+   "shares": 1435,
+   "nd": 9200
   },
-  "compliance": {
-    "asOf": "2026-07-31",
-    "items": [
-      {
-        "year": 2026,
-        "status": "enquete_en_cours",
-        "title": "Class action boursiere (Securities Exchange Act) alleguant que le management aurait presente de maniere trompeuse le taux de croissance des procedures d'electrophysiologie US.",
-        "allegedBy": "Actionnaires (plusieurs cabinets d'avocats specialises, ex. Pomerantz, Kirby McInerney, Kessler Topaz)",
-        "outcome": "Periode couverte : 23/07/2025-03/02/2026 (date de l'annonce de la premiere baisse de guidance EP/WATCHMAN). Stade preliminaire (appels a candidature de lead plaintiff), issue et montant non determinables a ce stade.",
-        "source": "Depots judiciaires federaux, alertes investisseurs (MarketBeat, Law.com)",
-        "date": "2026-02-03"
-      }
-    ],
-    "note": "A suivre de pres au prochain refresh : calendrier de la class action (lead plaintiff, eventuelle motion to dismiss)."
+  {
+   "year": 2023,
+   "ca": 14240,
+   "ebit": 2100,
+   "net": 1570,
+   "shares": 1455,
+   "nd": 8300
   },
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2024,
+   "ca": 16747,
+   "ebit": 2700,
+   "net": 1853,
+   "shares": 1475,
+   "nd": 9700
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-14",
-    "statut": "incoherences_detectees",
-    "points": [
-      {
-        "sujet": "Trajectoire WATCHMAN/WAMGR et confiance EPS 2027",
-        "ancienPropos": "T1 2026 : le CFO se dit explicitement 'comfortable with double-digit EPS growth through the LRP' malgre les vents contraires WATCHMAN/EP deja identifies ; WAMGR revise a '8% moving towards 9%' sur l'horizon du plan long terme.",
-        "nouveauPropos": "T2 2026 : WAMGR revise a nouveau a la baisse a '7-8%' (perte d'environ 1 point vs T1) ; 2027 desormais qualifiee explicitement d''annee de transition' a croissance d'EPS ajuste LIMITEE, le retour a une croissance d'EPS soutenue repousse a 2028.",
-        "natureEcart": "inversion_narratif_structurant",
-        "materialite": "haute",
-        "justification": "En trois mois seulement, le discours passe d'une confiance explicite dans une croissance d'EPS a deux chiffres sur tout l'horizon du plan long terme a l'annonce d'une annee de transition a croissance limitee - une degradation rapide et significative de la trajectoire centrale de la these, au-dela du simple ajustement de guidance trimestriel habituel."
-      }
-    ],
-    "historique": [
-      {
-        "quarter": "T2 2026",
-        "date": "2026-07-29",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Robbie Marcus (JP Morgan) - la guidance abaissee est-elle conservatrice pour eviter de futures revisions, ou reflete-t-elle des tendances observees ? Comment penser la croissance organique 2027 (~5%) ? - le management indique que 75% de l'activite croit de maniere constante a ~6%, EP et WATCHMAN etant les moteurs de la baisse de guidance ; objectif d'ameliorer 2027 par rapport a la guidance du S2 26, avec une reprise attendue de l'EP au S2 27 et une amelioration significative en 2028 grace aux nouveaux lancements (TAM combine >25 Md$).",
-          "Q Larry Biegelsen (Wells Fargo) - 'pas d'amelioration en 2027' concerne-t-il l'annee complete ou seulement le S1 ? Impact des baisses de tarifs et de la concurrence ? Perspectives de label premiere ligne apres les donnees CHAMPION-AF ? - le management suppose que le marche WATCHMAN reste sous pression en 2027 jusqu'a amelioration averee des tendances, anticipe l'entree d'un concurrent en 2027 mais maintient sa confiance dans le leadership de marche de WATCHMAN.",
-          "Q Joanne Wuensch (Citi) - la guidance 2026 (croissance organique 5-6%) est-elle un point de depart raisonnable pour 2027 ? Quels produits portent la reacceleration 2028 ? - le management detaille sept lancements majeurs pour 2028 et au-dela (cloture Penumbra, systeme de denervation renale, option TAVR via MiRus, lancement IVL coronaire, entree en ICE, FARAWAVE Ultra, support circulatoire) ; le secteur ICVT positionne comme le plus grand moteur de croissance futur du groupe.",
-          "Q Rick Wise (Stifel) - details sur le programme de restructuration de 500M$ (calendrier, reinvestissement, phasage P&L) ? - plus de 50% des economies realisees fin 2027, d'abord visibles en SG&A en 2027 puis en COGS plus tard ; le programme doit permettre l'expansion de marge operationnelle et une forte croissance d'EPS a partir de 2028.",
-          "Q Mike Polark (Wolfe Research) - qu'est-ce qui peut faire evoluer les schemas de prescription de WATCHMAN ? Nouvelles donnees cliniques ? Innovation de forme ? Voie vers un label premiere ligne ? - investissements cibles en education clinique, couverture commerciale elargie et marketing direct-patient ; essai SIMPLAAFY attendu au S2 26 ; essai clinique du dispositif WATCHMAN Elite en cours ; recherche d'une mise a jour de label FDA et d'un reexamen de la decision de couverture nationale CMS ; 30-40% des patients AF necessitant une prevention d'AVC ne recoivent aucun traitement - besoin non couvert substantiel.",
-          "Q Travis Steed (BofA) - quelle croissance d'EPS en 2027 ? Plate, alignee sur le CA, ou avec un effet de levier ? Chemin vers une croissance a deux chiffres en 2028 ? - croissance d'EPS 2027 limitee attendue du fait de la pression sur la marge brute (faiblesse WATCHMAN/EP) et de la dilution Penumbra ; restructuration et catalyseurs de croissance positionnent un retour a une expansion de marge significative et une forte croissance d'EPS a partir de 2028.",
-          "Q Matt Taylor (Jefferies) - attentes plus precises pour la croissance EP en 2027 ? Quand les produits du pipeline contribuent-ils ? - S1 27 similaire aux dynamiques du S2 26 ; amelioration au S2 27 avec le lancement de FARAWAVE Ultra et l'entree sur le marche ICE ; 2028 montre une croissance a hauteur ou au-dessus du marche avec Ultra, ICE et la plateforme FARAFLEX.",
-          "Q Jayson Bedford (Raymond James) - WAMGR actualise ? Dynamique du marche vs part de marche en neuromodulation sacree ? - WAMGR desormais 7-8% (en baisse d'environ 1 point) ; urologie attendue stable a +1% sur l'annee 2026 complete, amelioration anticipee en 2027 avec trois lancements de portefeuille cornerstone."
-        ]
-      },
-      {
-        "quarter": "T1 2026",
-        "date": "2026-04-22",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Robbie Marcus (JP Morgan) - calendrier de la revision de guidance et validite du plan long terme (LRP) ? - trois moteurs principaux de la revision a la baisse : deceleration du volume WATCHMAN depuis mi-fevrier, erosion de part de marche EP superieure aux attentes, et sous-performance de l'urologie ; le management se dit neanmoins 'comfortable with double-digit EPS growth through the LRP' malgre les vents contraires 2026.",
-          "Q Joanne Wuensch (Citi) - sequencement trimestriel jusqu'a fin d'annee ? - le T2 identifie comme 'le trimestre le plus difficile' (comparables exigeants) ; WATCHMAN attendu en croissance a deux chiffres bas le reste de l'annee, EP a un chiffre moyen-eleve, activite globale a un chiffre moyen avec acceleration au S2.",
-          "Q Larry Biegelsen (Wells Fargo) - pression sur la part de marche EP et perspective US ? - EP US guide a une croissance a un chiffre moyen ; trois concurrents identifies (Medtronic, J&J, Abbott) ; malgre l'erosion de part de marche, le management maintient une 'grande confiance' dans le maintien du leadership PFA grace aux lancements du pipeline.",
-          "Q Rick Wise (Stifel) - perspective WATCHMAN apres les donnees CHAMPION et moteurs de croissance ? - l'essai CHAMPION a atteint tous ses criteres primaires et secondaires ; investissements commerciaux et marketing pour stimuler l'adoption ; procedures concomitantes attendues en hausse de 25% a 50% du mix sur l'horizon du LRP.",
-          "Q David Roman (Goldman Sachs) - croissance hors EP/WATCHMAN et lancements produits ? - activite ICVT executant a un tres haut niveau, AGENT et l'imagerie depassant les attentes ; donnees de l'essai FRACTURE presentees a EuroPCR (19 mai 2026) ; oncologie interventionnelle en croissance a un chiffre eleve dans les dizaines de pourcents.",
-          "Q Travis Steed (BofA) - evolution du WAMGR et implications pour le LRP ? - WAMGR revise clarifie a '8% en marche vers 9%' sur l'horizon du LRP ; guidance de CA organique du LRP jugee premature a ce stade, mise a jour prevue apres la planification strategique.",
-          "Q Vijay Kumar (Evercore) - rationnel du rachat d'actions de 2 Md$ compte tenu de l'operation Penumbra ? - le calendrier des rachats reflete la disponibilite de tresorerie et la confiance du management dans la societe et son pipeline ; rachats debutant apres la levee de la restriction liee au vote des actionnaires Penumbra (6 mai).",
-          "Q Matthew O'Brien (Piper Sandler) - engagement sur l'operation Penumbra a la valorisation revisee ? - cloture attendue au S2 2026 apres le vote des actionnaires ; le management insiste sur le maintien de l'equipe commerciale et du pipeline R&D de Penumbra apres cloture."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "precedent_crm_platform_late2027",
-        "quarterOrigine": "T2 2026",
-        "engagement": "Nouvelle plateforme de defibrillateurs (CRM) 'Precedent' attendue fin 2027.",
-        "echeance": "2027-Q4",
-        "statut": "en_cours"
-      },
-      {
-        "id": "renal_denervation_market_availability_2028",
-        "quarterOrigine": "T2 2026",
-        "engagement": "Disponibilite commerciale du systeme de denervation renale visee en 2028 (essai THRIVE en cours de recrutement).",
-        "echeance": "2028-Q4",
-        "statut": "en_cours"
-      },
-      {
-        "id": "restructuring_500m_runrate_2029",
-        "quarterOrigine": "T2 2026",
-        "engagement": "Programme de restructuration visant ~500M$ d'economies annuelles recurrentes a la sortie de 2029, plus de 50% realisees fin 2027.",
-        "echeance": "2029-Q4",
-        "statut": "en_cours"
-      }
-    ]
-  },
-  "hypothese": {
-    "date": "2026-08-18",
-    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive ; bridge etabli (reconciliation 2025 + projections), scorecard annuel cree (beats historiques +7,9%/+11,6% vs guidances initiales, application SUSPENDUE - 3e revision baissiere ce trimestre), etatsFinanciers renseigne.",
-    "summary": "T2 solide en absolu (CA +7% organique, adj EPS 0,86$ +15%, au-dessus de la guidance) mais le vrai signal du trimestre est le relevement de la guidance FY2026 a la baisse (adj EPS 3,28-3,32$ vs 3,34-3,41$ au T1) et surtout l'annonce explicite d'une '2027 de transition' a croissance d'EPS limitee, la persistance de la faiblesse WATCHMAN/EP repoussant le retour a une expansion de marge significative a 2028. Nouveau programme de restructuration (~500M$ d'economies recurrentes visees fin 2029). Correction importante apportee ce refresh : `data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels (874M$, hors amortissement) - une fois corrige, l'EPS normalise 2025 passe de ~1,94$ (GAAP brut) a 2,55$, restaurant une croissance normalisee 2025->2026 coherente (+7,5% plutot qu'un chiffre trompeur). omniumEPS 2,74->4,30 (2026-2030).",
-    "text": "== THESIS SUMMARY ==\nBoston Scientific is a two-sided situation. Operational execution keeps beating: Q2 organic revenue +7% above guidance, adjusted EPS $0.86 (+15%) above the top of the range, FY25 closed at $3.06 (+22%). But the FY26 guidance has now been cut three times (initial $3.43-3.49 -> $3.28-3.32), driven by two genuine demand-side shocks: an unexpected US WATCHMAN slowdown (referral patterns hit by cumulative clinical evidence; standalone procedures down mid-teens) and competitive share loss in pulsed-field ablation (~80% of the US AFib market). Management frames 2027 as \"more pressured than initially anticipated\" with limited EPS growth, and a significant recovery in 2028 (FARAWAVE Ultra, intracardiac echo entry, Penumbra). The thesis rests on that 2028 re-acceleration plus the $500M run-rate restructuring savings by 2029 - while the historical guidance-sandbagging pattern (+7.9%/+11.6% beats vs initial anchors) is demonstrably broken this year, which is why the scorecard refinement is suspended.\n\n== THESIS READ ==\n- Third downward FY26 revision this quarter (EPS $3.28-3.32, organic 5-6%): WATCHMAN US slowdown and PFA share loss are demand facts, not execution noise.\n- Q2 itself beat (organic +7%, adj EPS $0.86 above range top): the franchise executes; the issue is market trajectory, not delivery.\n- 2027 explicitly guided as pressured with limited EPS growth; recovery narrative concentrated on 2028 (FARAWAVE Ultra, ICE market entry, Penumbra integration).\n- Restructuring program: $500M run-rate savings by end-2029, more than half by 2027 - first visible in SG&A, then COGS.\n- Watch: SIMPLAAFY results (late 2026) and potential FDA label updates for WATCHMAN - upside NOT embedded in current guidance.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: adjusted methodology (d-ter) - data carries the officially published adjusted results; data 2025 was retreated of $874M of true operating one-offs at the 03/08 refresh (E5 d-bis, published gross figures traced in that refresh). Normative tax 14% (AN confirmed); bridge established (c-ter): 2025 reconciliation leaves a +$327M residual to split from the 10-K (effective tax possibly below 14% that year); projections fit at 14% with rising net interest through the Penumbra debt peak (~$11.0B new debt, official), then an unallocated ~-$619M conservatism in 2030 flagged in AN-BRIDGE-PRUDENCE - deliberate safety margin, to arbitrate later. Penumbra (~$14.5B, cash + debt + shares) remains excluded from operating projections until closing; its financing is in omniumND from 2026-27. Scorecard: annualBeatPct +9.4% established but application SUSPENDED (regime break - see applicationNote). WATCH-LIST: (1) WATCHMAN US stabilization vs further referral erosion; (2) PFA share trajectory vs FARAPULSE roadmap; (3) Penumbra closing terms and first post-integration guidance; (4) 10-K split of the 2025 bridge residual; (5) restructuring savings pace vs charges. Next useful refresh: Q3 2026 results (late October).\n\n== CATALYSTS ==\nQ3 2026 results (late Oct); SIMPLAAFY readout (late 2026); Penumbra closing.",
-    "impact": "neutre",
-    "priorEPS": {
-      "date": "2026-08-03",
-      "eps": {
-        "2026": 2.74,
-        "2027": 2.88,
-        "2028": 3.28,
-        "2029": 3.77,
-        "2030": 4.3
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T2 2026",
-        "date": "2026-07-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Adj EPS abaisse a 3,28-3,32$ (vs 3,34-3,41$ au T1 26) ; CA reporte abaisse a 5,5-6,5% (vs 7-8,5% au T1 26). 3e baisse de guidance consecutive depuis le debut de l'annee."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "dernierCall": {
-      "quarter": "T2 2026",
-      "date": "2026-07-29",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 5442,
-          "consensus": 5361
-        },
-        "epsAdj": {
-          "actual": 0.86,
-          "consensus": 0.83,
-          "basis": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "CA +3-5% (reporte et organique) vs T3 2025 ; adj EPS 0,80-0,82$ (guidance sous le consensus pre-publication).",
-      "guidanceAnnuelle": "FY2026 CA reporte +5,5-6,5% (organique +5-6%), adj EPS 3,28-3,32$ (hors Penumbra) - 3e baisse de guidance de l'annee.",
-      "pointsCles": [
-        "CA T2 en hausse de 7,0% organique, au-dessus de la guidance (5-7%) ; adj EPS 0,86$ (+15% YoY), au-dessus du haut de fourchette (0,82-0,84$), porte notamment par des elements fiscaux favorables.",
-        "Guidance FY2026 de nouveau abaissee (3e fois en 2026) et 2027 explicitement qualifiee de 'transition' a croissance d'EPS limitee - la faiblesse WATCHMAN/EP doit persister, et Penumbra sera legerement dilutive a son integration.",
-        "Nouveau programme de restructuration vise ~500M$ d'economies annuelles recurrentes a la sortie de 2029, plus de la moitie realisee fin 2027, pour financer les investissements de croissance et restaurer l'expansion de marge.",
-        "Le financement de Penumbra est precise dans le 10-K : ~11,0 Md$ de nouvelle dette (plus cash et actions), un chiffre officiel largement superieur a l'hypothese retenue dans la these precedente."
-      ],
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "communique",
-        "date": "2026-08-07"
-      }
-    },
-    "ancrages": [
-      {
-        "id": "data_2025_retraitement_true_up",
-        "moteur": "`data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels identifies par le management lui-meme (874M$ pretax hors amortissement : impairment 46M$, acquisition/cession 245M$, restructuration 343M$, litige 194M$, EU MDR 46M$ - source : reconciliation non-GAAP annuelle du 10-K FY2025), restant a son niveau GAAP brut (EBIT 3450M$, marge 17,2%) - defaut de conformite E5 d-bis corrige ce refresh : EBIT retraite a 4324M$ (marge 21,54%), net retraite a 3813M$ (meme methodologie 'adjusted moins amortissement garde' appliquee de facon coherente a l'historique et aux projections).",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "guidance_fy2026_abaissee_3e_fois",
-        "moteur": "Guidance FY2026 adj EPS abaissee a 3,28-3,32$ (vs 3,34-3,41$ au T1 26, vs 3,43-3,49$ en debut d'annee), CA reporte a 5,5-6,5% (vs 7-8,5%) - construction bottom-up H1 reel (EPS normalise 1,39$) + H2 guide (EPS normalise ~1,35$ apres amortissement) donnant un FY2026 normalise de 2,74$.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "2027_transition_croissance_limitee",
-        "moteur": "Le CFO qualifie explicitement 2027 d'annee de transition a 'croissance d'EPS ajuste limitee' du fait de la persistance WATCHMAN/EP et de la dilution initiale Penumbra, avec un retour a une expansion de marge significative et une forte croissance d'EPS repousse a 2028 -> trajectoire 2027 nettement tassee (+5% vs +16% dans la these precedente), reacceleration a partir de 2028 portee par 7 lancements produits (TAM combine 25 Md$) et les economies de restructuration.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumEBIT.2027",
-          "omniumNet.2027",
-          "omniumEPS.2027"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "penumbra_financement_dette_11md_officiel",
-        "moteur": "Le 10-K FY2025 precise desormais officiellement le financement de Penumbra : ~11,0 Md$ de nouvelle dette (plus cash et une portion en actions), deal ~14,5 Md$ au total, cloture visee au S2 2026 - chiffre bien plus lourd que l'hypothese prudente de la these precedente -> omniumND revise nettement a la hausse des 2026 (bascule vers ~18,5 Md$ en fin d'annee), desendettement progressif ensuite porte par la generation de FCF. Le volet operationnel (CA/EBIT) de Penumbra reste exclu des projections tant que la societe n'a pas publie de guidance post-cloture officielle.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "restructuring_500m_savings_2029",
-        "moteur": "Nouveau programme de restructuration annonce ce trimestre, ~500M$ d'economies annuelles recurrentes visees a la sortie de 2029 (plus de la moitie realisee fin 2027, d'abord en SG&A puis en COGS) -> contribue a la reacceleration de marge modelisee a partir de 2028-2029, en plus des lancements produits.",
-        "applique": [
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "tax_normalise_14pct_confirme",
-        "moteur": "Taux d'IS normatif maintenu a 14% (coherent avec le taux effectif FY2025 reel de 14,57% - 493/3385 - une fois les elements fiscaux differes/discrets neutralises), inchange vs these precedente.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "amortissement_recurrent_acquereur_serie",
-        "moteur": "Amortissement des intangibles (897M$ pretax en 2025, ~466M$ au seul S1 2026) maintenu dans la base normalisee car recurrent chez un acquereur en serie comme Boston Scientific (et desormais Penumbra en cours d'integration) - politique inchangee vs these precedente, reconfirmee par la reconciliation non-GAAP du T2 2026.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-BRIDGE-PRUDENCE",
-        "moteur": "Bridge (c-ter) exposes ~-$619M of unallocated conservatism in 2030 (and rising finNet 2028-29 while debt melts): the outer-year net trajectory embeds a deliberate safety margin on Penumbra integration and restructuring that is not decomposed line by line. To arbitrate at a future refresh: either name the components or release part of the margin.",
-        "applique": [
-          "bridge.2029",
-          "bridge.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 2.74,
-      "2027": 2.88,
-      "2028": 3.28,
-      "2029": 3.77,
-      "2030": 4.3
-    },
-    "omniumCA": {
-      "2026": 21400,
-      "2027": 22800,
-      "2028": 24850,
-      "2029": 27200,
-      "2030": 29650
-    },
-    "omniumEBIT": {
-      "2026": 4850,
-      "2027": 5240,
-      "2028": 6040,
-      "2029": 6880,
-      "2030": 7770
-    },
-    "omniumNet": {
-      "2026": 4050,
-      "2027": 4230,
-      "2028": 4780,
-      "2029": 5450,
-      "2030": 6150
-    },
-    "omniumND": {
-      "2026": 18500,
-      "2027": 14500,
-      "2028": 10000,
-      "2029": 5000,
-      "2030": -500
-    },
-    "omniumShares": {
-      "2026": 1478,
-      "2027": 1470,
-      "2028": 1458,
-      "2029": 1445,
-      "2030": 1430
-    },
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.75,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.75,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.75,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 0.8,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.67,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.72,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.67,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.68,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 0.7,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 0.76,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 0.7,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.72,
-          "actual": false
-        }
-      ]
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -270,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 3486,
-        "netPub": 3813,
-        "residual": 327,
-        "residualNote": "Published adjusted net exceeds the bridge by +$327M: either the 2025 effective tax on the adjusted base ran below the 14% normative (credits/mix) or positive non-operating items are not yet decomposed. To be split from the 10-K FY2025 at a future refresh; components here are first-pass estimates."
-      },
-      "2026": {
-        "finNet": -140,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 4051
-      },
-      "2027": {
-        "finNet": -321,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 4230
-      },
-      "2028": {
-        "finNet": -482,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 4780
-      },
-      "2029": {
-        "finNet": -543,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 5450
-      },
-      "2030": {
-        "finNet": 0,
-        "other": -619,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 6150
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Adjusted EPS (annual guidance)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-08-07",
-          "type": "guidance_revision",
-          "detail": "FY26 adjusted EPS narrowed DOWN to $3.28-3.32 (from $3.34-3.41 in April, initial $3.43-3.49 in February) - third downward revision; organic growth cut to 5-6%. Drivers: unexpected US WATCHMAN slowdown, PFA competitive share loss.",
-          "flag": "warning"
-        },
-        {
-          "date": "2026-08-07",
-          "type": "vs_guidance",
-          "detail": "Q2 adjusted EPS $0.86 (+15% YoY), beating the top of the guided range ($0.84); organic revenue +7% above guidance.",
-          "beatPct": 2.4
-        }
-      ],
-      "paceCheckpoint": null,
-      "weightedBeatPct": 2.4,
-      "annualBeatPct": 9.4,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 7.9,
-          "source": "initial_guidance",
-          "excluded": false,
-          "note": "Initial guidance Feb-2025 $2.80-2.87 (mid 2.835) vs realized $3.06."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 11.6,
-          "source": "initial_guidance",
-          "excluded": false,
-          "note": "Initial guidance Jan-2024 $2.23-2.27 (mid 2.25) vs realized $2.51."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 3.46,
-        "source": "initial_guidance",
-        "date": "2026-02-04",
-        "note": "Initial FY26 guidance $3.43-3.49 (midpoint). Current guidance $3.28-3.32 tracks ~-4.9% BELOW this anchor - the historical sandbagging pattern broke this year."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "Regime break in progress (E-scorecard f): third downward guidance revision this quarter (WATCHMAN, PFA share loss). The +9.4% historical beat pattern is demonstrably not operating in FY26; refinement suspended until the regime stabilizes.",
-      "consensusSource": null,
-      "consensusDate": null
-    },
-    "revisionEvent": {
-      "date": "2026-08-07",
-      "label": "Q2 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2025,
+   "ca": 20074,
+   "ebit": 4324,
+   "net": 3813,
+   "shares": 1495,
+   "nd": 9500
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 3.3,
+  "epsNY": 3.42,
+  "date": "2026-07-29",
+  "source": "Base management ADJUSTED (pas la base normalisee Omnium) : point median de la guidance FY2026 relevee/abaissee le 29/07 (3,28-3,32$), qui a immediatement remplace le consensus analystes pre-publication (~3,35$, desormais obsolete). epsNY = estimation Omnium d'une croissance limitee 2027 (~+4%) faute de consensus 2027 public frais a cette date ; a reverifier au prochain refresh."
+ },
+ "particularites": [],
+ "ownership": {
+  "asOf": "2026-Q1",
+  "insiderPct": 0.5,
+  "insiderDesc": "Tres faible, typique d'un CEO de tres grande capitalisation sans participation fondatrice (Mike Mahoney ~1,4M actions apres donation de 386 755 actions a un trust familial en mai 2026 ; vendeur net regulier, ex. 160 901 actions cedees le 02/02/2026).",
+  "insiderSource": "SEC Form 4 (compilation GuruFocus/MarketBeat/StockTitan).",
+  "notableHolders": [
+   {
+    "investor": "PRIMECAP Management",
+    "tier": "T2",
+    "pct": 2.23,
+    "asOf": "2026-Q1",
+    "movement": "reduit (-4,5%)"
+   },
+   {
+    "investor": "Capital World Investors",
+    "tier": "T2",
+    "pct": 1.8,
+    "asOf": "2026-Q1",
+    "movement": "n/d"
+   }
+  ],
+  "coverageNote": "Base actionnariale tres majoritairement passive/indicielle (Vanguard, Fidelity, BlackRock, State Street, Geode representent a eux seuls >27% du capital) - peu de gerants actifs de conviction identifies dans la liste de suivi Omnium.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-31",
+  "items": [
+   {
+    "year": 2026,
+    "status": "enquete_en_cours",
+    "title": "Class action boursiere (Securities Exchange Act) alleguant que le management aurait presente de maniere trompeuse le taux de croissance des procedures d'electrophysiologie US.",
+    "allegedBy": "Actionnaires (plusieurs cabinets d'avocats specialises, ex. Pomerantz, Kirby McInerney, Kessler Topaz)",
+    "outcome": "Periode couverte : 23/07/2025-03/02/2026 (date de l'annonce de la premiere baisse de guidance EP/WATCHMAN). Stade preliminaire (appels a candidature de lead plaintiff), issue et montant non determinables a ce stade.",
+    "source": "Depots judiciaires federaux, alertes investisseurs (MarketBeat, Law.com)",
+    "date": "2026-02-03"
+   }
+  ],
+  "note": "A suivre de pres au prochain refresh : calendrier de la class action (lead plaintiff, eventuelle motion to dismiss)."
+ },
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-14",
+  "statut": "incoherences_detectees",
+  "points": [
+   {
+    "sujet": "Trajectoire WATCHMAN/WAMGR et confiance EPS 2027",
+    "ancienPropos": "T1 2026 : le CFO se dit explicitement 'comfortable with double-digit EPS growth through the LRP' malgre les vents contraires WATCHMAN/EP deja identifies ; WAMGR revise a '8% moving towards 9%' sur l'horizon du plan long terme.",
+    "nouveauPropos": "T2 2026 : WAMGR revise a nouveau a la baisse a '7-8%' (perte d'environ 1 point vs T1) ; 2027 desormais qualifiee explicitement d''annee de transition' a croissance d'EPS ajuste LIMITEE, le retour a une croissance d'EPS soutenue repousse a 2028.",
+    "natureEcart": "inversion_narratif_structurant",
+    "materialite": "haute",
+    "justification": "En trois mois seulement, le discours passe d'une confiance explicite dans une croissance d'EPS a deux chiffres sur tout l'horizon du plan long terme a l'annonce d'une annee de transition a croissance limitee - une degradation rapide et significative de la trajectoire centrale de la these, au-dela du simple ajustement de guidance trimestriel habituel."
+   }
+  ],
+  "historique": [
+   {
+    "quarter": "T2 2026",
+    "date": "2026-07-29",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Robbie Marcus (JP Morgan) - la guidance abaissee est-elle conservatrice pour eviter de futures revisions, ou reflete-t-elle des tendances observees ? Comment penser la croissance organique 2027 (~5%) ? - le management indique que 75% de l'activite croit de maniere constante a ~6%, EP et WATCHMAN etant les moteurs de la baisse de guidance ; objectif d'ameliorer 2027 par rapport a la guidance du S2 26, avec une reprise attendue de l'EP au S2 27 et une amelioration significative en 2028 grace aux nouveaux lancements (TAM combine >25 Md$).",
+     "Q Larry Biegelsen (Wells Fargo) - 'pas d'amelioration en 2027' concerne-t-il l'annee complete ou seulement le S1 ? Impact des baisses de tarifs et de la concurrence ? Perspectives de label premiere ligne apres les donnees CHAMPION-AF ? - le management suppose que le marche WATCHMAN reste sous pression en 2027 jusqu'a amelioration averee des tendances, anticipe l'entree d'un concurrent en 2027 mais maintient sa confiance dans le leadership de marche de WATCHMAN.",
+     "Q Joanne Wuensch (Citi) - la guidance 2026 (croissance organique 5-6%) est-elle un point de depart raisonnable pour 2027 ? Quels produits portent la reacceleration 2028 ? - le management detaille sept lancements majeurs pour 2028 et au-dela (cloture Penumbra, systeme de denervation renale, option TAVR via MiRus, lancement IVL coronaire, entree en ICE, FARAWAVE Ultra, support circulatoire) ; le secteur ICVT positionne comme le plus grand moteur de croissance futur du groupe.",
+     "Q Rick Wise (Stifel) - details sur le programme de restructuration de 500M$ (calendrier, reinvestissement, phasage P&L) ? - plus de 50% des economies realisees fin 2027, d'abord visibles en SG&A en 2027 puis en COGS plus tard ; le programme doit permettre l'expansion de marge operationnelle et une forte croissance d'EPS a partir de 2028.",
+     "Q Mike Polark (Wolfe Research) - qu'est-ce qui peut faire evoluer les schemas de prescription de WATCHMAN ? Nouvelles donnees cliniques ? Innovation de forme ? Voie vers un label premiere ligne ? - investissements cibles en education clinique, couverture commerciale elargie et marketing direct-patient ; essai SIMPLAAFY attendu au S2 26 ; essai clinique du dispositif WATCHMAN Elite en cours ; recherche d'une mise a jour de label FDA et d'un reexamen de la decision de couverture nationale CMS ; 30-40% des patients AF necessitant une prevention d'AVC ne recoivent aucun traitement - besoin non couvert substantiel.",
+     "Q Travis Steed (BofA) - quelle croissance d'EPS en 2027 ? Plate, alignee sur le CA, ou avec un effet de levier ? Chemin vers une croissance a deux chiffres en 2028 ? - croissance d'EPS 2027 limitee attendue du fait de la pression sur la marge brute (faiblesse WATCHMAN/EP) et de la dilution Penumbra ; restructuration et catalyseurs de croissance positionnent un retour a une expansion de marge significative et une forte croissance d'EPS a partir de 2028.",
+     "Q Matt Taylor (Jefferies) - attentes plus precises pour la croissance EP en 2027 ? Quand les produits du pipeline contribuent-ils ? - S1 27 similaire aux dynamiques du S2 26 ; amelioration au S2 27 avec le lancement de FARAWAVE Ultra et l'entree sur le marche ICE ; 2028 montre une croissance a hauteur ou au-dessus du marche avec Ultra, ICE et la plateforme FARAFLEX.",
+     "Q Jayson Bedford (Raymond James) - WAMGR actualise ? Dynamique du marche vs part de marche en neuromodulation sacree ? - WAMGR desormais 7-8% (en baisse d'environ 1 point) ; urologie attendue stable a +1% sur l'annee 2026 complete, amelioration anticipee en 2027 avec trois lancements de portefeuille cornerstone."
+    ]
+   },
+   {
+    "quarter": "T1 2026",
+    "date": "2026-04-22",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Robbie Marcus (JP Morgan) - calendrier de la revision de guidance et validite du plan long terme (LRP) ? - trois moteurs principaux de la revision a la baisse : deceleration du volume WATCHMAN depuis mi-fevrier, erosion de part de marche EP superieure aux attentes, et sous-performance de l'urologie ; le management se dit neanmoins 'comfortable with double-digit EPS growth through the LRP' malgre les vents contraires 2026.",
+     "Q Joanne Wuensch (Citi) - sequencement trimestriel jusqu'a fin d'annee ? - le T2 identifie comme 'le trimestre le plus difficile' (comparables exigeants) ; WATCHMAN attendu en croissance a deux chiffres bas le reste de l'annee, EP a un chiffre moyen-eleve, activite globale a un chiffre moyen avec acceleration au S2.",
+     "Q Larry Biegelsen (Wells Fargo) - pression sur la part de marche EP et perspective US ? - EP US guide a une croissance a un chiffre moyen ; trois concurrents identifies (Medtronic, J&J, Abbott) ; malgre l'erosion de part de marche, le management maintient une 'grande confiance' dans le maintien du leadership PFA grace aux lancements du pipeline.",
+     "Q Rick Wise (Stifel) - perspective WATCHMAN apres les donnees CHAMPION et moteurs de croissance ? - l'essai CHAMPION a atteint tous ses criteres primaires et secondaires ; investissements commerciaux et marketing pour stimuler l'adoption ; procedures concomitantes attendues en hausse de 25% a 50% du mix sur l'horizon du LRP.",
+     "Q David Roman (Goldman Sachs) - croissance hors EP/WATCHMAN et lancements produits ? - activite ICVT executant a un tres haut niveau, AGENT et l'imagerie depassant les attentes ; donnees de l'essai FRACTURE presentees a EuroPCR (19 mai 2026) ; oncologie interventionnelle en croissance a un chiffre eleve dans les dizaines de pourcents.",
+     "Q Travis Steed (BofA) - evolution du WAMGR et implications pour le LRP ? - WAMGR revise clarifie a '8% en marche vers 9%' sur l'horizon du LRP ; guidance de CA organique du LRP jugee premature a ce stade, mise a jour prevue apres la planification strategique.",
+     "Q Vijay Kumar (Evercore) - rationnel du rachat d'actions de 2 Md$ compte tenu de l'operation Penumbra ? - le calendrier des rachats reflete la disponibilite de tresorerie et la confiance du management dans la societe et son pipeline ; rachats debutant apres la levee de la restriction liee au vote des actionnaires Penumbra (6 mai).",
+     "Q Matthew O'Brien (Piper Sandler) - engagement sur l'operation Penumbra a la valorisation revisee ? - cloture attendue au S2 2026 apres le vote des actionnaires ; le management insiste sur le maintien de l'equipe commerciale et du pipeline R&D de Penumbra apres cloture."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "precedent_crm_platform_late2027",
+    "quarterOrigine": "T2 2026",
+    "engagement": "Nouvelle plateforme de defibrillateurs (CRM) 'Precedent' attendue fin 2027.",
+    "echeance": "2027-Q4",
+    "statut": "en_cours"
+   },
+   {
+    "id": "renal_denervation_market_availability_2028",
+    "quarterOrigine": "T2 2026",
+    "engagement": "Disponibilite commerciale du systeme de denervation renale visee en 2028 (essai THRIVE en cours de recrutement).",
+    "echeance": "2028-Q4",
+    "statut": "en_cours"
+   },
+   {
+    "id": "restructuring_500m_runrate_2029",
+    "quarterOrigine": "T2 2026",
+    "engagement": "Programme de restructuration visant ~500M$ d'economies annuelles recurrentes a la sortie de 2029, plus de 50% realisees fin 2027.",
+    "echeance": "2029-Q4",
+    "statut": "en_cours"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-18",
+  "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive ; bridge etabli (reconciliation 2025 + projections), scorecard annuel cree (beats historiques +7,9%/+11,6% vs guidances initiales, application SUSPENDUE - 3e revision baissiere ce trimestre), etatsFinanciers renseigne.",
+  "summary": "T2 solide en absolu (CA +7% organique, adj EPS 0,86$ +15%, au-dessus de la guidance) mais le vrai signal du trimestre est le relevement de la guidance FY2026 a la baisse (adj EPS 3,28-3,32$ vs 3,34-3,41$ au T1) et surtout l'annonce explicite d'une '2027 de transition' a croissance d'EPS limitee, la persistance de la faiblesse WATCHMAN/EP repoussant le retour a une expansion de marge significative a 2028. Nouveau programme de restructuration (~500M$ d'economies recurrentes visees fin 2029). Correction importante apportee ce refresh : `data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels (874M$, hors amortissement) - une fois corrige, l'EPS normalise 2025 passe de ~1,94$ (GAAP brut) a 2,55$, restaurant une croissance normalisee 2025->2026 coherente (+7,5% plutot qu'un chiffre trompeur). omniumEPS 2,74->4,30 (2026-2030).",
+  "text": "== THESIS SUMMARY ==\nBoston Scientific is a two-sided situation. Operational execution keeps beating: Q2 organic revenue +7% above guidance, adjusted EPS $0.86 (+15%) above the top of the range, FY25 closed at $3.06 (+22%). But the FY26 guidance has now been cut three times (initial $3.43-3.49 -> $3.28-3.32), driven by two genuine demand-side shocks: an unexpected US WATCHMAN slowdown (referral patterns hit by cumulative clinical evidence; standalone procedures down mid-teens) and competitive share loss in pulsed-field ablation (~80% of the US AFib market). Management frames 2027 as \"more pressured than initially anticipated\" with limited EPS growth, and a significant recovery in 2028 (FARAWAVE Ultra, intracardiac echo entry, Penumbra). The thesis rests on that 2028 re-acceleration plus the $500M run-rate restructuring savings by 2029 - while the historical guidance-sandbagging pattern (+7.9%/+11.6% beats vs initial anchors) is demonstrably broken this year, which is why the scorecard refinement is suspended.\n\n== THESIS READ ==\n- Third downward FY26 revision this quarter (EPS $3.28-3.32, organic 5-6%): WATCHMAN US slowdown and PFA share loss are demand facts, not execution noise.\n- Q2 itself beat (organic +7%, adj EPS $0.86 above range top): the franchise executes; the issue is market trajectory, not delivery.\n- 2027 explicitly guided as pressured with limited EPS growth; recovery narrative concentrated on 2028 (FARAWAVE Ultra, ICE market entry, Penumbra integration).\n- Restructuring program: $500M run-rate savings by end-2029, more than half by 2027 - first visible in SG&A, then COGS.\n- Watch: SIMPLAAFY results (late 2026) and potential FDA label updates for WATCHMAN - upside NOT embedded in current guidance.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: adjusted methodology (d-ter) - data carries the officially published adjusted results; data 2025 was retreated of $874M of true operating one-offs at the 03/08 refresh (E5 d-bis, published gross figures traced in that refresh). Normative tax 14% (AN confirmed); bridge established (c-ter): 2025 reconciliation leaves a +$327M residual to split from the 10-K (effective tax possibly below 14% that year); projections fit at 14% with rising net interest through the Penumbra debt peak (~$11.0B new debt, official), then an unallocated ~-$619M conservatism in 2030 flagged in AN-BRIDGE-PRUDENCE - deliberate safety margin, to arbitrate later. Penumbra (~$14.5B, cash + debt + shares) remains excluded from operating projections until closing; its financing is in omniumND from 2026-27. Scorecard: annualBeatPct +9.4% established but application SUSPENDED (regime break - see applicationNote). WATCH-LIST: (1) WATCHMAN US stabilization vs further referral erosion; (2) PFA share trajectory vs FARAPULSE roadmap; (3) Penumbra closing terms and first post-integration guidance; (4) 10-K split of the 2025 bridge residual; (5) restructuring savings pace vs charges. Next useful refresh: Q3 2026 results (late October).\n\n== CATALYSTS ==\nQ3 2026 results (late Oct); SIMPLAAFY readout (late 2026); Penumbra closing.",
+  "impact": "neutre",
+  "priorEPS": {
+   "date": "2026-08-03",
+   "eps": {
+    "2026": 2.74,
+    "2027": 2.88,
+    "2028": 3.28,
+    "2029": 3.77,
+    "2030": 4.3
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T2 2026",
+    "date": "2026-07-29",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Adj EPS abaisse a 3,28-3,32$ (vs 3,34-3,41$ au T1 26) ; CA reporte abaisse a 5,5-6,5% (vs 7-8,5% au T1 26). 3e baisse de guidance consecutive depuis le debut de l'annee."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "dernierCall": {
+   "quarter": "T2 2026",
+   "date": "2026-07-29",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 5442,
+     "consensus": 5361
+    },
+    "epsAdj": {
+     "actual": 0.86,
+     "consensus": 0.83,
+     "basis": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "CA +3-5% (reporte et organique) vs T3 2025 ; adj EPS 0,80-0,82$ (guidance sous le consensus pre-publication).",
+   "guidanceAnnuelle": "FY2026 CA reporte +5,5-6,5% (organique +5-6%), adj EPS 3,28-3,32$ (hors Penumbra) - 3e baisse de guidance de l'annee.",
+   "pointsCles": [
+    "CA T2 en hausse de 7,0% organique, au-dessus de la guidance (5-7%) ; adj EPS 0,86$ (+15% YoY), au-dessus du haut de fourchette (0,82-0,84$), porte notamment par des elements fiscaux favorables.",
+    "Guidance FY2026 de nouveau abaissee (3e fois en 2026) et 2027 explicitement qualifiee de 'transition' a croissance d'EPS limitee - la faiblesse WATCHMAN/EP doit persister, et Penumbra sera legerement dilutive a son integration.",
+    "Nouveau programme de restructuration vise ~500M$ d'economies annuelles recurrentes a la sortie de 2029, plus de la moitie realisee fin 2027, pour financer les investissements de croissance et restaurer l'expansion de marge.",
+    "Le financement de Penumbra est precise dans le 10-K : ~11,0 Md$ de nouvelle dette (plus cash et actions), un chiffre officiel largement superieur a l'hypothese retenue dans la these precedente."
+   ],
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-08-07"
+   }
+  },
+  "ancrages": [
+   {
+    "id": "data_2025_retraitement_true_up",
+    "moteur": "`data` 2025 n'avait jamais ete retraite des vrais exceptionnels operationnels identifies par le management lui-meme (874M$ pretax hors amortissement : impairment 46M$, acquisition/cession 245M$, restructuration 343M$, litige 194M$, EU MDR 46M$ - source : reconciliation non-GAAP annuelle du 10-K FY2025), restant a son niveau GAAP brut (EBIT 3450M$, marge 17,2%) - defaut de conformite E5 d-bis corrige ce refresh : EBIT retraite a 4324M$ (marge 21,54%), net retraite a 3813M$ (meme methodologie 'adjusted moins amortissement garde' appliquee de facon coherente a l'historique et aux projections).",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "guidance_fy2026_abaissee_3e_fois",
+    "moteur": "Guidance FY2026 adj EPS abaissee a 3,28-3,32$ (vs 3,34-3,41$ au T1 26, vs 3,43-3,49$ en debut d'annee), CA reporte a 5,5-6,5% (vs 7-8,5%) - construction bottom-up H1 reel (EPS normalise 1,39$) + H2 guide (EPS normalise ~1,35$ apres amortissement) donnant un FY2026 normalise de 2,74$.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "2027_transition_croissance_limitee",
+    "moteur": "Le CFO qualifie explicitement 2027 d'annee de transition a 'croissance d'EPS ajuste limitee' du fait de la persistance WATCHMAN/EP et de la dilution initiale Penumbra, avec un retour a une expansion de marge significative et une forte croissance d'EPS repousse a 2028 -> trajectoire 2027 nettement tassee (+5% vs +16% dans la these precedente), reacceleration a partir de 2028 portee par 7 lancements produits (TAM combine 25 Md$) et les economies de restructuration.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumEBIT.2027",
+     "omniumNet.2027",
+     "omniumEPS.2027"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "penumbra_financement_dette_11md_officiel",
+    "moteur": "Le 10-K FY2025 precise desormais officiellement le financement de Penumbra : ~11,0 Md$ de nouvelle dette (plus cash et une portion en actions), deal ~14,5 Md$ au total, cloture visee au S2 2026 - chiffre bien plus lourd que l'hypothese prudente de la these precedente -> omniumND revise nettement a la hausse des 2026 (bascule vers ~18,5 Md$ en fin d'annee), desendettement progressif ensuite porte par la generation de FCF. Le volet operationnel (CA/EBIT) de Penumbra reste exclu des projections tant que la societe n'a pas publie de guidance post-cloture officielle.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "restructuring_500m_savings_2029",
+    "moteur": "Nouveau programme de restructuration annonce ce trimestre, ~500M$ d'economies annuelles recurrentes visees a la sortie de 2029 (plus de la moitie realisee fin 2027, d'abord en SG&A puis en COGS) -> contribue a la reacceleration de marge modelisee a partir de 2028-2029, en plus des lancements produits.",
+    "applique": [
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "tax_normalise_14pct_confirme",
+    "moteur": "Taux d'IS normatif maintenu a 14% (coherent avec le taux effectif FY2025 reel de 14,57% - 493/3385 - une fois les elements fiscaux differes/discrets neutralises), inchange vs these precedente.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "amortissement_recurrent_acquereur_serie",
+    "moteur": "Amortissement des intangibles (897M$ pretax en 2025, ~466M$ au seul S1 2026) maintenu dans la base normalisee car recurrent chez un acquereur en serie comme Boston Scientific (et desormais Penumbra en cours d'integration) - politique inchangee vs these precedente, reconfirmee par la reconciliation non-GAAP du T2 2026.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-BRIDGE-PRUDENCE",
+    "moteur": "Bridge (c-ter) exposes ~-$619M of unallocated conservatism in 2030 (and rising finNet 2028-29 while debt melts): the outer-year net trajectory embeds a deliberate safety margin on Penumbra integration and restructuring that is not decomposed line by line. To arbitrate at a future refresh: either name the components or release part of the margin.",
+    "applique": [
+     "bridge.2029",
+     "bridge.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 2.74,
+   "2027": 2.88,
+   "2028": 3.28,
+   "2029": 3.77,
+   "2030": 4.3
+  },
+  "omniumCA": {
+   "2026": 21400,
+   "2027": 22800,
+   "2028": 24850,
+   "2029": 27200,
+   "2030": 29650
+  },
+  "omniumEBIT": {
+   "2026": 4850,
+   "2027": 5240,
+   "2028": 6040,
+   "2029": 6880,
+   "2030": 7770
+  },
+  "omniumNet": {
+   "2026": 4050,
+   "2027": 4230,
+   "2028": 4780,
+   "2029": 5450,
+   "2030": 6150
+  },
+  "omniumND": {
+   "2026": 18500,
+   "2027": 14500,
+   "2028": 10000,
+   "2029": 5000,
+   "2030": -500
+  },
+  "omniumShares": {
+   "2026": 1478,
+   "2027": 1470,
+   "2028": 1458,
+   "2029": 1445,
+   "2030": 1430
+  },
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.75,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.75,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.75,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.8,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.67,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.72,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.67,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.68,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 0.7,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 0.76,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 0.7,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.72,
+     "actual": false
+    }
+   ]
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -270,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 3486,
+    "netPub": 3813,
+    "residual": 327,
+    "residualNote": "Published adjusted net exceeds the bridge by +$327M: either the 2025 effective tax on the adjusted base ran below the 14% normative (credits/mix) or positive non-operating items are not yet decomposed. To be split from the 10-K FY2025 at a future refresh; components here are first-pass estimates."
+   },
+   "2026": {
+    "finNet": -140,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 4051
+   },
+   "2027": {
+    "finNet": -321,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 4230
+   },
+   "2028": {
+    "finNet": -482,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 4780
+   },
+   "2029": {
+    "finNet": -543,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 5450
+   },
+   "2030": {
+    "finNet": 0,
+    "other": -619,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 6150
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Adjusted EPS (annual guidance)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-08-07",
+     "type": "guidance_revision",
+     "detail": "FY26 adjusted EPS narrowed DOWN to $3.28-3.32 (from $3.34-3.41 in April, initial $3.43-3.49 in February) - third downward revision; organic growth cut to 5-6%. Drivers: unexpected US WATCHMAN slowdown, PFA competitive share loss.",
+     "flag": "warning"
+    },
+    {
+     "date": "2026-08-07",
+     "type": "vs_guidance",
+     "detail": "Q2 adjusted EPS $0.86 (+15% YoY), beating the top of the guided range ($0.84); organic revenue +7% above guidance.",
+     "beatPct": 2.4
+    }
+   ],
+   "paceCheckpoint": null,
+   "weightedBeatPct": 2.4,
+   "annualBeatPct": 2.3,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 7.9,
+     "source": "initial_guidance",
+     "excluded": false,
+     "note": "Initial guidance Feb-2025 $2.80-2.87 (mid 2.835) vs realized $3.06.",
+     "anchorValue": 2.835
+    },
+    {
+     "fy": 2024,
+     "beatPct": 11.6,
+     "source": "initial_guidance",
+     "excluded": false,
+     "note": "Initial guidance Jan-2024 $2.23-2.27 (mid 2.25) vs realized $2.51.",
+     "anchorValue": 2.25
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 3.46,
+    "source": "initial_guidance",
+    "date": "2026-02-04",
+    "note": "Initial FY26 guidance $3.43-3.49 (midpoint). Current guidance $3.28-3.32 tracks ~-4.9% BELOW this anchor - the historical sandbagging pattern broke this year."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +2.3% BLENDED (19/08/2026 rule): FY26 in-progress projected -4.6% weighted 3, FY25 +7.9% weighted 2, FY24 +11.6% weighted 1. Application to projections remains SUSPENDED (third consecutive guidance cut).",
+   "consensusSource": null,
+   "consensusDate": null,
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 3.46,
+    "currentValue": 3.3,
+    "deltaPct": -4.6,
+    "asOf": "2026-08-07",
+    "note": "Initial FY26 guidance 3.43-3.49 (Feb, mid 3.46); guided 3.28-3.32 (mid 3.30) after a third downward revision on 07/08 - projected miss -4.6% vs the initial anchor."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-08-07",
+   "label": "Q2 2026",
+   "type": "earnings"
+  }
+ }
 }
