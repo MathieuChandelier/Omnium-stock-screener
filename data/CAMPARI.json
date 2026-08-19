@@ -1,287 +1,394 @@
 {
-  "name": "Campari",
-  "cours": 5.58,
-  "yahooSymbol": "CPR.MI",
-  "dividende": 0.1,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 2173,
-      "ebit": 400.8,
-      "net": 284.8,
-      "shares": 1127,
-      "nd": 830.9,
-      "div": 0.06
-    },
-    {
-      "year": 2022,
-      "ca": 2698,
-      "ebit": 511.5,
-      "net": 333.0,
-      "shares": 1126,
-      "nd": 1552.5,
-      "div": 0.06
-    },
-    {
-      "year": 2023,
-      "ca": 2919,
-      "ebit": 540.2,
-      "net": 330.5,
-      "shares": 1128,
-      "nd": 1853.5,
-      "div": 0.065
-    },
-    {
-      "year": 2024,
-      "ca": 3070,
-      "ebit": 392.4,
-      "net": 201.6,
-      "shares": 1200,
-      "nd": 2380,
-      "div": 0.065
-    },
-    {
-      "year": 2025,
-      "ca": 3051,
-      "ebit": 567.5,
-      "net": 346.3,
-      "shares": 1200,
-      "nd": 1958,
-      "div": 0.1
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 0.31,
-    "epsNY": 0.33,
-    "date": "2026-07-10",
-    "source": "Stockopedia (FY26 0.31€), recoupé valueinvesting.io - antérieur au S1 2026, à rafraîchir."
+ "name": "Campari",
+ "cours": 5.58,
+ "yahooSymbol": "CPR.MI",
+ "dividende": 0.1,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 2173,
+   "ebit": 400.8,
+   "net": 284.8,
+   "shares": 1127,
+   "nd": 830.9,
+   "div": 0.06
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2022,
+   "ca": 2698,
+   "ebit": 511.5,
+   "net": 333.0,
+   "shares": 1126,
+   "nd": 1552.5,
+   "div": 0.06
   },
-  "ownership": {
-    "asOf": "2026-07-29",
-    "insiderPct": 51.3,
-    "insiderDesc": "Lagfin S.C.A. (holding de la famille Garavoglia, actionnaire de contrôle historique) détient 51,3% du capital de Campari Group. Point de vigilance déjà identifié à la création : litige fiscal italien propre à Lagfin (saisie de 1,29 Md€ d'actions Campari en octobre 2025, soldé par un accord à 405 M€ payé sur 4 ans en décembre 2025) - dossier désormais clos, strictement au niveau de la holding de contrôle, sans impact direct sur les comptes de Campari Group ni mention dans le call S1 2026.",
-    "insiderSource": "Presse financière italienne (source de la thèse de création, non re-vérifiée à ce refresh - à rafraîchir avec une déclaration CONSOB à jour au prochain point).",
-    "notableHolders": [],
-    "coverageNote": "Titre coté à Milan (Borsa Italiana), hors périmètre 13F - recherche institutionnelle US non pertinente.",
-    "history": []
+  {
+   "year": 2023,
+   "ca": 2919,
+   "ebit": 540.2,
+   "net": 330.5,
+   "shares": 1128,
+   "nd": 1853.5,
+   "div": 0.065
   },
-  "compliance": {
-    "asOf": "2026-07-29",
-    "items": [],
-    "note": "Aucune allégation de fraude comptable, tromperie des investisseurs ou des consommateurs identifiée visant Campari Group elle-même. Le litige fiscal de Lagfin (actionnaire de contrôle, voir ownership) est volontairement exclu de ce champ : il porte sur la holding de contrôle et sa fiscalité personnelle, pas sur une allégation contre la société elle-même."
+  {
+   "year": 2024,
+   "ca": 3070,
+   "ebit": 392.4,
+   "net": 201.6,
+   "shares": 1200,
+   "nd": 2380,
+   "div": 0.065
   },
-  "hypothese": {
-    "date": "2026-08-04",
-    "priorEPS": {
-      "date": "2026-07-10",
-      "eps": {
-        "2026": 0.318,
-        "2027": 0.363
-      }
-    },
-    "source": "Refresh S1 2026 (29/07/2026) - TRANSCRIPT INTEGRAL du call S1 2026 (Simon Hunt CEO / Francesco Mele CFO, Q&A complete). Complement du 04/08/2026 : construction de hypothese.quarterlyEPS (E5 ter, cadence semestrielle) + resolution de la valeur absolue de dernierCall.epsAdj (auparavant non retrouvee) via le communique officiel H1 2025 de Campari (camparigroup.com, 31/07/2025, Group net profit-adjusted H1 25 = 216,2 M€) applique a la croissance +4,7% communiquee en call S1 26. These, ancrages et adjXXX inchanges, non rouverts par ce complement.",
-    "dernierCall": {
-      "quarter": "S1 26",
-      "communiqueAnalyse": false,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1511,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": 226.4,
-          "consensus": null,
-          "basis": "Group net profit-adjusted (M€), pas un EPS par action au sens strict (Campari ne publie pas de BPA ajuste explicite en communique). Valeur absolue H1 26 derivee : le transcript S1 26 ne donne que la croissance (+4,7% vs S1 25), sans chiffre absolu. Base H1 25 retrouvee dans le communique officiel Campari du 31/07/2025 (Group net profit-adjusted = 216,2 M€) -> H1 26 = 216,2 x 1,047 = 226,4 M€ (complement du 04/08/2026, resout la lacune signalee lors du refresh initial du 29/07/2026). Pas de consensus S1 identifie pour cette ligne."
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée (le secteur guide sur l'année pleine uniquement).",
-      "guidanceAnnuelle": "FY2026 : croissance organique du CA confirmée à environ 3% (inchangée). Marge EBIT ajustée RELEVÉE grâce à un environnement tarifaire plus favorable qu'anticipé (impact tarifaire FY26 désormais attendu à ~20 M€, contre ~30 M€ précédemment guidé, soit ~10 M€ de bénéfice incrémentiel) ; marge EBIT ajustée H2 attendue relativement stable en organique vs H2 2025 (effet COGS moindre qu'au S1). A&P et SG&A inchangés (objectif de 70pb de bénéfice SG&A organique sur l'année, 60pb déjà livrés au S1). Charges financières ajustées maintenues à ~100 M€ sur l'année. Remboursement tarifaire potentiel lié à 2025 (~15 M€, actif conditionnel comptabilisé) traité comme neutre pour l'année car potentiellement compensé par une volatilité additionnelle des coûts logistiques au S2 - pas d'incrément de guidance à ce titre sauf clarification au T3.",
-      "pointsCles": [
-        "5e trimestre consécutif de croissance organique du chiffre d'affaires (+2,7% au S1, +2,5% au T2 malgré une base de comparaison plus difficile) - Campari se présente comme le seul acteur coté de spiritueux dans cette situation, avec des gains de part de marché dans 95% de ses marchés.",
-        "Guidance de marge EBIT ajustée RELEVÉE grâce à un environnement tarifaire américain plus favorable qu'anticipé (impact FY26 désormais ~20 M€ contre ~30 M€ précédemment) ; la croissance organique du CA (~3%) et les autres lignes de guidance (A&P, SG&A, charges financières ~100 M€) restent inchangées.",
-        "Rationalisation du portefeuille en voie d'achèvement : cession du Rhum Agricole (Trois Rivières, Maison La Mauny) et de Cabo Wabo Tequila/Bisquit & Dubouche annoncée ce trimestre, portant à plus de 10 le nombre de marques/activités cédées en 18 mois - impact périmètre 2026 déjà guidé à -70 M€ de CA / -30 M€ d'EBIT (Cinzano sur 11 mois, Averna sur 7 mois), clôture du programme de rationalisation visée fin 2026.",
-        "Nouvelle émission obligataire de 600 M€ (Eurobond) accompagnée d'une opération de gestion de passif, améliorant le profil de maturité de la dette ; levier à 2,6x (légèrement au-dessus de fin d'année, effet saisonnier du besoin en fonds de roulement plutôt qu'une dégradation opérationnelle).",
-        "CapEx extraordinaire toujours concentré sur l'extension de la distillerie du Kentucky (finalisation visée fin 2026, ~100 M€ au total) ; CapEx total maintenu autour de 8% du CA (maintenance ~4% + extraordinaire ~4%), pas de normalisation attendue avant au moins 2027.",
-        "Marché allemand toujours difficile (pression sur le pouvoir d'achat du consommateur, pas un problème spécifique de distributeur) ; Etats-Unis toujours qualifiés de marché 'tricky' mais surperformance continue sur Aperol et Espolon, sans lecture négative significative identifiée sur une éventuelle guerre des prix dans la tequila à ce stade."
-      ]
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "FY25",
-        "date": "2026-03-04",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance organique du CA maintenue autour de 3% pour 2026 ; expansion organique 'contenue' de la marge EBIT ajustée, avec accélération au S2 selon le phasage des investissements A&P et l'effet de base tarifaire ; poursuite du désendettement et hausse du dividende privilégiées par rapport aux rachats d'actions."
-      },
-      {
-        "quarter": "S1 26",
-        "date": "2026-07-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance organique du CA confirmée ~3% (inchangée). Marge EBIT ajustée RELEVÉE (impact tarifaire FY26 ramené à ~20 M€ contre ~30 M€ précédemment, +10 M€ de bénéfice incrémentiel). A&P/SG&A inchangés (70pb SG&A visé). Charges financières ~100 M€ maintenues."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "summary": "S1 2026 confirme la thèse de resynchronisation : 5e trimestre consécutif de croissance organique (+2,7% S1), guidance de marge RELEVÉE grâce à un environnement tarifaire plus favorable (~20 M€ d'impact FY26 contre ~30 M€ guidé initialement), rationalisation de portefeuille en voie d'achèvement. Émission obligataire de 600 M€ améliore le profil de dette. omniumEBIT.2026 révisé à la hausse (+10 M€, bénéfice tarifaire) ; trajectoire 2027-2030 inchangée, l'amélioration tarifaire étant présentée comme spécifique à 2026 plutôt que structurelle.",
-    "text": "== SYNTHESE DE LA THESE ==\nLe S1 2026 confirme la thèse de resynchronisation posée à la création : Campari enchaîne un 5e trimestre consécutif de croissance organique (+2,7% au S1, +2,5% au T2 malgré une base de comparaison plus difficile), avec des gains de part de marché dans 95% de ses marchés - une performance que le management présente comme unique parmi les acteurs cotés de spiritueux. Le signal le plus important de ce refresh est le relèvement de la guidance de marge EBIT ajustée, permis par un environnement tarifaire américain sensiblement plus favorable qu'anticipé : l'impact tarifaire FY2026 est désormais attendu à environ 20 M€, contre 30 M€ dans la guidance initiale, soit un bénéfice incrémentiel d'environ 10 M€ qui vient directement alimenter la révision à la hausse de l'EBIT ajusté 2026 dans le modèle Omnium. La rationalisation du portefeuille, engagée depuis 18 mois, approche de son terme (plus de 10 marques/activités cédées, dont le Rhum Agricole et Cabo Wabo Tequila annoncés ce trimestre), avec une clôture visée fin 2026 - l'effet périmètre 2026 déjà guidé (-70 M€ de CA, -30 M€ d'EBIT) reste inchangé. Sur le plan financier, une nouvelle émission obligataire de 600 M€ améliore le profil de maturité de la dette, le levier restant confortable à 2,6x malgré un effet saisonnier du besoin en fonds de roulement. Point de lecture important pour la suite : le management indique explicitement que le bénéfice tarifaire 2026 ne doit pas être lu comme un changement structurel - la trajectoire de marge 2027 et au-delà, portée par le plan de coûts (+200pb cumulés visés d'ici 2027), reste inchangée dans le modèle.\n\n== EVENEMENTS & INFLEXIONS (S1 2026, transcript du 29/07) ==\n1. GUIDANCE DE MARGE RELEVEE - BENEFICE TARIFAIRE [classe (i), CONFIRME ET QUANTIFIE] : impact tarifaire US FY2026 ramené à ~20 M€ contre ~30 M€ guidé initialement (10% de tarif payé effectivement au lieu des 15% initialement anticipés entre fin février et fin du S1), soit ~10 M€ de bénéfice incrémentiel sur l'EBIT ajusté. Le CFO precise qu'une seconde investigation tarifaire est en cours et que le taux pourrait encore évoluer - la guidance reste una position 'équilibrée' plutôt qu'un pari sur un taux figé. Un remboursement tarifaire potentiel lié à 2025 (~15 M€, actif conditionnel déjà comptabilisé) n'est PAS intégré à la guidance, le management jugeant qu'il pourrait être compensé par une volatilité additionnelle des coûts logistiques au S2.\n2. CROISSANCE ORGANIQUE SOUTENUE, 5E TRIMESTRE CONSECUTIF [classe (i), CONFIRME] : +2,7% au S1 (+1,9% Europe, +2,6% Amérique du Nord, +9,1% marchés en développement, flat APAC/GTR), porté par la marque Aperol (+3,3%) et le déploiement de nouveaux formats (Aperol on Tap, Aperol to Go Can, RTS) qui élargissent les occasions de consommation sans cannibalisation apparente. Gains de part de marché confirmés dans 95% des marchés.\n3. RATIONALISATION DE PORTEFEUILLE PRESQUE ACHEVEE [classe (i), NOUVEAU CE TRIMESTRE] : cession du Rhum Agricole (Trois Rivières, Maison La Mauny) et de Cabo Wabo Tequila/Bisquit & Dubouche cognac, portant à plus de 10 marques/activités cédées en 18 mois. Actifs cédés jugés dilutifs en marge et cash-intensifs par le management, avec une contribution EBIT désormais négligeable (contrairement à Cinzano/Averna, positivement contributeurs). Clôture du programme de rationalisation de portefeuille visée fin 2026, réduisant durablement la complexité du groupe au profit des marques prioritaires.\n4. NOUVELLE EMISSION OBLIGATAIRE ET GESTION DE PASSIF [classe (i)] : Eurobond de 600 M€ récemment clôturé avec une opération de gestion de passif (liability management), améliorant le profil de maturité de la dette. Coût moyen de la dette nette stable à 4,3% malgré la baisse de la dette nette moyenne (2,0 Md€ contre 2,3 Md€ un an plus tôt). Charges financières ajustées S1 26 à 44 M€ (en baisse), guidance FY26 maintenue à ~100 M€.\n5. LEVIER LEGEREMENT SUPERIEUR, EFFET SAISONNIER [classe (i)] : levier à 2,6x (contre le ratio de fin d'année), hausse de la dette nette de 110 M€ principalement liée à l'augmentation du besoin en fonds de roulement (constitution de stocks pour la saison haute, créances liées à la concentration des lancements d'innovation en fin de trimestre) et au versement du dividende, partiellement compensée par le produit de la cession Averna. Conversion de free cash-flow récurrent avant variation de BFR à 64% (proche de la moyenne 5 ans de 68%) ; conversion totale limitée à 4%/19 M€ au S1 du fait de la saisonnalité du BFR, normalisation attendue au S2.\n6. CAPEX EXTRAORDINAIRE CONCENTRE SUR LE KENTUCKY [classe (iii), non chiffre au-dela de l'existant] : distillerie du Kentucky en cours de finalisation (visite de site prévue par le CEO dans les prochaines semaines), achèvement attendu fin 2026 pour un coût total d'environ 100 M€. CapEx total maintenu autour de 8% du CA (maintenance ~4%, extraordinaire un peu moins de 4%), pas de normalisation attendue avant au moins 2027.\n7. MARCHES CONTRASTES [classe (iii)] : Allemagne toujours sous pression (consommateur, pas un problème de distributeur) ; Etats-Unis toujours qualifiés de marché difficile mais surperformance continue sur les marques prioritaires (Aperol, Espolon) ; pas de lecture négative significative identifiée sur une éventuelle guerre des prix dans la catégorie tequila à ce stade, malgré une forte spéculation de marché sur le sujet.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase retenue pour les adjXXX : EBIT ajusté communiqué par le management (mécanisme le plus proche disponible publiquement). CA S1 26 (1 511 M€) DERIVE de l'EBIT ajusté (358 M€) et de la marge EBIT ajustée (23,7%) explicitement communiqués - le transcript consulté pour ce refresh ne donne pas le chiffre d'affaires absolu du semestre en clair, ce qui est inhabituel ; à corriger au prochain refresh avec le communiqué officiel complet si le chiffre exact diverge. omniumEBIT.2026 relevé de 640 à 650 M€ (+10 M€, bénéfice tarifaire incrémentiel explicitement guidé) - ajustement appliqué UNIQUEMENT à 2026, le management présentant ce bénéfice comme spécifique à l'exercice (dépendant du taux de tarif effectivement payé) plutôt que structurel ; trajectoire de marge 2027-2030 inchangée (plan de coûts +200pb cumulés d'ici 2027 toujours retenu comme moteur de la convergence de marge à moyen terme). omniumNet.2026 ajusté en conséquence (~390 M€, charges financières maintenues ~100 M€, ETR normatif actualisé à 27,9% conformément au taux récurrent S1 26 réel contre 27,5% retenu à la création). Actions en circulation supposées stables à ~1200 M (aucun signal de rachat actif, priorité donnée au dividende et au désendettement).\nWATCH-LIST pour le prochain refresh : (1) confirmer le chiffre d'affaires S1 26 exact avec le communiqué officiel complet (ce refresh repose sur une valeur dérivée, pas publiée telle quelle) ; (2) suivre l'évolution du taux de tarif US effectif (10% reconfirmé récemment mais seconde investigation en cours, risque de passage à 15%) ; (3) confirmer la clôture effective du programme de rationalisation de portefeuille d'ici fin 2026 ; (4) suivre la normalisation de la conversion de free cash-flow au S2 (BFR) ; (5) avancement de la distillerie Kentucky et confirmation de sa finalisation fin 2026 ; (6) suivre l'évolution de la lecture du marché sur une éventuelle guerre des prix dans la tequila et son impact potentiel sur Espolon ; (7) obtenir un consensus post-résultats S1 fiable (celui utilisé à la création, daté du 10/07/2026, est antérieur à cette publication) ; (8) prochain refresh utile : résultats T3 2026 (date non communiquée dans les sources consultées).\n\n== DECOMPOSITION SEMESTRIELLE DE L'EPS (04/08/2026) ==\nConstruction de hypothese.quarterlyEPS selon E5 ter, point 1 (societe a cadence de publication financiere detaillee SEMESTRIELLE - EBIT/resultat net publies deux fois par an ; seule la croissance organique du CA beneficie d'un point trimestriel, sans BPA associe). Cadence retenue : \"semestriel\", libelles H1/H2.\nH1 2026 (ACTUAL) : le transcript S1 26 ne donne le resultat net ajuste qu'en croissance (+4,7% vs S1 25), sans valeur absolue - lacune deja signalee dans dernierCall.epsAdj lors du refresh initial du 29/07. Recherche complementaire menee pour cette construction : le communique officiel Campari du 31/07/2025 (H1 2025 results press release, camparigroup.com) publie un Group net profit-adjusted H1 2025 de 216,2 M€. Applique a la croissance +4,7% communiquee en call => Group net profit-adjusted H1 26 = 216,2 x 1,047 = 226,4 M€. Rapporte aux 1200 M actions => EPS Omnium H1 26 = 0,189€. Aucun retraitement supplementaire necessaire : le \"Group net profit-adjusted\" publie par Campari EST la base retenue pour les adjXXX de ce ticker (pas de divergence de perimetre comme sur d'autres titres ou l'ajuste management exclut des elements que le modele Omnium conserve).\nH2 2026 (ESTIME) : calcule en residu pour boucler exactement sur omniumNet[2026]=390 M€ / omniumEPS[2026]=0,325€ deja fige => 163,6 M€, soit 0,136€/action. Coherent avec le narratif du call : le CFO indique explicitement un \"pull forward\" du benefice de marge brute et des economies SG&A vers le S1 (60pb sur 70pb SG&A vises deja livres au S1) et une marge EBIT ajustee H2 \"relativement stable\" en organique - le S1 capte donc une part disproportionnee du resultat annuel sans qu'il ait ete necessaire de forcer cet ecart, le calage residuel suffisant a le faire apparaitre.\nNY 2027 (ESTIME, confiance basse) : aucune guidance chiffree disponible au-dela de l'annee en cours. Repartition H1/H2 estimee a 55%/45% - skew S1 attenue par rapport a 2026 (58%/42% implicite), le \"pull forward\" 2026 etant en partie lie a des effets specifiques a l'annee (phasage tarifaire, base de comparaison SG&A) non necessairement reconduits a l'identique, mais une part de saisonnalite structurelle (pic Aperitivo concentre sur T2-T3, dont la moitie tombe en H1) devrait subsister : H1 27 = 0,200€, H2 27 = 0,163€, calibres pour boucler exactement sur omniumEPS[2027]=0,363€ deja fige. Point de suivi explicite : a reviser des la publication du point d'activite T1 2027.\nP/E \"12 mois glissants\" (S2 26 -> S1 27) base sur epsForward12m=0,336€ - notion adaptee a la cadence semestrielle de ce titre (somme des deux prochains semestres chronologiques).\n\n== CATALYSEURS ==\nPoursuite de la séquence de croissance organique (6e trimestre consécutif attendu au T3) ; clarification du taux de tarif US effectif et de son impact définitif sur la marge FY26 ; clôture du programme de rationalisation de portefeuille (fin 2026) ; finalisation de la distillerie Kentucky (fin 2026) ; normalisation de la conversion de cash au S2 ; confirmation du point bas du cycle spiritueux sur les prochains trimestres.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "tariff_benefit_2026_specifique",
-        "moteur": "Impact tarifaire US FY2026 ramené par le management de ~30 M€ à ~20 M€ (10% de tarif effectivement paye au lieu de 15% anticipe sur une partie du S1), soit ~10 M€ de benefice incremental sur l'EBIT ajuste - explicitement presente par le management comme lie au taux de tarif REELLEMENT PAYE cette annee (une seconde investigation pourrait encore le faire evoluer), pas comme un changement structurel. Applique UNIQUEMENT a 2026 ; trajectoire 2027-2030 inchangee.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "croissance_organique_5e_trimestre",
-        "moteur": "Croissance organique du CA confirmee a ~3% pour FY2026 (guidance reiteree), portee par un 5e trimestre consecutif de croissance (+2,7% S1, +2,5% T2) et des gains de part de marche dans 95% des marches - trajectoire jugee coherente avec l'hypothese de reacceleration organique retenue a la creation, aucun ajustement necessaire.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "rationalisation_portefeuille_fin_2026",
-        "moteur": "Programme de rationalisation de portefeuille (>10 marques/activites cedees en 18 mois, dont Rhum Agricole et Cabo Wabo ce trimestre) approche de son terme, cloture visee fin 2026 - effet perimetre 2026 deja integre a la guidance (-70 M€ CA/-30 M€ EBIT, deja capture dans le modele de creation), aucun changement supplementaire a integrer ce refresh au-dela de la confirmation du calendrier.",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "charges_financieres_2026_actualisees",
-        "moteur": "Charges financieres ajustees guidees a ~100 M€ pour FY2026 (S1 26 reel a 44 M€, cout moyen de la dette nette stable a 4,3% malgre une dette nette moyenne en baisse a 2,0 Md€ contre 2,3 Md€), amelioration du profil de maturite via l'emission obligataire de 600 M€ - retenu tel quel, leger ajustement vs l'hypothese de creation (~95 M€).",
-        "applique": [
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "tax_normatif_actualise",
-        "moteur": "Taux d'IS recurrent reel au S1 26 de 27,9% (vs 27,5% retenu a la creation, base sur une moyenne historique) - actualise a 27,9% pour l'ensemble de l'horizon de projection, coherent avec la donnee la plus recente et la plus fiable disponible.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "plan_couts_200pb_inchange",
-        "moteur": "Plan de couts cumulant +200pb de marge vise d'ici 2027 confirme sur la bonne trajectoire (60pb de benefice SG&A organique deja livres au S1, sur un objectif de 70pb pour l'annee complete) - trajectoire de marge EBIT ajustee 2027-2030 inchangee vs la these de creation, le benefice tarifaire 2026 etant traite comme un element distinct et non reconduit.",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "capex_kentucky_2026",
-        "moteur": "CapEx extraordinaire concentre sur la distillerie du Kentucky, finalisation visee fin 2026 (~100 M€ au total) ; CapEx total maintenu a ~8% du CA sans normalisation attendue avant 2027 au plus tot - non directement modelise dans adjXXX (pas de ligne CapEx dediee dans le schema) mais retenu comme contexte pour la trajectoire de desendettement, coherente avec l'hypothese de creation.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "actions_stables",
-        "moteur": "Aucun signal de programme de rachat actif identifie dans le transcript S1 26 - priorite reaffirmee au desendettement et au dividende, actions en circulation maintenues stables a ~1200 M sur tout l'horizon, inchange vs la these de creation.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 0.325,
-      "2027": 0.363,
-      "2028": 0.387,
-      "2029": 0.41,
-      "2030": 0.432
-    },
-    "omniumCA": {
-      "2026": 3090,
-      "2027": 3183,
-      "2028": 3278,
-      "2029": 3377,
-      "2030": 3478
-    },
-    "omniumEBIT": {
-      "2026": 650,
-      "2027": 707,
-      "2028": 741,
-      "2029": 777,
-      "2030": 810
-    },
-    "omniumNet": {
-      "2026": 390,
-      "2027": 435,
-      "2028": 464,
-      "2029": 492,
-      "2030": 518
-    },
-    "omniumND": {
-      "2026": 1750,
-      "2027": 1600,
-      "2028": 1480,
-      "2029": 1380,
-      "2030": 1300
-    },
-    "omniumShares": {
-      "2026": 1200,
-      "2027": 1200,
-      "2028": 1200,
-      "2029": 1200,
-      "2030": 1200
-    },
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "semestriel",
-      "CY": [
-        {
-          "label": "H1",
-          "eps": 0.189,
-          "actual": true
-        },
-        {
-          "label": "H2",
-          "eps": 0.136,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "H1",
-          "eps": 0.2,
-          "actual": false
-        },
-        {
-          "label": "H2",
-          "eps": 0.163,
-          "actual": false
-        }
-      ],
-      "epsForward12m": 0.336,
-      "forwardPeriodLabel": "S2 26 -> S1 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
-    }
+  {
+   "year": 2025,
+   "ca": 3051,
+   "ebit": 567.5,
+   "net": 346.3,
+   "shares": 1200,
+   "nd": 1958,
+   "div": 0.1
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 0.31,
+  "epsNY": 0.33,
+  "date": "2026-07-10",
+  "source": "Stockopedia (FY26 0.31€), recoupé valueinvesting.io - antérieur au S1 2026, à rafraîchir."
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "ownership": {
+  "asOf": "2026-07-29",
+  "insiderPct": 51.3,
+  "insiderDesc": "Lagfin S.C.A. (holding de la famille Garavoglia, actionnaire de contrôle historique) détient 51,3% du capital de Campari Group. Point de vigilance déjà identifié à la création : litige fiscal italien propre à Lagfin (saisie de 1,29 Md€ d'actions Campari en octobre 2025, soldé par un accord à 405 M€ payé sur 4 ans en décembre 2025) - dossier désormais clos, strictement au niveau de la holding de contrôle, sans impact direct sur les comptes de Campari Group ni mention dans le call S1 2026.",
+  "insiderSource": "Presse financière italienne (source de la thèse de création, non re-vérifiée à ce refresh - à rafraîchir avec une déclaration CONSOB à jour au prochain point).",
+  "notableHolders": [],
+  "coverageNote": "Titre coté à Milan (Borsa Italiana), hors périmètre 13F - recherche institutionnelle US non pertinente.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-29",
+  "items": [],
+  "note": "Aucune allégation de fraude comptable, tromperie des investisseurs ou des consommateurs identifiée visant Campari Group elle-même. Le litige fiscal de Lagfin (actionnaire de contrôle, voir ownership) est volontairement exclu de ce champ : il porte sur la holding de contrôle et sa fiscalité personnelle, pas sur une allégation contre la société elle-même."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-10",
+   "eps": {
+    "2026": 0.318,
+    "2027": 0.363
+   }
+  },
+  "source": "Refresh S1 2026 (29/07/2026) - TRANSCRIPT INTEGRAL du call S1 2026 (Simon Hunt CEO / Francesco Mele CFO, Q&A complete). Complement du 04/08/2026 : construction de hypothese.quarterlyEPS (E5 ter, cadence semestrielle) + resolution de la valeur absolue de dernierCall.epsAdj (auparavant non retrouvee) via le communique officiel H1 2025 de Campari (camparigroup.com, 31/07/2025, Group net profit-adjusted H1 25 = 216,2 M€) applique a la croissance +4,7% communiquee en call S1 26. These, ancrages et adjXXX inchanges, non rouverts par ce complement.",
+  "dernierCall": {
+   "quarter": "S1 26",
+   "communiqueAnalyse": false,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1511,
+     "consensus": null
+    },
+    "epsAdj": {
+     "actual": 226.4,
+     "consensus": null,
+     "basis": "non-GAAP",
+     "basisNote": "Group net profit-adjusted (M€), pas un EPS par action au sens strict (Campari ne publie pas de BPA ajuste explicite en communique). Valeur absolue H1 26 derivee : le transcript S1 26 ne donne que la croissance (+4,7% vs S1 25), sans chiffre absolu. Base H1 25 retrouvee dans le communique officiel Campari du 31/07/2025 (Group net profit-adjusted = 216,2 M€) -> H1 26 = 216,2 x 1,047 = 226,4 M€ (complement du 04/08/2026, resout la lacune signalee lors du refresh initial du 29/07/2026). Pas de consensus S1 identifie pour cette ligne."
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée (le secteur guide sur l'année pleine uniquement).",
+   "guidanceAnnuelle": "FY2026 : croissance organique du CA confirmée à environ 3% (inchangée). Marge EBIT ajustée RELEVÉE grâce à un environnement tarifaire plus favorable qu'anticipé (impact tarifaire FY26 désormais attendu à ~20 M€, contre ~30 M€ précédemment guidé, soit ~10 M€ de bénéfice incrémentiel) ; marge EBIT ajustée H2 attendue relativement stable en organique vs H2 2025 (effet COGS moindre qu'au S1). A&P et SG&A inchangés (objectif de 70pb de bénéfice SG&A organique sur l'année, 60pb déjà livrés au S1). Charges financières ajustées maintenues à ~100 M€ sur l'année. Remboursement tarifaire potentiel lié à 2025 (~15 M€, actif conditionnel comptabilisé) traité comme neutre pour l'année car potentiellement compensé par une volatilité additionnelle des coûts logistiques au S2 - pas d'incrément de guidance à ce titre sauf clarification au T3.",
+   "pointsCles": [
+    "5e trimestre consécutif de croissance organique du chiffre d'affaires (+2,7% au S1, +2,5% au T2 malgré une base de comparaison plus difficile) - Campari se présente comme le seul acteur coté de spiritueux dans cette situation, avec des gains de part de marché dans 95% de ses marchés.",
+    "Guidance de marge EBIT ajustée RELEVÉE grâce à un environnement tarifaire américain plus favorable qu'anticipé (impact FY26 désormais ~20 M€ contre ~30 M€ précédemment) ; la croissance organique du CA (~3%) et les autres lignes de guidance (A&P, SG&A, charges financières ~100 M€) restent inchangées.",
+    "Rationalisation du portefeuille en voie d'achèvement : cession du Rhum Agricole (Trois Rivières, Maison La Mauny) et de Cabo Wabo Tequila/Bisquit & Dubouche annoncée ce trimestre, portant à plus de 10 le nombre de marques/activités cédées en 18 mois - impact périmètre 2026 déjà guidé à -70 M€ de CA / -30 M€ d'EBIT (Cinzano sur 11 mois, Averna sur 7 mois), clôture du programme de rationalisation visée fin 2026.",
+    "Nouvelle émission obligataire de 600 M€ (Eurobond) accompagnée d'une opération de gestion de passif, améliorant le profil de maturité de la dette ; levier à 2,6x (légèrement au-dessus de fin d'année, effet saisonnier du besoin en fonds de roulement plutôt qu'une dégradation opérationnelle).",
+    "CapEx extraordinaire toujours concentré sur l'extension de la distillerie du Kentucky (finalisation visée fin 2026, ~100 M€ au total) ; CapEx total maintenu autour de 8% du CA (maintenance ~4% + extraordinaire ~4%), pas de normalisation attendue avant au moins 2027.",
+    "Marché allemand toujours difficile (pression sur le pouvoir d'achat du consommateur, pas un problème spécifique de distributeur) ; Etats-Unis toujours qualifiés de marché 'tricky' mais surperformance continue sur Aperol et Espolon, sans lecture négative significative identifiée sur une éventuelle guerre des prix dans la tequila à ce stade."
+   ]
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "FY25",
+    "date": "2026-03-04",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance organique du CA maintenue autour de 3% pour 2026 ; expansion organique 'contenue' de la marge EBIT ajustée, avec accélération au S2 selon le phasage des investissements A&P et l'effet de base tarifaire ; poursuite du désendettement et hausse du dividende privilégiées par rapport aux rachats d'actions."
+   },
+   {
+    "quarter": "S1 26",
+    "date": "2026-07-29",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance organique du CA confirmée ~3% (inchangée). Marge EBIT ajustée RELEVÉE (impact tarifaire FY26 ramené à ~20 M€ contre ~30 M€ précédemment, +10 M€ de bénéfice incrémentiel). A&P/SG&A inchangés (70pb SG&A visé). Charges financières ~100 M€ maintenues."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "summary": "S1 2026 confirme la thèse de resynchronisation : 5e trimestre consécutif de croissance organique (+2,7% S1), guidance de marge RELEVÉE grâce à un environnement tarifaire plus favorable (~20 M€ d'impact FY26 contre ~30 M€ guidé initialement), rationalisation de portefeuille en voie d'achèvement. Émission obligataire de 600 M€ améliore le profil de dette. omniumEBIT.2026 révisé à la hausse (+10 M€, bénéfice tarifaire) ; trajectoire 2027-2030 inchangée, l'amélioration tarifaire étant présentée comme spécifique à 2026 plutôt que structurelle.",
+  "text": "== THESIS SUMMARY ==\nThe resynchronization thesis is on track: 5th consecutive quarter of organic growth (+2.7% S1 2026, +2.5% Q2 against a harder comp), market-share gains in 95% of key markets, and adjusted EBIT margin up 130bp to 23.7%. The key event of this refresh is the RAISED margin guidance, enabled by a materially friendlier US tariff outcome (FY26 impact now ~20M vs ~30M initially - a +10M incremental benefit fed straight into omniumEBIT 2026). Organic revenue guidance unchanged at ~3%. Portfolio rationalization is near complete after 18 months.\n\n== THESIS READ ==\n- Margin raise is tariff-driven and 2026-SPECIFIC per management - applied only to 2026, with the 2027-2030 margin trajectory unchanged (cost plan +200bp cumulative to 2027 remains the mid-term driver). Watch: whether any tariff benefit recurs in the 2027 guidance.\n- H2 will not repeat all H1 gross-margin gains - management explicit (benefits pulled forward, logistics costs high). Watch: H2 margin phasing.\n- House of Whiskey & Rum at -6% S1 (US category, South Korea, Russell's Reserve supply) is the soft spot in an otherwise broad portfolio. Watch: supply normalization.\n- Innovation is early but real: Aperol on Tap took 1.5% of Italian premium-beer share in 3 months. Watch: scaling beyond Italy.\n\n== SPECIAL FACTORS ==\nAdjusted-EBIT base (management APM, the most usable public mechanism). Campari communicates group adjusted net profit, not a per-share figure - basis flagged non-GAAP. S1 revenue (1,511M) was DERIVED from disclosed adjusted EBIT (358M) and margin (23.7%); the official release must be cross-checked at the next refresh.\n\n== PARAMETERS & WATCH-LIST ==\n2026: EBIT 650M (640 + 10M tariff benefit, 2026-only), finNet ~-109M declining with deleveraging (net debt 1,958 -> 1,300M by 2030), recurrent ETR 27.9% (S1 actual, vs 27.5% at setup), shares flat at 1,200M (no active buyback, dividend priority). 2027-2030: organic ~3%/yr, margin convergence on the +200bp cost plan. Bridge reconciles published 2025 at ~0 residual. Watch: rationalization completion by end-2026; A&P phasing into H2.\n\n== CATALYSTS ==\n9M sales (Oct); FY26 results (Mar 2027); Aperol on Tap / Campari Spritz RTS scaling; portfolio rationalization completion.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "tariff_benefit_2026_specifique",
+    "moteur": "Impact tarifaire US FY2026 ramené par le management de ~30 M€ à ~20 M€ (10% de tarif effectivement paye au lieu de 15% anticipe sur une partie du S1), soit ~10 M€ de benefice incremental sur l'EBIT ajuste - explicitement presente par le management comme lie au taux de tarif REELLEMENT PAYE cette annee (une seconde investigation pourrait encore le faire evoluer), pas comme un changement structurel. Applique UNIQUEMENT a 2026 ; trajectoire 2027-2030 inchangee.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "croissance_organique_5e_trimestre",
+    "moteur": "Croissance organique du CA confirmee a ~3% pour FY2026 (guidance reiteree), portee par un 5e trimestre consecutif de croissance (+2,7% S1, +2,5% T2) et des gains de part de marche dans 95% des marches - trajectoire jugee coherente avec l'hypothese de reacceleration organique retenue a la creation, aucun ajustement necessaire.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "rationalisation_portefeuille_fin_2026",
+    "moteur": "Programme de rationalisation de portefeuille (>10 marques/activites cedees en 18 mois, dont Rhum Agricole et Cabo Wabo ce trimestre) approche de son terme, cloture visee fin 2026 - effet perimetre 2026 deja integre a la guidance (-70 M€ CA/-30 M€ EBIT, deja capture dans le modele de creation), aucun changement supplementaire a integrer ce refresh au-dela de la confirmation du calendrier.",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "charges_financieres_2026_actualisees",
+    "moteur": "Charges financieres ajustees guidees a ~100 M€ pour FY2026 (S1 26 reel a 44 M€, cout moyen de la dette nette stable a 4,3% malgre une dette nette moyenne en baisse a 2,0 Md€ contre 2,3 Md€), amelioration du profil de maturite via l'emission obligataire de 600 M€ - retenu tel quel, leger ajustement vs l'hypothese de creation (~95 M€).",
+    "applique": [
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "tax_normatif_actualise",
+    "moteur": "Taux d'IS recurrent reel au S1 26 de 27,9% (vs 27,5% retenu a la creation, base sur une moyenne historique) - actualise a 27,9% pour l'ensemble de l'horizon de projection, coherent avec la donnee la plus recente et la plus fiable disponible.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "plan_couts_200pb_inchange",
+    "moteur": "Plan de couts cumulant +200pb de marge vise d'ici 2027 confirme sur la bonne trajectoire (60pb de benefice SG&A organique deja livres au S1, sur un objectif de 70pb pour l'annee complete) - trajectoire de marge EBIT ajustee 2027-2030 inchangee vs la these de creation, le benefice tarifaire 2026 etant traite comme un element distinct et non reconduit.",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "capex_kentucky_2026",
+    "moteur": "CapEx extraordinaire concentre sur la distillerie du Kentucky, finalisation visee fin 2026 (~100 M€ au total) ; CapEx total maintenu a ~8% du CA sans normalisation attendue avant 2027 au plus tot - non directement modelise dans adjXXX (pas de ligne CapEx dediee dans le schema) mais retenu comme contexte pour la trajectoire de desendettement, coherente avec l'hypothese de creation.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "actions_stables",
+    "moteur": "Aucun signal de programme de rachat actif identifie dans le transcript S1 26 - priorite reaffirmee au desendettement et au dividende, actions en circulation maintenues stables a ~1200 M sur tout l'horizon, inchange vs la these de creation.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 0.325,
+   "2027": 0.363,
+   "2028": 0.387,
+   "2029": 0.41,
+   "2030": 0.432
+  },
+  "omniumCA": {
+   "2026": 3090,
+   "2027": 3183,
+   "2028": 3278,
+   "2029": 3377,
+   "2030": 3478
+  },
+  "omniumEBIT": {
+   "2026": 650,
+   "2027": 707,
+   "2028": 741,
+   "2029": 777,
+   "2030": 810
+  },
+  "omniumNet": {
+   "2026": 390,
+   "2027": 435,
+   "2028": 464,
+   "2029": 492,
+   "2030": 518
+  },
+  "omniumND": {
+   "2026": 1750,
+   "2027": 1600,
+   "2028": 1480,
+   "2029": 1380,
+   "2030": 1300
+  },
+  "omniumShares": {
+   "2026": 1200,
+   "2027": 1200,
+   "2028": 1200,
+   "2029": 1200,
+   "2030": 1200
+  },
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "semestriel",
+   "CY": [
+    {
+     "label": "H1",
+     "eps": 0.189,
+     "actual": true
+    },
+    {
+     "label": "H2",
+     "eps": 0.136,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "H1",
+     "eps": 0.2,
+     "actual": false
+    },
+    {
+     "label": "H2",
+     "eps": 0.163,
+     "actual": false
+    }
+   ]
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -87,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 346.5,
+    "netPub": 346.3,
+    "residual": -0.2,
+    "residualNote": "Reconciles cleanly on the adjusted base: ~87M net financial charges on ~2.0bn net debt, recurrent ETR 27.9%."
+   },
+   "2026": {
+    "finNet": -109,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 390.1
+   },
+   "2027": {
+    "finNet": -104,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 434.8
+   },
+   "2028": {
+    "finNet": -97,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 464.3
+   },
+   "2029": {
+    "finNet": -95,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 491.7
+   },
+   "2030": {
+    "finNet": -92,
+    "other": 0,
+    "taxRate": 0.279,
+    "minorities": 0,
+    "netCalc": 517.7
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Organic revenue growth (guided, %)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-29",
+     "type": "guidance_revised",
+     "detail": "Organic revenue ~3% confirmed; adjusted-EBIT margin guidance RAISED on lower US tariff impact (~20M vs ~30M initially, +10M incremental benefit, 2026-specific)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: +2.7% organic (5th consecutive positive quarter, Q2 +2.5%), adjusted EBIT margin 23.7% (+130bp) - slightly below the +3% revenue anchor, well ahead on margin.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Initial FY25 guidance not archived at fiche setup - no reliable reconstruction."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same limitation."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 3.0,
+    "source": "initial_guidance",
+    "date": "2026-03-04",
+    "note": "Initial FY26 guidance at FY25 results: organic revenue growth ~3%, 'contained' organic adjusted-EBIT margin expansion. Margin component raised in July (tariff impact cut to ~20M from ~30M); the revenue anchor stays at +3% for the FY26 close measurement."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct null: no measurable closed FY at setup. FY26 will deliver the first observation vs the +3% initial anchor; margin overdelivery is tariff-driven and 2026-specific, so no uplift applied to 2027+.",
+   "consensusSource": "Stockopedia (FY26 0.31 EUR), cross-checked sell-side",
+   "consensusDate": "2026-07-10"
+  },
+  "revisionEvent": {
+   "date": "2026-07-29",
+   "label": "H1 2026",
+   "type": "earnings"
+  },
+  "etatsFinanciers": {
+   "analyse": false,
+   "note": "H1 2026 exploited via call summary (GuruFocus/Investing) and guidance disclosures; official interim release to be cross-checked next refresh (S1 revenue was derived from EBIT/margin, not read directly)."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-29",
+    "source": "Call summary (GuruFocus/Investing)",
+    "message": "Fifth consecutive quarter of organic growth (+2.7% S1, +2.5% Q2) with share gains in 95% of key markets; adjusted EBIT margin 23.7% (+130bp) on mix (aperitifs outperforming), input-cost savings and a smaller-than-expected US tariff hit (7M in S1); margin guidance raised (FY tariff impact cut to ~20M); management explicit that H2 will NOT repeat all H1 gross-margin gains (benefits pulled forward, logistics costs elevated); whiskey/rum -6% S1 remains the soft spot."
+   }
+  ]
+ }
 }
