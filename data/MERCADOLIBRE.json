@@ -502,14 +502,14 @@
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "No guidance policy; initial FY25 consensus not reliably reconstructed at setup."
+          "note": "MercadoLibre has a no-guidance policy; no dated early-2025 consensus snapshot archived - excluded structurally."
         },
         {
           "fy": 2024,
           "beatPct": null,
           "source": "initial_consensus",
           "excluded": true,
-          "note": "Same limitation."
+          "note": "Same structural limitation for FY24."
         }
       ],
       "anchorInitial": {
@@ -520,9 +520,10 @@
         "note": "First own archived projection (22/07/2026) - mid-year, imperfect as an 'initial' anchor; re-anchor at the FY27 open (Feb 2027 post-FY26 results). Initial FY26 consensus not sourced."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (no-guidance house, no measurable closed FY at setup). First measurable observation at FY2026 close vs the own-vintage anchor.",
+      "applicationNote": "No measurable fiscal year: no-guidance company. The consensus anchor (37.25, 22/07) starts the archive; first verdict at the FY26 close.",
       "consensusSource": "InvestingPro/MarketBeat (GAAP)",
-      "consensusDate": "2026-08-05"
+      "consensusDate": "2026-08-05",
+      "inProgress": null
     },
     "revisionEvent": {
       "date": "2026-08-05",

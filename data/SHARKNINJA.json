@@ -1,259 +1,271 @@
 {
- "name": "SharkNinja",
- "cours": 149.79,
- "yahooSymbol": "SN",
- "dividende": 0,
- "data": [
-  {
-   "year": 2021,
-   "ca": 3727,
-   "ebit": 438.26,
-   "net": 331.11,
-   "shares": 139.0,
-   "nd": 323.9,
-   "div": 0
-  },
-  {
-   "year": 2022,
-   "ca": 3717,
-   "ebit": 355.37,
-   "net": 258.87,
-   "shares": 138.98,
-   "nd": 305.03,
-   "div": 0
-  },
-  {
-   "year": 2023,
-   "ca": 4254,
-   "ebit": 455.84,
-   "net": 250.73,
-   "shares": 139.42,
-   "nd": 708.62,
-   "div": 0
-  },
-  {
-   "year": 2024,
-   "ca": 5529,
-   "ebit": 644.16,
-   "net": 438.71,
-   "shares": 141.08,
-   "nd": 557.19,
-   "div": 0
-  },
-  {
-   "year": 2025,
-   "ca": 6399,
-   "ebit": 920.28,
-   "net": 701.37,
-   "shares": 142.09,
-   "nd": 99.83,
-   "div": 0
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 6.12,
-  "epsNY": 7.12,
-  "date": "2026-07-13",
-  "source": "Zacks Consensus (FY26) / WallStreetZen (FY27) - EPS ajuste non-GAAP management, ~17 analystes"
- },
- "particularites": [],
- "hypothese": {
-  "date": "2026-08-19",
-  "source": "Creation - Transcript T1 2026 (6 mai 2026, dernier disponible), 10-K FY2025, communiques T4/FY2025 (11 fev 2026) et T1 2026 (6 mai 2026)",
-  "summary": "Thèse de croissance rentable post-scission JS Global : accélération internationale et innovation produit soutiennent une expansion structurelle de marge, avec un premier retour de capital (buyback 750M$) qui inverse le désendettement.",
-  "text": "== THESIS SUMMARY ==\nPost-spin profitable-growth story: since separating from JS Global (July 2023), 12 consecutive quarters of double-digit organic growth on a product-innovation engine (Ninja Luxe Cafe, Ninja Crispi, Shark PowerDetect) and accelerating international expansion (+31.6% in Q1 26), with the Europe/Mexico shift from distributor to direct sales completing by end-Q2 26. The bet: innovation cadence sustains growth while direct-sales mix and supply-chain diversification (out of China) defend margin through the tariff era.\n\n== THESIS READ ==\n- The innovation cadence is the moat - each new category (coffee, outdoor, beauty) extends the S-curve. Watch: new-category revenue disclosures.\n- Direct-sales transition lifts gross margin but adds opex first - the 2026 print will be mix-noisy. Watch: international margin once the transition completes.\n- Tariff exposure is managed via supply-chain shift - execution risk, not thesis risk. Watch: gross-margin bridge quarter by quarter.\n\n== SPECIAL FACTORS ==\nYoung fiche (created 15/07/2026): dernierCall and guidanceHistory ABSENT by construction - to initialize at the next quarterly report; priorEPS null. 'data' retreated for two true separation one-offs (2022: 34M discretionary bonus; 2023: 82.3M separation costs + 19.5M withholding tax), published figures kept in-fiche for audit traceability. Consensus basis wedge documented (adjusted street vs retreated GAAP).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 7,167M (+12%), EBIT 1,061M (14.8%), EPS 5.51; 2027-2030: revenue +8%/yr fading, margin ~15-15.8%, ETR 22% (company's own normalized rate), shares -1%/yr, net debt low and stable. Watch: next report (dernierCall init + first guidance archive); US consumer discretionary demand; tariff-regime changes.\n\n== CATALYSTS ==\nNext quarterly report (initializes the guidance archive); holiday-season sell-through; new-category launches; international direct-sales margin proof.",
-  "impact": "positif",
-  "omniumEPS": {
-   "2026": 5.51,
-   "2027": 6.32,
-   "2028": 7.06,
-   "2029": 7.76,
-   "2030": 8.38
-  },
-  "omniumCA": {
-   "2026": 7167,
-   "2027": 7884,
-   "2028": 8515,
-   "2029": 9111,
-   "2030": 9658
-  },
-  "omniumEBIT": {
-   "2026": 1061,
-   "2027": 1198,
-   "2028": 1320,
-   "2029": 1431,
-   "2030": 1526
-  },
-  "omniumNet": {
-   "2026": 789,
-   "2027": 894,
-   "2028": 988,
-   "2029": 1074,
-   "2030": 1148
-  },
-  "omniumND": {
-   "2026": 400,
-   "2027": 450,
-   "2028": 420,
-   "2029": 400,
-   "2030": 380
-  },
-  "omniumShares": {
-   "2026": 143.0,
-   "2027": 141.5,
-   "2028": 140.0,
-   "2029": 138.5,
-   "2030": 137.0
-  },
-  "ancrages": [
-   {
-    "id": "revenue-growth-2026",
-    "mechanism": "Guidance FY2026 relevee au T1'26 : CA +11,5% a +12,5%, midpoint 12,0% retenu",
-    "scope": "omniumCA 2026",
-    "confidence": "haute"
-   },
-   {
-    "id": "revenue-deceleration-2027-2030",
-    "mechanism": "Deceleration progressive 10%->6%, coherente avec la maturation post-hypercroissance et la croissance revenu consensus ~9,6%/an sur 3 ans (Simply Wall St)",
-    "scope": "omniumCA 2027-2030",
-    "confidence": "basse"
-   },
-   {
-    "id": "ebit-margin-leverage",
-    "mechanism": "Expansion de la marge EBIT GAAP de +40 a +50pb/an, coherente avec le levier operationnel guide sur l'Adjusted EBITDA (+32pb en 2026), moderee par les pressions tarifaires",
-    "scope": "omniumEBIT 2026-2030",
-    "confidence": "moyenne"
-   },
-   {
-    "id": "tax-rate-normalized",
-    "mechanism": "Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025",
-    "scope": "omniumNet 2026-2030",
-    "confidence": "haute"
-   },
-   {
-    "id": "sbc-intangible-reintegration",
-    "mechanism": "omniumNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)",
-    "scope": "omniumNet/omniumEPS 2026-2030",
-    "confidence": "moyenne"
-   },
-   {
-    "id": "buyback-net-debt",
-    "mechanism": "Programme de rachat d'actions de 750M$ autorise fev.2026, demarre au T1'26 (deja +117M$ de dette nette sur le trimestre) ; inverse la tendance de desendettement 2023-2025",
-    "scope": "omniumND 2026-2030",
-    "confidence": "basse"
-   },
-   {
-    "id": "separation-oneoff-2022-2023",
-    "mechanism": "Correction des couts de transaction lies a la separation JS Global (2023 : 82,3M$ pretax), de la retenue a la source sur le dividende special (2023 : 19,5M$) et du bonus discretionnaire exceptionnel (2022 : 34,0M$ pretax) ; IS normalise a 22% sur les additions pretax",
-    "scope": "data 2022-2023 (ebit, net)",
-    "confidence": "haute"
-   }
-  ],
-  "bridge": {
-   "2025": {
-    "finNet": -21,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 701.4,
-    "netPub": 701.37,
-    "residual": 0,
-    "residualNote": "Reconciles cleanly at the company's own 22% normalized rate; net financial charge modest after the strong 2025 deleveraging (net debt 557 -> 100M)."
-   },
-   "2026": {
-    "finNet": -45,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 792.5
-   },
-   "2027": {
-    "finNet": -52,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 893.9
-   },
-   "2028": {
-    "finNet": -53,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 988.3
-   },
-   "2029": {
-    "finNet": -54,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 1074.0
-   },
-   "2030": {
-    "finNet": -54,
-    "other": 0,
-    "taxRate": 0.22,
-    "minorities": 0,
-    "netCalc": 1148.2
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "EPS via consensus (adjusted street basis)",
-   "comparedAgainst": "consensus",
-   "basisAligned": false,
-   "basisNote": "Consensus is on the adjusted street basis; the Omnium base is GAAP retreated only for true separation-related one-offs (2022 bonus, 2023 separation costs) - wedge documented.",
-   "timeline": [
+  "name": "SharkNinja",
+  "cours": 149.79,
+  "yahooSymbol": "SN",
+  "dividende": 0,
+  "data": [
     {
-     "date": "2026-07-13",
-     "type": "vs_consensus",
-     "detail": "Snapshot at creation: 12 consecutive quarters of double-digit organic growth; international +31.6% in Q1 26 with the Europe/Mexico direct-sales transition completing by end-Q2 26."
-    }
-   ],
-   "paceCheckpoint": "Trajectory checkpoint at creation: organic double-digit streak intact; tariff mitigation (supply-chain shift out of China) executing.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+      "year": 2021,
+      "ca": 3727,
+      "ebit": 438.26,
+      "net": 331.11,
+      "shares": 139.0,
+      "nd": 323.9,
+      "div": 0
     },
     {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+      "year": 2022,
+      "ca": 3717,
+      "ebit": 355.37,
+      "net": 258.87,
+      "shares": 138.98,
+      "nd": 305.03,
+      "div": 0
+    },
+    {
+      "year": 2023,
+      "ca": 4254,
+      "ebit": 455.84,
+      "net": 250.73,
+      "shares": 139.42,
+      "nd": 708.62,
+      "div": 0
+    },
+    {
+      "year": 2024,
+      "ca": 5529,
+      "ebit": 644.16,
+      "net": 438.71,
+      "shares": 141.08,
+      "nd": 557.19,
+      "div": 0
+    },
+    {
+      "year": 2025,
+      "ca": 6399,
+      "ebit": 920.28,
+      "net": 701.37,
+      "shares": 142.09,
+      "nd": 99.83,
+      "div": 0
     }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 6.12,
-    "source": "initial_consensus",
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 6.12,
+    "epsNY": 7.12,
     "date": "2026-07-13",
-    "note": "Anchor = Zacks consensus at the earliest archived snapshot (13/07, adjusted basis); the company's own FY26 guidance frame was not yet archived at this young fiche (created 15/07, dernierCall to initialize at the next report). Omnium 2026 (5.51, retreated GAAP) sits below on basis grounds."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup (young fiche, priorEPS null and dernierCall absent by construction - both to initialize at the next quarterly report). First measurement at the FY26 close.",
-   "consensusSource": "Zacks Consensus / WallStreet (adjusted)",
-   "consensusDate": "2026-07-13"
+    "source": "Zacks Consensus (FY26) / WallStreetZen (FY27) - EPS ajuste non-GAAP management, ~17 analystes"
   },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Fiche created 15/07 from public filings; dernierCall/guidanceHistory to initialize at the next quarterly report."
+  "particularites": [],
+  "hypothese": {
+    "date": "2026-08-19",
+    "source": "Creation - Transcript T1 2026 (6 mai 2026, dernier disponible), 10-K FY2025, communiques T4/FY2025 (11 fev 2026) et T1 2026 (6 mai 2026)",
+    "summary": "Thèse de croissance rentable post-scission JS Global : accélération internationale et innovation produit soutiennent une expansion structurelle de marge, avec un premier retour de capital (buyback 750M$) qui inverse le désendettement.",
+    "text": "== THESIS SUMMARY ==\nPost-spin profitable-growth story: since separating from JS Global (July 2023), 12 consecutive quarters of double-digit organic growth on a product-innovation engine (Ninja Luxe Cafe, Ninja Crispi, Shark PowerDetect) and accelerating international expansion (+31.6% in Q1 26), with the Europe/Mexico shift from distributor to direct sales completing by end-Q2 26. The bet: innovation cadence sustains growth while direct-sales mix and supply-chain diversification (out of China) defend margin through the tariff era.\n\n== THESIS READ ==\n- The innovation cadence is the moat - each new category (coffee, outdoor, beauty) extends the S-curve. Watch: new-category revenue disclosures.\n- Direct-sales transition lifts gross margin but adds opex first - the 2026 print will be mix-noisy. Watch: international margin once the transition completes.\n- Tariff exposure is managed via supply-chain shift - execution risk, not thesis risk. Watch: gross-margin bridge quarter by quarter.\n\n== SPECIAL FACTORS ==\nYoung fiche (created 15/07/2026): dernierCall and guidanceHistory ABSENT by construction - to initialize at the next quarterly report; priorEPS null. 'data' retreated for two true separation one-offs (2022: 34M discretionary bonus; 2023: 82.3M separation costs + 19.5M withholding tax), published figures kept in-fiche for audit traceability. Consensus basis wedge documented (adjusted street vs retreated GAAP).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 7,167M (+12%), EBIT 1,061M (14.8%), EPS 5.51; 2027-2030: revenue +8%/yr fading, margin ~15-15.8%, ETR 22% (company's own normalized rate), shares -1%/yr, net debt low and stable. Watch: next report (dernierCall init + first guidance archive); US consumer discretionary demand; tariff-regime changes.\n\n== CATALYSTS ==\nNext quarterly report (initializes the guidance archive); holiday-season sell-through; new-category launches; international direct-sales margin proof.",
+    "impact": "positif",
+    "omniumEPS": {
+      "2026": 5.51,
+      "2027": 6.32,
+      "2028": 7.06,
+      "2029": 7.76,
+      "2030": 8.38
+    },
+    "omniumCA": {
+      "2026": 7167,
+      "2027": 7884,
+      "2028": 8515,
+      "2029": 9111,
+      "2030": 9658
+    },
+    "omniumEBIT": {
+      "2026": 1061,
+      "2027": 1198,
+      "2028": 1320,
+      "2029": 1431,
+      "2030": 1526
+    },
+    "omniumNet": {
+      "2026": 789,
+      "2027": 894,
+      "2028": 988,
+      "2029": 1074,
+      "2030": 1148
+    },
+    "omniumND": {
+      "2026": 400,
+      "2027": 450,
+      "2028": 420,
+      "2029": 400,
+      "2030": 380
+    },
+    "omniumShares": {
+      "2026": 143.0,
+      "2027": 141.5,
+      "2028": 140.0,
+      "2029": 138.5,
+      "2030": 137.0
+    },
+    "ancrages": [
+      {
+        "id": "revenue-growth-2026",
+        "mechanism": "Guidance FY2026 relevee au T1'26 : CA +11,5% a +12,5%, midpoint 12,0% retenu",
+        "scope": "omniumCA 2026",
+        "confidence": "haute"
+      },
+      {
+        "id": "revenue-deceleration-2027-2030",
+        "mechanism": "Deceleration progressive 10%->6%, coherente avec la maturation post-hypercroissance et la croissance revenu consensus ~9,6%/an sur 3 ans (Simply Wall St)",
+        "scope": "omniumCA 2027-2030",
+        "confidence": "basse"
+      },
+      {
+        "id": "ebit-margin-leverage",
+        "mechanism": "Expansion de la marge EBIT GAAP de +40 a +50pb/an, coherente avec le levier operationnel guide sur l'Adjusted EBITDA (+32pb en 2026), moderee par les pressions tarifaires",
+        "scope": "omniumEBIT 2026-2030",
+        "confidence": "moyenne"
+      },
+      {
+        "id": "tax-rate-normalized",
+        "mechanism": "Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025",
+        "scope": "omniumNet 2026-2030",
+        "confidence": "haute"
+      },
+      {
+        "id": "sbc-intangible-reintegration",
+        "mechanism": "omniumNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)",
+        "scope": "omniumNet/omniumEPS 2026-2030",
+        "confidence": "moyenne"
+      },
+      {
+        "id": "buyback-net-debt",
+        "mechanism": "Programme de rachat d'actions de 750M$ autorise fev.2026, demarre au T1'26 (deja +117M$ de dette nette sur le trimestre) ; inverse la tendance de desendettement 2023-2025",
+        "scope": "omniumND 2026-2030",
+        "confidence": "basse"
+      },
+      {
+        "id": "separation-oneoff-2022-2023",
+        "mechanism": "Correction des couts de transaction lies a la separation JS Global (2023 : 82,3M$ pretax), de la retenue a la source sur le dividende special (2023 : 19,5M$) et du bonus discretionnaire exceptionnel (2022 : 34,0M$ pretax) ; IS normalise a 22% sur les additions pretax",
+        "scope": "data 2022-2023 (ebit, net)",
+        "confidence": "haute"
+      }
+    ],
+    "bridge": {
+      "2025": {
+        "finNet": -21,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 701.4,
+        "netPub": 701.37,
+        "residual": 0,
+        "residualNote": "Reconciles cleanly at the company's own 22% normalized rate; net financial charge modest after the strong 2025 deleveraging (net debt 557 -> 100M)."
+      },
+      "2026": {
+        "finNet": -45,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 792.5
+      },
+      "2027": {
+        "finNet": -52,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 893.9
+      },
+      "2028": {
+        "finNet": -53,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 988.3
+      },
+      "2029": {
+        "finNet": -54,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 1074.0
+      },
+      "2030": {
+        "finNet": -54,
+        "other": 0,
+        "taxRate": 0.22,
+        "minorities": 0,
+        "netCalc": 1148.2
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted EPS (guided annual range)",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Consensus is on the adjusted street basis; the Omnium base is GAAP retreated only for true separation-related one-offs (2022 bonus, 2023 separation costs) - wedge documented.",
+      "timeline": [
+        {
+          "date": "2026-07-13",
+          "type": "vs_consensus",
+          "detail": "Snapshot at creation: 12 consecutive quarters of double-digit organic growth; international +31.6% in Q1 26 with the Europe/Mexico direct-sales transition completing by end-Q2 26."
+        }
+      ],
+      "paceCheckpoint": "Trajectory checkpoint at creation: organic double-digit streak intact; tariff mitigation (supply-chain shift out of China) executing.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 12.3,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 8.9,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "4.80-4.90$ adj EPS (mid 4.85)",
+          "realizedDisplay": "5.28$ adj (+21%)",
+          "note": "Initial FY25 guidance (FY24 release, 13/02/2025): adjusted EPS 4.80-4.90$ (mid 4.85, +12/15%); realized 5.28$ - level +8.9%."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 21.8,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "3.45-3.61$ adj EPS (mid 3.53)",
+          "realizedDisplay": "~4.30$ adj (implied)",
+          "note": "Initial FY24 guidance (FY23 release, 15/02/2024): adjusted EPS 3.45-3.61$ (mid 3.53, +7/12%); realized ~4.30$ (implied by the FY25 guide's '+12/15% vs prior' base; net sales +30%) - level +21.8%, medium precision on the realized figure."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 5.95,
+        "source": "initial_guidance",
+        "date": "2026-02-11",
+        "note": "TRUE initial FY26 guidance (FY25 release, 11/02/2026): adjusted EPS 5.90-6.00$ (mid 5.95), net sales +10/11%. Raised at Q1 (6.00-6.10) then at Q2 to 6.45-6.55$ (incl. +0.15$ net tariff refund). REPLACES the July consensus anchor (6.12) - SharkNinja does guide annually, contrary to the fiche's initial assumption."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +12.3% BLENDED (in-progress +9.2 x1/2; FY25 +8.9 and FY24 +21.8 equal-shared). A serial low-baller on management's adjusted (street) basis - the Omnium base is retreated GAAP (5.51 for 2026), so apply the pattern directionally, not mechanically.",
+      "consensusSource": "Zacks Consensus / WallStreet (adjusted)",
+      "consensusDate": "2026-07-13",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 5.95,
+        "currentValue": 6.5,
+        "deltaPct": 9.2,
+        "asOf": "2026-08-05",
+        "note": "Initial mid 5.95$; raised twice to 6.45-6.55$ (mid 6.50, of which ~0.15$ tariff refund) - projected +9.2%; sales guide lifted to +16/17%."
+      }
+    },
+    "etatsFinanciers": {
+      "analyse": false,
+      "note": "Fiche created 15/07 from public filings; dernierCall/guidanceHistory to initialize at the next quarterly report."
+    }
+  },
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q1 26",
+        "date": "2026-07-13",
+        "source": "Creation-refresh sourcing (public filings/aggregators)",
+        "message": "Post-JS-Global-spin profitable-growth thesis: 12 consecutive quarters of double-digit organic growth on product innovation (Ninja Luxe Cafe, Crispi, Shark PowerDetect) and international acceleration (+31.6% Q1 26) with the Europe/Mexico distributor-to-direct transition completing by end-Q2 26; separation-era one-offs retreated from 'data' (2022 discretionary bonus 34M pretax; 2023 separation costs 82.3M + 19.5M withholding) with published figures kept in-fiche for audit traceability."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q1 26",
-    "date": "2026-07-13",
-    "source": "Creation-refresh sourcing (public filings/aggregators)",
-    "message": "Post-JS-Global-spin profitable-growth thesis: 12 consecutive quarters of double-digit organic growth on product innovation (Ninja Luxe Cafe, Crispi, Shark PowerDetect) and international acceleration (+31.6% Q1 26) with the Europe/Mexico distributor-to-direct transition completing by end-Q2 26; separation-era one-offs retreated from 'data' (2022 discretionary bonus 34M pretax; 2023 separation costs 82.3M + 19.5M withholding) with published figures kept in-fiche for audit traceability."
-   }
-  ]
- }
 }

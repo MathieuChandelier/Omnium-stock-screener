@@ -1,303 +1,315 @@
 {
- "name": "Intuit",
- "cours": 275.4,
- "yahooSymbol": "INTU",
- "dividende": 4.8,
- "data": [
-  {
-   "year": 2016,
-   "ca": 4694,
-   "ebit": 1242,
-   "net": 979,
-   "shares": 265,
-   "nd": -2900,
-   "div": 1.04
-  },
-  {
-   "year": 2017,
-   "ca": 5196,
-   "ebit": 1418,
-   "net": 985,
-   "shares": 261,
-   "nd": -3300,
-   "div": 1.2
-  },
-  {
-   "year": 2018,
-   "ca": 6025,
-   "ebit": 1560,
-   "net": 1329,
-   "shares": 261,
-   "nd": -3600,
-   "div": 1.68
-  },
-  {
-   "year": 2019,
-   "ca": 6784,
-   "ebit": 1854,
-   "net": 1557,
-   "shares": 264,
-   "nd": -3900,
-   "div": 2.0
-  },
-  {
-   "year": 2020,
-   "ca": 7679,
-   "ebit": 2176,
-   "net": 1826,
-   "shares": 264,
-   "nd": -4200,
-   "div": 2.12
-  },
-  {
-   "year": 2021,
-   "ca": 9633,
-   "ebit": 2500,
-   "net": 2062,
-   "shares": 273,
-   "nd": 1900,
-   "div": 2.36
-  },
-  {
-   "year": 2022,
-   "ca": 12726,
-   "ebit": 2571,
-   "net": 2066,
-   "shares": 284,
-   "nd": 3200,
-   "div": 2.72
-  },
-  {
-   "year": 2023,
-   "ca": 14368,
-   "ebit": 3141,
-   "net": 2384,
-   "shares": 283,
-   "nd": 2800,
-   "div": 3.12
-  },
-  {
-   "year": 2024,
-   "ca": 16285,
-   "ebit": 3630,
-   "net": 2963,
-   "shares": 284,
-   "nd": 5600,
-   "div": 3.6
-  },
-  {
-   "year": 2025,
-   "ca": 18831,
-   "ebit": 4923,
-   "net": 3869,
-   "shares": 283,
-   "nd": 1400,
-   "div": 4.16
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 23.82,
-  "epsNY": 26.48,
-  "date": "2026-06-25",
-  "source": "S&P Global / TIKR consensus post-T3 FY26"
- },
- "particularites": [
-  {
-   "text": "Aucune particularité structurelle récurrente à mécanisme capitalistique atypique. A noter en lecture permanente : politique de rachats d'actions très agressive et accélérée en 2026 du fait du cours déprimé, faisant de la baisse du nombre d'actions diluées un moteur de l'EPS aussi important que la croissance opérationnelle.",
-   "valuePct": null
-  }
- ],
- "hypothese": {
-  "date": "2026-08-19",
-  "source": "Creation - Transcript T3 FY2026 (20 mai 2026, trimestre clos le 30 avril 2026)",
-  "summary": "Logiciel dominant TurboTax/QuickBooks a un point d'entree historiquement bas (P/E a terme ~12-14x) apres une chute de plus de 50% liee aux craintes de disruption IA. Restructuration et rachats d'actions massifs soutiennent la creation de valeur par action malgre une croissance en decelaration.",
-  "text": "== THESIS SUMMARY ==\nNear-monopoly in assisted tax preparation (TurboTax) and dominant SMB accounting franchise (QuickBooks), with Credit Karma and Mailchimp as growth adjacencies. The central bet: the 'guidance moat' (software that walks the user step by step, creating behavioral lock-in and high margins) survives the market's generative-AI disruption fear - a fear priced brutally (stock down >50% from the 814 peak). FY26 (ended 31/07) guided at 23.80-23.85 non-GAAP EPS; the report (~21/08/2026) is imminent.\n\n== THESIS READ ==\n- The AI threat is priced as existential while the franchises still compound double-digit - the asymmetry IS the thesis. Watch: the FY26 print and FY27 guide (~21/08) - first hard verdict.\n- Agentic-AI features are Intuit's own offense (done-for-you finance), monetizable across the installed base. Watch: AI attach/pricing disclosures at the report.\n- Credit Karma re-accelerated and Mailchimp stabilized in recent quarters - the adjacencies stopped detracting. Watch: segment splits at FY26.\n\n== SPECIAL FACTORS ==\nFiscal year ends JULY - the FY26 report (~21/08) closes the measurable year, rolls the horizon, and must initialize dernierCall (absent from this pre-close refresh). Base = GAAP with SBC and acquisition amortization KEPT (structural ~7-8/share wedge vs the non-GAAP guide, documented in the scorecard). FY26 restructuring excluded from the normalized base as a true one-off.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: revenue 21.4bn (+13.4%), EBIT 6.04bn (Omnium base), net 4.52bn / EPS 16.68; FY27-FY30: revenue +12%/yr, margin drift, ETR 24% normative (FY25 actual ~20% documented), shares -2.5%/yr degressive. finNet ~-88M improving. Watch: FY26 report (imminent); TurboTax Live share of tax revenue; any AI-driven pricing pressure evidence.\n\n== CATALYSTS ==\nFY26 results + FY27 guidance (~21/08/2026 - days away); tax-season 2027 early indicators; AI feature monetization; buyback pace at depressed prices.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "AN-CA-GUIDANCE",
-    "mechanism": "Croissance CA calee sur guidance formelle FY26 relevee (13-14%), puis convergence vers le consensus sell-side FY27 (~12%, 23.9 Mds$) et deceleration progressive vers ~10%/an en fin d'horizon",
-    "scope": "omniumCA 2026-2030",
-    "confidence": "haute (2026), moyenne (2027), basse (2028-2030)"
-   },
-   {
-    "id": "AN-MARGE-RESTRUCT",
-    "mechanism": "Expansion de marge EBIT portee par la restructuration et les gains d'efficience IA deja visibles en FY25 (+390pb), rythme degressif faute de cible LT communiquee",
-    "scope": "omniumEBIT marge 2026-2030",
-    "confidence": "moyenne"
-   },
-   {
-    "id": "AN-RESTRUCT-ONEOFF",
-    "mechanism": "Charge de restructuration FY26 (300-340M$ guide, 320M$ retenu) traitee comme vrai one-off et reintegree dans omniumEBIT/omniumNet FY26",
-    "scope": "omniumEBIT/omniumNet 2026 uniquement",
-    "confidence": "haute"
-   },
-   {
-    "id": "AN-IS-NORMATIF",
-    "mechanism": "Taux d'IS normatif maintenu a 24% (guidance management FY26), reconduit sans changement",
-    "scope": "toutes annees 2026-2030",
-    "confidence": "haute (2026), moyenne (au-dela)"
-   },
-   {
-    "id": "AN-RACHATS",
-    "mechanism": "Rythme de rachats accelere par la nouvelle autorisation de 8Mds$ (mai 2026) et le cours deprime, reduction des actions diluees ~2.5%/an degressive",
-    "scope": "omniumShares 2026-2030",
-    "confidence": "basse"
-   },
-   {
-    "id": "AN-SBC-AMORT",
-    "mechanism": "SBC et amortissement des intangibles d'acquisition conserves comme charges recurrentes reelles (non retraites contrairement au non-GAAP du management)",
-    "scope": "omniumEBIT/omniumNet/omniumEPS toutes annees",
-    "confidence": "haute (regle E5e)"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 16.68,
-   "2027": 19.45,
-   "2028": 22.37,
-   "2029": 25.3,
-   "2030": 28.63
-  },
-  "omniumCA": {
-   "2026": 21358,
-   "2027": 23921,
-   "2028": 26552,
-   "2029": 29207,
-   "2030": 32128
-  },
-  "omniumEBIT": {
-   "2026": 6035,
-   "2027": 6841,
-   "2028": 7674,
-   "2029": 8499,
-   "2030": 9413
-  },
-  "omniumNet": {
-   "2026": 4520,
-   "2027": 5135,
-   "2028": 5771,
-   "2029": 6402,
-   "2030": 7101
-  },
-  "omniumND": {
-   "2026": 1200,
-   "2027": 600,
-   "2028": 0,
-   "2029": -500,
-   "2030": -1200
-  },
-  "omniumShares": {
-   "2026": 271,
-   "2027": 264,
-   "2028": 258,
-   "2029": 253,
-   "2030": 248
-  },
-  "bridge": {
-   "2025": {
-    "finNet": -89,
-    "other": 0,
-    "taxRate": 0.2,
-    "minorities": 0,
-    "netCalc": 3867.2,
-    "netPub": 3869,
-    "residual": 1.8,
-    "residualNote": "FY25 (ends July) reconciles at ~20% effective (excess SBC tax benefits) vs the 24% normative used in projections; net financial charge ~-89M (interest 247M vs income 158M)."
-   },
-   "2026": {
-    "finNet": -88,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 4519.7
-   },
-   "2027": {
-    "finNet": -84,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 5135.3
-   },
-   "2028": {
-    "finNet": -81,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 5770.7
-   },
-   "2029": {
-    "finNet": -75,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 6402.2
-   },
-   "2030": {
-    "finNet": -70,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 7100.7
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Non-GAAP EPS (guided annually)",
-   "comparedAgainst": "guidance",
-   "basisAligned": false,
-   "basisNote": "Omnium base = GAAP with SBC and acquisition amortization (Credit Karma, Mailchimp) KEPT as recurring charges; management non-GAAP excludes both - a structural ~7-8/share wedge (Omnium 16.68 vs guided 23.82 for FY26). The beat is measured on the company's own non-GAAP metric.",
-   "timeline": [
+  "name": "Intuit",
+  "cours": 275.4,
+  "yahooSymbol": "INTU",
+  "dividende": 4.8,
+  "data": [
     {
-     "date": "2026-06-25",
-     "type": "guidance_revised",
-     "detail": "FY26 non-GAAP EPS guide standing at 23.80-23.85 post-Q3; consensus aligned at 23.82."
-    }
-   ],
-   "paceCheckpoint": "FY26 nearly closed (31/07); the tax-season quarter (Q3) delivered; measurement imminent at the ~21/08 report.",
-   "weightedBeatPct": null,
-   "annualBeatPct": null,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Initial FY25 anchor not archived at fiche setup - no reliable reconstruction."
+      "year": 2016,
+      "ca": 4694,
+      "ebit": 1242,
+      "net": 979,
+      "shares": 265,
+      "nd": -2900,
+      "div": 1.04
     },
     {
-     "fy": 2024,
-     "beatPct": null,
-     "source": "initial_guidance",
-     "excluded": true,
-     "note": "Same limitation."
+      "year": 2017,
+      "ca": 5196,
+      "ebit": 1418,
+      "net": 985,
+      "shares": 261,
+      "nd": -3300,
+      "div": 1.2
+    },
+    {
+      "year": 2018,
+      "ca": 6025,
+      "ebit": 1560,
+      "net": 1329,
+      "shares": 261,
+      "nd": -3600,
+      "div": 1.68
+    },
+    {
+      "year": 2019,
+      "ca": 6784,
+      "ebit": 1854,
+      "net": 1557,
+      "shares": 264,
+      "nd": -3900,
+      "div": 2.0
+    },
+    {
+      "year": 2020,
+      "ca": 7679,
+      "ebit": 2176,
+      "net": 1826,
+      "shares": 264,
+      "nd": -4200,
+      "div": 2.12
+    },
+    {
+      "year": 2021,
+      "ca": 9633,
+      "ebit": 2500,
+      "net": 2062,
+      "shares": 273,
+      "nd": 1900,
+      "div": 2.36
+    },
+    {
+      "year": 2022,
+      "ca": 12726,
+      "ebit": 2571,
+      "net": 2066,
+      "shares": 284,
+      "nd": 3200,
+      "div": 2.72
+    },
+    {
+      "year": 2023,
+      "ca": 14368,
+      "ebit": 3141,
+      "net": 2384,
+      "shares": 283,
+      "nd": 2800,
+      "div": 3.12
+    },
+    {
+      "year": 2024,
+      "ca": 16285,
+      "ebit": 3630,
+      "net": 2963,
+      "shares": 284,
+      "nd": 5600,
+      "div": 3.6
+    },
+    {
+      "year": 2025,
+      "ca": 18831,
+      "ebit": 4923,
+      "net": 3869,
+      "shares": 283,
+      "nd": 1400,
+      "div": 4.16
     }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 23.82,
-    "source": "initial_guidance",
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 23.82,
+    "epsNY": 26.48,
     "date": "2026-06-25",
-    "note": "FY26 (ends 31/07/2026) guided at 23.80-23.85 non-GAAP EPS. Dated at the earliest archived snapshot of the guide (25/06, post-Q3); the original August-2025 initial statement was not captured. FY26 RESULTS ARE IMMINENT (report ~21/08/2026) - the first closed-FY measurement lands within days."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct null: no measurable closed FY at setup - but the FIRST observation lands at the imminent FY26 report (~21/08/2026). To measure and pose the FY27 anchor immediately at that publication.",
-   "consensusSource": "S&P Global / TIKR (post-Q3 FY26)",
-   "consensusDate": "2026-06-25"
+    "source": "S&P Global / TIKR consensus post-T3 FY26"
   },
-  "etatsFinanciers": {
-   "analyse": false,
-   "note": "Refresh of 13/07 pre-FY-close; dernierCall to initialize at the FY26 report (~21/08/2026). 10-K not yet exploited."
+  "particularites": [
+    {
+      "text": "Aucune particularité structurelle récurrente à mécanisme capitalistique atypique. A noter en lecture permanente : politique de rachats d'actions très agressive et accélérée en 2026 du fait du cours déprimé, faisant de la baisse du nombre d'actions diluées un moteur de l'EPS aussi important que la croissance opérationnelle.",
+      "valuePct": null
+    }
+  ],
+  "hypothese": {
+    "date": "2026-08-19",
+    "source": "Creation - Transcript T3 FY2026 (20 mai 2026, trimestre clos le 30 avril 2026)",
+    "summary": "Logiciel dominant TurboTax/QuickBooks a un point d'entree historiquement bas (P/E a terme ~12-14x) apres une chute de plus de 50% liee aux craintes de disruption IA. Restructuration et rachats d'actions massifs soutiennent la creation de valeur par action malgre une croissance en decelaration.",
+    "text": "== THESIS SUMMARY ==\nNear-monopoly in assisted tax preparation (TurboTax) and dominant SMB accounting franchise (QuickBooks), with Credit Karma and Mailchimp as growth adjacencies. The central bet: the 'guidance moat' (software that walks the user step by step, creating behavioral lock-in and high margins) survives the market's generative-AI disruption fear - a fear priced brutally (stock down >50% from the 814 peak). FY26 (ended 31/07) guided at 23.80-23.85 non-GAAP EPS; the report (~21/08/2026) is imminent.\n\n== THESIS READ ==\n- The AI threat is priced as existential while the franchises still compound double-digit - the asymmetry IS the thesis. Watch: the FY26 print and FY27 guide (~21/08) - first hard verdict.\n- Agentic-AI features are Intuit's own offense (done-for-you finance), monetizable across the installed base. Watch: AI attach/pricing disclosures at the report.\n- Credit Karma re-accelerated and Mailchimp stabilized in recent quarters - the adjacencies stopped detracting. Watch: segment splits at FY26.\n\n== SPECIAL FACTORS ==\nFiscal year ends JULY - the FY26 report (~21/08) closes the measurable year, rolls the horizon, and must initialize dernierCall (absent from this pre-close refresh). Base = GAAP with SBC and acquisition amortization KEPT (structural ~7-8/share wedge vs the non-GAAP guide, documented in the scorecard). FY26 restructuring excluded from the normalized base as a true one-off.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: revenue 21.4bn (+13.4%), EBIT 6.04bn (Omnium base), net 4.52bn / EPS 16.68; FY27-FY30: revenue +12%/yr, margin drift, ETR 24% normative (FY25 actual ~20% documented), shares -2.5%/yr degressive. finNet ~-88M improving. Watch: FY26 report (imminent); TurboTax Live share of tax revenue; any AI-driven pricing pressure evidence.\n\n== CATALYSTS ==\nFY26 results + FY27 guidance (~21/08/2026 - days away); tax-season 2027 early indicators; AI feature monetization; buyback pace at depressed prices.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "AN-CA-GUIDANCE",
+        "mechanism": "Croissance CA calee sur guidance formelle FY26 relevee (13-14%), puis convergence vers le consensus sell-side FY27 (~12%, 23.9 Mds$) et deceleration progressive vers ~10%/an en fin d'horizon",
+        "scope": "omniumCA 2026-2030",
+        "confidence": "haute (2026), moyenne (2027), basse (2028-2030)"
+      },
+      {
+        "id": "AN-MARGE-RESTRUCT",
+        "mechanism": "Expansion de marge EBIT portee par la restructuration et les gains d'efficience IA deja visibles en FY25 (+390pb), rythme degressif faute de cible LT communiquee",
+        "scope": "omniumEBIT marge 2026-2030",
+        "confidence": "moyenne"
+      },
+      {
+        "id": "AN-RESTRUCT-ONEOFF",
+        "mechanism": "Charge de restructuration FY26 (300-340M$ guide, 320M$ retenu) traitee comme vrai one-off et reintegree dans omniumEBIT/omniumNet FY26",
+        "scope": "omniumEBIT/omniumNet 2026 uniquement",
+        "confidence": "haute"
+      },
+      {
+        "id": "AN-IS-NORMATIF",
+        "mechanism": "Taux d'IS normatif maintenu a 24% (guidance management FY26), reconduit sans changement",
+        "scope": "toutes annees 2026-2030",
+        "confidence": "haute (2026), moyenne (au-dela)"
+      },
+      {
+        "id": "AN-RACHATS",
+        "mechanism": "Rythme de rachats accelere par la nouvelle autorisation de 8Mds$ (mai 2026) et le cours deprime, reduction des actions diluees ~2.5%/an degressive",
+        "scope": "omniumShares 2026-2030",
+        "confidence": "basse"
+      },
+      {
+        "id": "AN-SBC-AMORT",
+        "mechanism": "SBC et amortissement des intangibles d'acquisition conserves comme charges recurrentes reelles (non retraites contrairement au non-GAAP du management)",
+        "scope": "omniumEBIT/omniumNet/omniumEPS toutes annees",
+        "confidence": "haute (regle E5e)"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 16.68,
+      "2027": 19.45,
+      "2028": 22.37,
+      "2029": 25.3,
+      "2030": 28.63
+    },
+    "omniumCA": {
+      "2026": 21358,
+      "2027": 23921,
+      "2028": 26552,
+      "2029": 29207,
+      "2030": 32128
+    },
+    "omniumEBIT": {
+      "2026": 6035,
+      "2027": 6841,
+      "2028": 7674,
+      "2029": 8499,
+      "2030": 9413
+    },
+    "omniumNet": {
+      "2026": 4520,
+      "2027": 5135,
+      "2028": 5771,
+      "2029": 6402,
+      "2030": 7101
+    },
+    "omniumND": {
+      "2026": 1200,
+      "2027": 600,
+      "2028": 0,
+      "2029": -500,
+      "2030": -1200
+    },
+    "omniumShares": {
+      "2026": 271,
+      "2027": 264,
+      "2028": 258,
+      "2029": 253,
+      "2030": 248
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -89,
+        "other": 0,
+        "taxRate": 0.2,
+        "minorities": 0,
+        "netCalc": 3867.2,
+        "netPub": 3869,
+        "residual": 1.8,
+        "residualNote": "FY25 (ends July) reconciles at ~20% effective (excess SBC tax benefits) vs the 24% normative used in projections; net financial charge ~-89M (interest 247M vs income 158M)."
+      },
+      "2026": {
+        "finNet": -88,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 4519.7
+      },
+      "2027": {
+        "finNet": -84,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 5135.3
+      },
+      "2028": {
+        "finNet": -81,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 5770.7
+      },
+      "2029": {
+        "finNet": -75,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 6402.2
+      },
+      "2030": {
+        "finNet": -70,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 7100.7
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Non-GAAP EPS (guided annually)",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Omnium base = GAAP with SBC and acquisition amortization (Credit Karma, Mailchimp) KEPT as recurring charges; management non-GAAP excludes both - a structural ~7-8/share wedge (Omnium 16.68 vs guided 23.82 for FY26). The beat is measured on the company's own non-GAAP metric.",
+      "timeline": [
+        {
+          "date": "2026-06-25",
+          "type": "guidance_revised",
+          "detail": "FY26 non-GAAP EPS guide standing at 23.80-23.85 post-Q3; consensus aligned at 23.82."
+        }
+      ],
+      "paceCheckpoint": "FY26 nearly closed (31/07); the tax-season quarter (Q3) delivered; measurement imminent at the ~21/08 report.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 3.7,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 4.6,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "19.16-19.36$ non-GAAP EPS (mid 19.26)",
+          "realizedDisplay": "20.15$ non-GAAP",
+          "note": "Initial FY25 guidance (FY24 release, Aug 2024): non-GAAP EPS 19.16-19.36$ (mid 19.26, +13/14%); raised in-year and realized 20.15$ (FY25 release, 21/08/2025) - level +4.6%."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 3.8,
+          "source": "initial_guidance",
+          "excluded": false,
+          "initialDisplay": "16.17-16.47$ non-GAAP EPS (mid 16.32)",
+          "realizedDisplay": "16.94$ non-GAAP",
+          "note": "Initial FY24 guidance (FY23 release, Aug 2023): non-GAAP EPS 16.17-16.47$ (mid 16.32); realized 16.94$ - level +3.8%."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 23.08,
+        "source": "initial_guidance",
+        "date": "2025-08-21",
+        "note": "TRUE initial FY26 guidance (FY25 release, 21/08/2025): non-GAAP EPS 22.98-23.18$ (mid 23.08, +14/15%), revenue +12/13%. Raised in-year to 23.80-23.85$ (standing post-Q3). Replaces the June-dated snapshot anchor (23.82, which was the raised guide). FY26 closes 31/07/2026 - results ~21/08/2026, first closed-FY verdict lands within days."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +3.7% BLENDED (in-progress +3.2 x1/2; FY25 +4.6 and FY24 +3.8 equal-shared). A remarkably repeatable +4-5% initial-guide beat pattern on management's non-GAAP EPS - the Omnium base wedge (SBC kept as a cost) is declared in basisNote.",
+      "consensusSource": "S&P Global / TIKR (post-Q3 FY26)",
+      "consensusDate": "2026-06-25",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 23.08,
+        "currentValue": 23.82,
+        "deltaPct": 3.2,
+        "asOf": "2026-06-25",
+        "note": "Initial mid 23.08$; guide standing at 23.80-23.85$ post-Q3 (consensus aligned 23.82) - projected +3.2%. To be replaced by the realized figure at the ~21/08 report."
+      }
+    },
+    "etatsFinanciers": {
+      "analyse": false,
+      "note": "Refresh of 13/07 pre-FY-close; dernierCall to initialize at the FY26 report (~21/08/2026). 10-K not yet exploited."
+    }
+  },
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "Q3 FY26",
+        "date": "2026-06-25",
+        "source": "Post-Q3 snapshot (as exploited at the 13/07 refresh)",
+        "message": "The 'guidance moat' thesis holds through the AI scare (stock -50% from the 814 peak): TurboTax/QuickBooks franchises intact, FY26 guide standing at 23.80-23.85 non-GAAP EPS with consensus aligned; the FY26 report (~21/08) is the imminent verdict - it closes the first measurable scorecard year AND rolls the horizon (FY ends July); restructuring excluded from the normalized base."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "Q3 FY26",
-    "date": "2026-06-25",
-    "source": "Post-Q3 snapshot (as exploited at the 13/07 refresh)",
-    "message": "The 'guidance moat' thesis holds through the AI scare (stock -50% from the 814 peak): TurboTax/QuickBooks franchises intact, FY26 guide standing at 23.80-23.85 non-GAAP EPS with consensus aligned; the FY26 report (~21/08) is the imminent verdict - it closes the first measurable scorecard year AND rolls the horizon (FY ends July); restructuring excluded from the normalized base."
-   }
-  ]
- }
 }

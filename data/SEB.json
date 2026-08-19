@@ -357,21 +357,25 @@
       ],
       "paceCheckpoint": "H1 ORfA 172M of a ~690M modeled year: on pace given the H2-heavy seasonality (H2 2025 base ~482M).",
       "weightedBeatPct": null,
-      "annualBeatPct": null,
+      "annualBeatPct": -3.7,
       "annualBeatHistory": [
         {
           "fy": 2025,
-          "beatPct": null,
+          "beatPct": -25.1,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Directional guidance only; the initial Feb-2025 wording was not reliably sourced at setup. 2025 was also the restructuring trough (regime-atypical)."
+          "excluded": false,
+          "initialDisplay": "ORfA 'further increase' (floor 802M)",
+          "realizedDisplay": "601M EUR (-25%)",
+          "note": "Initial FY25 guidance (FY24 release, 26/02/2025): organic sales growth ~5% and a FURTHER INCREASE in ORfA (floor = the 802M realized 2024); cut twice (H1: 700-750M, October profit warning: 550-600M) and realized 601M - level -25.1% vs the guided floor. The defining miss of the fiche."
         },
         {
           "fy": 2024,
-          "beatPct": null,
+          "beatPct": 10.5,
           "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same limitation."
+          "excluded": false,
+          "initialDisplay": "ORfA increase guided (floor 726M)",
+          "realizedDisplay": "802M EUR (+10.5%)",
+          "note": "Initial FY24 guidance (Feb 2024): an increase in ORfA (floor = 726M realized 2023); realized 802M (+10.5%), margin 9.7% - level +10.5% vs the floor. Both closed years are measured vs directional FLOORS (SEB guides direction, not numbers) - the sign is reliable, the magnitude asymmetric."
         }
       ],
       "anchorInitial": {
@@ -382,9 +386,17 @@
         "note": "First own archived projection (23/07, pre the 04/08 bottom-up upgrade to 6.15) - mid-year, imperfect; re-anchor at the FY27 open (Feb 2027). SEB guides direction (ORfA growth), not numbers."
       },
       "appliedToProjection": false,
-      "applicationNote": "annualBeatPct null (directional-guidance house, no measurable closed FY at setup; 2025 regime-atypical). First measurable observation at FY26 close.",
+      "applicationNote": "annualBeatPct -3.7% BLENDED (in-progress 0.0 x1/2; FY25 -25.1 and FY24 +10.5 equal-shared). A directional guider with a 2025 double profit warning in the sample - treat the average as a volatility flag, not a stable trait; metric is ORfA (no EPS guidance), directional only.",
       "consensusSource": "S&P Global MI / TipRanks",
-      "consensusDate": "2026-07-23"
+      "consensusDate": "2026-07-23",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 5.88,
+        "currentValue": 5.88,
+        "deltaPct": 0.0,
+        "asOf": "2026-07-22",
+        "note": "FY26 directional frame (continued operating-profit growth, normalized FCF, deleveraging toward 2x) CONFIRMED at H1 (22/07; H1 ORfA +44%, FCF back positive) - projected 0.0 on the directional guide."
+      }
     },
     "revisionEvent": {
       "date": "2026-07-22",
