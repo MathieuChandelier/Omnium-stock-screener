@@ -584,6 +584,49 @@ def c22():
                     bad.append((tk,f"anchorInitial.fy {ai.get('fy')} != annee en cours {cy}"))
     return bad
 
+RULE_DATE='2026-08-19'   # les regles de compactage et depreciations du 18/08
+                         # s'appliquent aux refreshes STRICTEMENT posterieurs
+
+@check("C23 cles depreciees : absentes de tout refresh post-18/08/2026")
+def c23():
+    # Non retroactif : les fiches anterieures gardent leurs cles (ignorees
+    # par l'app) ; un refresh POSTERIEUR qui les reecrit travaille pour
+    # rien - le 12m glissant n'existe plus dans l'app.
+    bad=[]
+    for tk,t in FICHES.items():
+        h=t['hypothese']
+        if (h.get('date') or '')<RULE_DATE: continue
+        qe=h.get('quarterlyEPS') or {}
+        for k_ in ('epsForward12m','forwardPeriodLabel','coherenceNoteCY','coherenceNoteNY'):
+            if k_ in qe: bad.append((tk,f'{k_} ecrit par un refresh du {h.get("date")} (deprecie)'))
+    return bad
+
+@check("W6  ~ compactage du texte : format et budgets E8 (refreshes post-18/08)")
+def w6():
+    # Le travail de compactage est doctrinal ET verifie : 5 rubriques
+    # nouvelles nomenclatures, budget total <= ~9000 car., Lecture de
+    # these en 3-5 puces. Les fiches anterieures (ex. MSFT du 30/07 :
+    # 10213 car., 6 rubriques anciennes) se compacteront a LEUR refresh.
+    ATTENDU=['SYNTHESE DE LA THESE','LECTURE DE THESE','PARTICULARITES',
+             'PARAMETRES & WATCH-LIST','CATALYSEURS']
+    import re as _re
+    bad=[]
+    for tk,t in FICHES.items():
+        h=t['hypothese']
+        if (h.get('date') or '')<RULE_DATE: continue
+        txt=h.get('text') or ''
+        rub=_re.findall(r'==\s*(.+?)\s*==',txt)
+        if len(txt)>9000: bad.append((tk,f'texte {len(txt)} car. (budget ~4500-8500)'))
+        manq=[r for r in ATTENDU if r not in rub]
+        vieux=[r for r in rub if r not in ATTENDU]
+        if manq: bad.append((tk,f'rubriques manquantes : {manq}'))
+        if vieux: bad.append((tk,f'anciennes rubriques : {vieux}'))
+        m=_re.search(r'== LECTURE DE THESE ==\n(.*?)(?=\n== |$)',txt,_re.S)
+        if m and 'Aucune inflexion' not in m.group(1):
+            n=sum(1 for l in m.group(1).splitlines() if l.strip().startswith('-'))
+            if not 3<=n<=5: bad.append((tk,f'Lecture de these : {n} puce(s), attendu 3-5'))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0; warns=0

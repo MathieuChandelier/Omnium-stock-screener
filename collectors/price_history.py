@@ -143,8 +143,10 @@ def snapshot_ticker(ticker: str, run_date_str: str):
     hyp = tdata.get("hypothese") or {}
     cy, ny = compute_cy_ny(tdata)
     eps_by_year = build_eps_by_year(hyp)
-    eps_fwd = (hyp.get("quarterlyEPS") or {}).get("epsForward12m")
-    eps_fwd = round(float(eps_fwd), 4) if isinstance(eps_fwd, (int, float)) else None
+    # epsForward12m DEPRECIE le 18/08/2026 (12m glissant retire de l'app,
+    # remplace par le millesime N+2) : plus aucune nouvelle capture. Les
+    # epsFwd deja archives restent intacts (append-only).
+    eps_fwd = None
     # P/E ex-cash : annee en cours ET annee suivante (nd_ny/sh_ny ajoutes le
     # 18/08/2026). La table de multiples cote app expose l'ex-cash sur les
     # deux, mais seule l'annee en cours en avait un HISTORIQUE - la cellule
