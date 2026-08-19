@@ -2,81 +2,405 @@
   "name": "Groupe SEB",
   "cours": 49.66,
   "yahooSymbol": "SK.PA",
-  "dividende": 2.80,
+  "dividende": 2.8,
   "data": [
-    {"year":2021,"ca":8059,"ebit":813,"net":453.8,"shares":54,"nd":1524,"div":2.45},
-    {"year":2022,"ca":7960,"ebit":620,"net":316.2,"shares":55,"nd":1973,"div":2.45},
-    {"year":2023,"ca":8006,"ebit":726,"net":386.2,"shares":55,"nd":1769,"div":2.62},
-    {"year":2024,"ca":8266,"ebit":802,"net":421.5,"shares":55,"nd":1926,"div":2.80},
-    {"year":2025,"ca":8169,"ebit":601,"net":244.6,"shares":55,"nd":2342,"div":2.80}
+    {
+      "year": 2021,
+      "ca": 8059,
+      "ebit": 813,
+      "net": 453.8,
+      "shares": 54,
+      "nd": 1524,
+      "div": 2.45
+    },
+    {
+      "year": 2022,
+      "ca": 7960,
+      "ebit": 620,
+      "net": 316.2,
+      "shares": 55,
+      "nd": 1973,
+      "div": 2.45
+    },
+    {
+      "year": 2023,
+      "ca": 8006,
+      "ebit": 726,
+      "net": 386.2,
+      "shares": 55,
+      "nd": 1769,
+      "div": 2.62
+    },
+    {
+      "year": 2024,
+      "ca": 8266,
+      "ebit": 802,
+      "net": 421.5,
+      "shares": 55,
+      "nd": 1926,
+      "div": 2.8
+    },
+    {
+      "year": 2025,
+      "ca": 8169,
+      "ebit": 601,
+      "net": 244.6,
+      "shares": 55,
+      "nd": 2342,
+      "div": 2.8
+    }
   ],
-  "epsConsensus": {"year":2026,"eps":5.85,"epsNY":7.90,"date":"2026-07-23","source":"S&P Global Market Intelligence / TipRanks (via stockanalysis.com) - snapshot pre-S1 (mai 2026), objectif de cours median analystes 73 EUR (8 avis, 75% positifs) post-S1 selon ideal-investisseur.fr/Zonebourse ; pas de revision EPS post-S1 clairement publiee a la date de ce refresh"},
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 5.85,
+    "epsNY": 7.9,
+    "date": "2026-07-23",
+    "source": "S&P Global Market Intelligence / TipRanks (via stockanalysis.com) - snapshot pre-S1 (mai 2026), objectif de cours median analystes 73 EUR (8 avis, 75% positifs) post-S1 selon ideal-investisseur.fr/Zonebourse ; pas de revision EPS post-S1 clairement publiee a la date de ce refresh"
+  },
   "particularites": [],
-  "nextEvent": {"label":"9M 26","date":"2026-10-22"},
+  "nextEvent": {
+    "label": "9M 26",
+    "date": "2026-10-22"
+  },
   "ownership": {
-    "asOf":"2026-07-23",
-    "insiderPct":31.9,
-    "insiderDesc":"Concert familial Lescure (pacte d'actionnaires du 27/02/2019, ~260 personnes physiques sur 7 generations) organise autour des holdings Generaction et Venelle Investissement, renforce depuis mars 2021 par HRC (Holding de Renforcement du Controle, endettee pour racheter des titres) : controle familial perenne et actif, structure sans classe d'actions a droit de vote multiple.",
-    "insiderSource":"Communique pacte d'actionnaires 27/02/2019 + communique HRC 12/03/2021, recoupes avec les declarations mensuelles AMF actions/droits de vote 2026",
-    "notableHolders":[],
-    "coverageNote":"Hors perimetre 13F (titre cote a Paris, non ADR US) - notableHolders non recherche, conforme au perimetre 13F du protocole (gerants americains uniquement sur titres cotes aux US).",
-    "history":[]
+    "asOf": "2026-07-23",
+    "insiderPct": 31.9,
+    "insiderDesc": "Concert familial Lescure (pacte d'actionnaires du 27/02/2019, ~260 personnes physiques sur 7 generations) organise autour des holdings Generaction et Venelle Investissement, renforce depuis mars 2021 par HRC (Holding de Renforcement du Controle, endettee pour racheter des titres) : controle familial perenne et actif, structure sans classe d'actions a droit de vote multiple.",
+    "insiderSource": "Communique pacte d'actionnaires 27/02/2019 + communique HRC 12/03/2021, recoupes avec les declarations mensuelles AMF actions/droits de vote 2026",
+    "notableHolders": [],
+    "coverageNote": "Hors perimetre 13F (titre cote a Paris, non ADR US) - notableHolders non recherche, conforme au perimetre 13F du protocole (gerants americains uniquement sur titres cotes aux US).",
+    "history": []
   },
   "compliance": {
-    "asOf":"2026-07-23",
-    "items":[],
-    "note":"Aucune allegation de fraude identifiee (manipulation comptable, tromperie des investisseurs, enquete SEC/DOJ/AMF pour fraude en valeurs mobilieres). L'amende de l'Autorite de la Concurrence francaise (189,5 M€, notifiee decembre 2024, decaissee 2025) releve du droit de la concurrence et non de la fraude au sens de ce champ - elle reste documentee dans hypothese.text, traitement coherent avec les dossiers antitrust des autres titres du portefeuille."
+    "asOf": "2026-07-23",
+    "items": [],
+    "note": "Aucune allegation de fraude identifiee (manipulation comptable, tromperie des investisseurs, enquete SEC/DOJ/AMF pour fraude en valeurs mobilieres). L'amende de l'Autorite de la Concurrence francaise (189,5 M€, notifiee decembre 2024, decaissee 2025) releve du droit de la concurrence et non de la fraude au sens de ce champ - elle reste documentee dans hypothese.text, traitement coherent avec les dossiers antitrust des autres titres du portefeuille."
   },
   "hypothese": {
-    "date":"2026-08-04",
-    "priorEPS":{"date":"2026-07-23","eps":{"2026":5.88,"2027":6.72}},
-    "source":"Refresh de forme (decoupage sequentiel H1/H2 2026) - meme call S1 26 (communique 22/07/2026 + transcript conference 22/07/2026 18h00 CET), pas de nouveau trimestre publie depuis le refresh precedent",
-    "dernierCall":{
-      "quarter":"S1 26",
-      "resultatsVsConsensus":{"ca":{"actual":3743,"consensus":null},"epsAdj":{"actual":-2.26,"consensus":null,"basis":"GAAP"}},
-      "guidanceProchainTrimestre":"Pas de guidance trimestrielle chiffree fournie (guidance a l'annee uniquement) ; le Groupe rappelle la nature saisonniere de son activite - le ROPA et la marge du 1er semestre ne sont pas representatifs de l'annee pleine.",
-      "guidanceAnnuelle":"Objectifs 2026 confirmes sans changement : retour a la croissance du ROPA sur l'annee, generation de cash-flow libre plus normative dans le prolongement du S1, baisse du levier financier vers ~2x hors acquisitions d'ici fin 2027.",
-      "pointsCles":["Le plan Rebond delivre ses premiers effets chiffres : impact positif sur le ROPA 2026 desormais estime a 40-60 M€ par le management, avec plus de 400 actions engagees sur les achats indirects et une baisse des frais de structure d'environ 25 M€ deja visible au S1.","Le remboursement des droits de douane US, evoque comme asymetrie positive lors de la creation, s'est concretise : impact positif d'environ 15 M€ sur le cout des ventes deja comptabilise au S1.","L'activite Professionnelle recule (-2,8% tcpc, -6,2% au seul T2) sous l'effet d'un attentisme persistant des clients HORECA notamment aux Etats-Unis et au Moyen-Orient, et les ventes Moyen-Orient de la zone EMEA (~10% du CA de la zone) reculent nettement sous l'effet du contexte geopolitique - developpement negatif non entierement compense par la bonne tenue du Grand Public.","Le cash-flow libre s'est nettement redresse (53 M€ contre -213 M€ au S1 2025) grace a une meilleure maitrise du BFR et a des investissements en repli, tandis que le taux effectif d'impot hors elements Rebond est ressorti a 30% contre 25% un an plus tot - point a confirmer sur l'annee pleine avant toute revision de l'ETR normatif du modele."]
+    "date": "2026-08-18",
+    "priorEPS": {
+      "date": "2026-08-04",
+      "eps": {
+        "2026": 6.15,
+        "2027": 6.72,
+        "2028": 7.57,
+        "2029": 8.43,
+        "2030": 9.22
+      }
     },
-    "guidanceHistory":[
-      {"quarter":"S1 26","date":"2026-07-22","fyGuided":2026,"guidanceAnnuelle":"Retour a la croissance du ROPA sur l'annee, cash-flow libre plus normatif dans le prolongement du S1, levier financier en baisse vers ~2x hors acquisitions d'ici fin 2027."}
+    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript H1 2026 lu depuis l'archive Drive, coherenceQualitative creee (cold start), bridge etabli (t 23,5% normatif, minoritaires Supor, charge financiere decroissante ; le 2025 aberrant de W2 documente avec arbitrage d-bis differe a la cloture FY26), scorecard cree (ancre own_vintage 5,88), cles depreciees purgees. Projections inchangees (bottom-up H2 du 04/08).",
+    "dernierCall": {
+      "quarter": "S1 26",
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 3743,
+          "consensus": null
+        },
+        "epsAdj": {
+          "actual": -2.26,
+          "consensus": null,
+          "basis": "GAAP"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (guidance a l'annee uniquement) ; le Groupe rappelle la nature saisonniere de son activite - le ROPA et la marge du 1er semestre ne sont pas representatifs de l'annee pleine.",
+      "guidanceAnnuelle": "Objectifs 2026 confirmes sans changement : retour a la croissance du ROPA sur l'annee, generation de cash-flow libre plus normative dans le prolongement du S1, baisse du levier financier vers ~2x hors acquisitions d'ici fin 2027.",
+      "pointsCles": [
+        "Le plan Rebond delivre ses premiers effets chiffres : impact positif sur le ROPA 2026 desormais estime a 40-60 M€ par le management, avec plus de 400 actions engagees sur les achats indirects et une baisse des frais de structure d'environ 25 M€ deja visible au S1.",
+        "Le remboursement des droits de douane US, evoque comme asymetrie positive lors de la creation, s'est concretise : impact positif d'environ 15 M€ sur le cout des ventes deja comptabilise au S1.",
+        "L'activite Professionnelle recule (-2,8% tcpc, -6,2% au seul T2) sous l'effet d'un attentisme persistant des clients HORECA notamment aux Etats-Unis et au Moyen-Orient, et les ventes Moyen-Orient de la zone EMEA (~10% du CA de la zone) reculent nettement sous l'effet du contexte geopolitique - developpement negatif non entierement compense par la bonne tenue du Grand Public.",
+        "Le cash-flow libre s'est nettement redresse (53 M€ contre -213 M€ au S1 2025) grace a une meilleure maitrise du BFR et a des investissements en repli, tandis que le taux effectif d'impot hors elements Rebond est ressorti a 30% contre 25% un an plus tot - point a confirmer sur l'annee pleine avant toute revision de l'ETR normatif du modele."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "communique",
+        "date": "2026-07-22"
+      },
+      "transcriptAnalyse": true,
+      "communiqueAnalyse": true
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "S1 26",
+        "date": "2026-07-22",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "Retour a la croissance du ROPA sur l'annee, cash-flow libre plus normatif dans le prolongement du S1, levier financier en baisse vers ~2x hors acquisitions d'ici fin 2027."
+      }
     ],
-    "guidanceLongTerme":"Ambition moyen terme (non datee) : croissance organique des ventes ~5%/an, marge ROPA convergeant vers 10% puis 11% - reaffirmee sans changement, traitee comme cible non contraignante sur l'horizon 2026-2030.",
-    "guidanceLongTermeHistory":[],
-    "quarterlyEPS":{
-      "cadence":"semestriel",
-      "CY":[
-        {"label":"S1","eps":0.75,"actual":true},
-        {"label":"S2","eps":5.40,"actual":false}
+    "guidanceLongTerme": "Ambition moyen terme (non datee) : croissance organique des ventes ~5%/an, marge ROPA convergeant vers 10% puis 11% - reaffirmee sans changement, traitee comme cible non contraignante sur l'horizon 2026-2030.",
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 0.75,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 5.4,
+          "actual": false
+        }
       ],
-      "NY":[
-        {"label":"S1","eps":0.94,"actual":false},
-        {"label":"S2","eps":5.78,"actual":false}
-      ],
-      "epsForward12m":6.18,
-      "forwardPeriodLabel":"S2 26 -> S1 27",
-      "coherenceNoteCY":null,
-      "coherenceNoteNY":null
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 0.94,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 5.78,
+          "actual": false
+        }
+      ]
     },
-    "summary":"Redressement operationnel confirme au S1 (ROPA +44%, cash-flow libre +53 M€ contre -213 M€ un an plus tot), plan Rebond desormais chiffre (40-60 M€ d'impact ROPA 2026) ; le decoupage sequentiel H1 actual + H2 rebati brique par brique porte l'ORfA 2026 a environ 690 M€ (vs 660 M€ precedemment), Professionnel en repli et ETR en hausse restant a surveiller.",
-    "text":"== SYNTHESE DE LA THESE ==\nLe pari de retournement operationnel se confirme au premier semestre 2026 : le ROPA progresse de 44% a 172 M€ (marge 4,6% contre 3,2% un an plus tot), le cash-flow libre redevient positif (53 M€ contre -213 M€ au S1 2025) et le plan Rebond delivre ses premiers effets desormais chiffres par le management (impact ROPA 2026 estime a 40-60 M€, sur la trajectoire des ~200 M€/an de recurrent vise fin 2027). Deux asymetries evoquees a la creation se sont concretisees positivement : le remboursement des droits de douane US (~15 M€ deja comptabilise en reduction du cout des ventes) et un effet de change desormais favorable sur le ROPA (+12 M€, devises courtes USD/CNY). En sens inverse, l'activite Professionnelle se degrade (-2,8% tcpc, -6,2% au seul T2) sous l'effet d'un attentisme HORECA persistant aux Etats-Unis et surtout au Moyen-Orient, dont les ventes EMEA reculent nettement - la crise Moyen-Orient, traitee comme un risque gerable a la creation, se materialise donc partiellement, meme si le Grand Public (89% des ventes) absorbe largement le choc. Point de vigilance nouveau : le taux effectif d'impot hors Rebond ressort a 30% au S1 contre 25% un an plus tot, un ecart significatif qui, s'il se confirme sur l'annee pleine, viendrait rogner la conversion Net/ROPA au-dela de ce que la seule dynamique operationnelle laisserait supposer. Au net, la these reste validee sur son axe central (redressement operationnel credible, execution du plan Rebond dans les temps) mais le chemin vers l'omniumNet/omniumEPS 2026 est desormais porte davantage par le ROPA et moins par la conversion fiscale et financiere qu'anticipe a la creation - les deux effets se compensant largement dans les grandes masses (voir E6-b).\n\n== EVENEMENTS & INFLEXIONS ==\n(i) Plan Rebond : charge de restructuration exceptionnelle confirmee a 178 M€ au S1 2026 (dans la fourchette 200-250 M€ initialement estimee, l'essentiel desormais provisionne) - explique l'ecart entre le resultat net GAAP S1 (-124 M€ part Groupe) et le resultat retraite (+41 M€, contre 1 M€ au S1 2025). Accords sociaux signes en France et dans la majorite des entites allemandes (departs a compter de septembre 2026) ; reduction du portefeuille de references produits de 25-30% desormais identifiee a ~90% et engagee a ~9%, achevement attendu debut 2027. (ii) Remboursement tarifs douaniers US : desormais chiffre et realise (~15 M€ d'impact positif sur le cout des ventes au S1) - l'asymetrie evoquee a la creation est levee, integree en base dans le ROPA 2026 plutot que traitee hors modele (ancrage TARIFF_REIMBURSEMENT resolu). (iii) Crise Moyen-Orient : materialisation partielle du risque evoque a la creation - ventes Moyen-Orient de la zone EMEA (~10% du CA de la zone) en recul net, et attentisme HORECA marque sur l'activite Professionnelle (Etats-Unis et Moyen-Orient specifiquement cites) ; le management chiffre desormais un impact cout matieres/logistique lie au conflit iranien d'environ -30 M€ attendu au S2 2026 (aluminium, plastiques, fret), partiellement couvert par la politique de hedging. (iv) Devises : effet positif confirme sur le ROPA (+12 M€, USD/CNY) mais effet negatif persistant en donnees publiees sur les devises longues (livre turque, yen, won) affectant le chiffre d'affaires publie des zones EMEA autres pays (-4,6% publie vs +0,6% organique) et Asie autres pays (-7,2% publie vs +0,3% organique) - la normalisation se confirme sur la marge mais pas encore integralement sur le CA publie. (v) Amerique du Nord Grand Public en nette acceleration au T2 (+15% tcpc), portee par un effet de base favorable et des gains de part de marche en articles culinaires et soin du linge - dynamique positive au-dela des attentes initiales.\n\n== PARTICULARITES ==\nAucune.\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : communique officiel de resultats S1 2026 (22/07/2026, businesswire.com/Groupe SEB) et conference management du meme jour (18h00 CET). CA S1 3 743 M€ (+1,7% tcpc, -0,1% en donnees publiees, effet devises -67 M€ concentre sur le T1). ROPA 172 M€ (+44%), marge 4,6% contre 3,2% au S1 2025. Resultat financier -67,4 M€ (contre -57,1 M€ au S1 2025, hausse liee a l'endettement net plus eleve et au cout de la dette). Taux effectif d'impot hors Rebond 30% (contre 25% au S1 2025) - a confirmer sur l'annee pleine. Dette financiere nette 2 516 M€ au 30/06/2026 (dont 311 M€ IFRS16), en baisse de 142 M€ sur un an mais en hausse de 174 M€ vs fin 2025 (hausse saisonniere normale de mi-annee liee au BFR) ; ratio dette nette/EBITDA ajuste 2,8x contre 2,9x un an plus tot. Prochain refresh utile : publication 9 mois 2026 (22/10/2026), qui donnera une premiere lecture du T3 isole et de la confirmation ou non de la trajectoire de marge H2.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable inchangee : « data ».ebit = ROPA, aucun retraitement supplementaire necessaire. Pas de mise a jour de « data » a ce refresh (exercice fiscal 2026 non cloture, seule l'annee 2025 figure en base annuelle). Decoupage sequentiel de la 1ere annee projetee (nouveau a ce refresh, voir ancrage SEQUENTIAL_H2_BRIDGE) : l'ORfA 2026 n'est plus derive d'un taux de croissance annuel unique mais reconstruit H1 actual (172 M€) + H2 rebati brique par brique a partir des elements chiffres par le management au Q&A (base H2 2025 ~482 M€, momentum sous-jacent +20 M€, increment Rebond H2 +30 M€, tarifs US H2 +7 M€, FX H2 +12 M€, crise Iran H2 -30 M€) - porte l'estimation a ~690 M€ contre 660 M€ precedemment, ecart de +4,5% classe information nouvelle sourcee (E6-b), sous le seuil de materialite mais documente plutot qu'absorbe silencieusement compte tenu de la demande explicite de tracabilite. Ratio de conversion Net/ROPA : maintenu en base normative ~52-56% par souci de continuite methodologique (E5bis, non-recalculation sans confrontation complete sur annee pleine), mais le S1 2026 fait apparaitre deux tensions symetriques sur cette conversion - ETR hors Rebond a 30% (vs 23-24% retenu en base) et charge financiere plus elevee (dette nette de mi-annee au plus haut) - qui se compensent largement avec l'amelioration du ROPA dans le calcul bottom-up de ce refresh, sans qu'il soit necessaire de reviser formellement le ratio agrege a ce stade. ETR normatif : maintenu provisoirement a 23-24% dans le modele long terme, mais watch-list prioritaire pour le prochain refresh si le S2 confirme un taux structurellement plus eleve. Charge financiere : toujours elevee en 2026 (dette nette de mi-annee au plus haut, obligation 500 M€ a 3,625% emise en 2025), decroissance attendue 2027-2030 avec le desendettement. WATCH-LIST pour le prochain refresh : (1) confirmation ou non du taux effectif d'impot 2026 pleine annee a un niveau structurellement superieur a la base historique ; (2) verification effective de l'impact Iran H2 (-30 M€ guide) et de l'increment Rebond H2 (20-40 M€ guide) une fois le S2 publie, contre le decoupage sequentiel retenu ici ; (3) evolution de l'activite Professionnelle (HORECA, grands contrats) ; (4) confirmation de la baisse du levier financier vers 2x fin 2027 sur une base de fin d'annee plutot que la lecture mi-annee saisonnierement elevee.\n\n== CATALYSEURS ==\nPublication 9 mois 2026 (22/10/2026) est le catalyseur a court terme le plus proche, avec un enjeu particulier sur la verification du bridge H2 chiffre par le management (Rebond, Iran, tarifs, FX) contre le decoupage sequentiel retenu dans ce refresh, et sur la resolution ou non de la faiblesse de l'activite Professionnelle.",
-    "impact":"positif",
+    "summary": "Redressement operationnel confirme au S1 (ROPA +44%, cash-flow libre +53 M€ contre -213 M€ un an plus tot), plan Rebond desormais chiffre (40-60 M€ d'impact ROPA 2026) ; le decoupage sequentiel H1 actual + H2 rebati brique par brique porte l'ORfA 2026 a environ 690 M€ (vs 660 M€ precedemment), Professionnel en repli et ETR en hausse restant a surveiller.",
+    "text": "== THESIS SUMMARY ==\nSEB is an operational-turnaround bet, and H1 2026 confirms it: ORfA +44% to 172M EUR (margin 4.6%, +140bp), free cash flow back positive (+53M vs -213M), net debt down 152M - with the Rebound plan now DELIVERING quantified savings (20M locked of the 40-60M 2026 target, on the path to ~200M/yr run-rate by end-2027; 3 pillars: France/Germany reorganization, 400+ indirect-procurement actions, 25-30% SKU reduction). Two creation-thesis asymmetries landed positively: US tariff refunds (+15M booked) and FX turning favorable (+12M). Against that: Professional (-2.8%, -6.2% in Q2) suffers HORECA caution in the US and the Middle East, and the Iran conflict adds a guided ~-30M H2 raw-material headwind - absorbed by Consumer (89% of sales, +2.3%). The path to 2026 earnings now runs through ORfA more than through tax/financial conversion: H1 effective tax ex-Rebound hit 30% vs the 23-24% normative - the top watch-list item.\n\n== THESIS READ ==\n- Rebound is no longer a promise: 20M EUR locked in H1, management bridge to H2 quantified line by line (base 482M + momentum +20 + Rebound +30 + tariffs +7 + FX +12 - Iran -30) -> the 690M ORfA model is management's own arithmetic.\n- FCF positive again and deleveraging started (toward 2x ND/EBITDA by 2027): the balance-sheet half of the turnaround is on schedule.\n- Professional degradation is real but ring-fenced (11% of sales); pipeline named (McDonald's global listing, ChaPanda, Scooters US) with slow conversion.\n- Distributor destocking in Europe (sell-in below sell-out): H2 revenue optics may lag sell-out - margin, not demand, is the 2026 story.\n- Watch: full-year effective tax - H1's 30% ex-Rebound vs 23.5% normative would clip the net conversion if confirmed.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: data.ebit = ORfA (published), unchanged. FY26 built H1-actual + management's own H2 bridge (~690M ORfA). Bridge (c-ter): tax 23.5% normative (H1's 30% ex-Rebond flagged, not yet extrapolated - E5bis continuity), net financial charge -150 -> -85M with deleveraging (2025 bond 500M at 3.625%), Supor minorities -55 -> -66M, 'other' small aggregate (Rebound implementation costs spread). The 2025 published year (W2-flagged, conversion 40.7%) is documented in the bridge; the d-bis retreat-vs-keep arbitration is DEFERRED to the FY26 close when the one-off split is published. Scorecard: directional guider - own-vintage anchor 5.88 (23/07), history not measurable (2025 regime-atypical), application suspended. coherenceQualitative created (transcript read). WATCH-LIST: (1) full-year ETR vs 30% H1 ex-Rebond; (2) H2 bridge verification line by line (Rebound increment, Iran -30M, tariffs, FX) at the 9M print; (3) Professional conversion pace; (4) year-end leverage on a year-end basis (vs seasonal mid-year peak); (5) d-bis arbitration on 2025 at FY26 close. Next useful refresh: 9M sales (22/10/2026).\n\n== CATALYSTS ==\n9M print (22 Oct): H2 bridge verification (Rebound/Iran/tariffs/FX) and Professional inflection; deleveraging readout at year-end.",
+    "impact": "positif",
     "ancrages": [
-      {"id":"REBOUND_SAVINGS","moteur":"Plan Rebond : impact positif sur le ROPA 2026 desormais chiffre par le management a 40-60 M€ (en ligne avec l'objectif ~200 M€/an en rythme de croisiere fin 2027) ; plus de 400 actions engagees sur les achats indirects et ~25 M€ de baisse des frais de structure deja visibles au S1.","applique":["omniumEBIT.2026","omniumEBIT.2027","omniumEBIT.2028"],"confiance":"haute"},
-      {"id":"REBOUND_ONEOFF_COST","moteur":"Cout de restructuration ponctuel plan Rebond confirme a 178 M€ au S1 2026 (dans la fourchette 200-250 M€ initialement estimee, l'essentiel desormais provisionne) - exclu d'omniumNet/omniumEPS comme vrai one-off, explique l'ecart marque entre resultat net GAAP S1 (-124 M€) et resultat retraite (+41 M€).","applique":[],"confiance":"haute"},
-      {"id":"FX_NORMALIZATION","moteur":"Effet de change confirme positif sur le ROPA au S1 (+12 M€, devises courtes USD/CNY), mais effet negatif persistant en donnees publiees sur les devises longues EMEA autres pays et Asie autres pays (livre turque, yen, won : -4,6% et -7,2% publie contre une croissance organique positive) - la normalisation se confirme sur le ROPA mais pas encore integralement sur le CA publie.","applique":["omniumCA.2026","omniumEBIT.2026"],"confiance":"moyenne"},
-      {"id":"DELEVERAGING","moteur":"Ratio dette nette/EBITDA ajuste ameliore a 2,8x au 30/06/2026 contre 2,9x un an plus tot (base glissante), dette nette 2 516 M€ (+174 M€ vs fin 2025, hausse saisonniere normale de mi-annee) ; trajectoire coherente avec l'objectif de retour vers 2x hors acquisitions d'ici fin 2027.","applique":["omniumND.2026","omniumND.2027","omniumND.2028"],"confiance":"moyenne"},
-      {"id":"MIDTERM_TARGETS","moteur":"Ambition moyen terme reaffirmee sans changement au S1 : croissance organique des ventes ~5%/an, marge ROPA 10% convergeant vers 11% - non pleinement atteinte sur l'horizon de projection (approche prudente, convergence graduelle retenue).","applique":["omniumCA.2027","omniumCA.2028","omniumCA.2029","omniumCA.2030","omniumEBIT.2027","omniumEBIT.2028","omniumEBIT.2029","omniumEBIT.2030"],"confiance":"basse"},
-      {"id":"TARIFF_REIMBURSEMENT","moteur":"Remboursement de droits de douane US desormais chiffre et realise : impact positif d'environ 15 M€ sur le cout des ventes deja comptabilise au S1 2026, avec un complement H2 plus modeste evoque par le management (~7 M€ retenu) - asymetrie levee, integree en base dans le ROPA 2026 plutot que traitee hors modele.","applique":["omniumEBIT.2026"],"confiance":"haute"},
-      {"id":"PROFESSIONAL_MIDEAST_SOFTNESS","moteur":"Activite Professionnelle en repli au S1 (-2,8% tcpc, -6,2% au seul T2) du fait d'un attentisme persistant des clients HORECA notamment aux Etats-Unis et au Moyen-Orient et d'une faible contribution des grands contrats ; ventes Moyen-Orient de la zone EMEA (~10% du CA de la zone) en recul net sous l'effet du contexte geopolitique - developpement negatif non entierement compense par la bonne tenue du Grand Public.","applique":["omniumCA.2026","omniumCA.2027"],"confiance":"moyenne"},
-      {"id":"NORTH_AMERICA_MOMENTUM","moteur":"Amerique du Nord Grand Public en nette acceleration au T2 (+15% tcpc), portee par un effet de base favorable et des gains de part de marche en articles culinaires et soin du linge - dynamique positive au-dela des attentes, a confirmer sur un trimestre plein sans effet de base.","applique":["omniumCA.2026"],"confiance":"basse"},
-      {"id":"SEQUENTIAL_H2_BRIDGE","moteur":"ORfA 2026 reconstruit sequentiellement (H1 actual 172 M€ + H2 rebati brique par brique : base H2 2025 482 M€, momentum sous-jacent +20 M€, Rebond +30 M€ (guidance H2 20-40 M€), tarifs US +7 M€, FX +12 M€, crise Iran -30 M€ chiffree par le CFO) plutot que par un taux de croissance annuel global - remplace la methode top-down du refresh precedent.","applique":["omniumCA.2026","omniumEBIT.2026","omniumNet.2026","omniumEPS.2026"],"confiance":"moyenne"}
+      {
+        "id": "REBOUND_SAVINGS",
+        "moteur": "Plan Rebond : impact positif sur le ROPA 2026 desormais chiffre par le management a 40-60 M€ (en ligne avec l'objectif ~200 M€/an en rythme de croisiere fin 2027) ; plus de 400 actions engagees sur les achats indirects et ~25 M€ de baisse des frais de structure deja visibles au S1.",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "REBOUND_ONEOFF_COST",
+        "moteur": "Cout de restructuration ponctuel plan Rebond confirme a 178 M€ au S1 2026 (dans la fourchette 200-250 M€ initialement estimee, l'essentiel desormais provisionne) - exclu d'omniumNet/omniumEPS comme vrai one-off, explique l'ecart marque entre resultat net GAAP S1 (-124 M€) et resultat retraite (+41 M€).",
+        "applique": [],
+        "confiance": "haute"
+      },
+      {
+        "id": "FX_NORMALIZATION",
+        "moteur": "Effet de change confirme positif sur le ROPA au S1 (+12 M€, devises courtes USD/CNY), mais effet negatif persistant en donnees publiees sur les devises longues EMEA autres pays et Asie autres pays (livre turque, yen, won : -4,6% et -7,2% publie contre une croissance organique positive) - la normalisation se confirme sur le ROPA mais pas encore integralement sur le CA publie.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "DELEVERAGING",
+        "moteur": "Ratio dette nette/EBITDA ajuste ameliore a 2,8x au 30/06/2026 contre 2,9x un an plus tot (base glissante), dette nette 2 516 M€ (+174 M€ vs fin 2025, hausse saisonniere normale de mi-annee) ; trajectoire coherente avec l'objectif de retour vers 2x hors acquisitions d'ici fin 2027.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "MIDTERM_TARGETS",
+        "moteur": "Ambition moyen terme reaffirmee sans changement au S1 : croissance organique des ventes ~5%/an, marge ROPA 10% convergeant vers 11% - non pleinement atteinte sur l'horizon de projection (approche prudente, convergence graduelle retenue).",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "TARIFF_REIMBURSEMENT",
+        "moteur": "Remboursement de droits de douane US desormais chiffre et realise : impact positif d'environ 15 M€ sur le cout des ventes deja comptabilise au S1 2026, avec un complement H2 plus modeste evoque par le management (~7 M€ retenu) - asymetrie levee, integree en base dans le ROPA 2026 plutot que traitee hors modele.",
+        "applique": [
+          "omniumEBIT.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "PROFESSIONAL_MIDEAST_SOFTNESS",
+        "moteur": "Activite Professionnelle en repli au S1 (-2,8% tcpc, -6,2% au seul T2) du fait d'un attentisme persistant des clients HORECA notamment aux Etats-Unis et au Moyen-Orient et d'une faible contribution des grands contrats ; ventes Moyen-Orient de la zone EMEA (~10% du CA de la zone) en recul net sous l'effet du contexte geopolitique - developpement negatif non entierement compense par la bonne tenue du Grand Public.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "NORTH_AMERICA_MOMENTUM",
+        "moteur": "Amerique du Nord Grand Public en nette acceleration au T2 (+15% tcpc), portee par un effet de base favorable et des gains de part de marche en articles culinaires et soin du linge - dynamique positive au-dela des attentes, a confirmer sur un trimestre plein sans effet de base.",
+        "applique": [
+          "omniumCA.2026"
+        ],
+        "confiance": "basse"
+      },
+      {
+        "id": "SEQUENTIAL_H2_BRIDGE",
+        "moteur": "ORfA 2026 reconstruit sequentiellement (H1 actual 172 M€ + H2 rebati brique par brique : base H2 2025 482 M€, momentum sous-jacent +20 M€, Rebond +30 M€ (guidance H2 20-40 M€), tarifs US +7 M€, FX +12 M€, crise Iran -30 M€ chiffree par le CFO) plutot que par un taux de croissance annuel global - remplace la methode top-down du refresh precedent.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumNet.2026",
+          "omniumEPS.2026"
+        ],
+        "confiance": "moyenne"
+      }
     ],
-    "omniumEPS":{"2026":6.15,"2027":6.72,"2028":7.57,"2029":8.43,"2030":9.22},
-    "omniumCA":{"2026":8230,"2027":8630,"2028":8960,"2029":9280,"2030":9610},
-    "omniumEBIT":{"2026":690,"2027":715,"2028":775,"2029":840,"2030":895},
-    "omniumNet":{"2026":337,"2027":368,"2028":415,"2029":462,"2030":505},
-    "omniumND":{"2026":2180,"2027":1730,"2028":1520,"2029":1370,"2030":1220},
-    "omniumShares":{"2026":54.8,"2027":54.8,"2028":54.8,"2029":54.8,"2030":54.8}
+    "omniumEPS": {
+      "2026": 6.15,
+      "2027": 6.72,
+      "2028": 7.57,
+      "2029": 8.43,
+      "2030": 9.22
+    },
+    "omniumCA": {
+      "2026": 8230,
+      "2027": 8630,
+      "2028": 8960,
+      "2029": 9280,
+      "2030": 9610
+    },
+    "omniumEBIT": {
+      "2026": 690,
+      "2027": 715,
+      "2028": 775,
+      "2029": 840,
+      "2030": 895
+    },
+    "omniumNet": {
+      "2026": 337,
+      "2027": 368,
+      "2028": 415,
+      "2029": 462,
+      "2030": 505
+    },
+    "omniumND": {
+      "2026": 2180,
+      "2027": 1730,
+      "2028": 1520,
+      "2029": 1370,
+      "2030": 1220
+    },
+    "omniumShares": {
+      "2026": 54.8,
+      "2027": 54.8,
+      "2028": 54.8,
+      "2029": 54.8,
+      "2030": 54.8
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -160,
+        "other": -49,
+        "taxRate": 0.235,
+        "minorities": -55,
+        "netCalc": 244.6,
+        "netPub": 244.6,
+        "residual": 0,
+        "residualNote": "First-pass: net financial charge ~-160M (peak debt year), Supor minorities ~-55M, 'other' -49M aggregating the restructuring-heavy 2025 items - the year W2 flags as conversion-aberrant (40.7% vs 52.6% median); d-bis arbitration (retreat vs keep) deferred to the FY26 close when the full-year one-off split is published."
+      },
+      "2026": {
+        "finNet": -150,
+        "other": -27,
+        "taxRate": 0.235,
+        "minorities": -55,
+        "netCalc": 337
+      },
+      "2027": {
+        "finNet": -129,
+        "other": -30,
+        "taxRate": 0.235,
+        "minorities": -57,
+        "netCalc": 368
+      },
+      "2028": {
+        "finNet": -107,
+        "other": -47,
+        "taxRate": 0.235,
+        "minorities": -60,
+        "netCalc": 415
+      },
+      "2029": {
+        "finNet": -95,
+        "other": -59,
+        "taxRate": 0.235,
+        "minorities": -63,
+        "netCalc": 462
+      },
+      "2030": {
+        "finNet": -85,
+        "other": -64,
+        "taxRate": 0.235,
+        "minorities": -66,
+        "netCalc": 505
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Directional (ORfA growth + normalized FCF)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-22",
+          "type": "guidance_revision",
+          "detail": "H1 26: FY26 guidance CONFIRMED - continued operating-profit growth, normalized FCF generation, deleveraging toward 2x ND/EBITDA by 2027. Rebound plan: 20M EUR of the 40-60M 2026 savings already locked.",
+          "flag": null
+        },
+        {
+          "date": "2026-07-22",
+          "type": "vs_guidance",
+          "detail": "H1 26: ORfA 172M EUR (+44%), margin 4.6% (+140bp); FCF back positive (+53M vs -213M); net debt -152M."
+        }
+      ],
+      "paceCheckpoint": "H1 ORfA 172M of a ~690M modeled year: on pace given the H2-heavy seasonality (H2 2025 base ~482M).",
+      "weightedBeatPct": null,
+      "annualBeatPct": null,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Directional guidance only; the initial Feb-2025 wording was not reliably sourced at setup. 2025 was also the restructuring trough (regime-atypical)."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Same limitation."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 5.88,
+        "source": "own_vintage",
+        "date": "2026-07-23",
+        "note": "First own archived projection (23/07, pre the 04/08 bottom-up upgrade to 6.15) - mid-year, imperfect; re-anchor at the FY27 open (Feb 2027). SEB guides direction (ORfA growth), not numbers."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct null (directional-guidance house, no measurable closed FY at setup; 2025 regime-atypical). First measurable observation at FY26 close.",
+      "consensusSource": "S&P Global MI / TipRanks",
+      "consensusDate": "2026-07-23"
+    },
+    "revisionEvent": {
+      "date": "2026-07-22",
+      "label": "S1 26",
+      "type": "earnings"
+    }
+  },
+  "coherenceQualitative": {
+    "statut": "coherent",
+    "suiviNarratif": "First tracked entries (cold start at the 18/08/2026 deep refresh; H1 transcript read from the Drive archive). H1 26 narrative consistent with the turnaround thesis: profit recovery prioritized over top-line targets, Rebound savings quantified and on schedule, Professional softness acknowledged with a named pipeline - no tension detected.",
+    "historique": [
+      {
+        "quarter": "H1 26",
+        "date": "2026-07-22",
+        "clesRetenues": "ORfA 172M (+44%), margin 4.6% (+140bp); FCF +53M (vs -213M); net debt -152M to 2.516bn; Rebound: 20M locked of 40-60M 2026 target, 200M run-rate by end-2027 (costs 100-125M); US tariffs refund +15M booked; Iran conflict ~-30M H2 raw-material headwind guided; Professional -2.8% (McDonald's global listing, ChaPanda wins; slow conversion); distributor destocking in Europe (sell-in < sell-out)."
+      }
+    ]
   }
 }

@@ -122,8 +122,8 @@
     "note": "Champ absent de la creation, non renseigne a ce refresh evenementiel T2 26 faute de recherche dediee. Le texte de creation mentionnait un litige de propriete intellectuelle en cours contre Abbott Diabetes Care (couts mineurs, non materiels) - a formaliser explicitement dans ce champ lors d'un prochain refresh plutot que de le laisser uniquement dans le corps du texte."
   },
   "hypothese": {
-    "date": "2026-08-03",
-    "source": "Refresh T2 2026 - Communique de resultats T2 2026 (30/07/2026) + extraits de transcript du call du meme jour (Jake Leach CEO / Jereme Sylvain CFO, via Investing.com/Motley Fool/Globe and Mail) + communique et transcript T1 2026 (30/04/2026, sources secondaires pour reconstituer le S1 complet) + 8-K Investor Day du 14/05/2026 (nouveaux objectifs financiers long terme a horizon 2030).",
+    "date": "2026-08-18",
+    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive, coherenceQualitative creee (cold start), bridge etabli (t 24% normatif vs ~10% effectif 2025 - l'ecart W1 documente), scorecard cree (ancre CA initiale 5 205 M$ depuis guidanceHistory, desaccord de metrique declare), basis ramene a l'enum (C16), cles depreciees purgees. Projections inchangees.",
     "dernierCall": {
       "quarter": "Q2 2026",
       "communiqueAnalyse": true,
@@ -136,7 +136,7 @@
         "epsAdj": {
           "actual": 0.7,
           "consensus": 0.61,
-          "basis": "Non-GAAP (management) - beat de 14,75% ; EPS GAAP dilue publie a 0,64$ (vs 0,45$ un an plus tot), retenu tel quel dans la base Omnium (pas de retraitement systematique au-dela de la correction FY2020 deja actee a la creation)"
+          "basis": "non-GAAP"
         }
       },
       "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement). Signal qualitatif : marge brute non-GAAP attendue au pic au T3 2026 puis en repli au T4 avec la montee en charge de l'usine irlandaise.",
@@ -147,7 +147,13 @@
         "Investor Day tenu le 14/05/2026 (Mesa, Arizona) : nouveaux objectifs financiers de long terme a horizon 2030 annonces - croissance organique du CA >=10%/an chaque annee jusqu'en 2030, marge brute non-GAAP 67-69%, marge operationnelle non-GAAP 29-30%, marge EBITDA ajustee 36-37% en 2030. Nouveau programme de rachat d'actions de 1,0 Md$ autorise (jusqu'au 30/06/2027), remplacant l'ancien programme (250 M$ restants).",
         "Rachats d'actions poursuivis activement au T2 26 (~600 M$ dans le cadre du nouveau programme de 1,0 Md$) ; FCF S1 26 superieur a 600 M$ (plus du double de la periode comparable 2025).",
         "Usine irlandaise en cours de montee en charge : marge brute attendue au pic au T3 26 puis en repli au T4 avec le demarrage de la production - a integrer dans la lecture de la trajectoire de marge S2."
-      ]
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US-GAAP",
+        "source": "communique",
+        "date": "2026-07-30"
+      }
     },
     "guidanceHistory": [
       {
@@ -172,7 +178,7 @@
     "guidanceLongTerme": "Nouveaux objectifs financiers de long terme annonces lors de l'Investor Day du 14/05/2026 (Mesa, Arizona) : croissance organique du chiffre d'affaires d'au moins 10% par an chaque annee jusqu'en 2030 ; marge brute non-GAAP 2030 de 67% a 69% ; marge operationnelle non-GAAP 2030 de 29% a 30% ; marge EBITDA ajustee 2030 de 36% a 37%. Premiere communication d'objectifs financiers chiffres a horizon 2030 pour DexCom (absente de la these de creation, qui ne disposait que de la guidance FY2026 annuelle).",
     "guidanceLongTermeHistory": [],
     "summary": "T2 2026 solide (CA record 1,31 Md$ +13%, EPS non-GAAP 0,70$ battant le consensus de 14,75%) et guidance FY2026 de nouveau relevee sur le CA et les trois lignes de marge. Evenement majeur du refresh : l'Investor Day du 14/05/2026 a introduit les PREMIERS objectifs financiers chiffres a horizon 2030 (croissance organique >=10%/an, marge operationnelle non-GAAP 29-30% en 2030, contre ~22-24% guide pour 2026) - trajectoire de marge Omnium 2027-2030 substantiellement relevee en consequence. omniumEPS 2026 releve de 2,23$ a 2,50$ (base GAAP normalisee Omnium), et plus fortement encore sur 2029-2030 pour refleter la nouvelle cible de marge 2030.",
-    "text": "== SYNTHESE DE LA THESE ==\nDexCom est l'un des trois acteurs dominants du monitoring continu du glucose (CGM), marche structurellement porteur avec un modele economique de type rasoir/lames (>90% du CA en capteurs consommables recurrents). La these de creation (redressement en cours apres l'accident d'execution 2024 et la compression de marge 2025) est desormais tres largement validee et amplifiee par ce refresh T2 2026 : CA record 1,31 Md$ (+13%), EPS non-GAAP 0,70$ battant le consensus de 14,75%, marge brute GAAP passee de 62,9% a 64,1% sur un an. L'evenement le plus structurant du trimestre n'est cependant pas le beat lui-meme mais l'Investor Day du 14 mai 2026 : DexCom y a communique pour la PREMIERE FOIS des objectifs financiers chiffres a horizon 2030 (croissance organique du CA d'au moins 10%/an chaque annee, marge operationnelle non-GAAP portee a 29-30% en 2030 contre 22-24% guide pour 2026, marge EBITDA ajustee 36-37%). Ce cadre change la nature de la these : d'un simple pari sur la poursuite du redressement 2025-2026, le dossier devient un engagement chiffre et public de marge quasi doublee sur quatre ans, assorti d'un nouveau programme de rachat d'actions de 1,0 Md$ signalant la confiance du management dans la generation de cash future (FCF S1 26 deja superieur a 600 M$, plus du double de 2025). Le principal risque a surveiller reste la concurrence structurelle (Abbott, Medtronic) et l'execution de la montee en charge de l'usine irlandaise, dont la production doit debuter au S2 26 avec un effet dilutif transitoire sur la marge brute au T4.\n\n== EVENEMENTS & INFLEXIONS (T2 2026, publie 30/07 + Investor Day 14/05) ==\n1. NOUVEAUX OBJECTIFS FINANCIERS 2030 [classe i, MAJEUR, nouveau] : Investor Day tenu le 14/05/2026 a Mesa (Arizona) - premiere communication chiffree de long terme pour DexCom. Croissance organique du CA visee a au moins 10%/an CHAQUE ANNEE jusqu'en 2030 ; marge brute non-GAAP 2030 a 67-69% (vs guidance FY26 de ~64%) ; marge operationnelle non-GAAP 2030 a 29-30% (vs 23,5-24% guide pour FY26) ; marge EBITDA ajustee 2030 a 36-37% (vs 31,5-32% guide pour FY26). Nouveau programme de rachat d'actions de 1,0 Md$ autorise jusqu'au 30/06/2027, remplacant l'ancien programme (250 M$ restants) - signal de confiance dans la generation de cash future.\n2. GUIDANCE FY2026 DE NOUVEAU RELEVEE AU T2 [classe i] : CA porte a 5,18-5,25 Md$ (vs 5,16-5,25 Md$), marge brute non-GAAP ~64% (vs 63-64%), marge operationnelle non-GAAP 23,5%-24% (vs 23-23,5%), marge EBITDA ajustee 31,5%-32% (vs 31-31,5%) - 2e relevement de l'annee apres celui deja actee au T1 (marge operationnelle et EBITDA relevees, CA/marge brute reconduits par prudence face aux incertitudes fret/logistique).\n3. BEAT T2 CONFIRME SUR TOUTES LES METRIQUES [classe i] : CA 1,31 Md$ (+13% publie, +12% organique, US +11%, International +19%), EPS non-GAAP 0,70$ (consensus 0,61$, beat de 14,75%), EPS GAAP dilue 0,64$ (vs 0,45$ un an plus tot), resultat net 269,1 M$ (+46%), marge brute GAAP 64,1% (vs 60,1% un an plus tot).\n4. USINE IRLANDAISE - MONTEE EN CHARGE A SURVEILLER [classe ii, quantifie qualitativement] : le management indique explicitement que la marge brute devrait atteindre un pic au T3 26 puis refluer au T4 avec le demarrage de la production de la nouvelle usine - point de vigilance pour la lecture de la trajectoire de marge du S2, deja integre au raisonnement de construction de quarterlyEPS de ce refresh (T4 26 estime en repli sequentiel vs T3).\n5. RACHATS D'ACTIONS ACTIFS [classe i, quantifie] : ~600 M$ executes au seul T2 26 dans le cadre du nouveau programme de 1,0 Md$ - rythme de reduction du nombre d'actions diluees legerement accelere vs la these de creation.\n6. FCF EN FORTE PROGRESSION [classe i] : plus de 600 M$ generes au S1 2026, plus du double de la periode comparable 2025 - confirme la trajectoire de desendettement/accumulation de cash nette deja anticipee a la creation.\n7. LIMITES DE CE REFRESH [classe iii, a noter] : champs ownership et compliance non renseignes (deja absents de la these de creation), non traites dans le cadre de ce refresh evenementiel cible sur les resultats T2/Investor Day. Litige de propriete intellectuelle contre Abbott Diabetes Care deja mentionne a la creation, non reactualise faute d'information nouvelle identifiee.\n\n== PARTICULARITES ==\nAucune particularite structurelle recurrente. Ne verse pas de dividende (capital redirige vers R&D, expansion internationale et desormais un programme de rachat d'actions actif de 1,0 Md$).\n\n== RESULTATS, SOURCES & GUIDANCE ==\nSource primaire : communique de resultats T2 2026 (30/07/2026) et extraits de transcript du call du meme jour (Jake Leach CEO / Jereme Sylvain CFO), via Investing.com/Motley Fool/Globe and Mail. Sources secondaires : communique et transcript T1 2026 (30/04/2026, pour reconstituer le S1 complet), 8-K Investor Day du 14/05/2026 (objectifs financiers 2030). CA T2 26 1,31 Md$ (+13%/+12% organique) ; EPS non-GAAP 0,70$, EPS GAAP dilue 0,64$ ; resultat net 269,1 M$ (+46%) ; marge brute GAAP 64,1% (vs 60,1%). Guidance FY26 relevee : CA 5,18-5,25 Md$, marge brute non-GAAP ~64%, marge operationnelle non-GAAP 23,5-24%, marge EBITDA ajustee 31,5-32%. Objectifs 2030 (Investor Day) : croissance organique >=10%/an, marge brute non-GAAP 67-69%, marge operationnelle non-GAAP 29-30%, marge EBITDA ajustee 36-37%. Prochain refresh utile : resultats T3 2026 (date non confirmee, generalement fin octobre/debut novembre).\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase retenue inchangee depuis la creation : GAAP, avec la seule correction E5 d-bis historique de la donnee FY2020 (285,5 M$ de benefice fiscal ponctuel retire). Pas de reprise systematique du non-GAAP du management au-dela de cette correction ponctuelle, l'ecart GAAP/non-GAAP restant modeste chez DexCom. Reconstruction FY2026 bottom-up : S1 26 reel (EPS GAAP 0,51$+0,64$=1,15$) + H2 26 estime (~1,35$, tenant compte de la croissance sequentielle du CA et de l'amelioration de marge guidee pour la moyenne annuelle, mais moderee au T4 par la montee en charge de l'usine irlandaise) -> omniumEPS 2026 2,50$ (vs 2,23$ a la creation, +12,1%). Pour 2027-2030, REVISION STRUCTURELLE de la trajectoire de marge pour integrer les nouveaux objectifs Investor Day (marge operationnelle non-GAAP 29-30% en 2030, contre 23,5-24% guide pour 2026) : progression quasi lineaire retenue plutot que la simple extrapolation du rythme +200-300pb/an de la these de creation, qui ne disposait pas encore de cet engagement chiffre. omniumND et omniumShares legerement ajustes pour refleter le nouveau programme de rachat de 1,0 Md$ (vs un programme plus modeste a la creation). ownership et compliance restent NON RENSEIGNES (deja absents de la creation) - a completer lors d'un prochain refresh dedie.\nWATCH-LIST pour le prochain refresh : (1) confirmer au T3 26 le maintien de la trajectoire de marge vers la guidance FY26 relevee (23,5-24% operationnelle non-GAAP), et observer l'impact reel de la montee en charge de l'usine irlandaise sur la marge brute du T4 ; (2) suivre le rythme d'execution du nouveau programme de rachat de 1,0 Md$ ; (3) tout signal concret sur la premiere annee de mise en oeuvre de la trajectoire 2030 (le marche voudra des jalons intermediaires 2027-2028 plus precis que la seule cible terminale) ; (4) issue du litige IP contre Abbott, a formaliser dans le champ compliance ; (5) completer les champs ownership et compliance laisses vides depuis la creation.\n\n== CATALYSEURS ==\nResultats T3 2026 (fin octobre/debut novembre) - premier test de la trajectoire de marge S2 avec la montee en charge de l'usine irlandaise ; execution du nouveau programme de rachat de 1,0 Md$ ; jalons intermediaires attendus sur la trajectoire 2030 (croissance organique >=10%/an, marge operationnelle 29-30%) ; poursuite de l'expansion de la couverture payeur segment type 2 non-insulino-dependant (decision CMS attendue mi-2027, deja plus lointaine que prevu a la creation).",
+    "text": "== THESIS SUMMARY ==\nDexCom is one of the three CGM leaders, a razor/blades model (>90% recurring sensor revenue) in a structurally growing market. The creation thesis (recovery from the 2024 execution accident and 2025 margin compression) is now validated and AMPLIFIED: record Q2 (revenue 1.31bn$ +13%, non-GAAP EPS 0.70$ beating consensus by 14.75%, GAAP GM up 400bp) and, more structurally, the May 14 Investor Day where DexCom committed for the FIRST TIME to numbered 2030 targets: organic revenue growth >=10% every year and non-GAAP operating margin 29-30% (vs 23.5-24% guided 2026) - the file moved from a recovery bet to a public margin-doubling commitment, backed by a 1bn$ buyback (600M$ already executed) and H1 FCF >600M$ (2x 2025). Key risks: Abbott/Medtronic competition, the Irish plant ramp (transitory Q4 gross-margin drag), and CMS type-2 coverage timing (decision expected late 2026, effect mid-2027).\n\n== THESIS READ ==\n- Second FY26 guidance upgrade of the year (revenue 5.18-5.25bn$, OM 23.5-24%): the recovery is compounding, not just stabilizing.\n- The 2030 commitments (>=10% growth every year, OM 29-30%) now anchor the 2027-2030 margin path - a near-linear ramp replaces the old +200-300bp/yr extrapolation.\n- CONNECT readout strengthens the type-2 non-insulin opportunity (A1C -1.6%, 97% wear rate; 7M+ covered lives) ahead of the CMS decision.\n- G7 15-day at ~25% mix in 2026 exiting toward ~50%: the margin mechanics behind the 2030 target are visible in the mix.\n- Watch: Irish plant ramp on Q4 gross margin - the guided, temporary counterpoint to an otherwise ahead-of-plan margin year.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP with the single historical d-bis correction (FY2020 tax one-off removed). FY26 bottom-up: H1 GAAP EPS 1.15$ actual + H2 ~1.35$ (sequential growth, Q4 moderated by the Irish ramp) -> 2.50$. Bridge (c-ter): 24% normative tax + small growing interest income (cash 1.5 -> 4.9bn$); the published 2025 year reconciles at ~10% effective tax - which fully explains the W1 conversion gap (93% -> 80%), documented, not an error. Scorecard: revenue-guided house - FY26 anchor 5,205M$ (initial guidance, metric mismatch declared), quarterly beats tracked (+14.75% Q2), history excluded at setup, application suspended. coherenceQualitative created this refresh (transcript read; Q1 reconstructed from guidanceHistory). WATCH-LIST: (1) Q3/Q4 margin vs the raised guide and the Irish ramp; (2) 1bn$ buyback execution pace; (3) first 2027-2028 milestones against the 2030 commitments; (4) Abbott IP litigation -> compliance field; (5) ownership/compliance fields still empty (Operation D / dedicated pass). Next useful refresh: Q3 results (late Oct/early Nov).\n\n== CATALYSTS ==\nQ3 2026 (late Oct): margin trajectory vs Irish ramp; CMS type-2 coverage decision expected before year-end (effect mid-2027); 2030-path milestones.",
     "impact": "positif",
     "ancrages": [
       {
@@ -323,11 +329,142 @@
           "eps": 0.79,
           "actual": false
         }
+      ]
+    },
+    "priorEPS": {
+      "date": "2026-08-03",
+      "eps": {
+        "2026": 2.5,
+        "2027": 3.12,
+        "2028": 3.77,
+        "2029": 4.54,
+        "2030": 5.46
+      }
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 20,
+        "other": 0,
+        "taxRate": 0.103,
+        "minorities": 0,
+        "netCalc": 836,
+        "netPub": 836,
+        "residual": 0,
+        "residualNote": "Low 2025 effective GAAP tax (~10%, stock-comp benefits and credits) - the reason the historical conversion (93%) exceeds the projected 80% (W1); projections carry the 24% normative rate."
+      },
+      "2026": {
+        "finNet": 30,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 990
+      },
+      "2027": {
+        "finNet": 79,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1207
+      },
+      "2028": {
+        "finNet": 94,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1425
+      },
+      "2029": {
+        "finNet": 110,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1679
+      },
+      "2030": {
+        "finNet": 130,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1975
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Revenue + non-GAAP margins (annual guidance)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-30",
+          "type": "guidance_revision",
+          "detail": "FY26 raised again: revenue 5.18-5.25bn$; non-GAAP GM ~64%, OM 23.5-24% (from 23-23.5%), adj EBITDA 31.5-32% - second upgrade of the year.",
+          "flag": null
+        },
+        {
+          "date": "2026-07-30",
+          "type": "vs_consensus",
+          "detail": "Q2 26: non-GAAP EPS 0.70$ vs consensus, beat +14.75%; revenue 1.31bn$ (+13%).",
+          "beatPct": 14.75
+        },
+        {
+          "date": "2026-04-30",
+          "type": "guidance_revision",
+          "detail": "FY26 reaffirmed (5.16-5.25bn$); operating margin nudged up.",
+          "flag": null
+        }
       ],
-      "epsForward12m": 2.79,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
+      "paceCheckpoint": "H1 GAAP EPS 1.15$ actual of the 2.50$ modeled year; Irish plant ramp is the guided H2 gross-margin headwind.",
+      "weightedBeatPct": 14.75,
+      "annualBeatPct": null,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Revenue guidance existed; the initial Feb-2025 range was not reliably sourced at setup."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Same limitation (the 2024 execution accident makes that year regime-atypical anyway)."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 5205,
+        "source": "initial_guidance",
+        "date": "2026-02-12",
+        "note": "Initial FY26 guidance midpoint, REVENUE metric in M$ (5.16-5.25bn) - taken directly from the fiche's guidanceHistory. Metric mismatch with the EPS target DECLARED: DexCom guides revenue/margins, not EPS."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup) + anchor metric is revenue (declared mismatch). First measurable observation at FY26 close vs 5,205M$.",
+      "consensusSource": "Management non-GAAP consensus base",
+      "consensusDate": "2026-07-31"
+    },
+    "revisionEvent": {
+      "date": "2026-07-30",
+      "label": "Q2 2026",
+      "type": "earnings"
     }
+  },
+  "coherenceQualitative": {
+    "statut": "coherent",
+    "suiviNarratif": "First tracked entries (cold start at the 18/08/2026 deep refresh; transcript read from the Drive archive). Q2 26 narrative fully consistent with the Investor Day frame: guidance raised a second time, margin trajectory ahead of the 2030 commitments, Irish plant ramp named as the only H2 headwind - no tension detected.",
+    "historique": [
+      {
+        "quarter": "Q2 2026",
+        "date": "2026-07-30",
+        "clesRetenues": "Revenue 1.31bn$ +13%; non-GAAP EPS 0.70$ (+46%), beat +14.75%; GM 64.1% +400bp; FY26 raised again; 600M$ buyback executed of the 1bn$ program; CONNECT trial: -1.6% A1C, 97% wear rate; G7 15-day on track for 50% US conversion by year-end; G8 targeted late-2027/early-2028."
+      },
+      {
+        "quarter": "Q1 2026",
+        "date": "2026-04-30",
+        "clesRetenues": "FY26 reaffirmed; operating margin nudged up (retroactively reconstructed from the fiche's guidanceHistory - pre-archive quarter)."
+      }
+    ]
   }
 }

@@ -418,6 +418,8 @@ def w1():
             if isinstance(aN.get(str(y)),(int,float)) and isinstance(aE.get(str(y)),(int,float)) and aE[str(y)]>0]
         if not ys: continue
         rp=aN[str(ys[-1])]/aE[str(ys[-1])]
+        br=h.get('bridge') or {}
+        if str(ys[-1]) in br: continue   # derive expliquee par le pont (c-ter)
         if abs(rp-rh)*100>10:
             bad.append((tk,f'conversion {rh*100:.0f}% (hist) -> {rp*100:.0f}% ({ys[-1]}) : '
                            f'{(rp-rh)*100:+.0f}pts - verifier ancrage IS/financier (E5-c)'))
@@ -460,6 +462,7 @@ def w3():
         aN=h.get('omniumNet') or {}; aE=h.get('omniumEBIT') or {}
         k=str(ys[-1])
         if not all(isinstance(x,(int,float)) for x in (n0,e0,aN.get(k),aE.get(k))) or e0<=0 or aE[k]<=0: continue
+        if k in (h.get('bridge') or {}): continue   # charge explicitee par le pont
         if aN[k]/aE[k] >= n0/e0-0.01:
             bad.append((tk,f'omniumND {nd0:.0f} -> {aND[k]:.0f} (+{(aND[k]/nd0-1)*100:.0f}%) mais '
                            f'conversion {n0/e0*100:.0f}% -> {aN[k]/aE[k]*100:.0f}% : charge '

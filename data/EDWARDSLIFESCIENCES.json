@@ -168,15 +168,18 @@
     ]
   },
   "hypothese": {
-    "date": "2026-07-24",
+    "date": "2026-08-18",
     "priorEPS": {
-      "date": "2026-07-15",
+      "date": "2026-07-24",
       "eps": {
-        "2026": 2.96,
-        "2027": 3.34
+        "2026": 2.81,
+        "2027": 3.14,
+        "2028": 3.61,
+        "2029": 4.15,
+        "2030": 4.77
       }
     },
-    "source": "Refresh T2 2026 - Communiqué de résultats T2 26 (8-K SEC, 23/07/2026) - couverture de call sourcée (Seeking Alpha, MarketsDaily, Ticker Report) - 10-Q T1 2026 (SEC) - DEF 14A 2026 (SEC) - FTC/Arnold & Porter/MedTech Dive (règlement HSR)",
+    "source": "Deep refresh 18/08/2026 (protocole complet) : bridge etabli (IS 17% 2026 -> 19% ensuite - Pillar Two/credits californiens - et tresorerie rebasee post-ASR), scorecard cree (ancre EPS ajuste initiale 2,975$ depuis guidanceHistory, decalage de base management/Omnium declare dans basisNote), cles depreciees purgees. Projections inchangees (etat du 24/07).",
     "dernierCall": {
       "quarter": "T2 26",
       "communiqueAnalyse": true,
@@ -199,7 +202,13 @@
         "La décision finale de la CMS sur la NCD TAVR est désormais attendue en septembre 2026, calendrier accéléré vs les indications précédentes (Q4 2026 au CMD de décembre 2025).",
         "Le règlement FTC/DOJ du différend Hart-Scott-Rodino lié à l'acquisition de JC Medical a été finalisé le 13/07/2026 (pénalité de 10 M$ pour Edwards), soldant ce volet du contentieux lié à la tentative avortée d'acquisition de JenaValve.",
         "La marge brute est désormais attendue en bas de la fourchette guidée 78-79% (vents contraires de change), tandis que la marge opérationnelle ajustée reste visée en haut de la fourchette 28-29% grâce au phasage des investissements R&D/SG&A."
-      ]
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US-GAAP",
+        "source": "communique",
+        "date": "2026-07-23"
+      }
     },
     "guidanceHistory": [
       {
@@ -226,31 +235,75 @@
       "cadence": "trimestriel",
       "historique": [],
       "PY": [
-        {"label": "T1", "eps": 0.64, "actual": true},
-        {"label": "T2", "eps": 0.67, "actual": true},
-        {"label": "T3", "eps": 0.67, "actual": true},
-        {"label": "T4", "eps": 0.58, "actual": true}
+        {
+          "label": "T1",
+          "eps": 0.64,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.67,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.67,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.58,
+          "actual": true
+        }
       ],
       "CY": [
-        {"label": "T1", "eps": 0.78, "actual": true},
-        {"label": "T2", "eps": 0.78, "actual": true},
-        {"label": "T3", "eps": 0.72, "actual": false},
-        {"label": "T4", "eps": 0.53, "actual": false}
+        {
+          "label": "T1",
+          "eps": 0.78,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.78,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.72,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.53,
+          "actual": false
+        }
       ],
       "NY": [
-        {"label": "T1", "eps": 0.87, "actual": false},
-        {"label": "T2", "eps": 0.87, "actual": false},
-        {"label": "T3", "eps": 0.80, "actual": false},
-        {"label": "T4", "eps": 0.60, "actual": false}
-      ],
-      "epsForward12m": 2.99,
-      "forwardPeriodLabel": "T3 26 -> T2 27",
-      "coherenceNoteCY": null,
-      "coherenceNoteNY": null
+        {
+          "label": "T1",
+          "eps": 0.87,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 0.87,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 0.8,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.6,
+          "actual": false
+        }
+      ]
     },
     "guidanceLongTermeHistory": [],
     "summary": "Leader TAVR en regain structurel de croissance + scaling TMTT vers 2 Md$ 2030 ; T2 26 bat le consensus mais l'EPS ajusté Omnium recule vs le refresh précédent du fait d'un IS structurellement plus élevé (Pillar Two/Californie) et d'un rebasage matériel de la trésorerie nette après l'ASR T1 26.",
-    "text": "== SYNTHESE DE LA THESE ==\nEdwards Lifesciences reste le leader mondial du TAVR, porté par un changement de pratique clinique (traitement précoce de la sténose aortique sévère) qui a permis un nouveau relèvement de guidance au T2 26 (CA groupe +10-11% CC, TAVR +8-9% CC). TMTT poursuit son scaling (+45% CC au T2, portefeuille EVOQUE/PASCAL/SAPIEN M3) vers l'objectif de 2 Md$ en 2030. La thèse centrale - croissance CA proche de 10%/an sur 2026-2030 combinée à une expansion de marge opérationnelle ajustée de 50-100 pb/an à partir de 2027 - est intacte et même renforcée par le beat du T2. Ce qui change ce trimestre n'est pas la trajectoire opérationnelle mais deux paramètres financiers structurels : (i) un IS normatif durablement plus élevé (Pillar Two non actif avant fin d'année + limitation californienne des crédits R&D, guidé explicitement par le management en haut de la fourchette 16-19%) et (ii) une trésorerie nette rebasée nettement à la baisse (2,3 Md$ au 30/06/26 contre 3,9 Md$ fin 2025) après l'ASR de 500 M$ du T1 et une acquisition bolt-on (Autus Valve Technologies). L'EPS ajusté Omnium 2026 (2,81$) recule donc de ~5% vs le refresh précédent malgré un CA et un EBIT légèrement relevés - un écart entièrement expliqué par des ancrages nommés, pas un jugement de dégradation de la thèse.\n\n== EVENEMENTS & INFLEXIONS ==\n(i) T2 26 GAAP pollué par plusieurs éléments ponctuels déjà identifiés par le management lui-même comme non-GAAP : allocation de 188,2 M$ contre des actifs d'impôts différés (loi budgétaire californienne du 29/06/2026 limitant l'usage des crédits R&D) ; pertes de dépréciation sur participations VIE de 163,6 M$ YTD S1 (123,6 M$ T1 lié à une participation VIE jugée non recouvrable, 40,0 M$ T2 lié à une option non exercée) ; gains de réévaluation de participations préalablement détenues lors de consolidations VIE de 85,1 M$ YTD S1 (65,2 M$ T1, 19,9 M$ T2). Ensemble à isoler comme vrais one-offs dans \"data\" 2026 lors de la clôture de l'exercice (E5-d-bis) - non retraité maintenant car l'exercice 2026 n'est pas encore clos.\n(i) Règlement FTC/DOJ finalisé le 13/07/2026 : Edwards a structuré l'acquisition de JC Medical (2024, filiale de Genesis MedTech) pour éviter le seuil de notification HSR (119,5 M$ à l'époque) en couplant le prix cash de 115 M$ à un investissement simultané de 25 M$ dans Genesis - pénalité civile de 10 M$ pour Edwards (2 M$ pour Genesis), plus importante sanction combinée jamais obtenue par les agences pour ce type de manquement. Impactera le T3 26 GAAP en charge de litige, à isoler comme one-off au prochain refresh.\n(i, qualitatif) Recours collectif Patel (T2 24, TAVR) : accord de principe pour un montant non matériel, sous réserve d'approbation du tribunal - charge déjà comptabilisée dans les \"certain litigation expenses\" du S1 26. L'action dérivée Ho v. Zovighian reste en cours en parallèle.\n(iii) NCD CMS TAVR : décision finale désormais attendue en septembre 2026 (accélération vs Q4 2026 communiqué en décembre 2025) - asymétrie positive non quantifiée, exclue des adjXXX.\n(iii) Essai PROGRESS (sténose modérée) : présentation des seules caractéristiques de base à New York Valves (choix délibéré du management pour laisser le temps aux cliniciens de comprendre une population hétérogène) ; lecture complète des résultats attendue au TCT (S2 26). Impact 2026 jugé minime par le management.\n(i, qualitatif) Transition CFO confirmée et sans accroc : Doretta Mistras pleinement en fonction (effective depuis mai 2026), porte-parole des chiffres au call T2 26.\n\n== PARTICULARITES ==\nAucune.\n\n== PARAMETRES & POINTS DE SUIVI ==\nBase comptable adjXXX = GAAP continuing operations retraité des vrais one-offs (voir ancrages) - PAS l'ajusté brut du management, qui exclut en outre l'intégralité des \"certain litigation expenses\" (Omnium n'en retraite que la part ponctuelle identifiée, voir ancrage retraitement_litige_recurrent) et un amortissement d'intangibles jugé non-matériel (~3 M$/trimestre, non retraité, <1% du résultat). Écart résultant : EPS ajusté Omnium 2026 (2,81$) ~5% sous la guidance management (2,95-3,05$), entièrement expliqué par (i) l'IS normatif au haut de fourchette 16-19% et (ii) la réintégration partielle du contentieux récurrent - écart structurel assumé, à documenter tant qu'il persiste. Voir ancrages pour le détail chiffré de l'IS normatif, du résultat financier net et de la trajectoire de trésorerie nette.\nCOMPLETION T2 26 (15/08/2026, sans nouveau trimestre) : coherenceQualitative et quarterlyEPS étaient absents du fichier malgré un sourcing déjà complet du T2 26 (communiqué ET transcript trouvés) - complétés a posteriori sans rouvrir data/adjXXX/ancrages. Le transcript T1 26 (23/04/2026) a été retrouvé et reconstruit RETROACTIVEMENT pour amorcer la comparaison de coherenceQualitative dès ce tour (aucune tension matérielle détectée entre T1 et T2, statut \"coherent\"). Pour quarterlyEPS : Q1 26 (0,78$) et Q2 26 (0,78$) sont des actuals publiés ; Q3 26 est calé au milieu de la guidance management (0,71-0,77$ -> 0,72$) ; Q4 26 (0,53$) est le résidu forcé pour boucler exactement sur l'omniumEPS 2026 déjà établi (2,81$, ANCRE non rouverte dans cette completion). Ce Q4 implicite est nettement inférieur à la saisonnalité brute observée en 2025 (T4 25 = 0,58$, pourtant le trimestre le plus faible de l'année) : l'écart n'est PAS traité comme une anomalie de calcul mais comme la conséquence attendue de la montée en charge du taux d'IS normatif sur la seconde moitié de l'exercice (Pillar Two non actif avant fin d'année + limitation californienne des crédits R&D, cf. ancrage is_normatif_2026) - un headwind fiscal concentré en fin d'année plutôt qu'une nouvelle faiblesse opérationnelle. A vérifier explicitement au refresh T3 26 (taux d'IS trimestriel réellement publié) plutôt que reconduit par défaut. NY 27 construit par application du même facteur de croissance (+11,7%) à chaque trimestre de CY 26, en conservant la forme saisonnière.\nWATCH-LIST pour le refresh suivant : (1) clôture FY2026 - isoler comme vrais one-offs dans \"data\" : allocation fiscale de 188,2 M$, dépréciations VIE (163,6 M$ YTD), gains de réévaluation VIE (85,1 M$ YTD), pénalité HSR de 10 M$ (T3 26) ; (2) décision finale NCD CMS (septembre 2026) ; (3) lecture complète de l'essai PROGRESS au TCT (S2 26) ; (4) confirmation de la date de publication T3 26 ; (5) évolution du dossier Ho v. Zovighian (action dérivée, toujours en cours) ; (6) actualisation de la trajectoire de trésorerie nette (rachats vs FCF, base 2,3 Md$ au 30/06/26) ; (7) montant/impact de l'acquisition bolt-on Autus Valve Technologies (non communiqué à ce stade) ; (8) vérifier au T3 26 si le taux d'IS trimestriel réel confirme le headwind fiscal assumé pour bâtir quarterlyEPS.Q3/Q4 26 ci-dessus ; (9) engagement structurant en cours (guidance 2027 détaillée promise à l'investor conference, voir coherenceQualitative.engagementsStructurants).\n\n== CATALYSEURS ==\nDécision NCD CMS (septembre 2026) et lecture PROGRESS au TCT (S2 2026), approbations PASCAL tricuspide US et PASCAL nouvelle génération (Capture Clarity) US/Europe attendues au T4 2026, rythme de scaling TMTT vers l'objectif de 2 Md$ en 2030, cadence des rachats d'actions.",
+    "text": "== THESIS SUMMARY ==\nEdwards Lifesciences is the global TAVR leader, riding a clinical-practice shift (early treatment of severe aortic stenosis) that drove another guidance raise at Q2 (group +10-11% cc, TAVR +8-9%). TMTT keeps scaling (+45% cc in Q2; EVOQUE/PASCAL/SAPIEN M3) toward its 2bn$-by-2030 target. The core thesis - ~10%/yr revenue growth 2026-2030 with 50-100bp/yr adjusted operating-margin expansion from 2027 - is intact and reinforced. What changed this year is financial, not operational: (i) a durably higher normative tax (Pillar Two + California R&D credit limitation; management explicitly guiding the top of 16-19%) and (ii) net cash rebased down (2.3bn$ at 30/06 vs 3.9bn$ end-2025) after the 500M$ ASR and the Autus bolt-on - the ~5% Omnium EPS haircut vs the prior refresh is entirely carried by named anchors, not a thesis downgrade. Omnium's basis sits structurally ~5% below management-adjusted (recurring litigation partially reintegrated, tax at band top) - a declared, persistent offset.\n\n== THESIS READ ==\n- Guidance raised again on revenue (+10-11% cc) with adjusted EPS held 2.95-3.05$: the operational engine outruns the plan while tax absorbs the surplus.\n- TMTT +45% cc: the second growth leg is compounding on schedule toward 2bn$/2030.\n- The Q4-26 implied EPS (0.53$, below 2025 seasonality) is a TAX phasing effect (Pillar Two/California back-loaded), not operational weakness - verify the actual quarterly tax rate at Q3.\n- Net cash rebased by capital returns (ASR) and Autus - finNet drops accordingly in the bridge; not a cash-generation problem (FCF intact).\n- Watch: CMS NCD decision (September) and PROGRESS data at TCT - the two catalysts that could re-rate TAVR growth beyond the guide.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: GAAP continuing operations retreated of true one-offs (NOT management-adjusted: recurring litigation only partially excluded, immaterial intangible amortization kept) - the ~5% structural gap to management basis is documented and declared in the scorecard basisNote. Bridge (c-ter): tax 17% (2026) then 19% (top of the guided 16-19% band, Pillar Two + California), interest income on the rebased cash (+47 -> +74M$); the published 2025 reconciles at 14.5% tax and +150M$ interest - explaining the W1 conversion gap (96% -> 83%) by parameters, not error. quarterlyEPS: Q1/Q2 actuals (0.78/0.78), Q3 at guide mid (0.72), Q4 residual (0.53) with the tax-phasing explanation. Scorecard: annual adjusted-EPS guider - anchor 2.975$ (initial Feb guidance, from guidanceHistory), basis offset declared, history to backfill, application suspended. WATCH-LIST: (1) FY26 close: isolate as true one-offs in data the 188.2M$ tax allocation, VIE impairments (163.6M$ YTD), VIE revaluation gains (85.1M$ YTD), HSR penalty (10M$); (2) actual quarterly tax rate at Q3 vs the phasing assumption; (3) TMTT ramp vs 760-780M$; (4) backfill FY24/25 initial guidance anchors. Next useful refresh: Q3 results (late October).\n\n== CATALYSTS ==\nCMS NCD decision (Sep 2026); PROGRESS at TCT (H2); PASCAL tricuspid US and next-gen approvals (Q4); TMTT scaling; buyback cadence.",
     "impact": "positif",
     "ancrages": [
       {
@@ -410,6 +463,109 @@
       "2028": 558,
       "2029": 548,
       "2030": 538
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 150,
+        "other": 0,
+        "taxRate": 0.145,
+        "minorities": 0,
+        "netCalc": 1500,
+        "netPub": 1500,
+        "residual": 0,
+        "residualNote": "Reconciles: interest income on the pre-ASR cash pile (~3.9bn$), low 2025 effective tax - both normalize in projections (tax to 17% then 19%, cash rebased after the 500M$ ASR and the Autus acquisition)."
+      },
+      "2026": {
+        "finNet": 47,
+        "other": 0,
+        "taxRate": 0.17,
+        "minorities": 0,
+        "netCalc": 1624
+      },
+      "2027": {
+        "finNet": 47,
+        "other": 0,
+        "taxRate": 0.19,
+        "minorities": 0,
+        "netCalc": 1785
+      },
+      "2028": {
+        "finNet": 55,
+        "other": 0,
+        "taxRate": 0.19,
+        "minorities": 0,
+        "netCalc": 2016
+      },
+      "2029": {
+        "finNet": 65,
+        "other": 0,
+        "taxRate": 0.19,
+        "minorities": 0,
+        "netCalc": 2276
+      },
+      "2030": {
+        "finNet": 74,
+        "other": 0,
+        "taxRate": 0.19,
+        "minorities": 0,
+        "netCalc": 2565
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted EPS (annual guidance, management basis)",
+      "comparedAgainst": "guidance",
+      "basisAligned": false,
+      "basisNote": "Management guides its ADJUSTED EPS (2.95-3.05$ FY26); the Omnium basis (2.81$) sits structurally ~5% below (normative tax at the top of the 16-19% band + partial reintegration of recurring litigation). Beats are measured on the management basis; the level offset is structural and documented.",
+      "timeline": [
+        {
+          "date": "2026-07-23",
+          "type": "guidance_revision",
+          "detail": "FY26: revenue growth raised to +10-11% cc (TAVR +8-9%, TMTT 760-780M$); adjusted EPS maintained 2.95-3.05$.",
+          "flag": null
+        },
+        {
+          "date": "2026-04-23",
+          "type": "guidance_revision",
+          "detail": "FY26: revenue raised to +9-11% cc; adjusted EPS raised to 2.95-3.05$ (from 2.90-3.05$).",
+          "flag": null
+        }
+      ],
+      "paceCheckpoint": "Q1+Q2 26 adjusted actuals 0.78$+0.78$ of the 2.95-3.05$ guided year - on pace, H2 carries the guided tax headwind.",
+      "weightedBeatPct": null,
+      "annualBeatPct": null,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "EW guides annual adjusted EPS; the initial Feb-2025 range was not reliably sourced at setup - backfill opportunistically."
+        },
+        {
+          "fy": 2024,
+          "beatPct": null,
+          "source": "initial_guidance",
+          "excluded": true,
+          "note": "Same limitation."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 2.975,
+        "source": "initial_guidance",
+        "date": "2026-02-10",
+        "note": "Initial FY26 guidance midpoint (2.90-3.05$, from the fiche's guidanceHistory), management-adjusted basis - the basis offset vs Omnium (~5%) is declared in basisNote."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct null (closed-FY initial anchors not sourced at setup). First measurable observation at FY26 close vs 2.975$ (management basis).",
+      "consensusSource": "Sell-side aggregate post-T2",
+      "consensusDate": "2026-07-24"
+    },
+    "revisionEvent": {
+      "date": "2026-07-23",
+      "label": "T2 26",
+      "type": "earnings"
     }
   }
 }
