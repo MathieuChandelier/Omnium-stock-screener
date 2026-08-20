@@ -1,410 +1,432 @@
 {
-  "name": "De'Longhi",
-  "cours": 38.36,
-  "yahooSymbol": "DLG.MI",
-  "dividende": 0.85,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 3221.6,
-      "ebit": 386.9,
-      "net": 311.1,
-      "shares": 153,
-      "nd": -425.1,
-      "div": 0.83
-    },
-    {
-      "year": 2022,
-      "ca": 3156.4,
-      "ebit": 263,
-      "net": 177.4,
-      "shares": 152.5,
-      "nd": -298.8,
-      "div": 0.48
-    },
-    {
-      "year": 2023,
-      "ca": 3073.5,
-      "ebit": 328.9,
-      "net": 250.4,
-      "shares": 152,
-      "nd": -662.6,
-      "div": 0.67
-    },
-    {
-      "year": 2024,
-      "ca": 3497.6,
-      "ebit": 430.6,
-      "net": 310.7,
-      "shares": 151.5,
-      "nd": -643.2,
-      "div": 1.25
-    },
-    {
-      "year": 2025,
-      "ca": 3801.5,
-      "ebit": 455.9,
-      "net": 316.3,
-      "shares": 150.95,
-      "nd": -770,
-      "div": 0.85
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 2.55,
-    "epsNY": 2.8,
-    "date": "2026-07-31",
-    "source": "Consensus sell-side post-S1 26 (snapshot immediat apres publication du 30/07/2026) - a recouper au prochain refresh, plusieurs bureaux n'ayant pas encore integre le relevement de guidance EBITDA."
+ "name": "De'Longhi",
+ "cours": 38.36,
+ "yahooSymbol": "DLG.MI",
+ "dividende": 0.85,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 3221.6,
+   "ebit": 386.9,
+   "net": 311.1,
+   "shares": 153,
+   "nd": -425.1,
+   "div": 0.83
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26 (trading update)",
-    "date": null
+  {
+   "year": 2022,
+   "ca": 3156.4,
+   "ebit": 263,
+   "net": 177.4,
+   "shares": 152.5,
+   "nd": -298.8,
+   "div": 0.48
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "priorEPS": {
-      "date": "2026-07-16",
-      "eps": {
-        "2026": 2.37,
-        "2027": 2.57,
-        "2028": 2.78,
-        "2029": 2.99,
-        "2030": 3.2
-      }
-    },
-    "source": "Refresh S1 2026 - Communique de resultats semestriels (30/07/2026, conseil d'administration du meme jour) + recherche publique complementaire (Beverfood, Uptrade, Askanews, Teleborsa, Il Gazzettino, Il Nord Est, toutes convergentes sur les memes chiffres). PAS de transcript primaire lu pour ce refresh (base publique) - a rechercher activement au prochain refresh.",
-    "dernierCall": {
-      "quarter": "S1 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": false,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1676.3,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": null,
-          "consensus": null,
-          "basis": null,
-          "basisNote": "Pas de consensus EPS S1 specifique identifie dans les sources consultees ; CA et EBITDA ajuste nettement au-dessus de la trajectoire implicite du refresh precedent (CA +8,0% a cambi costanti sur un semestre ou le comparant 2025 etait lui-meme tres fort, +11,3%)"
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement).",
-      "guidanceAnnuelle": "Guidance FY2026 RELEVEE sur l'EBITDA ajuste : 670-690 M EUR (vs 640-660 M EUR precedemment) ; croissance du CA reaffirmee inchangee a mid-single-digit (meme formulation qu'au refresh precedent, malgre un S1 nettement plus fort).",
-      "pointsCles": [
-        "CA S1 26 record a 1 676,3 M EUR (+5,8% publie, +8,0% a cambi costanti), contre un comparant S1 2025 lui-meme tres fort (+11,3%) - performance largement au-dessus de la trajectoire implicite du refresh precedent (qui anticipait un rattrapage partiel de Household apres un T1 a -2,4%).",
-        "T2 26 seul a 898,7 M EUR (+8,4% publie, +9,2% cc), confirmant le rattrapage de Household annonce par le management en avril et deja evoque au refresh precedent.",
-        "EBITDA ajuste S1 a 283,7 M EUR (+17,8%), marge 16,9% des ventes (contre 15,2% au S1 25) ; T2 seul EBITDA ajuste 157,7 M EUR, marge 17,6% (contre 15,0% au T2 25) - expansion de marge tres nette, effet mix Professional confirme.",
-        "Resultat net part du Groupe S1 a 141,4 M EUR (+21,2%) ; T2 seul 79,7 M EUR (+34,5%).",
-        "Professional confirme son hypercroissance a +40% cc sur le semestre - le groupe celebre par ailleurs ses 25 ans de cotation en Bourse, avec un CA qui doit atteindre pres de 4 Md EUR en 2026 (contre <1 Md EUR a l'introduction) et un resultat net multiplie par dix sur la periode.",
-        "Position financiere nette toujours largement positive (tresorerie nette) a 686,6 M EUR au 30/06/2026 (contre 770 M EUR fin 2025, repli saisonnier normal lie au dividende verse, mais en nette amelioration vs 345,8 M EUR un an plus tot) ; FCF avant dividendes/rachats/M&A positif a 78,3 M EUR sur le semestre."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "IFRS",
-        "source": "Rapport semestriel H1 2026 + communique (30/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA S1 1 676,3 M EUR (correspondance exacte fiche), adj EBITDA 283,7 M (16,9%), resultat net 141,4 M (+21,2%), position financiere nette +686,6 M. Guidance FY26 relevee a 670-690M."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "FY25",
-        "date": "2026-03-01",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Guidance initiale FY2026 : croissance du CA mid-single-digit ; EBITDA ajuste 640-660 M EUR."
-      },
-      {
-        "quarter": "Q1 26",
-        "date": "2026-07-05",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Guidance FY2026 reaffirmee inchangee malgre le trou d'air Household au T1 (-2,4%) : CA mid-single-digit, EBITDA ajuste 640-660 M EUR."
-      },
-      {
-        "quarter": "S1 26",
-        "date": "2026-07-30",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Guidance FY2026 relevee sur l'EBITDA ajuste : 670-690 M EUR (vs 640-660 M EUR) ; CA reaffirme mid-single-digit (formulation inchangee)."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "summary": "S1 2026 nettement au-dessus de la trajectoire implicite du refresh precedent : CA +8,0% cc (contre un comparant S1 2025 deja tres fort), EBITDA ajuste +17,8% avec une expansion de marge marquee (16,9% vs 15,2%), confirmant a la fois le rattrapage de Household annonce en avril et la poursuite de l'hypercroissance de Professional (+40% cc). Guidance FY2026 relevee sur l'EBITDA (670-690 M EUR vs 640-660 M EUR) meme si le CA reste formellement guide 'mid-single-digit' (formulation inchangee, prudence habituelle du management). omniumEPS 2026 releve de 2,37 a 2,51 EUR.",
-    "text": "== THESIS SUMMARY ==\nSum-of-the-parts between a mature/cyclical Household core and a hypergrowth Professional division (La Marzocco, Eversys). H1 2026 exceeded the catch-up trajectory: revenue 1,676.3M (+8.0% cc) against a strong comp, adjusted EBITDA margin 16.9% (vs 15.2%), and the FY26 EBITDA guidance RAISED to 670-690M (from 640-660M). Professional grew +40% cc at a 32% margin; Household rebounded (+4.5% Q2, +5.1% cc) exactly as management promised in April. Net cash 686.6M despite an ongoing buyback (30M of 60M spent).\n\n== THESIS READ ==\n- Professional is the thesis engine: +40% cc, 32% S1 margin - management frames ~30% as the normalized mid-term margin and 'low double digit' as the long-term growth rate; mix keeps lifting the group margin. Watch: H2 normalization to 'high-SD' guided growth against stiff comps.\n- Household stabilizes low-to-mid SD from H2, with a -15/16M price/mix drag (widened promo windows) seen stabilizing, offset by a 2027 innovation wave (coffee, espresso, nutrition, food prep). Watch: price/mix inflection and Kenwood/nutrition trends.\n- Tariffs now roughly neutral: 15M of refunds booked as cost rebates (4M Professional / 11M Household), none further expected. Watch: reclassification risk in H2 margins.\n\n== SPECIAL FACTORS ==\nGuidance is on adjusted EBITDA; no per-share consensus tracked (basis null). Minority buyout optionality (La Marzocco) and Professional M&A pipeline (North America preferred) sit on top of a net-cash balance sheet. Capital priorities stated: operations, buybacks, M&A.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: S1 actual + H2 on reaffirmed mid-SD guidance -> revenue ~4,004M; EBITDA at the raised mid (680M) less D&A run-rate -> EBIT ~525M; ETR 27.5%; finNet ~0 (interest income offset by FX/hedging). 2027-2030: setup growth rates applied to the higher 2026 base. Bridge reconciles published 2025 at ~0 residual. Watch: Professional H2 growth print; marketing envelope ~200M/yr; buyback completion.\n\n== CATALYSTS ==\n9M results (Nov); 2027 innovation launches; Professional M&A / minority buyout; buyback completion.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "household_rattrapage_confirme",
-        "moteur": "Le rattrapage de Household anticipe au refresh precedent (guidance FY26 reaffirmee malgre un T1 a -2,4%) est confirme par les chiffres reels : T2 26 CA +8,4% publie (+9,2% cc), portant la croissance S1 a +8,0% cc - performance superieure a la simple normalisation attendue, sur un comparant S1 2025 lui-meme tres fort (+11,3%).",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "professional_hypergrowth_confirme",
-        "moteur": "Professional confirme son hypercroissance a +40% cc sur le semestre complet, en ligne avec le T1 (+40,1%) - aucun signe de ralentissement a ce stade malgre les comparants H2-26 nettement plus durs (base H2-25 >30%) deja identifies au refresh precedent comme facteur de deceleration mecanique attendue.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "guidance-ebitda-relevee-s1-26",
-        "moteur": "Guidance EBITDA ajuste relevee au S1 26 de 640-660 M EUR a 670-690 M EUR (+4,6% au point median) - reconstruction bottom-up retenue : S1 26 reel (EBITDA ajuste 283,7 M EUR, marge 16,9%) + H2 26 estime par prolongation de l'expansion de marge observee (effet mix Professional, discipline sur les couts operationnels), donnant un FY2026 EBIT (base Omnium, apres D&A) revise a ~525 M EUR (vs 491 M EUR au refresh precedent, +6,9%).",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "tariff_drag_fading",
-        "moteur": "Impact tarifs douaniers US en net repli confirme depuis le T1 26 (~4M€ net au T1, contre 10-15M€ net sur FY25) - aucune information nouvelle contredisant cette trajectoire au S1, hypothese inchangee.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "professional_mix_margin",
-        "moteur": "Poids croissant de Professional dans le CA groupe tire la marge groupe - confirme et meme amplifie par l'expansion de marge observee au S1 26 (+170pb sur l'EBITDA ajuste S1 vs S1 25), au-dela de la simple hypothese de +15pb/an retenue au refresh precedent.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "minority_buyout_optionality",
-        "moteur": "Rachat des minoritaires La Marzocco/Eversys (~38% de minoritaires) toujours priorite n°1 d'allocation de capital selon la these de creation - aucune annonce identifiee dans les sources consultees pour ce refresh S1 26, non modelise.",
-        "applique": [],
-        "confiance": "basse"
-      },
-      {
-        "id": "net_cash_optionality",
-        "moteur": "Position financiere nette toujours largement positive (686,6 M€ au 30/06/2026, vs 345,8 M€ un an plus tot) malgre le repli saisonnier normal vs fin 2025 (770 M€, lie au paiement du dividende) - optionnalite M&A/rachat d'actions confirmee et meme renforcee.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 2.51,
-      "2027": 2.74,
-      "2028": 2.95,
-      "2029": 3.18,
-      "2030": 3.4
-    },
-    "omniumCA": {
-      "2026": 4004,
-      "2027": 4244,
-      "2028": 4482,
-      "2029": 4719,
-      "2030": 4960
-    },
-    "omniumEBIT": {
-      "2026": 525,
-      "2027": 567,
-      "2028": 608,
-      "2029": 651,
-      "2030": 694
-    },
-    "omniumNet": {
-      "2026": 377,
-      "2027": 409,
-      "2028": 440,
-      "2029": 472,
-      "2030": 503
-    },
-    "omniumND": {
-      "2026": -900,
-      "2027": -1030,
-      "2028": -1160,
-      "2029": -1300,
-      "2030": -1450
-    },
-    "omniumShares": {
-      "2026": 150,
-      "2027": 149.5,
-      "2028": 149,
-      "2029": 148.5,
-      "2030": 148
-    },
-    "quarterlyEPS": {
-      "cadence": "semestriel",
-      "CY": [
-        {
-          "label": "S1",
-          "eps": 0.94,
-          "actual": true
-        },
-        {
-          "label": "S2",
-          "eps": 1.57,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "S1",
-          "eps": 1.03,
-          "actual": false
-        },
-        {
-          "label": "S2",
-          "eps": 1.71,
-          "actual": false
-        }
-      ],
-      "PY": [
-        {
-          "label": "S1",
-          "eps": 0.77,
-          "actual": true
-        },
-        {
-          "label": "S2",
-          "eps": 1.32,
-          "actual": true
-        }
-      ],
-      "note": "[PY 2025 pose 20/08/2026 (C24) : S1 2025 = 116,7 M EUR (derive du S1 2026 141,4 M, +21,2% publie), S2 = solde vs data 316,3 M.]"
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -20,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 316.0,
-        "netPub": 316.3,
-        "residual": 0.3,
-        "residualNote": "Reconciles cleanly: small net financial charge despite the net-cash position (FX/hedging costs offsetting interest income), ETR ~27.5%."
-      },
-      "2026": {
-        "finNet": -5,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 377.0
-      },
-      "2027": {
-        "finNet": -3,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 408.9
-      },
-      "2028": {
-        "finNet": -1,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 440.1
-      },
-      "2029": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 472.0
-      },
-      "2030": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.275,
-        "minorities": 0,
-        "netCalc": 503.2
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Adjusted EBITDA (guided range, M EUR)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-07-05",
-          "type": "guidance_revised",
-          "detail": "FY26 guidance reaffirmed unchanged despite the Q1 Household air pocket (-2.4%)."
-        },
-        {
-          "date": "2026-07-30",
-          "type": "guidance_revised",
-          "detail": "Adjusted EBITDA raised to 670-690M (from 640-660M); revenue mid-SD reaffirmed. Driven by Professional margin (32% at S1) and tariff refunds (15M booked as cost rebates)."
-        }
-      ],
-      "paceCheckpoint": "H1 real: revenue 1,676.3M (+8.0% cc), adjusted EBITDA margin 16.9% (vs 15.2%) - tracking clearly above the initial 650M EBITDA mid.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 5.3,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 6.0,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "580-600M adj EBITDA (mid 590)",
-          "realizedDisplay": "625.1M",
-          "note": "Initial FY25 guidance (FY24-results release, Mar 2025): adjusted EBITDA 580-600M EUR (mid 590); realized 625.1M - level +6.0%."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Searched 19/08/2026: the initial (Mar-2024) FY24 adjusted-EBITDA range did not surface - excluded rather than estimated."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 650,
-        "source": "initial_guidance",
-        "date": "2026-03-01",
-        "note": "Initial FY26 guidance at FY25 results: revenue mid-single-digit growth, adjusted EBITDA 640-660M (mid 650). RAISED on 30/07 to 670-690M (mid 680, +4.6% vs initial mid) - the anchor stays initial; the FY26 close measures the full overdelivery."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +5.3% BLENDED (in-progress +4.6 x1/2; FY25 +6.0 single closed). Metric is adjusted EBITDA (De'Longhi guides no EPS) - directional only vs the EPS projections, not applied mechanically.",
-      "consensusSource": "Sell-side post-S1 26 snapshot",
-      "consensusDate": "2026-07-31",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 650,
-        "currentValue": 680,
-        "deltaPct": 4.6,
-        "asOf": "2026-07-30",
-        "note": "Initial FY26: adjusted EBITDA 640-660M (mid 650); raised 30/07 to 670-690M (mid 680) - projected +4.6%."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-30",
-      "label": "H1 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2023,
+   "ca": 3073.5,
+   "ebit": 328.9,
+   "net": 250.4,
+   "shares": 152,
+   "nd": -662.6,
+   "div": 0.67
   },
-  "coherenceQualitative": {
-    "historique": [
-      {
-        "quarter": "H1 26",
-        "date": "2026-07-30",
-        "source": "Investing.com transcript (full Q&A)",
-        "message": "EBITDA guidance raised to 670-690M on Professional strength (S1 +36%, +40% cc; EBITDA margin 32% vs 26.4% - management frames ~30% as the normalized mid-term level and 'low double digit' as long-term growth) and 15M of tariff refunds booked as cost rebates (4M Professional / 11M Household, none further expected). Household rebounded as promised (+4.5% Q2; Americas +20.8% cc on espresso machines) with a -15/16M price/mix drag from widened promo windows, seen stabilizing. July trading 'in line'. Capital priorities: operations, then buybacks (30/60M spent), then Professional M&A, North America preferred. FCF 12m rolling 508M; net cash 686.6M."
-      }
-    ]
+  {
+   "year": 2024,
+   "ca": 3497.6,
+   "ebit": 430.6,
+   "net": 310.7,
+   "shares": 151.5,
+   "nd": -643.2,
+   "div": 1.25
+  },
+  {
+   "year": 2025,
+   "ca": 3801.5,
+   "ebit": 455.9,
+   "net": 316.3,
+   "shares": 150.95,
+   "nd": -770,
+   "div": 0.85
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 2.47,
+  "epsNY": 2.61,
+  "epsY2": 2.81,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 10 analystes, CY..CY+2)",
+  "analystsCount": 10
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26 (trading update)",
+  "date": null
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-16",
+   "eps": {
+    "2026": 2.37,
+    "2027": 2.57,
+    "2028": 2.78,
+    "2029": 2.99,
+    "2030": 3.2
+   }
+  },
+  "source": "Refresh S1 2026 - Communique de resultats semestriels (30/07/2026, conseil d'administration du meme jour) + recherche publique complementaire (Beverfood, Uptrade, Askanews, Teleborsa, Il Gazzettino, Il Nord Est, toutes convergentes sur les memes chiffres). PAS de transcript primaire lu pour ce refresh (base publique) - a rechercher activement au prochain refresh.",
+  "dernierCall": {
+   "quarter": "S1 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": false,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1676.3,
+     "consensus": null
+    },
+    "epsAdj": {
+     "actual": null,
+     "consensus": null,
+     "basis": null,
+     "basisNote": "Pas de consensus EPS S1 specifique identifie dans les sources consultees ; CA et EBITDA ajuste nettement au-dessus de la trajectoire implicite du refresh precedent (CA +8,0% a cambi costanti sur un semestre ou le comparant 2025 etait lui-meme tres fort, +11,3%)"
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement).",
+   "guidanceAnnuelle": "Guidance FY2026 RELEVEE sur l'EBITDA ajuste : 670-690 M EUR (vs 640-660 M EUR precedemment) ; croissance du CA reaffirmee inchangee a mid-single-digit (meme formulation qu'au refresh precedent, malgre un S1 nettement plus fort).",
+   "pointsCles": [
+    "CA S1 26 record a 1 676,3 M EUR (+5,8% publie, +8,0% a cambi costanti), contre un comparant S1 2025 lui-meme tres fort (+11,3%) - performance largement au-dessus de la trajectoire implicite du refresh precedent (qui anticipait un rattrapage partiel de Household apres un T1 a -2,4%).",
+    "T2 26 seul a 898,7 M EUR (+8,4% publie, +9,2% cc), confirmant le rattrapage de Household annonce par le management en avril et deja evoque au refresh precedent.",
+    "EBITDA ajuste S1 a 283,7 M EUR (+17,8%), marge 16,9% des ventes (contre 15,2% au S1 25) ; T2 seul EBITDA ajuste 157,7 M EUR, marge 17,6% (contre 15,0% au T2 25) - expansion de marge tres nette, effet mix Professional confirme.",
+    "Resultat net part du Groupe S1 a 141,4 M EUR (+21,2%) ; T2 seul 79,7 M EUR (+34,5%).",
+    "Professional confirme son hypercroissance a +40% cc sur le semestre - le groupe celebre par ailleurs ses 25 ans de cotation en Bourse, avec un CA qui doit atteindre pres de 4 Md EUR en 2026 (contre <1 Md EUR a l'introduction) et un resultat net multiplie par dix sur la periode.",
+    "Position financiere nette toujours largement positive (tresorerie nette) a 686,6 M EUR au 30/06/2026 (contre 770 M EUR fin 2025, repli saisonnier normal lie au dividende verse, mais en nette amelioration vs 345,8 M EUR un an plus tot) ; FCF avant dividendes/rachats/M&A positif a 78,3 M EUR sur le semestre."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Rapport semestriel H1 2026 + communique (30/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 1 676,3 M EUR (correspondance exacte fiche), adj EBITDA 283,7 M (16,9%), resultat net 141,4 M (+21,2%), position financiere nette +686,6 M. Guidance FY26 relevee a 670-690M."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "FY25",
+    "date": "2026-03-01",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance initiale FY2026 : croissance du CA mid-single-digit ; EBITDA ajuste 640-660 M EUR."
+   },
+   {
+    "quarter": "Q1 26",
+    "date": "2026-07-05",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance FY2026 reaffirmee inchangee malgre le trou d'air Household au T1 (-2,4%) : CA mid-single-digit, EBITDA ajuste 640-660 M EUR."
+   },
+   {
+    "quarter": "S1 26",
+    "date": "2026-07-30",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Guidance FY2026 relevee sur l'EBITDA ajuste : 670-690 M EUR (vs 640-660 M EUR) ; CA reaffirme mid-single-digit (formulation inchangee)."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "summary": "S1 2026 nettement au-dessus de la trajectoire implicite du refresh precedent : CA +8,0% cc (contre un comparant S1 2025 deja tres fort), EBITDA ajuste +17,8% avec une expansion de marge marquee (16,9% vs 15,2%), confirmant a la fois le rattrapage de Household annonce en avril et la poursuite de l'hypercroissance de Professional (+40% cc). Guidance FY2026 relevee sur l'EBITDA (670-690 M EUR vs 640-660 M EUR) meme si le CA reste formellement guide 'mid-single-digit' (formulation inchangee, prudence habituelle du management). omniumEPS 2026 releve de 2,37 a 2,51 EUR.",
+  "text": "== THESIS SUMMARY ==\nSum-of-the-parts between a mature/cyclical Household core and a hypergrowth Professional division (La Marzocco, Eversys). H1 2026 exceeded the catch-up trajectory: revenue 1,676.3M (+8.0% cc) against a strong comp, adjusted EBITDA margin 16.9% (vs 15.2%), and the FY26 EBITDA guidance RAISED to 670-690M (from 640-660M). Professional grew +40% cc at a 32% margin; Household rebounded (+4.5% Q2, +5.1% cc) exactly as management promised in April. Net cash 686.6M despite an ongoing buyback (30M of 60M spent).\n\n== THESIS READ ==\n- Professional is the thesis engine: +40% cc, 32% S1 margin - management frames ~30% as the normalized mid-term margin and 'low double digit' as the long-term growth rate; mix keeps lifting the group margin. Watch: H2 normalization to 'high-SD' guided growth against stiff comps.\n- Household stabilizes low-to-mid SD from H2, with a -15/16M price/mix drag (widened promo windows) seen stabilizing, offset by a 2027 innovation wave (coffee, espresso, nutrition, food prep). Watch: price/mix inflection and Kenwood/nutrition trends.\n- Tariffs now roughly neutral: 15M of refunds booked as cost rebates (4M Professional / 11M Household), none further expected. Watch: reclassification risk in H2 margins.\n\n== SPECIAL FACTORS ==\nGuidance is on adjusted EBITDA; no per-share consensus tracked (basis null). Minority buyout optionality (La Marzocco) and Professional M&A pipeline (North America preferred) sit on top of a net-cash balance sheet. Capital priorities stated: operations, buybacks, M&A.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: S1 actual + H2 on reaffirmed mid-SD guidance -> revenue ~4,004M; EBITDA at the raised mid (680M) less D&A run-rate -> EBIT ~525M; ETR 27.5%; finNet ~0 (interest income offset by FX/hedging). 2027-2030: setup growth rates applied to the higher 2026 base. Bridge reconciles published 2025 at ~0 residual. Watch: Professional H2 growth print; marketing envelope ~200M/yr; buyback completion.\n\n== CATALYSTS ==\n9M results (Nov); 2027 innovation launches; Professional M&A / minority buyout; buyback completion.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "household_rattrapage_confirme",
+    "moteur": "Le rattrapage de Household anticipe au refresh precedent (guidance FY26 reaffirmee malgre un T1 a -2,4%) est confirme par les chiffres reels : T2 26 CA +8,4% publie (+9,2% cc), portant la croissance S1 a +8,0% cc - performance superieure a la simple normalisation attendue, sur un comparant S1 2025 lui-meme tres fort (+11,3%).",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "professional_hypergrowth_confirme",
+    "moteur": "Professional confirme son hypercroissance a +40% cc sur le semestre complet, en ligne avec le T1 (+40,1%) - aucun signe de ralentissement a ce stade malgre les comparants H2-26 nettement plus durs (base H2-25 >30%) deja identifies au refresh precedent comme facteur de deceleration mecanique attendue.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "guidance-ebitda-relevee-s1-26",
+    "moteur": "Guidance EBITDA ajuste relevee au S1 26 de 640-660 M EUR a 670-690 M EUR (+4,6% au point median) - reconstruction bottom-up retenue : S1 26 reel (EBITDA ajuste 283,7 M EUR, marge 16,9%) + H2 26 estime par prolongation de l'expansion de marge observee (effet mix Professional, discipline sur les couts operationnels), donnant un FY2026 EBIT (base Omnium, apres D&A) revise a ~525 M EUR (vs 491 M EUR au refresh precedent, +6,9%).",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "tariff_drag_fading",
+    "moteur": "Impact tarifs douaniers US en net repli confirme depuis le T1 26 (~4M€ net au T1, contre 10-15M€ net sur FY25) - aucune information nouvelle contredisant cette trajectoire au S1, hypothese inchangee.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "professional_mix_margin",
+    "moteur": "Poids croissant de Professional dans le CA groupe tire la marge groupe - confirme et meme amplifie par l'expansion de marge observee au S1 26 (+170pb sur l'EBITDA ajuste S1 vs S1 25), au-dela de la simple hypothese de +15pb/an retenue au refresh precedent.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "minority_buyout_optionality",
+    "moteur": "Rachat des minoritaires La Marzocco/Eversys (~38% de minoritaires) toujours priorite n°1 d'allocation de capital selon la these de creation - aucune annonce identifiee dans les sources consultees pour ce refresh S1 26, non modelise.",
+    "applique": [],
+    "confiance": "basse"
+   },
+   {
+    "id": "net_cash_optionality",
+    "moteur": "Position financiere nette toujours largement positive (686,6 M€ au 30/06/2026, vs 345,8 M€ un an plus tot) malgre le repli saisonnier normal vs fin 2025 (770 M€, lie au paiement du dividende) - optionnalite M&A/rachat d'actions confirmee et meme renforcee.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 2.51,
+   "2027": 2.74,
+   "2028": 2.95,
+   "2029": 3.18,
+   "2030": 3.4
+  },
+  "omniumCA": {
+   "2026": 4004,
+   "2027": 4244,
+   "2028": 4482,
+   "2029": 4719,
+   "2030": 4960
+  },
+  "omniumEBIT": {
+   "2026": 525,
+   "2027": 567,
+   "2028": 608,
+   "2029": 651,
+   "2030": 694
+  },
+  "omniumNet": {
+   "2026": 377,
+   "2027": 409,
+   "2028": 440,
+   "2029": 472,
+   "2030": 503
+  },
+  "omniumND": {
+   "2026": -900,
+   "2027": -1030,
+   "2028": -1160,
+   "2029": -1300,
+   "2030": -1450
+  },
+  "omniumShares": {
+   "2026": 150,
+   "2027": 149.5,
+   "2028": 149,
+   "2029": 148.5,
+   "2030": 148
+  },
+  "quarterlyEPS": {
+   "cadence": "semestriel",
+   "CY": [
+    {
+     "label": "S1",
+     "eps": 0.94,
+     "actual": true
+    },
+    {
+     "label": "S2",
+     "eps": 1.57,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "S1",
+     "eps": 1.03,
+     "actual": false
+    },
+    {
+     "label": "S2",
+     "eps": 1.71,
+     "actual": false
+    }
+   ],
+   "PY": [
+    {
+     "label": "S1",
+     "eps": 0.77,
+     "actual": true
+    },
+    {
+     "label": "S2",
+     "eps": 1.32,
+     "actual": true
+    }
+   ],
+   "note": "[PY 2025 pose 20/08/2026 (C24) : S1 2025 = 116,7 M EUR (derive du S1 2026 141,4 M, +21,2% publie), S2 = solde vs data 316,3 M.]"
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -20,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 316.0,
+    "netPub": 316.3,
+    "residual": 0.3,
+    "residualNote": "Reconciles cleanly: small net financial charge despite the net-cash position (FX/hedging costs offsetting interest income), ETR ~27.5%."
+   },
+   "2026": {
+    "finNet": -5,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 377.0
+   },
+   "2027": {
+    "finNet": -3,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 408.9
+   },
+   "2028": {
+    "finNet": -1,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 440.1
+   },
+   "2029": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 472.0
+   },
+   "2030": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.275,
+    "minorities": 0,
+    "netCalc": 503.2
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Adjusted EBITDA (guided range, M EUR)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-05",
+     "type": "guidance_revised",
+     "detail": "FY26 guidance reaffirmed unchanged despite the Q1 Household air pocket (-2.4%)."
+    },
+    {
+     "date": "2026-07-30",
+     "type": "guidance_revised",
+     "detail": "Adjusted EBITDA raised to 670-690M (from 640-660M); revenue mid-SD reaffirmed. Driven by Professional margin (32% at S1) and tariff refunds (15M booked as cost rebates)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: revenue 1,676.3M (+8.0% cc), adjusted EBITDA margin 16.9% (vs 15.2%) - tracking clearly above the initial 650M EBITDA mid.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 5.3,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 6.0,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "580-600M adj EBITDA (mid 590)",
+     "realizedDisplay": "625.1M",
+     "note": "Initial FY25 guidance (FY24-results release, Mar 2025): adjusted EBITDA 580-600M EUR (mid 590); realized 625.1M - level +6.0%."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Searched 19/08/2026: the initial (Mar-2024) FY24 adjusted-EBITDA range did not surface - excluded rather than estimated."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 650,
+    "source": "initial_guidance",
+    "date": "2026-03-01",
+    "note": "Initial FY26 guidance at FY25 results: revenue mid-single-digit growth, adjusted EBITDA 640-660M (mid 650). RAISED on 30/07 to 670-690M (mid 680, +4.6% vs initial mid) - the anchor stays initial; the FY26 close measures the full overdelivery."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +5.3% BLENDED (in-progress +4.6 x1/2; FY25 +6.0 single closed). Metric is adjusted EBITDA (De'Longhi guides no EPS) - directional only vs the EPS projections, not applied mechanically.",
+   "consensusSource": "Sell-side post-S1 26 snapshot",
+   "consensusDate": "2026-07-31",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 650,
+    "currentValue": 680,
+    "deltaPct": 4.6,
+    "asOf": "2026-07-30",
+    "note": "Initial FY26: adjusted EBITDA 640-660M (mid 650); raised 30/07 to 670-690M (mid 680) - projected +4.6%."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-30",
+   "label": "H1 2026",
+   "type": "earnings"
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-30",
+    "source": "Investing.com transcript (full Q&A)",
+    "message": "EBITDA guidance raised to 670-690M on Professional strength (S1 +36%, +40% cc; EBITDA margin 32% vs 26.4% - management frames ~30% as the normalized mid-term level and 'low double digit' as long-term growth) and 15M of tariff refunds booked as cost rebates (4M Professional / 11M Household, none further expected). Household rebounded as promised (+4.5% Q2; Americas +20.8% cc on espresso machines) with a -15/16M price/mix drag from widened promo windows, seen stabilizing. July trading 'in line'. Capital priorities: operations, then buybacks (30/60M spent), then Professional M&A, North America preferred. FCF 12m rolling 508M; net cash 686.6M."
+   }
+  ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 2.55,
+   "epsNY": 2.8,
+   "date": "2026-07-31",
+   "source": "Consensus sell-side post-S1 26 (snapshot immediat apres publication du 30/07/2026) - a recouper au prochain refresh, plusieurs bureaux n'ayant pas encore integre le relevement de guidance EBITDA."
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 2.03,
+   "2022": 1.16,
+   "2023": 1.65,
+   "2024": 2.05,
+   "2025": 2.11
+  }
+ }
 }

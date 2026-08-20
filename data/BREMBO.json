@@ -100,10 +100,12 @@
  ],
  "epsConsensus": {
   "year": 2026,
-  "eps": 0.69,
-  "epsNY": 0.76,
-  "date": "2026-07-07",
-  "source": "Non disponible - reconstruit sur guidance pre-S1 2026 (+3% cc), desormais obsolete suite au relevement du 29/07/2026."
+  "eps": 0.72,
+  "epsNY": 0.84,
+  "epsY2": 0.95,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 10 analystes, CY..CY+2)",
+  "analystsCount": 10
  },
  "particularites": [],
  "nextEvent": {
@@ -542,6 +544,26 @@
    "date": "2026-07-29",
    "label": "H1 2026",
    "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 0.69,
+   "epsNY": 0.76,
+   "date": "2026-07-07",
+   "source": "Non disponible - reconstruit sur guidance pre-S1 2026 (+3% cc), desormais obsolete suite au relevement du 29/07/2026."
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 0.67,
+   "2022": 0.9,
+   "2023": 0.94,
+   "2024": 0.82,
+   "2025": 0.66
   }
  }
 }
