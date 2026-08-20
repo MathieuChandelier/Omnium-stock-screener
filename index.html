@@ -492,6 +492,20 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    Puces par millesime sous l axe : navy = Omnium, turquoise = consensus
    (le code couleur EST la legende). Trois etats par millesime :
    YTD -> total depuis l origine -> detail. */
+/* Bouton Revisions : le meme idiome discret que le toggle de periode
+   du P/E ("1 wk / All") - texte efface, actif = navy souligne. */
+.epsrev-btn{position:absolute;top:4px;right:0;display:inline-flex;align-items:baseline;gap:5px;
+ font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted2);
+ background:none;border:none;padding:0;cursor:pointer;transition:color .15s ease;user-select:none;}
+.epsrev-btn:hover{color:var(--navy);}
+.epsrev-btn .epsrev-ic{width:10px;height:10px;opacity:.7;align-self:center;transition:opacity .15s ease;}
+.epsrev-btn:hover .epsrev-ic{opacity:1;}
+.epsrev-btn .epsrev-lb{padding-bottom:2px;border-bottom:2px solid transparent;transition:border-color .15s ease;}
+.epsrev-btn .epsrev-ct{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums;}
+.epsrev-btn.on{color:var(--navy);}
+.epsrev-btn.on .epsrev-ic{opacity:1;}
+.epsrev-btn.on .epsrev-lb{border-bottom-color:var(--navy);}
+.epsrev-btn.on .epsrev-ct{color:var(--navy);}
 .epsrev-row{position:relative;margin:0 0 6px;}
 .epsrev-cell{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;gap:3px;}
 .epsrev-chip{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;line-height:1.4;white-space:nowrap;font-variant-numeric:tabular-nums;}
@@ -3327,10 +3341,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       let hit, guard=0;
       while((hit=clash(oy))!=null && guard++<12){ oy+=(hit>oy?-5:5); }
       oy=Math.max(padT+6, Math.min(padT+plotH-2, oy));
-      const label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="11" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${txt}</text>`;
+      const label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="10.5" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${txt}</text>`;
       return `<circle cx="${dcx.toFixed(1)}" cy="${py.toFixed(1)}" r="${r}" fill="var(--navy)"/>${label}`;
     }).join('');
-    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   })(lastState);
 
   // COURBE CONSENSUS COURANTE : trait plein fin or, datee au bout DROIT
@@ -3340,13 +3354,13 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const chain=[...consYears, ...consExtraYears];
     const vOf=(y)=>consExtraYears.includes(y)?consExtra[y]:consMapAll[y];
     const pts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
-    consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'');
+    consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>`:'');
   }
   // LEGENDE : a gauche, dans le sillage du titre d axe. Noms seuls.
   let legSvg='';
   {
-    const items=[{col:'var(--navy)', sw:2, txt:'Omnium'}];
-    if(consYears.length) items.push({col:CONS_COL, sw:1.2, txt:'Consensus'});
+    const items=[{col:'var(--navy)', sw:1.8, txt:'Omnium'}];
+    if(consYears.length) items.push({col:CONS_COL, sw:1.8, txt:'Consensus'});
     let x=padL+unitTxt.length*7.4+22;
     const parts=[];
     items.forEach(it=>{
@@ -3359,12 +3373,14 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }
   // BOUTON "Revisions" : en tete de chart, a droite - present des qu il
   // existe au moins une revision archivee (Omnium ou consensus).
+  // v8 : vraie pilule HTML superposee au coin du chart - fond voile,
+  // icone historique, badge compteur ; a l etat actif elle passe navy
+  // plein avec le badge "YTD".
   const revCount=(n-1)+consHistMaps.length;
-  let revBtn='';
+  let revBtnHtml='';
   if(revCount>0){
-    const lbl=REV?`Revisions · YTD`:`Revisions · ${revCount}`;
-    revBtn=`<text x="${W}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${REV?'var(--navy)':'var(--muted)'}" text-anchor="end" style="cursor:pointer;" onclick="toggleEpsRevisions()">${REV?'✕ ':'↺ '}${lbl}</text>`;
-
+    const ic=`<svg class="epsrev-ic" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 3.2A4.4 4.4 0 1 1 1.6 6"/><polyline points="2.4 1.2 2.6 3.3 4.7 3.1"/><polyline points="6 3.9 6 6.2 7.8 7.1"/></svg>`;
+    revBtnHtml=`<button class="epsrev-btn${REV?' on':''}" onclick="toggleEpsRevisions()">${ic}<span class="epsrev-lb">Revisions<span class="epsrev-ct"> · ${REV?'YTD':revCount}</span></span></button>`;
   }
 
   // Pas de dates en bout de courbe (retour 20/08 v7) : on s attend a
@@ -3375,9 +3391,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const endLabels='';
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${revBtn}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
     single: n<2,
-    revLedger
+    revLedger,
+    revBtnHtml
   };
 }
 
@@ -3447,7 +3464,7 @@ function renderValoHistory(ticker){
       chartHtml='<div class="vr-empty">Not enough history yet to plot a projection curve (at least 2 projected years required).</div>';
       legendHtml='';
     }else{
-      chartHtml=proj.svg+(proj.revLedger||'');
+      chartHtml=`<div style="position:relative;">${proj.svg}${proj.revBtnHtml||''}</div>`+(proj.revLedger||'');
       // Plus de legende de correspondance : chaque courbe porte sa date au
       // bout d'elle-meme. Le cas "une seule courbe" ne merite rien non
       // plus (retour Nemetschek 20/08 : la mention n'apprenait rien).
