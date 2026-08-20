@@ -1,439 +1,450 @@
 {
-  "name": "Booking Holdings",
-  "cours": 181.03,
-  "yahooSymbol": "BKNG",
-  "dividende": 1.68,
-  "data": [
-    {
-      "year": 2020,
-      "ca": 6796,
-      "ebit": -475,
-      "net": 59,
-      "shares": 1025,
-      "nd": 1000
-    },
-    {
-      "year": 2021,
-      "ca": 10958,
-      "ebit": 915,
-      "net": 1165,
-      "shares": 1030,
-      "nd": -2000
-    },
-    {
-      "year": 2022,
-      "ca": 17090,
-      "ebit": 3232,
-      "net": 3058,
-      "shares": 1000,
-      "nd": -2800
-    },
-    {
-      "year": 2023,
-      "ca": 21365,
-      "ebit": 5835,
-      "net": 5572,
-      "shares": 915,
-      "nd": -3200,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 23739,
-      "ebit": 7555,
-      "net": 6369,
-      "shares": 851,
-      "nd": -2200,
-      "div": 1.4
-    },
-    {
-      "year": 2025,
-      "ca": 26917,
-      "ebit": 9490,
-      "net": 7389,
-      "shares": 810,
-      "nd": -500,
-      "div": 1.6
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 10.65,
-    "epsNY": 12.25,
-    "date": "2026-07-01",
-    "source": "Consensus deduit du forward P/E ~17,2x (cours 182$, post-split) ; adj EPS - guidance management low-to-mid-teens growth. Targets analystes ~214-223$ (Strong Buy). Confirme par le T2 26 : croissance H1 reelle +14,9%, quasi identique a l'hypothese."
+ "name": "Booking Holdings",
+ "cours": 181.03,
+ "yahooSymbol": "BKNG",
+ "dividende": 1.68,
+ "data": [
+  {
+   "year": 2020,
+   "ca": 6796,
+   "ebit": -475,
+   "net": 59,
+   "shares": 1025,
+   "nd": 1000
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": "2026-11-03"
+  {
+   "year": 2021,
+   "ca": 10958,
+   "ebit": 915,
+   "net": 1165,
+   "shares": 1030,
+   "nd": -2000
   },
-  "hypothese": {
-    "date": "2026-08-18",
-    "priorEPS": {
-      "date": "2026-08-05",
-      "eps": {
-        "2026": 10.65,
-        "2027": 12.25,
-        "2028": 14.08,
-        "2029": 16.12,
-        "2030": 18.38
-      }
-    },
-    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript T2 2026 (04/08) lu depuis l'archive Drive ; bridge etabli (t 22% + finNet plat, la chaine de projection se reconcilie exactement ; le publie 2025 ajuste laisse un residu a instruire au 10-K), scorecard cree (ancre FY26 10,35$ quantifiee depuis la guidance directionnelle initiale), cles depreciees purgees (dont coherenceNoteCY/NY -> C3 resolu). Projections inchangees.",
-    "dernierCall": {
-      "quarter": "T2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 7350,
-          "consensus": 7200
-        },
-        "epsAdj": {
-          "actual": 2.54,
-          "consensus": 2.45,
-          "basis": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 26 : room nights +3-5%, gross bookings/CA/adjusted EBITDA chacun +4-6% ; impact Moyen-Orient attendu legerement inferieur au T2 (normalisation en cours depuis juin/juillet), FX -1pt sur la croissance publiee (EUR/USD retenu a 1,15 pour le reste de l'annee).",
-      "guidanceAnnuelle": "FY26 : gross bookings/CA/adjusted EBITDA chacun en hausse a un chiffre eleve (guidance gross bookings LEGEREMENT ABAISSEE en haut de fourchette, de 'high-single a low-double-digit' a 'high-single-digit' uniquement, du fait d'une croissance des billets d'avion plus faible qu'anticipe - la perspective hebergement reste inchangee) ; EPS ajuste maintenu low-to-mid-teens, le CFO precisant explicitement viser le haut de cette fourchette (~mid-teens). Tailwind FX FY desormais estime a ~1,5pt sur les gross bookings et ~1pt sur le CA.",
-      "pointsCles": [
-        "Choc Moyen-Orient : impact legerement plus fort au T2 qu'au T1 (perturbations etendues a avril-mai avant normalisation en juin, confirmee en juillet) ; T3 attendu en amelioration continue mais impact indirect (capacite aerienne, prix des billets) suppose persister jusqu'a fin T3.",
-        "Programme de transformation : objectif d'economies annuelles releve une 2e fois, de 550 M$ a 650 M$ (contre 450 M$ au lancement), l'essentiel du surcroit de 100 M$ provenant des achats (procurement), realise majoritairement en 2027 ; ~30 M$ de couts de transformation constates au T2, majoritairement exclus de l'ajuste.",
-        "Rachats d'actions : trimestre record avec 3,7 Md$ de rachats et 4,1 Md$ de capital retourne au total (rachats + dividende) - 7,4 Md$ rachetes au S1 a un prix moyen de ~173$/action ; reduction du nombre d'actions de plus de 40% depuis 2014.",
-        "Trafic issu des LLM (ChatGPT et autres) toujours inferieur a 1% des room nights et stable sur les derniers trimestres selon le CFO - AUCUN changement materiel detecte, malgre les inquietudes du marche sur la desintermediation IA ; Booking participe au groupe de test CPC d'OpenAI et au lancement de l'agentic booking de Google.",
-        "Cout par interaction client en baisse a deux chiffres grace a l'IA (voice AI deployee sur la majorite des appels entrants eligibles), CSAT maintenu eleve.",
-        "Consolidation des operations B2B des 3 marques (Agoda/Priceline/Booking) en une seule unite, dirigee par Omri Morgenshtern (CEO Agoda) - accent explicite du CFO sur la discipline d'incrementalite pour eviter la cannibalisation du B2C a plus forte marge."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "depot",
-        "date": "2026-08-04"
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-28",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Gross bookings et CA attendus en hausse high-single a low-double-digit ; adjusted EBITDA et EPS attendus en croissance legerement plus rapide que le CA (low-to-mid-teens pour l'EPS)."
-      },
-      {
-        "quarter": "T2 26",
-        "date": "2026-08-04",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Gross bookings/CA/adjusted EBITDA ABAISSES en haut de fourchette a high-single-digit uniquement (vs high-single a low-double-digit), du fait d'une croissance des billets d'avion plus faible qu'anticipe (perspective hebergement inchangee) ; EPS ajuste maintenu low-to-mid-teens, avec une orientation explicite vers le haut de cette fourchette."
-      }
-    ],
-    "guidanceLongTerme": "Ambition long terme reaffirmee sans changement : gross bookings >=8%/an, CA +8%/an, EPS ajuste +15%/an en moyenne sur le cycle.",
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.99,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 2.22,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 3.98,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 1.95,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 1.14,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 2.54,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 4.2,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 2.77,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 1.31,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 2.93,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 4.83,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 3.18,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "T2 26 solide, au-dessus du haut de la guidance sur toutes les metriques cles (EPS ajuste 2,54$ +15%, CA 7,35 Md$ +8%). Guidance FY26 legerement resserree en haut de fourchette sur les gross bookings (billets d'avion), EPS ajuste maintenu low-to-mid-teens avec orientation vers le haut. CORRECTION HISTORIQUE d-bis appliquee au refresh precedent : data.net 2023-2025 sur base Adjusted (officiellement publiee). Decomposition T1-T4 2025 (PY) desormais ajoutee pour comparaison visuelle dans l'app. Croissance H1 reelle (+14,9%) confirme quasi exactement l'hypothese de creation (+15%) - omniumEPS 2026-2030 inchange. Trafic IA toujours sous 1% et stable, risque de desintermediation non materialise.",
-    "text": "== THESIS SUMMARY ==\nBooking Holdings is the structurally advantaged travel marketplace, and Q2 26 confirmed the creation thesis without amendment: every key metric beat the top of guidance (room nights +5%, gross bookings +9%, revenue +8%, adjusted EBITDA +9%, adjusted EPS 2.54$ +15% vs ~2.45$ consensus), H1 adjusted EPS growth (+14.9%) is running almost exactly on the +15%/yr creation assumption, and the CFO now explicitly targets the TOP of the low-to-mid-teens FY26 EPS guide. The core thesis theme - Booking as AI beneficiary rather than victim - keeps verifying: LLM-originated traffic remains 'significantly under 1%' of room nights and stable, while AI cuts customer-service cost per booking at a double-digit rate. Capital discipline intensifies (7.4bn$ of buybacks in H1 at ~173$/share; share count -3%/yr modeled) and the transformation program was raised a second time to 650M$ run-rate savings (450 at launch). Middle East drag persists on long-haul but normalization began in June.\n\n== THESIS READ ==\n- Beat across every guided metric in Q2, and the FY26 EPS guide reaffirmed with the CFO aiming at its top - the model (10.65$) is deliberately aligned there, not above.\n- AI story stays an opportunity: sub-1% LLM traffic, direct mix stable mid-60s%, and AI already deflating service costs - the desintermediation bear case keeps not materializing.\n- Transformation savings raised again (650M$): the second consecutive upgrade, structurally funding marketing and margin.\n- Buyback machine at full throttle (7.4bn$ in H1): the -3%/yr share-count assumption is if anything conservative.\n- Watch: gross-bookings top-end trim (flight capacity, Middle East) - immaterial to EPS but the first metric to watch if demand softens.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: ADJUSTED (d-ter) applied consistently - data 2023-2025 carries officially published adjusted net (d-bis correction done at a prior refresh; 2020-2022 remain unverified GAAP, to homogenize only if needed). Bridge (c-ter): the projection chain reconciles EXACTLY at tax 22% + flat -150M$ finNet (net cash building through the horizon); the published 2025 adjusted year leaves a -2,084M$ residual on those projection parameters, flagged in the bridge for a 10-K split (adjusted-basis below-EBIT items). Quarterly EPS (E5 ter) complete with the REAL 2025 seasonal pattern (Q3 ~44% of the year) anchoring the Q3/Q4 26 estimates. Scorecard: FY26 anchor 10.35$ quantified from the initial directional guide (low-to-mid-teens on 9.12$); closed-FY history not sourced at setup; application suspended AND flagged as would-be double-counting (model already at guide top). Deprecated keys purged. WATCH-LIST: (1) Middle East normalization through H2; (2) Q3/Q4 phasing vs the documented 2025 pattern; (3) B2B unit ramp; (4) buyback pace after an exceptional H1; (5) LLM traffic share; (6) ownership/compliance fields still absent from this file (Operation D / next refresh). Next useful refresh: Q3 results (early Nov).\n\n== CATALYSTS ==\nQ3 2026 (early Nov): seasonal peak quarter (validated 2025 pattern), Middle East normalization read, Connected Trip and B2B progression, buyback cadence.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "correction_dbis_base_ajustee",
-        "moteur": "data.net 2023-2025 retraitee de GAAP brut vers Adjusted officiellement publie (152,22$/187,10$/228,06$ EPS pre-split), corrigeant une incoherence de base qui produisait une fausse marche de +59,7% vers omniumEPS 2026 (desormais +16,8%, coherent avec la guidance low-to-mid-teens).",
-        "applique": [
-          "data.2023",
-          "data.2024",
-          "data.2025"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "guidance_fy26_confirmee_h1",
-        "moteur": "Croissance H1 2026 reelle de l'EPS ajuste (+14,9%, 3,68$ vs 3,20$ estime au S1 25) quasiment identique a l'hypothese de creation (+15%/an) - confirme la trajectoire omniumEPS sans necessiter de revision.",
-        "applique": [
-          "omniumEPS.2026",
-          "omniumEPS.2027",
-          "omniumEPS.2028",
-          "omniumEPS.2029",
-          "omniumEPS.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "gross_bookings_trim_flights",
-        "moteur": "Guidance FY26 gross bookings/CA legerement resserree en haut de fourchette, attribuee a une croissance plus faible des billets d'avion - perspective hebergement inchangee, impact trop marginal pour justifier une revision d'omniumCA.",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "moyen_orient_normalisation_poursuite",
-        "moteur": "Impact Moyen-Orient legerement plus marque au T2 qu'au T1 mais normalisation deja engagee en juin, confirmee en juillet - confirme la trajectoire de resolution progressive retenue a la creation.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "transformation_savings_relevees",
-        "moteur": "Objectif d'economies annuelles releve une 2e fois a 650 M$ (vs 550 M$ au T1, 450 M$ au lancement) - soutient la trajectoire de marge/EBIT sur l'horizon de projection.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "buybacks_record_poursuite",
-        "moteur": "Rythme de rachats record confirme (7,4 Md$ au S1 2026) - coherent avec la tendance omniumShares -3 a -4%/an retenue a la creation.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "ia_desintermediation_risque_non_materialise",
-        "moteur": "Trafic issu des LLM confirme sous 1% des room nights et stable - le risque de desintermediation IA continue de ne PAS se materialiser.",
-        "applique": [],
-        "confiance": "haute sur l'observation, non applicable a un chiffrage"
-      },
-      {
-        "id": "saisonnalite_py_2025_documentee",
-        "moteur": "Decomposition T1-T4 2025 (PY) desormais chiffree sur base officielle (0,99$/2,22$/3,98$/1,95$) : le T3 represente ~44% de l'EPS annuel (pic estival), pattern reconduit pour affiner la repartition T3/T4 26 estimee - remplace une hypothese de saisonnalite non etayee par une reference reelle.",
-        "applique": [
-          "quarterlyEPS.CY"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 10.65,
-      "2027": 12.25,
-      "2028": 14.08,
-      "2029": 16.12,
-      "2030": 18.38
-    },
-    "omniumCA": {
-      "2026": 29340,
-      "2027": 32127,
-      "2028": 35018,
-      "2029": 37995,
-      "2030": 41034
-    },
-    "omniumEBIT": {
-      "2026": 10868,
-      "2027": 12086,
-      "2028": 13418,
-      "2029": 14823,
-      "2030": 16291
-    },
-    "omniumNet": {
-      "2026": 8360,
-      "2027": 9310,
-      "2028": 10349,
-      "2029": 11445,
-      "2030": 12590
-    },
-    "omniumND": {
-      "2026": 0,
-      "2027": -1000,
-      "2028": -2500,
-      "2029": -4000,
-      "2030": -6000
-    },
-    "omniumShares": {
-      "2026": 785,
-      "2027": 760,
-      "2028": 735,
-      "2029": 710,
-      "2030": 685
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -17,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 7389,
-        "netPub": 7389,
-        "residual": 0,
-        "residualNote": "Adjusted base (d-ter): reconciles cleanly at tax 22% with a near-zero net financial line (interest on the debt stack offset by investment income). Same parameters carry the projection chain."
-      },
-      "2026": {
-        "finNet": -150,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 8360
-      },
-      "2027": {
-        "finNet": -150,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 9310
-      },
-      "2028": {
-        "finNet": -150,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 10349
-      },
-      "2029": {
-        "finNet": -150,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 11445
-      },
-      "2030": {
-        "finNet": -150,
-        "other": 0,
-        "taxRate": 0.22,
-        "minorities": 0,
-        "netCalc": 12590
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Adjusted EPS growth (directional annual guidance)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-08-04",
-          "type": "guidance_revision",
-          "detail": "FY26: gross-bookings top-end trimmed (high-single-digit only, weaker flight ticket growth); adjusted EPS growth MAINTAINED low-to-mid-teens, CFO explicitly targeting the top of that range; transformation savings raised a 2nd time to 650M$ (450 at launch).",
-          "flag": null
-        },
-        {
-          "date": "2026-08-04",
-          "type": "vs_guidance",
-          "detail": "Q2 26 beat across all metrics: adj EPS 2.54$ (+15%) vs consensus ~2.45$; room nights +5%, gross bookings +9%, adj EBITDA +9% - all above the top of guidance.",
-          "beatPct": 3.7
-        }
-      ],
-      "paceCheckpoint": "H1 26 adjusted EPS +14.9% - already at the top of the low-to-mid-teens FY guide.",
-      "weightedBeatPct": 3.7,
-      "annualBeatPct": 3.3,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 6.1,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
-          "realizedDisplay": "+22% (228.06$, pre-split)",
-          "note": "Initial FY25 frame (Q4-2024 release, 20/02/2025): the reconducted long-term ambition of >=15% cc adjusted-EPS growth as the annual floor; realized +22% (adj EPS 228.06$ pre-split) - level +6.1% vs the guided floor."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 7.0,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
-          "realizedDisplay": "+23%",
-          "note": "Initial FY24 frame (Feb 2024): same >=15% cc adjusted-EPS-growth floor; realized +23% - level +7.0% vs the floor. Both closed years beat a floor, not a point estimate - beats vs floor are structurally positive, read with that bias in mind."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 10.35,
-        "source": "initial_guidance",
-        "date": "2026-02-19",
-        "note": "Quantified from the initial directional guide: 'low-to-mid-teens adjusted EPS growth' on 9.12$ realized 2025, midpoint +13.5% -> 10.35$ (guidance-qualitative-to-hard rule, E2). Post-split basis."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +3.3% BLENDED (in-progress 0.0 x1/2; FY25 +6.1 and FY24 +7.0 equal-shared). Closed beats are measured vs a guided FLOOR (>=15%), not a mid - structurally flattering; apply with that discount.",
-      "consensusSource": "Forward P/E-derived, post-split",
-      "consensusDate": "2026-07-01",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 10.35,
-        "currentValue": 10.35,
-        "deltaPct": 0.0,
-        "asOf": "2026-08-04",
-        "note": "Initial FY26 guide 'low-to-mid-teens adj EPS growth' (mid +13.5% -> 10.35$ post-split); maintained verbatim at Q2 (04/08, gross-bookings mix trimmed but EPS frame intact) - projected 0.0."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-08-04",
-      "label": "T2 26",
-      "type": "earnings"
-    }
+  {
+   "year": 2022,
+   "ca": 17090,
+   "ebit": 3232,
+   "net": 3058,
+   "shares": 1000,
+   "nd": -2800
+  },
+  {
+   "year": 2023,
+   "ca": 21365,
+   "ebit": 5835,
+   "net": 5572,
+   "shares": 915,
+   "nd": -3200,
+   "div": 0
+  },
+  {
+   "year": 2024,
+   "ca": 23739,
+   "ebit": 7555,
+   "net": 6369,
+   "shares": 851,
+   "nd": -2200,
+   "div": 1.4
+  },
+  {
+   "year": 2025,
+   "ca": 26917,
+   "ebit": 9490,
+   "net": 7389,
+   "shares": 810,
+   "nd": -500,
+   "div": 1.6
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 10.5,
+  "epsNY": 12.14,
+  "epsY2": 14.17,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 38 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 10.45)",
+  "analystsCount": 38
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": "2026-11-03"
+ },
+ "hypothese": {
+  "date": "2026-08-18",
+  "priorEPS": {
+   "date": "2026-08-05",
+   "eps": {
+    "2026": 10.65,
+    "2027": 12.25,
+    "2028": 14.08,
+    "2029": 16.12,
+    "2030": 18.38
+   }
+  },
+  "source": "Deep refresh 18/08/2026 (protocole complet) : transcript T2 2026 (04/08) lu depuis l'archive Drive ; bridge etabli (t 22% + finNet plat, la chaine de projection se reconcilie exactement ; le publie 2025 ajuste laisse un residu a instruire au 10-K), scorecard cree (ancre FY26 10,35$ quantifiee depuis la guidance directionnelle initiale), cles depreciees purgees (dont coherenceNoteCY/NY -> C3 resolu). Projections inchangees.",
+  "dernierCall": {
+   "quarter": "T2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 7350,
+     "consensus": 7200
+    },
+    "epsAdj": {
+     "actual": 2.54,
+     "consensus": 2.45,
+     "basis": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 26 : room nights +3-5%, gross bookings/CA/adjusted EBITDA chacun +4-6% ; impact Moyen-Orient attendu legerement inferieur au T2 (normalisation en cours depuis juin/juillet), FX -1pt sur la croissance publiee (EUR/USD retenu a 1,15 pour le reste de l'annee).",
+   "guidanceAnnuelle": "FY26 : gross bookings/CA/adjusted EBITDA chacun en hausse a un chiffre eleve (guidance gross bookings LEGEREMENT ABAISSEE en haut de fourchette, de 'high-single a low-double-digit' a 'high-single-digit' uniquement, du fait d'une croissance des billets d'avion plus faible qu'anticipe - la perspective hebergement reste inchangee) ; EPS ajuste maintenu low-to-mid-teens, le CFO precisant explicitement viser le haut de cette fourchette (~mid-teens). Tailwind FX FY desormais estime a ~1,5pt sur les gross bookings et ~1pt sur le CA.",
+   "pointsCles": [
+    "Choc Moyen-Orient : impact legerement plus fort au T2 qu'au T1 (perturbations etendues a avril-mai avant normalisation en juin, confirmee en juillet) ; T3 attendu en amelioration continue mais impact indirect (capacite aerienne, prix des billets) suppose persister jusqu'a fin T3.",
+    "Programme de transformation : objectif d'economies annuelles releve une 2e fois, de 550 M$ a 650 M$ (contre 450 M$ au lancement), l'essentiel du surcroit de 100 M$ provenant des achats (procurement), realise majoritairement en 2027 ; ~30 M$ de couts de transformation constates au T2, majoritairement exclus de l'ajuste.",
+    "Rachats d'actions : trimestre record avec 3,7 Md$ de rachats et 4,1 Md$ de capital retourne au total (rachats + dividende) - 7,4 Md$ rachetes au S1 a un prix moyen de ~173$/action ; reduction du nombre d'actions de plus de 40% depuis 2014.",
+    "Trafic issu des LLM (ChatGPT et autres) toujours inferieur a 1% des room nights et stable sur les derniers trimestres selon le CFO - AUCUN changement materiel detecte, malgre les inquietudes du marche sur la desintermediation IA ; Booking participe au groupe de test CPC d'OpenAI et au lancement de l'agentic booking de Google.",
+    "Cout par interaction client en baisse a deux chiffres grace a l'IA (voice AI deployee sur la majorite des appels entrants eligibles), CSAT maintenu eleve.",
+    "Consolidation des operations B2B des 3 marques (Agoda/Priceline/Booking) en une seule unite, dirigee par Omri Morgenshtern (CEO Agoda) - accent explicite du CFO sur la discipline d'incrementalite pour eviter la cannibalisation du B2C a plus forte marge."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "depot",
+    "date": "2026-08-04"
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-28",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Gross bookings et CA attendus en hausse high-single a low-double-digit ; adjusted EBITDA et EPS attendus en croissance legerement plus rapide que le CA (low-to-mid-teens pour l'EPS)."
+   },
+   {
+    "quarter": "T2 26",
+    "date": "2026-08-04",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Gross bookings/CA/adjusted EBITDA ABAISSES en haut de fourchette a high-single-digit uniquement (vs high-single a low-double-digit), du fait d'une croissance des billets d'avion plus faible qu'anticipe (perspective hebergement inchangee) ; EPS ajuste maintenu low-to-mid-teens, avec une orientation explicite vers le haut de cette fourchette."
+   }
+  ],
+  "guidanceLongTerme": "Ambition long terme reaffirmee sans changement : gross bookings >=8%/an, CA +8%/an, EPS ajuste +15%/an en moyenne sur le cycle.",
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.99,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 2.22,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 3.98,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 1.95,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 1.14,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 2.54,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 4.2,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 2.77,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 1.31,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 2.93,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 4.83,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 3.18,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "T2 26 solide, au-dessus du haut de la guidance sur toutes les metriques cles (EPS ajuste 2,54$ +15%, CA 7,35 Md$ +8%). Guidance FY26 legerement resserree en haut de fourchette sur les gross bookings (billets d'avion), EPS ajuste maintenu low-to-mid-teens avec orientation vers le haut. CORRECTION HISTORIQUE d-bis appliquee au refresh precedent : data.net 2023-2025 sur base Adjusted (officiellement publiee). Decomposition T1-T4 2025 (PY) desormais ajoutee pour comparaison visuelle dans l'app. Croissance H1 reelle (+14,9%) confirme quasi exactement l'hypothese de creation (+15%) - omniumEPS 2026-2030 inchange. Trafic IA toujours sous 1% et stable, risque de desintermediation non materialise.",
+  "text": "== THESIS SUMMARY ==\nBooking Holdings is the structurally advantaged travel marketplace, and Q2 26 confirmed the creation thesis without amendment: every key metric beat the top of guidance (room nights +5%, gross bookings +9%, revenue +8%, adjusted EBITDA +9%, adjusted EPS 2.54$ +15% vs ~2.45$ consensus), H1 adjusted EPS growth (+14.9%) is running almost exactly on the +15%/yr creation assumption, and the CFO now explicitly targets the TOP of the low-to-mid-teens FY26 EPS guide. The core thesis theme - Booking as AI beneficiary rather than victim - keeps verifying: LLM-originated traffic remains 'significantly under 1%' of room nights and stable, while AI cuts customer-service cost per booking at a double-digit rate. Capital discipline intensifies (7.4bn$ of buybacks in H1 at ~173$/share; share count -3%/yr modeled) and the transformation program was raised a second time to 650M$ run-rate savings (450 at launch). Middle East drag persists on long-haul but normalization began in June.\n\n== THESIS READ ==\n- Beat across every guided metric in Q2, and the FY26 EPS guide reaffirmed with the CFO aiming at its top - the model (10.65$) is deliberately aligned there, not above.\n- AI story stays an opportunity: sub-1% LLM traffic, direct mix stable mid-60s%, and AI already deflating service costs - the desintermediation bear case keeps not materializing.\n- Transformation savings raised again (650M$): the second consecutive upgrade, structurally funding marketing and margin.\n- Buyback machine at full throttle (7.4bn$ in H1): the -3%/yr share-count assumption is if anything conservative.\n- Watch: gross-bookings top-end trim (flight capacity, Middle East) - immaterial to EPS but the first metric to watch if demand softens.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: ADJUSTED (d-ter) applied consistently - data 2023-2025 carries officially published adjusted net (d-bis correction done at a prior refresh; 2020-2022 remain unverified GAAP, to homogenize only if needed). Bridge (c-ter): the projection chain reconciles EXACTLY at tax 22% + flat -150M$ finNet (net cash building through the horizon); the published 2025 adjusted year leaves a -2,084M$ residual on those projection parameters, flagged in the bridge for a 10-K split (adjusted-basis below-EBIT items). Quarterly EPS (E5 ter) complete with the REAL 2025 seasonal pattern (Q3 ~44% of the year) anchoring the Q3/Q4 26 estimates. Scorecard: FY26 anchor 10.35$ quantified from the initial directional guide (low-to-mid-teens on 9.12$); closed-FY history not sourced at setup; application suspended AND flagged as would-be double-counting (model already at guide top). Deprecated keys purged. WATCH-LIST: (1) Middle East normalization through H2; (2) Q3/Q4 phasing vs the documented 2025 pattern; (3) B2B unit ramp; (4) buyback pace after an exceptional H1; (5) LLM traffic share; (6) ownership/compliance fields still absent from this file (Operation D / next refresh). Next useful refresh: Q3 results (early Nov).\n\n== CATALYSTS ==\nQ3 2026 (early Nov): seasonal peak quarter (validated 2025 pattern), Middle East normalization read, Connected Trip and B2B progression, buyback cadence.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "correction_dbis_base_ajustee",
+    "moteur": "data.net 2023-2025 retraitee de GAAP brut vers Adjusted officiellement publie (152,22$/187,10$/228,06$ EPS pre-split), corrigeant une incoherence de base qui produisait une fausse marche de +59,7% vers omniumEPS 2026 (desormais +16,8%, coherent avec la guidance low-to-mid-teens).",
+    "applique": [
+     "data.2023",
+     "data.2024",
+     "data.2025"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "guidance_fy26_confirmee_h1",
+    "moteur": "Croissance H1 2026 reelle de l'EPS ajuste (+14,9%, 3,68$ vs 3,20$ estime au S1 25) quasiment identique a l'hypothese de creation (+15%/an) - confirme la trajectoire omniumEPS sans necessiter de revision.",
+    "applique": [
+     "omniumEPS.2026",
+     "omniumEPS.2027",
+     "omniumEPS.2028",
+     "omniumEPS.2029",
+     "omniumEPS.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "gross_bookings_trim_flights",
+    "moteur": "Guidance FY26 gross bookings/CA legerement resserree en haut de fourchette, attribuee a une croissance plus faible des billets d'avion - perspective hebergement inchangee, impact trop marginal pour justifier une revision d'omniumCA.",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "moyen_orient_normalisation_poursuite",
+    "moteur": "Impact Moyen-Orient legerement plus marque au T2 qu'au T1 mais normalisation deja engagee en juin, confirmee en juillet - confirme la trajectoire de resolution progressive retenue a la creation.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "transformation_savings_relevees",
+    "moteur": "Objectif d'economies annuelles releve une 2e fois a 650 M$ (vs 550 M$ au T1, 450 M$ au lancement) - soutient la trajectoire de marge/EBIT sur l'horizon de projection.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "buybacks_record_poursuite",
+    "moteur": "Rythme de rachats record confirme (7,4 Md$ au S1 2026) - coherent avec la tendance omniumShares -3 a -4%/an retenue a la creation.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "ia_desintermediation_risque_non_materialise",
+    "moteur": "Trafic issu des LLM confirme sous 1% des room nights et stable - le risque de desintermediation IA continue de ne PAS se materialiser.",
+    "applique": [],
+    "confiance": "haute sur l'observation, non applicable a un chiffrage"
+   },
+   {
+    "id": "saisonnalite_py_2025_documentee",
+    "moteur": "Decomposition T1-T4 2025 (PY) desormais chiffree sur base officielle (0,99$/2,22$/3,98$/1,95$) : le T3 represente ~44% de l'EPS annuel (pic estival), pattern reconduit pour affiner la repartition T3/T4 26 estimee - remplace une hypothese de saisonnalite non etayee par une reference reelle.",
+    "applique": [
+     "quarterlyEPS.CY"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 10.65,
+   "2027": 12.25,
+   "2028": 14.08,
+   "2029": 16.12,
+   "2030": 18.38
+  },
+  "omniumCA": {
+   "2026": 29340,
+   "2027": 32127,
+   "2028": 35018,
+   "2029": 37995,
+   "2030": 41034
+  },
+  "omniumEBIT": {
+   "2026": 10868,
+   "2027": 12086,
+   "2028": 13418,
+   "2029": 14823,
+   "2030": 16291
+  },
+  "omniumNet": {
+   "2026": 8360,
+   "2027": 9310,
+   "2028": 10349,
+   "2029": 11445,
+   "2030": 12590
+  },
+  "omniumND": {
+   "2026": 0,
+   "2027": -1000,
+   "2028": -2500,
+   "2029": -4000,
+   "2030": -6000
+  },
+  "omniumShares": {
+   "2026": 785,
+   "2027": 760,
+   "2028": 735,
+   "2029": 710,
+   "2030": 685
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -17,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 7389,
+    "netPub": 7389,
+    "residual": 0,
+    "residualNote": "Adjusted base (d-ter): reconciles cleanly at tax 22% with a near-zero net financial line (interest on the debt stack offset by investment income). Same parameters carry the projection chain."
+   },
+   "2026": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 8360
+   },
+   "2027": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 9310
+   },
+   "2028": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 10349
+   },
+   "2029": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 11445
+   },
+   "2030": {
+    "finNet": -150,
+    "other": 0,
+    "taxRate": 0.22,
+    "minorities": 0,
+    "netCalc": 12590
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Adjusted EPS growth (directional annual guidance)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-08-04",
+     "type": "guidance_revision",
+     "detail": "FY26: gross-bookings top-end trimmed (high-single-digit only, weaker flight ticket growth); adjusted EPS growth MAINTAINED low-to-mid-teens, CFO explicitly targeting the top of that range; transformation savings raised a 2nd time to 650M$ (450 at launch).",
+     "flag": null
+    },
+    {
+     "date": "2026-08-04",
+     "type": "vs_guidance",
+     "detail": "Q2 26 beat across all metrics: adj EPS 2.54$ (+15%) vs consensus ~2.45$; room nights +5%, gross bookings +9%, adj EBITDA +9% - all above the top of guidance.",
+     "beatPct": 3.7
+    }
+   ],
+   "paceCheckpoint": "H1 26 adjusted EPS +14.9% - already at the top of the low-to-mid-teens FY guide.",
+   "weightedBeatPct": 3.7,
+   "annualBeatPct": 3.3,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 6.1,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
+     "realizedDisplay": "+22% (228.06$, pre-split)",
+     "note": "Initial FY25 frame (Q4-2024 release, 20/02/2025): the reconducted long-term ambition of >=15% cc adjusted-EPS growth as the annual floor; realized +22% (adj EPS 228.06$ pre-split) - level +6.1% vs the guided floor."
+    },
+    {
+     "fy": 2024,
+     "beatPct": 7.0,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "adj EPS cc growth >=15% (LT frame)",
+     "realizedDisplay": "+23%",
+     "note": "Initial FY24 frame (Feb 2024): same >=15% cc adjusted-EPS-growth floor; realized +23% - level +7.0% vs the floor. Both closed years beat a floor, not a point estimate - beats vs floor are structurally positive, read with that bias in mind."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 10.35,
+    "source": "initial_guidance",
+    "date": "2026-02-19",
+    "note": "Quantified from the initial directional guide: 'low-to-mid-teens adjusted EPS growth' on 9.12$ realized 2025, midpoint +13.5% -> 10.35$ (guidance-qualitative-to-hard rule, E2). Post-split basis."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +3.3% BLENDED (in-progress 0.0 x1/2; FY25 +6.1 and FY24 +7.0 equal-shared). Closed beats are measured vs a guided FLOOR (>=15%), not a mid - structurally flattering; apply with that discount.",
+   "consensusSource": "Forward P/E-derived, post-split",
+   "consensusDate": "2026-07-01",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 10.35,
+    "currentValue": 10.35,
+    "deltaPct": 0.0,
+    "asOf": "2026-08-04",
+    "note": "Initial FY26 guide 'low-to-mid-teens adj EPS growth' (mid +13.5% -> 10.35$ post-split); maintained verbatim at Q2 (04/08, gross-bookings mix trimmed but EPS frame intact) - projected 0.0."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-08-04",
+   "label": "T2 26",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 10.65,
+   "epsNY": 12.25,
+   "date": "2026-07-01",
+   "source": "Consensus deduit du forward P/E ~17,2x (cours 182$, post-split) ; adj EPS - guidance management low-to-mid-teens growth. Targets analystes ~214-223$ (Strong Buy). Confirme par le T2 26 : croissance H1 reelle +14,9%, quasi identique a l'hypothese."
+  }
+ ]
 }

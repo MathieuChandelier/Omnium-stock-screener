@@ -1,434 +1,445 @@
 {
-  "name": "Meta Platforms",
-  "cours": 560.0,
-  "yahooSymbol": "META",
-  "dividende": 2.1,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 117929,
-      "ebit": 46753,
-      "net": 39370,
-      "shares": 2859,
-      "nd": -48000,
-      "div": 0
-    },
-    {
-      "year": 2022,
-      "ca": 116609,
-      "ebit": 28940,
-      "net": 23200,
-      "shares": 2701,
-      "nd": -30820,
-      "div": 0
-    },
-    {
-      "year": 2023,
-      "ca": 134902,
-      "ebit": 46751,
-      "net": 39098,
-      "shares": 2629,
-      "nd": -47010,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 164501,
-      "ebit": 69380,
-      "net": 62360,
-      "shares": 2614,
-      "nd": -48980,
-      "div": 1.94
-    },
-    {
-      "year": 2025,
-      "ca": 200966,
-      "ebit": 83280,
-      "net": 60458,
-      "shares": 2574,
-      "nd": -22850,
-      "div": 2.1
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 32.5,
-    "epsNY": 35.17,
-    "date": "2026-07-06",
-    "source": "Consensus sell-side (S&P Global / multiples agrégateurs), actualisé début juillet 2026 - ANTERIEUR au T2 2026 (publié 29/07/2026, EPS 6,18$ vs consensus trimestriel 7,23$, miss de 14,5%). A recouper au prochain refresh une fois le consensus FY2026 mis à jour post-publication."
+ "name": "Meta Platforms",
+ "cours": 560.0,
+ "yahooSymbol": "META",
+ "dividende": 2.1,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 117929,
+   "ebit": 46753,
+   "net": 39370,
+   "shares": 2859,
+   "nd": -48000,
+   "div": 0
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "T3 2026",
-    "date": null
+  {
+   "year": 2022,
+   "ca": 116609,
+   "ebit": 28940,
+   "net": 23200,
+   "shares": 2701,
+   "nd": -30820,
+   "div": 0
   },
-  "ownership": {
-    "asOf": "2026-07-30",
-    "insiderPct": 13.0,
-    "insiderDesc": "Mark Zuckerberg (fondateur, Chairman & CEO) détient une participation économique minoritaire (~13% du capital, actions de classe A+B combinées) mais conserve le contrôle de vote majoritaire (~61% des droits de vote) via sa détention d'actions de classe B (10 voix/action) - structure de gouvernance à droits de vote différenciés classique des méga-caps tech fondateur-dirigées. Pas de rachat d'actions au T2 2026 (contrairement à 10,2 Md$ au T2 2025), la société privilégiant la préservation de cash/capacité d'endettement pour financer le capex.",
-    "insiderSource": "10-Q/10-K Meta Platforms (structure capitalistique classe A/B), communiqué T2 2026 (absence de rachats au trimestre) - proxy statement SEC comme source primaire pour les valeurs US.",
-    "notableHolders": [],
-    "coverageNote": "Titre coté aux Etats-Unis, périmètre 13F applicable - notableHolders non renseigné à ce stade, à enrichir lors d'un prochain refresh si pertinent pour ce dossier.",
-    "history": []
+  {
+   "year": 2023,
+   "ca": 134902,
+   "ebit": 46751,
+   "net": 39098,
+   "shares": 2629,
+   "nd": -47010,
+   "div": 0
   },
-  "compliance": {
-    "asOf": "2026-07-30",
-    "items": [],
-    "note": "Aucune allégation de fraude comptable ou de tromperie des investisseurs identifiée à ce jour. Distinct des procès liés à la protection des mineurs (sécurité des utilisateurs, pas une allégation de fraude financière) mentionnés dans hypothese.text - hors périmètre de ce champ par définition, mais à surveiller comme risque de réputation/juridique majeur (2,4 Md$ de charges légales déjà comptabilisées au T2 2026)."
+  {
+   "year": 2024,
+   "ca": 164501,
+   "ebit": 69380,
+   "net": 62360,
+   "shares": 2614,
+   "nd": -48980,
+   "div": 1.94
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "priorEPS": {
-      "date": "2026-07-09",
-      "eps": {
-        "2026": 29.57,
-        "2027": 28.17,
-        "2028": 33.44,
-        "2029": 41.34,
-        "2030": 50.33
-      }
-    },
-    "source": "Refresh T2 2026 - Communiqué complet des résultats T2 2026 (29/07/2026, incluant les états financiers condensés) + transcript intégral du call du même jour (Mark Zuckerberg/Susan Li, incluant la session Q&A complète) - sources primaires trouvées et confrontées au modèle de création (09/07/2026, basé sur le transcript T1 2026).",
-    "summary": "Le T2 2026 confirme le mécanisme central identifié à la création (explosion du capex → remontée différée de la D&A comprimant la marge) mais avec une ampleur et un calendrier significativement différents des estimations initiales : la D&A réelle du S1 2026 (12,4 Md$) est nettement inférieure à la trajectoire modélisée à la création (qui projetait ~36 Md$ sur l'année complète), ce qui améliore la marge à court terme mais implique probablement un rattrapage plus tardif et plus abrupt. Par ailleurs, le résultat opérationnel publié (-8% au T2) masque une réalité opérationnelle sous-jacente saine (+9% hors éléments non récurrents, selon la CFO elle-même) : la baisse est entièrement due à 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de départ (plan social de mai 2026), pas à une dégradation du métier publicitaire.",
-    "text": "== THESIS SUMMARY ==\nThe central bet stands: Meta is running the heaviest investment cycle in its history (FY26 capex 130-145bn) to fund AI, with deferred D&A that will mechanically compress operating margin for several years regardless of product success. This refresh's good news: the ad core remains exceptional (Q2 revenue +28%, fastest in the industry), and the GAAP EPS miss (-14.5% vs consensus) is integrally attributable to 2.4bn one-off legal charges, not the operating engine.\n\n== THESIS READ ==\n- D&A recalibrated on real data: S1 actual 12.4bn vs ~18bn modeled at setup -> FY26 ~27bn, then a LATER, STEEPER catch-up (40bn 2027, 55bn 2028, 62-65bn 2029-30). The compression is deferred, not avoided. Watch: D&A run-rate each quarter - the single most model-sensitive line.\n- FY26 EBIT anchored directly on guidance (revenue estimate minus guided total expenses at midpoint) rather than an independent margin assumption. Watch: any further expense-guidance creep from legal/regulatory items.\n- Net debt appears (capex exceeds FCF at peak): ~30bn 2026, peaking ~55bn 2027 before receding. Watch: bond issuance terms and buyback pace trade-off.\n\n== SPECIAL FACTORS ==\nPure GAAP base (no management-adjusted net exists). FY25 published net carries ~10bn of one-off tax charges (ETR 28.7% vs 16-17% normative) - the bridge documents it as residual; projections use normative rates (16.5% 2026, 17% 2027, 17.5% from 2028). EU DMA / US legal exposure remains the recurring one-off source.\n\n== PARAMETERS & WATCH-LIST ==\nRevenue +27% 2026 decelerating to +12% by 2030; EBIT margin trough 2027 (30%) then rebuild as D&A growth decelerates; shares -0.5%/yr net of SBC. Bridge finNet: interest on new debt net of cash yield. Watch: Reality Labs losses trajectory; ad pricing vs AI-capacity monetization evidence; consensus gap (Omnium 28.27 vs street 32.5 for 2026 - one-offs plus D&A phasing).\n\n== CATALYSTS ==\nQ3 (Oct); first AI-monetization disclosures; capex guidance for 2027 (Jan); legal-charge resolution.",
-    "impact": "neutre",
-    "ancrages": [
-      {
-        "id": "da_recalibree_donnees_reelles",
-        "moteur": "CORRECTION MAJEURE ce refresh (E6-a/E6-b) : la D&A reelle du S1 2026 (12,4 Md$, dont 6,36 Md$ au T2 seul) est nettement inferieure a la trajectoire du modele de creation (~18 Md$ attendus sur la meme periode selon le ratio de 50% du capex n-1 avec un an de decalage). Extrapolation FY2026 revisee a ~27 Md$ (vs ~36 Md$ a la creation), le decalage de mise en service des datacenters etant plus long qu'initialement suppose. Rattrapage plus marque et plus tardif projete sur 2027-2028 (40 Md$ puis 55 Md$) avant deceleration 2029-2030 (62 Md$ puis 65 Md$).",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "guidance_fy26_ancree",
-        "moteur": "EBIT FY2026 ancre directement sur la guidance officielle du T2 2026 : CA estime (~256 Md$, construit bottom-up S1 reel + guidance T3 + estimation T4) moins charges totales guidees (165-169 Md$, midpoint 167 Md$) = ~89 Md$ - methodologie plus robuste que la creation (qui partait d'une hypothese de marge independante). Coherent avec la reaffirmation explicite du management que le resultat d'exploitation FY2026 depassera FY2025 (83,28 Md$).",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "resultat_operationnel_sous_jacent_sain",
-        "moteur": "La CFO confirme explicitement que hors charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel T2 2026 aurait progresse de +9% sur un an (au lieu du -8% publie) - la baisse affichee est integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier publicitaire (CA publicitaire toujours en croissance la plus rapide de l'industrie selon Zuckerberg). Element qualitatif confirmant la robustesse du socle operationnel sous-jacent au capex/D&A.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "is_normatif_post_effet_ponctuel",
-        "moteur": "CORRECTION apres verification (le calcul initial de ce refresh appliquait par erreur le taux d'imposition REEL du S1 2026, lui-meme distordu par le benefice fiscal ponctuel de 8,03 Md$ du T1 2026 deja identifie a la creation - le S1 2026 publie affiche une PROVISION D'IMPOT NEGATIVE de -2 113 M$, soit un ETR implicite de -5,2%, contre ~16% au T2 seul hors cet effet). Taux d'imposition normatif desormais applique de maniere COHERENTE sur l'ensemble de FY2026 (17%, aligne sur le T2 seul et la guidance officielle 15-17%), plutot que de melanger le taux S1 reel distordu avec un taux S2 normatif - evite de reconduire artificiellement l'effet ponctuel T1 dans la projection annuelle. Taux maintenu a 17% pour 2027 puis 17,5% (2028-2030).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "bascule_dette_nette_recalibree",
-        "moteur": "Position de tresorerie/dette nette ENTIEREMENT RECALIBREE sur la base du bilan reel au 30/06/2026 (cash net residuel de 6,6 Md$ seulement, contre 22,9 Md$ modelise fin FY2025) : emission de 25 Md$ de dette long terme au seul T2 2026, rachats d'actions suspendus, CFO confirmant explicitement un virage structurel vers un financement davantage oriente dette. Bascule en dette nette projetee des fin FY2026 (compte tenu du capex S2 restant a engager pour atteindre la guidance 130-145 Md$), pic modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse avec la montee en charge de la D&A (non-cash) relativement au capex cash.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "actions_rachats_suspendus",
-        "moteur": "Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) dans un contexte de priorisation du financement du capex - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance vs la creation (qui supposait une poursuite des rachats), nombre d'actions quasi stable a court terme avec une legere reprise de decroissance supposee a partir de 2028 une fois le pic du cycle d'investissement passe.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "basse"
-      }
-    ],
-    "dernierCall": {
-      "quarter": "T2 26",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 60801,
-          "consensus": 60260
-        },
-        "epsAdj": {
-          "actual": 6.18,
-          "consensus": 7.23,
-          "basis": "GAAP",
-          "basisNote": "GAAP dilue - miss de 14,5% du consensus sell-side (45 analystes). Le miss est integralement attribuable a 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de depart (plan social mai 2026), non anticipes a cette ampleur par le consensus ; hors ces elements, la CFO indique que le resultat operationnel aurait progresse de +9% sur un an."
-        }
-      },
-      "guidanceProchainTrimestre": "CA T3 2026 guide a 61-64 Md$ (headwind change ~1pt aux taux actuels).",
-      "guidanceAnnuelle": "Charges totales FY2026 relevees a 165-169 Md$ (vs 162-169 Md$), integrant les 2,4 Md$ de charges juridiques du T2. Capex FY2026 resserre/releve par le bas a 130-145 Md$ (vs 125-145 Md$). Taux d'imposition reste de l'annee releve a 15-17% (vs 13-16%). Resultat d'exploitation FY2026 toujours attendu superieur a FY2025 (83,28 Md$), reconfirme explicitement malgre les relevements de charges. AUCUNE guidance capex 2027 fournie.",
-      "pointsCles": [
-        "La CFO confirme explicitement que le resultat operationnel T2 aurait progresse de +9% hors charges juridiques/plan social - signal cle que la deterioration affichee de la marge (31% vs 43%) est largement due a des elements non recurrents plutot qu'a une degradation structurelle, meme si la remontee de la D&A (cout structurel et recurrent, lui, bien reel) continue de peser en parallele.",
-        "Advantage+ (suite d'outils publicitaires bout-en-bout alimentes par IA) atteint un rythme annualise de CA superieur a 75 Md$ - nouvelle metrique cle non disponible a la creation, donnant une taille concrete a la monetisation IA du coeur publicitaire.",
-        "Susan Li refuse explicitement de donner une guidance capex 2027 en Q&A (\"infrastructure planning remains highly dynamic\"), mais confirme que la planification actuelle vise a 'maximiser la capacite 2026 et 2027', signal qualitatif fort que le capex restera eleve en 2027 sans engagement chiffre - la flexibilite est explicitement reservee pour les decisions 2028+.",
-        "Virage de financement confirme par la CFO : mix davantage oriente dette (emission de 25 Md$ au T2 seul), exploration de structures de partenariat/JV hors bilan partiel (BlackRock, 1 GW a El Paso, Texas) en complement du cash-flow operationnel - Susan Li le presente comme une evolution deliberee de la structure de capital plutot qu'une necessite ponctuelle.",
-        "Zuckerberg reaffirme la conviction sur les agents personnels comme 'marche massif et quasi inevitable' a horizon 5 ans, tout en reconnaissant explicitement qu'aucun produit n'a encore ete lance a ce stade ('we haven't done that yet') - a distinguer des Business Agents (deja deployes, >1M entreprises/semaine) et de l'API Muse Spark (deja disponible, distribution en cours d'elargissement).",
-        "Nouveau flux de revenus 'Family of Apps Other' franchit pour la premiere fois le seuil du milliard de dollars sur un trimestre (+73% sur un an), porte par la messagerie payante et les abonnements WhatsApp - diversification naissante au-dela de la publicite pure."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US GAAP",
-        "source": "10-Q T2 2026 + communique (29/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA T2 60,80 Md$ (+28%), resultat operationnel 18,78 Md$, resultat net 15,85 Md$ (EPS dilue 6,18$). Trimestre charge en one-offs (provisions juridiques + severance de la reduction d'effectifs de mai) - pression AI/capex sur les marges."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Charges totales FY26 162-169 Md$ ; capex FY26 125-145 Md$ (releve depuis 115-135 Md$) ; resultat d'exploitation FY26 attendu superieur a 2025 ; taux d'imposition 13-16% hors effet ponctuel T1."
-      },
-      {
-        "quarter": "T2 26",
-        "date": "2026-07-29",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Charges totales FY26 relevees a 165-169 Md$ (integrant 2,4 Md$ de charges juridiques T2) ; capex FY26 resserre/releve a 130-145 Md$ ; taux d'imposition reste de l'annee releve a 15-17% ; resultat d'exploitation FY26 > FY25 reconfirme. Toujours aucune guidance capex 2027."
-      }
-    ],
-    "guidanceLongTerme": "Planification actuelle geree pour 'maximiser la capacite 2026 et 2027' (CFO, T2 2026) sans engagement chiffre au-dela de FY2026 - la flexibilite decisionnelle est explicitement reservee pour 2028 et au-dela, le management indiquant vouloir evaluer les besoins reels avant de s'engager sur des decisions de serveurs a plus long terme. Aucun objectif chiffre de marge ou de CA a moyen terme communique.",
-    "omniumCA": {
-      "2026": 256000,
-      "2027": 307200,
-      "2028": 356352,
-      "2029": 406241,
-      "2030": 455000
-    },
-    "omniumEBIT": {
-      "2026": 89000,
-      "2027": 92160,
-      "2028": 103342,
-      "2029": 129997,
-      "2030": 159250
-    },
-    "omniumNet": {
-      "2026": 72510,
-      "2027": 75248,
-      "2028": 83607,
-      "2029": 106010,
-      "2030": 130556
-    },
-    "omniumEPS": {
-      "2026": 28.27,
-      "2027": 29.45,
-      "2028": 32.92,
-      "2029": 42.07,
-      "2030": 52.22
-    },
-    "omniumND": {
-      "2026": 30000,
-      "2027": 55000,
-      "2028": 45000,
-      "2029": 25000,
-      "2030": 5000
-    },
-    "omniumShares": {
-      "2026": 2565,
-      "2027": 2555,
-      "2028": 2540,
-      "2029": 2520,
-      "2030": 2500
-    },
-    "bridge": {
-      "2025": {
-        "finNet": 1500,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 70367.4,
-        "netPub": 60458,
-        "residual": -9909,
-        "residualNote": "FY25 published net carries a ~10bn one-off tax block (deferred-tax revaluation + Q4 legal/tax items): effective ETR ~28.7% vs 16-17% normative. The one-off detector fires by design; the normative bridge is the right base for projections."
-      },
-      "2026": {
-        "finNet": -1200,
-        "other": -960,
-        "taxRate": 0.165,
-        "minorities": 0,
-        "netCalc": 72511.4
-      },
-      "2027": {
-        "finNet": -2200,
-        "other": 700,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 75247.8
-      },
-      "2028": {
-        "finNet": -2000,
-        "other": 0,
-        "taxRate": 0.175,
-        "minorities": 0,
-        "netCalc": 83607.2
-      },
-      "2029": {
-        "finNet": -1500,
-        "other": 0,
-        "taxRate": 0.175,
-        "minorities": 0,
-        "netCalc": 106010.0
-      },
-      "2030": {
-        "finNet": -1000,
-        "other": 0,
-        "taxRate": 0.175,
-        "minorities": 0,
-        "netCalc": 130556.3
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "EPS, GAAP diluted (Meta guides expenses/capex, not EPS)",
-      "comparedAgainst": "consensus",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-04-29",
-          "type": "guidance_revised",
-          "detail": "FY26 expenses 162-169bn; capex RAISED to 125-145bn (from 115-135bn); operating income guided above 2025; ETR 13-16% ex-one-offs."
-        },
-        {
-          "date": "2026-07-29",
-          "type": "guidance_revised",
-          "detail": "FY26 expenses raised to 165-169bn (incl. 2.4bn Q2 legal charges); capex tightened/raised to 130-145bn; rest-of-year ETR raised to 15-17%."
-        }
-      ],
-      "paceCheckpoint": "Q2 real: ad revenue +28% published / +27% cc (fastest in the industry per Zuckerberg); GAAP EPS missed consensus by 14.5%, integrally attributable to the 2.4bn legal charges.",
-      "weightedBeatPct": null,
-      "annualBeatPct": null,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Searched 19/08/2026: Meta guides expenses/capex only, never EPS, and no DATED early-2025 consensus snapshot surfaced (figures found are undated or post-revision; realized FY25 GAAP EPS 23.49) - excluded rather than estimated."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Same limitation (searched 19/08/2026): no dated early-2024 consensus snapshot archived."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 32.5,
-        "source": "initial_consensus",
-        "date": "2026-07-06",
-        "note": "Meta guides total expenses and capex, never EPS - the anchor is the sell-side consensus (45 analysts). Earliest ARCHIVED snapshot (06/07); the immediate post-FY25 initial consensus was not captured. Omnium 2026 EPS (28.27) sits deliberately BELOW this anchor: 2.4bn Q2 legal charges plus the D&A recalibration."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "No measurable fiscal year and no in-progress leg (the 32.5 anchor is a July consensus snapshot, not an initial print): annualBeatPct not computed. First verdict at the FY26 close vs the archived anchor.",
-      "consensusSource": "Sell-side consensus (S&P Global, 45 analysts)",
-      "consensusDate": "2026-07-06",
-      "inProgress": null
-    },
-    "revisionEvent": {
-      "date": "2026-07-29",
-      "label": "Q2 2026",
-      "type": "earnings"
-    },
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 6.43,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 7.14,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.05,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 8.88,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 10.44,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 6.18,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 5.55,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 6.1,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 6.63,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 7.07,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 7.36,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 8.39,
-          "actual": false
-        }
-      ],
-      "note": "Sequencage pose le 20/08/2026 (backfill E5-ter). Base = GAAP PUBLIE, comme l'annuel de la fiche : T3 2025 (1,05$) porte la charge fiscale one-off ~15,9 Md$ (OBBBA) et T1 2026 (10,44$) le benefice fiscal one-off +8,03 Md$ (+3,13$/action) - non retraites car la base annuelle Omnium (23,49 / 28,27) les conserve. H2 2026 volontairement bas (5,55/6,10) : la these Omnium (28,27 vs consensus 32,5) absorbe la montee des couts AI/depreciation."
-    }
-  },
-  "coherenceQualitative": {
-    "historique": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-29",
-        "source": "Q2 release/call (as exploited at the 30/07 refresh)",
-        "message": "Core ad engine exceptional (+28% revenue, fastest ad growth in the industry) while the investment cycle deepens: capex 130-145bn, expenses raised to 165-169bn including 2.4bn legal charges; the 14.5% GAAP EPS miss is integrally one-off-driven; D&A running far below the setup model (12.4bn S1 real vs ~18bn modeled) - the margin compression is DEFERRED, not avoided, and the model now phases it 2027-2028."
-      }
-    ]
+  {
+   "year": 2025,
+   "ca": 200966,
+   "ebit": 83280,
+   "net": 60458,
+   "shares": 2574,
+   "nd": -22850,
+   "div": 2.1
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 31.72,
+  "epsNY": 33.89,
+  "epsY2": 39.15,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 62 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 31.05)",
+  "analystsCount": 62
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "T3 2026",
+  "date": null
+ },
+ "ownership": {
+  "asOf": "2026-07-30",
+  "insiderPct": 13.0,
+  "insiderDesc": "Mark Zuckerberg (fondateur, Chairman & CEO) détient une participation économique minoritaire (~13% du capital, actions de classe A+B combinées) mais conserve le contrôle de vote majoritaire (~61% des droits de vote) via sa détention d'actions de classe B (10 voix/action) - structure de gouvernance à droits de vote différenciés classique des méga-caps tech fondateur-dirigées. Pas de rachat d'actions au T2 2026 (contrairement à 10,2 Md$ au T2 2025), la société privilégiant la préservation de cash/capacité d'endettement pour financer le capex.",
+  "insiderSource": "10-Q/10-K Meta Platforms (structure capitalistique classe A/B), communiqué T2 2026 (absence de rachats au trimestre) - proxy statement SEC comme source primaire pour les valeurs US.",
+  "notableHolders": [],
+  "coverageNote": "Titre coté aux Etats-Unis, périmètre 13F applicable - notableHolders non renseigné à ce stade, à enrichir lors d'un prochain refresh si pertinent pour ce dossier.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-30",
+  "items": [],
+  "note": "Aucune allégation de fraude comptable ou de tromperie des investisseurs identifiée à ce jour. Distinct des procès liés à la protection des mineurs (sécurité des utilisateurs, pas une allégation de fraude financière) mentionnés dans hypothese.text - hors périmètre de ce champ par définition, mais à surveiller comme risque de réputation/juridique majeur (2,4 Md$ de charges légales déjà comptabilisées au T2 2026)."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-09",
+   "eps": {
+    "2026": 29.57,
+    "2027": 28.17,
+    "2028": 33.44,
+    "2029": 41.34,
+    "2030": 50.33
+   }
+  },
+  "source": "Refresh T2 2026 - Communiqué complet des résultats T2 2026 (29/07/2026, incluant les états financiers condensés) + transcript intégral du call du même jour (Mark Zuckerberg/Susan Li, incluant la session Q&A complète) - sources primaires trouvées et confrontées au modèle de création (09/07/2026, basé sur le transcript T1 2026).",
+  "summary": "Le T2 2026 confirme le mécanisme central identifié à la création (explosion du capex → remontée différée de la D&A comprimant la marge) mais avec une ampleur et un calendrier significativement différents des estimations initiales : la D&A réelle du S1 2026 (12,4 Md$) est nettement inférieure à la trajectoire modélisée à la création (qui projetait ~36 Md$ sur l'année complète), ce qui améliore la marge à court terme mais implique probablement un rattrapage plus tardif et plus abrupt. Par ailleurs, le résultat opérationnel publié (-8% au T2) masque une réalité opérationnelle sous-jacente saine (+9% hors éléments non récurrents, selon la CFO elle-même) : la baisse est entièrement due à 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de départ (plan social de mai 2026), pas à une dégradation du métier publicitaire.",
+  "text": "== THESIS SUMMARY ==\nThe central bet stands: Meta is running the heaviest investment cycle in its history (FY26 capex 130-145bn) to fund AI, with deferred D&A that will mechanically compress operating margin for several years regardless of product success. This refresh's good news: the ad core remains exceptional (Q2 revenue +28%, fastest in the industry), and the GAAP EPS miss (-14.5% vs consensus) is integrally attributable to 2.4bn one-off legal charges, not the operating engine.\n\n== THESIS READ ==\n- D&A recalibrated on real data: S1 actual 12.4bn vs ~18bn modeled at setup -> FY26 ~27bn, then a LATER, STEEPER catch-up (40bn 2027, 55bn 2028, 62-65bn 2029-30). The compression is deferred, not avoided. Watch: D&A run-rate each quarter - the single most model-sensitive line.\n- FY26 EBIT anchored directly on guidance (revenue estimate minus guided total expenses at midpoint) rather than an independent margin assumption. Watch: any further expense-guidance creep from legal/regulatory items.\n- Net debt appears (capex exceeds FCF at peak): ~30bn 2026, peaking ~55bn 2027 before receding. Watch: bond issuance terms and buyback pace trade-off.\n\n== SPECIAL FACTORS ==\nPure GAAP base (no management-adjusted net exists). FY25 published net carries ~10bn of one-off tax charges (ETR 28.7% vs 16-17% normative) - the bridge documents it as residual; projections use normative rates (16.5% 2026, 17% 2027, 17.5% from 2028). EU DMA / US legal exposure remains the recurring one-off source.\n\n== PARAMETERS & WATCH-LIST ==\nRevenue +27% 2026 decelerating to +12% by 2030; EBIT margin trough 2027 (30%) then rebuild as D&A growth decelerates; shares -0.5%/yr net of SBC. Bridge finNet: interest on new debt net of cash yield. Watch: Reality Labs losses trajectory; ad pricing vs AI-capacity monetization evidence; consensus gap (Omnium 28.27 vs street 32.5 for 2026 - one-offs plus D&A phasing).\n\n== CATALYSTS ==\nQ3 (Oct); first AI-monetization disclosures; capex guidance for 2027 (Jan); legal-charge resolution.",
+  "impact": "neutre",
+  "ancrages": [
+   {
+    "id": "da_recalibree_donnees_reelles",
+    "moteur": "CORRECTION MAJEURE ce refresh (E6-a/E6-b) : la D&A reelle du S1 2026 (12,4 Md$, dont 6,36 Md$ au T2 seul) est nettement inferieure a la trajectoire du modele de creation (~18 Md$ attendus sur la meme periode selon le ratio de 50% du capex n-1 avec un an de decalage). Extrapolation FY2026 revisee a ~27 Md$ (vs ~36 Md$ a la creation), le decalage de mise en service des datacenters etant plus long qu'initialement suppose. Rattrapage plus marque et plus tardif projete sur 2027-2028 (40 Md$ puis 55 Md$) avant deceleration 2029-2030 (62 Md$ puis 65 Md$).",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "guidance_fy26_ancree",
+    "moteur": "EBIT FY2026 ancre directement sur la guidance officielle du T2 2026 : CA estime (~256 Md$, construit bottom-up S1 reel + guidance T3 + estimation T4) moins charges totales guidees (165-169 Md$, midpoint 167 Md$) = ~89 Md$ - methodologie plus robuste que la creation (qui partait d'une hypothese de marge independante). Coherent avec la reaffirmation explicite du management que le resultat d'exploitation FY2026 depassera FY2025 (83,28 Md$).",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "resultat_operationnel_sous_jacent_sain",
+    "moteur": "La CFO confirme explicitement que hors charges juridiques (2,4 Md$) et charges de depart du plan social de mai 2026 (1,2 Md$), le resultat operationnel T2 2026 aurait progresse de +9% sur un an (au lieu du -8% publie) - la baisse affichee est integralement imputable a des elements non recurrents identifies et quantifies, pas a une deterioration du coeur de metier publicitaire (CA publicitaire toujours en croissance la plus rapide de l'industrie selon Zuckerberg). Element qualitatif confirmant la robustesse du socle operationnel sous-jacent au capex/D&A.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "is_normatif_post_effet_ponctuel",
+    "moteur": "CORRECTION apres verification (le calcul initial de ce refresh appliquait par erreur le taux d'imposition REEL du S1 2026, lui-meme distordu par le benefice fiscal ponctuel de 8,03 Md$ du T1 2026 deja identifie a la creation - le S1 2026 publie affiche une PROVISION D'IMPOT NEGATIVE de -2 113 M$, soit un ETR implicite de -5,2%, contre ~16% au T2 seul hors cet effet). Taux d'imposition normatif desormais applique de maniere COHERENTE sur l'ensemble de FY2026 (17%, aligne sur le T2 seul et la guidance officielle 15-17%), plutot que de melanger le taux S1 reel distordu avec un taux S2 normatif - evite de reconduire artificiellement l'effet ponctuel T1 dans la projection annuelle. Taux maintenu a 17% pour 2027 puis 17,5% (2028-2030).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "bascule_dette_nette_recalibree",
+    "moteur": "Position de tresorerie/dette nette ENTIEREMENT RECALIBREE sur la base du bilan reel au 30/06/2026 (cash net residuel de 6,6 Md$ seulement, contre 22,9 Md$ modelise fin FY2025) : emission de 25 Md$ de dette long terme au seul T2 2026, rachats d'actions suspendus, CFO confirmant explicitement un virage structurel vers un financement davantage oriente dette. Bascule en dette nette projetee des fin FY2026 (compte tenu du capex S2 restant a engager pour atteindre la guidance 130-145 Md$), pic modelise en 2027, decrue ensuite a mesure que le capex ralentit et que le FCF se redresse avec la montee en charge de la D&A (non-cash) relativement au capex cash.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "actions_rachats_suspendus",
+    "moteur": "Rachats d'actions suspendus au T2 2026 (zero, contre 10,2 Md$ au T2 2025) dans un contexte de priorisation du financement du capex - trajectoire d'actions revisee a la baisse en termes de rythme de decroissance vs la creation (qui supposait une poursuite des rachats), nombre d'actions quasi stable a court terme avec une legere reprise de decroissance supposee a partir de 2028 une fois le pic du cycle d'investissement passe.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "basse"
+   }
+  ],
+  "dernierCall": {
+   "quarter": "T2 26",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 60801,
+     "consensus": 60260
+    },
+    "epsAdj": {
+     "actual": 6.18,
+     "consensus": 7.23,
+     "basis": "GAAP",
+     "basisNote": "GAAP dilue - miss de 14,5% du consensus sell-side (45 analystes). Le miss est integralement attribuable a 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de depart (plan social mai 2026), non anticipes a cette ampleur par le consensus ; hors ces elements, la CFO indique que le resultat operationnel aurait progresse de +9% sur un an."
+    }
+   },
+   "guidanceProchainTrimestre": "CA T3 2026 guide a 61-64 Md$ (headwind change ~1pt aux taux actuels).",
+   "guidanceAnnuelle": "Charges totales FY2026 relevees a 165-169 Md$ (vs 162-169 Md$), integrant les 2,4 Md$ de charges juridiques du T2. Capex FY2026 resserre/releve par le bas a 130-145 Md$ (vs 125-145 Md$). Taux d'imposition reste de l'annee releve a 15-17% (vs 13-16%). Resultat d'exploitation FY2026 toujours attendu superieur a FY2025 (83,28 Md$), reconfirme explicitement malgre les relevements de charges. AUCUNE guidance capex 2027 fournie.",
+   "pointsCles": [
+    "La CFO confirme explicitement que le resultat operationnel T2 aurait progresse de +9% hors charges juridiques/plan social - signal cle que la deterioration affichee de la marge (31% vs 43%) est largement due a des elements non recurrents plutot qu'a une degradation structurelle, meme si la remontee de la D&A (cout structurel et recurrent, lui, bien reel) continue de peser en parallele.",
+    "Advantage+ (suite d'outils publicitaires bout-en-bout alimentes par IA) atteint un rythme annualise de CA superieur a 75 Md$ - nouvelle metrique cle non disponible a la creation, donnant une taille concrete a la monetisation IA du coeur publicitaire.",
+    "Susan Li refuse explicitement de donner une guidance capex 2027 en Q&A (\"infrastructure planning remains highly dynamic\"), mais confirme que la planification actuelle vise a 'maximiser la capacite 2026 et 2027', signal qualitatif fort que le capex restera eleve en 2027 sans engagement chiffre - la flexibilite est explicitement reservee pour les decisions 2028+.",
+    "Virage de financement confirme par la CFO : mix davantage oriente dette (emission de 25 Md$ au T2 seul), exploration de structures de partenariat/JV hors bilan partiel (BlackRock, 1 GW a El Paso, Texas) en complement du cash-flow operationnel - Susan Li le presente comme une evolution deliberee de la structure de capital plutot qu'une necessite ponctuelle.",
+    "Zuckerberg reaffirme la conviction sur les agents personnels comme 'marche massif et quasi inevitable' a horizon 5 ans, tout en reconnaissant explicitement qu'aucun produit n'a encore ete lance a ce stade ('we haven't done that yet') - a distinguer des Business Agents (deja deployes, >1M entreprises/semaine) et de l'API Muse Spark (deja disponible, distribution en cours d'elargissement).",
+    "Nouveau flux de revenus 'Family of Apps Other' franchit pour la premiere fois le seuil du milliard de dollars sur un trimestre (+73% sur un an), porte par la messagerie payante et les abonnements WhatsApp - diversification naissante au-dela de la publicite pure."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "10-Q T2 2026 + communique (29/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA T2 60,80 Md$ (+28%), resultat operationnel 18,78 Md$, resultat net 15,85 Md$ (EPS dilue 6,18$). Trimestre charge en one-offs (provisions juridiques + severance de la reduction d'effectifs de mai) - pression AI/capex sur les marges."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-29",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Charges totales FY26 162-169 Md$ ; capex FY26 125-145 Md$ (releve depuis 115-135 Md$) ; resultat d'exploitation FY26 attendu superieur a 2025 ; taux d'imposition 13-16% hors effet ponctuel T1."
+   },
+   {
+    "quarter": "T2 26",
+    "date": "2026-07-29",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Charges totales FY26 relevees a 165-169 Md$ (integrant 2,4 Md$ de charges juridiques T2) ; capex FY26 resserre/releve a 130-145 Md$ ; taux d'imposition reste de l'annee releve a 15-17% ; resultat d'exploitation FY26 > FY25 reconfirme. Toujours aucune guidance capex 2027."
+   }
+  ],
+  "guidanceLongTerme": "Planification actuelle geree pour 'maximiser la capacite 2026 et 2027' (CFO, T2 2026) sans engagement chiffre au-dela de FY2026 - la flexibilite decisionnelle est explicitement reservee pour 2028 et au-dela, le management indiquant vouloir evaluer les besoins reels avant de s'engager sur des decisions de serveurs a plus long terme. Aucun objectif chiffre de marge ou de CA a moyen terme communique.",
+  "omniumCA": {
+   "2026": 256000,
+   "2027": 307200,
+   "2028": 356352,
+   "2029": 406241,
+   "2030": 455000
+  },
+  "omniumEBIT": {
+   "2026": 89000,
+   "2027": 92160,
+   "2028": 103342,
+   "2029": 129997,
+   "2030": 159250
+  },
+  "omniumNet": {
+   "2026": 72510,
+   "2027": 75248,
+   "2028": 83607,
+   "2029": 106010,
+   "2030": 130556
+  },
+  "omniumEPS": {
+   "2026": 28.27,
+   "2027": 29.45,
+   "2028": 32.92,
+   "2029": 42.07,
+   "2030": 52.22
+  },
+  "omniumND": {
+   "2026": 30000,
+   "2027": 55000,
+   "2028": 45000,
+   "2029": 25000,
+   "2030": 5000
+  },
+  "omniumShares": {
+   "2026": 2565,
+   "2027": 2555,
+   "2028": 2540,
+   "2029": 2520,
+   "2030": 2500
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 1500,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 70367.4,
+    "netPub": 60458,
+    "residual": -9909,
+    "residualNote": "FY25 published net carries a ~10bn one-off tax block (deferred-tax revaluation + Q4 legal/tax items): effective ETR ~28.7% vs 16-17% normative. The one-off detector fires by design; the normative bridge is the right base for projections."
+   },
+   "2026": {
+    "finNet": -1200,
+    "other": -960,
+    "taxRate": 0.165,
+    "minorities": 0,
+    "netCalc": 72511.4
+   },
+   "2027": {
+    "finNet": -2200,
+    "other": 700,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 75247.8
+   },
+   "2028": {
+    "finNet": -2000,
+    "other": 0,
+    "taxRate": 0.175,
+    "minorities": 0,
+    "netCalc": 83607.2
+   },
+   "2029": {
+    "finNet": -1500,
+    "other": 0,
+    "taxRate": 0.175,
+    "minorities": 0,
+    "netCalc": 106010.0
+   },
+   "2030": {
+    "finNet": -1000,
+    "other": 0,
+    "taxRate": 0.175,
+    "minorities": 0,
+    "netCalc": 130556.3
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS, GAAP diluted (Meta guides expenses/capex, not EPS)",
+   "comparedAgainst": "consensus",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-04-29",
+     "type": "guidance_revised",
+     "detail": "FY26 expenses 162-169bn; capex RAISED to 125-145bn (from 115-135bn); operating income guided above 2025; ETR 13-16% ex-one-offs."
+    },
+    {
+     "date": "2026-07-29",
+     "type": "guidance_revised",
+     "detail": "FY26 expenses raised to 165-169bn (incl. 2.4bn Q2 legal charges); capex tightened/raised to 130-145bn; rest-of-year ETR raised to 15-17%."
+    }
+   ],
+   "paceCheckpoint": "Q2 real: ad revenue +28% published / +27% cc (fastest in the industry per Zuckerberg); GAAP EPS missed consensus by 14.5%, integrally attributable to the 2.4bn legal charges.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Searched 19/08/2026: Meta guides expenses/capex only, never EPS, and no DATED early-2025 consensus snapshot surfaced (figures found are undated or post-revision; realized FY25 GAAP EPS 23.49) - excluded rather than estimated."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Same limitation (searched 19/08/2026): no dated early-2024 consensus snapshot archived."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 32.5,
+    "source": "initial_consensus",
+    "date": "2026-07-06",
+    "note": "Meta guides total expenses and capex, never EPS - the anchor is the sell-side consensus (45 analysts). Earliest ARCHIVED snapshot (06/07); the immediate post-FY25 initial consensus was not captured. Omnium 2026 EPS (28.27) sits deliberately BELOW this anchor: 2.4bn Q2 legal charges plus the D&A recalibration."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "No measurable fiscal year and no in-progress leg (the 32.5 anchor is a July consensus snapshot, not an initial print): annualBeatPct not computed. First verdict at the FY26 close vs the archived anchor.",
+   "consensusSource": "Sell-side consensus (S&P Global, 45 analysts)",
+   "consensusDate": "2026-07-06",
+   "inProgress": null
+  },
+  "revisionEvent": {
+   "date": "2026-07-29",
+   "label": "Q2 2026",
+   "type": "earnings"
+  },
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 6.43,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 7.14,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.05,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 8.88,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 10.44,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 6.18,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 5.55,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 6.1,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 6.63,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 7.07,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 7.36,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 8.39,
+     "actual": false
+    }
+   ],
+   "note": "Sequencage pose le 20/08/2026 (backfill E5-ter). Base = GAAP PUBLIE, comme l'annuel de la fiche : T3 2025 (1,05$) porte la charge fiscale one-off ~15,9 Md$ (OBBBA) et T1 2026 (10,44$) le benefice fiscal one-off +8,03 Md$ (+3,13$/action) - non retraites car la base annuelle Omnium (23,49 / 28,27) les conserve. H2 2026 volontairement bas (5,55/6,10) : la these Omnium (28,27 vs consensus 32,5) absorbe la montee des couts AI/depreciation."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-29",
+    "source": "Q2 release/call (as exploited at the 30/07 refresh)",
+    "message": "Core ad engine exceptional (+28% revenue, fastest ad growth in the industry) while the investment cycle deepens: capex 130-145bn, expenses raised to 165-169bn including 2.4bn legal charges; the 14.5% GAAP EPS miss is integrally one-off-driven; D&A running far below the setup model (12.4bn S1 real vs ~18bn modeled) - the margin compression is DEFERRED, not avoided, and the model now phases it 2027-2028."
+   }
+  ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 32.5,
+   "epsNY": 35.17,
+   "date": "2026-07-06",
+   "source": "Consensus sell-side (S&P Global / multiples agrégateurs), actualisé début juillet 2026 - ANTERIEUR au T2 2026 (publié 29/07/2026, EPS 6,18$ vs consensus trimestriel 7,23$, miss de 14,5%). A recouper au prochain refresh une fois le consensus FY2026 mis à jour post-publication."
+  }
+ ]
 }
