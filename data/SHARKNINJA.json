@@ -148,45 +148,86 @@
   "ancrages": [
    {
     "id": "revenue-growth-2026",
-    "mechanism": "Guidance FY2026 relevee au T1'26 : CA +11,5% a +12,5%, midpoint 12,0% retenu",
-    "scope": "omniumCA 2026",
-    "confidence": "haute"
+    "moteur": "Guidance FY2026 relevee au T1'26 : CA +11,5% a +12,5%, midpoint 12,0% retenu",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
    },
    {
     "id": "revenue-deceleration-2027-2030",
-    "mechanism": "Deceleration progressive 10%->6%, coherente avec la maturation post-hypercroissance et la croissance revenu consensus ~9,6%/an sur 3 ans (Simply Wall St)",
-    "scope": "omniumCA 2027-2030",
-    "confidence": "basse"
+    "moteur": "Deceleration progressive 10%->6%, coherente avec la maturation post-hypercroissance et la croissance revenu consensus ~9,6%/an sur 3 ans (Simply Wall St)",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "basse"
    },
    {
     "id": "ebit-margin-leverage",
-    "mechanism": "Expansion de la marge EBIT GAAP de +40 a +50pb/an, coherente avec le levier operationnel guide sur l'Adjusted EBITDA (+32pb en 2026), moderee par les pressions tarifaires",
-    "scope": "omniumEBIT 2026-2030",
-    "confidence": "moyenne"
+    "moteur": "Expansion de la marge EBIT GAAP de +40 a +50pb/an, coherente avec le levier operationnel guide sur l'Adjusted EBITDA (+32pb en 2026), moderee par les pressions tarifaires",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
    },
    {
     "id": "tax-rate-normalized",
-    "mechanism": "Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025",
-    "scope": "omniumNet 2026-2030",
-    "confidence": "haute"
+    "moteur": "Taux d'IS GAAP maintenu a 22,5% (milieu de la guidance 22%-23%), coherent avec les exercices 2024-2025",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
    },
    {
     "id": "sbc-intangible-reintegration",
-    "mechanism": "omniumNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)",
-    "scope": "omniumNet/omniumEPS 2026-2030",
-    "confidence": "moyenne"
+    "moteur": "omniumNet reintegre la SBC et l'amortissement des intangibles d'acquisition, exclus par l'Adjusted EPS du management (ecart ~0,50-0,55$/action vs consensus non-GAAP)",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030",
+     "omniumEPS.2026",
+     "omniumEPS.2027",
+     "omniumEPS.2028",
+     "omniumEPS.2029",
+     "omniumEPS.2030"
+    ],
+    "confiance": "moyenne"
    },
    {
     "id": "buyback-net-debt",
-    "mechanism": "Programme de rachat d'actions de 750M$ autorise fev.2026, demarre au T1'26 (deja +117M$ de dette nette sur le trimestre) ; inverse la tendance de desendettement 2023-2025",
-    "scope": "omniumND 2026-2030",
-    "confidence": "basse"
+    "moteur": "Programme de rachat d'actions de 750M$ autorise fev.2026, demarre au T1'26 (deja +117M$ de dette nette sur le trimestre) ; inverse la tendance de desendettement 2023-2025",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "basse"
    },
    {
     "id": "separation-oneoff-2022-2023",
-    "mechanism": "Correction des couts de transaction lies a la separation JS Global (2023 : 82,3M$ pretax), de la retenue a la source sur le dividende special (2023 : 19,5M$) et du bonus discretionnaire exceptionnel (2022 : 34,0M$ pretax) ; IS normalise a 22% sur les additions pretax",
-    "scope": "data 2022-2023 (ebit, net)",
-    "confidence": "haute"
+    "moteur": "Correction des couts de transaction lies a la separation JS Global (2023 : 82,3M$ pretax), de la retenue a la source sur le dividende special (2023 : 19,5M$) et du bonus discretionnaire exceptionnel (2022 : 34,0M$ pretax) ; IS normalise a 22% sur les additions pretax",
+    "applique": [
+     "ebit.2022",
+     "net.2022",
+     "ebit.2023",
+     "net.2023"
+    ],
+    "confiance": "haute"
    }
   ],
   "bridge": {
@@ -244,9 +285,14 @@
    "basisNote": "Consensus is on the adjusted street basis; the Omnium base is GAAP retreated only for true separation-related one-offs (2022 bonus, 2023 separation costs) - wedge documented.",
    "timeline": [
     {
-     "date": "2026-07-13",
-     "type": "vs_consensus",
-     "detail": "Snapshot at creation: 12 consecutive quarters of double-digit organic growth; international +31.6% in Q1 26 with the Europe/Mexico direct-sales transition completing by end-Q2 26."
+     "date": "2026-05-06",
+     "type": "guidance_revision",
+     "detail": "Q1 26 call: FY26 adjusted EPS guide raised to $6.00-6.10 (from initial $5.90-6.00, mid 5.95, set with the FY25 release on 2026-02-11); sales guide edged up. First raise of the year on Q1 momentum (international +31.6%)."
+    },
+    {
+     "date": "2026-08-05",
+     "type": "guidance_revision",
+     "detail": "Q2 26 call: FY26 guide raised hard - net sales +16-17% (from +11.5-12.5%), adjusted EPS $6.45-6.55 (from $6.00-6.10; only ~$0.15 of the $0.45 raise from the net $247.1M CBP tariff-refund benefit), adjusted EBITDA $1.36-1.37B (+19.5-20.5%). Second raise of the year; mid now 6.50 vs initial 5.95 (+9.2%)."
     }
    ],
    "paceCheckpoint": "Trajectory checkpoint at creation: organic double-digit streak intact; tariff mitigation (supply-chain shift out of China) executing.",
@@ -373,7 +419,8 @@
     "quarter": "Q1 26",
     "date": "2026-07-13",
     "source": "Creation-refresh sourcing (public filings/aggregators)",
-    "message": "Post-JS-Global-spin profitable-growth thesis: 12 consecutive quarters of double-digit organic growth on product innovation (Ninja Luxe Cafe, Crispi, Shark PowerDetect) and international acceleration (+31.6% Q1 26) with the Europe/Mexico distributor-to-direct transition completing by end-Q2 26; separation-era one-offs retreated from 'data' (2022 discretionary bonus 34M pretax; 2023 separation costs 82.3M + 19.5M withholding) with published figures kept in-fiche for audit traceability."
+    "message": "Post-JS-Global-spin profitable-growth thesis: 12 consecutive quarters of double-digit organic growth on product innovation (Ninja Luxe Cafe, Crispi, Shark PowerDetect) and international acceleration (+31.6% Q1 26) with the Europe/Mexico distributor-to-direct transition completing by end-Q2 26; separation-era one-offs retreated from 'data' (2022 discretionary bonus 34M pretax; 2023 separation costs 82.3M + 19.5M withholding) with published figures kept in-fiche for audit traceability.",
+    "format": "compresse"
    }
   ]
  },
