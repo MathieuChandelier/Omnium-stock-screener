@@ -560,5 +560,16 @@
    "date": "2026-07-22",
    "source": "Simply Wall St / S&P Global (Visible Alpha) - base GAAP, forte volatilite liee aux gains de reevaluation Anthropic/SpaceX (+28.7 Mds$ T1 26, +77.1 Mds$ T2 26) : non comparable directement a omniumEPS Omnium qui les exclut integralement, voir ancrage equity_gains_exclusion"
   }
- ]
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 5.61,
+   "2022": 4.56,
+   "2023": 5.8,
+   "2024": 8.04,
+   "2025": 10.81
+  }
+ }
 }

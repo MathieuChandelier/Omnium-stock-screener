@@ -292,6 +292,49 @@ def c25():
         if abs(base-tgt)>0.08: bad.append((tk,f'base {base:.2f} vs data {tgt:.2f}'))
     return bad
 
+@check("W9  ~ realises fiche vs realises externes (externalActuals, ±8%)")
+def w9():
+    # Confirmation MULTI-SOURCES des donnees critiques (20/08/2026, suite
+    # au cas Sartorius : une estimation interne coherente traverse toute
+    # la batterie). La boucle consensus STOCKE les realises MarketScreener/
+    # Zonebourse dans externalActuals ; ce check recoupe les annees
+    # communes avec data.net/shares (base Omnium annuelle, reconvertie en
+    # PUBLIE via les impacts PY). Trois familles, priorisees :
+    #   [PY?]   ecart PY SANS pont documente (ni retraitements ni
+    #           quarterlyEPS.note) -> suspect de classe Sartorius, a
+    #           reconcilier au refresh du titre EN PRIORITE ;
+    #   [PY~]   ecart PY couvert par une note -> verifier une fois que la
+    #           note explique bien l ecart ;
+    #   [hist]  ecart d annee historique (base retraitee vs publie, pas
+    #           d impacts machine-readables par construction) -> a
+    #           documenter au fil de l eau.
+    # Tolerance 8% relative ET 0.08 absolu (actions moyennes ponderees,
+    # perimetres retraites cote agregateur). W tant que la premiere passe
+    # de reconciliation n est pas terminee ; se DURCIT ensuite en C26
+    # bloquant sur la famille [PY?] (voir doctrine).
+    bad=[]
+    for tk,t in FICHES.items():
+        ext=((t.get('externalActuals') or {}).get('eps')) or {}
+        if not ext: continue
+        rows=t.get('data') or []
+        qe=t['hypothese'].get('quarterlyEPS') or {}
+        py=qe.get('PY') or []
+        pyImp=sum(float(r.get('impact') or 0) for pr in py for r in (pr.get('retraitements') or []))
+        hasNote=bool((qe.get('note') or '').strip())
+        pyYear=rows[-1]['year'] if rows else None
+        for row in rows:
+            y=str(row.get('year'))
+            if y not in ext or not row.get('shares'): continue
+            base=row['net']/row['shares']
+            isPY=row.get('year')==pyYear
+            pub=base-(pyImp if isPY else 0)
+            ms=float(ext[y])
+            if abs(pub-ms)>0.08 and abs(pub-ms)/max(abs(ms),0.5)>0.08:
+                fam='[PY?]' if (isPY and not pyImp and not hasNote) else ('[PY~]' if isPY else '[hist]')
+                bad.append((tk,f"{fam} {y}: fiche (publie) {pub:.2f} vs externe {ms:.2f}"))
+    bad.sort(key=lambda x: 0 if '[PY?]' in x[1] else (1 if '[PY~]' in x[1] else 2))
+    return bad
+
 @check("W7  ~ fraicheur : consensus >45j, nextEvent passe, inProgress >120j")
 def w7():
     # Classe A4/A5/A9 de l audit 20/08 : les champs dates vieillissent en

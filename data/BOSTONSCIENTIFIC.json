@@ -546,5 +546,16 @@
    "date": "2026-07-29",
    "source": "Base management ADJUSTED (pas la base normalisee Omnium) : point median de la guidance FY2026 relevee/abaissee le 29/07 (3,28-3,32$), qui a immediatement remplace le consensus analystes pre-publication (~3,35$, desormais obsolete). epsNY = estimation Omnium d'une croissance limitee 2027 (~+4%) faute de consensus 2027 public frais a cette date ; a reverifier au prochain refresh."
   }
- ]
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 0.69,
+   "2022": 0.45,
+   "2023": 1.07,
+   "2024": 1.25,
+   "2025": 1.94
+  }
+ }
 }

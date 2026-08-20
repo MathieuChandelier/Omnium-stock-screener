@@ -489,5 +489,16 @@
    "date": "2026-07-21",
    "source": "ChartMill/FactSet (post-Q2 2026) pour FY26 ; WallStreetZen (7 analystes) pour FY27, ordre de grandeur"
   }
- ]
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 0.81,
+   "2022": 0.9375,
+   "2023": 1.418,
+   "2024": 1.732,
+   "2025": 2.22
+  }
+ }
 }
