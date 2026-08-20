@@ -178,15 +178,21 @@
      "consensus": 2.76,
      "basis": "GAAP",
      "basisNote": "GAAP"
+    },
+    "epsReported": {
+     "actual": 2.61,
+     "basis": "IFRS",
+     "period": "T2 26",
+     "note": "IFRS diluted EPS in EUR. Spotify reports in EUR (IFRS): Q2 26 net income EUR 545M over ~209M diluted shares gives ~EUR 2.61. Consistent with the Seeking Alpha USD print of $3.01 (missed consensus by $0.22) converted at the ~1.1492 USD/EUR rate used elsewhere in this file. Shareholder-deck line-item cross-check still pending (deck not re-fetched on 2026-08-20)."
     }
    },
-   "guidanceProchainTrimestre": "T3 26 : CA ~5,0 Md€ (+14% YoY), marge brute 32,9%, OI 670 M€ (incluant 9 M€ de charges sociales estimees), MAU 788M (+11M), abonnes Premium 305M (+5M).",
-   "guidanceAnnuelle": "Pas de guidance annuelle chiffree formelle sur marge brute/operationnelle (le management ne guide qu'au trimestre), mais amelioration de la marge brute et operationnelle attendue sur l'exercice complet 2026, avec ~200 M€ de surcout marketing/IA concentre sur T2-T3 puis moderation au T4 - confirme sans revision vs la guidance donnee au T1 et a l'Investor Day.",
+   "guidanceProchainTrimestre": "Q3 26: revenue ~EUR 5.0bn (+14% YoY, ARPU consistent with Q2, improving ad growth still expected to inflect toward double digits in H2 26); gross margin 32.9% (+130bp YoY, includes new-product reinvestment and the recurring Q3 regulatory-fee charge in one market); operating income EUR 670M with temporarily elevated opex (Q3 opex growth roughly consistent with Q2 ex-FX and social charges); MAU 788M (+11M, deliberately dampened by the emerging-markets monetization pivot, developed-markets growth stable); Premium subscribers 305M (+5M net, no near-term subscriber impact expected from the free-tier friction).",
+   "guidanceAnnuelle": "No formal full-year numeric guidance (Spotify guides one quarter ahead), but management reiterated - unchanged vs Q1 and the May Investor Day - that both gross margin and operating margin improve for full-year 2026 despite ~EUR 200M of incremental marketing/AI opex concentrated in Q2-Q3 (compute and marketing only, headcount flat, framed as fully controllable and reversible), with a moderation in year-over-year opex growth in Q4; meaningful year-over-year FCF growth in 2026 reconfirmed; ads business still expected to inflect toward double-digit growth in H2 26; 2030 Investor Day targets (mid-teens revenue CAGR, 35-40% gross margin, >20% operating margin, strong FCF growth) reaffirmed.",
    "pointsCles": [
-    "300 millions d'abonnes Premium franchis pour la premiere fois (+7M sur le trimestre, au-dessus de la guidance), MAU 777M (+16M, 1M sous la guidance) ; CA 4 777 M€ (+14% YoY publie, +15% YoY a change constant, accélération vs +14% au T1), marge brute record 33,4% (+193pb YoY).",
-    "EPS actual 2,61€ en dessous du consensus 2,76€ (-5,4%), action -5,9% a l'annonce - l'ecart provient d'elements sous la ligne d'exploitation (OI 655 M€ deja 25 M€ AU-DESSUS de la guidance), pas d'une deception operationnelle : normalisation post-remboursement des notes et fiscalite plutot qu'un signal de deterioration du coeur de metier.",
-    "Rachats d'actions accélérés : 662 M$ rachetes depuis le debut de l'annee au 3 aout (+30% vs rythme 2025), ~2,2M d'actions rachetees au total depuis la reprise du programme en 2025 (~1% des actions en circulation) ; aucune dette hors obligations locatives, 9,4 Md€ de tresorerie.",
-    "Guidance T3 26 : MAU 788M, abonnes Premium 305M, CA ~5,0 Md€, marge brute 32,9%, OI 670 M€ - management reaffirme explicitement la trajectoire d'investissement 2026 (~200 M€ de surcout marketing/IA) et sa moderation attendue au T4 et en 2027, deja annoncee a l'Investor Day de mai."
+    "300M Premium subscribers crossed for the first time (+7M net, 1M above guidance, growth across all regions); MAU 777M (+12% YoY, +16M net but 1M below forecast); revenue EUR 4.8bn, +15% YoY constant currency accelerating from +14% in Q1 (Premium +16% cc on subs +9% and ARPU +7.4%; ads +3% cc with automated channels at ~40% of ad revenue vs ~30% in Q1 and 33,000 active advertisers, +60% YoY).",
+    "Record gross margin 33.4% (+193bp YoY, 30bp above guidance, helped by a one-time Canadian digital-services-tax accrual reversal); operating income EUR 655M, EUR 25M above the 630M guide (EUR 16M ex favorable social charges), 13.7% operating margin; diluted EPS EUR 2.61 ($3.01) below consensus - the miss sits below the operating line, not in the core business; FCF EUR 797M (+14% YoY); EUR 9.4bn cash, no debt beyond leases; $662M buybacks YTD through Aug 3 (+30% vs 2025 pace, ~1% of shares retired since the 2025 restart) and management now expects recurring cash returns even alongside M&A.",
+    "Deliberate emerging-markets monetization pivot: added friction in the free tier (ad load, feature limits), sign-up screening and low-end Android deprecation in markets like India/Indonesia will dent Q3 MAU (guided 788M, +11M) but management explicitly expects no near-term impact on subscriber growth (Q3 guided 305M, +5M), replaying the LatAm free-to-paid conversion curve.",
+    "Monetization stack thickens beyond price rises: Audiobooks+ passed $100M ARR and has doubled since last disclosure in only a few markets; Reserved (Live Nation, US-only) booked ~100,000 tickets with sold-out allocations upsized mid-tour; AI products reach ~25% of actives (Prompted Playlists 14M of first 100M users, Large Taste Model measurably lifting active days); Merlin deal (30,000 indie labels) joins UMG for consented AI covers/remixes with a public research preview as next step; internal AI tooling (Honk/Chirp) keeps headcount flat for a third year with revenue per employee on track to double."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -448,7 +454,7 @@
    "timeline": [
     {
      "date": "2026-08-04",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "Q2 26: full-year gross and operating margin improvement expected DESPITE ~200M marketing/AI surcost concentrated Q2-Q3, moderation expected in Q4."
     }
    ],

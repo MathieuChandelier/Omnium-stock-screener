@@ -191,15 +191,21 @@
           "consensus": null,
           "basis": "GAAP",
           "basisNote": "GAAP"
+        },
+        "epsReported": {
+          "actual": 11.64,
+          "basis": "IFRS",
+          "period": "S1 26",
+          "note": "H1 26 reported IFRS EPS derived from published quarterly figures (Q1 5.21 EUR + Q2 6.43 EUR), implying ~132M EUR H1 net income - consistent with H1 EBIT of 170M EUR at a ~24-25% effective tax rate. Net income/EPS not restated in the earnings call itself."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (RATIONAL ne communique qu'une guidance annuelle).",
-      "guidanceAnnuelle": "Croissance CA maintenue en fourchette mid-to-high single-digit. Marge EBIT FY2026 desormais visee vers le haut de la fourchette 25-26% (contre une fourchette large sans positionnement precis lors du call T1), grace au remboursement de tarifs douaniers US comptabilise au T2.",
+      "guidanceProchainTrimestre": "No quantified quarterly guidance (RATIONAL guides on a full-year basis only). For H2, management points to the elevated order backlog (+EUR 10-15M at end-June) as support, expects North America to keep growing 10-15% in line with the long-term outlook, and sees German momentum continuing although the exceptional H1 pace may not be sustained; COGS inflation (~9% ex-one-off) expected to persist.",
+      "guidanceAnnuelle": "FY26 revenue growth guidance maintained at mid-to-high single-digit percent. EBIT margin now expected toward the TOP of the 25-26% corridor (vs an unpositioned band at the Q1 call), thanks to the ~EUR 14M refund of overpaid US tariffs booked in Q2. Gross margin still expected slightly below prior year (raw-material and logistics costs trending up again, full-year FX and tariff headwinds, buffered by the refund). Full-year 2026 US tariff cost seen at ~EUR 28-29M with H2 slightly below H1 on reduced rates; 2027 burden expected EUR 2-3M higher on US volume growth at an average tariff rate of ~14%, with a modest price increase under consideration if efficiency gains cannot absorb the extra costs.",
       "pointsCles": [
-        "EBIT T2 26 a 94,0 M€ (+16% YoY), tres nettement au-dessus du consensus (87,0 M€), porte par le remboursement de ~14 M€ de tarifs douaniers US indument percus, comptabilise en produit operationnel extraordinaire ce trimestre - marge EBIT T2 a 29,0% (vs 26,1% un an plus tot, consensus 26,6%). Hors remboursement, la marge S1 se serait etablie a 24,3%, conforme a la guidance.",
-        "CA T2 26 legerement en dessous du consensus (323,9 M€ vs 327 M€ attendu), lie au reflux de l'effet de pre-achat americain du T1 (6-8 M€, lie a une hausse de prix de fevrier) qui ne s'est pas repete - dynamique sous-jacente jugee conforme aux attentes par le management, Amerique du Nord toujours a +10% en change constant sur le semestre.",
-        "Carnet de commandes en hausse de 10 a 15 M€ vs les trimestres precedents suite a un fort flux de commandes en juin (Etats-Unis, Allemagne, Canada en tete), non entierement livre avant la fin du trimestre - signal positif explicitement cite par le management pour le S2 2026.",
-        "Chine toujours en repli net (zone Asie -2% globalement, Chine -25% YoY), lie au desengagement de Yum China (KFC) vers un sourcing local ; lancement de l'iCombi One en cours avec equipe commerciale dediee en place et un premier contrat grand compte deja securise."
+        "Q2 26 EBIT of EUR 94.0M (+16% YoY) came in well above consensus (EUR 87.0M), boosted by a ~EUR 14M one-off refund of overpaid US tariffs booked as extraordinary operating income in the quarter - Q2 EBIT margin 29.0% (vs 26.1% a year earlier, consensus 26.6%); excluding the refund, H1 margin stands at 24.3%, fully in line with FY guidance.",
+        "Q2 revenue slightly below consensus (EUR 323.9M vs 327M expected, +4% YoY) as the Q1 US pre-buying effect (EUR 6-8M pulled forward ahead of the February price increase) reversed; underlying demand judged in line with expectations by management, with North America still +10% FX-adjusted over the half and H1 group revenue at EUR 642M (+8% organic).",
+        "Order backlog up EUR 10-15M versus prior quarter-ends after a strong June order intake (US, Germany and Canada leading) that could not be fully shipped before quarter-end - explicitly cited by management as support for H2 2026, alongside 10-15% expected North America growth and continuing German momentum.",
+        "China still down sharply (-25% YoY, Asia -2% overall) on Yum China/KFC shifting to local combi-oven sourcing; iCombi One entry-model response under way (dedicated sales team in place, new dealers won every month, first key-account contract secured), while input-cost pressure builds (~9% COGS inflation ex-refund: alloy surcharges, electronics, +3.8% German wage round) with no short-term relief expected."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -455,7 +461,7 @@
       "timeline": [
         {
           "date": "2026-08-06",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26 reaffirmed (3rd time): revenue mid-to-high SD; EBIT margin toward the top of 25-26% (incl. ~14M US tariff refund booked in Q2)."
         }
       ],

@@ -76,7 +76,8 @@
     "items": [
       {
         "text": "Sanction de l'Autorite de la concurrence francaise (decision du 29/10/2024) : amende de 207 M€ visant plusieurs acteurs de la distribution electrique en France, dont Schneider Electric, pour avoir limite l'autonomie tarifaire de certains distributeurs (pratiques anticoncurrentielles sur le marche de la distribution commerciale). Amende payee en avril 2025. Schneider Electric conteste fermement les conclusions de l'Autorite et a fait appel devant la Cour d'appel de Paris - procedure en cours, issue non connue a ce stade. Provision de 104 M€ maintenue au bilan (ecart avec le montant paye, lie a la contestation), actif financier de 207 M€ comptabilise dans l'attente de l'issue de l'appel. Egalement : mise en examen par un juge d'instruction le 07/10/2022 dans le meme dossier (garantie bancaire de 20 M€ desormais expiree, garantie en especes de 80 M€ maintenue) - procedure contestee, en cours.",
-        "valuePct": null
+        "valuePct": null,
+        "status": "condamnation"
       }
     ],
     "note": "Il s'agit d'une sanction pour pratiques anticoncurrentielles (droit de la distribution/concurrence), PAS d'une allegation de fraude comptable ou de tromperie des investisseurs/consommateurs au sens strict du champ compliance tel que defini pour ce portefeuille - inclus ici par prudence et transparence compte tenu de son caractere financierement quantifie et toujours conteste en appel. A retirer de ce champ si le protocole considere que ce type de contentieux de droit de la concurrence est hors perimetre ; conserve pour l'instant en 'cumulative ledger' par analogie avec le traitement applique au litige fiscal Lagfin sur le ticker Campari (matiere connexe mais distincte de l'entite elle-meme)."
@@ -98,17 +99,21 @@
           "consensus": null,
           "basis": "non-GAAP",
           "basisNote": "BPA dilue ajuste S1 26 publie (4,79€, +21% publie / +28,5% organique vs S1 25). Consensus specifique au S1 non retrouve de facon fiable dans les sources consultees (une estimation pre-publication de 5,16€ trouvee sur ChartMill semble porter sur un perimetre trimestriel different, non cadree avec les chiffres publies - non retenue). Le marche a globalement salue la publication (action +6 a +7% le jour meme) et plusieurs commentateurs (Simply Wall St notamment) notent des resultats 'conformes aux attentes deja relevees', suggerant un beat modeste plutot qu'une surprise majeure."
+        },
+        "epsReported": {
+          "actual": 4.42,
+          "basis": "IFRS",
+          "period": "S1 26",
+          "note": "IFRS basic EPS as published in the H1 2026 financial statements: EUR 4.42 vs EUR 3.41 in H1 2025 (net income group share EUR 2,488m, +30% reported). Distinct from the adjusted diluted EPS of EUR 4.79 tracked in epsAdj (non-GAAP). Source: Schneider Electric 2026 half-year financial statements (via MarketScreener), cross-checked 2026-08-20 against the full Seeking Alpha transcript (article 4927500)."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (le groupe guide sur l'annee pleine). Signal qualitatif du CFO : marge EBITA ajustee S2 26 attendue 'relativement stable' en organique vs S2 25 (l'essentiel du benefice de phasage des couts/marge du S1 ne se repetant pas a l'identique au S2).",
-      "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee de 7-10% a 10-13% ; expansion organique de la marge EBITA ajustee portee de 50-80pb a 70-100pb (marge implicite ~19,4%-19,7% perimetre et change inclus, contre 19,1%-19,4% en fevrier). Taux d'imposition effectif attendu 23-25% (inchange). Cible moyen terme 2026-2030 (CMD 2025) confirmee sans changement : croissance organique du CA +7% a +10%/an, expansion cumulee de la marge EBITA ajustee de +250pb sur la periode, conversion de cash-flow ~100% en moyenne sur le cycle.",
+      "guidanceProchainTrimestre": "No quarterly guidance (the group guides on the full year; next print is Q3 26 revenue on 2026-10-15). Qualitative H2 signals from the call: H2 margin phasing mechanically less favorable than H1 (productivity comparison base gets tougher - more than 70% of FY25 productivity was delivered in H2 2025 - and the EUR 100m Q2 tariff refund does not repeat); if the June price run-rate is repeated in H2, pricing would fully offset raw-material inflation plus tariffs in value; services growth contribution expected to improve in H2; Middle East uncertainty remains a headwind for both businesses in H2 26; 'triple 4' expected - all 4 end markets, 4 business models and 4 regions contributing.",
+      "guidanceAnnuelle": "FY26 RAISED at H1 (2026-07-30): organic revenue growth lifted to +10% to +13% (from +7/+10% set in February) and organic adjusted-EBITA margin expansion lifted to +70 to +100bps (from +50/+80bps), implying organic adjusted-EBITA growth of +14% to +19% and an implied margin of ~19.4-19.7% including scope and FX (vs ~19.1-19.4% in February). Cash conversion expected around 100%; effective tax rate 23-25% unchanged; FX impact of c.EUR -450/500m on FY revenue at current rates with negligible margin impact; restructuring charges peaking at ~EUR 450m in 2026 (unchanged total envelope). Mid-term CMD 2025 frame confirmed unchanged: +7% to +10% organic revenue growth per year and +250bps cumulative organic adj-EBITA margin expansion over 2026-2030, with ~100% average cash conversion.",
       "pointsCles": [
-        "Croissance organique record au S1 26 (+14,0%, CA 21 226 M€) avec acceleration au T2 (+16,5% organique, record trimestriel) - Energy Management +15,4% (demande datacenters/IA toujours tres forte), Industrial Automation +7,7% (reprise du Discrete automation, AVEVA en croissance a un chiffre eleve, ARR +11%).",
-        "Guidance FY26 relevee des le S1 sur la croissance ET la marge - signal de confiance fort du management, la marge EBITA ajustee S1 26 (19,3%, +120pb organique) ayant deja depasse les attentes malgre un mix defavorable (forte croissance des Systems, moins margee que les Products/Software a court terme).",
-        "Deux acquisitions structurantes annoncees fin juin 2026 : Cognite (plateforme IA/donnees industrielles, 3,1 Md$, integration a AVEVA/Industrial Automation) et AiDASH (IA climatique/vegetation pour infrastructures critiques, ~350 M$ EV, integration a Energy Management) - toutes deux financees par la dette, clotures attendues 'dans les prochains trimestres'.",
-        "Operation de gestion de passif sur les OCEANE : rachat de 94% de l'encours OCEANE 2030 concomitant a l'emission d'une nouvelle OCEANE 2034 (850 M€ a 0,25%) - allongement du profil de maturite de la dette convertible.",
-        "Contentieux avec l'Autorite de la concurrence francaise toujours en appel (amende de 207 M€ payee en 2025, provision de 104 M€ inchangee) - Schneider Electric maintient sa contestation.",
-        "Restructuration en acceleration attendue (pic cumule de 500 M€ vise sur 2025-2027, au-dessus du rythme normatif de 100-150 M€/an) - lie a la simplification du portefeuille d'offres Industrial Automation, 127 M€ deja constates au S1 26."
+        "Record H1 26: revenue EUR 21.2bn, +14.0% organic (Q2 +16.5%, best quarter ever at EUR 11.5bn) - Energy Management +15.4% (Q2 +18%) on data-center/AI demand with triple-digit semicon growth, Industrial Automation +7.7% (Q2 +11%) as discrete recovers and process turned positive; systems +28% in Q2 and the three largest markets (US, China, India) all growing around or above 20%.",
+        "Profitability inflection: adjusted EBITA EUR 4.1bn (+22% organic), margin 19.3% (+120bps organic; EM +100bps, IA +50bps) with gross margin 42.5% (+10bps) despite adverse systems mix - driven by EUR 535m industrial productivity, EUR 280m product pricing (price realization 2.5x in Q2 vs Q1, ~4pts of product growth) and SFC/sales down 1.1pt; net income EUR 2.5bn (+30%, IFRS basic EPS 4.42), record H1 FCF of EUR 1.6bn, ~100% FY cash conversion expected.",
+        "FY26 guidance RAISED on both axes at H1 (organic revenue to +10/13% from +7/10%; organic adj-EBITA margin expansion to +70/100bps from +50/80bps, i.e. +14/19% organic adj-EBITA growth) - management flags a tougher H2 productivity comparison base (>70% of FY25 productivity was delivered in H2), Middle East volatility and a c.EUR -450/500m FY FX headwind on revenue (negligible margin impact); EUR 100m Q2 tariff refunds flattered H1 (net tariff impact -104m in the bridge).",
+        "Portfolio and capacity acceleration for the AI cycle: Cognite (data foundation + Atlas AI agentic layer, signed pre-closing) and AiDASH acquisitions, Kraken grid-flexibility and SoftBank France AI-infrastructure partnerships (new prefab plant committed), Foxconn prefab capacity in North America, Motivair liquid cooling extended to Italy and India, high-density power-rack/power-center architectures in industrialization; IA turnaround on track toward 18% margin by 2028 (capitalized-R&D write-off taken, AVEVA subscription transition near completion); EUR 250m buybacks executed, restructuring to peak at ~EUR 450m in 2026."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -316,7 +321,7 @@
       "timeline": [
         {
           "date": "2026-07-30",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26 RAISED: organic revenue to +10/+13% (from +7/+10%); organic adj-EBITA margin expansion to +70/+100bp (implied ~19.4-19.7%)."
         }
       ],
@@ -415,7 +420,8 @@
         "quarter": "H1 26",
         "date": "2026-07-30",
         "source": "Communique + transcript (as exploited at the 04/08 refresh)",
-        "message": "FY26 guidance RAISED on both axes (organic revenue to +10/13% from +7/10%; adj-EBITA margin expansion to +70/100bp) on datacenter-driven demand; H1 adjusted diluted EPS 4.79, +21% published / +28.5% organic; the 'ebit' base is Adjusted EBITA (management's explicit steering metric), net is IFRS group share - the below-EBITA wedge (PPA, restructuring) is carried explicitly in the bridge."
+        "message": "FY26 guidance RAISED on both axes (organic revenue to +10/13% from +7/10%; adj-EBITA margin expansion to +70/100bp) on datacenter-driven demand; H1 adjusted diluted EPS 4.79, +21% published / +28.5% organic; the 'ebit' base is Adjusted EBITA (management's explicit steering metric), net is IFRS group share - the below-EBITA wedge (PPA, restructuring) is carried explicitly in the bridge.",
+        "format": "compresse"
       }
     ]
   }
