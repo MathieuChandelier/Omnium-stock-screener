@@ -139,6 +139,11 @@
      "consensus": null,
      "basis": "non-GAAP",
      "basisNote": "non-GAAP"
+    },
+    "epsReported": {
+     "actual": 0.96,
+     "basis": "IFRS",
+     "period": "T2 26"
     }
    },
    "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie (guidance annuelle uniquement).",
@@ -281,7 +286,7 @@
    }
   ],
   "omniumEPS": {
-   "2026": 4.35,
+   "2026": 4.24,
    "2027": 5.28,
    "2028": 6.3,
    "2029": 7.46,
@@ -302,7 +307,7 @@
    "2030": 1130
   },
   "omniumNet": {
-   "2026": 400,
+   "2026": 390,
    "2027": 486,
    "2028": 580,
    "2029": 686,
@@ -324,41 +329,71 @@
   },
   "guidanceLongTermeHistory": [],
   "quarterlyEPS": {
-   "cadence": "semestriel",
+   "cadence": "trimestriel",
    "historique": [],
    "PY": [
     {
-     "label": "H1",
-     "eps": 1.54,
+     "label": "T1",
+     "eps": 0.88,
      "actual": true
     },
     {
-     "label": "H2",
-     "eps": 1.35,
+     "label": "T2",
+     "eps": 0.7,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.66,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.65,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "H1",
-     "eps": 1.98,
+     "label": "T1",
+     "eps": 0.91,
      "actual": true
     },
     {
-     "label": "H2",
-     "eps": 2.37,
+     "label": "T2",
+     "eps": 0.96,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.18,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.19,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "H1",
-     "eps": 2.4,
+     "label": "T1",
+     "eps": 1.18,
      "actual": false
     },
     {
-     "label": "H2",
-     "eps": 2.88,
+     "label": "T2",
+     "eps": 1.22,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 1.42,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.46,
      "actual": false
     }
    ]
@@ -376,10 +411,11 @@
    },
    "2026": {
     "finNet": -105,
-    "other": 0,
+    "other": -13,
     "taxRate": 0.26,
     "minorities": 0,
-    "netCalc": 399.6
+    "netCalc": 390.0,
+    "residualNote": "FY26 realigned on H1-26 REPORTED IFRS (EPS 0.91+0.96=1.87 vs 1.98 modeled): ~13M of extraordinary items kept in reported net profit (underlying-to-reported wedge observed in H1), carried in 'other'. H2 Omnium estimate unchanged."
    },
    "2027": {
     "finNet": -90,

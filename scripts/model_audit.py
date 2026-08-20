@@ -126,6 +126,37 @@ for tk, d in FICHES.items():
         except ValueError:
             add('A9 scorecard inProgress sans asOf', tk, '')
 
+# ── A11 : actual non reconcilie avec le reported du dernier call ──
+# Cas SARTORIUSSTEDIM (20/08/2026) : une ESTIMATION marquee "actual" a
+# survecu aux resultats (H1 saisi 1.98, reported IFRS 1.86). Quand
+# dernierCall porte un epsReported date d'une periode, l'actual de la
+# MEME periode dans quarterlyEPS doit lui etre egal (±0.02, base
+# publiee : publishedOf = eps - somme des impacts).
+for tk in FICHES:
+    d = FICHES[tk]
+    h = d.get('hypothese') or {}
+    rep = ((h.get('dernierCall') or {}).get('resultatsVsConsensus') or {}).get('epsReported') or {}
+    per = str(rep.get('period') or '')
+    try:
+        val = float(rep.get('actual'))
+    except (TypeError, ValueError):
+        val = None
+    if val is None or not per:
+        continue
+    lab = per.split()[0]
+    q = h.get('quarterlyEPS') or {}
+    # Le reported du call date de l'exercice EN COURS : le recoupement ne
+    # vaut que pour CY (PY porte les memes labels T1..T4, autre annee).
+    for k in ('CY',):
+        for pr in (q.get(k) or []):
+            if not isinstance(pr, dict) or pr.get('label') != lab or not pr.get('actual'):
+                continue
+            adj = sum(float(r.get('impact') or 0) for r in (pr.get('retraitements') or []))
+            pub = float(pr.get('eps') or 0) - adj
+            if abs(pub - val) > 0.02:
+                add('A11 actual non reconcilie avec le reported du call', tk,
+                    f'{k} {lab} publie fiche {pub:.2f} vs reported call {val:.2f}')
+
 # ── A10 : priceHistory manquant ──
 try:
     PH = json.load(open('data/priceHistory.json')).get('tickers', {})
