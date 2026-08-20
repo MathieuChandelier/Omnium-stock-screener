@@ -271,22 +271,25 @@ def c14():
                            f"n'a pas ndCY : libelle ex-cash impossible a honorer"))
     return bad
 
-@check("C25 somme PY PUBLIEE == data.net/actions de l exercice clos")
+@check("C25 somme PY (base Omnium) == data.net/actions de l exercice clos")
 def c25():
-    # Classe A3 de l audit 20/08 : 9 fiches posaient des periodes PY dans
-    # une base DIFFERENTE de data (non-GAAP, base retraitee sans pont...).
-    # La regle : publie(periode) = eps - somme(impacts) ; la somme des
-    # publies doit retomber sur le net/actions de data, sinon la
-    # decomposition ment. Tolerance 0.08 (arrondis de moyenne d actions).
+    # Classe A3 de l audit 20/08 : des periodes PY posees dans une base
+    # DIFFERENTE de data (non-GAAP, publie brut alors que data est
+    # retraite...) sans pont de retraitements. La regle du SCHEMA :
+    # eps(periode) EST la base Omnium (= publie + impacts), et data.net
+    # est la meme base a l annuel - la somme des eps du PY doit donc
+    # retomber sur data.net/actions. Un ecart = soit des trimestres
+    # poses dans la mauvaise base, soit un pont de retraitements omis.
+    # Tolerance 0.08 (arrondis de moyenne d actions).
     bad=[]
     for tk,t in FICHES.items():
         qe=t['hypothese'].get('quarterlyEPS') or {}
         py=qe.get('PY') or []
         last=(t.get('data') or [])[-1] if t.get('data') else None
         if not py or not last or not last.get('shares'): continue
-        pub=sum((+p.get('eps',0))-sum(+r.get('impact',0) for r in (p.get('retraitements') or [])) for p in py)
+        base=sum(+p.get('eps',0) for p in py)
         tgt=last['net']/last['shares']
-        if abs(pub-tgt)>0.08: bad.append((tk,f'publie {pub:.2f} vs data {tgt:.2f}'))
+        if abs(base-tgt)>0.08: bad.append((tk,f'base {base:.2f} vs data {tgt:.2f}'))
     return bad
 
 @check("W7  ~ fraicheur : consensus >45j, nextEvent passe, inProgress >120j")

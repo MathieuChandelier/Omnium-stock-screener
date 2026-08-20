@@ -3099,10 +3099,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     let out=keep.map((i,j)=>{
       const iy=yOf(shown[i].epsByYear[String(end)]);
       const isLast=i===n-1;
-      // Filet de rappel quand l'etiquette a du etre decalee de son ancrage.
-      const lead=Math.abs(pos[j]-iy)>1.5
-        ? `<path d="M${(x0+1).toFixed(1)} ${iy.toFixed(1)} C${(x0+4).toFixed(1)} ${iy.toFixed(1)} ${(x0+3).toFixed(1)} ${pos[j].toFixed(1)} ${(x0+5).toFixed(1)} ${pos[j].toFixed(1)}" fill="none" stroke="var(--navy)" stroke-width="1" opacity=".4"/>`
-        : '';
+      // Plus de filet de rappel (retour 20/08 : le petit trait entre la
+      // courbe et son etiquette parasitait la lecture) - le leger decalage
+      // vertical d'une etiquette deplacee reste lisible sans lien dessine.
+      const lead='';
       // paint-order:stroke = halo blanc : une etiquette d'horizon
       // intermediaire se pose forcement sur les courbes qui vont plus loin
       // a droite, le halo la detache sans la deplacer de son ancrage.

@@ -429,25 +429,13 @@
       "PY": [
         {
           "label": "T1",
-          "eps": 4.13,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Mark-to-market effect on OpenAI stake",
-              "impact": 0.41
-            }
-          ]
+          "eps": 3.72,
+          "actual": true
         },
         {
           "label": "T2",
-          "eps": 4.14,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Mark-to-market effect on OpenAI stake",
-              "impact": -1.02
-            }
-          ]
+          "eps": 5.16,
+          "actual": true
         },
         {
           "label": "T3",
@@ -456,18 +444,8 @@
         },
         {
           "label": "T4",
-          "eps": 4.47,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Mark-to-market effect on OpenAI stake",
-              "impact": -0.07
-            },
-            {
-              "raison": "Anthropic stake gain, net of exceptional charges",
-              "impact": -0.27
-            }
-          ]
+          "eps": 4.79,
+          "actual": true
         }
       ],
       "CY": [
@@ -513,7 +491,8 @@
           "eps": 6.21,
           "actual": false
         }
-      ]
+      ],
+      "note": "[Correctif C25 20/08/2026 : data FY26 conserve le PUBLIE (133,7 Md$ / 17,95$) - le PY repose donc sur les trimestres publies. Les effets mark-to-market OpenAI/Anthropic du FY26 (+0,41 T1 / -1,02 T2 / -0,07 et -0,27 T4, signes en base) restent documentes ici mais NE sont PAS retraites de l'exercice clos, par coherence avec data ; la base PROJETEE (omniumEPS FY27+) les exclut, comme declare.]"
     },
     "guidanceScorecard": {
       "cadence": "quarterly",

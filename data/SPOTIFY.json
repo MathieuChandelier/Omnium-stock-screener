@@ -326,7 +326,7 @@
       "PY": [
         {
           "label": "T1",
-          "eps": 1.07,
+          "eps": 1.09,
           "actual": true
         },
         {
@@ -336,12 +336,12 @@
         },
         {
           "label": "T3",
-          "eps": 3.28,
+          "eps": 4.36,
           "actual": true
         },
         {
           "label": "T4",
-          "eps": 4.43,
+          "eps": 5.71,
           "actual": true
         }
       ],
@@ -388,7 +388,8 @@
           "eps": 4.03,
           "actual": false
         }
-      ]
+      ],
+      "note": "[Correctif C25 20/08/2026 : les anciens T3/T4 (3,28/4,43) ne correspondaient pas aux nets publies (899/1 174 M EUR). EPS recalcules sur la moyenne diluee annuelle (206 M de titres) pour l'additivite avec data (2 212 M / 10,74 EUR) - convention du schema.]"
     },
     "bridge": {
       "2025": {
