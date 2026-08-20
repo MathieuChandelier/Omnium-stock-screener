@@ -349,6 +349,76 @@
       "date": "2026-07-29",
       "label": "Q2 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 6.43,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 7.14,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.05,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 8.88,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 10.44,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 6.18,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 5.55,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 6.1,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 6.63,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 7.07,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 7.36,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 8.39,
+          "actual": false
+        }
+      ],
+      "note": "Sequencage pose le 20/08/2026 (backfill E5-ter). Base = GAAP PUBLIE, comme l'annuel de la fiche : T3 2025 (1,05$) porte la charge fiscale one-off ~15,9 Md$ (OBBBA) et T1 2026 (10,44$) le benefice fiscal one-off +8,03 Md$ (+3,13$/action) - non retraites car la base annuelle Omnium (23,49 / 28,27) les conserve. H2 2026 volontairement bas (5,55/6,10) : la these Omnium (28,27 vs consensus 32,5) absorbe la montee des couts AI/depreciation."
     }
   },
   "coherenceQualitative": {

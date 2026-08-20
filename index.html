@@ -388,7 +388,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    libelles de rang, la hierarchie se fait a la couleur seule. */
 .eps-rows{display:flex;flex-direction:column;gap:7px;}
 .eps-row{display:flex;align-items:center;gap:12px;}
-.eps-head{display:flex;align-items:baseline;gap:12px;flex:0 0 268px;min-width:0;}
+.eps-head{display:flex;align-items:baseline;gap:12px;flex:0 0 268px;min-width:0;flex-wrap:wrap;align-content:center;}
+/* Consensus : seconde ligne systematique sous "EPS 20xx  total" - la
+   flex-basis 100% force le retour a la ligne dans la colonne fixe. */
+.eps-cons-line{flex:0 0 100%;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);line-height:1.3;}
+.eps-cons-line .eps-analysts{font-weight:600;color:var(--muted);}
 .eps-lbl{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex:0 0 134px;}
 .eps-tot{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;white-space:normal;}
 /* Pont : les trois totaux annuels (Published / Adjustments / Omnium)
@@ -630,7 +634,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .eps-head{flex:0 0 76px;flex-direction:column;gap:1px;}
   .eps-lbl{flex:0 0 auto;font-size:11.5px;line-height:1.25;}
   .eps-tot{font-size:11.5px;line-height:1.25;white-space:normal;}
-  .eps-tot .eps-analysts{display:none;}
+  /* En colonne, flex-basis 100% se lirait en HAUTEUR : on la neutralise,
+     et le nombre d'analystes disparait (place comptee). */
+  .eps-cons-line{flex:0 0 auto;font-size:8px;}
+  .eps-cons-line .eps-analysts{display:none;}
   .eps-lbl-lg{display:none;}
   .eps-lbl-sm{display:inline;}
   .eps-cells{gap:5px;}
@@ -1726,7 +1733,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         <div class="eps-row base">
           <div class="eps-head">
             <span class="eps-lbl" style="flex:0 0 auto;">${opts.label}</span>
-            <span class="eps-tot">${shown>0?totalTxt(shown):'—'}${consHtml}</span>
+            <span class="eps-tot">${shown>0?totalTxt(shown):'—'}</span>
+            ${consHtml}
           </div>
           ${cells(p=>chip(p,opts.forceActual))}
         </div>
@@ -1768,7 +1776,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
         <div class="eps-row base">
           <div class="eps-head">
             <span class="eps-lbl">${lbl('Omnium','Omnium')}</span>
-            <span class="eps-tot">${totalTxt(cleanTotal)}${consHtml}</span>
+            <span class="eps-tot">${totalTxt(cleanTotal)}</span>
+            ${consHtml}
           </div>
           ${cells(p=>chip(p,opts.forceActual))}
         </div>
@@ -1778,10 +1787,13 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // "Published" : un consensus sell-side est etabli hors elements non
   // recurrents, le comparer au chiffre publie brut ferait lire un
   // manquement (ou un depassement) qui n'existe pas.
+  // Le consensus vit TOUJOURS sur sa propre seconde ligne, sous le
+  // libelle d'exercice (retour Arista 20/08) : accole au total dans la
+  // colonne fixe de 268px, il debordait en 2-3 lignes irregulieres selon
+  // la longueur du chiffre - le design doit etre le meme partout.
   const consHtmlOf=(c)=>{
     if(!c||!(c.eps>0)) return '';
-    return `<span class="eps-cons"> / ${lbl('Consensus','Cons.')} ${c.eps.toFixed(2)}${cur||'$'}</span>`
-      +(c.analysts?`<span class="eps-analysts"> (${c.analysts} analysts)</span>`:'');
+    return `<span class="eps-cons-line">${lbl('Consensus','Cons.')} ${c.eps.toFixed(2)}${cur||'$'}${c.analysts?`<span class="eps-analysts"> · ${c.analysts} analysts</span>`:''}</span>`;
   };
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
@@ -1887,50 +1899,22 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
 // - jamais les chiffres eux-memes, deja portes par Earnings Per Share
 // juste au-dessus (Published/Adjustments/Omnium/Consensus).
 function buildAccountingBasisNote(d, CY){
+  // Synthese en UNE phrase, et seulement quand une base DIFFERE (retour
+  // 20/08 : le paragraphe long combinait trois phrases + la basisNote
+  // brute). Si le groupe reporte GAAP/IFRS - ou si rien n'indique le
+  // contraire - il n'y a rien a signaler : on n'affiche rien du tout.
+  // Enum strict (voir E8-bis) : une valeur hors {GAAP, non-GAAP} est
+  // traitee comme absente plutot que mal-affichee.
   const hyp=d.hypothese||{};
-  const qe=hyp.quarterlyEPS||null;
-  // Enum strict (voir E8-bis) : un JSON heritee peut porter une phrase a la
-  // place du tag attendu (piege deja identifie le 17/08/2026 sur un autre
-  // champ) - une valeur hors {GAAP, non-GAAP} est traitee comme absente
-  // plutot que mal-affichee comme "non-GAAP" par defaut.
   const asBasis=v=>(v==='GAAP'||v==='non-GAAP')?v:null;
   const mgmtBasis=asBasis(hyp.dernierCall?.resultatsVsConsensus?.epsAdj?.basis);
   const consBasis=asBasis(d.epsConsensus?.basis);
-  const note=hyp.guidanceScorecard?.basisNote||null;
-
-  // Motifs de retraitement : un retraitement ne vit que sur un trimestre
-  // REALISE (actual:true) - en debut d'exercice, ces trimestres sont
-  // encore dans PY (le nouvel exercice, CY, n'a que des projections sans
-  // retraitement tant qu'aucun trimestre n'est publie). On regroupe donc
-  // PY+CY plutot que CY seul, dedupliques.
-  const reasons=[...new Set([...(Array.isArray(qe?.PY)?qe.PY:[]), ...(Array.isArray(qe?.CY)?qe.CY:[])]
-    .flatMap(p=>Array.isArray(p.retraitements)?p.retraitements.map(r=>r.raison):[])
-    .filter(Boolean))];
-
-  const escTxt=s=>(s||'').toString().replace(/</g,'&lt;');
-  let omniumPart=`Omnium bases its EPS on published GAAP/IFRS`;
-  if(reasons.length) omniumPart+=`, adjusted this year for ${reasons.map(escTxt).join(', ')}`;
-  omniumPart+='.';
-
-  let peersPart;
-  if(!mgmtBasis&&!consBasis){
-    peersPart=' No comparable EPS guidance or consensus exists for this name.';
-  } else if(mgmtBasis&&consBasis&&mgmtBasis===consBasis){
-    peersPart=mgmtBasis==='GAAP'
-      ? ' The company and consensus both report on the same GAAP basis.'
-      : ' The company and consensus both report on an adjusted non-GAAP basis.';
-  } else {
-    peersPart='';
-    if(mgmtBasis) peersPart+=mgmtBasis==='GAAP'
-      ? ' The company reports on a GAAP basis.'
-      : ' The company communicates on an adjusted non-GAAP basis.';
-    if(consBasis) peersPart+=consBasis==='GAAP'
-      ? ' Consensus follows the GAAP basis.'
-      : ' Consensus follows the adjusted non-GAAP basis.';
-  }
-
-  const notePart=note?` ${note.toString().replace(/</g,'&lt;')}`:'';
-  return `${omniumPart}${peersPart}${notePart}`;
+  const name=(d.name||'').toString().replace(/</g,'&lt;');
+  if(mgmtBasis==='non-GAAP')
+    return `Omnium projections are on published GAAP/IFRS — ${name} communicates, guides and is covered by consensus on adjusted non-GAAP figures.`;
+  if(consBasis==='non-GAAP')
+    return `Omnium projections are on published GAAP/IFRS — the consensus on ${name} is on an adjusted non-GAAP basis.`;
+  return '';
 }
 
 let _epsHistOpen=false;
@@ -1972,13 +1956,16 @@ function buildThesisBar(d, cagrEps, cours, div, total, CY, LY){
     ? `<div class="th-bar">${parts.filter(p=>p.v>0).map(p=>
         `<div class="th-seg ${p.cls}" style="flex:${(p.v/posSum).toFixed(4)};"></div>`).join('')}</div>`
     : '';
+  // Un seul moteur : le total du titre EST ce moteur - repeter le meme
+  // chiffre en legende faisait double emploi (retour Copart 20/08). La
+  // legende ne garde alors que le nom du moteur, sans valeur. Le heros et
+  // "Assuming constant valuation" vivent desormais dans l'en-tete de
+  // section, pas ici.
   const legend=parts.length
     ? `<div class="th-leg">${parts.map(p=>
-        `<span${p.title?` title="${escAttr(p.title)}"`:''}><span class="th-sw ${p.cls}${p.v<0?' neg':''}"></span><b>${p.v>=0?'+':'−'}${Math.abs(p.v).toFixed(1)}%</b> ${p.label}</span>`).join('')}</div>`
+        `<span${p.title?` title="${escAttr(p.title)}"`:''}><span class="th-sw ${p.cls}${p.v<0?' neg':''}"></span>${parts.length>1?`<b>${p.v>=0?'+':'−'}${Math.abs(p.v).toFixed(1)}%</b> `:''}${p.label}</span>`).join('')}</div>`
     : '';
-  return `<div class="th-hero"><span class="th-hv">${total>=0?'+':''}${total.toFixed(1)}%</span></div>
-    ${bar}${legend}
-    <div class="th-assume">Assuming constant valuation</div>`;
+  return `${bar}${legend}`;
 }
 
 // Derniere annee de l'horizon affiche couverte par l'ANALYSE (omniumEPS,
@@ -2037,8 +2024,9 @@ function renderReturnBlock(ticker, proj, cours){
 
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
-    <div class="rb-header">
-      <div class="card-title" style="margin-bottom:0;">Expected annual return · ${CY} → ${LY}</div>
+    <div class="rb-header" style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;row-gap:2px;margin-bottom:12px;">
+      <div class="card-title" style="margin-bottom:0;">Expected annual return<span style="white-space:nowrap;"> · ${total>=0?'+':'−'}${Math.abs(total).toFixed(1)}% to ${LY}</span></div>
+      <span class="th-assume" style="margin:0;padding-bottom:0;">assuming constant valuation</span>
     </div>
     ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
     <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
@@ -2059,7 +2047,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsCY:''}</div>
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsNY:''}</div>
     </div>
-    <div class="acct-basis">${buildAccountingBasisNote(d, CY)}</div>
+    ${(b=>b?`<div class="acct-basis">${b}</div>`:'')(buildAccountingBasisNote(d, CY))}
   `;
 }
 
@@ -3162,10 +3150,9 @@ function renderValoHistory(ticker){
     }else{
       chartHtml=proj.svg;
       // Plus de legende de correspondance : chaque courbe porte sa date au
-      // bout d'elle-meme. Seul le cas "une seule courbe" merite un mot.
-      legendHtml=proj.single
-        ? '<span style="color:var(--muted);">Only one curve archived so far — check back after a thesis revision.</span>'
-        : '';
+      // bout d'elle-meme. Le cas "une seule courbe" ne merite rien non
+      // plus (retour Nemetschek 20/08 : la mention n'apprenait rien).
+      legendHtml='';
     }
   }else{
     // La legende se construit APRES le trace, a partir de ce qu'il
@@ -3199,7 +3186,6 @@ function renderValoHistory(ticker){
     <div class="vr-hist-controls">
       <div class="vr-control-row">${modeBtn('pe','P/E')}${modeBtn('projection','EPS')}</div>
       ${showPeriodRow ? `<div class="vr-control-row">${availPeriods.map(periodBtn).join('')}${allBtn}</div>` : ''}
-      ${st.mode==='projection' ? '<div class="vr-control-row" style="color:var(--muted);font-size:9.5px;">Each curve = a revision of the EPS projection</div>' : ''}
     </div>
     <div class="vr-hist-legend">${legendHtml}</div>
     <div class="vr-hist-chart">${chartHtml}</div>
@@ -3624,17 +3610,20 @@ function buildGuidanceScorecard(ticker){
     +(ip.note?line(esc(ip.note)):''):'';
   const histLines=hist.map(fyLine).join('');
   const exclRows=excl.length?excl.map(e=>line(`<b style="color:var(--navy);">FY${String(e.fy).slice(2)}</b> \u2014 excluded${e.note?`: ${esc(e.note)}`:''}`)).join(''):'';
-  const basisHtml=gs.basisAligned===false&&gs.basisNote?line(esc(gs.basisNote)):'';
-  // Cite la source consensus UNIQUEMENT quand le consensus est la
-  // reference de mesure (titre sans guidance) - sur un titre ancre
-  // guidance elle n'apportait que du bruit (retour Insulet 19/08).
-  const consBased=gs.comparedAgainst==='consensus'
-    || (ai.source==='initial_consensus')
-    || hist.some(e=>e.source==='initial_consensus');
-  const consLine=(consBased&&(gs.consensusSource||gs.consensusDate))?`<p style="font-size:9.5px;color:var(--muted);line-height:1.5;margin:10px 0 0;border-top:1px solid var(--border);padding-top:8px;">Consensus source: ${esc(gs.consensusSource||'')}${gs.consensusDate?` \u2014 ${formatFrDate(gs.consensusDate)}`:''}</p>`:'';
+  // Base comptable : la meme phrase SYNTHETIQUE que la section EPS
+  // (buildAccountingBasisNote) - la basisNote brute (longue) reste en
+  // donnee mais ne s'affiche plus (retour 20/08).
+  const basisHtml=gs.basisAligned===false?(b=>b?line(b):'')(buildAccountingBasisNote(d)):'';
+  // Titre sans guidance : le scorecard est ANCRE CONSENSUS et le dit
+  // en clair sous le heros (retour Copart 20/08) - la mesure se deroule
+  // alors sur les consensus initiaux dates, exactement comme une
+  // guidance. L'ancienne ligne "Consensus source: ..." (qui ne se
+  // rapportait a rien) disparait.
+  const consBased=gs.comparedAgainst==='consensus';
 
   return `${hero}
     <p style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin:4px 0 0;">${esc(heroSub)}</p>
+    ${consBased?`<p style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin:2px 0 0;">Based on consensus \u2014 ${esc(d.name||ticker)} does not guide.</p>`:''}
     ${rows}
     ${anchorLine}
     <div class="rb-eps-py-toggle" id="gs-toggle" onclick="toggleGuidanceScorecard()" style="margin-top:11px;">
@@ -3644,7 +3633,7 @@ function buildGuidanceScorecard(ticker){
     <div class="rb-eps-py-content" id="gs-content">
       ${olderRows}
       <p style="font-size:9.5px;color:var(--muted);margin:9px 0 0;">Average: the year in progress counts for half, closed years share the rest equally.</p>
-      ${ipLine}${anchorDetail}${histLines}${exclRows}${basisHtml}${consLine}
+      ${ipLine}${anchorDetail}${histLines}${exclRows}${basisHtml}
     </div>`;
 }
 
