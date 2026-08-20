@@ -357,6 +357,39 @@
     }
    ],
    "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q) ; exercice fiscal clos fin janvier (PY = FY26, CY = FY27). T1 FY27 (avril 2026) publie a 2,39$ ; T2-T4 estimes sur la guidance T2 (~91 Md$ de CA ex-Chine) et le calage omniumEPS 9,10 (= consensus, deliberement)."
+  },
+  "dernierCall": {
+   "quarter": "Q1 FY27",
+   "date": "2026-05-20",
+   "source": "Seeking Alpha full transcript (article 4907259), read 2026-08-20; GAAP figures cross-checked stockanalysis.com",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 81615,
+     "consensus": 79120
+    },
+    "epsAdj": {
+     "actual": 1.87,
+     "consensus": 1.77,
+     "basis": "non-GAAP",
+     "basisNote": "Headline beat basis (Seeking Alpha: EPS $1.87 vs $1.77, +$0.10; revenue beat +$2.5B). GAAP diluted EPS printed far higher at $2.39, lifted by non-operating items (mark-to-market gains on the equity-investment portfolio); recurring comparison stays on the $1.87 basis."
+    },
+    "epsReported": {
+     "actual": 2.39,
+     "basis": "GAAP",
+     "period": "Q1 FY27",
+     "note": "GAAP diluted EPS $2.39 on GAAP net income of $58.3B for the February-April 2026 quarter (ended April 26, 2026), per stockanalysis.com quarterly financials; revenue $81.6B."
+    }
+   },
+   "guidanceProchainTrimestre": "Q2 FY27: revenue $91B +/-2% (growth driven primarily by Data Center), GAAP gross margin 74.9% / non-GAAP 75.0% +/-50bp, OpEx ~$8.5B GAAP / ~$8.3B non-GAAP. Outlook again EXCLUDES any China data center compute revenue: H200 licenses approved by Washington but zero revenue booked and imports into China still uncertain.",
+   "guidanceAnnuelle": "FY27: gross margins to stay mid-70s; OpEx growth now seen in the upper-40s % YoY (R&D plus AI-tools usage); GAAP/non-GAAP tax rate lowered to 16-18% (from 17-19%, geographic mix). Multi-year: $1 TRILLION cumulative Blackwell+Rubin revenue seen 2025 through calendar 2027 (doubled vs the $0.5T frame of Nov 2025); Vera Rubin production shipments start Q3 FY27 (up to 35x inference throughput vs Blackwell); ~$20B standalone Vera CPU revenue visibility this year on a new $200B TAM. Capital return: quarterly dividend raised $0.01 -> $0.25, new $80B buyback on top of $39B remaining, ~50% of FCF returned this year.",
+   "pointsCles": [
+    "Record quarter, third straight YoY acceleration: revenue $81.6B (+85% YoY, +20% QoQ, record +$13.5B sequential step), Data Center $75B (+92% YoY; ~120% YoY ex-China) with compute $60B and networking $15B (near-tripled YoY; Spectrum-X now bigger than all Ethernet peers combined, InfiniBand x4 on XDR); record FCF $49B and record $20B returned to shareholders.",
+    "New reporting framework: two platforms, Data Center (Hyperscale $38B, +12% QoQ; ACIE $37B, +31% QoQ with AI-cloud revenue >3x YoY) and Edge Computing $6.4B (+29% YoY) absorbing former Gaming/ProViz/Auto; sovereign AI revenue +80% YoY across ~40 countries, >80 partner datacenters above 10MW; physical AI >$9B trailing-12-month revenue.",
+    "Product cycle de-risked: GB300 NVL72 fastest ramp in company history, MLPerf inference sweep (+2.7x throughput, -60% cost/token in 6 months); Vera Rubin on track for Q3 FY27 with POs already in hand from nearly all major customers and every frontier lab expected on it at launch; Anthropic added as strategic partner (capacity via AWS, Azure, CoreWeave), lifting NVIDIA's share of frontier compute; AWS to add >1M Blackwell/Rubin GPUs starting this year.",
+    "Capital-return pivot plus visibility: dividend x25 to $0.25/quarter, +$80B buyback, ~50% of FCF to shareholders; $1T Blackwell+Rubin revenue visibility through CY2027 backed by $145B total supply commitments; China stays a free option (H200 licenses granted, zero revenue assumed); hyperscale capex seen >$1T in 2027 and AI infrastructure spend $3-4T/year by end of decade. Next call: Q2 FY27 on August 26, 2026."
+   ],
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true
   }
  },
  "coherenceQualitative": {

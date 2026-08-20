@@ -5127,6 +5127,54 @@
      "shNY": 1650.0,
      "ndY2": 900.0,
      "shY2": 1630.0
+    },
+    {
+     "date": "2026-08-20",
+     "price": 5.04,
+     "cyYear": 2026,
+     "nyYear": 2027,
+     "revisionEvent": {
+      "date": "2026-08-03",
+      "label": "Q2 2026",
+      "type": "earnings"
+     },
+     "epsByYear": {
+      "2026": -0.093,
+      "2027": 0.176,
+      "2028": 0.34,
+      "2029": 0.47,
+      "2030": 0.59
+     },
+     "ndCY": 1250.0,
+     "shCY": 1670.0,
+     "ndNY": 1100.0,
+     "shNY": 1650.0,
+     "ndY2": 900.0,
+     "shY2": 1630.0
+    },
+    {
+     "date": "2026-08-20",
+     "price": 5.04,
+     "cyYear": 2026,
+     "nyYear": 2027,
+     "epsByYear": {
+      "2026": -0.09,
+      "2027": 0.18,
+      "2028": 0.34,
+      "2029": 0.47,
+      "2030": 0.59
+     },
+     "ndCY": 1250.0,
+     "shCY": 1670.0,
+     "ndNY": 1100.0,
+     "shNY": 1650.0,
+     "ndY2": 900.0,
+     "shY2": 1630.0,
+     "revisionEvent": {
+      "date": "2026-08-03",
+      "label": "Q2 26 results",
+      "note": "omniumEPS 2026/2027 realigned on omniumNet/omniumShares (-0.09->-0.093, 0.18->0.176) while integrating the Q2 26 call (03/08) - mechanical consistency fix, model thesis unchanged."
+     }
     }
    ]
   },

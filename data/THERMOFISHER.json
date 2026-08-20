@@ -133,7 +133,7 @@
     "2027": 20.97
    }
   },
-  "source": "Refresh Q2 2026 - Communique de resultats officiel (23/07/2026) + guidance annuelle relevee confirmee par recoupement de plusieurs sources secondaires du call (23/07/2026, 8h30 ET) ; transcript integral mot-a-mot non retrouve mais montants de guidance confirmes",
+  "source": "Refresh Q2 2026 - Communique de resultats officiel (23/07/2026) + transcript integral du call (Seeking Alpha article 4924749, consulte le 2026-08-20) + stockanalysis.com pour le GAAP trimestriel",
   "dernierCall": {
    "quarter": "Q2 26",
    "resultatsVsConsensus": {
@@ -146,15 +146,21 @@
      "consensus": 5.71,
      "basis": "non-GAAP",
      "basisNote": "non-GAAP"
+    },
+    "epsReported": {
+     "actual": 4.68,
+     "basis": "GAAP",
+     "period": "Q2 26",
+     "note": "GAAP diluted EPS $4.68 (+9% YoY) on GAAP net income of $1,736M (revenue $11,994M). Gap vs $6.03 adjusted EPS reflects acquisition amortization and restructuring/integration charges (Clario, Solventum filtration & separation). Source: stockanalysis.com quarterly financials, cross-checked with the 7/23 call transcript (CFO remarks)."
     }
    },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee dans le communique (le management donne generalement de la couleur de phasing lors du Q&A du call, non disponible dans les sources a la date de ce refresh).",
-   "guidanceAnnuelle": "Guidance FY2026 relevee au call du 23/07 : CA porte a 47,4-48,1 Mds$ (depuis 47,3-48,1 Mds$, relevement du bas de fourchette), EPS ajuste porte a 24,93-25,33$ (depuis 24,64-25,12$) - les deux au-dessus du consensus de marche selon la presse financiere (source secondaire agregeant le call, transcript integral non retrouve mot pour mot mais montants confirmes par recoupement de plusieurs sources).",
+   "guidanceProchainTrimestre": "No formal quarterly guidance, but explicit phasing given on the call: H2 organic growth steps up to ~4% (vs 3% in H1) with Q3 and Q4 similar, and Q3 adjusted EPS expected to be $0.35-0.40 above Q2's $6.03 (i.e. roughly $6.38-6.43).",
+   "guidanceAnnuelle": "FY26 guidance raised at the 7/23/2026 call: revenue $47.4-48.1B (+6-8% reported; organic now expected at ~4%, the top of the maintained 3-4% range; FX tailwind trimmed to +$200M, -$100M vs prior guide) and adjusted EPS $24.93-25.33 (+9-11%), a $0.25 raise at the midpoint (= +$0.30 Q2 beat +$0.05 H2 revenue -$0.05 microbiology divestiture -$0.05 FX). Acquisitions (Clario + filtration/separation) now contribute $1.6B revenue and $0.32 EPS; adjusted operating margin expansion raised to 80bp; net interest ~$660M; adjusted tax rate 11.5%; FCF $6.9-7.4B (net capex $1.9-2.1B); $4B buybacks and ~$700M dividends; 370-373M average diluted shares.",
    "pointsCles": [
-    "Croissance organique accélérée à 5% au T2 (contre 1% au T1), portee par un effet de base tres favorable en Analytical Instruments (marge segment 23,0% contre 18,8% un an plus tot, la comparaison difficile liee aux tarifs douaniers 2025 s'etant estompee) et par la poursuite de la forte dynamique Bioproduction/Clinical Research dans Laboratory Products and Biopharma Services.",
-    "Rachats d'actions tres actifs et au-dela du plan initial : 4,0 Mds$ sur le seul S1 2026 (dont 1,0 Md$ au T2), a comparer aux 3 Mds$ initialement assumes pour l'annee entiere lors du call T1 - trajectoire de reduction du nombre d'actions plus rapide que prevu.",
-    "Divestiture de l'activite microbiologie annoncee au T2 (montant et calendrier non precises a ce stade) - optionnalite positive sur l'allocation de capital, non chiffree dans le modele.",
-    "Les actionnaires ont rejete le vote consultatif 'say-on-pay' lors de l'AG 2026 : signal de friction institutionnelle sur la remuneration dirigeante, a rapprocher du nouveau plan de retention massif du CEO annonce le meme mois (vesting jusqu'en 2033-2035) - point de gouvernance a suivre, sans impact direct sur le modele financier."
+    "Organic growth accelerated to 5% in Q2 (from 1% in Q1), broad-based across all four end markets: pharma/biotech (~60% of revenue) mid-single-digit, academic/government back to growth at low-single-digit, industrial/applied and diagnostics both mid-single-digit. Revenue $11.99B (+10% reported, incl. +5% from acquisitions) came in ~$300M above internal guidance; adjusted operating margin +90bp to 22.8%, adjusted EPS $6.03 (+13%), GAAP diluted EPS $4.68 (+9%).",
+    "Analytical Instruments was the standout: +7% organic with adjusted operating margin up 420bp to 23.0% as the 2025 tariff comp dissipated, driven by the ASMS Orbitrap launches (Tribrid Apex, Excedion), AI-enabled software and electron microscopy (semiconductor/advanced materials, very strong bookings). Bioproduction had another excellent quarter (no customer delays, unlike the largest peer; DynaDrive single-use bioreactors becoming the CDMO standard) and clinical research delivered strong revenue AND authorizations, with Clario excellent in its first full quarter.",
+    "Capital deployment running ahead of plan: $4B of buybacks already completed in H1 (vs $3B initially assumed for the full year), the Q2 $1B tranche funded by anticipated proceeds of the microbiology divestiture, now quantified (Q3 close; 2025 revenue $645M, ~1/4 retained through channel; -$200M revenue and -$0.05 EPS in 2026, ~-$0.15 dilution first full year). Leverage 3.6x gross / 3.3x net debt-to-adjusted-EBITDA, H1 FCF $2.5B, adjusted ROIC 10.9%.",
+    "Management raised only what is proven: the FY26 organic outlook moved to the top of the maintained 3-4% range on pharma/biotech strength alone, while the academic/government return to growth (US positive again, Europe very strong) and China's low-single-digit rebound (7.5% of revenue, academic still muted) were deliberately NOT annualized - optional upside if trends hold. Say-on-pay rejection at the 2026 AGM remains a governance watch item."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -162,7 +168,9 @@
     "source": "10-Q T2 2026 + communique (23/07/2026)",
     "date": "2026-08-19",
     "note": "Croises : CA T2 11,99 Md$ (+10% : +5% organique, +5% acquisitions), EPS GAAP 4,68$ (+9%), adj EPS 6,03$ (+13%). Guidance relevee : CA 47,4-48,1 Md$, adj EPS 24,93-25,33$."
-   }
+   },
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true
   },
   "guidanceHistory": [
    {
@@ -185,31 +193,31 @@
   "ancrages": [
    {
     "id": "AN-CA",
-    "moteur": "Croissance organique accélérée a 5% au T2 26 (contre 1% au T1), guidance FY2026 de nouveau relevee au call du 23/07 (montant exact non confirme, voir watch-list) - trajectoire au-dessus de l'estimation de creation.",
+    "moteur": "Croissance organique accélérée a 5% au T2 26 (contre 1% au T1), guidance FY2026 de nouveau relevee au call du 23/07 (montant exact non confirme, voir watch-list) - trajectoire au-dessus de l'estimation de creation (confiance detaillee : haute (2026), moyenne (2027-2028), basse (2029-2030)).",
     "applique": [
      "omniumCA.2026",
      "omniumCA.2027",
      "omniumCA.2028"
     ],
-    "confiance": "haute (2026), moyenne (2027-2028), basse (2029-2030)"
+    "confiance": "haute"
    },
    {
     "id": "AN-MARGE",
-    "moteur": "Marge operationnelle GAAP T2 26 a 17,4% (S1 26 : 17,2%), en ligne voire legerement au-dessus de la trajectoire de recuperation progressive anticipee a la creation (17,8% vise pour FY2026) ; marge Analytical Instruments quasi retrouvee (23,0% contre 18,8% un an plus tot) avec la dissipation de l'effet tarifs douaniers 2025.",
+    "moteur": "Marge operationnelle GAAP T2 26 a 17,4% (S1 26 : 17,2%), en ligne voire legerement au-dessus de la trajectoire de recuperation progressive anticipee a la creation (17,8% vise pour FY2026) ; marge Analytical Instruments quasi retrouvee (23,0% contre 18,8% un an plus tot) avec la dissipation de l'effet tarifs douaniers 2025 (confiance detaillee : moyenne (chiffrage precis des couts d'integration Clario/Solventum restants toujours pas disponible)).",
     "applique": [
      "omniumEBIT.2026",
      "omniumEBIT.2027",
      "omniumEBIT.2028"
     ],
-    "confiance": "moyenne (chiffrage precis des couts d'integration Clario/Solventum restants toujours pas disponible)"
+    "confiance": "moyenne"
    },
    {
     "id": "AN-IS",
-    "moteur": "Taux d'IS normatif ~9% valide par le taux effectif GAAP observe au S1 26 (6,5%, T2 seul 8,7%) - element structurel confirme, non retraite.",
+    "moteur": "Taux d'IS normatif ~9% valide par le taux effectif GAAP observe au S1 26 (6,5%, T2 seul 8,7%) - element structurel confirme, non retraite (confiance detaillee : haute (revalidee ce refresh)).",
     "applique": [
      "toutes annees 2026-2030"
     ],
-    "confiance": "haute (revalidee ce refresh)"
+    "confiance": "haute"
    },
    {
     "id": "AN-INTERET",
@@ -237,7 +245,7 @@
    },
    {
     "id": "AN-ND",
-    "moteur": "Dette nette de mi-annee (~38,5 Mds$ au 30/06/2026) deja inferieure au pic de 42 Mds$ attendu pour la fin d'annee dans le modele de creation, malgre le decaissement complet de Clario - trajectoire de desendettement meilleure que prevu.",
+    "moteur": "Dette nette de mi-annee (~38,5 Mds$ au 30/06/2026) deja inferieure au pic de 42 Mds$ attendu pour la fin d'annee dans le modele de creation, malgre le decaissement complet de Clario - trajectoire de desendettement meilleure que prevu (confiance detaillee : moyenne (revisee a la hausse depuis basse, la trajectoire etant desormais confirmee par un point de donnee reel)).",
     "applique": [
      "omniumND.2026",
      "omniumND.2027",
@@ -245,13 +253,13 @@
      "omniumND.2029",
      "omniumND.2030"
     ],
-    "confiance": "moyenne (revisee a la hausse depuis basse, la trajectoire etant desormais confirmee par un point de donnee reel)"
+    "confiance": "moyenne"
    },
    {
     "id": "AN-MICROBIO-DIVEST",
-    "moteur": "Divestiture de l'activite microbiologie annoncee au T2 2026, montant et calendrier de cloture non precises a ce stade - optionnalite positive pure sur l'allocation de capital et le desendettement, exclue des adjXXX tant que les termes ne sont pas connus.",
+    "moteur": "Divestiture de l'activite microbiologie annoncee au T2 2026, montant et calendrier de cloture non precises a ce stade - optionnalite positive pure sur l'allocation de capital et le desendettement, exclue des adjXXX tant que les termes ne sont pas connus (confiance detaillee : haute sur l'occurrence, nulle sur le montant).",
     "applique": [],
-    "confiance": "haute sur l'occurrence, nulle sur le montant"
+    "confiance": "haute"
    }
   ],
   "omniumEPS": {
@@ -352,12 +360,12 @@
    "timeline": [
     {
      "date": "2026-04-23",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 RAISED: revenue to 47.3-48.1bn (from 46.3-47.2), adjusted EPS to 24.64-25.12 (from 24.22-24.80)."
     },
     {
      "date": "2026-07-23",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 RAISED again: revenue 47.4-48.1bn, adjusted EPS 24.93-25.33 - both above consensus."
     }
    ],
@@ -486,7 +494,8 @@
     "quarter": "Q2 26",
     "date": "2026-07-23",
     "source": "Q2 release/call (as exploited at the 23/07 refresh)",
-    "message": "Post-COVID-normalization turnaround accelerating: organic 1% (Q1) -> 5% (Q2), Analytical Instruments margin nearly recovered (23.0% vs 18.8%) as the 2025 tariff comp dissipated; guidance raised a second time (24.93-25.33 adjusted EPS); interest INCOME in net retreat (207 vs 297M) on the post-Clario cash drawdown - confirming the financial-result pressure anticipated at creation (ancrage AN-INTERET); buyback pace running FASTER than the -2%/yr initial assumption."
+    "message": "Post-COVID-normalization turnaround accelerating: organic 1% (Q1) -> 5% (Q2), Analytical Instruments margin nearly recovered (23.0% vs 18.8%) as the 2025 tariff comp dissipated; guidance raised a second time (24.93-25.33 adjusted EPS); interest INCOME in net retreat (207 vs 297M) on the post-Clario cash drawdown - confirming the financial-result pressure anticipated at creation (ancrage AN-INTERET); buyback pace running FASTER than the -2%/yr initial assumption.",
+    "format": "compresse"
    }
   ]
  },

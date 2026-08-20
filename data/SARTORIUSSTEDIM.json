@@ -141,19 +141,19 @@
      "basisNote": "non-GAAP"
     },
     "epsReported": {
-     "actual": 0.96,
+     "actual": 1.87,
      "basis": "IFRS",
-     "period": "T2 26"
+     "period": "S1 26",
+     "note": "H1 26 reported IFRS EPS (Q1 0.91 + Q2 0.96), reported net profit EUR 181m (+17.6% YoY) on sharply lower extraordinary items; underlying (non-GAAP) EPS EUR 2.42."
     }
    },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie (guidance annuelle uniquement).",
-   "guidanceAnnuelle": "FY26 confirmée : CA +6-10% cc (bas de fourchette optique du fait de l'effet de compensation tarifaire ~35 M€ ; croissance opérationnelle hors effet proche du milieu de fourchette ~8% cc), marge EBITDA underlying 'légèrement au-dessus de 31%', capex/CA ~13,3% (stable vs 2025), dette nette/EBITDA visée 'légèrement au-dessus de 2x' fin 2026 (vs 2,38x fin 2025).",
+   "guidanceProchainTrimestre": "No quarterly guidance given. H2 phasing flagged: MatTek contribution rolls off from July; tariff surcharges flip from H1 tailwind (+40bp in Q2) to H2 headwind (no net FY growth impulse if tariffs stay at 10%); FX turns into a tailwind of slightly below 50bp in each of Q3 and Q4; equipment revenue in absolute terms expected higher in H2 than H1.",
+   "guidanceAnnuelle": "FY26 confirmed for SSB: sales +6-10% cc. Newly introduced 'operational' view (excluding the ~EUR 35m customer tariff compensation, tariff assumptions frozen as of July 24, 2026): broadly around the midpoint (~8% cc); including the compensation effect, cc growth expected in the lower half of the range. Underlying EBITDA margin slightly above 31% (H1 ran at 31.4%); CapEx ratio around the prior-year level of slightly above 13% of sales; net debt/underlying EBITDA slightly above 2x at year-end (2.36x at H1); FX headwind ~2pts on FY reported revenue growth. Group frame also confirmed: +5-9% cc, margin slightly above 30%; BPS +6-10%, margin slightly above 32%; LPS +2-6%, margin slightly below 21%.",
    "pointsCles": [
-    "Le catalyseur central de la thèse se matérialise : l'activité équipement, en berne depuis 2022, s'est stabilisée comme attendu et est repassée en légère croissance organique au S1 26, tandis que les consommables ont crû de plus de 9% en organique - René Fáber a réaffirmé sa confiance dans la cible 9-12%/an à partir de 2027 lors du Q&A.",
-    "Événement technique ponctuel : suite à la décision de la Cour Suprême américaine (20/02/2026) jugeant inconstitutionnels certains tarifs douaniers IEEPA, SSB a perçu d'importants remboursements en fin de semestre et prévoit de compenser ses clients (~23 M€ de provision comptabilisée au 30/06/26) - la direction souligne explicitement que la réduction technique du CA et l'amélioration technique des marges qui en résultent ne reflètent pas la performance opérationnelle sous-jacente.",
-    "Refinancement obligataire réalisé en mai 2026 : la première tranche du financement 2023 (520 M€, échéance septembre 2026) a été refinancée via Sartorius Finance B.V. à un coupon explicite de 3,75%, réduisant le coût de financement prospectif du groupe.",
-    "Rachat des 24% minoritaires restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%), financé sur trésorerie/dette - opération légèrement relutive sur le résultat net part du groupe.",
-    "Q&A (transcript complet desormais lu) : deux clients cles ont retarde des projets de therapies avancees en phase tardive (timing de projet, pas d'annulation ni de lien avec les problemes d'anticorps monoclonaux signales par des concurrents) - commandes attendues fin d'annee, revenus probablement materialises en 2027 ; effet de mix negatif recurrent sur la marge lie a ce retard plutot qu'un probleme structurel. Effet tarifaire douanier passe de vent favorable au S1 (+40pb au T2) a vent contraire au S2 (a taux inchange, aucun impulsion nette sur l'annee)."
+    "Core thesis catalyst firming up: the equipment business - muted since 2022 - stabilized and returned to slight organic growth in H1 26 ('the bottom is behind us'), while consumables grew >9% operationally (double-digit CAGR since 2019, volumes now above the pandemic peak); Faber reiterated the 9-12% mid-term BPS growth ambition and sees FY26 recurring revenue in the high-single to low-double-digit range.",
+    "US tariff technicality dominates the optics: after the Feb-2026 Supreme Court ruling voided IEEPA tariffs, SSB received EUR 22m of EUR 35m refunds claimed (~13m outstanding, timing uncertain) and books an equivalent customer-compensation liability that cuts reported revenue - a 1.5pt cc growth drag in H1 (~3pt in Q2); surcharges added +40bp in Q2 and flip to a headwind in H2 (net ~zero over the full year at the current 10% tariff level), with negligible margin impact - underlying economics unchanged.",
+    "Advanced-therapy order delays at two large late-stage customers: management insists on project timing, not cancellations, and explicitly denies any link to Danaher's mAb customer delays; orders expected late 2026/early 2027 with revenue mostly landing in 2027; ex-ATS the recurring business would be double-digit, and the delayed high-margin ATS consumables also explain the adverse product-mix effect within the margin bridge.",
+    "Below the line and balance sheet: underlying net profit EUR 235m (+3%, EPS 2.42), reported net profit EUR 181m (+17.6%); operating cash flow +39% to EUR 341m, FCF nearly doubled to EUR 199m; leverage improved to 2.36x (vs 2.38x YE25) despite the CellGenix minority buyout (EUR 72m, SSB now at 100%) and the dividend; May bond refinancing oversubscribed; regions: APAC +12.5% cc led (China recovery), EMEA +7.7%, Americas +5.4% operational cc (+0.8% incl. tariff compensation); brand fee to Sartorius AG up 25bp since Q1 26 after German tax audits."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -455,7 +455,7 @@
    "timeline": [
     {
      "date": "2026-07-23",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 confirmed: +6/10% cc (operational ~8% ex-tariff effect), underlying EBITDA margin slightly above 31%."
     }
    ],
