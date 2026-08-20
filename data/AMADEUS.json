@@ -90,7 +90,7 @@
   },
   "source": "Refresh S1 2026 - Communique officiel de resultats (31/07/2026, amadeus.com) + Transcript integral du call du meme jour (Luis Maroto CEO / Carol Borg CFO) + communique T1 2026 (08/05/2026, chiffres absolus) pour la decomposition trimestrielle",
   "dernierCall": {
-   "quarter": "S1 26",
+   "quarter": "H1 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -99,27 +99,30 @@
      "consensus": null
     },
     "epsAdj": {
-     "actual": 1.75,
+     "actual": 1.64,
      "consensus": null,
-     "basis": "non-GAAP",
-     "basisNote": "EPS dilue ajuste (APM Amadeus), +7,3% a change constant vs S1 25 ; pas de consensus sell-side specifique au S1 retrouve de facon fiable dans les sources consultees"
+     "basis": "GAAP",
+     "basisNote": "reported diluted EPS EUR; adjusted diluted EPS +7% cc"
+    },
+    "epsReported": {
+     "actual": 1.64,
+     "basis": "IFRS",
+     "period": "H1 26"
     }
    },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (guidance semestrielle/annuelle uniquement). Le CFO anticipe explicitement que le T3 26 delivre une meilleure evolution des reservations que le T2 26 ('we expect our Q3 booking evolution to outperform our Q2 evolution').",
-   "guidanceAnnuelle": "FY26 ABAISSEE/ELARGIE : CA groupe desormais 'mid-to-high single-digit' cc (vs 'high-single-digit' avant), CA Air Distribution ramene a 'low-to-mid single-digit' (vs fourchette superieure precedente), EPS dilue ajuste desormais 'high-single to low-double-digit' (vs 'low-double-digit'), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange). Air IT Solutions ('high-single-digit') et Hospitality & Other Solutions ('low-double-digit') maintenus inchanges. Fourchette volontairement elargie compte tenu de l'incertitude court terme.",
+   "guidanceProchainTrimestre": "Q3 26: booking evolution expected to outperform Q2 (bookings ~flat over the first 3 weeks of July after -7.6% in Q2, PBs ~+1%); Air IT margin slightly dilutive in H2 (airports/professional-services mix).",
+   "guidanceAnnuelle": "FY26 REVISED (wider, prudent range on Middle East disruption; IATA cut to +1.9% from +4.4%): group revenue cc mid-to-high single-digit, adjusted diluted EPS high single to low double-digit; Air Distribution cut to low-to-mid single-digit; Air IT (high single) and Hospitality (low double-digit) UNCHANGED; adjusted EBIT margin stability and FCF EUR1.35-1.45B MAINTAINED; capex toward the low end (~10% of revenue). Mid-term outlook unchanged.",
    "pointsCles": [
-    "Impact Moyen-Orient plus profond et plus long qu'anticipe au T1 : l'IATA a reduit son hypothese de trafic mondial 2026 de +4,4% (decembre) a +1,9% (juin) ; reservations Amadeus -3,7% au S1 (creux mars-avril-mai), debut de reprise en juin et sur les 3 premieres semaines de juillet (reservations quasi stables, PB +1% en amelioration vs juin).",
-    "Resilience du modele diversifie confirmee : Air IT Solutions (+8,7% cc) et Hospitality & Other Solutions (+9,2% cc) compensent largement la faiblesse d'Air Distribution (+1,1% cc, bookings -3,7%) - narratif central du management pour justifier la limite de l'impact sur le CA groupe malgre la revision IATA.",
-    "Programme de rachat d'actions de 500 M€ (annonce fin fevrier) integralement complete en juin 2026 - dette nette en hausse a 2 577,5 M€ (1,0x EBITDA LTM, +436 M€ vs fin 2025) du fait du rachat et du dividende, FCF S1 en legere hausse (472,2 M€, +0,8%).",
-    "Acquisition IDEMIA Public Security : Share Purchase Agreement desormais SIGNE (vs simple intention a la creation), cloture reglementaire visee mi-2027 (calendrier precise, plus tardif qu'implicite a la creation) - CEO 'extremement optimiste', retours de l'industrie positifs, aucun signal negatif recueilli aupres des clients.",
-    "Couts de decommissionnement du data center de secours (post-migration cloud, site d'Erding) traites en elements non-recurrents jusqu'a fin d'annee - produit de cession potentiel des serveurs evoque (appetit de marche pour l'infrastructure IA) mais non chiffre."
+    "H1 26: revenue EUR3,335M (+5.1% cc / +2.3% reported), adjusted EBIT EUR1,012M (+4.9% cc, 29.8% margin flat), adjusted diluted EPS +7% cc; FIXED COSTS -0.1% (cloud migration completed end-2025 + containment); FCF EUR472M, leverage 1x, EUR500M buyback completed.",
+    "Middle East is the swing factor: IATA negative traffic in April-May (first time in 15 years ex-COVID), bookings -7.6% in Q2 on cancellations then wait-and-see; recovery since June (July bookings ~flat, PBs ~+1%) - guidance prudently widened, with Air Distribution alone downgraded; management base case: 'the worst has happened'.",
+    "Structural momentum intact: new Altea PSS win >40M pax/year (deploy by 2027; Altea-first, Nevio later - coexistence assumed), Nevio at 25% of Altea business with public proof points (Finnair ancillaries, BA retailing), Air IT rev/PB +7.5% (Q1's one-third disruption-revenue boost faded in Q2), Hospitality +9.2% (Marriott 1,700 properties live, peak 2027; Accor 2028), IDEMIA SPA signed (approval base case Q2-27, Maroto 'more optimistic than at signing').",
+    "AI positioning: 'neutral embedded orchestrator' of AI-enabled travel; founding B2B partner of Google's UCP protocol (hospitality); agentic AI inflates look-to-book ratios - answered with caching, per-booking transaction caps and possible monetization of the search layer (a stated industry-wide challenge)."
    ],
    "etatsFinanciers": {
     "analyse": true,
     "referentiel": "IFRS",
-    "source": "H1 2026 Management Review + etats intermediaires condenses (amadeus.com IR)",
-    "date": "2026-08-19",
-    "note": "Croises vs fiche : CA H1 3 334,9 M EUR (+2,3%, +5,1% cc), adj EBIT 1 011,5 M EUR, dette financiere nette 2 577,5 M EUR au 30/06 (1,0x EBITDA) - la trajectoire omniumND 2026 (1 950) suppose le desendettement H2 par FCF, hypothese de la fiche confirmee comme hypothese."
+    "source": "communique",
+    "date": "2026-07-31"
    }
   },
   "guidanceHistory": [

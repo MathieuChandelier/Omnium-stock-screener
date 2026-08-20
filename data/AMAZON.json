@@ -201,34 +201,40 @@
   ],
   "guidanceLongTerme": null,
   "dernierCall": {
-   "quarter": "T2 2026",
+   "quarter": "T2 26",
    "date": "2026-07-30",
    "resultatsVsConsensus": {
     "ca": {
-     "actual": 200606,
-     "consensus": 196180
+     "actual": 200610,
+     "consensus": 196620
     },
     "epsAdj": {
      "actual": 5.75,
-     "consensus": 1.82
+     "consensus": 1.82,
+     "basis": "GAAP",
+     "basisNote": "GAAP incl. Anthropic MTM gains + ~$1.2B one-offs (tariff refunds ~$600M, energy-derivative FV ~$600M) - recurring base ~1.82, bridged in quarterlyEPS"
+    },
+    "epsReported": {
+     "actual": 5.75,
+     "basis": "GAAP",
+     "period": "T2 26"
     }
    },
-   "guidanceProchainTrimestre": "CA 197,0-202,0 Md$ (+9-12% YoY, ~-400pb lies au decalage du Prime Day vers le T2, ~-80pb de FX defavorable) ; OI 22,5-26,5 Md$ (vs 17,4 Md$ au T3 25).",
-   "guidanceAnnuelle": "Capex FY2026 releve a ~220 Md$ (vs ~200 Md$ guide au T1 26) ; pas de guidance CA/OI annuelle formelle.",
+   "guidanceProchainTrimestre": "Q3 26: net sales $197-202B (sequential decel explained by the Prime Day shift INTO Q2 - ex-Prime-Day growth would be ~400bp higher - and ~80bp FX headwind); operating income $22.5-26.5B.",
+   "guidanceAnnuelle": "FY26 cash capex RAISED to ~$220B (from ~$200B) on memory cost inflation - and still NOT enough capacity for 2026 or 2027 demand; AWS power capacity to double by end-2027 vs 2025 (on track); no annual P&L guidance (constant practice).",
    "pointsCles": [
-    "AWS accelere pour le 5e trimestre consecutif a 36,7% YoY (plus rapide depuis 18 trimestres), backlog en hausse de 36% sequentiel a 496 Md$, IA et puces maison chacune au-dela de 25 Md$ de runrate annualise en croissance a trois chiffres.",
-    "Le resultat net publie de 62,6 Md$ (EPS 5,75$) est tire a plus de 90% par un gain de marque-a-marche non-operationnel de 53,4 Md$ sur la participation Anthropic, sans lien avec la performance operationnelle du trimestre.",
-    "Le capex FY2026 est releve a ~220 Md$ en raison de l'inflation des couts des puces memoire ; le management previent que la contrainte de capacite persistera en 2026 et 2027, avec une demande 2028 deja qualifiee de \"frappante\".",
-    "Le free cash flow TTM continue de se degrader (-7,6 Md$ contre +18,2 Md$ un an plus tot) et le bilan a bascule en dette nette positive des le T2, apres 67 Md$ de nouvelle dette long terme emise au S1."
+    "Q2 26: revenue $200.6B (+20% ex-FX, beat ~$4B, includes Prime Day shifted into Q2), operating income $27.5B (+43%) incl ~$1.2B of one-offs (tariff refunds ~$600M NA + ~$600M energy-derivative fair-value gain in AWS); GAAP EPS $5.75 vs consensus 1.82 - the gap is the bridged Anthropic MTM + one-offs, recurring base ~$1.82.",
+    "AWS is inflecting: +36.7% to $42.2B (5th straight acceleration, fastest in 18 quarters, +$4.6B sequential ~80% above the prior record), $169B run rate, backlog $496B growing triple-digit with most 2027 capacity already reserved and striking 2028 bookings; AWS margin 39.3% (+650bp, +520bp ex-derivative) on efficiency and custom silicon.",
+    "Chips are a >$25B run-rate business growing triple-digit: Trainium carries multiyear multi-gigawatt commitments from BOTH Anthropic and OpenAI plus startup adoption, and selling Trainium OUTSIDE the cloud is under active discussion ('real chance'); Graviton on 98% of top-1000 EC2 customers; own frontier model coming ('half a dozen comparable models, one of them ours') while Bedrock stays multi-model.",
+    "Capex raised to ~$220B for 2026 (memory inflation) with demand still exceeding capacity through 2027; Jassy frames the economics (data centers 30+yr life monetized across 5-6 server generations, servers break even <3yrs on >=5yr AI contracts) and LIFTS the ambition: AWS 'at least double a few hundred billion', possibly a $1 trillion revenue business; stores side: 2nd-largest US grocer, same-day perishables in 2,300 cities changing the essentials trajectory, ads +26% to $19.8B."
    ],
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
     "analyse": true,
-    "referentiel": "US GAAP",
-    "source": "8-K EX-99.1 Q2 2026 (EDGAR, amzn-20260630xex991) + Form 10-Q",
-    "date": "2026-08-19",
-    "note": "Cross-checked vs the fiche: Q2 revenue $200.6bn (+20%), operating income $27.5bn, published net income $62.6bn OF WHICH $53.4bn of non-operating gains (Anthropic) - excluded from the normalized base, consistent with the fiche."
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-07-30"
    }
   },
   "ancrages": [
