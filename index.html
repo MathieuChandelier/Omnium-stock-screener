@@ -466,35 +466,49 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .th-sw.neg{background:transparent;border:1.5px dashed var(--muted);}
 .th-assume{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:400;font-style:italic;color:var(--muted);margin-top:10px;padding-bottom:2px;}
 .eps-lbl-sm{display:none;}
-/* ── EPS "tout aligne" (design final 20/08/2026) ──
-   Une grille unique (annee+total | N periodes) partagee entre l'en-tete
-   T1..T4, chaque rangee d'annee et la ligne de pont - alignement au
-   pixel. Blocs bas a hauteur UNIFORME (44px) : un bloc ajuste loge le
-   publie barre au-dessus de la valeur sans depasser ses voisins. */
-.epsg-qhead{margin:12px 0 2px;}
-.epsg-qhead span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:center;}
-.epsg-yr{margin:6px 0 0;}
-.epsg-left{display:flex;align-items:baseline;gap:10px;min-width:0;}
-.epsg-y{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);}
-.epsg-t{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;}
-.epsg-chip{text-align:center;border-radius:8px;padding:4px;position:relative;min-height:44px;display:flex;flex-direction:column;justify-content:center;}
+/* ── EPS idiome COMPTE DE RESULTAT (design definitif 20/08/2026) ──
+   Grille partagee (libelle indente | N periodes | FY) ; lignes Published
+   et One-offs en chiffres nus, DOUBLE FILET comptable, ligne de resultat
+   "→ EPS Omnium" seule en blocs (T-labels dedans). Badge de detail des
+   one-offs en position ABSOLUE : la valeur reste centree dans sa colonne. */
+.epsg-yrhead{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin:12px 0 2px;}
+.epsg-yr{margin-top:2px;}
+.epsg-lbl{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;color:var(--muted2,#64748b);padding-left:14px;white-space:nowrap;}
+.epsg-lbl.pub{color:#64748b;}
+.epsg-lbl.adj{color:var(--teal-text);}
+.epsg-lbl.res{color:var(--navy);font-weight:800;}
+.epsg-pubcell{text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:#64748b;min-height:22px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;}
+.epsg-pubcell.nil{color:#d4d9e6;}
+.epsg-offc{text-align:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--teal-text);min-height:22px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;}
+.epsg-offc.nil{color:#d4d9e6;font-weight:600;}
+.epsg-offc.has{cursor:pointer;}
+.epsg-offc .epsg-vw{position:relative;text-decoration:underline dotted rgba(28,187,161,.5);text-underline-offset:3px;}
+.epsg-offc .epsg-ct{position:absolute;left:calc(100% + 4px);top:50%;transform:translateY(-50%);font-size:8px;font-weight:800;color:var(--teal-text);background:rgba(43,216,194,.2);border-radius:8px;padding:0 4px;line-height:1.5;}
+.epsg-offc.has.open .epsg-vw{text-decoration-style:solid;}
+.epsg-dbl{border-top:3px double #b8bed6;margin:5px 0 3px;}
+.epsg-t{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums;}
+.epsg-t.pub{color:#64748b;}
+.epsg-t.adj{color:var(--teal-text);}
+.epsg-t.res{color:var(--navy);font-weight:800;}
+.epsg-ytd{font-size:7.5px;font-weight:600;color:var(--muted);margin-left:3px;text-transform:uppercase;letter-spacing:.04em;}
+.epsg-chip{text-align:center;border-radius:7px;min-height:34px;display:flex;flex-direction:column;justify-content:center;padding:3px 2px;}
 .epsg-chip.act{background:#eceefc;}
 .epsg-chip.est{border:1.5px dashed var(--border);}
-.epsg-v{font-family:'Poppins',sans-serif;font-size:12px;font-weight:800;color:var(--navy);line-height:1.2;display:block;font-variant-numeric:tabular-nums;}
+.epsg-q{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;line-height:1.1;}
+.epsg-v{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);line-height:1.2;font-variant-numeric:tabular-nums;}
 .epsg-chip.est .epsg-v{color:var(--muted);}
-.epsg-pub{display:block;font-family:'Poppins',sans-serif;font-size:8.5px;font-weight:600;color:var(--muted);text-decoration:line-through;line-height:1.1;margin-bottom:1px;font-variant-numeric:tabular-nums;}
-.epsg-dot{position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
-.epsg-adj{cursor:pointer;}
-.epsg-adj.open{outline:1.5px solid var(--teal);}
-.epsg-yrhead{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin:10px 0 0;}
-.epsg-yr.b{margin-top:4px;}
-.epsg-lbl{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;}
-.epsg-lbl.pub,.epsg-t.pub{color:var(--muted);}
-.epsg-lbl.adj,.epsg-t.adj{color:var(--teal-text);}
-.epsg-lbl.base{color:var(--navy);}
-.epsg-chip.pub{background:none;border:none;min-height:30px;}
-.epsg-chip.pub .epsg-v{color:var(--muted);font-weight:600;}
-.epsg-chip.pub.est .epsg-v{color:#c9cede;}
+/* separation douce entre exercices */
+.rb-eps-grid .rb-eps-block+.rb-eps-block{border-top:1px solid #f0f1f7;padding-top:8px;margin-top:8px;}
+@media(max-width:760px){
+  .epsg-yr,.epsg-yrhead{--epsg-left:88px;--epsg-fy:54px;}
+  .epsg-yr{gap:5px !important;}
+  .epsg-lbl,.epsg-lbl.res{padding-left:4px;font-size:8.5px;}
+  .epsg-chip{min-height:30px;}
+  .epsg-v{font-size:10px;}
+  .epsg-pubcell,.epsg-offc{font-size:9.5px;}
+  .epsg-t{font-size:10px;}
+  .epsg-yrhead{font-size:11.5px;}
+}
 @media(max-width:760px){
   .epsg-qhead,.epsg-yr,.epsg-bridge{--epsg-left:84px;gap:6px !important;}
   .epsg-chip{padding:3px 2px;min-height:38px;}
@@ -1693,7 +1707,7 @@ let _adjDetails={}, _adjOpen=null;
 function toggleAdjDetail(blockId, idx){
   const box=document.getElementById(blockId+'-d');
   if(!box) return;
-  document.querySelectorAll('.eps-adj.open, .epsg-adj.open').forEach(c=>c.classList.remove('open'));
+  document.querySelectorAll('.eps-adj.open, .epsg-offc.open').forEach(c=>c.classList.remove('open'));
   const key=blockId+':'+idx;
   if(_adjOpen===key){ _adjOpen=null; box.classList.remove('open'); box.innerHTML=''; return; }
   const per=(_adjDetails[blockId]||[])[idx];
@@ -1747,7 +1761,10 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const adjOf=p=>(Array.isArray(p.retraitements)?p.retraitements:[]).reduce((a,r)=>a+(+r.impact||0),0);
   const publishedOf=p=>(+p.eps)-adjOf(p);
   const hasAdj=arr=>arr.some(p=>Array.isArray(p.retraitements)&&p.retraitements.length);
-  const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
+  // "Reported" (et non "Published") : la ligne Published du pont porte
+  // deja ce mot pour les chiffres bruts - deux sens pour un meme mot
+  // rendaient la section ambigue au premier regard (retour 20/08).
+  const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Reported</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
 
   // ── DESIGN FINAL 20/08/2026 ("tout aligne") ──
   // UNE grille partagee pour toute la section : les intitules T1..T4 (ou
@@ -1759,9 +1776,19 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // conserve), et une ligne discrete sous la rangee resume
   // "published X$ − Y$ (raison)". Les triples rangees
   // Published/Adjustments/Omnium disparaissent.
+  // Idiome COMPTE DE RESULTAT (design definitif 20/08/2026) : lignes
+  // indentees sous l'annee, "(−) One-offs", DOUBLE FILET comptable puis
+  // "→ EPS Omnium" - le signal universel du sous-total, lisible au
+  // premier regard. Les trimestres (T1..T4 / S1-S2) vivent DANS les
+  // blocs de la ligne de resultat de chaque annee (pas d'en-tete
+  // detache) ; seuls ces blocs sont "en blocs", les lignes Published et
+  // One-offs restent des chiffres nus au-dessus du filet, comme dans un
+  // vrai P&L. Totaux en bout de ligne ; YTD sur les lignes publiees d'un
+  // exercice en cours ; badge de detail flottant pour ne pas desaxer la
+  // valeur de sa colonne.
   const nPer=(qe.CY||[]).length||4;
-  const gridStyle=`display:grid;grid-template-columns:var(--epsg-left,132px) repeat(${nPer},1fr);gap:10px;align-items:center;`;
-  const headerRow=`<div class="epsg-qhead" style="${gridStyle}"><span></span>${(qe.CY||[]).map(p=>`<span>${esc(p.label)}</span>`).join('')}</div>`;
+  const gridStyle=`display:grid;grid-template-columns:var(--epsg-left,168px) repeat(${nPer},1fr) var(--epsg-fy,70px);gap:8px;align-items:center;`;
+  const headerRow='';
 
   const yearBlock=(arr,opts={})=>{
     const blockId=`adj-${(opts.label||'').replace(/[^0-9A-Za-z]/g,'')}`;
@@ -1774,49 +1801,57 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const shown=opts.annual!=null?opts.annual:arr.reduce((a,p)=>a+(+p.eps||0),0);
     const baseCells=arr.map(p=>{
       const act=(opts.forceActual||p.actual);
-      return `<div class="epsg-chip ${act?'act':'est'}"><span class="epsg-v">${(+p.eps).toFixed(2)}</span></div>`;
+      return `<div class="epsg-chip ${act?'act':'est'}"><span class="epsg-q">${esc(p.label)}</span><span class="epsg-v">${(+p.eps).toFixed(2)}</span></div>`;
     }).join('');
-    // Cas courant (aucun retraitement) : UNE rangee basse - annee + total
-    // a gauche, valeurs seules dans les blocs, sous l'en-tete T1..T4.
-    if(!hasAdj(arr)){
-      return `<div class="epsg-yr" style="${gridStyle}">
-        <span class="epsg-left"><span class="epsg-y">${opts.label}</span><span class="epsg-t">${shown>0?totalTxt(shown):'—'}</span></span>
+    const resultRow=(tot)=>`<div class="epsg-yr" style="${gridStyle}">
+        <span class="epsg-lbl res">→ EPS Omnium</span>
         ${baseCells}
+        <span class="epsg-t res" style="text-align:right;">${tot>0?totalTxt(tot):'—'}</span>
       </div>`;
+    // Annee sans retraitement : titre d'annee + la seule ligne de
+    // resultat (cas degenere du meme gabarit).
+    if(!hasAdj(arr)){
+      return `<div class="epsg-yrhead">${opts.label}</div>${resultRow(shown)}`;
     }
-    // Pont (retour 20/08, "repart sur la logique des blocs") : les TROIS
-    // rangees Published / Adjustments / Omnium, dans la MEME grille que
-    // l'en-tete T1..T4 - le pont se lit vers le bas comme une addition :
-    //     publie  +  corrections Omnium  =  base Omnium
     const cleanTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
-    const pubTotal=cleanTotal-adjTotal;
-    const nAdj=arr.filter(p=>adjOf(p)!==0).length;
+    const impacts=arr.flatMap(p=>(p.retraitements||[]).map(r=>+r.impact||0));
+    const allNeg=impacts.every(v=>v<=0), allPos=impacts.every(v=>v>=0);
+    const offLbl=allNeg?'(−) One-offs':(allPos?'(+) One-offs':'(±) One-offs');
+    const cellVal=(v)=>(allNeg||allPos)?Math.abs(v).toFixed(2):fmtSigned(v);
+    // Exercice en cours : les totaux Published/One-offs ne couvrent que
+    // les trimestres REALISES - marques "ytd" pour ne pas laisser croire
+    // que l'equation boucle sur l'annee pleine avant sa cloture.
+    const hasEst=arr.some(p=>!(opts.forceActual||p.actual));
+    const actArr=arr.filter(p=>(opts.forceActual||p.actual));
+    const pubTotal=actArr.reduce((a,p)=>a+publishedOf(p),0);
+    const ytd=hasEst?`<small class="epsg-ytd">ytd</small>`:'';
     const pubCells=arr.map(p=>{
       const act=(opts.forceActual||p.actual);
-      return `<div class="epsg-chip pub ${act?'act':'est'}"><span class="epsg-v">${publishedOf(p).toFixed(2)}</span></div>`;
+      return `<div class="epsg-pubcell${act?'':' nil'}">${act?publishedOf(p).toFixed(2):'—'}</div>`;
     }).join('');
     const adjCells=arr.map((p,i)=>{
       const n=(p.retraitements||[]).length;
-      if(!n) return `<div class="eps-adj nil">—</div>`;
-      // Le compteur s'affiche MEME a 1 : sans lui, un trimestre a cause
-      // unique n'aurait aucune invite au clic.
-      return `<div class="eps-adj has" onclick="toggleAdjDetail('${blockId}',${i})" id="${blockId}-c${i}">${fmtSigned(adjOf(p))}<span class="eps-ct">${n}</span></div>`;
+      if(!n) return `<div class="epsg-offc nil">—</div>`;
+      // Badge de compteur FLOTTANT (position absolue) : la valeur reste
+      // centree pile dans sa colonne, alignee avec les autres rangees.
+      // Le compteur s'affiche MEME a 1 (invite au clic).
+      return `<div class="epsg-offc has" onclick="toggleAdjDetail('${blockId}',${i})" id="${blockId}-c${i}"><span class="epsg-vw">${cellVal(adjOf(p))}<span class="epsg-ct">${n}</span></span></div>`;
     }).join('');
     return `<div class="epsg-yrhead">${opts.label}</div>
-      <div class="epsg-yr b" style="${gridStyle}">
-        <span class="epsg-left"><span class="epsg-lbl pub">Published</span><span class="epsg-t pub">${totalTxt(pubTotal)}</span></span>
+      <div class="epsg-yr" style="${gridStyle}">
+        <span class="epsg-lbl pub">EPS published</span>
         ${pubCells}
+        <span class="epsg-t pub" style="text-align:right;">${totalTxt(pubTotal)}${ytd}</span>
       </div>
-      <div class="epsg-yr b" style="${gridStyle}">
-        <span class="epsg-left"><span class="epsg-lbl adj">Adjustments</span><span class="epsg-t adj">${nAdj>=2?fmtSigned(adjTotal)+(cur||'$'):''}</span></span>
+      <div class="epsg-yr" style="${gridStyle}">
+        <span class="epsg-lbl adj">${offLbl}</span>
         ${adjCells}
+        <span class="epsg-t adj" style="text-align:right;">${(allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal)}${cur||'$'}${ytd}</span>
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
-      <div class="epsg-yr b" style="${gridStyle}">
-        <span class="epsg-left"><span class="epsg-lbl base">Omnium</span><span class="epsg-t">${totalTxt(cleanTotal)}</span></span>
-        ${baseCells}
-      </div>`;
+      <div class="epsg-dbl"></div>
+      ${resultRow(cleanTotal)}`;
   };
   // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
   // "Published" : un consensus sell-side est etabli hors elements non
@@ -2957,6 +2992,16 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     if(+dCons.epsNY>0) consMapAll[+dCons.year+1]=+dCons.epsNY;
     if(+dCons.epsY2>0) consMapAll[+dCons.year+2]=+dCons.epsY2;
   }
+  // Instantanes consensus ARCHIVES (epsConsensusHistory) : pointilles
+  // attenues sans etiquette - la date reste en donnee, pas a l'ecran.
+  const consHistMaps=(Array.isArray((state.tickers[ticker]||{}).epsConsensusHistory)?(state.tickers[ticker]||{}).epsConsensusHistory:[])
+    .filter(h=>h&&h.year).map(h=>{
+      const m={};
+      if(+h.eps>0) m[+h.year]=+h.eps;
+      if(+h.epsNY>0) m[+h.year+1]=+h.epsNY;
+      if(+h.epsY2>0) m[+h.year+2]=+h.epsY2;
+      return m;
+    });
 
   const allYears=new Set();
   shown.forEach(s=>Object.keys(s.epsByYear).forEach(y=>allYears.add(+y)));
@@ -2984,6 +3029,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }));
   consYears.forEach(y=>{ const v=consMapAll[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
   consExtraYears.forEach(y=>{ const v=consExtra[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
+  consHistMaps.forEach(m=>years.forEach(y=>{ const v=m[y]; if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; } }));
   if(!isFinite(yMin)||!isFinite(yMax)) return null;
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
   const margin=(yMax-yMin)*0.12;
@@ -3054,34 +3100,38 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       }
       return `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
     }).join('');
-    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.5}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+    // Convention 20/08 (v2) : seule la courbe COURANTE est un trait plein
+    // epais ; les revisions ARCHIVEES passent en pointilles (leurs dates
+    // restent en donnee mais ne s'affichent plus - voir vintageLabels).
+    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.4}"${isLast?'':' stroke-dasharray="3 4"'} opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
 
-  // Trace consensus : pointilles or, points evides, etiquette "Consensus"
-  // + valeur au bout - visuellement subordonne aux courbes Omnium (navy).
-  // Le prolongement extrapole est ATTENUE (opacite reduite, points plus
-  // petits) et l'etiquette du bout le declare.
+  // Trace consensus (convention 20/08 v2) : la courbe consensus COURANTE
+  // est un TRAIT PLEIN FIN or (prolongee lineairement jusqu'a l'horizon,
+  // sans mention) ; les instantanes consensus ARCHIVES
+  // (epsConsensusHistory) sont en pointilles attenues, sans etiquette.
+  // L'etiquette unique "Consensus · date" vit EN HAUT A DROITE, hors de
+  // la zone de trace (padT) - elle ne peut couper aucune courbe, quel
+  // que soit l'empilement futur. Aucune valeur affichee.
   let consSvg='';
+  consHistMaps.forEach(m=>{
+    const ys=years.filter(y=>typeof m[y]==='number');
+    if(ys.length<2) return;
+    const pts=ys.map(y=>`${xOf(y).toFixed(1)},${yOf(m[y]).toFixed(1)}`).join(' ');
+    consSvg+=`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1" stroke-dasharray="2 4" opacity=".35" stroke-linejoin="round" stroke-linecap="round"/>`;
+  });
   if(consYears.length){
-    const pts=consYears.map(y=>`${xOf(y).toFixed(1)},${yOf(consMapAll[y]).toFixed(1)}`).join(' ');
-    const dots=consYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consMapAll[y]).toFixed(1)}" r="2.8" fill="#fff" stroke="#c9a227" stroke-width="1.8"/>`).join('');
-    let extraSvg='';
-    if(consExtraYears.length){
-      const lastReal=consYears[consYears.length-1];
-      const chain=[lastReal,...consExtraYears];
-      const vOf=(y)=>y===lastReal?consMapAll[y]:consExtra[y];
-      const epts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
-      extraSvg=`<polyline points="${epts}" fill="none" stroke="#c9a227" stroke-width="1.3" stroke-dasharray="2.5 4.5" opacity=".55" stroke-linejoin="round" stroke-linecap="round"/>`
-        +consExtraYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consExtra[y]).toFixed(1)}" r="2.1" fill="#fff" stroke="#c9a227" stroke-width="1.4" opacity=".55"/>`).join('');
-    }
-    const endYears=consExtraYears.length?consExtraYears:consYears;
-    const lastY=endYears[endYears.length-1];
-    const lv=consExtraYears.length?consExtra[lastY]:consMapAll[lastY];
-    const lx=xOf(lastY), ly=yOf(lv);
-    const anchor=(lx+90>padL+plotW)?'end':'start';
-    const labTxt=consExtraYears.length?`Consensus ${lv.toFixed(2)} (extrapolated)`:`Consensus ${lv.toFixed(2)}`;
-    const label=`<text x="${(anchor==='end'?lx-7:lx+7).toFixed(1)}" y="${(ly-7).toFixed(1)}" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="#92700a" text-anchor="${anchor}">${labTxt}</text>`;
-    consSvg=(consYears.length>1?`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-dasharray="4 4" stroke-linejoin="round" stroke-linecap="round"/>`:'')+extraSvg+dots+label;
+    const lastReal=consYears[consYears.length-1];
+    const chain=[...consYears, ...consExtraYears];
+    const vOf=(y)=>consExtraYears.includes(y)?consExtra[y]:consMapAll[y];
+    const pts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
+    const dots=consYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consMapAll[y]).toFixed(1)}" r="2.2" fill="#fff" stroke="#c9a227" stroke-width="1.5"/>`).join('');
+    consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'')+dots;
+  }
+  if(consYears.length||consHist.length){
+    const dCo=(state.tickers[ticker]||{}).epsConsensus||{};
+    const labTxt=`Consensus${dCo.date?` · ${formatFrDate(dCo.date)}`:''}`;
+    consSvg+=`<text x="${(padL+plotW+padR-2).toFixed(1)}" y="15" font-size="9.5" font-weight="500" font-family="Poppins,sans-serif" fill="#92700a" text-anchor="end">${labTxt}</text>`;
   }
 
   // ETIQUETTES DE MILLESIME POSEES SUR LE GRAPHIQUE
@@ -3115,8 +3165,13 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const MAX_LAB=Math.max(2, Math.min(narrow?3:5, Math.floor(plotH/26)));
   const groups={};
   shown.forEach((s,i)=>{ const e=endYearOf(s); if(e!=null) (groups[e]=groups[e]||[]).push(i); });
+  // Convention 20/08 v2 : SEULE la courbe COURANTE porte son etiquette de
+  // millesime - les dates des revisions archivees restent en donnee
+  // (priceHistory) mais ne s'affichent plus : l'empilement des courbes
+  // reste lisible quelle que soit sa profondeur future.
   const vintageLabels=Object.keys(groups).map(Number).sort((a,b)=>a-b).map(end=>{
-    const idx=groups[end], keep=idx.slice(-MAX_LAB);
+    const idx=groups[end], keep=idx.filter(i=>i===n-1);
+    if(!keep.length) return '';
     const ideal=keep.map(i=>yOf(shown[i].epsByYear[String(end)]));
     // Anti-chevauchement vertical, puis rabattement dans le cadre.
     const ord=ideal.map((y,j)=>({y,j})).sort((a,b)=>a.y-b.y);
