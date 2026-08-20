@@ -488,6 +488,32 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .epsg-offc.has:hover .epsg-ct{transform:translateY(-30%);opacity:1;}
 .epsg-offc.has.open .epsg-ct{transform:translateY(-46%) rotate(180deg);opacity:1;}
 .epsg-dbl{border-top:3px double #b8bed6;margin:5px 0 3px;}
+/* ── Panneau REVISIONS du chart EPS (R1, 20/08 v6) ─────────────────
+   Puces par millesime sous l axe : navy = Omnium, turquoise = consensus
+   (le code couleur EST la legende). Trois etats par millesime :
+   YTD -> total depuis l origine -> detail. */
+.epsrev-row{position:relative;margin:0 0 6px;}
+.epsrev-cell{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;gap:3px;}
+.epsrev-chip{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;border-radius:6px;padding:2px 7px;line-height:1.35;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.epsrev-chip.omn{background:#eceefc;color:var(--navy);}
+.epsrev-chip.cons{background:rgba(43,216,194,.13);color:var(--teal-text);}
+.epsrev-chip.eq{opacity:.45;font-weight:600;}
+.epsrev-more{font-family:'Poppins',sans-serif;font-size:8px;font-weight:600;color:var(--muted);cursor:pointer;line-height:1.2;user-select:none;}
+.epsrev-more:hover{color:var(--navy);}
+.epsrev-since{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:500;color:var(--muted);line-height:1.1;}
+.epsrev-strip{border:1px solid #f0f1f7;background:#fafbfe;border-radius:8px;padding:8px 12px;margin:0 0 8px;display:flex;flex-direction:column;gap:4px;}
+.epsrev-strip .epsrev-t{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:baseline;}
+.epsrev-strip .epsrev-x{cursor:pointer;color:var(--muted);font-weight:600;font-size:8.5px;}
+.epsrev-line{font-family:'Poppins',sans-serif;font-size:8.5px;font-weight:600;display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;font-variant-numeric:tabular-nums;}
+.epsrev-line .sw{display:inline-block;width:11px;height:0;border-top:2px solid currentColor;border-radius:1px;margin-right:2px;vertical-align:2px;}
+.epsrev-line .stp{color:inherit;}
+.epsrev-line .arr{color:#c3c8d9;font-weight:500;}
+.epsrev-line .tot{font-weight:800;}
+@media(max-width:760px){
+  .epsrev-chip{font-size:8px;padding:2px 5px;}
+  .epsrev-line{font-size:8px;}
+}
+
 /* Colonne FY : une colonne a part entiere, au meme regime que T1..T4 -
    tout centre (totaux Published/One-offs/Omnium, micro-label FY). */
 .epsg-t{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:center;}
@@ -2981,6 +3007,7 @@ function distinctEpsByYearStates(snapshots){
 }
 
 function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
+  if(typeof _epsRevTicker!=='undefined'&&_epsRevTicker!==ticker){ _epsRevTicker=ticker; _epsRevVintage={}; }
   const ph=state.priceHistory;
   const entry=ph && ph.tickers ? ph.tickers[ticker] : null;
   const snaps=entry ? (entry.snapshots||[]) : [];
@@ -3077,15 +3104,16 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // "Revisions") sous forme de TRAINEES par millesime - pas de courbes
   // empilees : representation scalable a toute profondeur d'archive.
   const REV=(typeof _epsRevShow!=='undefined')&&_epsRevShow;
+  // Echelle STABLE : seules les deux courbes COURANTES la fixent, dans
+  // tous les modes - basculer les revisions ne redimensionne jamais le
+  // trace (les puces R1 vivent SOUS l axe, pas dessus).
   let yMin=Infinity, yMax=-Infinity;
-  const scaleStates=REV?shown:[shown[shown.length-1]];
-  scaleStates.forEach(s=>years.forEach(y=>{
-    const v=s.epsByYear[String(y)];
+  years.forEach(y=>{
+    const v=shown[shown.length-1].epsByYear[String(y)];
     if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; }
-  }));
+  });
   consYears.forEach(y=>{ const v=consMapAll[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
   consExtraYears.forEach(y=>{ const v=consExtra[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
-  if(REV) consHistMaps.forEach(m=>years.forEach(y=>{ const v=m[y]; if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; } }));
   if(!isFinite(yMin)||!isFinite(yMax)) return null;
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
   const margin=(yMax-yMin)*0.12;
@@ -3103,34 +3131,6 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const yFirst=years[0], yLast=years[years.length-1];
   const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
   const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
-
-  // Une courbe ARCHIVEE ne se trace que si elle se SEPARE visiblement de
-  // sa courbe courante sur une part suffisante de son parcours : une
-  // archive qui colle au trace courant sauf en un point ne laisserait
-  // qu'un fragment pointille orphelin accroche a ce point, illisible
-  // (retour 20/08 v3). Seuil : >=3px d'ecart sur >=50% du span. La
-  // donnee, elle, reste archivee (priceHistory / epsConsensusHistory).
-  const fracVisible=(mapA,mapB)=>{
-    const ysA=years.filter(y=>typeof mapA[y]==='number');
-    const ysB=years.filter(y=>typeof mapB[y]==='number');
-    if(ysA.length<2) return 0;
-    if(ysB.length<2) return 1;
-    const interp=(m,ys,fy)=>{
-      if(fy<=ys[0]) return m[ys[0]];
-      if(fy>=ys[ys.length-1]) return m[ys[ys.length-1]];
-      let k=1; while(k<ys.length&&ys[k]<fy) k++;
-      const a=ys[k-1], b=ys[k];
-      return m[a]+(m[b]-m[a])*((fy-a)/(b-a));
-    };
-    let vis=0, tot=0;
-    for(let k=0;k<=24;k++){
-      const fy=ysA[0]+(ysA[ysA.length-1]-ysA[0])*k/24;
-      tot++;
-      if(fy<ysB[0]||fy>ysB[ysB.length-1]){ vis++; continue; }
-      if(Math.abs(yOf(interp(mapA,ysA,fy))-yOf(interp(mapB,ysB,fy)))>=3) vis++;
-    }
-    return tot?vis/tot:0;
-  };
 
   const ticks=4;
   const gridlines=Array.from({length:ticks+1},(_, i)=>{
@@ -3162,7 +3162,9 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
     return `${d.getUTCDate()} ${m} ${String(d.getUTCFullYear()).slice(2)}`;
   };
-  const CONS_COL='var(--gold-text)';
+  // Turquoise pour le consensus (decision 20/08 v6) : se detache mieux
+  // du navy que l or, qui reste la couleur du scorecard guidance.
+  const CONS_COL='var(--teal-text)';
   const consCurMap={...consExtra, ...consMapAll};
   const mapYAt=(m,x)=>{
     const ys=years.filter(y=>typeof m[y]==='number');
@@ -3187,87 +3189,104 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // vieux = plus efface). Une seule figure par millesime, quel que soit
   // le nombre de revisions archivees : scalable, et la direction de la
   // migration se lit d un coup d oeil. Navy = Omnium, or = consensus.
-  let trailsSvg='', trailsMagnified=false, revLedger='';
+  // ── PANNEAU REVISIONS R1 (20/08 v6) : puces par millesime ──────────
+  //
+  // Trois niveaux de lecture, du plus quotidien au plus profond :
+  //   1. bouton "Revisions" -> puces YTD par millesime (total des
+  //      revisions depuis le debut de l annee CIVILE ; tant que les
+  //      archives ne remontent pas avant le 1er janvier, la fenetre
+  //      YTD EST l origine - l ecart disparait avec le temps) ;
+  //   2. micro-lien "full" sous un millesime porteur d archives
+  //      ANTERIEURES au 1er janvier -> total depuis les PREMIERES
+  //      projections, micro-legende "since {date}" (le millesime de
+  //      l exercice en cours ne peut jamais porter ce lien : il sort
+  //      du chart au roulement avant d accumuler un passe) ;
+  //   3. "detail" -> bandeau pleine largeur : le film complet du
+  //      millesime, etape par etape, series navy et turquoise.
+  // Le chart, lui, reste PUR : les puces vivent sous l axe, la legende
+  // tient dans le bouton ("Revisions · YTD"), le code couleur suffit.
+  let revLedger='';
   if(REV){
-    // Trainees AMPLIFIEES PAR SERIE autour du point actuel (retour
-    // 20/08) : une revision legere serait invisible a l echelle du
-    // chart, et un facteur commun se ferait ecraser par la serie la
-    // plus revisee. Le facteur (plafonne x8) rend la direction lisible ;
-    // la VERITE CHIFFREE, elle, vit dans le registre des deltas sous le
-    // chart - c est lui qu on lit, les trainees ne sont qu un indice.
-    const specs=[];
+    const fmtD=v=>{const a=Math.abs(v); return (a>=10?a.toFixed(0):a.toFixed(1))+'%';};
+    const chip=(cls,v)=>{
+      if(v==null) return '';
+      if(Math.abs(v)<0.05) return `<span class="epsrev-chip ${cls} eq">=</span>`;
+      return `<span class="epsrev-chip ${cls}">${v>0?'▲':'▼'} ${fmtD(v)}</span>`;
+    };
+    // Series chronologiques completes (les cartes archivees ont deja ete
+    // etendues a l horizon par extrapolation) - l entree COURANTE ferme
+    // chaque serie.
+    const omnEntries=shown.map(st=>({date:st.date,
+      lab:shortDate(st.event&&st.event.date?st.event.date:st.date), m:st.epsByYear}));
+    const consEntries=consHistList.map(h=>({date:h.date||'', lab:h.date?shortDate(h.date):'—', m:h.m}))
+      .concat(consYears.length&&dCons?[{date:dCons.date||'', lab:dCons.date?shortDate(dCons.date):'—', m:consCurMap}]:[]);
+    const jan1=`${new Date().getFullYear()}-01-01`;
+    // Base YTD = dernier etat date d AVANT le 1er janvier (sinon le
+    // premier etat = l origine) ; base origine = premier etat.
+    const baseOf=(entries,mode)=>{
+      if(entries.length<2) return null;
+      if(mode==='all') return entries[0];
+      let b=null;
+      entries.slice(0,-1).forEach(e=>{ if(e.date&&e.date<jan1) b=e; });
+      return b||entries[0];
+    };
+    const val=(e,y)=>{ const v=e&&e.m?e.m[String(y)]??e.m[y]:null; return (typeof v==='number')?v:null; };
+    const delta=(entries,y,mode)=>{
+      const b=baseOf(entries,mode); if(!b) return null;
+      const cur=val(entries[entries.length-1],y), old=val(b,y);
+      if(cur==null||old==null||Math.abs(old)<1e-9) return null;
+      return (cur-old)/Math.abs(old)*100;
+    };
+    const hasPrior=(entries,y)=>entries.length>=2
+      && entries.slice(0,-1).some(e=>e.date&&e.date<jan1&&val(e,y)!=null);
+    const st=(typeof _epsRevVintage!=='undefined')?_epsRevVintage:{};
+    let cells='', strip='', any=false, anyMore=false;
     years.forEach(y=>{
-      const cur=lastState.epsByYear[String(y)];
-      if(typeof cur==='number'){
-        const arch=shown.slice(0,n-1).map(st=>st.epsByYear[String(y)]).filter(v=>typeof v==='number');
-        if(arch.length) specs.push({x:xOf(y), cy:yOf(cur), ys:arch.map(v=>yOf(v)), grp:'omn', col:'var(--navy)'});
+      const mode=(st[y]||0)>=1?'all':'ytd';
+      const dO=delta(omnEntries,y,mode), dC=delta(consEntries,y,mode);
+      if(dO==null&&dC==null) return;
+      any=true;
+      const eligible=hasPrior(omnEntries,y)||hasPrior(consEntries,y);
+      if(eligible) anyMore=true;
+      const lx=(xOf(y)/W*100).toFixed(2);
+      const i=years.indexOf(y);
+      const tr=i===0?'translateX(0)':(i===years.length-1?'translateX(-100%)':'translateX(-50%)');
+      let more='';
+      if(eligible){
+        const lvl=st[y]||0;
+        const lbl=lvl===0?'full ⌄':(lvl===1?'detail ⌄':'close ⌃');
+        more=`<span class="epsrev-more" onclick="epsRevCycle(${y})">${lbl}</span>`;
+        if(lvl>=1){
+          const b=baseOf(omnEntries,y,'all')||baseOf(consEntries,y,'all');
+          if(b&&b.date) more+=`<span class="epsrev-since">since ${shortDate(b.date)}</span>`;
+        }
       }
-      if(typeof consCurMap[y]==='number'){
-        const archC=consHistMaps.map(m=>m[y]).filter(v=>typeof v==='number');
-        if(archC.length) specs.push({x:xOf(y)+5, cy:yOf(consCurMap[y]), ys:archC.map(v=>yOf(v)), grp:'cons', col:CONS_COL});
+      cells+=`<div class="epsrev-cell" style="left:${lx}%;transform:${tr};">${chip('omn',dO)}${chip('cons',dC)}${more}</div>`;
+      // ── niveau 3 : bandeau detail du millesime ──
+      if((st[y]||0)===2){
+        const line=(entries,col,name)=>{
+          const pts2=entries.map(e=>({lab:e.lab, v:val(e,y)})).filter(x=>x.v!=null);
+          if(pts2.length<2) return '';
+          let out=`<div class="epsrev-line" style="color:${col};"><span class="sw"></span>`;
+          pts2.forEach((x,k)=>{
+            if(k) out+=`<span class="arr">→</span>`;
+            out+=`<span class="stp">${x.lab} <b>${x.v.toFixed(2)}</b></span>`;
+          });
+          const d0=pts2[0].v, d1=pts2[pts2.length-1].v;
+          if(Math.abs(d0)>1e-9){
+            const dv=(d1-d0)/Math.abs(d0)*100;
+            out+=`<span class="tot">${Math.abs(dv)<0.05?'=':(dv>0?'▲ ':'▼ ')+fmtD(dv)}</span>`;
+          }
+          return out+'</div>';
+        };
+        strip+=`<div class="epsrev-strip">
+          <div class="epsrev-t"><span>${y} — revision history</span><span class="epsrev-x" onclick="epsRevCycle(${y})">✕ close</span></div>
+          ${line(omnEntries,'var(--navy)')}${line(consEntries,'var(--teal-text)')}
+        </div>`;
       }
     });
-    ['omn','cons'].forEach(g=>{
-      const grp=specs.filter(sp=>sp.grp===g);
-      let maxDev=0;
-      grp.forEach(sp=>sp.ys.forEach(v=>{ maxDev=Math.max(maxDev, Math.abs(v-sp.cy)); }));
-      if(!maxDev) return;
-      const f=Math.min(8, Math.max(1, 22/maxDev));
-      if(f>1.25) trailsMagnified=true;
-      const amp=(sp,v)=>sp.cy+(v-sp.cy)*f;
-      grp.forEach(sp=>{
-        let ext=sp.ys[0];
-        sp.ys.forEach(v=>{ if(Math.abs(v-sp.cy)>Math.abs(ext-sp.cy)) ext=v; });
-        if(Math.abs(amp(sp,ext)-sp.cy)<3) return;
-        trailsSvg+=`<line x1="${sp.x.toFixed(1)}" x2="${sp.x.toFixed(1)}" y1="${amp(sp,ext).toFixed(1)}" y2="${sp.cy.toFixed(1)}" stroke="${sp.col}" stroke-width="2" stroke-linecap="round" opacity=".14"/>`;
-        sp.ys.forEach((v,i)=>{
-          const op=(0.16+0.38*((i+1)/sp.ys.length)).toFixed(2);
-          trailsSvg+=`<circle cx="${sp.x.toFixed(1)}" cy="${amp(sp,v).toFixed(1)}" r="1.9" fill="${sp.col}" opacity="${op}"/>`;
-        });
-      });
-    });
-    // REGISTRE DES DELTAS : sous le chart, une ligne par serie -
-    // "Omnium · since 5 Feb 26   2026 +0.6%  2027 +1.2% ...". Des
-    // chiffres signes, lisibles quelle que soit l ampleur des
-    // revisions : c est la piece maitresse du mode, les trainees ne
-    // font qu indiquer la direction sur le trace.
-    const fmtD=v=>{const a=Math.abs(v); return (v>=0?'+':'−')+(a>=10?a.toFixed(0):a.toFixed(1))+'%';};
-    const rows=[];
-    if(n>1){
-      const old=shown[0];
-      const parts=[];
-      years.forEach(y=>{
-        const a=old.epsByYear[String(y)], b=lastState.epsByYear[String(y)];
-        if(typeof a==='number'&&typeof b==='number'&&Math.abs(a)>1e-9){
-          const dv=(b-a)/Math.abs(a)*100;
-          parts.push(`<span style="color:var(--muted);font-size:8.5px;">${y}</span>&nbsp;<b>${Math.abs(dv)<0.05?'unch.':fmtD(dv)}</b>`);
-        }
-      });
-      if(parts.length) rows.push({col:'var(--navy)', name:'Omnium',
-        anchor:shortDate(old.event&&old.event.date?old.event.date:old.date), parts});
-    }
-    if(consHistList.length&&consYears.length){
-      const old=consHistList[0];
-      const parts=[];
-      years.forEach(y=>{
-        // Cote COURANT aussi, la comparaison porte sur la courbe COMPLETE
-        // (points reels + extrapolation) - tous les millesimes comptent.
-        const a=old.m[y], b=consCurMap[y];
-        if(typeof a==='number'&&typeof b==='number'&&Math.abs(a)>1e-9){
-          const dv=(b-a)/Math.abs(a)*100;
-          parts.push(`<span style="color:var(--muted);font-size:8.5px;">${y}</span>&nbsp;<b>${Math.abs(dv)<0.05?'unch.':fmtD(dv)}</b>`);
-        }
-      });
-      if(parts.length) rows.push({col:CONS_COL, name:'Consensus',
-        anchor:old.date?shortDate(old.date):'', parts});
-    }
-    if(rows.length){
-      revLedger='<div style="margin:0 0 8px;display:flex;flex-direction:column;gap:3px;">'+rows.map(r=>
-        `<div style="font-family:'Poppins',sans-serif;font-size:9.5px;color:${r.col};display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;">`+
-        `<span style="font-weight:700;">${r.name}${r.anchor?` · since ${r.anchor}`:''}</span>`+
-        r.parts.map(pt=>`<span style="font-variant-numeric:tabular-nums;white-space:nowrap;">${pt}</span>`).join('')+
-        '</div>').join('')+'</div>';
-    }
+    if(any)
+      revLedger=`<div class="epsrev-row" style="height:${anyMore?66:46}px;">${cells}</div>${strip}`;
   }
   // COURBE OMNIUM COURANTE seule (les revisions ne s empilent plus).
   const curvesSvg=(s=>{
@@ -3346,10 +3365,9 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const revCount=(n-1)+consHistMaps.length;
   let revBtn='';
   if(revCount>0){
-    const lbl=REV?`Hide revisions`:`Revisions · ${revCount}`;
+    const lbl=REV?`Revisions · YTD`:`Revisions · ${revCount}`;
     revBtn=`<text x="${W}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${REV?'var(--navy)':'var(--muted)'}" text-anchor="end" style="cursor:pointer;" onclick="toggleEpsRevisions()">${REV?'✕ ':'↺ '}${lbl}</text>`;
-    if(REV&&trailsMagnified)
-      revBtn+=`<text x="${W}" y="27" font-size="8" font-weight="500" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end">trails magnified — deltas below</text>`;
+
   }
 
   // DATES AU BOUT DROIT DES DEUX COURBES COURANTES
@@ -3383,7 +3401,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${revBtn}${gridlines}${yLabels}${trailsSvg}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${revBtn}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
     single: n<2,
     revLedger
   };
@@ -3393,8 +3411,9 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 let _valoHistState={mode:'pe', seriesKind:'cy', period:'all'};
 // Affichage des revisions sur le chart EPS projections (defaut : OFF -
 // seules les deux courbes COURANTES s'affichent, datees a droite).
-let _epsRevShow=false;
-function toggleEpsRevisions(){ _epsRevShow=!_epsRevShow; renderValoHistory(CT); }
+let _epsRevShow=false, _epsRevVintage={}, _epsRevTicker=null;
+function toggleEpsRevisions(){ _epsRevShow=!_epsRevShow; if(!_epsRevShow)_epsRevVintage={}; renderValoHistory(CT); }
+function epsRevCycle(y){ _epsRevVintage[y]=((_epsRevVintage[y]||0)+1)%3; renderValoHistory(CT); }
 
 function renderValoHistory(ticker){
   // Rendu dans le creneau ouvert par la table de multiples (fusion des deux
