@@ -318,6 +318,32 @@ def w7():
         if ip and ia is not None and ia>120: bad.append((tk,f'scorecard inProgress {ia} j'))
     return bad
 
+@check("W8  ~ prose francophone dans une fiche (l app est en anglais)")
+def w8():
+    # Constat 20/08/2026 (AMAZON) : deux regles de langue contradictoires
+    # ont coexiste dans la doctrine (18-20/08) et 28 fiches portent une
+    # prose majoritairement francaise. La regle unique : TOUTE prose de
+    # fiche est en ANGLAIS. Ce detecteur (heuristique : stopwords
+    # francais + diacritiques dans les chaines longues) porte la file de
+    # traduction et empeche la recidive.
+    import re as _re
+    FR=_re.compile(r"\b(le|la|les|des|du|une|aux|avec|pour|dans|sur|est|sont|ete|exclue|croises|relevee|exercice|retraite|publie)\b",_re.I)
+    ACC=_re.compile(r"[\u00e9\u00e8\u00ea\u00e0\u00e7\u00f9\u00e2\u00ee\u00f4\u00fb]")
+    bad=[]
+    for tk,t in FICHES.items():
+        score=0
+        def walk(x):
+            nonlocal score
+            if isinstance(x,str):
+                if len(x)>40: score+=len(FR.findall(x))+len(ACC.findall(x))
+            elif isinstance(x,dict):
+                for v in x.values(): walk(v)
+            elif isinstance(x,list):
+                for v in x: walk(v)
+        walk(t)
+        if score>120: bad.append((tk,f'score fr {score}'))
+    return sorted(bad,key=lambda x:-int(x[1].split()[-1]))
+
 @check("C24 quarterlyEPS present et complet (PY/CY/NY) sur toute fiche")
 def c16():
     # Ne verifie pas des valeurs (C1/C2 s'en chargent) mais la PRESENCE :
