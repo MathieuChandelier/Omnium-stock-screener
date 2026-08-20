@@ -174,17 +174,21 @@
      "consensus": 7.23,
      "basis": "GAAP",
      "basisNote": "GAAP dilue - miss de 14,5% du consensus sell-side (45 analystes). Le miss est integralement attribuable a 2,4 Md$ de charges juridiques et 1,2 Md$ de charges de depart (plan social mai 2026), non anticipes a cette ampleur par le consensus ; hors ces elements, la CFO indique que le resultat operationnel aurait progresse de +9% sur un an."
+    },
+    "epsReported": {
+     "actual": 6.18,
+     "basis": "GAAP",
+     "period": "T2 26",
+     "note": "GAAP diluted EPS of $6.18 on GAAP net income of $15.8B ($15,848M, quarter ended June 30, 2026, per stockanalysis.com quarterly financials, cross-checked with the earnings call). Missed sell-side consensus by ~$1.22 (~14.5%), integrally driven by one-offs: $2.4B legal charges and $1.2B severance from the May 2026 headcount reduction; ex-items, operating income would have grown +9% YoY per the CFO."
     }
    },
-   "guidanceProchainTrimestre": "CA T3 2026 guide a 61-64 Md$ (headwind change ~1pt aux taux actuels).",
-   "guidanceAnnuelle": "Charges totales FY2026 relevees a 165-169 Md$ (vs 162-169 Md$), integrant les 2,4 Md$ de charges juridiques du T2. Capex FY2026 resserre/releve par le bas a 130-145 Md$ (vs 125-145 Md$). Taux d'imposition reste de l'annee releve a 15-17% (vs 13-16%). Resultat d'exploitation FY2026 toujours attendu superieur a FY2025 (83,28 Md$), reconfirme explicitement malgre les relevements de charges. AUCUNE guidance capex 2027 fournie.",
+   "guidanceProchainTrimestre": "Q3 2026 total revenue guided to $61-64B, assuming ~1pt FX headwind to YoY growth at current rates - implies continued mid-to-high-20s growth after Q2's +28% reported / +27% cc; guidance given with the usual caveat on active legal/regulatory matters (US youth-safety trials scheduled this year, potential material loss).",
+   "guidanceAnnuelle": "FY2026 total expenses raised to $165-169B (lower end lifted to absorb the $2.4B Q2 legal charge; prior $162-169B). FY2026 capex, including finance-lease principal payments, narrowed upward to $130-145B (prior $125-145B). Tax rate for remaining 2026 quarters raised to 15-17% (prior 13-16%). FY2026 operating income explicitly reconfirmed above FY2025 ($83.28B) despite the expense raises. NO 2027 capex guidance provided; infrastructure plans geared to maximizing 2026-27 compute capacity (demand-constrained per the CFO), with land/power foundations laid for 2028+ flexibility and server purchase decisions deferred.",
    "pointsCles": [
-    "La CFO confirme explicitement que le resultat operationnel T2 aurait progresse de +9% hors charges juridiques/plan social - signal cle que la deterioration affichee de la marge (31% vs 43%) est largement due a des elements non recurrents plutot qu'a une degradation structurelle, meme si la remontee de la D&A (cout structurel et recurrent, lui, bien reel) continue de peser en parallele.",
-    "Advantage+ (suite d'outils publicitaires bout-en-bout alimentes par IA) atteint un rythme annualise de CA superieur a 75 Md$ - nouvelle metrique cle non disponible a la creation, donnant une taille concrete a la monetisation IA du coeur publicitaire.",
-    "Susan Li refuse explicitement de donner une guidance capex 2027 en Q&A (\"infrastructure planning remains highly dynamic\"), mais confirme que la planification actuelle vise a 'maximiser la capacite 2026 et 2027', signal qualitatif fort que le capex restera eleve en 2027 sans engagement chiffre - la flexibilite est explicitement reservee pour les decisions 2028+.",
-    "Virage de financement confirme par la CFO : mix davantage oriente dette (emission de 25 Md$ au T2 seul), exploration de structures de partenariat/JV hors bilan partiel (BlackRock, 1 GW a El Paso, Texas) en complement du cash-flow operationnel - Susan Li le presente comme une evolution deliberee de la structure de capital plutot qu'une necessite ponctuelle.",
-    "Zuckerberg reaffirme la conviction sur les agents personnels comme 'marche massif et quasi inevitable' a horizon 5 ans, tout en reconnaissant explicitement qu'aucun produit n'a encore ete lance a ce stade ('we haven't done that yet') - a distinguer des Business Agents (deja deployes, >1M entreprises/semaine) et de l'API Muse Spark (deja disponible, distribution en cours d'elargissement).",
-    "Nouveau flux de revenus 'Family of Apps Other' franchit pour la premiere fois le seuil du milliard de dollars sur un trimestre (+73% sur un an), porte par la messagerie payante et les abonnements WhatsApp - diversification naissante au-dela de la publicite pure."
+    "Underlying P&L intact despite the headline miss: CFO confirmed Q2 operating income would have grown +9% YoY excluding the $2.4B legal charges and $1.2B severance (May 2026 headcount reduction, ~8,000 roles; headcount 75,000+, -3% QoQ); reported operating margin fell to 31% on these one-offs, while the ramp in D&A remains the real recurring structural cost to monitor into 2027-2028.",
+    "AI monetization of the core is now quantified: Advantage+ crossed a $75B annual revenue run-rate; the GEM ads-ranking model plus the new Meta Generative Recommender drove +8.3% ad clicks and +15.7% conversions on Facebook (and +1% app-event conversions on Instagram); Family of Apps 'Other' revenue crossed $1B in a quarter for the first time (+73% YoY, WhatsApp paid messaging and subscriptions) - nascent diversification beyond pure advertising.",
+    "Capex regime and funding shift: quarterly capex hit $31.1B leaving FCF at just $784M; no 2027 capex guidance (Susan Li: infrastructure planning 'highly dynamic') but plans are explicitly geared to maximizing 2026-27 capacity - Meta describes itself as demand-constrained, including for the core business - with the funding mix tilting toward debt and infrastructure JVs (BlackRock, 1 GW El Paso data center under Meta Compute) and 2028+ server decisions deferred for flexibility.",
+    "Product pipeline is promise-heavy but staged: Zuckerberg frames consumer personal agents as a 'massive, near-inevitable' market within 5 years while conceding nothing has shipped yet; distinct from Business Agents already live globally (>1M businesses/week on WhatsApp/Messenger, Instagram rollout underway) and the Muse Spark public API (OpenRouter, enterprise rollout coming); return to open-source model releases promised 'soon' alongside closed frontier models, and Meta reports numerous offers to buy its compute 'at a significant premium'."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -192,7 +196,9 @@
     "source": "10-Q T2 2026 + communique (29/07/2026)",
     "date": "2026-08-19",
     "note": "Croises : CA T2 60,80 Md$ (+28%), resultat operationnel 18,78 Md$, resultat net 15,85 Md$ (EPS dilue 6,18$). Trimestre charge en one-offs (provisions juridiques + severance de la reduction d'effectifs de mai) - pression AI/capex sur les marges."
-   }
+   },
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true
   },
   "guidanceHistory": [
    {
@@ -307,12 +313,12 @@
    "timeline": [
     {
      "date": "2026-04-29",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 expenses 162-169bn; capex RAISED to 125-145bn (from 115-135bn); operating income guided above 2025; ETR 13-16% ex-one-offs."
     },
     {
      "date": "2026-07-29",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 expenses raised to 165-169bn (incl. 2.4bn Q2 legal charges); capex tightened/raised to 130-145bn; rest-of-year ETR raised to 15-17%."
     }
    ],
@@ -430,7 +436,8 @@
     "quarter": "Q2 26",
     "date": "2026-07-29",
     "source": "Q2 release/call (as exploited at the 30/07 refresh)",
-    "message": "Core ad engine exceptional (+28% revenue, fastest ad growth in the industry) while the investment cycle deepens: capex 130-145bn, expenses raised to 165-169bn including 2.4bn legal charges; the 14.5% GAAP EPS miss is integrally one-off-driven; D&A running far below the setup model (12.4bn S1 real vs ~18bn modeled) - the margin compression is DEFERRED, not avoided, and the model now phases it 2027-2028."
+    "message": "Core ad engine exceptional (+28% revenue, fastest ad growth in the industry) while the investment cycle deepens: capex 130-145bn, expenses raised to 165-169bn including 2.4bn legal charges; the 14.5% GAAP EPS miss is integrally one-off-driven; D&A running far below the setup model (12.4bn S1 real vs ~18bn modeled) - the margin compression is DEFERRED, not avoided, and the model now phases it 2027-2028.",
+    "format": "compresse"
    }
   ]
  },

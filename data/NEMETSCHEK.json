@@ -146,15 +146,21 @@
           "consensus": null,
           "basis": "non-GAAP",
           "basisNote": "non-GAAP (hors amortissement PPA)"
+        },
+        "epsReported": {
+          "actual": 0.57,
+          "basis": "IFRS",
+          "period": "T2 26",
+          "note": "Reported IFRS EPS of EUR 0.57 for Q2 26 (net income EUR 66m, +20.3% yoy), boosted by a strongly improved financial result from FX hedging around the HCSS acquisition; H1 26 EPS grew +29.9% yoy."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (la societe guide a l'annee).",
-      "guidanceAnnuelle": "Croissance organique du chiffre d'affaires de 14-15% a change constant et marge d'EBITDA de 32-33% pour 2026 reaffirmees ; l'acquisition HCSS (consolidee a partir du 1er juillet 2026) ajoute environ 600 points de base de croissance du CA publie mais retire environ 150 points de base a la marge d'EBITDA publiee du fait des couts d'integration et de la comptabilisation d'acquisition.",
+      "guidanceProchainTrimestre": "No quarterly guidance (the company guides on a full-year basis). Management flagged an expected H2 growth deceleration versus the +16% cc achieved in H1, due to tough Build comparables (GoCanvas contribution and post-Bluebeam-transition effects in 2025); no additional multi-year contract effect is assumed in H2 and Media is expected around mid-single-digit growth.",
+      "guidanceAnnuelle": "FY26 organic guidance fully confirmed: revenue growth of 14-15% cc (CEO referenced 14-16% in the Q&A and sees the group tracking well after +16% cc in H1) and EBITDA margin of 32-33%, close to 33% excluding acquisition-related one-off costs. HCSS, consolidated from July 1, 2026, adds around 600bps of cc revenue growth in FY26 after the estimated PPA effect and dilutes the reported EBITDA margin by around 150bps (PPA, integration costs and a new share-based compensation program for the enlarged Build segment); the front-loaded IFRS deferred-revenue haircut reduces the H2 26 HCSS contribution by a mid-to-high EUR 20s million amount. Guidance assumes no material macro deterioration and the HCSS financial impact remains preliminary until the PPA is finalized later this year.",
       "pointsCles": [
-        "Chiffre d'affaires du S1 26 en hausse de 11,9% publie (+15,7% a change constant) a 640,7 M€ ; T2 seul a 654 M€ (+13% publie, +14,5% a change constant), legerement au-dessus des attentes de croissance des analystes (13,7%).",
-        "Part des revenus recurrents (abonnement/SaaS) a un niveau record de 80% du chiffre d'affaires du groupe au T2 26, ARR en hausse de 15,9% publie (+17,4% a change constant).",
-        "Guidance organique 2026 integralement reaffirmee malgre un effet de change transactionnel extraordinaire au T2 (forint hongrois) et un abaissement de la guidance du seul segment Media (croissance a un chiffre moyen contre attente precedente a deux chiffres).",
-        "Acquisition HCSS cloturee et consolidee au 1er juillet 2026, elargissant le segment Build (infrastructure/construction lourde) ; impact dilutif transitoire sur la marge et l'EPS publies en 2026-2027, relution attendue en 2028."
+        "H1 26 revenue up 11.9% reported (+15.7% cc) to EUR 640.7m, Q2 up 13% reported (+14.5% cc) despite a very high comparison base; Q2 EBITDA of EUR 98.6m for a 30.1% reported margin, depressed by an extraordinary transactional FX effect (higher single-digit EUR m) and HCSS deal costs - 31% excluding deal costs - while Q2 net income rose 20.3% to EUR 66m (IFRS EPS EUR 0.57).",
+        "Subscription/SaaS revenue grew 32.4% cc in H1 to EUR 514.7m, lifting recurring revenue to a record 95% of group sales (subscription/SaaS at 80%) and ARR to EUR 1.25bn (+17.4% cc); perpetual licenses are down 40.8% cc and now only 2% of group revenue.",
+        "Segments diverged: Build stayed the engine (+27.1% cc in H1, 39.8% EBITDA margin, +520bps yoy) while Design grew 9.7% cc mid-transition (65% of Design revenue in subscription at end-Q2, ~70% targeted for end-2026, 90%+ by end-2027, tailwind only from 2028) and Media disappointed (+3.3% cc) on US media & entertainment customer consolidation, with Maxon cut to mid-single-digit growth for 2026.",
+        "HCSS, the group's largest-ever acquisition, is consolidated from July 1, 2026: underlying growth kept in the higher teens, H2 26 revenue contribution seen clearly above EUR 80m after a front-loaded IFRS deferred-revenue haircut (mid-to-high EUR 20s m), and EPS framed as dilutive in 2026, roughly flat in 2027 and clearly accretive in 2028 (~28% minority stake held by Thoma Bravo)."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -396,7 +402,7 @@
       "timeline": [
         {
           "date": "2026-07-30",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26 reaffirmed: organic +14/15% cc, organic EBITDA margin 32-33%; HCSS effects quantified separately (+~600bp revenue, -~150bp margin)."
         }
       ],

@@ -127,15 +127,21 @@
           "consensus": null,
           "basis": "GAAP",
           "basisNote": "GAAP"
+        },
+        "epsReported": {
+          "actual": 0.61,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "Basic EPS derived from the published H1 26 IFRS net result (EUR 164.7M over ~271.6M shares); Moncler does not headline a per-share figure in its interim release."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie (Q3 = communiqué de chiffre d'affaires seul, publication le 21 octobre 2026 après clôture) ; management indique juillet en ligne avec juin puis légèrement meilleur, sans quantification.",
-      "guidanceAnnuelle": "Pas d'objectif chiffré de CA pour l'exercice. Ambition reconduite de protéger la marge EBIT groupe dans la zone des 29%+ à long terme (structurelle, non spécifique à 2026). Paramètres opérationnels donnés pour le solde de l'année : one-off gouvernance ~2 M EUR au S2 (vs 8 M EUR au S1, ~10 M EUR sur l'exercice), capex ~6% du CA, marketing ~7% du CA, contribution espace ~4%, BFR cible ~9,7% du CA en fin d'année.",
+      "guidanceProchainTrimestre": "No quantified quarterly guidance (Q3 is a revenue-only release, due October 21, 2026 post-market close; quiet period starts September 22). Qualitatively, early July traded in line with a soft June then improved slightly; management explicitly declined to extrapolate current trading. Space contribution ran slightly below the ~4% FY pace in Q2, judged not meaningful on a quarterly basis.",
+      "guidanceAnnuelle": "No quantified FY revenue or EPS target. Long-standing ambition to protect a group EBIT margin 'in the region of 29%+' reiterated, explicitly conditional on H2 top-line delivery (H2 called the most important half of the year). FY26 operating parameters confirmed: governance one-off ~EUR 2M in H2 (vs EUR 8M in H1, ~EUR 10M FY), net capex back to ~6% of revenue by year-end, marketing ~7% of revenue, space contribution ~4%, year-end NWC back to ~9.7% of revenue. Early 2027 indications: space again ~4%, price increases low-to-mid single digit at current input costs and FX.",
       "pointsCles": [
-        "Le T2 a nettement ralenti (CA groupe +5% cFX contre +12% cFX au T1), l'EMEA Moncler reculant de 8% cFX au T2 sous l'effet d'un flux touristique asiatique et américain en forte baisse, notamment en juin.",
-        "Le management évoque un comportement client 'buy now, wear now' (achat en saison plutôt qu'en anticipation), observé dans toutes les régions mais plus marqué en Europe, qui décale une partie de la demande automne/hiver sans en réduire nécessairement le volume total.",
-        "Premier call de Bartolomeo (Leo) Rongone comme CEO (en poste depuis le 1er avril 2026) ; Remo Ruffini devient président exécutif. Le conseil a acté les démissions d'Alexandre Arnault et Geoffroy van Raemdonck, remplacés par la cooptation de Sidney Toledano (ex-PDG de Christian Dior Couture, conseiller de Bernard Arnault).",
-        "Ouverture du flagship de la Cinquième Avenue à New York prévue en septembre 2026, présentée comme le jalon central de l'expansion américaine ; impact de coûts (loyers, personnel) déjà en partie intégré aux charges de vente du S2 mais contribution au CA jugée non significative avant 2027."
+        "Sharp Q2 deceleration (group revenue +5% cFX vs +12% cFX in Q1), with Moncler EMEA down 8% cFX on collapsing Asian and American tourist inflows to Europe - most acute in June - and a weak European online channel; Asia held at +12% as demand repatriated to local markets (Chinese cluster still up double digit, Korea ~10% of group revenue and strong locally).",
+        "Management flags an intensifying 'Buy Now, Wear Now' behavior across all regions (customers purchasing in-season rather than pre-buying Fall/Winter), delaying part of H2 demand; the first-ever end-to-end Spring/Summer push ('Have a Puffy Summer') performed well through April-June and early July and is framed as a structural multi-season commitment, not a one-off campaign.",
+        "First earnings call for new Group CEO Leo (Bartolomeo) Rongone (in post since April 1, 2026, Remo Ruffini executive chairman): stated priorities are US relevance, an all-season customer dialogue, the three Moncler brand dimensions (Collection, Grenoble, Genius) and deeper, more personal VIC engagement - continuity, no strategy reset; the EUR 8M H1 governance one-off (~EUR 10M FY) stems from this transition.",
+        "H1 EBIT margin 19.0% (18.3% LY; ~19.6% ex one-off) on strict cost control and favorable channel mix (gross margin 77.2%); Stone Island posted a fourth straight double-digit quarter (+11% cFX, DTC +15%) on volume plus category mix (outerwear/knitwear vs entry price), and the NY Fifth Avenue flagship (opening September 2026, rent already expensed) is the pivotal H2 milestone for the US bet."
       ],
       "communiqueAnalyse": true,
       "transcriptAnalyse": true,
@@ -379,7 +385,7 @@
       "timeline": [
         {
           "date": "2026-07-22",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "H1 26: no quantified revenue target; 29%+ LT group EBIT-margin ambition reconducted; H2 parameters given (governance one-off ~2M, capex ~6% of revenue)."
         }
       ],
