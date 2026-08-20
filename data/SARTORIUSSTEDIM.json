@@ -514,7 +514,9 @@
    "eps": 4.35,
    "epsNY": 5.28,
    "date": "2026-07-24",
-   "source": "Stockopedia (~5,02€, juillet 2026), base 'underlying' management (non comparable à omniumEPS Omnium, qui garde l'amortissement des intangibles)."
+   "source": "Stockopedia (~5,02€, juillet 2026), base 'underlying' management (non comparable à omniumEPS Omnium, qui garde l'amortissement des intangibles).",
+   "excluded": true,
+   "excludedNote": "Entree INVALIDE (correction 20/08/2026) : base hybride 'underlying' alignee sur le total Omnium CY (4.35) au lieu du consensus brut - voir doctrine, piege Sartorius. Conservee pour audit, EXCLUE des courbes et des deltas de revision : le passage a la base GAAP n'est pas une revision baissiere du consensus."
   }
  ],
  "externalActuals": {

@@ -3030,7 +3030,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // Instantanes consensus ARCHIVES (epsConsensusHistory) : pointilles
   // attenues sans etiquette - la date reste en donnee, pas a l'ecran.
   const consHistList=(Array.isArray((state.tickers[ticker]||{}).epsConsensusHistory)?(state.tickers[ticker]||{}).epsConsensusHistory:[])
-    .filter(h=>h&&h.year).map(h=>{
+    .filter(h=>h&&h.year&&!h.excluded).map(h=>{
       const m={};
       if(+h.eps>0) m[+h.year]=+h.eps;
       if(+h.epsNY>0) m[+h.year+1]=+h.epsNY;
@@ -3057,6 +3057,19 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     years.filter(y=>y>l).forEach(y=>{ consExtra[y]=consMapAll[l]+slope*(y-l); });
   }
   const consExtraYears=Object.keys(consExtra).map(Number).sort((a,b)=>a-b);
+  // Les instantanes consensus ARCHIVES s'etendent eux aussi a l'horizon
+  // du plan par la MEME regle (droite depuis leurs deux derniers points
+  // reels) : les trainees et le registre des deltas portent ainsi sur
+  // TOUS les millesimes de la courbe, pas seulement sur les annees que
+  // l'ancien snapshot stockait (retour 20/08 : un historique 2 ans
+  // tronquait la comparaison a 2026-2027).
+  consHistMaps.forEach(m=>{
+    const ys=Object.keys(m).map(Number).sort((a,b)=>a-b);
+    if(ys.length<2) return;
+    const l=ys[ys.length-1], p2=ys[ys.length-2];
+    const slope=(m[l]-m[p2])/(l-p2);
+    years.filter(y=>y>l).forEach(y=>{ m[y]=m[l]+slope*(y-l); });
+  });
 
   // Logique d'affichage (20/08 v5) : par defaut, SEULES les deux courbes
   // courantes (Omnium + consensus) s'affichent, chacune datee au bout
@@ -3237,7 +3250,9 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       const old=consHistList[0];
       const parts=[];
       years.forEach(y=>{
-        const a=old.m[y], b=consMapAll[y];
+        // Cote COURANT aussi, la comparaison porte sur la courbe COMPLETE
+        // (points reels + extrapolation) - tous les millesimes comptent.
+        const a=old.m[y], b=consCurMap[y];
         if(typeof a==='number'&&typeof b==='number'&&Math.abs(a)>1e-9){
           const dv=(b-a)/Math.abs(a)*100;
           parts.push(`<span style="color:var(--muted);font-size:8.5px;">${y}</span>&nbsp;<b>${Math.abs(dv)<0.05?'unch.':fmtD(dv)}</b>`);
