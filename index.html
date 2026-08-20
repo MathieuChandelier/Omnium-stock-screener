@@ -1995,6 +1995,22 @@ function buildAccountingBasisNote(d, CY){
   const mgmtBasis=asBasis(hyp.dernierCall?.resultatsVsConsensus?.epsAdj?.basis);
   const consBasis=asBasis(d.epsConsensus?.basis);
   const name=(d.name||'').toString().replace(/</g,'&lt;');
+  // DISTINCTION MESUREE (20/08 v2) : un drapeau "le call comparait en
+  // non-GAAP" attrape a tort les DUAL reporters (Booking, Arista...)
+  // dont l'ecart ajuste/GAAP est mineur. Depuis le refresh consensus,
+  // epsConsensus.adjGapPct mesure l'ecart reel entre le consensus base
+  // ajustee (stockanalysis) et le consensus ancre GAAP (MarketScreener)
+  // sur le MEME exercice. En dessous de 12%, il n'y a rien a signaler ;
+  // au-dela, c'est un vrai communicant ajuste (Sartorius, Danaher,
+  // Broadcom...) et la note chiffre l'ecart. Un ecart aberrant (>60%,
+  // typiquement un GAAP proche de zero ou de signe oppose) reste
+  // signale mais sans pourcentage, qui n'aurait pas de sens.
+  const gap=d.epsConsensus?.adjGapPct;
+  if(typeof gap==='number'&&isFinite(gap)){
+    if(Math.abs(gap)<12) return '';
+    const pct=(Math.abs(gap)<=60)?` (≈${gap>0?'+':'−'}${Math.abs(Math.round(gap))}% vs reported this year)`:'';
+    return `Omnium relies on reported GAAP/IFRS numbers, whereas ${name}'s guidance and market consensus are based on adjusted figures${pct}.`;
+  }
   if(mgmtBasis==='non-GAAP')
     return `Omnium relies on reported GAAP/IFRS numbers, whereas ${name}'s guidance and market consensus are based on adjusted figures.`;
   if(consBasis==='non-GAAP')
@@ -3013,14 +3029,15 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }
   // Instantanes consensus ARCHIVES (epsConsensusHistory) : pointilles
   // attenues sans etiquette - la date reste en donnee, pas a l'ecran.
-  const consHistMaps=(Array.isArray((state.tickers[ticker]||{}).epsConsensusHistory)?(state.tickers[ticker]||{}).epsConsensusHistory:[])
+  const consHistList=(Array.isArray((state.tickers[ticker]||{}).epsConsensusHistory)?(state.tickers[ticker]||{}).epsConsensusHistory:[])
     .filter(h=>h&&h.year).map(h=>{
       const m={};
       if(+h.eps>0) m[+h.year]=+h.eps;
       if(+h.epsNY>0) m[+h.year+1]=+h.epsNY;
       if(+h.epsY2>0) m[+h.year+2]=+h.epsY2;
-      return m;
+      return {date:h.date||null, m};
     });
+  const consHistMaps=consHistList.map(x=>x.m);
 
   const allYears=new Set();
   shown.forEach(s=>Object.keys(s.epsByYear).forEach(y=>allYears.add(+y)));
@@ -3157,30 +3174,85 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // vieux = plus efface). Une seule figure par millesime, quel que soit
   // le nombre de revisions archivees : scalable, et la direction de la
   // migration se lit d un coup d oeil. Navy = Omnium, or = consensus.
-  let trailsSvg='';
+  let trailsSvg='', trailsMagnified=false, revLedger='';
   if(REV){
-    const trail=(archVals, curV, x, col)=>{
-      if(!archVals.length||typeof curV!=='number') return '';
-      const ys=archVals.map(v=>yOf(v)), cy=yOf(curV);
-      let ext=ys[0];
-      ys.forEach(v=>{ if(Math.abs(v-cy)>Math.abs(ext-cy)) ext=v; });
-      if(Math.abs(ext-cy)<3) return '';
-      let out=`<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${ext.toFixed(1)}" y2="${cy.toFixed(1)}" stroke="${col}" stroke-width="2" stroke-linecap="round" opacity=".14"/>`;
-      archVals.forEach((v,i)=>{
-        const op=(0.16+0.38*((i+1)/archVals.length)).toFixed(2);
-        out+=`<circle cx="${x.toFixed(1)}" cy="${yOf(v).toFixed(1)}" r="1.9" fill="${col}" opacity="${op}"/>`;
-      });
-      return out;
-    };
+    // Trainees AMPLIFIEES PAR SERIE autour du point actuel (retour
+    // 20/08) : une revision legere serait invisible a l echelle du
+    // chart, et un facteur commun se ferait ecraser par la serie la
+    // plus revisee. Le facteur (plafonne x8) rend la direction lisible ;
+    // la VERITE CHIFFREE, elle, vit dans le registre des deltas sous le
+    // chart - c est lui qu on lit, les trainees ne sont qu un indice.
+    const specs=[];
     years.forEach(y=>{
       const cur=lastState.epsByYear[String(y)];
-      const arch=shown.slice(0,n-1).map(st=>st.epsByYear[String(y)]).filter(v=>typeof v==='number');
-      trailsSvg+=trail(arch, cur, xOf(y), 'var(--navy)');
+      if(typeof cur==='number'){
+        const arch=shown.slice(0,n-1).map(st=>st.epsByYear[String(y)]).filter(v=>typeof v==='number');
+        if(arch.length) specs.push({x:xOf(y), cy:yOf(cur), ys:arch.map(v=>yOf(v)), grp:'omn', col:'var(--navy)'});
+      }
       if(typeof consCurMap[y]==='number'){
         const archC=consHistMaps.map(m=>m[y]).filter(v=>typeof v==='number');
-        trailsSvg+=trail(archC, consCurMap[y], xOf(y)+5, CONS_COL);
+        if(archC.length) specs.push({x:xOf(y)+5, cy:yOf(consCurMap[y]), ys:archC.map(v=>yOf(v)), grp:'cons', col:CONS_COL});
       }
     });
+    ['omn','cons'].forEach(g=>{
+      const grp=specs.filter(sp=>sp.grp===g);
+      let maxDev=0;
+      grp.forEach(sp=>sp.ys.forEach(v=>{ maxDev=Math.max(maxDev, Math.abs(v-sp.cy)); }));
+      if(!maxDev) return;
+      const f=Math.min(8, Math.max(1, 22/maxDev));
+      if(f>1.25) trailsMagnified=true;
+      const amp=(sp,v)=>sp.cy+(v-sp.cy)*f;
+      grp.forEach(sp=>{
+        let ext=sp.ys[0];
+        sp.ys.forEach(v=>{ if(Math.abs(v-sp.cy)>Math.abs(ext-sp.cy)) ext=v; });
+        if(Math.abs(amp(sp,ext)-sp.cy)<3) return;
+        trailsSvg+=`<line x1="${sp.x.toFixed(1)}" x2="${sp.x.toFixed(1)}" y1="${amp(sp,ext).toFixed(1)}" y2="${sp.cy.toFixed(1)}" stroke="${sp.col}" stroke-width="2" stroke-linecap="round" opacity=".14"/>`;
+        sp.ys.forEach((v,i)=>{
+          const op=(0.16+0.38*((i+1)/sp.ys.length)).toFixed(2);
+          trailsSvg+=`<circle cx="${sp.x.toFixed(1)}" cy="${amp(sp,v).toFixed(1)}" r="1.9" fill="${sp.col}" opacity="${op}"/>`;
+        });
+      });
+    });
+    // REGISTRE DES DELTAS : sous le chart, une ligne par serie -
+    // "Omnium · since 5 Feb 26   2026 +0.6%  2027 +1.2% ...". Des
+    // chiffres signes, lisibles quelle que soit l ampleur des
+    // revisions : c est la piece maitresse du mode, les trainees ne
+    // font qu indiquer la direction sur le trace.
+    const fmtD=v=>{const a=Math.abs(v); return (v>=0?'+':'−')+(a>=10?a.toFixed(0):a.toFixed(1))+'%';};
+    const rows=[];
+    if(n>1){
+      const old=shown[0];
+      const parts=[];
+      years.forEach(y=>{
+        const a=old.epsByYear[String(y)], b=lastState.epsByYear[String(y)];
+        if(typeof a==='number'&&typeof b==='number'&&Math.abs(a)>1e-9){
+          const dv=(b-a)/Math.abs(a)*100;
+          parts.push(`<span style="color:var(--muted);font-size:8.5px;">${y}</span>&nbsp;<b>${Math.abs(dv)<0.05?'unch.':fmtD(dv)}</b>`);
+        }
+      });
+      if(parts.length) rows.push({col:'var(--navy)', name:'Omnium',
+        anchor:shortDate(old.event&&old.event.date?old.event.date:old.date), parts});
+    }
+    if(consHistList.length&&consYears.length){
+      const old=consHistList[0];
+      const parts=[];
+      years.forEach(y=>{
+        const a=old.m[y], b=consMapAll[y];
+        if(typeof a==='number'&&typeof b==='number'&&Math.abs(a)>1e-9){
+          const dv=(b-a)/Math.abs(a)*100;
+          parts.push(`<span style="color:var(--muted);font-size:8.5px;">${y}</span>&nbsp;<b>${Math.abs(dv)<0.05?'unch.':fmtD(dv)}</b>`);
+        }
+      });
+      if(parts.length) rows.push({col:CONS_COL, name:'Consensus',
+        anchor:old.date?shortDate(old.date):'', parts});
+    }
+    if(rows.length){
+      revLedger='<div style="margin:0 0 8px;display:flex;flex-direction:column;gap:3px;">'+rows.map(r=>
+        `<div style="font-family:'Poppins',sans-serif;font-size:9.5px;color:${r.col};display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;">`+
+        `<span style="font-weight:700;">${r.name}${r.anchor?` · since ${r.anchor}`:''}</span>`+
+        r.parts.map(pt=>`<span style="font-variant-numeric:tabular-nums;white-space:nowrap;">${pt}</span>`).join('')+
+        '</div>').join('')+'</div>';
+    }
   }
   // COURBE OMNIUM COURANTE seule (les revisions ne s empilent plus).
   const curvesSvg=(s=>{
@@ -3261,6 +3333,8 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   if(revCount>0){
     const lbl=REV?`Hide revisions`:`Revisions · ${revCount}`;
     revBtn=`<text x="${W}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${REV?'var(--navy)':'var(--muted)'}" text-anchor="end" style="cursor:pointer;" onclick="toggleEpsRevisions()">${REV?'✕ ':'↺ '}${lbl}</text>`;
+    if(REV&&trailsMagnified)
+      revBtn+=`<text x="${W}" y="27" font-size="8" font-weight="500" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="end">trails magnified — deltas below</text>`;
   }
 
   // DATES AU BOUT DROIT DES DEUX COURBES COURANTES
@@ -3295,7 +3369,8 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 
   return {
     svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${revBtn}${gridlines}${yLabels}${trailsSvg}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
-    single: n<2
+    single: n<2,
+    revLedger
   };
 }
 
@@ -3364,7 +3439,7 @@ function renderValoHistory(ticker){
       chartHtml='<div class="vr-empty">Not enough history yet to plot a projection curve (at least 2 projected years required).</div>';
       legendHtml='';
     }else{
-      chartHtml=proj.svg;
+      chartHtml=proj.svg+(proj.revLedger||'');
       // Plus de legende de correspondance : chaque courbe porte sa date au
       // bout d'elle-meme. Le cas "une seule courbe" ne merite rien non
       // plus (retour Nemetschek 20/08 : la mention n'apprenait rien).
