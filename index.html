@@ -1825,7 +1825,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const hasEst=arr.some(p=>!(opts.forceActual||p.actual));
     const actArr=arr.filter(p=>(opts.forceActual||p.actual));
     const pubTotal=actArr.reduce((a,p)=>a+publishedOf(p),0);
-    const ytd=hasEst?`<small class="epsg-ytd">ytd</small>`:'';
+    // Exercice en cours : pas de totaux Published/One-offs (partiels et
+    // trompeurs) - seul le total Omnium (annee pleine) s'affiche (20/08).
     const pubCells=arr.map(p=>{
       const act=(opts.forceActual||p.actual);
       return `<div class="epsg-pubcell${act?'':' nil'}">${act?publishedOf(p).toFixed(2):'—'}</div>`;
@@ -1842,12 +1843,12 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       <div class="epsg-yr" style="${gridStyle}">
         <span class="epsg-lbl pub">EPS published</span>
         ${pubCells}
-        <span class="epsg-t pub" style="text-align:right;">${totalTxt(pubTotal)}${ytd}</span>
+        <span class="epsg-t pub" style="text-align:right;">${hasEst?'':totalTxt(pubTotal)}</span>
       </div>
       <div class="epsg-yr" style="${gridStyle}">
         <span class="epsg-lbl adj">${offLbl}</span>
         ${adjCells}
-        <span class="epsg-t adj" style="text-align:right;">${(allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal)}${cur||'$'}${ytd}</span>
+        <span class="epsg-t adj" style="text-align:right;">${hasEst?'':((allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal))+(cur||'$')}</span>
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
       <div class="epsg-dbl"></div>
