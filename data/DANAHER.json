@@ -149,15 +149,21 @@
      "consensus": 1.84,
      "basis": "non-GAAP",
      "basisNote": "non-GAAP"
+    },
+    "epsReported": {
+     "actual": 1.23,
+     "basis": "GAAP",
+     "period": "T2 26",
+     "note": "GAAP diluted EPS from the Q2 26 release (net income $870M); adjusted $1.94 - gap driven mainly by acquisition amortization (~$1.9B FY incl. Masimo)."
     }
    },
    "guidanceProchainTrimestre": "T3 26 : CA total +2-3%, core hors respiratoire ~+5%, marge operationnelle ajustee ~26,5%.",
    "guidanceAnnuelle": "FY26 : CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0% precedemment), EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$), amortissement releve a ~1,9 Md$ (integration Masimo), ETR ~17%, actions diluees moy. ~707M.",
    "pointsCles": [
-    "Plusieurs gros clients bioprocessing ont reprogramme des livraisons deja en carnet vers 2027 pour des raisons de planning de production et de site readiness cote client - pas un signal de demande, les commandes consommables ET equipement progressent toujours a mi-dizaine de %.",
-    "Life Sciences a livre son meilleur trimestre depuis plusieurs annees ; marches high-growth (Chine incluse, +mid-single-digit) compensent la faiblesse des marches developpes liee au calendrier de livraisons.",
-    "Masimo integre depuis a peine un mois montre un depart encourageant (croissance high-single-digit) ; Diagnostics guide une acceleration a high-single-digit hors respiratoire en T3 a mesure que les vents contraires Chine s'attenuent.",
-    "Management reaffirme etre en debut d'un cycle pluriannuel de capex bioprocessing (volumes biologiques + reshoring) et confirme la trajectoire d'acceleration CA/EPS attendue en H2 et au-dela."
+    "Core revenue +3.0% but +4.5% EXCLUDING respiratory testing - a 150bp acceleration vs Q1 - with Life Sciences delivering its best quarter in several years (+5.5%: Pall applied filtration ~+10% on semiconductor microelectronics, Abcam's best quarter since acquisition, biotech funding starting to convert into orders); adjusted EPS $1.94 (+8%, vs $1.84 consensus), H1 FCF $2.4B with 124% net-income conversion.",
+    "The bioprocessing 'miss' is a documented customer-timing event, not demand: a few very large commercial customers pushed chromatography-resin shipments already in backlog into 2027 ($50-60M in Q2, >$100M for the year, ~200bp of FY bioprocessing growth) for production-schedule and site-readiness reasons - while consumables AND equipment orders both grew mid-teens, market inventories sit lower than prior years, and management calls it 'highly unlikely' these volumes do not ship in 2027; equipment revenue returned to growth, read as the early innings of a multi-year bioprocessing capex cycle (reshoring + capacity).",
+    "FY26 guidance: core growth narrowed to +3-4% (anchor the low end per the CFO; Life Sciences raised, bioprocessing trimmed to mid-single) with a mid-single-digit core EXIT rate in Q4 as respiratory (~250bp Q3 headwind, ~$1.6B FY) and China policy headwinds fade; adjusted EPS RAISED to $8.45-8.60 (Q2 beat + $0.07-0.08 from closing Masimo early, partly offset by mix/FX and a deliberate H2 hedge) - ~10% EPS growth at midpoint.",
+    "Capital deployment flywheel active: Masimo closed early June ('every bit the company we thought', high-single-digit growth validated, FDA 510(k) already secured for an AI opioid-induced respiratory depression solution); Leica Biosystems to acquire StatLab (~$250M revenue, >85% recurring, accretive in year one, closing by end-2026); ~$900M of buybacks (5M shares); Diagnostics ex-respiratory +5% with Cepheid non-respiratory +low-double-digits and China stabilizing."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -460,12 +466,12 @@
    "timeline": [
     {
      "date": "2026-04-21",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "Core revenue reaffirmed +3/+6%; adjusted EPS RAISED to 8.35-8.55 (from 8.35-8.50)."
     },
     {
      "date": "2026-07-21",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "Core revenue NARROWED to +3/+4% (bioprocessing deliveries pushed to 2027); adjusted EPS RAISED to 8.45-8.60; amortization ~1.9bn, ETR ~17%, diluted shares ~707M."
     }
    ],

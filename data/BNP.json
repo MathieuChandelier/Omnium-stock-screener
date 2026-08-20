@@ -86,7 +86,7 @@
     "title": "Litige civil aux Etats-Unis lie au role de BNP Paribas dans le financement d'entites soudanaises entre la fin des annees 1990 et 2009 (lettres de credit sur des contrats petroliers/agricoles) : un jury federal de Manhattan a reconnu la Banque responsable en octobre 2025 d'avoir aide le regime soudanais a commettre des exactions en violant les sanctions americaines, condamnant BNP Paribas a verser 20,5 M$ de dommages-interets a trois plaignants soudanais. La certification du verdict (7 janvier 2026) ouvre la voie a un appel, deja engage par la Banque (requete deposee debut fevrier 2026). Les avocats des plaignants evoquent un potentiel elargissement a une classe de ~23 000 refugies soudanais reclamant des montants beaucoup plus eleves.",
     "allegedBy": "Plaignants soudanais (particuliers, via class action potentielle) devant un tribunal federal de Manhattan",
     "date": "2025-10-01",
-    "status": "condamnation en premiere instance, en appel",
+    "status": "condamnation",
     "outcome": "20,5 M$ de dommages-interets a trois plaignants (premiere instance) ; appel en cours, issue non connue",
     "source": "Communiques officiels BNP Paribas (28/10/2025, 08/01/2026) + presse (Reuters, Boursorama, AllAfrica)"
    },
@@ -95,7 +95,7 @@
     "title": "Plaidoyer de culpabilite de BNP Paribas pour conspiration en vue de violer les sanctions americaines (Soudan, Cuba, Iran, 2004-2012) - reglement historique de ~8,9 Md$ avec la justice americaine (DOJ, Reserve Federale, Etat de New York, OFAC).",
     "allegedBy": "Departement de la Justice americain (DOJ) et regulateurs bancaires US",
     "date": "2014-06-30",
-    "status": "clos (reglement paye, plaidoyer de culpabilite accepte par le tribunal)",
+    "status": "reglee",
     "outcome": "Amende/reglement de ~8,9 Md$, plaidoyer de culpabilite accepte",
     "source": "Communique officiel du DOJ (justice.gov, archives), largement documente publiquement - mentionne ici comme contexte historique du litige Soudan toujours actif"
    }
@@ -234,7 +234,7 @@
   "ancrages": [
    {
     "id": "AN-RNPG-TARGET",
-    "moteur": "Objectif officiel confirme au T2 26 : croissance du RNPG >10%/an en moyenne sur 2025-2028 (releve en fevrier 2026 depuis un objectif TCAM >7% sur 2024-2026), ROTE >13% en 2028 (objectif precedent 13%). Hypothese de modele : 10,5%/an sur 2026-2028 (leger surplus vs le plancher officiel), puis ralentissement a 8%/7,5% en 2029-2030 en l'absence d'objectif officiel au-dela de 2028.",
+    "moteur": "Objectif officiel confirme au T2 26 : croissance du RNPG >10%/an en moyenne sur 2025-2028 (releve en fevrier 2026 depuis un objectif TCAM >7% sur 2024-2026), ROTE >13% en 2028 (objectif precedent 13%). Hypothese de modele : 10,5%/an sur 2026-2028 (leger surplus vs le plancher officiel), puis ralentissement a 8%/7,5% en 2029-2030 en l'absence d'objectif officiel au-dela de 2028 (confiance haute sur 2026-2028, basse sur 2029-2030).",
     "applique": [
      "omniumNet.2026",
      "omniumNet.2027",
@@ -242,7 +242,7 @@
      "omniumNet.2029",
      "omniumNet.2030"
     ],
-    "confiance": "haute (2026-2028), basse (2029-2030)"
+    "confiance": "moyenne"
    },
    {
     "id": "AN-COEFFICIENT-EXPLOITATION",
@@ -258,20 +258,20 @@
    },
    {
     "id": "AN-DISTRIBUTION-POLICY",
-    "moteur": "INSTRUCTION UTILISATEUR EXPLICITE : distribution portee a 70% de payout du resultat net a partir de 2027 (55% dividende + 15% rachats d'actions), contre la politique officiellement confirmee de 60% minimum a partir de 2027 (50% dividende minimum + reste, precisions attendues au CMD 2027-2030 de fevrier 2027) et 60% en 2026 (50% dividende + 10% rachats, cette derniere annee conservee conforme a la politique officielle). Hypothese explicitement plus genereuse que le plancher officiel connu a ce jour.",
+    "moteur": "INSTRUCTION UTILISATEUR EXPLICITE : distribution portee a 70% de payout du resultat net a partir de 2027 (55% dividende + 15% rachats d'actions), contre la politique officiellement confirmee de 60% minimum a partir de 2027 (50% dividende minimum + reste, precisions attendues au CMD 2027-2030 de fevrier 2027) et 60% en 2026 (50% dividende + 10% rachats, cette derniere annee conservee conforme a la politique officielle). Hypothese explicitement plus genereuse que le plancher officiel connu a ce jour (instruction utilisateur non encore confirmee officiellement par le management au-dela du plancher de 60%).",
     "applique": [
      "omniumShares.2027",
      "omniumShares.2028",
      "omniumShares.2029",
      "omniumShares.2030"
     ],
-    "confiance": "basse (instruction utilisateur non encore confirmee officiellement par le management au-dela du plancher de 60%)"
+    "confiance": "basse"
    },
    {
     "id": "AN-CET1-EXCESS",
-    "moteur": "CET1 a 13,0% au 30/06/2026, deja au niveau de l'objectif 2027, tres au-dessus des exigences SREP (10,43%) - la distribution de l'exces de CET1 au-dela de 13% sera determinee annuellement a partir de 2027 (non chiffree a ce stade, potentiel supplement de distribution non modelise dans les 70%/55%/15% retenus).",
+    "moteur": "CET1 a 13,0% au 30/06/2026, deja au niveau de l'objectif 2027, tres au-dessus des exigences SREP (10,43%) - la distribution de l'exces de CET1 au-dela de 13% sera determinee annuellement a partir de 2027 (non chiffree a ce stade, potentiel supplement de distribution non modelise dans les 70%/55%/15% retenus) (confiance haute sur l'occurrence, nulle sur le montant).",
     "applique": [],
-    "confiance": "haute sur l'occurrence, nulle sur le montant"
+    "confiance": "moyenne"
    },
    {
     "id": "AN-COUT-DU-RISQUE",
@@ -310,9 +310,9 @@
    },
    {
     "id": "AN-LITIGE-SOUDAN",
-    "moteur": "Litige 'Soudan' toujours en cours : la Banque a ete condamnee en premiere instance (20,5 M$, octobre 2025) et a ete autorisee a faire appel (decision du 8 janvier 2026), requete deposee debut fevrier 2026, BNP Paribas se dit confiante dans la solidite de ses arguments - risque juridique non chiffre, non provisionne dans les adjXXX au-dela du montant deja verse, potentiel elargissement de la classe de plaignants evoque par leurs avocats.",
+    "moteur": "Litige 'Soudan' toujours en cours : la Banque a ete condamnee en premiere instance (20,5 M$, octobre 2025) et a ete autorisee a faire appel (decision du 8 janvier 2026), requete deposee debut fevrier 2026, BNP Paribas se dit confiante dans la solidite de ses arguments - risque juridique non chiffre, non provisionne dans les adjXXX au-dela du montant deja verse, potentiel elargissement de la classe de plaignants evoque par leurs avocats (confiance haute sur l'occurrence, nulle sur l'issue).",
     "applique": [],
-    "confiance": "haute sur l'occurrence, nulle sur l'issue"
+    "confiance": "moyenne"
    }
   ],
   "omniumEPS": {
@@ -413,12 +413,12 @@
    "timeline": [
     {
      "date": "2026-02-05",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY25 results: 2024-2026 trajectory confirmed (ROTE 12% in 2026, net-income CAGR >7%, EPS CAGR >8%, revenue CAGR >5%, cost of risk <40bp); 2028 targets RAISED (ROTE >13%)."
     },
     {
      "date": "2026-07-23",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "Q2 26: 2026 and 2028 objectives confirmed without change."
     }
    ],
@@ -485,7 +485,8 @@
     "quarter": "Q2 26",
     "date": "2026-07-23",
     "source": "Q2 release/call (as exploited at the 04/08 refresh)",
-    "message": "2026 and 2028 GTS objectives confirmed without change (ROTE 12% in 2026, >13% in 2028; EPS CAGR >8% 2024-2026; cost of risk <40bp); AXA IM integration (01/07/2025) feeding the Investment & Protection pole; CET1 13.0% vs 10.43% SREP - 257bp headroom funding the buyback trajectory; CFO evoked a post-2028 cost-income horizon approaching ~50%, not yet formalized and not in the projection."
+    "message": "2026 and 2028 GTS objectives confirmed without change (ROTE 12% in 2026, >13% in 2028; EPS CAGR >8% 2024-2026; cost of risk <40bp); AXA IM integration (01/07/2025) feeding the Investment & Protection pole; CET1 13.0% vs 10.43% SREP - 257bp headroom funding the buyback trajectory; CFO evoked a post-2028 cost-income horizon approaching ~50%, not yet formalized and not in the projection.",
+    "format": "compresse"
    }
   ]
  },

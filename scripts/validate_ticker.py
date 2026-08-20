@@ -81,9 +81,17 @@ def validate_adj_fields(d, errors):
     if not isinstance(hyp, dict):
         errors.add("'hypothese' est absent ou n'est pas un objet.")
         return
+    # Emetteurs financiers (bank/insurer/broker) : la dette nette n'a pas de
+    # sens economique - index.html ignore omniumND via isFinancialIssuer() et
+    # la convention de la fiche est de le laisser absent ou a null (cf.
+    # commentaire "omniumND y est volontairement absent" dans index.html et
+    # C14 qui interdit un omniumND numerique sans ndCY dans les captures).
+    financial_issuer = d.get("issuerType") in ("bank", "insurer", "broker")
     for field in ADJ_FIELDS:
         val = hyp.get(field)
         if val is None:
+            if field == "omniumND" and financial_issuer:
+                continue
             errors.add(f"hypothese.{field} est absent.")
             continue
         if not isinstance(val, dict):
@@ -95,6 +103,8 @@ def validate_adj_fields(d, errors):
             )
             continue
         for year, num in val.items():
+            if num is None and field == "omniumND" and financial_issuer:
+                continue
             if not isinstance(num, (int, float)) or isinstance(num, bool):
                 errors.add(f"hypothese.{field}['{year}'] n'est pas un nombre : {num!r}.")
 
