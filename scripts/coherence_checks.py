@@ -271,6 +271,45 @@ def c14():
                            f"n'a pas ndCY : libelle ex-cash impossible a honorer"))
     return bad
 
+@check("C25 somme PY PUBLIEE == data.net/actions de l exercice clos")
+def c25():
+    # Classe A3 de l audit 20/08 : 9 fiches posaient des periodes PY dans
+    # une base DIFFERENTE de data (non-GAAP, base retraitee sans pont...).
+    # La regle : publie(periode) = eps - somme(impacts) ; la somme des
+    # publies doit retomber sur le net/actions de data, sinon la
+    # decomposition ment. Tolerance 0.08 (arrondis de moyenne d actions).
+    bad=[]
+    for tk,t in FICHES.items():
+        qe=t['hypothese'].get('quarterlyEPS') or {}
+        py=qe.get('PY') or []
+        last=(t.get('data') or [])[-1] if t.get('data') else None
+        if not py or not last or not last.get('shares'): continue
+        pub=sum((+p.get('eps',0))-sum(+r.get('impact',0) for r in (p.get('retraitements') or [])) for p in py)
+        tgt=last['net']/last['shares']
+        if abs(pub-tgt)>0.08: bad.append((tk,f'publie {pub:.2f} vs data {tgt:.2f}'))
+    return bad
+
+@check("W7  ~ fraicheur : consensus >45j, nextEvent passe, inProgress >120j")
+def w7():
+    # Classe A4/A5/A9 de l audit 20/08 : les champs dates vieillissent en
+    # silence. Warning (pas anomalie) : la peremption se draine au refresh.
+    import datetime as _dt
+    today=_dt.date.today(); bad=[]
+    def age(s):
+        try: return (today-_dt.date.fromisoformat(str(s)[:10])).days
+        except Exception: return None
+    for tk,t in FICHES.items():
+        co=t.get('epsConsensus') or {}
+        a=age(co.get('date'))
+        if co and a is not None and a>45: bad.append((tk,f'consensus {a} j'))
+        ne=t.get('nextEvent') or {}
+        na=age(ne.get('date'))
+        if na is not None and na>0: bad.append((tk,f'nextEvent passe ({ne.get("date")})'))
+        ip=(t['hypothese'].get('guidanceScorecard') or {}).get('inProgress') or {}
+        ia=age(ip.get('asOf'))
+        if ip and ia is not None and ia>120: bad.append((tk,f'scorecard inProgress {ia} j'))
+    return bad
+
 @check("C24 quarterlyEPS present et complet (PY/CY/NY) sur toute fiche")
 def c16():
     # Ne verifie pas des valeurs (C1/C2 s'en chargent) mais la PRESENCE :

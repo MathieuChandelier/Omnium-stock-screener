@@ -1787,24 +1787,21 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // "Published" : un consensus sell-side est etabli hors elements non
   // recurrents, le comparer au chiffre publie brut ferait lire un
   // manquement (ou un depassement) qui n'existe pas.
-  // Le consensus vit TOUJOURS sur sa propre seconde ligne, sous le
-  // libelle d'exercice (retour Arista 20/08) : accole au total dans la
-  // colonne fixe de 268px, il debordait en 2-3 lignes irregulieres selon
-  // la longueur du chiffre - le design doit etre le meme partout.
-  const consHtmlOf=(c)=>{
-    if(!c||!(c.eps>0)) return '';
-    return `<span class="eps-cons-line">${lbl('Consensus','Cons.')} ${c.eps.toFixed(2)}${cur||'$'}${c.analysts?`<span class="eps-analysts"> · ${c.analysts} analysts</span>`:''}</span>`;
-  };
+  // Plus de consensus dans les blocs EPS (retour 20/08) : le consensus
+  // vit desormais en COURBE sur le graphique EPS au-dessus (voir
+  // buildValoProjectionCurvesSVG), pas en texte redondant ici. Et le
+  // libelle se reduit a l'annee seule - "EPS" est deja le titre de
+  // section, le repeter sur chaque rang n'apportait rien.
   const pyBlock=(Array.isArray(qe.PY)&&qe.PY.length)?{
     year: CY-1,
     annualEps: qe.PY.reduce((a,p)=>a+(+p.eps||0),0),
-    html: yearBlock(qe.PY, {label:`EPS ${CY-1}`, forceActual:true})
+    html: yearBlock(qe.PY, {label:`${CY-1}`, forceActual:true})
   }:null;
   const historiqueBlocks=(Array.isArray(qe.historique)?qe.historique:[])
     .filter(h=>h && Array.isArray(h.periods) && h.periods.length)
     .map(h=>({
       year: h.year,
-      html: yearBlock(h.periods, {label:`EPS ${h.year}`, forceActual:true})
+      html: yearBlock(h.periods, {label:`${h.year}`, forceActual:true})
     }));
   const peCY=(cours>0&&epsCY>0)?(cours/epsCY):null;
   const peNY=(cours>0&&epsNY>0)?(cours/epsNY):null;
@@ -1884,8 +1881,8 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     pyBlock,
     historiqueBlocks,
     legendRow,
-    chipsCY: yearBlock(qe.CY,{label:`EPS ${CY}`, annual:epsCY, consensusHtml:consHtmlOf(consInfo&&consInfo.cy)}),
-    chipsNY: yearBlock(qe.NY,{label:`EPS ${CY+1}`, annual:epsNY, consensusHtml:consHtmlOf(consInfo&&consInfo.ny)}),
+    chipsCY: yearBlock(qe.CY,{label:`${CY}`, annual:epsCY}),
+    chipsNY: yearBlock(qe.NY,{label:`${CY+1}`, annual:epsNY}),
     peStack
   };
 }
@@ -2022,15 +2019,19 @@ function renderReturnBlock(ticker, proj, cours){
     {cy:(cons?.eps>0?{eps:cons.eps, analysts:analystsCY}:null), ny:(consNY>0?{eps:consNY, analysts:analystsNY}:null)},
     proj[CY+2]?.eps, ndY2, shY2);
 
+  // Largeur BORNEE (retour 20/08) : la colonne d'analyse n'a pas a remplir
+  // l'ecran - 880px maxi, la marge droite fait partie du design. Et les
+  // sections respirent : 26px au-dessus de chaque filet.
   el.innerHTML = `
+    <div style="max-width:880px;">
     <div style="border-top:1px solid var(--border);"></div>
-    <div class="rb-header" style="display:flex;align-items:baseline;justify-content:flex-start;gap:10px;flex-wrap:wrap;row-gap:2px;margin-bottom:12px;">
+    <div class="rb-header" style="display:flex;align-items:baseline;justify-content:flex-start;gap:10px;flex-wrap:wrap;row-gap:2px;margin-bottom:12px;padding-top:14px;">
       <div class="card-title" style="margin-bottom:0;">Expected annual return<span style="white-space:nowrap;"> · ${total>=0?'+':'−'}${Math.abs(total).toFixed(1)}% to ${LY}</span></div>
       <span class="th-assume" style="margin:0;padding-bottom:0;">assuming constant valuation</span>
     </div>
     ${buildThesisBar(d, cagrEps, cours, div, total, CY, LY)}
-    <div style="border-top:1px solid var(--border);margin-bottom:4px;"></div>
-    ${qeBlock?`<div class="card-title" style="margin:0 0 10px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}<div id="valo-hist-slot"></div>`:''}
+    <div style="border-top:1px solid var(--border);margin-top:26px;"></div>
+    ${qeBlock?`<div class="card-title" style="margin:16px 0 12px;">Price-to-Earnings Ratios</div>${qeBlock.peStack}<div id="valo-hist-slot"></div>`:''}
     ${qeBlock?.historiqueBlocks?.length?`
     <div class="rb-eps-py-toggle" id="eps-hist-toggle" onclick="toggleEpsHistBlock()">
       <span class="lbl">History (before ${qeBlock.pyBlock?qeBlock.pyBlock.year:CY-1})</span>
@@ -2040,6 +2041,7 @@ function renderReturnBlock(ticker, proj, cours){
       ${qeBlock.historiqueBlocks.map(h=>`
       <div class="rb-eps-block rb-eps-block-py" style="margin-bottom:12px;">${h.html}</div>`).join('')}
     </div>`:''}
+    <div style="border-top:1px solid var(--border);margin-top:26px;"></div>
     <div class="card-title" style="margin:16px 0 6px;">Earnings Per Share</div>
     ${qeBlock?qeBlock.legendRow:''}
     <div class="rb-eps-grid">
@@ -2048,6 +2050,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsNY:''}</div>
     </div>
     ${(b=>b?`<div class="acct-basis">${b}</div>`:'')(buildAccountingBasisNote(d, CY))}
+    </div>
   `;
 }
 
@@ -2904,16 +2907,32 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   });
   const shown=states.slice(-(maxCurves||6));
 
+  // COURBE CONSENSUS (20/08/2026) : les valeurs sell-side quittent les
+  // blocs EPS pour vivre ICI, face a la projection Omnium - une seule
+  // comparaison, au meme endroit. Points CY/CY+1 depuis epsConsensus
+  // (+CY+2 quand epsY2 est renseigne - retrieve consensus 3 ans, voir
+  // doctrine). Bornee aux annees deja tracees : elle ne peut pas etendre
+  // l'axe des millesimes.
+  const dCons=(state.tickers[ticker]||{}).epsConsensus||null;
+  const consMapAll={};
+  if(dCons&&dCons.year){
+    if(+dCons.eps>0) consMapAll[+dCons.year]=+dCons.eps;
+    if(+dCons.epsNY>0) consMapAll[+dCons.year+1]=+dCons.epsNY;
+    if(+dCons.epsY2>0) consMapAll[+dCons.year+2]=+dCons.epsY2;
+  }
+
   const allYears=new Set();
   shown.forEach(s=>Object.keys(s.epsByYear).forEach(y=>allYears.add(+y)));
   const years=Array.from(allYears).sort((a,b)=>a-b);
   if(years.length<2) return null;
+  const consYears=years.filter(y=>typeof consMapAll[y]==='number');
 
   let yMin=Infinity, yMax=-Infinity;
   shown.forEach(s=>years.forEach(y=>{
     const v=s.epsByYear[String(y)];
     if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; }
   }));
+  consYears.forEach(y=>{ const v=consMapAll[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
   if(!isFinite(yMin)||!isFinite(yMax)) return null;
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
   const margin=(yMax-yMin)*0.12;
@@ -2986,6 +3005,19 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     }).join('');
     return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.5}" opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
+
+  // Trace consensus : pointilles or, points evides, etiquette "Consensus"
+  // + valeur au bout - visuellement subordonne aux courbes Omnium (navy).
+  let consSvg='';
+  if(consYears.length){
+    const pts=consYears.map(y=>`${xOf(y).toFixed(1)},${yOf(consMapAll[y]).toFixed(1)}`).join(' ');
+    const dots=consYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consMapAll[y]).toFixed(1)}" r="2.8" fill="#fff" stroke="#c9a227" stroke-width="1.8"/>`).join('');
+    const lastY=consYears[consYears.length-1], lv=consMapAll[lastY];
+    const lx=xOf(lastY), ly=yOf(lv);
+    const anchor=(lx+70>padL+plotW)?'end':'start';
+    const label=`<text x="${(anchor==='end'?lx-7:lx+7).toFixed(1)}" y="${(ly-7).toFixed(1)}" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="#92700a" text-anchor="${anchor}">Consensus ${lv.toFixed(2)}</text>`;
+    consSvg=(consYears.length>1?`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-dasharray="4 4" stroke-linejoin="round" stroke-linecap="round"/>`:'')+dots+label;
+  }
 
   // ETIQUETTES DE MILLESIME POSEES SUR LE GRAPHIQUE
   //
@@ -3082,7 +3114,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }).join('');
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${curvesSvg}${xLabels}${vintageLabels}</svg>`,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${vintageLabels}</svg>`,
     single: n<2
   };
 }
