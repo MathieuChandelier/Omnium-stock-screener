@@ -184,17 +184,21 @@
           "actual": null,
           "consensus": null,
           "basis": null
+        },
+        "epsReported": {
+          "actual": null,
+          "basis": "IFRS",
+          "period": "S1 26",
+          "note": "IFRS EPS not disclosed in the H1 26 release or call; net income group share EUR 2.2bn, stable (EUR 2.5bn excl. the exceptional French surtax)."
         }
       },
       "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée (politique constante d'Hermès). Signal qualitatif de la CFO : aucun changement de tendance observé aux Etats-Unis, au Japon, en Corée et en Europe pour le reste de l'année ; les points d'interrogation portent sur la France (où une amélioration a déjà été observée au T2 vs T1) et sur le Moyen-Orient, dont l'évolution reste par nature imprévisible selon la direction.",
       "guidanceAnnuelle": "Objectif directionnel qualitatif reconfirmé sans changement : progression ambitieuse du chiffre d'affaires à taux de change constants à moyen terme. Aucun chiffrage précis fourni, conformément à la politique constante du groupe qui refuse historiquement toute guidance numérique. Investissements opérationnels attendus à ~1 Md€ sur l'année complète (accélération habituelle au S2). Prix 2027 : processus budgétaire encore trop précoce pour être quantifié, mais la direction indique d'ores et déjà qu'elle attend une hausse de prix 'légèrement inférieure' à celle appliquée en 2026.",
       "pointsCles": [
-        "Accélération séquentielle confirmée au T2 2026 (+7% à taux de change constants, vs un rythme plus modeste au T1) - la direction souligne explicitement la mise en garde contre une lecture trop mécanique des pourcentages de croissance ('vous ne pouvez pas juste additionner 6% de volume et l'augmentation de prix pour obtenir le chiffre attendu de la maroquinerie'), rappelant que la croissance d'Hermès est avant tout une croissance en heures de travail artisanal, pas en unités produites.",
-        "Chine 'stabilisée mais pas en amélioration' selon le CEO Axel Dumas, vision inchangée depuis 6 à 12 mois - le marché chinois est davantage corrélé au marché immobilier et boursier local qu'à une dynamique de 'croissance' pure ; le CEO cite le prix du porc (indicateur non conventionnel de propension aux banquets/célébrations) comme signal avancé personnel qu'il surveille pour un rebond de la consommation.",
-        "Ecart marqué entre la France (+2% au S1, pénalisée par la baisse des flux touristiques moyen-orientaux notamment sur Paris) et le reste de l'Europe (+9%, forte dynamique en Italie, Europe du Nord, Allemagne, effet de la nouvelle Maison de Londres Bond Street) - la direction indique une amélioration séquentielle en France hors Paris et sur la Côte d'Azur au T2.",
-        "Marge brute en amélioration à 71,1% (+0,4pt) grâce à une gestion des stocks exceptionnelle et un taux d'écoulement des collections très élevé - la direction souligne que cette performance reflète la désirabilité des produits plutôt qu'un effet ponctuel, et que le cash-flow en hausse de 18% en est la preuve tangible (quasi tout ce qui est produit est vendu, sans reconstitution de stocks).",
-        "Surtaxe fiscale exceptionnelle française confirmée comme limitée aux exercices 2025-2026 uniquement (mesure à 41,2% sur la moyenne de l'IS des deux exercices, ~360 M€ de coût estimé sur FY2026 complet) - élément clé pour la trajectoire du résultat net 2027, qui devrait bénéficier d'un rebond mécanique indépendamment de toute amélioration opérationnelle.",
-        "Pas de rachat d'actions significatif (hors contrat de liquidité) - la direction privilégie l'investissement dans l'outil de production et les acquisitions de participations chez les fournisseurs de matières premières (stratégie d'intégration verticale) plutôt que le retour de capital aux actionnaires au-delà du dividende."
+        "Q2 accelerated to +7% at constant currency (H1 +6%, revenue EUR 8.2bn) led by Americas +15%, Japan +11% and Europe ex-France +9%; leather goods rose +10% and management explicitly warned against mechanically adding 6% volume plus price to model the division - growth is measured in artisan hours, with one new leather workshop per year through 2030 (~300 jobs each) and quality of available leather as the real bottleneck.",
+        "Margins held at elite levels despite FX: recurring operating margin 41.0% (EUR 3.4bn) absorbing a ~EUR 200m currency drag (-1pt), gross margin up 0.4pt to 71.1% on record sell-through and near-zero working capital build; adjusted free cash flow +18% to EUR 2.2bn and restated net cash EUR 12.9bn (50% of equity).",
+        "China 'stabilized but not improving' per CEO Axel Dumas, with demand tied to the property market and household savings rather than GDP; aspirational customers under pressure globally while wealthy clients stay resilient, and the Middle East war shaved ~1.5pt off group growth in both Q1 and Q2 as Gulf clients stopped travelling (also hitting Paris stores).",
+        "Net income group share flat at EUR 2.2bn, dented by the exceptional French corporate surtax (EUR 270m in H1, ~EUR 360m expected FY26, limited to fiscal 2025-26), setting up a mechanical net income rebound in 2027; H2 faces a heavier hedging headwind (~EUR 210m FY vs EUR 100m in H1), capex acceleration to EUR 1bn and targeted sales-force hiring, while 2027 price increases are expected slightly below 2026."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -368,7 +372,7 @@
           "date": "2026-07-29",
           "type": "vs_consensus",
           "detail": "S1 26: revenue 8.2bn EUR (+6% cc, in line with consensus per same-day press), operating margin 41% slightly above expectations despite ~200M EUR FX drag; stock nonetheless -5% on reported-growth optics (+2% at current FX).",
-          "beatPct": null
+          "beatPct": 0.0
         }
       ],
       "paceCheckpoint": "S1 net 2.2bn EUR of a modeled 4.46bn year: on pace, with the surtax front-loaded (270 of 360M EUR already booked in S1).",

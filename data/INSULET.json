@@ -1,511 +1,516 @@
 {
- "name": "Insulet Corporation",
- "cours": 133.26,
- "yahooSymbol": "PODD",
- "dividende": 0,
- "data": [
-  {
-   "year": 2021,
-   "ca": 1099,
-   "ebit": 126,
-   "net": 16.8,
-   "shares": 69,
-   "nd": 482
-  },
-  {
-   "year": 2022,
-   "ca": 1305,
-   "ebit": 37.6,
-   "net": 4.6,
-   "shares": 70,
-   "nd": 727
-  },
-  {
-   "year": 2023,
-   "ca": 1697,
-   "ebit": 220.1,
-   "net": 206.3,
-   "shares": 74,
-   "nd": 712
-  },
-  {
-   "year": 2024,
-   "ca": 2072,
-   "ebit": 308.9,
-   "net": 418.3,
-   "shares": 74,
-   "nd": 427
-  },
-  {
-   "year": 2025,
-   "ca": 2708,
-   "ebit": 473.8,
-   "net": 247.1,
-   "shares": 72,
-   "nd": 233
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 6.14,
-  "epsNY": 7.63,
-  "epsY2": 9.14,
-  "date": "2026-08-20",
-  "source": "MarketScreener (consensus 25 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 6.50)",
-  "analystsCount": 25,
-  "adjGapPct": 5.9
- },
- "particularites": [],
- "nextEvent": {
-  "label": "Q3 26",
-  "date": null
- },
- "coherenceQualitative": {
-  "asOf": "2026-08-10",
-  "statut": "incoherences_detectees",
-  "points": [
-   {
-    "sujet": "Retention/utilisation Type 2",
-    "ancienPropos": "T1 26 (06/05/2026, reponse directe a une question sur le risque de retention Type 2, Travis Steed BofA) : McEvoy affirme un 'strong type 2 momentum' des le stade precoce (~5% de penetration) et une retention stable a l'echelle du groupe a 90% - aucun signal d'alerte specifique sur le Type 2.",
-    "nouveauPropos": "T2 26 (05/08/2026) : McEvoy reconnait explicitement que le management 'aurait du identifier les problemes Type 2 plus tot' ('As CEO, I take accountability'), la CFO chiffrant un mecanisme de retention/utilisation Type 2 degradee expliquant l'essentiel (~2/3) de l'abaissement de la guidance CA US Omnipod.",
-    "natureEcart": "inversion_narratif_structurant",
-    "materialite": "haute",
-    "justification": "Le Type 2 est un moteur de croissance central du modele (ancrages us_omnipod_guidance_cut_mecanisme_precise et trajectoire_2027_prudente_revisee) ; le passage d'une reassurance explicite sur la stabilite de la retention (question posee frontalement au T1) a un aveu de detection tardive un seul trimestre plus tard est un signal de credibilite/gouvernance a tracer plutot qu'a lisser silencieusement."
-   }
+  "name": "Insulet Corporation",
+  "cours": 133.26,
+  "yahooSymbol": "PODD",
+  "dividende": 0,
+  "data": [
+    {
+      "year": 2021,
+      "ca": 1099,
+      "ebit": 126,
+      "net": 16.8,
+      "shares": 69,
+      "nd": 482
+    },
+    {
+      "year": 2022,
+      "ca": 1305,
+      "ebit": 37.6,
+      "net": 4.6,
+      "shares": 70,
+      "nd": 727
+    },
+    {
+      "year": 2023,
+      "ca": 1697,
+      "ebit": 220.1,
+      "net": 206.3,
+      "shares": 74,
+      "nd": 712
+    },
+    {
+      "year": 2024,
+      "ca": 2072,
+      "ebit": 308.9,
+      "net": 418.3,
+      "shares": 74,
+      "nd": 427
+    },
+    {
+      "year": 2025,
+      "ca": 2708,
+      "ebit": 473.8,
+      "net": 247.1,
+      "shares": 72,
+      "nd": 233
+    }
   ],
-  "historique": [
-   {
-    "quarter": "T1 26",
-    "date": "2026-05-06",
-    "format": "brut",
-    "clesRetenues": [
-     "Q David Roman (Goldman Sachs) - bilan de la premiere annee comme CEO, ce qui a depasse/atteint les attentes : McEvoy exprime une confiance accrue dans le potentiel de croissance, priorite a la culture d'entreprise tout en doublant le CA (algorithmes, integration capteurs, international, capacites commerciales, scaling operationnel).",
-     "Q David Roman - confiance dans la soutenabilite du LRT 20% compte tenu d'une croissance implicite S2 en haut de la dizaine : Pease cite la solidite US/international, l'effet de lissage FX cc, et les catalyseurs d'innovation (Libre 3 Plus, Omnipod 6, boucle fermee) pour soutenir 20%.",
-     "Q Robbie Marcus (JPMorgan) - comment maintenir 20% avec une deceleration en dollars et une sortie US sous 20% : Pease avance le lancement Omnipod 6 en 2027 et le plein effet de l'expansion de la force de vente ; McEvoy insiste sur le marche non capte et l'historique d'execution.",
-     "Q Robbie Marcus - evaluation de la croissance de marche, moteurs de saisonnalite, performance des nouveaux patients : McEvoy note une acceleration du marche en 2024-2025, une faiblesse T1 liee aux resets de franchise/transitions ACA, avec amelioration mois apres mois jusqu'en avril.",
-     "Q Travis Steed (BofA) - inquietude sur le declin de retention Type 2, difficulte de la courbe de penetration a venir : McEvoy souligne un fort momentum Type 2 a ~5% de penetration precoce, etude EVOLVE (boucle fermee) dont l'enrolement a commence, Type 2 ~40% des nouveaux patients, retention stable a 90% a l'echelle du groupe.",
-     "Q Travis Steed - impact de la saisonnalite sur le mix Type 1 vs Type 2 : Benjamin note ~40% de composition Type 2 dans les nouveaux patients, saisonnalite similaire entre segments, aucun impact concurrentiel des GLP-1 observe.",
-     "Q Larry Biegelsen (Wells Fargo) - comment maintenir 20% face a une erosion inevitable de part de marche des pompes sans tube : McEvoy insiste sur l'expansion de categorie plutot que l'echange de parts, avance technologique (6e generation), maitrise manufacturing, avantages de cout.",
-     "Q Matthew O'Brien (Piper Sandler) - nouveaux concurrents pharmacie perturbant le flux de patients T1 : McEvoy confirme aucun impact prix au T1, pricing net reste positif, comportement concurrentiel rationnel et discipline sans disruption materielle d'acces marche.",
-     "Q Matthew O'Brien - impact du rappel produit sur l'acquisition de nouveaux patients : McEvoy affirme que le MDC n'a pas impacte les nouveaux patients T1, reponse rapide avec actions correctives ciblees, aucun evenement indesirable additionnel depuis la mise a jour du 10 avril.",
-     "Q Jeff Johnson (Baird) - confirmation du pricing net positif au T1, soutenabilite sur 2-3 ans : McEvoy affirme un pricing net positif attendu sur trois ans, coherent avec la guidance de l'Investor Day.",
-     "Q Jeff Johnson - distinction retention/utilisation Type 2, patterns d'abandon precoce : McEvoy/Benjamin expliquent que les patients Type 2 necessitent un accompagnement d'onboarding renforce vs Type 1 ; utilisation stable, attrition en debut de parcours adressee via des modeles d'engagement revus.",
-     "Q Jayson Bedford (Raymond James) - moteurs de deceleration de la croissance internationale au T2 au-dela des comps : Pease note que la realisation prix/mix va moderer a mesure que les lancements murissent et que la conversion DASH->Omnipod 5 se stabilise, la sequence en dollars restant positive.",
-     "Q Shagun Singh (RBC) - nature d'un decalage de CA de 10 M$ au T1, portee de l'upgrade algorithme, rythme d'expansion de la force de vente : McEvoy detaille un decalage de timing d'inventaire de 10 M$, montee en competence de la force de vente sur le message clinique, 450K utilisateurs additionnels via Libre 3 Plus, evenements de formation professionnelle tripes.",
-     "Q Matt Taylor (Jefferies) - lancement Omnipod 6, gains de parts vs benefices prix/mix potentiels : McEvoy positionne Omnipod 6 comme moteur de croissance de categorie (algorithme 3e generation, automatisation accrue, fardeau utilisateur reduit, chassis mono-pod simplifiant les prescriptions)."
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 6.14,
+    "epsNY": 7.63,
+    "epsY2": 9.14,
+    "date": "2026-08-20",
+    "source": "MarketScreener (consensus 25 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 6.50)",
+    "analystsCount": 25,
+    "adjGapPct": 5.9
+  },
+  "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26",
+    "date": null
+  },
+  "coherenceQualitative": {
+    "asOf": "2026-08-10",
+    "statut": "incoherences_detectees",
+    "points": [
+      {
+        "sujet": "Retention/utilisation Type 2",
+        "ancienPropos": "T1 26 (06/05/2026, reponse directe a une question sur le risque de retention Type 2, Travis Steed BofA) : McEvoy affirme un 'strong type 2 momentum' des le stade precoce (~5% de penetration) et une retention stable a l'echelle du groupe a 90% - aucun signal d'alerte specifique sur le Type 2.",
+        "nouveauPropos": "T2 26 (05/08/2026) : McEvoy reconnait explicitement que le management 'aurait du identifier les problemes Type 2 plus tot' ('As CEO, I take accountability'), la CFO chiffrant un mecanisme de retention/utilisation Type 2 degradee expliquant l'essentiel (~2/3) de l'abaissement de la guidance CA US Omnipod.",
+        "natureEcart": "inversion_narratif_structurant",
+        "materialite": "haute",
+        "justification": "Le Type 2 est un moteur de croissance central du modele (ancrages us_omnipod_guidance_cut_mecanisme_precise et trajectoire_2027_prudente_revisee) ; le passage d'une reassurance explicite sur la stabilite de la retention (question posee frontalement au T1) a un aveu de detection tardive un seul trimestre plus tard est un signal de credibilite/gouvernance a tracer plutot qu'a lisser silencieusement."
+      }
+    ],
+    "historique": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-05-06",
+        "format": "brut",
+        "clesRetenues": [
+          "Q David Roman (Goldman Sachs) - bilan de la premiere annee comme CEO, ce qui a depasse/atteint les attentes : McEvoy exprime une confiance accrue dans le potentiel de croissance, priorite a la culture d'entreprise tout en doublant le CA (algorithmes, integration capteurs, international, capacites commerciales, scaling operationnel).",
+          "Q David Roman - confiance dans la soutenabilite du LRT 20% compte tenu d'une croissance implicite S2 en haut de la dizaine : Pease cite la solidite US/international, l'effet de lissage FX cc, et les catalyseurs d'innovation (Libre 3 Plus, Omnipod 6, boucle fermee) pour soutenir 20%.",
+          "Q Robbie Marcus (JPMorgan) - comment maintenir 20% avec une deceleration en dollars et une sortie US sous 20% : Pease avance le lancement Omnipod 6 en 2027 et le plein effet de l'expansion de la force de vente ; McEvoy insiste sur le marche non capte et l'historique d'execution.",
+          "Q Robbie Marcus - evaluation de la croissance de marche, moteurs de saisonnalite, performance des nouveaux patients : McEvoy note une acceleration du marche en 2024-2025, une faiblesse T1 liee aux resets de franchise/transitions ACA, avec amelioration mois apres mois jusqu'en avril.",
+          "Q Travis Steed (BofA) - inquietude sur le declin de retention Type 2, difficulte de la courbe de penetration a venir : McEvoy souligne un fort momentum Type 2 a ~5% de penetration precoce, etude EVOLVE (boucle fermee) dont l'enrolement a commence, Type 2 ~40% des nouveaux patients, retention stable a 90% a l'echelle du groupe.",
+          "Q Travis Steed - impact de la saisonnalite sur le mix Type 1 vs Type 2 : Benjamin note ~40% de composition Type 2 dans les nouveaux patients, saisonnalite similaire entre segments, aucun impact concurrentiel des GLP-1 observe.",
+          "Q Larry Biegelsen (Wells Fargo) - comment maintenir 20% face a une erosion inevitable de part de marche des pompes sans tube : McEvoy insiste sur l'expansion de categorie plutot que l'echange de parts, avance technologique (6e generation), maitrise manufacturing, avantages de cout.",
+          "Q Matthew O'Brien (Piper Sandler) - nouveaux concurrents pharmacie perturbant le flux de patients T1 : McEvoy confirme aucun impact prix au T1, pricing net reste positif, comportement concurrentiel rationnel et discipline sans disruption materielle d'acces marche.",
+          "Q Matthew O'Brien - impact du rappel produit sur l'acquisition de nouveaux patients : McEvoy affirme que le MDC n'a pas impacte les nouveaux patients T1, reponse rapide avec actions correctives ciblees, aucun evenement indesirable additionnel depuis la mise a jour du 10 avril.",
+          "Q Jeff Johnson (Baird) - confirmation du pricing net positif au T1, soutenabilite sur 2-3 ans : McEvoy affirme un pricing net positif attendu sur trois ans, coherent avec la guidance de l'Investor Day.",
+          "Q Jeff Johnson - distinction retention/utilisation Type 2, patterns d'abandon precoce : McEvoy/Benjamin expliquent que les patients Type 2 necessitent un accompagnement d'onboarding renforce vs Type 1 ; utilisation stable, attrition en debut de parcours adressee via des modeles d'engagement revus.",
+          "Q Jayson Bedford (Raymond James) - moteurs de deceleration de la croissance internationale au T2 au-dela des comps : Pease note que la realisation prix/mix va moderer a mesure que les lancements murissent et que la conversion DASH->Omnipod 5 se stabilise, la sequence en dollars restant positive.",
+          "Q Shagun Singh (RBC) - nature d'un decalage de CA de 10 M$ au T1, portee de l'upgrade algorithme, rythme d'expansion de la force de vente : McEvoy detaille un decalage de timing d'inventaire de 10 M$, montee en competence de la force de vente sur le message clinique, 450K utilisateurs additionnels via Libre 3 Plus, evenements de formation professionnelle tripes.",
+          "Q Matt Taylor (Jefferies) - lancement Omnipod 6, gains de parts vs benefices prix/mix potentiels : McEvoy positionne Omnipod 6 comme moteur de croissance de categorie (algorithme 3e generation, automatisation accrue, fardeau utilisateur reduit, chassis mono-pod simplifiant les prescriptions)."
+        ]
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-05",
+        "format": "brut",
+        "clesRetenues": [
+          "Q Robbie Marcus (JPMorgan) - ce qui a change depuis l'ADA sur les tendances Type 2, quand l'attrition a-t-elle accelere, hypotheses de concurrence/prix 2027 : McEvoy reconnait qu'ils auraient du identifier le probleme plus tot, le qualifie d'execution pas structurel, retention se stabilise apres 90 jours, actions correctives en cours ; Pease precise que 2027 suppose des entrants concurrents et un pricing stable sans amelioration de retention integree.",
+          "Q Travis Steed (BofA) - confiance dans la stabilisation 2027, hypothese de sortie US ~9%, hypotheses concurrence 2027 : McEvoy cite les donnees precoces d'Omnipod Discover montrant que les interventions fonctionnent ; Pease precise une fourchette 9-14%, mediane 12%, beneficiant des lancements produits et de l'expansion de la force de vente.",
+          "Q Larry Biegelsen (Wells Fargo) - metriques precises de retention/utilisation Type 1 vs Type 2, confiance dans l'efficacite des actions : McEvoy decrit des differences de charge emotionnelle, comorbidites plus elevees, mix payeur different (60% Medicare/Medicaid), parcours insuline plus lent chez Type 2 ; 10 points de friction identifies dans les 90 premiers jours, ameliorations precoces via Omnipod Discover.",
+          "Q Jeff Johnson (Baird) - possibilite de re-engager les patients Type 2 tombes en desuetude, preuves de renversement des problemes d'adherence, hypotheses prix liees a des exclusions payeur : Benjamin confirme un re-engagement reussi a echelle pilote en expansion ; Pease dement toute recherche d'accords payeur exclusifs, strategie de prix disciplinee au benefice de la categorie.",
+          "Q Matt Taylor (Jefferies) - caracterisation de la difference de retention a 90 jours Type 1 vs Type 2, premiers succes des changements de retention : McEvoy decrit des differences modestes et des points de friction specifiques (adjudication assurance, premier changement de pod, retrait prescription) ; donnees Omnipod Discover precoces montrant une retention 'nettement amelioree' en lancement limite.",
+          "Q Marie Thibault (BTIG) - calendrier d'arrivee de la concurrence, delai avant impact visible des actions de retention Type 2 : McEvoy note que la guidance suppose prudemment la persistance des tendances actuelles jusqu'a fin d'annee sans integrer les benefices des actions, suivi mensuel des metriques.",
+          "Q Richard Newitter (Truist) - saura-t-on sous trois mois si les initiatives fonctionnent, rapidite pour distinguer structurel vs execution : McEvoy qualifie le probleme de 'defi d'execution, pas structurel', demande forte, programmes deployes immediatement, gains d'efficacite compensant les couts.",
+          "Q Joe Federico (Stifel) - retour sur investissement Type 2 compte tenu de la dynamique de retention changeante et d'un cycle de maturation plus long : McEvoy souligne l'importance strategique du Type 2 (modele de revenu recurrent, dependance insuline a vie) ; Pease ajoute un cout d'acquisition stable et un cout de service en amelioration continue malgre l'expansion du service client.",
+          "Q Kieran Ryan (Deutsche Bank) - s'agit-il principalement de retention ou d'utilisation, effet du type de prescripteur (endo vs generaliste) sur la retention : McEvoy confirme que la retention est le probleme principal, les endocrinologues affichant une meilleure retention, les generalistes necessitant plus de renforcement de confiance ; Benjamin note que la force de vente elargie aide a mieux servir un panel de prescripteurs plus large."
+        ]
+      }
+    ],
+    "engagementsStructurants": [
+      {
+        "id": "evolve_510k_2027",
+        "quarterOrigine": "T1 26",
+        "engagement": "Soumission reglementaire 510(k) visee pour Evolve (boucle fermee Type 2) en 2027 ; enrolement de l'etude commence au T1 26.",
+        "echeance": "2027-Q4",
+        "statut": "en_cours"
+      }
     ]
-   },
-   {
-    "quarter": "T2 26",
-    "date": "2026-08-05",
-    "format": "brut",
-    "clesRetenues": [
-     "Q Robbie Marcus (JPMorgan) - ce qui a change depuis l'ADA sur les tendances Type 2, quand l'attrition a-t-elle accelere, hypotheses de concurrence/prix 2027 : McEvoy reconnait qu'ils auraient du identifier le probleme plus tot, le qualifie d'execution pas structurel, retention se stabilise apres 90 jours, actions correctives en cours ; Pease precise que 2027 suppose des entrants concurrents et un pricing stable sans amelioration de retention integree.",
-     "Q Travis Steed (BofA) - confiance dans la stabilisation 2027, hypothese de sortie US ~9%, hypotheses concurrence 2027 : McEvoy cite les donnees precoces d'Omnipod Discover montrant que les interventions fonctionnent ; Pease precise une fourchette 9-14%, mediane 12%, beneficiant des lancements produits et de l'expansion de la force de vente.",
-     "Q Larry Biegelsen (Wells Fargo) - metriques precises de retention/utilisation Type 1 vs Type 2, confiance dans l'efficacite des actions : McEvoy decrit des differences de charge emotionnelle, comorbidites plus elevees, mix payeur different (60% Medicare/Medicaid), parcours insuline plus lent chez Type 2 ; 10 points de friction identifies dans les 90 premiers jours, ameliorations precoces via Omnipod Discover.",
-     "Q Jeff Johnson (Baird) - possibilite de re-engager les patients Type 2 tombes en desuetude, preuves de renversement des problemes d'adherence, hypotheses prix liees a des exclusions payeur : Benjamin confirme un re-engagement reussi a echelle pilote en expansion ; Pease dement toute recherche d'accords payeur exclusifs, strategie de prix disciplinee au benefice de la categorie.",
-     "Q Matt Taylor (Jefferies) - caracterisation de la difference de retention a 90 jours Type 1 vs Type 2, premiers succes des changements de retention : McEvoy decrit des differences modestes et des points de friction specifiques (adjudication assurance, premier changement de pod, retrait prescription) ; donnees Omnipod Discover precoces montrant une retention 'nettement amelioree' en lancement limite.",
-     "Q Marie Thibault (BTIG) - calendrier d'arrivee de la concurrence, delai avant impact visible des actions de retention Type 2 : McEvoy note que la guidance suppose prudemment la persistance des tendances actuelles jusqu'a fin d'annee sans integrer les benefices des actions, suivi mensuel des metriques.",
-     "Q Richard Newitter (Truist) - saura-t-on sous trois mois si les initiatives fonctionnent, rapidite pour distinguer structurel vs execution : McEvoy qualifie le probleme de 'defi d'execution, pas structurel', demande forte, programmes deployes immediatement, gains d'efficacite compensant les couts.",
-     "Q Joe Federico (Stifel) - retour sur investissement Type 2 compte tenu de la dynamique de retention changeante et d'un cycle de maturation plus long : McEvoy souligne l'importance strategique du Type 2 (modele de revenu recurrent, dependance insuline a vie) ; Pease ajoute un cout d'acquisition stable et un cout de service en amelioration continue malgre l'expansion du service client.",
-     "Q Kieran Ryan (Deutsche Bank) - s'agit-il principalement de retention ou d'utilisation, effet du type de prescripteur (endo vs generaliste) sur la retention : McEvoy confirme que la retention est le probleme principal, les endocrinologues affichant une meilleure retention, les generalistes necessitant plus de renforcement de confiance ; Benjamin note que la force de vente elargie aide a mieux servir un panel de prescripteurs plus large."
-    ]
-   }
+  },
+  "hypothese": {
+    "date": "2026-08-18",
+    "priorEPS": {
+      "date": "2026-08-10",
+      "eps": {
+        "2026": 6.46,
+        "2027": 8.0,
+        "2028": 9.88,
+        "2029": 12.21,
+        "2030": 15.1
+      }
+    },
+    "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive ; bridge etabli (reconciliation 2025 avec residu a instruire + projections a IS 27%), scorecard annuel cree (ancre initiale FY26 posee a 6,21$, historique non mesurable avant FY26), etatsFinanciers renseigne. Projections inchangees (etat du 10/08 confirme).",
+    "dernierCall": {
+      "quarter": "T2 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 801.7,
+          "consensus": 787
+        },
+        "epsAdj": {
+          "actual": 1.66,
+          "consensus": 1.44,
+          "basis": "non-GAAP"
+        },
+        "epsReported": {
+          "actual": 1.37,
+          "basis": "GAAP",
+          "period": "T2 26",
+          "note": "GAAP diluted EPS (net income ~$95M); gap vs $1.66 adjusted EPS driven by non-cash and one-time adjustments."
+        }
+      },
+      "guidanceProchainTrimestre": "Q3 26 (cc): total revenue +17.5-19.5%, Omnipod +18-20%, US Omnipod +14-16%, International +28-30%; FX headwind ~50bps total and ~200bps International on a reported basis.",
+      "guidanceAnnuelle": "FY26 (cc): total revenue growth cut to +20-22% (from +21-23%), total Omnipod +21-23%, US Omnipod LOWERED to +17-19% - about 2/3 of the cut from softer type 2 retention/utilization in the first 90 days (Q2 trends assumed to persist in H2 with no benefit from corrective actions), the rest from a slower start in new customer starts and slightly softer pricing (mix of commercial investments, explicitly NOT competition per CFO Flavia Pease). International RAISED to +30-32% cc (FX +300bps). ~100bps adjusted operating margin expansion confirmed; net interest expense ~$40M; non-GAAP tax rate 20-21%; ~70M diluted shares; adjusted EPS growth of at least +30% maintained. FCF modestly down vs 2025 (medical device corrections). Preliminary 2027: exit 2026 at mid-teens cc growth, objective to match or beat that rate (implied US range 9-14%, midpoint 12%) on new product launches and sales force expansion, with NO assumed benefit from retention initiatives; long-range framework (margin +100bps/yr, adjusted EPS CAGR >25%) reaffirmed, full long-term review at the Q4 call.",
+      "pointsCles": [
+        "US guidance cut fully owned by management (CEO Ashley McEvoy: 'As CEO, I take accountability'): ~2/3 of the reduction from weaker type 2 retention/utilization concentrated in the first 90 days of onboarding, ~1/3 from slower new customer starts and pricing phasing - explicitly NOT competition, pricing or GLP-1s; retention stabilizes past 90 days, framing it as an execution issue, not a structural one.",
+        "P&L quality intact despite the top-line cut: Q2 revenue +23.5% reported ($801.7M, ~$14M beat), adjusted gross margin 72.9% (+320bps), adjusted operating margin 19.3% (+140bps), adjusted EPS $1.66 (+41.5%, $0.21 beat); FY26 margin expansion (~100bps) and adjusted EPS growth (>=30%) guidance both maintained.",
+        "Corrective actions already deployed in Q3 at zero net incremental cost: sales force compensation re-weighted toward 45-day retention instead of new starts only, expanded customer care for insurance navigation, refined sampling, and scale-up of Omnipod Discover (12,000+ patients, 1,600+ HCPs, early data showing meaningfully improved retention) - none of it assumed in guidance, making the H2 and preliminary 2027 bar deliberately conservative.",
+        "Growth engines beyond US type 2 remain strong: International +33% cc with FY guidance raised to +30-32% (Omnipod 5 #1 for new users in Australia, Spain launch), pipeline de-risks 2027-2028 competition (annual algorithm upgrades, Omnipod 6 launch 2027 backed by STRIVE pivotal data, fully closed-loop type 2 system targeted for 2028 with EVOLVE pivotal underway and 510(k) submission expected 2027); CFO denies any payer-exclusivity pricing tactics."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "US-GAAP",
+        "source": "communique",
+        "date": "2026-08-05"
+      }
+    },
+    "guidanceHistory": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-05-06",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA total +21-23% cc, US Omnipod +20-22%, International +26-28%, marge operationnelle ajustee +100pb."
+      },
+      {
+        "quarter": "T2 26",
+        "date": "2026-08-05",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA total ABAISSE a +20-22% cc (Omnipod total +21-23%) ; US Omnipod ABAISSE a +17-19% cc ; International RELEVE a +30-32% cc. Marge operationnelle ajustee +100pb et EPS ajuste +30% minimum MAINTENUS malgre le trim de CA."
+      }
+    ],
+    "guidanceLongTerme": "Premiere indication 2027 (CFO Flavia Pease, nouvelle a ce refresh) : croissance cc de sortie 2026 attendue mid-teens (fourchette 9% bas / 12% median / 14% haut), objectif 2027 coherent ou superieur a ce rythme de sortie, porte par Omnipod 6 et le plein effet de l'expansion commerciale - N'INTEGRE PAS les benefices attendus des initiatives de retention Type 2 en cours (base volontairement prudente). Mise a jour complete du plan long terme prevue au call T4 26. Ambition historique reaffirmee en toile de fond : ~100pb d'expansion de marge annuelle, CAGR EPS ajuste >25%.",
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.7,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.81,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.85,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.07,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 1.42,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.66,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.55,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 1.83,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 1.9,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 2.24,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 1.83,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 2.03,
+          "actual": false
+        }
+      ],
+      "note": "[Correctif C25 20/08/2026 : pont fiscal ajoute - le PY publie (4,97$) est ramene a la base normalisee data (3,43$), allocation proportionnelle.] [C10 20/08/2026 : idem - base normalisee (27%) sans pont par periode ; publie 2025 : 1,02/1,17/1,23/1,55 (4,97$).]"
+    },
+    "summary": "T2 26 : beat net (CA +23,5%, EPS ajuste 1,66$ +41,5%) mais guidance US Omnipod abaissee (retention Type 2, mecanisme desormais precise par la CFO : ~2/3 retention persistante, reste demarrage/prix, pas concurrence). Guidance EPS ajuste (+30% min) et marge (+100pb) MAINTENUES malgre le trim de CA - signal de discipline. Premiere indication 2027 plus prudente que la these de creation (sortie mid-teens sans les benefices retention) -> trajectoire 2028-2030 revisee a la baisse de facon reelle, pas du bruit. omniumEPS 2026 remonte a 6,46$ (guidance dure), mais 2030 recule de 17,60$ a 15,10$.",
+    "text": "== THESIS SUMMARY ==\nInsulet is the portfolio's highest-growth medtech: 10th consecutive year above +20% cc revenue growth, FY25 closed at +30.7% with adjusted EPS $4.97 (+53%), and FY26 guided at +20-22% cc with adjusted EPS growth raised to >=30% even as the US outlook was cut. The thesis is a category-winner in insulin patch pumps (Omnipod 5) expanding into the far larger Type 2 market. Q2 crystallized the central tension: growth and margins keep beating (Q2 revenue +23.5%, adj EPS $1.66 +41.5%, adjusted OM 19.3% +140bp), but the Type 2 expansion hit its first real friction - weaker retention/utilization in the first 90 days post-onboarding, cutting US growth guidance to 17-19% and the stock by 21%. Management frames it as execution (onboarding support), not market structure; remediation pilots (Omnipod Discover: 1,600 clinicians, 12,000 patients) show early retention improvement. The first quantified 2027 indication (9-14% growth, 12% median, excluding remediation benefits) resets expectations at an intentionally beatable level.\n\n== THESIS READ ==\n- Type 2 friction is real but specific: concentrated in the first 90 days of onboarding; beyond 90 days retention stabilizes - consistent with an execution problem, not a demand problem.\n- The guidance package is asymmetric: US cut, International raised (+30-32% cc), total held, EPS growth RAISED to >=30% - profitability is not the issue.\n- First 2027 quantification (9-14%, median 12%) deliberately excludes remediation benefits - a conservative reset after a credibility hit.\n- Balance sheet swings to net cash through the horizon; buyback boosted at FY25 results.\n- Watch: 90-day retention metrics for Type 2 cohorts over the next two quarters - the single variable that arbitrates execution-vs-structure.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP in data; the thesis anchors on the company's adjusted basis for guidance comparison (management guides adjusted EPS growth). Bridge (c-ter): projections fit cleanly at a 27% normative tax with small net interest income (net cash rising to ~$2.1B by 2030); the 2025 published GAAP year leaves a -$92M residual (elevated post-valuation-allowance effective tax and undecomposed charges) flagged for the next 10-K pass - the FY2024 GAAP year (net > EBIT, tax benefit) is the known distortion in the historical conversion ratio. Scorecard: anchor FY26 posed at $6.21 (initial >=25% floor). Pre-FY26 the company guided annual REVENUE (not EPS): FY25 initial +19-22% cc vs +29.5% realized = +7.5% level beat, recorded with the metric mismatch declared; application suspended until a same-metric observation exists (FY26 close). Projections unchanged from 10/08 (guidance-anchored: 2026 raised on hard EPS guidance, 2028-2030 re-acceleration kept prudent). WATCH-LIST: (1) Type 2 90-day retention trend; (2) US growth vs 17-19% band; (3) 2027 framing evolution vs the 9-14% initial range; (4) 10-K split of the 2025 bridge residual; (5) competitive entries assumed in 2027 guidance. Next useful refresh: Q3 2026 results (early November).\n\n== CATALYSTS ==\nQ3 2026 results (early Nov): first read on Type 2 remediation; any 2027 range update.",
+    "impact": "neutre",
+    "ancrages": [
+      {
+        "id": "eps_guidance_maintenue",
+        "moteur": "Guidance EPS ajuste FY26 explicitement MAINTENUE a +30% minimum vs FY2025 (base officielle 4,97$) malgre la baisse de guidance CA - ancre directe et fiable (guidance dure, confirmee sur le call malgre le contexte negatif) => omniumEPS 2026 6,46$.",
+        "applique": [
+          "omniumEPS.2026",
+          "omniumNet.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "us_omnipod_guidance_cut_mecanisme_precise",
+        "moteur": "Guidance FY26 US Omnipod abaissee a +17-19% cc, mecanisme desormais precise par la CFO : ~2/3 retention/utilisation Type 2 persistante, ~1/3 demarrage plus lent + phasage prix, explicitement pas de concurrence - risque d'execution caracterise et borne plutot qu'un risque diffus.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "international_guidance_raise",
+        "moteur": "Guidance FY26 International relevee a +30-32% cc (vs +26-28%), +33% cc au T2, Australie #1, entree Espagne - compense une part significative de la baisse US en valeur absolue.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "trajectoire_2027_prudente_revisee",
+        "moteur": "Premiere indication CFO pour 2027 (sortie 2026 'mid-teens', fourchette 9%/12%/14%, sans benefice retention integre) structurellement plus prudente que la trajectoire retenue a la creation - omniumCA/omniumEBIT/omniumEPS 2027-2030 revises a la baisse en consequence, croissance moderee vers 15-18%/an plutot que la reacceleration plus rapide anticipee initialement.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030",
+          "omniumEPS.2027",
+          "omniumEPS.2028",
+          "omniumEPS.2029",
+          "omniumEPS.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "marge_100pb_maintenue",
+        "moteur": "Expansion de marge operationnelle ajustee de ~100pb/an maintenue pour FY26 malgre le trim de CA, ralentissant graduellement a ~80pb/an en fin d'horizon (maturite croissante de la marge, deja a 19,3% au T2 26).",
+        "applique": [
+          "omniumEBIT.2026",
+          "omniumEBIT.2027",
+          "omniumEBIT.2028",
+          "omniumEBIT.2029",
+          "omniumEBIT.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "saisonnalite_py_2025_documentee",
+        "moteur": "Decomposition T1-T4 2025 (PY) chiffree sur base officielle (1,02$/1,17$/1,23$/1,55$) : T4 nettement superieur au T3 - pattern reconduit pour la repartition T3/T4 26 estimee.",
+        "applique": [
+          "quarterlyEPS.CY"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "pricing_exclusivite_ecartee",
+        "moteur": "La CFO dement explicitement toute strategie d'exclusivite tarifaire en Q&A (question sur un rollback Blue Cross touchant des concurrents a pompe tubee) - risque de pratique commerciale agressive/risque reputationnel ecarte, prix US stables a legerement haussiers. Ne pilote aucun adjXXX (evenement de nature qualitative/risque ecarte, pas un moteur de projection chiffrable) - conserve neanmoins ici plutot que dans le texte pour tracer explicitement l'id source du point de suivi.",
+        "applique": [],
+        "confiance": "haute"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 6.46,
+      "2027": 8.0,
+      "2028": 9.88,
+      "2029": 12.21,
+      "2030": 15.1
+    },
+    "omniumCA": {
+      "2026": 3320,
+      "2027": 3818,
+      "2028": 4429,
+      "2029": 5182,
+      "2030": 6115
+    },
+    "omniumEBIT": {
+      "2026": 614,
+      "2027": 745,
+      "2028": 908,
+      "2029": 1104,
+      "2030": 1345
+    },
+    "omniumNet": {
+      "2026": 452,
+      "2027": 548,
+      "2028": 667,
+      "2029": 812,
+      "2030": 989
+    },
+    "omniumND": {
+      "2026": -100,
+      "2027": -450,
+      "2028": -900,
+      "2029": -1450,
+      "2030": -2100
+    },
+    "omniumShares": {
+      "2026": 70,
+      "2027": 68.5,
+      "2028": 67.5,
+      "2029": 66.5,
+      "2030": 65.5
+    },
+    "bridge": {
+      "2025": {
+        "finNet": 10,
+        "other": 0,
+        "taxRate": 0.3,
+        "minorities": 0,
+        "netCalc": 339,
+        "netPub": 247.1,
+        "residual": -91.9,
+        "residualNote": "FY2025 GAAP carried items not yet decomposed at setup: elevated effective tax after the FY2024 valuation-allowance release, convertible-related and other charges. To be split from the 10-K at a future refresh; the adjusted basis (net $354.4M / EPS $4.97) that anchors the thesis is unaffected."
+      },
+      "2026": {
+        "finNet": 5,
+        "other": 0,
+        "taxRate": 0.27,
+        "minorities": 0,
+        "netCalc": 452
+      },
+      "2027": {
+        "finNet": 6,
+        "other": 0,
+        "taxRate": 0.27,
+        "minorities": 0,
+        "netCalc": 548
+      },
+      "2028": {
+        "finNet": 6,
+        "other": 0,
+        "taxRate": 0.27,
+        "minorities": 0,
+        "netCalc": 667
+      },
+      "2029": {
+        "finNet": 8,
+        "other": 0,
+        "taxRate": 0.27,
+        "minorities": 0,
+        "netCalc": 812
+      },
+      "2030": {
+        "finNet": 10,
+        "other": 0,
+        "taxRate": 0.27,
+        "minorities": 0,
+        "netCalc": 989
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted EPS growth (annual guidance, given since FY2026)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-08-05",
+          "type": "guidance_revision",
+          "detail": "Mixed revision: US Omnipod growth CUT to 17-19% (Type 2 retention/utilization in the first 90 days), International RAISED to 30-32% cc, total held at 20-22% cc; adjusted EPS growth RAISED to >=30% (from >=25% initial). Stock -21% on the US cut.",
+          "flag": null
+        },
+        {
+          "date": "2026-08-05",
+          "type": "vs_guidance",
+          "detail": "Q2 adjusted EPS $1.66 (+41.5% YoY), revenue $801.7M +23.5% - beat on both lines, overshadowed by the US guidance cut. Beat measured vs Q2 guidance midpoint: revenue +22.7% cc realized vs +20-22% cc guided (+1.7pt).",
+          "beatPct": 1.7
+        }
+      ],
+      "paceCheckpoint": "H1 2026 adjusted EPS $3.08 of a >=6.46$ implied year: pace consistent with the raised >=30% growth guidance.",
+      "weightedBeatPct": null,
+      "annualBeatPct": 5.5,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": 7.5,
+          "source": "initial_guidance",
+          "excluded": false,
+          "note": "Measured on REVENUE guidance (no EPS guidance that year): initial +19-22% cc (Feb 2025, midpoint 20.5%), raised to +24-27% at Q2 2025, realized +29.5% cc (+30.7% reported, $2.7B) - level beat vs the initial midpoint +7.5%. Metric mismatch with the FY26 EPS anchor DECLARED (anchor-coherence rule): EPS-level conservatism was likely higher (realized adjusted EPS +53.4%), so +7.5% is a floor.",
+          "initialDisplay": "+20.5% cc revenue (mid)",
+          "realizedDisplay": "+29.5% cc"
+        },
+        {
+          "fy": 2024,
+          "beatPct": 6.6,
+          "source": "initial_guidance",
+          "excluded": false,
+          "note": "Initial FY24 guidance (Q4-2023 release, 22/02/2024): total revenue growth 12-17% (mid 14.5%), raised to 14-18% at Q1; realized +22% - level beat +6.6% vs the initial mid. Backfilled 19/08/2026 from the public release (the earlier 'not reliably sourced' exclusion was unjustified). Same revenue-vs-EPS metric caveat as FY25.",
+          "initialDisplay": "+14.5% revenue (initial mid)",
+          "realizedDisplay": "+22%"
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 6.21,
+        "source": "initial_guidance",
+        "date": "2026-02-18",
+        "note": "Floor anchor: initial FY26 guidance 'adjusted EPS growth >=25%' on realized 2025 of $4.97. Guidance since raised to >=30% (Q2); the anchor stays the INITIAL floor."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct +5.5% (19/08 rule: year in progress = half [+4.0 projected, floor-to-floor], closed years share the rest equally [+7.5, +6.6]). Application still SUSPENDED (E-scorecard f): closed observations are on REVENUE anchors while the FY26 anchor is EPS (declared metric mismatch), and the in-year revision is mixed.",
+      "consensusSource": "S&P Global, 24 analysts (adjusted EPS)",
+      "consensusDate": "2026-07-01",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 6.21,
+        "currentValue": 6.46,
+        "deltaPct": 4.0,
+        "asOf": "2026-08-12",
+        "note": "Floor-to-floor: initial '>=25% adjusted-EPS growth' (6.21 on 4.97 realized) RAISED to '>=30%' (6.46) at Q2 - both are floors, so the +4.0% projected beat is itself a floor. Mixed underlying revision: US Omnipod cut, International raised, total held."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-08-12",
+      "label": "Q2 2026",
+      "type": "earnings"
+    }
+  },
+  "epsConsensusHistory": [
+    {
+      "year": 2026,
+      "eps": 6.48,
+      "epsNY": 8.08,
+      "date": "2026-07-01",
+      "source": "S&P Global 24 analystes (EPS ajuste non-GAAP) - snapshot PRE-T2 26, quasi coincidentiel avec la guidance management +30% minimum (~6,46$) desormais confirmee par transcript - a rafraichir au prochain point neanmoins."
+    }
   ],
-  "engagementsStructurants": [
-   {
-    "id": "evolve_510k_2027",
-    "quarterOrigine": "T1 26",
-    "engagement": "Soumission reglementaire 510(k) visee pour Evolve (boucle fermee Type 2) en 2027 ; enrolement de l'etude commence au T1 26.",
-    "echeance": "2027-Q4",
-    "statut": "en_cours"
-   }
-  ]
- },
- "hypothese": {
-  "date": "2026-08-18",
-  "priorEPS": {
-   "date": "2026-08-10",
-   "eps": {
-    "2026": 6.46,
-    "2027": 8.0,
-    "2028": 9.88,
-    "2029": 12.21,
-    "2030": 15.1
-   }
-  },
-  "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive ; bridge etabli (reconciliation 2025 avec residu a instruire + projections a IS 27%), scorecard annuel cree (ancre initiale FY26 posee a 6,21$, historique non mesurable avant FY26), etatsFinanciers renseigne. Projections inchangees (etat du 10/08 confirme).",
-  "dernierCall": {
-   "quarter": "T2 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 801.7,
-     "consensus": 787
-    },
-    "epsAdj": {
-     "actual": 1.66,
-     "consensus": 1.44,
-     "basis": "non-GAAP"
+  "externalActuals": {
+    "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+    "date": "2026-08-20",
+    "eps": {
+      "2021": 0.24,
+      "2022": 0.07,
+      "2023": 2.94,
+      "2024": 5.78,
+      "2025": 3.48
     }
-   },
-   "guidanceProchainTrimestre": "T3 26 (cc) : total +17,5-19,5%, Omnipod +18-20%, US Omnipod +14-16%, International +28-30% ; vent de face FX modeste (~50pb total, ~200pb International).",
-   "guidanceAnnuelle": "FY26 (cc) : CA total +20-22% (vs ~23% implicite a la creation), Omnipod total +21-23%, US Omnipod ABAISSE a +17-19% (retention/utilisation Type 2 plus faible que prevue dans les 90 premiers jours - environ 2/3 de la baisse, le solde venant d'un demarrage plus lent des nouveaux patients et du phasage prix, PAS de la concurrence selon la CFO Flavia Pease), International RELEVE a +30-32%. Marge operationnelle ajustee +100pb CONFIRMEE (~18,5%). EPS ajuste MAINTENU a +30% minimum malgre la baisse de CA - signal de confiance sur l'execution des couts. Taux d'impot non-GAAP 20-21%, ~70M actions diluees.",
-   "pointsCles": [
-    "La direction assume publiquement la baisse de guidance US (CEO Ashley McEvoy : 'As CEO, I take accountability') - la CFO chiffre precisement l'origine : ~2/3 lies a la persistance des tendances de retention/utilisation Type 2, le solde a un demarrage plus lent des nouveaux patients et au phasage prix - explicitement PAS a la concurrence.",
-    "Malgre la baisse de CA, la guidance EPS ajuste (+30% minimum) et d'expansion de marge (+100pb) sont MAINTENUES a l'identique - signal fort de discipline operationnelle.",
-    "Premiere indication 2027 (nouvelle) : croissance de sortie 2026 attendue 'mid-teens' (CFO : fourchette 9% bas / 12% median / 14% haut), objectif de maintenir ou ameliorer ce rythme via Omnipod 6 et le plein effet de l'expansion commerciale - SANS integrer les benefices attendus des initiatives de retention (base prudente assumee).",
-    "Plan d'action concret deja engage au T3 : remuneration commerciale reorientee vers la retention a 45 jours, expansion des equipes de service client, echantillonnage affine, montee en charge d'Omnipod Discover (12 000+ patients, 1 600+ professionnels de sante, donnees precoces montrant une retention amelioree).",
-    "Q&A : la CFO dement explicitement toute strategie d'exclusivite tarifaire evoquee par un analyste (rollback Blue Cross d'acces pharmacie pour des concurrents a pompe tubee) - 'not something initiated by us' ; prix US stables a legerement haussiers.",
-    "International toujours tres solide : Omnipod 5 numero 1 des nouvelles prescriptions en Australie, entree reussie en Espagne, +33% cc au T2."
-   ],
-   "etatsFinanciers": {
-    "analyse": true,
-    "referentiel": "US-GAAP",
-    "source": "communique",
-    "date": "2026-08-12"
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T1 26",
-    "date": "2026-05-06",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA total +21-23% cc, US Omnipod +20-22%, International +26-28%, marge operationnelle ajustee +100pb."
-   },
-   {
-    "quarter": "T2 26",
-    "date": "2026-08-05",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA total ABAISSE a +20-22% cc (Omnipod total +21-23%) ; US Omnipod ABAISSE a +17-19% cc ; International RELEVE a +30-32% cc. Marge operationnelle ajustee +100pb et EPS ajuste +30% minimum MAINTENUS malgre le trim de CA."
-   }
-  ],
-  "guidanceLongTerme": "Premiere indication 2027 (CFO Flavia Pease, nouvelle a ce refresh) : croissance cc de sortie 2026 attendue mid-teens (fourchette 9% bas / 12% median / 14% haut), objectif 2027 coherent ou superieur a ce rythme de sortie, porte par Omnipod 6 et le plein effet de l'expansion commerciale - N'INTEGRE PAS les benefices attendus des initiatives de retention Type 2 en cours (base volontairement prudente). Mise a jour complete du plan long terme prevue au call T4 26. Ambition historique reaffirmee en toile de fond : ~100pb d'expansion de marge annuelle, CAGR EPS ajuste >25%.",
-  "guidanceLongTermeHistory": [],
-  "quarterlyEPS": {
-   "cadence": "trimestriel",
-   "PY": [
-    {
-     "label": "T1",
-     "eps": 0.7,
-     "actual": true
-    },
-    {
-     "label": "T2",
-     "eps": 0.81,
-     "actual": true
-    },
-    {
-     "label": "T3",
-     "eps": 0.85,
-     "actual": true
-    },
-    {
-     "label": "T4",
-     "eps": 1.07,
-     "actual": true
-    }
-   ],
-   "CY": [
-    {
-     "label": "T1",
-     "eps": 1.42,
-     "actual": true
-    },
-    {
-     "label": "T2",
-     "eps": 1.66,
-     "actual": true
-    },
-    {
-     "label": "T3",
-     "eps": 1.55,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 1.83,
-     "actual": false
-    }
-   ],
-   "NY": [
-    {
-     "label": "T1",
-     "eps": 1.9,
-     "actual": false
-    },
-    {
-     "label": "T2",
-     "eps": 2.24,
-     "actual": false
-    },
-    {
-     "label": "T3",
-     "eps": 1.83,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 2.03,
-     "actual": false
-    }
-   ],
-   "note": "[Correctif C25 20/08/2026 : pont fiscal ajoute - le PY publie (4,97$) est ramene a la base normalisee data (3,43$), allocation proportionnelle.] [C10 20/08/2026 : idem - base normalisee (27%) sans pont par periode ; publie 2025 : 1,02/1,17/1,23/1,55 (4,97$).]"
-  },
-  "summary": "T2 26 : beat net (CA +23,5%, EPS ajuste 1,66$ +41,5%) mais guidance US Omnipod abaissee (retention Type 2, mecanisme desormais precise par la CFO : ~2/3 retention persistante, reste demarrage/prix, pas concurrence). Guidance EPS ajuste (+30% min) et marge (+100pb) MAINTENUES malgre le trim de CA - signal de discipline. Premiere indication 2027 plus prudente que la these de creation (sortie mid-teens sans les benefices retention) -> trajectoire 2028-2030 revisee a la baisse de facon reelle, pas du bruit. omniumEPS 2026 remonte a 6,46$ (guidance dure), mais 2030 recule de 17,60$ a 15,10$.",
-  "text": "== THESIS SUMMARY ==\nInsulet is the portfolio's highest-growth medtech: 10th consecutive year above +20% cc revenue growth, FY25 closed at +30.7% with adjusted EPS $4.97 (+53%), and FY26 guided at +20-22% cc with adjusted EPS growth raised to >=30% even as the US outlook was cut. The thesis is a category-winner in insulin patch pumps (Omnipod 5) expanding into the far larger Type 2 market. Q2 crystallized the central tension: growth and margins keep beating (Q2 revenue +23.5%, adj EPS $1.66 +41.5%, adjusted OM 19.3% +140bp), but the Type 2 expansion hit its first real friction - weaker retention/utilization in the first 90 days post-onboarding, cutting US growth guidance to 17-19% and the stock by 21%. Management frames it as execution (onboarding support), not market structure; remediation pilots (Omnipod Discover: 1,600 clinicians, 12,000 patients) show early retention improvement. The first quantified 2027 indication (9-14% growth, 12% median, excluding remediation benefits) resets expectations at an intentionally beatable level.\n\n== THESIS READ ==\n- Type 2 friction is real but specific: concentrated in the first 90 days of onboarding; beyond 90 days retention stabilizes - consistent with an execution problem, not a demand problem.\n- The guidance package is asymmetric: US cut, International raised (+30-32% cc), total held, EPS growth RAISED to >=30% - profitability is not the issue.\n- First 2027 quantification (9-14%, median 12%) deliberately excludes remediation benefits - a conservative reset after a credibility hit.\n- Balance sheet swings to net cash through the horizon; buyback boosted at FY25 results.\n- Watch: 90-day retention metrics for Type 2 cohorts over the next two quarters - the single variable that arbitrates execution-vs-structure.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP in data; the thesis anchors on the company's adjusted basis for guidance comparison (management guides adjusted EPS growth). Bridge (c-ter): projections fit cleanly at a 27% normative tax with small net interest income (net cash rising to ~$2.1B by 2030); the 2025 published GAAP year leaves a -$92M residual (elevated post-valuation-allowance effective tax and undecomposed charges) flagged for the next 10-K pass - the FY2024 GAAP year (net > EBIT, tax benefit) is the known distortion in the historical conversion ratio. Scorecard: anchor FY26 posed at $6.21 (initial >=25% floor). Pre-FY26 the company guided annual REVENUE (not EPS): FY25 initial +19-22% cc vs +29.5% realized = +7.5% level beat, recorded with the metric mismatch declared; application suspended until a same-metric observation exists (FY26 close). Projections unchanged from 10/08 (guidance-anchored: 2026 raised on hard EPS guidance, 2028-2030 re-acceleration kept prudent). WATCH-LIST: (1) Type 2 90-day retention trend; (2) US growth vs 17-19% band; (3) 2027 framing evolution vs the 9-14% initial range; (4) 10-K split of the 2025 bridge residual; (5) competitive entries assumed in 2027 guidance. Next useful refresh: Q3 2026 results (early November).\n\n== CATALYSTS ==\nQ3 2026 results (early Nov): first read on Type 2 remediation; any 2027 range update.",
-  "impact": "neutre",
-  "ancrages": [
-   {
-    "id": "eps_guidance_maintenue",
-    "moteur": "Guidance EPS ajuste FY26 explicitement MAINTENUE a +30% minimum vs FY2025 (base officielle 4,97$) malgre la baisse de guidance CA - ancre directe et fiable (guidance dure, confirmee sur le call malgre le contexte negatif) => omniumEPS 2026 6,46$.",
-    "applique": [
-     "omniumEPS.2026",
-     "omniumNet.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "us_omnipod_guidance_cut_mecanisme_precise",
-    "moteur": "Guidance FY26 US Omnipod abaissee a +17-19% cc, mecanisme desormais precise par la CFO : ~2/3 retention/utilisation Type 2 persistante, ~1/3 demarrage plus lent + phasage prix, explicitement pas de concurrence - risque d'execution caracterise et borne plutot qu'un risque diffus.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "international_guidance_raise",
-    "moteur": "Guidance FY26 International relevee a +30-32% cc (vs +26-28%), +33% cc au T2, Australie #1, entree Espagne - compense une part significative de la baisse US en valeur absolue.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "trajectoire_2027_prudente_revisee",
-    "moteur": "Premiere indication CFO pour 2027 (sortie 2026 'mid-teens', fourchette 9%/12%/14%, sans benefice retention integre) structurellement plus prudente que la trajectoire retenue a la creation - omniumCA/omniumEBIT/omniumEPS 2027-2030 revises a la baisse en consequence, croissance moderee vers 15-18%/an plutot que la reacceleration plus rapide anticipee initialement.",
-    "applique": [
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030",
-     "omniumEPS.2027",
-     "omniumEPS.2028",
-     "omniumEPS.2029",
-     "omniumEPS.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "marge_100pb_maintenue",
-    "moteur": "Expansion de marge operationnelle ajustee de ~100pb/an maintenue pour FY26 malgre le trim de CA, ralentissant graduellement a ~80pb/an en fin d'horizon (maturite croissante de la marge, deja a 19,3% au T2 26).",
-    "applique": [
-     "omniumEBIT.2026",
-     "omniumEBIT.2027",
-     "omniumEBIT.2028",
-     "omniumEBIT.2029",
-     "omniumEBIT.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "saisonnalite_py_2025_documentee",
-    "moteur": "Decomposition T1-T4 2025 (PY) chiffree sur base officielle (1,02$/1,17$/1,23$/1,55$) : T4 nettement superieur au T3 - pattern reconduit pour la repartition T3/T4 26 estimee.",
-    "applique": [
-     "quarterlyEPS.CY"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "pricing_exclusivite_ecartee",
-    "moteur": "La CFO dement explicitement toute strategie d'exclusivite tarifaire en Q&A (question sur un rollback Blue Cross touchant des concurrents a pompe tubee) - risque de pratique commerciale agressive/risque reputationnel ecarte, prix US stables a legerement haussiers. Ne pilote aucun adjXXX (evenement de nature qualitative/risque ecarte, pas un moteur de projection chiffrable) - conserve neanmoins ici plutot que dans le texte pour tracer explicitement l'id source du point de suivi.",
-    "applique": [],
-    "confiance": "haute"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 6.46,
-   "2027": 8.0,
-   "2028": 9.88,
-   "2029": 12.21,
-   "2030": 15.1
-  },
-  "omniumCA": {
-   "2026": 3320,
-   "2027": 3818,
-   "2028": 4429,
-   "2029": 5182,
-   "2030": 6115
-  },
-  "omniumEBIT": {
-   "2026": 614,
-   "2027": 745,
-   "2028": 908,
-   "2029": 1104,
-   "2030": 1345
-  },
-  "omniumNet": {
-   "2026": 452,
-   "2027": 548,
-   "2028": 667,
-   "2029": 812,
-   "2030": 989
-  },
-  "omniumND": {
-   "2026": -100,
-   "2027": -450,
-   "2028": -900,
-   "2029": -1450,
-   "2030": -2100
-  },
-  "omniumShares": {
-   "2026": 70,
-   "2027": 68.5,
-   "2028": 67.5,
-   "2029": 66.5,
-   "2030": 65.5
-  },
-  "bridge": {
-   "2025": {
-    "finNet": 10,
-    "other": 0,
-    "taxRate": 0.3,
-    "minorities": 0,
-    "netCalc": 339,
-    "netPub": 247.1,
-    "residual": -91.9,
-    "residualNote": "FY2025 GAAP carried items not yet decomposed at setup: elevated effective tax after the FY2024 valuation-allowance release, convertible-related and other charges. To be split from the 10-K at a future refresh; the adjusted basis (net $354.4M / EPS $4.97) that anchors the thesis is unaffected."
-   },
-   "2026": {
-    "finNet": 5,
-    "other": 0,
-    "taxRate": 0.27,
-    "minorities": 0,
-    "netCalc": 452
-   },
-   "2027": {
-    "finNet": 6,
-    "other": 0,
-    "taxRate": 0.27,
-    "minorities": 0,
-    "netCalc": 548
-   },
-   "2028": {
-    "finNet": 6,
-    "other": 0,
-    "taxRate": 0.27,
-    "minorities": 0,
-    "netCalc": 667
-   },
-   "2029": {
-    "finNet": 8,
-    "other": 0,
-    "taxRate": 0.27,
-    "minorities": 0,
-    "netCalc": 812
-   },
-   "2030": {
-    "finNet": 10,
-    "other": 0,
-    "taxRate": 0.27,
-    "minorities": 0,
-    "netCalc": 989
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Adjusted EPS growth (annual guidance, given since FY2026)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-08-12",
-     "type": "guidance_revision",
-     "detail": "Mixed revision: US Omnipod growth CUT to 17-19% (Type 2 retention/utilization in the first 90 days), International RAISED to 30-32% cc, total held at 20-22% cc; adjusted EPS growth RAISED to >=30% (from >=25% initial). Stock -21% on the US cut.",
-     "flag": null
-    },
-    {
-     "date": "2026-08-12",
-     "type": "vs_guidance",
-     "detail": "Q2 adjusted EPS $1.66 (+41.5% YoY), revenue $801.7M +23.5% - beat on both lines, overshadowed by the US guidance cut."
-    }
-   ],
-   "paceCheckpoint": "H1 2026 adjusted EPS $3.08 of a >=6.46$ implied year: pace consistent with the raised >=30% growth guidance.",
-   "weightedBeatPct": null,
-   "annualBeatPct": 5.5,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": 7.5,
-     "source": "initial_guidance",
-     "excluded": false,
-     "note": "Measured on REVENUE guidance (no EPS guidance that year): initial +19-22% cc (Feb 2025, midpoint 20.5%), raised to +24-27% at Q2 2025, realized +29.5% cc (+30.7% reported, $2.7B) - level beat vs the initial midpoint +7.5%. Metric mismatch with the FY26 EPS anchor DECLARED (anchor-coherence rule): EPS-level conservatism was likely higher (realized adjusted EPS +53.4%), so +7.5% is a floor.",
-     "initialDisplay": "+20.5% cc revenue (mid)",
-     "realizedDisplay": "+29.5% cc"
-    },
-    {
-     "fy": 2024,
-     "beatPct": 6.6,
-     "source": "initial_guidance",
-     "excluded": false,
-     "note": "Initial FY24 guidance (Q4-2023 release, 22/02/2024): total revenue growth 12-17% (mid 14.5%), raised to 14-18% at Q1; realized +22% - level beat +6.6% vs the initial mid. Backfilled 19/08/2026 from the public release (the earlier 'not reliably sourced' exclusion was unjustified). Same revenue-vs-EPS metric caveat as FY25.",
-     "initialDisplay": "+14.5% revenue (initial mid)",
-     "realizedDisplay": "+22%"
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 6.21,
-    "source": "initial_guidance",
-    "date": "2026-02-18",
-    "note": "Floor anchor: initial FY26 guidance 'adjusted EPS growth >=25%' on realized 2025 of $4.97. Guidance since raised to >=30% (Q2); the anchor stays the INITIAL floor."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct +5.5% (19/08 rule: year in progress = half [+4.0 projected, floor-to-floor], closed years share the rest equally [+7.5, +6.6]). Application still SUSPENDED (E-scorecard f): closed observations are on REVENUE anchors while the FY26 anchor is EPS (declared metric mismatch), and the in-year revision is mixed.",
-   "consensusSource": "S&P Global, 24 analysts (adjusted EPS)",
-   "consensusDate": "2026-07-01",
-   "inProgress": {
-    "fy": 2026,
-    "initialValue": 6.21,
-    "currentValue": 6.46,
-    "deltaPct": 4.0,
-    "asOf": "2026-08-12",
-    "note": "Floor-to-floor: initial '>=25% adjusted-EPS growth' (6.21 on 4.97 realized) RAISED to '>=30%' (6.46) at Q2 - both are floors, so the +4.0% projected beat is itself a floor. Mixed underlying revision: US Omnipod cut, International raised, total held."
-   }
-  },
-  "revisionEvent": {
-   "date": "2026-08-12",
-   "label": "Q2 2026",
-   "type": "earnings"
   }
- },
- "epsConsensusHistory": [
-  {
-   "year": 2026,
-   "eps": 6.48,
-   "epsNY": 8.08,
-   "date": "2026-07-01",
-   "source": "S&P Global 24 analystes (EPS ajuste non-GAAP) - snapshot PRE-T2 26, quasi coincidentiel avec la guidance management +30% minimum (~6,46$) desormais confirmee par transcript - a rafraichir au prochain point neanmoins."
-  }
- ],
- "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
-  "date": "2026-08-20",
-  "eps": {
-   "2021": 0.24,
-   "2022": 0.07,
-   "2023": 2.94,
-   "2024": 5.78,
-   "2025": 3.48
-  }
- }
 }
