@@ -4840,8 +4840,8 @@ function renderMarketCalendar(){
         <span class="dchipb${today?' today':''}"><span class="d">${d.getUTCDate()}</span><span class="m">${MOIS[d.getUTCMonth()]}</span></span>
         <span><span class="who" onclick="CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</span><span class="what">${esc(e.label)}</span></span>
         <span class="x" onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar">×</span>
-      </div>+`<div style="margin-top:8px;"><span class="epsrev-more" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span></div>`;
-    }).join('')}</div>`;
+      </div>`;
+    }).join('')}</div>`+`<div style="margin-top:8px;"><span class="epsrev-more" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span></div>`;
   } else {
     calBody=`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
   }
