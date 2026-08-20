@@ -132,16 +132,20 @@
      "actual": 1.37,
      "consensus": 1.26,
      "basis": "GAAP"
+    },
+    "epsReported": {
+     "actual": 1.37,
+     "basis": "GAAP",
+     "period": "T2 26"
     }
    },
-   "guidanceProchainTrimestre": "T3 26 : CA guide entre 4,69 et 4,77 Md$ (+15% a +17% YoY, incluant ~3pts de vent arriere FX), take rate implicite stable YoY, croissance de GBV au milieu de la fourchette 'mid teens', Nights & Seats Booked en croissance a deux chiffres bas ; marge Adjusted EBITDA attendue en LEGER RECUL YoY (effet de timing des investissements), aucun impact significatif du conflit au Moyen-Orient anticipe (contrairement au T2).",
-   "guidanceAnnuelle": "Guidance FY26 RELEVEE UNE SECONDE FOIS sur le call T2 26 : croissance du CA visee 'au moins mid-teens' (vs 'low to mid teens' precedemment), marge Adjusted EBITDA visee a 'au moins 35,5%' (vs '>=35%' precedemment) - refletant la demande forte sur la plateforme, les investissements en talents/technologie/marketing, et l'execution du roadmap produit.",
+   "guidanceProchainTrimestre": "Q3 26: revenue $4.69-4.77B (+15-17% YoY, incl. ~3pts FX TAILWIND after hedging); GBV growth mid-teens (nights & seats low double-digit, ADR up moderately on mix and price); adjusted EBITDA up YoY but margin slightly below Q3-25 (investment timing); no Middle East impact assumed.",
+   "guidanceAnnuelle": "FY26 RAISED: revenue growth now 'at least mid-teens' (from low-to-mid teens) and adjusted EBITDA margin >=35.5% (from 35%); implied take rate roughly flat (RNPL booking-to-stay timing + new-business incentives; slightly up without them).",
    "pointsCles": [
-    "Le CFO signale un credit d'impot ponctuel de 77 M$ au T2, lie a une nouvelle guidance fiscale publiee affectant des impots d'exercices anterieurs - un vrai one-off, exclu de la lecture trimestrielle normalisee (voir quarterlyEPS).",
-    "Le CEO decrit une expansion en 3 phases : (1) phase actuelle - attachement de services/experiences a une intention de reservation de logement deja existante ; (2) guichet unique du voyage (horizon ~18 mois) ; (3) au-dela du voyage vers d'autres formes de connexion - AI presentee comme le catalyseur permettant cette expansion, pas seulement un outil d'efficacite.",
-    "Rachat du partenaire location de voitures CarTrawler par Expedia releve par un analyste comme un risque de dependance - le management minimise, confirme sa confiance dans la poursuite du partenariat et reaffirme une strategie M&A 'opportuniste', priorite a la croissance organique.",
-    "Test de recherche par IA generative demarre ce mois-ci sur une faible part du trafic (bascule optionnelle via un toggle, pas un remplacement force), extension prevue sur l'annee si les resultats se confirment - le management insiste sur le temps necessaire pour reeduquer le comportement de recherche des utilisateurs.",
-    "Take rate implicite FY26 attendu stable YoY (pas en hausse comme le potentiel de monetisation le permettrait), du fait du calendrier de Reserve Now Pay Later (paiement differe) et d'incitations clients accrues liees aux nouveaux verticaux en 2026 - le management precise qu'hors ces incitations, le take rate aurait ete legerement superieur."
+    "Q2 26 beat across every key metric: revenue $3.61B (+17%, above the high end), GBV $27.2B (+16%), nights & seats +10% (accelerating); GAAP EPS $1.37 beat by $0.13 but includes a $77M one-off tax benefit (~$0.13/share, bridged in quarterlyEPS - recurring base ~$1.24); adjusted EBITDA $1.3B at 35% margin (+100bp), TTM FCF $4.8B (37% margin), $1.1B buybacks.",
+    "Breadth is the story: first-time bookers +11% (best in 4 years, Gen Z fastest), app nights 64% of total (+23%), expansion markets ~2x core AND core re-accelerating (US, France, UK, Australia); RNPL >20% of GBV and extended; single service fee on ~half of listings, full rollout by year-end.",
+    "Hotels growing ~3x faster than homes (single-digit % of nights): inbound supply interest flipped positive, top-20 city rollout, and ~35% of first-time hotel guests come back to book a home - hotels feed homes; services expand via partnerships (car rentals biggest, reservation length > stay length; luggage storage a sleeper hit) with little cost carried by Airbnb.",
+    "AI-native rebuild pays: concept-to-launch -60%, features shipped +80%, support cost per booking -16% (AI assistant resolves ~45% without a human, voice later this year), AI search entering opt-in tests this month, new AI host-pricing model called 'many multiples bigger than RNPL' as a growth lever; FY guidance absorbs materially higher AI spend while RAISING margin."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -315,7 +319,13 @@
     {
      "label": "T2",
      "eps": 1.24,
-     "actual": true
+     "actual": true,
+     "retraitements": [
+      {
+       "raison": "One-off tax benefit tied to newly published guidance on prior-year taxes, excluded from the Omnium base",
+       "impact": -0.13
+      }
+     ]
     },
     {
      "label": "T3",
