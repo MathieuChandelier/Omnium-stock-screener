@@ -1796,7 +1796,9 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       q:p.label,
       items:(p.retraitements||[]).map(r=>({raison:r.raison, impact:+r.impact||0}))
     }));
-    const totalTxt=v=>`${v.toFixed(2)}${cur||'$'}`;
+    // Pas de suffixe devise sur les totaux : l'unite est portee UNE fois
+    // par le titre de section ("in $"), comme sur le chart EPS (20/08).
+    const totalTxt=v=>v.toFixed(2);
     const fmtSigned=v=>`${v>=0?'+':'−'}${Math.abs(v).toFixed(2)}`;
     const shown=opts.annual!=null?opts.annual:arr.reduce((a,p)=>a+(+p.eps||0),0);
     const baseCells=arr.map(p=>{
@@ -1848,7 +1850,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       <div class="epsg-yr" style="${gridStyle}">
         <span class="epsg-lbl adj">${offLbl}</span>
         ${adjCells}
-        <span class="epsg-t adj" style="text-align:right;">${hasEst?'':((allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal))+(cur||'$')}</span>
+        <span class="epsg-t adj" style="text-align:right;">${hasEst?'':((allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal))}</span>
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
       <div class="epsg-dbl"></div>
@@ -2114,7 +2116,7 @@ function renderReturnBlock(ticker, proj, cours){
       <div class="rb-eps-block rb-eps-block-py" style="margin-bottom:12px;">${h.html}</div>`).join('')}
     </div>`:''}
     <div style="border-top:1px solid var(--border);margin-top:26px;"></div>
-    <div class="card-title" style="margin:16px 0 6px;">Earnings Per Share</div>
+    <div class="card-title" style="margin:16px 0 6px;">Earnings Per Share<span style="color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0;font-size:11.5px;"> · in ${cur||'$'}</span></div>
     ${qeBlock?qeBlock.legendRow:''}
     ${qeBlock?qeBlock.headerRow:''}
     <div class="rb-eps-grid" style="gap:6px;margin-top:0;padding-bottom:10px;">
