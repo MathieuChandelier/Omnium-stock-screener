@@ -466,6 +466,43 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .th-sw.neg{background:transparent;border:1.5px dashed var(--muted);}
 .th-assume{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:400;font-style:italic;color:var(--muted);margin-top:10px;padding-bottom:2px;}
 .eps-lbl-sm{display:none;}
+/* ── EPS "tout aligne" (design final 20/08/2026) ──
+   Une grille unique (annee+total | N periodes) partagee entre l'en-tete
+   T1..T4, chaque rangee d'annee et la ligne de pont - alignement au
+   pixel. Blocs bas a hauteur UNIFORME (44px) : un bloc ajuste loge le
+   publie barre au-dessus de la valeur sans depasser ses voisins. */
+.epsg-qhead{margin:12px 0 2px;}
+.epsg-qhead span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;text-align:center;}
+.epsg-yr{margin:6px 0 0;}
+.epsg-left{display:flex;align-items:baseline;gap:10px;min-width:0;}
+.epsg-y{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);}
+.epsg-t{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;}
+.epsg-chip{text-align:center;border-radius:8px;padding:4px;position:relative;min-height:44px;display:flex;flex-direction:column;justify-content:center;}
+.epsg-chip.act{background:#eceefc;}
+.epsg-chip.est{border:1.5px dashed var(--border);}
+.epsg-v{font-family:'Poppins',sans-serif;font-size:12px;font-weight:800;color:var(--navy);line-height:1.2;display:block;font-variant-numeric:tabular-nums;}
+.epsg-chip.est .epsg-v{color:var(--muted);}
+.epsg-pub{display:block;font-family:'Poppins',sans-serif;font-size:8.5px;font-weight:600;color:var(--muted);text-decoration:line-through;line-height:1.1;margin-bottom:1px;font-variant-numeric:tabular-nums;}
+.epsg-dot{position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+.epsg-adj{cursor:pointer;}
+.epsg-adj.open{outline:1.5px solid var(--teal);}
+.epsg-yrhead{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin:10px 0 0;}
+.epsg-yr.b{margin-top:4px;}
+.epsg-lbl{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;}
+.epsg-lbl.pub,.epsg-t.pub{color:var(--muted);}
+.epsg-lbl.adj,.epsg-t.adj{color:var(--teal-text);}
+.epsg-lbl.base{color:var(--navy);}
+.epsg-chip.pub{background:none;border:none;min-height:30px;}
+.epsg-chip.pub .epsg-v{color:var(--muted);font-weight:600;}
+.epsg-chip.pub.est .epsg-v{color:#c9cede;}
+@media(max-width:760px){
+  .epsg-qhead,.epsg-yr,.epsg-bridge{--epsg-left:84px;gap:6px !important;}
+  .epsg-chip{padding:3px 2px;min-height:38px;}
+  .epsg-v{font-size:10.5px;}
+  .epsg-pub{font-size:7.5px;}
+  .epsg-y,.epsg-t{font-size:11.5px;}
+  .epsg-left{flex-direction:column;gap:0;align-items:flex-start;}
+}
 .qs-sum{margin-top:5px;text-align:center;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:var(--muted);}
 .qs-sum.ecart{color:#c0392b;}
 .coherence{margin-top:6px;display:flex;align-items:flex-start;gap:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);font-weight:600;text-align:left;line-height:1.4;}
@@ -1656,7 +1693,7 @@ let _adjDetails={}, _adjOpen=null;
 function toggleAdjDetail(blockId, idx){
   const box=document.getElementById(blockId+'-d');
   if(!box) return;
-  document.querySelectorAll('.eps-adj.open').forEach(c=>c.classList.remove('open'));
+  document.querySelectorAll('.eps-adj.open, .epsg-adj.open').forEach(c=>c.classList.remove('open'));
   const key=blockId+':'+idx;
   if(_adjOpen===key){ _adjOpen=null; box.classList.remove('open'); box.innerHTML=''; return; }
   const per=(_adjDetails[blockId]||[])[idx];
@@ -1700,11 +1737,6 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // cellule "referme" un panneau qui n'existe deja plus.
   _adjDetails={}; _adjOpen=null;
   const esc=s=>(s||'').toString().replace(/</g,'&lt;');
-  const chip=(p,forceActual,valueOverride)=>{
-    const v=valueOverride!=null?valueOverride:(+p.eps);
-    return `<div class="qs-chip ${(forceActual||p.actual)?'actual':'estim'}"><div class="chip-q">${esc(p.label)}</div><div class="chip-v">${v.toFixed(2)}</div></div>`;
-  };
-  const chipsRow=(arr,forceActual)=>`<div class="qs-chips-row">${arr.map(p=>chip(p,forceActual)).join('')}</div>`;
   // Convention du SCHEMA, sans exception :
   //     eps (clean Omnium) = publishedEps + SOMME(impact)
   // Donc `eps` STOCKE EST DEJA la base Omnium, et le chiffre publie se
@@ -1715,108 +1747,76 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   const adjOf=p=>(Array.isArray(p.retraitements)?p.retraitements:[]).reduce((a,r)=>a+(+r.impact||0),0);
   const publishedOf=p=>(+p.eps)-adjOf(p);
   const hasAdj=arr=>arr.some(p=>Array.isArray(p.retraitements)&&p.retraitements.length);
-  const fmtSigned=v=>`${v>=0?'+':'−'}${Math.abs(v).toFixed(2)}`;
-  const lbl=(long,short)=>`<span class="eps-lbl-lg">${long}</span><span class="eps-lbl-sm">${short}</span>`;
-  // Legende statique, discrete, toujours visible sous la ligne de chips -
-  // jamais une interaction au tap/clic (revu le 17/08/2026 : l'utilisateur
-  // n'avait pas identifie la pastille comme cliquable, l'info doit etre
-  // lisible d'emblee, en petits caracteres).
-  const retraitLegend=(arr)=>{
-    // Regroupe PAR RAISON (pas par trimestre) - un meme retraitement
-    // recurrent-mais-variable (ex. mark-to-market OpenAI) qui touche
-    // plusieurs trimestres n'affiche le libelle qu'UNE fois, suivi de
-    // chaque trimestre concerne (revu le 17/08/2026, evite de repeter le
-    // meme libelle 3 fois pour 3 chiffres differents).
-    const byRaison=new Map();
-    arr.forEach(p=>{
-      (p.retraitements||[]).forEach(r=>{
-        if(!byRaison.has(r.raison)) byRaison.set(r.raison, []);
-        byRaison.get(r.raison).push({label:p.label, impact:r.impact});
-      });
-    });
-    if(!byRaison.size) return '';
-    // Les montants ne sont PLUS repetes ici : ils vivent desormais dans la
-    // ligne "Adjustments", calee sous chaque trimestre. Et des qu'il y a
-    // plusieurs causes, chacune a sa propre sous-ligne chiffree (voir
-    // reasonRows) - cette legende n'aurait alors plus rien a apprendre.
-    if(byRaison.size>1) return '';
-    const lines=[...byRaison.keys()].map(raison=>
-      `<div class="qs-retrait-line"><b class="qs-retrait-raison">${esc(raison)}</b></div>`).join('');
-    return `<div class="qs-retrait-legend">${lines}</div>`;
-  };
   const legendRow=`<div class="qtr-legend-row"><span class="qtr-legend"><span><span class="leg-dot" style="background:var(--navy);"></span>Published</span><span><span class="leg-dot" style="background:#fff;border:1.5px dashed var(--border);"></span>Estimated</span></span></div>`;
 
-  // Un bloc d'annee = un rang par nature de chiffre, chaque rang sur UNE
-  // ligne (libelle + total a gauche, puces a droite). Sans retraitement,
-  // publie et base Omnium se confondent : il ne reste qu'un rang, donc
-  // exactement l'entete d'avant - le cas courant est le cas degenere du
-  // meme gabarit, pas une seconde mise en page.
+  // ── DESIGN FINAL 20/08/2026 ("tout aligne") ──
+  // UNE grille partagee pour toute la section : les intitules T1..T4 (ou
+  // S1/S2) vivent UNE seule fois en tete, chaque annee est UNE rangee
+  // basse (valeur seule dans les blocs, hauteur uniforme). Le pont
+  // published->Omnium devient SUBTIL : dans un bloc ajuste, le publie
+  // apparait barre en petit au-dessus de la valeur avec une pastille
+  // turquoise (clic -> detail des raisons, mecanisme _adjDetails
+  // conserve), et une ligne discrete sous la rangee resume
+  // "published X$ − Y$ (raison)". Les triples rangees
+  // Published/Adjustments/Omnium disparaissent.
+  const nPer=(qe.CY||[]).length||4;
+  const gridStyle=`display:grid;grid-template-columns:var(--epsg-left,132px) repeat(${nPer},1fr);gap:10px;align-items:center;`;
+  const headerRow=`<div class="epsg-qhead" style="${gridStyle}"><span></span>${(qe.CY||[]).map(p=>`<span>${esc(p.label)}</span>`).join('')}</div>`;
+
   const yearBlock=(arr,opts={})=>{
-    const consHtml=opts.consensusHtml||'';
-    // Identifiant stable du bloc : le detail ouvert doit pouvoir viser SON
-    // exercice, la fiche en affichant plusieurs.
     const blockId=`adj-${(opts.label||'').replace(/[^0-9A-Za-z]/g,'')}`;
     _adjDetails[blockId]=arr.map(p=>({
       q:p.label,
       items:(p.retraitements||[]).map(r=>({raison:r.raison, impact:+r.impact||0}))
     }));
     const totalTxt=v=>`${v.toFixed(2)}${cur||'$'}`;
-    const cells=(fn)=>`<div class="eps-cells">${arr.map(fn).join('')}</div>`;
+    const fmtSigned=v=>`${v>=0?'+':'−'}${Math.abs(v).toFixed(2)}`;
+    const shown=opts.annual!=null?opts.annual:arr.reduce((a,p)=>a+(+p.eps||0),0);
+    const baseCells=arr.map(p=>{
+      const act=(opts.forceActual||p.actual);
+      return `<div class="epsg-chip ${act?'act':'est'}"><span class="epsg-v">${(+p.eps).toFixed(2)}</span></div>`;
+    }).join('');
+    // Cas courant (aucun retraitement) : UNE rangee basse - annee + total
+    // a gauche, valeurs seules dans les blocs, sous l'en-tete T1..T4.
     if(!hasAdj(arr)){
-      const shown=opts.annual!=null?opts.annual:arr.reduce((a,p)=>a+(+p.eps||0),0);
-      return `<div class="qs-qtr-block"><div class="eps-rows">
-        <div class="eps-row base">
-          <div class="eps-head">
-            <span class="eps-lbl" style="flex:0 0 auto;">${opts.label}</span>
-            <span class="eps-tot">${shown>0?totalTxt(shown):'—'}</span>
-            ${consHtml}
-          </div>
-          ${cells(p=>chip(p,opts.forceActual))}
-        </div>
-      </div>${opts.legend?legendRow:''}</div>`;
+      return `<div class="epsg-yr" style="${gridStyle}">
+        <span class="epsg-left"><span class="epsg-y">${opts.label}</span><span class="epsg-t">${shown>0?totalTxt(shown):'—'}</span></span>
+        ${baseCells}
+      </div>`;
     }
-    // Le pont se lit vers le BAS comme une addition :
+    // Pont (retour 20/08, "repart sur la logique des blocs") : les TROIS
+    // rangees Published / Adjustments / Omnium, dans la MEME grille que
+    // l'en-tete T1..T4 - le pont se lit vers le bas comme une addition :
     //     publie  +  corrections Omnium  =  base Omnium
     const cleanTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
     const pubTotal=cleanTotal-adjTotal;
     const nAdj=arr.filter(p=>adjOf(p)!==0).length;
-    return `<div class="qs-qtr-block bridge">
-      <div class="eps-yr-solo">${opts.label}</div>
-      <div class="eps-rows">
-        <div class="eps-row pub">
-          <div class="eps-head">
-            <span class="eps-lbl">${lbl('Published','Published')}</span>
-            <span class="eps-tot">${totalTxt(pubTotal)}</span>
-          </div>
-          ${cells(p=>chip(p,opts.forceActual,publishedOf(p)))}
-        </div>
-        <div class="eps-row adj">
-          <div class="eps-head">
-            <span class="eps-lbl">${lbl('Adjustments','Adjust.')}</span>
-            <span class="eps-tot">${nAdj>=2?fmtSigned(adjTotal)+(cur||'$'):''}</span>
-          </div>
-          <div class="eps-cells">${arr.map((p,i)=>{
-            const a=adjOf(p);
-            const n=(p.retraitements||[]).length;
-            if(!n) return `<div class="eps-adj nil">—</div>`;
-            // Le compteur s'affiche MEME a 1 : sans lui, un trimestre a
-            // cause unique n'aurait aucune invite au clic. La languette
-            // designe l'endroit ou le detail va s'ouvrir.
-            return `<div class="eps-adj has" onclick="toggleAdjDetail('${blockId}',${i})" id="${blockId}-c${i}">`
-              +`${fmtSigned(a)}<span class="eps-ct">${n}</span></div>`;
-          }).join('')}</div>
-        </div>
-        <div class="eps-detail" id="${blockId}-d"></div>
-        <div class="eps-row base">
-          <div class="eps-head">
-            <span class="eps-lbl">${lbl('Omnium','Omnium')}</span>
-            <span class="eps-tot">${totalTxt(cleanTotal)}</span>
-            ${consHtml}
-          </div>
-          ${cells(p=>chip(p,opts.forceActual))}
-        </div>
-      </div>${opts.legend?legendRow:''}</div>`;
+    const pubCells=arr.map(p=>{
+      const act=(opts.forceActual||p.actual);
+      return `<div class="epsg-chip pub ${act?'act':'est'}"><span class="epsg-v">${publishedOf(p).toFixed(2)}</span></div>`;
+    }).join('');
+    const adjCells=arr.map((p,i)=>{
+      const n=(p.retraitements||[]).length;
+      if(!n) return `<div class="eps-adj nil">—</div>`;
+      // Le compteur s'affiche MEME a 1 : sans lui, un trimestre a cause
+      // unique n'aurait aucune invite au clic.
+      return `<div class="eps-adj has" onclick="toggleAdjDetail('${blockId}',${i})" id="${blockId}-c${i}">${fmtSigned(adjOf(p))}<span class="eps-ct">${n}</span></div>`;
+    }).join('');
+    return `<div class="epsg-yrhead">${opts.label}</div>
+      <div class="epsg-yr b" style="${gridStyle}">
+        <span class="epsg-left"><span class="epsg-lbl pub">Published</span><span class="epsg-t pub">${totalTxt(pubTotal)}</span></span>
+        ${pubCells}
+      </div>
+      <div class="epsg-yr b" style="${gridStyle}">
+        <span class="epsg-left"><span class="epsg-lbl adj">Adjustments</span><span class="epsg-t adj">${nAdj>=2?fmtSigned(adjTotal)+(cur||'$'):''}</span></span>
+        ${adjCells}
+      </div>
+      <div class="eps-detail" id="${blockId}-d"></div>
+      <div class="epsg-yr b" style="${gridStyle}">
+        <span class="epsg-left"><span class="epsg-lbl base">Omnium</span><span class="epsg-t">${totalTxt(cleanTotal)}</span></span>
+        ${baseCells}
+      </div>`;
   };
   // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
   // "Published" : un consensus sell-side est etabli hors elements non
@@ -1916,6 +1916,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     pyBlock,
     historiqueBlocks,
     legendRow,
+    headerRow,
     chipsCY: yearBlock(qe.CY,{label:`${CY}`, annual:epsCY}),
     chipsNY: yearBlock(qe.NY,{label:`${CY+1}`, annual:epsNY}),
     peStack
@@ -2079,7 +2080,8 @@ function renderReturnBlock(ticker, proj, cours){
     <div style="border-top:1px solid var(--border);margin-top:26px;"></div>
     <div class="card-title" style="margin:16px 0 6px;">Earnings Per Share</div>
     ${qeBlock?qeBlock.legendRow:''}
-    <div class="rb-eps-grid">
+    ${qeBlock?qeBlock.headerRow:''}
+    <div class="rb-eps-grid" style="gap:6px;margin-top:0;padding-bottom:10px;">
       ${qeBlock?.pyBlock?`<div class="rb-eps-block">${qeBlock.pyBlock.html}</div>`:''}
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsCY:''}</div>
       <div class="rb-eps-block">${qeBlock?qeBlock.chipsNY:''}</div>
