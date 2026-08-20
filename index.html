@@ -3140,9 +3140,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }).join('');
   // Seuls le haut et le bas sont chiffres, dans les bandes de marge que
   // le trace n'atteint jamais - donc sans aplat de fond.
-  const vHi=yMax-margin*0.55, vLo=yMin+margin*0.55;
-  const yLabels=`<text x="${padL}" y="${(yOf(vHi)-6).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vHi.toFixed(1)}</text>`
-    +`<text x="${padL}" y="${(yOf(vLo)+12).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)">${vLo.toFixed(1)}</text>`;
+  // Pas de bornes d'echelle (retour 20/08 v7, "le 3.6 doit
+  // disparaitre") : chaque point Omnium porte deja sa valeur, les
+  // bornes hautes/basses n'apprenaient rien et flottaient seules.
+  const yLabels='';
   const unitTxt=`EPS, in ${tickerCur(ticker)||'$'}`;
   const unitLabel=`<text x="${padL}" y="15" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)">${unitTxt}</text>`;
   // Le trace demarrant a x=0, une etiquette centree sur le premier (ou le
