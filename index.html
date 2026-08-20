@@ -488,11 +488,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .epsg-offc.has:hover .epsg-ct{transform:translateY(-30%);opacity:1;}
 .epsg-offc.has.open .epsg-ct{transform:translateY(-46%) rotate(180deg);opacity:1;}
 .epsg-dbl{border-top:3px double #b8bed6;margin:5px 0 3px;}
-.epsg-t{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;}
+/* Colonne FY : une colonne a part entiere, au meme regime que T1..T4 -
+   tout centre (totaux Published/One-offs/Omnium, micro-label FY). */
+.epsg-t{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;text-align:center;}
 .epsg-t.pub{color:#64748b;}
 .epsg-t.adj{color:var(--teal-text);}
 .epsg-t.res{color:var(--navy);font-weight:800;}
-.epsg-t.res.fy{display:flex;flex-direction:column;align-items:center;justify-self:end;line-height:1.2;}
+.epsg-t.res.fy{display:flex;flex-direction:column;align-items:center;line-height:1.2;}
 .epsg-chip{text-align:center;border-radius:7px;min-height:34px;display:flex;flex-direction:column;justify-content:center;padding:3px 2px;}
 .epsg-chip.act{background:#eceefc;}
 .epsg-chip.est{border:1.5px dashed var(--border);}
@@ -1808,15 +1810,20 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     // Le total annuel porte la MEME grammaire que les blocs : micro-label
     // "FY" au-dessus du chiffre (comme T1..T4 dans les blocs) - la
     // colonne de droite se declare total annuel sans en-tete dedie.
-    const resultRow=(tot)=>`<div class="epsg-yr" style="${gridStyle}">
-        <span class="epsg-lbl res">→ EPS Omnium</span>
+    // La fleche "→" n'existe que sur les annees a PONT : elle conclut
+    // l'equation Published − One-offs au-dela du double filet. Sur une
+    // annee propre, sans equation au-dessus, elle ne renvoyait a rien.
+    // Et "EPS" disparait des libelles de rang ("Omnium", "Published") :
+    // c'est deja le titre de la section (retour 20/08 v3).
+    const resultRow=(tot,bridge)=>`<div class="epsg-yr" style="${gridStyle}">
+        <span class="epsg-lbl res">${bridge?'→ ':''}Omnium</span>
         ${baseCells}
         <span class="epsg-t res fy"><span class="epsg-q">FY</span>${tot>0?totalTxt(tot):'—'}</span>
       </div>`;
     // Annee sans retraitement : titre d'annee + la seule ligne de
     // resultat (cas degenere du meme gabarit).
     if(!hasAdj(arr)){
-      return `<div class="epsg-yrhead">${opts.label}</div>${resultRow(shown)}`;
+      return `<div class="epsg-yrhead">${opts.label}</div>${resultRow(shown,false)}`;
     }
     const cleanTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
@@ -1846,18 +1853,18 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     }).join('');
     return `<div class="epsg-yrhead">${opts.label}</div>
       <div class="epsg-yr" style="${gridStyle}">
-        <span class="epsg-lbl pub">EPS published</span>
+        <span class="epsg-lbl pub">Published</span>
         ${pubCells}
-        <span class="epsg-t pub" style="text-align:right;">${hasEst?'':totalTxt(pubTotal)}</span>
+        <span class="epsg-t pub">${hasEst?'':totalTxt(pubTotal)}</span>
       </div>
       <div class="epsg-yr" style="${gridStyle}">
         <span class="epsg-lbl adj">${offLbl}</span>
         ${adjCells}
-        <span class="epsg-t adj" style="text-align:right;">${hasEst?'':((allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal))}</span>
+        <span class="epsg-t adj">${hasEst?'':((allNeg||allPos)?Math.abs(adjTotal).toFixed(2):fmtSigned(adjTotal))}</span>
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
       <div class="epsg-dbl"></div>
-      ${resultRow(cleanTotal)}`;
+      ${resultRow(cleanTotal,true)}`;
   };
   // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
   // "Published" : un consensus sell-side est etabli hors elements non
@@ -2768,8 +2775,10 @@ function buildValoChartSVG(ticker, opts){
     const headY=Math.max(12, Math.min(...items.map(it=>it.ny))-22);
     const head=`<text x="${colMid.toFixed(1)}" y="${headY.toFixed(1)}" font-size="10" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="middle" letter-spacing=".05em">TODAY</text>`;
     return head+items.map(it=>{
-      const lead=Math.abs(it.ny-it.y)>1.5
-        ? `<path d="M${(lx+1).toFixed(1)} ${it.y.toFixed(1)} C${(lx+4).toFixed(1)} ${it.y.toFixed(1)} ${(lx+3).toFixed(1)} ${it.ny.toFixed(1)} ${(lx+5).toFixed(1)} ${it.ny.toFixed(1)}" fill="none" stroke="${it.col}" stroke-width="1" opacity=".4"/>` : '';
+      // Pas de filet de rappel entre le point et son etiquette deplacee
+      // (retour 20/08 : ces petits traits intriguaient plus qu'ils ne
+      // guidaient) - la couleur de l'annee suffit a rattacher l'etiquette.
+      const lead='';
       return lead
         +`<circle cx="${lx.toFixed(1)}" cy="${it.y.toFixed(1)}" r="3" fill="${it.col}"/>`
         // L'annee garde la teinte de SA courbe (c'est ce qui rattache
@@ -3053,6 +3062,34 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
   const yOf=(v)=> padT + (1-(v-yMin)/(yMax-yMin))*plotH;
 
+  // Une courbe ARCHIVEE ne se trace que si elle se SEPARE visiblement de
+  // sa courbe courante sur une part suffisante de son parcours : une
+  // archive qui colle au trace courant sauf en un point ne laisserait
+  // qu'un fragment pointille orphelin accroche a ce point, illisible
+  // (retour 20/08 v3). Seuil : >=3px d'ecart sur >=50% du span. La
+  // donnee, elle, reste archivee (priceHistory / epsConsensusHistory).
+  const fracVisible=(mapA,mapB)=>{
+    const ysA=years.filter(y=>typeof mapA[y]==='number');
+    const ysB=years.filter(y=>typeof mapB[y]==='number');
+    if(ysA.length<2) return 0;
+    if(ysB.length<2) return 1;
+    const interp=(m,ys,fy)=>{
+      if(fy<=ys[0]) return m[ys[0]];
+      if(fy>=ys[ys.length-1]) return m[ys[ys.length-1]];
+      let k=1; while(k<ys.length&&ys[k]<fy) k++;
+      const a=ys[k-1], b=ys[k];
+      return m[a]+(m[b]-m[a])*((fy-a)/(b-a));
+    };
+    let vis=0, tot=0;
+    for(let k=0;k<=24;k++){
+      const fy=ysA[0]+(ysA[ysA.length-1]-ysA[0])*k/24;
+      tot++;
+      if(fy<ysB[0]||fy>ysB[ysB.length-1]){ vis++; continue; }
+      if(Math.abs(yOf(interp(mapA,ysA,fy))-yOf(interp(mapB,ysB,fy)))>=3) vis++;
+    }
+    return tot?vis/tot:0;
+  };
+
   const ticks=4;
   const gridlines=Array.from({length:ticks+1},(_, i)=>{
     const v=yMin+(yMax-yMin)*(i/ticks);
@@ -3075,8 +3112,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   }).join('');
 
   const n=shown.length;
+  const lastState=shown[n-1];
   const curvesSvg=shown.map((s,i)=>{
     const isLast=i===n-1;
+    if(!isLast && fracVisible(s.epsByYear, lastState.epsByYear)<0.5) return '';
     const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
     const ptYears=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
     const pts=ptYears.map(y=>`${xOf(y).toFixed(1)},${yOf(s.epsByYear[String(y)]).toFixed(1)}`).join(' ');
@@ -3108,7 +3147,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     // Convention 20/08 (v2) : seule la courbe COURANTE est un trait plein
     // epais ; les revisions ARCHIVEES passent en pointilles (leurs dates
     // restent en donnee mais ne s'affichent plus - voir vintageLabels).
-    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2.5:1.4}"${isLast?'':' stroke-dasharray="3 4"'} opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+    return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2:1.4}"${isLast?'':' stroke-dasharray="3 4"'} opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
 
   // Trace consensus (convention 20/08 v2) : la courbe consensus COURANTE
@@ -3122,9 +3161,13 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // Couleur : LE jaune Omnium existant (--gold-text, celui du scorecard) -
   // pas une troisieme nuance d'or (retour 20/08).
   const CONS_COL='var(--gold-text)';
+  const consCurMap={...consExtra, ...consMapAll};
   consHistMaps.forEach(m=>{
     const ys=years.filter(y=>typeof m[y]==='number');
     if(ys.length<2) return;
+    // Meme regle que les revisions Omnium archivees : un instantane qui
+    // colle au consensus courant ne laisserait qu'un fragment pointille.
+    if(fracVisible(m, consCurMap)<0.5) return;
     const pts=ys.map(y=>`${xOf(y).toFixed(1)},${yOf(m[y]).toFixed(1)}`).join(' ');
     consSvg+=`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1" stroke-dasharray="2 4" opacity=".3" stroke-linejoin="round" stroke-linecap="round"/>`;
   });
@@ -3135,56 +3178,28 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     // Trait plein fin, SANS marqueurs (retour 20/08 : les points ronds
     // n'apprenaient rien et accrochaient l'oeil).
     consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'');
-    // ETIQUETTE "Consensus · date" : posee A GAUCHE le long de la courbe
-    // (l'espace en haut a droite reste au stack de courbes/etiquettes de
-    // millesime). Positionnement intelligent : on echantillonne la
-    // clairance au-dessus ET en dessous de la courbe consensus vis-a-vis
-    // de toutes les courbes Omnium sur la largeur du texte, et on pose le
-    // texte du cote le plus degage, rabattu dans le cadre.
-    const dCo=(state.tickers[ticker]||{}).epsConsensus||{};
-    const labTxt=`Consensus${dCo.date?` · ${formatFrDate(dCo.date)}`:''}`;
-    const labW=labTxt.length*5.2;
-    const consYAt=(x)=>{
-      const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
-      const ys=chain;
-      if(fy<=ys[0]) return yOf(vOf(ys[0]));
-      if(fy>=ys[ys.length-1]) return yOf(vOf(ys[ys.length-1]));
-      let k=1; while(k<ys.length&&ys[k]<fy) k++;
-      const a=ys[k-1], b=ys[k];
-      return yOf(vOf(a)+(vOf(b)-vOf(a))*((fy-a)/(b-a)));
-    };
-    const omnYAt=(x)=>{
-      const out=[];
-      shown.forEach(st=>{
-        const ys2=years.filter(yy=>typeof st.epsByYear[String(yy)]==='number');
-        if(ys2.length<2) return;
-        const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
-        if(fy<ys2[0]||fy>ys2[ys2.length-1]) return;
-        let k=1; while(k<ys2.length&&ys2[k]<fy) k++;
-        const a=ys2[k-1], b=ys2[Math.min(k,ys2.length-1)];
-        const va=st.epsByYear[String(a)], vb=st.epsByYear[String(b)];
-        out.push(yOf(va+(vb-va)*((b>a)?(fy-a)/(b-a):0)));
-      });
-      return out;
-    };
-    const lx=padL+plotW*0.12;
-    // La courbe a une PENTE : l'offset se prend sur son point le plus
-    // haut (cote au-dessus) ou le plus bas (cote en dessous) SUR TOUTE
-    // la largeur du texte - sinon le trait barre l'etiquette.
-    let topMin=Infinity, botMax=-Infinity;
-    for(let k=0;k<=6;k++){ const cy2=consYAt(lx+labW*k/6); if(cy2<topMin)topMin=cy2; if(cy2>botMax)botMax=cy2; }
-    const yAbove=topMin-8, yBelow=botMax+14;
-    const clearance=(yy)=>{
-      let m=Infinity;
-      for(let k=0;k<=6;k++){
-        const x=lx+labW*k/6;
-        omnYAt(x).forEach(oy=>{ m=Math.min(m, Math.abs(oy-yy)); });
-      }
-      return m;
-    };
-    let ly=clearance(yAbove)>=clearance(yBelow)?yAbove:yBelow;
-    ly=Math.max(padT+8, Math.min(padT+plotH-3, ly));
-    consSvg+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" font-weight="500" font-family="Poppins,sans-serif" fill="${CONS_COL}" text-anchor="start">${labTxt}</text>`;
+  }
+  // LEGENDE (retour 20/08 v3) : plus d'etiquette flottante le long de la
+  // courbe - une legende en tete de graphique, alignee a droite sur la
+  // ligne de base de l'unite d'axe, nomme les deux traits. La date du
+  // consensus vit dans la legende ; aucun placement intelligent requis,
+  // aucune collision possible avec l'empilement futur des courbes.
+  let legSvg='';
+  {
+    const items=[{col:'var(--navy)', sw:2, txt:'Omnium'}];
+    if(consYears.length)
+      items.push({col:CONS_COL, sw:1.2, txt:`Consensus${dCons&&dCons.date?` · ${formatFrDate(dCons.date)}`:''}`});
+    let x=W;
+    const parts=[];
+    for(let i=items.length-1;i>=0;i--){
+      const it=items[i];
+      x-=it.txt.length*5.1;
+      parts.push(`<text x="${x.toFixed(1)}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}">${it.txt}</text>`);
+      x-=18;
+      parts.push(`<line x1="${x.toFixed(1)}" x2="${(x+13).toFixed(1)}" y1="11.8" y2="11.8" stroke="${it.col}" stroke-width="${it.sw}" stroke-linecap="round"/>`);
+      x-=16;
+    }
+    legSvg=parts.join('');
   }
 
   // ETIQUETTES DE MILLESIME POSEES SUR LE GRAPHIQUE
@@ -3281,13 +3296,13 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       // a droite, le halo la detache sans la deplacer de son ancrage.
       return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shown[i].event?shown[i].event.label:shortDate(shown[i].date)}</text>`;
     }).join('');
-    if(idx.length>keep.length)
-      out+=`<text x="${(x0+7).toFixed(1)}" y="${(Math.max(...pos)+14).toFixed(1)}" font-size="9.5" font-family="Poppins,sans-serif" fill="var(--muted)" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">+${idx.length-keep.length}</text>`;
+    // Pas de compteur "+N" des revisions archivees (retour 20/08 v3) :
+    // il n'apprenait rien - les pointilles disent deja qu'il y a un passe.
     return out;
   }).join('');
 
   return {
-    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${vintageLabels}</svg>`,
+    svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${vintageLabels}</svg>`,
     single: n<2
   };
 }
