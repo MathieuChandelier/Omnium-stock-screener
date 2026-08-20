@@ -371,7 +371,8 @@
         {
           "date": "2026-07-22",
           "type": "vs_guidance",
-          "detail": "H1 26: ORfA 172M EUR (+44%), margin 4.6% (+140bp); FCF back positive (+53M vs -213M); net debt -152M."
+          "detail": "H1 26: ORfA 172M EUR (+44%), margin 4.6% (+140bp); FCF back positive (+53M vs -213M); net debt -152M.",
+          "beatPct": 0.0
         }
       ],
       "paceCheckpoint": "H1 ORfA 172M of a ~690M modeled year: on pace given the H2-heavy seasonality (H2 2025 base ~482M).",
@@ -425,12 +426,15 @@
   },
   "coherenceQualitative": {
     "statut": "coherent",
-    "suiviNarratif": "First tracked entries (cold start at the 18/08/2026 deep refresh; H1 transcript read from the Drive archive). H1 26 narrative consistent with the turnaround thesis: profit recovery prioritized over top-line targets, Rebound savings quantified and on schedule, Professional softness acknowledged with a named pipeline - no tension detected.",
+    "suiviNarratif": [
+      "First tracked entries (cold start at the 18/08/2026 deep refresh; H1 transcript read from the Drive archive). H1 26 narrative consistent with the turnaround thesis: profit recovery prioritized over top-line targets, Rebound savings quantified and on schedule, Professional softness acknowledged with a named pipeline - no tension detected."
+    ],
     "historique": [
       {
         "quarter": "H1 26",
         "date": "2026-07-22",
-        "clesRetenues": "ORfA 172M (+44%), margin 4.6% (+140bp); FCF +53M (vs -213M); net debt -152M to 2.516bn; Rebound: 20M locked of 40-60M 2026 target, 200M run-rate by end-2027 (costs 100-125M); US tariffs refund +15M booked; Iran conflict ~-30M H2 raw-material headwind guided; Professional -2.8% (McDonald's global listing, ChaPanda wins; slow conversion); distributor destocking in Europe (sell-in < sell-out)."
+        "clesRetenues": "ORfA 172M (+44%), margin 4.6% (+140bp); FCF +53M (vs -213M); net debt -152M to 2.516bn; Rebound: 20M locked of 40-60M 2026 target, 200M run-rate by end-2027 (costs 100-125M); US tariffs refund +15M booked; Iran conflict ~-30M H2 raw-material headwind guided; Professional -2.8% (McDonald's global listing, ChaPanda wins; slow conversion); distributor destocking in Europe (sell-in < sell-out).",
+        "format": "brut"
       }
     ]
   }
