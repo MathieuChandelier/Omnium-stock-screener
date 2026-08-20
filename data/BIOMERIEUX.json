@@ -1,510 +1,532 @@
 {
-  "name": "BioMérieux",
-  "cours": 70.5,
-  "yahooSymbol": "BIM.PA",
-  "dividende": 0.98,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 3376,
-      "ebit": 784,
-      "net": 601.1,
-      "shares": 119,
-      "nd": -341,
-      "div": 0.85
-    },
-    {
-      "year": 2022,
-      "ca": 3589,
-      "ebit": 587,
-      "net": 452.4,
-      "shares": 118,
-      "nd": -47,
-      "div": 0.85
-    },
-    {
-      "year": 2023,
-      "ca": 3675,
-      "ebit": 491,
-      "net": 410,
-      "shares": 119,
-      "nd": 166,
-      "div": 0.85
-    },
-    {
-      "year": 2024,
-      "ca": 3980,
-      "ebit": 589,
-      "net": 432.2,
-      "shares": 119,
-      "nd": 41,
-      "div": 0.9
-    },
-    {
-      "year": 2025,
-      "ca": 4070,
-      "ebit": 662,
-      "net": 503,
-      "shares": 119,
-      "nd": -108,
-      "div": 0.98
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 4.44,
-    "epsNY": 4.94,
-    "date": "2026-06-01",
-    "source": "Simply Wall St (consensus analystes agrégé, snapshot juin 2026 - antérieur à la publication S1 2026 du 28/07/2026, à recouper au prochain refresh une fois un consensus post-résultats disponible)"
+ "name": "BioMérieux",
+ "cours": 70.5,
+ "yahooSymbol": "BIM.PA",
+ "dividende": 0.98,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 3376,
+   "ebit": 784,
+   "net": 601.1,
+   "shares": 119,
+   "nd": -341,
+   "div": 0.85
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "T3 26",
-    "date": "2026-10-30"
+  {
+   "year": 2022,
+   "ca": 3589,
+   "ebit": 587,
+   "net": 452.4,
+   "shares": 118,
+   "nd": -47,
+   "div": 0.85
   },
-  "ownership": {
-    "asOf": "2026-07-29",
-    "insiderPct": 58.9,
-    "insiderDesc": "Institut Mérieux (holding contrôlé par la famille Mérieux - Alain et Alexandre Mérieux via Mérieux Alliance à 68%, Fondation Christophe et Rodolphe Mérieux à 32%), actionnaire de contrôle historique de bioMérieux. Renforcement de +1 point en mai 2026 (acquisition sur le marché), portant la participation de ~57,9% à ~58,9%. Flottant ~35%, le solde se répartissant notamment entre Sitam Belgique (~3%), Sofina SA (~1,9%), salariés (~0,8%) et autodétention (~0,4%).",
-    "insiderSource": "Communiqué Institut Mérieux du 06/05/2026 (« L'Institut Mérieux a acquis une participation supplémentaire de 1% dans bioMérieux », portant sa participation à ~60% du capital) - pas de proxy statement US pour ce titre français, information de l'actionnaire de contrôle utilisée comme équivalent primaire ; répartition fine du flottant corroborée par des agrégateurs de marché (BFM Bourse/Tradingsat).",
-    "notableHolders": [],
-    "coverageNote": "Titre coté à titre principal sur Euronext Paris (hors périmètre 13F, qui ne couvre que les valeurs cotées aux Etats-Unis) - notableHolders non renseigné par choix assumé, voir PERIMETRE 13F.",
-    "history": [
-      {
-        "date": "2026-05-06",
-        "pct": 58.9,
-        "note": "Institut Mérieux renforce sa participation de +1 point (acquisition sur le marché), portant sa détention à près de 60% du capital"
-      }
-    ]
+  {
+   "year": 2023,
+   "ca": 3675,
+   "ebit": 491,
+   "net": 410,
+   "shares": 119,
+   "nd": 166,
+   "div": 0.85
   },
-  "compliance": {
-    "asOf": "2026-07-29",
-    "items": [],
-    "note": "Aucune allégation de fraude comptable, tromperie des investisseurs ou des consommateurs identifiée à ce jour pour bioMérieux ou l'Institut Mérieux. A surveiller par défaut à chaque refresh, mais champ vide en l'absence d'élément identifié."
+  {
+   "year": 2024,
+   "ca": 3980,
+   "ebit": 589,
+   "net": 432.2,
+   "shares": 119,
+   "nd": 41,
+   "div": 0.9
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-10",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "H1 26",
-        "date": "2026-07-28",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Odysseas Manasiotis (BNP Paribas) - pourquoi les cibles 2027-2028 impliquent une décélération vs la croissance H2 26 implicite : la direction triangule la guidance sur le rythme solide du T2 (+5% organique), qu'elle voit comme une continuation stable plutôt qu'une décélération.",
-          "Q Odysseas Manasiotis - qu'est-ce qui soutient l'ambition de croissance au-delà de 2028 : futurs lancements produits (SPOTFIRE STI/méningite, SPINCHIP, VITEK plus petit) devraient soutenir la croissance, guidance précise au-delà de 2028 renvoyée à un possible futur Capital Markets Day.",
-          "Q Aicha Noor (Morgan Stanley) - pourquoi la guidance SPOTFIRE a baissé d'environ 450 M€ à ~400 M€ d'ici 2028 : moteur principal = effet de change, la faiblesse de l'euro fait apparaître des cibles en euros plus basses lors de la conversion.",
-          "Q Aicha Noor - les ventes d'équipement au T2 sont-elles une libération de demande différée ou une faiblesse persistante : les ventes d'équipement T2 ont progressé de 5%, suggérant une amélioration après un T1 faible, avec une meilleure visibilité sur les tendances de marché.",
-          "Q Aicha Noor - le changement de politique SPOTFIRE au Japon est-il temporaire ou structurel : structurel, les autorités ont restreint l'usage aux 'patients à haut risque', définition encore floue en attendant des précisions.",
-          "Q Charles Pitman-King (Barclays) - comment la marge brute évoluera-t-elle compte tenu du nouveau mix et des attentes tarifaires : la direction refuse une guidance précise, réaffirme l'engagement à faire croître l'EBIT plus vite que les ventes via plusieurs leviers de coûts.",
-          "Q Charles Pitman-King - confirmer qu'aucun élément ponctuel n'a soutenu le chiffre SPOTFIRE de 400 M€ au T2 : confirmé, performance normalisée sans opération ponctuelle significative.",
-          "Q Charles Pitman-King - calendrier de lancement du panel méningite, 2027 ou 2028 : provisoirement 2028, encore incertain en attendant la fin des essais cliniques.",
-          "Q Charles Pitman-King - impact concurrentiel du lancement LIAISON NES : marché déjà encombré, ce nouveau concurrent ne change pas matériellement l'environnement compte tenu de la part de marché encore marginale de bioMérieux sur ce segment et du positionnement compétitif de SPOTFIRE.",
-          "Q Kavya Deshpande (UBS) - quelle confiance dans la guidance respiratoire annuelle compte tenu de la faiblesse actuelle des données ambulatoires : la direction évite de tirer des conclusions des données épidémiologiques estivales, hypothèses basées sur les niveaux du T4 2025 et l'environnement actuel.",
-          "Q Kavya Deshpande - qu'est-ce qui explique l'accélération implicite hors-respiratoire au S2 au-delà de 10% : une épidémie de Cyclospora aux US (5 000+ cas) détectée via les tests high-plex a créé une hausse 'très significative' des ventes du panel GI.",
-          "Q David Westenberg (Piper Sandler) - quelle part de la croissance SPOTFIRE reflète de nouveaux clients vs de la cannibalisation : aucune cannibalisation, principalement des gains de nouveaux clients et de parts concurrentielles sur le segment point-of-care.",
-          "Q David Westenberg - si la guidance atterrit en bas de fourchette, quels leviers OpEx garantissent un EBIT croissant plus vite que les ventes : même à 3-4% de croissance des ventes, la direction voit un levier opérationnel suffisant pour une rentabilité surperformant le revenu.",
-          "Q Jan Koch (Deutsche Bank) - détail des améliorations en Chine et attentes pour le S2 : recul du S1 amélioré à -6% (vs -15% précédemment), fabrication locale d'instruments et gestion des coûts soutenant la stabilisation.",
-          "Q Jan Koch - impact de l'annonce Danaher/Cepheid high-plex sur le positionnement concurrentiel : l'annonce valide le marché, la direction attend les détails de panel et de performance avant une évaluation concurrentielle plus approfondie.",
-          "Q Jan Koch - l'EBIT du S1 reflète-t-il les remboursements tarifaires : oui, bénéfice de 30 M€ lié au remboursement tarifaire 2025 compensé par les paiements de tarifs du S1 26, impact net neutre sur un an.",
-          "Q Philip Omnu (JPMorgan) - le T3 est-il attendu dans la fourchette 3-5%, ou la croissance est-elle fortement pondérée en fin d'année : la direction ancre sa confiance sur la performance solide du T2 (5%), le T3 est habituellement plus petit en raison de la saisonnalité, le T4 dépendant de la force respiratoire.",
-          "Q Philip Omnu - quelle confiance pour atteindre le bas de fourchette si la grippe sous-performe : si le T4 respiratoire égale le niveau faible de 2025, la croissance annuelle tend vers le bas de fourchette, soulignant la dépendance respiratoire.",
-          "Q Philip Omnu - clarifier le calendrier du remboursement tarifaire, le bénéfice du S1 est-il complet : 13 M€ sur ~15 M€ remboursés au S1, montant résiduel minime (~2 M€) attendu au S2.",
-          "Q Anna Rackcliffe (BofA/RBC) - positionnement concurrentiel BIOFIRE et SPOTFIRE : part de marché BIOFIRE stable, érosion de prix modeste comme attendu, SPOTFIRE gagne des parts sur un large marché avec de la place pour plusieurs concurrents.",
-          "Q Anna Rackcliffe - comment les lancements hors-RP et la concurrence s'équilibreront pour la croissance SPOTFIRE post-2028 : les extensions vaginite, IST et méningite visent à réduire la dépendance à la saisonnalité respiratoire, détail post-2028 renvoyé à un futur événement Capital Markets.",
-          "Q Anna Rackcliffe - pourquoi maintenir l'intensité R&D si le marché est moins réceptif à l'innovation : R&D ciblée à 12% des ventes, portefeuille ajusté pour l'accessibilité et l'acceptation marché plutôt qu'une réduction absolue.",
-          "Q Thibault Lechevallier (All Invest) - bioMérieux poursuivra-t-elle une consolidation plus active pour renforcer la croissance : approche M&A inchangée, poursuite de bolt-ons stratégiques sur les segments coeur (exemples récents : Accellix, SPINCHIP), avec un critère de raisonnabilité stratégique et financière."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "meningite_panel_2028",
-        "quarterOrigine": "H1 26",
-        "engagement": "Lancement du panel méningite SPOTFIRE provisoirement visé en 2028, sous réserve de la fin des essais cliniques - extension destinée à réduire la dépendance à la saisonnalité respiratoire.",
-        "echeance": "2028-Q4",
-        "statut": "en_cours"
-      }
-    ]
-  },
-  "hypothese": {
-    "date": "2026-08-19",
-    "priorEPS": {
-      "date": "2026-07-14",
-      "eps": {
-        "2026": 4.07,
-        "2027": 4.45,
-        "2028": 4.92,
-        "2029": 5.37,
-        "2030": 5.82
-      }
-    },
-    "source": "Harmonisation structurelle du schema (03/08/2026) - alignement sur la version courante du protocole (ajout communiqueAnalyse/transcriptAnalyse, guidanceLongTermeHistory, quarterlyEPS via E5 ter) ; aucune nouvelle publication de resultats depuis le refresh S1 2026 du 28-29/07/2026 - these, ancrages et adjXXX inchanges. Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025 S1 2,40€/S2 2,24€, sur la base resultat net ajuste dilue publie, bouclant exactement sur les 4,64€ FY2025) et coherenceQualitative ajoutes. Transcript H1 26 (28/07/2026) relu integralement (23 echanges Q&A). Transcript N-1 (FY2025, 27/02/2026) reste introuvable malgre une recherche reelle sur plusieurs sources (Yahoo Finance sur abonnement, Seeking Alpha 403, presse francaise sans detail Q&A) - repli legitime sur une entree unique (E2 ter point 1 bis), statut coherent par defaut.",
-    "dernierCall": {
-      "quarter": "H1 26",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1964.6,
-          "consensus": 1858
-        },
-        "epsAdj": {
-          "actual": 1.99,
-          "consensus": null,
-          "basis": "non-GAAP",
-          "basisNote": "Résultat net ajusté dilué par action (définition société, hors amortissements/dépréciations d'actifs incorporels acquis et éléments non courants) - pas de consensus sell-side spécifique identifié sur cette base précise ; à titre de repère, le CA T2 seul (981M€) a battu le consensus Visible Alpha de 945,6M€ (+3,75%)"
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie ; direction qualitative : la base de comparaison H2 2025 est plus faible qu'H1 2025 (organique +3% au S2 2025 vs +9% au S1 2025), ce qui facilite mécaniquement la comparaison au S2 2026. La direction indique explicitement que si le T4 2026 (saison respiratoire) est équivalent au T4 2025 (déjà faible), la croissance organique annuelle se situera plutôt en bas de fourchette (~3%) ; une saison plus forte pousserait vers le haut de fourchette.",
-      "guidanceAnnuelle": "Objectifs FY2026 CONFIRMÉS suite au bon T2 : croissance organique du CA entre +3% et +5% ; croissance organique du ROCC (CEBIT) entre 0% et +10%. Effet de change sur le ROCC 2026 révisé favorablement à -40/-50 M€ (vs -50/-60 M€ précédemment), dont -35 M€ déjà constatés au S1. CapEx révisé légèrement à la baisse (~8% du CA vs ~9% initialement). Perspectives 2027-2028 AJUSTÉES À LA BAISSE (changement matériel vs refresh précédent) : croissance organique du CA visée à +3%/+6% par an (vs '+7% TCAM 2024-2028' précédemment) ; croissance organique du ROCC visée supérieure à celle du CA (vs 'au moins +10%' précédemment). Motif invoqué : dégradation de l'environnement géopolitique et macroéconomique depuis 2024 (pression budgétaire santé au profit des dépenses de défense, tarifs douaniers américains, inflation sur les intrants).",
-      "pointsCles": [
-        "Net rebond du T2 (+5% organique, +7,3% hors panels respiratoires) après un T1 très faible (-3,9% organique), ramenant la croissance organique S1 à seulement +0,2% ; la direction invite explicitement les analystes à utiliser le rythme du T2 (proche du point médian de la nouvelle guidance 2027-2028) plutôt que le T1 comme référence de trajectoire.",
-        "SPOTFIRE réalise son meilleur T2 depuis le lancement (ventes de réactifs +40%, 400 nouveaux instruments installés, base installée de 7 200 instruments soit +60% vs juin 2025), sans aucun effet ponctuel selon la direction - mais le Japon restreint désormais l'usage du panel respiratoire SPOTFIRE aux 'patients à haut risque', un frein structurel et non temporaire dont le périmètre précis reste à clarifier avec les autorités japonaises.",
-        "La Chine en microbiologie s'améliore (-6% au S1 2026 vs un déclin proche de -15% en 2025 complet), portée par la localisation industrielle (BACT/ALERT, VITEK COMPACT PRO, bientôt Virtuo) réduisant l'exposition tarifaire et la dépendance aux approvisionnements importés.",
-        "Concurrence : l'annonce par Danaher/Cepheid d'un nouveau système high-plex est jugée par la direction comme une validation de la valeur du marché du multiplex plutôt qu'une menace immédiate - aucun panel ni performance n'a encore été communiqué par le concurrent, la société se réserve d'affiner son analyse une fois ces détails connus. Remboursement tarifaire douanier américain 2025 (~13 M€) intégralement reconnu au S1 2026, compensant les nouveaux tarifs de 15% payés sur la période (effet net neutre vs 2025)."
-      ],
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "IFRS",
-        "source": "Communique et etats S1 2026 (PR 28/07/2026, biomerieux.com)",
-        "date": "2026-08-19",
-        "note": "Croises : CA S1 1 964,6 M EUR (+0,2% organique), resultat operationnel 299 M EUR (+43,3%), net 226,1 M EUR / BPA 1,92 EUR, guidance FY26 confirmee (+3/+5% ; CEBIT 0/+10%)."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-23",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Révision à la baisse post-warning : CA organique +3% à +5% (vs +5-7% avant warning) ; ROCC organique 0% à +10% (vs ≥10% avant warning) ; effet de change ROCC -50 à -60 M€."
-      },
-      {
-        "quarter": "H1 26",
-        "date": "2026-07-28",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Objectifs FY2026 confirmés (CA organique +3%/+5% ; ROCC organique 0%/+10%) ; effet de change ROCC révisé favorablement à -40/-50 M€. Perspectives 2027-2028 ajustées à la baisse : CA organique +3%/+6% par an (vs +7% TCAM précédemment) ; ROCC organique > croissance du CA (vs ≥10% précédemment)."
-      }
-    ],
-    "guidanceLongTerme": "Plan stratégique GO•28 (horizon 2028) : quatre piliers - GO•Simple (efficacité opérationnelle), Grow Stronger (engagement des équipes), croissance responsable (RSE, -35% d'émissions Scope 3 visées d'ici 2034), et quatre moteurs de croissance produits (BIOFIRE non-respiratoire +4%/+8% par an 2027-2028, SPOTFIRE +25%/+40% par an, Microbiologie +3%/+5% par an, Applications Industrielles). Ambition de R&D à 12% du CA d'ici fin 2028. Trajectoire au-delà de 2028 non précisée à ce stade (direction indique qu'un nouveau Capital Markets Day serait le cadre approprié pour la communiquer).",
-    "summary": "Le refresh S1 2026 acte un changement de trajectoire structurel plus qu'un simple ajustement conjoncturel : le rebond du T2 (+5% organique) confirme que le warning du T1 était bien lié à l'épidémiologie respiratoire et non à une perte de part de marché, mais la direction profite de la publication pour abaisser ses ambitions moyen terme 2027-2028 (CA organique +3-6% vs +7% CAGR visé auparavant), reconnaissant un environnement macro/géopolitique durablement dégradé. La génération de cash reste un point fort majeur (FCF +76% au S1, position de trésorerie nette portée à 236 M€).",
-    "text": "== THESIS SUMMARY ==\nWorld leader in syndromic/multiplex in-vitro diagnostics (BIOFIRE). The refresh marks a thesis inflection: what the April warning framed as conjunctural (weak respiratory season, BIOFIRE respiratory -23% organic in Q1) is now compounded by a structural mid-term cut announced at H1 - 2027-2028 organic revenue now guided +3% to +6%/yr (vs '+7% CAGR 2024-2028' before) and organic ROCC merely 'above revenue growth' (vs 'at least +10%'). FY26 guidance itself is confirmed (+3/+5% organic; ROCC 0/+10%) on a solid Q2 (+5% organic, +7.3% ex-respiratory).\n\n== THESIS READ ==\n- Mid-term de-rating is the story: the multiple now rests on GO*28 execution and BIOFIRE menu expansion, not a mechanical +7% top line. Watch: the first 2027 guidance (Feb 2027) under the new frame.\n- FY26 pace is credible after Q2; the quarterly progression matched what management laid out. Watch: H2 respiratory season - the swing factor for the confirmed range.\n- PPA bridge corrected: real acquired-intangible amortization runs ~28M/yr vs ~66M assumed at setup - the retreated base was too conservative and has been refined. Watch: residual REVEAL/restructuring charges polluting the bridge.\n\n== SPECIAL FACTORS ==\nData retreated for two true one-offs only (Hybiome 2023, VITEK REVEAL 2025); recurring PPA amortization and GO*28 restructuring deliberately KEPT in the base (rule E5e) - 'ebit' is published recurring operating income plus true one-offs, NOT management's contributive ROCC. Growing net cash position (-320M in 2026 to -720M in 2030) yields a small positive financial result in the bridge.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: EBIT 677M on the confirmed guidance mid. 2027-2030: ~5%/yr revenue, margin drift +30-40bp/yr - aligned with the LOWERED mid-term frame, not the old +7% CAGR. Bridge: ETR 25%, positive finNet rising with net cash; published 2025 reconciles at zero residual on the retreated base. Shares flat at 118M. Watch: FX drag (-40/-50M on ROCC guided); US respiratory volumes; menu approvals cadence.\n\n== CATALYSTS ==\nQ3 sales (Oct); FY26 results (Feb 2027) with first 2027 guidance under the new frame; BIOFIRE menu approvals; GO*28 milestones.",
-    "impact": "negatif",
-    "ancrages": [
-      {
-        "id": "guidance-ca-2026",
-        "moteur": "Guidance officielle confirmée au S1 2026 (28/07/2026) après le warning du T1 : CA organique +3% à +5% pour FY2026 ; retenu à ~3,5% (proche du bas de fourchette), la direction indiquant explicitement que le scénario central (saison respiratoire T4 2026 = T4 2025, déjà faible) pointe vers le bas de la fourchette.",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "fx-drag-ca-2026",
-        "moteur": "Effet de change estimé à environ -150 M€ sur le CA FY2026 (S1 2026 réel -87,3 M€ + extrapolation prudente d'un effet plus modéré au S2, cohérent avec l'amélioration de la guidance FX sur le ROCC de -50/-60 M€ à -40/-50 M€) ; la société ne donne pas de guidance FX explicite sur le CA (seulement sur le ROCC).",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "croissance-organique-ca-2027-2030",
-        "moteur": "Perspectives 2027-2028 RÉVISÉES À LA BAISSE par la société elle-même au S1 2026 : croissance organique annuelle du CA visée entre +3% et +6% (vs '+7% TCAM 2024-2028' précédemment) ; retenue à +5%/an sur 2027-2028 (proche du point médian, cohérent avec le rythme du T2 2026 que la direction recommande d'utiliser comme référence) ; extrapolation prudente à +5%/an pour 2029-2030 en l'absence de guidance au-delà de 2028 (la société indique elle-même qu'un nouveau Capital Markets Day serait nécessaire pour se prononcer sur cet horizon).",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "guidance-rocc-2026",
-        "moteur": "Guidance officielle confirmée au S1 2026 : ROCC organique 0% à +10% pour FY2026 ; retenu à ~3% (bas de fourchette, cohérent avec l'hypothèse de CA prudente), effet de change ROCC -40/-50 M€ (dont -35 M€ déjà constatés au S1 2026).",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "recovery-rocc-2027-2030",
-        "moteur": "Guidance révisée au S1 2026 : croissance organique du ROCC visée simplement supérieure à celle du CA sur 2027-2028 (vs '≥10%' précédemment) ; retenue à environ +1,5 pt au-dessus de la croissance du CA chaque année (+6,5% en 2027, +6,5% en 2028 puis modération progressive à +6%/2029 et +5,5%/2030), reflétant les initiatives GO•Simple accélérées (réduction d'effectifs, fermeture de site avancée) destinées à générer ce levier opérationnel.",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "pont-ebit-rocc",
-        "moteur": "RÉVISÉ ce refresh (E6-a/E6-b) : écart ROCC/ROC(base retenue) recalibré à ≈28 M€ pour 2026 (amortissement des incorporels acquis annualisé sur la base du S1 2026 réel de -14,2 M€), contre ≈66 M€ estimé au refresh de création - l'ancienne hypothèse apparaît rétrospectivement surestimée. Légère progression annuelle (+2 M€/an) reflétant l'intégration d'Accellix et de futures acquisitions bolt-on.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "is-normatif",
-        "moteur": "TEI normatif maintenu à 23,4% (taux effectif réel S1 2026, cohérent avec le taux FY2025 de 24,5% jugé propre - légère révision à la baisse par rapport à l'hypothèse retenue au refresh de création).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "resultat-financier-tension-e5abis",
-        "moteur": "TENSION MÉTHODOLOGIQUE NON RÉSOLUE : société en position de trésorerie nette croissante sans programme de rachat actif et régulier au sens du protocole, ce qui pointerait mécaniquement vers un produit financier Bund 10 ans (3,20%) + 2 pts. Mais le résultat financier net S1 2026 réel est négatif (-5 M€, vs +4 M€ au S1 2025), la direction l'attribuant à l'effet défavorable du renforcement de l'euro sur les positions de trésorerie en devises plutôt qu'à un manque de rendement structurel. Retenu par prudence proche de zéro en 2026 (-8 M€, extrapolation du rythme S1) puis normalisation progressive et modeste (0 M€ en 2027, +5/+8/+10 M€ en 2028-2030) plutôt que le taux théorique Bund+2pts, qui donnerait un résultat sensiblement plus élevé compte tenu de la trésorerie nette croissante - à trancher au prochain refresh selon la persistance ou non de l'effet change.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "reveal-oneoff-2025",
-        "moteur": "Dépréciation partielle VITEK REVEAL (146 M€ pretax publiée, S1 2025) retraitée hors data 2025 (E5 d-bis) ; traitement fiscal déductible confirmé par la réconciliation résultat net/résultat net ajusté publiée par la société (effet d'impôt théorique de 34,9 M€ sur la dépréciation, cohérent avec un TEI proche de 24%). Confirmation a posteriori du caractère ponctuel de cet événement : l'amortissement des incorporels acquis est revenu à un niveau normalisé de -14,2 M€ au S1 2026 (vs -163,2 M€ au S1 2025), sans nouvelle dépréciation.",
-        "applique": [
-          "data.2025"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "hybiome-oneoff-2023",
-        "moteur": "Dépréciation goodwill/technologie Hybiome retraitée hors data 2023 (E5 d-bis) ; montant pretax ≈52 M€ reconstruit via l'écart de TEI publié (26,2%) vs retraité (23,4%, déclaré explicitement par la société elle-même) ; traitement fiscal non-déductible confirmé explicitement par la société.",
-        "applique": [
-          "data.2023"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "shares-recalibre",
-        "moteur": "Nombre d'actions dilué recalibré à 118M (nombre réel au 30/06/2026 : 118 367 846, en légère baisse vs 118 905 491 un an plus tôt) ; rachats nets modestes au S1 2026 (-19,3 M€) jugés insuffisants pour qualifier un programme de rachat actif et régulier au sens E5-a bis (voir ancrage résultat financier).",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumCA": {
-      "2026": 4065,
-      "2027": 4268,
-      "2028": 4481,
-      "2029": 4705,
-      "2030": 4940
-    },
-    "omniumEBIT": {
-      "2026": 677,
-      "2027": 721,
-      "2028": 768,
-      "2029": 814,
-      "2030": 863
-    },
-    "omniumNet": {
-      "2026": 512,
-      "2027": 552,
-      "2028": 592,
-      "2029": 630,
-      "2030": 669
-    },
-    "omniumEPS": {
-      "2026": 4.34,
-      "2027": 4.68,
-      "2028": 5.02,
-      "2029": 5.34,
-      "2030": 5.67
-    },
-    "omniumND": {
-      "2026": -320,
-      "2027": -420,
-      "2028": -520,
-      "2029": -620,
-      "2030": -720
-    },
-    "omniumShares": {
-      "2026": 118,
-      "2027": 118,
-      "2028": 118,
-      "2029": 118,
-      "2030": 118
-    },
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "semestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "S1",
-          "eps": 2.24,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Depreciation partielle de la technologie VITEK REVEAL (one-off E5 d-bis) reintegree dans la base",
-              "impact": 0.89
-            }
-          ]
-        },
-        {
-          "label": "S2",
-          "eps": 1.99,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "S1",
-          "eps": 1.99,
-          "actual": true
-        },
-        {
-          "label": "S2",
-          "eps": 2.35,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "S1",
-          "eps": 2.15,
-          "actual": false
-        },
-        {
-          "label": "S2",
-          "eps": 2.53,
-          "actual": false
-        }
-      ],
-      "note": "[Correctif C25 20/08/2026 : PY repose sur le PUBLIE reel (RN part du groupe 2025 : 398 M EUR - S1 161 M, S2 237 M) + pont VITEK REVEAL (+105 M net, comptabilise au S1) vers la base data 503 M / 4,23 EUR. Les anciennes valeurs (2,40/2,24) ne correspondaient a aucune des deux bases.]"
-    },
-    "bridge": {
-      "2025": {
-        "finNet": 9,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 503,
-        "netPub": 503,
-        "residual": 0,
-        "residualNote": "Reconciles cleanly on the retreated base (Hybiome 2023 / VITEK REVEAL 2025 one-offs removed): slight positive financial result (net cash), ETR ~25%."
-      },
-      "2026": {
-        "finNet": 6,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 512
-      },
-      "2027": {
-        "finNet": 15,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 552
-      },
-      "2028": {
-        "finNet": 21,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 592
-      },
-      "2029": {
-        "finNet": 26,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 630
-      },
-      "2030": {
-        "finNet": 29,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 669
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Organic revenue growth (guided range, %)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-04-23",
-          "type": "guidance_revised",
-          "detail": "Post-warning cut: organic revenue to +3/+5% (from +5/+7%), organic ROCC to 0/+10% (from >=+10%)."
-        },
-        {
-          "date": "2026-07-28",
-          "type": "guidance_revised",
-          "detail": "FY26 confirmed (+3/+5%; ROCC 0/+10%), FX drag improved to -40/-50M. Mid-term 2027-28 CUT: organic revenue +3/+6%/yr (vs +7% CAGR), ROCC 'above revenue growth' (vs >=+10%)."
-        }
-      ],
-      "paceCheckpoint": "H1 real: Q2 +5% organic (+7.3% ex-respiratory) after Q1 -3% - FY26 pace credible within the lowered range.",
-      "weightedBeatPct": null,
-      "annualBeatPct": -0.4,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": -0.7,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": ">=+7% organic (initial floor)",
-          "realizedDisplay": "+6.2%",
-          "note": "Initial FY25 guidance (Mar 2025): organic sales at least +7%, CEBIT at least +10%; realized +6.2% organic (China drag) - level -0.7% vs the floor. CEBIT side EXCEEDED (+16% cc), documented but the anchor metric is sales."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 3.1,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "+7% organic (initial mid 6-8%)",
-          "realizedDisplay": "+10.3%",
-          "note": "Initial FY24 guidance (Mar 2024): organic +6/+8% (mid 7%), CEBIT >=+10%; realized +10.3% organic - level +3.1%. Raised in September 2024."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 6.0,
-        "source": "initial_guidance",
-        "date": "2026-04-23",
-        "note": "Initial FY26 guidance was organic revenue +5% to +7% (mid +6%), evidenced by the 23/04 warning communique which cut it to +3/+5% ('vs +5-7% avant warning'). The initial statement itself (Feb/Mar 2026) was not captured; the anchor is dated at its earliest archived evidence."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct -0.4% BLENDED (in-progress -1.9 x1/2; FY25 -0.7 and FY24 +3.1 equal-shared). NOT applied: the 2026 build already sits on the lowered guidance, and beats are on ORGANIC REVENUE while the anchor is EPS-adjacent (declared mismatch).",
-      "consensusSource": "Simply Wall St (analyst consensus, adjusted EPS)",
-      "consensusDate": "2026-06-01",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 6.0,
-        "currentValue": 4.0,
-        "deltaPct": -1.9,
-        "asOf": "2026-07-28",
-        "note": "Initial FY26 organic +5/+7% (mid +6, evidenced by the 23/04 warning); guided +3/+5% since (mid +4, confirmed twice) - projected level -1.9%. Revenue metric."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-28",
-      "label": "H1 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2025,
+   "ca": 4070,
+   "ebit": 662,
+   "net": 503,
+   "shares": 119,
+   "nd": -108,
+   "div": 0.98
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 4.08,
+  "epsNY": 4.49,
+  "epsY2": 4.89,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 14 analystes, CY..CY+2)",
+  "analystsCount": 14
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "T3 26",
+  "date": "2026-10-30"
+ },
+ "ownership": {
+  "asOf": "2026-07-29",
+  "insiderPct": 58.9,
+  "insiderDesc": "Institut Mérieux (holding contrôlé par la famille Mérieux - Alain et Alexandre Mérieux via Mérieux Alliance à 68%, Fondation Christophe et Rodolphe Mérieux à 32%), actionnaire de contrôle historique de bioMérieux. Renforcement de +1 point en mai 2026 (acquisition sur le marché), portant la participation de ~57,9% à ~58,9%. Flottant ~35%, le solde se répartissant notamment entre Sitam Belgique (~3%), Sofina SA (~1,9%), salariés (~0,8%) et autodétention (~0,4%).",
+  "insiderSource": "Communiqué Institut Mérieux du 06/05/2026 (« L'Institut Mérieux a acquis une participation supplémentaire de 1% dans bioMérieux », portant sa participation à ~60% du capital) - pas de proxy statement US pour ce titre français, information de l'actionnaire de contrôle utilisée comme équivalent primaire ; répartition fine du flottant corroborée par des agrégateurs de marché (BFM Bourse/Tradingsat).",
+  "notableHolders": [],
+  "coverageNote": "Titre coté à titre principal sur Euronext Paris (hors périmètre 13F, qui ne couvre que les valeurs cotées aux Etats-Unis) - notableHolders non renseigné par choix assumé, voir PERIMETRE 13F.",
+  "history": [
+   {
+    "date": "2026-05-06",
+    "pct": 58.9,
+    "note": "Institut Mérieux renforce sa participation de +1 point (acquisition sur le marché), portant sa détention à près de 60% du capital"
+   }
+  ]
+ },
+ "compliance": {
+  "asOf": "2026-07-29",
+  "items": [],
+  "note": "Aucune allégation de fraude comptable, tromperie des investisseurs ou des consommateurs identifiée à ce jour pour bioMérieux ou l'Institut Mérieux. A surveiller par défaut à chaque refresh, mais champ vide en l'absence d'élément identifié."
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-10",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-28",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Odysseas Manasiotis (BNP Paribas) - pourquoi les cibles 2027-2028 impliquent une décélération vs la croissance H2 26 implicite : la direction triangule la guidance sur le rythme solide du T2 (+5% organique), qu'elle voit comme une continuation stable plutôt qu'une décélération.",
+     "Q Odysseas Manasiotis - qu'est-ce qui soutient l'ambition de croissance au-delà de 2028 : futurs lancements produits (SPOTFIRE STI/méningite, SPINCHIP, VITEK plus petit) devraient soutenir la croissance, guidance précise au-delà de 2028 renvoyée à un possible futur Capital Markets Day.",
+     "Q Aicha Noor (Morgan Stanley) - pourquoi la guidance SPOTFIRE a baissé d'environ 450 M€ à ~400 M€ d'ici 2028 : moteur principal = effet de change, la faiblesse de l'euro fait apparaître des cibles en euros plus basses lors de la conversion.",
+     "Q Aicha Noor - les ventes d'équipement au T2 sont-elles une libération de demande différée ou une faiblesse persistante : les ventes d'équipement T2 ont progressé de 5%, suggérant une amélioration après un T1 faible, avec une meilleure visibilité sur les tendances de marché.",
+     "Q Aicha Noor - le changement de politique SPOTFIRE au Japon est-il temporaire ou structurel : structurel, les autorités ont restreint l'usage aux 'patients à haut risque', définition encore floue en attendant des précisions.",
+     "Q Charles Pitman-King (Barclays) - comment la marge brute évoluera-t-elle compte tenu du nouveau mix et des attentes tarifaires : la direction refuse une guidance précise, réaffirme l'engagement à faire croître l'EBIT plus vite que les ventes via plusieurs leviers de coûts.",
+     "Q Charles Pitman-King - confirmer qu'aucun élément ponctuel n'a soutenu le chiffre SPOTFIRE de 400 M€ au T2 : confirmé, performance normalisée sans opération ponctuelle significative.",
+     "Q Charles Pitman-King - calendrier de lancement du panel méningite, 2027 ou 2028 : provisoirement 2028, encore incertain en attendant la fin des essais cliniques.",
+     "Q Charles Pitman-King - impact concurrentiel du lancement LIAISON NES : marché déjà encombré, ce nouveau concurrent ne change pas matériellement l'environnement compte tenu de la part de marché encore marginale de bioMérieux sur ce segment et du positionnement compétitif de SPOTFIRE.",
+     "Q Kavya Deshpande (UBS) - quelle confiance dans la guidance respiratoire annuelle compte tenu de la faiblesse actuelle des données ambulatoires : la direction évite de tirer des conclusions des données épidémiologiques estivales, hypothèses basées sur les niveaux du T4 2025 et l'environnement actuel.",
+     "Q Kavya Deshpande - qu'est-ce qui explique l'accélération implicite hors-respiratoire au S2 au-delà de 10% : une épidémie de Cyclospora aux US (5 000+ cas) détectée via les tests high-plex a créé une hausse 'très significative' des ventes du panel GI.",
+     "Q David Westenberg (Piper Sandler) - quelle part de la croissance SPOTFIRE reflète de nouveaux clients vs de la cannibalisation : aucune cannibalisation, principalement des gains de nouveaux clients et de parts concurrentielles sur le segment point-of-care.",
+     "Q David Westenberg - si la guidance atterrit en bas de fourchette, quels leviers OpEx garantissent un EBIT croissant plus vite que les ventes : même à 3-4% de croissance des ventes, la direction voit un levier opérationnel suffisant pour une rentabilité surperformant le revenu.",
+     "Q Jan Koch (Deutsche Bank) - détail des améliorations en Chine et attentes pour le S2 : recul du S1 amélioré à -6% (vs -15% précédemment), fabrication locale d'instruments et gestion des coûts soutenant la stabilisation.",
+     "Q Jan Koch - impact de l'annonce Danaher/Cepheid high-plex sur le positionnement concurrentiel : l'annonce valide le marché, la direction attend les détails de panel et de performance avant une évaluation concurrentielle plus approfondie.",
+     "Q Jan Koch - l'EBIT du S1 reflète-t-il les remboursements tarifaires : oui, bénéfice de 30 M€ lié au remboursement tarifaire 2025 compensé par les paiements de tarifs du S1 26, impact net neutre sur un an.",
+     "Q Philip Omnu (JPMorgan) - le T3 est-il attendu dans la fourchette 3-5%, ou la croissance est-elle fortement pondérée en fin d'année : la direction ancre sa confiance sur la performance solide du T2 (5%), le T3 est habituellement plus petit en raison de la saisonnalité, le T4 dépendant de la force respiratoire.",
+     "Q Philip Omnu - quelle confiance pour atteindre le bas de fourchette si la grippe sous-performe : si le T4 respiratoire égale le niveau faible de 2025, la croissance annuelle tend vers le bas de fourchette, soulignant la dépendance respiratoire.",
+     "Q Philip Omnu - clarifier le calendrier du remboursement tarifaire, le bénéfice du S1 est-il complet : 13 M€ sur ~15 M€ remboursés au S1, montant résiduel minime (~2 M€) attendu au S2.",
+     "Q Anna Rackcliffe (BofA/RBC) - positionnement concurrentiel BIOFIRE et SPOTFIRE : part de marché BIOFIRE stable, érosion de prix modeste comme attendu, SPOTFIRE gagne des parts sur un large marché avec de la place pour plusieurs concurrents.",
+     "Q Anna Rackcliffe - comment les lancements hors-RP et la concurrence s'équilibreront pour la croissance SPOTFIRE post-2028 : les extensions vaginite, IST et méningite visent à réduire la dépendance à la saisonnalité respiratoire, détail post-2028 renvoyé à un futur événement Capital Markets.",
+     "Q Anna Rackcliffe - pourquoi maintenir l'intensité R&D si le marché est moins réceptif à l'innovation : R&D ciblée à 12% des ventes, portefeuille ajusté pour l'accessibilité et l'acceptation marché plutôt qu'une réduction absolue.",
+     "Q Thibault Lechevallier (All Invest) - bioMérieux poursuivra-t-elle une consolidation plus active pour renforcer la croissance : approche M&A inchangée, poursuite de bolt-ons stratégiques sur les segments coeur (exemples récents : Accellix, SPINCHIP), avec un critère de raisonnabilité stratégique et financière."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "meningite_panel_2028",
+    "quarterOrigine": "H1 26",
+    "engagement": "Lancement du panel méningite SPOTFIRE provisoirement visé en 2028, sous réserve de la fin des essais cliniques - extension destinée à réduire la dépendance à la saisonnalité respiratoire.",
+    "echeance": "2028-Q4",
+    "statut": "en_cours"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-14",
+   "eps": {
+    "2026": 4.07,
+    "2027": 4.45,
+    "2028": 4.92,
+    "2029": 5.37,
+    "2030": 5.82
+   }
+  },
+  "source": "Harmonisation structurelle du schema (03/08/2026) - alignement sur la version courante du protocole (ajout communiqueAnalyse/transcriptAnalyse, guidanceLongTermeHistory, quarterlyEPS via E5 ter) ; aucune nouvelle publication de resultats depuis le refresh S1 2026 du 28-29/07/2026 - these, ancrages et adjXXX inchanges. Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025 S1 2,40€/S2 2,24€, sur la base resultat net ajuste dilue publie, bouclant exactement sur les 4,64€ FY2025) et coherenceQualitative ajoutes. Transcript H1 26 (28/07/2026) relu integralement (23 echanges Q&A). Transcript N-1 (FY2025, 27/02/2026) reste introuvable malgre une recherche reelle sur plusieurs sources (Yahoo Finance sur abonnement, Seeking Alpha 403, presse francaise sans detail Q&A) - repli legitime sur une entree unique (E2 ter point 1 bis), statut coherent par defaut.",
+  "dernierCall": {
+   "quarter": "H1 26",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1964.6,
+     "consensus": 1858
+    },
+    "epsAdj": {
+     "actual": 1.99,
+     "consensus": null,
+     "basis": "non-GAAP",
+     "basisNote": "Résultat net ajusté dilué par action (définition société, hors amortissements/dépréciations d'actifs incorporels acquis et éléments non courants) - pas de consensus sell-side spécifique identifié sur cette base précise ; à titre de repère, le CA T2 seul (981M€) a battu le consensus Visible Alpha de 945,6M€ (+3,75%)"
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie ; direction qualitative : la base de comparaison H2 2025 est plus faible qu'H1 2025 (organique +3% au S2 2025 vs +9% au S1 2025), ce qui facilite mécaniquement la comparaison au S2 2026. La direction indique explicitement que si le T4 2026 (saison respiratoire) est équivalent au T4 2025 (déjà faible), la croissance organique annuelle se situera plutôt en bas de fourchette (~3%) ; une saison plus forte pousserait vers le haut de fourchette.",
+   "guidanceAnnuelle": "Objectifs FY2026 CONFIRMÉS suite au bon T2 : croissance organique du CA entre +3% et +5% ; croissance organique du ROCC (CEBIT) entre 0% et +10%. Effet de change sur le ROCC 2026 révisé favorablement à -40/-50 M€ (vs -50/-60 M€ précédemment), dont -35 M€ déjà constatés au S1. CapEx révisé légèrement à la baisse (~8% du CA vs ~9% initialement). Perspectives 2027-2028 AJUSTÉES À LA BAISSE (changement matériel vs refresh précédent) : croissance organique du CA visée à +3%/+6% par an (vs '+7% TCAM 2024-2028' précédemment) ; croissance organique du ROCC visée supérieure à celle du CA (vs 'au moins +10%' précédemment). Motif invoqué : dégradation de l'environnement géopolitique et macroéconomique depuis 2024 (pression budgétaire santé au profit des dépenses de défense, tarifs douaniers américains, inflation sur les intrants).",
+   "pointsCles": [
+    "Net rebond du T2 (+5% organique, +7,3% hors panels respiratoires) après un T1 très faible (-3,9% organique), ramenant la croissance organique S1 à seulement +0,2% ; la direction invite explicitement les analystes à utiliser le rythme du T2 (proche du point médian de la nouvelle guidance 2027-2028) plutôt que le T1 comme référence de trajectoire.",
+    "SPOTFIRE réalise son meilleur T2 depuis le lancement (ventes de réactifs +40%, 400 nouveaux instruments installés, base installée de 7 200 instruments soit +60% vs juin 2025), sans aucun effet ponctuel selon la direction - mais le Japon restreint désormais l'usage du panel respiratoire SPOTFIRE aux 'patients à haut risque', un frein structurel et non temporaire dont le périmètre précis reste à clarifier avec les autorités japonaises.",
+    "La Chine en microbiologie s'améliore (-6% au S1 2026 vs un déclin proche de -15% en 2025 complet), portée par la localisation industrielle (BACT/ALERT, VITEK COMPACT PRO, bientôt Virtuo) réduisant l'exposition tarifaire et la dépendance aux approvisionnements importés.",
+    "Concurrence : l'annonce par Danaher/Cepheid d'un nouveau système high-plex est jugée par la direction comme une validation de la valeur du marché du multiplex plutôt qu'une menace immédiate - aucun panel ni performance n'a encore été communiqué par le concurrent, la société se réserve d'affiner son analyse une fois ces détails connus. Remboursement tarifaire douanier américain 2025 (~13 M€) intégralement reconnu au S1 2026, compensant les nouveaux tarifs de 15% payés sur la période (effet net neutre vs 2025)."
+   ],
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Communique et etats S1 2026 (PR 28/07/2026, biomerieux.com)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 1 964,6 M EUR (+0,2% organique), resultat operationnel 299 M EUR (+43,3%), net 226,1 M EUR / BPA 1,92 EUR, guidance FY26 confirmee (+3/+5% ; CEBIT 0/+10%)."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-23",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Révision à la baisse post-warning : CA organique +3% à +5% (vs +5-7% avant warning) ; ROCC organique 0% à +10% (vs ≥10% avant warning) ; effet de change ROCC -50 à -60 M€."
+   },
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-28",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Objectifs FY2026 confirmés (CA organique +3%/+5% ; ROCC organique 0%/+10%) ; effet de change ROCC révisé favorablement à -40/-50 M€. Perspectives 2027-2028 ajustées à la baisse : CA organique +3%/+6% par an (vs +7% TCAM précédemment) ; ROCC organique > croissance du CA (vs ≥10% précédemment)."
+   }
+  ],
+  "guidanceLongTerme": "Plan stratégique GO•28 (horizon 2028) : quatre piliers - GO•Simple (efficacité opérationnelle), Grow Stronger (engagement des équipes), croissance responsable (RSE, -35% d'émissions Scope 3 visées d'ici 2034), et quatre moteurs de croissance produits (BIOFIRE non-respiratoire +4%/+8% par an 2027-2028, SPOTFIRE +25%/+40% par an, Microbiologie +3%/+5% par an, Applications Industrielles). Ambition de R&D à 12% du CA d'ici fin 2028. Trajectoire au-delà de 2028 non précisée à ce stade (direction indique qu'un nouveau Capital Markets Day serait le cadre approprié pour la communiquer).",
+  "summary": "Le refresh S1 2026 acte un changement de trajectoire structurel plus qu'un simple ajustement conjoncturel : le rebond du T2 (+5% organique) confirme que le warning du T1 était bien lié à l'épidémiologie respiratoire et non à une perte de part de marché, mais la direction profite de la publication pour abaisser ses ambitions moyen terme 2027-2028 (CA organique +3-6% vs +7% CAGR visé auparavant), reconnaissant un environnement macro/géopolitique durablement dégradé. La génération de cash reste un point fort majeur (FCF +76% au S1, position de trésorerie nette portée à 236 M€).",
+  "text": "== THESIS SUMMARY ==\nWorld leader in syndromic/multiplex in-vitro diagnostics (BIOFIRE). The refresh marks a thesis inflection: what the April warning framed as conjunctural (weak respiratory season, BIOFIRE respiratory -23% organic in Q1) is now compounded by a structural mid-term cut announced at H1 - 2027-2028 organic revenue now guided +3% to +6%/yr (vs '+7% CAGR 2024-2028' before) and organic ROCC merely 'above revenue growth' (vs 'at least +10%'). FY26 guidance itself is confirmed (+3/+5% organic; ROCC 0/+10%) on a solid Q2 (+5% organic, +7.3% ex-respiratory).\n\n== THESIS READ ==\n- Mid-term de-rating is the story: the multiple now rests on GO*28 execution and BIOFIRE menu expansion, not a mechanical +7% top line. Watch: the first 2027 guidance (Feb 2027) under the new frame.\n- FY26 pace is credible after Q2; the quarterly progression matched what management laid out. Watch: H2 respiratory season - the swing factor for the confirmed range.\n- PPA bridge corrected: real acquired-intangible amortization runs ~28M/yr vs ~66M assumed at setup - the retreated base was too conservative and has been refined. Watch: residual REVEAL/restructuring charges polluting the bridge.\n\n== SPECIAL FACTORS ==\nData retreated for two true one-offs only (Hybiome 2023, VITEK REVEAL 2025); recurring PPA amortization and GO*28 restructuring deliberately KEPT in the base (rule E5e) - 'ebit' is published recurring operating income plus true one-offs, NOT management's contributive ROCC. Growing net cash position (-320M in 2026 to -720M in 2030) yields a small positive financial result in the bridge.\n\n== PARAMETERS & WATCH-LIST ==\nFY26: EBIT 677M on the confirmed guidance mid. 2027-2030: ~5%/yr revenue, margin drift +30-40bp/yr - aligned with the LOWERED mid-term frame, not the old +7% CAGR. Bridge: ETR 25%, positive finNet rising with net cash; published 2025 reconciles at zero residual on the retreated base. Shares flat at 118M. Watch: FX drag (-40/-50M on ROCC guided); US respiratory volumes; menu approvals cadence.\n\n== CATALYSTS ==\nQ3 sales (Oct); FY26 results (Feb 2027) with first 2027 guidance under the new frame; BIOFIRE menu approvals; GO*28 milestones.",
+  "impact": "negatif",
+  "ancrages": [
+   {
+    "id": "guidance-ca-2026",
+    "moteur": "Guidance officielle confirmée au S1 2026 (28/07/2026) après le warning du T1 : CA organique +3% à +5% pour FY2026 ; retenu à ~3,5% (proche du bas de fourchette), la direction indiquant explicitement que le scénario central (saison respiratoire T4 2026 = T4 2025, déjà faible) pointe vers le bas de la fourchette.",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "fx-drag-ca-2026",
+    "moteur": "Effet de change estimé à environ -150 M€ sur le CA FY2026 (S1 2026 réel -87,3 M€ + extrapolation prudente d'un effet plus modéré au S2, cohérent avec l'amélioration de la guidance FX sur le ROCC de -50/-60 M€ à -40/-50 M€) ; la société ne donne pas de guidance FX explicite sur le CA (seulement sur le ROCC).",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "croissance-organique-ca-2027-2030",
+    "moteur": "Perspectives 2027-2028 RÉVISÉES À LA BAISSE par la société elle-même au S1 2026 : croissance organique annuelle du CA visée entre +3% et +6% (vs '+7% TCAM 2024-2028' précédemment) ; retenue à +5%/an sur 2027-2028 (proche du point médian, cohérent avec le rythme du T2 2026 que la direction recommande d'utiliser comme référence) ; extrapolation prudente à +5%/an pour 2029-2030 en l'absence de guidance au-delà de 2028 (la société indique elle-même qu'un nouveau Capital Markets Day serait nécessaire pour se prononcer sur cet horizon).",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "guidance-rocc-2026",
+    "moteur": "Guidance officielle confirmée au S1 2026 : ROCC organique 0% à +10% pour FY2026 ; retenu à ~3% (bas de fourchette, cohérent avec l'hypothèse de CA prudente), effet de change ROCC -40/-50 M€ (dont -35 M€ déjà constatés au S1 2026).",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "recovery-rocc-2027-2030",
+    "moteur": "Guidance révisée au S1 2026 : croissance organique du ROCC visée simplement supérieure à celle du CA sur 2027-2028 (vs '≥10%' précédemment) ; retenue à environ +1,5 pt au-dessus de la croissance du CA chaque année (+6,5% en 2027, +6,5% en 2028 puis modération progressive à +6%/2029 et +5,5%/2030), reflétant les initiatives GO•Simple accélérées (réduction d'effectifs, fermeture de site avancée) destinées à générer ce levier opérationnel.",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "pont-ebit-rocc",
+    "moteur": "RÉVISÉ ce refresh (E6-a/E6-b) : écart ROCC/ROC(base retenue) recalibré à ≈28 M€ pour 2026 (amortissement des incorporels acquis annualisé sur la base du S1 2026 réel de -14,2 M€), contre ≈66 M€ estimé au refresh de création - l'ancienne hypothèse apparaît rétrospectivement surestimée. Légère progression annuelle (+2 M€/an) reflétant l'intégration d'Accellix et de futures acquisitions bolt-on.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "is-normatif",
+    "moteur": "TEI normatif maintenu à 23,4% (taux effectif réel S1 2026, cohérent avec le taux FY2025 de 24,5% jugé propre - légère révision à la baisse par rapport à l'hypothèse retenue au refresh de création).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "resultat-financier-tension-e5abis",
+    "moteur": "TENSION MÉTHODOLOGIQUE NON RÉSOLUE : société en position de trésorerie nette croissante sans programme de rachat actif et régulier au sens du protocole, ce qui pointerait mécaniquement vers un produit financier Bund 10 ans (3,20%) + 2 pts. Mais le résultat financier net S1 2026 réel est négatif (-5 M€, vs +4 M€ au S1 2025), la direction l'attribuant à l'effet défavorable du renforcement de l'euro sur les positions de trésorerie en devises plutôt qu'à un manque de rendement structurel. Retenu par prudence proche de zéro en 2026 (-8 M€, extrapolation du rythme S1) puis normalisation progressive et modeste (0 M€ en 2027, +5/+8/+10 M€ en 2028-2030) plutôt que le taux théorique Bund+2pts, qui donnerait un résultat sensiblement plus élevé compte tenu de la trésorerie nette croissante - à trancher au prochain refresh selon la persistance ou non de l'effet change.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "reveal-oneoff-2025",
+    "moteur": "Dépréciation partielle VITEK REVEAL (146 M€ pretax publiée, S1 2025) retraitée hors data 2025 (E5 d-bis) ; traitement fiscal déductible confirmé par la réconciliation résultat net/résultat net ajusté publiée par la société (effet d'impôt théorique de 34,9 M€ sur la dépréciation, cohérent avec un TEI proche de 24%). Confirmation a posteriori du caractère ponctuel de cet événement : l'amortissement des incorporels acquis est revenu à un niveau normalisé de -14,2 M€ au S1 2026 (vs -163,2 M€ au S1 2025), sans nouvelle dépréciation.",
+    "applique": [
+     "data.2025"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "hybiome-oneoff-2023",
+    "moteur": "Dépréciation goodwill/technologie Hybiome retraitée hors data 2023 (E5 d-bis) ; montant pretax ≈52 M€ reconstruit via l'écart de TEI publié (26,2%) vs retraité (23,4%, déclaré explicitement par la société elle-même) ; traitement fiscal non-déductible confirmé explicitement par la société.",
+    "applique": [
+     "data.2023"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "shares-recalibre",
+    "moteur": "Nombre d'actions dilué recalibré à 118M (nombre réel au 30/06/2026 : 118 367 846, en légère baisse vs 118 905 491 un an plus tôt) ; rachats nets modestes au S1 2026 (-19,3 M€) jugés insuffisants pour qualifier un programme de rachat actif et régulier au sens E5-a bis (voir ancrage résultat financier).",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumCA": {
+   "2026": 4065,
+   "2027": 4268,
+   "2028": 4481,
+   "2029": 4705,
+   "2030": 4940
+  },
+  "omniumEBIT": {
+   "2026": 677,
+   "2027": 721,
+   "2028": 768,
+   "2029": 814,
+   "2030": 863
+  },
+  "omniumNet": {
+   "2026": 512,
+   "2027": 552,
+   "2028": 592,
+   "2029": 630,
+   "2030": 669
+  },
+  "omniumEPS": {
+   "2026": 4.34,
+   "2027": 4.68,
+   "2028": 5.02,
+   "2029": 5.34,
+   "2030": 5.67
+  },
+  "omniumND": {
+   "2026": -320,
+   "2027": -420,
+   "2028": -520,
+   "2029": -620,
+   "2030": -720
+  },
+  "omniumShares": {
+   "2026": 118,
+   "2027": 118,
+   "2028": 118,
+   "2029": 118,
+   "2030": 118
+  },
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "semestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "S1",
+     "eps": 2.24,
+     "actual": true,
+     "retraitements": [
+      {
+       "raison": "Depreciation partielle de la technologie VITEK REVEAL (one-off E5 d-bis) reintegree dans la base",
+       "impact": 0.89
+      }
+     ]
+    },
+    {
+     "label": "S2",
+     "eps": 1.99,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "S1",
+     "eps": 1.99,
+     "actual": true
+    },
+    {
+     "label": "S2",
+     "eps": 2.35,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "S1",
+     "eps": 2.15,
+     "actual": false
+    },
+    {
+     "label": "S2",
+     "eps": 2.53,
+     "actual": false
+    }
+   ],
+   "note": "[Correctif C25 20/08/2026 : PY repose sur le PUBLIE reel (RN part du groupe 2025 : 398 M EUR - S1 161 M, S2 237 M) + pont VITEK REVEAL (+105 M net, comptabilise au S1) vers la base data 503 M / 4,23 EUR. Les anciennes valeurs (2,40/2,24) ne correspondaient a aucune des deux bases.]"
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 9,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 503,
+    "netPub": 503,
+    "residual": 0,
+    "residualNote": "Reconciles cleanly on the retreated base (Hybiome 2023 / VITEK REVEAL 2025 one-offs removed): slight positive financial result (net cash), ETR ~25%."
+   },
+   "2026": {
+    "finNet": 6,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 512
+   },
+   "2027": {
+    "finNet": 15,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 552
+   },
+   "2028": {
+    "finNet": 21,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 592
+   },
+   "2029": {
+    "finNet": 26,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 630
+   },
+   "2030": {
+    "finNet": 29,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 669
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Organic revenue growth (guided range, %)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-04-23",
+     "type": "guidance_revised",
+     "detail": "Post-warning cut: organic revenue to +3/+5% (from +5/+7%), organic ROCC to 0/+10% (from >=+10%)."
+    },
+    {
+     "date": "2026-07-28",
+     "type": "guidance_revised",
+     "detail": "FY26 confirmed (+3/+5%; ROCC 0/+10%), FX drag improved to -40/-50M. Mid-term 2027-28 CUT: organic revenue +3/+6%/yr (vs +7% CAGR), ROCC 'above revenue growth' (vs >=+10%)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: Q2 +5% organic (+7.3% ex-respiratory) after Q1 -3% - FY26 pace credible within the lowered range.",
+   "weightedBeatPct": null,
+   "annualBeatPct": -0.4,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": -0.7,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": ">=+7% organic (initial floor)",
+     "realizedDisplay": "+6.2%",
+     "note": "Initial FY25 guidance (Mar 2025): organic sales at least +7%, CEBIT at least +10%; realized +6.2% organic (China drag) - level -0.7% vs the floor. CEBIT side EXCEEDED (+16% cc), documented but the anchor metric is sales."
+    },
+    {
+     "fy": 2024,
+     "beatPct": 3.1,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "+7% organic (initial mid 6-8%)",
+     "realizedDisplay": "+10.3%",
+     "note": "Initial FY24 guidance (Mar 2024): organic +6/+8% (mid 7%), CEBIT >=+10%; realized +10.3% organic - level +3.1%. Raised in September 2024."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 6.0,
+    "source": "initial_guidance",
+    "date": "2026-04-23",
+    "note": "Initial FY26 guidance was organic revenue +5% to +7% (mid +6%), evidenced by the 23/04 warning communique which cut it to +3/+5% ('vs +5-7% avant warning'). The initial statement itself (Feb/Mar 2026) was not captured; the anchor is dated at its earliest archived evidence."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct -0.4% BLENDED (in-progress -1.9 x1/2; FY25 -0.7 and FY24 +3.1 equal-shared). NOT applied: the 2026 build already sits on the lowered guidance, and beats are on ORGANIC REVENUE while the anchor is EPS-adjacent (declared mismatch).",
+   "consensusSource": "Simply Wall St (analyst consensus, adjusted EPS)",
+   "consensusDate": "2026-06-01",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 6.0,
+    "currentValue": 4.0,
+    "deltaPct": -1.9,
+    "asOf": "2026-07-28",
+    "note": "Initial FY26 organic +5/+7% (mid +6, evidenced by the 23/04 warning); guided +3/+5% since (mid +4, confirmed twice) - projected level -1.9%. Revenue metric."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-28",
+   "label": "H1 2026",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 4.44,
+   "epsNY": 4.94,
+   "date": "2026-06-01",
+   "source": "Simply Wall St (consensus analystes agrégé, snapshot juin 2026 - antérieur à la publication S1 2026 du 28/07/2026, à recouper au prochain refresh une fois un consensus post-résultats disponible)"
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 5.06,
+   "2022": 3.82,
+   "2023": 3.01,
+   "2024": 3.64,
+   "2025": 3.34
+  }
+ }
 }

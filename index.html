@@ -483,6 +483,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .epsg-offc.nil{color:#d4d9e6;}
 .epsg-offc.has{cursor:pointer;}
 .epsg-offc .epsg-vw{position:relative;}
+/* Le SIGNE est SUSPENDU hors de la colonne : la grandeur se centre
+   exactement comme le chiffre Published au-dessus - les unites
+   s'alignent pile (retour 20/08). */
+.epsg-sg{position:absolute;right:100%;margin-right:1.5px;}
+/* Typo STRICTEMENT commune Published/One-offs sur tous les displays :
+   meme corps, meme graisse, pas de gras synthetise par le navigateur. */
+.epsg-pubcell,.epsg-offc,.epsg-offc .epsg-vw{font-synthesis:none;letter-spacing:0;line-height:1.2;}
 .epsg-offc .epsg-ct{position:absolute;left:calc(100% + 3px);top:50%;transform:translateY(-46%);width:8px;height:8px;color:var(--teal-text);opacity:.7;transition:transform .18s ease;display:flex;align-items:center;}
 .epsg-offc .epsg-ct svg{width:8px;height:8px;display:block;}
 .epsg-offc.has:hover .epsg-ct{transform:translateY(-30%);opacity:1;}
@@ -1871,10 +1878,10 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
     // Le SIGNE vit sur les VALEURS, pas sur le libelle (retour 20/08 v4) :
     // impact negatif = gain retire du publie (-3.93), impact positif =
-    // charge reintegree (+0.50). Le libelle nu s'aligne a gauche avec
-    // "Published" et libere la colonne - cle sur mobile.
+    // charge reintegree (+0.50). Il est rendu SUSPENDU (epsg-sg) pour
+    // que la grandeur reste alignee au chiffre Published au-dessus.
     const offLbl='One-offs';
-    const cellVal=(v)=>fmtSigned(v);
+    const cellVal=(v)=>`<span class="epsg-sg">${v>=0?'+':'−'}</span>${Math.abs(v).toFixed(2)}`;
     // Exercice en cours : les totaux Published/One-offs ne couvrent que
     // les trimestres REALISES - marques "ytd" pour ne pas laisser croire
     // que l'equation boucle sur l'annee pleine avant sa cloture.
@@ -1904,7 +1911,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       <div class="epsg-yr" style="${gridStyle}">
         <span class="epsg-lbl adj">${offLbl}</span>
         ${adjCells}
-        <span class="epsg-t adj">${hasEst?'':fmtSigned(adjTotal)}</span>
+        <span class="epsg-t adj">${hasEst?'':`<span class="epsg-vw" style="position:relative;">${cellVal(adjTotal)}</span>`}</span>
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
       <div class="epsg-dbl"></div>
