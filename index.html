@@ -3118,20 +3118,66 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 
   const n=shown.length;
   const lastState=shown[n-1];
+  // Norme d'abreviation des dates posees sur les charts : "29 Jul 26" -
+  // la MEME pour les millesimes Omnium et la date consensus.
+  const shortDate=(iso)=>{
+    const d=new Date(iso+'T00:00:00Z');
+    if(isNaN(d)) return iso;
+    const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
+    return `${d.getUTCDate()} ${m} ${String(d.getUTCFullYear()).slice(2)}`;
+  };
+  // Couleur consensus : LE jaune Omnium existant (--gold-text).
+  const CONS_COL='var(--gold-text)';
+  // Structures consensus calculees AVANT le trace Omnium : la regle
+  // anti-barrage des etiquettes doit voir TOUTES les courbes dessinees.
+  const consCurMap={...consExtra, ...consMapAll};
+  const drawnConsHistMaps=consHistMaps.filter(m=>{
+    const ys=years.filter(y=>typeof m[y]==='number');
+    return ys.length>=2 && fracVisible(m, consCurMap)>=0.5;
+  });
+  const drawnOmnMaps=shown.filter((st,i)=> i===n-1 || fracVisible(st.epsByYear, lastState.epsByYear)>=0.5).map(st=>st.epsByYear);
+  const mapYAt=(m,x)=>{
+    const ys=years.filter(y=>typeof m[y]==='number');
+    if(ys.length<2) return null;
+    const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
+    if(fy<ys[0]||fy>ys[ys.length-1]) return null;
+    let k=1; while(k<ys.length&&ys[k]<fy) k++;
+    const a=ys[k-1], b=ys[k];
+    return yOf(m[a]+(m[b]-m[a])*((fy-a)/(b-a)));
+  };
+  // Ordonnees de toutes les courbes AUTRES que le consensus courant.
+  const othersYAt=(x)=>{
+    const out=[];
+    drawnOmnMaps.forEach(m=>{ const y=mapYAt(m,x); if(y!=null) out.push(y); });
+    drawnConsHistMaps.forEach(m=>{ const y=mapYAt(m,x); if(y!=null) out.push(y); });
+    return out;
+  };
+  // Toutes les courbes dessinees, consensus courant inclus.
+  const allCurveYAt=(x)=>{
+    const out=othersYAt(x);
+    if(consYears.length){ const y=mapYAt(consCurMap,x); if(y!=null) out.push(y); }
+    return out;
+  };
   const curvesSvg=shown.map((s,i)=>{
     const isLast=i===n-1;
-    if(!isLast && fracVisible(s.epsByYear, lastState.epsByYear)<0.5) return '';
+    if(!isLast && !drawnOmnMaps.includes(s.epsByYear)) return '';
     const opacity=n>1 ? (0.2 + 0.8*(i/(n-1))) : 1;
     const ptYears=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
     const pts=ptYears.map(y=>`${xOf(y).toFixed(1)},${yOf(s.epsByYear[String(y)]).toFixed(1)}`).join(' ');
     const dots=ptYears.map((y,j)=>{
       const v=s.epsByYear[String(y)];
       const px=xOf(y), py=yOf(v);
+      const r=isLast?3.5:2.2;
+      // Rabat du marqueur DANS le cadre : a x=0 le disque etait tronque
+      // par le viewBox (defaut constate sur le premier millesime).
+      const dcx=Math.max(px, padL+r+0.5);
       let label='';
       if(isLast){
-        // L'etiquette est decalee PERPENDICULAIREMENT a la pente locale,
-        // toujours du cote superieur : elle ne peut donc jamais se poser
-        // sur le trace, quelle que soit son inclinaison.
+        // Etiquette decalee perpendiculairement a la pente locale, cote
+        // superieur, puis REGLE ANTI-BARRAGE : aucune valeur ne doit etre
+        // barree par une courbe, quelle qu'elle soit. Si une courbe
+        // traverse la moitie BASSE de l'etiquette, la valeur REMONTE ;
+        // la moitie haute, elle descend - par pas, jusqu'au degagement.
         const pv=ptYears[j-1], nv=ptYears[j+1];
         const ax=pv!=null?xOf(pv):px, ay=pv!=null?yOf(s.epsByYear[String(pv)]):py;
         const bx=nv!=null?xOf(nv):px, by=nv!=null?yOf(s.epsByYear[String(nv)]):py;
@@ -3139,49 +3185,39 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
         const len=Math.hypot(dx,dy)||1; dx/=len; dy/=len;
         let nx=-dy, ny=dx;
         if(ny>0){ nx=-nx; ny=-ny; }
-        // Bornage horizontal : sur le premier/dernier point, le decalage
-        // perpendiculaire peut sortir du viewBox - on rabat l'ancrage.
-        const ox=px+nx*15, oy=py+ny*15;
+        const ox=px+nx*15;
+        let oy=py+ny*15;
         const txt=v.toFixed(1), halfW=txt.length*3.2;
         const anchor=(ox-halfW<padL)?'start':((ox+halfW>padL+plotW)?'end':'middle');
         const cx=anchor==='start'?Math.max(ox,padL):(anchor==='end'?Math.min(ox,padL+plotW):ox);
-        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="11" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}">${txt}</text>`;
+        const x0=anchor==='start'?cx:(anchor==='end'?cx-halfW*2:cx-halfW);
+        const clash=(yy)=>{
+          for(let k=0;k<=4;k++){
+            const xx=Math.max(padL, Math.min(padL+plotW, x0+halfW*2*k/4));
+            for(const cy of allCurveYAt(xx)){ if(Math.abs(cy-yy)<7) return cy; }
+          }
+          return null;
+        };
+        let hit, guard=0;
+        while((hit=clash(oy))!=null && guard++<10){ oy+=(hit>oy?-4:4); }
+        oy=Math.max(padT+6, Math.min(padT+plotH-2, oy));
+        label=`<text x="${cx.toFixed(1)}" y="${(oy+3).toFixed(1)}" font-size="11" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="${anchor}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${txt}</text>`;
       }
-      return `<circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${isLast?3.5:2.2}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
+      return `<circle cx="${dcx.toFixed(1)}" cy="${py.toFixed(1)}" r="${r}" fill="var(--navy)" opacity="${opacity}"/>${label}`;
     }).join('');
-    // Convention 20/08 (v2) : seule la courbe COURANTE est un trait plein
-    // epais ; les revisions ARCHIVEES passent en pointilles (leurs dates
-    // restent en donnee mais ne s'affichent plus - voir vintageLabels).
+    // Seule la courbe COURANTE est un trait plein ; les revisions
+    // archivees VISIBLEMENT distinctes passent en pointilles.
     return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2:1.4}"${isLast?'':' stroke-dasharray="3 4"'} opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
 
-  // Trace consensus : la courbe consensus COURANTE est un trait plein fin
-  // or (prolongee lineairement jusqu'a l'horizon, sans mention) ; les
-  // instantanes ARCHIVES (epsConsensusHistory) sont en pointilles
-  // attenues, sans etiquette. La DATE du consensus courant se pose pres
-  // de sa courbe (voir plus bas) ; les noms des traits vivent dans la
-  // legende a cote du titre d'axe.
+  // Trace consensus : courbe courante en trait plein fin or (prolongee
+  // lineairement jusqu'a l'horizon, sans mention) ; instantanes archives
+  // visiblement distincts en pointilles attenues, sans etiquette. La
+  // date du consensus courant se pose pres de sa courbe ; les noms des
+  // traits vivent dans la legende a cote du titre d'axe.
   let consSvg='';
-  // Couleur : LE jaune Omnium existant (--gold-text, celui du scorecard) -
-  // pas une troisieme nuance d'or (retour 20/08).
-  const CONS_COL='var(--gold-text)';
-  // Norme d'abreviation des dates posees sur les charts : "6 Jul '26" -
-  // la MEME pour les millesimes Omnium et la date consensus.
-  const shortDate=(iso)=>{
-    const d=new Date(iso+'T00:00:00Z');
-    if(isNaN(d)) return iso;
-    const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
-    return `${d.getUTCDate()} ${m} '${String(d.getUTCFullYear()).slice(2)}`;
-  };
-  const consCurMap={...consExtra, ...consMapAll};
-  const drawnConsHist=[];
-  consHistMaps.forEach(m=>{
+  drawnConsHistMaps.forEach(m=>{
     const ys=years.filter(y=>typeof m[y]==='number');
-    if(ys.length<2) return;
-    // Meme regle que les revisions Omnium archivees : un instantane qui
-    // colle au consensus courant ne laisserait qu'un fragment pointille.
-    if(fracVisible(m, consCurMap)<0.5) return;
-    drawnConsHist.push(m);
     const pts=ys.map(y=>`${xOf(y).toFixed(1)},${yOf(m[y]).toFixed(1)}`).join(' ');
     consSvg+=`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1" stroke-dasharray="2 4" opacity=".3" stroke-linejoin="round" stroke-linecap="round"/>`;
   });
@@ -3189,53 +3225,27 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const chain=[...consYears, ...consExtraYears];
     const vOf=(y)=>consExtraYears.includes(y)?consExtra[y]:consMapAll[y];
     const pts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
-    // Trait plein fin, SANS marqueurs (retour 20/08 : les points ronds
-    // n'apprenaient rien et accrochaient l'oeil).
     consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'');
     // DATE du consensus courant (norme shortDate), posee PRES de sa
-    // courbe. Placement pense pour le REMPLISSAGE futur : candidats sur
-    // la moitie GAUCHE du trace (la droite appartient aux etiquettes de
-    // millesime), au-dessus/en dessous de la courbe avec offset pris sur
-    // ses extremes sous la largeur du texte (une pente ne peut pas barrer
-    // le texte), et clairance mesuree contre TOUTES les courbes tracees
-    // (Omnium courante + archives visibles + archives consensus). Le
-    // candidat le plus degage gagne ; a egalite, le plus a gauche.
+    // courbe. Candidats sur la moitie gauche du trace (la droite
+    // appartient aux etiquettes de millesime), offsets pris sur les
+    // extremes de la courbe sous la largeur du texte, clairance mesuree
+    // contre toutes les AUTRES courbes dessinees.
     if(dCons&&dCons.date&&chain.length>1){
       const labTxt=shortDate(dCons.date);
       const labW=labTxt.length*4.8+2;
-      const consYAt=(x)=>{
-        const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
-        if(fy<=chain[0]) return yOf(vOf(chain[0]));
-        if(fy>=chain[chain.length-1]) return yOf(vOf(chain[chain.length-1]));
-        let k=1; while(k<chain.length&&chain[k]<fy) k++;
-        const a=chain[k-1], b=chain[k];
-        return yOf(vOf(a)+(vOf(b)-vOf(a))*((fy-a)/(b-a)));
-      };
-      const mapYAt=(m,x)=>{
-        const ys=years.filter(y=>typeof m[y]==='number');
-        if(ys.length<2) return null;
-        const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
-        if(fy<ys[0]||fy>ys[ys.length-1]) return null;
-        let k=1; while(k<ys.length&&ys[k]<fy) k++;
-        const a=ys[k-1], b=ys[k];
-        return yOf(m[a]+(m[b]-m[a])*((fy-a)/(b-a)));
-      };
-      const others=shown
-        .filter((s,i)=> i===n-1 || fracVisible(s.epsByYear, lastState.epsByYear)>=0.5)
-        .map(s=>s.epsByYear)
-        .concat(drawnConsHist);
       let best=null;
       [0.05,0.22,0.42].forEach(fr=>{
         const lx=padL+plotW*fr;
         if(lx+labW>padL+plotW*0.62) return;
         let topMin=Infinity, botMax=-Infinity;
-        for(let k=0;k<=6;k++){ const cy=consYAt(lx+labW*k/6); if(cy<topMin)topMin=cy; if(cy>botMax)botMax=cy; }
+        for(let k=0;k<=6;k++){ const cy=mapYAt(consCurMap, lx+labW*k/6); if(cy==null) continue; if(cy<topMin)topMin=cy; if(cy>botMax)botMax=cy; }
+        if(!isFinite(topMin)) return;
         [topMin-7, botMax+13].forEach(yy=>{
           if(yy<padT+9||yy>padT+plotH-2) return;
           let m=Infinity;
           for(let k=0;k<=6;k++){
-            const x=lx+labW*k/6;
-            others.forEach(mp=>{ const oy=mapYAt(mp,x); if(oy!=null) m=Math.min(m,Math.abs(oy-yy)); });
+            othersYAt(lx+labW*k/6).forEach(oy=>{ m=Math.min(m,Math.abs(oy-yy)); });
           }
           if(!best||m>best.m+0.5) best={lx,yy,m};
         });
@@ -3244,9 +3254,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
         consSvg+=`<text x="${best.lx.toFixed(1)}" y="${best.yy.toFixed(1)}" font-size="9" font-weight="500" font-family="Poppins,sans-serif" fill="${CONS_COL}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${labTxt}</text>`;
     }
   }
-  // LEGENDE : a GAUCHE, dans le sillage du titre d'axe ("EPS, in $") -
-  // les deux forment la ligne de tete. Noms seuls, sans date (la date
-  // consensus vit pres de sa courbe).
+  // LEGENDE : a gauche, dans le sillage du titre d'axe. Noms seuls.
   let legSvg='';
   {
     const items=[{col:'var(--navy)', sw:2, txt:'Omnium'}];
@@ -3277,8 +3285,10 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const ys=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
     return ys.length?ys[ys.length-1]:null;
   };
-  // (shortDate est defini plus haut, aupres du trace consensus - meme
-  // norme d'abreviation pour toutes les dates posees sur le chart.)
+  // Regle harmonisee (20/08) : TOUTE courbe se nomme par une DATE, la
+  // norme shortDate ("29 Jul 26") - la date de l'EVENEMENT qui a fixe
+  // la projection (earnings, guidance...) quand elle existe, sinon la
+  // date de capture. L'evenement lui-meme (T2 26...) reste en donnee.
   // Combien de dates nommer par horizon. Tant qu'elles tiennent, on les
   // affiche TOUTES - masquer une date alors que la place existe n'apporte
   // rien. Le plafond n'est donc pas arbitraire : c'est le nombre
@@ -3322,7 +3332,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       return yOf(va+(vb-va)*f);
     };
     keep.forEach((i,j)=>{
-      const labW=(shown[i].event?shown[i].event.label:shortDate(shown[i].date)).length*5.4+8;
+      const labW=shortDate(shown[i].event&&shown[i].event.date?shown[i].event.date:shown[i].date).length*5.4+8;
       const clash=(yy)=>shown.some((st,si)=>{
         if(si===i) return false;
         for(let k=0;k<=4;k++){
@@ -3350,7 +3360,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       // paint-order:stroke = halo blanc : une etiquette d'horizon
       // intermediaire se pose forcement sur les courbes qui vont plus loin
       // a droite, le halo la detache sans la deplacer de son ancrage.
-      return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shown[i].event?shown[i].event.label:shortDate(shown[i].date)}</text>`;
+      return `${lead}<text x="${(x0+7).toFixed(1)}" y="${(pos[j]+3.4).toFixed(1)}" font-size="9.5" font-weight="${isLast?700:600}" font-family="Poppins,sans-serif" fill="${isLast?'var(--navy)':'var(--muted)'}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${shortDate(shown[i].event&&shown[i].event.date?shown[i].event.date:shown[i].date)}</text>`;
     }).join('');
     // Pas de compteur "+N" des revisions archivees (retour 20/08 v3) :
     // il n'apprenait rien - les pointilles disent deja qu'il y a un passe.

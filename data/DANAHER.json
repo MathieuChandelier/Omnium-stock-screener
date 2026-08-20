@@ -1,516 +1,527 @@
 {
-  "name": "Danaher Corporation",
-  "cours": 193.62,
-  "yahooSymbol": "DHR",
-  "dividende": 1.28,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 24802,
-      "ebit": 6377,
-      "net": 5283,
-      "shares": 737,
-      "nd": 19590,
-      "div": 0.84
-    },
-    {
-      "year": 2022,
-      "ca": 26643,
-      "ebit": 7536,
-      "net": 6222,
-      "shares": 737,
-      "nd": 13682,
-      "div": 1.0
-    },
-    {
-      "year": 2023,
-      "ca": 23890,
-      "ebit": 5202,
-      "net": 4200,
-      "shares": 743,
-      "nd": 12538,
-      "div": 1.05
-    },
-    {
-      "year": 2024,
-      "ca": 23875,
-      "ebit": 4863,
-      "net": 3899,
-      "shares": 737,
-      "nd": 13927,
-      "div": 1.08
-    },
-    {
-      "year": 2025,
-      "ca": 24568,
-      "ebit": 5130,
-      "net": 4174,
-      "shares": 716,
-      "nd": 13803,
-      "div": 1.28
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 8.44,
-    "epsNY": 9.12,
-    "date": "2026-07-20",
-    "source": "Barchart/Zacks, base non-GAAP management (pas encore actualise post-T2 26)."
+ "name": "Danaher Corporation",
+ "cours": 193.62,
+ "yahooSymbol": "DHR",
+ "dividende": 1.28,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 24802,
+   "ebit": 6377,
+   "net": 5283,
+   "shares": 737,
+   "nd": 19590,
+   "div": 0.84
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2022,
+   "ca": 26643,
+   "ebit": 7536,
+   "net": 6222,
+   "shares": 737,
+   "nd": 13682,
+   "div": 1.0
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-10",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-21",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Michael Ryskin (BofA) - comment atteindre l'acceleration H2 vu la faiblesse du core T1 (0,5%) : trois vents porteurs attendus (attenuation des vents contraires Chine Diagnostics, comps respiratoires plus faciles, amelioration Life Sciences consommables), tous confirmes au T1 selon le management.",
-          "Q Vijay Kumar (Evercore) - rationnel strategique de l'acquisition Masimo et retours attendus : joueur mission-critical en soins aigus, synergies d'appel avec Radiometer, 125 M$ de synergies de couts visees d'ici l'annee 5, cibles de ROIC a haut simple chiffre.",
-          "Q Vijay Kumar - pourquoi la baisse de marge T2 est plus marquee que le pattern historique : decline saisonniere respiratoire, plus des investissements de croissance avances depuis des trimestres ulterieurs vers le T2.",
-          "Q Scott Davis (Melius) - pressions des couts petrole/petrochimie, exposition Moyen-Orient : aucune pression de cout significative a ce stade, pas d'exposition directe Moyen-Orient dans la chaine d'approvisionnement.",
-          "Q Jack Meehan (Nephron) - influence de l'IA sur les depenses clients : accelere le developpement pharmaceutique, ameliore les rendements de pipeline (~10% base), stimule la demande d'automatisation/instruments/reactifs.",
-          "Q Jack Meehan - benefices de productivite IA en interne chez Danaher : 'AI-enabled DBS' et 'DBS-enabled AI' de plus en plus synonymes, gains d'efficacite et cycles de developpement produit accelere.",
-          "Q Tycho Peterson (Jefferies) - tendances de commandes bioprocessing par segment client, taille opportunite Chine : pharma demande robuste en production commerciale, biotech se stabilise, CDMO en amelioration, Chine biologics croissance a deux chiffres.",
-          "Q Tycho Peterson - positionnement Life Sciences pour le reste de l'annee : consommables attendues positives sur l'annee pleine 2026 (vs leger declin attendu auparavant), instruments Chine en reinvestissement, academique reste attone mais stable.",
-          "Q Casey Woodring (JPMorgan) - contexte sequentiel des commandes bioprocessing et book-to-bill : T1 = premiere croissance de commandes positive en pres de deux ans, funnel robuste, tailles de commandes plus importantes (brownfield/greenfield).",
-          "Q Casey Woodring - qu'est-ce qui compense la guidance respiratoire plus faible tout en maintenant la guidance diagnostics : gains de parts chez Cepheid, forte performance hors respiratoire hors Chine, traction DxI 9000 chez Beckman Coulter, Masimo apportera un uplift additionnel.",
-          "Q Dan Brennan (TD Cowen) - priorisation M&A par segment, autre operation sizable possible cette annee : filtre M&A discipline a trois vecteurs, biais pour le deploiement de capital vers le M&A, capacite bilancielle et de leadership pour plusieurs transactions concurrentes.",
-          "Q Doug Schenkel (Wolfe) - qu'est-ce qui permettrait d'atteindre le haut de la guidance annuelle : amelioration Life Sciences additionnelle, acceleration bioprocessing consommables/equipement, saison respiratoire au-dessus de la normale (retour au rythme endemique 1,8 Md$).",
-          "Q Doug Schenkel - Danaher peut-il poursuivre du M&A en Diagnostics en parallele de l'integration Masimo : oui, capacite bilancielle et de leadership pour executer sur les trois segments simultanement."
-        ]
-      },
-      {
-        "quarter": "T2 26",
-        "date": "2026-07-21",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Michael Ryskin (BofA) - pourquoi le manque a gagner bioprocessing T2 (~75 M$) ne reviendrait pas au T3/T4 : ~50-60 M$ d'expeditions de resine chromatographie decalees a 2027 pour raisons de planning client/site readiness, ~100 M$+ sur l'annee pleine, mais croissance de commandes consommables/equipement toujours robuste a mi-dizaine de %.",
-          "Q Tycho Peterson (Jefferies) - outlook equipement bioprocessing apres 4 trimestres consecutifs de croissance de commandes : 'debut de partie' d'un cycle pluriannuel d'expansion de capacite (reshoring), investissements greenfield necessitant 2-3 ans pour se materialiser.",
-          "Q Tycho Peterson - moteurs de conversion du financement biotech en depenses consommables : financement biotech ameliore se traduisant en commandes/CA, progres IDT en test MRD, momentum Aldevron, meilleur trimestre d'Abcam depuis l'acquisition.",
-          "Q Dan Leonard (RBC) - point commun entre les clients retardant les expeditions chromatographie : delais confines aux produits resine pour la fabrication a grands lots chez quelques grands fabricants commerciaux, sans lien avec des molecules ou geographies specifiques.",
-          "Q Dan Leonard - moteur de l'acceleration diagnostics au T4 (high-single-digit) vu la guidance T3 plate : hors vent contraire respiratoire, diagnostics a montre une croissance core a mi-simple chiffre au T2, innovations produit (DxI 9000, extensions menu Cepheid) soutenant l'acceleration.",
-          "Q Scott Davis (Melius) - premieres metriques Masimo (cloture debut juin) : croissance de CA a high-single-digit sur le trimestre, autorisation FDA 510(k) deja obtenue pour une solution IA de detection de depression respiratoire induite par les opioides.",
-          "Q Scott Davis - calendrier de reprise academique/gouvernemental : depend de politiques gouvernementales plus constructives, academique <5% du CA, stabilite plutot que reprise est l'attente actuelle.",
-          "Q Jack Meehan (Operon) - ventilation croissance semi-conducteurs vs autres clients chez Pall : microelectronique (semi-conducteurs/memoire) a depasse le taux du segment (>10%), soutenue par un nouveau site Singapour et des investissements de capacite.",
-          "Q Jack Meehan - pourquoi Life Sciences ralentit de 5,5% au T2 a 3-4% implicite au T3 : aucun changement de tendance sous-jacente, moderation liee au timing chez Pall et variations de calendrier de projets.",
-          "Q Vijay Kumar (Evercore) - premieres perspectives FY2027 vu le T4 implicite ~6% et le pushout bioprocessing de 100 M$ : la guidance core mid-single-digit pour 2026 (pas 2027) reste ancree en bas de la fourchette 3-4%, meilleure Life Sciences compensant des hypotheses bioprocessing plus conservatrices.",
-          "Q Vijay Kumar - composantes du relevement de guidance EPS de 0,10$ : ~0,07-0,08$ lies a la cloture anticipee de Masimo (modelisee a l'origine pour 2027), ~0,07-0,08$ de beat operationnel T2, compenses partiellement par mix/FX.",
-          "Q Dan Brennan (TD Cowen) - la guidance bioprocessing mid-single-digit inclut-elle un coussin vu le pushout de 100 M$+ : impact de quelques centaines de points de base sur la croissance bioprocessing, progression mid-single-digit T3 et mid-to-high-single-digit T4 attendue.",
-          "Q Dan Brennan - details sur le point commun des clients bioprocessing, risque de recours : delais limites a quelques grands clients, sans lien molecule/geographie, confiance que les expeditions 2027 auront bien lieu.",
-          "Q Casey Woodring (JPMorgan) - le timing des commandes consommables inclut-il le CA reporte : expeditions retardees deja en carnet (pas book-and-turn), la plupart des consommables expedies depuis le backlog.",
-          "Q Casey Woodring - outlook mis a jour Radiometer/Leica Biosystems pour le S2 : les deux continuent a high-single-digit, acquisition StatLab renforce l'offre workflow complete de Leica.",
-          "Q Patrick Donnelly (Citi) - pourquoi plusieurs clients ont-ils retarde simultanement, delais etendus au-dela des resines : delais impliquent 'quelques' tres grands clients (pas plusieurs), limites aux resines specialisees, forte croissance consommables upstream ailleurs dans le portefeuille.",
-          "Q Patrick Donnelly - quels signaux indiquent un retournement de confiance marche : croissance segment 5,5% portee par la reprise pharma/biopharma, conversion financement biotech amelioree, stabilisation academique, marches cliniques/appliques solides, meilleur trimestre Abcam, demande emergente d'automatisation IA."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "masimo_synergies_125m_an5",
-        "quarterOrigine": "T1 26",
-        "engagement": "125 M$ de synergies de couts Masimo visees d'ici l'annee 5 post-cloture - chiffre explicitement confirme par le management sur le call T1 26 (pas seulement une estimation externe, contrairement a ce qui etait note precedemment dans ce fichier).",
-        "echeance": "2031-Q2",
-        "statut": "en_cours"
-      }
-    ]
+  {
+   "year": 2023,
+   "ca": 23890,
+   "ebit": 5202,
+   "net": 4200,
+   "shares": 743,
+   "nd": 12538,
+   "div": 1.05
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "priorEPS": {
-      "date": "2026-07-05",
-      "eps": {
-        "2026": 6.43,
-        "2027": 6.86
-      }
-    },
-    "source": "Refresh de forme (ajout decoupage trimestriel E5 ter) - meme call T2 26 (21/07/2026), pas de nouveau resultat publie. Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025, 1,39$/1,31$/1,40$/1,73$ sur base non-GAAP management retraitee de l'amortissement apres impot, bouclant a 0,01$ pres sur data[2025].net/shares=5,83$) et coherenceQualitative ajoutes - transcripts T1 26 (21/04/2026) et T2 26 (21/07/2026) relus integralement, aucune contradiction materielle detectee (statut coherent). Correction incidente : le chiffre de 125 M$ de synergies Masimo, presente comme non confirme par le management dans une version anterieure de ce fichier, est en realite explicitement cite par le management lui-meme sur le call T1 26 - ajoute comme engagement structurant. coherenceNoteCY (deprecie) mis a null, contenu deja couvert dans PARAMETRES & POINTS DE SUIVI.",
-    "dernierCall": {
-      "quarter": "T2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 6265,
-          "consensus": 6110
-        },
-        "epsAdj": {
-          "actual": 1.94,
-          "consensus": 1.84,
-          "basis": "non-GAAP",
-          "basisNote": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 26 : CA total +2-3%, core hors respiratoire ~+5%, marge operationnelle ajustee ~26,5%.",
-      "guidanceAnnuelle": "FY26 : CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0% precedemment), EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$), amortissement releve a ~1,9 Md$ (integration Masimo), ETR ~17%, actions diluees moy. ~707M.",
-      "pointsCles": [
-        "Plusieurs gros clients bioprocessing ont reprogramme des livraisons deja en carnet vers 2027 pour des raisons de planning de production et de site readiness cote client - pas un signal de demande, les commandes consommables ET equipement progressent toujours a mi-dizaine de %.",
-        "Life Sciences a livre son meilleur trimestre depuis plusieurs annees ; marches high-growth (Chine incluse, +mid-single-digit) compensent la faiblesse des marches developpes liee au calendrier de livraisons.",
-        "Masimo integre depuis a peine un mois montre un depart encourageant (croissance high-single-digit) ; Diagnostics guide une acceleration a high-single-digit hors respiratoire en T3 a mesure que les vents contraires Chine s'attenuent.",
-        "Management reaffirme etre en debut d'un cycle pluriannuel de capex bioprocessing (volumes biologiques + reshoring) et confirme la trajectoire d'acceleration CA/EPS attendue en H2 et au-dela."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US GAAP",
-        "source": "10-Q Q2 2026 + press release (21/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA T2 6,3 Md$ (+5,5%), resultat net GAAP 870 M$ (EPS 1,23$), adj EPS 1,94$. Cloture Masimo debut juin integree; guidance FY26 relevee a 8,45-8,60$."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-21",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "CA core reaffirme +3,0/+6,0%. EPS ajuste RELEVE a 8,35-8,55$ (vs 8,35-8,50$ precedemment)."
-      },
-      {
-        "quarter": "T2 26",
-        "date": "2026-07-21",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0%). EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$). Amort. releve a ~1,9 Md$, ETR ~17%, actions diluees ~707M."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 1.39,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 1.31,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.4,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 1.73,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 1.56,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 1.38,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 1.615,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.745,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 1.55,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 1.65,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 1.72,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.79,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "Guidance mixte T2 26 : EPS ajuste releve mais CA core resserre/abaisse en haut de fourchette (pushouts bioprocessing). Masimo cloture en avance (10/06, 9,9 Md$ cash). Amortissement releve a ~1,9 Md$ pese sur l'EPS normalise Omnium malgre le relevement du guide management. Decoupage trimestriel ajoute a ce refresh (E5 ter), a confiance basse compte tenu du phasage estime de l'amortissement post-Masimo.",
-    "text": "== THESIS SUMMARY ==\nQuality serial-acquirer compounder (DBS) in cyclical bioprocessing reacceleration, now extended into patient monitoring/acute care via Masimo (closed EARLY, 10/06/2026, 9.9bn cash). Q2 26 reads double: at headline, a clean beat plus an annual adjusted-EPS raise (8.45-8.60); in the detail, core revenue growth NARROWED (top cut from +6% to +4%) on bioprocessing deliveries pushed into 2027 - the EPS raises are cost/mix-driven, not volume-driven.\n\n== THESIS READ ==\n- Bioprocessing timing slip, not demand loss: deliveries move to 2027, backing the 2027 acceleration in the model. Watch: bioprocessing orders/book-to-bill each quarter.\n- Masimo integration is the new-money swing: closed early, funded in cash, net debt jumps to ~22bn in 2026 then deleverages ~4.5bn/yr. Watch: Masimo margin trajectory under DBS.\n- The 2027+ financial-charge extrapolation (~-470M annualized from H2-26 run-rate, NOT the Treasury formula) is flagged LOW CONFIDENCE. Watch: reconfirm at the 10-Q - the single most uncertain bridge line.\n\n== SPECIAL FACTORS ==\nBase = normalized US GAAP: acquisition amortization KEPT (reintegrated from the non-GAAP guide), true one-offs excluded (2025 impairment; Masimo transaction costs/inventory step-up ~0.15/share in Q2). Omnium EPS = non-GAAP guide minus after-tax amortization - the definitional wedge vs the 8.44 street is documented in the scorecard. 2026 financial charge explicitly guided (-310M).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 26.4bn (incl. Masimo stub), EBIT 5.67bn, ETR 17% (guided); 2027-2030: core +5%/yr with 2027 bioprocessing catch-up, margin drift, deleveraging 22 -> 4bn. Shares ~707M near-frozen 2026, gradual buyback resumption 2027+. Watch: financial-charge line vs 10-Q; Masimo synergy quantification; China diagnostics pricing.\n\n== CATALYSTS ==\nQ3 (Oct); bioprocessing order inflection; first full Masimo quarter; 2027 guidance (Jan) with the delivery catch-up.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "core_ca_2026",
-        "moteur": "Croissance CA core FY26 resserree par le management a +3,0/+4,0% (vs +3,0/+6,0% precedemment) ; traduite en +3,5% central + FX +0,5%.",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "masimo_conso",
-        "moteur": "Masimo cloture le 10/06/2026 (avant calendrier), consolide ~6,5 mois en 2026 (~840M$ de CA incremental estime sur une base annualisee ~1,55 Md$), annee pleine des 2027.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "core_ca_2027plus",
-        "moteur": "Reacceleration progressive du core (bioprocessing multi-annuel + diagnostics ex-respiratoire guide en acceleration) vers ~4,5-5%/an sur 2027-2030 ; FX neutralise au-dela de 2026.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "amort_relevee",
-        "moteur": "Amortissement des intangibles d'acquisition guide FY26 a ~1,9 Md$ (vs 1,7 Md$ ex-Masimo) ; charge recurrente reintegree dans la base Omnium (regle acquereur en serie), croissante en annee pleine 2027.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumNet.2026",
-          "omniumEBIT.2027",
-          "omniumNet.2027",
-          "omniumEBIT.2028",
-          "omniumNet.2028",
-          "omniumEBIT.2029",
-          "omniumNet.2029",
-          "omniumEBIT.2030",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "fin_2026",
-        "moteur": "Charge financiere nette FY26 explicitement guidee par le management a ~-310 M$ (priorite E5-a bis, taux communique).",
-        "applique": [
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "fin_2027plus",
-        "moteur": "A defaut de guide explicite au-dela de 2026, extrapolation du rythme H2-26 implicite (~-460/470 M$ annualise, deduit de l'interet net H1-26 vs le guide FY26) plutot que la formule Treasury 10Y+2pts (~6,55%) qui surestimerait fortement le cout reel observe (mix dette existante a coupon bas + financement Masimo partiellement court terme) ; puis decroissance avec le desendettement.",
-        "applique": [
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "etr_norm",
-        "moteur": "ETR normatif maintenu a 17% (guidance management inchangee).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "buybacks_pause",
-        "moteur": "Rachats d'actions en pause pour financer Masimo (guide shares moy. ~707M FY26) ; reprise graduelle assumee 2027-2030 a mesure du desendettement.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "oneoff_masimo_t2",
-        "moteur": "Couts de transaction/step-up d'inventaire Masimo (0,15$/action T2, ~108M$ pretax) traites comme vrai one-off lie a une transaction identifiee et exclus de la base normalisee.",
-        "applique": [
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "impair_2025",
-        "moteur": "Depreciation isolee marque Life Sciences T2 25 (432M$ pretax/328M$ apres impot) + installation Biotechnology T1 25 (15M$/11M$) : vrais one-offs non retraites lors de la creation initiale, corriges ici via d-bis. Portion residuelle non-EBIT du pont GAAP/non-GAAP FY25 (~273M$ apres impot au S2) traitee comme non-EBIT par approximation, non individuellement retracee.",
-        "applique": [
-          "data.2025"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 6.3,
-      "2027": 6.71,
-      "2028": 7.5,
-      "2029": 8.25,
-      "2030": 9.0
-    },
-    "omniumCA": {
-      "2026": 26400,
-      "2027": 28250,
-      "2028": 29650,
-      "2029": 31100,
-      "2030": 32650
-    },
-    "omniumEBIT": {
-      "2026": 5670,
-      "2027": 6180,
-      "2028": 6670,
-      "2029": 7140,
-      "2030": 7600
-    },
-    "omniumNet": {
-      "2026": 4450,
-      "2027": 4730,
-      "2028": 5250,
-      "2029": 5740,
-      "2030": 6210
-    },
-    "omniumND": {
-      "2026": 22000,
-      "2027": 17500,
-      "2028": 13000,
-      "2029": 8500,
-      "2030": 4000
-    },
-    "omniumShares": {
-      "2026": 707,
-      "2027": 705,
-      "2028": 700,
-      "2029": 695,
-      "2030": 690
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -101,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 4174.1,
-        "netPub": 4174,
-        "residual": -0.1,
-        "residualNote": "Reconciles cleanly pre-Masimo: modest net financial charge, ETR 17% (guided level, matches actual)."
-      },
-      "2026": {
-        "finNet": -310,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 4448.8
-      },
-      "2027": {
-        "finNet": -481,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 4730.2
-      },
-      "2028": {
-        "finNet": -345,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 5249.8
-      },
-      "2029": {
-        "finNet": -224,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 5740.3
-      },
-      "2030": {
-        "finNet": -118,
-        "other": 0,
-        "taxRate": 0.17,
-        "minorities": 0,
-        "netCalc": 6210.1
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Adjusted EPS (guided range) + core revenue growth",
-      "comparedAgainst": "guidance",
-      "basisAligned": false,
-      "basisNote": "Omnium EPS (6.30 for 2026) = management non-GAAP guide MINUS after-tax acquisition amortization (kept per E5; all other management adjustments validated as true one-offs, incl. Masimo transaction/inventory step-up ~0.15/share). The beat is measured on the company's own adjusted metric.",
-      "timeline": [
-        {
-          "date": "2026-04-21",
-          "type": "guidance_revised",
-          "detail": "Core revenue reaffirmed +3/+6%; adjusted EPS RAISED to 8.35-8.55 (from 8.35-8.50)."
-        },
-        {
-          "date": "2026-07-21",
-          "type": "guidance_revised",
-          "detail": "Core revenue NARROWED to +3/+4% (bioprocessing deliveries pushed to 2027); adjusted EPS RAISED to 8.45-8.60; amortization ~1.9bn, ETR ~17%, diluted shares ~707M."
-        }
-      ],
-      "paceCheckpoint": "Q2 real: revenue/adjusted EPS beat at headline; the detail shows the core-growth top cut - EPS raises are cost/mix-driven, not volume-driven.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 0.9,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 0.6,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "7.70-7.80$ adj EPS (mid 7.75)",
-          "realizedDisplay": "7.80$ adj",
-          "note": "Initial FY25 adjusted-EPS guidance 7.70-7.80$ (Q4-2024 release, 29/01/2025); realized 7.80$ - level +0.6% (top of the initial range)."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Searched 19/08/2026: the initial (Jan-2024) adjusted-EPS range did not surface in the Q4-2023 release coverage (core-growth guidance only was quoted) - excluded rather than estimated."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 8.425,
-        "source": "initial_guidance",
-        "date": "2026-04-21",
-        "note": "Initial FY26 adjusted-EPS guidance 8.35-8.50 (mid 8.425), evidenced by the 21/04 raise which cites it. Raised twice in-year (8.35-8.55 in April, 8.45-8.60 in July) while core revenue growth was NARROWED (top cut from +6% to +4% on bioprocessing deliveries pushed to 2027) - a mixed in-year signal the timeline captures."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +0.9% BLENDED (in-progress +1.2 x1/2; FY25 +0.6 single closed). NOT applied as-is to the Omnium base: beats are on management's adjusted EPS, the Omnium base re-deducts acquisition amortization (declared wedge).",
-      "consensusSource": "Barchart/Zacks (management non-GAAP basis)",
-      "consensusDate": "2026-07-20",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 8.425,
-        "currentValue": 8.525,
-        "deltaPct": 1.2,
-        "asOf": "2026-07-21",
-        "note": "Initial FY26: 8.35-8.50$ (mid 8.425); raised twice to 8.45-8.60$ (mid 8.525, 21/07) - projected +1.2% on management's adjusted metric."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-21",
-      "label": "Q2 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2024,
+   "ca": 23875,
+   "ebit": 4863,
+   "net": 3899,
+   "shares": 737,
+   "nd": 13927,
+   "div": 1.08
+  },
+  {
+   "year": 2025,
+   "ca": 24568,
+   "ebit": 5130,
+   "net": 4174,
+   "shares": 716,
+   "nd": 13803,
+   "div": 1.28
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 5.93,
+  "epsNY": 7.24,
+  "epsY2": 8.0,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 26 analystes, CY..CY+2)",
+  "analystsCount": 26
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-10",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-21",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Michael Ryskin (BofA) - comment atteindre l'acceleration H2 vu la faiblesse du core T1 (0,5%) : trois vents porteurs attendus (attenuation des vents contraires Chine Diagnostics, comps respiratoires plus faciles, amelioration Life Sciences consommables), tous confirmes au T1 selon le management.",
+     "Q Vijay Kumar (Evercore) - rationnel strategique de l'acquisition Masimo et retours attendus : joueur mission-critical en soins aigus, synergies d'appel avec Radiometer, 125 M$ de synergies de couts visees d'ici l'annee 5, cibles de ROIC a haut simple chiffre.",
+     "Q Vijay Kumar - pourquoi la baisse de marge T2 est plus marquee que le pattern historique : decline saisonniere respiratoire, plus des investissements de croissance avances depuis des trimestres ulterieurs vers le T2.",
+     "Q Scott Davis (Melius) - pressions des couts petrole/petrochimie, exposition Moyen-Orient : aucune pression de cout significative a ce stade, pas d'exposition directe Moyen-Orient dans la chaine d'approvisionnement.",
+     "Q Jack Meehan (Nephron) - influence de l'IA sur les depenses clients : accelere le developpement pharmaceutique, ameliore les rendements de pipeline (~10% base), stimule la demande d'automatisation/instruments/reactifs.",
+     "Q Jack Meehan - benefices de productivite IA en interne chez Danaher : 'AI-enabled DBS' et 'DBS-enabled AI' de plus en plus synonymes, gains d'efficacite et cycles de developpement produit accelere.",
+     "Q Tycho Peterson (Jefferies) - tendances de commandes bioprocessing par segment client, taille opportunite Chine : pharma demande robuste en production commerciale, biotech se stabilise, CDMO en amelioration, Chine biologics croissance a deux chiffres.",
+     "Q Tycho Peterson - positionnement Life Sciences pour le reste de l'annee : consommables attendues positives sur l'annee pleine 2026 (vs leger declin attendu auparavant), instruments Chine en reinvestissement, academique reste attone mais stable.",
+     "Q Casey Woodring (JPMorgan) - contexte sequentiel des commandes bioprocessing et book-to-bill : T1 = premiere croissance de commandes positive en pres de deux ans, funnel robuste, tailles de commandes plus importantes (brownfield/greenfield).",
+     "Q Casey Woodring - qu'est-ce qui compense la guidance respiratoire plus faible tout en maintenant la guidance diagnostics : gains de parts chez Cepheid, forte performance hors respiratoire hors Chine, traction DxI 9000 chez Beckman Coulter, Masimo apportera un uplift additionnel.",
+     "Q Dan Brennan (TD Cowen) - priorisation M&A par segment, autre operation sizable possible cette annee : filtre M&A discipline a trois vecteurs, biais pour le deploiement de capital vers le M&A, capacite bilancielle et de leadership pour plusieurs transactions concurrentes.",
+     "Q Doug Schenkel (Wolfe) - qu'est-ce qui permettrait d'atteindre le haut de la guidance annuelle : amelioration Life Sciences additionnelle, acceleration bioprocessing consommables/equipement, saison respiratoire au-dessus de la normale (retour au rythme endemique 1,8 Md$).",
+     "Q Doug Schenkel - Danaher peut-il poursuivre du M&A en Diagnostics en parallele de l'integration Masimo : oui, capacite bilancielle et de leadership pour executer sur les trois segments simultanement."
+    ]
+   },
+   {
+    "quarter": "T2 26",
+    "date": "2026-07-21",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Michael Ryskin (BofA) - pourquoi le manque a gagner bioprocessing T2 (~75 M$) ne reviendrait pas au T3/T4 : ~50-60 M$ d'expeditions de resine chromatographie decalees a 2027 pour raisons de planning client/site readiness, ~100 M$+ sur l'annee pleine, mais croissance de commandes consommables/equipement toujours robuste a mi-dizaine de %.",
+     "Q Tycho Peterson (Jefferies) - outlook equipement bioprocessing apres 4 trimestres consecutifs de croissance de commandes : 'debut de partie' d'un cycle pluriannuel d'expansion de capacite (reshoring), investissements greenfield necessitant 2-3 ans pour se materialiser.",
+     "Q Tycho Peterson - moteurs de conversion du financement biotech en depenses consommables : financement biotech ameliore se traduisant en commandes/CA, progres IDT en test MRD, momentum Aldevron, meilleur trimestre d'Abcam depuis l'acquisition.",
+     "Q Dan Leonard (RBC) - point commun entre les clients retardant les expeditions chromatographie : delais confines aux produits resine pour la fabrication a grands lots chez quelques grands fabricants commerciaux, sans lien avec des molecules ou geographies specifiques.",
+     "Q Dan Leonard - moteur de l'acceleration diagnostics au T4 (high-single-digit) vu la guidance T3 plate : hors vent contraire respiratoire, diagnostics a montre une croissance core a mi-simple chiffre au T2, innovations produit (DxI 9000, extensions menu Cepheid) soutenant l'acceleration.",
+     "Q Scott Davis (Melius) - premieres metriques Masimo (cloture debut juin) : croissance de CA a high-single-digit sur le trimestre, autorisation FDA 510(k) deja obtenue pour une solution IA de detection de depression respiratoire induite par les opioides.",
+     "Q Scott Davis - calendrier de reprise academique/gouvernemental : depend de politiques gouvernementales plus constructives, academique <5% du CA, stabilite plutot que reprise est l'attente actuelle.",
+     "Q Jack Meehan (Operon) - ventilation croissance semi-conducteurs vs autres clients chez Pall : microelectronique (semi-conducteurs/memoire) a depasse le taux du segment (>10%), soutenue par un nouveau site Singapour et des investissements de capacite.",
+     "Q Jack Meehan - pourquoi Life Sciences ralentit de 5,5% au T2 a 3-4% implicite au T3 : aucun changement de tendance sous-jacente, moderation liee au timing chez Pall et variations de calendrier de projets.",
+     "Q Vijay Kumar (Evercore) - premieres perspectives FY2027 vu le T4 implicite ~6% et le pushout bioprocessing de 100 M$ : la guidance core mid-single-digit pour 2026 (pas 2027) reste ancree en bas de la fourchette 3-4%, meilleure Life Sciences compensant des hypotheses bioprocessing plus conservatrices.",
+     "Q Vijay Kumar - composantes du relevement de guidance EPS de 0,10$ : ~0,07-0,08$ lies a la cloture anticipee de Masimo (modelisee a l'origine pour 2027), ~0,07-0,08$ de beat operationnel T2, compenses partiellement par mix/FX.",
+     "Q Dan Brennan (TD Cowen) - la guidance bioprocessing mid-single-digit inclut-elle un coussin vu le pushout de 100 M$+ : impact de quelques centaines de points de base sur la croissance bioprocessing, progression mid-single-digit T3 et mid-to-high-single-digit T4 attendue.",
+     "Q Dan Brennan - details sur le point commun des clients bioprocessing, risque de recours : delais limites a quelques grands clients, sans lien molecule/geographie, confiance que les expeditions 2027 auront bien lieu.",
+     "Q Casey Woodring (JPMorgan) - le timing des commandes consommables inclut-il le CA reporte : expeditions retardees deja en carnet (pas book-and-turn), la plupart des consommables expedies depuis le backlog.",
+     "Q Casey Woodring - outlook mis a jour Radiometer/Leica Biosystems pour le S2 : les deux continuent a high-single-digit, acquisition StatLab renforce l'offre workflow complete de Leica.",
+     "Q Patrick Donnelly (Citi) - pourquoi plusieurs clients ont-ils retarde simultanement, delais etendus au-dela des resines : delais impliquent 'quelques' tres grands clients (pas plusieurs), limites aux resines specialisees, forte croissance consommables upstream ailleurs dans le portefeuille.",
+     "Q Patrick Donnelly - quels signaux indiquent un retournement de confiance marche : croissance segment 5,5% portee par la reprise pharma/biopharma, conversion financement biotech amelioree, stabilisation academique, marches cliniques/appliques solides, meilleur trimestre Abcam, demande emergente d'automatisation IA."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "masimo_synergies_125m_an5",
+    "quarterOrigine": "T1 26",
+    "engagement": "125 M$ de synergies de couts Masimo visees d'ici l'annee 5 post-cloture - chiffre explicitement confirme par le management sur le call T1 26 (pas seulement une estimation externe, contrairement a ce qui etait note precedemment dans ce fichier).",
+    "echeance": "2031-Q2",
+    "statut": "en_cours"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-05",
+   "eps": {
+    "2026": 6.43,
+    "2027": 6.86
+   }
+  },
+  "source": "Refresh de forme (ajout decoupage trimestriel E5 ter) - meme call T2 26 (21/07/2026), pas de nouveau resultat publie. Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025, 1,39$/1,31$/1,40$/1,73$ sur base non-GAAP management retraitee de l'amortissement apres impot, bouclant a 0,01$ pres sur data[2025].net/shares=5,83$) et coherenceQualitative ajoutes - transcripts T1 26 (21/04/2026) et T2 26 (21/07/2026) relus integralement, aucune contradiction materielle detectee (statut coherent). Correction incidente : le chiffre de 125 M$ de synergies Masimo, presente comme non confirme par le management dans une version anterieure de ce fichier, est en realite explicitement cite par le management lui-meme sur le call T1 26 - ajoute comme engagement structurant. coherenceNoteCY (deprecie) mis a null, contenu deja couvert dans PARAMETRES & POINTS DE SUIVI.",
+  "dernierCall": {
+   "quarter": "T2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 6265,
+     "consensus": 6110
+    },
+    "epsAdj": {
+     "actual": 1.94,
+     "consensus": 1.84,
+     "basis": "non-GAAP",
+     "basisNote": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 26 : CA total +2-3%, core hors respiratoire ~+5%, marge operationnelle ajustee ~26,5%.",
+   "guidanceAnnuelle": "FY26 : CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0% precedemment), EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$), amortissement releve a ~1,9 Md$ (integration Masimo), ETR ~17%, actions diluees moy. ~707M.",
+   "pointsCles": [
+    "Plusieurs gros clients bioprocessing ont reprogramme des livraisons deja en carnet vers 2027 pour des raisons de planning de production et de site readiness cote client - pas un signal de demande, les commandes consommables ET equipement progressent toujours a mi-dizaine de %.",
+    "Life Sciences a livre son meilleur trimestre depuis plusieurs annees ; marches high-growth (Chine incluse, +mid-single-digit) compensent la faiblesse des marches developpes liee au calendrier de livraisons.",
+    "Masimo integre depuis a peine un mois montre un depart encourageant (croissance high-single-digit) ; Diagnostics guide une acceleration a high-single-digit hors respiratoire en T3 a mesure que les vents contraires Chine s'attenuent.",
+    "Management reaffirme etre en debut d'un cycle pluriannuel de capex bioprocessing (volumes biologiques + reshoring) et confirme la trajectoire d'acceleration CA/EPS attendue en H2 et au-dela."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "10-Q Q2 2026 + press release (21/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA T2 6,3 Md$ (+5,5%), resultat net GAAP 870 M$ (EPS 1,23$), adj EPS 1,94$. Cloture Masimo debut juin integree; guidance FY26 relevee a 8,45-8,60$."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-21",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "CA core reaffirme +3,0/+6,0%. EPS ajuste RELEVE a 8,35-8,55$ (vs 8,35-8,50$ precedemment)."
+   },
+   {
+    "quarter": "T2 26",
+    "date": "2026-07-21",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0%). EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$). Amort. releve a ~1,9 Md$, ETR ~17%, actions diluees ~707M."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 1.39,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.31,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.4,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 1.73,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 1.56,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.38,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 1.615,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.745,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 1.55,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 1.65,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 1.72,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.79,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Guidance mixte T2 26 : EPS ajuste releve mais CA core resserre/abaisse en haut de fourchette (pushouts bioprocessing). Masimo cloture en avance (10/06, 9,9 Md$ cash). Amortissement releve a ~1,9 Md$ pese sur l'EPS normalise Omnium malgre le relevement du guide management. Decoupage trimestriel ajoute a ce refresh (E5 ter), a confiance basse compte tenu du phasage estime de l'amortissement post-Masimo.",
+  "text": "== THESIS SUMMARY ==\nQuality serial-acquirer compounder (DBS) in cyclical bioprocessing reacceleration, now extended into patient monitoring/acute care via Masimo (closed EARLY, 10/06/2026, 9.9bn cash). Q2 26 reads double: at headline, a clean beat plus an annual adjusted-EPS raise (8.45-8.60); in the detail, core revenue growth NARROWED (top cut from +6% to +4%) on bioprocessing deliveries pushed into 2027 - the EPS raises are cost/mix-driven, not volume-driven.\n\n== THESIS READ ==\n- Bioprocessing timing slip, not demand loss: deliveries move to 2027, backing the 2027 acceleration in the model. Watch: bioprocessing orders/book-to-bill each quarter.\n- Masimo integration is the new-money swing: closed early, funded in cash, net debt jumps to ~22bn in 2026 then deleverages ~4.5bn/yr. Watch: Masimo margin trajectory under DBS.\n- The 2027+ financial-charge extrapolation (~-470M annualized from H2-26 run-rate, NOT the Treasury formula) is flagged LOW CONFIDENCE. Watch: reconfirm at the 10-Q - the single most uncertain bridge line.\n\n== SPECIAL FACTORS ==\nBase = normalized US GAAP: acquisition amortization KEPT (reintegrated from the non-GAAP guide), true one-offs excluded (2025 impairment; Masimo transaction costs/inventory step-up ~0.15/share in Q2). Omnium EPS = non-GAAP guide minus after-tax amortization - the definitional wedge vs the 8.44 street is documented in the scorecard. 2026 financial charge explicitly guided (-310M).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 26.4bn (incl. Masimo stub), EBIT 5.67bn, ETR 17% (guided); 2027-2030: core +5%/yr with 2027 bioprocessing catch-up, margin drift, deleveraging 22 -> 4bn. Shares ~707M near-frozen 2026, gradual buyback resumption 2027+. Watch: financial-charge line vs 10-Q; Masimo synergy quantification; China diagnostics pricing.\n\n== CATALYSTS ==\nQ3 (Oct); bioprocessing order inflection; first full Masimo quarter; 2027 guidance (Jan) with the delivery catch-up.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "core_ca_2026",
+    "moteur": "Croissance CA core FY26 resserree par le management a +3,0/+4,0% (vs +3,0/+6,0% precedemment) ; traduite en +3,5% central + FX +0,5%.",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "masimo_conso",
+    "moteur": "Masimo cloture le 10/06/2026 (avant calendrier), consolide ~6,5 mois en 2026 (~840M$ de CA incremental estime sur une base annualisee ~1,55 Md$), annee pleine des 2027.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "core_ca_2027plus",
+    "moteur": "Reacceleration progressive du core (bioprocessing multi-annuel + diagnostics ex-respiratoire guide en acceleration) vers ~4,5-5%/an sur 2027-2030 ; FX neutralise au-dela de 2026.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "amort_relevee",
+    "moteur": "Amortissement des intangibles d'acquisition guide FY26 a ~1,9 Md$ (vs 1,7 Md$ ex-Masimo) ; charge recurrente reintegree dans la base Omnium (regle acquereur en serie), croissante en annee pleine 2027.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumNet.2026",
+     "omniumEBIT.2027",
+     "omniumNet.2027",
+     "omniumEBIT.2028",
+     "omniumNet.2028",
+     "omniumEBIT.2029",
+     "omniumNet.2029",
+     "omniumEBIT.2030",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "fin_2026",
+    "moteur": "Charge financiere nette FY26 explicitement guidee par le management a ~-310 M$ (priorite E5-a bis, taux communique).",
+    "applique": [
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "fin_2027plus",
+    "moteur": "A defaut de guide explicite au-dela de 2026, extrapolation du rythme H2-26 implicite (~-460/470 M$ annualise, deduit de l'interet net H1-26 vs le guide FY26) plutot que la formule Treasury 10Y+2pts (~6,55%) qui surestimerait fortement le cout reel observe (mix dette existante a coupon bas + financement Masimo partiellement court terme) ; puis decroissance avec le desendettement.",
+    "applique": [
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "etr_norm",
+    "moteur": "ETR normatif maintenu a 17% (guidance management inchangee).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "buybacks_pause",
+    "moteur": "Rachats d'actions en pause pour financer Masimo (guide shares moy. ~707M FY26) ; reprise graduelle assumee 2027-2030 a mesure du desendettement.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "oneoff_masimo_t2",
+    "moteur": "Couts de transaction/step-up d'inventaire Masimo (0,15$/action T2, ~108M$ pretax) traites comme vrai one-off lie a une transaction identifiee et exclus de la base normalisee.",
+    "applique": [
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "impair_2025",
+    "moteur": "Depreciation isolee marque Life Sciences T2 25 (432M$ pretax/328M$ apres impot) + installation Biotechnology T1 25 (15M$/11M$) : vrais one-offs non retraites lors de la creation initiale, corriges ici via d-bis. Portion residuelle non-EBIT du pont GAAP/non-GAAP FY25 (~273M$ apres impot au S2) traitee comme non-EBIT par approximation, non individuellement retracee.",
+    "applique": [
+     "data.2025"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 6.3,
+   "2027": 6.71,
+   "2028": 7.5,
+   "2029": 8.25,
+   "2030": 9.0
+  },
+  "omniumCA": {
+   "2026": 26400,
+   "2027": 28250,
+   "2028": 29650,
+   "2029": 31100,
+   "2030": 32650
+  },
+  "omniumEBIT": {
+   "2026": 5670,
+   "2027": 6180,
+   "2028": 6670,
+   "2029": 7140,
+   "2030": 7600
+  },
+  "omniumNet": {
+   "2026": 4450,
+   "2027": 4730,
+   "2028": 5250,
+   "2029": 5740,
+   "2030": 6210
+  },
+  "omniumND": {
+   "2026": 22000,
+   "2027": 17500,
+   "2028": 13000,
+   "2029": 8500,
+   "2030": 4000
+  },
+  "omniumShares": {
+   "2026": 707,
+   "2027": 705,
+   "2028": 700,
+   "2029": 695,
+   "2030": 690
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -101,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 4174.1,
+    "netPub": 4174,
+    "residual": -0.1,
+    "residualNote": "Reconciles cleanly pre-Masimo: modest net financial charge, ETR 17% (guided level, matches actual)."
+   },
+   "2026": {
+    "finNet": -310,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 4448.8
+   },
+   "2027": {
+    "finNet": -481,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 4730.2
+   },
+   "2028": {
+    "finNet": -345,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 5249.8
+   },
+   "2029": {
+    "finNet": -224,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 5740.3
+   },
+   "2030": {
+    "finNet": -118,
+    "other": 0,
+    "taxRate": 0.17,
+    "minorities": 0,
+    "netCalc": 6210.1
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Adjusted EPS (guided range) + core revenue growth",
+   "comparedAgainst": "guidance",
+   "basisAligned": false,
+   "basisNote": "Omnium EPS (6.30 for 2026) = management non-GAAP guide MINUS after-tax acquisition amortization (kept per E5; all other management adjustments validated as true one-offs, incl. Masimo transaction/inventory step-up ~0.15/share). The beat is measured on the company's own adjusted metric.",
+   "timeline": [
+    {
+     "date": "2026-04-21",
+     "type": "guidance_revised",
+     "detail": "Core revenue reaffirmed +3/+6%; adjusted EPS RAISED to 8.35-8.55 (from 8.35-8.50)."
+    },
+    {
+     "date": "2026-07-21",
+     "type": "guidance_revised",
+     "detail": "Core revenue NARROWED to +3/+4% (bioprocessing deliveries pushed to 2027); adjusted EPS RAISED to 8.45-8.60; amortization ~1.9bn, ETR ~17%, diluted shares ~707M."
+    }
+   ],
+   "paceCheckpoint": "Q2 real: revenue/adjusted EPS beat at headline; the detail shows the core-growth top cut - EPS raises are cost/mix-driven, not volume-driven.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 0.9,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 0.6,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "7.70-7.80$ adj EPS (mid 7.75)",
+     "realizedDisplay": "7.80$ adj",
+     "note": "Initial FY25 adjusted-EPS guidance 7.70-7.80$ (Q4-2024 release, 29/01/2025); realized 7.80$ - level +0.6% (top of the initial range)."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Searched 19/08/2026: the initial (Jan-2024) adjusted-EPS range did not surface in the Q4-2023 release coverage (core-growth guidance only was quoted) - excluded rather than estimated."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 8.425,
+    "source": "initial_guidance",
+    "date": "2026-04-21",
+    "note": "Initial FY26 adjusted-EPS guidance 8.35-8.50 (mid 8.425), evidenced by the 21/04 raise which cites it. Raised twice in-year (8.35-8.55 in April, 8.45-8.60 in July) while core revenue growth was NARROWED (top cut from +6% to +4% on bioprocessing deliveries pushed to 2027) - a mixed in-year signal the timeline captures."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +0.9% BLENDED (in-progress +1.2 x1/2; FY25 +0.6 single closed). NOT applied as-is to the Omnium base: beats are on management's adjusted EPS, the Omnium base re-deducts acquisition amortization (declared wedge).",
+   "consensusSource": "Barchart/Zacks (management non-GAAP basis)",
+   "consensusDate": "2026-07-20",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 8.425,
+    "currentValue": 8.525,
+    "deltaPct": 1.2,
+    "asOf": "2026-07-21",
+    "note": "Initial FY26: 8.35-8.50$ (mid 8.425); raised twice to 8.45-8.60$ (mid 8.525, 21/07) - projected +1.2% on management's adjusted metric."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-21",
+   "label": "Q2 2026",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 8.44,
+   "epsNY": 9.12,
+   "date": "2026-07-20",
+   "source": "Barchart/Zacks, base non-GAAP management (pas encore actualise post-T2 26)."
+  }
+ ]
 }

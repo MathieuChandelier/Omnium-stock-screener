@@ -1,578 +1,589 @@
 {
-  "name": "Netflix",
-  "cours": 67.97,
-  "yahooSymbol": "NFLX",
-  "dividende": 0,
-  "data": [
-    {
-      "year": 2015,
-      "ca": 6780,
-      "ebit": 306,
-      "net": 123,
-      "shares": 4365,
-      "nd": 932,
-      "div": 0
-    },
-    {
-      "year": 2016,
-      "ca": 8831,
-      "ebit": 380,
-      "net": 187,
-      "shares": 4387,
-      "nd": 577,
-      "div": 0
-    },
-    {
-      "year": 2017,
-      "ca": 11693,
-      "ebit": 839,
-      "net": 559,
-      "shares": 4468,
-      "nd": 2706,
-      "div": 0
-    },
-    {
-      "year": 2018,
-      "ca": 15794,
-      "ebit": 1605,
-      "net": 1211,
-      "shares": 4512,
-      "nd": 5482,
-      "div": 0
-    },
-    {
-      "year": 2019,
-      "ca": 20156,
-      "ebit": 2604,
-      "net": 1867,
-      "shares": 4518,
-      "nd": 9717,
-      "div": 0
-    },
-    {
-      "year": 2020,
-      "ca": 24996,
-      "ebit": 4585,
-      "net": 2761,
-      "shares": 4542,
-      "nd": 11500,
-      "div": 0
-    },
-    {
-      "year": 2021,
-      "ca": 29698,
-      "ebit": 6195,
-      "net": 5116,
-      "shares": 4554,
-      "nd": 9360,
-      "div": 0
-    },
-    {
-      "year": 2022,
-      "ca": 31616,
-      "ebit": 5633,
-      "net": 4492,
-      "shares": 4513,
-      "nd": 9200,
-      "div": 0
-    },
-    {
-      "year": 2023,
-      "ca": 33723,
-      "ebit": 6954,
-      "net": 5408,
-      "shares": 4495,
-      "nd": 7543,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 39001,
-      "ebit": 10418,
-      "net": 8712,
-      "shares": 4393,
-      "nd": 7540,
-      "div": 0
-    },
-    {
-      "year": 2025,
-      "ca": 45200,
-      "ebit": 13327,
-      "net": 10980,
-      "shares": 4341,
-      "nd": 5460,
-      "div": 0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 3.66,
-    "epsNY": 3.92,
-    "date": "2026-07-16",
-    "source": "WallStreetZen/consensus, post-split (10-for-1, janv. 2026) ; INCLUT la soulte WBD de 2,8 Md$ comptabilisée au T1 26, non comparable telle quelle à omniumEPS (voir ancrage wbd_termination_fee_exclusion)"
+ "name": "Netflix",
+ "cours": 67.97,
+ "yahooSymbol": "NFLX",
+ "dividende": 0,
+ "data": [
+  {
+   "year": 2015,
+   "ca": 6780,
+   "ebit": 306,
+   "net": 123,
+   "shares": 4365,
+   "nd": 932,
+   "div": 0
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": "2026-10-20"
+  {
+   "year": 2016,
+   "ca": 8831,
+   "ebit": 380,
+   "net": 187,
+   "shares": 4387,
+   "nd": 577,
+   "div": 0
   },
-  "ownership": {
-    "asOf": "2026-08-09",
-    "insiderPct": 4.96,
-    "insiderDesc": "Pas de famille fondatrice au controle : Reed Hastings (co-fondateur, Executive Chairman) reste le premier actionnaire individuel (~21,16M d'actions post-split) mais l'ensemble dirigeants+administrateurs ne represente qu'une fraction minoritaire du capital, sans classe d'actions a droits de vote renforces. Evenement de gouvernance notable : Hastings ne se representera PAS au conseil d'administration lors de l'assemblee 2026.",
-    "insiderSource": "DEF 14A 2026 (SEC, deposee avril 2026) - tableau de detention beneficiaire des dirigeants et administrateurs en groupe, corrobore par agregateurs (BusinessQuant, WallStreetZen).",
-    "notableHolders": [
-      {
-        "investor": "Chase Coleman - Tiger Global Management",
-        "pct": null,
-        "tier": 1,
-        "movement": null,
-        "asOf": "2026-Q1",
-        "source": "13F Q1 2026 - NFLX represente ~1,03% du portefeuille Tiger Global (poids de ligne, pas la part du capital Netflix detenue - non retrouvee precisement)."
-      },
-      {
-        "investor": "Thomas Russo - Gardner Russo & Quinn",
-        "pct": null,
-        "tier": 2,
-        "movement": null,
-        "asOf": "2026-Q1",
-        "source": "13F Q1 2026 - NFLX represente ~6,35% du portefeuille du gerant (poids de ligne, pas la part du capital Netflix detenue)."
-      },
-      {
-        "investor": "Josh Tarasoff - Greenlea Lane Capital",
-        "pct": null,
-        "tier": 2,
-        "movement": null,
-        "asOf": "2026-Q1",
-        "source": "13F Q1 2026 - NFLX represente ~7,80% du portefeuille du gerant, une de ses plus fortes convictions (poids de ligne, pas la part du capital Netflix detenue)."
-      }
-    ],
-    "coverageNote": null,
-    "history": []
+  {
+   "year": 2017,
+   "ca": 11693,
+   "ebit": 839,
+   "net": 559,
+   "shares": 4468,
+   "nd": 2706,
+   "div": 0
   },
-  "compliance": {
-    "asOf": "2026-08-09",
-    "items": [
-      {
-        "year": 2022,
-        "title": "Recours collectif en valeurs mobilieres alleguant que Netflix a dissimule le ralentissement de sa croissance d'abonnes (dont l'impact du partage de mots de passe) aux investisseurs entre janvier 2021 et avril 2022.",
-        "allegedBy": "Plaignants actionnaires (dont Grant & Eisenhofer, Kirby McInerney, Rosen Law Firm), Tribunal federal de Californie",
-        "date": "2022-05-01",
-        "status": "classee_sans_suite",
-        "outcome": "Rejet definitif par le juge federal en novembre 2024, la cour jugeant qu'un nouvel amendement de la plainte serait futile - dossier clos.",
-        "source": "Law360, StreamTV Insider (couverture du rejet, novembre 2024)."
-      },
-      {
-        "year": 2025,
-        "title": "Sollicitations d'enquete par plusieurs cabinets d'avocats plaignants (dont Robbins Geller Rudman & Dowd, Schall Law Firm) sur d'eventuelles declarations trompeuses de Netflix et de ses dirigeants concernant l'activite et les operations du groupe.",
-        "allegedBy": "Robbins Geller Rudman & Dowd LLP, Schall Law Firm (cabinets d'avocats plaignants sollicitant des temoins/plaignants)",
-        "date": "2025-10-27",
-        "status": "sollicitation",
-        "outcome": null,
-        "source": "Communiques GlobeNewswire/BusinessWire/PR Newswire (oct.-nov. 2025) ; RGRD LLP, page de cas dediee."
-      }
-    ],
-    "note": "Un ancien recours collectif (2022, croissance d'abonnes/partage de mots de passe) a ete definitivement rejete en novembre 2024. Une vague de sollicitations d'enquete par des cabinets plaignants existe depuis fin octobre 2025 (voir items) mais reste au stade le plus preliminaire - aucun objet precis d'allegation ni plainte formelle identifies a ce jour, aucune enquete reglementaire (SEC/DOJ) recensee."
+  {
+   "year": 2018,
+   "ca": 15794,
+   "ebit": 1605,
+   "net": 1211,
+   "shares": 4512,
+   "nd": 5482,
+   "div": 0
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-09",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q1 26",
-        "date": "2026-04-16",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Sean Diffley (Morgan Stanley) - enseignements du dossier Warner Bros. Discovery et appetit pour de la M&A : Neumann/direction qualifient l'operation de 'nice-to-have, pas need-to-have', equipe restee concentree sur le coeur d'activite, discipline capitalistique demontree en se retirant quand le cout depassait la valeur pour les actionnaires.",
-          "Q Vikram Kesavabhotla (Baird) - performance de la metrique interne de qualite d'engagement en 2026 : nouveau plus haut historique au T1, credibilite evaluee via son pouvoir predictif sur la retention.",
-          "Q Rich Greenfield (LightShed) - impact de la methodologie Nielsen sur le revenu publicitaire : Nielsen Gauge n'est pas la monnaie du marche video, changement sans effet sur l'efficacite, objectif de 3 Md$ de publicite maintenu.",
-          "Q John Hodulik (UBS) - details d'audience du World Baseball Classic et opportunites similaires : 31,4M de spectateurs, programme le plus regarde de l'histoire au Japon, plus gros jour d'inscription de l'histoire du pays, forte croissance APAC associee.",
-          "Q Robert Fishman (MoffettNathanson) - evaluation du ROI des evenements live vs contenu scripte, strategie NFL : strategie inchangee (grands evenements marquants), discussions NFL en cours dans un cadre discipline centre sur les evenements.",
-          "Q Peter Supino (Wolfe Research) - modele economique et strategie des podcasts : donnees precoces montrant un engagement incremental, notamment en journee et sur mobile, catalogue proprietaire et licencie prometteur.",
-          "Q Dan Salmon (New Street Research) - croissance de la base annonceurs, achat direct vs DSP, strategie mid-market : base annonceurs +70% sur un an a plus de 4 000, programmatique approchant 50% des pubs hors live, expansion iterative.",
-          "Q Vikram Kesavabhotla (Baird) - rationnel et premiers signaux de la hausse de prix US : prix fonde sur les ameliorations de valeur et les signaux d'engagement, premiers resultats conformes aux attentes et a l'historique, retention plus forte partout.",
-          "Q Eric Sheridan (Goldman Sachs) - enseignements de 5 ans de jeux video et futurs axes d'investissement : marche adressable de 150 Md$ identifie, extensions IP synergiques, jeux plateforme soutenant retention/acquisition, jeux enfants priorises.",
-          "Q Brian Pitts (BMO) - mesure du succes de Netflix Playground et valeur pour l'abonne : app dediee jeux enfants, curatee, sans pub ni achat in-app, forts signaux de croissance.",
-          "Q Eric Sheridan (Goldman Sachs) - paysage concurrentiel par geographie/format : relations createurs fortes au-dela du seul budget, signatures recentes avec des talents de premier plan comme indicateur de repeat business.",
-          "Q Eric Sheridan (Goldman Sachs) - evolution du processus creatif GenAI et rationnel de l'acquisition InterPositive : la GenAI ameliore les outils, pas l'art ; InterPositive accelere une technologie specifique aux cineastes, adoption croissante chez les createurs.",
-          "Q Rich Greenfield (LightShed) - calendrier de sortie de Reed Hastings du conseil et lien avec Warner Bros. Discovery : sortie sans lien avec le dossier WBD (que Reed avait lui-meme porte), transition reflétant une philosophie de succession annoncee de longue date par le fondateur."
-        ]
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-16",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Steve Cahall (Wells Fargo) - moteur de la deceleration de croissance FX-neutre T2->T3 : Neumann repond que ce n'est pas pilote trimestre par trimestre, moteurs identiques (abonnements/prix/pub), un peu de choppiness lie a une base 2025 plus pesee au S2, objectif annuel 13-14% maintenu, penetration <45% des foyers adressables et ~7% du marche adressable de 670 Md$ captes.",
-          "Q Rob Sanderson (Loop Capital) - qualite de l'engagement malgre le ralentissement des heures vues/membre : Peters repond que la relation heures/revenu n'est pas lineaire (ex. live = 5% du budget contenu mais 1% des heures, pourtant 6 des 10 meilleurs jours d'inscription sur 5 ans), heures de visionnage +2% au S1 26 (acceleration vs +1,5% en 2025).",
-          "Q Steve Cahall (Wells Fargo) - acceleration de l'amortissement de contenu vs valeur pour le membre : Sarandos repond que la depense de contenu croit ~10% en 2026 (vs 8% de moyenne 5 ans, 14% sur 10 ans), investissement discipline, slate forte (I Will Find You, Swapped, Teach You a Lesson, The Polygamist).",
-          "Q David Joyce (Seaport) - inquietude sur la chute d'audience des saisons 2 : Sarandos repond qu'il n'y a pas de changement materiel agrege, le decrochage S2 est legerement ameliore vs l'an dernier, aucun changement de strategie de sortie prevu.",
-          "Q Vikram Kesavabhotla (Baird) - suivi retention/engagement post-World Baseball Classic au Japon : Sarandos confirme un succes record (programme le plus regarde de l'histoire au Japon), les evenements live generent des pics d'inscription avec un churn legerement plus eleve mais conforme aux attentes, poursuite de l'expansion du calendrier live y compris regional.",
-          "Q Robert Fishman (MoffettNathanson) + Rich Greenfield (LightShed) - opportunite de bundling (Peacock, chaine FAST) et TF1 comme plateforme tierce : Peters repond qu'il est trop tot (4 semaines) mais les resultats sont encourageants, ouverture a des partenariats similaires, rien de nouveau a annoncer.",
-          "Q Robert Fishman (MoffettNathanson) - opportunite d'une offre FAST gratuite : Peters repond que l'option est etudiee mais sans plan de lancement a court terme, risque de cannibalisation et necessite d'une activite publicitaire deja a l'echelle.",
-          "Q John Hodulik (UBS) - futurs formats de contenu au-dela des jeux/podcasts : Sarandos refuse de preannoncer, se dit encourage par les podcasts (visionnage diurne/mobile incremental), nouveaux partenariats editeurs (Conde Nast, Hearst, People) le mois suivant.",
-          "Q Steve Cahall (Wells Fargo) - potentiel de monetisation publicitaire (ARM) : Peters repond que l'ecart d'ARM entre le palier publicitaire et le palier standard se resserre et represente une opportunite de revenu sous-realise, tire par l'elargissement des sources de demande et la pile ad-tech propriétaire.",
-          "Q Sean Diffley (Morgan Stanley) - receptivite aux hausses de prix et calendrier/magnitude : Peters repond que les hausses S1 26 (US, Mexique, Espagne) se passent comme prevu, le prix suit toujours la valeur deja livree, Netflix reste la meilleure valeur du secteur SVOD.",
-          "Q Rich Greenfield (LightShed) - retour des essais gratuits sur certains marches : Peters confirme des tests d'essais gratuits pour les nouveaux membres non-reabonnes (hors US/UK), demarche classique de test-and-learn.",
-          "Q Vikram Kesavabhotla (Baird) - progres de la strategie de jeux cloud : Peters cite un marche adressable de 150 Md$ (hors Chine/Russie), FIFA et Unhinged comme meilleurs lancements cloud, joueurs actifs mensuels cloud x11 depuis octobre 2025, jeux enfants (Playground) engagement mobile +600% sur un an.",
-          "Q Jessica Reif Ehrlich (BofA) - effet de levier de l'echelle (~330M foyers) dans un paysage media en consolidation : Sarandos repond que l'echelle cree un effet volant (decouverte, monetisation, ROI programme), TF1 en exemple, la consolidation du secteur n'est pas nouvelle, focus reste sur les membres.",
-          "Q Sean Diffley (Morgan Stanley) - premiers enseignements du rachat InterPositive et impact sur le budget de contenu de 20 Md$ : Sarandos repond que la GenAI s'etend a environ 300 titres (concentree en post-production), qualite preservee (artistes aux commandes), economies probablement reinvesties dans plus de contenu plutot que reduites du budget.",
-          "Q Dan Kurnos (StoneX) - allocation du capital face aux rumeurs Lionsgate/NBCUniversal : Sarandos refuse de commenter la speculation, reaffirme la philosophie 'builders not buyers' et un seuil tres eleve pour toute M&A significative ; Neumann confirme aucun changement de politique d'allocation du capital, rachat record de 4,7 Md$ au T2, 27 Md$ d'autorisation restante."
-        ]
-      }
-    ],
-    "engagementsStructurants": []
+  {
+   "year": 2019,
+   "ca": 20156,
+   "ebit": 2604,
+   "net": 1867,
+   "shares": 4518,
+   "nd": 9717,
+   "div": 0
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "source": "Refresh (sourcing complete sur le meme trimestre) - Creation T2 2026 le 2026-07-17 (Transcript T2 2026, Investing.com/Seeking Alpha) completee par cette session : lettre aux actionnaires + transcript de l'interview Q2 26 (S&P Global Market Intelligence, 16/07/2026) relus integralement, ownership/compliance/coherenceQualitative/quarterlyEPS renseignes pour la premiere fois. Aucun nouveau trimestre publie depuis la creation (prochain : Q3 26, 20/10/2026) - data/adjXXX/ancrages non rouverts. RECUPERATION RETROACTIVE (E2 ter point 1 bis) : transcript Q1 26 (16/04/2026, Sarandos/Peters/Neumann) retrouve et lu a posteriori pour amorcer immediatement la comparaison de coherenceQualitative (aucune entree brute anterieure disponible avant ce refresh) - capture Q&A Q1 26 marquee comme reconstruite retroactivement, pas une capture live du Q1 26.",
-    "priorEPS": {
-      "date": "2026-07-17",
-      "eps": {
-        "2026": 3.2,
-        "2027": 3.81
-      }
-    },
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 12560,
-          "consensus": 12583
-        },
-        "epsAdj": {
-          "actual": 0.8,
-          "consensus": 0.79,
-          "basis": "GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 26 : CA guidé à 12,86 Md$ (+12% reporté, +11% FX-neutre), marge opérationnelle 33,2%, résultat net 3 452 M$, EPS 0,82$ — guidance légèrement sous le consensus pré-publication (~13,0 Md$ de CA, ~13% de croissance attendue par le marché).",
-      "guidanceAnnuelle": "CA 2026 resserré à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre) ; marge opérationnelle 31,5% ; publicité visée à ~3 Md$ (x2 vs 2025) ; EPS consensus normalisé (S&P Global, hors éléments non récurrents) 3,51$ pour l'année pleine.",
-      "pointsCles": [
-        "Rachat d'actions record de 4,7 Md$ sur le trimestre (le plus important de l'histoire du groupe), financé en partie par la soulte WBD ; ~27 Md$ d'autorisation restante.",
-        "Aucun changement de stratégie de sortie des saisons malgré l'attention du marché sur l'engagement ; la chute d'audience Saison 2 est jugée légèrement améliorée par rapport à l'an dernier.",
-        "Partenariat de distribution TF1 (France) jugé positif après quatre semaines ; pas de plan de lancement d'une offre gratuite ou d'une plateforme FAST à court terme.",
-        "Déploiement de la GenAI (dont l'acquisition InterPositive) sur environ 300 productions à ce jour ; dépenses de contenu 2026 guidées à +10%, sous la croissance du CA."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US GAAP",
-        "source": "10-Q T2 2026 + lettre aux actionnaires (16/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA T2 12,56 Md$ (+13%, +12% FX-neutre), resultat operationnel 4,19 Md$ (marge 33,4% vs 34,1% N-1), guidance FY26 resserree 51,0-51,4 Md$ / marge 31,5% reiteree."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-16",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "CA 2026 resserré à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre) ; marge opérationnelle 31,5% ; publicité visée à ~3 Md$."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.66,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.72,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.59,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 0.56,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.66,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.8,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.82,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.92,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 0.79,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 0.95,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 0.98,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 1.09,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "Leader mondial du streaming, croissance CA guidée 13-14% pour 2026 et expansion de marge opérationnelle confirmée (31,5% guidé). Soulte WBD de 2,8 Md$ (T1 26) exclue d'omniumNet comme non-opérationnelle. Rachats d'actions record au T2 26.",
-    "text": "== THESIS SUMMARY ==\nUndisputed streaming leader (~1bn viewers) with under 45% penetration of an ~800M-broadband-household TAM where it captures only ~7% of ~670bn addressable revenue. The compounding stack: subscription growth + pricing power + advertising ramp (~3bn targeted 2026 vs ~1.5bn 2025), with content-cost growth guided ~10% - below revenue growth - feeding steady margin expansion (operating margin 31.5% guided). FY26 revenue tightened to 51.0-51.4bn at Q2.\n\n== THESIS READ ==\n- The ad tier is the marginal thesis driver: 2x targeted in 2026 and still early. Watch: ad-revenue milestones vs the ~3bn goal.\n- Margin expansion is policy, not luck (content growth capped below revenue growth). Watch: content-slate inflation and sports-rights discipline.\n- Capital returns accelerate: shares -2.4%/yr modeled, gross-debt cap 10-15bn maintained. Watch: buyback pace vs the WBD situation (any large M&A would break the model).\n\n== SPECIAL FACTORS ==\nBase = normalized operating (ex-WBD-related items per ancrages). Normative tax 14% (2025 actual 13.7%, no windfall to correct). Historical net debt 2015-2021 approximated (low confidence flagged, moderate materiality). Post-split share figures.\n\n== PARAMETERS & WATCH-LIST ==\nRevenue +12%/yr fading to +9% by 2030; EBIT margin 31.5% -> 34%; ETR 14%; finNet ~-500M shrinking with modest deleveraging (5.5 -> 3bn). Published 2025 reconciles at ~0 residual. Shares 4,200 -> 3,800M. Watch: FX-neutral vs reported growth gap; ad-tech stack execution; engagement metrics disclosure cadence.\n\n== CATALYSTS ==\nQ3 (Oct); ad-revenue disclosures; 2027 guidance (Jan); live/sports events scaling.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "revenue_growth_guidance",
-        "moteur": "CA 2026 guidé à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre), ralentissant graduellement vers ~9% en 2030 à mesure que la base se dilue, soutenu par une pénétration foyers <45% et une part de marché adressable captée d'environ 7% seulement.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "margin_expansion_guidance",
-        "moteur": "Marge opérationnelle 2026 guidée à 31,5% (vs 29,5% en 2025), les coûts de contenu (+10% guidé) croissant plus lentement que le CA ; expansion graduelle poursuivie vers ~34% d'ici 2030 à mesure que l'effet de levier opérationnel se matérialise.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "wbd_termination_fee_exclusion",
-        "moteur": "Soulte de rupture de 2,8 Md$ bruts encaissée au T1 2026 suite à l'abandon du rachat de Warner Bros. Discovery (surenchère Paramount Skydance), comptabilisée en \"interest and other income\" — exclue d'omniumNet/omniumEPS 2026 comme gain non-opérationnel et non récurrent, cohérent avec le traitement des gains non-opérationnels ailleurs dans le portefeuille.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumEPS.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "tax_normalization",
-        "moteur": "Taux d'impôt normalisé à 14%, proche du taux effectif 2025 (13,7%) sans indice de windfall à corriger, appliqué de façon stable sur tout l'horizon de projection.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "buyback_pace",
-        "moteur": "Rachat d'actions record au T2 26 (4,7 Md$, financé en partie par la soulte WBD), ~27 Md$ d'autorisation restante ; actions diluées supposées en baisse continue de ~4,3 Md (2025) vers ~3,8 Md d'ici 2030.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030",
-          "omniumEPS.2026",
-          "omniumEPS.2027",
-          "omniumEPS.2028",
-          "omniumEPS.2029",
-          "omniumEPS.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "net_debt_trajectory",
-        "moteur": "Plafond de dette brute visé par le management à 10-15 Md$ (pas de désendettement supplémentaire engagé), mais le free cash-flow croissant (9,5 Md$ en 2025) est supposé réduire progressivement la dette nette malgré le rythme de rachats d'actions.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 3.2,
-      "2027": 3.81,
-      "2028": 4.43,
-      "2029": 5.1,
-      "2030": 5.81
-    },
-    "omniumCA": {
-      "2026": 51200,
-      "2027": 57340,
-      "2028": 63650,
-      "2029": 70020,
-      "2030": 76320
-    },
-    "omniumEBIT": {
-      "2026": 16130,
-      "2027": 18640,
-      "2028": 21000,
-      "2029": 23460,
-      "2030": 25950
-    },
-    "omniumNet": {
-      "2026": 13440,
-      "2027": 15640,
-      "2028": 17720,
-      "2029": 19880,
-      "2030": 22060
-    },
-    "omniumND": {
-      "2026": 5000,
-      "2027": 4500,
-      "2028": 4000,
-      "2029": 3500,
-      "2030": 3000
-    },
-    "omniumShares": {
-      "2026": 4200,
-      "2027": 4100,
-      "2028": 4000,
-      "2029": 3900,
-      "2030": 3800
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -604,
-        "other": 0,
-        "taxRate": 0.137,
-        "minorities": 0,
-        "netCalc": 10979.9,
-        "netPub": 10980,
-        "residual": 0.1,
-        "residualNote": "Reconciles cleanly: ~600M net interest on the gross-debt stack (10-15bn cap policy), actual 2025 ETR 13.7%."
-      },
-      "2026": {
-        "finNet": -502,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 13440.1
-      },
-      "2027": {
-        "finNet": -454,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 15640.0
-      },
-      "2028": {
-        "finNet": -395,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 17720.3
-      },
-      "2029": {
-        "finNet": -344,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 19879.8
-      },
-      "2030": {
-        "finNet": -299,
-        "other": 0,
-        "taxRate": 0.14,
-        "minorities": 0,
-        "netCalc": 22059.9
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Revenue (guided range) + operating margin",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-07-16",
-          "type": "guidance_revised",
-          "detail": "FY26 revenue tightened to 51.0-51.4bn; operating margin 31.5%; advertising on track to ~3bn (vs ~1.5bn in 2025)."
-        }
-      ],
-      "paceCheckpoint": "H1 real: on the guided path; ad revenue scaling per plan.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 3.8,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 4.0,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "rev 43.5-44.5bn + 29% op margin",
-          "realizedDisplay": "45.0bn / 29.5%",
-          "note": "Initial FY25 guidance (Q4-24 letter, 21/01/2025): revenue 43.5-44.5bn (mid 44.0) and 29% operating margin - implied op income 12.76bn; realized 45.0bn at 29.5% = 13.28bn - level +4.0% on the guided op-income plan (revenue alone +2.3%)."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 11.3,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "24% op margin (no revenue range)",
-          "realizedDisplay": "26.7% op margin",
-          "note": "Initial FY24 guidance (Q4-23 letter, 23/01/2024): 24% operating margin - Netflix guided no FY24 revenue range, so the beat is margin-only: realized 26.7% = +11.3% on the guided profitability plan (an outsized beat year: margin raised three times in-year)."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 51200,
-        "source": "initial_guidance",
-        "date": "2026-01-20",
-        "note": "TRUE initial FY26 guidance (Q4-25 letter, 20/01/2026): revenue 50.7-51.7bn (mid 51.2, +12/14%), operating margin 31.5%. Tightened at Q2 (16/07) to 51.0-51.4 - SAME mid, margin reiterated. Netflix guides revenue/margin, not EPS."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +3.8% BLENDED (in-progress 0.0 x1/2; FY25 +4.0 and FY24 +11.3 equal-shared). Beats measured on the guided operating-income plan (revenue x margin; margin-only for FY24) - translation to EPS via buybacks/below-the-line is the declared wedge.",
-      "consensusSource": "WallStreetZen consensus (GAAP, post-split)",
-      "consensusDate": "2026-07-16",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 51200,
-        "currentValue": 51200,
-        "deltaPct": 0.0,
-        "asOf": "2026-07-16",
-        "note": "Initial mid 51.2bn / 31.5% margin; Q2 tightened the range around the same mid and reiterated the margin - projected 0.0 on the guided plan."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-16",
-      "label": "Q2 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2020,
+   "ca": 24996,
+   "ebit": 4585,
+   "net": 2761,
+   "shares": 4542,
+   "nd": 11500,
+   "div": 0
+  },
+  {
+   "year": 2021,
+   "ca": 29698,
+   "ebit": 6195,
+   "net": 5116,
+   "shares": 4554,
+   "nd": 9360,
+   "div": 0
+  },
+  {
+   "year": 2022,
+   "ca": 31616,
+   "ebit": 5633,
+   "net": 4492,
+   "shares": 4513,
+   "nd": 9200,
+   "div": 0
+  },
+  {
+   "year": 2023,
+   "ca": 33723,
+   "ebit": 6954,
+   "net": 5408,
+   "shares": 4495,
+   "nd": 7543,
+   "div": 0
+  },
+  {
+   "year": 2024,
+   "ca": 39001,
+   "ebit": 10418,
+   "net": 8712,
+   "shares": 4393,
+   "nd": 7540,
+   "div": 0
+  },
+  {
+   "year": 2025,
+   "ca": 45200,
+   "ebit": 13327,
+   "net": 10980,
+   "shares": 4341,
+   "nd": 5460,
+   "div": 0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 3.58,
+  "epsNY": 3.82,
+  "epsY2": 4.58,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 51 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 3.59)",
+  "analystsCount": 51
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": "2026-10-20"
+ },
+ "ownership": {
+  "asOf": "2026-08-09",
+  "insiderPct": 4.96,
+  "insiderDesc": "Pas de famille fondatrice au controle : Reed Hastings (co-fondateur, Executive Chairman) reste le premier actionnaire individuel (~21,16M d'actions post-split) mais l'ensemble dirigeants+administrateurs ne represente qu'une fraction minoritaire du capital, sans classe d'actions a droits de vote renforces. Evenement de gouvernance notable : Hastings ne se representera PAS au conseil d'administration lors de l'assemblee 2026.",
+  "insiderSource": "DEF 14A 2026 (SEC, deposee avril 2026) - tableau de detention beneficiaire des dirigeants et administrateurs en groupe, corrobore par agregateurs (BusinessQuant, WallStreetZen).",
+  "notableHolders": [
+   {
+    "investor": "Chase Coleman - Tiger Global Management",
+    "pct": null,
+    "tier": 1,
+    "movement": null,
+    "asOf": "2026-Q1",
+    "source": "13F Q1 2026 - NFLX represente ~1,03% du portefeuille Tiger Global (poids de ligne, pas la part du capital Netflix detenue - non retrouvee precisement)."
+   },
+   {
+    "investor": "Thomas Russo - Gardner Russo & Quinn",
+    "pct": null,
+    "tier": 2,
+    "movement": null,
+    "asOf": "2026-Q1",
+    "source": "13F Q1 2026 - NFLX represente ~6,35% du portefeuille du gerant (poids de ligne, pas la part du capital Netflix detenue)."
+   },
+   {
+    "investor": "Josh Tarasoff - Greenlea Lane Capital",
+    "pct": null,
+    "tier": 2,
+    "movement": null,
+    "asOf": "2026-Q1",
+    "source": "13F Q1 2026 - NFLX represente ~7,80% du portefeuille du gerant, une de ses plus fortes convictions (poids de ligne, pas la part du capital Netflix detenue)."
+   }
+  ],
+  "coverageNote": null,
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-08-09",
+  "items": [
+   {
+    "year": 2022,
+    "title": "Recours collectif en valeurs mobilieres alleguant que Netflix a dissimule le ralentissement de sa croissance d'abonnes (dont l'impact du partage de mots de passe) aux investisseurs entre janvier 2021 et avril 2022.",
+    "allegedBy": "Plaignants actionnaires (dont Grant & Eisenhofer, Kirby McInerney, Rosen Law Firm), Tribunal federal de Californie",
+    "date": "2022-05-01",
+    "status": "classee_sans_suite",
+    "outcome": "Rejet definitif par le juge federal en novembre 2024, la cour jugeant qu'un nouvel amendement de la plainte serait futile - dossier clos.",
+    "source": "Law360, StreamTV Insider (couverture du rejet, novembre 2024)."
+   },
+   {
+    "year": 2025,
+    "title": "Sollicitations d'enquete par plusieurs cabinets d'avocats plaignants (dont Robbins Geller Rudman & Dowd, Schall Law Firm) sur d'eventuelles declarations trompeuses de Netflix et de ses dirigeants concernant l'activite et les operations du groupe.",
+    "allegedBy": "Robbins Geller Rudman & Dowd LLP, Schall Law Firm (cabinets d'avocats plaignants sollicitant des temoins/plaignants)",
+    "date": "2025-10-27",
+    "status": "sollicitation",
+    "outcome": null,
+    "source": "Communiques GlobeNewswire/BusinessWire/PR Newswire (oct.-nov. 2025) ; RGRD LLP, page de cas dediee."
+   }
+  ],
+  "note": "Un ancien recours collectif (2022, croissance d'abonnes/partage de mots de passe) a ete definitivement rejete en novembre 2024. Une vague de sollicitations d'enquete par des cabinets plaignants existe depuis fin octobre 2025 (voir items) mais reste au stade le plus preliminaire - aucun objet precis d'allegation ni plainte formelle identifies a ce jour, aucune enquete reglementaire (SEC/DOJ) recensee."
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-09",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q1 26",
+    "date": "2026-04-16",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Sean Diffley (Morgan Stanley) - enseignements du dossier Warner Bros. Discovery et appetit pour de la M&A : Neumann/direction qualifient l'operation de 'nice-to-have, pas need-to-have', equipe restee concentree sur le coeur d'activite, discipline capitalistique demontree en se retirant quand le cout depassait la valeur pour les actionnaires.",
+     "Q Vikram Kesavabhotla (Baird) - performance de la metrique interne de qualite d'engagement en 2026 : nouveau plus haut historique au T1, credibilite evaluee via son pouvoir predictif sur la retention.",
+     "Q Rich Greenfield (LightShed) - impact de la methodologie Nielsen sur le revenu publicitaire : Nielsen Gauge n'est pas la monnaie du marche video, changement sans effet sur l'efficacite, objectif de 3 Md$ de publicite maintenu.",
+     "Q John Hodulik (UBS) - details d'audience du World Baseball Classic et opportunites similaires : 31,4M de spectateurs, programme le plus regarde de l'histoire au Japon, plus gros jour d'inscription de l'histoire du pays, forte croissance APAC associee.",
+     "Q Robert Fishman (MoffettNathanson) - evaluation du ROI des evenements live vs contenu scripte, strategie NFL : strategie inchangee (grands evenements marquants), discussions NFL en cours dans un cadre discipline centre sur les evenements.",
+     "Q Peter Supino (Wolfe Research) - modele economique et strategie des podcasts : donnees precoces montrant un engagement incremental, notamment en journee et sur mobile, catalogue proprietaire et licencie prometteur.",
+     "Q Dan Salmon (New Street Research) - croissance de la base annonceurs, achat direct vs DSP, strategie mid-market : base annonceurs +70% sur un an a plus de 4 000, programmatique approchant 50% des pubs hors live, expansion iterative.",
+     "Q Vikram Kesavabhotla (Baird) - rationnel et premiers signaux de la hausse de prix US : prix fonde sur les ameliorations de valeur et les signaux d'engagement, premiers resultats conformes aux attentes et a l'historique, retention plus forte partout.",
+     "Q Eric Sheridan (Goldman Sachs) - enseignements de 5 ans de jeux video et futurs axes d'investissement : marche adressable de 150 Md$ identifie, extensions IP synergiques, jeux plateforme soutenant retention/acquisition, jeux enfants priorises.",
+     "Q Brian Pitts (BMO) - mesure du succes de Netflix Playground et valeur pour l'abonne : app dediee jeux enfants, curatee, sans pub ni achat in-app, forts signaux de croissance.",
+     "Q Eric Sheridan (Goldman Sachs) - paysage concurrentiel par geographie/format : relations createurs fortes au-dela du seul budget, signatures recentes avec des talents de premier plan comme indicateur de repeat business.",
+     "Q Eric Sheridan (Goldman Sachs) - evolution du processus creatif GenAI et rationnel de l'acquisition InterPositive : la GenAI ameliore les outils, pas l'art ; InterPositive accelere une technologie specifique aux cineastes, adoption croissante chez les createurs.",
+     "Q Rich Greenfield (LightShed) - calendrier de sortie de Reed Hastings du conseil et lien avec Warner Bros. Discovery : sortie sans lien avec le dossier WBD (que Reed avait lui-meme porte), transition reflétant une philosophie de succession annoncee de longue date par le fondateur."
+    ]
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-16",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Steve Cahall (Wells Fargo) - moteur de la deceleration de croissance FX-neutre T2->T3 : Neumann repond que ce n'est pas pilote trimestre par trimestre, moteurs identiques (abonnements/prix/pub), un peu de choppiness lie a une base 2025 plus pesee au S2, objectif annuel 13-14% maintenu, penetration <45% des foyers adressables et ~7% du marche adressable de 670 Md$ captes.",
+     "Q Rob Sanderson (Loop Capital) - qualite de l'engagement malgre le ralentissement des heures vues/membre : Peters repond que la relation heures/revenu n'est pas lineaire (ex. live = 5% du budget contenu mais 1% des heures, pourtant 6 des 10 meilleurs jours d'inscription sur 5 ans), heures de visionnage +2% au S1 26 (acceleration vs +1,5% en 2025).",
+     "Q Steve Cahall (Wells Fargo) - acceleration de l'amortissement de contenu vs valeur pour le membre : Sarandos repond que la depense de contenu croit ~10% en 2026 (vs 8% de moyenne 5 ans, 14% sur 10 ans), investissement discipline, slate forte (I Will Find You, Swapped, Teach You a Lesson, The Polygamist).",
+     "Q David Joyce (Seaport) - inquietude sur la chute d'audience des saisons 2 : Sarandos repond qu'il n'y a pas de changement materiel agrege, le decrochage S2 est legerement ameliore vs l'an dernier, aucun changement de strategie de sortie prevu.",
+     "Q Vikram Kesavabhotla (Baird) - suivi retention/engagement post-World Baseball Classic au Japon : Sarandos confirme un succes record (programme le plus regarde de l'histoire au Japon), les evenements live generent des pics d'inscription avec un churn legerement plus eleve mais conforme aux attentes, poursuite de l'expansion du calendrier live y compris regional.",
+     "Q Robert Fishman (MoffettNathanson) + Rich Greenfield (LightShed) - opportunite de bundling (Peacock, chaine FAST) et TF1 comme plateforme tierce : Peters repond qu'il est trop tot (4 semaines) mais les resultats sont encourageants, ouverture a des partenariats similaires, rien de nouveau a annoncer.",
+     "Q Robert Fishman (MoffettNathanson) - opportunite d'une offre FAST gratuite : Peters repond que l'option est etudiee mais sans plan de lancement a court terme, risque de cannibalisation et necessite d'une activite publicitaire deja a l'echelle.",
+     "Q John Hodulik (UBS) - futurs formats de contenu au-dela des jeux/podcasts : Sarandos refuse de preannoncer, se dit encourage par les podcasts (visionnage diurne/mobile incremental), nouveaux partenariats editeurs (Conde Nast, Hearst, People) le mois suivant.",
+     "Q Steve Cahall (Wells Fargo) - potentiel de monetisation publicitaire (ARM) : Peters repond que l'ecart d'ARM entre le palier publicitaire et le palier standard se resserre et represente une opportunite de revenu sous-realise, tire par l'elargissement des sources de demande et la pile ad-tech propriétaire.",
+     "Q Sean Diffley (Morgan Stanley) - receptivite aux hausses de prix et calendrier/magnitude : Peters repond que les hausses S1 26 (US, Mexique, Espagne) se passent comme prevu, le prix suit toujours la valeur deja livree, Netflix reste la meilleure valeur du secteur SVOD.",
+     "Q Rich Greenfield (LightShed) - retour des essais gratuits sur certains marches : Peters confirme des tests d'essais gratuits pour les nouveaux membres non-reabonnes (hors US/UK), demarche classique de test-and-learn.",
+     "Q Vikram Kesavabhotla (Baird) - progres de la strategie de jeux cloud : Peters cite un marche adressable de 150 Md$ (hors Chine/Russie), FIFA et Unhinged comme meilleurs lancements cloud, joueurs actifs mensuels cloud x11 depuis octobre 2025, jeux enfants (Playground) engagement mobile +600% sur un an.",
+     "Q Jessica Reif Ehrlich (BofA) - effet de levier de l'echelle (~330M foyers) dans un paysage media en consolidation : Sarandos repond que l'echelle cree un effet volant (decouverte, monetisation, ROI programme), TF1 en exemple, la consolidation du secteur n'est pas nouvelle, focus reste sur les membres.",
+     "Q Sean Diffley (Morgan Stanley) - premiers enseignements du rachat InterPositive et impact sur le budget de contenu de 20 Md$ : Sarandos repond que la GenAI s'etend a environ 300 titres (concentree en post-production), qualite preservee (artistes aux commandes), economies probablement reinvesties dans plus de contenu plutot que reduites du budget.",
+     "Q Dan Kurnos (StoneX) - allocation du capital face aux rumeurs Lionsgate/NBCUniversal : Sarandos refuse de commenter la speculation, reaffirme la philosophie 'builders not buyers' et un seuil tres eleve pour toute M&A significative ; Neumann confirme aucun changement de politique d'allocation du capital, rachat record de 4,7 Md$ au T2, 27 Md$ d'autorisation restante."
+    ]
+   }
+  ],
+  "engagementsStructurants": []
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Refresh (sourcing complete sur le meme trimestre) - Creation T2 2026 le 2026-07-17 (Transcript T2 2026, Investing.com/Seeking Alpha) completee par cette session : lettre aux actionnaires + transcript de l'interview Q2 26 (S&P Global Market Intelligence, 16/07/2026) relus integralement, ownership/compliance/coherenceQualitative/quarterlyEPS renseignes pour la premiere fois. Aucun nouveau trimestre publie depuis la creation (prochain : Q3 26, 20/10/2026) - data/adjXXX/ancrages non rouverts. RECUPERATION RETROACTIVE (E2 ter point 1 bis) : transcript Q1 26 (16/04/2026, Sarandos/Peters/Neumann) retrouve et lu a posteriori pour amorcer immediatement la comparaison de coherenceQualitative (aucune entree brute anterieure disponible avant ce refresh) - capture Q&A Q1 26 marquee comme reconstruite retroactivement, pas une capture live du Q1 26.",
+  "priorEPS": {
+   "date": "2026-07-17",
+   "eps": {
+    "2026": 3.2,
+    "2027": 3.81
+   }
+  },
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 12560,
+     "consensus": 12583
+    },
+    "epsAdj": {
+     "actual": 0.8,
+     "consensus": 0.79,
+     "basis": "GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 26 : CA guidé à 12,86 Md$ (+12% reporté, +11% FX-neutre), marge opérationnelle 33,2%, résultat net 3 452 M$, EPS 0,82$ — guidance légèrement sous le consensus pré-publication (~13,0 Md$ de CA, ~13% de croissance attendue par le marché).",
+   "guidanceAnnuelle": "CA 2026 resserré à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre) ; marge opérationnelle 31,5% ; publicité visée à ~3 Md$ (x2 vs 2025) ; EPS consensus normalisé (S&P Global, hors éléments non récurrents) 3,51$ pour l'année pleine.",
+   "pointsCles": [
+    "Rachat d'actions record de 4,7 Md$ sur le trimestre (le plus important de l'histoire du groupe), financé en partie par la soulte WBD ; ~27 Md$ d'autorisation restante.",
+    "Aucun changement de stratégie de sortie des saisons malgré l'attention du marché sur l'engagement ; la chute d'audience Saison 2 est jugée légèrement améliorée par rapport à l'an dernier.",
+    "Partenariat de distribution TF1 (France) jugé positif après quatre semaines ; pas de plan de lancement d'une offre gratuite ou d'une plateforme FAST à court terme.",
+    "Déploiement de la GenAI (dont l'acquisition InterPositive) sur environ 300 productions à ce jour ; dépenses de contenu 2026 guidées à +10%, sous la croissance du CA."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "10-Q T2 2026 + lettre aux actionnaires (16/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA T2 12,56 Md$ (+13%, +12% FX-neutre), resultat operationnel 4,19 Md$ (marge 33,4% vs 34,1% N-1), guidance FY26 resserree 51,0-51,4 Md$ / marge 31,5% reiteree."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-16",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "CA 2026 resserré à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre) ; marge opérationnelle 31,5% ; publicité visée à ~3 Md$."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.66,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.72,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.59,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.56,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.66,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.8,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.82,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.92,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 0.79,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 0.95,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 0.98,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 1.09,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Leader mondial du streaming, croissance CA guidée 13-14% pour 2026 et expansion de marge opérationnelle confirmée (31,5% guidé). Soulte WBD de 2,8 Md$ (T1 26) exclue d'omniumNet comme non-opérationnelle. Rachats d'actions record au T2 26.",
+  "text": "== THESIS SUMMARY ==\nUndisputed streaming leader (~1bn viewers) with under 45% penetration of an ~800M-broadband-household TAM where it captures only ~7% of ~670bn addressable revenue. The compounding stack: subscription growth + pricing power + advertising ramp (~3bn targeted 2026 vs ~1.5bn 2025), with content-cost growth guided ~10% - below revenue growth - feeding steady margin expansion (operating margin 31.5% guided). FY26 revenue tightened to 51.0-51.4bn at Q2.\n\n== THESIS READ ==\n- The ad tier is the marginal thesis driver: 2x targeted in 2026 and still early. Watch: ad-revenue milestones vs the ~3bn goal.\n- Margin expansion is policy, not luck (content growth capped below revenue growth). Watch: content-slate inflation and sports-rights discipline.\n- Capital returns accelerate: shares -2.4%/yr modeled, gross-debt cap 10-15bn maintained. Watch: buyback pace vs the WBD situation (any large M&A would break the model).\n\n== SPECIAL FACTORS ==\nBase = normalized operating (ex-WBD-related items per ancrages). Normative tax 14% (2025 actual 13.7%, no windfall to correct). Historical net debt 2015-2021 approximated (low confidence flagged, moderate materiality). Post-split share figures.\n\n== PARAMETERS & WATCH-LIST ==\nRevenue +12%/yr fading to +9% by 2030; EBIT margin 31.5% -> 34%; ETR 14%; finNet ~-500M shrinking with modest deleveraging (5.5 -> 3bn). Published 2025 reconciles at ~0 residual. Shares 4,200 -> 3,800M. Watch: FX-neutral vs reported growth gap; ad-tech stack execution; engagement metrics disclosure cadence.\n\n== CATALYSTS ==\nQ3 (Oct); ad-revenue disclosures; 2027 guidance (Jan); live/sports events scaling.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "revenue_growth_guidance",
+    "moteur": "CA 2026 guidé à 51,0-51,4 Md$ (13-14% reporté, ~12% FX-neutre), ralentissant graduellement vers ~9% en 2030 à mesure que la base se dilue, soutenu par une pénétration foyers <45% et une part de marché adressable captée d'environ 7% seulement.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "margin_expansion_guidance",
+    "moteur": "Marge opérationnelle 2026 guidée à 31,5% (vs 29,5% en 2025), les coûts de contenu (+10% guidé) croissant plus lentement que le CA ; expansion graduelle poursuivie vers ~34% d'ici 2030 à mesure que l'effet de levier opérationnel se matérialise.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "wbd_termination_fee_exclusion",
+    "moteur": "Soulte de rupture de 2,8 Md$ bruts encaissée au T1 2026 suite à l'abandon du rachat de Warner Bros. Discovery (surenchère Paramount Skydance), comptabilisée en \"interest and other income\" — exclue d'omniumNet/omniumEPS 2026 comme gain non-opérationnel et non récurrent, cohérent avec le traitement des gains non-opérationnels ailleurs dans le portefeuille.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumEPS.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "tax_normalization",
+    "moteur": "Taux d'impôt normalisé à 14%, proche du taux effectif 2025 (13,7%) sans indice de windfall à corriger, appliqué de façon stable sur tout l'horizon de projection.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "buyback_pace",
+    "moteur": "Rachat d'actions record au T2 26 (4,7 Md$, financé en partie par la soulte WBD), ~27 Md$ d'autorisation restante ; actions diluées supposées en baisse continue de ~4,3 Md (2025) vers ~3,8 Md d'ici 2030.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030",
+     "omniumEPS.2026",
+     "omniumEPS.2027",
+     "omniumEPS.2028",
+     "omniumEPS.2029",
+     "omniumEPS.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "net_debt_trajectory",
+    "moteur": "Plafond de dette brute visé par le management à 10-15 Md$ (pas de désendettement supplémentaire engagé), mais le free cash-flow croissant (9,5 Md$ en 2025) est supposé réduire progressivement la dette nette malgré le rythme de rachats d'actions.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 3.2,
+   "2027": 3.81,
+   "2028": 4.43,
+   "2029": 5.1,
+   "2030": 5.81
+  },
+  "omniumCA": {
+   "2026": 51200,
+   "2027": 57340,
+   "2028": 63650,
+   "2029": 70020,
+   "2030": 76320
+  },
+  "omniumEBIT": {
+   "2026": 16130,
+   "2027": 18640,
+   "2028": 21000,
+   "2029": 23460,
+   "2030": 25950
+  },
+  "omniumNet": {
+   "2026": 13440,
+   "2027": 15640,
+   "2028": 17720,
+   "2029": 19880,
+   "2030": 22060
+  },
+  "omniumND": {
+   "2026": 5000,
+   "2027": 4500,
+   "2028": 4000,
+   "2029": 3500,
+   "2030": 3000
+  },
+  "omniumShares": {
+   "2026": 4200,
+   "2027": 4100,
+   "2028": 4000,
+   "2029": 3900,
+   "2030": 3800
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -604,
+    "other": 0,
+    "taxRate": 0.137,
+    "minorities": 0,
+    "netCalc": 10979.9,
+    "netPub": 10980,
+    "residual": 0.1,
+    "residualNote": "Reconciles cleanly: ~600M net interest on the gross-debt stack (10-15bn cap policy), actual 2025 ETR 13.7%."
+   },
+   "2026": {
+    "finNet": -502,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 13440.1
+   },
+   "2027": {
+    "finNet": -454,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 15640.0
+   },
+   "2028": {
+    "finNet": -395,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 17720.3
+   },
+   "2029": {
+    "finNet": -344,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 19879.8
+   },
+   "2030": {
+    "finNet": -299,
+    "other": 0,
+    "taxRate": 0.14,
+    "minorities": 0,
+    "netCalc": 22059.9
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Revenue (guided range) + operating margin",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-16",
+     "type": "guidance_revised",
+     "detail": "FY26 revenue tightened to 51.0-51.4bn; operating margin 31.5%; advertising on track to ~3bn (vs ~1.5bn in 2025)."
+    }
+   ],
+   "paceCheckpoint": "H1 real: on the guided path; ad revenue scaling per plan.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 3.8,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 4.0,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "rev 43.5-44.5bn + 29% op margin",
+     "realizedDisplay": "45.0bn / 29.5%",
+     "note": "Initial FY25 guidance (Q4-24 letter, 21/01/2025): revenue 43.5-44.5bn (mid 44.0) and 29% operating margin - implied op income 12.76bn; realized 45.0bn at 29.5% = 13.28bn - level +4.0% on the guided op-income plan (revenue alone +2.3%)."
+    },
+    {
+     "fy": 2024,
+     "beatPct": 11.3,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "24% op margin (no revenue range)",
+     "realizedDisplay": "26.7% op margin",
+     "note": "Initial FY24 guidance (Q4-23 letter, 23/01/2024): 24% operating margin - Netflix guided no FY24 revenue range, so the beat is margin-only: realized 26.7% = +11.3% on the guided profitability plan (an outsized beat year: margin raised three times in-year)."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 51200,
+    "source": "initial_guidance",
+    "date": "2026-01-20",
+    "note": "TRUE initial FY26 guidance (Q4-25 letter, 20/01/2026): revenue 50.7-51.7bn (mid 51.2, +12/14%), operating margin 31.5%. Tightened at Q2 (16/07) to 51.0-51.4 - SAME mid, margin reiterated. Netflix guides revenue/margin, not EPS."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +3.8% BLENDED (in-progress 0.0 x1/2; FY25 +4.0 and FY24 +11.3 equal-shared). Beats measured on the guided operating-income plan (revenue x margin; margin-only for FY24) - translation to EPS via buybacks/below-the-line is the declared wedge.",
+   "consensusSource": "WallStreetZen consensus (GAAP, post-split)",
+   "consensusDate": "2026-07-16",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 51200,
+    "currentValue": 51200,
+    "deltaPct": 0.0,
+    "asOf": "2026-07-16",
+    "note": "Initial mid 51.2bn / 31.5% margin; Q2 tightened the range around the same mid and reiterated the margin - projected 0.0 on the guided plan."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-16",
+   "label": "Q2 2026",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 3.66,
+   "epsNY": 3.92,
+   "date": "2026-07-16",
+   "source": "WallStreetZen/consensus, post-split (10-for-1, janv. 2026) ; INCLUT la soulte WBD de 2,8 Md$ comptabilisée au T1 26, non comparable telle quelle à omniumEPS (voir ancrage wbd_termination_fee_exclusion)"
+  }
+ ]
 }
