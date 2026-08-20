@@ -569,6 +569,36 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 
 .dash-head{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 26px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 2px 12px;margin:0 0 34px;}
 .dash-vr{background:var(--border);}
+/* ── Dashboard B1 (20/08/2026) : panneaux bleu voile, zero carte a ombre.
+   Rythme : 20px ENTRE les panneaux, padding 16/18 DEDANS, rangees 32-48px.
+   Calendrier en GRILLE multi-colonnes de pastilles de date (celle du jour
+   pleine en navy) ; P/E en groupes navy + en-tetes de colonnes. */
+.dashb-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;max-width:1120px;margin:0 0 20px;}
+.dashb-panel{background:#f6f7fe;border-radius:14px;padding:16px 18px 12px;}
+.dashb-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 10px;}
+.dashb-act{background:#f6f7fe;border-radius:14px;padding:12px 18px 8px;margin:0 0 34px;max-width:1120px;}
+.calb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:2px 18px;}
+.calb-evt{display:grid;grid-template-columns:36px 1fr 10px;gap:9px;align-items:center;padding:6px 0;}
+.dchipb{width:36px;height:36px;border-radius:9px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.dchipb .d{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);line-height:1.1;}
+.dchipb .m{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1;}
+.dchipb.today{background:var(--navy);}
+.dchipb.today .d,.dchipb.today .m{color:#fff;}
+.calb-evt .who{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);line-height:1.25;cursor:pointer;}
+.calb-evt .what{display:block;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:500;color:#64748b;line-height:1.25;}
+.calb-evt .x{color:#c2c8d4;font-size:10px;line-height:1;cursor:pointer;text-align:center;}
+.peb-group{display:flex;align-items:center;gap:10px;margin:12px 0 2px;}
+.peb-group.first{margin-top:0;}
+.peb-group b{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
+.peb-group i{flex:1;height:1px;background:#e9ebf7;}
+.peb-colhead{display:grid;grid-template-columns:1fr 64px 52px;gap:12px;}
+.peb-colhead span{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);text-align:right;}
+.peb-row{display:grid;grid-template-columns:1fr 64px 52px;gap:12px;align-items:center;height:32px;}
+.peb-row+.peb-row{border-top:1px solid #e9ebf7;}
+@media(max-width:760px){
+  .dashb-grid{grid-template-columns:1fr;gap:14px;}
+  .dashb-act{margin-bottom:26px;}
+}
 @media(max-width:760px){
   .dash-head{grid-template-columns:1fr;gap:18px 0;}
   .dash-vr{display:none;}
@@ -4544,69 +4574,62 @@ function renderMarketCalendar(){
   const wrap=document.getElementById('market-calendar-wrap');
   if(!wrap) return;
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
-  const cell="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);";
-  const weekHead=(txt)=>`<div style="display:flex;align-items:center;gap:8px;margin:12px 0 2px;"><span style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--navy);letter-spacing:.08em;text-transform:uppercase;">${txt}</span><div style="flex:1;height:1px;background:var(--border);"></div></div>`;
 
-  // ── Volet gauche : Market Calendar
+  // ── Volet gauche : Market Calendar - B1 "pastilles de date" (20/08).
+  // Grille multi-colonnes : le calendrier se remplit en cellules
+  // compactes (pastille jour/mois + ticker + objet), 2 colonnes des que
+  // la place existe. La pastille du JOUR est pleine en navy - plus
+  // d'intitules de semaine ni d'echeance relative : la date se lit seule.
   const sel=calUpcoming(_calData.selected);
   let calBody;
   if(sel.length){
-    const mondayOf=(ds)=>{ const d=new Date(ds+'T00:00:00Z'); const wd=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-wd); return d.toISOString().slice(0,10); };
-    const thisMonday=mondayOf(new Date().toISOString().slice(0,10));
-    const groups=[];
-    sel.forEach(e=>{
-      const wk=mondayOf(e.date);
-      let g=groups.find(x=>x.wk===wk);
-      if(!g){ g={wk,items:[]}; groups.push(g); }
-      g.items.push(e);
-    });
     const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const rows=(items)=>items.map(e=>{
+    const todayIso=new Date().toISOString().slice(0,10);
+    calBody=`<div class="calb-grid">${sel.map(e=>{
       const d=new Date(e.date+'T00:00:00Z');
-      return `<div title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}" style="display:grid;grid-template-columns:52px 96px 1fr 18px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f2f3f9;">
-        <span style="${cell}white-space:nowrap;">${d.getUTCDate()} ${MOIS[d.getUTCMonth()]}</span>
-        <span onclick="CT='${esc(e.ticker)}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(e.ticker)}</span>
-        <span style="${cell}line-height:1.35;">${esc(e.label)}</span>
-        <span onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar" style="cursor:pointer;font-size:11.5px;color:var(--muted);text-align:center;line-height:1;">×</span>
+      const today=e.date===todayIso;
+      return `<div class="calb-evt" title="${esc(e.source)}${e.status==='estimated'?' (estimated date)':''}">
+        <span class="dchipb${today?' today':''}"><span class="d">${d.getUTCDate()}</span><span class="m">${MOIS[d.getUTCMonth()]}</span></span>
+        <span><span class="who" onclick="CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</span><span class="what">${esc(e.label)}</span></span>
+        <span class="x" onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar">×</span>
       </div>`;
-    }).join('');
-    calBody=groups.map(g=>weekHead(g.wk===thisMonday?'This week':`Week of ${formatFrDate(g.wk)}`)+rows(g.items)).join('');
+    }).join('')}</div>`;
   } else {
-    calBody=`<p style="font-size:9.5px;color:var(--muted);margin:12px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
+    calBody=`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
   }
 
-  // ── Volet droit : extremes P/E vs moyenne de leur serie
+  // ── Volet droit : extremes P/E vs moyenne de leur serie - groupes
+  // navy affirmes + en-tetes de colonnes "Current / vs avg" (B1 20/08).
   const {disc, stretch}=peVsAverageExtremes(3);
-  const maxDev=Math.max(...disc.map(r=>-r.devPct), ...stretch.map(r=>r.devPct), 1);
   const peRow=(r)=>{
     // Convention de marche (decision 19/08) : decote en VERT, tension en
     // ROUGE - pas une couleur decorative, un code lu par tout investisseur.
-    const disc_=r.devPct<0;
-    const col=disc_?'#0f8f4a':'var(--err)';   // vert de marche (fonce), rouge inchange
-    return `<div title="average ${r.avg.toFixed(1)}×" style="display:grid;grid-template-columns:1fr 62px 52px;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid #f2f3f9;">
-      <span onclick="CT='${r.ticker}';showTab('analyse');" style="cursor:pointer;${cell}overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.ticker}</span>
-      <span style="text-align:right;${cell}">${r.pe.toFixed(1)}×</span>
-      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};">${r.devPct>=0?'+':'−'}${Math.abs(r.devPct).toFixed(0)}%</span>
+    const col=r.devPct<0?'#0f8f4a':'var(--err)';
+    return `<div class="peb-row" title="average ${r.avg.toFixed(1)}×">
+      <span onclick="CT='${r.ticker}';showTab('analyse');" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.ticker}</span>
+      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;">${r.pe.toFixed(1)}×</span>
+      <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:${col};font-variant-numeric:tabular-nums;">${r.devPct>=0?'+':'−'}${Math.abs(r.devPct).toFixed(0)}%</span>
     </div>`;
   };
-  const periodSel=`<div style="margin-top:0;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);">${['1m','1y','all'].map(p=>`<span onclick="setPeAvgPeriod('${p}')" style="cursor:pointer;margin-right:10px;${_peAvgPeriod===p?'color:var(--navy);font-weight:700;':'font-weight:500;'}">${p==='all'?'all time':p==='1m'?'1 month':'1 year'}</span>`).join('')}</div>`;
-  const colHead=`<div style="display:grid;grid-template-columns:1fr 62px 52px;gap:10px;margin:16px 0 -12px;">
-      <span></span><span style="text-align:right;transform:translateX(4px);font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted);white-space:nowrap;">Current</span><span></span>
-    </div>`;
+  const grpHead=(txt,first)=>`<div class="peb-group${first?' first':''}"><b>${txt}</b><i></i></div>`;
+  const periodSel=`<span style="display:flex;gap:10px;font-family:'Poppins',sans-serif;font-size:9.5px;">${['1m','1y','all'].map(p=>`<span onclick="setPeAvgPeriod('${p}')" style="cursor:pointer;${_peAvgPeriod===p?'color:var(--navy);font-weight:700;':'color:var(--muted);font-weight:600;'}">${p}</span>`).join('')}</span>`;
+  const colHead=`<div class="peb-colhead"><span></span><span>Current</span><span>vs avg</span></div>`;
   const peBody=(disc.length||stretch.length)
-    ? `${periodSel}${colHead}${disc.length?weekHead('Deepest discounts')+disc.map(peRow).join(''):''}
-       ${stretch.length?weekHead('Most stretched')+stretch.map(peRow).join(''):''}`
-    : `<p style="font-size:9.5px;color:var(--muted);margin:10px 0 0;">Not enough price history yet.</p>`;
+    ? `${disc.length?grpHead('Deepest discounts',true)+colHead+disc.map(peRow).join(''):''}
+       ${stretch.length?grpHead('Most stretched')+stretch.map(peRow).join(''):''}`
+    : `<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">Not enough price history yet.</p>`;
 
-  wrap.innerHTML=`<div class="dash-head">
-    <div>
-      <div class="card-title" style="margin-bottom:18px;"><b style="color:var(--teal-text);">Market Calendar</b></div>
+  wrap.innerHTML=`<div class="dashb-grid">
+    <div class="dashb-panel">
+      <div class="dashb-head"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">Market Calendar</span></div>
       ${calBody}
     </div>
-    <div class="dash-vr"></div>
-    <div>
-      <div class="card-title" style="margin-bottom:18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;"><b style="color:var(--teal-text);">P/E Rankings vs average</b>
-        <span onclick="showTab('valuerankings', null)" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);text-transform:none;letter-spacing:0;white-space:nowrap;">Full rankings <span style="font-size:9.5px;">›</span></span>
+    <div class="dashb-panel">
+      <div class="dashb-head"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">P/E Rankings</span>
+        <span style="display:flex;align-items:baseline;gap:16px;">
+          ${periodSel}
+          <span onclick="showTab('valuerankings', null)" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);white-space:nowrap;">Full rankings ›</span>
+        </span>
       </div>
       ${peBody}
     </div>
@@ -4647,17 +4670,18 @@ function renderActionsBar(){
   if(gaps.total) items.push({k:'gaps',dot:'var(--navy)',lbl:'Source data gaps — transcripts & consensus',cnt:String(gaps.total),panel:buildSourceGapsPanel(gaps)});
 
   if(!items.length){ wrap.innerHTML=''; return; }
-  const rows=items.map(it=>{
+  const rows=items.map((it,i)=>{
     const open=_actRowOpen===it.k;
-    return `<div onclick="toggleActionRow('${it.k}')" style="display:grid;grid-template-columns:14px 1fr 46px 14px;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #f2f3f9;cursor:pointer;">
-        <span style="width:8px;height:8px;border-radius:50%;background:${it.dot};"></span>
+    return `<div onclick="toggleActionRow('${it.k}')" style="display:grid;grid-template-columns:14px 1fr 46px 14px;gap:10px;align-items:center;height:36px;${i?'border-top:1px solid #e9ebf7;':''}cursor:pointer;">
+        <span style="width:7px;height:7px;border-radius:50%;background:${it.dot};"></span>
         <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">${it.lbl}</span>
         <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">${it.cnt}</span>
-        <span style="color:var(--muted);font-size:11.5px;text-align:center;${open?'transform:rotate(90deg);':''}">›</span>
-      </div>${open?`<div onclick="event.stopPropagation();" style="padding:10px 0 12px;border-bottom:1px solid #f2f3f9;">${it.panel}</div>`:''}`;
+        <span style="color:#c2c8d4;font-size:11.5px;text-align:center;${open?'transform:rotate(90deg);':''}">›</span>
+      </div>${open?`<div onclick="event.stopPropagation();" style="padding:6px 0 12px;border-top:1px solid #e9ebf7;">${it.panel}</div>`:''}`;
   }).join('');
-  wrap.innerHTML=`<div style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 2px 4px;margin:0 0 34px;max-width:560px;">
-    <div class="card-title" style="margin-bottom:2px;"><b style="color:var(--teal-text);">Actions</b></div>
+  // Panneau au meme gabarit B1 que le calendrier et le P/E (20/08).
+  wrap.innerHTML=`<div class="dashb-act">
+    <div class="dashb-head" style="margin-bottom:4px;"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">Actions</span></div>
     ${rows}
   </div>`;
 }
