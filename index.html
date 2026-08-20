@@ -473,7 +473,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    one-offs en position ABSOLUE : la valeur reste centree dans sa colonne. */
 .epsg-yrhead{font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:var(--navy);margin:12px 0 2px;}
 .epsg-yr{margin-top:2px;}
-.epsg-lbl{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--muted2,#64748b);padding-left:14px;white-space:nowrap;}
+.epsg-lbl{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--muted2,#64748b);padding-left:2px;white-space:nowrap;}
 .epsg-lbl.pub{color:#64748b;}
 .epsg-lbl.adj{color:var(--teal-text);}
 .epsg-lbl.res{color:var(--navy);font-weight:800;}
@@ -504,7 +504,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 /* separation douce entre exercices */
 .rb-eps-grid .rb-eps-block+.rb-eps-block{border-top:1px solid #f0f1f7;padding-top:8px;margin-top:8px;}
 @media(max-width:760px){
-  .epsg-yr,.epsg-yrhead{--epsg-left:88px;--epsg-fy:54px;}
+  .epsg-yr,.epsg-yrhead{--epsg-left:64px;--epsg-fy:54px;}
   .epsg-yr{gap:5px !important;}
   .epsg-lbl,.epsg-lbl.res{padding-left:4px;font-size:9px;}
   .epsg-chip{min-height:30px;}
@@ -512,7 +512,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .epsg-yrhead{font-size:11.5px;}
 }
 @media(max-width:760px){
-  .epsg-qhead,.epsg-yr,.epsg-bridge{--epsg-left:84px;gap:6px !important;}
+  .epsg-qhead,.epsg-yr,.epsg-bridge{--epsg-left:64px;gap:6px !important;}
   .epsg-chip{padding:3px 2px;min-height:38px;}
   .epsg-v{font-size:10.5px;}
   .epsg-pub{font-size:7.5px;}
@@ -1789,7 +1789,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
   // exercice en cours ; badge de detail flottant pour ne pas desaxer la
   // valeur de sa colonne.
   const nPer=(qe.CY||[]).length||4;
-  const gridStyle=`display:grid;grid-template-columns:var(--epsg-left,168px) repeat(${nPer},1fr) var(--epsg-fy,70px);gap:8px;align-items:center;`;
+  const gridStyle=`display:grid;grid-template-columns:var(--epsg-left,96px) repeat(${nPer},1fr) var(--epsg-fy,70px);gap:8px;align-items:center;`;
   const headerRow='';
 
   const yearBlock=(arr,opts={})=>{
@@ -1810,20 +1810,22 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
     // Le total annuel porte la MEME grammaire que les blocs : micro-label
     // "FY" au-dessus du chiffre (comme T1..T4 dans les blocs) - la
     // colonne de droite se declare total annuel sans en-tete dedie.
-    // La fleche "→" n'existe que sur les annees a PONT : elle conclut
-    // l'equation Published − One-offs au-dela du double filet. Sur une
-    // annee propre, sans equation au-dessus, elle ne renvoyait a rien.
-    // Et "EPS" disparait des libelles de rang ("Omnium", "Published") :
-    // c'est deja le titre de la section (retour 20/08 v3).
-    const resultRow=(tot,bridge)=>`<div class="epsg-yr" style="${gridStyle}">
-        <span class="epsg-lbl res">${bridge?'→ ':''}Omnium</span>
+    // La serie CONSERVEE ne porte AUCUN libelle (retour 20/08 v4) : les
+    // chiffres publies sont publies, les estimations sont evidemment de
+    // l'Omnium (legende Reported/Estimated) - "Omnium" n'apprenait rien.
+    // Sur une annee a pont, la ligne muette sous le double filet EST le
+    // resultat de l'equation Published − One-offs : le filet comptable
+    // l'annonce mieux qu'un mot. Seules les lignes d'ENTREE de
+    // l'equation gardent un libelle.
+    const resultRow=(tot)=>`<div class="epsg-yr" style="${gridStyle}">
+        <span></span>
         ${baseCells}
         <span class="epsg-t res fy"><span class="epsg-q">FY</span>${tot>0?totalTxt(tot):'—'}</span>
       </div>`;
     // Annee sans retraitement : titre d'annee + la seule ligne de
     // resultat (cas degenere du meme gabarit).
     if(!hasAdj(arr)){
-      return `<div class="epsg-yrhead">${opts.label}</div>${resultRow(shown,false)}`;
+      return `<div class="epsg-yrhead">${opts.label}</div>${resultRow(shown)}`;
     }
     const cleanTotal=arr.reduce((a,p)=>a+(+p.eps||0),0);
     const adjTotal=arr.reduce((a,p)=>a+adjOf(p),0);
@@ -1864,7 +1866,7 @@ function buildQuarterlyEPS(qe, cours, epsCY, epsNY, CY, cur, ndCY, shCY, ndNY, s
       </div>
       <div class="eps-detail" id="${blockId}-d"></div>
       <div class="epsg-dbl"></div>
-      ${resultRow(cleanTotal,true)}`;
+      ${resultRow(cleanTotal)}`;
   };
   // Le consensus est accole a la ligne "Omnium basis", jamais a la ligne
   // "Published" : un consensus sell-side est etabli hors elements non
@@ -3150,24 +3152,33 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     return `<polyline points="${pts}" fill="none" stroke="var(--navy)" stroke-width="${isLast?2:1.4}"${isLast?'':' stroke-dasharray="3 4"'} opacity="${opacity}" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
   }).join('');
 
-  // Trace consensus (convention 20/08 v2) : la courbe consensus COURANTE
-  // est un TRAIT PLEIN FIN or (prolongee lineairement jusqu'a l'horizon,
-  // sans mention) ; les instantanes consensus ARCHIVES
-  // (epsConsensusHistory) sont en pointilles attenues, sans etiquette.
-  // L'etiquette unique "Consensus · date" vit EN HAUT A DROITE, hors de
-  // la zone de trace (padT) - elle ne peut couper aucune courbe, quel
-  // que soit l'empilement futur. Aucune valeur affichee.
+  // Trace consensus : la courbe consensus COURANTE est un trait plein fin
+  // or (prolongee lineairement jusqu'a l'horizon, sans mention) ; les
+  // instantanes ARCHIVES (epsConsensusHistory) sont en pointilles
+  // attenues, sans etiquette. La DATE du consensus courant se pose pres
+  // de sa courbe (voir plus bas) ; les noms des traits vivent dans la
+  // legende a cote du titre d'axe.
   let consSvg='';
   // Couleur : LE jaune Omnium existant (--gold-text, celui du scorecard) -
   // pas une troisieme nuance d'or (retour 20/08).
   const CONS_COL='var(--gold-text)';
+  // Norme d'abreviation des dates posees sur les charts : "6 Jul '26" -
+  // la MEME pour les millesimes Omnium et la date consensus.
+  const shortDate=(iso)=>{
+    const d=new Date(iso+'T00:00:00Z');
+    if(isNaN(d)) return iso;
+    const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
+    return `${d.getUTCDate()} ${m} '${String(d.getUTCFullYear()).slice(2)}`;
+  };
   const consCurMap={...consExtra, ...consMapAll};
+  const drawnConsHist=[];
   consHistMaps.forEach(m=>{
     const ys=years.filter(y=>typeof m[y]==='number');
     if(ys.length<2) return;
     // Meme regle que les revisions Omnium archivees : un instantane qui
     // colle au consensus courant ne laisserait qu'un fragment pointille.
     if(fracVisible(m, consCurMap)<0.5) return;
+    drawnConsHist.push(m);
     const pts=ys.map(y=>`${xOf(y).toFixed(1)},${yOf(m[y]).toFixed(1)}`).join(' ');
     consSvg+=`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1" stroke-dasharray="2 4" opacity=".3" stroke-linejoin="round" stroke-linecap="round"/>`;
   });
@@ -3178,27 +3189,73 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     // Trait plein fin, SANS marqueurs (retour 20/08 : les points ronds
     // n'apprenaient rien et accrochaient l'oeil).
     consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'');
+    // DATE du consensus courant (norme shortDate), posee PRES de sa
+    // courbe. Placement pense pour le REMPLISSAGE futur : candidats sur
+    // la moitie GAUCHE du trace (la droite appartient aux etiquettes de
+    // millesime), au-dessus/en dessous de la courbe avec offset pris sur
+    // ses extremes sous la largeur du texte (une pente ne peut pas barrer
+    // le texte), et clairance mesuree contre TOUTES les courbes tracees
+    // (Omnium courante + archives visibles + archives consensus). Le
+    // candidat le plus degage gagne ; a egalite, le plus a gauche.
+    if(dCons&&dCons.date&&chain.length>1){
+      const labTxt=shortDate(dCons.date);
+      const labW=labTxt.length*4.8+2;
+      const consYAt=(x)=>{
+        const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
+        if(fy<=chain[0]) return yOf(vOf(chain[0]));
+        if(fy>=chain[chain.length-1]) return yOf(vOf(chain[chain.length-1]));
+        let k=1; while(k<chain.length&&chain[k]<fy) k++;
+        const a=chain[k-1], b=chain[k];
+        return yOf(vOf(a)+(vOf(b)-vOf(a))*((fy-a)/(b-a)));
+      };
+      const mapYAt=(m,x)=>{
+        const ys=years.filter(y=>typeof m[y]==='number');
+        if(ys.length<2) return null;
+        const fy=yFirst+((x-padL)/plotW)*(yLast-yFirst);
+        if(fy<ys[0]||fy>ys[ys.length-1]) return null;
+        let k=1; while(k<ys.length&&ys[k]<fy) k++;
+        const a=ys[k-1], b=ys[k];
+        return yOf(m[a]+(m[b]-m[a])*((fy-a)/(b-a)));
+      };
+      const others=shown
+        .filter((s,i)=> i===n-1 || fracVisible(s.epsByYear, lastState.epsByYear)>=0.5)
+        .map(s=>s.epsByYear)
+        .concat(drawnConsHist);
+      let best=null;
+      [0.05,0.22,0.42].forEach(fr=>{
+        const lx=padL+plotW*fr;
+        if(lx+labW>padL+plotW*0.62) return;
+        let topMin=Infinity, botMax=-Infinity;
+        for(let k=0;k<=6;k++){ const cy=consYAt(lx+labW*k/6); if(cy<topMin)topMin=cy; if(cy>botMax)botMax=cy; }
+        [topMin-7, botMax+13].forEach(yy=>{
+          if(yy<padT+9||yy>padT+plotH-2) return;
+          let m=Infinity;
+          for(let k=0;k<=6;k++){
+            const x=lx+labW*k/6;
+            others.forEach(mp=>{ const oy=mapYAt(mp,x); if(oy!=null) m=Math.min(m,Math.abs(oy-yy)); });
+          }
+          if(!best||m>best.m+0.5) best={lx,yy,m};
+        });
+      });
+      if(best)
+        consSvg+=`<text x="${best.lx.toFixed(1)}" y="${best.yy.toFixed(1)}" font-size="9" font-weight="500" font-family="Poppins,sans-serif" fill="${CONS_COL}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${labTxt}</text>`;
+    }
   }
-  // LEGENDE (retour 20/08 v3) : plus d'etiquette flottante le long de la
-  // courbe - une legende en tete de graphique, alignee a droite sur la
-  // ligne de base de l'unite d'axe, nomme les deux traits. La date du
-  // consensus vit dans la legende ; aucun placement intelligent requis,
-  // aucune collision possible avec l'empilement futur des courbes.
+  // LEGENDE : a GAUCHE, dans le sillage du titre d'axe ("EPS, in $") -
+  // les deux forment la ligne de tete. Noms seuls, sans date (la date
+  // consensus vit pres de sa courbe).
   let legSvg='';
   {
     const items=[{col:'var(--navy)', sw:2, txt:'Omnium'}];
-    if(consYears.length)
-      items.push({col:CONS_COL, sw:1.2, txt:`Consensus${dCons&&dCons.date?` · ${formatFrDate(dCons.date)}`:''}`});
-    let x=W;
+    if(consYears.length) items.push({col:CONS_COL, sw:1.2, txt:'Consensus'});
+    let x=padL+unitTxt.length*7.4+22;
     const parts=[];
-    for(let i=items.length-1;i>=0;i--){
-      const it=items[i];
-      x-=it.txt.length*5.1;
-      parts.push(`<text x="${x.toFixed(1)}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}">${it.txt}</text>`);
-      x-=18;
+    items.forEach(it=>{
       parts.push(`<line x1="${x.toFixed(1)}" x2="${(x+13).toFixed(1)}" y1="11.8" y2="11.8" stroke="${it.col}" stroke-width="${it.sw}" stroke-linecap="round"/>`);
-      x-=16;
-    }
+      x+=18;
+      parts.push(`<text x="${x.toFixed(1)}" y="15" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}">${it.txt}</text>`);
+      x+=it.txt.length*5.1+16;
+    });
     legSvg=parts.join('');
   }
 
@@ -3217,12 +3274,8 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     const ys=years.filter(y=>typeof s.epsByYear[String(y)]==='number');
     return ys.length?ys[ys.length-1]:null;
   };
-  const shortDate=(iso)=>{
-    const d=new Date(iso+'T00:00:00Z');
-    if(isNaN(d)) return iso;
-    const m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getUTCMonth()];
-    return `${d.getUTCDate()} ${m} '${String(d.getUTCFullYear()).slice(2)}`;
-  };
+  // (shortDate est defini plus haut, aupres du trace consensus - meme
+  // norme d'abreviation pour toutes les dates posees sur le chart.)
   // Combien de dates nommer par horizon. Tant qu'elles tiennent, on les
   // affiche TOUTES - masquer une date alors que la place existe n'apporte
   // rien. Le plafond n'est donc pas arbitraire : c'est le nombre
