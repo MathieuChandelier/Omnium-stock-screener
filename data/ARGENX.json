@@ -177,29 +177,33 @@
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
     "ca": {
-     "actual": 1516,
-     "consensus": 1450
+     "actual": 1540,
+     "consensus": 1432
     },
     "epsAdj": {
      "actual": 7.32,
-     "consensus": 5.86,
+     "consensus": 6.19,
      "basis": "GAAP"
+    },
+    "epsReported": {
+     "actual": 7.32,
+     "basis": "IFRS",
+     "period": "Q2 26"
     }
    },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (convention biotech, inchange depuis la creation).",
-   "guidanceAnnuelle": "Pas de guidance CA/EPS chiffree publiee. Vision 2030 reaffirmee qualitativement sans changement : 50 000 patients traites dans le monde, 10 indications labellisees, 5 candidats pipeline en developpement d'enregistrement d'ici 2030.",
+   "guidanceProchainTrimestre": "No formal quantitative guidance (constant practice). Two registrational readouts before year-end: myositis (VYVGART, Q3 - success = positive primary in at least one subtype, IMNM/DM analyzed independently) and empasiprubart in MMN (Q4 - head-to-head vs IVIg, non-inferiority on grip strength with superiority option).",
+   "guidanceAnnuelle": "Stated financial profile: increasing operating margins, sustained earnings growth, significant cash generation. Vision 2030: 10 labeled indications, 5 late-stage molecules by 2030.",
    "pointsCles": [
-    "Lancement reussi du label VYVGART/VYVGART Hytrulo elargi a tous les serotypes de gMG (seronegative inclus) aux Etats-Unis - resolution positive d'un des deux binaires reglementaires suivis a la creation (l'autre etant l'extension ocular MG, egalement positive suite aux resultats ADAPT OCULUS).",
-    "Flux de tresorerie d'exploitation S1 26 nettement positif (+0,7 Md$ contre -0,4 Md$ au S1 25), tresorerie totale portee a 5,2 Md$ (contre 4,4 Md$ fin 2025) - generation de cash plus rapide que prevu.",
-    "Elargissement du pipeline au-dela des catalyseurs deja suivis : etude d'enregistrement lancee dans la maladie de Graves, signal positif de l'etude Phase 2 VARVARA (empasiprubart en transplantation/DGF) a 52 semaines, dix molecules attendues en developpement clinique d'ici fin 2026.",
-    "Les deux binaires majeurs de la these (lecture topline ALKIVIA en myositis au T3 26, lecture topline EMPASSION en MMN au T4 26) restent confirmes sur le calendrier annonce, toujours non resolus et hors modele au moment du call (NDLR : ALKIVIA a depuis ete publiee le 17/08/2026, voir EVENEMENTS & INFLEXIONS - ce point reste inchange en tant que RECORD de ce qui a ete dit le 30/07)."
+    "Q2 26: product sales $1.5B (+60% YoY, +17% QoQ, 18th consecutive growth quarter, beat ~$108M) - US $1.3B (+15% QoQ, stable net pricing), Japan +55% QoQ incl a ~$25M ONE-OFF from a distribution-model change; operating income $494M (+146%), cash $5.2B (+$744M YTD); EPS $7.32 beat by $1.13.",
+    "Seronegative gMG approval is the quarter's event: VYVGART now the only treatment across ALL gMG serotypes (+11,000 addressable patients), ~55% of US commercial lives covered within 10 weeks (90% targeted in 3-6 months), most plans dropping the serology-test requirement, and a measurable HALO effect on seropositive prescriptions; PFS keeps pulling new-to-brand (~80% of US PFS patients).",
+    "Two registrational readouts before year-end: myositis (rheumatology entry; IMNM and DM read independently, both framed as potential blockbusters; DM autoantibody rationale defended against the interferon thesis) and empasiprubart MMN (head-to-head vs IVIg after the Phase II showed -81% rescue need; non-inferiority on grip strength, superiority optional).",
+    "Franchise depth: >5,000 repeat prescribers, 60% of patients reaching sustained minimal symptom expression (claimed unique), >25,000 patient-years of safety; next-gen FcRn (213 Phase-III-ready Q4-weekly, 124 characterizing, ORAL FcRn advancing), ARGX-121 IgA sweeper (-90% IgA single dose) rushed into IgAN; balance sheet now widens BD scope to biotech assets - same bar: novel, de-riskable biology in high-unmet-need immunology."
    ],
    "etatsFinanciers": {
     "analyse": true,
     "referentiel": "IFRS",
-    "source": "2026 Half-Year Financial Report (IAS 34, argenx.com) + 6-K",
-    "date": "2026-08-19",
-    "note": "Croises vs fiche : resultat operationnel H1 887 M$, resultat net 838 M$, ventes produit 2,8 Md$ - coherents avec la marge operationnelle 31,1% et les ventes 2 813 M$ de la fiche."
+    "source": "communique",
+    "date": "2026-07-23"
    }
   },
   "guidanceHistory": [],
