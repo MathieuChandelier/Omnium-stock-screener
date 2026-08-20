@@ -305,6 +305,11 @@ def w7():
         co=t.get('epsConsensus') or {}
         a=age(co.get('date'))
         if co and a is not None and a>45: bad.append((tk,f'consensus {a} j'))
+        # Standard 3 ans (20/08/2026) : eps/epsNY/epsY2 imperatifs - un
+        # manque = file de retrieve, et si la cascade a echoue, l echec
+        # doit avoir ete NOTIFIE a l utilisateur (doctrine epsConsensus).
+        if co and not co.get('epsY2'): bad.append((tk,'consensus sans epsY2 (3 ans requis)'))
+        if co and not co.get('epsNY'): bad.append((tk,'consensus sans epsNY'))
         ne=t.get('nextEvent') or {}
         na=age(ne.get('date'))
         if na is not None and na>0: bad.append((tk,f'nextEvent passe ({ne.get("date")})'))

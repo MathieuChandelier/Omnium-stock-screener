@@ -2926,6 +2926,19 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   const years=Array.from(allYears).sort((a,b)=>a-b);
   if(years.length<2) return null;
   const consYears=years.filter(y=>typeof consMapAll[y]==='number');
+  // EXTRAPOLATION LINEAIRE (decision 20/08/2026) : au-dela du dernier
+  // point REEL (CY+2), la courbe consensus se prolonge en droite jusqu'a
+  // l'horizon du plan - les consensus long terme etant eux-memes des
+  // extrapolations, la droite est l'approximation honnete. Segment
+  // ATTENUE et etiquete, jamais stocke : seuls les points reels vivent
+  // dans epsConsensus.
+  const consExtra={};
+  if(consYears.length>=2){
+    const l=consYears[consYears.length-1], p=consYears[consYears.length-2];
+    const slope=(consMapAll[l]-consMapAll[p])/(l-p);
+    years.filter(y=>y>l).forEach(y=>{ consExtra[y]=consMapAll[l]+slope*(y-l); });
+  }
+  const consExtraYears=Object.keys(consExtra).map(Number).sort((a,b)=>a-b);
 
   let yMin=Infinity, yMax=-Infinity;
   shown.forEach(s=>years.forEach(y=>{
@@ -2933,6 +2946,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
     if(typeof v==='number'){ if(v<yMin)yMin=v; if(v>yMax)yMax=v; }
   }));
   consYears.forEach(y=>{ const v=consMapAll[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
+  consExtraYears.forEach(y=>{ const v=consExtra[y]; if(v<yMin)yMin=v; if(v>yMax)yMax=v; });
   if(!isFinite(yMin)||!isFinite(yMax)) return null;
   if(yMin===yMax){ yMin-=Math.abs(yMin*0.1)||1; yMax+=Math.abs(yMax*0.1)||1; }
   const margin=(yMax-yMin)*0.12;
@@ -3008,15 +3022,29 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 
   // Trace consensus : pointilles or, points evides, etiquette "Consensus"
   // + valeur au bout - visuellement subordonne aux courbes Omnium (navy).
+  // Le prolongement extrapole est ATTENUE (opacite reduite, points plus
+  // petits) et l'etiquette du bout le declare.
   let consSvg='';
   if(consYears.length){
     const pts=consYears.map(y=>`${xOf(y).toFixed(1)},${yOf(consMapAll[y]).toFixed(1)}`).join(' ');
     const dots=consYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consMapAll[y]).toFixed(1)}" r="2.8" fill="#fff" stroke="#c9a227" stroke-width="1.8"/>`).join('');
-    const lastY=consYears[consYears.length-1], lv=consMapAll[lastY];
+    let extraSvg='';
+    if(consExtraYears.length){
+      const lastReal=consYears[consYears.length-1];
+      const chain=[lastReal,...consExtraYears];
+      const vOf=(y)=>y===lastReal?consMapAll[y]:consExtra[y];
+      const epts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
+      extraSvg=`<polyline points="${epts}" fill="none" stroke="#c9a227" stroke-width="1.3" stroke-dasharray="2.5 4.5" opacity=".55" stroke-linejoin="round" stroke-linecap="round"/>`
+        +consExtraYears.map(y=>`<circle cx="${xOf(y).toFixed(1)}" cy="${yOf(consExtra[y]).toFixed(1)}" r="2.1" fill="#fff" stroke="#c9a227" stroke-width="1.4" opacity=".55"/>`).join('');
+    }
+    const endYears=consExtraYears.length?consExtraYears:consYears;
+    const lastY=endYears[endYears.length-1];
+    const lv=consExtraYears.length?consExtra[lastY]:consMapAll[lastY];
     const lx=xOf(lastY), ly=yOf(lv);
-    const anchor=(lx+70>padL+plotW)?'end':'start';
-    const label=`<text x="${(anchor==='end'?lx-7:lx+7).toFixed(1)}" y="${(ly-7).toFixed(1)}" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="#92700a" text-anchor="${anchor}">Consensus ${lv.toFixed(2)}</text>`;
-    consSvg=(consYears.length>1?`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-dasharray="4 4" stroke-linejoin="round" stroke-linecap="round"/>`:'')+dots+label;
+    const anchor=(lx+90>padL+plotW)?'end':'start';
+    const labTxt=consExtraYears.length?`Consensus ${lv.toFixed(2)} (extrapolated)`:`Consensus ${lv.toFixed(2)}`;
+    const label=`<text x="${(anchor==='end'?lx-7:lx+7).toFixed(1)}" y="${(ly-7).toFixed(1)}" font-size="9.5" font-weight="700" font-family="Poppins,sans-serif" fill="#92700a" text-anchor="${anchor}">${labTxt}</text>`;
+    consSvg=(consYears.length>1?`<polyline points="${pts}" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-dasharray="4 4" stroke-linejoin="round" stroke-linecap="round"/>`:'')+extraSvg+dots+label;
   }
 
   // ETIQUETTES DE MILLESIME POSEES SUR LE GRAPHIQUE
