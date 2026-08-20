@@ -115,23 +115,34 @@
     "date": "2026-08-19",
     "source": "Creation - Communique + transcript T1 2026 (29/04/2026), rapport annuel/financier FY2025, ad-hoc relevement de guidance (17/06/2026), CMD (25/11/2025)",
     "dernierCall": {
-      "quarter": "T1 26",
+      "quarter": "H1 26",
       "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
-          "actual": 673,
+          "actual": 1379.5,
           "consensus": null
         },
-        "epsAdj": null
+        "epsAdj": {
+          "actual": 1.64,
+          "consensus": null,
+          "basis": "non-GAAP",
+          "note": "Core (non-GAAP) basic EPS CHF 1.64 for H1 26 (core net profit CHF 262M, 19% margin, +15.7% cc). No half-year sell-side consensus captured: the street consensus tracked in this file is annual (core basis)."
+        },
+        "epsReported": {
+          "actual": 1.57,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "Reported IFRS basic EPS CHF 1.57 for H1 2026 (IFRS net profit CHF 250.7M on revenue of CHF 1,379.5M), from the 19/08/2026 half-year release. Gap to core EPS (CHF 1.64) is a contained CHF 11M after-tax non-core block (M&A effects and legal costs, partly offset by US tariff refunds); IFRS gross margin (72.0%) even exceeds core (70.5%) on those refunds."
+        }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (Straumann ne guide qu'a l'annee).",
-      "guidanceAnnuelle": "Croissance organique high-single-digit confirmee pour 2026 ; marge EBIT core relevee a +140/170 pb (vs +30/60 pb initialement guide en fevrier) a change constant 2025, relevement annonce par ad-hoc le 17/06/2026 pour amelioration operationnelle, mix geographique favorable et tarifs douaniers moins penalisants qu'anticipe - progression desormais equilibree entre S1 et S2.",
+      "guidanceProchainTrimestre": "No quarterly guidance (Straumann guides on a full-year basis only). Next print: Q3 2026 organic growth (autumn), still to be presented by outgoing CEO Daniellot before the December handover to Christopher Norbye; China VBP 2.0 tendering could start in H2 2026 with operational implementation expected early 2027.",
+      "guidanceAnnuelle": "FY26 outlook CONFIRMED at the H1 call (19/08/2026) after the 17/06/2026 ad-hoc raise: high single-digit organic revenue growth and core EBIT margin improvement of ~140-170bp at constant 2025 FX (vs +30/60bp initial February guidance). At July spot rates FX remains an expected 80-100bp headwind on the reported core EBIT margin. Management quantifies at least 2/3 of the margin upgrade as structural (opex discipline with flat headcount, manufacturing footprint incl. the fully operational Shanghai campus, procurement), the balance from milder US tariffs and the delayed VBP 2.0. CMD 2030 ambition reaffirmed unchanged (~10% organic CAGR, +40-50bp core EBIT margin per year on average, explicitly endorsed by the incoming CEO); ClearCorrect breakeven still targeted for end-2027.",
       "pointsCles": [
-        "VBP en Chine : aucune date officielle, possible mise en oeuvre en S2 2026, patients continuant de se faire traiter et distributeurs redemarrant leurs commandes en attendant.",
-        "iEXCEL (implants premium) depasse 20% des volumes premium, moteur cle du momentum en implantologie.",
-        "Transition de fabrication Smartee finalisee en EMEA et Asie-Pacifique, appui a la marge via la localisation en Chine (couverture tarifaire).",
-        "Pertes de ClearCorrect en voie de reduction de moitie comme prevu, impact positif sur la marge attendu en accumulation tout au long de 2026."
+        "CEO transition announced: Guillaume Daniellot steps down end-2026 after 7 years; external successor Christopher Norbye (ASSA ABLOY divisional CEO background, 8 years at Ossur early career) takes over in December and has explicitly endorsed the 2030 midterm guidance - main new watch item (execution continuity, management retention).",
+        "Broad-based acceleration: Q2 organic +8.5% (H1 +7.8%, revenue CHF 1,379.5M, +2.3% in CHF) with every region contributing - EMEA +8.6%, North America +8.4%, APAC +7.4% (ex-China +25%), LatAm +11.8% (H1 +15.4%); China improving sequentially ahead of VBP 2.0 (operational start expected early 2027, management sees max -5% to -15% ASP impact and a low comparison base since Q3 2025).",
+        "Margin delivery ahead of plan: core EBIT margin 25.7% reported / 26.9% at constant 2025 FX (+90bp comparable), driven by 130bp of opex efficiency with flat headcount on ~8% growth; core gross margin 70.5% (US tariffs -60bp, one-off Villeret equipment write-down -30bp); FCF +49% to CHF 169M (12.2% of revenue) as the heavy capex cycle ends.",
+        "Digital flywheel compounding: group estimates ~1/4 to 1/3 of global intraoral scanner unit sales over the last 12 months (SIRIOS X3-led), double-digit growth of the AXS connected-user base; iEXCEL now ~40% of premium implant volumes with no slowdown attributed to Nobel S-Line; ClearCorrect transformation on track for breakeven by end-2027."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -369,7 +380,7 @@
       "timeline": [
         {
           "date": "2026-06-17",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "Ad-hoc: core EBIT margin expansion RAISED to +140/170bp cc (from +30/60bp initial); organic high-SD growth confirmed."
         }
       ],

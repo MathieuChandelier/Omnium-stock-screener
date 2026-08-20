@@ -150,15 +150,21 @@
           "consensus": 5.03,
           "basis": "non-GAAP",
           "basisNote": "Core (non-GAAP)"
+        },
+        "epsReported": {
+          "actual": 5.83,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "IFRS basic EPS from continuing operations (group net income EUR 1,111m vs EUR 475m a year earlier). Kept separate from the core EPS of EUR 6.84, which is the consensus metric."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance semestrielle S2 chiffree isolement fournie (guidance donnee a l'annee).",
-      "guidanceAnnuelle": "Guidance 2026 relevee : croissance des ventes nettes de 'low-teens' a 'mid-teens' a change constant (vs guidance initiale a un chiffre eleve/deux chiffres bas), croissance de l'EBITDA ajuste de 'mid-teens' a 'low-20s' a change constant, taux d'imposition core autour de 15%.",
+      "guidanceProchainTrimestre": "No standalone H2 guidance (UCB guides on the full year only), but the CFO walked through the H2-vs-H1 mechanics: BRIVIACT loss of exclusivity weighted to H2, no repeat of the ~EUR 100m prior-year gross-to-net benefit, BIMZELX net-price erosion from the June 1 first-line PBM agreement before volumes build, and heavier R&D phasing (new studies plus Neurona/Candid integration) - so the H2 EBITDA margin steps down from H1's 40.7%.",
+      "guidanceAnnuelle": "FY26 guidance raised (upgrade vs the initial February frame): net sales growth low-teens to mid-teens at constant rates (initially high-single-digit to low-double-digit), adjusted EBITDA growth mid-teens to low-20s at constant rates, core tax rate ~15%; full-year R&D ratio near 25% of net sales and full-year gross margin still expected up vs 2025 (product mix more than offsetting net-price effects); guidance excludes any potential US most-favored-nation pricing or tariff impact.",
       "pointsCles": [
-        "Ventes nettes S1 26 en hausse de 23% a 4,1 Md€, EBITDA ajuste +68% a 1,7 Md€ ; core EPS a 6,84€ (quasi doublement sur un an), largement au-dessus du consensus de 5,03€.",
-        "BIMZELX moteur principal : ventes doublees a 1,5 Md€ au S1, objectif de pic de ventes releve a au moins 7 Md€ (parts de marche ~35% psoriasis, ~30% rhumatologie, ~45% hidradenite suppuree) ; accord d'acces de premiere ligne avec un grand PBM americain effectif au 1er juin 2026.",
-        "Vents contraires identifies pour le S2 26 : perte d'exclusivite de BRIVIACT (Europe des aout, declin US ~80% sur 12 mois), erosion du prix net de BIMZELX avant montee en volume, phasing R&D plus charge, couts d'integration des acquisitions Neurona Therapeutics et Candid Therapeutics.",
-        "Cinq moteurs de croissance representant desormais plus de la moitie des ventes nettes du groupe ; portefeuille myasthenie grave (gMG) en hausse de 38% sur un an."
+        "H1 26 net sales +23% (+28% CER) to EUR 4.09bn and adjusted EBITDA +68% (+79% CER) to EUR 1.74bn (40.7% margin, explicitly flagged as phasing-inflated); core EPS EUR 6.84 vs 3.53 a year ago, far above the EUR 5.03 consensus, with IFRS net income of EUR 1,111m (basic EPS 5.83).",
+        "BIMZELX doubled YoY to EUR 1.5bn and peak-sales target raised to at least EUR 7bn (IL-17 dynamic shares ~35% psoriasis, ~30% rheumatology, ~45% HS; >135,000 patients, >50 countries); first-line access across all three indications at a major US PBM effective June 1, on top of 80% commercial covered lives and the BE BOLD superiority readout vs SKYRIZI (ACR50) published at EULAR in June.",
+        "H2 26 headwinds spelled out by the CFO: BRIVIACT LOE weighted to H2 (US generics since February, ~80% 12-month US decline; Europe LOE in August, ~-50%), non-recurrence of the ~EUR 100m prior-year gross-to-net benefit, BIMZELX net-price erosion ahead of the first-line volume build, and heavier H2 R&D phasing plus Neurona/Candid integration costs.",
+        "Five growth drivers now deliver >50% of group net sales (gMG portfolio +38% to EUR 330m, EVENITY net contribution +34% to EUR 379m, FINTEPLA +18% to EUR 239m); pipeline advanced on all fronts - bepranemab into confirmatory Phase II, galvokimig AD readout targeted early 2028 plus COPD/bronchiectasis expansion, rezanecel (Neurona) Phase III in H1 27, cizutamig (Candid) Phase II in gMG and SARD-ILD."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -376,7 +382,7 @@
       "timeline": [
         {
           "date": "2026-07-30",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26: net sales low-to-mid-teens cc, adjusted EBITDA mid-teens-to-low-20s cc, core tax ~15% - BIMZELX momentum carrying both axes."
         }
       ],
