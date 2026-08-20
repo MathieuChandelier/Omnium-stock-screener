@@ -256,6 +256,76 @@
     "etatsFinanciers": {
       "analyse": false,
       "note": "Fiche created 15/07 from public filings; dernierCall/guidanceHistory to initialize at the next quarterly report."
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.83,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.98,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.33,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.8,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 0.85,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.92,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.59,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 2.15,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 0.97,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 1.06,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 1.82,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 2.47,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (saisonnalite T4-lourde, fetes). L'ecart avec l'adjusted communique (6,45-6,55 guide 2026) est le wedge declare de la fiche (base Omnium 5,51 = GAAP retraite) ; T3/T4 2026 calages omniumEPS."
     }
   },
   "coherenceQualitative": {

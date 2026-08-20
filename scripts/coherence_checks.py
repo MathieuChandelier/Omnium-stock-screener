@@ -271,6 +271,26 @@ def c14():
                            f"n'a pas ndCY : libelle ex-cash impossible a honorer"))
     return bad
 
+@check("C24 quarterlyEPS present et complet (PY/CY/NY) sur toute fiche")
+def c16():
+    # Ne verifie pas des valeurs (C1/C2 s'en chargent) mais la PRESENCE :
+    # 12 fiches sont nees sans sequencage E5-ter et aucun invariant ne le
+    # signalait - le trou restait invisible (constat 20/08/2026, META).
+    # Toute fiche doit porter quarterlyEPS avec cadence declaree et les
+    # trois exercices PY/CY/NY non vides (2 periodes en semestriel,
+    # 4 en trimestriel).
+    bad=[]
+    for tk,t in FICHES.items():
+        qe=t['hypothese'].get('quarterlyEPS')
+        if not isinstance(qe,dict):
+            bad.append((tk,'quarterlyEPS absent (sequencage E5-ter jamais pose)')); continue
+        n=2 if qe.get('cadence')=='semestriel' else 4
+        for k in ('PY','CY','NY'):
+            arr=qe.get(k)
+            if not isinstance(arr,list) or len(arr)!=n:
+                bad.append((tk,f'{k} manquant ou incomplet ({len(arr) if isinstance(arr,list) else 0}/{n} periodes)'))
+    return bad
+
 @check("C15 les trois echeances tracees doivent avoir >=2 points archives")
 def c16():
     # Le graphique P/E trace CY, CY+1 et CY+2 ensemble. Une echeance dont

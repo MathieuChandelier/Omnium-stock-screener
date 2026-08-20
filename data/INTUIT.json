@@ -300,6 +300,76 @@
     "etatsFinanciers": {
       "analyse": false,
       "note": "Refresh of 13/07 pre-FY-close; dernierCall to initialize at the FY26 report (~21/08/2026). 10-K not yet exploited."
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.7,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.67,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 10.02,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.34,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 1.59,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 2.48,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 11.09,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.52,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 1.85,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 2.89,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 12.93,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 1.78,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q) ; exercice fiscal clos fin juillet, saisonnalite extreme du T3 (avril, saison fiscale TurboTax). T4 FY26 estime - resultats attendus ~21/08/2026. Somme PY 13,73 vs 13,67 en fiche (arrondi du nombre d'actions moyen)."
     }
   },
   "coherenceQualitative": {

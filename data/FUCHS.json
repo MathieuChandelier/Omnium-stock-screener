@@ -308,6 +308,46 @@
       "date": "2026-07-31",
       "label": "H1 26",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 1.09,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 1.25,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 1.34,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 1.22,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 1.45,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 1.32,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). IFRS publie : resultat apres impots S1 2026 178 M EUR (S1 2025 : 144 M), ~132,5 M titres. S2 2026 estime SOUS S1 : les pre-achats lies au Moyen-Orient ont tire les volumes dans S1 (guidance EBIT FY 460-480 vs 260 realises en S1) - documente au H1 report 31/07/2026."
     }
   },
   "coherenceQualitative": {

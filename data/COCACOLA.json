@@ -330,6 +330,76 @@
       "date": "2026-07-28",
       "label": "Q2 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.77,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.88,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.86,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.53,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 0.91,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.03,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.75,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.6,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 0.98,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 1.11,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 0.81,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.64,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q) ; T4 2025 (0,53$) porte des charges de fin d'exercice (marges sous pression). Estimations T3/T4 2026 et 2027 saisonnalisees sur le profil publie, sommes calees sur omniumEPS."
     }
   },
   "coherenceQualitative": {

@@ -284,6 +284,76 @@
     "etatsFinanciers": {
       "analyse": false,
       "note": "Refresh of 10/07 post-Q1 FY27; dernierCall to initialize at the Q2 FY27 report (26/08/2026). 10-Q not line-by-line exploited."
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.76,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.08,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.3,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.76,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 2.39,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 2.15,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 2.25,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 2.31,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 3.47,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 3.12,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 3.26,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 3.35,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q) ; exercice fiscal clos fin janvier (PY = FY26, CY = FY27). T1 FY27 (avril 2026) publie a 2,39$ ; T2-T4 estimes sur la guidance T2 (~91 Md$ de CA ex-Chine) et le calage omniumEPS 9,10 (= consensus, deliberement)."
     }
   },
   "coherenceQualitative": {

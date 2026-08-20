@@ -377,6 +377,88 @@
       "date": "2026-07-28",
       "label": "Q2 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.1,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.26,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.26,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.23,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 0.34,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Amortissements d'acquisition et couts de transaction (dont BioLife) exclus de la base Omnium (E5) - ecart structurel GAAP publie -> base",
+              "impact": 0.19
+            }
+          ]
+        },
+        {
+          "label": "T2",
+          "eps": 0.35,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Amortissements d'acquisition et couts de transaction (dont BioLife) exclus de la base Omnium (E5) - ecart structurel GAAP publie -> base",
+              "impact": 0.26
+            }
+          ]
+        },
+        {
+          "label": "T3",
+          "eps": 0.41,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.42,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 0.4,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 0.42,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 0.47,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.48,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). PY = GAAP publie (0,85$ vs 0,86 fiche, arrondi). CY : base Omnium 1,52 (GAAP retraite des amortissements d'acquisition/couts de deal, cf. basisNote) - publie T1 0,15 / T2 0,09 reconcilie par retraitement ; T2 charge des couts BioLife."
     }
   },
   "coherenceQualitative": {

@@ -368,6 +368,76 @@
       "date": "2026-07-29",
       "label": "Q2 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 1.81,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.35,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.22,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.92,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 1.71,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.37,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.4,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 1.09,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 1.91,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 1.53,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 1.56,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 1.22,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q). Saisonnalite T1-lourde (comps 2025 exceptionnels) ; T3/T4 2026 estimes sur le profil 2025, calage omniumEPS 5,57 (guidance 5,32-5,40 + 53e semaine au T4)."
     }
   },
   "coherenceQualitative": {

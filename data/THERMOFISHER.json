@@ -405,6 +405,76 @@
       "date": "2026-07-23",
       "label": "Q2 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 3.98,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 4.28,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 4.27,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 5.22,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 4.43,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 4.68,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 4.89,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 5.97,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 5.0,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 5.28,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 5.52,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 6.75,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q), saisonnalite T4-lourde. T3/T4 2026 estimes sur le profil 2025, calage omniumEPS 19,97 (l'adjusted guide 24,93-25,33 est le wedge declare)."
     }
   },
   "coherenceQualitative": {

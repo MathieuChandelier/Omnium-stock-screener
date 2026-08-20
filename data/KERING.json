@@ -381,6 +381,52 @@
       "date": "2026-07-28",
       "label": "S1 26",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 3.88,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 0.46,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 2.9,
+          "actual": true,
+          "retraitements": [
+            {
+              "raison": "Elements non recurrents S1 2026 (restructurations/depreciations) exclus de la base Omnium - RN publie part du groupe 189 M EUR, RN courant des activites poursuivies 355 M",
+              "impact": 1.35
+            }
+          ]
+        },
+        {
+          "label": "S2",
+          "eps": 5.66,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 5.09,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 6.21,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). PY = publie IFRS (S1 2025 : 474 M part du groupe = 3,88 EUR ; S2 2025 charge de charges, solde 0,46). CY : base Omnium = RN courant (355 M S1) ; S2 2026 porte la these de redressement (marges S2>S1 guidees, OpEx en baisse). ~122,3 M titres."
     }
   }
 }

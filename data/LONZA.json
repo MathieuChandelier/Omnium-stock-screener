@@ -342,6 +342,46 @@
       "date": "2026-07-22",
       "label": "H1 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 5.68,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 7.48,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 8.18,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 10.29,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 7.24,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 9.1,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). IFRS publie : profit S1 2026 595 M CHF soit 8,18 CHF/action (S1 2025 : 426 M / 5,68). S2 2026 superieur (montee en charge CDMO/ADC), calage sur omniumEPS 18,47 ; 2027 en retrait (voir these fiche)."
     }
   },
   "coherenceQualitative": {

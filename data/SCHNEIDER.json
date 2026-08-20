@@ -367,6 +367,46 @@
       "date": "2026-07-30",
       "label": "H1 2026",
       "type": "earnings"
+    },
+    "quarterlyEPS": {
+      "cadence": "semestriel",
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 3.41,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 3.99,
+          "actual": true
+        }
+      ],
+      "CY": [
+        {
+          "label": "S1",
+          "eps": 4.45,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 5.41,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "S1",
+          "eps": 4.91,
+          "actual": false
+        },
+        {
+          "label": "S2",
+          "eps": 5.97,
+          "actual": false
+        }
+      ],
+      "note": "Backfill E5-ter 20/08/2026 (C24). IFRS publie : RN part du groupe S1 2026 ~2,49 Md EUR (+30%) soit ~4,45 EUR/action ; S1 2025 : 3,41 EUR publie. S2 historiquement plus lourd, calage omniumEPS 9,86."
     }
   },
   "coherenceQualitative": {
