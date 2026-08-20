@@ -123,15 +123,21 @@
           "actual": 11.52,
           "consensus": 11.45,
           "basis": "GAAP"
+        },
+        "epsReported": {
+          "actual": 11.52,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "Basic EPS group share, H1 2026 (net income group share EUR 5.7bn, flat YoY on ~494m shares). LVMH reports under IFRS only and publishes no adjusted EPS; figure matches the interim release, not restated on the call."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie (LVMH ne communique pas de guidance formelle par trimestre) ; direction qualitative : poursuite de l'amélioration séquentielle attendue au S2, sur une base de comparaison optiquement plus difficile mais jugée globalement comparable une fois ajustée des bases 2024.",
-      "guidanceAnnuelle": "Pas d'objectif chiffré de CA ni de marge pour l'exercice 2026 ; guidance directionnelle : impact de change sur l'EBIT annuel attendu à environ -1 Md€ (ordre de grandeur similaire à 2025, dont plus de 600 M€ déjà réalisés au S1), marge de Wines & Spirits attendue proche de 2025 sur l'année complète, poursuite de la discipline sur les charges marketing/G&A. Dividende intérimaire de 5,50 €/action confirmé, versement prévu le 3 décembre 2026 (solde à venir, cohérent avec le dividende annuel stable de 13,0 €/action).",
+      "guidanceProchainTrimestre": "No quantified quarterly guidance (LVMH does not issue formal quarterly targets). Directional message for Q3/H2: continued sequential improvement expected; the H2 comparison base is 'optically tougher' but management views it as broadly comparable once adjusted for the easy 2024 comps it mirrors; Middle East exit rate at end-Q2 still negative but much more muted, with gradual steady improvement; July too early to read.",
+      "guidanceAnnuelle": "No quantified full-year revenue or margin target. Directional FY26 guidance from the call: full-year FX impact on EBIT expected around EUR -1bn (similar to 2025, ~EUR 0.7bn already absorbed in H1), with the H2 margin hit similar to H1's despite a possible slight FX tailwind on revenue (offset by DFS disposal perimeter effects); Wines & Spirits expected to grow at constant currencies in 2026 but more moderately than H1's +5%, with full-year divisional EBIT margin close to 2025 levels (cost phasing and delayed FX impact through inventories); continued cost discipline on marketing and G&A; operating leverage only expected once group organic growth reaches 3-4%; interim dividend set at EUR 5.50/share, payable December 2026.",
       "pointsCles": [
-        "La direction réaffirme qu'une croissance organique Groupe de 3-4% reste le seuil nécessaire à un réel effet de levier opérationnel sur la marge, et souligne que la performance du S1 (marge à 22,5%) tient d'un effort de discipline de coûts ponctuel plutôt que d'une règle reproductible mécaniquement.",
-        "Le conflit au Moyen-Orient continue de peser sur la croissance (encore -1 pt au T2, sur une durée plus longue qu'au T1 mais avec une intensité mensuelle en atténuation continue), sans visibilité sur son issue selon la direction.",
-        "La demande chinoise locale et touristique est restée stable en niveau sur le semestre, mais de plus en plus concentrée autour des événements commerciaux ponctuels (soldes, lancements) - un changement de comportement que la direction dit suivre de près plutôt que d'y voir un signal structurel de faiblesse.",
-        "Vuitton et Dior sont tous deux repassés en territoire de croissance positive au T2 (Dior légèrement au-dessus de la moyenne du groupe), portés par le renouveau créatif de Jonathan Anderson et la célébration des 130 ans du Monogram, la direction reconnaissant toutefois des tensions de chaîne d'approvisionnement transitoires chez Dior liées à la transition créative."
+        "Sequential inflection confirmed: group organic growth accelerated from +1% in Q1 to +3% in Q2 (~+4% excluding a 1pt Middle East conflict drag), with Fashion & Leather Goods back to +1% organic in Q2 and both Louis Vuitton and Dior in positive territory (Dior slightly above the divisional average), driven by Jonathan Anderson's creative renewal and the Monogram 130th-anniversary push.",
+        "Margin resilience through discipline, not leverage: 22.5% operating margin on just +2% organic growth was achieved via a 2% cut in marketing & selling costs and flat G&A; CFO Cecile Cabanis explicitly warned this is not a repeatable rule and that 3-4% organic growth remains the threshold for genuine operating leverage.",
+        "FX is the dominant headwind: nearly EUR 700m negative currency impact on H1 EBIT (organic EBIT up ~4%), with a similar margin hit expected in H2 (notably in Wines & Spirits via inventory lag) even though reported revenue could see a slight FX tailwind offset by DFS disposal perimeter effects.",
+        "Demand mosaic: US accelerated to +6% in Q2 (local plus returning tourists, Americans up high-single-digit in F&LG), Asian clienteles shifted spend toward Europe and Japan (explaining Asia's sequential slowdown), Chinese local and tourist demand stayed flat but increasingly clustered around shopping events, and jewelry (Tiffany and Bvlgari both mid-teens in Q2) remained the standout while standalone watches stayed slightly negative."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -368,7 +374,7 @@
           "date": "2026-07-27",
           "type": "vs_consensus",
           "detail": "S1 26: revenue 38.64bn EUR (~-1.3bn vs Visible Alpha consensus) but operating margin 22.5% clearly ABOVE market fears; F&LG back to organic growth in Q2 (+1%) after seven declining quarters.",
-          "beatPct": null
+          "beatPct": 0.6
         }
       ],
       "paceCheckpoint": "S1 net 5.7bn EUR of a modeled 11.1bn year: H2 seasonally stronger, on pace.",

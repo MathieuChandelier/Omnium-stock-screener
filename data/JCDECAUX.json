@@ -88,7 +88,7 @@
     "source": "Refresh H1 2026 - Transcript integral du call H1 2026 (Jean-Charles Decaux Co-CEO / Jean-Francois Decaux Co-CEO / David Bourg CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 05/07/2026 (transcript FY2025 + communique T1 2026, deja integres, non rouverts par ce refresh sauf ou indique).",
     "dernierCall": {
       "quarter": "H1 2026",
-      "communiqueAnalyse": false,
+      "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
@@ -98,19 +98,23 @@
         "epsAdj": {
           "actual": null,
           "consensus": null,
-          "basis": null,
+          "basis": "non-GAAP",
           "basisNote": "Aucun consensus externe recoupe pour ce refresh (transcript uniquement, pas de communique de presse distinct fourni)."
+        },
+        "epsReported": {
+          "actual": 0.66,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "Group net income EUR 140.1m / ~212.9m shares; includes the non-taxable EUR 47.5m APG|SGA disposal gain (~0.44 ex-gain). No external consensus cross-checked."
         }
       },
-      "guidanceProchainTrimestre": "T3 2026 : croissance organique attendue autour de +5%, malgre les tensions macroeconomiques et geopolitiques persistantes (ralentissement attendu de la contribution Coupe du Monde, dont 60% de l'effet incremental etait deja capte au T2 contre 40% attendu au T3).",
-      "guidanceAnnuelle": "Pas de guidance CA/marge annuelle chiffree formelle (convention du groupe). CapEx net maintenu a ~8% du CA sur l'annee pleine (confirme malgre un S1 plus bas, du fait de retards de deploiement de nouveaux contrats reportes au S2).",
+      "guidanceProchainTrimestre": "Q3 2026 organic revenue growth guided at around +5% despite persistent macroeconomic and geopolitical tensions; the FIFA World Cup incremental effect recedes (60% of the >EUR 30m total already captured in Q2 vs 40% expected in Q3, versus a 50/50 split initially communicated at the Q1 call).",
+      "guidanceAnnuelle": "No formal quantified full-year revenue/margin guidance (group convention: quarterly-only guider). Full-year net capex confirmed at ~8% of revenue despite a lower H1 (5.9%), as new-contract rollouts were delayed into H2 (higher inventory, incl. Carmila). Management explicitly cautious on H2 margins: the start-up phase of new contracts is dilutive and the sports tailwind recedes - H2 margin progression will not match the H1 pace.",
       "pointsCles": [
-        "CA H1 26 record a 1 953,9 M EUR (+4,6% publie, +5,7% organique), T2 seul egalement +5,7% organique - tres au-dessus de la guidance T2 donnee au call precedent (~+3%), malgre le conflit au Moyen-Orient, grace au digital et a un effet Coupe du Monde FIFA superieur aux attentes initiales (+30 M EUR d'impact incremental total, dont 60% au T2 et 40% attendu au T3).",
-        "Levier operationnel tres marque : marge operationnelle H1 +16,8% (359 M EUR, marge 18,4% contre 16,5%), EBIT recurrent H1 +53,5% (136,2 M EUR, marge 7% contre 4,7%), resultat net part du groupe H1 +84,7% (140,1 M EUR) - MAIS ce dernier chiffre inclut une plus-value non taxable de 47,5 M EUR liee a la cession du solde de la participation APG|SGA (deja identifiee comme optionnalite non modelisee a la creation, desormais realisee) ; hors cet element, la croissance du resultat net ressort a +23,3%, toujours tres solide mais sans commune mesure avec le +84,7% brut.",
-        "Free cash-flow H1 devenu positif a 26,2 M EUR (contre un niveau nettement inferieur un an plus tot, amelioration de 91,1 M EUR), une performance rare a ce stade de l'annee compte tenu de la saisonnalite habituellement defavorable du premier semestre pour le groupe.",
-        "Digital a 42,8% du CA groupe au H1 (43,7% au T2 seul, +14,5% organique) ; programmatique a 12,3% du CA digital (contre 10,1% un an plus tot, +30,9% organique) - VIOOH desormais breakeven cash-on-cash sur une base autonome et rentable en EBIT au niveau groupe.",
-        "Renouvellement du contrat Heathrow pour 8 ans SANS appel d'offres (decision de l'aeroport, conditions tarifaires globalement inchangees vs les 10 dernieres annees) - confirmation de la solidite du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands aeroports mondiaux, dont Denver qui demarre avec ~6 mois de retard).",
-        "Dette nette en baisse de 284,1 M EUR sur un an (dont plus de 200 M EUR hors les 79 M EUR de produit de cession APG|SGA) ; les deux agences de notation ont ameliore leur perspective de stable a positive."
+        "Record H1 revenue of EUR 1,953.9m, +4.6% reported / +5.7% organic (Q1 and Q2 both +5.7%), with Q2 far above the ~+3% guidance despite the Middle-East conflict - driven by digital (42.8% of group revenue, +14.5% organic; programmatic +30.9% to 12.3% of digital revenue) and a FIFA World Cup effect above initial expectations (>EUR 30m incremental, 60% captured in Q2 / 40% expected in Q3, vs 50/50 initially flagged).",
+        "Spectacular operating leverage: operating margin +16.8% to EUR 359m (18.4% rate, +190bp), recurring EBIT +53.5% to EUR 136.2m (7.0% margin, +220bp) on rents & fees up only +3.4% and other opex +0.9%; published group net income of EUR 140.1m (+84.7%) is inflated by a non-taxable EUR 47.5m APG|SGA disposal gain - underlying net growth of +23.3% (CFO-confirmed) is the basis retained for the Omnium base.",
+        "H1 free cash flow turned positive at EUR 26.2m (+EUR 91.1m YoY) despite the usually adverse first-half seasonality, with cash flow before working capital nearly tripling to >EUR 100m; net debt down EUR 284.1m YoY (>EUR 200m excluding the EUR 79m APG|SGA proceeds), EUR 1.28bn cash plus an undrawn EUR 825m RCF, and both rating agencies lifted their outlook from stable to positive.",
+        "Portfolio quality confirmed: Heathrow renewed for 8 years WITHOUT a tender at broadly unchanged terms (154 airports, 14 of the world's 25 largest; Denver starting ~6 months late), VIOOH now cash-on-cash breakeven standalone and EBIT-positive at group level; management explicitly cautious on H2 - new contracts (Barcelona, Stockholm, Carmila) in dilutive start-up phase and a receding sports tailwind - with Q3 guided at ~+5% organic and full-year net capex kept at ~8% of revenue."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -174,9 +178,9 @@
       },
       {
         "id": "heathrow-renouvellement",
-        "moteur": "Renouvellement du contrat Heathrow pour 8 ans sans appel d'offres, conditions tarifaires globalement inchangees vs les 10 dernieres annees - confirmation de la resilience du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands mondiaux), sans impact chiffrable materiel isole (deja dans la base contractuelle existante).",
+        "moteur": "Renouvellement du contrat Heathrow pour 8 ans sans appel d'offres, conditions tarifaires globalement inchangees vs les 10 dernieres annees - confirmation de la resilience du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands mondiaux), sans impact chiffrable materiel isole (deja dans la base contractuelle existante). [Confiance haute sur l'occurrence, sans impact chiffrable isole.]",
         "applique": [],
-        "confiance": "haute sur l'occurrence, sans impact chiffrable isole"
+        "confiance": "haute"
       },
       {
         "id": "fcf-positif-h1-inhabituel",
@@ -340,12 +344,12 @@
       "timeline": [
         {
           "date": "2026-05-05",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "Q2 guided ~+3% organic, flagged Middle-East drag (~5% of 2025 revenue, Dubai/UAE airports)."
         },
         {
           "date": "2026-07-31",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "Q3 guided ~+5% organic; World Cup incremental effect receding (40% of total effect expected in Q3 vs 60% already captured in Q2/H1)."
         }
       ],
@@ -393,7 +397,8 @@
         "quarter": "H1 26",
         "date": "2026-07-31",
         "source": "User-provided call transcript (as exploited at the 03/08 refresh)",
-        "message": "H1 organic +5.7% far above the ~+3% Q2 guidance despite the Middle-East drag; recurring EBIT +53.5% (margin +190bp) - the operating-leverage thesis demonstrated; published group net (+84.7%) inflated by a non-taxable APG|SGA disposal gain (47.5M) excluded from the Omnium base; management explicitly cautious on H2 (new contracts in dilutive start-up phase, sports tailwind receding, Q3 guided ~+5%)."
+        "message": "H1 organic +5.7% far above the ~+3% Q2 guidance despite the Middle-East drag; recurring EBIT +53.5% (margin +190bp) - the operating-leverage thesis demonstrated; published group net (+84.7%) inflated by a non-taxable APG|SGA disposal gain (47.5M) excluded from the Omnium base; management explicitly cautious on H2 (new contracts in dilutive start-up phase, sports tailwind receding, Q3 guided ~+5%).",
+        "format": "compresse"
       }
     ]
   }
