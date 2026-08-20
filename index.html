@@ -4655,6 +4655,14 @@ async function calSubscribeGoogle(ev){
   try{ await navigator.clipboard.writeText(calFeedUrl()); if(el) el.textContent='Feed URL copied — paste it in the Google form'; }
   catch(e){ if(el) el.textContent=calFeedUrl(); }
   window.open('https://calendar.google.com/calendar/u/0/r/settings/addbyurl','_blank');
+  // Une fois le flux copie, l invitation n a plus de raison d etre :
+  // elle disparait definitivement sur ce navigateur (la ✕ fait pareil).
+  try{ localStorage.setItem('omniumCalSubscribed','1'); }catch(e){}
+  setTimeout(()=>renderMarketCalendar(), 4000);
+}
+function calSubscribeDismiss(){
+  try{ localStorage.setItem('omniumCalSubscribed','1'); }catch(e){}
+  renderMarketCalendar();
 }
 function calGoogleLink(cls){
   if(_calRemote!==true) return '';
@@ -4841,7 +4849,7 @@ function renderMarketCalendar(){
         <span><span class="who" onclick="CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</span><span class="what">${esc(e.label)}</span></span>
         <span class="x" onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar">×</span>
       </div>`;
-    }).join('')}</div>`+`<div style="margin-top:8px;"><span class="epsrev-more" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span></div>`;
+    }).join('')}</div>`+((()=>{try{if(localStorage.getItem('omniumCalSubscribed'))return '';}catch(e){} return `<div style="margin-top:8px;display:flex;align-items:baseline;gap:8px;"><span class="epsrev-more" style="font-size:8.5px;font-weight:600;color:var(--muted);" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span><span class="epsrev-more" style="font-size:8.5px;color:var(--muted);" onclick="calSubscribeDismiss()" title="Already subscribed — hide">✕</span></div>`;})());
   } else {
     calBody=`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
   }
