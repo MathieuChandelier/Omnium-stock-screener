@@ -170,31 +170,31 @@
    "quarter": "Q2 26",
    "resultatsVsConsensus": {
     "ca": {
-     "actual": 12593,
-     "consensus": 12620
+     "actual": 12590,
+     "consensus": 12514
     },
     "epsAdj": {
      "actual": 1.31,
      "consensus": 1.28,
-     "basis": "non-GAAP"
+     "basis": "non-GAAP",
+     "basisNote": "non-GAAP"
     }
    },
-   "guidanceProchainTrimestre": "T3 26 : BPA ajusté guidé $1.38-$1.46 (consensus pré-publication $1.42).",
-   "guidanceAnnuelle": "FY26 relevée : BPA ajusté $5.45-$5.60 (vs $5.38-$5.58 précédemment) ; croissance des ventes comparables réaffirmée à 6.5%-7.5% (inclut Exact Sciences en base comparable des deux années).",
+   "guidanceProchainTrimestre": "Q3 26: adjusted EPS $1.38-1.46; FX ~-1% on Q3 sales (but ~+1% on FY sales).",
+   "guidanceAnnuelle": "FY26 comparable sales growth REAFFIRMED at 6.5-7.5%; adjusted EPS RAISED to $5.45-5.60 (gross-margin expansion driven: +100bp adjusted GM in Q2). Note Abbott guides non-GAAP only.",
    "pointsCles": [
-    "Clôture de l'acquisition d'Exact Sciences le 23 mars 2026 (cancer diagnostics, ~$3Md de CA incrémental attendu en 2026) ; Cologuard affiche une croissance à mi-adolescence aux US et à deux chiffres à l'international, nouveaux et anciens utilisateurs en hausse.",
-    "Écart massif GAAP ($0.53) vs ajusté ($1.31) au T2, principalement lié à l'amortissement d'intangibles (quasi doublé à $658M avec Exact Sciences), aux coûts d'intégration/step-up d'inventaire liés à l'acquisition, et à une provision légale de $385M pour un règlement de principe.",
-    "Electrophysiology en croissance à faible double chiffre, Rhythm Management/Diabetes Care/Heart Failure en hausse à haut simple chiffre ; le management évoque une accélération attendue des ventes et du BPA au second semestre.",
-    "Taux d'imposition GAAP anormalement élevé au T2 (39.1%) du fait d'éléments fiscaux discrets (~$110M de résolution de positions fiscales antérieures + ~$240M d'ajustement lié à la reconnaissance antérieure d'un avantage fiscal différé non monétaire significatif) ; taux normatif hors éléments spécifiés ~15.2%."
+    "Q2 26: sales $12.59B (+13.0% reported incl. Exact Sciences; +4.8% comparable, an acceleration vs the prior two quarters), adjusted EPS $1.31 above guidance midpoint and consensus; adjusted GM 58.0% (+100bp, mix incl. Exact + margin initiatives); FY adjusted EPS guidance raised to $5.45-5.60.",
+    "Second-half acceleration rests on 4 named businesses carrying ~80% of the trajectory shift - Nutrition (WIC leadership regained, Ensure US consumption up double-digit), Electrophysiology (Volt 2.0 US full release in Q3, TactiFlex Duo intl, Europe EP +20%, aim to outgrow the market and recapture share), Core Lab (US +7.5%, hospital labs +13%, China VBP drag fading from ~-30% to mid-single-digit), Cancer Diagnostics (Cologuard mid-teens, ACS 'preferred' designation, care-gap programs ramping in H2).",
+    "Libre/CGM read: $2B quarter (+9.5%) is the 'plateau' rate of ~8-9% absent a major reimbursement expansion; catalysts queued - US type-2 non-insulin (~10M Medicare lives, 'multibillion-dollar', possibly this fall), ~7 major international basal markets in discussion; Libre Duo (dual glucose-ketone, world first) CE-marked with US filing in final-stage talks; a 5th ~$1B sensor plant under planning.",
+    "Procedure-volume fears rebutted from Abbott's own diagnostics telemetry (no slowdown even in high-ACA-disenrollment states; Medicare, not Medicaid, funds >2/3 of US cardio); Structural Heart soft spot is US mitral execution (fix by Q4, intl double-digit, TAVR +30% H1); Amulet 360 filed (competitor holds ~90% of a $2B LAA market - relaunch/share-capture setup for 2027)."
    ],
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
     "analyse": true,
-    "referentiel": "US GAAP",
-    "source": "Form 10-Q Q2 2026 (periode close 30/06) + 8-K EX-99.1",
-    "date": "2026-08-19",
-    "note": "Croises vs fiche : CA 12 593 M$ (+13,0%), EPS GAAP 0,53$ / ajuste 1,31$ (1 362 M$ de charges specifiees apres impot dont 658 M$ d'amortissement d'incorporels) - coherent avec la base Omnium qui les conserve."
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-07-16"
    }
   },
   "summary": "BPA ajusté T2 26 au-dessus du consensus et guidance FY26 relevée, mais écart GAAP/ajusté considérablement élargi par l'intégration d'Exact Sciences (amortissement, coûts d'intégration, provision légale). Thèse intacte : accélération attendue au S2 avec dissipation progressive des coûts ponctuels liés à l'acquisition.",

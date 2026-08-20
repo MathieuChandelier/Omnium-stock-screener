@@ -195,31 +195,36 @@
    "quarter": "Q2 26",
    "resultatsVsConsensus": {
     "ca": {
-     "actual": 119796,
-     "consensus": 117200
+     "actual": 119800,
+     "consensus": 116980
     },
     "epsAdj": {
      "actual": 9.11,
-     "consensus": 3.32,
-     "basis": "GAAP"
+     "consensus": 2.91,
+     "basis": "GAAP",
+     "basisNote": "GAAP incl. ~$98B unrealized equity gains in OI&E - recurring base ~4.55 (bridged in quarterlyEPS)"
+    },
+    "epsReported": {
+     "actual": 9.11,
+     "basis": "GAAP",
+     "period": "T2 26"
     }
    },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree fournie (guidance a l'annee uniquement) ; management signale une pression de marge Cloud modeste au T3 liee au recours a de la capacite tierce en pont avant normalisation.",
-   "guidanceAnnuelle": "Capex 2026 relevee a 195-205 Mds$ (depuis 180-190 Mds$ en avril), nouvelle confirmation d'une hausse significative supplementaire du capex en 2027 (non chiffree par le management, consensus sell-side ~257-262 Mds$).",
+   "guidanceProchainTrimestre": "Q3 26: slight FX headwind (vs +1pt in Q2), mostly Search/YouTube; Q3 starts lapping the Search acceleration that began in Q3-25; Cloud margin under MODEST near-term pressure from third-party bridge capacity and Wiz integration.",
+   "guidanceAnnuelle": "FY26 CapEx RAISED to $195-205B (from $180-190B), 2027 capex to increase significantly; TPU system sales revenue mostly recognized in 2027; depreciation/energy/AI hiring pressure on P&L and FCF assumed. No EPS guidance (constant practice).",
    "pointsCles": [
-    "Cloud a accelere a +82% de croissance (contre +63% au T1), porte par la demande en infrastructure et solutions IA d'entreprise, avec un backlog en hausse de 52 Mds$ sur le trimestre a 514 Mds$ et une marge operationnelle Cloud plus que triplee a 35,6%.",
-    "Rachats d'actions totalement suspendus depuis janvier 2026 (0$ sur les deux premiers trimestres, contre 28,3 Mds$ sur la meme periode 2025) au profit d'une levee de capital propre de 84,75 Mds$ annoncee debut juin (actions ordinaires + preferentielles convertibles obligatoires 6,25% + programme ATM de 40 Mds$ non encore tire), avec une ancre de 10 Mds$ de Berkshire Hathaway.",
-    "Free cash-flow negatif de 5,9 Mds$ sur le trimestre (capex record de 44,9 Mds$), la dette long terme ayant quasiment double depuis fin 2025 (98,2 Mds$) en parallele de la levee de capital propre.",
-    "Le management a ete interroge sur le retard rapporte du modele Gemini 3.5 Pro (article Bloomberg du 16/07) et sur les departs de chercheurs IA seniors, sans remise en cause de la trajectoire produit annoncee ; Search & other reste resilient a +17% et YouTube Ads a +13%, sans signe de cannibalisation par l'IA generative."
+    "Q2 26: revenue $119.8B (+24%, 12th straight double-digit quarter, beat ~$2.8B); operating income +30% to $40.8B (34% margin); GAAP EPS $9.11 dominated by ~$98B of UNREALIZED equity-portfolio gains in OI&E - recurring base ~$4.55, bridged in quarterlyEPS; Q2 FCF negative (-$5.9B) on $44.9B quarterly capex.",
+    "Cloud is the story: +82% to $24.8B with operating margin 35.6% (vs 20.7%, OI x3), backlog $514B (+>$50B sequential, >50% to revenue within 24 months), first TPU SYSTEM deliveries to customer data centers (revenue mostly 2027), ~90% of Fortune 100 on Gemini Enterprise, ~500 customers >1T tokens/year.",
+    "Search resilient at scale: +17% to $63.3B - AI Mode >1B MAU with INCREMENTAL queries, AI Max out of beta (0.5M advertisers, +15% conversions at similar ROAS), all-time-high search usage during the World Cup; YouTube ads +13% with subscriptions growing faster than ads.",
+    "Investment cycle steepens: FY26 capex raised to $195-205B and 2027 'significantly' higher; debt grown $16B -> ~$100B in a year plus an equity raise (balance-sheet resilience; ATM only for SBC tax); third-party bridge compute accepted at high short-term cost for multiyear ROI; Gemini 4 pretraining underway with a near-monthly release cadence targeted - coding gap acknowledged and closing (3.6 Flash +10pts DeepSWE in 6 weeks)."
    ],
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "etatsFinanciers": {
     "analyse": true,
-    "referentiel": "US GAAP",
-    "source": "8-K EX-99.1 Q2 2026 (EDGAR, googexhibit991q22026)",
-    "date": "2026-08-19",
-    "note": "Etats condenses GAAP du communique Q2 2026 verifies (operating income +30% - coherent avec Cloud +82%/marge 35,6% de la fiche)."
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-07-22"
    }
   },
   "guidanceHistory": [
