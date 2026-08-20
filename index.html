@@ -2024,7 +2024,7 @@ function renderReturnBlock(ticker, proj, cours){
 
   el.innerHTML = `
     <div style="border-top:1px solid var(--border);"></div>
-    <div class="rb-header" style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;row-gap:2px;margin-bottom:12px;">
+    <div class="rb-header" style="display:flex;align-items:baseline;justify-content:flex-start;gap:10px;flex-wrap:wrap;row-gap:2px;margin-bottom:12px;">
       <div class="card-title" style="margin-bottom:0;">Expected annual return<span style="white-space:nowrap;"> · ${total>=0?'+':'−'}${Math.abs(total).toFixed(1)}% to ${LY}</span></div>
       <span class="th-assume" style="margin:0;padding-bottom:0;">assuming constant valuation</span>
     </div>
