@@ -494,10 +494,10 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    YTD -> total depuis l origine -> detail. */
 .epsrev-row{position:relative;margin:0 0 6px;}
 .epsrev-cell{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;gap:3px;}
-.epsrev-chip{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;border-radius:6px;padding:2px 7px;line-height:1.35;white-space:nowrap;font-variant-numeric:tabular-nums;}
-.epsrev-chip.omn{background:#eceefc;color:var(--navy);}
-.epsrev-chip.cons{background:rgba(43,216,194,.13);color:var(--teal-text);}
-.epsrev-chip.eq{opacity:.45;font-weight:600;}
+.epsrev-chip{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;line-height:1.4;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.epsrev-chip.omn{color:var(--navy);}
+.epsrev-chip.cons{color:var(--teal-text);}
+.epsrev-chip.eq{opacity:.4;font-weight:600;}
 .epsrev-more{font-family:'Poppins',sans-serif;font-size:8px;font-weight:600;color:var(--muted);cursor:pointer;line-height:1.2;user-select:none;}
 .epsrev-more:hover{color:var(--navy);}
 .epsrev-since{font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:500;color:var(--muted);line-height:1.1;}
@@ -3126,7 +3126,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // Il doit tenir la plus longue ("30 Oct '26"), sinon le libelle est rogne
   // par le viewBox - defaut constate en sandbox a 375px.
   const narrow=(chartW||640)<430;
-  const W=chartW||640, H=260, padL=0, padR=narrow?58:66, padT=40, padB=32;
+  const W=chartW||640, H=260, padL=0, padR=narrow?24:28, padT=40, padB=32;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const yFirst=years[0], yLast=years[years.length-1];
   const xOf=(year)=> yLast>yFirst ? padL + ((year-yFirst)/(yLast-yFirst))*plotW : padL+plotW/2;
@@ -3312,7 +3312,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       if(ny>0){ nx=-nx; ny=-ny; }
       const ox=px+nx*15;
       let oy=py+ny*15;
-      const txt=v.toFixed(1), halfW=txt.length*3.2;
+      const txt=v.toFixed(2), halfW=txt.length*3.2;
       const anchor=(ox-halfW<padL)?'start':((ox+halfW>padL+plotW)?'end':'middle');
       const cx=anchor==='start'?Math.max(ox,padL):(anchor==='end'?Math.min(ox,padL+plotW):ox);
       const x0=anchor==='start'?cx:(anchor==='end'?cx-halfW*2:cx-halfW);
@@ -3334,16 +3334,12 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 
   // COURBE CONSENSUS COURANTE : trait plein fin or, datee au bout DROIT
   // comme la courbe Omnium (l espace y est reserve).
-  let consSvg='', consEndLabel=null;
+  let consSvg='';
   if(consYears.length){
     const chain=[...consYears, ...consExtraYears];
     const vOf=(y)=>consExtraYears.includes(y)?consExtra[y]:consMapAll[y];
     const pts=chain.map(y=>`${xOf(y).toFixed(1)},${yOf(vOf(y)).toFixed(1)}`).join(' ');
     consSvg+=(chain.length>1?`<polyline points="${pts}" fill="none" stroke="${CONS_COL}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>`:'');
-    if(dCons&&dCons.date&&chain.length>1){
-      const endY=chain[chain.length-1];
-      consEndLabel={x:xOf(endY)+7, y:yOf(vOf(endY)), txt:shortDate(dCons.date)};
-    }
   }
   // LEGENDE : a gauche, dans le sillage du titre d axe. Noms seuls.
   let legSvg='';
@@ -3370,35 +3366,12 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
 
   }
 
-  // DATES AU BOUT DROIT DES DEUX COURBES COURANTES
-  //
-  // Regle harmonisee (20/08) : chaque courbe se nomme par une DATE, la
-  // norme shortDate ("29 Jul 26") - pour l Omnium, la date de l EVENEMENT
-  // qui a fixe la projection (earnings, guidance...) quand elle existe,
-  // sinon la date de capture ; pour le consensus, sa date de releve.
-  // L evenement lui-meme (T2 26...) reste en donnee. Anti-collision
-  // mutuelle : si les deux bouts de courbe arrivent trop proches, les
-  // etiquettes s ecartent symetriquement.
-  let endLabels='';
-  {
-    const omnYears=years.filter(y=>typeof lastState.epsByYear[String(y)]==='number');
-    let omn=null;
-    if(omnYears.length){
-      const endY=omnYears[omnYears.length-1];
-      omn={x:xOf(endY)+7, y:yOf(lastState.epsByYear[String(endY)]),
-           txt:shortDate(lastState.event&&lastState.event.date?lastState.event.date:lastState.date)};
-    }
-    const cons=consEndLabel;
-    if(omn&&cons&&Math.abs(omn.y-cons.y)<12){
-      const mid=(omn.y+cons.y)/2, sign=omn.y<=cons.y?1:-1;
-      omn.y=mid-6*sign; cons.y=mid+6*sign;
-    }
-    [omn,cons].forEach((L,i)=>{
-      if(!L) return;
-      const y=Math.max(padT+6, Math.min(padT+plotH-2, L.y));
-      endLabels+=`<text x="${L.x.toFixed(1)}" y="${(y+3.4).toFixed(1)}" font-size="9.5" font-weight="${i===0?700:600}" font-family="Poppins,sans-serif" fill="${i===0?'var(--navy)':CONS_COL}" style="paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round;">${L.txt}</text>`;
-    });
-  }
+  // Pas de dates en bout de courbe (retour 20/08 v7) : on s attend a
+  // voir les DERNIERES projections - la date n apportait qu une info
+  // legere, prenait de la place, et deux dates differentes posaient
+  // question. Les dates restent en donnee et dans le film de detail
+  // du panneau Revisions.
+  const endLabels='';
 
   return {
     svg: `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMinYMid meet" style="display:block;overflow:visible;">${unitLabel}${legSvg}${revBtn}${gridlines}${yLabels}${consSvg}${curvesSvg}${xLabels}${endLabels}</svg>`,
