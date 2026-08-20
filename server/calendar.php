@@ -33,14 +33,32 @@ if (isset($_GET['ics'])) {
   header('Content-Type: text/calendar; charset=utf-8');
   header('Content-Disposition: inline; filename="omnium-market-calendar.ics"');
   $out = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Omnium//MarketCalendar//FR\r\nX-WR-CALNAME:Omnium Market Calendar\r\nCALSCALE:GREGORIAN\r\n";
+  // VTIMEZONE Europe/Paris : requis pour les evenements HORODATES
+  // (decision 20/08 : l heure vit dans le calendrier Google, pas dans le
+  // dashboard - earnings sans heure connue = 22:00 Paris, la cloture US).
+  $out .= "BEGIN:VTIMEZONE\r\nTZID:Europe/Paris\r\nBEGIN:DAYLIGHT\r\nTZOFFSETFROM:+0100\r\nTZOFFSETTO:+0200\r\nTZNAME:CEST\r\nDTSTART:19700329T020000\r\nRRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\nEND:DAYLIGHT\r\nBEGIN:STANDARD\r\nTZOFFSETFROM:+0200\r\nTZOFFSETTO:+0100\r\nTZNAME:CET\r\nDTSTART:19701025T030000\r\nRRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\nEND:STANDARD\r\nEND:VTIMEZONE\r\n";
   foreach ($d['selected'] as $e) {
     $date = $e['date'] ?? ''; $dt = str_replace('-', '', $date);
     if (strlen($dt) !== 8) continue;
-    $end = date('Ymd', strtotime($date . ' +1 day'));
     $uid = preg_replace('/[^A-Za-z0-9\-]/', '', $e['id'] ?? uniqid()) . '@omnium';
     $sum = addcslashes(($e['ticker'] ?? '') . ' — ' . ($e['label'] ?? ''), ",;\\");
     $desc = addcslashes(trim(($e['type'] ?? '') . ' · ' . ($e['status'] ?? '') . ' · ' . ($e['source'] ?? ''), ' ·'), ",;\\");
-    $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;VALUE=DATE:$dt\r\nDTEND;VALUE=DATE:$end\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\nEND:VEVENT\r\n";
+    // Heure de l evenement (HH:MM, Europe/Paris) : celle de la source si
+    // capturee (champ "time" transmis tel quel par l app) ; a defaut,
+    // 22:00 pour les EARNINGS (cloture de bourse US, le standard) ;
+    // les autres types sans heure restent en journee entiere.
+    $time = $e['time'] ?? '';
+    if (!preg_match('/^\d{2}:\d{2}$/', $time) && ($e['type'] ?? '') === 'earnings') { $time = '22:00'; }
+    if (preg_match('/^\d{2}:\d{2}$/', $time)) {
+      $hm = str_replace(':', '', $time);
+      $startTs = strtotime("$date $time:00");
+      $endHm = date('His', $startTs + 3600);
+      $endDt = date('Ymd', $startTs + 3600);
+      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;TZID=Europe/Paris:{$dt}T{$hm}00\r\nDTEND;TZID=Europe/Paris:{$endDt}T{$endHm}\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\nEND:VEVENT\r\n";
+    } else {
+      $end = date('Ymd', strtotime($date . ' +1 day'));
+      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;VALUE=DATE:$dt\r\nDTEND;VALUE=DATE:$end\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\nEND:VEVENT\r\n";
+    }
   }
   echo $out . "END:VCALENDAR\r\n"; exit;
 }

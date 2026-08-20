@@ -4646,6 +4646,16 @@ function calPillState(){
   return {due, actions, gen, cands};
 }
 function calFeedUrl(){ return 'https://model.omnium-capital.com/calendar.php?user='+encodeURIComponent(getUserId())+'&ics=1'; }
+// Abonnement Google Calendar (20/08) : le flux .ics ne peut apparaitre
+// dans Google qu'apres un abonnement UNE FOIS ("From URL") - etape
+// d'onboarding qui manquait au design "silencieux". Copie l'URL
+// personnelle puis ouvre le formulaire Google d'ajout par URL.
+async function calSubscribeGoogle(ev){
+  const el=ev&&ev.target;
+  try{ await navigator.clipboard.writeText(calFeedUrl()); if(el) el.textContent='Feed URL copied — paste it in the Google form'; }
+  catch(e){ if(el) el.textContent=calFeedUrl(); }
+  window.open('https://calendar.google.com/calendar/u/0/r/settings/addbyurl','_blank');
+}
 function calGoogleLink(cls){
   if(_calRemote!==true) return '';
   const href='https://calendar.google.com/calendar/render?cid='+encodeURIComponent(calFeedUrl());
@@ -4830,7 +4840,7 @@ function renderMarketCalendar(){
         <span class="dchipb${today?' today':''}"><span class="d">${d.getUTCDate()}</span><span class="m">${MOIS[d.getUTCMonth()]}</span></span>
         <span><span class="who" onclick="CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</span><span class="what">${esc(e.label)}</span></span>
         <span class="x" onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar">×</span>
-      </div>`;
+      </div>+`<div style="margin-top:8px;"><span class="epsrev-more" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span></div>`;
     }).join('')}</div>`;
   } else {
     calBody=`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;

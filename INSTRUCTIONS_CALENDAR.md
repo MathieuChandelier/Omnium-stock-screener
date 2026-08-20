@@ -31,6 +31,12 @@ Chaque evenement porte :
   semaine suivante garde le MEME id - c'est ce qui evite les doublons
   cote selections utilisateur) ;
 - `ticker`, `date` (YYYY-MM-DD), `label` court en anglais,
+- `time` (HH:MM, Europe/Paris) QUAND la source la donne - l'heure
+  n'apparait PAS dans le dashboard mais alimente le flux .ics du
+  calendrier Google (decision 20/08/2026). A defaut d'heure connue,
+  calendar.php applique lui-meme 22:00 aux EARNINGS (cloture de bourse
+  US, le standard) et laisse les autres types en journee entiere - ne
+  jamais inventer une heure cote collecte,
   `type` : `earnings` | `conference` | `cmd` | `agm` | `other` ;
 - `source` : ou la date a ete lue (IR page, agenda de conference,
   communique...) ;
