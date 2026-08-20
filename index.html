@@ -888,6 +888,7 @@ function normalizeState(s){
   if(!s.webState)s.webState=null;
   if(!s.calendarProposals)s.calendarProposals=[];
   if(!('calendarCandidates' in s))s.calendarCandidates=null;
+  if(!('sourceGaps' in s))s.sourceGaps=null;
   if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
   if(!s.priceHistory.tickers) s.priceHistory.tickers={};
   if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
@@ -1118,7 +1119,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -1152,12 +1153,16 @@ async function loadState() {
       fetch('data/calendarProposals.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       // Market Calendar hebdomadaire (INSTRUCTIONS_CALENDAR.md) : candidats
       // du dernier run manuel - absence graciable avant le premier run.
-      fetch('data/calendarCandidates.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/calendarCandidates.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      // Trous de donnees sources (transcripts sous le seuil de richesse) -
+      // entretenu par les boucles de collecte ; les trous CONSENSUS, eux,
+      // se calculent en direct depuis les fiches (computeSourceGaps).
+      fetch('data/sourceGaps.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -4411,6 +4416,60 @@ function calTriageDone(){
 let _actRowOpen=null;   // accordeon de la section Actions (une ligne ouverte a la fois)
 function toggleActionRow(k){ _actRowOpen=(_actRowOpen===k?null:k); renderActionsBar(); }
 
+// ── SOURCE DATA GAPS (20/08/2026) ─────────────────────────────────
+// Trous de donnees sources malgre les cascades de back-up : le compteur
+// se peuple DYNAMIQUEMENT au fil des refreshes et des creations de
+// titres, et le panneau fournit le texte pret a coller pour lancer une
+// boucle de collecte (Seeking Alpha via Chrome pour les transcripts,
+// MarketScreener via navigateur pour les consensus).
+// - CONSENSUS : calcule en direct depuis les fiches (eps/epsNY/epsY2
+//   manquants, ou snapshot >45 jours - meme seuil que W7).
+// - TRANSCRIPTS : deux signaux fusionnes - dernierCall.transcriptAnalyse
+//   =false (le refresh n'a pas pu lire le transcript) et les entrees de
+//   data/sourceGaps.json (archives Drive sous le seuil de richesse,
+//   entretenues par les boucles de collecte).
+function computeSourceGaps(){
+  const cons=[], trans=[];
+  const today=new Date();
+  Object.entries(state.tickers).forEach(([tk,d])=>{
+    const co=d.epsConsensus||null;
+    const miss=[];
+    if(!co||!(+co.eps>0)) miss.push('eps CY');
+    else{
+      if(!(+co.epsNY>0)) miss.push('epsNY');
+      if(!(+co.epsY2>0)) miss.push('epsY2');
+      const dt=co.date?new Date(String(co.date).slice(0,10)):null;
+      if(dt&&isFinite(dt)&&(today-dt)/864e5>45) miss.push(`stale ${Math.round((today-dt)/864e5)} j`);
+    }
+    if(miss.length) cons.push({tk, detail:miss.join(' · ')});
+    const dc=d.hypothese?.dernierCall;
+    if(dc&&dc.transcriptAnalyse===false)
+      trans.push({tk, detail:`${(dc.quarter||'dernier trimestre')} — transcript non lu au refresh`});
+  });
+  (state.sourceGaps?.transcripts||[]).forEach(g=>{
+    if(g&&g.ticker&&g.status!=='ok'&&!trans.some(t=>t.tk===g.ticker))
+      trans.push({tk:g.ticker, detail:`${g.event||''} — ${g.note||'archive sous le seuil de richesse'}`});
+  });
+  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk));
+  return {cons, trans, total:cons.length+trans.length};
+}
+function buildSourceGapsPanel(g){
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  const list=(items)=>items.map(i=>`<div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-family:'Poppins',sans-serif;font-size:9.5px;line-height:1.6;"><b style="color:var(--navy);">${esc(i.tk)}</b><span style="color:var(--muted);">${esc(i.detail)}</span></div>`).join('');
+  const req=[
+    'Boucle de collecte des donnees sources manquantes (Chrome connecte pour Seeking Alpha) :',
+    g.trans.length?`\n1) TRANSCRIPTS (cascade doctrine, seuil de richesse : segments + guidance + >=5 echanges Q&A nominatifs) — recollecte et archive sur le Drive (transcript/<TITRE>/) :\n${g.trans.map(t=>`- ${t.tk} : ${t.detail}`).join('\n')}`:'',
+    g.cons.length?`\n2) CONSENSUS 3 ANS (stockanalysis puis MarketScreener via navigateur, extrapolation au-dela) — complete epsConsensus {eps, epsNY, epsY2, date, source} :\n${g.cons.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}`:'',
+    '\nEchec apres cascade complete = me le signaler explicitement (je fournis la valeur).'
+  ].filter(Boolean).join('\n');
+  return `<div class="act-grp">
+      ${g.trans.length?`<div class="act-grp-t">Transcripts (${g.trans.length})</div>${list(g.trans)}`:''}
+      ${g.cons.length?`<div class="act-grp-t" style="margin-top:${g.trans.length?'10px':'0'};">Consensus (${g.cons.length})</div>${list(g.cons)}`:''}
+      <div class="act-grp-w" style="margin-top:10px;">Texte à coller pour lancer la boucle :</div>
+      <div class="act-req">${esc(req)}</div>
+    </div>`;
+}
+
 // Rangee de pastilles + panneaux (requete / tri). Codes du fichier :
 // navy-light/navy = action due, teal-light/teal-dark = resultat a trier.
 // ── SECTION ACTIONS (variante A "Liste", 19/08/2026) : toutes les
@@ -4582,6 +4641,10 @@ function renderActionsBar(){
       "Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l'énumération GAAP / non-GAAP (ou null) et déplace la justification vers pointsCles :"):'')});
   // Boucle 13F ABANDONNEE (19/08/2026) - le champ ownership des fiches
   // reste de la donnee, mais plus aucune file ni operation dediee.
+
+  // Trous de donnees sources : compteur dynamique (voir computeSourceGaps).
+  const gaps=computeSourceGaps();
+  if(gaps.total) items.push({k:'gaps',dot:'var(--navy)',lbl:'Source data gaps — transcripts & consensus',cnt:String(gaps.total),panel:buildSourceGapsPanel(gaps)});
 
   if(!items.length){ wrap.innerHTML=''; return; }
   const rows=items.map(it=>{
