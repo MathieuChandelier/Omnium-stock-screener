@@ -1,484 +1,495 @@
 {
-  "name": "Airbnb",
-  "cours": 130.0,
-  "yahooSymbol": "ABNB",
-  "dividende": 0,
-  "data": [
-    {
-      "year": 2018,
-      "ca": 3651,
-      "ebit": 19,
-      "net": -17,
-      "shares": 256,
-      "nd": -1000,
-      "div": 0
-    },
-    {
-      "year": 2019,
-      "ca": 4805,
-      "ebit": -502,
-      "net": -674,
-      "shares": 261,
-      "nd": -800,
-      "div": 0
-    },
-    {
-      "year": 2020,
-      "ca": 3378,
-      "ebit": -3590,
-      "net": -4585,
-      "shares": 284,
-      "nd": -4700,
-      "div": 0
-    },
-    {
-      "year": 2021,
-      "ca": 5992,
-      "ebit": 429,
-      "net": -352,
-      "shares": 616,
-      "nd": -7900,
-      "div": 0
-    },
-    {
-      "year": 2022,
-      "ca": 8399,
-      "ebit": 1802,
-      "net": 1893,
-      "shares": 680,
-      "nd": -7600,
-      "div": 0
-    },
-    {
-      "year": 2023,
-      "ca": 9917,
-      "ebit": 1518,
-      "net": 1992,
-      "shares": 662,
-      "nd": -7800,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 11102,
-      "ebit": 2553,
-      "net": 2648,
-      "shares": 645,
-      "nd": -9000,
-      "div": 0
-    },
-    {
-      "year": 2025,
-      "ca": 12241,
-      "ebit": 2544,
-      "net": 2724,
-      "shares": 623,
-      "nd": -9500,
-      "div": 0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 5.19,
-    "epsNY": 6.21,
-    "date": "2026-07-17",
-    "source": "WallStreetZen, consensus agrege"
+ "name": "Airbnb",
+ "cours": 130.0,
+ "yahooSymbol": "ABNB",
+ "dividende": 0,
+ "data": [
+  {
+   "year": 2018,
+   "ca": 3651,
+   "ebit": 19,
+   "net": -17,
+   "shares": 256,
+   "nd": -1000,
+   "div": 0
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2019,
+   "ca": 4805,
+   "ebit": -502,
+   "net": -674,
+   "shares": 261,
+   "nd": -800,
+   "div": 0
   },
-  "ownership": {
-    "asOf": "2026-07-22",
-    "insiderPct": 27.0,
-    "insiderDesc": "Les trois cofondateurs (Brian Chesky - CEO et Chairman, Nathan Blecharczyk - Chairman du board, Joe Gebbia) detiennent ensemble environ 27% du capital mais pres de 80% du pouvoir de vote via une structure a classes d'actions duales (Classe B = 20 voix/action). Chesky seul detient 31,9% du pouvoir de vote (1,0% du capital Classe A + 35,6% du capital Classe B).",
-    "insiderSource": "DEF 14A depose le 24 avril 2026 (donnees de detention arretees au 8 avril 2026) - source primaire de detention beneficiaire des dirigeants et administrateurs.",
-    "notableHolders": [],
-    "coverageNote": null,
-    "history": []
+  {
+   "year": 2020,
+   "ca": 3378,
+   "ebit": -3590,
+   "net": -4585,
+   "shares": 284,
+   "nd": -4700,
+   "div": 0
   },
-  "compliance": {
-    "asOf": "2026-07-22",
-    "items": [],
-    "note": "Aucune fraude averee ni allegation de fraude en valeurs mobilieres identifiee dans l'historique du titre a ce jour (recherche du 2026-07-22). Le contentieux identifie (plainte de gouvernance de juin 2025 sur l'exclusion de propositions d'actionnaires du proxy, class actions commerciales ordinaires sur frais de menage/classification des hotes/remise de taxes locales) releve du contentieux commercial ou de gouvernance courant, hors perimetre de ce champ (voir INSTRUCTIONS.md - PORTEE DE LA RECHERCHE)."
+  {
+   "year": 2021,
+   "ca": 5992,
+   "ebit": 429,
+   "net": -352,
+   "shares": 616,
+   "nd": -7900,
+   "div": 0
   },
-  "hypothese": {
-    "date": "2026-08-18",
-    "priorEPS": {
-      "date": "2026-08-07",
-      "eps": {
-        "2026": 5.25,
-        "2027": 6.34,
-        "2028": 7.57,
-        "2029": 8.88,
-        "2030": 10.27
-      }
-    },
-    "source": "Deep refresh 18/08/2026 (protocole complet) : bridge etabli (t 20% + interets projetes a 0 - Option A E5 a-bis maintenue et documentee, l'ecart historique 114% de conversion explique), scorecard cree, cles depreciees purgees. Projections inchangees (etat du 07/08).",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 3610,
-          "consensus": 3580
-        },
-        "epsAdj": {
-          "actual": 1.37,
-          "consensus": 1.26,
-          "basis": "GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "T3 26 : CA guide entre 4,69 et 4,77 Md$ (+15% a +17% YoY, incluant ~3pts de vent arriere FX), take rate implicite stable YoY, croissance de GBV au milieu de la fourchette 'mid teens', Nights & Seats Booked en croissance a deux chiffres bas ; marge Adjusted EBITDA attendue en LEGER RECUL YoY (effet de timing des investissements), aucun impact significatif du conflit au Moyen-Orient anticipe (contrairement au T2).",
-      "guidanceAnnuelle": "Guidance FY26 RELEVEE UNE SECONDE FOIS sur le call T2 26 : croissance du CA visee 'au moins mid-teens' (vs 'low to mid teens' precedemment), marge Adjusted EBITDA visee a 'au moins 35,5%' (vs '>=35%' precedemment) - refletant la demande forte sur la plateforme, les investissements en talents/technologie/marketing, et l'execution du roadmap produit.",
-      "pointsCles": [
-        "Le CFO signale un credit d'impot ponctuel de 77 M$ au T2, lie a une nouvelle guidance fiscale publiee affectant des impots d'exercices anterieurs - un vrai one-off, exclu de la lecture trimestrielle normalisee (voir quarterlyEPS).",
-        "Le CEO decrit une expansion en 3 phases : (1) phase actuelle - attachement de services/experiences a une intention de reservation de logement deja existante ; (2) guichet unique du voyage (horizon ~18 mois) ; (3) au-dela du voyage vers d'autres formes de connexion - AI presentee comme le catalyseur permettant cette expansion, pas seulement un outil d'efficacite.",
-        "Rachat du partenaire location de voitures CarTrawler par Expedia releve par un analyste comme un risque de dependance - le management minimise, confirme sa confiance dans la poursuite du partenariat et reaffirme une strategie M&A 'opportuniste', priorite a la croissance organique.",
-        "Test de recherche par IA generative demarre ce mois-ci sur une faible part du trafic (bascule optionnelle via un toggle, pas un remplacement force), extension prevue sur l'annee si les resultats se confirment - le management insiste sur le temps necessaire pour reeduquer le comportement de recherche des utilisateurs.",
-        "Take rate implicite FY26 attendu stable YoY (pas en hausse comme le potentiel de monetisation le permettrait), du fait du calendrier de Reserve Now Pay Later (paiement differe) et d'incitations clients accrues liees aux nouveaux verticaux en 2026 - le management precise qu'hors ces incitations, le take rate aurait ete legerement superieur."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "communique",
-        "date": "2026-08-06"
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q1 26",
-        "date": "2026-05-07",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance CA FY26 relevee a 'low to mid teens' ; marge Adjusted EBITDA visee a au moins 35%."
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-08-06",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance CA FY26 relevee a 'au moins mid-teens' (vs 'low to mid teens') ; marge Adjusted EBITDA relevee a 'au moins 35,5%' (vs '>=35%')."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "ancrages": [
-      {
-        "id": "revenue_growth_guidance",
-        "moteur": "Guidance FY26 relevee une SECONDE fois sur le call T2'26 : croissance CA visee 'au moins mid-teens' (~15,5% central retenu, vs '~14%' au refresh precedent) - coherente avec l'acceleration reelle T1->T2 (CA +18% puis +17% YoY sur base plus dure) et la guidance T3 (CA guide +15% a +17% YoY) ; deceleration progressive 2027-2030 inchangee dans sa forme, rebasee sur ce nouveau point de depart 2026.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "margin_recovery_experiences",
-        "moteur": "Guidance Adjusted EBITDA FY26 relevee a >=35,5% (vs >=35% precedemment) ; reconstruction bottom-up via les trimestres reels (T1/T2 26 actuals + T3 guide, sachant que le T3 concentre l'essentiel de la rentabilite annuelle - marge Adjusted EBITDA de 50% au seul T3 2025, contre 34-35% en rythme normal) implique une marge EBIT GAAP FY26 ~27,9% - sensiblement plus elevee que l'estimation plate precedente (21,5%), qui sous-estimait l'effet de levier operationnel du T3. Trajectoire 2027-2030 rebasee proportionnellement, marge continuant a s'etendre graduellement vers ~32,4% en 2030 (recuperation/scaling des nouveaux verticaux).",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "netfin_zero_buyback",
-        "moteur": "Regle E5-a bis, cas 3 : dette nette negative (cash net ~9,5 Md$ fin FY25) et programme de rachat d'actions actif et regulier documente depuis 2022 (10,9 Md$ rachetes, autorisation de 6 Md$ ouverte en fevrier 2024, rythme ~3,8-4 Md$/an) -> rendement financier net projete a 0% (cash considere consomme par les rachats en cours d'annee). Voir PARAMETRES pour la discussion du biais que ce choix introduit sur ce titre specifique (cash net tres superieur au rythme annuel de rachats, ~700-800 M$/an d'interets reels observes FY24-FY25).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "etr_normatif_20pct",
-        "moteur": "Taux effectif d'imposition normatif retenu a 20%, base sur les taux effectifs reels FY2024 (20,5%) et FY2025 (19,95%), tous deux propres (post le one-off fiscal FY2023 retraite via E5 d-bis) et mutuellement coherents.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "buyback_pace_3pct",
-        "moteur": "Reduction du nombre d'actions diluees projetee a ~3%/an, moderee vs le rythme exceptionnel de FY2025 (-3,4%, 623M vs 645M), coherente avec l'autorisation de rachat de 6 Md$ ouverte en fevrier 2024 et la priorite de retour de capital reaffirmee par le management.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "debt_refinancing_q1_2026",
-        "moteur": "Emission de 2,5 Md$ d'obligations senior au T1'26 (notations investment grade obtenues), utilisee pour rembourser les 2,0 Md$ de convertibles a 0% dues en 2026 - augmente la dette brute d'environ 0,5 Md$. Dette nette (cash net) projetee globalement stable a legerement moins negative sur l'horizon (rachats d'actions consommant l'essentiel du free cash-flow annuel genere), plutot qu'une trajectoire de cash net croissant sans limite.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumCA": {
-      "2026": 14138,
-      "2027": 15831,
-      "2028": 17574,
-      "2029": 19327,
-      "2030": 21070
-    },
-    "omniumEBIT": {
-      "2026": 3938,
-      "2027": 4614,
-      "2028": 5349,
-      "2029": 6084,
-      "2030": 6826
-    },
-    "omniumNet": {
-      "2026": 3150,
-      "2027": 3691,
-      "2028": 4279,
-      "2029": 4867,
-      "2030": 5461
-    },
-    "omniumShares": {
-      "2026": 600,
-      "2027": 582,
-      "2028": 565,
-      "2029": 548,
-      "2030": 532
-    },
-    "omniumEPS": {
-      "2026": 5.25,
-      "2027": 6.34,
-      "2028": 7.57,
-      "2029": 8.88,
-      "2030": 10.27
-    },
-    "omniumND": {
-      "2026": -9200,
-      "2027": -9000,
-      "2028": -8800,
-      "2029": -8600,
-      "2030": -8400
-    },
-    "summary": "Leader mondial de la location de courte duree en pleine extension de plateforme (experiences, pilotes hotels, services), CA T1'26 +18% YoY et guidance FY26 relevee (croissance 'low to mid teens', marge Adjusted EBITDA >=35%). Ecart marque et documente vs consensus : omniumEPS Omnium batit sur un revenu financier net projete a 0% (regle E5-a bis, cash net considere consomme par les rachats d'actions actifs), alors que le titre genere reellement ~700-800 M$/an d'interets financiers recurrents - biais conservateur assume, a rediscuter au prochain refresh.",
-    "text": "== THESIS SUMMARY ==\nAirbnb is the dominant short-stay platform with growing optionality in experiences and hotel pilots (NY, LA, SF, Madrid). The bet: sustained double-digit revenue growth (FY26 guidance upgraded twice, now 'at least mid-teens'), a massive continuous buyback (10.9bn$ retired since 2022; ~3%/yr share shrink modeled) and AI-driven cost discipline compound into steady operating-margin expansion. The methodological signature of this file is deliberate: E5 a-bis Option A is applied to the letter - the ~9.5bn$ net cash pile really earns 700-800M$/yr of interest, but the model projects that at ZERO (cash treated as consumed by buybacks), so the projected 80% Net/EBIT conversion sits far below the published 114% (2025: real interest + ~9% GAAP tax). That conservatism is assumed, documented, and flagged for periodic re-discussion rather than smoothed - it is the main reason W1 flags this file, by design.\n\n== THESIS READ ==\n- FY26 revenue guidance upgraded a second time (at least mid-teens): the demand engine keeps outrunning the plan set in February.\n- Q2 above the top of guidance with Middle-East drag absorbed - the Q1 'fragility' read was conjunctural, as management claimed.\n- Buyback pace (~3.8-4bn$/yr) against 9.5bn$ net cash: Option A's zero-interest assumption stays a deliberate ~0.90$/share EPS haircut vs economic reality.\n- Experiences/hotels pilots still unquantified in revenue - optionality, not yet a driver.\n- Watch: the FY25 'clean' tax rate looked closer to 13% than the 20% normative - reconcile at the FY26 close (could be a structural EPS tailwind if confirmed).\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP. Bridge (c-ter): projections at exactly t=20% (ancrage etr_normatif_20pct) and finNet=0 (ancrage netfin_zero_buyback, Option A) - the chain reconciles to the cent; the published 2025 year reconciles at +450M$ interest and ~9% effective tax, which fully explains the W1 conversion gap (114% -> 80%), by construction not by error. Shares -3%/yr (buyback_pace_3pct); ND barely declining (cash generation offset by buybacks). Scorecard: quarterly revenue guider - FY26 anchor own_vintage 3.97$ (22/07, pre-upgrades, low baseline), history not measurable at setup, application suspended (documented). WATCH-LIST: (1) Option A re-discussion trigger: any material change in cash/buyback profile; (2) FY25 clean tax ~13% vs 20% normative - reconcile at FY26 close; (3) hotels/experiences first quantified contribution; (4) buyback pace post debt refinancing. Next useful refresh: Q3 results (early November).\n\n== CATALYSTS ==\nQ3 2026 (early Nov): third guidance touchpoint of the year; experiences/hotel pilots metrics; buyback cadence.",
-    "quarterlyEPS": {
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.24,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.98,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 2.55,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 0.56,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.38,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 1.24,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 2.98,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.65,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 0.46,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 1.5,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 3.6,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.78,
-          "actual": false
-        }
-      ],
-      "cadence": "trimestriel"
-    },
-    "bridge": {
-      "2025": {
-        "finNet": 450,
-        "other": 0,
-        "taxRate": 0.09,
-        "minorities": 0,
-        "netCalc": 2724,
-        "netPub": 2724,
-        "residual": 0,
-        "residualNote": "Net above EBIT is structural that year: ~450M$ real interest income on the ~9.5bn$ net cash pile plus a low effective GAAP tax (~9%, stock-comp and credits) - this is exactly why the historical Net/EBIT conversion (114%) exceeds the projected 80% (W1): projections apply E5 a-bis Option A (interest projected at 0 with active buybacks) and the 20% normative tax."
-      },
-      "2026": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 3150
-      },
-      "2027": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 3691
-      },
-      "2028": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 4279
-      },
-      "2029": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 4867
-      },
-      "2030": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 5461
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "quarterly",
-      "metric": "Revenue (quarterly guidance + FY directional)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-08-06",
-          "type": "guidance_revision",
-          "detail": "FY26 revenue growth RAISED to 'at least mid-teens' (from 'low to mid teens' in May) - second upgrade of the year.",
-          "flag": null
-        },
-        {
-          "date": "2026-05-07",
-          "type": "guidance_revision",
-          "detail": "FY26 revenue growth raised to 'low to mid teens'; Adjusted EBITDA margin floor reiterated.",
-          "flag": null
-        }
-      ],
-      "paceCheckpoint": "Q2 26 above guidance range top; FY26 trajectory upgraded twice.",
-      "weightedBeatPct": null,
-      "annualBeatPct": null,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Airbnb guides one quarter of revenue plus a directional FY margin comment - no annual initial frame to measure; no dated early-2025 consensus snapshot archived - excluded structurally."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same structural limitation for FY24."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 3.97,
-        "source": "own_vintage",
-        "date": "2026-07-22",
-        "note": "First own archived projection (22/07, pre-Q2 upgrade) - mid-year and taken under strict Option A economics; re-anchor at the FY27 open. The subsequent internal revision to 5.25$ (guidance upgrades + margin + buyback) makes this anchor a LOW baseline."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "No measurable fiscal year: quarterly-only guider. The own-vintage anchor (3.97, 22/07 - a LOW baseline per its note) starts the archive; first verdict at the FY26 close, re-anchor at the FY27 open.",
-      "consensusSource": "WallStreetZen",
-      "consensusDate": "2026-07-17",
-      "inProgress": null
-    },
-    "revisionEvent": {
-      "date": "2026-08-06",
-      "label": "Q2 26",
-      "type": "earnings"
-    }
+  {
+   "year": 2022,
+   "ca": 8399,
+   "ebit": 1802,
+   "net": 1893,
+   "shares": 680,
+   "nd": -7600,
+   "div": 0
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-07",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-08-06",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Justin Post (BofA) - progression de l'initiative hotels dans les villes deja bien approvisionnees (pas seulement les marches contraints reglementairement) : le management confirme une reception tres au-dela des attentes des deux cotes (hotels ET marches non contraints), ~35% des primo-reservants hotel reviennent reserver un logement.",
-          "Q Richard Clarke (Bernstein) - ambition ultime des produits annexes (simple attachement vs OTA complet) et impact de l'acquisition du partenaire CarTrawler par Expedia sur la strategie M&A : le CEO decrit 3 phases (attachement actuel -> guichet unique voyage -> au-dela du voyage), confirme sa confiance dans la poursuite du partenariat CarTrawler malgre l'acquisition, reaffirme une strategie M&A opportuniste sans urgence accrue.",
-          "Q Lloyd Walmsley (Mizuho) - marches ou l'amelioration de conversion hotels est la plus visible et calendrier des tests de recherche IA : deploiement etendu a une vingtaine de villes, inventaire hotelier selectif (complementaire, pas concurrent des logements) ; tests IA demarrent ce mois-ci sur faible part du trafic via toggle optionnel, extension progressive sur l'annee selon les resultats.",
-          "Q Jed Kelly (Oppenheimer) - le service fee unique sera-t-il etendu a tous les hotes ou reste limite aux gestionnaires professionnels : migration en cours vers l'ensemble de la base d'hotes, achevement attendu avant fin d'annee (environ la moitie des annonces actives deja migrees).",
-          "Q Ken Gawrelski (Wells Fargo) - reaction des hotes historiques a l'arrivee des hotels sur la plateforme et approche geo-par-geo vs globale pour le trip planning : tres peu de retours negatifs des hotes core, analogie avec l'effet d'entrainement Amazon (nouvelle categorie ne cannibalise pas, renforce l'existant) ; supply (hotels/services/experiences) teste ville par ville, mais le trip planning global sera deploye globalement.",
-          "Q Eric Sheridan (Goldman Sachs) - arbitrage entre reinvestissement et remontee de la marge incrementale a long terme : le CFO refuse un guide chiffre au-dela de 2026, confirme un plancher structurel de capacite a investir tout en delivrant une expansion de marge, se refere au track record recent comme meilleur indicateur disponible.",
-          "Q Ron Josey (Citi) - detail des outils de pricing hote et contribution actuelle des experiences aux nuitees reservees : le pricing est presente comme le plus gros levier de croissance disponible (bien plus que Reserve Now Pay Later), nouveau modele de tarification pilote par IA en cours de deploiement ; experiences encore a petite echelle, horizon de contribution pluriannuel explicitement assume (pas cette annee).",
-          "Q John Colantuoni (Jefferies) - impact de la transition AI-native sur les couts produits et ajustements operationnels : le CEO minimise l'impact cout (couts d'inference marginaux face au ROI des transactions a haute valeur), le CFO confirme neanmoins une hausse materielle deja integree a la guidance des depenses IA, partiellement compensee par la baisse du cout de support client (-16% YoY) et une croissance des effectifs plus lente que par le passe.",
-          "Q Kevin Kopelman (TD Cowen) - moteurs de l'acceleration des primo-reservants (+11%, plus haut niveau en 4 ans) : attribue a l'effet cumule de multiples ameliorations produit plutot qu'a un seul facteur, force particuliere en Inde/Bresil (marches d'expansion) ET acceleration recente sur les marches coeur (dont les US) ; Reserve Now Pay Later cite explicitement comme facteur de conversion pour les nouveaux utilisateurs hesitants.",
-          "Q Conor Cunningham (Melius Research) - decomposition de l'acceleration de croissance du trimestre et strategie de pricing long terme sur l'ADR : le management refuse d'isoler un facteur unique (renvoie a une liste de 12-15 ameliorations dans la lettre aux actionnaires), precise que la hausse de l'ADR reflete en partie une popularite croissante des grands logements familiaux (plus de chambres, effet de mix reel) et non uniquement une hausse de prix nominale.",
-          "Q Colin Sebastian (Baird) - quelles nouvelles categories de services montrent la plus forte traction/economie unitaire et rythme d'investissement : location de voitures citee comme la plus grosse opportunite (duree de reservation superieure aux attentes), stockage de bagages cite comme succes inattendu ('sleeper hit') ; la plupart des services additionnels fonctionnent en PARTENARIAT (cout marginal faible car assume par le partenaire), le management ne s'attend pas a une hausse significative des couts lies a cette expansion.",
-          "Q Doug Anmuth (JPMorgan) - opportunite B2B plus formelle a terme : le CEO ecarte explicitement le marque blanche (white label), privilegie une strategie 'consumer-first' (analogie Apple vs BlackBerry) ou l'adoption entreprise suit l'adoption grand public plutot que l'inverse - strategie B2B qualifiee d''emergente', aucun engagement chiffre ou calendrier donne."
-        ]
-      }
-    ],
-    "engagementsStructurants": []
+  {
+   "year": 2023,
+   "ca": 9917,
+   "ebit": 1518,
+   "net": 1992,
+   "shares": 662,
+   "nd": -7800,
+   "div": 0
+  },
+  {
+   "year": 2024,
+   "ca": 11102,
+   "ebit": 2553,
+   "net": 2648,
+   "shares": 645,
+   "nd": -9000,
+   "div": 0
+  },
+  {
+   "year": 2025,
+   "ca": 12241,
+   "ebit": 2544,
+   "net": 2724,
+   "shares": 623,
+   "nd": -9500,
+   "div": 0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 5.29,
+  "epsNY": 6.18,
+  "epsY2": 7.4,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 45 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 5.28)",
+  "analystsCount": 45
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "ownership": {
+  "asOf": "2026-07-22",
+  "insiderPct": 27.0,
+  "insiderDesc": "Les trois cofondateurs (Brian Chesky - CEO et Chairman, Nathan Blecharczyk - Chairman du board, Joe Gebbia) detiennent ensemble environ 27% du capital mais pres de 80% du pouvoir de vote via une structure a classes d'actions duales (Classe B = 20 voix/action). Chesky seul detient 31,9% du pouvoir de vote (1,0% du capital Classe A + 35,6% du capital Classe B).",
+  "insiderSource": "DEF 14A depose le 24 avril 2026 (donnees de detention arretees au 8 avril 2026) - source primaire de detention beneficiaire des dirigeants et administrateurs.",
+  "notableHolders": [],
+  "coverageNote": null,
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-22",
+  "items": [],
+  "note": "Aucune fraude averee ni allegation de fraude en valeurs mobilieres identifiee dans l'historique du titre a ce jour (recherche du 2026-07-22). Le contentieux identifie (plainte de gouvernance de juin 2025 sur l'exclusion de propositions d'actionnaires du proxy, class actions commerciales ordinaires sur frais de menage/classification des hotes/remise de taxes locales) releve du contentieux commercial ou de gouvernance courant, hors perimetre de ce champ (voir INSTRUCTIONS.md - PORTEE DE LA RECHERCHE)."
+ },
+ "hypothese": {
+  "date": "2026-08-18",
+  "priorEPS": {
+   "date": "2026-08-07",
+   "eps": {
+    "2026": 5.25,
+    "2027": 6.34,
+    "2028": 7.57,
+    "2029": 8.88,
+    "2030": 10.27
+   }
+  },
+  "source": "Deep refresh 18/08/2026 (protocole complet) : bridge etabli (t 20% + interets projetes a 0 - Option A E5 a-bis maintenue et documentee, l'ecart historique 114% de conversion explique), scorecard cree, cles depreciees purgees. Projections inchangees (etat du 07/08).",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 3610,
+     "consensus": 3580
+    },
+    "epsAdj": {
+     "actual": 1.37,
+     "consensus": 1.26,
+     "basis": "GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "T3 26 : CA guide entre 4,69 et 4,77 Md$ (+15% a +17% YoY, incluant ~3pts de vent arriere FX), take rate implicite stable YoY, croissance de GBV au milieu de la fourchette 'mid teens', Nights & Seats Booked en croissance a deux chiffres bas ; marge Adjusted EBITDA attendue en LEGER RECUL YoY (effet de timing des investissements), aucun impact significatif du conflit au Moyen-Orient anticipe (contrairement au T2).",
+   "guidanceAnnuelle": "Guidance FY26 RELEVEE UNE SECONDE FOIS sur le call T2 26 : croissance du CA visee 'au moins mid-teens' (vs 'low to mid teens' precedemment), marge Adjusted EBITDA visee a 'au moins 35,5%' (vs '>=35%' precedemment) - refletant la demande forte sur la plateforme, les investissements en talents/technologie/marketing, et l'execution du roadmap produit.",
+   "pointsCles": [
+    "Le CFO signale un credit d'impot ponctuel de 77 M$ au T2, lie a une nouvelle guidance fiscale publiee affectant des impots d'exercices anterieurs - un vrai one-off, exclu de la lecture trimestrielle normalisee (voir quarterlyEPS).",
+    "Le CEO decrit une expansion en 3 phases : (1) phase actuelle - attachement de services/experiences a une intention de reservation de logement deja existante ; (2) guichet unique du voyage (horizon ~18 mois) ; (3) au-dela du voyage vers d'autres formes de connexion - AI presentee comme le catalyseur permettant cette expansion, pas seulement un outil d'efficacite.",
+    "Rachat du partenaire location de voitures CarTrawler par Expedia releve par un analyste comme un risque de dependance - le management minimise, confirme sa confiance dans la poursuite du partenariat et reaffirme une strategie M&A 'opportuniste', priorite a la croissance organique.",
+    "Test de recherche par IA generative demarre ce mois-ci sur une faible part du trafic (bascule optionnelle via un toggle, pas un remplacement force), extension prevue sur l'annee si les resultats se confirment - le management insiste sur le temps necessaire pour reeduquer le comportement de recherche des utilisateurs.",
+    "Take rate implicite FY26 attendu stable YoY (pas en hausse comme le potentiel de monetisation le permettrait), du fait du calendrier de Reserve Now Pay Later (paiement differe) et d'incitations clients accrues liees aux nouveaux verticaux en 2026 - le management precise qu'hors ces incitations, le take rate aurait ete legerement superieur."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-08-06"
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q1 26",
+    "date": "2026-05-07",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance CA FY26 relevee a 'low to mid teens' ; marge Adjusted EBITDA visee a au moins 35%."
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-08-06",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance CA FY26 relevee a 'au moins mid-teens' (vs 'low to mid teens') ; marge Adjusted EBITDA relevee a 'au moins 35,5%' (vs '>=35%')."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "ancrages": [
+   {
+    "id": "revenue_growth_guidance",
+    "moteur": "Guidance FY26 relevee une SECONDE fois sur le call T2'26 : croissance CA visee 'au moins mid-teens' (~15,5% central retenu, vs '~14%' au refresh precedent) - coherente avec l'acceleration reelle T1->T2 (CA +18% puis +17% YoY sur base plus dure) et la guidance T3 (CA guide +15% a +17% YoY) ; deceleration progressive 2027-2030 inchangee dans sa forme, rebasee sur ce nouveau point de depart 2026.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "margin_recovery_experiences",
+    "moteur": "Guidance Adjusted EBITDA FY26 relevee a >=35,5% (vs >=35% precedemment) ; reconstruction bottom-up via les trimestres reels (T1/T2 26 actuals + T3 guide, sachant que le T3 concentre l'essentiel de la rentabilite annuelle - marge Adjusted EBITDA de 50% au seul T3 2025, contre 34-35% en rythme normal) implique une marge EBIT GAAP FY26 ~27,9% - sensiblement plus elevee que l'estimation plate precedente (21,5%), qui sous-estimait l'effet de levier operationnel du T3. Trajectoire 2027-2030 rebasee proportionnellement, marge continuant a s'etendre graduellement vers ~32,4% en 2030 (recuperation/scaling des nouveaux verticaux).",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "netfin_zero_buyback",
+    "moteur": "Regle E5-a bis, cas 3 : dette nette negative (cash net ~9,5 Md$ fin FY25) et programme de rachat d'actions actif et regulier documente depuis 2022 (10,9 Md$ rachetes, autorisation de 6 Md$ ouverte en fevrier 2024, rythme ~3,8-4 Md$/an) -> rendement financier net projete a 0% (cash considere consomme par les rachats en cours d'annee). Voir PARAMETRES pour la discussion du biais que ce choix introduit sur ce titre specifique (cash net tres superieur au rythme annuel de rachats, ~700-800 M$/an d'interets reels observes FY24-FY25).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "etr_normatif_20pct",
+    "moteur": "Taux effectif d'imposition normatif retenu a 20%, base sur les taux effectifs reels FY2024 (20,5%) et FY2025 (19,95%), tous deux propres (post le one-off fiscal FY2023 retraite via E5 d-bis) et mutuellement coherents.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "buyback_pace_3pct",
+    "moteur": "Reduction du nombre d'actions diluees projetee a ~3%/an, moderee vs le rythme exceptionnel de FY2025 (-3,4%, 623M vs 645M), coherente avec l'autorisation de rachat de 6 Md$ ouverte en fevrier 2024 et la priorite de retour de capital reaffirmee par le management.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "debt_refinancing_q1_2026",
+    "moteur": "Emission de 2,5 Md$ d'obligations senior au T1'26 (notations investment grade obtenues), utilisee pour rembourser les 2,0 Md$ de convertibles a 0% dues en 2026 - augmente la dette brute d'environ 0,5 Md$. Dette nette (cash net) projetee globalement stable a legerement moins negative sur l'horizon (rachats d'actions consommant l'essentiel du free cash-flow annuel genere), plutot qu'une trajectoire de cash net croissant sans limite.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumCA": {
+   "2026": 14138,
+   "2027": 15831,
+   "2028": 17574,
+   "2029": 19327,
+   "2030": 21070
+  },
+  "omniumEBIT": {
+   "2026": 3938,
+   "2027": 4614,
+   "2028": 5349,
+   "2029": 6084,
+   "2030": 6826
+  },
+  "omniumNet": {
+   "2026": 3150,
+   "2027": 3691,
+   "2028": 4279,
+   "2029": 4867,
+   "2030": 5461
+  },
+  "omniumShares": {
+   "2026": 600,
+   "2027": 582,
+   "2028": 565,
+   "2029": 548,
+   "2030": 532
+  },
+  "omniumEPS": {
+   "2026": 5.25,
+   "2027": 6.34,
+   "2028": 7.57,
+   "2029": 8.88,
+   "2030": 10.27
+  },
+  "omniumND": {
+   "2026": -9200,
+   "2027": -9000,
+   "2028": -8800,
+   "2029": -8600,
+   "2030": -8400
+  },
+  "summary": "Leader mondial de la location de courte duree en pleine extension de plateforme (experiences, pilotes hotels, services), CA T1'26 +18% YoY et guidance FY26 relevee (croissance 'low to mid teens', marge Adjusted EBITDA >=35%). Ecart marque et documente vs consensus : omniumEPS Omnium batit sur un revenu financier net projete a 0% (regle E5-a bis, cash net considere consomme par les rachats d'actions actifs), alors que le titre genere reellement ~700-800 M$/an d'interets financiers recurrents - biais conservateur assume, a rediscuter au prochain refresh.",
+  "text": "== THESIS SUMMARY ==\nAirbnb is the dominant short-stay platform with growing optionality in experiences and hotel pilots (NY, LA, SF, Madrid). The bet: sustained double-digit revenue growth (FY26 guidance upgraded twice, now 'at least mid-teens'), a massive continuous buyback (10.9bn$ retired since 2022; ~3%/yr share shrink modeled) and AI-driven cost discipline compound into steady operating-margin expansion. The methodological signature of this file is deliberate: E5 a-bis Option A is applied to the letter - the ~9.5bn$ net cash pile really earns 700-800M$/yr of interest, but the model projects that at ZERO (cash treated as consumed by buybacks), so the projected 80% Net/EBIT conversion sits far below the published 114% (2025: real interest + ~9% GAAP tax). That conservatism is assumed, documented, and flagged for periodic re-discussion rather than smoothed - it is the main reason W1 flags this file, by design.\n\n== THESIS READ ==\n- FY26 revenue guidance upgraded a second time (at least mid-teens): the demand engine keeps outrunning the plan set in February.\n- Q2 above the top of guidance with Middle-East drag absorbed - the Q1 'fragility' read was conjunctural, as management claimed.\n- Buyback pace (~3.8-4bn$/yr) against 9.5bn$ net cash: Option A's zero-interest assumption stays a deliberate ~0.90$/share EPS haircut vs economic reality.\n- Experiences/hotels pilots still unquantified in revenue - optionality, not yet a driver.\n- Watch: the FY25 'clean' tax rate looked closer to 13% than the 20% normative - reconcile at the FY26 close (could be a structural EPS tailwind if confirmed).\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP. Bridge (c-ter): projections at exactly t=20% (ancrage etr_normatif_20pct) and finNet=0 (ancrage netfin_zero_buyback, Option A) - the chain reconciles to the cent; the published 2025 year reconciles at +450M$ interest and ~9% effective tax, which fully explains the W1 conversion gap (114% -> 80%), by construction not by error. Shares -3%/yr (buyback_pace_3pct); ND barely declining (cash generation offset by buybacks). Scorecard: quarterly revenue guider - FY26 anchor own_vintage 3.97$ (22/07, pre-upgrades, low baseline), history not measurable at setup, application suspended (documented). WATCH-LIST: (1) Option A re-discussion trigger: any material change in cash/buyback profile; (2) FY25 clean tax ~13% vs 20% normative - reconcile at FY26 close; (3) hotels/experiences first quantified contribution; (4) buyback pace post debt refinancing. Next useful refresh: Q3 results (early November).\n\n== CATALYSTS ==\nQ3 2026 (early Nov): third guidance touchpoint of the year; experiences/hotel pilots metrics; buyback cadence.",
+  "quarterlyEPS": {
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.24,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.98,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 2.55,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.56,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.38,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 1.24,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 2.98,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.65,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 0.46,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 1.5,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 3.6,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.78,
+     "actual": false
+    }
+   ],
+   "cadence": "trimestriel"
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 450,
+    "other": 0,
+    "taxRate": 0.09,
+    "minorities": 0,
+    "netCalc": 2724,
+    "netPub": 2724,
+    "residual": 0,
+    "residualNote": "Net above EBIT is structural that year: ~450M$ real interest income on the ~9.5bn$ net cash pile plus a low effective GAAP tax (~9%, stock-comp and credits) - this is exactly why the historical Net/EBIT conversion (114%) exceeds the projected 80% (W1): projections apply E5 a-bis Option A (interest projected at 0 with active buybacks) and the 20% normative tax."
+   },
+   "2026": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 3150
+   },
+   "2027": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 3691
+   },
+   "2028": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 4279
+   },
+   "2029": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 4867
+   },
+   "2030": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 5461
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "quarterly",
+   "metric": "Revenue (quarterly guidance + FY directional)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-08-06",
+     "type": "guidance_revision",
+     "detail": "FY26 revenue growth RAISED to 'at least mid-teens' (from 'low to mid teens' in May) - second upgrade of the year.",
+     "flag": null
+    },
+    {
+     "date": "2026-05-07",
+     "type": "guidance_revision",
+     "detail": "FY26 revenue growth raised to 'low to mid teens'; Adjusted EBITDA margin floor reiterated.",
+     "flag": null
+    }
+   ],
+   "paceCheckpoint": "Q2 26 above guidance range top; FY26 trajectory upgraded twice.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Airbnb guides one quarter of revenue plus a directional FY margin comment - no annual initial frame to measure; no dated early-2025 consensus snapshot archived - excluded structurally."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same structural limitation for FY24."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 3.97,
+    "source": "own_vintage",
+    "date": "2026-07-22",
+    "note": "First own archived projection (22/07, pre-Q2 upgrade) - mid-year and taken under strict Option A economics; re-anchor at the FY27 open. The subsequent internal revision to 5.25$ (guidance upgrades + margin + buyback) makes this anchor a LOW baseline."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "No measurable fiscal year: quarterly-only guider. The own-vintage anchor (3.97, 22/07 - a LOW baseline per its note) starts the archive; first verdict at the FY26 close, re-anchor at the FY27 open.",
+   "consensusSource": "WallStreetZen",
+   "consensusDate": "2026-07-17",
+   "inProgress": null
+  },
+  "revisionEvent": {
+   "date": "2026-08-06",
+   "label": "Q2 26",
+   "type": "earnings"
+  }
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-07",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-08-06",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Justin Post (BofA) - progression de l'initiative hotels dans les villes deja bien approvisionnees (pas seulement les marches contraints reglementairement) : le management confirme une reception tres au-dela des attentes des deux cotes (hotels ET marches non contraints), ~35% des primo-reservants hotel reviennent reserver un logement.",
+     "Q Richard Clarke (Bernstein) - ambition ultime des produits annexes (simple attachement vs OTA complet) et impact de l'acquisition du partenaire CarTrawler par Expedia sur la strategie M&A : le CEO decrit 3 phases (attachement actuel -> guichet unique voyage -> au-dela du voyage), confirme sa confiance dans la poursuite du partenariat CarTrawler malgre l'acquisition, reaffirme une strategie M&A opportuniste sans urgence accrue.",
+     "Q Lloyd Walmsley (Mizuho) - marches ou l'amelioration de conversion hotels est la plus visible et calendrier des tests de recherche IA : deploiement etendu a une vingtaine de villes, inventaire hotelier selectif (complementaire, pas concurrent des logements) ; tests IA demarrent ce mois-ci sur faible part du trafic via toggle optionnel, extension progressive sur l'annee selon les resultats.",
+     "Q Jed Kelly (Oppenheimer) - le service fee unique sera-t-il etendu a tous les hotes ou reste limite aux gestionnaires professionnels : migration en cours vers l'ensemble de la base d'hotes, achevement attendu avant fin d'annee (environ la moitie des annonces actives deja migrees).",
+     "Q Ken Gawrelski (Wells Fargo) - reaction des hotes historiques a l'arrivee des hotels sur la plateforme et approche geo-par-geo vs globale pour le trip planning : tres peu de retours negatifs des hotes core, analogie avec l'effet d'entrainement Amazon (nouvelle categorie ne cannibalise pas, renforce l'existant) ; supply (hotels/services/experiences) teste ville par ville, mais le trip planning global sera deploye globalement.",
+     "Q Eric Sheridan (Goldman Sachs) - arbitrage entre reinvestissement et remontee de la marge incrementale a long terme : le CFO refuse un guide chiffre au-dela de 2026, confirme un plancher structurel de capacite a investir tout en delivrant une expansion de marge, se refere au track record recent comme meilleur indicateur disponible.",
+     "Q Ron Josey (Citi) - detail des outils de pricing hote et contribution actuelle des experiences aux nuitees reservees : le pricing est presente comme le plus gros levier de croissance disponible (bien plus que Reserve Now Pay Later), nouveau modele de tarification pilote par IA en cours de deploiement ; experiences encore a petite echelle, horizon de contribution pluriannuel explicitement assume (pas cette annee).",
+     "Q John Colantuoni (Jefferies) - impact de la transition AI-native sur les couts produits et ajustements operationnels : le CEO minimise l'impact cout (couts d'inference marginaux face au ROI des transactions a haute valeur), le CFO confirme neanmoins une hausse materielle deja integree a la guidance des depenses IA, partiellement compensee par la baisse du cout de support client (-16% YoY) et une croissance des effectifs plus lente que par le passe.",
+     "Q Kevin Kopelman (TD Cowen) - moteurs de l'acceleration des primo-reservants (+11%, plus haut niveau en 4 ans) : attribue a l'effet cumule de multiples ameliorations produit plutot qu'a un seul facteur, force particuliere en Inde/Bresil (marches d'expansion) ET acceleration recente sur les marches coeur (dont les US) ; Reserve Now Pay Later cite explicitement comme facteur de conversion pour les nouveaux utilisateurs hesitants.",
+     "Q Conor Cunningham (Melius Research) - decomposition de l'acceleration de croissance du trimestre et strategie de pricing long terme sur l'ADR : le management refuse d'isoler un facteur unique (renvoie a une liste de 12-15 ameliorations dans la lettre aux actionnaires), precise que la hausse de l'ADR reflete en partie une popularite croissante des grands logements familiaux (plus de chambres, effet de mix reel) et non uniquement une hausse de prix nominale.",
+     "Q Colin Sebastian (Baird) - quelles nouvelles categories de services montrent la plus forte traction/economie unitaire et rythme d'investissement : location de voitures citee comme la plus grosse opportunite (duree de reservation superieure aux attentes), stockage de bagages cite comme succes inattendu ('sleeper hit') ; la plupart des services additionnels fonctionnent en PARTENARIAT (cout marginal faible car assume par le partenaire), le management ne s'attend pas a une hausse significative des couts lies a cette expansion.",
+     "Q Doug Anmuth (JPMorgan) - opportunite B2B plus formelle a terme : le CEO ecarte explicitement le marque blanche (white label), privilegie une strategie 'consumer-first' (analogie Apple vs BlackBerry) ou l'adoption entreprise suit l'adoption grand public plutot que l'inverse - strategie B2B qualifiee d''emergente', aucun engagement chiffre ou calendrier donne."
+    ]
+   }
+  ],
+  "engagementsStructurants": []
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 5.19,
+   "epsNY": 6.21,
+   "date": "2026-07-17",
+   "source": "WallStreetZen, consensus agrege"
+  }
+ ]
 }

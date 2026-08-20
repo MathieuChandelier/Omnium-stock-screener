@@ -1,481 +1,492 @@
 {
-  "name": "Interactive Brokers",
-  "cours": 96.5,
-  "yahooSymbol": "IBKR",
-  "dividende": 0.35,
-  "data": [
-    {
-      "year": 2018,
-      "ca": 1903,
-      "ebit": 1195,
-      "net": 169,
-      "shares": 300,
-      "nd": -1489,
-      "div": 0.1
-    },
-    {
-      "year": 2019,
-      "ca": 1937,
-      "ebit": 1159,
-      "net": 161,
-      "shares": 307,
-      "nd": -1730,
-      "div": 0.1
-    },
-    {
-      "year": 2020,
-      "ca": 2218,
-      "ebit": 1257,
-      "net": 195,
-      "shares": 363,
-      "nd": -2422,
-      "div": 0.1
-    },
-    {
-      "year": 2021,
-      "ca": 2714,
-      "ebit": 1787,
-      "net": 308,
-      "shares": 383,
-      "nd": -3529,
-      "div": 0.1
-    },
-    {
-      "year": 2022,
-      "ca": 3067,
-      "ebit": 1998,
-      "net": 380,
-      "shares": 408,
-      "nd": -3806,
-      "div": 0.1
-    },
-    {
-      "year": 2023,
-      "ca": 4340,
-      "ebit": 3069,
-      "net": 600,
-      "shares": 420,
-      "nd": -4881,
-      "div": 0.1
-    },
-    {
-      "year": 2024,
-      "ca": 5185,
-      "ebit": 3695,
-      "net": 755,
-      "shares": 434,
-      "nd": -5748,
-      "div": 0.21
-    },
-    {
-      "year": 2025,
-      "ca": 6210,
-      "ebit": 4771,
-      "net": 984,
-      "shares": 446,
-      "nd": -7093,
-      "div": 0.32
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 2.57,
-    "epsNY": 2.95,
-    "date": "2026-07-21",
-    "source": "ChartMill/FactSet (post-Q2 2026) pour FY26 ; WallStreetZen (7 analystes) pour FY27, ordre de grandeur"
+ "name": "Interactive Brokers",
+ "cours": 96.5,
+ "yahooSymbol": "IBKR",
+ "dividende": 0.35,
+ "data": [
+  {
+   "year": 2018,
+   "ca": 1903,
+   "ebit": 1195,
+   "net": 169,
+   "shares": 300,
+   "nd": -1489,
+   "div": 0.1
   },
-  "particularites": [
-    {
-      "text": "IBKR opère sous une structure Up-C héritée de son IPO (2007) : le titre coté (IBG Inc.) ne détient qu'une fraction minoritaire du résultat consolidé du groupe opérationnel IBG LLC - environ 26,5% à mi-2026, contre 17,4% en 2018. Cette part augmente structurellement chaque année via le rachat progressif, par IBG Inc., de parts de IBG LLC détenues par IBG Holdings LLC (famille Peterffy, management et employés historiques) : un mécanisme à sens unique (IBG Inc. n'a jamais cédé de parts) qui accroît mécaniquement à la fois le résultat net attribuable aux actionnaires ordinaires ET le nombre d'actions IBG Inc. en circulation, indépendamment de la croissance opérationnelle sous-jacente du groupe. Pris en compte via le ratio de conversion Net/EBIT projeté et la trajectoire d'actions - voir ancrages ibgOwnershipAccretion et sharesUpCGrowth.",
-      "valuePct": null
-    }
-  ],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2019,
+   "ca": 1937,
+   "ebit": 1159,
+   "net": 161,
+   "shares": 307,
+   "nd": -1730,
+   "div": 0.1
   },
-  "clientAccounts": {
-    "_instructions": "Indicateur PROPRE A CE TITRE (IBKR), HORS boucle standard E1-E8 : nombre de comptes clients ouverts chez Interactive Brokers (\"Total Accounts\"), publié par la société elle-même chaque trimestre dans le communiqué de résultats (tableau OPERATING DATA / CUSTOMER STATISTICS) et mensuellement dans ses \"Electronic Brokerage Statistics\" (interactivebrokers.com/mkt/getFileNew.php?file=latestMetric). A CHAQUE REFRESH (Operation B) : 1) ajouter le point du trimestre venant d'être publié au tableau 'quarterly' ci-dessous (valeur de FIN de trimestre telle que publiée, en milliers de comptes, jamais recalculée) ; 2) SI le trimestre publié est un Q4 (clôture d'exercice) : basculer ce point dans 'annual' (avec sa valeur de fin d'année) ET repartir avec un tableau 'quarterly' ne contenant plus que le nouveau point Q1 de l'exercice qui commence (reset) ; 3) si le trimestre publié n'est PAS un Q4, se contenter d'ajouter le point à 'quarterly' (pas de reset, pas de bascule vers 'annual'). Ne jamais toucher aux points déjà présents dans 'annual'. Champ purement factuel et de synthèse (comme dernierCall/priorEPS) : il n'entre dans AUCUN calcul adjXXX et ne doit jamais être recalculé, arrondi différemment ou estimé - copier tel que publié par IBKR.",
-    "unit": "comptes clients, en milliers, fin de période",
-    "annual": [
-      {
-        "year": 2020,
-        "value": 1070
-      },
-      {
-        "year": 2021,
-        "value": 1680
-      },
-      {
-        "year": 2022,
-        "value": 2090
-      },
-      {
-        "year": 2023,
-        "value": 2562
-      },
-      {
-        "year": 2024,
-        "value": 3337
-      },
-      {
-        "year": 2025,
-        "value": 4400
-      }
-    ],
-    "quarterly": [
-      {
-        "quarter": "Q1 26",
-        "value": 4754
-      },
-      {
-        "quarter": "Q2 26",
-        "value": 5185
-      }
-    ]
+  {
+   "year": 2020,
+   "ca": 2218,
+   "ebit": 1257,
+   "net": 195,
+   "shares": 363,
+   "nd": -2422,
+   "div": 0.1
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-10",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q1 2026",
-        "date": "2026-04-21",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Patrick Moley (Piper Sandler) - opportunite strategique de la suppression par la SEC de la regle Pattern Day Trader : Milan Galik (CEO) salue une modernisation reglementaire (passage d'un comptage de trades a une marge fondee sur le risque), opportunite jugee importante sur la large base de petits comptes individuels d'IBKR qui pourront desormais trader plus frequemment.",
-          "Q Patrick Moley - moteurs de la croissance des comptes en contexte de volatilite geopolitique/energetique et frictions d'ouverture a l'international : Galik indique que les patterns historiques montrent que la volatilite dope l'activite de trading et compense l'hesitation a ouvrir de nouveaux comptes, anticipe une performance en ligne avec les dernieres annees.",
-          "Q James Yaro (Goldman Sachs) - tendances de depenses marketing historiques et trajectoire future : Thomas Peterffy (Chairman) affirme etre 'determine a augmenter les depenses marketing' tout en maintenant des exigences strictes de retour sur investissement ; la croissance des depenses reste lente faute de nouveaux canaux identifies.",
-          "Q James Yaro - vision sur les outils d'optimisation de cash assistes par IA developpes par les concurrents et impact potentiel sur le pricing des depots : Peterffy exprime une inquietude sur la pression concurrentielle, Galik relativise en notant que la complexite IA requise est faible car il s'agit fondamentalement d'une decision business d'allocation des interets.",
-          "Q Ben Budish (Barclays) - actualisation intra-mois des encours sur marge apres la hausse de marche de mars : Peterffy confirme un encours de 86,6 Md$ en fin de trimestre, rappelle que les chiffres mensuels sont publies publiquement.",
-          "Q Ben Budish - actualites sur les marches de prediction, notamment discussions institutionnelles ForecastEx : Peterffy rapporte des sollicitations croissantes de la part d'acteurs ayant jure ne jamais y entrer, anticipe que 'cela va devenir enorme'.",
-          "Q Brennan Hawken (BMO) - repartition par devise des encours sensibles aux taux hors USD et devises a plus forte croissance : Paul Brody (CFO) refuse une divulgation granulaire, explique la distinction USD/non-USD comme un outil pour eclairer les attentes de variation des taux de reference.",
-          "Q Brennan Hawken - symetrie des scenarios de sensibilite aux taux (hausse vs baisse) : Brody confirme des scenarios globalement symetriques avec une legere asymetrie en territoire de taux negatifs pour certaines devises non-USD.",
-          "Q Chris Allen (KBW) - transferts effectifs de positions crypto vers IBKR depuis le lancement de la fonctionnalite : Galik confirme des flux entrants significatifs, principalement depuis les US, avec des transferts internationaux egalement observes apres le lancement en douceur quelques semaines plus tot.",
-          "Q Chris Allen - capacites additionnelles necessaires pour accelerer la penetration des actifs numeriques : Galik identifie l'expansion geographique (Singapour) et le staking comme priorites, le partenaire Zero Hash developpant des capacites de staking pour les devises proof-of-stake.",
-          "Q Karim Assef (Bank of America) - partenariat Coinbase Derivatives, demande client, opportunite et economie de revenus : Galik explique que le partenariat propose des contrats futures crypto retail de taille 'significativement plus petite', souligne l'attrait des futures perpetuels du fait de 'volumes tres significatifs'."
-        ]
-      },
-      {
-        "quarter": "Q2 2026",
-        "date": "2026-07-21",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Steven Chubak (Wolfe Research) - le rendement du marketing s'est-il ameliore avec la hausse des depenses et cela soutient-il une croissance de comptes structurellement superieure au niveau normalise de 20% ? Peterffy repond que le rendement reste 'a peu pres le meme' malgre la hausse des depenses (augmentation proportionnelle, pas de surperformance), refuse de promettre une croissance superieure a 20% en citant le precedent d'une guidance a 30% ayant ensuite deçu.",
-          "Q Steven Chubak (relance) - la croissance des encours sur marge reflete-t-elle une activite client saine ou un levier potentiellement risque ? Peterffy affirme que le management reste 'tres attentif' et surveille en continu, se dit a l'aise avec les niveaux actuels.",
-          "Q James Yaro (Goldman Sachs) - position de capital excedentaire et activite du pipeline d'acquisitions : Galik rapporte un capital excedentaire d'environ 10,3 Md$ apres tampons (+1,1 Md$ sur le trimestre), sollicitations hebdomadaires en forte hausse de la part de banques d'affaires mais aucune cible jugee digne d'interet a ce jour.",
-          "Q James Yaro - impact des actions reglementaires chinoises contre les brokers Tiger et Futu et risques potentiels sur l'activite Hong Kong : Galik explique qu'IBKR reste conforme en ne faisant pas de publicite en Chine continentale et en verifiant la residence hors Chine continentale des titulaires de comptes, rapporte une 'nette hausse' des transferts de brokers depuis Tiger et Futu suite aux mesures reglementaires.",
-          "Q Patrick Moley (Piper Sandler) - raisons de l'integration des contrats de marches de prediction Kalshi et CME aux cotes de ForecastEx, signaux precoces de volume/adoption : Galik justifie ce choix par la philosophie de connectivite large aux marches d'IBKR, se concentre sur les contrats economiques, politiques et climatiques plutot que sport/divertissement.",
-          "Q Patrick Moley (relance) - les nouvelles cohortes de comptes montrent des DARTs et commissions par ordre stables malgre 1,3 million d'ajouts de comptes, pourquoi pas de dilution ? Galik attribue cela a l'environnement de marche porteur, la volatilite, l'interet pour l'IPO SpaceX et la composition variable des comptes.",
-          "Q Ben Budish (Barclays) - moteurs de la vigueur du securities lending ce trimestre, contribution de l'IPO SpaceX et implications pour le S2 : Brody explique une combinaison de croissance du bilan et de detentions de titres difficiles a emprunter a taux eleves, souligne la nature imprevisible des futurs 'specials'.",
-          "Q Ben Budish (relance) - la concentration des volumes ForecastEx sur les contrats meteo/temperature signale-t-elle un product-market fit ou une inquietude de concentration ? Galik indique un focus maintenu sur la meteo, avec expansion vers les contrats d'atterrissage d'ouragans et les applications de risque assurantiel.",
-          "Q Daniel Fannon (Jefferies) - repartition regionale de la forte croissance des comptes et contribution specifique de la Coree : Galik repond de maniere generale que la croissance se produit 'partout dans le monde' sans priorisation regionale.",
-          "Q Daniel Fannon (relance) - vigueur du carnet de commandes des introducing brokers, taille des partenaires potentiels, evolution du profil des partenaires : Galik rapporte un quatrieme ou cinquieme trimestre consecutif d'integrations a deux chiffres, evolution vers des entreprises deja etablies elargissant leur offre plutot que des startups pures.",
-          "Q Brennan Hawken (BMO) - impact du trading sur le marche coreen, isolation d'IBKR vis-a-vis des appels de marge compte tenu de la politique non-resident, tendances de volume semaine apres semaine : Galik confirme un fort interet pour les actions coreennes (notamment semi-conducteurs), decrit une trajectoire de volume 'droite vers le haut' depuis le premier jour.",
-          "Q Brennan Hawken (relance) - impact precoce des nouvelles capacites d'IA agentique sur les volumes et l'engagement, l'execution autonome est-elle une phase future ? Galik detaille l'enthousiasme client pour les integrations chatbot (OpenAI, Anthropic, xAI), approche actuelle 'humain dans la boucle' ou l'IA genere des instructions necessitant validation client, capacites pleinement autonomes a venir avec garde-fous.",
-          "Q Chris Allen (KBW) - demande client pour des produits perpetuels et le trading 24/7 sur metaux et autres actifs suite au lancement des options binaires : Galik precise privilegier les instruments avec volume et interet public existants plutot que de repondre uniquement a la demande client, cite les perpetuels crypto comme exemple (environ un tiers du trading crypto desormais), s'engage a elargir l'acces a mesure que davantage de plateformes en proposent."
-        ]
-      }
-    ],
-    "engagementsStructurants": []
+  {
+   "year": 2021,
+   "ca": 2714,
+   "ebit": 1787,
+   "net": 308,
+   "shares": 383,
+   "nd": -3529,
+   "div": 0.1
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "T1",
-          "eps": 0.47,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.51,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.57,
-          "actual": true
-        },
-        {
-          "label": "T4",
-          "eps": 0.65,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "T1",
-          "eps": 0.6,
-          "actual": true
-        },
-        {
-          "label": "T2",
-          "eps": 0.69,
-          "actual": true
-        },
-        {
-          "label": "T3",
-          "eps": 0.59,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.67,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "T1",
-          "eps": 0.67,
-          "actual": false
-        },
-        {
-          "label": "T2",
-          "eps": 0.78,
-          "actual": false
-        },
-        {
-          "label": "T3",
-          "eps": 0.66,
-          "actual": false
-        },
-        {
-          "label": "T4",
-          "eps": 0.75,
-          "actual": false
-        }
-      ]
-    },
-    "source": "Création - T2 2026 (communiqué de résultats + transcript du 21 juillet 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS (base EPS dilue ajuste/non-GAAP, coherent avec la base utilisee pour dernierCall.resultatsVsConsensus.epsAdj) - PY (FY2025 T1 0.47/T2 0.51/T3 0.57/T4 0.65, sources communiques 8-K trimestriels retraites du split 4-pour-1, somme 2.20 proche de data[2025].net/shares=2.21), CY (T1 26 0.60 et T2 26 0.69 actuals, T3/T4 26 estimes par repartition saisonniere de omniumNet/omniumShares 2026), NY (2027 estime par la meme repartition saisonniere de omniumNet/omniumShares 2027). Ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript Motley Fool du 21/04/2026, 6 analystes/11 echanges) compare au T2 2026 (transcript Motley Fool du 21/07/2026, 7 analystes/13 echanges avec relances) - aucune incoherence materielle identifiee (prudence marketing/croissance de comptes constante entre les deux trimestres, surveillance du risque de levier sur marge constante, sujets IA et crypto en expansion coherente sans reniement d'un engagement anterieur). Corrections incidentes (schema requis absent depuis la creation) : ajout hypothese.omniumEPS (derive de omniumNet/omniumShares, coherent a moins de 2% par annee) et ajout des booleens dernierCall.communiqueAnalyse/transcriptAnalyse (les deux sources ayant ete effectivement analysees a la creation).",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1896,
-          "consensus": 1797
-        },
-        "epsAdj": {
-          "actual": 0.69,
-          "consensus": 0.651,
-          "basis": "non-GAAP",
-          "basisNote": "non-GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie - IBKR ne communique pas de guidance formelle et publie à la place des statistiques mensuelles détaillées (comptes, DARTs, encours).",
-      "guidanceAnnuelle": "Pas de guidance annuelle chiffrée fournie non plus - même pratique constante du management sur l'ensemble de l'historique.",
-      "pointsCles": [
-        "Croissance des comptes clients exceptionnelle : +34% sur un an à 5,19 millions fin juin (+9% sur le seul trimestre), portée par l'expansion géographique (lancement du trading en Corée) et produit (accès à l'IPO SpaceX en Europe, élargissement de l'offre crypto en Europe).",
-        "Approbation préliminaire conditionnelle de l'OCC pour une charte de banque nationale de confiance (National Trust Bank), avec un objectif d'opérationnalisation d'ici la fin de l'année - une extension réglementaire potentiellement structurante du modèle, encore non opérationnelle.",
-        "Marge avant impôts de 77%, septième trimestre consécutif au-dessus de 70%, malgré une hausse des effectifs (3 265 salariés) pour accompagner l'onboarding des nouveaux comptes et la conformité.",
-        "Prêts sur marge en forte accélération (+67% à 108,5 Md$), principal moteur de la hausse des revenus d'intérêts nets (+23% à 1,06 Md$, la ligne de revenus la plus importante du groupe)."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US GAAP",
-        "source": "8-K/communique 2Q2026 (21/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : net revenues T2 1,90 Md$ (1,88 ajuste), EPS dilue 0,69$ (reporte = ajuste; 0,51$ N-1), marge pretax 77%, comptes clients 5,19 M (+34%). Confirme le profil de marge >75% septieme trimestre consecutif."
-      }
-    },
-    "summary": "Broker électronique en croissance structurelle de comptes clients à un rythme rarement observé dans le secteur, avec un effet de levier actionnarial propre (structure Up-C) qui amplifie mécaniquement l'EPS au-delà de la seule croissance opérationnelle.",
-    "text": "== THESIS SUMMARY ==\nThe most profitable automated electronic broker in its sector (pretax margin >75% for seven straight quarters), with account growth still ACCELERATING in 2026 (+34% YoY; base ~5x since end-2020) and client equity at 930bn (+40%). The second engine, widely ignored: the Up-C structure - IBG Inc. shareholders own only a minority of IBG Holdings LLC, and continuous share issuance mechanically raises Inc.'s ownership share, so EPS-relevant income grows FASTER than consolidated pretax income (conversion 21.5% -> 23.7% over the plan).\n\n== THESIS READ ==\n- Client growth is the compounding engine and shows no deceleration; international accounts drive the mix. Watch: monthly brokerage metrics (accounts, DARTs, margin loans).\n- Rate sensitivity is the main earnings swing: net interest income dominates revenue; the model's ~+13%/yr revenue embeds only gradual rate normalization. Watch: Fed path vs the NII line.\n- The Up-C accretion is structural, not speculative - each issuance converts minority income into Inc. income. Watch: the quarterly ownership-percentage disclosure.\n\n== SPECIAL FACTORS ==\nUp-C convention documented in the bridge: 'ebit' = consolidated pretax (before LLC split), 'net' = IBG Inc. share only; the bridge 'minorities' line carries the LLC holders' share and absorbs the tax asymmetry - a simple tax rate does NOT connect ebit to net (ancrage ibgOwnershipAccretion). Share count RISES by design (467 -> 528M) while EPS still compounds - anti-intuitive and structural. Broker balance sheet: highly liquid, net cash convention.\n\n== PARAMETERS & WATCH-LIST ==\n2026: net revenues 7,150M, pretax 5,541M (margin 77.5%), Inc. net 1,191M / EPS 2.55; 2027-2030: revenue +13%/yr fading, pretax margin plateau ~77-78%, conversion rising per ownership accretion. Watch: NII sensitivity to cuts; crypto/event-contract regulatory openings; monthly metrics vs the account-growth deceleration ancrage.\n\n== CATALYSTS ==\nMonthly brokerage metrics; Q3 (Oct); rate-cut path; new product launches (prediction markets, crypto expansion).",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "accountGrowthDecel",
-        "moteur": "Croissance des comptes clients ouverte à un rythme exceptionnel (+34% sur un an, +9% au T2 26 seul, base multipliée par ~5 depuis fin 2020) mais appelée à décélérer progressivement à mesure que la base s'élargit ; le CA (majoritairement commissions et intérêts nets liés aux comptes/encours) suit cette décélération, d'environ +15% en 2026 à ~+9% en 2030.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "pretaxMarginPlateau",
-        "moteur": "Marge avant impôts consolidée déjà très élevée (77% au T2 26, 7e trimestre consécutif >70%) ; modélisée en stabilisation prudente autour de 77-78% sur l'horizon plutôt qu'en extrapolation d'une expansion supplémentaire au-delà des niveaux déjà records.",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "ibgOwnershipAccretion",
-        "moteur": "Structure Up-C : la part d'IBG Inc. (titre coté) dans le résultat consolidé croît structurellement et irréversiblement chaque année via le rachat de parts LLC détenues par les initiés historiques - de 17,4% (2018) à 26,5% (T2 26). Ce mécanisme documenté par la société elle-même (10-K) élève mécaniquement le ratio de conversion Net(part IBG Inc.)/EBIT consolidé, modélisé en poursuivant la tendance historique mais à rythme décéléré par prudence : ratio de 21,1% au 1S26, projeté vers 23,7% en 2030 (vs +5 à +7pts sur les 8 dernières années).",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "sharesUpCGrowth",
-        "moteur": "Corollaire direct du même mécanisme : le nombre d'actions IBG Inc. en circulation augmente structurellement (émission de nouvelles actions en échange des parts LLC rachetées, PAS une dilution opportuniste) - de ~300M (2018) à ~450M (T2 26) ; projeté en poursuivant la même trajectoire d'accroissement de la part de détention, vers ~528M en 2030 (soit ~30,5% de détention estimée).",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumCA": {
-      "2026": 7150,
-      "2027": 8080,
-      "2028": 9020,
-      "2029": 9920,
-      "2030": 10810
-    },
-    "omniumEBIT": {
-      "2026": 5541,
-      "2027": 6262,
-      "2028": 7018,
-      "2029": 7738,
-      "2030": 8454
-    },
-    "omniumNet": {
-      "2026": 1191,
-      "2027": 1390,
-      "2028": 1600,
-      "2029": 1803,
-      "2030": 2004
-    },
-    "omniumEPS": {
-      "2026": 2.55,
-      "2027": 2.86,
-      "2028": 3.19,
-      "2029": 3.49,
-      "2030": 3.8
-    },
-    "omniumND": {
-      "2026": -8500,
-      "2027": -9800,
-      "2028": -11200,
-      "2029": -12700,
-      "2030": -14300
-    },
-    "omniumShares": {
-      "2026": 467,
-      "2027": 486,
-      "2028": 502,
-      "2029": 516,
-      "2030": 528
-    },
-    "bridge": {
-      "2025": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -2833,
-        "netCalc": 983.8,
-        "netPub": 984,
-        "residual": 0.2,
-        "residualNote": "Up-C structure: 'ebit' is CONSOLIDATED pretax income (before the IBG Holdings LLC split), 'net' is income attributable to IBG Inc. shareholders only. The 'minorities' line carries the LLC holders' share (fitted; it also absorbs the tax asymmetry - LLC minority income is not taxed at the consolidated level). The Net/EBIT conversion therefore reflects ownership + tax jointly (ancrage ibgOwnershipAccretion), rising from ~21.5% (2026) to ~23.7% (2030) as IBG Inc.'s stake grows with share issuance."
-      },
-      "2026": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -3242,
-        "netCalc": 1190.8
-      },
-      "2027": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -3620,
-        "netCalc": 1389.6
-      },
-      "2028": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -4014,
-        "netCalc": 1600.4
-      },
-      "2029": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -4387,
-        "netCalc": 1803.4
-      },
-      "2030": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": -4759,
-        "netCalc": 2004.2
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "EPS, GAAP diluted (IBKR gives no guidance of any kind)",
-      "comparedAgainst": "consensus",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-07-21",
-          "type": "vs_consensus",
-          "detail": "Q2 26: account growth +34% YoY (base ~5x since end-2020), client equity 930bn (+40%); pretax margin >75% for a seventh straight quarter."
-        }
-      ],
-      "paceCheckpoint": "H1 real: account and client-equity growth still accelerating, pretax margin >75% held.",
-      "weightedBeatPct": null,
-      "annualBeatPct": null,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Searched 19/08/2026: IBKR guides nothing and no DATED early-2025 consensus snapshot surfaced (only current 2026-era estimates and the realized FY25 GAAP EPS 2.23) - excluded rather than estimated."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Same limitation (searched 19/08/2026): no dated early-2024 consensus snapshot archived."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 2.57,
-        "source": "initial_consensus",
-        "date": "2026-07-21",
-        "note": "IBKR guides nothing (no revenue, margin or EPS frame) - the anchor is the consensus snapshot at Q2 (earliest archived; the post-FY25 initial print was not captured). Omnium 2026 (2.55) sits essentially ON consensus."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "No measurable fiscal year and no in-progress leg (the FY26 anchor is a July consensus snapshot, not an initial print): annualBeatPct not computed. The 2.57 anchor starts the archive - first verdict at the FY26 close.",
-      "consensusSource": "ChartMill/FactSet (post-Q2 2026)",
-      "consensusDate": "2026-07-21",
-      "inProgress": null
-    },
-    "revisionEvent": {
-      "date": "2026-07-21",
-      "label": "Q2 2026",
-      "type": "earnings"
-    }
+  {
+   "year": 2022,
+   "ca": 3067,
+   "ebit": 1998,
+   "net": 380,
+   "shares": 408,
+   "nd": -3806,
+   "div": 0.1
+  },
+  {
+   "year": 2023,
+   "ca": 4340,
+   "ebit": 3069,
+   "net": 600,
+   "shares": 420,
+   "nd": -4881,
+   "div": 0.1
+  },
+  {
+   "year": 2024,
+   "ca": 5185,
+   "ebit": 3695,
+   "net": 755,
+   "shares": 434,
+   "nd": -5748,
+   "div": 0.21
+  },
+  {
+   "year": 2025,
+   "ca": 6210,
+   "ebit": 4771,
+   "net": 984,
+   "shares": 446,
+   "nd": -7093,
+   "div": 0.32
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 2.74,
+  "epsNY": 3.18,
+  "epsY2": 3.45,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus 12 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 2.71)",
+  "analystsCount": 12
+ },
+ "particularites": [
+  {
+   "text": "IBKR opère sous une structure Up-C héritée de son IPO (2007) : le titre coté (IBG Inc.) ne détient qu'une fraction minoritaire du résultat consolidé du groupe opérationnel IBG LLC - environ 26,5% à mi-2026, contre 17,4% en 2018. Cette part augmente structurellement chaque année via le rachat progressif, par IBG Inc., de parts de IBG LLC détenues par IBG Holdings LLC (famille Peterffy, management et employés historiques) : un mécanisme à sens unique (IBG Inc. n'a jamais cédé de parts) qui accroît mécaniquement à la fois le résultat net attribuable aux actionnaires ordinaires ET le nombre d'actions IBG Inc. en circulation, indépendamment de la croissance opérationnelle sous-jacente du groupe. Pris en compte via le ratio de conversion Net/EBIT projeté et la trajectoire d'actions - voir ancrages ibgOwnershipAccretion et sharesUpCGrowth.",
+   "valuePct": null
+  }
+ ],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": null
+ },
+ "clientAccounts": {
+  "_instructions": "Indicateur PROPRE A CE TITRE (IBKR), HORS boucle standard E1-E8 : nombre de comptes clients ouverts chez Interactive Brokers (\"Total Accounts\"), publié par la société elle-même chaque trimestre dans le communiqué de résultats (tableau OPERATING DATA / CUSTOMER STATISTICS) et mensuellement dans ses \"Electronic Brokerage Statistics\" (interactivebrokers.com/mkt/getFileNew.php?file=latestMetric). A CHAQUE REFRESH (Operation B) : 1) ajouter le point du trimestre venant d'être publié au tableau 'quarterly' ci-dessous (valeur de FIN de trimestre telle que publiée, en milliers de comptes, jamais recalculée) ; 2) SI le trimestre publié est un Q4 (clôture d'exercice) : basculer ce point dans 'annual' (avec sa valeur de fin d'année) ET repartir avec un tableau 'quarterly' ne contenant plus que le nouveau point Q1 de l'exercice qui commence (reset) ; 3) si le trimestre publié n'est PAS un Q4, se contenter d'ajouter le point à 'quarterly' (pas de reset, pas de bascule vers 'annual'). Ne jamais toucher aux points déjà présents dans 'annual'. Champ purement factuel et de synthèse (comme dernierCall/priorEPS) : il n'entre dans AUCUN calcul adjXXX et ne doit jamais être recalculé, arrondi différemment ou estimé - copier tel que publié par IBKR.",
+  "unit": "comptes clients, en milliers, fin de période",
+  "annual": [
+   {
+    "year": 2020,
+    "value": 1070
+   },
+   {
+    "year": 2021,
+    "value": 1680
+   },
+   {
+    "year": 2022,
+    "value": 2090
+   },
+   {
+    "year": 2023,
+    "value": 2562
+   },
+   {
+    "year": 2024,
+    "value": 3337
+   },
+   {
+    "year": 2025,
+    "value": 4400
+   }
+  ],
+  "quarterly": [
+   {
+    "quarter": "Q1 26",
+    "value": 4754
+   },
+   {
+    "quarter": "Q2 26",
+    "value": 5185
+   }
+  ]
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-10",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q1 2026",
+    "date": "2026-04-21",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Patrick Moley (Piper Sandler) - opportunite strategique de la suppression par la SEC de la regle Pattern Day Trader : Milan Galik (CEO) salue une modernisation reglementaire (passage d'un comptage de trades a une marge fondee sur le risque), opportunite jugee importante sur la large base de petits comptes individuels d'IBKR qui pourront desormais trader plus frequemment.",
+     "Q Patrick Moley - moteurs de la croissance des comptes en contexte de volatilite geopolitique/energetique et frictions d'ouverture a l'international : Galik indique que les patterns historiques montrent que la volatilite dope l'activite de trading et compense l'hesitation a ouvrir de nouveaux comptes, anticipe une performance en ligne avec les dernieres annees.",
+     "Q James Yaro (Goldman Sachs) - tendances de depenses marketing historiques et trajectoire future : Thomas Peterffy (Chairman) affirme etre 'determine a augmenter les depenses marketing' tout en maintenant des exigences strictes de retour sur investissement ; la croissance des depenses reste lente faute de nouveaux canaux identifies.",
+     "Q James Yaro - vision sur les outils d'optimisation de cash assistes par IA developpes par les concurrents et impact potentiel sur le pricing des depots : Peterffy exprime une inquietude sur la pression concurrentielle, Galik relativise en notant que la complexite IA requise est faible car il s'agit fondamentalement d'une decision business d'allocation des interets.",
+     "Q Ben Budish (Barclays) - actualisation intra-mois des encours sur marge apres la hausse de marche de mars : Peterffy confirme un encours de 86,6 Md$ en fin de trimestre, rappelle que les chiffres mensuels sont publies publiquement.",
+     "Q Ben Budish - actualites sur les marches de prediction, notamment discussions institutionnelles ForecastEx : Peterffy rapporte des sollicitations croissantes de la part d'acteurs ayant jure ne jamais y entrer, anticipe que 'cela va devenir enorme'.",
+     "Q Brennan Hawken (BMO) - repartition par devise des encours sensibles aux taux hors USD et devises a plus forte croissance : Paul Brody (CFO) refuse une divulgation granulaire, explique la distinction USD/non-USD comme un outil pour eclairer les attentes de variation des taux de reference.",
+     "Q Brennan Hawken - symetrie des scenarios de sensibilite aux taux (hausse vs baisse) : Brody confirme des scenarios globalement symetriques avec une legere asymetrie en territoire de taux negatifs pour certaines devises non-USD.",
+     "Q Chris Allen (KBW) - transferts effectifs de positions crypto vers IBKR depuis le lancement de la fonctionnalite : Galik confirme des flux entrants significatifs, principalement depuis les US, avec des transferts internationaux egalement observes apres le lancement en douceur quelques semaines plus tot.",
+     "Q Chris Allen - capacites additionnelles necessaires pour accelerer la penetration des actifs numeriques : Galik identifie l'expansion geographique (Singapour) et le staking comme priorites, le partenaire Zero Hash developpant des capacites de staking pour les devises proof-of-stake.",
+     "Q Karim Assef (Bank of America) - partenariat Coinbase Derivatives, demande client, opportunite et economie de revenus : Galik explique que le partenariat propose des contrats futures crypto retail de taille 'significativement plus petite', souligne l'attrait des futures perpetuels du fait de 'volumes tres significatifs'."
+    ]
+   },
+   {
+    "quarter": "Q2 2026",
+    "date": "2026-07-21",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Steven Chubak (Wolfe Research) - le rendement du marketing s'est-il ameliore avec la hausse des depenses et cela soutient-il une croissance de comptes structurellement superieure au niveau normalise de 20% ? Peterffy repond que le rendement reste 'a peu pres le meme' malgre la hausse des depenses (augmentation proportionnelle, pas de surperformance), refuse de promettre une croissance superieure a 20% en citant le precedent d'une guidance a 30% ayant ensuite deçu.",
+     "Q Steven Chubak (relance) - la croissance des encours sur marge reflete-t-elle une activite client saine ou un levier potentiellement risque ? Peterffy affirme que le management reste 'tres attentif' et surveille en continu, se dit a l'aise avec les niveaux actuels.",
+     "Q James Yaro (Goldman Sachs) - position de capital excedentaire et activite du pipeline d'acquisitions : Galik rapporte un capital excedentaire d'environ 10,3 Md$ apres tampons (+1,1 Md$ sur le trimestre), sollicitations hebdomadaires en forte hausse de la part de banques d'affaires mais aucune cible jugee digne d'interet a ce jour.",
+     "Q James Yaro - impact des actions reglementaires chinoises contre les brokers Tiger et Futu et risques potentiels sur l'activite Hong Kong : Galik explique qu'IBKR reste conforme en ne faisant pas de publicite en Chine continentale et en verifiant la residence hors Chine continentale des titulaires de comptes, rapporte une 'nette hausse' des transferts de brokers depuis Tiger et Futu suite aux mesures reglementaires.",
+     "Q Patrick Moley (Piper Sandler) - raisons de l'integration des contrats de marches de prediction Kalshi et CME aux cotes de ForecastEx, signaux precoces de volume/adoption : Galik justifie ce choix par la philosophie de connectivite large aux marches d'IBKR, se concentre sur les contrats economiques, politiques et climatiques plutot que sport/divertissement.",
+     "Q Patrick Moley (relance) - les nouvelles cohortes de comptes montrent des DARTs et commissions par ordre stables malgre 1,3 million d'ajouts de comptes, pourquoi pas de dilution ? Galik attribue cela a l'environnement de marche porteur, la volatilite, l'interet pour l'IPO SpaceX et la composition variable des comptes.",
+     "Q Ben Budish (Barclays) - moteurs de la vigueur du securities lending ce trimestre, contribution de l'IPO SpaceX et implications pour le S2 : Brody explique une combinaison de croissance du bilan et de detentions de titres difficiles a emprunter a taux eleves, souligne la nature imprevisible des futurs 'specials'.",
+     "Q Ben Budish (relance) - la concentration des volumes ForecastEx sur les contrats meteo/temperature signale-t-elle un product-market fit ou une inquietude de concentration ? Galik indique un focus maintenu sur la meteo, avec expansion vers les contrats d'atterrissage d'ouragans et les applications de risque assurantiel.",
+     "Q Daniel Fannon (Jefferies) - repartition regionale de la forte croissance des comptes et contribution specifique de la Coree : Galik repond de maniere generale que la croissance se produit 'partout dans le monde' sans priorisation regionale.",
+     "Q Daniel Fannon (relance) - vigueur du carnet de commandes des introducing brokers, taille des partenaires potentiels, evolution du profil des partenaires : Galik rapporte un quatrieme ou cinquieme trimestre consecutif d'integrations a deux chiffres, evolution vers des entreprises deja etablies elargissant leur offre plutot que des startups pures.",
+     "Q Brennan Hawken (BMO) - impact du trading sur le marche coreen, isolation d'IBKR vis-a-vis des appels de marge compte tenu de la politique non-resident, tendances de volume semaine apres semaine : Galik confirme un fort interet pour les actions coreennes (notamment semi-conducteurs), decrit une trajectoire de volume 'droite vers le haut' depuis le premier jour.",
+     "Q Brennan Hawken (relance) - impact precoce des nouvelles capacites d'IA agentique sur les volumes et l'engagement, l'execution autonome est-elle une phase future ? Galik detaille l'enthousiasme client pour les integrations chatbot (OpenAI, Anthropic, xAI), approche actuelle 'humain dans la boucle' ou l'IA genere des instructions necessitant validation client, capacites pleinement autonomes a venir avec garde-fous.",
+     "Q Chris Allen (KBW) - demande client pour des produits perpetuels et le trading 24/7 sur metaux et autres actifs suite au lancement des options binaires : Galik precise privilegier les instruments avec volume et interet public existants plutot que de repondre uniquement a la demande client, cite les perpetuels crypto comme exemple (environ un tiers du trading crypto desormais), s'engage a elargir l'acces a mesure que davantage de plateformes en proposent."
+    ]
+   }
+  ],
+  "engagementsStructurants": []
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "T1",
+     "eps": 0.47,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.51,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.57,
+     "actual": true
+    },
+    {
+     "label": "T4",
+     "eps": 0.65,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "T1",
+     "eps": 0.6,
+     "actual": true
+    },
+    {
+     "label": "T2",
+     "eps": 0.69,
+     "actual": true
+    },
+    {
+     "label": "T3",
+     "eps": 0.59,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.67,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "T1",
+     "eps": 0.67,
+     "actual": false
+    },
+    {
+     "label": "T2",
+     "eps": 0.78,
+     "actual": false
+    },
+    {
+     "label": "T3",
+     "eps": 0.66,
+     "actual": false
+    },
+    {
+     "label": "T4",
+     "eps": 0.75,
+     "actual": false
+    }
+   ]
+  },
+  "source": "Création - T2 2026 (communiqué de résultats + transcript du 21 juillet 2026). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS (base EPS dilue ajuste/non-GAAP, coherent avec la base utilisee pour dernierCall.resultatsVsConsensus.epsAdj) - PY (FY2025 T1 0.47/T2 0.51/T3 0.57/T4 0.65, sources communiques 8-K trimestriels retraites du split 4-pour-1, somme 2.20 proche de data[2025].net/shares=2.21), CY (T1 26 0.60 et T2 26 0.69 actuals, T3/T4 26 estimes par repartition saisonniere de omniumNet/omniumShares 2026), NY (2027 estime par la meme repartition saisonniere de omniumNet/omniumShares 2027). Ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript Motley Fool du 21/04/2026, 6 analystes/11 echanges) compare au T2 2026 (transcript Motley Fool du 21/07/2026, 7 analystes/13 echanges avec relances) - aucune incoherence materielle identifiee (prudence marketing/croissance de comptes constante entre les deux trimestres, surveillance du risque de levier sur marge constante, sujets IA et crypto en expansion coherente sans reniement d'un engagement anterieur). Corrections incidentes (schema requis absent depuis la creation) : ajout hypothese.omniumEPS (derive de omniumNet/omniumShares, coherent a moins de 2% par annee) et ajout des booleens dernierCall.communiqueAnalyse/transcriptAnalyse (les deux sources ayant ete effectivement analysees a la creation).",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1896,
+     "consensus": 1797
+    },
+    "epsAdj": {
+     "actual": 0.69,
+     "consensus": 0.651,
+     "basis": "non-GAAP",
+     "basisNote": "non-GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffrée fournie - IBKR ne communique pas de guidance formelle et publie à la place des statistiques mensuelles détaillées (comptes, DARTs, encours).",
+   "guidanceAnnuelle": "Pas de guidance annuelle chiffrée fournie non plus - même pratique constante du management sur l'ensemble de l'historique.",
+   "pointsCles": [
+    "Croissance des comptes clients exceptionnelle : +34% sur un an à 5,19 millions fin juin (+9% sur le seul trimestre), portée par l'expansion géographique (lancement du trading en Corée) et produit (accès à l'IPO SpaceX en Europe, élargissement de l'offre crypto en Europe).",
+    "Approbation préliminaire conditionnelle de l'OCC pour une charte de banque nationale de confiance (National Trust Bank), avec un objectif d'opérationnalisation d'ici la fin de l'année - une extension réglementaire potentiellement structurante du modèle, encore non opérationnelle.",
+    "Marge avant impôts de 77%, septième trimestre consécutif au-dessus de 70%, malgré une hausse des effectifs (3 265 salariés) pour accompagner l'onboarding des nouveaux comptes et la conformité.",
+    "Prêts sur marge en forte accélération (+67% à 108,5 Md$), principal moteur de la hausse des revenus d'intérêts nets (+23% à 1,06 Md$, la ligne de revenus la plus importante du groupe)."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US GAAP",
+    "source": "8-K/communique 2Q2026 (21/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : net revenues T2 1,90 Md$ (1,88 ajuste), EPS dilue 0,69$ (reporte = ajuste; 0,51$ N-1), marge pretax 77%, comptes clients 5,19 M (+34%). Confirme le profil de marge >75% septieme trimestre consecutif."
+   }
+  },
+  "summary": "Broker électronique en croissance structurelle de comptes clients à un rythme rarement observé dans le secteur, avec un effet de levier actionnarial propre (structure Up-C) qui amplifie mécaniquement l'EPS au-delà de la seule croissance opérationnelle.",
+  "text": "== THESIS SUMMARY ==\nThe most profitable automated electronic broker in its sector (pretax margin >75% for seven straight quarters), with account growth still ACCELERATING in 2026 (+34% YoY; base ~5x since end-2020) and client equity at 930bn (+40%). The second engine, widely ignored: the Up-C structure - IBG Inc. shareholders own only a minority of IBG Holdings LLC, and continuous share issuance mechanically raises Inc.'s ownership share, so EPS-relevant income grows FASTER than consolidated pretax income (conversion 21.5% -> 23.7% over the plan).\n\n== THESIS READ ==\n- Client growth is the compounding engine and shows no deceleration; international accounts drive the mix. Watch: monthly brokerage metrics (accounts, DARTs, margin loans).\n- Rate sensitivity is the main earnings swing: net interest income dominates revenue; the model's ~+13%/yr revenue embeds only gradual rate normalization. Watch: Fed path vs the NII line.\n- The Up-C accretion is structural, not speculative - each issuance converts minority income into Inc. income. Watch: the quarterly ownership-percentage disclosure.\n\n== SPECIAL FACTORS ==\nUp-C convention documented in the bridge: 'ebit' = consolidated pretax (before LLC split), 'net' = IBG Inc. share only; the bridge 'minorities' line carries the LLC holders' share and absorbs the tax asymmetry - a simple tax rate does NOT connect ebit to net (ancrage ibgOwnershipAccretion). Share count RISES by design (467 -> 528M) while EPS still compounds - anti-intuitive and structural. Broker balance sheet: highly liquid, net cash convention.\n\n== PARAMETERS & WATCH-LIST ==\n2026: net revenues 7,150M, pretax 5,541M (margin 77.5%), Inc. net 1,191M / EPS 2.55; 2027-2030: revenue +13%/yr fading, pretax margin plateau ~77-78%, conversion rising per ownership accretion. Watch: NII sensitivity to cuts; crypto/event-contract regulatory openings; monthly metrics vs the account-growth deceleration ancrage.\n\n== CATALYSTS ==\nMonthly brokerage metrics; Q3 (Oct); rate-cut path; new product launches (prediction markets, crypto expansion).",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "accountGrowthDecel",
+    "moteur": "Croissance des comptes clients ouverte à un rythme exceptionnel (+34% sur un an, +9% au T2 26 seul, base multipliée par ~5 depuis fin 2020) mais appelée à décélérer progressivement à mesure que la base s'élargit ; le CA (majoritairement commissions et intérêts nets liés aux comptes/encours) suit cette décélération, d'environ +15% en 2026 à ~+9% en 2030.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "pretaxMarginPlateau",
+    "moteur": "Marge avant impôts consolidée déjà très élevée (77% au T2 26, 7e trimestre consécutif >70%) ; modélisée en stabilisation prudente autour de 77-78% sur l'horizon plutôt qu'en extrapolation d'une expansion supplémentaire au-delà des niveaux déjà records.",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "ibgOwnershipAccretion",
+    "moteur": "Structure Up-C : la part d'IBG Inc. (titre coté) dans le résultat consolidé croît structurellement et irréversiblement chaque année via le rachat de parts LLC détenues par les initiés historiques - de 17,4% (2018) à 26,5% (T2 26). Ce mécanisme documenté par la société elle-même (10-K) élève mécaniquement le ratio de conversion Net(part IBG Inc.)/EBIT consolidé, modélisé en poursuivant la tendance historique mais à rythme décéléré par prudence : ratio de 21,1% au 1S26, projeté vers 23,7% en 2030 (vs +5 à +7pts sur les 8 dernières années).",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "sharesUpCGrowth",
+    "moteur": "Corollaire direct du même mécanisme : le nombre d'actions IBG Inc. en circulation augmente structurellement (émission de nouvelles actions en échange des parts LLC rachetées, PAS une dilution opportuniste) - de ~300M (2018) à ~450M (T2 26) ; projeté en poursuivant la même trajectoire d'accroissement de la part de détention, vers ~528M en 2030 (soit ~30,5% de détention estimée).",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumCA": {
+   "2026": 7150,
+   "2027": 8080,
+   "2028": 9020,
+   "2029": 9920,
+   "2030": 10810
+  },
+  "omniumEBIT": {
+   "2026": 5541,
+   "2027": 6262,
+   "2028": 7018,
+   "2029": 7738,
+   "2030": 8454
+  },
+  "omniumNet": {
+   "2026": 1191,
+   "2027": 1390,
+   "2028": 1600,
+   "2029": 1803,
+   "2030": 2004
+  },
+  "omniumEPS": {
+   "2026": 2.55,
+   "2027": 2.86,
+   "2028": 3.19,
+   "2029": 3.49,
+   "2030": 3.8
+  },
+  "omniumND": {
+   "2026": -8500,
+   "2027": -9800,
+   "2028": -11200,
+   "2029": -12700,
+   "2030": -14300
+  },
+  "omniumShares": {
+   "2026": 467,
+   "2027": 486,
+   "2028": 502,
+   "2029": 516,
+   "2030": 528
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -2833,
+    "netCalc": 983.8,
+    "netPub": 984,
+    "residual": 0.2,
+    "residualNote": "Up-C structure: 'ebit' is CONSOLIDATED pretax income (before the IBG Holdings LLC split), 'net' is income attributable to IBG Inc. shareholders only. The 'minorities' line carries the LLC holders' share (fitted; it also absorbs the tax asymmetry - LLC minority income is not taxed at the consolidated level). The Net/EBIT conversion therefore reflects ownership + tax jointly (ancrage ibgOwnershipAccretion), rising from ~21.5% (2026) to ~23.7% (2030) as IBG Inc.'s stake grows with share issuance."
+   },
+   "2026": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -3242,
+    "netCalc": 1190.8
+   },
+   "2027": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -3620,
+    "netCalc": 1389.6
+   },
+   "2028": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -4014,
+    "netCalc": 1600.4
+   },
+   "2029": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -4387,
+    "netCalc": 1803.4
+   },
+   "2030": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": -4759,
+    "netCalc": 2004.2
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS, GAAP diluted (IBKR gives no guidance of any kind)",
+   "comparedAgainst": "consensus",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-21",
+     "type": "vs_consensus",
+     "detail": "Q2 26: account growth +34% YoY (base ~5x since end-2020), client equity 930bn (+40%); pretax margin >75% for a seventh straight quarter."
+    }
+   ],
+   "paceCheckpoint": "H1 real: account and client-equity growth still accelerating, pretax margin >75% held.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Searched 19/08/2026: IBKR guides nothing and no DATED early-2025 consensus snapshot surfaced (only current 2026-era estimates and the realized FY25 GAAP EPS 2.23) - excluded rather than estimated."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Same limitation (searched 19/08/2026): no dated early-2024 consensus snapshot archived."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 2.57,
+    "source": "initial_consensus",
+    "date": "2026-07-21",
+    "note": "IBKR guides nothing (no revenue, margin or EPS frame) - the anchor is the consensus snapshot at Q2 (earliest archived; the post-FY25 initial print was not captured). Omnium 2026 (2.55) sits essentially ON consensus."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "No measurable fiscal year and no in-progress leg (the FY26 anchor is a July consensus snapshot, not an initial print): annualBeatPct not computed. The 2.57 anchor starts the archive - first verdict at the FY26 close.",
+   "consensusSource": "ChartMill/FactSet (post-Q2 2026)",
+   "consensusDate": "2026-07-21",
+   "inProgress": null
+  },
+  "revisionEvent": {
+   "date": "2026-07-21",
+   "label": "Q2 2026",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 2.57,
+   "epsNY": 2.95,
+   "date": "2026-07-21",
+   "source": "ChartMill/FactSet (post-Q2 2026) pour FY26 ; WallStreetZen (7 analystes) pour FY27, ordre de grandeur"
+  }
+ ]
 }
