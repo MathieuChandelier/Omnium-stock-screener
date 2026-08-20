@@ -155,7 +155,7 @@
     "source": "Refresh S1/T2 2026 - Transcript integral du call T2 2026 (Carlo Rosa CEO / Alberto Donati CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 09/07/2026 (transcript T1 + Investor Day 2026-2030 du 20/05/2026, deja integres, non rouverts par ce refresh sauf ou indique). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS.PY (FY2025 S1 1.62 EUR / S2 1.27 EUR, derive du ratio management adjusted net profit H1 125 M EUR / FY 223 M EUR applique a la base restated Omnium 150 M EUR / 52 M titres) ; ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript investing.com du 08/05/2026, 7 analystes/~14 echanges) compare au T2 2026 (transcript investing.com du 31/07/2026, deja lu lors du refresh precedent, 9 analystes/~22 echanges) - aucune incoherence materielle identifiee (revision guidance Chine 5->7 M EUR justifiee par VBP/pricing concurrentiel, clarification risque Moyen-Orient est une precision et non un retournement, reponses destockage QuantiFERON coherentes T1/T2). Correction incidente : confiance de l'ancrage nes-toujours-non-chiffre normalisee sur l'enum standard (basse).",
     "dernierCall": {
       "quarter": "Q2 2026",
-      "communiqueAnalyse": false,
+      "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
         "ca": {
@@ -168,16 +168,21 @@
           "consensus": null,
           "basis": null,
           "basisNote": "Aucun chiffre de CA absolu, EBIT/EBITDA en valeur absolue publie ou de consensus explicitement rappele dans le transcript fourni au-dela des pourcentages de croissance cites ; H1 CA absolu (602 M EUR) et EBIT/EBITDA H1 absolus sont bien donnes par le CFO, retenus ci-dessous, mais pas de consensus externe recoupe pour ce refresh (aucun communique de presse officiel fourni, seulement le transcript)."
+        },
+        "epsReported": {
+          "actual": null,
+          "basis": "IFRS",
+          "period": "H1 26",
+          "note": "H1 26 IFRS net profit EUR 84M (-15% vs 99M) per the official H1 release (Q2 net profit flat at EUR 46M), but no per-share figure is disclosed in the release and stockanalysis carries TTM EPS only (EUR 2.69) - implied ~EUR 1.6/share on ~52M shares is a derivation, not a published figure, hence actual left null."
         }
       },
-      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree publiee (convention du groupe, guidance annuelle uniquement). Signal qualitatif fort sur Molecular : le management confirme qu'il faudra environ +27% organique au S2 pour atteindre l'objectif 'low double-digit' annuel sur ce segment, explique par la normalisation de la saison grippale et la montee en charge de PLEX/NES (quasi nuls au S2 2025).",
-      "guidanceAnnuelle": "Guidance FY2026 REAFFIRMEE INTEGRALEMENT malgre un S1 flat a cambi costanti : CA +5% a +6% cc, marge EBITDA ajustee 32%-33%.",
+      "guidanceProchainTrimestre": "No quarterly guidance published (group convention, annual guidance only). Strong qualitative H2 signal on Molecular: management explicitly confirms ~+27% organic growth is required in H2 to reach the FY 'low double-digit' segment target, framed as mechanically plausible rather than heroic - normalized flu season vs a weak 2025, a LIAISON PLEX installed base that did not exist last year, and first NES revenues in Q3 and especially Q4 ('look at the euro amount, not the percentage'). First NES quantification promised at the Q3/Q4 calls; LTG expected mid-double-digit in H2 on easy comps and recovering instrument placements.",
+      "guidanceAnnuelle": "FY2026 guidance REAFFIRMED IN FULL for the second consecutive quarter despite a flat cc H1: revenue +5% to +6% at constant FX, adjusted EBITDA margin 32%-33%. FX: at EUR/USD 1.15-1.16 the full-year headwind would be ~EUR 25M, of which ~20M already absorbed in H1 (minimal expected H2 impact). The EUR 8-10M Middle-East inflation disclaimer (jet fuel/plastics) was removed from the 2026 guidance - minimal impact to date, to be reassessed for 2027.",
       "pointsCles": [
-        "T2 26 CA +4% cc (+5% cc hors Chine et hors respiratoire moleculaire), confirmant la progression trimestrielle attendue communiquee en mars lors des resultats FY2025 - Immunodiagnostics +4% (+5% hors Chine, porte par un retour a une croissance historique aux Etats-Unis), Molecular +1% (+4% hors respiratoire), LTG +7% (bonne surprise, recuperation plus rapide que prevu en Life Science).",
-        "H1 26 CA 602 M EUR, flat a cambi costanti (-3% a cours courants, effet de change -20 M EUR sur le semestre, dont seulement -3 M EUR au T2 seul contre -17 M EUR au T1) ; EBIT ajuste H1 149 M EUR (-10% cc), marge EBIT 24% cc/25% cours courants ; EBITDA H1 194 M EUR (-7% cc), marge EBITDA 32% (conforme guidance), avec une nette amelioration sequentielle de 31% au T1 a 33% au T2 - operating leverage demontre.",
-        "Position financiere nette a -844 M EUR au 30/06/2026 (contre -580 M EUR fin 2025, deterioration de 265 M EUR) sous l'effet cumule de 233 M EUR de rachats d'actions et 65 M EUR de dividendes verses au S1, partiellement compenses par un FCF H1 positif mais en repli (58 M EUR contre 83 M EUR au S1 25, du fait d'un stockage de precaution d'inventaire lie au lancement de LIAISON NES).",
-        "Programme de rachat d'actions de 250 M EUR quasi acheve : ~3,6M d'actions rachetees (~6,5% du capital) pour 236 M EUR, soit ~95% du programme, a la date du call.",
-        "LIAISON NES : commercialisation demarree via les distributeurs, aucun chiffre communique a ce stade ('pas significatif'), mais approbation FDA 510(k) obtenue pour le second test (Group A strep), completant le panel complet - visibilite attendue aux calls T3/T4 avec la saison grippale. LIAISON PLEX : plus de 150 clients (frontiere depassee depuis le Q4), lancement du panel GI en cours (2 comptes valides a ce stade, funnel en forte expansion), delai d'activation clients toujours 6-12 mois (inchange)."
+        "Q2 26 revenue +4% cc (+5% ex-China and ex-molecular respiratory), exactly on the quarterly path laid out in March: Immunodiagnostics +4% (+5% ex-China; US back to double-digit historical growth on the hospital strategy, 600-hospital year-end target confirmed; Q1 QuantiFERON destocking and US weather effects behind; China ~-25% on VBP with no H2 improvement expected; Iran at zero revenue vs EUR 1.5M in Q2 25), Molecular +1% (+4% ex-respiratory; targeted specialty MDX +25%), LTG +7% (positive surprise, faster-than-expected Life Science recovery, now seen mid-to-high single digit FY).",
+        "H1 26 revenue EUR 602M flat cc (-3% reported, FX headwind -20M of which only -3M in Q2 vs -17M in Q1); adjusted EBITDA 194M (-7% cc), 32% margin with a marked sequential step-up from 31% in Q1 to 33% in Q2 (operating leverage demonstrated, ~EUR 3M/quarter tariff impact absorbed); adjusted EBIT 149M (-10% cc, 25% margin, reported EBIT 125M); IFRS net profit 84M (-15%), adjusted net profit 106M (-16%); Q2 revenue 315M with net profit flat at 46M.",
+        "Balance sheet deliberately stretched by capital returns: net debt EUR -844M at 30/06 (vs -580M end-2025, -265M swing) after 233M of buyback outflows and 65M of dividends, partly offset by positive but lower H1 FCF of 58M (vs 83M, deliberate NES-launch inventory build); the EUR 250M buyback is ~95% executed (~3.6M shares, ~6.5% of capital, 236M) and H2 cash generation is expected to improve on stronger earnings and inventory normalization.",
+        "LIAISON NES commercial via distributors since April but still zero disclosed numbers ('too early', placements typically land right before the season; second 510(k) - Group A Strep - completes the panel; first quantification promised for Q3/Q4); LIAISON PLEX now above 150 customers (90% hospitals, ~2/3 of placements in flex configuration), blood panel launched and GI panel just approved (2 accounts validated, fast-expanding funnel), full-panel Europe launch planned Q1 27, activation timelines unchanged at 6-12 months; US reimbursement of ~$140-142 per 4-target mini-panel with minimal denials validates the mini-panel strategy, with Roche and bioMerieux themselves moving to smaller panels."
       ],
       "etatsFinanciers": {
         "analyse": true,
@@ -413,12 +418,12 @@
       "timeline": [
         {
           "date": "2026-05-08",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26 reiterated integrally despite Q1 -3% cc, judged transitory (soft flu season, QuantiFERON destocking, US weather)."
         },
         {
           "date": "2026-07-31",
-          "type": "guidance_revised",
+          "type": "guidance_revision",
           "detail": "FY26 reaffirmed integrally on a flat cc H1 (Q2 +4%) - quarterly progression exactly as management laid out in March."
         }
       ],
