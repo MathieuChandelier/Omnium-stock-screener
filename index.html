@@ -492,19 +492,19 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
    Puces par millesime sous l axe : navy = Omnium, turquoise = consensus
    (le code couleur EST la legende). Trois etats par millesime :
    YTD -> total depuis l origine -> detail. */
-/* Bouton Revisions : le meme idiome discret que le toggle de periode
-   du P/E ("1 wk / All") - texte efface, actif = navy souligne. */
-.epsrev-btn{position:absolute;top:4px;right:0;display:inline-flex;align-items:baseline;gap:5px;
+/* Bouton Revisions : GHOST PILL (B3, choix 20/08) - texte nu au repos,
+   contour hairline au survol, contour lavande fin a l'actif. Presence
+   legere, zone de clic genereuse. */
+.epsrev-btn{position:absolute;top:0;right:0;display:inline-flex;align-items:baseline;gap:5px;
  font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--muted2);
- background:none;border:none;padding:0;cursor:pointer;transition:color .15s ease;user-select:none;}
-.epsrev-btn:hover{color:var(--navy);}
+ background:none;border:1px solid transparent;border-radius:999px;padding:3px 10px;cursor:pointer;
+ transition:border-color .15s ease,color .15s ease;user-select:none;}
+.epsrev-btn:hover{border-color:var(--border);}
 .epsrev-btn .epsrev-ic{width:10px;height:10px;opacity:.7;align-self:center;transition:opacity .15s ease;}
 .epsrev-btn:hover .epsrev-ic{opacity:1;}
-.epsrev-btn .epsrev-lb{padding-bottom:2px;border-bottom:2px solid transparent;transition:border-color .15s ease;}
 .epsrev-btn .epsrev-ct{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums;}
-.epsrev-btn.on{color:var(--navy);}
+.epsrev-btn.on{color:var(--navy);border-color:#c9cdf0;}
 .epsrev-btn.on .epsrev-ic{opacity:1;}
-.epsrev-btn.on .epsrev-lb{border-bottom-color:var(--navy);}
 .epsrev-btn.on .epsrev-ct{color:var(--navy);}
 .epsrev-row{position:relative;margin:0 0 6px;}
 .epsrev-cell{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;gap:3px;}
@@ -3380,7 +3380,7 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   let revBtnHtml='';
   if(revCount>0){
     const ic=`<svg class="epsrev-ic" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 3.2A4.4 4.4 0 1 1 1.6 6"/><polyline points="2.4 1.2 2.6 3.3 4.7 3.1"/><polyline points="6 3.9 6 6.2 7.8 7.1"/></svg>`;
-    revBtnHtml=`<button class="epsrev-btn${REV?' on':''}" onclick="toggleEpsRevisions()">${ic}<span class="epsrev-lb">Revisions<span class="epsrev-ct"> · ${REV?'YTD':revCount}</span></span></button>`;
+    revBtnHtml=`<button class="epsrev-btn${REV?' on':''}" onclick="toggleEpsRevisions()">${ic}<span>Revisions</span><span class="epsrev-ct">· ${REV?'YTD':revCount}</span></button>`;
   }
 
   // Pas de dates en bout de courbe (retour 20/08 v7) : on s attend a
