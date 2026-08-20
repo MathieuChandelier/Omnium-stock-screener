@@ -269,7 +269,20 @@
           "eps": 1.16,
           "actual": false
         }
-      ]
+      ],
+      "PY": [
+        {
+          "label": "S1",
+          "eps": 0.36,
+          "actual": true
+        },
+        {
+          "label": "S2",
+          "eps": 0.88,
+          "actual": true
+        }
+      ],
+      "note": "[PY 2025 pose 20/08/2026 (C24) : S1 2025 = 75,9 M EUR (derive du S1 2026 140,1 M, +84,7% publie), S2 = solde vs data 262,6 M - saisonnalite S2-lourde structurelle.]"
     },
     "bridge": {
       "2025": {

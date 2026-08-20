@@ -294,7 +294,30 @@
           "eps": 1.74,
           "actual": false
         }
-      ]
+      ],
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 1.42,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 1.8,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 1.71,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 1.62,
+          "actual": true
+        }
+      ],
+      "note": "[PY 2025 pose 20/08/2026 (C24) : nets publies cumules 2025 (T1 47,6 / S1 107,8 / 9M 165,2 / FY 219,6 M EUR) rapportes aux 33,5 M de titres de la fiche - somme 6,55 vs data 6,57 (arrondi).]"
     },
     "bridge": {
       "2025": {

@@ -329,7 +329,30 @@
           "eps": 0.79,
           "actual": false
         }
-      ]
+      ],
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.27,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.45,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.7,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.68,
+          "actual": true
+        }
+      ],
+      "note": "[PY 2025 pose 20/08/2026 (C24) : publie GAAP 10-Q - somme 2,10$ vs data 2,06$ (arrondi de moyenne d'actions).]"
     },
     "priorEPS": {
       "date": "2026-08-03",

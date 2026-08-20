@@ -212,46 +212,22 @@
         {
           "label": "T1",
           "eps": 0.63,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Normalisation du taux d'IS a 21% normatif (excess tax benefits 2025 exclus - parametre declare de la fiche)",
-              "impact": -0.05
-            }
-          ]
+          "actual": true
         },
         {
           "label": "T2",
           "eps": 0.67,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Normalisation du taux d'IS a 21% normatif (excess tax benefits 2025 exclus - parametre declare de la fiche)",
-              "impact": -0.06
-            }
-          ]
+          "actual": true
         },
         {
           "label": "T3",
           "eps": 0.69,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Normalisation du taux d'IS a 21% normatif (excess tax benefits 2025 exclus - parametre declare de la fiche)",
-              "impact": -0.06
-            }
-          ]
+          "actual": true
         },
         {
           "label": "T4",
           "eps": 0.76,
-          "actual": true,
-          "retraitements": [
-            {
-              "raison": "Normalisation du taux d'IS a 21% normatif (excess tax benefits 2025 exclus - parametre declare de la fiche)",
-              "impact": -0.06
-            }
-          ]
+          "actual": true
         }
       ],
       "CY": [
@@ -298,7 +274,7 @@
           "actual": false
         }
       ],
-      "note": "[Correctif C25 20/08/2026 : le PY etait pose en publie brut (2,98$) alors que data 2025 (2,75$) est la base normalisee fiscalement - pont ajoute, allocation uniforme du differentiel de TEI.]"
+      "note": "[Correctif C25 20/08/2026 : le PY etait pose en publie brut (2,98$) alors que data 2025 (2,75$) est la base normalisee fiscalement - pont ajoute, allocation uniforme du differentiel de TEI.] [C10 20/08/2026 : la normalisation fiscale est un ecart de BASE annuel, pas un one-off trimestriel - les periodes PY portent la base normalisee sans pont par periode ; publie 2025 : 0,68/0,73/0,75/0,82 (2,98$).]"
     },
     "summary": "Leader du switching haute vitesse pleinement engage dans la vague de networking IA : T2 26 marque le premier trimestre a plus de 3 Md$ de CA (+37,7%), avec une guidance FY26 relevee pour la 3e fois de l'annee (~12,6 Md$, marge operationnelle 48-49%). Plus de 100 clients Etherlink AI fabric (vs 4-5 en 2024) et des engagements d'achat pluriannuels quasi tries (9,7 Md$) confirment la trajectoire de demande, tempere par une contrainte d'approvisionnement sectorielle que le CEO juge durable jusqu'en 2028. omniumEPS 4,05->8,52 (2026-2030).",
     "cagrBridge": null,

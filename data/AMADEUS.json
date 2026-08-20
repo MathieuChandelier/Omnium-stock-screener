@@ -1,418 +1,441 @@
 {
- "name": "Amadeus IT Group",
- "cours": 52.16,
- "yahooSymbol": "AMS.MC",
- "dividende": 1.48,
- "data": [
-  {
-   "year": 2019,
-   "ca": 5571,
-   "ebit": 1452,
-   "net": 1268,
-   "shares": 430,
-   "nd": 3348
-  },
-  {
-   "year": 2020,
-   "ca": 2152,
-   "ebit": -546,
-   "net": -505,
-   "shares": 448,
-   "nd": 3100
-  },
-  {
-   "year": 2021,
-   "ca": 2236,
-   "ebit": 273,
-   "net": -123,
-   "shares": 450,
-   "nd": 2800
-  },
-  {
-   "year": 2022,
-   "ca": 4486,
-   "ebit": 1065,
-   "net": 665,
-   "shares": 450,
-   "nd": 2284,
-   "div": 0.74
-  },
-  {
-   "year": 2023,
-   "ca": 5420,
-   "ebit": 1367,
-   "net": 1145,
-   "shares": 450,
-   "nd": 2111,
-   "div": 1.24
-  },
-  {
-   "year": 2024,
-   "ca": 6141,
-   "ebit": 1614,
-   "net": 1223,
-   "shares": 450,
-   "nd": 2111,
-   "div": 1.32
-  },
-  {
-   "year": 2025,
-   "ca": 6517,
-   "ebit": 1646,
-   "net": 1336,
-   "shares": 450.5,
-   "nd": 2141,
-   "div": 1.48
-  }
- ],
- "epsConsensus": {
-  "year": 2026,
-  "eps": 3.29,
-  "epsNY": 3.63,
-  "date": "2026-07-01",
-  "source": "Google Finance/consensus (EPS reference ~3,05 EUR au 01/07/2026) ; snapshot PRE-S1 26, non actualise depuis la revision de guidance du 31/07 - probablement trop haut desormais compte tenu du trim EPS 'high-single to low-double-digit' (vs 'low-double-digit' avant) ; a rafraichir au prochain point."
- },
- "particularites": [],
- "nextEvent": {
-  "label": "Q3 26 (trading update)",
-  "date": "2026-11-06"
- },
- "hypothese": {
-  "date": "2026-08-19",
-  "priorEPS": {
-   "date": "2026-07-06",
-   "eps": {
-    "2026": 3.29,
-    "2027": 3.63
-   }
-  },
-  "source": "Refresh S1 2026 - Communique officiel de resultats (31/07/2026, amadeus.com) + Transcript integral du call du meme jour (Luis Maroto CEO / Carol Borg CFO) + communique T1 2026 (08/05/2026, chiffres absolus) pour la decomposition trimestrielle",
-  "dernierCall": {
-   "quarter": "S1 26",
-   "communiqueAnalyse": true,
-   "transcriptAnalyse": true,
-   "resultatsVsConsensus": {
-    "ca": {
-     "actual": 3335,
-     "consensus": null
+  "name": "Amadeus IT Group",
+  "cours": 52.16,
+  "yahooSymbol": "AMS.MC",
+  "dividende": 1.48,
+  "data": [
+    {
+      "year": 2019,
+      "ca": 5571,
+      "ebit": 1452,
+      "net": 1268,
+      "shares": 430,
+      "nd": 3348
     },
-    "epsAdj": {
-     "actual": 1.75,
-     "consensus": null,
-     "basis": "non-GAAP",
-     "basisNote": "EPS dilue ajuste (APM Amadeus), +7,3% a change constant vs S1 25 ; pas de consensus sell-side specifique au S1 retrouve de facon fiable dans les sources consultees"
+    {
+      "year": 2020,
+      "ca": 2152,
+      "ebit": -546,
+      "net": -505,
+      "shares": 448,
+      "nd": 3100
+    },
+    {
+      "year": 2021,
+      "ca": 2236,
+      "ebit": 273,
+      "net": -123,
+      "shares": 450,
+      "nd": 2800
+    },
+    {
+      "year": 2022,
+      "ca": 4486,
+      "ebit": 1065,
+      "net": 665,
+      "shares": 450,
+      "nd": 2284,
+      "div": 0.74
+    },
+    {
+      "year": 2023,
+      "ca": 5420,
+      "ebit": 1367,
+      "net": 1145,
+      "shares": 450,
+      "nd": 2111,
+      "div": 1.24
+    },
+    {
+      "year": 2024,
+      "ca": 6141,
+      "ebit": 1614,
+      "net": 1223,
+      "shares": 450,
+      "nd": 2111,
+      "div": 1.32
+    },
+    {
+      "year": 2025,
+      "ca": 6517,
+      "ebit": 1646,
+      "net": 1336,
+      "shares": 450.5,
+      "nd": 2141,
+      "div": 1.48
     }
-   },
-   "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (guidance semestrielle/annuelle uniquement). Le CFO anticipe explicitement que le T3 26 delivre une meilleure evolution des reservations que le T2 26 ('we expect our Q3 booking evolution to outperform our Q2 evolution').",
-   "guidanceAnnuelle": "FY26 ABAISSEE/ELARGIE : CA groupe desormais 'mid-to-high single-digit' cc (vs 'high-single-digit' avant), CA Air Distribution ramene a 'low-to-mid single-digit' (vs fourchette superieure precedente), EPS dilue ajuste desormais 'high-single to low-double-digit' (vs 'low-double-digit'), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange). Air IT Solutions ('high-single-digit') et Hospitality & Other Solutions ('low-double-digit') maintenus inchanges. Fourchette volontairement elargie compte tenu de l'incertitude court terme.",
-   "pointsCles": [
-    "Impact Moyen-Orient plus profond et plus long qu'anticipe au T1 : l'IATA a reduit son hypothese de trafic mondial 2026 de +4,4% (decembre) a +1,9% (juin) ; reservations Amadeus -3,7% au S1 (creux mars-avril-mai), debut de reprise en juin et sur les 3 premieres semaines de juillet (reservations quasi stables, PB +1% en amelioration vs juin).",
-    "Resilience du modele diversifie confirmee : Air IT Solutions (+8,7% cc) et Hospitality & Other Solutions (+9,2% cc) compensent largement la faiblesse d'Air Distribution (+1,1% cc, bookings -3,7%) - narratif central du management pour justifier la limite de l'impact sur le CA groupe malgre la revision IATA.",
-    "Programme de rachat d'actions de 500 M€ (annonce fin fevrier) integralement complete en juin 2026 - dette nette en hausse a 2 577,5 M€ (1,0x EBITDA LTM, +436 M€ vs fin 2025) du fait du rachat et du dividende, FCF S1 en legere hausse (472,2 M€, +0,8%).",
-    "Acquisition IDEMIA Public Security : Share Purchase Agreement desormais SIGNE (vs simple intention a la creation), cloture reglementaire visee mi-2027 (calendrier precise, plus tardif qu'implicite a la creation) - CEO 'extremement optimiste', retours de l'industrie positifs, aucun signal negatif recueilli aupres des clients.",
-    "Couts de decommissionnement du data center de secours (post-migration cloud, site d'Erding) traites en elements non-recurrents jusqu'a fin d'annee - produit de cession potentiel des serveurs evoque (appetit de marche pour l'infrastructure IA) mais non chiffre."
-   ],
-   "etatsFinanciers": {
-    "analyse": true,
-    "referentiel": "IFRS",
-    "source": "H1 2026 Management Review + etats intermediaires condenses (amadeus.com IR)",
+  ],
+  "epsConsensus": {
+    "year": 2026,
+    "eps": 3.29,
+    "epsNY": 3.63,
+    "date": "2026-07-01",
+    "source": "Google Finance/consensus (EPS reference ~3,05 EUR au 01/07/2026) ; snapshot PRE-S1 26, non actualise depuis la revision de guidance du 31/07 - probablement trop haut desormais compte tenu du trim EPS 'high-single to low-double-digit' (vs 'low-double-digit' avant) ; a rafraichir au prochain point."
+  },
+  "particularites": [],
+  "nextEvent": {
+    "label": "Q3 26 (trading update)",
+    "date": "2026-11-06"
+  },
+  "hypothese": {
     "date": "2026-08-19",
-    "note": "Croises vs fiche : CA H1 3 334,9 M EUR (+2,3%, +5,1% cc), adj EBIT 1 011,5 M EUR, dette financiere nette 2 577,5 M EUR au 30/06 (1,0x EBITDA) - la trajectoire omniumND 2026 (1 950) suppose le desendettement H2 par FCF, hypothese de la fiche confirmee comme hypothese."
-   }
-  },
-  "guidanceHistory": [
-   {
-    "quarter": "T1 26",
-    "date": "2026-05-07",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA groupe high-single-digit cc, marge EBIT ajustee stable, EPS dilue ajuste low-double-digit, hypothese de trafic mondial +3% sur l'annee (date approximative du call T1, non confirmee avec precision)."
-   },
-   {
-    "quarter": "S1 26",
-    "date": "2026-07-31",
-    "fyGuided": 2026,
-    "guidanceAnnuelle": "CA groupe ABAISSE a mid-to-high single-digit (vs high-single-digit), Air Distribution ramene a low-to-mid single-digit, EPS dilue ajuste ABAISSE a high-single to low-double-digit (vs low-double-digit), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange)."
-   }
-  ],
-  "guidanceLongTerme": "Ambition moyen terme reaffirmee SANS changement malgre la revision de la guidance FY26 : croissance du CA CAGR high-single-digit et expansion de marge maintenues - le CFO souligne explicitement que la revision ne concerne que le court terme, les fondamentaux du business restant solides.",
-  "guidanceLongTermeHistory": [],
-  "quarterlyEPS": {
-   "cadence": "trimestriel",
-   "CY": [
-    {
-     "label": "T1",
-     "eps": 0.86,
-     "actual": true
+    "priorEPS": {
+      "date": "2026-07-06",
+      "eps": {
+        "2026": 3.29,
+        "2027": 3.63
+      }
     },
-    {
-     "label": "T2",
-     "eps": 0.89,
-     "actual": true
+    "source": "Refresh S1 2026 - Communique officiel de resultats (31/07/2026, amadeus.com) + Transcript integral du call du meme jour (Luis Maroto CEO / Carol Borg CFO) + communique T1 2026 (08/05/2026, chiffres absolus) pour la decomposition trimestrielle",
+    "dernierCall": {
+      "quarter": "S1 26",
+      "communiqueAnalyse": true,
+      "transcriptAnalyse": true,
+      "resultatsVsConsensus": {
+        "ca": {
+          "actual": 3335,
+          "consensus": null
+        },
+        "epsAdj": {
+          "actual": 1.75,
+          "consensus": null,
+          "basis": "non-GAAP",
+          "basisNote": "EPS dilue ajuste (APM Amadeus), +7,3% a change constant vs S1 25 ; pas de consensus sell-side specifique au S1 retrouve de facon fiable dans les sources consultees"
+        }
+      },
+      "guidanceProchainTrimestre": "Pas de guidance trimestrielle chiffree (guidance semestrielle/annuelle uniquement). Le CFO anticipe explicitement que le T3 26 delivre une meilleure evolution des reservations que le T2 26 ('we expect our Q3 booking evolution to outperform our Q2 evolution').",
+      "guidanceAnnuelle": "FY26 ABAISSEE/ELARGIE : CA groupe desormais 'mid-to-high single-digit' cc (vs 'high-single-digit' avant), CA Air Distribution ramene a 'low-to-mid single-digit' (vs fourchette superieure precedente), EPS dilue ajuste desormais 'high-single to low-double-digit' (vs 'low-double-digit'), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange). Air IT Solutions ('high-single-digit') et Hospitality & Other Solutions ('low-double-digit') maintenus inchanges. Fourchette volontairement elargie compte tenu de l'incertitude court terme.",
+      "pointsCles": [
+        "Impact Moyen-Orient plus profond et plus long qu'anticipe au T1 : l'IATA a reduit son hypothese de trafic mondial 2026 de +4,4% (decembre) a +1,9% (juin) ; reservations Amadeus -3,7% au S1 (creux mars-avril-mai), debut de reprise en juin et sur les 3 premieres semaines de juillet (reservations quasi stables, PB +1% en amelioration vs juin).",
+        "Resilience du modele diversifie confirmee : Air IT Solutions (+8,7% cc) et Hospitality & Other Solutions (+9,2% cc) compensent largement la faiblesse d'Air Distribution (+1,1% cc, bookings -3,7%) - narratif central du management pour justifier la limite de l'impact sur le CA groupe malgre la revision IATA.",
+        "Programme de rachat d'actions de 500 M€ (annonce fin fevrier) integralement complete en juin 2026 - dette nette en hausse a 2 577,5 M€ (1,0x EBITDA LTM, +436 M€ vs fin 2025) du fait du rachat et du dividende, FCF S1 en legere hausse (472,2 M€, +0,8%).",
+        "Acquisition IDEMIA Public Security : Share Purchase Agreement desormais SIGNE (vs simple intention a la creation), cloture reglementaire visee mi-2027 (calendrier precise, plus tardif qu'implicite a la creation) - CEO 'extremement optimiste', retours de l'industrie positifs, aucun signal negatif recueilli aupres des clients.",
+        "Couts de decommissionnement du data center de secours (post-migration cloud, site d'Erding) traites en elements non-recurrents jusqu'a fin d'annee - produit de cession potentiel des serveurs evoque (appetit de marche pour l'infrastructure IA) mais non chiffre."
+      ],
+      "etatsFinanciers": {
+        "analyse": true,
+        "referentiel": "IFRS",
+        "source": "H1 2026 Management Review + etats intermediaires condenses (amadeus.com IR)",
+        "date": "2026-08-19",
+        "note": "Croises vs fiche : CA H1 3 334,9 M EUR (+2,3%, +5,1% cc), adj EBIT 1 011,5 M EUR, dette financiere nette 2 577,5 M EUR au 30/06 (1,0x EBITDA) - la trajectoire omniumND 2026 (1 950) suppose le desendettement H2 par FCF, hypothese de la fiche confirmee comme hypothese."
+      }
     },
-    {
-     "label": "T3",
-     "eps": 0.72,
-     "actual": false
+    "guidanceHistory": [
+      {
+        "quarter": "T1 26",
+        "date": "2026-05-07",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA groupe high-single-digit cc, marge EBIT ajustee stable, EPS dilue ajuste low-double-digit, hypothese de trafic mondial +3% sur l'annee (date approximative du call T1, non confirmee avec precision)."
+      },
+      {
+        "quarter": "S1 26",
+        "date": "2026-07-31",
+        "fyGuided": 2026,
+        "guidanceAnnuelle": "CA groupe ABAISSE a mid-to-high single-digit (vs high-single-digit), Air Distribution ramene a low-to-mid single-digit, EPS dilue ajuste ABAISSE a high-single to low-double-digit (vs low-double-digit), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange)."
+      }
+    ],
+    "guidanceLongTerme": "Ambition moyen terme reaffirmee SANS changement malgre la revision de la guidance FY26 : croissance du CA CAGR high-single-digit et expansion de marge maintenues - le CFO souligne explicitement que la revision ne concerne que le court terme, les fondamentaux du business restant solides.",
+    "guidanceLongTermeHistory": [],
+    "quarterlyEPS": {
+      "cadence": "trimestriel",
+      "CY": [
+        {
+          "label": "T1",
+          "eps": 0.86,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.89,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.72,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.75,
+          "actual": false
+        }
+      ],
+      "NY": [
+        {
+          "label": "T1",
+          "eps": 0.95,
+          "actual": false
+        },
+        {
+          "label": "T2",
+          "eps": 0.98,
+          "actual": false
+        },
+        {
+          "label": "T3",
+          "eps": 0.8,
+          "actual": false
+        },
+        {
+          "label": "T4",
+          "eps": 0.82,
+          "actual": false
+        }
+      ],
+      "PY": [
+        {
+          "label": "T1",
+          "eps": 0.79,
+          "actual": true
+        },
+        {
+          "label": "T2",
+          "eps": 0.83,
+          "actual": true
+        },
+        {
+          "label": "T3",
+          "eps": 0.8,
+          "actual": true
+        },
+        {
+          "label": "T4",
+          "eps": 0.55,
+          "actual": true
+        }
+      ],
+      "note": "[PY 2025 pose 20/08/2026 (C24) : nets publies IFRS 355/372/361/248 M EUR rapportes aux 450,5 M de titres de la fiche - somme 2,97 EUR = data.]"
     },
-    {
-     "label": "T4",
-     "eps": 0.75,
-     "actual": false
+    "summary": "S1 2026 resilient (CA +5,1% cc, EPS ajuste +7,3% cc) mais guidance FY26 ABAISSEE suite a l'aggravation du conflit Moyen-Orient (IATA -4,4%->+1,9% de trafic mondial 2026) : Air Distribution porte l'essentiel du trim, Air IT et Hospitality inchanges. IDEMIA desormais sous accord signe (cloture mi-2027). Rachat de 500 M€ complete, dette nette en hausse temporaire. omniumEPS 2026 revise a 3,22 (-2,1% vs creation), ambition moyen terme reaffirmee sans changement. Decoupage trimestriel construit a partir des chiffres absolus T1 26 (0,86€) et S1 26 (1,75€).",
+    "text": "== THESIS SUMMARY ==\nWorld #1 in travel technology. H1 2026 validated the diversification-resilience thesis: against a Middle-East shock harsher and longer than assumed (IATA cut 2026 world-traffic growth from +4.4% to +1.9%), Air IT Solutions (+8.7% cc) and Hospitality & Other (+9.2% cc) absorbed the blow, leaving only Air Distribution soft (+1.1% cc, bookings -3.7%). Consequence: FY26 guidance cut (revenue to mid-to-high SD cc, adjusted EPS to high-SD-to-low-DD, ranges widened) - but only on the short-term component; the mid-term ambition is reaffirmed unchanged. Buyback completed; IDEMIA acquisition signed (closing mid-2027, size undisclosed).\n\n== THESIS READ ==\n- Diversification works as designed: non-air segments compound through an air-traffic shock. Watch: the H2 bookings-recovery assumption (+3% world traffic) that underpins the guidance.\n- The cut is cyclical, not structural - mid-term targets intact, so 2027-2030 keeps setup growth rates on a permanently lower 2026 base (no catch-up modeled). Watch: any touch to the mid-term ambition at FY26 results.\n- Capital allocation steady; IDEMIA NOT in the net-debt path (size unknown). Watch: transaction size disclosure and any new buyback.\n\n== SPECIAL FACTORS ==\nAdjusted (APM) basis throughout, consistent with guidance and unchanged since setup. Amadeus 'adjusted profit' adds back PPA amortization/impairments net of tax below adjusted EBIT: the bridge carries a documented +169M residual on published 2025 for this reason, and projected years absorb the wedge in the effective tax/finNet fit.\n\n== PARAMETERS & WATCH-LIST ==\n2026 rebuilt bottom-up: H1 actual (revenue 3,334.9M, adj EBIT 1,011.5M) + H2 on the lowered guidance (~5.5% cc revenue, margin ~29.3%). 2027-2030: ~10%/yr EPS growth per the unchanged mid-term ambition, applied to the lower base. Bridge: ETR 24% wedge (see SPECIAL FACTORS). Net debt to 650M by 2030 excluding IDEMIA. Buyback trajectory: shares 446 -> 431M. Watch: full transcript access was restricted this refresh (summary only); IDEMIA size; Air Distribution stabilization.\n\n== CATALYSTS ==\nQ3 results (Nov); traffic normalization post-shock; IDEMIA size disclosure and closing (mid-2027); potential new buyback announcement.",
+    "impact": "positif",
+    "ancrages": [
+      {
+        "id": "guidance_fy26_abaissee",
+        "moteur": "Guidance FY26 abaissee au S1 suite a l'aggravation du choc Moyen-Orient : CA groupe 'mid-to-high single-digit' (vs 'high-single-digit'), EPS dilue ajuste 'high-single to low-double-digit' (vs 'low-double-digit'). Bridge H1 actual (3 334,9 M€ CA, 1 011,5 M€ adj EBIT) + H2 estime sur la guidance abaissee.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumEBIT.2026",
+          "omniumNet.2026",
+          "omniumEPS.2026"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "moyen_orient_choc_prolonge",
+        "moteur": "Risque identifie a la creation (perturbations Moyen-Orient) desormais materialise a un degre superieur : IATA a coupe son hypothese de trafic mondial 2026 de +4,4% a +1,9%, reservations Amadeus -3,7% au S1 avec creux mars-avril-mai ; reprise amorcee en juin/juillet mais nature (rattrapage vs inflexion durable) non tranchee par le management lui-meme.",
+        "applique": [
+          "omniumCA.2026"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "diversification_resilience",
+        "moteur": "Air IT Solutions (+8,7% cc) et Hospitality & Other Solutions (+9,2% cc) compensent largement la faiblesse d'Air Distribution (+1,1% cc) - confirme la these de resilience par la diversification retenue a la creation, contient l'ampleur du trim de guidance au niveau groupe.",
+        "applique": [
+          "omniumCA.2026",
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030"
+        ],
+        "confiance": "haute"
+      },
+      {
+        "id": "midterm_ambition_maintenue",
+        "moteur": "Ambition moyen terme reaffirmee sans changement par le CFO malgre le trim FY26 (CAGR CA high-single-digit, expansion de marge) - memes taux de croissance annuels retenus qu'a la creation (~10%/an) mais appliques a une base 2026 desormais plus basse, decalage permanent vers le bas plutot que rattrapage.",
+        "applique": [
+          "omniumCA.2027",
+          "omniumCA.2028",
+          "omniumCA.2029",
+          "omniumCA.2030",
+          "omniumEPS.2027",
+          "omniumEPS.2028",
+          "omniumEPS.2029",
+          "omniumEPS.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "buyback_complete_2026",
+        "moteur": "Programme de rachat de 500 M€ (annonce fin fevrier) integralement complete en juin 2026 - dette nette en hausse temporaire (2 577,5 M€ au 30/06, +436 M€ vs fin 2025) du fait du rachat et du dividende, desendettement attendu au S2 porte par le FCF (guidance FY26 inchangee a 1,35-1,45 Md€), sans nouveau programme annonce a ce stade.",
+        "applique": [
+          "omniumND.2026",
+          "omniumND.2027",
+          "omniumND.2028",
+          "omniumND.2029",
+          "omniumND.2030"
+        ],
+        "confiance": "moyenne"
+      },
+      {
+        "id": "idemia_accord_signe",
+        "moteur": "Acquisition IDEMIA Public Security desormais sous Share Purchase Agreement signe (vs intention a la creation), cloture reglementaire visee mi-2027 - effet financier toujours non communique par le management, maintenu hors base centrale (optionnalite non chiffree) plutot qu'integre aux adjXXX, taille de transaction a integrer dans omniumND des qu'elle sera connue.",
+        "applique": [],
+        "confiance": "haute sur l'occurrence, nulle sur le montant"
+      }
+    ],
+    "omniumEPS": {
+      "2026": 3.22,
+      "2027": 3.55,
+      "2028": 3.91,
+      "2029": 4.3,
+      "2030": 4.72
+    },
+    "omniumCA": {
+      "2026": 6720,
+      "2027": 7230,
+      "2028": 7770,
+      "2029": 8315,
+      "2030": 8900
+    },
+    "omniumEBIT": {
+      "2026": 1965,
+      "2027": 2125,
+      "2028": 2308,
+      "2029": 2495,
+      "2030": 2696
+    },
+    "omniumNet": {
+      "2026": 1434,
+      "2027": 1573,
+      "2028": 1717,
+      "2029": 1871,
+      "2030": 2034
+    },
+    "omniumND": {
+      "2026": 1950,
+      "2027": 1700,
+      "2028": 1400,
+      "2029": 1050,
+      "2030": 650
+    },
+    "omniumShares": {
+      "2026": 446,
+      "2027": 443,
+      "2028": 439,
+      "2029": 435,
+      "2030": 431
+    },
+    "bridge": {
+      "2025": {
+        "finNet": -90,
+        "other": 0,
+        "taxRate": 0.25,
+        "minorities": 0,
+        "netCalc": 1167,
+        "netPub": 1336,
+        "residual": 169,
+        "residualNote": "Amadeus 'adjusted profit' adds back PPA amortization and impairments NET OF TAX below the adjusted-EBIT line, so a flat tax-on-adjusted-EBIT understates it by ~169M. Projected years absorb this wedge in a lower effective finNet/ETR fit (conversion ~73-76% observed)."
+      },
+      "2026": {
+        "finNet": -78,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1434
+      },
+      "2027": {
+        "finNet": -55,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1573
+      },
+      "2028": {
+        "finNet": -49,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1717
+      },
+      "2029": {
+        "finNet": -33,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 1871
+      },
+      "2030": {
+        "finNet": -20,
+        "other": 0,
+        "taxRate": 0.24,
+        "minorities": 0,
+        "netCalc": 2034
+      }
+    },
+    "guidanceScorecard": {
+      "cadence": "annual",
+      "metric": "Adjusted diluted EPS growth (guided range)",
+      "comparedAgainst": "guidance",
+      "basisAligned": true,
+      "basisNote": null,
+      "timeline": [
+        {
+          "date": "2026-07-31",
+          "type": "guidance_revised",
+          "detail": "FY26 cut: revenue to mid-to-high SD cc (from high-SD), adjusted EPS to high-SD-to-low-DD (from low-DD), ranges widened; mid-term ambition reaffirmed unchanged."
+        }
+      ],
+      "paceCheckpoint": "H1 real: revenue +5% cc, adjusted EBIT +5%, adjusted diluted EPS +7% - pace consistent with the LOWERED range, below the initial anchor.",
+      "weightedBeatPct": null,
+      "annualBeatPct": -1.7,
+      "annualBeatHistory": [
+        {
+          "fy": 2025,
+          "beatPct": -4.4,
+          "source": "initial_guidance",
+          "excluded": false,
+          "anchorValue": null,
+          "initialDisplay": "6,815M EUR revenue (initial mid)",
+          "realizedDisplay": "6,517M EUR",
+          "note": "Initial FY25 guidance (PR 28/02/2025): revenue 6.69-6.94bn (+9/13%), EBITDA 2.49-2.61bn; realized revenue 6,517M (+6.1%, Middle-East shock year) - level MISS -4.4% vs the initial mid. Metric mismatch with the EPS anchor declared (revenue-guided years)."
+        },
+        {
+          "fy": 2024,
+          "beatPct": 0.1,
+          "source": "initial_guidance",
+          "excluded": false,
+          "anchorValue": null,
+          "initialDisplay": "+12.75% revenue (initial mid)",
+          "realizedDisplay": "+12.9%",
+          "note": "Initial FY24 guidance (FY23 PR, 28/02/2024): revenue growth 11-14.5% (mid 12.75%); realized +12.9% (6,141.7M) - on the mid (+0.1% level)."
+        }
+      ],
+      "anchorInitial": {
+        "fy": 2026,
+        "value": 3.29,
+        "source": "initial_guidance",
+        "date": "2026-05-07",
+        "note": "Quantified from 'low-double-digit' adjusted-EPS growth (~+11%) on FY25 adjusted EPS 2.965 -> ~3.29, matching pre-cut consensus. Earliest ARCHIVED guidance (the February FY25-results statement was not captured); guidance was CUT on 31/07 to high-SD-to-low-DD - the anchor stays initial for the FY26 close measurement."
+      },
+      "appliedToProjection": false,
+      "applicationNote": "annualBeatPct -1.7% BLENDED (FY26 in-progress -1.2 x1/2; closed FY25 -4.4 and FY24 +0.1 equal-shared). NOT applied to projections: the 2026 build already sits on the LOWERED guidance (applying the negative blend would double-count the cut), and closed years are measured on REVENUE while the anchor is EPS (declared mismatch).",
+      "consensusSource": "Google Finance / sell-side (adjusted EPS reference)",
+      "consensusDate": "2026-07-01",
+      "inProgress": {
+        "fy": 2026,
+        "initialValue": 3.29,
+        "currentValue": 3.25,
+        "deltaPct": -1.2,
+        "asOf": "2026-07-31",
+        "note": "Initial 'low-double-digit' adjusted-EPS growth (~+11% -> 3.29 on 2.965); guidance CUT 31/07 to 'high-SD-to-low-DD' (mid ~+9.5% -> ~3.25). Projected -1.2% vs the initial anchor."
+      }
+    },
+    "revisionEvent": {
+      "date": "2026-07-31",
+      "label": "H1 2026",
+      "type": "earnings"
     }
-   ],
-   "NY": [
-    {
-     "label": "T1",
-     "eps": 0.95,
-     "actual": false
-    },
-    {
-     "label": "T2",
-     "eps": 0.98,
-     "actual": false
-    },
-    {
-     "label": "T3",
-     "eps": 0.8,
-     "actual": false
-    },
-    {
-     "label": "T4",
-     "eps": 0.82,
-     "actual": false
-    }
-   ]
   },
-  "summary": "S1 2026 resilient (CA +5,1% cc, EPS ajuste +7,3% cc) mais guidance FY26 ABAISSEE suite a l'aggravation du conflit Moyen-Orient (IATA -4,4%->+1,9% de trafic mondial 2026) : Air Distribution porte l'essentiel du trim, Air IT et Hospitality inchanges. IDEMIA desormais sous accord signe (cloture mi-2027). Rachat de 500 M€ complete, dette nette en hausse temporaire. omniumEPS 2026 revise a 3,22 (-2,1% vs creation), ambition moyen terme reaffirmee sans changement. Decoupage trimestriel construit a partir des chiffres absolus T1 26 (0,86€) et S1 26 (1,75€).",
-  "text": "== THESIS SUMMARY ==\nWorld #1 in travel technology. H1 2026 validated the diversification-resilience thesis: against a Middle-East shock harsher and longer than assumed (IATA cut 2026 world-traffic growth from +4.4% to +1.9%), Air IT Solutions (+8.7% cc) and Hospitality & Other (+9.2% cc) absorbed the blow, leaving only Air Distribution soft (+1.1% cc, bookings -3.7%). Consequence: FY26 guidance cut (revenue to mid-to-high SD cc, adjusted EPS to high-SD-to-low-DD, ranges widened) - but only on the short-term component; the mid-term ambition is reaffirmed unchanged. Buyback completed; IDEMIA acquisition signed (closing mid-2027, size undisclosed).\n\n== THESIS READ ==\n- Diversification works as designed: non-air segments compound through an air-traffic shock. Watch: the H2 bookings-recovery assumption (+3% world traffic) that underpins the guidance.\n- The cut is cyclical, not structural - mid-term targets intact, so 2027-2030 keeps setup growth rates on a permanently lower 2026 base (no catch-up modeled). Watch: any touch to the mid-term ambition at FY26 results.\n- Capital allocation steady; IDEMIA NOT in the net-debt path (size unknown). Watch: transaction size disclosure and any new buyback.\n\n== SPECIAL FACTORS ==\nAdjusted (APM) basis throughout, consistent with guidance and unchanged since setup. Amadeus 'adjusted profit' adds back PPA amortization/impairments net of tax below adjusted EBIT: the bridge carries a documented +169M residual on published 2025 for this reason, and projected years absorb the wedge in the effective tax/finNet fit.\n\n== PARAMETERS & WATCH-LIST ==\n2026 rebuilt bottom-up: H1 actual (revenue 3,334.9M, adj EBIT 1,011.5M) + H2 on the lowered guidance (~5.5% cc revenue, margin ~29.3%). 2027-2030: ~10%/yr EPS growth per the unchanged mid-term ambition, applied to the lower base. Bridge: ETR 24% wedge (see SPECIAL FACTORS). Net debt to 650M by 2030 excluding IDEMIA. Buyback trajectory: shares 446 -> 431M. Watch: full transcript access was restricted this refresh (summary only); IDEMIA size; Air Distribution stabilization.\n\n== CATALYSTS ==\nQ3 results (Nov); traffic normalization post-shock; IDEMIA size disclosure and closing (mid-2027); potential new buyback announcement.",
-  "impact": "positif",
-  "ancrages": [
-   {
-    "id": "guidance_fy26_abaissee",
-    "moteur": "Guidance FY26 abaissee au S1 suite a l'aggravation du choc Moyen-Orient : CA groupe 'mid-to-high single-digit' (vs 'high-single-digit'), EPS dilue ajuste 'high-single to low-double-digit' (vs 'low-double-digit'). Bridge H1 actual (3 334,9 M€ CA, 1 011,5 M€ adj EBIT) + H2 estime sur la guidance abaissee.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumEBIT.2026",
-     "omniumNet.2026",
-     "omniumEPS.2026"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "moyen_orient_choc_prolonge",
-    "moteur": "Risque identifie a la creation (perturbations Moyen-Orient) desormais materialise a un degre superieur : IATA a coupe son hypothese de trafic mondial 2026 de +4,4% a +1,9%, reservations Amadeus -3,7% au S1 avec creux mars-avril-mai ; reprise amorcee en juin/juillet mais nature (rattrapage vs inflexion durable) non tranchee par le management lui-meme.",
-    "applique": [
-     "omniumCA.2026"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "diversification_resilience",
-    "moteur": "Air IT Solutions (+8,7% cc) et Hospitality & Other Solutions (+9,2% cc) compensent largement la faiblesse d'Air Distribution (+1,1% cc) - confirme la these de resilience par la diversification retenue a la creation, contient l'ampleur du trim de guidance au niveau groupe.",
-    "applique": [
-     "omniumCA.2026",
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030"
-    ],
-    "confiance": "haute"
-   },
-   {
-    "id": "midterm_ambition_maintenue",
-    "moteur": "Ambition moyen terme reaffirmee sans changement par le CFO malgre le trim FY26 (CAGR CA high-single-digit, expansion de marge) - memes taux de croissance annuels retenus qu'a la creation (~10%/an) mais appliques a une base 2026 desormais plus basse, decalage permanent vers le bas plutot que rattrapage.",
-    "applique": [
-     "omniumCA.2027",
-     "omniumCA.2028",
-     "omniumCA.2029",
-     "omniumCA.2030",
-     "omniumEPS.2027",
-     "omniumEPS.2028",
-     "omniumEPS.2029",
-     "omniumEPS.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "buyback_complete_2026",
-    "moteur": "Programme de rachat de 500 M€ (annonce fin fevrier) integralement complete en juin 2026 - dette nette en hausse temporaire (2 577,5 M€ au 30/06, +436 M€ vs fin 2025) du fait du rachat et du dividende, desendettement attendu au S2 porte par le FCF (guidance FY26 inchangee a 1,35-1,45 Md€), sans nouveau programme annonce a ce stade.",
-    "applique": [
-     "omniumND.2026",
-     "omniumND.2027",
-     "omniumND.2028",
-     "omniumND.2029",
-     "omniumND.2030"
-    ],
-    "confiance": "moyenne"
-   },
-   {
-    "id": "idemia_accord_signe",
-    "moteur": "Acquisition IDEMIA Public Security desormais sous Share Purchase Agreement signe (vs intention a la creation), cloture reglementaire visee mi-2027 - effet financier toujours non communique par le management, maintenu hors base centrale (optionnalite non chiffree) plutot qu'integre aux adjXXX, taille de transaction a integrer dans omniumND des qu'elle sera connue.",
-    "applique": [],
-    "confiance": "haute sur l'occurrence, nulle sur le montant"
-   }
-  ],
-  "omniumEPS": {
-   "2026": 3.22,
-   "2027": 3.55,
-   "2028": 3.91,
-   "2029": 4.3,
-   "2030": 4.72
-  },
-  "omniumCA": {
-   "2026": 6720,
-   "2027": 7230,
-   "2028": 7770,
-   "2029": 8315,
-   "2030": 8900
-  },
-  "omniumEBIT": {
-   "2026": 1965,
-   "2027": 2125,
-   "2028": 2308,
-   "2029": 2495,
-   "2030": 2696
-  },
-  "omniumNet": {
-   "2026": 1434,
-   "2027": 1573,
-   "2028": 1717,
-   "2029": 1871,
-   "2030": 2034
-  },
-  "omniumND": {
-   "2026": 1950,
-   "2027": 1700,
-   "2028": 1400,
-   "2029": 1050,
-   "2030": 650
-  },
-  "omniumShares": {
-   "2026": 446,
-   "2027": 443,
-   "2028": 439,
-   "2029": 435,
-   "2030": 431
-  },
-  "bridge": {
-   "2025": {
-    "finNet": -90,
-    "other": 0,
-    "taxRate": 0.25,
-    "minorities": 0,
-    "netCalc": 1167,
-    "netPub": 1336,
-    "residual": 169,
-    "residualNote": "Amadeus 'adjusted profit' adds back PPA amortization and impairments NET OF TAX below the adjusted-EBIT line, so a flat tax-on-adjusted-EBIT understates it by ~169M. Projected years absorb this wedge in a lower effective finNet/ETR fit (conversion ~73-76% observed)."
-   },
-   "2026": {
-    "finNet": -78,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 1434
-   },
-   "2027": {
-    "finNet": -55,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 1573
-   },
-   "2028": {
-    "finNet": -49,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 1717
-   },
-   "2029": {
-    "finNet": -33,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 1871
-   },
-   "2030": {
-    "finNet": -20,
-    "other": 0,
-    "taxRate": 0.24,
-    "minorities": 0,
-    "netCalc": 2034
-   }
-  },
-  "guidanceScorecard": {
-   "cadence": "annual",
-   "metric": "Adjusted diluted EPS growth (guided range)",
-   "comparedAgainst": "guidance",
-   "basisAligned": true,
-   "basisNote": null,
-   "timeline": [
-    {
-     "date": "2026-07-31",
-     "type": "guidance_revised",
-     "detail": "FY26 cut: revenue to mid-to-high SD cc (from high-SD), adjusted EPS to high-SD-to-low-DD (from low-DD), ranges widened; mid-term ambition reaffirmed unchanged."
-    }
-   ],
-   "paceCheckpoint": "H1 real: revenue +5% cc, adjusted EBIT +5%, adjusted diluted EPS +7% - pace consistent with the LOWERED range, below the initial anchor.",
-   "weightedBeatPct": null,
-   "annualBeatPct": -1.7,
-   "annualBeatHistory": [
-    {
-     "fy": 2025,
-     "beatPct": -4.4,
-     "source": "initial_guidance",
-     "excluded": false,
-     "anchorValue": null,
-     "initialDisplay": "6,815M EUR revenue (initial mid)",
-     "realizedDisplay": "6,517M EUR",
-     "note": "Initial FY25 guidance (PR 28/02/2025): revenue 6.69-6.94bn (+9/13%), EBITDA 2.49-2.61bn; realized revenue 6,517M (+6.1%, Middle-East shock year) - level MISS -4.4% vs the initial mid. Metric mismatch with the EPS anchor declared (revenue-guided years)."
-    },
-    {
-     "fy": 2024,
-     "beatPct": 0.1,
-     "source": "initial_guidance",
-     "excluded": false,
-     "anchorValue": null,
-     "initialDisplay": "+12.75% revenue (initial mid)",
-     "realizedDisplay": "+12.9%",
-     "note": "Initial FY24 guidance (FY23 PR, 28/02/2024): revenue growth 11-14.5% (mid 12.75%); realized +12.9% (6,141.7M) - on the mid (+0.1% level)."
-    }
-   ],
-   "anchorInitial": {
-    "fy": 2026,
-    "value": 3.29,
-    "source": "initial_guidance",
-    "date": "2026-05-07",
-    "note": "Quantified from 'low-double-digit' adjusted-EPS growth (~+11%) on FY25 adjusted EPS 2.965 -> ~3.29, matching pre-cut consensus. Earliest ARCHIVED guidance (the February FY25-results statement was not captured); guidance was CUT on 31/07 to high-SD-to-low-DD - the anchor stays initial for the FY26 close measurement."
-   },
-   "appliedToProjection": false,
-   "applicationNote": "annualBeatPct -1.7% BLENDED (FY26 in-progress -1.2 x1/2; closed FY25 -4.4 and FY24 +0.1 equal-shared). NOT applied to projections: the 2026 build already sits on the LOWERED guidance (applying the negative blend would double-count the cut), and closed years are measured on REVENUE while the anchor is EPS (declared mismatch).",
-   "consensusSource": "Google Finance / sell-side (adjusted EPS reference)",
-   "consensusDate": "2026-07-01",
-   "inProgress": {
-    "fy": 2026,
-    "initialValue": 3.29,
-    "currentValue": 3.25,
-    "deltaPct": -1.2,
-    "asOf": "2026-07-31",
-    "note": "Initial 'low-double-digit' adjusted-EPS growth (~+11% -> 3.29 on 2.965); guidance CUT 31/07 to 'high-SD-to-low-DD' (mid ~+9.5% -> ~3.25). Projected -1.2% vs the initial anchor."
-   }
-  },
-  "revisionEvent": {
-   "date": "2026-07-31",
-   "label": "H1 2026",
-   "type": "earnings"
+  "coherenceQualitative": {
+    "historique": [
+      {
+        "quarter": "H1 26",
+        "date": "2026-07-31",
+        "source": "GuruFocus call summary (Q&A access restricted)",
+        "message": "Diversification thesis stress-tested and holding: revenue +5% cc / adj EBIT +5% / adj EPS +7% through a Middle-East traffic shock; FY26 guidance cut on the short-term component only (wider, lower ranges), mid-term ambition explicitly reaffirmed; H2 assumes bookings recovery and +3% world traffic - the load-bearing assumption of the projection."
+      }
+    ]
   }
- },
- "coherenceQualitative": {
-  "historique": [
-   {
-    "quarter": "H1 26",
-    "date": "2026-07-31",
-    "source": "GuruFocus call summary (Q&A access restricted)",
-    "message": "Diversification thesis stress-tested and holding: revenue +5% cc / adj EBIT +5% / adj EPS +7% through a Middle-East traffic shock; FY26 guidance cut on the short-term component only (wider, lower ranges), mid-term ambition explicitly reaffirmed; H2 assumes bookings recovery and +3% world traffic - the load-bearing assumption of the projection."
-   }
-  ]
- }
 }
