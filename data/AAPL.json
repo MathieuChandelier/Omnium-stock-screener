@@ -143,15 +143,20 @@
      "actual": 2.02,
      "consensus": 1.89,
      "basis": "GAAP"
+    },
+    "epsReported": {
+     "actual": 2.02,
+     "basis": "GAAP",
+     "period": "Q3 26"
     }
    },
-   "guidanceProchainTrimestre": "T4 FY26 (sept.) guide a CA +9-11% YoY (~111,7-113,8 Md$ vs 102,5 Md$ un an plus tot), marge brute 47-48% (dont ~1pt de remboursements tarifaires), opex 19,1-19,4 Md$, taux d'IS ~16,5%, avec un vent contraire de change sequentiel de ~2,5pts sur la croissance.",
-   "guidanceAnnuelle": "Apple ne fournit pas de guidance annuelle chiffree formelle ; seule la guidance trimestrielle ci-dessus est communiquee, conformement a sa pratique historique de guidance trimestre par trimestre uniquement.",
+   "guidanceProchainTrimestre": "Q4 FY26: total revenue +9% to +11% YoY, embedding ~2.5pts sequential FX headwind and a significant sequential increase in supply constraints (iPhone, Mac AND iPad). iPhone mid-teens reported growth; Services roughly in line with Q3 after ~2.5pts FX. Gross margin 47-48% (incl. ~1pt of expected tariff refunds), OpEx $19.1-19.4B, OI&E ~$350M ex-MTM, tax ~16.5%.",
+   "guidanceAnnuelle": "No annual guidance (constant practice). No color beyond September explicitly (Reitzes exchange); the adjusted sequential GM decline (~160bp to ~46.5% mid-range) is >100% memory-cost driven, FX minimal.",
    "pointsCles": [
-    "Le CFO Kevan Parekh a chiffre que l'inflation des couts memoire (DRAM/NAND) explique plus de 100% de la compression sequentielle de la marge brute hors tarifs (49,3% au T2 vers 48,1% au T3), avec une nouvelle baisse guidee a 46,5% hors tarifs au T4 - un phenomene que Tim Cook a qualifie de 'crue du siecle'.",
-    "C'etait le dernier call de resultats de Tim Cook comme CEO : il quitte ses fonctions le 31 aout 2026 pour devenir President executif, John Ternus (SVP Hardware Engineering) prenant la direction le 1er septembre 2026, sans changement de strategie annonce.",
-    "Cook a attribue les contraintes d'approvisionnement affectant iPhone, Mac et iPad au T4 a une demande superieure aux attentes plutot qu'a un probleme fournisseur, evoquant la necessite de 'jongler' entre les gammes de produits.",
-    "Les Services (30,7 Md$) sont ressortis legerement sous le consensus (~31,3 Md$), le CFO evoquant une faiblesse du mobile gaming et des changements de modele App Store, la Chine (18,8 Md$) etant egalement en-dessous des attentes (~19,5 Md$)."
+    "Q3 FY26 revenue $109.4B (+16% YoY, June-quarter record, beat ~$457M) with June records in EVERY geographic segment; EPS $2.02 (+29%) beat by $0.13 but includes +$0.11 of tariff refunds - recurring base ~$1.91 (bridged in quarterlyEPS); GM 50.1% incl ~2pts of refunds (mid-guidance without them); OCF $34.4B, all three metrics June records even ex-refunds.",
+    "Supply becomes THE constraint: advanced-node SoC availability, root cause being demand ABOVE plan (iPhone +22% to $54.3B, Mac +29% to $10.4B, both June records) with an unusually inflexible supply chain; Q4 constraints increase significantly and extend to iPhone, Mac and iPad - explicitly a demand-forecast problem, not a supplier problem (Arizona fab >100M components this year).",
+    "Memory '100-year flood': costs paid rose again sequentially and rise further in Q4, driving reluctant price increases on iPad and Mac; offsets (carry-in inventory - decreasing after September, cheaper non-memory components, mix) only partial; DRAM = 3 suppliers, all sourcing options under evaluation; beyond September market pricing keeps climbing - the key margin swing factor.",
+    "Last Tim Cook call - John Ternus takes over September 1 (present on the call); Siri AI betas exceptionally well received, EU launch pending Commission talks (Mac exempt from DMA scope), China approval obtained for base Apple Intelligence features with Siri AI to follow; monetization via iCloud+ upsell; Apple Upgrade hardware leasing launched in US retail with Klarna; Broadcom >$30B American Manufacturing agreement; $33B returned in the quarter (buybacks $25.8B), cash $147B vs debt $84B."
    ],
    "etatsFinanciers": {
     "analyse": true,
@@ -180,7 +185,13 @@
     {
      "label": "Q3",
      "eps": 1.91,
-     "actual": true
+     "actual": true,
+     "retraitements": [
+      {
+       "raison": "Tariff refunds excluded from the Omnium base (non-recurring customs duty reimbursement)",
+       "impact": -0.11
+      }
+     ]
     },
     {
      "label": "Q4",
