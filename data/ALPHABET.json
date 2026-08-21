@@ -374,7 +374,7 @@
      "actual": true,
      "retraitements": [
       {
-       "raison": "Unrealised revaluation gains on unlisted securities (Anthropic, SpaceX) excluded from the Omnium base (anchor equity_gains_exclusion)",
+       "raison": "Unrealised revaluation gains on unlisted securities (Anthropic, SpaceX) excluded from the Omnium base",
        "impact": -1.7
       }
      ]
@@ -385,7 +385,7 @@
      "actual": true,
      "retraitements": [
       {
-       "raison": "Unrealised revaluation gains on unlisted securities (Anthropic, SpaceX) excluded from the Omnium base (anchor equity_gains_exclusion)",
+       "raison": "Unrealised revaluation gains on unlisted securities (Anthropic, SpaceX) excluded from the Omnium base",
        "impact": -4.56
       }
      ]
@@ -503,7 +503,7 @@
    "timeline": [
     {
      "date": "2026-07-22",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 capex raised to 195-205bn (from 180-190bn); a further significant increase flagged for 2027. Buybacks fully suspended (0 in H1 26 vs 28.3bn H1 25); 84bn+ debt raised."
     }
    ],
@@ -553,7 +553,8 @@
     "quarter": "Q2 26",
     "date": "2026-07-22",
     "source": "Q2 release/call (as exploited at the 03/08 refresh)",
-    "message": "Full-stack AI thesis intact and strengthening: Cloud accelerated to +82% (backlog 514bn, operating margin tripled to 35.6%) while Search (+17%) and YouTube (+13%) show no generative-AI cannibalization. The structural change is FINANCIAL: buybacks fully suspended (0 in H1 26 vs 28.3bn H1 25), 84bn+ raised in debt, capex guided 195-205bn with 2027 higher still - the capital-return era pauses while the AI build-out is funded."
+    "message": "Full-stack AI thesis intact and strengthening: Cloud accelerated to +82% (backlog 514bn, operating margin tripled to 35.6%) while Search (+17%) and YouTube (+13%) show no generative-AI cannibalization. The structural change is FINANCIAL: buybacks fully suspended (0 in H1 26 vs 28.3bn H1 25), 84bn+ raised in debt, capex guided 195-205bn with 2027 higher still - the capital-return era pauses while the AI build-out is funded.",
+    "format": "compresse"
    }
   ]
  },

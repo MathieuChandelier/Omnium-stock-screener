@@ -160,7 +160,7 @@
    ],
    "etatsFinanciers": {
     "analyse": true,
-    "referentiel": "US GAAP",
+    "referentiel": "US-GAAP",
     "source": "Form 10-Q (trimestre clos 27/06/2026, MarketScreener) + 8-K EX-99.1 du 30/07/2026 (EDGAR)",
     "date": "2026-08-19",
     "note": "Cross-checked vs the fiche: revenue 109,4 Md$ (+16%), gross margin 50,1% (of which ~2pts tariff refunds), diluted EPS 2,02$ (+0,11$ of one-off tariff effect) - consistent with the normalised base, which excludes that effect."
@@ -419,7 +419,8 @@
     {
      "date": "2026-07-30",
      "type": "vs_consensus",
-     "detail": "Q3 FY26 (June qtr): revenue 109.4bn (+16%), iPhone +22% (record), EPS 2.02 (+29%); published gross margin 50.1% includes ~2pts one-off tariff refunds (EPS +0.11) excluded from the Omnium normalized base."
+     "detail": "Q3 FY26 (June qtr): revenue 109.4bn (+16%), iPhone +22% (record), EPS 2.02 (+29%); published gross margin 50.1% includes ~2pts one-off tariff refunds (EPS +0.11) excluded from the Omnium normalized base.",
+     "beatPct": 6.9
     }
    ],
    "paceCheckpoint": "9M FY26: record across segments; the model excludes the one-off tariff-refund margin benefit from its normalized base.",
@@ -465,7 +466,8 @@
     "quarter": "Q3 FY26",
     "date": "2026-07-30",
     "source": "Q3 release/call (as exploited at the 31/07 refresh)",
-    "message": "Record June quarter (revenue 109.4bn +16%, iPhone 54.3bn +22%, Mac +29% on MacBook Neo, Services 30.7bn +12% record but slightly under consensus, EPS 2.02 +29%); published gross margin 50.1% carries ~2pts of one-off tariff refunds (EPS +0.11) that the Omnium base excludes; CFO quantified memory-cost inflation (DRAM/NAND, AI-driven) as the key FY27 margin headwind - the prospective signal of the quarter."
+    "message": "Record June quarter (revenue 109.4bn +16%, iPhone 54.3bn +22%, Mac +29% on MacBook Neo, Services 30.7bn +12% record but slightly under consensus, EPS 2.02 +29%); published gross margin 50.1% carries ~2pts of one-off tariff refunds (EPS +0.11) that the Omnium base excludes; CFO quantified memory-cost inflation (DRAM/NAND, AI-driven) as the key FY27 margin headwind - the prospective signal of the quarter.",
+    "format": "compresse"
    }
   ]
  },

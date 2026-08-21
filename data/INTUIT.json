@@ -120,39 +120,82 @@
   "ancrages": [
    {
     "id": "AN-CA-GUIDANCE",
-    "mechanism": "Revenue growth anchored on the raised formal FY26 guidance (13-14%), then convergence towards the FY27 sell-side consensus (~12%, 23.9 Mds$) and a gradual deceleration towards ~10%/yr at the end of the horizon",
-    "scope": "omniumCA 2026-2030",
-    "confidence": "haute (2026), moyenne (2027), basse (2028-2030)"
+    "moteur": "Revenue growth anchored on the raised formal FY26 guidance (13-14%), then convergence towards the FY27 sell-side consensus (~12%, 23.9 Mds$) and a gradual deceleration towards ~10%/yr at the end of the horizon (confiance : haute (2026), moyenne (2027), basse (2028-2030))",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
    },
    {
     "id": "AN-MARGE-RESTRUCT",
-    "mechanism": "EBIT margin expansion driven by the restructuring and the AI efficiency gains already visible in FY25 (+390bp), at a tapering pace absent any communicated LT target",
-    "scope": "omniumEBIT marge 2026-2030",
-    "confidence": "moyenne"
+    "moteur": "EBIT margin expansion driven by the restructuring and the AI efficiency gains already visible in FY25 (+390bp), at a tapering pace absent any communicated LT target",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
    },
    {
     "id": "AN-RESTRUCT-ONEOFF",
-    "mechanism": "FY26 restructuring charge (300-340M$ guided, 320M$ retained) treated as a genuine one-off and added back into omniumEBIT/omniumNet FY26",
-    "scope": "omniumEBIT/omniumNet 2026 uniquement",
-    "confidence": "haute"
+    "moteur": "FY26 restructuring charge (300-340M$ guided, 320M$ retained) treated as a genuine one-off and added back into omniumEBIT/omniumNet FY26",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
    },
    {
     "id": "AN-IS-NORMATIF",
-    "mechanism": "Normative tax rate maintained at 24% (management FY26 guidance), rolled forward unchanged",
-    "scope": "toutes annees 2026-2030",
-    "confidence": "haute (2026), moyenne (au-dela)"
+    "moteur": "Normative tax rate maintained at 24% (management FY26 guidance), rolled forward unchanged (confiance : haute (2026), moyenne (au-dela))",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
    },
    {
     "id": "AN-RACHATS",
-    "mechanism": "Buyback pace accelerated by the new 8Mds$ authorisation (May 2026) and the depressed share price, diluted share count reduction ~2.5%/yr on a tapering basis",
-    "scope": "omniumShares 2026-2030",
-    "confidence": "basse"
+    "moteur": "Buyback pace accelerated by the new 8Mds$ authorisation (May 2026) and the depressed share price, diluted share count reduction ~2.5%/yr on a tapering basis",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "basse"
    },
    {
     "id": "AN-SBC-AMORT",
-    "mechanism": "SBC and amortisation of acquisition intangibles kept as genuine recurring expenses (not adjusted out, unlike management's non-GAAP)",
-    "scope": "omniumEBIT/omniumNet/omniumEPS all years",
-    "confidence": "haute (regle E5e)"
+    "moteur": "SBC and amortisation of acquisition intangibles kept as genuine recurring expenses (not adjusted out, unlike management's non-GAAP) (confiance : haute (regle E5e))",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030",
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030",
+     "omniumEPS.2026",
+     "omniumEPS.2027",
+     "omniumEPS.2028",
+     "omniumEPS.2029",
+     "omniumEPS.2030"
+    ],
+    "confiance": "haute"
    }
   ],
   "omniumEPS": {
@@ -253,7 +296,7 @@
    "timeline": [
     {
      "date": "2026-06-25",
-     "type": "guidance_revised",
+     "type": "guidance_revision",
      "detail": "FY26 non-GAAP EPS guide standing at 23.80-23.85 post-Q3; consensus aligned at 23.82."
     }
    ],
@@ -381,7 +424,8 @@
     "quarter": "Q3 FY26",
     "date": "2026-06-25",
     "source": "Post-Q3 snapshot (as exploited at the 13/07 refresh)",
-    "message": "The 'guidance moat' thesis holds through the AI scare (stock -50% from the 814 peak): TurboTax/QuickBooks franchises intact, FY26 guide standing at 23.80-23.85 non-GAAP EPS with consensus aligned; the FY26 report (~21/08) is the imminent verdict - it closes the first measurable scorecard year AND rolls the horizon (FY ends July); restructuring excluded from the normalized base."
+    "message": "The 'guidance moat' thesis holds through the AI scare (stock -50% from the 814 peak): TurboTax/QuickBooks franchises intact, FY26 guide standing at 23.80-23.85 non-GAAP EPS with consensus aligned; the FY26 report (~21/08) is the imminent verdict - it closes the first measurable scorecard year AND rolls the horizon (FY ends July); restructuring excluded from the normalized base.",
+    "format": "compresse"
    }
   ]
  },
@@ -404,5 +448,6 @@
    "2024": 10.43,
    "2025": 13.67
   }
- }
+ },
+ "fyEndMonth": 7
 }

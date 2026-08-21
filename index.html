@@ -4794,11 +4794,16 @@ function actionQueues(){
   const today=new Date();
   Object.entries(state.tickers).forEach(([tk,d])=>{
     const dc=d?.hypothese?.dernierCall;
-    if(!dc) return;
     // Champ absent == false : etat par defaut de toute fiche anterieure a la
     // regle. Ce n'est pas une anomalie, c'est une file d'attente.
-    const ef=dc.etatsFinanciers;
+    // dernierCall ABSENT (21/08/2026) : une fiche creee avant son premier
+    // evenement de resultats n'a pas de dernierCall du tout - elle sortait
+    // donc de la file par le haut, alors qu'elle est le cas le plus
+    // clairement en attente qui soit (INTUIT, creee avant la publication
+    // FY26). Elle entre desormais dans la file au lieu d'en disparaitre.
+    const ef=dc?dc.etatsFinanciers:(d?.hypothese?.etatsFinanciers||null);
     if(!ef || ef.analyse!==true) attente.push(tk);
+    if(!dc) return;
     const b=(dc.resultatsVsConsensus||{}).epsAdj?.basis;
     if(typeof b==='string' && !['GAAP','non-GAAP'].includes(b.trim())) horsEnum.push(tk);
   });
@@ -5688,11 +5693,11 @@ function renderActionsBar(){
   if(st.actions) items.push({k:'caltri',dot:'var(--teal)',lbl:'Calendar actions — events to triage',cnt:String(st.actions),panel:buildCalTriagePanel(st)});
   if(st.due) items.push({k:'caldue',dot:'var(--navy)',lbl:'Refresh calendar &amp; news — weekly run due',cnt:'Thu',panel:buildCalDuePanel(st)});
   const nStat=q.attente.length+q.horsEnum.length;
-  if(nStat) items.push({k:'stat',dot:'#c2c8d4',lbl:'Statements pending — GAAP/IFRS to reconcile',cnt:String(nStat),
-    panel:grp('Projections provisoires — awaiting GAAP/IFRS statements',
-      'Earnings refreshed from the press release and transcript, but no reporting-standard financial statements recorded as used. Projections stand until they are.',
+  if(nStat) items.push({k:'stat',dot:'#c2c8d4',lbl:'Statements pending — gross GAAP/IFRS lines to confirm',cnt:String(nStat),
+    panel:grp('Projections provisoires — gross revenue &amp; net income not yet confirmed',
+      'The test is narrow: were revenue and net income read on the issuer’s NON-restated line? A complete financial table is not required — two figures are. Projections stand until they are confirmed.',
       q.attente,
-      'Refresh comptable groupé — pour les titres ci-dessous, reprends les états financiers en référentiel (US GAAP ou IFRS), désormais disponibles, applique les retraitements Omnium, et renseigne dernierCall.etatsFinanciers {analyse, referentiel, source, date} :')
+      'Refresh comptable groupé — pour les titres ci-dessous, confirme le CA et le résultat net sur la ligne BRUTE de l\'émetteur (GAAP/IFRS), puis renseigne dernierCall.etatsFinanciers {analyse, referentiel, source, date}. Le test est étroit : deux chiffres suffisent, une table financière complète n\'est PAS exigée — analyse:true dès que le CA et le résultat net bruts sont identifiés avec certitude, peu importe le nombre de documents ouverts. OUVRE tous les documents de l\'événement de résultats avant de conclure à une absence (les lister ne suffit pas ; un 6-K étranger n\'a pas de champ items). Une ligne se classe brute ou retraitée par SA DÉFINITION, jamais par son libellé : "operationnel", "courant", "core", "underlying" ne disent rien par eux-mêmes — c\'est une note excluant EXPLICITEMENT des éléments qui fait la ligne retraitée, et la brute est alors juste à côté dans le même document. referentiel = "US-GAAP" ou "IFRS" (domicile juridique, jamais la place de cotation). analyse reste false UNIQUEMENT si les deux chiffres bruts restent introuvables après cela :')
     +(q.horsEnum.length?grp('epsAdj.basis hors énumération',
       'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent.',
       q.horsEnum,
