@@ -76,6 +76,13 @@ SUIVI_NARRATIF_RULE_DATE = "2026-08-21"
 COMPTES_PERIODE_RE = r"^\d{4}-(FY|H[12]|Q[1-4])$"
 COMPTES_BASE_VALUES = {"US-GAAP", "IFRS"}
 COMPTES_CLASSE_VALUES = {"oneOff", "recurrent", "indetermine"}
+# Provenance de la ligne. Le tableau sert DEUX maitres : il transcrit la table
+# de l'emetteur (couche 2), et il porte les retraitements qu'OMNIUM etablit
+# lui-meme (couche 1) - un exces d'impot sur le taux normatif, un
+# mark-to-market qu'aucun emetteur ne retraite. Sans distinguer les deux, le
+# bouclage casse des qu'Omnium ajoute une ligne : la cible est l'ajuste de la
+# SOCIETE, elle ne connait que les lignes de la societe.
+COMPTES_ORIGINE_VALUES = {"emetteur", "omnium"}
 COMPTES_RUPTURE_TYPE_VALUES = {"retraitement", "perimetre"}
 COMPTES_RUPTURE_PAR_VALUES = {"emetteur", "omnium"}
 # kebab-case strict : c'est l'identifiant qui, relu periode apres periode,
@@ -279,6 +286,8 @@ def validate_comptes(d, errors):
                     errors.add(f"{where}.{k} doit etre un nombre (0 si la ligne ne touche pas ce niveau).")
             if "ebitda" in r and not isinstance(r["ebitda"], (int, float)):
                 errors.add(f"{where}.ebitda doit etre un nombre si present.")
+            if r.get("origine", "emetteur") not in COMPTES_ORIGINE_VALUES:
+                errors.add(f"{where}.origine={r.get('origine')!r} invalide (attendu {sorted(COMPTES_ORIGINE_VALUES)}).")
             if "impot" in r and not isinstance(r["impot"], (int, float)):
                 errors.add(f"{where}.impot doit etre un nombre si present (effet d'impot PROPRE a cette ligne).")
             cl = r.get("classe")
@@ -294,7 +303,10 @@ def validate_comptes(d, errors):
             for k, tax in (("ebitda", 0), ("ebit", 0), ("net", imp)):
                 if not isinstance(aj.get(k), (int, float)) or not isinstance(pub.get(k), (int, float)):
                     continue
-                calc = pub[k] + sum(r.get(k, 0) for r in rets if isinstance(r, dict)) + tax
+                emet = [r for r in rets if isinstance(r, dict) and r.get("origine", "emetteur") == "emetteur"]
+                tax_om = sum(r.get("impot", 0) for r in rets
+                             if isinstance(r, dict) and r.get("origine") == "omnium") if k == "net" else 0
+                calc = pub[k] + sum(r.get(k, 0) for r in emet) + tax - tax_om
                 if abs(calc - aj[k]) > max(1.0, abs(aj[k]) * 0.005):
                     errors.add(
                         f"comptes['{per}'] : la table ne BOUCLE pas sur {k} - "
