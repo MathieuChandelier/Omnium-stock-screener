@@ -638,40 +638,42 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);}
 .pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;margin-left:10px;}
 
-/* Historical Data & Projections - variante 3 "bleu clair, texte gris"
-   (sandbox-datatable .vgrey, validee le 21/08) : tout Poppins, UNE seule
-   taille, graisse 400 partout, aucun italique. AUCUNE bordure nulle part.
-   Le L inverse (bandeau des annees + colonne Indicator) en bleu tres clair
-   #eef0fb PLEIN, texte gris fonce #334155 - plus aucun navy ni blanc.
-   Voile turquoise sur les colonnes prospectives du CORPS uniquement (dans le
-   bandeau le bleu prime). Trait vertical turquoise 1px entre la derniere
-   annee historique et la premiere projetee. Hierarchie de lecture portee par
-   la seule valeur de gris : libelles/annees #334155, valeurs #64748b, lignes
-   secondaires #94a3b8. Contraste #334155 sur #eef0fb = 9.12:1 (AAA). */
+/* Historical Data & Projections - variante C "L asymetrique"
+   (sandbox-datatable .vC, validee le 21/08, remplace la variante 3 en
+   bleu clair) : tout Poppins, UNE seule taille, graisse 400 partout,
+   aucun italique. Les deux bras du L ne se repetent plus - le bandeau
+   des annees AFFIRME (aplat navy plein, texte blanc, coins hauts
+   arrondis), la colonne des libelles se contente de DELIMITER (aucun
+   aplat, texte navy, simple filet vertical a droite). Voile turquoise
+   sur les colonnes prospectives du CORPS uniquement (dans le bandeau le
+   navy prime) ; plus de trait vertical turquoise, le voile suffit a
+   marquer la cesure des que le bandeau porte la couleur. Hierarchie de
+   lecture : libelles navy, valeurs #64748b, lignes secondaires #94a3b8. */
 #analyse-tbl{font-size:12.5px;}
 #analyse-tbl thead th,#analyse-tbl tbody td{font-family:'Poppins',system-ui,sans-serif;font-weight:400;font-style:normal;}
-#analyse-tbl thead th{background:#eef0fb;color:#334155;font-size:12.5px;letter-spacing:0;line-height:1.5;padding:8px 13px;width:auto;border:none;}
-#analyse-tbl thead th.proj-head{background:#eef0fb;color:#334155;}
+#analyse-tbl thead th{background:var(--navy);color:#fff;font-size:12.5px;letter-spacing:0;line-height:1.5;padding:8px 13px;width:auto;border:none;}
+#analyse-tbl thead th.proj-head{background:var(--navy);color:#fff;}
+#analyse-tbl thead th:first-child{border-radius:8px 0 0 0;}
+#analyse-tbl thead th:last-child{border-radius:0 8px 0 0;}
 #analyse-tbl tbody td{padding:7px 13px;color:#64748b;border:none;font-variant-numeric:tabular-nums;}
 /* colonne des libelles : juste ce qu'il faut, la largeur gagnee va aux
    annees (21/08/2026). */
 #analyse-tbl tbody td:first-child,#analyse-tbl thead th:first-child{width:1%;white-space:nowrap;padding-right:16px;}
-#analyse-tbl tbody td:first-child{font-size:12.5px;color:#334155;font-weight:400;}
+#analyse-tbl tbody td:first-child{font-size:12.5px;color:var(--navy);font-weight:400;border-right:1px solid rgba(0,1,144,.22);}
 /* le voile ne porte que le fond : la couleur reste celle du corps, sinon les
    lignes secondaires perdraient leur gris plus clair sur la partie projetee */
 #analyse-tbl td.proj-row{background:rgba(43,216,194,.055);}
-#analyse-tbl td.proj-first,#analyse-tbl th.proj-first{border-left:1px solid var(--teal);}
 #analyse-tbl tr.row-emph td:not(:first-child){font-weight:400;color:#64748b;}
 #analyse-tbl tr.row-sub td:not(:first-child){color:#94a3b8;}
 #analyse-tbl tbody tr:hover td{background:#fafbfe;}
 #analyse-tbl tbody tr:hover td.proj-row{background:rgba(43,216,194,.09);}
-#analyse-tbl tbody tr:hover td:first-child{background:#e4e7f7;}
-/* colonne Indicator sticky - fond PLEIN (opaque : au scroll mobile un fond
-   transparent laisserait transparaitre les colonnes qui defilent). Meme
-   #eef0fb dans le bandeau et dans le corps, coin compris (aucune surcharge
-   plus foncee a l'intersection). */
-#analyse-tbl thead th:first-child{position:sticky;left:0;z-index:2;background:#eef0fb;}
-#analyse-tbl tbody td:first-child{position:sticky;left:0;z-index:2;background:#eef0fb;}
+#analyse-tbl tbody tr:hover td:first-child{background:#f4f5ff;}
+/* colonne des libelles sticky - fond PLEIN (opaque : au scroll mobile un
+   fond transparent laisserait transparaitre les colonnes qui defilent).
+   Blanc dans le corps, navy dans le bandeau : le coin appartient au
+   bandeau, c'est lui qui donne au L sa forme. */
+#analyse-tbl thead th:first-child{position:sticky;left:0;z-index:2;background:var(--navy);}
+#analyse-tbl tbody td:first-child{position:sticky;left:0;z-index:2;background:#fff;}
 #analyse-scroll{border:none;border-radius:0;}
 #analyse-scroll.scrolled-x thead th:first-child,#analyse-scroll.scrolled-x tbody td:first-child{box-shadow:2px 0 5px rgba(0,0,0,.08);}
 /* plus aucune pastille de scroll : elles se superposaient a la lecture, le
