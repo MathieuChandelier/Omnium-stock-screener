@@ -2672,9 +2672,9 @@ function buildValoChartSVG(ticker, opts){
     ? `Price, in ${tickerCur(ticker)||'$'}`
     : `P/E${exCashReel?' ex-cash':''}${(serieYear&&!extras.length)?' '+serieYear:''}, in ×`;
   const axText=(x,y,txt,anchor)=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="9.5" font-weight="400" font-family="Poppins,sans-serif" fill="var(--muted)" text-anchor="${anchor}">${txt}</text>`;
-  // 3 graduations tracees, 2 seulement chiffrees (haut et bas) : la
-  // mediane reste un trait muet. Les deux etiquettes sont posees hors de
-  // la bande occupee par la courbe, donc SANS aucun aplat de fond.
+  // 3 graduations muettes (21/08/2026 : plus AUCUNE valeur chiffree sur
+  // l'axe Y - les bornes haut/bas parasitaient la lecture ; les valeurs
+  // vivent sur les etiquettes de droite des courbes).
   const vTop=yMax-marginTop*0.62, vBot=yMin+marginBot*0.62;
   const yAxis=compact ? '' : (
     `<text x="${padL}" y="15" font-size="13" font-weight="700" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="start">${axisUnit}</text>`
@@ -2682,8 +2682,6 @@ function buildValoChartSVG(ticker, opts){
       const y=yOf(v).toFixed(1);
       return `<line x1="${padL}" x2="${(padL+plotW).toFixed(1)}" y1="${y}" y2="${y}" stroke="var(--border)" stroke-width="1"/>`;
     }).join('')
-    + axText(padL, yOf(vTop)-6, fmtY(vTop), 'start')
-    + axText(padL, yOf(vBot)+12, fmtY(vBot), 'start')
   );
   // Abscisses adaptatives : dates courtes en dessous de ~3 mois, mois
   // ensuite (millesime au changement d'annee), semestres/annees au-dela
