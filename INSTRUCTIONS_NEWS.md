@@ -8,16 +8,25 @@ L'operation ne touche JAMAIS `hypothese`/`omniumXXX`/`data` ni un
 `data/CODE.json` individuel.
 
 Elle REMPLACE l'ancienne boucle Python automatisee (collectors/
-communiques.py + web.py + youtube.py, dormante — conservee comme contexte
-historique seulement) : la collecte est desormais faite par la session
-LLM elle-meme, avec les memes garanties (jamais d'invention, jamais
-d'echec silencieux) et la lecon principale de l'ancienne boucle en tete —
-elle notifiait PLUSIEURS fois le meme evenement (un item par lien) ; la
-regle de dedup par EVENEMENT ci-dessous existe pour ca.
+communiques.py + web.py, dormants — contexte historique seulement ;
+collectors/youtube.py est REACTIVE comme outil de la boucle video
+quotidienne, voir plus bas) : la collecte communiques/externe est
+desormais faite par la session LLM elle-meme, avec les memes garanties
+(jamais d'invention, jamais d'echec silencieux) et la lecon principale
+de l'ancienne boucle en tete — elle notifiait PLUSIEURS fois le meme
+evenement (un item par lien) ; la regle de dedup par EVENEMENT
+ci-dessous existe pour ca.
 
-DECLENCHEMENT : celui du calendrier (INSTRUCTIONS_CALENDAR.md) — pastille
-bleue "Refresh calendar" du jeudi matin, ou demande directe. Boucle
-MANUELLE, aucun token API, aucune automatisation.
+DEUX CADENCES (decision 21/08/2026) :
+- HEBDO : communiques societes + externe critique (kinds `communique`,
+  `externe`, `broker`), dans le run du calendrier — declenchement :
+  pastille bleue "Refresh calendar" du jeudi matin (INSTRUCTIONS_
+  CALENDAR.md), ou demande directe. Boucle MANUELLE. Le run hebdo ne
+  fait PLUS de videos.
+- DAILY : videos YouTube (kind `video`) via la BOUCLE VIDEO QUOTIDIENNE
+  dediee (section ci-dessous), un lot rotatif de tickers par jour —
+  c'est elle qui fait s'incrementer quotidiennement les notifications
+  du bandeau NEWS.
 
 ## PHILOSOPHIE
 
@@ -42,8 +51,8 @@ pages "Events" IR du calendrier :
    complement utile pour les tickers US (URLs deja validees), jamais un
    substitut a la lecture du pressroom.
 2. Screener large les publications EXTERNES de la fenetre (presse
-   whitelist, brokers) et YouTube — puis filtrer selon la typologie
-   stricte ci-dessous.
+   whitelist, brokers) — puis filtrer selon la typologie stricte
+   ci-dessous. Les videos ne sont PAS traitees ici (boucle daily).
 3. Ecrire `data/newsFeed.json` (voir LIVRABLES).
 
 ## TYPOLOGIE STRICTE DES ITEMS RETENUS
@@ -98,9 +107,10 @@ pages "Events" IR du calendrier :
    contenu MATERIEL et SPECIFIQUE au titre (demonstration produit
    structurante, deposition, keynote avec annonce). EXCLUS : analyses
    de chaines generalistes, recaps de resultats, contenu d'opinion.
-   Le protocole de recherche detaille (requetes, chaines, quotas) est
-   defini par la spec du moteur YouTube ; la presente typologie et la
-   regle de dedup ci-dessous s'imposent a lui.
+   Collectees par la BOUCLE VIDEO QUOTIDIENNE (section dediee) ; le
+   protocole de recherche detaille (requetes, chaines) est defini par
+   la spec du moteur YouTube ; la presente typologie et la regle de
+   dedup ci-dessous s'imposent a lui.
 
 ## REGLES
 
@@ -120,11 +130,52 @@ pages "Events" IR du calendrier :
 - SCALABILITE : tout ticker retire de `data/manifest.json` est ignore
   partout — collecte, feed, sourceGaps.
 
+## BOUCLE VIDEO QUOTIDIENNE (kind:"video")
+
+Chaque JOUR, un run Claude Code dedie traite UN LOT rotatif de tickers
+du manifest et fusionne ses items `kind:"video"` dans
+`data/newsFeed.json` (meme schema, memes regles de typologie et de
+dedup — les ids stables font la dedup naturellement), puis commit/push.
+
+DECOUPAGE ET REGLE DE COHERENCE (a ecrire noir sur blanc) :
+- Lots calcules depuis `data/manifest.json` : ~12 tickers par lot,
+  soit 5 lots pour 59 titres. Le decoupage se recalcule quand le
+  manifest change (scalabilite : un ticker retire disparait des lots).
+- La rotation complete (nombre de lots, en jours) doit TOUJOURS rester
+  inferieure d'au moins 2 jours a la fenetre de recherche : rotation
+  5 j / fenetre 7 j aujourd'hui ; si le portefeuille impose 7 lots,
+  la fenetre passe a 9 j. C'est ce qui garantit qu'aucune video ne
+  tombe entre deux passages d'un meme ticker.
+
+BACKEND :
+- VOIE PRINCIPALE : scraping de la recherche youtube.com (ytInitialData,
+  le meme moteur que le site) — detection validee aussi bonne ou
+  meilleure que l'API (test Tenev, 21/08/2026), sans quota.
+- VOIE OPTIONNELLE : l'API YouTube Data v3 si YOUTUBE_API_KEY est
+  disponible (secrets GitHub Actions uniquement, jamais en clair) —
+  limite de quota journaliere (100 unites par recherche sur un budget
+  de 10 000 : la couverture par lots existe aussi pour ca).
+- L'outil est `python3 collectors/youtube.py` (le support des lots y
+  est ajoute par l'agent moteur YouTube — voir sa spec pour
+  l'implementation ; la presente spec n'en fixe que le contrat :
+  typologie video, dedup par evenement, schema newsFeed, sourceGaps).
+
+ECHEC DU RUN DAILY = NOTIFICATION TYPEE : scraping bloque, page
+inaccessible, resultat illisible -> meme mecanique que le hebdo, entree
+dans `data/sourceGaps.json` section `news`
+(`{"ticker":"...","source":"youtube","note":"<cause courte>",
+"url":"<recherche ou video>","blockedBy":"scraping_bloque"}`), effacee
+par la passe qui sert le titre. Jamais de silence.
+
 ## LIVRABLES
 
-`data/newsFeed.json`, REGENERE entierement a chaque run (memes vertus
-que le calendrier : les ids stables assurent la continuite, les items
-sortis de la fenetre 7d disparaissent) :
+`data/newsFeed.json`, ecrit par les DEUX cadences (memes vertus que le
+calendrier : les ids stables assurent la continuite, les items sortis
+de la fenetre disparaissent) :
+- le run HEBDO regenere les items `communique`/`externe`/`broker` de la
+  fenetre 7d et PRESERVE les items `video` encore en fenetre ;
+- le run DAILY fusionne ses items `video` (lot du jour) et purge les
+  videos sorties de fenetre, sans toucher aux autres kinds.
 
 ```
 {"_meta":{"generatedAt":"<ISO UTC de ce run>","window":"7d"},
@@ -136,9 +187,13 @@ sortis de la fenetre 7d disparaissent) :
            "corroborations":[{"source":"...","url":"..."}]}]}
 ```
 
-Livre dans LE MEME COMMIT que `data/calendarCandidates.json` et
-`data/nextEvents.json` ("Calendar refresh - <date>") : un run, un commit,
-trois fichiers.
+Commits :
+- run HEBDO : dans LE MEME COMMIT que `data/calendarCandidates.json` et
+  `data/nextEvents.json` ("Calendar refresh - <date>") — un run, un
+  commit, trois fichiers ;
+- run DAILY : son propre commit/push quotidien ("News video - <date>,
+  lot <n>/<total>") — c'est ce push qui incremente les notifications
+  du bandeau NEWS chaque jour.
 
 ECHEC DE RETRIEVE = NOTIFICATION TYPEE : si le pressroom d'un titre
 reste illisible apres les trois strategies (403 persistant, coquille JS)
