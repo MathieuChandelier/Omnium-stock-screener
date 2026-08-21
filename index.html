@@ -60,7 +60,9 @@ header{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-dark) 100%)
 
 .container{max-width:1160px;margin:0 auto;padding:22px 29px;}
 
-.card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 24px;margin-bottom:18px;}
+/* Marge horizontale 18px : harmonisee avec les blocs dashboard de la vue
+   principale (.dashb-* — Market Calendar, P/E Rankings, Actions), 21/08. */
+.card{background:var(--surface);border-radius:12px;box-shadow:0 2px 14px rgba(0,1,144,.06),0 1px 3px rgba(0,0,0,.04);padding:20px 18px;margin-bottom:18px;}
 #analyse-tbl-card{background:transparent;box-shadow:none;padding:0;}
 #return-block,#context-card{background:transparent;box-shadow:none;padding:0;}
 .card-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin-bottom:14px;}
@@ -177,6 +179,10 @@ td input[type=number]:hover{border-color:var(--border);}
 .ctrl input[type=number]{width:90px;border:1px solid rgba(0,1,144,.15);border-radius:6px;padding:5px 8px;font-size:12px;background:#fff;}
 
 .analyse-header{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+/* Fiche : les blocs y sont a nu (padding 0 par overrides id) - le retrait
+   de 18px de la vue principale (.dashb-*) est porte par le panneau, desktop
+   et mobile (harmonisation 21/08/2026). */
+#tab-analyse{padding:0 18px;}
 .analyse-id{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .analyse-name{font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.1;margin-left:2px;}
 .analyse-price-wrap{display:flex;align-items:baseline;gap:8px;}
@@ -726,7 +732,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   .tab-bar{padding:8px 12px;}
   .back-btn{padding:7px 15px 7px 12px;font-size:12px;gap:6px;}
   .container{padding:10px 13px 30px;}
-  .card{padding:16px;border-radius:11px;margin-bottom:12px;}
+  .card{padding:16px 18px;border-radius:11px;margin-bottom:12px;}
   /* Harmonisation 21/08 : sur mobile, en-tetes et lignes du portefeuille
      s'alignent sur la marge interieure des blocs du dessus (.dashb-* : 18px). */
   .pf-col-header{padding:0 18px 6px;gap:8px;margin-left:0;}
