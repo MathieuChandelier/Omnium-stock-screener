@@ -5298,6 +5298,10 @@ function peVsAverageExtremes(nEach){
   return {disc, stretch};
 }
 
+// Tuile Market Calendar : 8 evenements affiches par defaut (21/08/2026).
+const CAL_MAX_SHOWN=8;
+let _calShowAll=false;
+function calToggleShowAll(){ _calShowAll=!_calShowAll; renderMarketCalendar(); }
 function renderMarketCalendar(){
   const wrap=document.getElementById('market-calendar-wrap');
   if(!wrap) return;
@@ -5309,7 +5313,13 @@ function renderMarketCalendar(){
   // compactes (pastille jour/mois + ticker + objet), 2 colonnes des que
   // la place existe. La pastille du JOUR est pleine en navy - plus
   // d'intitules de semaine ni d'echeance relative : la date se lit seule.
-  const sel=calUpcoming(_calData.selected);
+  // PLAFOND D'AFFICHAGE (21/08/2026) : 8 evenements par defaut, le reste
+  // derriere un depliant. Mesure : la tuile grandit de ~25px par evenement
+  // (2 colonnes) - au-dela de 8-12 elle cesse d'etre une tuile de dashboard
+  // et repousse News/Actions hors du premier ecran sur mobile.
+  const selAll=calUpcoming(_calData.selected);
+  const sel=_calShowAll?selAll:selAll.slice(0,CAL_MAX_SHOWN);
+  const caches=selAll.length-sel.length;
   let calBody;
   if(sel.length){
     const MOIS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -5322,7 +5332,9 @@ function renderMarketCalendar(){
         <span><span class="who" onclick="CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</span><span class="what">${esc(e.label)}</span></span>
         <span class="x" onclick="calToggleEvent('${esc(e.id)}')" title="Remove from my calendar">×</span>
       </div>`;
-    }).join('')}</div>`+((()=>{try{if(localStorage.getItem('omniumCalSubscribed'))return '';}catch(e){} return `<div style="margin-top:8px;display:flex;align-items:baseline;gap:8px;"><span class="epsrev-more" style="font-size:8.5px;font-weight:600;color:var(--muted);" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span><span class="epsrev-more" style="font-size:8.5px;color:var(--muted);" onclick="calSubscribeDismiss()" title="Already subscribed — hide">✕</span></div>`;})());
+    }).join('')}</div>`
+      +((caches>0||_calShowAll)?`<div style="margin-top:6px;"><span class="epsrev-more" style="font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:600;color:var(--navy);cursor:pointer;" onclick="calToggleShowAll()">${_calShowAll?'Show less':`+ ${caches} more event${caches>1?'s':''}`}</span></div>`:'')
+      +((()=>{try{if(localStorage.getItem('omniumCalSubscribed'))return '';}catch(e){} return `<div style="margin-top:8px;display:flex;align-items:baseline;gap:8px;"><span class="epsrev-more" style="font-size:8.5px;font-weight:600;color:var(--muted);" onclick="calSubscribeGoogle(event)">＋ Add to Google Calendar (one-time feed subscription)</span><span class="epsrev-more" style="font-size:8.5px;color:var(--muted);" onclick="calSubscribeDismiss()" title="Already subscribed — hide">✕</span></div>`;})());
   } else {
     calBody=`<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">No upcoming events selected yet — tick them in Calendar actions.</p>`;
   }
