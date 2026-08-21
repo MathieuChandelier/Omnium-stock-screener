@@ -78,30 +78,35 @@ tr.row-sub td.proj{color:var(--muted);}
 .mframe tbody td:first-child{font-size:9.5px;min-width:92px;max-width:100px;white-space:normal;line-height:1.25;padding-right:6px;}
 .mframe thead th:first-child{min-width:92px;}
 
-/* ---------- V-FINALE : consolidation validable ----------
-   Palette reduite : navy plat (en-tetes historiques), fond projections quasi
-   imperceptible (3 traitements A/B/C de la rupture bandeau/corps), trait
-   turquoise vertical comme seul accent. Deux poids seulement : 400 / 700 ;
-   valeurs des lignes secondaires en gris doux (alleger, pas accentuer). */
-.vf thead th{font-weight:700;}
-.vf thead th.hist-last{background:var(--navy);}          /* plat : pas de navy-dark */
-.vf tbody td{color:var(--text);}
+/* ---------- V-FINALE (iteration 3) : l'epure ----------
+   Plus aucun fond dans le bandeau : texte navy sur blanc dans un cadre fin.
+   Un seul accent : le turquoise — trait vertical affine a 1px + voile quasi
+   imperceptible sur la partie prospective (deux essais : voile jusque sur les
+   labels, ou stoppe sous le bandeau). Graisses minimales : 600 uniquement sur
+   la colonne Indicator et le bandeau, 400 partout ailleurs. */
+.vf thead th{background:#fff;color:var(--navy);font-weight:600;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.vf .tbl-wrap thead th:first-child{background:#fff;}
+.vf thead th.hist-last{background:#fff;}
+.vf tbody td{color:var(--navy);border-bottom:1px solid #f4f5f9;}
+.vf tbody tr:last-child td{border-bottom:none;}
 .vf tbody td.hist-last{background:transparent;font-weight:inherit;color:inherit;}
-.vf tbody td:first-child{font-weight:700;font-size:10.5px;}
-/* alleger, pas accentuer : les VALEURS des lignes secondaires en gris doux */
+.vf tbody td:first-child{font-weight:600;font-size:10.5px;}
+/* les VALEURS des lignes secondaires en gris doux (acquis) */
 .vf tr.row-sub td:not(:first-child){color:var(--muted);font-size:inherit;}
-.vf tr.row-emph td{font-weight:700;color:var(--navy);}
-.vf tbody tr:hover td{background:#f2f3fb;}
-.vf tbody tr:hover td:first-child{background:#f2f3fb;}
-/* -- Option A : corps bleu quasi imperceptible, labels 2026+ en turquoise fonce sur blanc -- */
-.oa td.proj{background:var(--proj-bg);}
-.oa thead th.proj-head{background:var(--bg);color:var(--teal-dark-text);box-shadow:none;}
-/* -- Option B : corps turquoise ultra-pale, labels navy sur blanc + fin trait turquoise sous le label -- */
-.ob td.proj{background:var(--teal-light);}
-.ob thead th.proj-head{background:var(--bg);color:var(--navy);box-shadow:inset 0 -2px 0 var(--teal);}
-/* -- Option C : aucun fond — le bandeau navy s'arrete a 2025, seul le trait turquoise marque la zone -- */
-.oc td.proj{background:transparent;}
-.oc thead th.proj-head{background:var(--bg);color:var(--navy);box-shadow:none;}
+/* plus aucun bold de valeurs : EPS / P/E reviennent au poids courant */
+.vf tr.row-emph td:not(:first-child){font-weight:400;color:var(--navy);}
+.vf tbody tr:hover td{background:#fafbfe;}
+.vf tbody tr:hover td:first-child{background:#fafbfe;}
+.vf tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
+/* trait vertical turquoise affine */
+.vf td.proj-first,.vf th.proj-first{border-left:1px solid var(--teal);}
+/* -- Essai (a) : le voile turquoise couvre AUSSI les labels du bandeau -- */
+.ea td.proj{background:rgba(43,216,194,.055);}
+.ea thead th.proj-head{background:rgba(43,216,194,.055);}
+/* -- Essai (b) : le voile s'arrete sous le bandeau, labels sur blanc -- */
+.eb td.proj{background:rgba(43,216,194,.055);}
+.eb thead th.proj-head{background:#fff;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
 .vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
 .vf .chev svg{width:12px;height:12px;}
@@ -176,21 +181,18 @@ th.fold-th:hover{background:#000165;}
 <!-- ================= V-FINALE ================= -->
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
-  <h2>Options A / B / C — rupture bandeau / corps</h2>
-  <p class="intent">Alléger plutôt qu'accentuer : valeurs des lignes secondaires (Growth, EBIT margin, Debt/EBIT, Div. yield) repassées en gris doux, lignes principales inchangées ; fond projections nettement plus léger ; et surtout une <b>rupture nette</b> entre le bandeau des années et le corps sur la zone future — trois traitements ci-dessous. Acquis conservés partout : apostrophes 1'766, tabular-nums, trait vertical turquoise, couleurs plates, deux poids (400/700), aucun italique.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevrons inchangés (démo sous l'option B).</p>
+  <h2>Essais (a) / (b) — l'épure</h2>
+  <p class="intent">Plus aucun fond dans le bandeau des années : texte navy sur blanc dans un cadre fin. Le turquoise reste le seul marqueur de la partie prospective, en voile quasi imperceptible et trait vertical affiné à 1&nbsp;px ; graisses réduites au strict minimum (600 sur la colonne Indicator et le bandeau, 400 partout ailleurs — plus aucun bold de valeurs). Acquis conservés : apostrophes 1'766, tabular-nums, valeurs secondaires en gris doux, aucun italique, aucun dégradé.</p>
+  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés (démo sous l'essai b).</p>
 
-  <div class="demo-lbl">Option A — corps bleu quasi imperceptible, labels 2026+ en turquoise foncé sur blanc</div>
-  <div class="tbl-wrap oa" id="oad"></div>
+  <div class="demo-lbl">Essai (a) — le voile turquoise couvre aussi les labels d'années 2026+</div>
+  <div class="tbl-wrap ea" id="ead"></div>
 
-  <div class="demo-lbl">Option B — corps turquoise ultra-pâle (marqueur de marque des projections), labels navy sur blanc soulignés d'un fin trait turquoise</div>
-  <div class="tbl-wrap ob" id="obd"></div>
+  <div class="demo-lbl">Essai (b) — le voile s'arrête sous le bandeau : labels 2026+ sur blanc</div>
+  <div class="tbl-wrap eb" id="ebd"></div>
 
-  <div class="demo-lbl">Option C — épure maximale : aucun fond, le bandeau navy s'arrête à 2025 et le seul marqueur est le trait turquoise</div>
-  <div class="tbl-wrap oc" id="ocd"></div>
-
-  <div class="demo-lbl">Mobile 375&nbsp;px (option B) — snap et chevrons inchangés</div>
-  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ob" id="vfm"></div>
+  <div class="demo-lbl">Mobile 375&nbsp;px (essai b) — snap et chevron unique inchangés</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap eb" id="vfm"></div>
     <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
@@ -366,10 +368,9 @@ function sparkline(vals,w=56,ht=18){
   return s+'</svg>';
 }
 
-/* ---------- V-FINALE : options A/B/C ---------- */
-buildTable(document.getElementById('oad'));
-buildTable(document.getElementById('obd'));
-buildTable(document.getElementById('ocd'));
+/* ---------- V-FINALE : essais (a)/(b) ---------- */
+buildTable(document.getElementById('ead'));
+buildTable(document.getElementById('ebd'));
 buildTable(document.getElementById('vfm'));
 (function(){
   const s=document.getElementById('vfs'), w=document.getElementById('vfm');
