@@ -96,6 +96,16 @@ REGLES :
    les entrees existantes, jamais de suppression d'un ticker non traite.
    Ajouter `_meta.lastRun` a la date du jour.
 
+ECHEC DE RETRIEVE = NOTIFICATION TYPEE (21/08/2026) : si la page IR d'un
+titre reste illisible apres les trois strategies d'acces (403 persistant,
+coquille JS) et que la session ne dispose pas du navigateur, le run
+INSCRIT le titre dans `data/sourceGaps.json`, section `calendar`
+(`{"ticker":"...","status":"a_recollecter","note":"<cause courte>",
+"url":"<page IR>"}`). Le panneau Actions du dashboard affiche alors
+l'action dediee "passe navigateur Claude in Chrome" avec le prompt exact
+pour ce(s) titre(s) ; la passe qui sert le titre EFFACE son entree.
+Jamais d'echec silencieux.
+
 Pousser les deux fichiers dans le meme commit ("Calendar refresh - <date>").
 Le dashboard bascule alors automatiquement la pastille bleue en pastille
 turquoise "Calendar actions" : l'utilisateur trie, coche ce qu'il veut

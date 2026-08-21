@@ -4776,8 +4776,17 @@ function computeSourceGaps(){
     if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok'&&!trans.some(t=>t.tk===g.ticker))
       trans.push({tk:g.ticker, detail:`${g.event||''} — ${g.note||'archive sous le seuil de richesse'}`});
   });
-  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk));
-  return {cons, trans, total:cons.length+trans.length};
+  // ECHECS DU RUN CALENDRIER (21/08/2026) : quand la page IR d'un titre a
+  // resiste aux strategies sans navigateur pendant le run hebdomadaire,
+  // le run l'inscrit dans sourceGaps.calendar - le panneau porte alors
+  // l'action SPECIFIQUE "passe navigateur Claude in Chrome" pour ce titre.
+  const cal=[];
+  (state.sourceGaps?.calendar||[]).forEach(g=>{
+    if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok')
+      cal.push({tk:g.ticker, detail:g.note||'page IR inaccessible sans navigateur', url:g.url||null});
+  });
+  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk)); cal.sort((a,b)=>a.tk.localeCompare(b.tk));
+  return {cons, trans, cal, total:cons.length+trans.length+cal.length};
 }
 // Panneau par CAS (21/08/2026) : chaque famille de blocage porte sa propre
 // action, avec le prompt LLM exact pret a coller — plus un texte generique
@@ -4811,6 +4820,8 @@ function buildSourceGapsPanel(g){
     `[A lancer apres minuit] Le quota journalier MarketScreener/Zonebourse etait epuise le ${new Date().toISOString().slice(0,10)} : reprends la boucle consensus 3 exercices (MarketScreener via navigateur en primaire, Zonebourse en repli, stockanalysis pour adjGapPct, externalActuals au passage) pour :\n${cQuotaT.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}\nEfface l'entree "consensus" correspondante de data/sourceGaps.json une fois la fiche servie.`, first)); first=false; }
   if(cManual.length){ S.push(sect('Consensus — manual input needed', cManual, 'The full cascade (all ranks, all three access strategies) failed for these — the assistant must not invent a value.',
     `Les titres suivants ont epuise la cascade consensus complete sans resultat. Je te fournis les valeurs ci-dessous — integre-les dans epsConsensus (archive l'ancien dans epsConsensusHistory, source = "fourni par l'utilisateur (date)") puis efface l'entree de data/sourceGaps.json :\n${cManual.map(c=>`- ${c.tk} : ${c.detail} -> eps 2026 = ?, eps 2027 = ?, eps 2028 = ?`).join('\n')}`, first)); first=false; }
+  if((g.cal||[]).length){ S.push(sect('Calendar — IR page needs the browser pass (Claude in Chrome)', g.cal, 'The weekly calendar run could not read these IR event pages without a real browser (403/JS shell after all three access strategies).',
+    `Reprends le run calendrier (INSTRUCTIONS_CALENDAR.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page Events/Financial calendar du site IR, capte les evenements a un mois (earnings, presentations investisseurs, conferences brokers) AVEC le champ url (lien precis evenement/webcast), fusionne dans data/calendarCandidates.json + data/nextEvents.json, puis efface l'entree "calendar" correspondante de data/sourceGaps.json :\n${g.cal.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   return `<div class="act-grp">${S.join('')}
       <div style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.5;">Failure after a full cascade must be reported back explicitly — never a silent null. Removing a ticker from the portfolio clears its rows here automatically.</div>
     </div>`;
