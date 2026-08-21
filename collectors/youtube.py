@@ -43,14 +43,29 @@ tickers restants en cas de quotaExceeded — ou pour tout le run si
 YOUTUBE_API_KEY est absente. Demander une hausse de quota ou etaler le
 run si l'API devient la voie principale.
 
+BOUCLE DAILY PAR LOTS ROTATIFS (decision user 21/08/2026) :
+  Le manifest est decoupe en lots de ~12 tickers (ordre alphabetique
+  stable) ; chaque appel --daily traite LE lot du jour puis avance la
+  rotation, persistee dans data/newsVideoRotation.json (versionne : le
+  run tourne depuis n'importe quel clone). Fenetre de recherche =
+  max(7 jours, nombre_de_lots + 2) calculee depuis la taille du manifest,
+  pour qu'aucun ticker n'ait de trou de couverture entre deux passages.
+
 Usage :
-  python collectors/youtube.py               # tout le manifest
-  python collectors/youtube.py ROBINHOOD ... # sous-ensemble (debug/test)
-  python collectors/youtube.py --scrape ...  # forcer le backend scraping
-Env : YOUTUBE_API_KEY (optionnelle depuis la refonte, cf. QUOTA).
-Ecrit artifacts/youtube.json au schema newsFeed :
+  python collectors/youtube.py --daily         # lot du jour + rotation
+  python collectors/youtube.py --all           # tout le manifest
+  python collectors/youtube.py ROBINHOOD ...   # sous-ensemble (debug/test)
+  Options : --merge  fusionne directement dans data/newsFeed.json
+                     (dedup id + evenement contre l'existant toutes kinds,
+                     purge des videos sorties de fenetre)
+            --scrape force le backend scraping meme si cle presente
+Env : YOUTUBE_API_KEY (optionnelle - scraping = voie principale).
+Ecrit toujours artifacts/youtube.json au schema newsFeed :
   {"id":"TICKER-YYYYMMDD-slug","ticker","date","kind":"video","title",
    "summary","source","url","critical":true,"corroborations":[...]}
+Echecs de scraping par ticker -> data/sourceGaps.json section "news"
+  ({ticker, source:"youtube", note, blockedBy:"scraping_bloque"}),
+  entree effacee par la passe qui reussit.
 """
 
 import json
@@ -82,9 +97,12 @@ load_ticker_json = _state.load_ticker_json
 load_existing_news = _state.load_existing_news
 write_artifact = _state.write_artifact
 
-WINDOW_DAYS = 7
 MAX_RESULTS_PER_QUERY = 10
+LOT_TARGET_SIZE = 12
 EXECUTIVES_PATH = "data/executives.json"
+ROTATION_PATH = "data/newsVideoRotation.json"
+NEWSFEED_PATH = "data/newsFeed.json"
+SOURCEGAPS_PATH = "data/sourceGaps.json"
 
 # Suffixes juridiques/generiques a retirer pour obtenir le nom "court"
 # reellement employe dans les titres de videos ("Robinhood Markets" ->
@@ -227,6 +245,12 @@ class QuotaExceeded(Exception):
     pass
 
 
+class ScrapeBlocked(Exception):
+    """HTML recu sans ytInitialData exploitable (blocage, consent wall,
+    structure inattendue) - a distinguer d'une recherche sans resultat."""
+    pass
+
+
 def _http_get(url: str) -> str:
     """urllib avec repli curl (certains postes locaux n'ont pas la chaine
     de certificats pour urllib ; curl utilise les certs systeme)."""
@@ -313,11 +337,11 @@ def scrape_search(query: str, order: str, now: datetime) -> list:
     html = _http_get(url)
     m = re.search(r"var ytInitialData = (\{.*?\});</script>", html, re.S)
     if not m:
-        return []
+        raise ScrapeBlocked(f"pas de ytInitialData ({len(html)} octets recus)")
     try:
         data = json.loads(m.group(1))
-    except json.JSONDecodeError:
-        return []
+    except json.JSONDecodeError as e:
+        raise ScrapeBlocked(f"ytInitialData illisible: {e}")
     out = []
 
     def walk(o):
@@ -512,6 +536,7 @@ def collect_for_ticker(ticker: str, backend: str, api_key: str,
 
     seen_ids, candidates = set(), []
     used_backend = backend
+    ok_queries, blocked_notes = 0, []
     for query, order in build_queries(company_short, exec_names):
         try:
             if used_backend == "api":
@@ -521,10 +546,16 @@ def collect_for_ticker(ticker: str, backend: str, api_key: str,
         except QuotaExceeded:
             print(f"  [QUOTA] bascule scraping a partir de {ticker}", file=sys.stderr)
             used_backend = "scrape"
-            results = scrape_search(query, order, now)
-        except Exception as e:
+            try:
+                results = scrape_search(query, order, now)
+            except (ScrapeBlocked, Exception) as e:
+                blocked_notes.append(f"'{query}' ({order}): {e}")
+                continue
+        except (ScrapeBlocked, Exception) as e:
+            blocked_notes.append(f"'{query}' ({order}): {e}")
             print(f"  [ERREUR] {ticker} '{query}' ({order}): {e}", file=sys.stderr)
             continue
+        ok_queries += 1
         for v in results:
             if v["videoId"] in seen_ids:
                 continue
@@ -579,7 +610,10 @@ def collect_for_ticker(ticker: str, backend: str, api_key: str,
                 for c in group[1:]
             ],
         })
-    return items, used_backend
+    # Bloque = AUCUNE requete n'a abouti alors qu'au moins une a echoue :
+    # a signaler dans sourceGaps plutot que d'echouer en silence.
+    blocked = ok_queries == 0 and bool(blocked_notes)
+    return items, used_backend, (blocked_notes[0] if blocked else "")
 
 
 # ---------------------------------------------------------------------------
@@ -593,9 +627,178 @@ def load_executives(path=EXECUTIVES_PATH) -> dict:
     return {k: v for k, v in data.items() if not k.startswith("_")}
 
 
+def _read_json(path, default):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return default
+
+
+def _write_json(path, data):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+
+
+# ---------------------------------------------------------------------------
+# Lots rotatifs (boucle daily)
+# ---------------------------------------------------------------------------
+
+def compute_lots(manifest: list) -> list:
+    """Lots contigus de ~LOT_TARGET_SIZE tickers, ordre alphabetique STABLE
+    (le contenu d'un lot ne bouge que si le manifest change)."""
+    tickers = sorted(manifest)
+    n = len(tickers)
+    if n == 0:
+        return []
+    lot_count = max(1, -(-n // LOT_TARGET_SIZE))  # ceil
+    base, rem = divmod(n, lot_count)
+    lots, start = [], 0
+    for i in range(lot_count):
+        size = base + (1 if i < rem else 0)
+        lots.append(tickers[start:start + size])
+        start += size
+    return lots
+
+
+def window_days_for(lot_count: int) -> int:
+    """Fenetre = max(7, nombre_de_lots + 2) : chaque ticker est revisite
+    tous les lot_count jours, la marge de 2 jours absorbe un run manque
+    sans trou de couverture."""
+    return max(7, lot_count + 2)
+
+
+def advance_rotation(lot_count: int, now: datetime) -> int:
+    """Lit/avance data/newsVideoRotation.json ; retourne l'index du lot a
+    traiter. Robuste a un changement de taille du manifest (modulo)."""
+    state = _read_json(ROTATION_PATH, {"lastLotIndex": -1, "lastRunDate": None,
+                                       "lotCount": lot_count})
+    idx = (int(state.get("lastLotIndex", -1)) + 1) % lot_count
+    _write_json(ROTATION_PATH, {
+        "lastLotIndex": idx,
+        "lastRunDate": now.strftime("%Y-%m-%d"),
+        "lotCount": lot_count,
+    })
+    return idx
+
+
+# ---------------------------------------------------------------------------
+# sourceGaps.json section "news" (echecs de scraping types)
+# ---------------------------------------------------------------------------
+
+def update_source_gaps(processed: dict):
+    """processed : {ticker: note_de_blocage_ou_chaine_vide}. Une passe qui
+    reussit efface l'entree youtube du ticker ; un blocage la (re)pose."""
+    gaps = _read_json(SOURCEGAPS_PATH, None)
+    if gaps is None or not isinstance(gaps.get("news"), list):
+        return  # structure inattendue : ne pas inventer de fichier
+    news = [e for e in gaps["news"]
+            if not (e.get("source") == "youtube" and e.get("ticker") in processed)]
+    for ticker, note in processed.items():
+        if note:
+            news.append({
+                "ticker": ticker,
+                "source": "youtube",
+                "note": f"Scraping YouTube bloque ({note[:160]})",
+                "blockedBy": "scraping_bloque",
+            })
+    gaps["news"] = news
+    _write_json(SOURCEGAPS_PATH, gaps)
+
+
+# ---------------------------------------------------------------------------
+# Merge direct dans data/newsFeed.json (--merge)
+# ---------------------------------------------------------------------------
+
+def _all_feed_urls(feed_items: list) -> set:
+    urls = set()
+    for it in feed_items:
+        urls.add(it.get("url", ""))
+        for c in it.get("corroborations", []):
+            urls.add(c.get("url", ""))
+    return urls
+
+
+def merge_into_feed(new_items: list, window_start_date: str, now: datetime,
+                    executives: dict) -> dict:
+    """Fusionne les items collectes dans data/newsFeed.json :
+    - dedup par id et par url (item principal comme corroboration) ;
+    - dedup par EVENEMENT toutes kinds confondues : une video qui recoupe
+      un item existant du meme ticker (dates proches + similarite de
+      titres) devient une corroboration de cet item, pas un nouvel item ;
+    - purge les items kind=video sortis de la fenetre ;
+    - met a jour _meta.generatedAt sans toucher les items des autres
+      tickers encore dans leur fenetre."""
+    feed = _read_json(NEWSFEED_PATH, {"_meta": {}, "items": []})
+    items = feed.get("items", [])
+    stats = {"added": 0, "corroborated": 0, "skipped": 0, "purged": 0}
+
+    kept = [it for it in items
+            if not (it.get("kind") == "video" and it.get("date", "") < window_start_date)]
+    stats["purged"] = len(items) - len(kept)
+    items = kept
+
+    existing_ids = {it.get("id") for it in items}
+    existing_urls = _all_feed_urls(items)
+
+    for ni in new_items:
+        if ni["id"] in existing_ids or ni["url"] in existing_urls:
+            stats["skipped"] += 1
+            continue
+        # rapprochement par evenement contre l'existant du meme ticker
+        exec_entry = executives.get(ni["ticker"], {}) or {}
+        exec_names = [n for n in [exec_entry.get("ceo", "")] +
+                      list(exec_entry.get("others", [])) if n]
+        exclude = set()
+        for a in [ni["ticker"]] + exec_names:
+            exclude |= set(re.findall(r"[a-z0-9]{3,}", _norm(a)))
+        ni_toks = significant_tokens(ni["title"], exclude)
+        target = None
+        for it in items:
+            if it.get("ticker") != ni["ticker"]:
+                continue
+            try:
+                d1 = datetime.strptime(ni.get("date", ""), "%Y-%m-%d")
+                d2 = datetime.strptime(it.get("date", ""), "%Y-%m-%d")
+                if abs((d1 - d2).days) > 3:
+                    continue
+            except ValueError:
+                continue
+            it_toks = significant_tokens(it.get("title", ""), exclude)
+            if ni_toks and it_toks:
+                shared = ni_toks & it_toks
+                if len(shared) >= 2 and len(shared) / min(len(ni_toks), len(it_toks)) >= 0.6:
+                    target = it
+                    break
+        if target is not None:
+            target.setdefault("corroborations", []).append({
+                "title": ni["title"], "source": ni["source"],
+                "url": ni["url"], "date": ni["date"], "kind": "video",
+            })
+            # les corroborations deja attachees a l'item video suivent
+            target["corroborations"].extend(ni.get("corroborations", []))
+            existing_urls.add(ni["url"])
+            stats["corroborated"] += 1
+        else:
+            items.append(ni)
+            existing_ids.add(ni["id"])
+            existing_urls |= {ni["url"]} | {c.get("url", "") for c in ni.get("corroborations", [])}
+            stats["added"] += 1
+
+    feed["items"] = items
+    feed.setdefault("_meta", {})["generatedAt"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    _write_json(NEWSFEED_PATH, feed)
+    return stats
+
+
 def main(argv):
     args = [a for a in argv if not a.startswith("-")]
     force_scrape = "--scrape" in argv
+    daily = "--daily" in argv
+    do_merge = "--merge" in argv
 
     api_key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     backend = "scrape" if (force_scrape or not api_key) else "api"
@@ -603,27 +806,49 @@ def main(argv):
         print("[INFO] YOUTUBE_API_KEY absente - backend scraping (ytInitialData)", file=sys.stderr)
 
     manifest = load_manifest()
-    tickers = [t for t in args if t in manifest] or manifest
     executives = load_executives()
     now = datetime.now(timezone.utc)
-    window_start = now - timedelta(days=WINDOW_DAYS)
 
-    all_items, error_count = [], 0
+    lots = compute_lots(manifest)
+    window_days = window_days_for(len(lots))
+    window_start = now - timedelta(days=window_days)
+
+    if daily:
+        idx = advance_rotation(len(lots), now)
+        tickers = lots[idx]
+        print(f"[daily] lot {idx + 1}/{len(lots)} ({len(tickers)} tickers : "
+              f"{tickers[0]}..{tickers[-1]}), fenetre {window_days} jours")
+    else:
+        tickers = [t for t in args if t in manifest] or manifest
+
+    all_items, error_count, processed = [], 0, {}
     for ticker in tickers:
         existing_urls = {it.get("url", "") for it in load_existing_news(ticker)}
         try:
-            items, backend = collect_for_ticker(
+            items, backend, blocked_note = collect_for_ticker(
                 ticker, backend, api_key, window_start, now, existing_urls, executives)
         except Exception as e:
             print(f"  [ERREUR] {ticker}: {e}", file=sys.stderr)
             error_count += 1
+            processed[ticker] = f"erreur inattendue: {e}"
             continue
+        processed[ticker] = blocked_note
+        if blocked_note:
+            error_count += 1
+            print(f"  [BLOQUE] {ticker}: {blocked_note}", file=sys.stderr)
         if items:
             print(f"  [{ticker}] {len(items)} evenement(s) "
                   f"({sum(len(i['corroborations']) for i in items)} corroboration(s))")
         all_items.extend(items)
 
     write_artifact("youtube", all_items)
+    update_source_gaps(processed)
+    if do_merge:
+        stats = merge_into_feed(all_items, window_start.strftime("%Y-%m-%d"),
+                                now, executives)
+        print(f"[merge] newsFeed.json : +{stats['added']} items, "
+              f"{stats['corroborated']} corroboration(s) d'items existants, "
+              f"{stats['skipped']} deja connus, {stats['purged']} video(s) purgee(s)")
     print(f"[youtube] {len(all_items)} evenements, {error_count} tickers en erreur "
           f"sur {len(tickers)} (backend final : {backend})")
     if tickers and error_count >= len(tickers) * 0.8:
