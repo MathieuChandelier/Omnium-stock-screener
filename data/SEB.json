@@ -460,5 +460,75 @@
    "2024": 4.23,
    "2025": 4.45
   }
+ },
+ "comptes": {
+  "2025-FY": {
+   "base": "IFRS",
+   "publie": {
+    "ca": 8169.4,
+    "ebit": 502.1,
+    "net": 244.6
+   },
+   "retraitements": [
+    {
+     "id": "interessement-participation",
+     "libelle": "Intéressement et participation — exclu du ROPA par l'émetteur ; charge légale française présente à chaque arrêté sans exception (23,8 en 2023, 32,9 en 2024, 18,0 en 2025, 10,7 au S1 2026)",
+     "ebit": 18.0,
+     "net": 18.0,
+     "classe": "recurrent"
+    },
+    {
+     "id": "plan-rebond-provisions",
+     "libelle": "Autres produits et charges d'exploitation — provisions liées à la mise en œuvre du plan Rebond",
+     "ebit": 24.0,
+     "net": 24.0,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres-produits-charges-exploitation-solde",
+     "libelle": "Autres produits et charges d'exploitation — solde hors plan Rebond, non détaillé par l'émetteur ; poste renseigné à chaque arrêté depuis 2023 (34,3 / 228,8 / 80,8)",
+     "ebit": 56.8,
+     "net": 56.8,
+     "classe": "recurrent"
+    }
+   ],
+   "impotSurRetraitements": -23.3,
+   "source": "Communiqué « Résultats annuels 2025 » du 25/02/2026, compte de résultat consolidé et commentaire p. 5–6 (M€). SEB ne publie pas de passerelle séparée : le compte de résultat EST la table de réconciliation, et l'ajusté publié est le ROPA (600,9). Bouclage EBIT exact : 502,1 + 18,0 + 24,0 + 56,8 = 600,9. SEB ne publie AUCUN résultat net ajusté au titre de 2025 (le « résultat net ajusté » de 422 M€ ne porte que sur 2024, retraité de l'amende de l'Autorité de la concurrence) : impotSurRetraitements est calculé au TEI publié de 23,6 % et n'est donc pas un chiffre publié — la jambe nette ne constitue pas un contrôle pour cette période.",
+   "rupture": null
+  },
+  "2026-H1": {
+   "base": "IFRS",
+   "publie": {
+    "ca": 3743.4,
+    "ebit": -23.3,
+    "net": -124.1
+   },
+   "retraitements": [
+    {
+     "id": "interessement-participation",
+     "libelle": "Intéressement et participation — exclu du ROPA par l'émetteur ; charge légale de chaque exercice",
+     "ebit": 10.7,
+     "net": 10.7,
+     "classe": "recurrent"
+    },
+    {
+     "id": "plan-rebond-provisions",
+     "libelle": "Autres produits et charges d'exploitation — charges exceptionnelles liées au plan Rebond (enveloppe annoncée 200–250 M€, 24,0 en 2025 puis 178,0 au S1 2026)",
+     "ebit": 178.0,
+     "net": 178.0,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres-produits-charges-exploitation-solde",
+     "libelle": "Autres produits et charges d'exploitation — solde hors plan Rebond, non détaillé par l'émetteur",
+     "ebit": 6.5,
+     "net": 6.5,
+     "classe": "recurrent"
+    }
+   ],
+   "impotSurRetraitements": -18.1,
+   "source": "Communiqué « Ventes et Résultats du 1er semestre 2026 » du 22/07/2026, compte de résultat consolidé et commentaire p. 6 (M€). Bouclage EBIT exact sur le ROPA : −23,3 + 10,7 + 178,0 + 6,5 = 171,9. Sur la jambe nette, le seul ajusté publié est le « Résultat net part du Groupe retraité des charges exceptionnelles (nettes d'impôt) relatives au plan Rebond » = 41 M€ : −124,1 + 178,0 − 12,9 = 41,0, d'où un effet d'impôt implicite de −12,9 sur la seule ligne Rebond (7,2 % — l'émetteur ne le détaille pas). Les 5,2 restants de impotSurRetraitements portent les deux lignes récurrentes au TEI hors Rebond publié de 30 %.",
+   "rupture": null
+  }
  }
 }

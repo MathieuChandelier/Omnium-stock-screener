@@ -492,5 +492,125 @@
    "2024": 5.13,
    "2025": 4.98
   }
+ },
+ "comptes": {
+  "2025-FY": {
+   "base": "IFRS",
+   "publie": {
+    "ca": 28491,
+    "ebit": 3379,
+    "net": 2315
+   },
+   "retraitements": [
+    {
+     "id": "ppa-amortissement",
+     "libelle": "Impacts incrémentaux des allocations de prix d'acquisition (combinaison Essilor-Luxottica, acquisition GrandVision et autres acquisitions stratégiques) — colonne agrégée, aucun deal chiffré séparément par l'émetteur",
+     "ebit": 830,
+     "net": 831,
+     "classe": "recurrent"
+    },
+    {
+     "id": "restructuration-reorganisation",
+     "libelle": "Projets de restructuration et de réorganisation (marché nord-américain, opérations industrielles)",
+     "ebit": 63,
+     "net": 63,
+     "classe": "recurrent"
+    },
+    {
+     "id": "superboost-actionnariat-salarie",
+     "libelle": "Coût du plan d'actionnariat salarié international SuperBoost",
+     "ebit": 70,
+     "net": 70,
+     "classe": "recurrent"
+    },
+    {
+     "id": "remuneration-variable-non-recurrente",
+     "libelle": "Rémunération variable non récurrente attribuée au management et aux salariés",
+     "ebit": 75,
+     "net": 75,
+     "classe": "recurrent"
+    },
+    {
+     "id": "frais-ma",
+     "libelle": "Honoraires professionnels liés aux opérations de M&A",
+     "ebit": 12,
+     "net": 12,
+     "classe": "recurrent"
+    },
+    {
+     "id": "litiges-significatifs",
+     "libelle": "Coûts non récurrents liés à des contentieux significatifs, frais de justice inclus",
+     "ebit": 15,
+     "net": 15,
+     "classe": "recurrent"
+    },
+    {
+     "id": "autres-non-gaap-solde",
+     "libelle": "Solde non détaillé de la colonne « Other non-GAAP adjustments » (249 publiés − 235 de composantes décrites)",
+     "ebit": 14,
+     "net": 14,
+     "classe": "indetermine",
+     "note": "L'émetteur ne décrit que les retraitements « les plus significatifs » ; ce solde de 14 M€ n'est rattaché à aucun poste nommé dans le communiqué du 11/02/2026. Ni sa nature ni sa récurrence ne peuvent être établies sur pièce, donc ni oneOff ni recurrent ne peut être tranché. Montant immatériel (0,4 % de l'EBIT publié). À reclasser si l'URD 2025 le détaille."
+    },
+    {
+     "id": "interets-minoritaires-sur-retraitements",
+     "libelle": "Part des intérêts minoritaires dans les retraitements (ligne dérivée : écart entre le net ajusté total et le net ajusté attribuable)",
+     "ebit": 0,
+     "net": -16,
+     "classe": "recurrent"
+    }
+   ],
+   "impotSurRetraitements": -222,
+   "source": "Communiqué Q4/FY 2025 du 11/02/2026 (Extrait du rapport de gestion 2025, pages 15-16) — table de réconciliation « Adjustments related to PPA impacts / Other non-GAAP adjustments » et détail des retraitements",
+   "rupture": null
+  },
+  "2026-H1": {
+   "base": "IFRS",
+   "publie": {
+    "ca": 14818,
+    "ebit": 2296,
+    "net": 1566
+   },
+   "retraitements": [
+    {
+     "id": "ppa-amortissement",
+     "libelle": "Impacts incrémentaux des allocations de prix d'acquisition (combinaison Essilor-Luxottica, acquisition GrandVision et autres acquisitions stratégiques) — colonne agrégée, aucun deal chiffré séparément par l'émetteur",
+     "ebit": 415,
+     "net": 416,
+     "classe": "recurrent"
+    },
+    {
+     "id": "restructuration-reorganisation",
+     "libelle": "Projets de restructuration et de réorganisation (marchés nord-américain et EMEA)",
+     "ebit": 21,
+     "net": 21,
+     "classe": "recurrent"
+    },
+    {
+     "id": "frais-ma",
+     "libelle": "Honoraires professionnels et autres coûts non récurrents liés aux opérations de M&A",
+     "ebit": 12,
+     "net": 12,
+     "classe": "recurrent"
+    },
+    {
+     "id": "litiges-significatifs",
+     "libelle": "Coûts non récurrents liés à des contentieux significatifs, frais de justice inclus",
+     "ebit": 7,
+     "net": 7,
+     "classe": "recurrent"
+    },
+    {
+     "id": "interets-minoritaires-sur-retraitements",
+     "libelle": "Part des intérêts minoritaires dans les retraitements (ligne dérivée : écart entre le net ajusté total et le net ajusté attribuable)",
+     "ebit": 0,
+     "net": -9,
+     "classe": "recurrent"
+    }
+   ],
+   "impotSurRetraitements": -92,
+   "source": "Communiqué Q2/H1 2026 du 28/07/2026 (Rapport de gestion intermédiaire 2026, page 13) — table de réconciliation « Adjustments related to PPA impacts / Other non-GAAP adjustments » et détail des retraitements",
+   "rupture": null
+  }
  }
 }

@@ -76,6 +76,7 @@ SUIVI_NARRATIF_RULE_DATE = "2026-08-21"
 COMPTES_PERIODE_RE = r"^\d{4}-(FY|H[12]|Q[1-4])$"
 COMPTES_BASE_VALUES = {"US-GAAP", "IFRS"}
 COMPTES_CLASSE_VALUES = {"oneOff", "recurrent", "indetermine"}
+COMPTES_RUPTURE_TYPE_VALUES = {"retraitement", "perimetre"}
 COMPTES_RUPTURE_PAR_VALUES = {"emetteur", "omnium"}
 # kebab-case strict : c'est l'identifiant qui, relu periode apres periode,
 # forme la SERIE d'un poste. Sans stabilite, pas de serie, donc pas de
@@ -230,11 +231,24 @@ def validate_comptes(d, errors):
             if not isinstance(rup, dict):
                 errors.add(f"comptes['{per}'].rupture doit etre null ou un objet {{par, motif}}.")
             else:
-                if rup.get("par") not in COMPTES_RUPTURE_PAR_VALUES:
+                # Deux ruptures de nature differente, et elles n'appellent pas
+                # le meme geste : 'retraitement' = quelqu'un a REECRIT les
+                # comparatifs (l'emetteur fait autorite, on realigne
+                # l'historique ; si c'est nous, ca se notifie) ; 'perimetre' =
+                # personne n'a rien reecrit, un EVENEMENT rend la serie non
+                # comparable (acquisition, cession, changement de norme) et un
+                # CAGR ne doit jamais franchir cette borne.
+                typ = rup.get("type")
+                if typ not in COMPTES_RUPTURE_TYPE_VALUES:
+                    errors.add(
+                        f"comptes['{per}'].rupture.type={typ!r} invalide "
+                        f"(attendu {sorted(COMPTES_RUPTURE_TYPE_VALUES)})."
+                    )
+                if typ == "retraitement" and rup.get("par") not in COMPTES_RUPTURE_PAR_VALUES:
                     errors.add(
                         f"comptes['{per}'].rupture.par={rup.get('par')!r} invalide "
-                        f"(attendu {sorted(COMPTES_RUPTURE_PAR_VALUES)}) - qui a retraite decide "
-                        f"si on suit ou si on notifie."
+                        f"(attendu {sorted(COMPTES_RUPTURE_PAR_VALUES)}) - qui a retraite "
+                        f"decide si on suit ou si on notifie."
                     )
                 if not isinstance(rup.get("motif"), str) or not rup["motif"].strip():
                     errors.add(f"comptes['{per}'].rupture.motif doit etre une phrase non vide.")
@@ -261,6 +275,8 @@ def validate_comptes(d, errors):
             for k in ("ebit", "net"):
                 if not isinstance(r.get(k), (int, float)):
                     errors.add(f"{where}.{k} doit etre un nombre (0 si la ligne ne touche pas ce niveau).")
+            if "impot" in r and not isinstance(r["impot"], (int, float)):
+                errors.add(f"{where}.impot doit etre un nombre si present (effet d'impot PROPRE a cette ligne).")
             cl = r.get("classe")
             if cl not in COMPTES_CLASSE_VALUES:
                 errors.add(f"{where}.classe={cl!r} invalide (attendu {sorted(COMPTES_CLASSE_VALUES)}).")

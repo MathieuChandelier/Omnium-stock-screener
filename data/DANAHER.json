@@ -541,5 +541,113 @@
    "2024": 5.29,
    "2025": 5.05
   }
+ },
+ "comptes": {
+  "2025-FY": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 24568,
+    "ebit": 4690,
+    "net": 3600
+   },
+   "retraitements": [
+    {
+     "id": "amort-incorporels-acquisition",
+     "libelle": "Amortissement des incorporels d'acquisition (ligne agrégée par l'émetteur, aucun deal nommé)",
+     "ebit": 1697,
+     "net": 1697,
+     "classe": "recurrent"
+    },
+    {
+     "id": "depreciations-actifs",
+     "libelle": "Dépréciations d'actifs : marque Life Sciences 432, technologies/incorporels/site Biotechnology 101, marque Diagnostics 15, site Life Sciences 14",
+     "ebit": 562,
+     "net": 562,
+     "classe": "oneOff"
+    },
+    {
+     "id": "juste-valeur-investissements",
+     "libelle": "Pertes nettes de juste valeur sur participations et sociétés en commandite (mark-to-market, hors exploitation)",
+     "ebit": 0,
+     "net": 248,
+     "classe": "oneOff"
+    },
+    {
+     "id": "denouement-contingence-acquisition",
+     "libelle": "Dénouement d'une contingence d'acquisition (segment Diagnostics)",
+     "ebit": -10,
+     "net": -10,
+     "classe": "oneOff"
+    },
+    {
+     "id": "plus-value-cession-site",
+     "libelle": "Plus-value sur la cession d'un site industriel",
+     "ebit": 0,
+     "net": -11,
+     "classe": "oneOff"
+    },
+    {
+     "id": "plus-value-cession-ligne-produits",
+     "libelle": "Plus-value sur la cession d'une ligne de produits",
+     "ebit": 0,
+     "net": -9,
+     "classe": "oneOff"
+    },
+    {
+     "id": "impot-discret",
+     "libelle": "Éléments d'impôt discrets (reprises de provisions pour positions fiscales incertaines, remesure de différés, allowances)",
+     "ebit": 0,
+     "net": -14,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": -480,
+   "source": "8-K du 28/01/2026, exhibit 99.1 « Danaher Reports Fourth Quarter and Full Year 2025 Results » (dhr-20260128xex991.htm) — Consolidated Statements of Earnings et Reconciliation of GAAP to Non-GAAP Financial Measures, notes A à J",
+   "rupture": null
+  },
+  "2026-Q2": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 6265,
+    "ebit": 1127,
+    "net": 870
+   },
+   "retraitements": [
+    {
+     "id": "amort-incorporels-acquisition",
+     "libelle": "Amortissement des incorporels d'acquisition (ligne agrégée par l'émetteur, aucun deal nommé)",
+     "ebit": 463,
+     "net": 463,
+     "classe": "recurrent"
+    },
+    {
+     "id": "juste-valeur-investissements",
+     "libelle": "Pertes nettes de juste valeur sur participations et sociétés en commandite (mark-to-market, hors exploitation)",
+     "ebit": 0,
+     "net": 7,
+     "classe": "oneOff"
+    },
+    {
+     "id": "acquisition-elements-transaction",
+     "libelle": "Éléments liés à l'acquisition de Masimo : step-up de juste valeur des stocks, frais de transaction jugés significatifs, paiements pré-acquisition en actions et de changement de contrôle",
+     "ebit": 108,
+     "net": 108,
+     "classe": "oneOff"
+    },
+    {
+     "id": "impot-discret",
+     "libelle": "Éléments d'impôt discrets (charges nettes liées à des révisions d'estimations sur positions fiscales incertaines d'exercices antérieurs)",
+     "ebit": 0,
+     "net": 21,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": -94,
+   "source": "8-K du 21/07/2026, exhibit 99.1 « Danaher Reports Second Quarter 2026 Results » (dhr-20260721xex991.htm) — Consolidated Condensed Statements of Earnings et Reconciliation of GAAP to Non-GAAP Financial Measures, notes A à G",
+   "rupture": {
+    "type": "perimetre",
+    "motif": "Acquisition de Masimo bouclée le 10/06/2026 (16 jours de contribution au T2), sans retraitement des comparatifs 2025. Guidance d'amortissement d'incorporels d'acquisition relevée de ~1,7 Md$ (CP du 28/01/2026) à ~1,9 Md$ (CP du 21/07/2026), dette d'acquisition émise en avril-juin 2026 : la série des postes amort-incorporels-acquisition et acquisition-elements-transaction ne se projette pas à travers cette borne sans retraitement."
+   }
+  }
  }
 }

@@ -532,5 +532,134 @@
    "2024": 7.64,
    "2025": 3.72
   }
+ },
+ "comptes": {
+  "2025-FY": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 44328,
+    "ebit": 8053,
+    "net": 6524
+   },
+   "retraitements": [
+    {
+     "id": "amort-incorporels-acquisition",
+     "libelle": "Amortissement des incorporels d'acquisition (colonne agrégée « Intangible Amortization », aucun deal nommé par l'émetteur)",
+     "ebit": 1682,
+     "net": 1682,
+     "classe": "recurrent"
+    },
+    {
+     "id": "restructuration-reduction-couts",
+     "libelle": "Restructuration et initiatives de réduction de coûts (indemnités, outplacement, coûts directs de plans)",
+     "ebit": 284,
+     "net": 287,
+     "classe": "recurrent"
+    },
+    {
+     "id": "acquisition-cession-frais",
+     "libelle": "Frais liés aux acquisitions et cessions (intégration, step-up de stocks, autres coûts de transaction)",
+     "ebit": 57,
+     "net": 83,
+     "classe": "recurrent"
+    },
+    {
+     "id": "litige-provision-reglement",
+     "libelle": "Provision pour litige — règlement convenu (legal reserves, agreed-upon settlement)",
+     "ebit": 165,
+     "net": 165,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres-mdr-ivdr-depreciations",
+     "libelle": "Autres : coûts incrémentaux de mise en conformité MDR/IVDR et dépréciations de participations",
+     "ebit": 60,
+     "net": 79,
+     "classe": "recurrent"
+    },
+    {
+     "id": "impot-discret-reprise-benefice-differe",
+     "libelle": "Impôt discret : ajustements liés à la reconnaissance antérieure d'un bénéfice d'impôt différé non-cash (charge)",
+     "ebit": 0,
+     "net": 610,
+     "classe": "oneOff"
+    },
+    {
+     "id": "impot-discret-positions-fiscales-anterieures",
+     "libelle": "Impôt discret : résolution de positions fiscales d'exercices antérieurs (produit)",
+     "ebit": 0,
+     "net": -70,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": -320,
+   "source": "8-K du 22/01/2026, exhibit 99.1 « Abbott Reports Fourth-Quarter and Full-Year 2025 Results » (abt-2025q4xexhibitx991.htm) — pages 11, 13, 15 et 18 : compte de résultat 12M25, réconciliation non-GAAP, réconciliation du taux d'impôt, Details of Specified Items",
+   "rupture": null
+  },
+  "2026-Q2": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 12593,
+    "ebit": 1693,
+    "net": 928
+   },
+   "retraitements": [
+    {
+     "id": "amort-incorporels-acquisition",
+     "libelle": "Amortissement des incorporels d'acquisition (colonne agrégée « Intangible Amortization », aucun deal nommé par l'émetteur)",
+     "ebit": 658,
+     "net": 658,
+     "classe": "recurrent"
+    },
+    {
+     "id": "restructuration-reduction-couts",
+     "libelle": "Restructuration et initiatives de réduction de coûts (indemnités, outplacement, coûts directs de plans)",
+     "ebit": 5,
+     "net": 6,
+     "classe": "recurrent"
+    },
+    {
+     "id": "acquisition-cession-frais",
+     "libelle": "Frais liés aux acquisitions et cessions (intégration, step-up de stocks, autres coûts de transaction)",
+     "ebit": 84,
+     "net": 83,
+     "classe": "recurrent"
+    },
+    {
+     "id": "litige-provision-reglement",
+     "libelle": "Provision pour litige — règlement convenu en principe, sous conditions (legal reserves)",
+     "ebit": 385,
+     "net": 385,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres-mdr-ivdr-depreciations",
+     "libelle": "Autres : coûts incrémentaux de mise en conformité MDR/IVDR et dépréciations de participations",
+     "ebit": 18,
+     "net": 45,
+     "classe": "recurrent"
+    },
+    {
+     "id": "impot-discret-reprise-benefice-differe",
+     "libelle": "Impôt discret : ajustements liés à la reconnaissance antérieure d'un bénéfice d'impôt différé non-cash (charge)",
+     "ebit": 0,
+     "net": 240,
+     "classe": "oneOff"
+    },
+    {
+     "id": "impot-discret-positions-fiscales-anterieures",
+     "libelle": "Impôt discret : résolution de positions fiscales d'exercices antérieurs (charge nette au T2 2026)",
+     "ebit": 0,
+     "net": 110,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": -165,
+   "source": "8-K du 16/07/2026, exhibit 99.1 « Abbott Reports Second-Quarter 2026 Results » (abt-2026q2xexhibitx991.htm) — pages 8, 12, 14 et 17 : compte de résultat 2Q26, réconciliation non-GAAP, réconciliation du taux d'impôt, Details of Specified Items",
+   "rupture": {
+    "type": "perimetre",
+    "motif": "Acquisition d'Exact Sciences bouclée le 23/03/2026, sans retraitement des comparatifs 2025. Le périmètre et le stock d'incorporels amortissables sont discontinus : amortissement trimestriel 420 M$ (2Q25) → 658 M$ (2Q26), intérêts nets 50 → 299 M$, nouveau segment Cancer Diagnostics. La série des postes amort-incorporels-acquisition et acquisition-cession-frais ne se projette pas à travers cette borne sans retraitement."
+   }
+  }
  }
 }

@@ -496,5 +496,168 @@
    "2024": -0.46,
    "2025": 0.86
   }
+ },
+ "comptes": {
+  "2025-FY": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 738.256,
+    "ebit": 55.167,
+    "net": 48.894
+   },
+   "retraitements": [
+    {
+     "id": "acquisition-integration-couts",
+     "libelle": "Acquisition and integration costs",
+     "ebit": 18.067,
+     "net": 18.067,
+     "classe": "indetermine",
+     "note": "Arbitrage en attente. Le poste est présent à chaque exercice chez un acquéreur en série (7,3 M$ en 2024, 18,1 M$ en 2025, 4,8 M$ au S1 2026), ce qui plaide pour « recurrent » au sens d'E5-e ; mais son montant est piloté par le calendrier des deals et non par l'exploitation. L'audit du 21/08 le retraite dans sa reconstruction historique (§1.2) et le réintègre dans sa reconstruction de la projection (§1.3) : les deux lectures coexistent dans le même document. Tant que l'arbitrage n'est pas rendu, la ligne est exclue de la base Omnium par défaut (traitée comme conservée)."
+    },
+    {
+     "id": "restructuration",
+     "libelle": "Restructuring activities and other related charges",
+     "ebit": -0.049,
+     "net": -0.049,
+     "classe": "oneOff"
+    },
+    {
+     "id": "amortissement-incorporels-acquisition",
+     "libelle": "Intangible amortization — amortissement des incorporels d'acquisition ; l'émetteur agrège sans nommer de deal",
+     "ebit": 39.057,
+     "net": 39.057,
+     "classe": "recurrent"
+    },
+    {
+     "id": "complement-de-prix-juste-valeur",
+     "libelle": "Contingent consideration — réévaluation à la juste valeur des compléments de prix, non-cash",
+     "ebit": -13.607,
+     "net": -16.72,
+     "classe": "oneOff"
+    },
+    {
+     "id": "step-up-stocks",
+     "libelle": "Inventory step-up charges — écoulement de la revalorisation des stocks issue du PPA",
+     "ebit": 1.56,
+     "net": 1.56,
+     "classe": "oneOff"
+    },
+    {
+     "id": "interets-non-cash-convertible",
+     "libelle": "Non-cash interest expense — accrétion de l'escompte de la dette convertible d'acquisition",
+     "ebit": 0,
+     "net": 15.471,
+     "classe": "recurrent"
+    },
+    {
+     "id": "amortissement-frais-emission-dette",
+     "libelle": "Amortization of debt issuance costs — frais d'émission de la dette convertible",
+     "ebit": 0,
+     "net": 1.66,
+     "classe": "recurrent"
+    },
+    {
+     "id": "change-prets-intragroupe",
+     "libelle": "Foreign currency impact of certain intercompany loans",
+     "ebit": 0,
+     "net": -0.867,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres",
+     "libelle": "Other",
+     "ebit": 1.628,
+     "net": 1.628,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": -11.756,
+   "source": "8-K du 24/02/2026, exhibit 99.1 (CIK 0000730272), tables « Reconciliation of Income (Loss) from Operations (GAAP) to Adjusted Income from Operations » et « Reconciliation of Net Income (Loss) (GAAP) to Adjusted Net Income ». Montants en M$ (les k$ publiés divisés par 1 000, sans arrondi). Ajusté publié : EBIT 101,823 ; net 96,945 ; EPS dilué 1,71 $ (GAAP 0,86 $). La SBC n'est PAS dans la liste d'exclusions de l'émetteur.",
+   "rupture": null
+  },
+  "2026-Q2": {
+   "base": "US-GAAP",
+   "publie": {
+    "ca": 204.128,
+    "ebit": 13.976,
+    "net": 5.008
+   },
+   "retraitements": [
+    {
+     "id": "acquisition-integration-couts",
+     "libelle": "Acquisition, integration and divestiture costs",
+     "ebit": 2.127,
+     "net": 2.127,
+     "classe": "indetermine",
+     "note": "Même arbitrage en attente qu'au FY 2025 : poste présent à chaque période chez un acquéreur en série. Il va en outre changer d'échelle avec BioLife Solutions (~1,5 Md$, closing attendu au T4 2026)."
+    },
+    {
+     "id": "restructuration",
+     "libelle": "Restructuring activities and other charges",
+     "ebit": 2.718,
+     "net": 2.718,
+     "classe": "oneOff"
+    },
+    {
+     "id": "couts-transformation",
+     "libelle": "Transformation costs — programme de projets stratégiques discrets affiché jusqu'à fin 2027",
+     "ebit": 2.949,
+     "net": 2.949,
+     "classe": "recurrent"
+    },
+    {
+     "id": "amortissement-incorporels-acquisition",
+     "libelle": "Intangible amortization — amortissement des incorporels d'acquisition ; l'émetteur agrège sans nommer de deal",
+     "ebit": 9.547,
+     "net": 9.547,
+     "classe": "recurrent"
+    },
+    {
+     "id": "complement-de-prix-juste-valeur",
+     "libelle": "Contingent consideration — réévaluation à la juste valeur des compléments de prix, non-cash",
+     "ebit": 2.308,
+     "net": 2.212,
+     "classe": "oneOff"
+    },
+    {
+     "id": "interets-non-cash-convertible",
+     "libelle": "Non-cash interest expense — accrétion de l'escompte de la dette convertible d'acquisition",
+     "ebit": 0,
+     "net": 4.161,
+     "classe": "recurrent"
+    },
+    {
+     "id": "amortissement-frais-emission-dette",
+     "libelle": "Amortization of debt issuance costs — frais d'émission de la dette convertible",
+     "ebit": 0,
+     "net": 0.421,
+     "classe": "recurrent"
+    },
+    {
+     "id": "change-prets-intragroupe",
+     "libelle": "Foreign currency impact of certain intercompany loans",
+     "ebit": 0,
+     "net": 0.618,
+     "classe": "oneOff"
+    },
+    {
+     "id": "moins-value-cession-activite",
+     "libelle": "Loss on sale of business — ajustement de la moins-value de cession de Polymem (13,660 M$ constatés au T1 2026)",
+     "ebit": 0,
+     "net": -0.103,
+     "classe": "oneOff"
+    },
+    {
+     "id": "autres",
+     "libelle": "Other",
+     "ebit": 0.379,
+     "net": 0.379,
+     "classe": "oneOff"
+    }
+   ],
+   "impotSurRetraitements": 0.74,
+   "source": "8-K du 28/07/2026, exhibit 99.1 (CIK 0000730272), tables de réconciliation EBIT, net et EPS, trois mois clos le 30/06/2026 ; compte de résultat condensé pour le CA. Montants en M$. Ajusté publié : EBIT 34,004 ; net 30,777 ; EPS dilué 0,54 $ (GAAP 0,09 $). L'ETR GAAP du trimestre est de 64,6 % (9,145 sur 14,153 de pretax) : un one-off fiscal discret que l'émetteur ne retraite PAS et qui écrase le net publié.",
+   "rupture": null
+  }
  }
 }
