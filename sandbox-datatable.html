@@ -107,6 +107,10 @@ tr.row-sub td.proj{color:var(--muted);}
 /* -- Essai (b) : le voile s'arrete sous le bandeau, labels sur blanc -- */
 .eb td.proj{background:rgba(43,216,194,.055);}
 .eb thead th.proj-head{background:#fff;}
+/* -- B epuree : comme (b) SANS le filet turquoise horizontal sous les labels
+   2026+ (herite du style de base th.proj-head, ici annule) -- */
+.ebp td.proj{background:rgba(43,216,194,.055);}
+.ebp thead th.proj-head{background:#fff;box-shadow:none;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
 .vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
 .vf .chev svg{width:12px;height:12px;}
@@ -181,21 +185,24 @@ th.fold-th:hover{background:#000165;}
 <!-- ================= V-FINALE ================= -->
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
-  <h2>Essais (a) / (b) — l'épure</h2>
-  <p class="intent">Plus aucun fond dans le bandeau des années : texte navy sur blanc dans un cadre fin. Le turquoise reste le seul marqueur de la partie prospective, en voile quasi imperceptible et trait vertical affiné à 1&nbsp;px ; graisses réduites au strict minimum (600 sur la colonne Indicator et le bandeau, 400 partout ailleurs — plus aucun bold de valeurs). Acquis conservés : apostrophes 1'766, tabular-nums, valeurs secondaires en gris doux, aucun italique, aucun dégradé.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés (démo sous l'essai b).</p>
+  <h2>B épurée — à valider</h2>
+  <p class="intent">Déclinaison de l'essai (b) sans le filet turquoise horizontal qui courait sous les labels des années projetées : il ne reste que le trait vertical turquoise 1&nbsp;px entre 2025 et 2026 et le voile quasi imperceptible sur le corps prospectif. Tout le reste de (b) est inchangé : bandeau sans fond dans un cadre fin, graisses minimales (600 Indicator/bandeau, 400 ailleurs), valeurs secondaires en gris doux, apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
+  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
 
-  <div class="demo-lbl">Essai (a) — le voile turquoise couvre aussi les labels d'années 2026+</div>
-  <div class="tbl-wrap ea" id="ead"></div>
+  <div class="demo-lbl">B épurée — desktop</div>
+  <div class="tbl-wrap ebp" id="ebpd"></div>
 
-  <div class="demo-lbl">Essai (b) — le voile s'arrête sous le bandeau : labels 2026+ sur blanc</div>
-  <div class="tbl-wrap eb" id="ebd"></div>
-
-  <div class="demo-lbl">Mobile 375&nbsp;px (essai b) — snap et chevron unique inchangés</div>
-  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap eb" id="vfm"></div>
+  <div class="demo-lbl">B épurée — mobile 375&nbsp;px</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebp" id="vfm"></div>
     <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
+
+  <div class="demo-lbl">Comparaison — essai (a) : voile jusque sur les labels 2026+, filet horizontal d'origine</div>
+  <div class="tbl-wrap ea" id="ead"></div>
+
+  <div class="demo-lbl">Comparaison — essai (b) d'origine : labels sur blanc, avec le filet turquoise horizontal</div>
+  <div class="tbl-wrap eb" id="ebd"></div>
 </div>
 
 <div class="ref-divider">Pistes initiales — conservées pour référence</div>
@@ -368,7 +375,8 @@ function sparkline(vals,w=56,ht=18){
   return s+'</svg>';
 }
 
-/* ---------- V-FINALE : essais (a)/(b) ---------- */
+/* ---------- V-FINALE : B epuree + comparaisons (a)/(b) ---------- */
+buildTable(document.getElementById('ebpd'));
 buildTable(document.getElementById('ead'));
 buildTable(document.getElementById('ebd'));
 buildTable(document.getElementById('vfm'));
