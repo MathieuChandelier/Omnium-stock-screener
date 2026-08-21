@@ -122,24 +122,6 @@ tr.row-sub td.proj{color:var(--muted);}
 .vf .ebq tbody tr:hover td:first-child{background:#eff1fa;}
 .mframe .ebq thead th{font-size:11.5px;}
 .mframe .ebq tbody td:first-child{font-size:11.5px;}
-/* -- B Poppins : structure exacte de la B Quattrocento (taille unique, 400
-   partout, L #f7f8fd, voile turquoise, trait 1px) mais TOUT en 'Poppins' —
-   labels, annees, coin, valeurs. Poppins etant plus large, taille unique
-   ramenee a 12.5px desktop / 11px mobile. Aucun gras, aucune taille
-   superieure sur labels/annees. Bonus : chiffres tabulaires natifs. -- */
-.ebo thead th,.ebo tbody td,.ebo tbody td:first-child{font-family:'Poppins',system-ui,sans-serif;}
-.ebo table{font-size:12.5px;}
-.ebo thead th{font-weight:400;background:#f7f8fd;font-size:12.5px;line-height:1.5;letter-spacing:0;}
-.vf .ebo thead th:first-child{background:#f7f8fd;}
-.ebo thead th.hist-last{background:#f7f8fd;}
-.ebo thead th.proj-head{background:#f7f8fd;box-shadow:none;}
-.ebo tbody td{line-height:1.5;}
-.ebo tbody td:first-child{font-weight:400;background:#f7f8fd;font-size:12.5px;}
-.ebo td.proj{background:rgba(43,216,194,.055);}
-.vf .ebo tbody tr:hover td:first-child{background:#eff1fa;}
-.mframe .ebo table{font-size:11px;}
-.mframe .ebo thead th{font-size:11px;}
-.mframe .ebo tbody td:first-child{font-size:11px;}
 /* -- B nue : table entierement nue. AUCUNE bordure (ni hairlines de lignes,
    ni cadre, ni filets du bandeau), AUCUN fond (ni L inverse bleu, ni voile
    turquoise) - corps 100% blanc. Seule zone coloree : le bandeau navy plein
@@ -157,12 +139,42 @@ tr.row-sub td.proj{color:var(--muted);}
 /* colonne Indicator sticky : fond BLANC opaque (sans fond, le scroll mobile
    laisserait defiler les colonnes sous le libelle) */
 .vf .ebz tbody td:first-child{font-weight:400;font-size:12.5px;background:#fff;}
+/* la regle de base .vf tbody td.hist-last{color:inherit} l'emporte en
+   specificite et ramenerait la colonne 2025 au noir du body : on refixe */
+.vf .ebz tbody td.hist-last{color:var(--navy);}
 .ebz td.proj{background:transparent;}
 .vf .ebz tbody tr:hover td{background:#fafbfe;}
 .vf .ebz tbody tr:hover td:first-child{background:#fafbfe;}
 .mframe .ebz table{font-size:11px;}
 .mframe .ebz thead th{font-size:11px;}
 .mframe .ebz tbody td:first-child{font-size:11px;}
+/* -- B grise : la B nue + voile turquoise reintroduit sur le CORPS des
+   colonnes prospectives (le bandeau navy reste plein, sans voile), et plus
+   AUCUN bleu dans le corps : toutes les valeurs en gris moyen #64748b, les
+   lignes secondaires en gris plus clair #94a3b8, les libelles Indicator en
+   gris fonce #334155. La hierarchie ne tient qu'a trois niveaux de gris. -- */
+.vf .tbl-wrap.ebg{border:none;border-radius:0;}
+.ebg thead th,.ebg tbody td,.ebg tbody td:first-child{font-family:'Poppins',system-ui,sans-serif;}
+.ebg table{font-size:12.5px;}
+.ebg thead th{font-weight:400;font-size:12.5px;line-height:1.5;letter-spacing:0;
+  background:var(--navy);color:#fff;border:none;box-shadow:none;}
+.vf .ebg thead th:first-child{background:var(--navy);color:#fff;}
+.ebg thead th.hist-last{background:var(--navy);}
+.ebg thead th.proj-head{background:var(--navy);color:#fff;box-shadow:none;}
+.ebg tbody td{line-height:1.5;border:none;background:transparent;color:#64748b;}
+.vf .ebg tbody td:first-child{font-weight:400;font-size:12.5px;background:#fff;color:#334155;}
+/* idem : sans cela la colonne 2025 echapperait au gris (color:inherit) */
+.vf .ebg tbody td.hist-last{color:#64748b;}
+.vf .ebg tr.row-emph td:not(:first-child){font-weight:400;color:#64748b;}
+.vf .ebg tr.row-sub td:not(:first-child){color:#94a3b8;}
+/* voile turquoise : corps uniquement */
+.ebg td.proj{background:rgba(43,216,194,.055);}
+.vf .ebg tbody tr:hover td{background:#fafbfe;}
+.vf .ebg tbody tr:hover td:first-child{background:#fafbfe;}
+.vf .ebg tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
+.mframe .ebg table{font-size:11px;}
+.mframe .ebg thead th{font-size:11px;}
+.mframe .ebg tbody td:first-child{font-size:11px;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
 .vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
 .vf .chev svg{width:12px;height:12px;}
@@ -237,21 +249,21 @@ th.fold-th:hover{background:#000165;}
 <!-- ================= V-FINALE ================= -->
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
-  <h2>B nue — à valider</h2>
-  <p class="intent">Table entièrement nue : <b>aucune bordure</b> (ni filets entre les lignes, ni cadre, ni traits du bandeau) et <b>aucun fond</b> — le L inversé bleu et le voile turquoise des projections disparaissent, le corps est 100&nbsp;% blanc. Seule zone colorée : le <b>bandeau navy plein</b> (#000190) avec les années en blanc, en graisse 400 comme le reste. Trait vertical turquoise 1&nbsp;px conservé entre 2025 et 2026. Acquis : tout Poppins, taille unique 12.5&nbsp;px / 11&nbsp;px mobile, apostrophes 1'766, valeurs secondaires en gris doux, Indicator sticky (fond blanc opaque).</p>
+  <h2>B grise — à valider</h2>
+  <p class="intent">La B nue avec le <b>voile turquoise réintroduit sur le corps</b> des colonnes prospectives (le bandeau navy reste plein, sans voile), et plus <b>aucun bleu dans le corps</b> : toutes les valeurs en gris moyen <b>#64748b</b>, les lignes secondaires (Growth&nbsp;%, EBIT margin, Debt/EBIT, Div. yield) en gris plus clair <b>#94a3b8</b>, les libellés de la colonne Indicator en gris foncé <b>#334155</b>. La hiérarchie ne tient plus qu'à des niveaux de gris. Inchangé : aucune bordure, bandeau navy avec années en blanc, tout Poppins taille unique graisse 400, apostrophes 1'766, trait vertical turquoise, Indicator sticky opaque.</p>
   <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
 
-  <div class="demo-lbl">B nue — desktop</div>
-  <div class="tbl-wrap ebz" id="ebzd"></div>
+  <div class="demo-lbl">B grise — desktop</div>
+  <div class="tbl-wrap ebg" id="ebgd"></div>
 
-  <div class="demo-lbl">B nue — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebz" id="vfm"></div>
+  <div class="demo-lbl">B grise — mobile 375&nbsp;px</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebg" id="vfm"></div>
     <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
 
-  <div class="demo-lbl">Comparaison — B Poppins (L inversé bleu + voile turquoise + bordures)</div>
-  <div class="tbl-wrap ebo" id="ebod"></div>
+  <div class="demo-lbl">Comparaison — B nue (valeurs en navy, corps sans voile)</div>
+  <div class="tbl-wrap ebz" id="ebzd"></div>
 
   <div class="demo-lbl">Archive — B Quattrocento (portée en prod le 21/08)</div>
   <div class="tbl-wrap ebq" id="ebqd"></div>
@@ -427,9 +439,9 @@ function sparkline(vals,w=56,ht=18){
   return s+'</svg>';
 }
 
-/* ---------- V-FINALE : B nue, puis comparaisons ---------- */
+/* ---------- V-FINALE : B grise, puis comparaisons ---------- */
+buildTable(document.getElementById('ebgd'));
 buildTable(document.getElementById('ebzd'));
-buildTable(document.getElementById('ebod'));
 buildTable(document.getElementById('ebqd'));
 buildTable(document.getElementById('vfm'));
 (function(){
