@@ -61,12 +61,13 @@
  ],
  "epsConsensus": {
   "year": 2026,
-  "eps": 7.35,
-  "epsNY": 7.95,
-  "date": "2026-06-09",
-  "source": "Ajusté (non-GAAP, hors PPA/one-offs) - consensus sell-side via MarketScreener/ideal-investisseur.fr",
-  "analystsCount": 33,
-  "analystsCountNY": null
+  "eps": 5.684,
+  "epsNY": 6.434,
+  "epsY2": 7.392,
+  "date": "2026-08-21",
+  "source": "MarketScreener (consensus 23 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 7.40)",
+  "analystsCount": 23,
+  "adjGapPct": 30.2
  },
  "particularites": [],
  "nextEvent": {
@@ -468,6 +469,28 @@
    "date": "2026-07-28",
    "label": "Q2 2026",
    "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 7.35,
+   "epsNY": 7.95,
+   "date": "2026-06-09",
+   "source": "Ajusté (non-GAAP, hors PPA/one-offs) - consensus sell-side via MarketScreener/ideal-investisseur.fr",
+   "analystsCount": 33,
+   "analystsCountNY": null
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-21",
+  "eps": {
+   "2021": 3.28,
+   "2022": 4.83,
+   "2023": 5.08,
+   "2024": 5.13,
+   "2025": 4.98
   }
  }
 }

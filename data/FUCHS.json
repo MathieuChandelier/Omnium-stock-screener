@@ -52,10 +52,13 @@
  ],
  "epsConsensus": {
   "year": 2026,
-  "eps": 2.46,
-  "epsNY": 2.77,
-  "date": "2026-07-08",
-  "source": "Consensus Stockopedia/Vara Research (~19 analystes) ; recoupé avec la guidance EBIT ~450 M€ communiquée le 29/04/2026 et un taux d'imposition normatif ~28,5%"
+  "eps": 2.52,
+  "epsNY": 2.664,
+  "epsY2": 2.857,
+  "date": "2026-08-21",
+  "source": "MarketScreener (consensus 10 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 2.54)",
+  "analystsCount": 10,
+  "adjGapPct": 0.8
  },
  "particularites": [],
  "hypothese": {
@@ -370,5 +373,25 @@
     "format": "brut"
    }
   ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 2.46,
+   "epsNY": 2.77,
+   "date": "2026-07-08",
+   "source": "Consensus Stockopedia/Vara Research (~19 analystes) ; recoupé avec la guidance EBIT ~450 M€ communiquée le 29/04/2026 et un taux d'imposition normatif ~28,5%"
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-21",
+  "eps": {
+   "2021": 1.83,
+   "2022": 1.88,
+   "2023": 2.09,
+   "2024": 2.3,
+   "2025": 2.34
+  }
  }
 }

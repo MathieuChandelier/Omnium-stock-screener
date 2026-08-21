@@ -1,405 +1,428 @@
 {
-  "name": "Lonza Group",
-  "cours": 541.2,
-  "yahooSymbol": "LONN.SW",
-  "dividende": 5.0,
-  "data": [
-    {
-      "year": 2022,
-      "ca": 6223,
-      "ebit": 1357,
-      "net": 1215,
-      "shares": 73.4,
-      "nd": -100,
-      "div": 3.5
-    },
-    {
-      "year": 2023,
-      "ca": 6717,
-      "ebit": 873,
-      "net": 654,
-      "shares": 73.7,
-      "nd": 1100,
-      "div": 3.75
-    },
-    {
-      "year": 2024,
-      "ca": 6600,
-      "ebit": 950,
-      "net": 550,
-      "shares": 72.9,
-      "nd": 1500,
-      "div": 4.0
-    },
-    {
-      "year": 2025,
-      "ca": 6530,
-      "ebit": 1550,
-      "net": 949,
-      "shares": 72.1,
-      "nd": 1700,
-      "div": 5.0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 17.2,
-    "epsNY": 19.8,
-    "date": "2026-07-22",
-    "source": "Objectif de cours analystes ~CHF 650 (Buy) post-T2 26 (TipRanks) ; consensus EPS non retrouve precisement dans les sources disponibles, estimation Omnium basee sur la guidance FY2026 relevee (marge CORE EBITDA 33-34%, croissance CER 11-12%) - a rafraichir avec un consensus formel au prochain point."
+ "name": "Lonza Group",
+ "cours": 541.2,
+ "yahooSymbol": "LONN.SW",
+ "dividende": 5.0,
+ "data": [
+  {
+   "year": 2022,
+   "ca": 6223,
+   "ebit": 1357,
+   "net": 1215,
+   "shares": 73.4,
+   "nd": -100,
+   "div": 3.5
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "FY 26",
-    "date": "2027-01-27"
+  {
+   "year": 2023,
+   "ca": 6717,
+   "ebit": 873,
+   "net": 654,
+   "shares": 73.7,
+   "nd": 1100,
+   "div": 3.75
   },
-  "ownership": {
-    "asOf": "2026-07-23",
-    "insiderPct": 0.5,
-    "insiderDesc": "Aucun actionnaire de controle, flottant proche de 100%, structure a une action = une voix (pas de classe multiple). Detention dirigeante individuelle non significative rapportee. Actionnariat tres largement institutionnel et diversifie a l'echelle internationale.",
-    "insiderSource": "Rapport annuel Lonza (gouvernance) + syntheses tierces (matrixbcg.com, SimplyWallSt)",
-    "notableHolders": [],
-    "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie avec une position notable sur ce titre. Principaux actionnaires connus (non tier-1) : BlackRock (~5-10% selon la source/date), UBS Fund Management Suisse (~3-4%), Norges Bank (~3%), Vanguard Group (~3,6%) - positions institutionnelles passives/quasi-passives, hors perimetre de la watchlist nominative. Titre hors perimetre 13F (cote SIX Swiss Exchange, pas d'ADR US identifie).",
-    "history": []
+  {
+   "year": 2024,
+   "ca": 6600,
+   "ebit": 950,
+   "net": 550,
+   "shares": 72.9,
+   "nd": 1500,
+   "div": 4.0
   },
-  "compliance": {
-    "asOf": "2026-07-23",
-    "items": [],
-    "note": "Aucune allegation de fraude en valeurs mobilieres identifiee dans cette recherche (portee reduite, creation). Un dossier environnemental historique (contamination des sols/eaux souterraines sur le site de Visp, remediation en cours avec installation d'une barriere hydraulique) est documente dans les rapports annuels mais releve de la conformite environnementale, pas de la fraude au sens de ce champ - non repris ici, a surveiller separement si pertinent."
-  },
-  "hypothese": {
-    "date": "2026-08-19",
-    "source": "Creation - Communique de resultats S1 2026 officiel (22/07/2026, 06h30 CET) + rapport S1 2026 + recherche publique (rapports annuels 2022-2025, presse specialisee)",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 3374,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": 8.18,
-          "consensus": null,
-          "basis": "GAAP",
-          "basisNote": "GAAP"
-        },
-        "epsReported": {
-          "actual": 8.18,
-          "basis": "IFRS",
-          "period": "H1 26",
-          "note": "IFRS reported EPS for H1 2026 (continuing + discontinued): net profit CHF 595m, EPS CHF 8.18 vs CHF 5.68 in H1 25. CORE EPS CHF 8.63, +34.0% vs 6.44. Semi-annual reporter - no quarterly EPS print; no formal sell-side consensus captured for the half."
-        }
-      },
-      "guidanceProchainTrimestre": "No quarterly guidance (semi-annual reporter). For H2 26 management explicitly guides to lower percentage growth on tough comparables while absolute sales keep rising above H1: Advanced Synthesis growth and margins normalize (margins around 40% vs 48.1% in H1, the 2025-into-2026 phasing benefit does not repeat), Integrated Biologics absorbs the extended Vacaville CDMO-readiness shutdown partly offset by the Visp 6x20,000L large-scale mammalian start-up, and Specialized Modalities gets a larger Cell & Gene contribution after the return to normal operations late in H1.",
-      "guidanceAnnuelle": "FY26 outlook UPGRADED at the H1 call: CORE EBITDA margin raised to 33-34% (from '>32%'; the CFO explicitly frames 33% as the annual floor), CER sales growth reconfirmed at 11-12% (implies ~6-8% in H2 against a high prior-year base). FX headwind of -2 to -3pp expected on FY reported sales (concentrated in H1, USD-driven). Capex to remain mid-to-high teens as % of sales with some phasing into 2027; >CHF 7bn organic capex through 2030 under strict return criteria (IRR >=15%, ROIC at peak >=30%). Mid-term algorithm unchanged: low-teens CER sales growth on average over time with continuously expanding margins and cash generation. Capital Markets Day in Vacaville in October 2026.",
-      "pointsCles": [
-        "Broad-based beat-quality half: all three platforms grew double-digit CER - Integrated Biologics +10.0% (CHF 1.87bn sales, margin flat at a solid 36.0%), Advanced Synthesis +27.7% (CHF 834m, CORE EBITDA margin 48.1%, +6.8pp, driven by Small Molecules and especially Bioconjugates off a low base; underlying growth low teens), Specialized Modalities +22.6% (CHF 553m, margin 28.0%, +10.7pp on the Microbial rebound and Bioscience; margins now approaching group average). Group: sales CHF 3.4bn +16% CER (+11.2% reported, ~5pp FX headwind), CORE EBITDA CHF 1.2bn (+27.4%), margin 34.8% (+4.4pp), FCF CHF 426m (vs 116m), capex CHF 530m (15.7% of sales vs 21.2%), annualized ROIC 13.2% (~2x WACC per CFO).",
-        "Pure-play CDMO transformation COMPLETED in under 15 months: agreement signed to divest Capsules & Health Ingredients to Lone Star (EV CHF 2.3bn, closing before year-end 2026; CHI now in discontinued operations, H1 25 restated and republished 23 June 2026). CHF 500m of surplus capital earmarked for an accelerated buyback at closing, the balance to deleveraging - the group swings to net cash into 2027.",
-        "Growth pipeline strengthened: long-term strategic collaboration extended with a leading US biopharma spanning all US commercial sites; sixth commercial cell & gene therapy approved in the network; two new ADC investments announced (highly potent payload-linker suites in Visp, ramp-up from 2029; second commercial aseptic ADC filling line in Stein, ramp-up from 2030 with a big-pharma anchor customer, peak sales by mid-2030s); Stein large-scale fill-finish scope broadened to high-value small-molecule drug products (small extra capex, start pushed to 2028); Visp 6x20,000L mammalian asset begins operations in H2 26; Vacaville CDMO-readiness on track (five contracts already offset the Roche run-off through 2028, growth contribution after 2028, FY26 site sales ~CHF 0.6bn flat).",
-        "H2 deliberately framed as normalization, not deterioration: tougher comps and less favorable phasing (mainly Advanced Synthesis), Vacaville extended shutdown a known drag; FY margin floor 33%. Demand backdrop intact - management sees no change in big-pharma outsourcing behavior, US capacity demand particularly high (Portsmouth, Vacaville), large-pharma capex/sales stable at ~5% through 2030, customer mix balanced (~45% of revenue with small/mid biotech). Market nonetheless marked the stock down ~6% on the unchanged revenue guidance."
-      ],
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "IFRS",
-        "source": "Rapport semestriel H1 2026 + communique (22/07/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA S1 3,4 Md CHF (+16,0% CER), CORE EBITDA 1,2 Md (+27,4%), marge 34,8% (+4,4pp), FCF 0,4 Md. Guidance marge relevee a 33-34%, croissance CER inchangee 11-12% (H2 en moderation)."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q1 26",
-        "date": "2026-04-30",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance CER 11-12% confirmee, marge CORE EBITDA guidee >32% (guidance initiale/confirmee au T1, avant le relevement du T2)."
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-22",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Marge CORE EBITDA relevee a 33-34% (depuis >32%), croissance CER confirmee inchangee a 11-12%. Vent contraire de change -2 a -3% sur les ventes attendu pour l'annee pleine."
-      }
-    ],
-    "guidanceLongTerme": "Plan d'investissement organique de plus de 7 Md CHF a horizon 2030 dans le cadre du 'CDMO Organic Growth Model' (intensite de CapEx visee au milieu de la fourchette mid-to-high-teens en % des ventes pour 2026, avec un phasing entre 2026 et 2027). Cadre d'allocation du capital discipline : priorite a l'investissement organique, M&A bolt-on selective, retour de capital excedentaire aux actionnaires (dont les 500 M CHF post-cession CHI). Objectif de notation credit BBB+ maintenu, levier cible mi-terme entre 1,5x et 2,0x net debt/CORE EBITDA (objectif historique, non reconfirme explicitement a ce refresh - a verifier).",
-    "summary": "CDMO pharmaceutique suisse en forte acceleration organique (CER +16% au S1 26 sur les trois Business Platforms), marge relevee pour la deuxieme fois consecutive (33-34% vise pour 2026), achevement de la transformation en CDMO pur jeu via la cession de Capsules & Health Ingredients pour 2,3 Md CHF - point d'attention majeur : discontinuite methodologique entre l'historique (incluant CHI) et les projections 2026+ (hors CHI).",
-    "text": "== THESIS SUMMARY ==\nWorld-leading pharma/biotech CDMO (Integrated Biologics, Advanced Synthesis, Specialized Modalities) riding structural outsourcing growth. H1 26: CORE EBITDA margin guidance RAISED to 33-34% (from >32%) on biologics mix, CER growth held at 11-12% despite a -2/-3% FX headwind on reported sales. The CHI divestment (2.3bn CHF net proceeds; closing end-2026) reshapes the balance sheet: 500M to an accelerated buyback, 1.8bn to deleveraging - net cash through 2026-2027.\n\n== THESIS READ ==\n- The margin raise is mix-quality evidence (biologics utilization), not a one-off. Watch: Integrated Biologics order intake and 2027 capacity ramp (Vacaville).\n- The 2027 EPS dip (16.34 vs 18.47) is the CHI-exit earnings hole before the redeployment compounds - optics, not deterioration. Watch: closing accounts to size the hole precisely.\n- Buyback (500M accelerated) plus net-cash position gives allocation optionality rare in the CDMO space. Watch: bolt-on M&A vs further buybacks.\n\n== SPECIAL FACTORS ==\nBase = IFRS as reported (CORE gap ~2% only this semester, not retreated per user instruction - only true exceptionals). Any CHI disposal GAIN will be excluded as a pure one-off at booking. BRIDGE CAVEAT (flagged): the projected 'other' line is a fitted below-EBIT block (CHI-exit effects, stranded costs, financing swings) - LOW CONFIDENCE, to rebuild at the CHI closing. priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 7,118M CHF, EBIT 1,601M, EPS 18.47 (includes CHI stub); 2027-2030: ~9-10%/yr CER ex-CHI, margin drift, shares -1.4%/yr (buyback). ETR 20%. Watch: CHI closing accounts (bridge rebuild trigger); FX; biologics pricing environment.\n\n== CATALYSTS ==\nCHI closing (end-2026) + accelerated buyback execution; FY26 results (late Jan 2027); Vacaville/capacity utilization milestones; CDMO demand prints from big-pharma outsourcing.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "AN-GUIDANCE-RELEVEE",
-        "moteur": "Guidance FY2026 relevee pour la deuxieme fois consecutive au T2 26 : marge CORE EBITDA 33-34% (depuis >32%), croissance CER confirmee a 11-12% - execution operationnelle forte sur les trois Business Platforms, toutes a deux chiffres de croissance CER au S1.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-CHI-DIVESTITURE",
-        "moteur": "Cession de Capsules & Health Ingredients (CHI) a Lone Star Funds pour 2,3 Md CHF, cloture attendue avant fin 2026 - CHI contribue encore au resultat 2026 (jusqu'a cloture) mais est totalement exclue des projections 2027+, creant une discontinuite de perimetre assumee dans le modele. Plus-value de cession attendue mais non chiffree, traitee comme vrai one-off exclu d'omniumNet.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumNet.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-BUYBACK-500M",
-        "moteur": "500 M CHF de capital excedentaire a retourner via un programme de rachat accelere des la cloture de la cession CHI, en complement du programme de rachat deja en cours depuis 2023 - reduction progressive du nombre d'actions sur l'horizon de projection.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-CAPEX-CROISSANCE-7MD",
-        "moteur": "Plan d'investissement organique de plus de 7 Md CHF a horizon 2030 (extensions ADC a Stein et Visp, capacites mammalian, drug product, bioconjugues, cell & gene) - intensite de CapEx visee au milieu de la fourchette mid-to-high-teens en % des ventes pour 2026, avec normalisation et phasing 2026-2027 ; soutient la trajectoire de croissance CA/EBIT 2027-2030 mais maintient une pression sur le desendettement.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-NORMALISATION-S2",
-        "moteur": "Le management indique explicitement que la croissance et la marge du S2 26 seront plus normalisees que le S1 (phasing favorable au S1 chez Advanced Synthesis en particulier, base de comparaison 2025 plus elevee au S2) - modelise par une deceleration sequentielle de la croissance organique sur la deuxieme moitie de l'annee, sans remettre en cause la guidance annuelle globale.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "AN-CHI-PROCEEDS-DEBT-FINANCIAL",
-        "moteur": "Produit net de cession CHI (2,3 Md CHF) affecte de facon coherente : 500 M CHF au rachat d'actions accelere (voir AN-BUYBACK-500M), le solde de 1,8 Md CHF applique au desendettement a la cloture (attendue fin 2026). Le groupe passe ainsi en position de cash net a fin 2026 et fin 2027 (omniumND negatif), ce qui implique des charges financieres nettes quasi nulles voire un leger produit financier net sur ces deux annees (au lieu de la charge d'interet habituelle sur une dette nette positive) - omniumNet 2026-2027 revise a la hausse en consequence par rapport a un calcul qui aurait fige le ratio de conversion EBIT-net anterieur a la cession. La remontee progressive de la dette nette en territoire positif des 2029-2030 (financement du plan CapEx >7 Md CHF a horizon 2030) restaure une charge financiere nette modeste mais non negligeable.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030",
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 18.47,
-      "2027": 16.34,
-      "2028": 18.81,
-      "2029": 21.3,
-      "2030": 23.82
-    },
-    "omniumCA": {
-      "2026": 7118,
-      "2027": 7830,
-      "2028": 8535,
-      "2029": 9218,
-      "2030": 9863
-    },
-    "omniumEBIT": {
-      "2026": 1601,
-      "2027": 1840,
-      "2028": 2091,
-      "2029": 2305,
-      "2030": 2515
-    },
-    "omniumNet": {
-      "2026": 1330,
-      "2027": 1160,
-      "2028": 1317,
-      "2029": 1470,
-      "2030": 1620
-    },
-    "omniumND": {
-      "2026": -1000,
-      "2027": -500,
-      "2028": -200,
-      "2029": 100,
-      "2030": 300
-    },
-    "omniumShares": {
-      "2026": 72.0,
-      "2027": 71.0,
-      "2028": 70.0,
-      "2029": 69.0,
-      "2030": 68.0
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -60,
-        "other": -304,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 948.8,
-        "netPub": 949,
-        "residual": 0.2,
-        "residualNote": "Below-EBIT block ~-364M at 20% tax: financing plus non-operating items (restructuring/impairment residuals). NOTE: across the projected years the 'other' line is a FITTED below-EBIT block (CHI-perimeter exit effects, stranded costs, financing swings around the 2.3bn CHF disposal proceeds) - LOW CONFIDENCE by construction, to rebuild line-by-line at the CHI closing (end-2026) when the disposal accounting is published. 2026: finNet -40 = interest on the intra-year average debt (the 1.8bn deleveraging lands only at the CHI closing, end-2026); the +102 'other' belongs to the same fitted CHI-transition block."
-      },
-      "2026": {
-        "finNet": -40,
-        "other": 102,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1330.4
-      },
-      "2027": {
-        "finNet": 15,
-        "other": -405,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1160.0
-      },
-      "2028": {
-        "finNet": 5,
-        "other": -450,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1316.8
-      },
-      "2029": {
-        "finNet": 0,
-        "other": -467,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1470.4
-      },
-      "2030": {
-        "finNet": -10,
-        "other": -480,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1620.0
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Revenue growth CER (guided) + CORE EBITDA margin",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-07-22",
-          "type": "guidance_revision",
-          "detail": "CORE EBITDA margin RAISED to 33-34% (from >32%); CER growth confirmed 11-12%; FX headwind -2/-3% on full-year reported sales."
-        }
-      ],
-      "paceCheckpoint": "H1 real: on the CER band with the margin raise - mix (Integrated Biologics) driving the beat.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 0.3,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 1.4,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "CER sales growth approaching 20%",
-          "realizedDisplay": "+21.7% CER",
-          "note": "Initial FY25 guidance (FY24 release, 29/01/2025): CER sales growth approaching 20% (CDMO scope) with CORE EBITDA margin approaching 30%; realized +21.7% CER, margin 31.6% - level +1.4% on the revenue metric, margin also above. Medium confidence on scope (CDMO guide vs group realized, post-CHI exit convergent)."
-        },
-        {
-          "fy": 2024,
-          "beatPct": -0.2,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "flat CER sales (0%)",
-          "realizedDisplay": "-0.2% CER",
-          "note": "Initial FY24 guidance (FY23 release, 26/01/2024): flat CER sales, CORE EBITDA margin in the high twenties; realized -0.2% CER, margin 29.0% - level -0.2%, margin in line."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 11.5,
-        "source": "initial_guidance",
-        "date": "2026-01-28",
-        "note": "TRUE initial FY26 guidance (FY25 release, 28/01/2026): CER revenue growth 11-12% (mid 11.5), CORE EBITDA margin >32%, FX headwind ~-2% flagged. Margin RAISED to 33-34% at Q2 (22/07) while CER growth held."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +0.3% BLENDED (in-progress 0.0 x1/2; FY25 +1.4 and FY24 -0.2 equal-shared). Metric is CER revenue growth (no EPS guidance) - directional only; the margin trajectory (29.0 -> 31.6 -> 33-34 guided) is the stronger signal.",
-      "consensusSource": "Analyst aggregate (Bloomberg/Vontobel refs)",
-      "consensusDate": "2026-07-22",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 11.5,
-        "currentValue": 11.5,
-        "deltaPct": 0.0,
-        "asOf": "2026-07-22",
-        "note": "CER growth held at 11-12% through Q2; the CORE EBITDA margin was raised to 33-34% (from >32%) - projected 0.0 on the primary revenue metric, positive on margin."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-22",
-      "label": "H1 2026",
-      "type": "earnings"
-    },
-    "quarterlyEPS": {
-      "cadence": "semestriel",
-      "PY": [
-        {
-          "label": "S1",
-          "eps": 5.68,
-          "actual": true
-        },
-        {
-          "label": "S2",
-          "eps": 7.48,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "S1",
-          "eps": 8.18,
-          "actual": true
-        },
-        {
-          "label": "S2",
-          "eps": 10.29,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "S1",
-          "eps": 7.24,
-          "actual": false
-        },
-        {
-          "label": "S2",
-          "eps": 9.1,
-          "actual": false
-        }
-      ],
-      "note": "Backfill E5-ter 20/08/2026 (C24). IFRS publie : profit S1 2026 595 M CHF soit 8,18 CHF/action (S1 2025 : 426 M / 5,68). S2 2026 superieur (montee en charge CDMO/ADC), calage sur omniumEPS 18,47 ; 2027 en retrait (voir these fiche)."
-    }
-  },
-  "coherenceQualitative": {
-    "historique": [
-      {
-        "quarter": "H1 26",
-        "date": "2026-07-22",
-        "format": "compresse",
-        "source": "H1 release/call (as exploited at the 23/07 refresh)",
-        "message": "CORE EBITDA margin guidance RAISED to 33-34% (from >32%) on Integrated Biologics mix; CER growth held 11-12%; FX -2/-3% headwind on reported sales. CHI divestment: 2.3bn CHF net proceeds allocated 500M to an accelerated buyback and 1.8bn to deleveraging at closing (end-2026) - the group swings to net cash 2026-2027; any disposal gain will be treated as a pure one-off at booking."
-      }
-    ]
+  {
+   "year": 2025,
+   "ca": 6530,
+   "ebit": 1550,
+   "net": 949,
+   "shares": 72.1,
+   "nd": 1700,
+   "div": 5.0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 17.03,
+  "epsNY": 20.42,
+  "epsY2": 24.2,
+  "date": "2026-08-21",
+  "source": "MarketScreener (consensus 24 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 18.51)",
+  "analystsCount": 24,
+  "adjGapPct": 8.7
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "FY 26",
+  "date": "2027-01-27"
+ },
+ "ownership": {
+  "asOf": "2026-07-23",
+  "insiderPct": 0.5,
+  "insiderDesc": "Aucun actionnaire de controle, flottant proche de 100%, structure a une action = une voix (pas de classe multiple). Detention dirigeante individuelle non significative rapportee. Actionnariat tres largement institutionnel et diversifie a l'echelle internationale.",
+  "insiderSource": "Rapport annuel Lonza (gouvernance) + syntheses tierces (matrixbcg.com, SimplyWallSt)",
+  "notableHolders": [],
+  "coverageNote": "Aucun investisseur de la watchlist tier-1 identifie avec une position notable sur ce titre. Principaux actionnaires connus (non tier-1) : BlackRock (~5-10% selon la source/date), UBS Fund Management Suisse (~3-4%), Norges Bank (~3%), Vanguard Group (~3,6%) - positions institutionnelles passives/quasi-passives, hors perimetre de la watchlist nominative. Titre hors perimetre 13F (cote SIX Swiss Exchange, pas d'ADR US identifie).",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-07-23",
+  "items": [],
+  "note": "Aucune allegation de fraude en valeurs mobilieres identifiee dans cette recherche (portee reduite, creation). Un dossier environnemental historique (contamination des sols/eaux souterraines sur le site de Visp, remediation en cours avec installation d'une barriere hydraulique) est documente dans les rapports annuels mais releve de la conformite environnementale, pas de la fraude au sens de ce champ - non repris ici, a surveiller separement si pertinent."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Creation - Communique de resultats S1 2026 officiel (22/07/2026, 06h30 CET) + rapport S1 2026 + recherche publique (rapports annuels 2022-2025, presse specialisee)",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 3374,
+     "consensus": null
+    },
+    "epsAdj": {
+     "actual": 8.18,
+     "consensus": null,
+     "basis": "GAAP",
+     "basisNote": "GAAP"
+    },
+    "epsReported": {
+     "actual": 8.18,
+     "basis": "IFRS",
+     "period": "H1 26",
+     "note": "IFRS reported EPS for H1 2026 (continuing + discontinued): net profit CHF 595m, EPS CHF 8.18 vs CHF 5.68 in H1 25. CORE EPS CHF 8.63, +34.0% vs 6.44. Semi-annual reporter - no quarterly EPS print; no formal sell-side consensus captured for the half."
+    }
+   },
+   "guidanceProchainTrimestre": "No quarterly guidance (semi-annual reporter). For H2 26 management explicitly guides to lower percentage growth on tough comparables while absolute sales keep rising above H1: Advanced Synthesis growth and margins normalize (margins around 40% vs 48.1% in H1, the 2025-into-2026 phasing benefit does not repeat), Integrated Biologics absorbs the extended Vacaville CDMO-readiness shutdown partly offset by the Visp 6x20,000L large-scale mammalian start-up, and Specialized Modalities gets a larger Cell & Gene contribution after the return to normal operations late in H1.",
+   "guidanceAnnuelle": "FY26 outlook UPGRADED at the H1 call: CORE EBITDA margin raised to 33-34% (from '>32%'; the CFO explicitly frames 33% as the annual floor), CER sales growth reconfirmed at 11-12% (implies ~6-8% in H2 against a high prior-year base). FX headwind of -2 to -3pp expected on FY reported sales (concentrated in H1, USD-driven). Capex to remain mid-to-high teens as % of sales with some phasing into 2027; >CHF 7bn organic capex through 2030 under strict return criteria (IRR >=15%, ROIC at peak >=30%). Mid-term algorithm unchanged: low-teens CER sales growth on average over time with continuously expanding margins and cash generation. Capital Markets Day in Vacaville in October 2026.",
+   "pointsCles": [
+    "Broad-based beat-quality half: all three platforms grew double-digit CER - Integrated Biologics +10.0% (CHF 1.87bn sales, margin flat at a solid 36.0%), Advanced Synthesis +27.7% (CHF 834m, CORE EBITDA margin 48.1%, +6.8pp, driven by Small Molecules and especially Bioconjugates off a low base; underlying growth low teens), Specialized Modalities +22.6% (CHF 553m, margin 28.0%, +10.7pp on the Microbial rebound and Bioscience; margins now approaching group average). Group: sales CHF 3.4bn +16% CER (+11.2% reported, ~5pp FX headwind), CORE EBITDA CHF 1.2bn (+27.4%), margin 34.8% (+4.4pp), FCF CHF 426m (vs 116m), capex CHF 530m (15.7% of sales vs 21.2%), annualized ROIC 13.2% (~2x WACC per CFO).",
+    "Pure-play CDMO transformation COMPLETED in under 15 months: agreement signed to divest Capsules & Health Ingredients to Lone Star (EV CHF 2.3bn, closing before year-end 2026; CHI now in discontinued operations, H1 25 restated and republished 23 June 2026). CHF 500m of surplus capital earmarked for an accelerated buyback at closing, the balance to deleveraging - the group swings to net cash into 2027.",
+    "Growth pipeline strengthened: long-term strategic collaboration extended with a leading US biopharma spanning all US commercial sites; sixth commercial cell & gene therapy approved in the network; two new ADC investments announced (highly potent payload-linker suites in Visp, ramp-up from 2029; second commercial aseptic ADC filling line in Stein, ramp-up from 2030 with a big-pharma anchor customer, peak sales by mid-2030s); Stein large-scale fill-finish scope broadened to high-value small-molecule drug products (small extra capex, start pushed to 2028); Visp 6x20,000L mammalian asset begins operations in H2 26; Vacaville CDMO-readiness on track (five contracts already offset the Roche run-off through 2028, growth contribution after 2028, FY26 site sales ~CHF 0.6bn flat).",
+    "H2 deliberately framed as normalization, not deterioration: tougher comps and less favorable phasing (mainly Advanced Synthesis), Vacaville extended shutdown a known drag; FY margin floor 33%. Demand backdrop intact - management sees no change in big-pharma outsourcing behavior, US capacity demand particularly high (Portsmouth, Vacaville), large-pharma capex/sales stable at ~5% through 2030, customer mix balanced (~45% of revenue with small/mid biotech). Market nonetheless marked the stock down ~6% on the unchanged revenue guidance."
+   ],
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Rapport semestriel H1 2026 + communique (22/07/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 3,4 Md CHF (+16,0% CER), CORE EBITDA 1,2 Md (+27,4%), marge 34,8% (+4,4pp), FCF 0,4 Md. Guidance marge relevee a 33-34%, croissance CER inchangee 11-12% (H2 en moderation)."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q1 26",
+    "date": "2026-04-30",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance CER 11-12% confirmee, marge CORE EBITDA guidee >32% (guidance initiale/confirmee au T1, avant le relevement du T2)."
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-22",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Marge CORE EBITDA relevee a 33-34% (depuis >32%), croissance CER confirmee inchangee a 11-12%. Vent contraire de change -2 a -3% sur les ventes attendu pour l'annee pleine."
+   }
+  ],
+  "guidanceLongTerme": "Plan d'investissement organique de plus de 7 Md CHF a horizon 2030 dans le cadre du 'CDMO Organic Growth Model' (intensite de CapEx visee au milieu de la fourchette mid-to-high-teens en % des ventes pour 2026, avec un phasing entre 2026 et 2027). Cadre d'allocation du capital discipline : priorite a l'investissement organique, M&A bolt-on selective, retour de capital excedentaire aux actionnaires (dont les 500 M CHF post-cession CHI). Objectif de notation credit BBB+ maintenu, levier cible mi-terme entre 1,5x et 2,0x net debt/CORE EBITDA (objectif historique, non reconfirme explicitement a ce refresh - a verifier).",
+  "summary": "CDMO pharmaceutique suisse en forte acceleration organique (CER +16% au S1 26 sur les trois Business Platforms), marge relevee pour la deuxieme fois consecutive (33-34% vise pour 2026), achevement de la transformation en CDMO pur jeu via la cession de Capsules & Health Ingredients pour 2,3 Md CHF - point d'attention majeur : discontinuite methodologique entre l'historique (incluant CHI) et les projections 2026+ (hors CHI).",
+  "text": "== THESIS SUMMARY ==\nWorld-leading pharma/biotech CDMO (Integrated Biologics, Advanced Synthesis, Specialized Modalities) riding structural outsourcing growth. H1 26: CORE EBITDA margin guidance RAISED to 33-34% (from >32%) on biologics mix, CER growth held at 11-12% despite a -2/-3% FX headwind on reported sales. The CHI divestment (2.3bn CHF net proceeds; closing end-2026) reshapes the balance sheet: 500M to an accelerated buyback, 1.8bn to deleveraging - net cash through 2026-2027.\n\n== THESIS READ ==\n- The margin raise is mix-quality evidence (biologics utilization), not a one-off. Watch: Integrated Biologics order intake and 2027 capacity ramp (Vacaville).\n- The 2027 EPS dip (16.34 vs 18.47) is the CHI-exit earnings hole before the redeployment compounds - optics, not deterioration. Watch: closing accounts to size the hole precisely.\n- Buyback (500M accelerated) plus net-cash position gives allocation optionality rare in the CDMO space. Watch: bolt-on M&A vs further buybacks.\n\n== SPECIAL FACTORS ==\nBase = IFRS as reported (CORE gap ~2% only this semester, not retreated per user instruction - only true exceptionals). Any CHI disposal GAIN will be excluded as a pure one-off at booking. BRIDGE CAVEAT (flagged): the projected 'other' line is a fitted below-EBIT block (CHI-exit effects, stranded costs, financing swings) - LOW CONFIDENCE, to rebuild at the CHI closing. priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 7,118M CHF, EBIT 1,601M, EPS 18.47 (includes CHI stub); 2027-2030: ~9-10%/yr CER ex-CHI, margin drift, shares -1.4%/yr (buyback). ETR 20%. Watch: CHI closing accounts (bridge rebuild trigger); FX; biologics pricing environment.\n\n== CATALYSTS ==\nCHI closing (end-2026) + accelerated buyback execution; FY26 results (late Jan 2027); Vacaville/capacity utilization milestones; CDMO demand prints from big-pharma outsourcing.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "AN-GUIDANCE-RELEVEE",
+    "moteur": "Guidance FY2026 relevee pour la deuxieme fois consecutive au T2 26 : marge CORE EBITDA 33-34% (depuis >32%), croissance CER confirmee a 11-12% - execution operationnelle forte sur les trois Business Platforms, toutes a deux chiffres de croissance CER au S1.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-CHI-DIVESTITURE",
+    "moteur": "Cession de Capsules & Health Ingredients (CHI) a Lone Star Funds pour 2,3 Md CHF, cloture attendue avant fin 2026 - CHI contribue encore au resultat 2026 (jusqu'a cloture) mais est totalement exclue des projections 2027+, creant une discontinuite de perimetre assumee dans le modele. Plus-value de cession attendue mais non chiffree, traitee comme vrai one-off exclu d'omniumNet.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-BUYBACK-500M",
+    "moteur": "500 M CHF de capital excedentaire a retourner via un programme de rachat accelere des la cloture de la cession CHI, en complement du programme de rachat deja en cours depuis 2023 - reduction progressive du nombre d'actions sur l'horizon de projection.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-CAPEX-CROISSANCE-7MD",
+    "moteur": "Plan d'investissement organique de plus de 7 Md CHF a horizon 2030 (extensions ADC a Stein et Visp, capacites mammalian, drug product, bioconjugues, cell & gene) - intensite de CapEx visee au milieu de la fourchette mid-to-high-teens en % des ventes pour 2026, avec normalisation et phasing 2026-2027 ; soutient la trajectoire de croissance CA/EBIT 2027-2030 mais maintient une pression sur le desendettement.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-NORMALISATION-S2",
+    "moteur": "Le management indique explicitement que la croissance et la marge du S2 26 seront plus normalisees que le S1 (phasing favorable au S1 chez Advanced Synthesis en particulier, base de comparaison 2025 plus elevee au S2) - modelise par une deceleration sequentielle de la croissance organique sur la deuxieme moitie de l'annee, sans remettre en cause la guidance annuelle globale.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "AN-CHI-PROCEEDS-DEBT-FINANCIAL",
+    "moteur": "Produit net de cession CHI (2,3 Md CHF) affecte de facon coherente : 500 M CHF au rachat d'actions accelere (voir AN-BUYBACK-500M), le solde de 1,8 Md CHF applique au desendettement a la cloture (attendue fin 2026). Le groupe passe ainsi en position de cash net a fin 2026 et fin 2027 (omniumND negatif), ce qui implique des charges financieres nettes quasi nulles voire un leger produit financier net sur ces deux annees (au lieu de la charge d'interet habituelle sur une dette nette positive) - omniumNet 2026-2027 revise a la hausse en consequence par rapport a un calcul qui aurait fige le ratio de conversion EBIT-net anterieur a la cession. La remontee progressive de la dette nette en territoire positif des 2029-2030 (financement du plan CapEx >7 Md CHF a horizon 2030) restaure une charge financiere nette modeste mais non negligeable.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030",
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 18.47,
+   "2027": 16.34,
+   "2028": 18.81,
+   "2029": 21.3,
+   "2030": 23.82
+  },
+  "omniumCA": {
+   "2026": 7118,
+   "2027": 7830,
+   "2028": 8535,
+   "2029": 9218,
+   "2030": 9863
+  },
+  "omniumEBIT": {
+   "2026": 1601,
+   "2027": 1840,
+   "2028": 2091,
+   "2029": 2305,
+   "2030": 2515
+  },
+  "omniumNet": {
+   "2026": 1330,
+   "2027": 1160,
+   "2028": 1317,
+   "2029": 1470,
+   "2030": 1620
+  },
+  "omniumND": {
+   "2026": -1000,
+   "2027": -500,
+   "2028": -200,
+   "2029": 100,
+   "2030": 300
+  },
+  "omniumShares": {
+   "2026": 72.0,
+   "2027": 71.0,
+   "2028": 70.0,
+   "2029": 69.0,
+   "2030": 68.0
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -60,
+    "other": -304,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 948.8,
+    "netPub": 949,
+    "residual": 0.2,
+    "residualNote": "Below-EBIT block ~-364M at 20% tax: financing plus non-operating items (restructuring/impairment residuals). NOTE: across the projected years the 'other' line is a FITTED below-EBIT block (CHI-perimeter exit effects, stranded costs, financing swings around the 2.3bn CHF disposal proceeds) - LOW CONFIDENCE by construction, to rebuild line-by-line at the CHI closing (end-2026) when the disposal accounting is published. 2026: finNet -40 = interest on the intra-year average debt (the 1.8bn deleveraging lands only at the CHI closing, end-2026); the +102 'other' belongs to the same fitted CHI-transition block."
+   },
+   "2026": {
+    "finNet": -40,
+    "other": 102,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1330.4
+   },
+   "2027": {
+    "finNet": 15,
+    "other": -405,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1160.0
+   },
+   "2028": {
+    "finNet": 5,
+    "other": -450,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1316.8
+   },
+   "2029": {
+    "finNet": 0,
+    "other": -467,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1470.4
+   },
+   "2030": {
+    "finNet": -10,
+    "other": -480,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1620.0
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Revenue growth CER (guided) + CORE EBITDA margin",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-22",
+     "type": "guidance_revision",
+     "detail": "CORE EBITDA margin RAISED to 33-34% (from >32%); CER growth confirmed 11-12%; FX headwind -2/-3% on full-year reported sales."
+    }
+   ],
+   "paceCheckpoint": "H1 real: on the CER band with the margin raise - mix (Integrated Biologics) driving the beat.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 0.3,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 1.4,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "CER sales growth approaching 20%",
+     "realizedDisplay": "+21.7% CER",
+     "note": "Initial FY25 guidance (FY24 release, 29/01/2025): CER sales growth approaching 20% (CDMO scope) with CORE EBITDA margin approaching 30%; realized +21.7% CER, margin 31.6% - level +1.4% on the revenue metric, margin also above. Medium confidence on scope (CDMO guide vs group realized, post-CHI exit convergent)."
+    },
+    {
+     "fy": 2024,
+     "beatPct": -0.2,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "flat CER sales (0%)",
+     "realizedDisplay": "-0.2% CER",
+     "note": "Initial FY24 guidance (FY23 release, 26/01/2024): flat CER sales, CORE EBITDA margin in the high twenties; realized -0.2% CER, margin 29.0% - level -0.2%, margin in line."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 11.5,
+    "source": "initial_guidance",
+    "date": "2026-01-28",
+    "note": "TRUE initial FY26 guidance (FY25 release, 28/01/2026): CER revenue growth 11-12% (mid 11.5), CORE EBITDA margin >32%, FX headwind ~-2% flagged. Margin RAISED to 33-34% at Q2 (22/07) while CER growth held."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +0.3% BLENDED (in-progress 0.0 x1/2; FY25 +1.4 and FY24 -0.2 equal-shared). Metric is CER revenue growth (no EPS guidance) - directional only; the margin trajectory (29.0 -> 31.6 -> 33-34 guided) is the stronger signal.",
+   "consensusSource": "Analyst aggregate (Bloomberg/Vontobel refs)",
+   "consensusDate": "2026-07-22",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 11.5,
+    "currentValue": 11.5,
+    "deltaPct": 0.0,
+    "asOf": "2026-07-22",
+    "note": "CER growth held at 11-12% through Q2; the CORE EBITDA margin was raised to 33-34% (from >32%) - projected 0.0 on the primary revenue metric, positive on margin."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-22",
+   "label": "H1 2026",
+   "type": "earnings"
+  },
+  "quarterlyEPS": {
+   "cadence": "semestriel",
+   "PY": [
+    {
+     "label": "S1",
+     "eps": 5.68,
+     "actual": true
+    },
+    {
+     "label": "S2",
+     "eps": 7.48,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "S1",
+     "eps": 8.18,
+     "actual": true
+    },
+    {
+     "label": "S2",
+     "eps": 10.29,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "S1",
+     "eps": 7.24,
+     "actual": false
+    },
+    {
+     "label": "S2",
+     "eps": 9.1,
+     "actual": false
+    }
+   ],
+   "note": "Backfill E5-ter 20/08/2026 (C24). IFRS publie : profit S1 2026 595 M CHF soit 8,18 CHF/action (S1 2025 : 426 M / 5,68). S2 2026 superieur (montee en charge CDMO/ADC), calage sur omniumEPS 18,47 ; 2027 en retrait (voir these fiche)."
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "H1 26",
+    "date": "2026-07-22",
+    "format": "compresse",
+    "source": "H1 release/call (as exploited at the 23/07 refresh)",
+    "message": "CORE EBITDA margin guidance RAISED to 33-34% (from >32%) on Integrated Biologics mix; CER growth held 11-12%; FX -2/-3% headwind on reported sales. CHI divestment: 2.3bn CHF net proceeds allocated 500M to an accelerated buyback and 1.8bn to deleveraging at closing (end-2026) - the group swings to net cash 2026-2027; any disposal gain will be treated as a pure one-off at booking."
+   }
+  ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 17.2,
+   "epsNY": 19.8,
+   "date": "2026-07-22",
+   "source": "Objectif de cours analystes ~CHF 650 (Buy) post-T2 26 (TipRanks) ; consensus EPS non retrouve precisement dans les sources disponibles, estimation Omnium basee sur la guidance FY2026 relevee (marge CORE EBITDA 33-34%, croissance CER 11-12%) - a rafraichir avec un consensus formel au prochain point."
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-21",
+  "eps": {
+   "2021": 39.52,
+   "2022": 16.34,
+   "2023": 8.88,
+   "2024": 8.92,
+   "2025": 13.51
+  }
+ }
 }

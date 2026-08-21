@@ -1,7 +1,7 @@
 {
  "_meta": {
   "generatedAt": "2026-08-20",
-  "note": "File des archives transcripts a enrichir (seuil doctrine : segments + guidance + >=5 echanges Q&A nominatifs). Entretenu par les boucles de collecte : une entree passe a status 'ok' (ou disparait) quand l'archive Drive est reconstruite. CPRT traite le 20/08/2026 (Q2+Q3 FY26 reconstruits depuis Seeking Alpha)."
+  "note": "File des archives transcripts a enrichir (seuil doctrine : segments + guidance + >=5 echanges Q&A nominatifs). Entretenu par les boucles de collecte : une entree passe a status 'ok' (ou disparait) quand l'archive Drive est reconstruite. CPRT traite le 20/08/2026 (Q2+Q3 FY26 reconstruits depuis Seeking Alpha). | Section 'consensus' (21/08/2026) : entrees typees {ticker, need, blockedBy, blockedDate, note} entretenues par les boucles - blockedBy: 'quota_marketscreener'|'quota_zonebourse' (blocage journalier, le panneau app bascule seul en 'relancer maintenant' au changement de date) ou 'source_absente' (cascade complete epuisee -> saisie manuelle). Toute entree dont le ticker quitte data/manifest.json est ignoree par l'app (scalabilite)."
  },
  "transcripts": [
   {
@@ -10,5 +10,6 @@
    "status": "a_recollecter",
    "note": "archive de la campagne initiale (15/08) sous le seuil de richesse - a reconstruire depuis le transcript integral"
   }
- ]
+ ],
+ "consensus": []
 }

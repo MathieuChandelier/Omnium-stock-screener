@@ -4636,6 +4636,9 @@ function calPillState(){
   // Fenetre stricte d'UN MOIS (J+31 depuis le run) et DEDUP : un
   // evenement deja accepte ne se re-propose JAMAIS (id stable).
   let cands=calUpcoming(cc&&cc.events);
+  // SCALABILITE (21/08/2026) : un titre retire du portefeuille ne propose
+  // plus jamais d'evenement — filtre manifest sur les candidats.
+  cands=cands.filter(e=>!e.ticker||state.tickers[e.ticker]);
   if(gen){
     const lim=new Date(new Date(gen.slice(0,10)+'T00:00:00Z').getTime()+31*86400e3).toISOString().slice(0,10);
     cands=cands.filter(e=>e.date<=lim);
@@ -4670,6 +4673,21 @@ function calGoogleLink(cls){
   return `<a href="${href}" target="_blank" rel="noopener" style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);text-decoration:none;text-transform:none;letter-spacing:0;" title="One-time: adds the Omnium Market Calendar feed to your Google Calendar. Every event you tick then syncs on its own.">Add to Google Calendar</a>`;
 }
 function calIsSelected(id){ return (_calData.selected||[]).some(e=>e&&e.id===id); }
+// SCALABILITE (21/08/2026) : purge des evenements deja COCHES dont le
+// titre a quitte le portefeuille — cote client ET cote flux .ics (le
+// calPost('remove') retire l'evenement du calendar_store, Google le
+// desynchronise au prochain rafraichissement du flux). Une passe par
+// session, apres le chargement des fiches.
+let _calPrunedRemoved=false;
+function calPruneRemovedTickers(){
+  if(_calPrunedRemoved||!state.tickers||!Object.keys(state.tickers).length) return;
+  _calPrunedRemoved=true;
+  const gone=(_calData.selected||[]).filter(e=>e&&e.ticker&&!state.tickers[e.ticker]);
+  if(!gone.length) return;
+  _calData.selected=_calData.selected.filter(e=>!(e&&e.ticker&&!state.tickers[e.ticker]));
+  gone.forEach(e=>calPost('remove',{id:e.id}));
+  if(_calRemote!==true) _calLocalSave();
+}
 function calToggleEvent(id){
   const st=calPillState();
   const ev=(st.cands||[]).find(e=>e.id===id)||( _calData.selected||[]).find(e=>e.id===id);
@@ -4715,44 +4733,86 @@ function toggleActionRow(k){ _actRowOpen=(_actRowOpen===k?null:k); renderActions
 //   data/sourceGaps.json (archives Drive sous le seuil de richesse,
 //   entretenues par les boucles de collecte).
 function computeSourceGaps(){
+  // SCALABILITE (21/08/2026) : TOUT est filtre par le manifest — un titre
+  // retire du portefeuille disparait de chaque groupe, y compris les
+  // entrees de data/sourceGaps.json qui le mentionnent encore.
   const cons=[], trans=[];
   const today=new Date();
+  const todayIso=today.toISOString().slice(0,10);
+  // Meta de blocage par titre (data/sourceGaps.json, section OPTIONNELLE
+  // "consensus" entretenue par les boucles) : blockedBy = quota|source_absente.
+  const consMeta={};
+  (state.sourceGaps?.consensus||[]).forEach(g=>{
+    if(g&&g.ticker&&state.tickers[g.ticker]) consMeta[g.ticker]=g;
+  });
   Object.entries(state.tickers).forEach(([tk,d])=>{
     const co=d.epsConsensus||null;
     const miss=[];
-    if(!co||!(+co.eps>0)) miss.push('eps CY');
+    // Un consensus NEGATIF est un consensus valide (emetteur en perte,
+    // ex. SNAP -0.07) : seul null/absent/non-numerique compte comme trou
+    // (faux positif corrige le 21/08/2026 - l'ancien test eps>0 rangeait
+    // les loss-makers en gap permanent).
+    const has=v=>v!=null&&isFinite(+v);
+    if(!co||!has(co.eps)) miss.push('eps CY');
     else{
-      if(!(+co.epsNY>0)) miss.push('epsNY');
-      if(!(+co.epsY2>0)) miss.push('epsY2');
+      if(!has(co.epsNY)) miss.push('epsNY');
+      if(!has(co.epsY2)) miss.push('epsY2');
       const dt=co.date?new Date(String(co.date).slice(0,10)):null;
       if(dt&&isFinite(dt)&&(today-dt)/864e5>45) miss.push(`stale ${Math.round((today-dt)/864e5)} j`);
     }
-    if(miss.length) cons.push({tk, detail:miss.join(' · ')});
+    if(miss.length){
+      const m=consMeta[tk]||null;
+      // Typage du cas : pilote le sous-groupe du panneau et le prompt associe.
+      let kase='fetch';
+      if(m&&m.blockedBy==='source_absente') kase='manual';
+      else if(m&&String(m.blockedBy||'').startsWith('quota')) kase=(m.blockedDate===todayIso)?'quota_today':'quota_reset';
+      cons.push({tk, detail:miss.join(' · ')+(m&&m.note?` — ${m.note}`:''), kase});
+    }
     const dc=d.hypothese?.dernierCall;
     if(dc&&dc.transcriptAnalyse===false)
       trans.push({tk, detail:`${(dc.quarter||'dernier trimestre')} — transcript non lu au refresh`});
   });
   (state.sourceGaps?.transcripts||[]).forEach(g=>{
-    if(g&&g.ticker&&g.status!=='ok'&&!trans.some(t=>t.tk===g.ticker))
+    if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok'&&!trans.some(t=>t.tk===g.ticker))
       trans.push({tk:g.ticker, detail:`${g.event||''} — ${g.note||'archive sous le seuil de richesse'}`});
   });
   cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk));
   return {cons, trans, total:cons.length+trans.length};
 }
+// Panneau par CAS (21/08/2026) : chaque famille de blocage porte sa propre
+// action, avec le prompt LLM exact pret a coller — plus un texte generique
+// unique. Cas couverts : transcripts (Seeking Alpha via Claude in Chrome),
+// consensus a relancer (MarketScreener navigateur), consensus bloque par
+// QUOTA JOURNALIER (relancable des le lendemain — le panneau bascule tout
+// seul de "epuise aujourd'hui" a "quota reinitialise" au changement de
+// date), consensus en SAISIE MANUELLE (cascade epuisee, ex. Lonza).
 function buildSourceGapsPanel(g){
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
   const list=(items)=>items.map(i=>`<div style="display:grid;grid-template-columns:110px 1fr;gap:8px;font-family:'Poppins',sans-serif;font-size:9.5px;line-height:1.6;"><b style="color:var(--navy);">${esc(i.tk)}</b><span style="color:var(--muted);">${esc(i.detail)}</span></div>`).join('');
-  const req=[
-    'Boucle de collecte des donnees sources manquantes (Chrome connecte pour Seeking Alpha) :',
-    g.trans.length?`\n1) TRANSCRIPTS (cascade doctrine, seuil de richesse : segments + guidance + >=5 echanges Q&A nominatifs) — recollecte et archive sur le Drive (transcript/<TITRE>/) :\n${g.trans.map(t=>`- ${t.tk} : ${t.detail}`).join('\n')}`:'',
-    g.cons.length?`\n2) CONSENSUS 3 ANS (stockanalysis puis MarketScreener via navigateur, extrapolation au-dela) — complete epsConsensus {eps, epsNY, epsY2, date, source} :\n${g.cons.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}`:'',
-    '\nEchec apres cascade complete = me le signaler explicitement (je fournis la valeur).'
-  ].filter(Boolean).join('\n');
-  return `<div class="act-grp">
-      ${g.trans.length?`<div class="act-grp-t">Transcripts (${g.trans.length})</div>${list(g.trans)}`:''}
-      ${g.cons.length?`<div class="act-grp-t" style="margin-top:${g.trans.length?'10px':'0'};">Consensus (${g.cons.length})</div>${list(g.cons)}`:''}
-      <div class="act-grp-w" style="margin-top:10px;">Texte à coller pour lancer la boucle :</div>
-      <div class="act-req">${esc(req)}</div>
+  const tks=items=>items.map(i=>i.tk).join(', ');
+  const sect=(title,items,note,prompt,first)=> items.length?`
+      <div class="act-grp-t" style="margin-top:${first?'0':'12px'};">${title} (${items.length})</div>
+      ${note?`<div style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.6;margin:2px 0 6px;">${note}</div>`:''}
+      ${list(items)}
+      <div class="act-grp-w" style="margin-top:8px;">Paste to run this exact action:</div>
+      <div class="act-req">${esc(prompt)}</div>`:'';
+  const cFetch=g.cons.filter(c=>c.kase==='fetch');
+  const cQuotaT=g.cons.filter(c=>c.kase==='quota_today');
+  const cQuotaR=g.cons.filter(c=>c.kase==='quota_reset');
+  const cManual=g.cons.filter(c=>c.kase==='manual');
+  let first=true; const S=[];
+  if(g.trans.length){ S.push(sect('Transcripts — rebuild from Seeking Alpha', g.trans, 'Requires the user’s signed-in Chrome session (Claude in Chrome).',
+    `Recollecte les transcripts suivants via Seeking Alpha DANS MA SESSION CHROME CONNECTEE (Claude in Chrome — jamais d'identifiants), cascade doctrine si SA ne couvre pas (Motley Fool US, investing.com/stockanalysis-Quartr pour l'Europe), seuil de richesse : segments + guidance + >=5 echanges Q&A nominatifs. Archive chaque synthese dans le Drive partage "Omnium Stock-screener" (transcript/<TITRE>/, id racine 1difkU7g9LwDTXNZMyX8nXwRaLtZdvYmo), mets a jour dernierCall et retire l'entree de data/sourceGaps.json :\n${g.trans.map(t=>`- ${t.tk} : ${t.detail}`).join('\n')}`, first)); first=false; }
+  if(cFetch.length){ S.push(sect('Consensus — fetch now', cFetch, null,
+    `Recupere le consensus EPS 3 exercices (CY/CY+1/CY+2) pour les titres suivants : MarketScreener VIA NAVIGATEUR en source primaire (les 3 annees chez lui, ligne EPS ancree GAAP, jamais de melange de sources), Zonebourse en repli de quota, stockanalysis en curl UNIQUEMENT pour adjGapPct, realises 5 ans -> externalActuals. Applique la regle des trois strategies d'acces avant de conclure a une absence. Ecris epsConsensus {eps, epsNY, epsY2, date, source, analystsCount} en archivant l'ancien dans epsConsensusHistory :\n${cFetch.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}`, first)); first=false; }
+  if(cQuotaR.length){ S.push(sect('Consensus — daily quota has RESET, relaunch', cQuotaR, 'The free MarketScreener/Zonebourse daily quota blocked these yesterday or earlier — counters reset overnight, this can run now.',
+    `Le quota journalier MarketScreener/Zonebourse est reinitialise : relance MAINTENANT la boucle consensus 3 exercices (MarketScreener via navigateur, Zonebourse en repli, stockanalysis pour adjGapPct, externalActuals au passage) pour :\n${cQuotaR.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}\nEfface l'entree "consensus" correspondante de data/sourceGaps.json une fois la fiche servie.`, first)); first=false; }
+  if(cQuotaT.length){ S.push(sect('Consensus — daily quota exhausted TODAY, relaunch tomorrow', cQuotaT, 'Free-tier daily cap hit today. Relaunching now would burn requests for nothing — come back after midnight (the prompt below stays valid).',
+    `[A lancer apres minuit] Le quota journalier MarketScreener/Zonebourse etait epuise le ${new Date().toISOString().slice(0,10)} : reprends la boucle consensus 3 exercices (MarketScreener via navigateur en primaire, Zonebourse en repli, stockanalysis pour adjGapPct, externalActuals au passage) pour :\n${cQuotaT.map(c=>`- ${c.tk} : ${c.detail}`).join('\n')}\nEfface l'entree "consensus" correspondante de data/sourceGaps.json une fois la fiche servie.`, first)); first=false; }
+  if(cManual.length){ S.push(sect('Consensus — manual input needed', cManual, 'The full cascade (all ranks, all three access strategies) failed for these — the assistant must not invent a value.',
+    `Les titres suivants ont epuise la cascade consensus complete sans resultat. Je te fournis les valeurs ci-dessous — integre-les dans epsConsensus (archive l'ancien dans epsConsensusHistory, source = "fourni par l'utilisateur (date)") puis efface l'entree de data/sourceGaps.json :\n${cManual.map(c=>`- ${c.tk} : ${c.detail} -> eps 2026 = ?, eps 2027 = ?, eps 2028 = ?`).join('\n')}`, first)); first=false; }
+  return `<div class="act-grp">${S.join('')}
+      <div style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.5;">Failure after a full cascade must be reported back explicitly — never a silent null. Removing a ticker from the portfolio clears its rows here automatically.</div>
     </div>`;
 }
 
@@ -4829,6 +4889,7 @@ function peVsAverageExtremes(nEach){
 function renderMarketCalendar(){
   const wrap=document.getElementById('market-calendar-wrap');
   if(!wrap) return;
+  calPruneRemovedTickers();
   const esc=t=>(t||'').toString().replace(/</g,'&lt;');
 
   // ── Volet gauche : Market Calendar - B1 "pastilles de date" (20/08).

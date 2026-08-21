@@ -1,436 +1,459 @@
 {
-  "name": "Straumann Group",
-  "cours": 102.35,
-  "yahooSymbol": "STMN.SW",
-  "dividende": 1.0,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 2022,
-      "ebit": 553.3,
-      "net": 396.1,
-      "shares": 159.1,
-      "nd": -376,
-      "div": 0.675
-    },
-    {
-      "year": 2022,
-      "ca": 2321,
-      "ebit": 602.6,
-      "net": 434.8,
-      "shares": 159.4,
-      "nd": -208,
-      "div": 0.8
-    },
-    {
-      "year": 2023,
-      "ca": 2412,
-      "ebit": 606.4,
-      "net": 246.1,
-      "shares": 159.4,
-      "nd": -172,
-      "div": 0.85
-    },
-    {
-      "year": 2024,
-      "ca": 2503.9,
-      "ebit": 601.0,
-      "net": 388.3,
-      "shares": 159.4,
-      "nd": -119,
-      "div": 0.95
-    },
-    {
-      "year": 2025,
-      "ca": 2605.4,
-      "ebit": 557.5,
-      "net": 363.0,
-      "shares": 159.6,
-      "nd": -136,
-      "div": 1.0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 3.04,
-    "epsNY": 3.62,
-    "date": "2026-08-14",
-    "source": "Consensus sell-side, base majoritairement ajustee/core - MarketScreener",
-    "analystsCount": 19
+ "name": "Straumann Group",
+ "cours": 102.35,
+ "yahooSymbol": "STMN.SW",
+ "dividende": 1.0,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 2022,
+   "ebit": 553.3,
+   "net": 396.1,
+   "shares": 159.1,
+   "nd": -376,
+   "div": 0.675
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "H1 26",
-    "date": "2026-08-19"
+  {
+   "year": 2022,
+   "ca": 2321,
+   "ebit": 602.6,
+   "net": 434.8,
+   "shares": 159.4,
+   "nd": -208,
+   "div": 0.8
   },
-  "ownership": {
-    "asOf": "2026-08-14",
-    "insiderPct": 16,
-    "insiderDesc": "Thomas Straumann (famille fondatrice) reste le premier actionnaire individuel identifie ; l'ensemble des dirigeants et de la famille fondatrice detiendrait environ 32% du capital au global selon les dernieres agregations disponibles.",
-    "insiderSource": "Agregateurs (Yahoo Finance/Simply Wall St) a partir des dernieres notifications de participations significatives SIX/FINMA - pas de proxy statement SEC pour ce titre suisse, seule corroboration disponible a ce stade.",
-    "notableHolders": [],
-    "coverageNote": "Titre cote exclusivement sur SIX Swiss Exchange (hors NYSE/Nasdaq) : hors perimetre de declaration Form 13F (reserve aux gerants americains sur valeurs cotees aux Etats-Unis), aucune recherche de seuils AMF/FINMA equivalents tentee au-dela de la detention founder ci-dessus, conformement au perimetre assume du champ.",
-    "history": []
+  {
+   "year": 2023,
+   "ca": 2412,
+   "ebit": 606.4,
+   "net": 246.1,
+   "shares": 159.4,
+   "nd": -172,
+   "div": 0.85
   },
-  "compliance": {
-    "asOf": "2026-08-14",
-    "items": [],
-    "note": "Aucune fraude averee, enquete reglementaire ou allegation de fraude identifiee pour Straumann Holding AG lors de cette recherche (pas d'action SEC/FINMA trouvee, pas de rapport de vendeur a decouvert activiste). Un litige extraordinaire pese pour CHF 25-28 M/an sur le resultat 2024-2025 selon la reconciliation IFRS->core du rapport annuel, mais relève du contentieux commercial/propriete intellectuelle et non d'une allegation de fraude - hors perimetre de ce champ, voir hypothese.text (PARAMETRES) pour le suivi."
+  {
+   "year": 2024,
+   "ca": 2503.9,
+   "ebit": 601.0,
+   "net": 388.3,
+   "shares": 159.4,
+   "nd": -119,
+   "div": 0.95
   },
-  "coherenceQualitative": {
-    "asOf": "2026-04-29",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-04-29",
-        "format": "brut",
-        "clesRetenues": [
-          "Q VBP Chine - timing de mise en oeuvre : le management n'a aucune mise a jour officielle, evoque une possible implementation en S2 2026, avec normalisation des flux patients et redemarrage des commandes distributeurs.",
-          "Q Risque de trou d'air de demande en Chine si le VBP tarde : le CEO ecarte ce risque, les patients continuant de se faire traiter tant que le VBP parait moins probable a court terme.",
-          "Q Moteurs de marge 2026 : la CFO confirme que les moteurs restent inchanges - transformation de l'activite orthodontie et localisation de la fabrication en Chine en positif, volatilite FX et tarifs douaniers surveilles en externe.",
-          "Q Croissance en Amerique latine : le CEO l'attribue essentiellement aux volumes, portee par le developpement des implants challenger dans toute la region via les filiales locales."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "cmd_2030_targets",
-        "quarterOrigine": "CMD nov. 2025",
-        "engagement": "Cible ~10% de CAGR de croissance organique du CA et +40/50 pb de marge EBIT core par an sur 2026-2030.",
-        "echeance": "2030-Q4",
-        "statut": "en_cours"
-      },
-      {
-        "id": "clearcorrect_breakeven",
-        "quarterOrigine": "T1 26",
-        "engagement": "Pertes de ClearCorrect (aligneurs) en voie de reduction de moitie dans le cadre de la transformation de l'activite orthodontie.",
-        "echeance": "2026-Q4",
-        "statut": "en_cours"
-      }
-    ]
-  },
-  "hypothese": {
-    "date": "2026-08-19",
-    "source": "Creation - Communique + transcript T1 2026 (29/04/2026), rapport annuel/financier FY2025, ad-hoc relevement de guidance (17/06/2026), CMD (25/11/2025)",
-    "dernierCall": {
-      "quarter": "H1 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1379.5,
-          "consensus": null
-        },
-        "epsAdj": {
-          "actual": 1.64,
-          "consensus": null,
-          "basis": "non-GAAP",
-          "note": "Core (non-GAAP) basic EPS CHF 1.64 for H1 26 (core net profit CHF 262M, 19% margin, +15.7% cc). No half-year sell-side consensus captured: the street consensus tracked in this file is annual (core basis)."
-        },
-        "epsReported": {
-          "actual": 1.57,
-          "basis": "IFRS",
-          "period": "H1 26",
-          "note": "Reported IFRS basic EPS CHF 1.57 for H1 2026 (IFRS net profit CHF 250.7M on revenue of CHF 1,379.5M), from the 19/08/2026 half-year release. Gap to core EPS (CHF 1.64) is a contained CHF 11M after-tax non-core block (M&A effects and legal costs, partly offset by US tariff refunds); IFRS gross margin (72.0%) even exceeds core (70.5%) on those refunds."
-        }
-      },
-      "guidanceProchainTrimestre": "No quarterly guidance (Straumann guides on a full-year basis only). Next print: Q3 2026 organic growth (autumn), still to be presented by outgoing CEO Daniellot before the December handover to Christopher Norbye; China VBP 2.0 tendering could start in H2 2026 with operational implementation expected early 2027.",
-      "guidanceAnnuelle": "FY26 outlook CONFIRMED at the H1 call (19/08/2026) after the 17/06/2026 ad-hoc raise: high single-digit organic revenue growth and core EBIT margin improvement of ~140-170bp at constant 2025 FX (vs +30/60bp initial February guidance). At July spot rates FX remains an expected 80-100bp headwind on the reported core EBIT margin. Management quantifies at least 2/3 of the margin upgrade as structural (opex discipline with flat headcount, manufacturing footprint incl. the fully operational Shanghai campus, procurement), the balance from milder US tariffs and the delayed VBP 2.0. CMD 2030 ambition reaffirmed unchanged (~10% organic CAGR, +40-50bp core EBIT margin per year on average, explicitly endorsed by the incoming CEO); ClearCorrect breakeven still targeted for end-2027.",
-      "pointsCles": [
-        "CEO transition announced: Guillaume Daniellot steps down end-2026 after 7 years; external successor Christopher Norbye (ASSA ABLOY divisional CEO background, 8 years at Ossur early career) takes over in December and has explicitly endorsed the 2030 midterm guidance - main new watch item (execution continuity, management retention).",
-        "Broad-based acceleration: Q2 organic +8.5% (H1 +7.8%, revenue CHF 1,379.5M, +2.3% in CHF) with every region contributing - EMEA +8.6%, North America +8.4%, APAC +7.4% (ex-China +25%), LatAm +11.8% (H1 +15.4%); China improving sequentially ahead of VBP 2.0 (operational start expected early 2027, management sees max -5% to -15% ASP impact and a low comparison base since Q3 2025).",
-        "Margin delivery ahead of plan: core EBIT margin 25.7% reported / 26.9% at constant 2025 FX (+90bp comparable), driven by 130bp of opex efficiency with flat headcount on ~8% growth; core gross margin 70.5% (US tariffs -60bp, one-off Villeret equipment write-down -30bp); FCF +49% to CHF 169M (12.2% of revenue) as the heavy capex cycle ends.",
-        "Digital flywheel compounding: group estimates ~1/4 to 1/3 of global intraoral scanner unit sales over the last 12 months (SIRIOS X3-led), double-digit growth of the AXS connected-user base; iEXCEL now ~40% of premium implant volumes with no slowdown attributed to Nobel S-Line; ClearCorrect transformation on track for breakeven by end-2027."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "IFRS",
-        "source": "Rapport semestriel H1 2026 + communique (19/08/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA S1 1,4 Md CHF (+7,8% organique; T2 +8,5%), core EBIT margin 26,9% cc (+90bp), FCF 169 M (+49%). Resultat NET sous les attentes sur couts one-off (juridique + M&A) - ecart core/IFRS a suivre. Guidance FY26 maintenue (organique high-single-digit, +140/170bp)."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "T1 26",
-        "date": "2026-06-17",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Croissance organique high-single-digit confirmee ; marge EBIT core relevee a +140/170 pb (vs +30/60 pb initial) a change constant 2025, relevement annonce par ad-hoc le 17/06/2026."
-      }
-    ],
-    "guidanceLongTerme": "CMD du 25/11/2025 : ~10% de CAGR de croissance organique du CA et +40 a +50 pb de marge EBIT core par an sur l'horizon 2026-2030, dans le cadre de la strategie de renforcement des parts de marche, de la profitabilite et de la generation de cash.",
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "semestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "H1",
-          "eps": 1.49,
-          "actual": true
-        },
-        {
-          "label": "H2",
-          "eps": 0.74,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "H1",
-          "eps": 1.99,
-          "actual": false
-        },
-        {
-          "label": "H2",
-          "eps": 1.01,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "H1",
-          "eps": 2.24,
-          "actual": false
-        },
-        {
-          "label": "H2",
-          "eps": 1.16,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "Leader mondial de l'implantologie dentaire (Straumann premium + Neodent challenger), en gain de parts de marche continu, avec une expansion de marge structurelle desormais accelere par la guidance 2026 relevee - projection Omnium volontairement plus conservatrice que le consensus core du management.",
-    "cagrBridge": null,
-    "text": "== THESIS SUMMARY ==\nWorld leader in dental implantology (premium Straumann + challenger Neodent, plus ClearCorrect aligners and the AXS digital ecosystem). Three structural pillars: an under-penetrated implant market (aging demographics, low treatment rates outside mature markets), share gains across price tiers, and digitalization pulling the ecosystem. The year's dominant signal: the June AD-HOC margin-guidance raise - core EBIT margin expansion lifted to +140/170bp cc from +30/60bp initial, with organic high-SD growth confirmed.\n\n== THESIS READ ==\n- A +100bp-plus ad-hoc margin raise mid-year is rare - cost leverage arriving faster than the CMD trend line. Watch: the H1 report (late August) decomposing the raise.\n- Neodent's challenger economics keep widening the funnel in emerging markets. Watch: LatAm/APAC organic prints.\n- ClearCorrect remains the fixable weak leg vs Invisalign. Watch: aligner volume trajectory.\n\n== SPECIAL FACTORS ==\nBase = IFRS retreated ONLY of the true 2025 HQ-impairment one-off; PPA amortization AND recurring restructuring (present in all four regions + Operations in 2025) deliberately KEPT (anti-flattery policy) - hence the assumed gap vs core-basis consensus (3.00 vs 3.04-3.62), documented in the scorecard. FY25 below-EBIT block (-104: FX, leases, associates) documented as one-off-heavy vs the ~-14 normative. Shares constant.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 2,748M (+5.5% reported, high-SD organic), EBIT 613M (Omnium base), EPS 3.00; 2027-2030: revenue +10%/yr, margin drift, ETR 20%, net cash building. Watch: H1 report (late Aug - imminent next anchor); CHF FX drag; China VBP implantology round effects.\n\n== CATALYSTS ==\nH1 2026 report (late Aug); Q3 organic print; ClearCorrect relaunch evidence; CMD trend confirmation.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "growth_guidance_2026",
-        "moteur": "Guidance groupe relevee le 17/06/2026 : croissance organique high-single-digit 2026 confirmee, calee sur le consensus sell-side (CHF 2 748 M, +8,5% vs 2025).",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "growth_cmd_2030",
-        "moteur": "Cible CMD du 25/11/2025 : ~10% de CAGR de croissance organique du CA sur l'horizon 2026-2030, extrapolee au meme rythme que le consensus sell-side au-dela de 2028.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "margin_2026_raise",
-        "moteur": "Relevement de la marge EBIT core de +140/170 pb annonce le 17/06/2026 (vs +30/60 pb initial), traduit sur la base IFRS retraitee Omnium (hors amortissement PPA et restructuration recurrente, reintegres par politique) en une expansion d'environ +90 pb de la marge EBIT retraitee 2026.",
-        "applique": [
-          "omniumEBIT.2026"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "margin_cmd_trend",
-        "moteur": "Cible CMD de +40/50 pb de marge EBIT core par an sur 2026-2030, traduite en ~+55/60 pb de marge EBIT retraitee par an pour 2027-2030, avec normalisation progressive attendue de la charge de restructuration 2025 (exceptionnellement elevee, presente dans les 4 regions de vente + Operations).",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "tax_normatif",
-        "moteur": "IS normatif retenu a 20%, coherent avec le taux effectif IFRS 2025 (21,3%) et 2024 (17,9%), ajustements Pilier 2 deja en vigueur pour les entites suisses.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "financial_result_cash_net",
-        "moteur": "Position de cash net (CHF -136 M en 2025, tresorerie nette positive), sans programme de rachat d'actions actif et regulier identifie -> produit financier net calcule au taux suisse 10 ans + 2 pts de spread normatif (~2,5%), impact marginal (<10 M CHF/an) compte tenu du faible montant.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "shares_flat",
-        "moteur": "Nombre d'actions diluees stable historiquement (~159,1-159,6 M sur 2021-2025), aucun programme de rachat massif identifie -> maintenu constant sur l'horizon de projection.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 3.0,
-      "2027": 3.38,
-      "2028": 3.82,
-      "2029": 4.32,
-      "2030": 4.88
-    },
-    "omniumCA": {
-      "2026": 2748,
-      "2027": 3010,
-      "2028": 3302,
-      "2029": 3632,
-      "2030": 3995
-    },
-    "omniumEBIT": {
-      "2026": 613,
-      "2027": 689,
-      "2028": 776,
-      "2029": 875,
-      "2030": 987
-    },
-    "omniumNet": {
-      "2026": 479,
-      "2027": 540,
-      "2028": 610,
-      "2029": 689,
-      "2030": 779
-    },
-    "omniumND": {
-      "2026": -180,
-      "2027": -260,
-      "2028": -360,
-      "2029": -480,
-      "2030": -620
-    },
-    "omniumShares": {
-      "2026": 159.6,
-      "2027": 159.6,
-      "2028": 159.6,
-      "2029": 159.6,
-      "2030": 159.6
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -104,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 362.8,
-        "netPub": 363,
-        "residual": 0.2,
-        "residualNote": "FY25 finNet (-104) bundles FX losses (CHF strength), lease interest and associate losses - far heavier than the ~-14 normative level projected; the gap is the below-EBIT one-off block of 2025, documented. Base retreated only of the true 2025 HQ-impairment one-off; PPA amortization and recurring restructuring KEPT (anti-flattery policy)."
-      },
-      "2026": {
-        "finNet": -14,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 479.2
-      },
-      "2027": {
-        "finNet": -14,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 540.0
-      },
-      "2028": {
-        "finNet": -13,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 610.4
-      },
-      "2029": {
-        "finNet": -14,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 688.8
-      },
-      "2030": {
-        "finNet": -13,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 779.2
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Organic revenue growth + core EBIT margin expansion (bp, guided)",
-      "comparedAgainst": "guidance",
-      "basisAligned": false,
-      "basisNote": "Consensus follows the management 'core' basis; the Omnium base REINTEGRATES PPA amortization (serial acquirer: Neodent, ClearCorrect, distributors) and recurring restructuring (present in all four sales regions + Operations in 2025) - Omnium 3.00 vs street 3.04-3.62, assumed and documented.",
-      "timeline": [
-        {
-          "date": "2026-06-17",
-          "type": "guidance_revision",
-          "detail": "Ad-hoc: core EBIT margin expansion RAISED to +140/170bp cc (from +30/60bp initial); organic high-SD growth confirmed."
-        }
-      ],
-      "paceCheckpoint": "H1 pace: high-SD organic confirmed; the margin raise (+140/170bp vs +30/60 initial) is the year's dominant positive signal.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 3.7,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 0.8,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "high-single-digit organic (~+8), +30/60bp",
-          "realizedDisplay": "+8.9% organic, margin top of band",
-          "note": "Initial FY25 guidance (FY24 release, Feb 2025): organic revenue high-single-digit (~+8%), core EBIT margin +30/60bp cc; realized +8.9% organic (2.6bn CHF), margin 26.5% cc at the upper end - level +0.8%, both axes delivered."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 5.3,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "high-single-digit organic (~+8), +30/60bp",
-          "realizedDisplay": "+13.7% organic",
-          "note": "Initial FY24 guidance (FY23 release, 27/02/2024): organic revenue high-single-digit (~+8%), core EBIT margin +30/60bp cc; realized +13.7% organic (2.5bn CHF) - level +5.3%, a big top-line beat year."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 45,
-        "source": "initial_guidance",
-        "date": "2026-06-17",
-        "note": "Initial FY26 guidance: organic high-single-digit revenue growth, core EBIT margin expansion +30/60bp cc (mid +45bp) - evidenced by the June ad-hoc RAISE which cites it (margin expansion lifted to +140/170bp). The initial February statement itself was not captured; the anchor value is the initial +45bp mid and the FY26 close will measure the full overdelivery."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +3.7% BLENDED (in-progress +4.3 x1/2; FY25 +0.8 and FY24 +5.3 equal-shared). Beats on the guided organic-growth/margin plan (no EPS guidance) - directional only vs the EPS projections (declared mismatch).",
-      "consensusSource": "Sell-side consensus (core-basis majority)",
-      "consensusDate": "2026-08-14",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 45,
-        "currentValue": 155,
-        "deltaPct": 4.3,
-        "asOf": "2026-08-19",
-        "note": "Initial core EBIT margin expansion +30/60bp cc (mid 45); RAISED via June ad-hoc to +140/170bp (mid 155), maintained at H1 (19/08) - on the implied core-EBIT plan (~25.2% margin base, organic ~+8 held) the extra ~110bp is a +4.3% profit-plan uplift."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-06-17",
-      "label": "Ad-hoc guidance raise",
-      "type": "special"
-    }
+  {
+   "year": 2025,
+   "ca": 2605.4,
+   "ebit": 557.5,
+   "net": 363.0,
+   "shares": 159.6,
+   "nd": -136,
+   "div": 1.0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 3.051,
+  "epsNY": 3.652,
+  "epsY2": 4.205,
+  "date": "2026-08-21",
+  "source": "MarketScreener (consensus 19 analystes, CY..CY+2) — recoupé stockanalysis.com (CY 3.21)",
+  "analystsCount": 19,
+  "adjGapPct": 5.2
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "H1 26",
+  "date": "2026-08-19"
+ },
+ "ownership": {
+  "asOf": "2026-08-14",
+  "insiderPct": 16,
+  "insiderDesc": "Thomas Straumann (famille fondatrice) reste le premier actionnaire individuel identifie ; l'ensemble des dirigeants et de la famille fondatrice detiendrait environ 32% du capital au global selon les dernieres agregations disponibles.",
+  "insiderSource": "Agregateurs (Yahoo Finance/Simply Wall St) a partir des dernieres notifications de participations significatives SIX/FINMA - pas de proxy statement SEC pour ce titre suisse, seule corroboration disponible a ce stade.",
+  "notableHolders": [],
+  "coverageNote": "Titre cote exclusivement sur SIX Swiss Exchange (hors NYSE/Nasdaq) : hors perimetre de declaration Form 13F (reserve aux gerants americains sur valeurs cotees aux Etats-Unis), aucune recherche de seuils AMF/FINMA equivalents tentee au-dela de la detention founder ci-dessus, conformement au perimetre assume du champ.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-08-14",
+  "items": [],
+  "note": "Aucune fraude averee, enquete reglementaire ou allegation de fraude identifiee pour Straumann Holding AG lors de cette recherche (pas d'action SEC/FINMA trouvee, pas de rapport de vendeur a decouvert activiste). Un litige extraordinaire pese pour CHF 25-28 M/an sur le resultat 2024-2025 selon la reconciliation IFRS->core du rapport annuel, mais relève du contentieux commercial/propriete intellectuelle et non d'une allegation de fraude - hors perimetre de ce champ, voir hypothese.text (PARAMETRES) pour le suivi."
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-04-29",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-04-29",
+    "format": "brut",
+    "clesRetenues": [
+     "Q VBP Chine - timing de mise en oeuvre : le management n'a aucune mise a jour officielle, evoque une possible implementation en S2 2026, avec normalisation des flux patients et redemarrage des commandes distributeurs.",
+     "Q Risque de trou d'air de demande en Chine si le VBP tarde : le CEO ecarte ce risque, les patients continuant de se faire traiter tant que le VBP parait moins probable a court terme.",
+     "Q Moteurs de marge 2026 : la CFO confirme que les moteurs restent inchanges - transformation de l'activite orthodontie et localisation de la fabrication en Chine en positif, volatilite FX et tarifs douaniers surveilles en externe.",
+     "Q Croissance en Amerique latine : le CEO l'attribue essentiellement aux volumes, portee par le developpement des implants challenger dans toute la region via les filiales locales."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "cmd_2030_targets",
+    "quarterOrigine": "CMD nov. 2025",
+    "engagement": "Cible ~10% de CAGR de croissance organique du CA et +40/50 pb de marge EBIT core par an sur 2026-2030.",
+    "echeance": "2030-Q4",
+    "statut": "en_cours"
+   },
+   {
+    "id": "clearcorrect_breakeven",
+    "quarterOrigine": "T1 26",
+    "engagement": "Pertes de ClearCorrect (aligneurs) en voie de reduction de moitie dans le cadre de la transformation de l'activite orthodontie.",
+    "echeance": "2026-Q4",
+    "statut": "en_cours"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Creation - Communique + transcript T1 2026 (29/04/2026), rapport annuel/financier FY2025, ad-hoc relevement de guidance (17/06/2026), CMD (25/11/2025)",
+  "dernierCall": {
+   "quarter": "H1 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1379.5,
+     "consensus": null
+    },
+    "epsAdj": {
+     "actual": 1.64,
+     "consensus": null,
+     "basis": "non-GAAP",
+     "note": "Core (non-GAAP) basic EPS CHF 1.64 for H1 26 (core net profit CHF 262M, 19% margin, +15.7% cc). No half-year sell-side consensus captured: the street consensus tracked in this file is annual (core basis)."
+    },
+    "epsReported": {
+     "actual": 1.57,
+     "basis": "IFRS",
+     "period": "H1 26",
+     "note": "Reported IFRS basic EPS CHF 1.57 for H1 2026 (IFRS net profit CHF 250.7M on revenue of CHF 1,379.5M), from the 19/08/2026 half-year release. Gap to core EPS (CHF 1.64) is a contained CHF 11M after-tax non-core block (M&A effects and legal costs, partly offset by US tariff refunds); IFRS gross margin (72.0%) even exceeds core (70.5%) on those refunds."
+    }
+   },
+   "guidanceProchainTrimestre": "No quarterly guidance (Straumann guides on a full-year basis only). Next print: Q3 2026 organic growth (autumn), still to be presented by outgoing CEO Daniellot before the December handover to Christopher Norbye; China VBP 2.0 tendering could start in H2 2026 with operational implementation expected early 2027.",
+   "guidanceAnnuelle": "FY26 outlook CONFIRMED at the H1 call (19/08/2026) after the 17/06/2026 ad-hoc raise: high single-digit organic revenue growth and core EBIT margin improvement of ~140-170bp at constant 2025 FX (vs +30/60bp initial February guidance). At July spot rates FX remains an expected 80-100bp headwind on the reported core EBIT margin. Management quantifies at least 2/3 of the margin upgrade as structural (opex discipline with flat headcount, manufacturing footprint incl. the fully operational Shanghai campus, procurement), the balance from milder US tariffs and the delayed VBP 2.0. CMD 2030 ambition reaffirmed unchanged (~10% organic CAGR, +40-50bp core EBIT margin per year on average, explicitly endorsed by the incoming CEO); ClearCorrect breakeven still targeted for end-2027.",
+   "pointsCles": [
+    "CEO transition announced: Guillaume Daniellot steps down end-2026 after 7 years; external successor Christopher Norbye (ASSA ABLOY divisional CEO background, 8 years at Ossur early career) takes over in December and has explicitly endorsed the 2030 midterm guidance - main new watch item (execution continuity, management retention).",
+    "Broad-based acceleration: Q2 organic +8.5% (H1 +7.8%, revenue CHF 1,379.5M, +2.3% in CHF) with every region contributing - EMEA +8.6%, North America +8.4%, APAC +7.4% (ex-China +25%), LatAm +11.8% (H1 +15.4%); China improving sequentially ahead of VBP 2.0 (operational start expected early 2027, management sees max -5% to -15% ASP impact and a low comparison base since Q3 2025).",
+    "Margin delivery ahead of plan: core EBIT margin 25.7% reported / 26.9% at constant 2025 FX (+90bp comparable), driven by 130bp of opex efficiency with flat headcount on ~8% growth; core gross margin 70.5% (US tariffs -60bp, one-off Villeret equipment write-down -30bp); FCF +49% to CHF 169M (12.2% of revenue) as the heavy capex cycle ends.",
+    "Digital flywheel compounding: group estimates ~1/4 to 1/3 of global intraoral scanner unit sales over the last 12 months (SIRIOS X3-led), double-digit growth of the AXS connected-user base; iEXCEL now ~40% of premium implant volumes with no slowdown attributed to Nobel S-Line; ClearCorrect transformation on track for breakeven by end-2027."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "IFRS",
+    "source": "Rapport semestriel H1 2026 + communique (19/08/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA S1 1,4 Md CHF (+7,8% organique; T2 +8,5%), core EBIT margin 26,9% cc (+90bp), FCF 169 M (+49%). Resultat NET sous les attentes sur couts one-off (juridique + M&A) - ecart core/IFRS a suivre. Guidance FY26 maintenue (organique high-single-digit, +140/170bp)."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "T1 26",
+    "date": "2026-06-17",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Croissance organique high-single-digit confirmee ; marge EBIT core relevee a +140/170 pb (vs +30/60 pb initial) a change constant 2025, relevement annonce par ad-hoc le 17/06/2026."
+   }
+  ],
+  "guidanceLongTerme": "CMD du 25/11/2025 : ~10% de CAGR de croissance organique du CA et +40 a +50 pb de marge EBIT core par an sur l'horizon 2026-2030, dans le cadre de la strategie de renforcement des parts de marche, de la profitabilite et de la generation de cash.",
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "semestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "H1",
+     "eps": 1.49,
+     "actual": true
+    },
+    {
+     "label": "H2",
+     "eps": 0.74,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "H1",
+     "eps": 1.99,
+     "actual": false
+    },
+    {
+     "label": "H2",
+     "eps": 1.01,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "H1",
+     "eps": 2.24,
+     "actual": false
+    },
+    {
+     "label": "H2",
+     "eps": 1.16,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Leader mondial de l'implantologie dentaire (Straumann premium + Neodent challenger), en gain de parts de marche continu, avec une expansion de marge structurelle desormais accelere par la guidance 2026 relevee - projection Omnium volontairement plus conservatrice que le consensus core du management.",
+  "cagrBridge": null,
+  "text": "== THESIS SUMMARY ==\nWorld leader in dental implantology (premium Straumann + challenger Neodent, plus ClearCorrect aligners and the AXS digital ecosystem). Three structural pillars: an under-penetrated implant market (aging demographics, low treatment rates outside mature markets), share gains across price tiers, and digitalization pulling the ecosystem. The year's dominant signal: the June AD-HOC margin-guidance raise - core EBIT margin expansion lifted to +140/170bp cc from +30/60bp initial, with organic high-SD growth confirmed.\n\n== THESIS READ ==\n- A +100bp-plus ad-hoc margin raise mid-year is rare - cost leverage arriving faster than the CMD trend line. Watch: the H1 report (late August) decomposing the raise.\n- Neodent's challenger economics keep widening the funnel in emerging markets. Watch: LatAm/APAC organic prints.\n- ClearCorrect remains the fixable weak leg vs Invisalign. Watch: aligner volume trajectory.\n\n== SPECIAL FACTORS ==\nBase = IFRS retreated ONLY of the true 2025 HQ-impairment one-off; PPA amortization AND recurring restructuring (present in all four regions + Operations in 2025) deliberately KEPT (anti-flattery policy) - hence the assumed gap vs core-basis consensus (3.00 vs 3.04-3.62), documented in the scorecard. FY25 below-EBIT block (-104: FX, leases, associates) documented as one-off-heavy vs the ~-14 normative. Shares constant.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 2,748M (+5.5% reported, high-SD organic), EBIT 613M (Omnium base), EPS 3.00; 2027-2030: revenue +10%/yr, margin drift, ETR 20%, net cash building. Watch: H1 report (late Aug - imminent next anchor); CHF FX drag; China VBP implantology round effects.\n\n== CATALYSTS ==\nH1 2026 report (late Aug); Q3 organic print; ClearCorrect relaunch evidence; CMD trend confirmation.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "growth_guidance_2026",
+    "moteur": "Guidance groupe relevee le 17/06/2026 : croissance organique high-single-digit 2026 confirmee, calee sur le consensus sell-side (CHF 2 748 M, +8,5% vs 2025).",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "growth_cmd_2030",
+    "moteur": "Cible CMD du 25/11/2025 : ~10% de CAGR de croissance organique du CA sur l'horizon 2026-2030, extrapolee au meme rythme que le consensus sell-side au-dela de 2028.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "margin_2026_raise",
+    "moteur": "Relevement de la marge EBIT core de +140/170 pb annonce le 17/06/2026 (vs +30/60 pb initial), traduit sur la base IFRS retraitee Omnium (hors amortissement PPA et restructuration recurrente, reintegres par politique) en une expansion d'environ +90 pb de la marge EBIT retraitee 2026.",
+    "applique": [
+     "omniumEBIT.2026"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "margin_cmd_trend",
+    "moteur": "Cible CMD de +40/50 pb de marge EBIT core par an sur 2026-2030, traduite en ~+55/60 pb de marge EBIT retraitee par an pour 2027-2030, avec normalisation progressive attendue de la charge de restructuration 2025 (exceptionnellement elevee, presente dans les 4 regions de vente + Operations).",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "tax_normatif",
+    "moteur": "IS normatif retenu a 20%, coherent avec le taux effectif IFRS 2025 (21,3%) et 2024 (17,9%), ajustements Pilier 2 deja en vigueur pour les entites suisses.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "financial_result_cash_net",
+    "moteur": "Position de cash net (CHF -136 M en 2025, tresorerie nette positive), sans programme de rachat d'actions actif et regulier identifie -> produit financier net calcule au taux suisse 10 ans + 2 pts de spread normatif (~2,5%), impact marginal (<10 M CHF/an) compte tenu du faible montant.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "shares_flat",
+    "moteur": "Nombre d'actions diluees stable historiquement (~159,1-159,6 M sur 2021-2025), aucun programme de rachat massif identifie -> maintenu constant sur l'horizon de projection.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 3.0,
+   "2027": 3.38,
+   "2028": 3.82,
+   "2029": 4.32,
+   "2030": 4.88
+  },
+  "omniumCA": {
+   "2026": 2748,
+   "2027": 3010,
+   "2028": 3302,
+   "2029": 3632,
+   "2030": 3995
+  },
+  "omniumEBIT": {
+   "2026": 613,
+   "2027": 689,
+   "2028": 776,
+   "2029": 875,
+   "2030": 987
+  },
+  "omniumNet": {
+   "2026": 479,
+   "2027": 540,
+   "2028": 610,
+   "2029": 689,
+   "2030": 779
+  },
+  "omniumND": {
+   "2026": -180,
+   "2027": -260,
+   "2028": -360,
+   "2029": -480,
+   "2030": -620
+  },
+  "omniumShares": {
+   "2026": 159.6,
+   "2027": 159.6,
+   "2028": 159.6,
+   "2029": 159.6,
+   "2030": 159.6
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -104,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 362.8,
+    "netPub": 363,
+    "residual": 0.2,
+    "residualNote": "FY25 finNet (-104) bundles FX losses (CHF strength), lease interest and associate losses - far heavier than the ~-14 normative level projected; the gap is the below-EBIT one-off block of 2025, documented. Base retreated only of the true 2025 HQ-impairment one-off; PPA amortization and recurring restructuring KEPT (anti-flattery policy)."
+   },
+   "2026": {
+    "finNet": -14,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 479.2
+   },
+   "2027": {
+    "finNet": -14,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 540.0
+   },
+   "2028": {
+    "finNet": -13,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 610.4
+   },
+   "2029": {
+    "finNet": -14,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 688.8
+   },
+   "2030": {
+    "finNet": -13,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 779.2
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Organic revenue growth + core EBIT margin expansion (bp, guided)",
+   "comparedAgainst": "guidance",
+   "basisAligned": false,
+   "basisNote": "Consensus follows the management 'core' basis; the Omnium base REINTEGRATES PPA amortization (serial acquirer: Neodent, ClearCorrect, distributors) and recurring restructuring (present in all four sales regions + Operations in 2025) - Omnium 3.00 vs street 3.04-3.62, assumed and documented.",
+   "timeline": [
+    {
+     "date": "2026-06-17",
+     "type": "guidance_revision",
+     "detail": "Ad-hoc: core EBIT margin expansion RAISED to +140/170bp cc (from +30/60bp initial); organic high-SD growth confirmed."
+    }
+   ],
+   "paceCheckpoint": "H1 pace: high-SD organic confirmed; the margin raise (+140/170bp vs +30/60 initial) is the year's dominant positive signal.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 3.7,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 0.8,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "high-single-digit organic (~+8), +30/60bp",
+     "realizedDisplay": "+8.9% organic, margin top of band",
+     "note": "Initial FY25 guidance (FY24 release, Feb 2025): organic revenue high-single-digit (~+8%), core EBIT margin +30/60bp cc; realized +8.9% organic (2.6bn CHF), margin 26.5% cc at the upper end - level +0.8%, both axes delivered."
+    },
+    {
+     "fy": 2024,
+     "beatPct": 5.3,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "high-single-digit organic (~+8), +30/60bp",
+     "realizedDisplay": "+13.7% organic",
+     "note": "Initial FY24 guidance (FY23 release, 27/02/2024): organic revenue high-single-digit (~+8%), core EBIT margin +30/60bp cc; realized +13.7% organic (2.5bn CHF) - level +5.3%, a big top-line beat year."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 45,
+    "source": "initial_guidance",
+    "date": "2026-06-17",
+    "note": "Initial FY26 guidance: organic high-single-digit revenue growth, core EBIT margin expansion +30/60bp cc (mid +45bp) - evidenced by the June ad-hoc RAISE which cites it (margin expansion lifted to +140/170bp). The initial February statement itself was not captured; the anchor value is the initial +45bp mid and the FY26 close will measure the full overdelivery."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +3.7% BLENDED (in-progress +4.3 x1/2; FY25 +0.8 and FY24 +5.3 equal-shared). Beats on the guided organic-growth/margin plan (no EPS guidance) - directional only vs the EPS projections (declared mismatch).",
+   "consensusSource": "Sell-side consensus (core-basis majority)",
+   "consensusDate": "2026-08-14",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 45,
+    "currentValue": 155,
+    "deltaPct": 4.3,
+    "asOf": "2026-08-19",
+    "note": "Initial core EBIT margin expansion +30/60bp cc (mid 45); RAISED via June ad-hoc to +140/170bp (mid 155), maintained at H1 (19/08) - on the implied core-EBIT plan (~25.2% margin base, organic ~+8 held) the extra ~110bp is a +4.3% profit-plan uplift."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-06-17",
+   "label": "Ad-hoc guidance raise",
+   "type": "special"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 3.04,
+   "epsNY": 3.62,
+   "date": "2026-08-14",
+   "source": "Consensus sell-side, base majoritairement ajustee/core - MarketScreener",
+   "analystsCount": 19
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "date": "2026-08-21",
+  "eps": {
+   "2021": 2.482,
+   "2022": 2.72,
+   "2023": 1.54,
+   "2024": 2.43,
+   "2025": 2.23
+  }
+ }
 }
