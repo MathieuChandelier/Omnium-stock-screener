@@ -100,6 +100,20 @@ td.proj-first,th.proj-first{border-left:2px solid var(--teal);}
 .vf .mframe thead th{font-size:11px;}
 .vf .mframe tbody td:first-child{font-size:11px;}
 
+/* ---------------- VARIANTE 3 : bleu clair, texte gris (.vgrey) --------
+   Reprise exacte de la variante 2 (L inverse #eef0fb plein, voile turquoise
+   dans le corps, aucune bordure, trait turquoise 1 px) MAIS plus aucun texte
+   navy : les annees du bandeau et les libelles Indicator passent en gris
+   fonce #334155 — soit deux crans plus sombres que les valeurs (#64748b) et
+   trois que les lignes secondaires (#94a3b8). La hierarchie de lecture est
+   donc portee par la seule valeur de gris, sans changement de teinte.
+   Contraste #334155 sur #eef0fb = 9.12:1 (AA et AAA). */
+.vgrey thead th{background:var(--lblue);color:#334155;}
+.vgrey thead th.proj-head{background:var(--lblue);color:#334155;}
+.vf .vgrey thead th:first-child{background:var(--lblue);color:#334155;}
+.vf .vgrey tbody td:first-child{background:var(--lblue);color:#334155;}
+.vf .vgrey tbody tr:hover td:first-child{background:var(--lblue-hover);}
+
 /* ---------------- VARIANTE 1 : bandeau navy (.vnavy) ----------------
    Bandeau des annees en navy plein, annees en BLANC. Corps blanc, valeurs
    en gris (#64748b / #94a3b8), libelles Indicator en #334155 sur blanc
@@ -144,7 +158,21 @@ td.proj-first,th.proj-first{border-left:2px solid var(--teal);}
 <body>
 <div class="page">
 <h1>Sandbox — Historical Data &amp; Projections</h1>
-<p class="sub">Comparatif final avant passage en prod : <b>deux variantes</b>, identiques en tout point sauf le traitement du «&nbsp;L inversé&nbsp;» (bandeau des années + colonne Indicator). Chacune est montrée en desktop puis en mobile&nbsp;375&nbsp;px. Communs aux deux : aucune bordure, tout Poppins en taille unique et graisse 400, valeurs en gris (<b>#64748b</b>, lignes secondaires <b>#94a3b8</b>), voile turquoise sur le corps des colonnes prospectives 2026+, trait vertical turquoise 1&nbsp;px entre 2025 et 2026, séparateur de milliers apostrophe (<b>1'766</b>), colonne Indicator sticky, et en mobile un scroll-snap par colonne avec ouverture cadrée sur 2024&nbsp;|&nbsp;2025&nbsp;‖&nbsp;2026, sans aucun chevron ni pastille.</p>
+<p class="sub">Comparatif final avant passage en prod : <b>trois variantes</b>, identiques en tout point sauf le traitement du «&nbsp;L inversé&nbsp;» (bandeau des années + colonne Indicator). Chacune est montrée en desktop puis en mobile&nbsp;375&nbsp;px. Communs aux trois : aucune bordure, tout Poppins en taille unique et graisse 400, valeurs en gris (<b>#64748b</b>, lignes secondaires <b>#94a3b8</b>), voile turquoise sur le corps des colonnes prospectives 2026+, trait vertical turquoise 1&nbsp;px entre 2025 et 2026, séparateur de milliers apostrophe (<b>1'766</b>), colonne Indicator sticky, et en mobile un scroll-snap par colonne avec ouverture cadrée sur 2024&nbsp;|&nbsp;2025&nbsp;‖&nbsp;2026, sans aucun chevron ni pastille.</p>
+
+<!-- ================= VARIANTE 3 — BLEU CLAIR, TEXTE GRIS ================= -->
+<div class="variant vf" id="v-grey">
+  <span class="vtag">Variante 3</span>
+  <h2>Bleu clair, texte gris</h2>
+  <p class="intent">La demande&nbsp;: <b>la variante 2 sans le texte en bleu</b>. Le L inversé garde exactement le même fond <b>#eef0fb</b> plein (le navy à ~7&nbsp;% sur blanc), mais les années du bandeau <b>et</b> les libellés de la colonne Indicator quittent le navy pour un <b>gris foncé #334155</b> — la même valeur que les libellés de la variante 1. Le tableau devient alors entièrement gris&nbsp;: plus une seule touche de bleu dans le texte, la couleur ne subsiste que dans le fond du L et dans le trait turquoise. La hiérarchie tient sur la seule échelle de gris&nbsp;: <b>#334155</b> pour les années et les libellés, <b>#64748b</b> pour les valeurs, <b>#94a3b8</b> pour les lignes secondaires — les repères de lecture restent donc les éléments les plus sombres de la table.</p>
+  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> scroll-snap par colonne, ouverture cadrée, colonne Indicator sticky sur bleu clair opaque. <b>Contraste :</b> #334155 sur #eef0fb = <b>9.12:1</b> (AA&nbsp;+&nbsp;AAA) ; valeurs #64748b sur blanc = 4.76:1 (AA) ; lignes secondaires #94a3b8 = 2.56:1, <b>sous le seuil AA</b>, conservé tel quel comme dans les deux autres variantes.</p>
+
+  <div class="demo-lbl">Variante 3 — desktop</div>
+  <div class="tbl-wrap vgrey" id="grey-d"></div>
+
+  <div class="demo-lbl">Variante 3 — mobile 375&nbsp;px</div>
+  <div class="mframe"><div class="snapper"><div class="tbl-wrap vgrey" id="grey-m"></div></div></div>
+</div>
 
 <!-- ================= VARIANTE 1 — BANDEAU NAVY ================= -->
 <div class="variant vf" id="v-navy">
@@ -278,8 +306,8 @@ function openOnPivot(el){
   window.addEventListener('load',go);
 }
 
-['navy-d','navy-m','blue-d','blue-m','ebq-d'].forEach(id=>buildTable(document.getElementById(id)));
-['navy-m','blue-m'].forEach(id=>openOnPivot(document.getElementById(id)));
+['grey-d','grey-m','navy-d','navy-m','blue-d','blue-m','ebq-d'].forEach(id=>buildTable(document.getElementById(id)));
+['grey-m','navy-m','blue-m'].forEach(id=>openOnPivot(document.getElementById(id)));
 </script>
 </body>
 </html>
