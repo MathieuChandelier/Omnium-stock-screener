@@ -83,6 +83,30 @@ COMPTES_CLASSE_VALUES = {"oneOff", "recurrent", "indetermine"}
 # bouclage casse des qu'Omnium ajoute une ligne : la cible est l'ajuste de la
 # SOCIETE, elle ne connait que les lignes de la societe.
 COMPTES_ORIGINE_VALUES = {"emetteur", "omnium"}
+
+# ── L'ECHELLE : un modele de reporting UNIQUE pour les 59 titres ──────
+# On ne plie pas le modele au style de publication de chaque emetteur : on
+# pose la meme echelle pour tous, et on laisse VIDES les barreaux qu'un
+# emetteur ne publie pas. Une societe qui reporte proprement passe du CA au
+# resultat operationnel sans rien entre les deux ; une societe qui raisonne
+# en EBITDA remplit les barreaux intermediaires, et c'est la qu'on voit
+# quelles charges elle neutralise avant d'arriver au meme resultat.
+#
+# Plus de barreaux, moins d'erreurs - pas seulement parce qu'il y a plus de
+# place, mais parce que chaque barreau se CONTROLE par ses voisins :
+# ebitda + da == ebit, ebit + finNet == avantImpot, avantImpot + impot +
+# minoritaires == net. Trois identites gratuites qui attrapent une recopie
+# fausse a l'instant ou elle est ecrite.
+COMPTES_ECHELLE = ("ca", "margeBrute", "ebitda", "da", "ebit",
+                   "finNet", "avantImpot", "impot", "minoritaires", "net")
+COMPTES_ECHELLE_REQUISE = ("ca", "ebit", "net")
+# Les charges et l'impot sont portes en NEGATIF, comme dans un compte de
+# resultat - on lit l'echelle en additionnant, jamais en soustrayant.
+COMPTES_IDENTITES = (
+    (("ebitda", "da"), "ebit"),
+    (("ebit", "finNet"), "avantImpot"),
+    (("avantImpot", "impot", "minoritaires"), "net"),
+)
 COMPTES_RUPTURE_TYPE_VALUES = {"retraitement", "perimetre"}
 COMPTES_RUPTURE_PAR_VALUES = {"emetteur", "omnium"}
 # kebab-case strict : c'est l'identifiant qui, relu periode apres periode,
@@ -229,11 +253,27 @@ def validate_comptes(d, errors):
             errors.add(f"comptes['{per}'].publie doit etre un objet {{ca, ebit, net}}.")
             pub = {}
         else:
-            for k in ("ca", "ebit", "net"):
+            for k in COMPTES_ECHELLE_REQUISE:
                 if not isinstance(pub.get(k), (int, float)):
                     errors.add(f"comptes['{per}'].publie.{k} doit etre un nombre.")
-            if "ebitda" in pub and not isinstance(pub["ebitda"], (int, float)):
-                errors.add(f"comptes['{per}'].publie.ebitda doit etre un nombre si present.")
+            for k in pub:
+                if k not in COMPTES_ECHELLE:
+                    errors.add(
+                        f"comptes['{per}'].publie.{k} hors echelle - le modele de "
+                        f"reporting est le meme pour tous les titres, un barreau non "
+                        f"publie se laisse VIDE, il ne s'invente pas "
+                        f"(echelle : {', '.join(COMPTES_ECHELLE)})."
+                    )
+                elif not isinstance(pub[k], (int, float)):
+                    errors.add(f"comptes['{per}'].publie.{k} doit etre un nombre.")
+            for termes, cible in COMPTES_IDENTITES:
+                if cible in pub and all(t in pub for t in termes):
+                    somme = sum(pub[t] for t in termes)
+                    if abs(somme - pub[cible]) > max(1.0, abs(pub[cible]) * 0.005):
+                        errors.add(
+                            f"comptes['{per}'].publie : {' + '.join(termes)} = {somme:g} "
+                            f"mais {cible} = {pub[cible]:g}. L'echelle ne tient pas."
+                        )
 
         rup = c.get("rupture")
         if rup is not None:
