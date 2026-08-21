@@ -50,11 +50,11 @@ Chaque evenement porte :
   cote selections utilisateur) ;
 - `ticker`, `date` (YYYY-MM-DD), `label` court en anglais,
 - `time` (HH:MM, Europe/Paris) QUAND la source la donne - l'heure
-  n'apparait PAS dans le dashboard mais alimente le flux .ics du
-  calendrier Google (decision 20/08/2026). A defaut d'heure connue,
-  calendar.php applique lui-meme 22:00 aux EARNINGS (cloture de bourse
-  US, le standard) et laisse les autres types en journee entiere - ne
-  jamais inventer une heure cote collecte,
+  n'apparait PAS dans le dashboard mais part dans le Google Calendar
+  (decision 20/08/2026). A defaut d'heure connue, calendar.php applique
+  lui-meme 22:00 aux EARNINGS (cloture de bourse US, le standard) et
+  laisse les autres types en journee entiere - ne jamais inventer une
+  heure cote collecte,
   `type` : `earnings` | `conference` | `cmd` | `agm` | `other` ;
 - `url` (21/08/2026) : le LIEN PRECIS de l'evenement - page evenement
   IR, lien webcast ou page d'inscription - des que la source en affiche
@@ -150,3 +150,33 @@ jours (les evenements A VENIR restent ici, au calendrier). Son livrable
 `data/newsFeed.json` part dans LE MEME COMMIT que calendarCandidates.json
 et nextEvents.json ; ses echecs de retrieve vont dans
 `data/sourceGaps.json`, section `news`.
+
+## SYNCHRONISATION GOOGLE CALENDAR (directe, 21/08/2026)
+
+L'abonnement ICS ("From URL") est REMPLACE. Il restait tributaire du
+rafraichissement de Google, soit 8 a 24 h de latence entre l'acceptation
+d'un evenement au tri et son apparition dans l'agenda.
+
+Desormais `server/calendar.php` ecrit DIRECTEMENT dans un agenda Google
+dedie, via un COMPTE DE SERVICE (Google Calendar API v3) : l'acceptation
+d'un evenement l'y cree dans la seconde, son retrait l'en supprime aussi
+vite. Le flux `.ics` reste servi par le meme script pour compatibilite,
+mais ne doit plus etre l'outil de reference.
+
+Configuration, a cote de `calendar.php` sur model.omnium-capital.com :
+- `gcal_key.json` : cle privee du compte de service
+  `omnium-calendar@omnium-news-collector.iam.gserviceaccount.com` ;
+- `gcal_config.json` : `{"calendarId":"<agenda dedie>"}` - l'agenda est
+  CREE PAR le compte de service puis partage a l'utilisateur (et non
+  l'inverse : la politique Workspace interdit le partage sortant
+  modifiable) ;
+- `gcal_token_cache.json` : jeton OAuth mis en cache ~1 h, regenere seul.
+Ces trois fichiers sont INTERDITS d'acces web (bloc `<FilesMatch>` du
+`.htaccess`). Sans eux, la sync est silencieusement sautee et le store
+continue de fonctionner - aucune rupture.
+
+CONSEQUENCE POUR LE RUN : rien ne change cote collecte. Le champ `url`
+d'un evenement part dans le Google Calendar (propriete `source` + tete de
+la description), et l'heure suit la regle ci-dessus. Un titre RETIRE du
+manifest voit ses evenements deja acceptes revoques cote serveur, donc
+retires de l'agenda Google (cf. SCALABILITE).
