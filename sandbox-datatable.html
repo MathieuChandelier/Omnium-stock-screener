@@ -101,19 +101,7 @@ tr.row-sub td.proj{color:var(--muted);}
 .vf tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
 /* trait vertical turquoise affine */
 .vf td.proj-first,.vf th.proj-first{border-left:1px solid var(--teal);}
-/* -- B ultra-light + fonds : le L inverse (bandeau + colonne Indicator) dans
-   UNE seule teinte bleu tres clair. Solide #f3f4fb (navy ~4.5% sur blanc)
-   plutot qu'un rgba : le coin "Indicator" ne se double pas, et la colonne
-   sticky reste opaque au scroll mobile. Dans le bandeau le bleu garde la
-   priorite a droite du trait ; le voile turquoise reste reserve au corps. -- */
-.ebf thead th{font-weight:400;background:#f3f4fb;}
-.vf .ebf thead th:first-child{background:#f3f4fb;}
-.ebf thead th.hist-last{background:#f3f4fb;}
-.ebf thead th.proj-head{background:#f3f4fb;box-shadow:none;}
-.ebf tbody td:first-child{font-weight:400;background:#f3f4fb;}
-.ebf td.proj{background:rgba(43,216,194,.055);}
-.vf .ebf tbody tr:hover td:first-child{background:#eceefb;}
-/* -- B uniforme : comme + fonds, avec UNE seule taille de police partout —
+/* -- B uniforme : L inverse #f3f4fb avec UNE seule taille de police partout —
    celle des valeurs (13px desktop / 11.5px mobile). Plus aucune variation de
    taille ni de graisse : seules les couleurs (navy / gris doux) et les fonds
    differencient. Line-height unifie en consequence. -- */
@@ -145,6 +133,24 @@ tr.row-sub td.proj{color:var(--muted);}
 .vf .ebq tbody tr:hover td:first-child{background:#eff1fa;}
 .mframe .ebq thead th{font-size:11.5px;}
 .mframe .ebq tbody td:first-child{font-size:11.5px;}
+/* -- B Poppins : structure exacte de la B Quattrocento (taille unique, 400
+   partout, L #f7f8fd, voile turquoise, trait 1px) mais TOUT en 'Poppins' —
+   labels, annees, coin, valeurs. Poppins etant plus large, taille unique
+   ramenee a 12.5px desktop / 11px mobile. Aucun gras, aucune taille
+   superieure sur labels/annees. Bonus : chiffres tabulaires natifs. -- */
+.ebo thead th,.ebo tbody td,.ebo tbody td:first-child{font-family:'Poppins',system-ui,sans-serif;}
+.ebo table{font-size:12.5px;}
+.ebo thead th{font-weight:400;background:#f7f8fd;font-size:12.5px;line-height:1.5;letter-spacing:0;}
+.vf .ebo thead th:first-child{background:#f7f8fd;}
+.ebo thead th.hist-last{background:#f7f8fd;}
+.ebo thead th.proj-head{background:#f7f8fd;box-shadow:none;}
+.ebo tbody td{line-height:1.5;}
+.ebo tbody td:first-child{font-weight:400;background:#f7f8fd;font-size:12.5px;}
+.ebo td.proj{background:rgba(43,216,194,.055);}
+.vf .ebo tbody tr:hover td:first-child{background:#eff1fa;}
+.mframe .ebo table{font-size:11px;}
+.mframe .ebo thead th{font-size:11px;}
+.mframe .ebo tbody td:first-child{font-size:11px;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
 .vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
 .vf .chev svg{width:12px;height:12px;}
@@ -219,24 +225,24 @@ th.fold-th:hover{background:#000165;}
 <!-- ================= V-FINALE ================= -->
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
-  <h2>B Quattrocento — à valider</h2>
-  <p class="intent">Une seule famille et une seule taille pour tout le tableau : tout — labels d'années, coin, colonne Indicator, valeurs — passe en <b>'Quattrocento Sans'</b> (la police du body de l'app), 13&nbsp;px desktop / 11.5&nbsp;px mobile, graisse 400 partout, plus aucun Poppins. La hiérarchie ne tient qu'à la couleur (navy vs gris doux des valeurs secondaires) et aux fonds : L inversé <b>#f7f8fd</b> (éclairci d'un cran, navy ~3&nbsp;% sur blanc), voile turquoise quasi imperceptible sur le corps prospectif, trait vertical turquoise 1&nbsp;px. Apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
+  <h2>B Poppins — à valider</h2>
+  <p class="intent">La structure exacte de la B Quattrocento — une seule taille, graisse 400 partout, L inversé <b>#f7f8fd</b>, voile turquoise, trait vertical 1&nbsp;px, gris doux des valeurs secondaires — mais tout en <b>'Poppins'</b> : labels, années, coin et valeurs à la même taille, sans aucun gras ni taille supérieure sur les labels (le défaut de l'ancienne B uniforme). Poppins étant plus large que Quattrocento, la taille unique est ramenée à 12.5&nbsp;px desktop / 11&nbsp;px mobile. Avantage : Poppins a des chiffres tabulaires, les décimales se réalignent. Apostrophes 1'766, aucun italique ni dégradé.</p>
   <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
 
-  <div class="demo-lbl">B Quattrocento — desktop</div>
-  <div class="tbl-wrap ebq" id="ebqd"></div>
+  <div class="demo-lbl">B Poppins — desktop</div>
+  <div class="tbl-wrap ebo" id="ebod"></div>
 
-  <div class="demo-lbl">B Quattrocento — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebq" id="vfm"></div>
+  <div class="demo-lbl">B Poppins — mobile 375&nbsp;px</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebo" id="vfm"></div>
     <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
 
-  <div class="demo-lbl">Comparaison — B uniforme (taille unique, labels en Poppins)</div>
-  <div class="tbl-wrap ebn" id="ebnd"></div>
+  <div class="demo-lbl">Comparaison — B Quattrocento (chiffres non tabulaires)</div>
+  <div class="tbl-wrap ebq" id="ebqd"></div>
 
-  <div class="demo-lbl">Comparaison — B ultra-light + fonds (tailles différenciées 12/10.5/13)</div>
-  <div class="tbl-wrap ebf" id="ebfd"></div>
+  <div class="demo-lbl">Archive — B uniforme (labels Poppins plus gros : le défaut corrigé)</div>
+  <div class="tbl-wrap ebn" id="ebnd"></div>
 </div>
 
 <div class="ref-divider">Pistes initiales — conservées pour référence</div>
@@ -409,10 +415,10 @@ function sparkline(vals,w=56,ht=18){
   return s+'</svg>';
 }
 
-/* ---------- V-FINALE : B Quattrocento, puis comparaisons ---------- */
+/* ---------- V-FINALE : B Poppins, puis comparaisons ---------- */
+buildTable(document.getElementById('ebod'));
 buildTable(document.getElementById('ebqd'));
 buildTable(document.getElementById('ebnd'));
-buildTable(document.getElementById('ebfd'));
 buildTable(document.getElementById('vfm'));
 (function(){
   const s=document.getElementById('vfs'), w=document.getElementById('vfm');
