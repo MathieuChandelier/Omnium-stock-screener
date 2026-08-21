@@ -108,8 +108,22 @@ REGLES :
    toujours consomme par la colonne NEXT EVENT du portefeuille) :
    pour chaque ticker, la PROCHAINE echeance retenue `{label, date}`
    (convention courte, annee sur 2 chiffres, ex. "Q3 26") - fusion avec
-   les entrees existantes, jamais de suppression d'un ticker non traite.
-   Ajouter `_meta.lastRun` a la date du jour.
+   les entrees existantes, jamais de suppression d'un ticker du manifest
+   non traite (une page IR illisible ne doit pas effacer l'echeance
+   connue). Ajouter `_meta.lastRun` a la date du jour.
+
+SCALABILITE - LE PORTEFEUILLE FAIT AUTORITE (21/08/2026). Le manifest est
+la seule liste qui compte, dans les deux sens :
+- ticker AJOUTE : il entre dans le perimetre des le run suivant, sans
+  aucune declaration ailleurs - le run itere `data/manifest.json`, point ;
+- ticker RETIRE : le run PURGE son entree de `data/nextEvents.json` (et
+  il disparait de `calendarCandidates.json`, integralement regenere).
+  Sans cette purge, une echeance fantome survivrait au titre.
+Cote app, la symetrie est deja assuree : evenements du tri, tuile du
+Market Calendar, selections deja acceptees, entrees de `sourceGaps` et
+items de `newsFeed` sont tous filtres par le manifest, et les selections
+d'un titre retire sont revoquees cote serveur (calPruneRemovedTickers)
+- donc aussi retirees du Google Calendar.
 
 ECHEC DE RETRIEVE = NOTIFICATION TYPEE (21/08/2026) : si la page IR d'un
 titre reste illisible apres les trois strategies d'acces (403 persistant,

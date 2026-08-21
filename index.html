@@ -5298,8 +5298,8 @@ function peVsAverageExtremes(nEach){
   return {disc, stretch};
 }
 
-// Tuile Market Calendar : 8 evenements affiches par defaut (21/08/2026).
-const CAL_MAX_SHOWN=8;
+// Tuile Market Calendar : 10 evenements affiches par defaut (21/08/2026).
+const CAL_MAX_SHOWN=10;
 let _calShowAll=false;
 function calToggleShowAll(){ _calShowAll=!_calShowAll; renderMarketCalendar(); }
 function renderMarketCalendar(){
@@ -5313,7 +5313,7 @@ function renderMarketCalendar(){
   // compactes (pastille jour/mois + ticker + objet), 2 colonnes des que
   // la place existe. La pastille du JOUR est pleine en navy - plus
   // d'intitules de semaine ni d'echeance relative : la date se lit seule.
-  // PLAFOND D'AFFICHAGE (21/08/2026) : 8 evenements par defaut, le reste
+  // PLAFOND D'AFFICHAGE (21/08/2026) : 10 evenements par defaut, le reste
   // derriere un depliant. Mesure : la tuile grandit de ~25px par evenement
   // (2 colonnes) - au-dela de 8-12 elle cesse d'etre une tuile de dashboard
   // et repousse News/Actions hors du premier ecran sur mobile.
