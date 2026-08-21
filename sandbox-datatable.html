@@ -101,16 +101,16 @@ tr.row-sub td.proj{color:var(--muted);}
 .vf tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
 /* trait vertical turquoise affine */
 .vf td.proj-first,.vf th.proj-first{border-left:1px solid var(--teal);}
-/* -- Essai (a) : le voile turquoise couvre AUSSI les labels du bandeau -- */
-.ea td.proj{background:rgba(43,216,194,.055);}
-.ea thead th.proj-head{background:rgba(43,216,194,.055);}
-/* -- Essai (b) : le voile s'arrete sous le bandeau, labels sur blanc -- */
-.eb td.proj{background:rgba(43,216,194,.055);}
-.eb thead th.proj-head{background:#fff;}
 /* -- B epuree : comme (b) SANS le filet turquoise horizontal sous les labels
    2026+ (herite du style de base th.proj-head, ici annule) -- */
 .ebp td.proj{background:rgba(43,216,194,.055);}
 .ebp thead th.proj-head{background:#fff;box-shadow:none;}
+/* -- B ultra-light : plus AUCUN gras — 400 partout, Indicator et bandeau
+   compris ; la hierarchie ne tient qu'aux couleurs deja en place -- */
+.ebu td.proj{background:rgba(43,216,194,.055);}
+.ebu thead th.proj-head{background:#fff;box-shadow:none;}
+.ebu thead th{font-weight:400;}
+.ebu tbody td:first-child{font-weight:400;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
 .vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
 .vf .chev svg{width:12px;height:12px;}
@@ -185,24 +185,21 @@ th.fold-th:hover{background:#000165;}
 <!-- ================= V-FINALE ================= -->
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
-  <h2>B épurée — à valider</h2>
-  <p class="intent">Déclinaison de l'essai (b) sans le filet turquoise horizontal qui courait sous les labels des années projetées : il ne reste que le trait vertical turquoise 1&nbsp;px entre 2025 et 2026 et le voile quasi imperceptible sur le corps prospectif. Tout le reste de (b) est inchangé : bandeau sans fond dans un cadre fin, graisses minimales (600 Indicator/bandeau, 400 ailleurs), valeurs secondaires en gris doux, apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
+  <h2>B ultra-light — à valider</h2>
+  <p class="intent">Déclinaison de la B épurée sans plus aucun gras : graisse 400 partout, colonne Indicator et labels d'années du bandeau compris. La hiérarchie ne tient plus qu'aux couleurs déjà en place — navy pour les labels, le bandeau et les valeurs principales, gris doux pour les valeurs secondaires. Le reste est inchangé : bandeau sans fond dans un cadre fin, trait vertical turquoise 1&nbsp;px, voile quasi imperceptible, apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
   <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
 
-  <div class="demo-lbl">B épurée — desktop</div>
-  <div class="tbl-wrap ebp" id="ebpd"></div>
+  <div class="demo-lbl">B ultra-light — desktop</div>
+  <div class="tbl-wrap ebu" id="ebud"></div>
 
-  <div class="demo-lbl">B épurée — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebp" id="vfm"></div>
+  <div class="demo-lbl">B ultra-light — mobile 375&nbsp;px</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebu" id="vfm"></div>
     <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
 
-  <div class="demo-lbl">Comparaison — essai (a) : voile jusque sur les labels 2026+, filet horizontal d'origine</div>
-  <div class="tbl-wrap ea" id="ead"></div>
-
-  <div class="demo-lbl">Comparaison — essai (b) d'origine : labels sur blanc, avec le filet turquoise horizontal</div>
-  <div class="tbl-wrap eb" id="ebd"></div>
+  <div class="demo-lbl">Comparaison — B épurée précédente (Indicator et bandeau en 600)</div>
+  <div class="tbl-wrap ebp" id="ebpd"></div>
 </div>
 
 <div class="ref-divider">Pistes initiales — conservées pour référence</div>
@@ -375,10 +372,9 @@ function sparkline(vals,w=56,ht=18){
   return s+'</svg>';
 }
 
-/* ---------- V-FINALE : B epuree + comparaisons (a)/(b) ---------- */
+/* ---------- V-FINALE : B ultra-light + comparaison B epuree ---------- */
+buildTable(document.getElementById('ebud'));
 buildTable(document.getElementById('ebpd'));
-buildTable(document.getElementById('ead'));
-buildTable(document.getElementById('ebd'));
 buildTable(document.getElementById('vfm'));
 (function(){
   const s=document.getElementById('vfs'), w=document.getElementById('vfm');
