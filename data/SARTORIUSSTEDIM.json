@@ -53,7 +53,7 @@
   "epsNY": 5.03,
   "epsY2": 6.11,
   "date": "2026-08-20",
-  "source": "MarketScreener (consensus 14 analystes, CY..CY+2) — base IFRS publiee (l'underlying management ~5,02 EUR 2026 est ~+29% au-dessus)",
+  "source": "MarketScreener (consensus of 14 analysts, CY..CY+2) — reported IFRS basis (the management underlying ~5,02 EUR 2026 is ~+29% above)",
   "analystsCount": 14,
   "adjGapPct": 28.7
  },
@@ -65,16 +65,16 @@
  "ownership": {
   "asOf": "2026-07-24",
   "insiderPct": 71.5,
-  "insiderDesc": "Situation atypique : SSB est une filiale contrôlée, pas une société à actionnariat diffus. Sartorius AG (Göttingen, Allemagne) détient directement et indirectement 71,5% du capital et 83,0% des droits de vote (structure à droits de vote double probable) ; flottant ~28,5% du capital.",
-  "insiderSource": "Rapport financier semestriel S1 2026 (SSB, note 7 'Related Parties', déposé le 23/07/2026, revu par les commissaires aux comptes PwC/KPMG).",
+  "insiderDesc": "Atypical situation: SSB is a controlled subsidiary, not a widely held company. Sartorius AG (Göttingen, Germany) holds directly and indirectly 71,5% of the share capital and 83,0% of the voting rights (double voting rights structure likely); free float ~28,5% of the capital.",
+  "insiderSource": "H1 2026 interim financial report (SSB, note 7 'Related Parties', filed on 23/07/2026, reviewed by the auditors PwC/KPMG).",
   "notableHolders": [],
-  "coverageNote": "Titre coté à Paris (Euronext), hors périmètre 13F (gérants actifs américains) - aucune recherche d'équivalent local (AMF) effectuée à ce stade, cohérent avec le choix assumé du protocole pour les titres non cotés aux US.",
+  "coverageNote": "Stock listed in Paris (Euronext), outside the 13F scope (US active managers) - no search for a local equivalent (AMF) carried out at this stage, consistent with the protocol's deliberate choice for stocks not listed in the US.",
   "history": []
  },
  "compliance": {
   "asOf": "2026-07-24",
   "items": [],
-  "note": "Recherche étendue à l'historique public du titre (champ absent du fichier de création). Aucune allégation de fraude, enquête réglementaire ou recours collectif identifié contre Sartorius Stedim Biotech. Un litige commercial ordinaire est mentionné dans les notes du rapport S1 26 (filiale Sartorius BIA Separations d.o.o., différend avec l'ancien actionnaire BIA Separations GmbH lié à une procédure d'insolvabilité antérieure à l'acquisition de 2020) - écarté du périmètre de ce champ (contentieux commercial ordinaire, pas une allégation de fraude)."
+  "note": "Search extended to the stock's public history (field absent from the creation file). No fraud allegation, regulatory investigation or class action identified against Sartorius Stedim Biotech. An ordinary commercial dispute is mentioned in the notes to the H1 26 report (subsidiary Sartorius BIA Separations d.o.o., dispute with the former shareholder BIA Separations GmbH tied to an insolvency proceeding predating the 2020 acquisition) - excluded from the scope of this field (ordinary commercial litigation, not a fraud allegation)."
  },
  "coherenceQualitative": {
   "asOf": "2026-08-10",
@@ -86,22 +86,22 @@
     "date": "2026-07-23",
     "format": "brut",
     "clesRetenues": [
-     "Q Richard Vosser (JPMorgan) - le S1 soutient-il la confiance dans l'objectif long terme BPS 9-12% : le management cite la trajectoire de croissance a deux chiffres des consommables, une demande commerciale de medicaments solide, un pipeline d'approbations sain et un financement biotech en amelioration.",
-     "Q Charles Weston (RBC) - la croissance operationnelle T2 incluait-elle le vent favorable des surcharges tarifaires, quelle ampleur : oui, +40pb au T2, integre comme un fait operationnel.",
-     "Q Charles Weston (RBC) - detail sur les programmes retardes, ampleur du vent contraire, confiance sur le retour des commandes : deux clients cles ont retarde des projets de therapies avancees en phase tardive pour des raisons de timing, commandes attendues fin d'annee, revenus probablement en 2027.",
-     "Q Subbu Nambi (Guggenheim) - les retards en modalites avancees sont-ils lies aux problemes d'anticorps monoclonaux signales par des concurrents : aucun lien, retards isoles a deux clients de therapie avancee, sans rapport avec le portefeuille proteines.",
-     "Q Subbu Nambi (Guggenheim) - pourquoi supposer que les retards sont temporaires plutot que permanents : les echanges avec les clients indiquent un decalage de timing plutot que des annulations de programme, resolution attendue fin d'annee/debut 2027.",
-     "Q James Quigley (Goldman Sachs) - quelles metriques demontrent une forte demande sous-jacente en consommables BPS soutenant une croissance a deux chiffres continue : les grands clients CDMO/biopharma montrent une croissance large en production de phase tardive/commerciale, classique et therapies avancees confondues, donnant de la visibilite.",
-     "Q Odysseas Manesiotis (BNP Paribas) - quels groupes de produits equipement/consommables ont pilote le vent contraire de mix persistant : pas un probleme mix recurrent vs non-recurrent, mais les retards de produits ATS a marge plus elevee creant des effets de mix negatifs au sein des categories.",
-     "Q Charlie Haywood (BofA) - quantifier l'exposition chromatographie/purification en % du BPS, elargissement des retards clients au-dela de ceux mentionnes : aucun pourcentage fourni, retards clients isoles sans tendance visible sur produits ou clients.",
-     "Q Falko Friedrich (Deutsche Bank) - le S2 doit-il etre modelise en croissance equilibree T3/T4 ou y a-t-il des effets de phasage specifiques : pas de guidance trimestrielle fournie, facteurs techniques principaux = sortie de MatTek et effet tarifaire inversant de vent favorable a vent contraire au S2.",
-     "Q Oliver Reinberg (Kepler Cheuvreux) - avec des comps 2027 favorables, pourquoi ne pas viser le haut de la fourchette 9-12% moyen terme : sera traite au moment approprie, incertitudes tarifaires actuelles empechant de speculer au-dela de la guidance actuelle.",
-     "Q Harry Sephton (Berenberg) - pourquoi le milieu de fourchette BPS suggere-t-il une deceleration malgre l'acceleration T1-T2 et l'amelioration des marches finaux : le vent favorable tarifaire du S1 s'inverse en vent contraire au S2, aux taux actuels aucune impulsion de croissance nette sur l'annee.",
-     "Q Charles Pitman-King (Barclays) - depuis quand le remboursement tarifaire potentiel est-il devenu une strategie, la transparence differencie-t-elle Sartorius des pairs : remboursements inattendus, demande faite comme les pairs mais paiement recu seulement fin juin, compensation client refletant une philosophie de partenariat.",
-     "Q James Vane-Tempest (Jefferies) - expliquer l'acceleration APAC et les patterns de stockage, benefice de marge brute lie aux depreciations de stock de l'annee precedente : momentum APAC tire par la reprise Chine en consommables, stockage minimal et disperse, benefices d'inventaire se dissipant graduellement sur plusieurs trimestres.",
-     "Q Oliver Metzger (ODDO BHF) - confirmer les attentes de croissance equipement au S2, quand la convergence vers le niveau consommables : equipement attendu stable a modeste croissance, convergence dependant des ajouts de capacite client, management attend plus de visibilite sur les commandes.",
-     "Q Thibault Boutherin (Morgan Stanley) - performance Americas bioprocessing hors effets tarifs/ATS, commandes liees au onshoring : hors effets tarifs et ATS, l'Amerique du Nord montre une croissance saine, projets de onshoring se materialisant en brownfield, majorite des commandes attendue S2 2027, impact ventes 2028+.",
-     "Q Charles Weston (RBC, relance) - l'estimation de risque sanctions Iran de 10 M€ pour 2026 a-t-elle change : aucun changement, l'estimation de 10 M€ reste valide."
+     "Q Richard Vosser (JPMorgan) - does H1 support confidence in the 9-12% long-term BPS target: management cites the double-digit growth trajectory of consumables, solid commercial drug demand, a healthy approval pipeline and improving biotech funding.",
+     "Q Charles Weston (RBC) - did Q2 operating growth include the tailwind from tariff surcharges, and how large: yes, +40bp in Q2, treated as an operating fact.",
+     "Q Charles Weston (RBC) - detail on the delayed programmes, scale of the headwind, confidence on orders returning: two key clients have delayed late-stage advanced-therapy projects for timing reasons, orders expected at year-end, revenue likely in 2027.",
+     "Q Subbu Nambi (Guggenheim) - are the advanced-modality delays linked to the monoclonal antibody issues flagged by peers: no link, delays isolated to two advanced-therapy clients, unrelated to the protein portfolio.",
+     "Q Subbu Nambi (Guggenheim) - why assume the delays are temporary rather than permanent: client discussions point to a timing shift rather than programme cancellations, resolution expected at year-end/early 2027.",
+     "Q James Quigley (Goldman Sachs) - which metrics demonstrate strong underlying BPS consumables demand supporting continued double-digit growth: large CDMO/biopharma clients show broad-based growth in late-stage/commercial production, classical and advanced therapies alike, providing visibility.",
+     "Q Odysseas Manesiotis (BNP Paribas) - which equipment/consumables product groups drove the persistent mix headwind: not a recurring vs non-recurring mix issue, but delays in higher-margin ATS products creating negative mix effects within the categories.",
+     "Q Charlie Haywood (BofA) - quantify chromatography/purification exposure as a % of BPS, and whether client delays are broadening beyond those mentioned: no percentage provided, client delays isolated with no visible trend across products or clients.",
+     "Q Falko Friedrich (Deutsche Bank) - should H2 be modelled with balanced Q3/Q4 growth or are there specific phasing effects: no quarterly guidance provided, the main technical factors being the MatTek exit and the tariff effect reversing from tailwind to headwind in H2.",
+     "Q Oliver Reinberg (Kepler Cheuvreux) - with favourable 2027 comps, why not target the high end of the 9-12% medium-term range: will be addressed at the appropriate time, current tariff uncertainties preventing speculation beyond the current guidance.",
+     "Q Harry Sephton (Berenberg) - why does the midpoint of the BPS range imply a deceleration despite the Q1-Q2 acceleration and improving end markets: the H1 tariff tailwind reverses into a headwind in H2, with no net growth impulse for the year at current rates.",
+     "Q Charles Pitman-King (Barclays) - since when has the potential tariff refund become a strategy, and does the transparency differentiate Sartorius from peers: refunds unexpected, claim filed as peers did but payment received only at end-June, client compensation reflecting a partnership philosophy.",
+     "Q James Vane-Tempest (Jefferies) - explain the APAC acceleration and the stocking patterns, and the gross margin benefit from prior-year inventory write-downs: APAC momentum driven by the China recovery in consumables, stocking minimal and scattered, inventory benefits fading gradually over several quarters.",
+     "Q Oliver Metzger (ODDO BHF) - confirm the equipment growth expectations for H2, and when convergence towards the consumables level: equipment expected flat to modest growth, convergence dependent on client capacity additions, management awaiting more visibility on orders.",
+     "Q Thibault Boutherin (Morgan Stanley) - Americas bioprocessing performance excluding tariff/ATS effects, and orders tied to onshoring: excluding tariff and ATS effects, North America shows healthy growth, onshoring projects materialising as brownfield, majority of orders expected in H2 2027, sales impact 2028+.",
+     "Q Charles Weston (RBC, follow-up) - has the 10 M€ Iran sanctions risk estimate for 2026 changed: no change, the 10 M€ estimate remains valid."
     ]
    }
   ],
@@ -109,7 +109,7 @@
    {
     "id": "onshoring_americas_2027_2028",
     "quarterOrigine": "S1 26",
-    "engagement": "Projets de onshoring en Amerique du Nord (brownfield) - majorite des commandes attendue au S2 2027, impact sur les ventes a partir de 2028.",
+    "engagement": "North America onshoring projects (brownfield) - majority of orders expected in H2 2027, impact on sales from 2028.",
     "echeance": "2027-Q4",
     "statut": "en_cours"
    }
@@ -160,7 +160,7 @@
     "referentiel": "IFRS",
     "source": "Rapport semestriel S1 2026 + communique (23/07/2026)",
     "date": "2026-08-19",
-    "note": "Croises : CA S1 1 527 M EUR (+2,5% publie, +6,4% cc), underlying EBITDA 479 M (marge 31,4%, +0,4pp), resultat net 181 M (+17,6%). Objectifs annuels confirmes (6-10% cc, marge >31%)."
+    "note": "Cross-checked: H1 revenue 1 527 M EUR (+2,5% reported, +6,4% cc), underlying EBITDA 479 M (margin 31,4%, +0,4pp), net income 181 M (+17,6%). Full-year targets confirmed (6-10% cc, margin >31%)."
    }
   },
   "guidanceHistory": [
@@ -168,17 +168,17 @@
     "quarter": "H1 26",
     "date": "2026-07-23",
     "fyGuided": 2026,
-    "guidanceAnnuelle": "CA +6-10% cc confirmée (bas de fourchette optique, effet compensation tarifs ~35 M€ ; opérationnel hors effet ~8% cc), marge EBITDA underlying 'légèrement au-dessus de 31%', capex/CA ~13,3%, dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026."
+    "guidanceAnnuelle": "Revenue +6-10% cc confirmed (optically at the low end of the range, tariff compensation effect ~35 M€; operationally ~8% cc excluding that effect), underlying EBITDA margin 'slightly above 31%', capex/revenue ~13,3%, net debt/EBITDA 'slightly above 2x' at end-2026."
    }
   ],
-  "guidanceLongTerme": "CMD mars 2026 : ambition moyen terme à partir de 2027 - croissance CA organique 9-12%/an (devises constantes, 100-200pb au-dessus de la croissance de marché bioprocessing estimée à 8-10%/an) et expansion de marge EBITDA underlying de 60-85 pb/an, tirée par le levier opérationnel, les améliorations opérationnelles et la part croissante des consommables haute marge.",
-  "summary": "Pure-player bioprocessing, filiale 71,5% Sartorius AG. THESE VALIDEE au S1 26 : l'équipement s'est stabilisé et repasse en croissance comme attendu, les consommables restent >9% organique. Nouvelles cibles CMD mars 2026 (CA +9-12%/an, marge +60-85pb/an à partir de 2027) précisent et confirment la trajectoire. Seul bémol : désendettement plus lent que prévu (CellGenix + dividende ont consommé le FCF du S1) et effet technique tarifs douaniers qui brouille temporairement la lecture du CA publié.",
+  "guidanceLongTerme": "CMD March 2026: medium-term ambition from 2027 - organic revenue growth 9-12%/yr (constant currency, 100-200bp above bioprocessing market growth estimated at 8-10%/yr) and underlying EBITDA margin expansion of 60-85 bp/yr, driven by operating leverage, operational improvements and the growing share of high-margin consumables.",
+  "summary": "Bioprocessing pure-player, 71,5%-owned subsidiary of Sartorius AG. THESIS VALIDATED in H1 26: equipment has stabilised and is back to growth as expected, consumables remain >9% organic. New CMD March 2026 targets (revenue +9-12%/yr, margin +60-85bp/yr from 2027) refine and confirm the trajectory. One caveat only: slower deleveraging than expected (CellGenix + dividend consumed H1 FCF) and a technical tariff effect that temporarily clouds the read on reported revenue.",
   "text": "== THESIS SUMMARY ==\nPure-play world bioprocessing supplier, 71.5%-owned by Sartorius AG (83% of votes). The cyclical-recovery thesis posed at creation (07/07/2026) passed its first test: equipment - mute since 2022 - 'stabilized as expected and back to slight growth' in H1, while high-margin recurring consumables keep compounding >9% organic. FY26 guidance confirmed: +6/10% cc (operational ~8% ex-tariff effect), underlying EBITDA margin slightly above 31%.\n\n== THESIS READ ==\n- The equipment cycle turning is THE thesis driver - one semester of evidence in, more needed. Watch: equipment order intake each half.\n- Consumables >9% organic is the quality floor under the recovery. Watch: destocking fully behind in all regions.\n- Deleveraging is the below-the-line kicker: finNet -130M (2025) improving to ~-48M by 2030 (May-2026 refinancing at 3.75% coupon), compounding EPS ahead of EBIT. Watch: refinancing schedule execution.\n\n== SPECIAL FACTORS ==\nBase = normalized IFRS: underlying EBITDA minus FULL D&A including ~110M/yr IFRS3 acquisition amortization KEPT (vs management 'underlying' which excludes it) - wedge documented; the amortization figure was re-derived from published S1 actuals (54.7M/6m), refining the ~155M creation estimate (E5bis confrontation done). ETR 26% = management's own interim rate. Shares constant (92M).\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 3,100M, EBIT 645M (Omnium base), EPS 4.35; 2027-2030: revenue +9.5%/yr, margin expansion per the March-2026 CMD frame, net debt 2,173 -> 350M. Watch: CMD mid-term targets vs delivery; parent-company (Sartorius AG) structural decisions; China bioprocessing demand.\n\n== CATALYSTS ==\nQ3 (Oct); equipment order-book inflection confirmation; FY26 (late Jan 2027) with FY27 frame; deleveraging milestones.",
   "impact": "positif",
   "ancrages": [
    {
     "id": "reprise_equipement_2026",
-    "moteur": "Activité équipement stabilisée comme attendu et repassée en légère croissance organique au S1 26 (vs quasi-stagnation 2022-2025), confirmée par des consommables >9% organique et le maintien de la guidance CA",
+    "moteur": "Equipment business stabilised as expected and back to slight organic growth in H1 26 (vs near-stagnation 2022-2025), confirmed by consumables >9% organic and the maintained revenue guidance",
     "applique": [
      "omniumCA.2026"
     ],
@@ -186,7 +186,7 @@
    },
    {
     "id": "ambition_moyen_terme_2027plus",
-    "moteur": "CMD mars 2026 : croissance CA organique 9-12%/an cc à partir de 2027 (100-200pb au-dessus du marché bioprocessing 8-10%/an) - retenu à ~9,5% reporté (retrait ~1pt FX)",
+    "moteur": "CMD March 2026: organic revenue growth 9-12%/yr cc from 2027 (100-200bp above the bioprocessing market at 8-10%/yr) - taken at ~9,5% reported (~1pt FX deduction)",
     "applique": [
      "omniumCA.2027",
      "omniumCA.2028",
@@ -197,7 +197,7 @@
    },
    {
     "id": "expansion_marge_2027plus",
-    "moteur": "CMD mars 2026 : expansion de marge EBITDA underlying de 60-85pb/an à partir de 2027 (levier opérationnel, part croissante des consommables) - retenu au milieu de fourchette ~72,5pb/an",
+    "moteur": "CMD March 2026: underlying EBITDA margin expansion of 60-85bp/yr from 2027 (operating leverage, growing share of consumables) - taken at the midpoint of the range ~72,5bp/yr",
     "applique": [
      "omniumEBIT.2027",
      "omniumEBIT.2028",
@@ -208,7 +208,7 @@
    },
    {
     "id": "marge_ebitda_2026",
-    "moteur": "Guidance confirmée au S1 26 : marge EBITDA underlying 'légèrement au-dessus de 31%' - retenu à 31,3%, cohérent avec le 31,4% déjà publié au S1 26",
+    "moteur": "Guidance confirmed at H1 26: underlying EBITDA margin 'slightly above 31%' - taken at 31,3%, consistent with the 31,4% already reported in H1 26",
     "applique": [
      "omniumEBIT.2026"
     ],
@@ -216,7 +216,7 @@
    },
    {
     "id": "is_normatif",
-    "moteur": "Taux d'IS explicitement guidé et appliqué par le management pour le calcul des résultats intermédiaires : 26% (identique 2025 et 2026), reconduit sur tout l'horizon de projection à défaut d'information contraire",
+    "moteur": "Tax rate explicitly guided and applied by management for the calculation of the interim results: 26% (identical in 2025 and 2026), rolled forward across the whole projection horizon absent information to the contrary",
     "applique": [
      "omniumNet.2026",
      "omniumNet.2027",
@@ -233,7 +233,7 @@
    },
    {
     "id": "resultat_financier_net",
-    "moteur": "Résultat financier S1 26 publié -57,5 M€ (vs -62,2 M€ S1 25), amélioration liée à la baisse des charges d'intérêt et aux effets de change/valorisation positifs. Refinancement obligataire de mai 2026 (tranche 2023 refinancée via Sartorius Finance B.V. à un coupon explicite de 3,75%, priorité 1 E5-a-bis) réduit le coût de financement prospectif - trajectoire d'amélioration retenue jusqu'en 2030 à mesure du désendettement",
+    "moteur": "Reported H1 26 net financial result -57,5 M€ (vs -62,2 M€ in H1 25), an improvement driven by lower interest charges and positive FX/valuation effects. The May 2026 bond refinancing (2023 tranche refinanced through Sartorius Finance B.V. at an explicit 3,75% coupon, priority 1 E5-a-bis) reduces the prospective cost of funding - improving trajectory retained through 2030 as leverage comes down",
     "applique": [
      "omniumNet.2026",
      "omniumNet.2027",
@@ -245,7 +245,7 @@
    },
    {
     "id": "rebasage_nd_2026",
-    "moteur": "Dette nette de 2 198,7 M€ au 30/06/26 (vs 2 173,1 M€ fin 2025, quasi stable au lieu de la décrue attendue), le FCF du S1 (198,8 M€) ayant été consommé par le dividende FY25 (67,9 M€) et le rachat des minoritaires CellGenix (71,8 M€). Guidance confirmée : dette nette/EBITDA 'légèrement au-dessus de 2x' fin 2026 (vs 2,38x fin 2025), impliquant un désendettement concentré sur le S2. Rebasage de la trajectoire omniumND vs le refresh de création (1 850 M€ fin 2026 projetés, désormais 2 050 M€)",
+    "moteur": "Net debt of 2 198,7 M€ at 30/06/26 (vs 2 173,1 M€ at end-2025, broadly flat instead of the expected decline), H1 FCF (198,8 M€) having been absorbed by the FY25 dividend (67,9 M€) and the buyout of the CellGenix minorities (71,8 M€). Guidance confirmed: net debt/EBITDA 'slightly above 2x' at end-2026 (vs 2,38x at end-2025), implying deleveraging concentrated in H2. Rebasing of the omniumND trajectory vs the creation refresh (1 850 M€ projected at end-2026, now 2 050 M€)",
     "applique": [
      "omniumND.2026",
      "omniumND.2027",
@@ -257,7 +257,7 @@
    },
    {
     "id": "rachat_cellgenix_2026",
-    "moteur": "Exercice de l'option d'achat des 24% minoritaires restants de Sartorius CellGenix GmbH pour ~71,8 M€ (SSB détient désormais 100%) - légèrement relutif sur le résultat net part du groupe (suppression de la quote-part minoritaire), effet mineur mais retenu dans le résultat net projeté",
+    "moteur": "Exercise of the call option on the remaining 24% minority interest in Sartorius CellGenix GmbH for ~71,8 M€ (SSB now holds 100%) - slightly accretive to net income attributable to the group (removal of the minority share), a minor effect but retained in projected net income",
     "applique": [
      "omniumNet.2026",
      "omniumNet.2027",
@@ -269,7 +269,7 @@
    },
    {
     "id": "base_amortissement_intangibles",
-    "moteur": "Amortissement IFRS3/intangibles lié aux acquisitions en série (Polyplus, CellGenix, BIA Separations) explicitement gardé dans la base Omnium (E5-e, acquéreur en série) : ~109-115 M€/an sur la base du S1 26 publié (54,7 M€ sur 6 mois) - chiffre plus précis que l'estimation ~155 M€/an retenue à la création, recalculé une fois avec confrontation explicite (E5bis)",
+    "moteur": "IFRS3/intangibles amortisation tied to the serial acquisitions (Polyplus, CellGenix, BIA Separations) explicitly kept in the Omnium base (E5-e, serial acquirer): ~109-115 M€/yr on the basis of reported H1 26 (54,7 M€ over 6 months) - a more precise figure than the ~155 M€/yr estimate used at creation, recalculated once with explicit confrontation (E5bis)",
     "applique": [
      "omniumEBIT.2026",
      "omniumEBIT.2027",
@@ -514,13 +514,13 @@
    "eps": 4.35,
    "epsNY": 5.28,
    "date": "2026-07-24",
-   "source": "Stockopedia (~5,02€, juillet 2026), base 'underlying' management (non comparable à omniumEPS Omnium, qui garde l'amortissement des intangibles).",
+   "source": "Stockopedia (~5,02€, July 2026), management 'underlying' basis (not comparable to Omnium's omniumEPS, which keeps intangibles amortisation).",
    "excluded": true,
-   "excludedNote": "Entree INVALIDE (correction 20/08/2026) : base hybride 'underlying' alignee sur le total Omnium CY (4.35) au lieu du consensus brut - voir doctrine, piege Sartorius. Conservee pour audit, EXCLUE des courbes et des deltas de revision : le passage a la base GAAP n'est pas une revision baissiere du consensus."
+   "excludedNote": "INVALID entry (correction 20/08/2026): hybrid 'underlying' basis aligned on the Omnium CY total (4.35) instead of the raw consensus - see doctrine, Sartorius trap. Kept for audit, EXCLUDED from the curves and from the revision deltas: the switch to the GAAP basis is not a downward consensus revision."
   }
  ],
  "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
   "date": "2026-08-20",
   "eps": {
    "2021": 4.5,

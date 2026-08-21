@@ -68,8 +68,8 @@
   "ownership": {
     "asOf": "2026-07-24",
     "insiderPct": 0.2,
-    "insiderDesc": "Dirigeants et administrateurs, sans famille fondatrice ni bloc de contrôle identifié (grande capitalisation, actionnariat diffus à dominante institutionnelle).",
-    "insiderSource": "Agrégateur SimplyWall St (juin 2026, ~0,2%) - DEF 14A 2026 (déposé le 26/03/2026) consulté mais tableau de détention bénéficiaire non extrait lors de cette recherche ; ordre de grandeur cohérent avec les publications SimplyWall St successives 2023-2026 (systématiquement <1%) - traité comme repli sur agrégateur avec réserve explicite plutôt qu'ancrage proxy direct.",
+    "insiderDesc": "Officers and directors, with no founding family and no identified control block (large cap, diffuse, predominantly institutional shareholder base).",
+    "insiderSource": "SimplyWall St aggregator (June 2026, ~0,2%) - DEF 14A 2026 (filed 26/03/2026) consulted but the beneficial ownership table was not extracted during this search; order of magnitude consistent with the successive SimplyWall St publications 2023-2026 (systematically <1%) - treated as an aggregator fallback with an explicit reservation rather than a direct proxy anchor.",
     "notableHolders": [],
     "coverageNote": null,
     "history": []
@@ -79,17 +79,17 @@
     "items": [
       {
         "year": 2024,
-        "title": "Recours collectif en valeurs mobilières (Patel v. Edwards Lifesciences) alléguant des déclarations trompeuses sur la demande TAVR et l'insuffisance de contrôles internes entre février et juillet 2024, à la suite d'une chute de 31% du titre le 25/07/2024.",
+        "title": "Securities class action (Patel v. Edwards Lifesciences) alleging misleading statements on TAVR demand and inadequate internal controls between February and July 2024, following a 31% fall in the stock on 25/07/2024.",
         "allegedBy": "Investisseurs actionnaires (plusieurs cabinets dont Robbins Geller, BFA Law, Levi & Korsinsky) - class action devant le U.S. District Court for the Central District of California, No. 24-cv-02221",
         "date": "2024-10-14",
         "status": "reglee",
-        "outcome": "Motion de rejet partiellement accordée/rejetée le 19/09/2025 ; accord de principe pour un montant non matériel aux états financiers (charge comptabilisée dans Certain Litigation Expenses), sous réserve d'approbation du tribunal",
+        "outcome": "Motion to dismiss partially granted/denied on 19/09/2025; agreement in principle for an amount not material to the financial statements (charge booked in Certain Litigation Expenses), subject to court approval",
         "source": "10-Q T1 2026 (SEC)"
       },
       {
         "year": 2024,
-        "title": "Action dérivée d'actionnaires (Ho v. Zovighian) alléguant violations des lois fédérales sur les valeurs mobilières, manquements aux devoirs fiduciaires, abus de contrôle et mauvaise gestion, en lien avec les mêmes faits que le recours Patel.",
-        "allegedBy": "Actionnaire (Manh Ho), pour le compte de la société, contre certains dirigeants et administrateurs - U.S. District Court for the Central District of California, Case No. 8:24-cv-02822",
+        "title": "Shareholder derivative action (Ho v. Zovighian) alleging violations of federal securities laws, breaches of fiduciary duty, abuse of control and mismanagement, in connection with the same facts as the Patel action.",
+        "allegedBy": "Shareholder (Manh Ho), on behalf of the company, against certain officers and directors - U.S. District Court for the Central District of California, Case No. 8:24-cv-02822",
         "date": "2024-12-31",
         "status": "enquete_en_cours",
         "outcome": null,
@@ -97,24 +97,24 @@
       },
       {
         "year": 2025,
-        "title": "Injonction préliminaire de la FTC bloquant l'acquisition prévue de JenaValve Technology (945 M$) pour motifs anticoncurrentiels dans le segment naissant du TAVR-AR (régurgitation aortique).",
+        "title": "FTC preliminary injunction blocking the planned acquisition of JenaValve Technology (945 M$) on anticompetitive grounds in the nascent TAVR-AR (aortic regurgitation) segment.",
         "allegedBy": "Federal Trade Commission (FTC)",
         "date": "2025-08-01",
         "status": "classee_sans_suite",
-        "outcome": "Injonction préliminaire accordée en janvier 2026 ; Edwards a abandonné l'acquisition et résilié l'accord de fusion le 14/01/2026 plutôt que de poursuivre le litige",
-        "source": "Couverture presse juridique (MedTech Dive, Arnold & Porter) - déjà documenté en détail dans hypothese.text"
+        "outcome": "Preliminary injunction granted in January 2026; Edwards abandoned the acquisition and terminated the merger agreement on 14/01/2026 rather than pursue the litigation",
+        "source": "Legal press coverage (MedTech Dive, Arnold & Porter) - already documented in detail in hypothese.text"
       },
       {
         "year": 2026,
-        "title": "Règlement FTC/DOJ pour violation du Hart-Scott-Rodino Act : structuration de l'acquisition de JC Medical (2024) pour éviter la notification antitrust préalable, en lien direct avec la tentative avortée d'acquisition de JenaValve.",
+        "title": "FTC/DOJ settlement for violation of the Hart-Scott-Rodino Act: structuring of the JC Medical acquisition (2024) to avoid the prior antitrust notification, directly linked to the aborted attempt to acquire JenaValve.",
         "allegedBy": "Federal Trade Commission (FTC) et Department of Justice (DOJ)",
         "date": "2026-07-13",
         "status": "reglee",
-        "outcome": "Pénalité civile de 10 M$ pour Edwards (2 M$ pour Genesis MedTech/JC Medical) - le plus important règlement combiné jamais obtenu par les agences pour ce type de manquement ; obligation de notification préalable renforcée et programme de conformité antitrust à instaurer",
+        "outcome": "Civil penalty of 10 M$ for Edwards (2 M$ for Genesis MedTech/JC Medical) - the largest combined settlement ever obtained by the agencies for this type of failure; strengthened prior-notification obligation and an antitrust compliance programme to be put in place",
         "source": "FTC (communiqué du 13/07/2026), Arnold & Porter, MedTech Dive, Bloomberg Law"
       }
     ],
-    "note": "Recherche étendue à l'historique public du titre (champ absent des refresh précédents). Deux volets soldés ce trimestre (Patel - accord de principe ; règlement HSR/JC Medical - 10 M$) ; l'action dérivée Ho v. Zovighian reste en cours. Aucune autre allégation de fraude ou enquête réglementaire matérielle identifiée."
+    "note": "Search extended to the stock's public history (field absent from previous refreshes). Two strands settled this quarter (Patel - agreement in principle; HSR/JC Medical settlement - 10 M$); the Ho v. Zovighian derivative action remains ongoing. No other fraud allegation or material regulatory investigation identified."
   },
   "coherenceQualitative": {
     "asOf": "2026-08-15",
@@ -126,16 +126,16 @@
         "date": "2026-07-23",
         "format": "brut",
         "clesRetenues": [
-          "Q Robbie Marcus (JPMorgan) - moteurs de la croissance TAVR (marché vs part) et mix TMTT : croissance tirée par la technologie/preuves cliniques SAPIEN, croissance US et internationale similaire, force TMTT large sur PASCAL/EVOQUE/M3.",
-          "Q Larry Biegelsen (Wells Fargo) - pourquoi scinder la présentation PROGRESS (caractéristiques de base vs résultats) : choix pédagogique sur la sténose modérée, impact 2026 jugé minime.",
-          "Q Larry Biegelsen (Wells Fargo, relance) - la croissance groupe de 10% est-elle atteignable en 2027 vu le ralentissement implicite du S2 : objectif long terme de 10% réaffirmé, guidance 2027 détaillée promise à l'investor conference.",
-          "Q Travis Steed (BofA) - saisonnalité normalisée au T3 et rythme de croissance TAVR attendu : hausse séquentielle normale attendue, comparaisons T2 25 exceptionnelles expliquant le ralentissement apparent du S2.",
-          "Q Travis Steed (BofA, relance) - impact de la NCD sur l'expansion des centres TAVR et la capacité TMTT : projet de politique favorable à la couverture asymptomatique, pas d'expansion majeure de centres attendue, gains d'efficience en perspective.",
-          "Q Joanne Wuensch (Citi) - calendrier d'adoption et contribution au CA si PROGRESS est un succès : traitement de la sténose modérée nécessitera un changement de pratique et une éducation médicale, clarté attendue au TCT.",
-          "Q Pito Chickering (Deutsche Bank) - calendrier d'approbation PASCAL tricuspide (T4) et positionnement concurrentiel : approbation FDA attendue au T4 après présentation des données au TCT, expérience européenne démontrant la différenciation PASCAL.",
-          "Q Vijay Kumar (Evercore ISI) - inflexion EVOQUE spécifique ou croissance TMTT large : croissance large sur toutes les plateformes TMTT, EVOQUE en fort momentum via l'ouverture de nouveaux centres.",
-          "Q Vijay Kumar (Evercore ISI, relance) - caractéristiques de base de PROGRESS (insuffisance cardiaque, traitements) : PROGRESS n'est pas un essai insuffisance cardiaque, patients avec fonction ventriculaire gauche saine.",
-          "Q Josh Jennings (TD Cowen) - opportunité TAVR-in-TAVR et calendrier de contribution volumique : part de marché actuellement faible mais croissance attendue, déjà intégrée aux modèles de marché avec considérations de durabilité."
+          "Q Robbie Marcus (JPMorgan) - drivers of TAVR growth (market vs share) and TMTT mix: growth driven by SAPIEN technology/clinical evidence, similar US and international growth, broad TMTT strength across PASCAL/EVOQUE/M3.",
+          "Q Larry Biegelsen (Wells Fargo) - why split the PROGRESS presentation (baseline characteristics vs results): pedagogical choice on moderate stenosis, 2026 impact judged minimal.",
+          "Q Larry Biegelsen (Wells Fargo, follow-up) - is 10% group growth achievable in 2027 given the implied H2 slowdown: long-term 10% target reaffirmed, detailed 2027 guidance promised at the investor conference.",
+          "Q Travis Steed (BofA) - normalised seasonality in Q3 and expected pace of TAVR growth: normal sequential increase expected, exceptional Q2 25 comparisons explaining the apparent H2 slowdown.",
+          "Q Travis Steed (BofA, follow-up) - impact of the NCD on TAVR centre expansion and TMTT capacity: draft policy favourable to asymptomatic coverage, no major centre expansion expected, efficiency gains in prospect.",
+          "Q Joanne Wuensch (Citi) - adoption timeline and revenue contribution if PROGRESS is a success: treating moderate stenosis will require a change in practice and medical education, clarity expected at TCT.",
+          "Q Pito Chickering (Deutsche Bank) - PASCAL tricuspid approval timeline (Q4) and competitive positioning: FDA approval expected in Q4 after the data presentation at TCT, European experience demonstrating PASCAL differentiation.",
+          "Q Vijay Kumar (Evercore ISI) - EVOQUE-specific inflection or broad TMTT growth: broad growth across all TMTT platforms, EVOQUE with strong momentum through the opening of new centres.",
+          "Q Vijay Kumar (Evercore ISI, follow-up) - PROGRESS baseline characteristics (heart failure, treatments): PROGRESS is not a heart failure trial, patients with healthy left ventricular function.",
+          "Q Josh Jennings (TD Cowen) - TAVR-in-TAVR opportunity and timing of volume contribution: market share currently low but growth expected, already embedded in the market models with durability considerations."
         ]
       },
       {
@@ -143,20 +143,20 @@
         "date": "2026-04-23",
         "format": "brut",
         "clesRetenues": [
-          "Q David Roman (Goldman Sachs) - lecture des données de durabilité TAVR concurrentes et impact sur le choix des dispositifs : preuves cliniques renforcent la confiance dans la durabilité SAPIEN et la demande médecins.",
-          "Q David Roman (Goldman Sachs, relance) - moteurs de la forte croissance séquentielle TMTT et dynamique de parts : différenciation du portefeuille PASCAL/EVOQUE/SAPIEN M3 permettant une sélection de thérapie personnalisée.",
-          "Q Larry Biegelsen (Wells Fargo) - hypothèses de parts de marché dans la guidance TAVR vu les données de durabilité concurrentes : majorité de la croissance reflète l'expansion du marché, gains de parts modestes liés surtout à une sortie de concurrent en Europe.",
-          "Q Larry Biegelsen (Wells Fargo, relance) - calendrier des travaux cliniques confirmatoires SAPIEN X4 : collecte de preuves prévue jusqu'en 2026, communication des améliorations produit après la fin de l'essai.",
-          "Q Travis Steed (BofA) - contraintes de capacité des laboratoires de cardiologie structurelle sur les volumes : capacité non critique, systèmes de santé gèrent efficacement via optimisation des process.",
-          "Q Travis Steed (BofA, relance) - évaluation des exigences NCD proposées et rythme de croissance TAVR US : décision finale NCD difficile à prédire, décision provisoire attendue en juin, croissance US saine, ex-US plus rapide.",
-          "Q Robbie Marcus (JPMorgan) - pourquoi la guidance TAVR n'a été relevée que d'1% malgré des beats solides : approche prudente reflétant une comparaison T1 25 basse et une base T2 25 déjà élevée.",
-          "Q Robbie Marcus (JPMorgan, relance) - les concurrents perdent-ils des parts au profit d'Edwards en mitrale/tricuspide : Edwards crée une expansion de catégorie plutôt qu'une simple prise de parts.",
-          "Q Vijay Kumar (Evercore ISI) - impact du programme de rachat accéléré sur le nombre d'actions : ASR réduit le nombre moyen d'actions diluées de 5 millions sur l'année, impact météo nominal au T1.",
-          "Q Vijay Kumar (Evercore ISI, relance) - niveau de confiance sur l'essai PROGRESS et gestion des crossovers : pas de commentaire sur les essais avant résultats, présentation au TCT, recrutement rapide reflétant l'enthousiasme médical.",
-          "Q Joanne Wuensch (Citi) - modélisation de la R&D à venir et avancement de la recherche CFO : guidance R&D maintenue à 17%, recherche CFO bien avancée, annonce à venir.",
-          "Q Matthew Taylor (Jefferies) - la hausse de guidance TAVR reflète-t-elle des gains de parts ou surtout la croissance du marché : surperformance T1 tirée surtout par la croissance du marché, gains de parts modestes.",
-          "Q Matthew Taylor (Jefferies, relance) - impact de l'environnement macro sur la couverture et la demande de procédures : aucun environnement tendu observé, demande robuste pour les technologies vitales, nouvelle politique FDA-CMS RAPID jugée positive.",
-          "Q Matt Miksic (Barclays) - stratégie de lancement du remplacement mitral SAPIEN M3 : déploiement en phase précoce démarrant par les centres d'essai, extension progressive."
+          "Q David Roman (Goldman Sachs) - reading of competing TAVR durability data and impact on device choice: clinical evidence reinforces confidence in SAPIEN durability and physician demand.",
+          "Q David Roman (Goldman Sachs, follow-up) - drivers of the strong sequential TMTT growth and share dynamics: PASCAL/EVOQUE/SAPIEN M3 portfolio differentiation enabling personalised therapy selection.",
+          "Q Larry Biegelsen (Wells Fargo) - market share assumptions in the TAVR guidance given competing durability data: majority of the growth reflects market expansion, modest share gains driven mainly by a competitor exit in Europe.",
+          "Q Larry Biegelsen (Wells Fargo, follow-up) - timeline of the confirmatory clinical work on SAPIEN X4: evidence collection planned through 2026, product improvements to be communicated after the trial ends.",
+          "Q Travis Steed (BofA) - structural heart lab capacity constraints on volumes: capacity not critical, health systems managing effectively through process optimisation.",
+          "Q Travis Steed (BofA, follow-up) - assessment of the proposed NCD requirements and pace of US TAVR growth: final NCD decision hard to predict, provisional decision expected in June, healthy US growth, ex-US faster.",
+          "Q Robbie Marcus (JPMorgan) - why the TAVR guidance was raised by only 1% despite solid beats: prudent approach reflecting a low Q1 25 comparison and an already high Q2 25 base.",
+          "Q Robbie Marcus (JPMorgan, follow-up) - are competitors losing share to Edwards in mitral/tricuspid: Edwards is creating category expansion rather than simply taking share.",
+          "Q Vijay Kumar (Evercore ISI) - impact of the accelerated buyback programme on the share count: the ASR reduces the average diluted share count by 5 million over the year, nominal weather impact in Q1.",
+          "Q Vijay Kumar (Evercore ISI, follow-up) - confidence level on the PROGRESS trial and management of crossovers: no comment on trials before results, presentation at TCT, rapid enrolment reflecting physician enthusiasm.",
+          "Q Joanne Wuensch (Citi) - modelling of upcoming R&D and progress of the CFO search: R&D guidance maintained at 17%, CFO search well advanced, announcement to come.",
+          "Q Matthew Taylor (Jefferies) - does the TAVR guidance raise reflect share gains or mainly market growth: Q1 outperformance driven mainly by market growth, modest share gains.",
+          "Q Matthew Taylor (Jefferies, follow-up) - impact of the macro environment on coverage and procedure demand: no strained environment observed, robust demand for life-saving technologies, new FDA-CMS RAPID policy judged positive.",
+          "Q Matt Miksic (Barclays) - launch strategy for the SAPIEN M3 mitral replacement: early-phase rollout starting with the trial centres, gradual extension."
         ]
       }
     ],
@@ -164,7 +164,7 @@
       {
         "id": "guidance_2027_investor_conf",
         "quarterOrigine": "T2 26",
-        "engagement": "Zovighian réaffirme l'objectif long terme de croissance du CA groupe de ~10%/an et promet une guidance 2027 détaillée lors de l'investor conference (post-TCT S2 26).",
+        "engagement": "Zovighian reaffirms the long-term target of ~10%/yr group revenue growth and promises detailed 2027 guidance at the investor conference (post-TCT H2 26).",
         "echeance": "2026-Q4",
         "statut": "en_cours"
       }
@@ -182,7 +182,7 @@
         "2030": 4.77
       }
     },
-    "source": "Deep refresh 18/08/2026 (protocole complet) : bridge etabli (IS 17% 2026 -> 19% ensuite - Pillar Two/credits californiens - et tresorerie rebasee post-ASR), scorecard cree (ancre EPS ajuste initiale 2,975$ depuis guidanceHistory, decalage de base management/Omnium declare dans basisNote), cles depreciees purgees. Projections inchangees (etat du 24/07).",
+    "source": "Deep refresh 18/08/2026 (full protocol): bridge established (tax rate 17% 2026 -> 19% thereafter - Pillar Two/California credits - and cash rebased post-ASR), scorecard created (initial adjusted EPS anchor 2,975$ from guidanceHistory, management/Omnium base gap declared in basisNote), deprecated keys purged. Projections unchanged (state of 24/07).",
     "dernierCall": {
       "quarter": "Q2 26",
       "communiqueAnalyse": true,
@@ -205,7 +205,7 @@
         }
       },
       "guidanceProchainTrimestre": "T3 26 : CA 1,63-1,71 Md$, EPS ajusté 0,71-0,77$.",
-      "guidanceAnnuelle": "FY26 : CA +10-11% (CC, relevé de +9-11%), TAVR +8-9% CC (relevé de +7-9%), TMTT 760-780 M$ (relevé de 740-780 M$), EPS ajusté maintenu 2,95-3,05$ malgré un IS désormais attendu en haut de fourchette 16-19% (Pillar Two non actif avant fin d'année + limitation californienne des crédits R&D).",
+      "guidanceAnnuelle": "FY26: revenue +10-11% (CC, raised from +9-11%), TAVR +8-9% CC (raised from +7-9%), TMTT 760-780 M$ (raised from 740-780 M$), adjusted EPS maintained at 2,95-3,05$ despite a tax rate now expected at the high end of the 16-19% range (Pillar Two not active before year-end + California limitation on R&D credits).",
       "pointsCles": [
         "Broad-based beat: sales of $1.74B grew 12.5% underlying with all franchises contributing (TAVR $1.30B +10.5%, TMTT $195.9M +44.8%, Surgical $284M +5%); adjusted EPS $0.78 beat by $0.04 while GAAP EPS was $0.42 due to the California R&D tax credit limitation.",
         "FY26 guidance raised on sales (total 10-11%, TAVR 8-9%, TMTT $760-780M) but adjusted EPS only reaffirmed at $2.95-3.05: operating leverage (op margin at high end of 28-29%, ~150bps constant-currency expansion) absorbs a tax rate now expected at the high end of 16-19% (Pillar Two without safe harbor legislation plus California R&D credit limits).",
@@ -239,7 +239,7 @@
         "guidanceAnnuelle": "CA +10-11% (CC), TAVR +8-9%, TMTT 760-780 M$, EPS ajusté maintenu 2,95-3,05$."
       }
     ],
-    "guidanceLongTerme": "Croissance CA groupe ~10%/an en moyenne à long terme + expansion de marge opérationnelle ajustée de 50-100 pb/an à partir de 2027 (réaffirmé au call T2 26 ; objectif initial CMD décembre 2025).",
+    "guidanceLongTerme": "~10%/yr average group revenue growth over the long term + adjusted operating margin expansion of 50-100 bp/yr from 2027 (reaffirmed on the Q2 26 call; initial target from the December 2025 CMD).",
     "quarterlyEPS": {
       "cadence": "trimestriel",
       "historique": [],
@@ -311,7 +311,7 @@
       ]
     },
     "guidanceLongTermeHistory": [],
-    "summary": "Leader TAVR en regain structurel de croissance + scaling TMTT vers 2 Md$ 2030 ; T2 26 bat le consensus mais l'EPS ajusté Omnium recule vs le refresh précédent du fait d'un IS structurellement plus élevé (Pillar Two/Californie) et d'un rebasage matériel de la trésorerie nette après l'ASR T1 26.",
+    "summary": "TAVR leader in a structural growth recovery + TMTT scaling towards 2 Md$ by 2030; Q2 26 beats consensus but the Omnium adjusted EPS declines vs the previous refresh on the back of a structurally higher tax rate (Pillar Two/California) and a material rebasing of net cash after the Q1 26 ASR.",
     "text": "== THESIS SUMMARY ==\nEdwards Lifesciences is the global TAVR leader, riding a clinical-practice shift (early treatment of severe aortic stenosis) that drove another guidance raise at Q2 (group +10-11% cc, TAVR +8-9%). TMTT keeps scaling (+45% cc in Q2; EVOQUE/PASCAL/SAPIEN M3) toward its 2bn$-by-2030 target. The core thesis - ~10%/yr revenue growth 2026-2030 with 50-100bp/yr adjusted operating-margin expansion from 2027 - is intact and reinforced. What changed this year is financial, not operational: (i) a durably higher normative tax (Pillar Two + California R&D credit limitation; management explicitly guiding the top of 16-19%) and (ii) net cash rebased down (2.3bn$ at 30/06 vs 3.9bn$ end-2025) after the 500M$ ASR and the Autus bolt-on - the ~5% Omnium EPS haircut vs the prior refresh is entirely carried by named anchors, not a thesis downgrade. Omnium's basis sits structurally ~5% below management-adjusted (recurring litigation partially reintegrated, tax at band top) - a declared, persistent offset.\n\n== THESIS READ ==\n- Guidance raised again on revenue (+10-11% cc) with adjusted EPS held 2.95-3.05$: the operational engine outruns the plan while tax absorbs the surplus.\n- TMTT +45% cc: the second growth leg is compounding on schedule toward 2bn$/2030.\n- The Q4-26 implied EPS (0.53$, below 2025 seasonality) is a TAX phasing effect (Pillar Two/California back-loaded), not operational weakness - verify the actual quarterly tax rate at Q3.\n- Net cash rebased by capital returns (ASR) and Autus - finNet drops accordingly in the bridge; not a cash-generation problem (FCF intact).\n- Watch: CMS NCD decision (September) and PROGRESS data at TCT - the two catalysts that could re-rate TAVR growth beyond the guide.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: GAAP continuing operations retreated of true one-offs (NOT management-adjusted: recurring litigation only partially excluded, immaterial intangible amortization kept) - the ~5% structural gap to management basis is documented and declared in the scorecard basisNote. Bridge (c-ter): tax 17% (2026) then 19% (top of the guided 16-19% band, Pillar Two + California), interest income on the rebased cash (+47 -> +74M$); the published 2025 reconciles at 14.5% tax and +150M$ interest - explaining the W1 conversion gap (96% -> 83%) by parameters, not error. quarterlyEPS: Q1/Q2 actuals (0.78/0.78), Q3 at guide mid (0.72), Q4 residual (0.53) with the tax-phasing explanation. Scorecard: annual adjusted-EPS guider - anchor 2.975$ (initial Feb guidance, from guidanceHistory), basis offset declared, history to backfill, application suspended. WATCH-LIST: (1) FY26 close: isolate as true one-offs in data the 188.2M$ tax allocation, VIE impairments (163.6M$ YTD), VIE revaluation gains (85.1M$ YTD), HSR penalty (10M$); (2) actual quarterly tax rate at Q3 vs the phasing assumption; (3) TMTT ramp vs 760-780M$; (4) backfill FY24/25 initial guidance anchors. Next useful refresh: Q3 results (late October).\n\n== CATALYSTS ==\nCMS NCD decision (Sep 2026); PROGRESS at TCT (H2); PASCAL tricuspid US and next-gen approvals (Q4); TMTT scaling; buyback cadence.",
     "impact": "positif",
     "ancrages": [
@@ -325,7 +325,7 @@
       },
       {
         "id": "croissance_groupe_2027plus",
-        "moteur": "Déclaration CEO réitérée au call T2 26 : ~10%/an de croissance CA moyenne à long terme",
+        "moteur": "CEO statement reiterated on the Q2 26 call: ~10%/yr average revenue growth over the long term",
         "applique": [
           "omniumCA.2027",
           "omniumCA.2028",
@@ -336,7 +336,7 @@
       },
       {
         "id": "expansion_marge_op_2026",
-        "moteur": "Guidance management : marge opérationnelle ajustée visée en haut de la fourchette originale 28-29% pour 2026 (~150 pb d'expansion CC vs 27% ajusté 2025), incluant la normalisation des coûts liés à l'opération JenaValve avortée",
+        "moteur": "Management guidance: adjusted operating margin targeted at the high end of the original 28-29% range for 2026 (~150 bp of CC expansion vs 27% adjusted in 2025), including the normalisation of costs related to the aborted JenaValve transaction",
         "applique": [
           "omniumEBIT.2026"
         ],
@@ -344,7 +344,7 @@
       },
       {
         "id": "expansion_marge_op_2027plus",
-        "moteur": "Guidance reconduite : 50-100 pb/an d'expansion de marge opérationnelle ajustée à partir de 2027",
+        "moteur": "Guidance reiterated: 50-100 bp/yr of adjusted operating margin expansion from 2027",
         "applique": [
           "omniumEBIT.2027",
           "omniumEBIT.2028",
@@ -355,7 +355,7 @@
       },
       {
         "id": "is_normatif_2026",
-        "moteur": "Guidance management explicite au call T2 26 : IS 2026 désormais en haut de fourchette 16-19% (Pillar Two safe-harbor non actif avant fin d'année + limitation californienne des crédits R&D actée le 29/06/2026) - retenu à 19%, contre 17% utilisé au refresh précédent",
+        "moteur": "Explicit management guidance on the Q2 26 call: 2026 tax rate now at the high end of the 16-19% range (Pillar Two safe-harbor not active before year-end + California limitation on R&D credits enacted on 29/06/2026) - taken at 19%, against 17% used at the previous refresh",
         "applique": [
           "omniumNet.2026",
           "omniumEPS.2026"
@@ -364,7 +364,7 @@
       },
       {
         "id": "is_normatif_2027plus",
-        "moteur": "A défaut de clarté législative supplémentaire sur Pillar Two/crédits R&D californiens, IS normatif maintenu prudemment à 18% sur 2027-2030",
+        "moteur": "Absent further legislative clarity on Pillar Two/California R&D credits, normative tax rate prudently maintained at 18% over 2027-2030",
         "applique": [
           "omniumNet.2027",
           "omniumNet.2028",
@@ -379,7 +379,7 @@
       },
       {
         "id": "resultat_financier_net",
-        "moteur": "Cash net 2,3 Md$ au 30/06/26 + programme de rachat actif/régulier : rendement financier net quasi-nul retenu sur les exercices projetés 2027-2030 (application stricte E5-a-bis) ; 2026 retient ~95 M$ reflétant le résultat financier déjà publié au S1 26 (63,5 M$) prolongé sur un S2 plus faible",
+        "moteur": "Net cash 2,3 Md$ at 30/06/26 + active/regular buyback programme: near-zero net financial return taken for the projected 2027-2030 years (strict application of E5-a-bis); 2026 takes ~95 M$ reflecting the financial result already reported in H1 26 (63,5 M$) extended over a weaker H2",
         "applique": [
           "omniumNet.2026",
           "omniumNet.2027",
@@ -391,7 +391,7 @@
       },
       {
         "id": "rachat_actions",
-        "moteur": "ASR 500 M$ T1 26, ~1,5 Md$ d'autorisation restante inchangée au T2 26, tendance historique -1,5 à -2%/an - actions diluées T2 26 : 577,6 M (vs 587,9 M un an plus tôt)",
+        "moteur": "ASR 500 M$ in Q1 26, ~1,5 Md$ of remaining authorisation unchanged in Q2 26, historical trend -1,5 to -2%/yr - diluted shares Q2 26: 577,6 M (vs 587,9 M a year earlier)",
         "applique": [
           "omniumShares.2026",
           "omniumShares.2027",
@@ -403,7 +403,7 @@
       },
       {
         "id": "rebasage_nd_2026",
-        "moteur": "Trésorerie nette de 2,3 Md$ au 30/06/26 (cash 2,9 Md$, dette ~0,6 Md$), en net repli vs 3,9 Md$ fin 2025 - rebasage matériel vs le refresh précédent (qui projetait 4,3 Md$ fin 2026) du fait de l'ASR T1 26 et d'une acquisition bolt-on (Autus Valve Technologies, montant non communiqué)",
+        "moteur": "Net cash of 2,3 Md$ at 30/06/26 (cash 2,9 Md$, debt ~0,6 Md$), sharply down vs 3,9 Md$ at end-2025 - material rebasing vs the previous refresh (which projected 4,3 Md$ at end-2026) on the back of the Q1 26 ASR and a bolt-on acquisition (Autus Valve Technologies, amount not disclosed)",
         "applique": [
           "omniumND.2026",
           "omniumND.2027",
@@ -415,7 +415,7 @@
       },
       {
         "id": "retraitement_litige_recurrent",
-        "moteur": "'Certain litigation expenses' (contentieux IP ordinaire, hors éléments ponctuels JenaValve/FTC déjà isolés en 2025 et hors règlement HSR JC Medical de 10 M$) traité comme charge récurrente et maintenu dans la base Omnium (non retraité, à la différence de l'ajusté management qui l'exclut intégralement) - ordre de grandeur historique ~10-15 M$/trimestre, <1% de l'EBIT mais contribue à l'écart documenté vs guidance",
+        "moteur": "'Certain litigation expenses' (ordinary IP litigation, excluding the JenaValve/FTC one-off items already isolated in 2025 and excluding the 10 M$ HSR JC Medical settlement) treated as a recurring charge and kept in the Omnium base (not adjusted out, unlike management's adjusted figure which excludes it entirely) - historical order of magnitude ~10-15 M$/quarter, <1% of EBIT but contributes to the documented gap vs guidance",
         "applique": [
           "omniumEBIT.2026",
           "omniumEBIT.2027",
@@ -597,7 +597,7 @@
     }
   ],
   "externalActuals": {
-    "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+    "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
     "date": "2026-08-20",
     "eps": {
       "2021": 2.38,

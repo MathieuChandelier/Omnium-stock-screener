@@ -57,7 +57,7 @@
  },
  "particularites": [
   {
-   "text": "Acquisition HCSS consolidee a partir du 1er juillet 2026 : genere un amortissement PPA RECURRENT sur les actifs incorporels identifies (relations clients, technologie), a montant a peu pres CONSTANT en euros sur sa duree (charge non decroissante en soi - au contraire, l'effet 2026 ne porte que sur un semestre de consolidation, celui de 2027 sur une annee pleine, donc plus eleve en absolu). L'effet NET sur l'EPS (dilutif en 2026, neutre en 2027, relutif a partir de 2028 selon la direction) provient de la croissance organique des benefices d'HCSS qui rattrape puis depasse cette charge stable - pas d'une disparition de l'amortissement lui-meme. S'ajoute en 2026 une decote ponctuelle (non recurrente) sur le chiffre d'affaires differe repris en purchase accounting, concentree sur le second semestre. [20/08/2026 : valuePct retire du rendement attendu - l'effet PPA/HCSS est DEJA porte par la trajectoire d'EPS Omnium (base GAAP, amortissements conserves) ; le compter en 'special items' -3%/an double-comptait la charge et faussait l'Expected return.]",
+   "text": "HCSS acquisition consolidated from 1 July 2026: generates RECURRING PPA amortisation on the identified intangible assets (customer relationships, technology), at a roughly CONSTANT amount in euros over its life (a charge that does not decline as such - on the contrary, the 2026 effect covers only one half-year of consolidation, that of 2027 a full year, hence higher in absolute terms). The NET effect on EPS (dilutive in 2026, neutral in 2027, accretive from 2028 according to management) comes from the organic growth of HCSS earnings catching up with and then exceeding that stable charge - not from the amortisation itself disappearing. On top of that, 2026 carries a one-off (non-recurring) haircut on deferred revenue written down in purchase accounting, concentrated in the second half. [20/08/2026: valuePct removed from the expected return - the PPA/HCSS effect is ALREADY carried by the Omnium EPS trajectory (GAAP basis, amortisation retained); counting it in 'special items' at -3%/yr double-counted the charge and distorted the Expected return.]",
    "valuePct": null
   }
  ],
@@ -68,16 +68,16 @@
  "ownership": {
   "asOf": "2026-08-12",
   "insiderPct": 51,
-  "insiderDesc": "Famille fondatrice Nemetschek tres largement majoritaire au controle : Georg Nemetschek detient 2,7% en direct, ses fils environ 5,4%, et les fondations qu'il a etablies environ 38,9% - soit un bloc familial/fondations agrege d'environ 51% des droits de vote, structure de gouvernance stable depuis l'introduction en bourse de 1999.",
-  "insiderSource": "SimplyWall St (repartition actionnariale, 2026), recoupe avec les rapports annuels Nemetschek.",
+  "insiderDesc": "The founding Nemetschek family holds a very large controlling majority: Georg Nemetschek holds 2,7% directly, his sons around 5,4%, and the foundations he established around 38,9% - i.e. an aggregate family/foundations block of around 51% of the voting rights, a governance structure stable since the 1999 IPO.",
+  "insiderSource": "SimplyWall St (shareholder breakdown, 2026), cross-checked with Nemetschek's annual reports.",
   "notableHolders": [],
-  "coverageNote": "Titre cote exclusivement sur Xetra (Francfort), hors perimetre de declaration 13F americaine - pas de suivi notableHolders via ce mecanisme (reserve aux gestionnaires institutionnels US sur titres cotes aux Etats-Unis).",
+  "coverageNote": "Stock listed exclusively on Xetra (Frankfurt), outside the scope of US 13F reporting - no notableHolders tracking via that mechanism (reserved for US institutional managers on US-listed securities).",
   "history": []
  },
  "compliance": {
   "asOf": "2026-08-12",
   "items": [],
-  "note": "Aucune fraude averee, enquete reglementaire ou allegation de vendeur a decouvert identifiee apres recherche (12/08/2026)."
+  "note": "No proven fraud, regulatory investigation or short-seller allegation identified after research (12/08/2026)."
  },
  "coherenceQualitative": {
   "asOf": "2026-08-12",
@@ -89,15 +89,15 @@
     "date": "2026-07-30",
     "format": "brut",
     "clesRetenues": [
-     "Q George Webb (Morgan Stanley) - adoption de Bluebeam Max et poids du segment Media : deploiement 'meilleur que prevu' avec de forts retours clients sur les gains de productivite ; la faiblesse de Media vient de la consolidation clients et du M&A dans le secteur, pas d'une disruption par l'IA generative - guidance Media abaissee a une croissance a un chiffre moyen.",
-     "Q George Webb (Morgan Stanley) - pont de revenus HCSS : contribution attendue superieure a 80 M€ au S2 26 (avant purchase accounting), decote sur le chiffre d'affaires differe estimee entre 20 et 30 M€ sur 12 mois et concentree en debut de periode ; trajectoire d'accretion EPS : dilutif en 2026, neutre en 2027, relutif en 2028 (ou 2027 si les hypotheses conservatrices se relachent).",
-     "Q Alice Jennings (Barclays) - implications du ralentissement de croissance au S2 : la croissance de 16% au S1 (change constant) soutient la confiance dans la guidance annuelle de 14-15% ; positionnement prudent du fait de l'incertitude macro, aucune revision de guidance par segment hors Media ; priorites d'investissement inchangees (produit, IA, capital-risque, veille M&A).",
-     "Q Nicolas David (Oddo BHF) - hypotheses sur les contrats pluriannuels et effet de change transactionnel : contrats pluriannuels attendus a un niveau similaire S2 vs S1, sans vent contraire/porteur supplementaire ; effet de change extraordinaire au T2 du au forint hongrois (appreciation forte post-elections d'avril), generant une perte de reevaluation transactionnelle dans une filiale detenant des actifs libelles en euros.",
-     "Q Nicolas David (Oddo BHF) - momentum en Allemagne : dynamique positive portee par la digitalisation des permis de construire et la stabilisation du residentiel ; Bluebeam et Design performent bien sur le marche allemand.",
-     "Q Naiso Nining (Berenberg) - strategie de monetisation de l'IA hors Bluebeam : lancement prevu de forfaits premium 'Max' sur d'autres gammes (ALLPLAN Max, Steel Genie) ; modeles hybrides a la consommation (tokens) envisages a moyen terme mais priorite a l'abonnement pour l'adoption a court terme ; ~70% des architectes sondes expriment des reserves de confiance envers les sorties d'IA en general.",
-     "Q Joseph George (JP Morgan) - trajectoire de croissance organique du segment Build post-integration HCSS : Build attendu proche de 20% de croissance organique un an apres l'integration complete, Bluebeam au-dela de 20%, HCSS dans le haut de la fourchette adolescente (haute teens).",
-     "Q Victor Cheng (Bank of America) - croissance HCSS au S1 et pont S2 ; transition Design vers l'abonnement : HCSS en forte croissance haute teens au S1 sans saisonnalite marquee ; effets differes de purchase accounting concentres au S1, moindres au S2 ; Design desormais a 65% d'abonnement (objectif 70% fin 2026, plus de 90% fin 2027) - transition creant un frein jusqu'en 2027, croissance des prix tiree par les nouvelles fonctionnalites IA plutot que par des hausses de prix pures.",
-     "Q Michael Briest (UBS) - prix d'acquisition et contribution de ComputerWorks : reponse tronquee dans les sources disponibles pour ce refresh, a completer si un transcript plus complet devient accessible."
+     "Q George Webb (Morgan Stanley) - Bluebeam Max adoption and the weight of the Media segment: rollout 'better than expected' with strong customer feedback on productivity gains; Media weakness comes from customer consolidation and M&A in the sector, not from disruption by generative AI - Media guidance cut to mid-single-digit growth.",
+     "Q George Webb (Morgan Stanley) - HCSS revenue bridge: contribution expected above 80 M€ in H2 26 (before purchase accounting), deferred revenue haircut estimated at between 20 and 30 M€ over 12 months and concentrated at the start of the period; EPS accretion trajectory: dilutive in 2026, neutral in 2027, accretive in 2028 (or 2027 if the conservative assumptions are relaxed).",
+     "Q Alice Jennings (Barclays) - implications of the growth slowdown in H2: 16% growth in H1 (constant currency) supports confidence in the 14-15% annual guidance; cautious positioning given macro uncertainty, no guidance revision by segment other than Media; investment priorities unchanged (product, AI, venture capital, M&A screening).",
+     "Q Nicolas David (Oddo BHF) - assumptions on multi-year contracts and transactional FX effect: multi-year contracts expected at a similar level in H2 vs H1, with no additional headwind/tailwind; extraordinary FX effect in Q2 due to the Hungarian forint (sharp appreciation after the April elections), generating a transactional revaluation loss in a subsidiary holding euro-denominated assets.",
+     "Q Nicolas David (Oddo BHF) - momentum in Germany: positive dynamic driven by the digitalisation of building permits and the stabilisation of residential; Bluebeam and Design are performing well in the German market.",
+     "Q Naiso Nining (Berenberg) - AI monetisation strategy outside Bluebeam: planned launch of premium 'Max' tiers on other ranges (ALLPLAN Max, Steel Genie); hybrid consumption-based (token) models considered over the medium term but priority given to subscription for near-term adoption; ~70% of the architects surveyed express reservations about trusting AI outputs in general.",
+     "Q Joseph George (JP Morgan) - organic growth trajectory of the Build segment post-HCSS integration: Build expected close to 20% organic growth one year after full integration, Bluebeam above 20%, HCSS at the top of the teens range (high teens).",
+     "Q Victor Cheng (Bank of America) - HCSS growth in H1 and the H2 bridge; Design's transition to subscription: HCSS growing strongly at high teens in H1 with no marked seasonality; deferred purchase accounting effects concentrated in H1, lower in H2; Design now at 65% subscription (target 70% at end-2026, above 90% at end-2027) - a transition creating a drag through 2027, price growth driven by new AI features rather than by pure price increases.",
+     "Q Michael Briest (UBS) - acquisition price and contribution of ComputerWorks: answer truncated in the sources available for this refresh, to be completed if a more complete transcript becomes accessible."
     ]
    },
    {
@@ -105,12 +105,12 @@
     "date": "2026-04-30",
     "format": "compresse",
     "clesRetenues": [
-     "Q (contrats pluriannuels et impact M&A sur la guidance) - contrats pluriannuels apportant un vent porteur de quelques millions d'euros au T1, similaire a 2025 ; guidance organique confirmee, quelques couts M&A au T1, details supplementaires attendus apres la cloture du rachat HCSS.",
-     "Q (impact geopolitique Moyen-Orient et perspective Media) - exposition regionale limitee ; segment Media attendu en croissance a un chiffre eleve en 2026, revu a la baisse par rapport a l'attente precedente de croissance a deux chiffres.",
-     "Q (strategie de rachat de revendeurs) - objectif de controler la mise sur le marche et la relation client ; les revendeurs rachetes disposent souvent de propriete intellectuelle et d'une localisation propres, contrats variant entre commission et partage de revenus.",
-     "Q (croissance du segment Build et cross-selling) - Build maintient une croissance solide a deux chiffres, au-dela de 20% attendu pour 2026 ; cross-selling entre Bluebeam et GoCanvas en progression avec une base clients croissante.",
-     "Q (strategie de monetisation de l'IA) - monetisation dependante du produit/des fonctionnalites ; Bluebeam Max sur abonnement avec tarification a la consommation (tokens) potentielle, modele susceptible de s'appliquer au segment Design.",
-     "Contexte chiffre du trimestre : CA publie +10,7% a 313,1 M€ (+17% a change constant), ARR +14,4% publie (+21% a change constant, ~1,2 Md€), marge d'EBITDA a 31,4%, EBITDA +22% publie (~+30% a change constant) a 98,4 M€, EPS 0,52€."
+     "Q (multi-year contracts and M&A impact on guidance) - multi-year contracts providing a tailwind of a few million euros in Q1, similar to 2025; organic guidance confirmed, some M&A costs in Q1, further details expected after the closing of the HCSS acquisition.",
+     "Q (Middle East geopolitical impact and Media outlook) - limited regional exposure; Media segment expected to grow at a high single-digit rate in 2026, revised down from the previous expectation of double-digit growth.",
+     "Q (reseller acquisition strategy) - objective of controlling go-to-market and the customer relationship; the resellers acquired often have their own intellectual property and localisation, with contracts varying between commission and revenue sharing.",
+     "Q (Build segment growth and cross-selling) - Build maintains solid double-digit growth, above 20% expected for 2026; cross-selling between Bluebeam and GoCanvas improving with a growing customer base.",
+     "Q (AI monetisation strategy) - monetisation dependent on the product/features; Bluebeam Max on subscription with potential consumption-based (token) pricing, a model that could be applied to the Design segment.",
+     "Quantified context for the quarter: reported revenue +10,7% to 313,1 M€ (+17% at constant currency), ARR +14,4% reported (+21% at constant currency, ~1,2 Md€), EBITDA margin at 31,4%, EBITDA +22% reported (~+30% at constant currency) to 98,4 M€, EPS 0,52€."
     ]
    }
   ],
@@ -118,14 +118,14 @@
    {
     "id": "design_subscription_90pct_2027",
     "quarterOrigine": "T2 26",
-    "engagement": "Transition du segment Design vers l'abonnement au-dela de 90% du chiffre d'affaires d'ici fin 2027 (contre 65% au T2 26, objectif intermediaire de 70% fin 2026).",
+    "engagement": "Transition of the Design segment to subscription beyond 90% of revenue by end-2027 (against 65% in Q2 26, interim target of 70% at end-2026).",
     "echeance": "2027-Q4",
     "statut": "en_cours"
    },
    {
     "id": "hcss_eps_accretive_2028",
     "quarterOrigine": "T2 26",
-    "engagement": "Acquisition HCSS attendue relutive sur l'EPS a partir de 2028 (dilutive en 2026, neutre en 2027 selon la trajectoire de base, potentiellement des 2027 si les hypotheses conservatrices se relachent).",
+    "engagement": "HCSS acquisition expected to be EPS accretive from 2028 (dilutive in 2026, neutral in 2027 on the base trajectory, potentially as early as 2027 if the conservative assumptions are relaxed).",
     "echeance": "2028-Q1",
     "statut": "en_cours"
    }
@@ -133,7 +133,7 @@
  },
  "hypothese": {
   "date": "2026-08-19",
-  "source": "Creation (12/08/2026) - communique et transcript du T2 26/S1 26 (30/07/2026) analyses, ainsi que le transcript du T1 26 (30/04/2026) pour amorcer la comparaison de coherenceQualitative des le premier passage.",
+  "source": "Creation (12/08/2026) - Q2 26/H1 26 release and transcript (30/07/2026) analysed, together with the Q1 26 transcript (30/04/2026) to start the coherenceQualitative comparison from the first pass.",
   "dernierCall": {
    "quarter": "Q2 26",
    "communiqueAnalyse": true,
@@ -169,7 +169,7 @@
     "referentiel": "IFRS",
     "source": "Rapport semestriel H1 2026 + communique (30/07/2026)",
     "date": "2026-08-19",
-    "note": "Croises : CA S1 640,7 M EUR (+11,9% publie, +15,7% cc), EBITDA 197,0 M (marge 30,7%; 31,5% ajustee des couts one-off d'acquisition), subscription/SaaS 514,7 M (+32,4% cc, 95% de CA recurrent). Guidance FY26 confirmee."
+    "note": "Cross-checked: revenue H1 640,7 M EUR (+11,9% reported, +15,7% cc), EBITDA 197,0 M (margin 30,7%; 31,5% adjusted for one-off acquisition costs), subscription/SaaS 514,7 M (+32,4% cc, 95% recurring revenue). FY26 guidance confirmed."
    }
   },
   "guidanceHistory": [
@@ -177,7 +177,7 @@
     "quarter": "Q2 26",
     "date": "2026-07-30",
     "fyGuided": 2026,
-    "guidanceAnnuelle": "Croissance organique du CA de 14-15% a change constant et marge d'EBITDA de 32-33% (organique) pour 2026, reaffirmees ; HCSS ajoute ~600 points de base de croissance du CA publie et retire ~150 points de base a la marge d'EBITDA publiee."
+    "guidanceAnnuelle": "Organic revenue growth of 14-15% at constant currency and an EBITDA margin of 32-33% (organic) for 2026, reaffirmed; HCSS adds ~600 basis points to reported revenue growth and takes ~150 basis points off the reported EBITDA margin."
    }
   ],
   "guidanceLongTerme": null,
@@ -252,13 +252,13 @@
     }
    ]
   },
-  "summary": "Editeur allemand de logiciels de conception/construction (Design/Build/Manage/Media), en transition SaaS structurelle avec ARR et marge en expansion continue ; l'acquisition HCSS (juillet 2026) elargit le segment Build mais dilue transitoirement l'EPS avant une relution attendue en 2028.",
+  "summary": "German design/construction software vendor (Design/Build/Manage/Media), in a structural SaaS transition with ARR and margin expanding continuously; the HCSS acquisition (July 2026) broadens the Build segment but transitorily dilutes EPS ahead of the accretion expected in 2028.",
   "text": "== THESIS SUMMARY ==\nFounder-family-controlled (~51%) design/build software house in structural transition to subscription/SaaS: recurring revenue hit 80% of group in Q2 26 (record), Design targeting >90% by end-2027. The transition drives continuous margin expansion (EBITDA 25.0% in 2021 -> 31.2% in 2025) while transiently braking reported growth during the maintenance-to-subscription switch. HCSS (US infrastructure software) adds ~600bp reported growth and dilutes margin ~150bp during integration. FY26 guidance reaffirmed at Q2: organic +14/15% cc, organic EBITDA margin 32-33%.\n\n== THESIS READ ==\n- Transition executing on plan - 80% recurring is the proof point; the reported-growth brake is temporary by construction. Watch: Design segment recurring share vs the >90% end-2027 target.\n- HCSS integration is the main new-money risk (debt-funded, ~460M net debt 2026). Watch: HCSS growth retention and deleveraging pace.\n- 2027+ net conversion (~78% of EBIT) embeds a below-EBIT tailwind vs a flat 25% ETR - consensus-derived net, documented in the bridge 'other' line. Watch: arbitrate at next refresh with full statements.\n\n== SPECIAL FACTORS ==\nFiche created at Q2 26: historical net debt 2021-2024 estimated by qualitative cross-check (only hard point: ~8M net debt at Q1 26); quarterly EPS Q3/Q4 26 and 2027 are estimates on consensus + 2025 seasonality. priorEPS null by construction (no earlier vintage exists). Basis: management non-GAAP excludes PPA amortization; Omnium tracks GAAP consensus.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 1,435M (organic mid + HCSS), EBIT 352M, net 262M (GAAP consensus-aligned). 2027-2030: ~13%/yr revenue, margin expansion, deleveraging to net cash by 2030. Bridge: ETR 25%; the 'other' line carries the consensus conversion wedge (to arbitrate). Watch: Q3 26 (first post-creation print); HCSS disclosure granularity; historical nd correction from annual reports.\n\n== CATALYSTS ==\nQ3 26 (Oct); HCSS first full-quarter disclosures; Design recurring-share milestones; FY27 guidance (Mar).",
   "impact": "positif",
   "ancrages": [
    {
     "id": "AN-HCSS-CONSOLIDATION",
-    "moteur": "Consolidation d'HCSS a partir du 1er juillet 2026 : environ 600 points de base de croissance du chiffre d'affaires publie ajoutee au second semestre 2026 et sur l'annee pleine 2027, avec un effet dilutif transitoire sur la marge d'EBIT (amortissement PPA, decote du chiffre d'affaires differe) qui s'attenue progressivement jusqu'a la relution attendue en 2028.",
+    "moteur": "Consolidation of HCSS from 1 July 2026: around 600 basis points of reported revenue growth added in the second half of 2026 and over the full year 2027, with a transitory dilutive effect on the EBIT margin (PPA amortisation, deferred revenue haircut) that gradually fades until the accretion expected in 2028.",
     "applique": [
      "omniumCA.2026",
      "omniumCA.2027",
@@ -269,7 +269,7 @@
    },
    {
     "id": "AN-SAAS-TRANSITION",
-    "moteur": "Transition SaaS structurelle en cours : abonnement/SaaS a 80% du chiffre d'affaires groupe au T2 26 (record), Design visant plus de 90% de son CA en abonnement fin 2027 - mix recurrent croissant qui soutient l'expansion de marge au-dela du seul effet HCSS.",
+    "moteur": "Structural SaaS transition under way: subscription/SaaS at 80% of group revenue in Q2 26 (a record), with Design targeting more than 90% of its revenue on subscription by end-2027 - a rising recurring mix that supports margin expansion beyond the HCSS effect alone.",
     "applique": [
      "omniumEBIT.2027",
      "omniumEBIT.2028",
@@ -280,7 +280,7 @@
    },
    {
     "id": "AN-BUILD-MOMENTUM",
-    "moteur": "Segment Build (Bluebeam + HCSS) attendu proche de 20% de croissance organique un an apres l'integration complete d'HCSS selon la direction, porte par Bluebeam (au-dela de 20%) et HCSS (haut de la fourchette adolescente).",
+    "moteur": "Build segment (Bluebeam + HCSS) expected close to 20% organic growth one year after the full integration of HCSS according to management, driven by Bluebeam (above 20%) and HCSS (top of the teens range).",
     "applique": [
      "omniumCA.2027",
      "omniumCA.2028"
@@ -289,7 +289,7 @@
    },
    {
     "id": "AN-LOW-LEVERAGE",
-    "moteur": "Bilan tres peu endette avant HCSS (dette nette quasi nulle, environ 8 M€ au T1 26) ; l'acquisition HCSS financee par dette (impact estime a environ 450 M€ sur la dette nette) degrade temporairement le levier, mais un desendettement rapide est attendu compte tenu de la generation de cash historique du groupe (flux de tresorerie d'exploitation +31,3% en 2025).",
+    "moteur": "Balance sheet carrying very little debt ahead of HCSS (near-zero net debt, around 8 M€ in Q1 26); the HCSS acquisition, debt-financed (estimated impact of around 450 M€ on net debt), temporarily weakens leverage, but rapid deleveraging is expected given the group's historical cash generation (operating cash flow +31,3% in 2025).",
     "applique": [
      "omniumND.2026",
      "omniumND.2027",
@@ -301,7 +301,7 @@
    },
    {
     "id": "AN-FAMILY-CONTROL",
-    "moteur": "Controle familial stable (environ 51% agrege Nemetschek/fondations) depuis l'introduction en bourse de 1999 - gouvernance orientee long terme, coherente avec la strategie d'investissement produit/IA/M&A cible reaffirmee au T2 26.",
+    "moteur": "Stable family control (around 51% aggregate Nemetschek/foundations) since the 1999 IPO - long-term-oriented governance, consistent with the targeted product/AI/M&A investment strategy reaffirmed in Q2 26.",
     "applique": [],
     "confiance": "haute"
    }
@@ -468,7 +468,7 @@
   }
  ],
  "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
   "date": "2026-08-21",
   "eps": {
    "2021": 1.17,
