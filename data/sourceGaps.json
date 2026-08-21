@@ -1,7 +1,7 @@
 {
  "_meta": {
   "generatedAt": "2026-08-20",
-  "note": "File des archives transcripts a enrichir (seuil doctrine : segments + guidance + >=5 echanges Q&A nominatifs). Entretenu par les boucles de collecte : une entree passe a status 'ok' (ou disparait) quand l'archive Drive est reconstruite. CPRT traite le 20/08/2026 (Q2+Q3 FY26 reconstruits depuis Seeking Alpha). | Section 'consensus' (21/08/2026) : entrees typees {ticker, need, blockedBy, blockedDate, note} entretenues par les boucles - blockedBy: 'quota_marketscreener'|'quota_zonebourse' (blocage journalier, le panneau app bascule seul en 'relancer maintenant' au changement de date) ou 'source_absente' (cascade complete epuisee -> saisie manuelle). Toute entree dont le ticker quitte data/manifest.json est ignoree par l'app (scalabilite). | Section 'calendar' (21/08/2026) : {ticker, status, note, url} - echecs de lecture des pages IR pendant le run hebdomadaire du calendrier (page navigateur-only apres les 3 strategies) ; le panneau Actions porte alors l'action specifique 'passe navigateur Claude in Chrome' ; entree effacee par la passe qui sert le titre ; ignoree si le ticker quitte le manifest."
+  "note": "File des archives transcripts a enrichir (seuil doctrine : segments + guidance + >=5 echanges Q&A nominatifs). Entretenu par les boucles de collecte : une entree passe a status 'ok' (ou disparait) quand l'archive Drive est reconstruite. CPRT traite le 20/08/2026 (Q2+Q3 FY26 reconstruits depuis Seeking Alpha). | Section 'consensus' (21/08/2026) : entrees typees {ticker, need, blockedBy, blockedDate, note} entretenues par les boucles - blockedBy: 'quota_marketscreener'|'quota_zonebourse' (blocage journalier, le panneau app bascule seul en 'relancer maintenant' au changement de date) ou 'source_absente' (cascade complete epuisee -> saisie manuelle). Toute entree dont le ticker quitte data/manifest.json est ignoree par l'app (scalabilite). | Section 'calendar' (21/08/2026) : {ticker, status, note, url} - echecs de lecture des pages IR pendant le run hebdomadaire du calendrier (page navigateur-only apres les 3 strategies) ; le panneau Actions porte alors l'action specifique 'passe navigateur Claude in Chrome' ; entree effacee par la passe qui sert le titre ; ignoree si le ticker quitte le manifest. | Section 'news' (21/08/2026) : {ticker, source, note, url, blockedBy} - echecs de lecture des pressrooms IR pendant la boucle News du meme run hebdomadaire (INSTRUCTIONS_NEWS.md), page navigateur-only apres les 3 strategies (blockedBy: 'navigateur_indisponible') ; entree effacee par la passe qui sert le titre ; ignoree si le ticker quitte le manifest."
  },
  "transcripts": [
   {
@@ -12,5 +12,6 @@
   }
  ],
  "consensus": [],
- "calendar": []
+ "calendar": [],
+ "news": []
 }

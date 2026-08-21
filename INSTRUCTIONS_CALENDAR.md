@@ -125,3 +125,14 @@ Pousser les deux fichiers dans le meme commit ("Calendar refresh - <date>").
 Le dashboard bascule alors automatiquement la pastille bleue en pastille
 turquoise "Calendar actions" : l'utilisateur trie, coche ce qu'il veut
 dans son agenda (bouton + par ligne -> Google Calendar), et ferme.
+
+## BOUCLE NEWS (meme run)
+
+Depuis le 21/08/2026, le run hebdomadaire execute AUSSI la boucle News
+specifiee dans INSTRUCTIONS_NEWS.md : meme session, meme passe sur les
+sites IR (la page pressroom se lit dans la foulee de la page Events,
+avec les memes trois strategies d'acces), fenetre retrospective de 7
+jours (les evenements A VENIR restent ici, au calendrier). Son livrable
+`data/newsFeed.json` part dans LE MEME COMMIT que calendarCandidates.json
+et nextEvents.json ; ses echecs de retrieve vont dans
+`data/sourceGaps.json`, section `news`.
