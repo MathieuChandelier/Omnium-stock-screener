@@ -258,6 +258,26 @@ thead th .fy-month-tag{color:#8be9dc;}
 .news-bar-text b{font-weight:800;}
 .news-bar-close{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;color:var(--navy);opacity:.55;transition:opacity .12s,background .12s;padding:0;}
 .news-bar-close:hover{opacity:1;background:rgba(0,1,144,.08);}
+/* ── Bandeau NEWS (flux data/newsFeed.json, 21/08/2026) : la barre reprend
+   le gabarit .news-bar, le panneau deplie le fond .dashb-panel. ── */
+.newsf-panel{background:#f6f7fe;border-radius:14px;padding:10px 18px;}
+.newsf-item{display:grid;grid-template-columns:14px 1fr;gap:10px;padding:10px 0;cursor:pointer;}
+.newsf-item+.newsf-item{border-top:1px solid #e9ebf7;}
+.newsf-item.seen{opacity:.55;}
+.newsf-dot{width:7px;height:7px;border-radius:50%;background:#c2c8d4;margin-top:5px;}
+.newsf-dot.unseen{background:var(--navy);}
+.newsf-meta{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);}
+.newsf-tk{font-size:11.5px;font-weight:700;color:var(--navy);cursor:pointer;}
+.newsf-kind{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:1px 7px;}
+.newsf-kind.crit{color:#b3261e;border-color:rgba(179,38,30,.35);background:#fde3e3;}
+.newsf-title{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);line-height:1.35;margin-top:2px;}
+.newsf-title a{color:var(--navy);text-decoration:none;}
+.newsf-title a:hover{text-decoration:underline;}
+.newsf-sum{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);line-height:1.5;margin-top:2px;}
+.newsf-src{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;font-family:'Poppins',sans-serif;font-size:9px;}
+.newsf-src a{color:var(--navy);font-weight:600;text-decoration:none;}
+.newsf-src a:hover{text-decoration:underline;}
+.newsf-src a.newsf-corro{opacity:.65;font-weight:500;}
 .market-action-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#e8f9ee;border-radius:14px;gap:12px;margin:0 0 8px;}
 .market-action-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:#0a7a3d;cursor:pointer;flex:1;min-width:0;}
 .market-action-bar-text b{font-weight:800;}
@@ -886,6 +906,7 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="weekly-ai-bar-wrap"></div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
+  <div id="news-feed-wrap"></div>
   <div id="market-calendar-wrap"></div>
   <div id="actions-bar-wrap"></div>
   <div class="card-title" style="margin-bottom:18px;"><b style="color:var(--teal-text);">All tickers</b></div>
@@ -1064,6 +1085,7 @@ function normalizeState(s){
   if(!s.calendarProposals)s.calendarProposals=[];
   if(!('calendarCandidates' in s))s.calendarCandidates=null;
   if(!('sourceGaps' in s))s.sourceGaps=null;
+  if(!('newsFeed' in s))s.newsFeed=null;
   if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
   if(!s.priceHistory.tickers) s.priceHistory.tickers={};
   if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
@@ -1294,7 +1316,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps, newsFeed] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -1332,12 +1354,15 @@ async function loadState() {
       // Trous de donnees sources (transcripts sous le seuil de richesse) -
       // entretenu par les boucles de collecte ; les trous CONSENSUS, eux,
       // se calculent en direct depuis les fiches (computeSourceGaps).
-      fetch('data/sourceGaps.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/sourceGaps.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      // Flux NEWS 7 jours du bandeau de notification (INSTRUCTIONS_NEWS.md,
+      // moteur news) - absence graciable avant le premier run du moteur.
+      fetch('data/newsFeed.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null, newsFeed: newsFeed || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -4794,6 +4819,135 @@ function calTriageDone(){
 let _actRowOpen=null;   // accordeon de la section Actions (une ligne ouverte a la fois)
 function toggleActionRow(k){ _actRowOpen=(_actRowOpen===k?null:k); renderActionsBar(); }
 
+// ══════════════════════════════════════════════════════════════
+// BANDEAU NEWS (21/08/2026) - notifications de news du portefeuille,
+// alimentees par data/newsFeed.json (moteur news, fenetre 7 jours,
+// INSTRUCTIONS_NEWS.md). Le bandeau principal n'affiche QUE le compte
+// des items NON CONSULTES ("NEWS — 4") et se masque a zero ; le clic
+// deplie le panneau detail ; CONSULTER un item (clic sur la ligne, le
+// titre, la source ou une corroboration) le marque VU immediatement,
+// le compte decremente sans rechargement. Etat "vu" PAR USER cote
+// serveur (news.php, meme infra que calendar.php/dismiss.php) avec
+// repli localStorage transparent tant que l'endpoint n'est pas deploye.
+// SCALABILITE : les items des tickers hors data/manifest.json sont
+// ignores PARTOUT (compte ET panneau, meme regle que calPillState /
+// computeSourceGaps) et l'etat vu de ces tickers est purge.
+// ══════════════════════════════════════════════════════════════
+const NEWSF_ENDPOINT='https://model.omnium-capital.com/news.php';
+const NEWSF_KIND_LABEL={communique:'Press release',externe:'External',broker:'Broker',video:'Video'};
+let _newsfRemote=null;            // null=inconnu, true/false apres 1er contact
+let _newsfSeen=new Set();         // ids consultes (source de verite en session)
+let _newsfOpen=false;
+function _newsfLocal(){ try{ return new Set(JSON.parse(localStorage.getItem('omniumNewsSeen')||'[]')); }catch(e){ return new Set(); } }
+function _newsfLocalSave(){ try{ localStorage.setItem('omniumNewsSeen',JSON.stringify([..._newsfSeen])); }catch(e){} }
+
+async function newsfFetch(){
+  const u=getUserId();
+  if(u){
+    try{
+      const r=await fetch(NEWSF_ENDPOINT+'?user='+encodeURIComponent(u),{signal:AbortSignal.timeout(5000)});
+      if(r.ok){
+        const j=await r.json();
+        _newsfSeen=new Set(Array.isArray(j.seen)?j.seen.filter(x=>typeof x==='string'):[]);
+        _newsfRemote=true;
+        // Migration douce : items vus hors-ligne pousses au serveur.
+        const pending=[..._newsfLocal()].filter(id=>!_newsfSeen.has(id));
+        if(pending.length){ pending.forEach(id=>_newsfSeen.add(id)); await newsfPost('seen',{ids:pending}); }
+        try{ localStorage.removeItem('omniumNewsSeen'); }catch(e){}
+        return;
+      }
+    }catch(e){}
+  }
+  _newsfRemote=false; _newsfSeen=_newsfLocal();
+}
+async function newsfPost(action,payload){
+  if(_newsfRemote){
+    try{
+      await fetch(NEWSF_ENDPOINT+'?user='+encodeURIComponent(getUserId())+'&action='+action,
+        {method:'POST',body:JSON.stringify(payload||{}),signal:AbortSignal.timeout(5000)});
+      return;
+    }catch(e){ _newsfRemote=false; }
+  }
+  _newsfLocalSave();
+}
+// Items AFFICHABLES : flux filtre par le manifest (un titre retire du
+// portefeuille disparait du compte ET du panneau), tries du plus recent
+// au plus ancien, critiques en tete a date egale. Vide pour un INVITE :
+// sans identifiant, aucun etat "vu" resolvable (meme regle que l'ancien
+// bandeau news, voir newsBarLines).
+function newsfItems(){
+  if(IS_GUEST_SESSION)return [];
+  const feed=state.newsFeed;
+  const items=(feed&&Array.isArray(feed.items))?feed.items:[];
+  return items
+    .filter(e=>e&&e.id&&e.ticker&&state.tickers[e.ticker])
+    .slice()
+    .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||((b.critical?1:0)-(a.critical?1:0)));
+}
+// Purge de l'etat vu des tickers retires (une passe par session, apres le
+// chargement des fiches — pendant du calPruneRemovedTickers). Cote
+// serveur, la purge par age de news.php (60 j) finit le travail.
+let _newsfPruned=false;
+function newsfPruneRemovedTickers(){
+  if(_newsfPruned||!state.tickers||!Object.keys(state.tickers).length) return;
+  _newsfPruned=true;
+  const gone=[..._newsfSeen].filter(id=>{const tk=String(id).split('-')[0];return tk&&!state.tickers[tk];});
+  if(!gone.length) return;
+  gone.forEach(id=>_newsfSeen.delete(id));
+  if(_newsfRemote!==true) _newsfLocalSave();
+}
+function newsfMarkSeen(id){
+  if(_newsfSeen.has(id)) return;
+  // Optimiste : le compte du bandeau decremente IMMEDIATEMENT, la
+  // synchronisation serveur part en arriere-plan (repli localStorage si
+  // le POST echoue - pattern calPost).
+  _newsfSeen.add(id);
+  newsfPost('seen',{ids:[id]});
+  renderNewsFeed();
+}
+function newsfToggle(){ _newsfOpen=!_newsfOpen; renderNewsFeed(); }
+
+function renderNewsFeed(){
+  const wrap=document.getElementById('news-feed-wrap');
+  if(!wrap) return;
+  newsfPruneRemovedTickers();
+  const items=newsfItems();
+  const unseen=items.filter(e=>!_newsfSeen.has(e.id));
+  if(!items.length){ wrap.innerHTML=''; _newsfOpen=false; return; }
+  // Bandeau masque a 0 non-consulte... sauf panneau encore OUVERT : le
+  // dernier clic ne doit pas faire disparaitre la liste sous la souris.
+  if(!unseen.length&&!_newsfOpen){ wrap.innerHTML=''; return; }
+  const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const rows=_newsfOpen?items.map(e=>{
+    const seen=_newsfSeen.has(e.id);
+    const kind=NEWSF_KIND_LABEL[e.kind]||e.kind||'';
+    const mark=`event.stopPropagation();newsfMarkSeen('${esc(e.id)}')`;
+    const corro=(Array.isArray(e.corroborations)?e.corroborations:[]).filter(c=>c&&c.url)
+      .map(c=>`<a class="newsf-corro" href="${esc(c.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(c.source||'corroboration')}</a>`).join('');
+    return `<div class="newsf-item${seen?' seen':''}" onclick="newsfMarkSeen('${esc(e.id)}')">
+      <span class="newsf-dot${seen?'':' unseen'}"></span>
+      <div style="min-width:0;">
+        <div class="newsf-meta">
+          <b class="newsf-tk" onclick="${mark};CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</b>
+          <span>${esc(formatNewsDayMonth(e.date))}</span>
+          ${kind?`<span class="newsf-kind">${esc(kind)}</span>`:''}
+          ${e.critical?`<span class="newsf-kind crit">critical</span>`:''}
+        </div>
+        <div class="newsf-title">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(e.title)}</a>`:esc(e.title)}</div>
+        ${e.summary?`<div class="newsf-sum">${esc(e.summary)}</div>`:''}
+        <div class="newsf-src">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(e.source||'source')}</a>`:esc(e.source||'')}${corro}</div>
+      </div>
+    </div>`;
+  }).join(''):'';
+  wrap.innerHTML=`<div class="news-bar-wrap">
+    <div class="news-bar" style="cursor:pointer;" onclick="newsfToggle()">
+      <span class="news-bar-text">NEWS — <b>${unseen.length}</b></span>
+      <span style="flex-shrink:0;color:var(--navy);opacity:.55;font-size:12px;transition:transform .2s;${_newsfOpen?'transform:rotate(90deg);':''}">›</span>
+    </div>
+    ${_newsfOpen?`<div class="newsf-panel">${rows||'<p style="font-size:9.5px;color:var(--muted);margin:6px 0;">Nothing in the 7-day window.</p>'}</div>`:''}
+  </div>`;
+}
+
 // ── SOURCE DATA GAPS (20/08/2026) ─────────────────────────────────
 // Trous de donnees sources malgre les cascades de back-up : le compteur
 // se peuple DYNAMIQUEMENT au fil des refreshes et des creations de
@@ -4859,8 +5013,19 @@ function computeSourceGaps(){
     if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok')
       cal.push({tk:g.ticker, detail:g.note||'page IR inaccessible sans navigateur', url:g.url||null});
   });
-  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk)); cal.sort((a,b)=>a.tk.localeCompare(b.tk));
-  return {cons, trans, cal, total:cons.length+trans.length+cal.length};
+  // ECHECS DU RUN NEWS (21/08/2026) : meme mecanique que 'calendar' —
+  // quand le pressroom d'un titre a resiste aux strategies sans
+  // navigateur pendant la collecte news, le run l'inscrit dans
+  // sourceGaps.news [{ticker,source,note,url,blockedBy}] et le panneau
+  // porte l'action "passe navigateur Claude in Chrome" pour ce titre.
+  // Section OPTIONNELLE (creee par l'agent doctrine) : code defensif.
+  const news=[];
+  (state.sourceGaps?.news||[]).forEach(g=>{
+    if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok')
+      news.push({tk:g.ticker, detail:[g.source,g.note].filter(Boolean).join(' — ')||'pressroom inaccessible sans navigateur', url:g.url||null});
+  });
+  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk)); cal.sort((a,b)=>a.tk.localeCompare(b.tk)); news.sort((a,b)=>a.tk.localeCompare(b.tk));
+  return {cons, trans, cal, news, total:cons.length+trans.length+cal.length+news.length};
 }
 // Panneau par CAS (21/08/2026) : chaque famille de blocage porte sa propre
 // action, avec le prompt LLM exact pret a coller — plus un texte generique
@@ -4896,6 +5061,8 @@ function buildSourceGapsPanel(g){
     `Les titres suivants ont epuise la cascade consensus complete sans resultat. Je te fournis les valeurs ci-dessous — integre-les dans epsConsensus (archive l'ancien dans epsConsensusHistory, source = "fourni par l'utilisateur (date)") puis efface l'entree de data/sourceGaps.json :\n${cManual.map(c=>`- ${c.tk} : ${c.detail} -> eps 2026 = ?, eps 2027 = ?, eps 2028 = ?`).join('\n')}`, first)); first=false; }
   if((g.cal||[]).length){ S.push(sect('Calendar — IR page needs the browser pass (Claude in Chrome)', g.cal, 'The weekly calendar run could not read these IR event pages without a real browser (403/JS shell after all three access strategies).',
     `Reprends le run calendrier (INSTRUCTIONS_CALENDAR.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page Events/Financial calendar du site IR, capte les evenements a un mois (earnings, presentations investisseurs, conferences brokers) AVEC le champ url (lien precis evenement/webcast), fusionne dans data/calendarCandidates.json + data/nextEvents.json, puis efface l'entree "calendar" correspondante de data/sourceGaps.json :\n${g.cal.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
+  if((g.news||[]).length){ S.push(sect('News — pressroom needs the browser pass (Claude in Chrome)', g.news, 'The news run could not read these pressroom/news pages without a real browser (403/JS shell after all three access strategies).',
+    `Reprends la collecte news (INSTRUCTIONS_NEWS.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page pressroom/news du site IR, capte les news de la fenetre 7 jours au schema newsFeed (id TICKER-YYYYMMDD-slug, kind, title, summary, source, url, critical, corroborations), fusionne dans data/newsFeed.json, puis efface l'entree "news" correspondante de data/sourceGaps.json :\n${g.news.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   return `<div class="act-grp">${S.join('')}
       <div style="font-family:'Poppins',sans-serif;font-size:9px;color:var(--muted);margin-top:10px;line-height:1.5;">Failure after a full cascade must be reported back explicitly — never a silent null. Removing a ticker from the portfolio clears its rows here automatically.</div>
     </div>`;
@@ -5098,6 +5265,7 @@ function renderPortfolio(){
   renderActionsBar();
   renderMarketCalendar();
   renderNewsBar();
+  renderNewsFeed();
   renderMarketActionBar();
   const list=document.getElementById('pf-list');
   const countEl=document.getElementById('pf-count');
@@ -5237,6 +5405,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   setTimeout(startPricePoll,1500);
   startMarketActionPoll();
   calFetch().then(()=>{ try{renderActionsBar();renderMarketCalendar();}catch(e){} });
+  newsfFetch().then(()=>{ try{renderNewsFeed();}catch(e){} });
 });
   </script>
 </body></html>

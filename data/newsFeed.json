@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "generatedAt": "2026-08-21T07:00:00Z",
+    "window": "7d",
+    "note": "DONNEES DE TEST (agent UI, 21/08/2026) — items factices pour developper le bandeau NEWS. A VIDER (items: []) avant la premiere mise en production du moteur news."
+  },
+  "items": [
+    {
+      "id": "ROBINHOOD-20260820-test-communique-fictif",
+      "ticker": "ROBINHOOD",
+      "date": "2026-08-20",
+      "kind": "communique",
+      "title": "[TEST] Communiqué fictif — partenariat imaginaire",
+      "summary": "Item de développement du bandeau NEWS. Ne décrit aucun événement réel — à vider avant mise en production.",
+      "source": "Robinhood Newsroom (test)",
+      "url": "https://example.com/test-robinhood",
+      "critical": true,
+      "corroborations": [
+        { "source": "Reuters (test)", "url": "https://example.com/test-reuters" },
+        { "source": "Bloomberg (test)", "url": "https://example.com/test-bloomberg" }
+      ]
+    },
+    {
+      "id": "AAPL-20260819-test-note-broker-fictive",
+      "ticker": "AAPL",
+      "date": "2026-08-19",
+      "kind": "broker",
+      "title": "[TEST] Note broker fictive — objectif de cours imaginaire",
+      "summary": "Deuxième item de test : non critique, une seule source, pas de corroboration.",
+      "source": "Broker XYZ (test)",
+      "url": "https://example.com/test-aapl",
+      "critical": false,
+      "corroborations": []
+    },
+    {
+      "id": "HORSMANIFEST-20260818-test-filtrage-scalabilite",
+      "ticker": "HORSMANIFEST",
+      "date": "2026-08-18",
+      "kind": "externe",
+      "title": "[TEST] Ticker hors manifest — ne doit JAMAIS apparaître",
+      "summary": "Item de contrôle du filtrage scalabilité : son ticker n'est pas dans data/manifest.json, il doit être ignoré du compte et du panneau.",
+      "source": "Test harness",
+      "url": "https://example.com/test-filtrage",
+      "critical": false,
+      "corroborations": []
+    }
+  ]
+}
