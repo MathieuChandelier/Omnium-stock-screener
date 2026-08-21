@@ -659,7 +659,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 /* colonne des libelles : juste ce qu'il faut, la largeur gagnee va aux
    annees (21/08/2026). */
 #analyse-tbl tbody td:first-child,#analyse-tbl thead th:first-child{width:1%;white-space:nowrap;padding-right:16px;}
-#analyse-tbl tbody td:first-child{font-size:12.5px;color:var(--navy);font-weight:400;border-right:1px solid rgba(0,1,144,.22);}
+#analyse-tbl tbody td:first-child{font-size:12.5px;color:#fff;font-weight:400;background:var(--navy);}
+#analyse-tbl tbody tr:last-child td:first-child{border-radius:0 0 0 8px;}
 /* le voile ne porte que le fond : la couleur reste celle du corps, sinon les
    lignes secondaires perdraient leur gris plus clair sur la partie projetee */
 #analyse-tbl td.proj-row{background:rgba(43,216,194,.055);}
@@ -667,13 +668,13 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 #analyse-tbl tr.row-sub td:not(:first-child){color:#94a3b8;}
 #analyse-tbl tbody tr:hover td{background:#fafbfe;}
 #analyse-tbl tbody tr:hover td.proj-row{background:rgba(43,216,194,.09);}
-#analyse-tbl tbody tr:hover td:first-child{background:#f4f5ff;}
+#analyse-tbl tbody tr:hover td:first-child{background:#1a1ba6;}
 /* colonne des libelles sticky - fond PLEIN (opaque : au scroll mobile un
    fond transparent laisserait transparaitre les colonnes qui defilent).
    Blanc dans le corps, navy dans le bandeau : le coin appartient au
    bandeau, c'est lui qui donne au L sa forme. */
 #analyse-tbl thead th:first-child{position:sticky;left:0;z-index:2;background:var(--navy);}
-#analyse-tbl tbody td:first-child{position:sticky;left:0;z-index:2;background:#fff;}
+#analyse-tbl tbody td:first-child{position:sticky;left:0;z-index:2;background:var(--navy);}
 #analyse-scroll{border:none;border-radius:0;}
 #analyse-scroll.scrolled-x thead th:first-child,#analyse-scroll.scrolled-x tbody td:first-child{box-shadow:2px 0 5px rgba(0,0,0,.08);}
 /* plus aucune pastille de scroll : elles se superposaient a la lecture, le
