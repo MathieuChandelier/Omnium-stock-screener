@@ -617,36 +617,39 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .pe-sub{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--muted);}
 .pe-exval{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-align:right;margin-left:10px;}
 
-/* Historical Data & Projections - design "B Quattrocento" (sandbox-datatable
-   valide le 21/08) : une seule famille (Quattrocento Sans) et une seule
-   taille, graisse 400 partout, L inverse #f7f8fd (bandeau + colonne
-   Indicator), voile turquoise sur le corps prospectif, trait vertical
-   turquoise 1px, valeurs secondaires en gris doux. Aucun fond navy. */
-#analyse-tbl{font-size:13px;}
-#analyse-tbl thead th,#analyse-tbl tbody td{font-family:'Quattrocento Sans',Georgia,serif;font-weight:400;font-style:normal;}
-#analyse-tbl thead th{background:#f7f8fd;color:var(--navy);font-size:13px;letter-spacing:0;line-height:1.5;padding:8px 13px;width:auto;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-#analyse-tbl thead th.proj-head{background:#f7f8fd;color:var(--navy);}
-#analyse-tbl tbody td{padding:7px 13px;color:var(--navy);border-bottom:1px solid #f4f5f9;font-variant-numeric:tabular-nums;}
-#analyse-tbl tbody tr:last-child td{border-bottom:none;}
-#analyse-tbl tbody td:first-child{font-size:13px;color:var(--navy);font-weight:400;}
-#analyse-tbl td.proj-row{background:rgba(43,216,194,.055);color:var(--navy);}
+/* Historical Data & Projections - design "B grise" (sandbox-datatable, valide
+   le 21/08) : tout Poppins, UNE seule taille, graisse 400 partout, aucun
+   italique. AUCUNE bordure nulle part. Bandeau des annees en navy plein avec
+   annees en BLANC. Voile turquoise sur les colonnes prospectives du CORPS
+   uniquement (le bandeau reste plein). Trait vertical turquoise 1px entre la
+   derniere annee historique et la premiere projetee. Plus AUCUN bleu dans le
+   corps : valeurs en gris moyen #64748b, lignes secondaires en gris plus
+   clair #94a3b8, libelles Indicator en gris fonce #334155. */
+#analyse-tbl{font-size:12.5px;}
+#analyse-tbl thead th,#analyse-tbl tbody td{font-family:'Poppins',system-ui,sans-serif;font-weight:400;font-style:normal;}
+#analyse-tbl thead th{background:var(--navy);color:#fff;font-size:12.5px;letter-spacing:0;line-height:1.5;padding:8px 13px;width:auto;border:none;}
+#analyse-tbl thead th.proj-head{background:var(--navy);color:#fff;}
+#analyse-tbl tbody td{padding:7px 13px;color:#64748b;border:none;font-variant-numeric:tabular-nums;}
+#analyse-tbl tbody td:first-child{font-size:12.5px;color:#334155;font-weight:400;}
+/* le voile ne porte que le fond : la couleur reste celle du corps, sinon les
+   lignes secondaires perdraient leur gris plus clair sur la partie projetee */
+#analyse-tbl td.proj-row{background:rgba(43,216,194,.055);}
 #analyse-tbl td.proj-first,#analyse-tbl th.proj-first{border-left:1px solid var(--teal);}
-#analyse-tbl tr.row-emph td:not(:first-child){font-weight:400;}
-#analyse-tbl tr.row-sub td:not(:first-child){color:var(--muted);}
+#analyse-tbl tr.row-emph td:not(:first-child){font-weight:400;color:#64748b;}
+#analyse-tbl tr.row-sub td:not(:first-child){color:#94a3b8;}
 #analyse-tbl tbody tr:hover td{background:#fafbfe;}
 #analyse-tbl tbody tr:hover td.proj-row{background:rgba(43,216,194,.09);}
-#analyse-tbl tbody tr:hover td:first-child{background:#eff1fa;}
-/* colonne Indicator sticky - fond PLEIN #f7f8fd (opaque : au scroll mobile un
-   fond transparent laisserait transparaitre les colonnes qui defilent) */
-#analyse-tbl thead th:first-child,#analyse-tbl tbody td:first-child{
-  position:sticky;left:0;z-index:2;background:#f7f8fd;
-}
-#analyse-scroll{border:1px solid var(--border);border-radius:10px;}
+#analyse-tbl tbody tr:hover td:first-child{background:#fafbfe;}
+/* colonne Indicator sticky - fond PLEIN (opaque : au scroll mobile un fond
+   transparent laisserait transparaitre les colonnes qui defilent). Navy dans
+   le bandeau, blanc dans le corps. */
+#analyse-tbl thead th:first-child{position:sticky;left:0;z-index:2;background:var(--navy);}
+#analyse-tbl tbody td:first-child{position:sticky;left:0;z-index:2;background:#fff;}
+#analyse-scroll{border:none;border-radius:0;}
 #analyse-scroll.scrolled-x thead th:first-child,#analyse-scroll.scrolled-x tbody td:first-child{box-shadow:2px 0 5px rgba(0,0,0,.08);}
-/* chevrons mobile (montes uniquement sous 760px) */
+/* plus aucune pastille de scroll : elles se superposaient a la lecture, le
+   scroll manuel (avec snap par colonne) suffit. */
 .atbl-snap{position:relative;}
-.atbl-chev{display:none;}
 
 /* Value Rankings + Historique de valorisation */
 .vr-entry{display:flex;align-items:center;justify-content:space-between;padding:9px 20px;background:#eef0ff;border-radius:14px;gap:12px;margin:0 0 8px;cursor:pointer;transition:box-shadow .15s,transform .1s;}
@@ -800,24 +803,11 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
        scroll-padding aligne les snaps sur le bord de la colonne sticky */
     scroll-snap-type:x mandatory;scroll-padding-left:98px;}
   #analyse-tbl thead th{scroll-snap-align:start;}
-  #analyse-tbl{font-size:11.5px;}
-  #analyse-tbl thead th{padding:8px 10px;font-size:11.5px;}
+  #analyse-tbl{font-size:11px;}
+  #analyse-tbl thead th{padding:8px 10px;font-size:11px;}
   #analyse-tbl tbody td{padding:6px 10px;}
-  #analyse-tbl tbody td:first-child{font-size:11.5px;padding-right:6px;white-space:normal;max-width:105px;line-height:1.3;}
+  #analyse-tbl tbody td:first-child{font-size:11px;padding-right:6px;white-space:normal;max-width:105px;line-height:1.3;}
   #analyse-tbl thead th:first-child{width:auto;min-width:98px;padding-right:6px;}
-  /* un seul chevron droit discret au chargement ; le gauche n'apparait
-     qu'apres un scroll UTILISATEUR vers la droite, le droit disparait en
-     fin de course */
-  .atbl-chev{position:absolute;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:50%;
-    background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);
-    cursor:pointer;z-index:6;display:flex;align-items:center;justify-content:center;padding:0;
-    transition:opacity .18s;-webkit-tap-highlight-color:transparent;}
-  .atbl-chev:active{transform:translateY(-50%) scale(.92);}
-  .atbl-chev svg{width:12px;height:12px;}
-  .atbl-chev.r{right:2px;}
-  .atbl-chev.l{left:100px;opacity:0;pointer-events:none;}
-  .atbl-snap.user-right .atbl-chev.l{opacity:1;pointer-events:auto;}
-  .atbl-snap.at-end .atbl-chev.r{opacity:0;pointer-events:none;}
   .rb-header{padding:12px 0 4px;}
   .rb-total-row{padding:2px 0 10px;gap:12px;flex-wrap:wrap;}
   .rb-bridge-wrap{padding:0 0 12px;}
@@ -991,8 +981,6 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
       <tbody id="analyse-body"></tbody>
     </table>
     </div>
-    <button class="atbl-chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="atbl-chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
 
@@ -1735,8 +1723,8 @@ function renderAnalyse(){
 
   const headRow=document.getElementById('analyse-head');
   if(headRow){
-    /* Aucun gras dans le bandeau (design B Quattrocento) ; proj-first porte
-       le trait vertical turquoise a travers le header. */
+    /* Aucun gras dans le bandeau (design B grise) ; proj-first porte le
+       trait vertical turquoise a travers le header. */
     headRow.innerHTML=`<th>Indicator</th>`
       +last5.map(r=>`<th>${yearHeaderHtml(r.year)}</th>`).join('')
       +PY.map((y,i)=>`<th class="proj-head${i===0?' proj-first':''}">${yearHeaderHtml(y)}</th>`).join('');
@@ -1822,35 +1810,22 @@ function renderAnalyse(){
   renderValoHistory(CT);
 }
 
-/* Ouverture cadree du tableau (design B Quattrocento) : positionne sur N-1
-   pour que les annees a venir soient PLEINEMENT visibles, sans smooth (un
-   onglet en arriere-plan, rAF throttle, n'animerait jamais). Le snap CSS
-   (mobile) garantit qu'aucune colonne n'est coupee a moitie. La fleche
-   gauche n'apparait qu'apres un scroll UTILISATEUR au-dela de la position
-   d'ouverture (baseline) ; la droite disparait en fin de course. */
+/* Ouverture cadree du tableau (design B grise) : positionne sur N-1 pour que
+   les annees a venir soient PLEINEMENT visibles, sans smooth (un onglet en
+   arriere-plan, rAF throttle, n'animerait jamais). Le snap CSS (mobile)
+   garantit qu'aucune colonne n'est coupee a moitie. Plus aucune pastille de
+   scroll : le seul etat encore calcule est l'ombre de la colonne sticky. */
 function initAnalyseSnap(){
   const snap=document.getElementById('analyse-snap');
   const wrap=document.getElementById('analyse-scroll');
   if(!snap||!wrap||snap.dataset.init)return;
   snap.dataset.init='1';
-  const colW=()=>{
-    const ths=document.getElementById('analyse-head')?.children;
-    return (ths&&ths[2])?ths[2].offsetWidth:64;
-  };
   snap._state=()=>{
-    /* Onglet masque (display:none) : le layout est a zero et max vaudrait 0 —
-       at-end serait pose a tort, et une transition d'opacite lancee dans un
-       sous-arbre cache reste figee au demasquage. On ne calcule rien. */
+    /* Onglet masque (display:none) : le layout est a zero, on ne calcule rien. */
     if(!wrap.clientWidth)return;
-    const max=wrap.scrollWidth-wrap.clientWidth;
-    /* tolerance large : le snap peut immobiliser le scroll quelques px avant la butee */
-    snap.classList.toggle('at-end',wrap.scrollLeft>=max-12);
-    snap.classList.toggle('user-right',wrap.scrollLeft>(+snap.dataset.baseline||0)+5);
     wrap.classList.toggle('scrolled-x',wrap.scrollLeft>2);
   };
   wrap.addEventListener('scroll',snap._state,{passive:true});
-  snap.querySelector('.atbl-chev.r')?.addEventListener('click',()=>wrap.scrollBy({left:colW(),behavior:'smooth'}));
-  snap.querySelector('.atbl-chev.l')?.addEventListener('click',()=>wrap.scrollBy({left:-colW(),behavior:'smooth'}));
 }
 function scrollAnalyseTblToDefault(histCount){
   const headRow=document.getElementById('analyse-head');
@@ -1867,7 +1842,7 @@ function scrollAnalyseTblToDefault(histCount){
     try{
       const stickyW=firstTh.getBoundingClientRect().width;
       wrap.scrollLeft=Math.max(0,targetTh.offsetLeft-stickyW);
-      if(snap){snap.dataset.baseline=wrap.scrollLeft;snap._state&&snap._state();}
+      if(snap&&snap._state)snap._state();
     }catch(e){}
   };
   openOn();
@@ -5160,9 +5135,9 @@ function buildSourceGapsPanel(g){
 // pastilles du haut ET les barres jaunes.
 function buildCalDuePanel(st){
   return `<div style="border-left:3px solid var(--navy);padding:2px 0 2px 11px;">
-      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">Refresh calendar — weekly (Thursday)</div>
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">Refresh calendar &amp; news — weekly (Thursday)</div>
       <div style="font-size:9.5px;color:var(--muted);margin-top:4px;line-height:1.6;">${st.gen?`Last run: ${formatFrDate(st.gen.slice(0,10))}. `:'No run recorded yet. '}Scans each company's IR events page (earnings, investor presentations, broker conferences, CMD, AGM…) over the next month, captures the precise event link for your Google Calendar, and refreshes the portfolio's NEXT EVENT column in the same pass. Spec file: <b style="color:var(--navy);">INSTRUCTIONS_CALENDAR.md</b></div>
-      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_CALENDAR.md — run hebdomadaire du Market Calendar : pour chaque ticker du manifest, lis la page Events/Financial calendar du site IR (règle des trois stratégies d'accès : curl nu → UA sobre → navigateur) sur une fenêtre d'un mois ; capte earnings, présentations investisseurs et conférences brokers avec le champ url (lien précis événement/webcast, obligatoire quand il existe) ; livre data/calendarCandidates.json ET data/nextEvents.json (ce run est l'unique mainteneur du NEXT EVENT — plus d'Opération C séparée) dans le même commit et pousse.</div>
+      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_CALENDAR.md ET INSTRUCTIONS_NEWS.md — run hebdomadaire (calendrier + news), dans la MÊME passe et le même commit. (1) CALENDRIER : pour chaque ticker du manifest, lis la page Events/Financial calendar du site IR (règle des trois stratégies d'accès : curl nu → UA sobre → navigateur) sur une fenêtre d'un mois ; capte earnings, présentations investisseurs et conférences brokers avec le champ url (lien précis événement/webcast, obligatoire quand il existe) ; livre data/calendarCandidates.json ET data/nextEvents.json (ce run est l'unique mainteneur du NEXT EVENT — plus d'Opération C séparée). (2) NEWS : dans la même visite du site IR, lis le pressroom sur une fenêtre de 7 jours et applique la typologie stricte d'INSTRUCTIONS_NEWS.md — communiqués de la société sur événements matériels PASSÉS (acquisition, warning, départ de dirigeant, nouveau plan de rachat…), externe UNIQUEMENT si critique (rumeur M&amp;A ou produit rapportée par une source de la whitelist, changement d'opinion broker ÉTAYÉ — jamais un simple changement d'objectif), règle routine vs signal (les déclarations hebdomadaires de rachats d'actions ne ressortent JAMAIS) ; un événement = un item (id TICKER-YYYYMMDD-slug, les autres liens en corroborations) ; fusionne dans data/newsFeed.json sans toucher aux items kind:"video" encore dans leur fenêtre (ils viennent de la boucle quotidienne). Échec d'accès d'un pressroom ou d'une page IR : entrée typée dans data/sourceGaps.json (section "calendar" ou "news"), jamais de silence. Pousse les fichiers modifiés dans un commit unique.</div>
     </div>`;
 }
 function buildCalTriagePanel(st){
@@ -5308,7 +5283,7 @@ function renderActionsBar(){
 
   const items=[];
   if(st.actions) items.push({k:'caltri',dot:'var(--teal)',lbl:'Calendar actions — events to triage',cnt:String(st.actions),panel:buildCalTriagePanel(st)});
-  if(st.due) items.push({k:'caldue',dot:'var(--navy)',lbl:'Refresh calendar — weekly run due',cnt:'Thu',panel:buildCalDuePanel(st)});
+  if(st.due) items.push({k:'caldue',dot:'var(--navy)',lbl:'Refresh calendar &amp; news — weekly run due',cnt:'Thu',panel:buildCalDuePanel(st)});
   const nStat=q.attente.length+q.horsEnum.length;
   if(nStat) items.push({k:'stat',dot:'#c2c8d4',lbl:'Statements pending — GAAP/IFRS to reconcile',cnt:String(nStat),
     panel:grp('Projections provisoires — awaiting GAAP/IFRS statements',
