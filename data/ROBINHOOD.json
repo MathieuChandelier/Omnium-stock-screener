@@ -57,7 +57,7 @@
  },
  "particularites": [
   {
-   "text": "Publication MENSUELLE des metriques operationnelles (volumes actions/options/crypto/event contracts, depots nets) permettant un nowcast intra-trimestriel precis du CA et de l'EPS avant leur publication.",
+   "text": "MONTHLY publication of operating metrics (equities/options/crypto/event contracts volumes, net deposits) allowing a precise intra-quarter nowcast of revenue and EPS ahead of their release.",
    "valuePct": null
   }
  ],
@@ -68,16 +68,16 @@
  "ownership": {
   "asOf": "2026-07-30",
   "insiderPct": null,
-  "insiderDesc": "Non renseigne a ce refresh - Vladimir Tenev (co-fondateur, Chairman & CEO) et Baiju Bhatt (co-fondateur) detiennent des participations significatives via des actions de classe B a droits de vote renforces, structure de gouvernance fondateur-controlee mais sans pourcentage precis verifie a ce refresh. A completer au prochain refresh via le proxy statement (DEF 14A).",
+  "insiderDesc": "Not populated at this refresh - Vladimir Tenev (co-founder, Chairman & CEO) and Baiju Bhatt (co-founder) hold significant stakes via class B shares carrying enhanced voting rights, a founder-controlled governance structure but with no precise percentage verified at this refresh. To be completed at the next refresh via the proxy statement (DEF 14A).",
   "insiderSource": null,
   "notableHolders": [],
-  "coverageNote": "Titre coté aux Etats-Unis, perimetre 13F applicable - notableHolders non renseigne a ce stade.",
+  "coverageNote": "US-listed stock, 13F scope applicable - notableHolders not populated at this stage.",
   "history": []
  },
  "compliance": {
   "asOf": "2026-07-30",
   "items": [],
-  "note": "Aucune allegation de fraude comptable ou de tromperie des investisseurs identifiee a ce jour lors de ce refresh. Robinhood a un historique de sanctions regulatoires passees (FINRA, SEC, notamment autour du GameStop/2021 et de pratiques PFOF) anterieures a la periode couverte par ce modele - a documenter explicitement lors d'un futur audit de ce champ, actuellement laisse vide faute de recherche dediee a ce refresh."
+  "note": "No allegation of accounting fraud or investor deception identified to date at this refresh. Robinhood has a history of past regulatory sanctions (FINRA, SEC, notably around GameStop/2021 and PFOF practices) predating the period covered by this model - to be documented explicitly in a future audit of this field, currently left empty for want of dedicated research at this refresh."
  },
  "coherenceQualitative": {
   "asOf": "2026-08-10",
@@ -89,30 +89,30 @@
     "date": "2026-04-28",
     "format": "brut",
     "clesRetenues": [
-     "Q Sebastian G. (actionnaire, Say Technologies) - avancement du dividend tracker : lancement prevu cette annee, l'equipe ayant identifie une opportunite de verser les dividendes 17 a 23 jours plus tot que les concurrents en exploitant le timing de la date d'enregistrement.",
-     "Q Matt S. (actionnaire, Say Technologies) - Robinhood aura-t-il acces aux prochaines grosses IPO : direction refuse de nommer des dossiers precis mais confirme un changement radical depuis 2021 (allocations retail decouragees) vers des allocations de 20-30% desormais demandees par les fondateurs eux-memes.",
-     "Q Alexander Markgraff (KeyBanc) - strategie de croissance client au-dela des Trump Accounts : simplification de l'onboarding, marketing cible sur les activites a fort ROI, organisation du catalogue produits pour eviter l'encombrement de l'interface.",
-     "Q Markgraff (relance) - flexibilite du cadre OpEx pour le reste de l'annee : 85-90% des couts sont fixes, les depenses discretionnaires sont reevaluees en continu, le marketing et les couts variables offrant des leviers d'ajustement si necessaire.",
-     "Q Dan Fannon (Jefferies) - resilience de la base client en periode de volatilite, tendances d'avril par classe d'actifs : depots nets de 18 Md$ au T1 malgre les vents contraires macro, diversification via banque/carte/robo-advisor (Strategies) ; avril montre les meilleurs volumes actions/options de l'annee, prediction markets ~3 Md$ (2e meilleur mois).",
-     "Q Jeff Roberts (journaliste) - le marche des prediction markets va-t-il vers un duopole ou plusieurs acteurs : consolidation attendue de dizaines de bourses vers quelques leaders, avantages Robinhood cites (27M de comptes finances, partenariat Rothera avec Susquehanna).",
-     "Q Devin Ryan (Citizens) - impact de la suppression de la regle PDT, lien avec le trading agentique : suppression jugee positive, notion depassee liant solde de compte et sophistication, levee de friction pour la participation retail, s'inscrit dans la strategie IA agentique plus large.",
-     "Q Dan Dolev (Mizuho) - details sur le trading agentique : refus de devoiler des specificites avant le lancement, annonces attendues au lancement produit de mai, a l'evenement crypto de juillet et au HOOD Summit d'automne.",
-     "Q Steven Chubak (Wolfe) - perspectives du securities lending, tailwinds IPO, dynamique de take rate au T2 : 25% d'opt-in client, 50% des actifs dans le programme fully-paid, marge de progression ; take rate traite comme metrique de sortie, focus sur la part de marche ; avril montre un rebond vs les creux du T1.",
-     "Q Benjamin Budish (Barclays) - strategie de financement de la marge, mouvement du cash sweep bancaire : 6 Md$ de cash sweep deplaces au bilan pour financer la marge sans impact client, ~25% des soldes crediteurs libres devraient rester en sweep, ~6 Md$ au bilan, pratique courtiere standard.",
-     "Q Craig Siegenthaler (BofA) - calendrier des conseillers financiers pilotes par l'IA : deux acceptions distinguees (recommandations de trading conformes reglementairement vs conseil financier complet incluant banque/succession/fiscalite) ; Robinhood Strategies (robo-advisor fiduciaire), TradePMR pour les conseillers humains, solutions self-serve en pilote (concierge/planification successorale).",
-     "Q James Yaro (Goldman Sachs) - perspectives de stabilisation crypto, tendances de volume, take rates long terme : focus sur l'utilite reelle de la tokenisation plutot que la prediction du prix du Bitcoin, moins de 20% du CA issu de la crypto, tres diversifie ; croissance institutionnelle resiliente, Bitstamp gagne des parts.",
-     "Q Patrick Moley (Piper Sandler) - point d'avancement sur les perpetual futures, calendrier d'expansion US : perpetuels UE performants sur Bitstamp, clients demandant plus de levier ; le lancement US necessite des changements reglementaires, l'offre actuelle du secteur etant des futures a longue echeance plutot que de vrais perpetuels ; discussions engagees avec les regulateurs, prete a lancer des approbation.",
-     "Q Tannor Manson (Future Investing) - impact de la strategie de recrutement IA, gains d'efficacite dans l'organisation : 100 M$ d'efficacite au T2025 principalement issus du service client et de l'ingenierie, volumes en hausse de 50% a effectifs stables, pas de reduction de personnel mais absorption de la croissance via la productivite IA, adoption superieure a 90% des employes.",
-     "Q Brian Bedell (Deutsche Bank) - mix traders actifs/moins actifs, composition des depots client, interactions avec la crypto : taux d'attache Gold en hausse a 40% pour les nouveaux clients (contre un chiffre unique bas auparavant), cash a haut rendement et interets sur collateral d'options moteurs d'adoption ; crypto constituency distincte mais integree a la plateforme.",
-     "Q David Smith (Truist) - moteurs de croissance bancaire (nouveaux clients vs expansion de l'ARPU) : expansion actuellement tiree par Gold aupres des clients existants, opportunite se deplacant vers l'acquisition de nouveaux clients via la Gold Card comme produit d'appel principal.",
-     "Q John Todaro (Needham) - expansion institutionnelle de Bitstamp, details sur le pret institutionnel : clients institutionnels demandant des ameliorations operationnelles (traitement des paquets, debit), pret institutionnel centre sur les besoins de liquidite de fonds de roulement/overnight, produit sans risque de credit utilisant le bilan de la societe.",
-     "Q Amit Kukreja (Amit is Investing) - strategie d'expansion internationale, approche d'entree sur les marches : offres crypto et courtage a l'echelle mondiale, licence complete sur marches selectionnes (Singapour, Indonesie, Royaume-Uni), la tokenisation accelerant la couverture des marches de longue traine.",
-     "Q Ramsey El-Assal (Cantor Fitzgerald) - niveau d'engagement des Trump Accounts, plans de cross-sell : opportunite de long terme aupres de la prochaine generation, priorite au meilleur produit gouvernemental jamais construit plutot qu'a la monetisation croisee a court terme.",
-     "Q Edward Engel (Compass Point) - tendances de volume crypto d'avril par rapport au T1 : pas de changement notable, rebond marque en actions/options, prediction markets ~3 Md$ (2e meilleur mois), marge continue de croitre, crypto dans la meme zone qu'au T1.",
-     "Q Michael Cyprys (Morgan Stanley) - strategie de connectivite API, cas d'usage, opportunite pluriannuelle : focalisation historique sur les experiences proprietaires, interet desormais pour les offres API compte tenu de l'orientation IA agentique, fournisseur a bas cout avec infrastructure solide.",
-     "Q Dr. Roy (Crossroads Capital) - expansion du secteur public, opportunites gouvernementales plurielles : territoire nouveau pour Robinhood, apprentissage des contrats gouvernementaux, autres etats et demandes internationales exprimant de l'interet, focus sur le succes actuel des Trump Accounts avant expansion.",
-     "Q Craig Maurer (FT Partners) - inquietudes des etats sur les prediction markets, impact sur la dynamique : differend juridictionnel rationnel, la CFTC revendiquant la juridiction federale, Robinhood defend la position CFTC, question qui se jouera sur plusieurs annees.",
-     "Q Journaliste (Stock Market News) - plans d'expansion de Robinhood Social : lance aupres des participants du HOOD Summit, extension a 10 000 clients, fonctionnalites hebdomadaires, disponibilite generale attendue dans les mois a venir."
+     "Q Sebastian G. (shareholder, Say Technologies) - progress on the dividend tracker: launch planned this year, the team having identified an opportunity to pay dividends 17 to 23 days earlier than competitors by exploiting the timing of the record date.",
+     "Q Matt S. (shareholder, Say Technologies) - will Robinhood have access to the next large IPOs: management declines to name specific deals but confirms a radical change since 2021 (retail allocations discouraged) towards allocations of 20-30% now requested by founders themselves.",
+     "Q Alexander Markgraff (KeyBanc) - customer growth strategy beyond Trump Accounts: simplified onboarding, marketing targeted at high-ROI activities, organisation of the product catalogue to avoid cluttering the interface.",
+     "Q Markgraff (follow-up) - flexibility of the OpEx framework for the rest of the year: 85-90% of costs are fixed, discretionary spending is reassessed on an ongoing basis, with marketing and variable costs offering levers for adjustment if needed.",
+     "Q Dan Fannon (Jefferies) - resilience of the customer base in a period of volatility, April trends by asset class: net deposits of 18 Md$ in Q1 despite macro headwinds, diversification via banking/card/robo-advisor (Strategies); April shows the best equities/options volumes of the year, prediction markets ~3 Md$ (2nd best month).",
+     "Q Jeff Roberts (journalist) - is the prediction markets market heading towards a duopoly or several players: consolidation expected from dozens of exchanges towards a few leaders, Robinhood advantages cited (27M funded accounts, Rothera partnership with Susquehanna).",
+     "Q Devin Ryan (Citizens) - impact of the removal of the PDT rule, link with agentic trading: removal judged positive, an outdated notion linking account balance and sophistication, friction removed for retail participation, fitting into the broader agentic AI strategy.",
+     "Q Dan Dolev (Mizuho) - details on agentic trading: refusal to disclose specifics ahead of launch, announcements expected at the May product launch, at the July crypto event and at the autumn HOOD Summit.",
+     "Q Steven Chubak (Wolfe) - securities lending outlook, IPO tailwinds, take rate dynamics in Q2: 25% customer opt-in, 50% of assets in the fully-paid programme, room for progress; take rate treated as an output metric, focus on market share; April shows a rebound vs the Q1 troughs.",
+     "Q Benjamin Budish (Barclays) - margin funding strategy, movement of the bank cash sweep: 6 Md$ of cash sweep moved onto the balance sheet to fund margin with no customer impact, ~25% of free credit balances should remain in sweep, ~6 Md$ on the balance sheet, standard brokerage practice.",
+     "Q Craig Siegenthaler (BofA) - timetable for AI-driven financial advisers: two distinct meanings distinguished (regulatorily compliant trading recommendations vs full financial advice including banking/estate/tax); Robinhood Strategies (fiduciary robo-advisor), TradePMR for human advisers, self-serve solutions in pilot (concierge/estate planning).",
+     "Q James Yaro (Goldman Sachs) - crypto stabilisation outlook, volume trends, long-term take rates: focus on the real utility of tokenisation rather than on predicting the Bitcoin price, less than 20% of revenue coming from crypto, highly diversified; resilient institutional growth, Bitstamp gaining share.",
+     "Q Patrick Moley (Piper Sandler) - progress update on perpetual futures, US expansion timetable: EU perpetuals performing well on Bitstamp, customers asking for more leverage; the US launch requires regulatory changes, the industry's current offering being long-dated futures rather than true perpetuals; discussions under way with regulators, ready to launch upon approval.",
+     "Q Tannor Manson (Future Investing) - impact of the AI hiring strategy, efficiency gains across the organisation: 100 M$ of efficiency in Q2025 mainly from customer service and engineering, volumes up 50% with headcount stable, no staff reduction but growth absorbed through AI productivity, adoption above 90% of employees.",
+     "Q Brian Bedell (Deutsche Bank) - mix of active/less active traders, composition of customer deposits, interactions with crypto: Gold attach rate up to 40% for new customers (against a low single digit previously), high-yield cash and interest on options collateral as adoption drivers; crypto constituency distinct but integrated into the platform.",
+     "Q David Smith (Truist) - banking growth drivers (new customers vs ARPU expansion): expansion currently driven by Gold among existing customers, with the opportunity shifting towards new customer acquisition via the Gold Card as the main lead product.",
+     "Q John Todaro (Needham) - Bitstamp institutional expansion, details on institutional lending: institutional customers asking for operational improvements (batch processing, throughput), institutional lending centred on working capital/overnight liquidity needs, a product with no credit risk using the company's balance sheet.",
+     "Q Amit Kukreja (Amit is Investing) - international expansion strategy, market entry approach: crypto and brokerage offerings on a global scale, full licensing in selected markets (Singapore, Indonesia, United Kingdom), with tokenisation accelerating coverage of long-tail markets.",
+     "Q Ramsey El-Assal (Cantor Fitzgerald) - level of engagement in Trump Accounts, cross-sell plans: a long-term opportunity with the next generation, priority given to the best government product ever built rather than to near-term cross-monetisation.",
+     "Q Edward Engel (Compass Point) - April crypto volume trends relative to Q1: no notable change, marked rebound in equities/options, prediction markets ~3 Md$ (2nd best month), margin continuing to grow, crypto in the same zone as in Q1.",
+     "Q Michael Cyprys (Morgan Stanley) - API connectivity strategy, use cases, multi-year opportunity: historical focus on proprietary experiences, now interest in API offerings given the agentic AI direction, low-cost provider with solid infrastructure.",
+     "Q Dr. Roy (Crossroads Capital) - public sector expansion, multiple government opportunities: new territory for Robinhood, learning about government contracts, other states and international enquiries expressing interest, focus on the current success of Trump Accounts before expanding.",
+     "Q Craig Maurer (FT Partners) - state-level concerns on prediction markets, impact on the momentum: a rational jurisdictional dispute, with the CFTC claiming federal jurisdiction, Robinhood backing the CFTC position, an issue that will play out over several years.",
+     "Q Journalist (Stock Market News) - expansion plans for Robinhood Social: launched with HOOD Summit attendees, extended to 10 000 customers, weekly feature releases, general availability expected in the coming months."
     ]
    },
    {
@@ -120,30 +120,30 @@
     "date": "2026-07-29",
     "format": "brut",
     "clesRetenues": [
-     "Q Zach (actionnaire, Say Technologies) - calendrier de lancement grand public de Robinhood Social : objectif de deploiement d'ici la fin du T3, iteration en cours sur les algorithmes de feed et les fonctionnalites avant disponibilite generale.",
-     "Q John (actionnaire, Say Technologies) - quels aspects du Clarity Act auraient le plus d'impact pour Robinhood : benefices de la tokenisation et stabilite reglementaire soulignes, Robinhood innovera de toute facon mais le Clarity Act permettrait de maximiser le potentiel produit.",
-     "Q Joe (actionnaire, Say Technologies) - traction des Trump Accounts depuis le lancement de juillet (inscriptions, flux d'actifs) : 7 millions d'enfants inscrits avec 1,5 Md$ de contributions, dizaines de millions de comptes attendus avec poursuite d'une croissance rapide.",
-     "Q Dan Dolev (Mizuho) - composantes structurelles de la croissance de pres d'1 million de comptes finances : attribuee a un contexte macro porteur, de nouveaux produits (banque, carte de credit), l'IPO SpaceX, les contributions d'acquisitions et l'expansion a l'etranger.",
-     "Q Daniel Fannon - durabilite des prediction markets au-dela de la dynamique Coupe du Monde : calendrier d'evenements soutenu (football, elections de mi-mandat), ameliorations produit continues, montee en puissance de Rothera comme moteurs de durabilite.",
-     "Q David Smith (Truist) - repartition des utilisateurs de prediction markets entre nouveaux clients et adoption par la base existante : les clients adoptent plusieurs produits quel que soit le point d'entree, les utilisateurs de prediction markets approchant desormais 2 millions au total.",
-     "Q Devin Ryan (Citizens) - premiers enseignements clients sur le trading agentique et feuille de route de la version 2.0 : plus de 100 000 comptes actifs, volumes croissants, projets d'elargissement de la boite a outils tout en simplifiant l'interface utilisateur.",
-     "Q Christian Blue (Autonomous) - vision d'expansion de Rothera au-dela du statut de 3e DCM : plans de croissance continue et expansion potentielle vers les perpetuels, routage multi-plateformes pour assurer la meilleure execution client.",
-     "Q Ramsey El-Assal (Cantor) - prochaines opportunites de croissance en DeFi au-dela des actifs tokenises et du pret actuels : dynamique developpeur, partenariats exploitant les actifs du monde reel (RWA), ameliorations d'infrastructure, elargissement de la tokenisation des classes d'actifs.",
-     "Q James Yarrow (Goldman Sachs) - calendrier et obstacles reglementaires pour le lancement des perpetual futures US : discussions constructives avec la CFTC en progres, sans calendrier precis mais engagement confirme a proposer des perpetuels.",
-     "Q Daniel (Crossroads) - plans d'ajout du support des actions etrangeres : confirme au programme pour l'expansion mondiale, complexite d'infrastructure reconnue mais priorite donnee au developpement d'une place de marche internationale.",
-     "Q John (Artemis) - potentiel haussier de long terme de Robinhood Chain permettant un acces global a l'app : actifs du monde reel comme contribution unique, dynamique developpeur, nature sans permission permettant des cas d'usage divers.",
-     "Q Ahmed - durabilite du flywheel d'engagement pour soutenir la vision a mille milliards : qualite produit, flywheel de cross-sell via les abonnements Gold, experience client orchestree sur l'ensemble de la gamme de produits.",
-     "Q Alexander (ButtonAdvisor) - chemin vers une valorisation de mille milliards de dollars, ce qui rend l'objectif plus atteignable qu'avant, role de l'IA : finance agentique, acces mondial aux actifs via la blockchain, marches prives, multiples vecteurs de croissance cites.",
-     "Q Craig Maurer (FT Partners) - commentaire sur la baisse des depots nets de juillet vs le T2, sante client : croissance sur l'annee restant au-dessus de l'objectif de 20%, variance attribuee a la saisonnalite et aux facteurs macro, engagement client confirme solide.",
-     "Q Steven Chubak (Wolfe) - decomposition de la guidance de charges : autofinancement des nouvelles initiatives (Rothera/WonderFi) tout en maintenant l'efficacite du socle historique, permettant une guidance abaissee malgre l'expansion produit.",
-     "Q Craig Siegenthaler (BofA) - strategie de deploiement produit en Asie suite a la licence MAS de Singapour : lancement de plusieurs produits simultanement plutot que sequentiellement, Singapour comme hub pour l'Asie du Sud-Est.",
-     "Q Alexander Markgraff (KeyBanc) - comment la DeFi modifie l'engagement client et la monetisation vs les produits traditionnels : engagement porte par les developpeurs via Twitter/podcasts, quelques points de base par transaction avec ~50% de partage de revenus avec Arbitrum.",
-     "Q Brian Bedell (Deutsche Bank) - interet pour le lancement de contrats KPI financiers type Cboe, calendrier de migration des event contracts NFL vers Rothera : incertitude sur le regime des titres, strategie multi-contrepartie soulignee, majorite du flux attendue via Rothera a moyen terme.",
-     "Q Patrick Moley (Piper Sandler) - pourquoi pas un lancement plus agressif des perpetuels US vu les mouvements concurrents et le soutien anterieur : hesitation dementie, feuille de route produit complete et multiples vecteurs de croissance cites, engagement confirme sans calendrier precis.",
-     "Q Benjamin Budish (Barclays) - metriques ADV de juillet par produit et tendances de taux de prise : actions/options/prediction markets similaires au T2 ; crypto legerement plus lente ; taux de prise de juillet dans la moyenne du T2.",
-     "Q Edward Engel (Compass Point) - strategie de partenariat avec d'autres bourses de prediction markets vs concentration sur Rothera : les deux approches confirmees, diversification maintenue entre ForecastEx, Kalshi et Rothera tout en poussant le flux Rothera prioritaire.",
-     "Q Andrew Hardy (BTIG) - axes de la strategie d'acquisition top-of-funnel et benefice de la suppression de la regle PDT : amelioration de l'onboarding, partage de produits, cross-sell banque-courtage ; benefice PDT juge disproportionne pour la base retail de Robinhood.",
-     "Q Gav (Wolfe Research) - jalons cles pour le trading agentique et extension aux prediction markets : objectif de fournir aux agents tous les outils du trader Robinhood, dynamique d'equipe soulignee, annonces attendues au prochain evenement trader actif."
+     "Q Zach (shareholder, Say Technologies) - mass-market launch timetable for Robinhood Social: target of rolling out by the end of Q3, iteration under way on feed algorithms and features ahead of general availability.",
+     "Q John (shareholder, Say Technologies) - which aspects of the Clarity Act would have the most impact for Robinhood: tokenisation benefits and regulatory stability highlighted, Robinhood will innovate in any case but the Clarity Act would allow the product potential to be maximised.",
+     "Q Joe (shareholder, Say Technologies) - traction of Trump Accounts since the July launch (sign-ups, asset flows): 7 million children enrolled with 1,5 Md$ of contributions, tens of millions of accounts expected with rapid growth continuing.",
+     "Q Dan Dolev (Mizuho) - structural components of the growth of nearly 1 million funded accounts: attributed to a supportive macro backdrop, new products (banking, credit card), the SpaceX IPO, contributions from acquisitions and overseas expansion.",
+     "Q Daniel Fannon - durability of prediction markets beyond World Cup momentum: a sustained events calendar (football, midterm elections), continuous product improvements, and the ramp-up of Rothera as drivers of durability.",
+     "Q David Smith (Truist) - split of prediction markets users between new customers and adoption by the existing base: customers adopt several products whatever the entry point, with prediction markets users now approaching 2 million in total.",
+     "Q Devin Ryan (Citizens) - first customer learnings on agentic trading and roadmap for version 2.0: more than 100 000 active accounts, rising volumes, plans to broaden the toolkit while simplifying the user interface.",
+     "Q Christian Blue (Autonomous) - vision for expanding Rothera beyond its status as 3rd DCM: plans for continued growth and potential expansion into perpetuals, multi-venue routing to ensure best execution for customers.",
+     "Q Ramsey El-Assal (Cantor) - next growth opportunities in DeFi beyond current tokenised assets and lending: developer momentum, partnerships leveraging real-world assets (RWA), infrastructure improvements, broadening of asset class tokenisation.",
+     "Q James Yarrow (Goldman Sachs) - timetable and regulatory obstacles for the US perpetual futures launch: constructive discussions with the CFTC progressing, with no precise timetable but a confirmed commitment to offer perpetuals.",
+     "Q Daniel (Crossroads) - plans to add support for foreign equities: confirmed on the agenda for global expansion, infrastructure complexity acknowledged but priority given to developing an international marketplace.",
+     "Q John (Artemis) - long-term upside potential of Robinhood Chain enabling global access to the app: real-world assets as a unique contribution, developer momentum, permissionless nature enabling diverse use cases.",
+     "Q Ahmed - durability of the engagement flywheel to support the trillion-dollar vision: product quality, cross-sell flywheel via Gold subscriptions, customer experience orchestrated across the whole product range.",
+     "Q Alexander (ButtonAdvisor) - path to a trillion-dollar valuation, what makes the target more reachable than before, role of AI: agentic finance, global access to assets via blockchain, private markets, multiple growth vectors cited.",
+     "Q Craig Maurer (FT Partners) - comment on the decline in July net deposits vs Q2, customer health: full-year growth still above the 20% target, the variance attributed to seasonality and macro factors, customer engagement confirmed as solid.",
+     "Q Steven Chubak (Wolfe) - breakdown of the expense guidance: self-funding of the new initiatives (Rothera/WonderFi) while maintaining the efficiency of the legacy base, allowing a guidance cut despite the product expansion.",
+     "Q Craig Siegenthaler (BofA) - product rollout strategy in Asia following the Singapore MAS licence: launching several products simultaneously rather than sequentially, Singapore as the hub for South-East Asia.",
+     "Q Alexander Markgraff (KeyBanc) - how DeFi changes customer engagement and monetisation vs traditional products: engagement driven by developers via Twitter/podcasts, a few basis points per transaction with ~50% revenue sharing with Arbitrum.",
+     "Q Brian Bedell (Deutsche Bank) - interest in launching Cboe-style financial KPI contracts, timetable for migrating NFL event contracts to Rothera: uncertainty on the securities regime, multi-counterparty strategy highlighted, majority of the flow expected via Rothera over the medium term.",
+     "Q Patrick Moley (Piper Sandler) - why not a more aggressive launch of US perpetuals given competitor moves and earlier support: hesitancy denied, a full product roadmap and multiple growth vectors cited, commitment confirmed with no precise timetable.",
+     "Q Benjamin Budish (Barclays) - July ADV metrics by product and take rate trends: equities/options/prediction markets similar to Q2; crypto slightly slower; July take rate in line with the Q2 average.",
+     "Q Edward Engel (Compass Point) - strategy of partnering with other prediction markets exchanges vs concentrating on Rothera: both approaches confirmed, diversification maintained across ForecastEx, Kalshi and Rothera while pushing Rothera flow as the priority.",
+     "Q Andrew Hardy (BTIG) - focus areas of the top-of-funnel acquisition strategy and benefit from the removal of the PDT rule: improved onboarding, product sharing, bank-brokerage cross-sell; PDT benefit judged disproportionate for Robinhood's retail base.",
+     "Q Gav (Wolfe Research) - key milestones for agentic trading and extension to prediction markets: goal of giving agents all the tools of the Robinhood trader, team momentum highlighted, announcements expected at the next active trader event."
     ]
    }
   ],
@@ -151,7 +151,7 @@
    {
     "id": "visionCap1000MdSur10Ans",
     "quarterOrigine": "T2 26",
-    "engagement": "Ambition directionnelle du CFO Shiv Verma : multiplier l'activite par 10 sur 10 ans, capitalisation boursiere potentielle de 1 000 Md$, comparaison aux actifs des institutions financieres traditionnelles.",
+    "engagement": "Directional ambition from CFO Shiv Verma: growing the business by 10 over 10 years, potential market capitalisation of 1 000 Md$, compared with the assets of traditional financial institutions.",
     "echeance": "2036-07-29",
     "statut": "en_cours"
    }
@@ -169,14 +169,14 @@
     "2030": 3.81
    }
   },
-  "source": "Harmonisation structurelle du schema (03/08/2026) - alignement sur la version courante du protocole (ajout communiqueAnalyse/transcriptAnalyse, guidanceLongTermeHistory, quarterlyEPS via E5 ter) ; aucune nouvelle publication de resultats depuis le refresh du 29-30/07/2026 (T2 2026) - these, ancrages et adjXXX inchanges. Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS.PY (FY2025 T1 0.37/T2 0.42/T3 0.61/T4 0.66, EPS dilue GAAP publie par trimestre, aucun one-off identifie sur ces trimestres, somme 2.06 proche de data[2025].net/shares=2.05). Ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript Motley Fool du 28/04/2026, 24 echanges) compare au T2 2026 (transcript Motley Fool du 29/07/2026, deja lu lors du refresh precedent pour la these, 24 echanges desormais captures systematiquement) - aucune incoherence materielle identifiee (perpetual futures US toujours en attente d'approbation reglementaire aux deux trimestres, trading agentique en progression naturelle pre-lancement vers post-lancement, expansion Asie en precision naturelle de la strategie deja esquissee au T1, calendrier Robinhood Social precise sans contredire le T1).",
-  "summary": "Le T2 2026 confirme la these de creation mais avec une ampleur qui depasse tres largement le nowcast : CA record 1,308 Md$ (+32%, nowcast de creation ~1,213 Md$ - depasse de ~8%), EPS 0,62$ (+48%, consensus battu de 47,6%). Surtout, Rothera/prediction markets explose bien au-dela du modele de creation : 156 M$ de revenus au seul T2 2026, contre 150 M$ modelises pour l'ANNEE COMPLETE 2026 a la creation - le catalyseur central de la these est deja realise a plus de 100% de l'objectif annuel apres un seul trimestre plein, avant meme la saison NFL et les elections de mi-mandat de novembre 2026 (evenement majeur a venir). Reaction de marche negative malgre le beat (-3,33% le jour de la publication) : le marche semble juger que la bonne nouvelle etait deja largement dans le cours.",
+  "source": "Structural harmonisation of the schema (03/08/2026) - alignment with the current version of the protocol (addition of communiqueAnalyse/transcriptAnalyse, guidanceLongTermeHistory, quarterlyEPS via E5 ter); no new results release since the 29-30/07/2026 refresh (Q2 2026) - thesis, anchors and adjXXX unchanged. Portfolio audit add-on of 10/08/2026: addition of quarterlyEPS.PY (FY2025 Q1 0.37/Q2 0.42/Q3 0.61/Q4 0.66, reported GAAP diluted EPS per quarter, no one-off identified in those quarters, sum 2.06 close to data[2025].net/shares=2.05). Addition of coherenceQualitative with a retroactive reconstruction of Q1 2026 (Motley Fool transcript of 28/04/2026, 24 exchanges) compared with Q2 2026 (Motley Fool transcript of 29/07/2026, already read at the previous refresh for the thesis, 24 exchanges now systematically captured) - no material inconsistency identified (US perpetual futures still awaiting regulatory approval in both quarters, agentic trading in a natural progression from pre-launch to post-launch, Asia expansion a natural refinement of the strategy already sketched at Q1, Robinhood Social timetable specified without contradicting Q1).",
+  "summary": "Q2 2026 confirms the creation thesis but with a magnitude that goes far beyond the nowcast: record revenue 1,308 Md$ (+32%, creation nowcast ~1,213 Md$ - exceeded by ~8%), EPS 0,62$ (+48%, consensus beaten by 47,6%). Above all, Rothera/prediction markets is running well beyond the creation model: 156 M$ of revenue in Q2 2026 alone, against 150 M$ modelled for the FULL YEAR 2026 at creation - the central catalyst of the thesis has already been delivered at more than 100% of the annual target after a single full quarter, even before the NFL season and the November 2026 midterm elections (a major event still to come). Negative market reaction despite the beat (-3,33% on the day of the release): the market appears to judge that the good news was already largely in the price.",
   "text": "== THESIS SUMMARY ==\nRobinhood is building the financial super-app: brokerage (equities/options/crypto/prediction markets), banking (Gold Card), wealth and private-markets access. Q2 2026 validated all three setup drivers (revenue diversification, near-free growth options via Rothera/Trump Accounts, capital discipline) while revealing the setup UNDERESTIMATED the prediction-markets inflection: Q2 alone generated 156M (World-Cup-boosted) versus 150M modeled for the entire year. OpEx guidance was tightened and LOWERED despite absorbing unbudgeted Rothera/WonderFi costs.\n\n== THESIS READ ==\n- Prediction markets re-rated upward in the model but Q2 was event-driven (World Cup); H2 leans on NFL season (Q3) and midterm elections (Q4) - still event-dependent revenue. Watch: a no-event quarter's run-rate.\n- Cost discipline is the quiet strength: raising investment while lowering the OpEx envelope. Watch: FY27 OpEx guidance.\n- The 47.6% Q2 GAAP beat is misleading (129M deconsolidation gain) - documented, not extrapolated. Watch: clean-print EPS next quarter.\n\n== SPECIAL FACTORS ==\nBase convention: 'ebit' IS pretax income (fintech convention, net interest revenue inside the top line) - so the bridge's finNet is zero BY CONSTRUCTION and the only wedge is tax. FY24 net ABOVE pretax (1.4bn DTA release) and FY25 ETR 12.8% vs 15% normative are documented one-offs. Massive net cash (-4.3bn growing to -11.8bn).\n\n== PARAMETERS & WATCH-LIST ==\nFY26 bottom-up by segment: S1 actual 2,378M + S2 ~2,900M (NFL Q3, midterms Q4) = ~5,278M (+18%); EBIT margin 47% (leverage demonstrated at Q2: 57% adjusted EBITDA margin). Tax 15% normative, drifting watch to 19% as DTA benefits fade - THE main below-line risk. Shares ~flat net of SBC buyback. Watch: crypto-cycle dependence; regulatory posture on prediction markets; tax-rate normalization pace.\n\n== CATALYSTS ==\nQ3 (Nov, NFL season print); midterm-election Q4 volumes; Rothera/Trump Accounts rollout; first no-event quarter run-rate.",
   "impact": "positif",
   "ancrages": [
    {
     "id": "AN-CA-2026",
-    "moteur": "CA FY2026 reconstruit bottom-up : S1 2026 reel (2 378 M$, +23% vs S1 2025 estime) + S2 2026 estime a ~2 900 M$ (T3 porte par la saison NFL sur les prediction markets, T4 porte par les elections de mi-mandat de novembre 2026 et la saisonnalite de fin d'annee) - revise significativement a la hausse vs la creation (4 950 M$ -> 5 278 M$) du fait principalement de la trajectoire prediction markets/Rothera, qui a deja depasse la cible annuelle de creation (150 M$) des le seul T2 (156 M$).",
+    "moteur": "FY2026 revenue rebuilt bottom-up: actual H1 2026 (2 378 M$, +23% vs estimated H1 2025) + estimated H2 2026 at ~2 900 M$ (Q3 driven by the NFL season on prediction markets, Q4 driven by the November 2026 midterm elections and year-end seasonality) - revised significantly upwards vs creation (4 950 M$ -> 5 278 M$) mainly on the back of the prediction markets/Rothera trajectory, which has already exceeded the annual creation target (150 M$) in Q2 alone (156 M$).",
     "applique": [
      "omniumCA.2026"
     ],
@@ -184,7 +184,7 @@
    },
    {
     "id": "AN-CA-2027-2030",
-    "moteur": "Poursuite d'une croissance forte mais graduellement moins spectaculaire : +18%/an sur 2027-2028 (2028 etant une annee d'election presidentielle, catalyseur prediction markets potentiellement comparable a 2026), puis moderation a +12%/an sur 2029-2030 (annees sans grand catalyseur electoral). Hypothese de reconstruction faute de guidance chiffree au-dela du trimestre suivant.",
+    "moteur": "Continued strong but gradually less spectacular growth: +18%/yr over 2027-2028 (2028 being a presidential election year, a prediction markets catalyst potentially comparable to 2026), then moderation to +12%/yr over 2029-2030 (years without a major electoral catalyst). A reconstruction assumption in the absence of quantified guidance beyond the next quarter.",
     "applique": [
      "omniumCA.2027",
      "omniumCA.2028",
@@ -195,7 +195,7 @@
    },
    {
     "id": "AN-MARGE",
-    "moteur": "Marge EBIT retenue a 47% pour FY2026 (vs 45,7% a la creation), revisee a la hausse suite a la confirmation d'un effet de levier operationnel superieur aux attentes (marge EBITDA ajustee reelle de 57% au T2, guidance de couts resserree/abaissee malgre l'ajout de Rothera et WonderFi non budgetes initialement). Expansion graduelle poursuivie vers 48-49% sur l'horizon 2027-2030, l'effet mix Rothera (marge incrementale quasi 100% sur ce segment) continuant de tirer la marge consolidee vers le haut.",
+    "moteur": "EBIT margin retained at 47% for FY2026 (vs 45,7% at creation), revised upwards following confirmation of operating leverage above expectations (actual adjusted EBITDA margin of 57% in Q2, cost guidance tightened/cut despite the addition of Rothera and WonderFi, not budgeted initially). Gradual expansion continued towards 48-49% over the 2027-2030 horizon, with the Rothera mix effect (incremental margin close to 100% on that segment) continuing to pull the consolidated margin higher.",
     "applique": [
      "omniumEBIT.2026",
      "omniumEBIT.2027",
@@ -207,7 +207,7 @@
    },
    {
     "id": "AN-IS-CONVERSION",
-    "moteur": "Taux d'IS normatif glissant maintenu (15% en 2026 -> 19% en 2030, demarrant pres du taux effectif reel 2025 pour eviter une fausse marche) et ratio de conversion Net/EBIT normalise maintenu a ~85%, methodologie de la creation inchangee faute d'element nouveau la remettant en cause.",
+    "moteur": "Sliding normative tax rate maintained (15% in 2026 -> 19% in 2030, starting close to the actual 2025 effective rate to avoid a false step) and normalised Net/EBIT conversion ratio maintained at ~85%, creation methodology unchanged in the absence of any new element calling it into question.",
     "applique": [
      "omniumNet.2026",
      "omniumNet.2027",
@@ -219,7 +219,7 @@
    },
    {
     "id": "AN-SHARES",
-    "moteur": "Nombre d'actions maintenu quasi stable (~907-908M en 2026, legere decroissance ensuite) : rachats d'actions poursuivis (7,5M d'actions pour 664 M$ YTD au T2) compensant la dilution SBC, la levee de 2,2 Md$ de notes convertibles a 0% de coupon ne generant aucune dilution nette tant que le cours reste sous 300$ (tres loin du cours actuel).",
+    "moteur": "Share count kept broadly stable (~907-908M in 2026, a slight decline thereafter): buybacks continued (7,5M shares for 664 M$ YTD at Q2) offsetting SBC dilution, with the 2,2 Md$ convertible notes issue at a 0% coupon generating no net dilution as long as the share price stays below 300$ (well away from the current price).",
     "applique": [
      "omniumShares.2026",
      "omniumShares.2027",
@@ -231,7 +231,7 @@
    },
    {
     "id": "AN-TRESORERIE",
-    "moteur": "Position de tresorerie nette renforcee par la levee de capital de 2,2 Md$ au T2 2026 (notes convertibles), partiellement compensee par la poursuite des rachats d'actions (664 M$ YTD) - trajectoire de tresorerie nette revisee a la hausse (plus negative, donc plus de cash net) vs la creation, avec poursuite de la generation de cash sur l'horizon de projection.",
+    "moteur": "Net cash position strengthened by the 2,2 Md$ capital raise in Q2 2026 (convertible notes), partly offset by continued buybacks (664 M$ YTD) - net cash trajectory revised upwards (more negative, hence more net cash) vs creation, with cash generation continuing over the projection horizon.",
     "applique": [
      "omniumND.2026",
      "omniumND.2027",
@@ -243,7 +243,7 @@
    },
    {
     "id": "AN-RVI-ONEOFF",
-    "moteur": "CORRECTION post-lecture complete du communique T2 2026 (E5 d-bis) : le resultat net publie (573 M$, EPS 0,62$) inclut 129 M$ de gain non-operationnel lie a la deconsolidation de Robinhood Ventures Fund I (RVI, ex-filiale consolidee dont Robinhood ne detient plus la majorite suite a son introduction en bourse), soit 0,14$/action. Ce gain est un element ponctuel et comptable (reevaluation de la participation residuelle a la juste valeur au moment de la perte de controle), sans rapport avec la performance operationnelle du trimestre. Il n'est PAS reconduit dans la projection FY2026-2030, qui reste construite a partir de la marge EBITDA ajustee (deja hors cet element) plutot que d'une extrapolation de l'EPS GAAP publie - mais il doit etre explicitement exclu de toute lecture du beat T2 comme preuve d'un effet de levier operationnel superieur aux attentes.",
+    "moteur": "CORRECTION after a full reading of the Q2 2026 release (E5 d-bis): reported net income (573 M$, EPS 0,62$) includes a 129 M$ non-operating gain tied to the deconsolidation of Robinhood Ventures Fund I (RVI, a formerly consolidated subsidiary in which Robinhood no longer holds a majority following its listing), i.e. 0,14$/share. This gain is a one-off accounting item (remeasurement of the residual stake at fair value at the moment control was lost), unrelated to the operating performance of the quarter. It is NOT carried forward in the FY2026-2030 projection, which remains built from the adjusted EBITDA margin (already excluding this item) rather than from an extrapolation of reported GAAP EPS - but it must be explicitly excluded from any reading of the Q2 beat as evidence of operating leverage above expectations.",
     "applique": [
      "omniumNet.2026"
     ],
@@ -261,7 +261,7 @@
      "actual": 0.62,
      "consensus": 0.42,
      "basis": "GAAP",
-     "basisNote": "GAAP dilue - beat brut de 47,6%, MAIS CE CHIFFRE EST TROMPEUR : le resultat net T2 (573 M$) inclut 129 M$ de gain lie a la deconsolidation de Robinhood Ventures Fund I (RVI), soit 0,14$ sur les 0,62$ d'EPS publie (~23% de l'EPS). EPS 'propre' hors cet element ponctuel et non-operationnel : environ 0,48$ (444 M$ / ~924M actions diluees), soit un beat reel mais plus modeste d'environ 14% vs consensus (0,42$) - toujours un beat, mais sans commune mesure avec le +47,6% brut. Element identifie et documente a l'ancrage AN-RVI-ONEOFF ci-dessous ; NON reflete dans les adjXXX (construits a partir de la marge EBITDA ajustee, deja hors cet element)."
+     "basisNote": "GAAP diluted - headline beat of 47,6%, BUT THIS FIGURE IS MISLEADING: Q2 net income (573 M$) includes a 129 M$ gain tied to the deconsolidation of Robinhood Ventures Fund I (RVI), i.e. 0,14$ of the 0,62$ of reported EPS (~23% of EPS). 'Clean' EPS excluding this one-off, non-operating item: around 0,48$ (444 M$ / ~924M diluted shares), i.e. a real but more modest beat of around 14% vs consensus (0,42$) - still a beat, but on nothing like the scale of the +47,6% headline. Item identified and documented at the AN-RVI-ONEOFF anchor below; NOT reflected in the adjXXX (built from the adjusted EBITDA margin, already excluding this item)."
     },
     "epsReported": {
      "actual": 0.62,
@@ -285,7 +285,7 @@
     "referentiel": "US GAAP",
     "source": "10-Q T2 2026 + communique (29/07/2026)",
     "date": "2026-08-19",
-    "note": "Croises : CA T2 1 308 M$ (+32%), resultat net 561 M$ (EPS dilue 0,62$, +48%) - dont ~129 M$ de gains lies a la deconsolidation de Robinhood Ventures Fund I (one-off declare). Funded customers 28,4 M (+7%), ARPU 187$ (+24%), Gold 4,84 M (+39%)."
+    "note": "Cross-checked: Q2 revenue 1 308 M$ (+32%), net income 561 M$ (diluted EPS 0,62$, +48%) - including ~129 M$ of gains tied to the deconsolidation of Robinhood Ventures Fund I (declared one-off). Funded customers 28,4 M (+7%), ARPU 187$ (+24%), Gold 4,84 M (+39%)."
    }
   },
   "guidanceHistory": [
@@ -302,7 +302,7 @@
     "guidanceAnnuelle": "OpEx ajustes+SBC FY26 resserree et abaissee a 2,675-2,775 Md$, malgre l'integration des couts Rothera/WonderFi non budgetes initialement - autofinancement via gains d'efficacite."
    }
   ],
-  "guidanceLongTerme": "Objectif directionnel de tres long terme communique par le CFO lors du call T2 2026 : multiplier l'activite par 10 sur les 10 prochaines annees (vision d'une capitalisation boursiere pouvant atteindre 1 000 Md$, comparaison faite avec les actifs sous gestion des institutions financieres traditionnelles, plusieurs dizaines de milliers de milliards de dollars). Non chiffrable dans les adjXXX, traite comme contexte strategique qualitatif.",
+  "guidanceLongTerme": "Very long-term directional target communicated by the CFO on the Q2 2026 call: growing the business by 10 over the next 10 years (a vision of a market capitalisation potentially reaching 1 000 Md$, compared with the assets under management of traditional financial institutions, several tens of trillions of dollars). Not quantifiable in the adjXXX, treated as qualitative strategic context.",
   "omniumCA": {
    "2026": 5278,
    "2027": 6228,
@@ -525,11 +525,11 @@
    "eps": 1.91,
    "epsNY": 2.6,
    "date": "2026-07-02",
-   "source": "Consensus 33 analystes (S&P Global via WallStreetZen), ANTERIEUR au T2 2026 (publie 29/07/2026, EPS 0,62$ vs consensus trimestriel 0,42$, beat de 47,6%) - quasi certainement obsolete a la hausse, a recouper au prochain refresh."
+   "source": "Consensus of 33 analysts (S&P Global via WallStreetZen), PRIOR to Q2 2026 (released 29/07/2026, EPS 0,62$ vs quarterly consensus 0,42$, beat of 47,6%) - almost certainly obsolete on the upside, to be cross-checked at the next refresh."
   }
  ],
  "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
   "date": "2026-08-20",
   "eps": {
    "2021": -7.49,
