@@ -503,7 +503,8 @@
    "publie": {
     "ca": 1195,
     "ebit": 229,
-    "net": 150
+    "net": 150,
+    "ebitda": 375
    },
    "retraitements": [
     {
@@ -511,21 +512,24 @@
      "libelle": "Coûts « one-off » liés à des événements non récurrents : intégration et restructuration de Luminex, cession des activités industrielles du site allemand, arrêt non-cash de la production du site chinois (~20 M€ comptabilisés en 2025)",
      "ebit": 39,
      "net": 39,
-     "classe": "oneOff"
+     "classe": "oneOff",
+     "ebitda": 19
     },
     {
      "id": "luminex-ppa-amort",
      "libelle": "Amortissement des incorporels Luminex identifiés dans le Purchase Price Allocation",
      "ebit": 36,
      "net": 36,
-     "classe": "recurrent"
+     "classe": "recurrent",
+     "ebitda": 0
     },
     {
      "id": "luminex-dette-interets",
      "libelle": "Charges financières sur les instruments de dette et l'obligation convertible émis pour financer l'acquisition de Luminex, nettes des effets de couverture",
      "ebit": 0,
      "net": 16,
-     "classe": "recurrent"
+     "classe": "recurrent",
+     "ebitda": 0
     }
    ],
    "impotSurRetraitements": -18,
@@ -533,7 +537,8 @@
    "rupture": null,
    "ajustePublie": {
     "ebit": 304,
-    "net": 223
+    "net": 223,
+    "ebitda": 394
    }
   },
   "2026-H1": {
@@ -541,7 +546,8 @@
    "publie": {
     "ca": 602,
     "ebit": 125,
-    "net": 84
+    "net": 84,
+    "ebitda": 188
    },
    "retraitements": [
     {
@@ -549,21 +555,24 @@
      "libelle": "Coûts « one-off » liés à des événements non récurrents : restructuration et programmes d'efficacité organisationnelle consécutifs au lancement des nouvelles plateformes",
      "ebit": 5,
      "net": 5,
-     "classe": "oneOff"
+     "classe": "oneOff",
+     "ebitda": 6
     },
     {
      "id": "luminex-ppa-amort",
      "libelle": "Amortissement des incorporels Luminex identifiés dans le Purchase Price Allocation",
      "ebit": 19,
      "net": 19,
-     "classe": "recurrent"
+     "classe": "recurrent",
+     "ebitda": 0
     },
     {
      "id": "luminex-dette-interets",
      "libelle": "Charges financières sur les instruments de dette et l'obligation convertible émis pour financer l'acquisition de Luminex, nettes des effets de couverture",
      "ebit": 0,
      "net": 6,
-     "classe": "recurrent"
+     "classe": "recurrent",
+     "ebitda": 0
     }
    ],
    "impotSurRetraitements": -8,
@@ -575,7 +584,8 @@
    },
    "ajustePublie": {
     "ebit": 149,
-    "net": 106
+    "net": 106,
+    "ebitda": 194
    }
   }
  }

@@ -807,11 +807,20 @@ def _omnium_de(c):
     one=[r for r in rets if r.get('classe')=='oneOff']
     eb=pub.get('ebit'); ne=pub.get('net')
     if not isinstance(eb,(int,float)) or not isinstance(ne,(int,float)): return None
+    # L'impot se prend PAR LIGNE quand il est renseigne : le prorata unique
+    # casse des que deux lignes ne portent pas le meme taux. Chez SEB au S1
+    # 2026, les provisions Rebond supportent 7,2% quand le reste est a ~30%
+    # - le prorata leur attribuerait -16,5 au lieu de -12,9 et faussait la
+    # base Omnium de 3,6 M EUR, soit 9,6%.
     imp=c.get('impotSurRetraitements') or 0
-    tot=sum(r.get('net',0) for r in rets)
-    part=(sum(r.get('net',0) for r in one)/tot) if tot else 0
+    rest=[r for r in rets if not isinstance(r.get('impot'),(int,float))]
+    tot=sum(r.get('net',0) for r in rest)
+    reste=imp-sum(r['impot'] for r in rets if isinstance(r.get('impot'),(int,float)))
+    def tax(r):
+        if isinstance(r.get('impot'),(int,float)): return r['impot']
+        return reste*(r.get('net',0)/tot) if tot else 0
     return (eb+sum(r.get('ebit',0) for r in one),
-            ne+sum(r.get('net',0) for r in one)+imp*part)
+            ne+sum(r.get('net',0)+tax(r) for r in one))
 
 @check("W10 ~ base declaree vs base employee (comptes -> data, 2%)")
 def w10():

@@ -225,6 +225,8 @@ def validate_comptes(d, errors):
             for k in ("ca", "ebit", "net"):
                 if not isinstance(pub.get(k), (int, float)):
                     errors.add(f"comptes['{per}'].publie.{k} doit etre un nombre.")
+            if "ebitda" in pub and not isinstance(pub["ebitda"], (int, float)):
+                errors.add(f"comptes['{per}'].publie.ebitda doit etre un nombre si present.")
 
         rup = c.get("rupture")
         if rup is not None:
@@ -275,6 +277,8 @@ def validate_comptes(d, errors):
             for k in ("ebit", "net"):
                 if not isinstance(r.get(k), (int, float)):
                     errors.add(f"{where}.{k} doit etre un nombre (0 si la ligne ne touche pas ce niveau).")
+            if "ebitda" in r and not isinstance(r["ebitda"], (int, float)):
+                errors.add(f"{where}.ebitda doit etre un nombre si present.")
             if "impot" in r and not isinstance(r["impot"], (int, float)):
                 errors.add(f"{where}.impot doit etre un nombre si present (effet d'impot PROPRE a cette ligne).")
             cl = r.get("classe")
@@ -287,7 +291,7 @@ def validate_comptes(d, errors):
         aj = c.get("ajustePublie")
         imp = c.get("impotSurRetraitements", 0)
         if isinstance(aj, dict) and isinstance(imp, (int, float)):
-            for k, tax in (("ebit", 0), ("net", imp)):
+            for k, tax in (("ebitda", 0), ("ebit", 0), ("net", imp)):
                 if not isinstance(aj.get(k), (int, float)) or not isinstance(pub.get(k), (int, float)):
                     continue
                 calc = pub[k] + sum(r.get(k, 0) for r in rets if isinstance(r, dict)) + tax
