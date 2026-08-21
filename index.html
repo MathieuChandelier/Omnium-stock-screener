@@ -283,6 +283,20 @@ thead th .fy-month-tag{color:#8be9dc;}
 .newsf-src a{color:var(--navy);font-weight:600;text-decoration:none;}
 .newsf-src a:hover{text-decoration:underline;}
 .newsf-src a.newsf-corro{opacity:.65;font-weight:500;}
+/* ── Manager moves — 13F (21/08/2026), 4e famille de la carte NEWS.
+   Seule famille a porter DEUX boutons par ligne : l'epingle "je retiens ce
+   mouvement" (il doit entrer dans l'ownership du titre - application par
+   session LLM, cf. server/managers.php) et la croix "traite, sans suite"
+   commune aux trois autres familles. */
+.mgr-item{grid-template-columns:1fr 26px 26px;}
+.mgr-pin:hover{color:var(--teal-text);border-color:var(--teal-text);background:var(--teal-light);}
+.mgr-who{font-size:9.5px;font-weight:600;color:var(--navy);}
+.newsf-kind.mgr-new{color:#0f8f4a;border-color:rgba(15,143,74,.35);background:#e7f6ed;}
+.newsf-kind.mgr-exit{color:#b3261e;border-color:rgba(179,38,30,.35);background:#fde3e3;}
+.newsf-kind.mgr-inc{color:var(--navy);border-color:rgba(0,1,144,.3);background:var(--navy-light);}
+.newsf-kind.mgr-dec{color:var(--muted);border-color:var(--border);background:#f5f6fa;}
+@media(max-width:420px){.mgr-item{grid-template-columns:1fr 24px 24px;gap:6px;}
+  .mgr-item .newsf-x{width:24px;height:24px;}}
 .market-action-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;background:#e8f9ee;border-radius:14px;gap:12px;margin:0 0 8px;}
 .market-action-bar-text{font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:#0a7a3d;cursor:pointer;flex:1;min-width:0;}
 .market-action-bar-text b{font-weight:800;}
@@ -1184,6 +1198,7 @@ function normalizeState(s){
   if(!('calendarCandidates' in s))s.calendarCandidates=null;
   if(!('sourceGaps' in s))s.sourceGaps=null;
   if(!('newsFeed' in s))s.newsFeed=null;
+  if(!('managerMoves' in s))s.managerMoves=null;
   if(!s.priceHistory || typeof s.priceHistory!=='object') s.priceHistory={schemaVersion:1, tickers:{}, earningsDates:{}};
   if(!s.priceHistory.tickers) s.priceHistory.tickers={};
   if(!s.priceHistory.earningsDates) s.priceHistory.earningsDates={};
@@ -1414,7 +1429,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps, newsFeed] = await Promise.all([
+    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps, newsFeed, managerMoves] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -1455,12 +1470,18 @@ async function loadState() {
       fetch('data/sourceGaps.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
       // Flux NEWS 7 jours du bandeau de notification (INSTRUCTIONS_NEWS.md,
       // moteur news) - absence graciable avant le premier run du moteur.
-      fetch('data/newsFeed.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
+      fetch('data/newsFeed.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null),
+      // Mouvements de gerants 13F du run TRIMESTRIEL (INSTRUCTIONS_MANAGERS.md,
+      // 17 fevrier / mai / aout / novembre) - absence graciable avant le
+      // premier run : la famille "Manager moves" de la carte NEWS ne
+      // s'affiche simplement pas, et la ligne d'action "run due" prend le
+      // relais (voir mgrDueState).
+      fetch('data/managerMoves.json', NO_STORE).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null, newsFeed: newsFeed || null };
+    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null, newsFeed: newsFeed || null, managerMoves: managerMoves || null };
 
     const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
@@ -5045,12 +5066,17 @@ function renderNewsFeed(){
   const wrap=document.getElementById('news-feed-wrap');
   if(!wrap) return;
   newsfPruneRemovedTickers();
+  mgrPruneRemovedTickers();
   const items=newsfItems();
   const unseen=items.filter(e=>!_newsfSeen.has(e.id));
+  // 4e famille (21/08/2026) : les mouvements de gerants 13F, qui viennent de
+  // data/managerMoves.json et non de newsFeed.json - meme carte, meme
+  // accordeon, meme regle de disparition.
+  const mgrPend=mgrPending();
   // Plus rien a traiter : la carte disparait entierement (et le panneau se
   // replie), y compris quand la derniere ligne vient d'etre retiree par sa
   // croix - c'est le comportement demande le 21/08.
-  if(!items.length||!unseen.length){ wrap.innerHTML=''; _newsfOpen=null; return; }
+  if(!unseen.length&&!mgrPend.length){ wrap.innerHTML=''; _newsfOpen=null; return; }
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   // Trois familles, une ligne chacune au gabarit d'ACTIONS (21/08/2026) :
   // le decompte se lit sans deplier, et chaque famille s'ouvre en
@@ -5080,14 +5106,43 @@ function renderNewsFeed(){
       </button>
     </div>`;
   };
+  // Ligne d'un mouvement de gerant : DEUX boutons, pas un. L'epingle
+  // RETIENT le mouvement (il doit entrer dans ownership.notableHolders du
+  // titre — l'app etant statique, la retention part au serveur et une
+  // session LLM applique, cf. ligne d'action "N retained to apply") ; la
+  // croix le traite SANS SUITE, comme dans les trois autres familles.
+  const mgrRow=m=>{
+    const a=MGR_ACTION[m.action]||{lbl:m.action||'', cls:'mgr-dec'};
+    const filed=m.filedAt?formatFrDate(String(m.filedAt).slice(0,10)):'';
+    return `<div class="newsf-item mgr-item">
+      <div style="min-width:0;">
+        <div class="newsf-meta">
+          <b class="newsf-tk" onclick="event.stopPropagation();CT='${esc(m.ticker)}';showTab('analyse');">${esc(m.ticker)}</b>
+          <span class="mgr-who">${esc(m.manager||'')}</span>
+          <span class="newsf-kind ${a.cls}">${esc(a.lbl)}</span>
+          <span>${esc(m.quarter||'')}${filed?` · filed ${esc(filed)}`:''}</span>
+        </div>
+        ${m.summary?`<div class="newsf-sum" style="margin-top:3px;">${esc(m.summary)}</div>`:''}
+        <div class="newsf-src">${m.url?`<a href="${esc(m.url)}" target="_blank" rel="noopener">EDGAR filing</a>`:''}</div>
+      </div>
+      <button class="newsf-x mgr-pin" title="Retenir — ce mouvement doit entrer dans l'ownership du titre" onclick="event.stopPropagation();mgrRetain('${esc(m.id)}')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>
+      </button>
+      <button class="newsf-x" title="Traité — sans suite" onclick="event.stopPropagation();mgrDismiss('${esc(m.id)}')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>`;
+  };
   // Familles : les communiques de la societe (source primaire) d'abord, les
-  // videos ensuite, le reste (presse critique + brokers etayes) en dernier.
+  // videos ensuite, le reste (presse critique + brokers etayes), et enfin
+  // les mouvements de gerants 13F (cadence trimestrielle, autre fichier).
   const FAMILLES=[
     {k:'releases', dot:'var(--navy)',   lbl:'Company releases — official statements', kinds:['communique']},
     {k:'videos',   dot:'var(--teal)',   lbl:'Videos — executive interviews',          kinds:['video']},
     {k:'press',    dot:'#c2c8d4',       lbl:'Press &amp; brokers — critical only',    kinds:['externe','broker']},
   ];
-  const groupes=FAMILLES.map(f=>({...f, items:unseen.filter(e=>f.kinds.includes(e.kind))})).filter(f=>f.items.length);
+  const groupes=FAMILLES.map(f=>({...f, items:unseen.filter(e=>f.kinds.includes(e.kind)), row:newsfRow})).filter(f=>f.items.length);
+  if(mgrPend.length) groupes.push({k:'managers', dot:'var(--teal-text)', lbl:'Manager moves — 13F positions', items:mgrPend, row:mgrRow});
   const rows=groupes.map((f,i)=>{
     const open=_newsfOpen===f.k;
     return `<div onclick="newsfToggle('${f.k}')" style="display:grid;grid-template-columns:14px 1fr 46px 14px;gap:10px;align-items:center;height:36px;${i?'border-top:1px solid #e9ebf7;':''}cursor:pointer;">
@@ -5095,12 +5150,239 @@ function renderNewsFeed(){
         <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">${f.lbl}</span>
         <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">${f.items.length}</span>
         <span style="color:#c2c8d4;font-size:11.5px;text-align:center;${open?'transform:rotate(90deg);':''}">›</span>
-      </div>${open?`<div onclick="event.stopPropagation();" style="padding:2px 0 8px;border-top:1px solid #e9ebf7;">${f.items.map(newsfRow).join('')}</div>`:''}`;
+      </div>${open?`<div onclick="event.stopPropagation();" style="padding:2px 0 8px;border-top:1px solid #e9ebf7;">${f.items.map(f.row).join('')}</div>`:''}`;
   }).join('');
   wrap.innerHTML=`<div class="dashb-act newsf-card">
     <div class="dashb-head" style="margin-bottom:4px;"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">News</span></div>
     ${rows}
   </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+// MANAGER MOVES — 13F (21/08/2026) - positions des grands gerants
+// relevees dans les depots 13F de la SEC, run TRIMESTRIEL
+// (INSTRUCTIONS_MANAGERS.md) qui livre data/managerMoves.json.
+//
+// Deux surfaces dans l'app :
+//   1. une famille de la carte NEWS ("Manager moves — 13F positions"),
+//      alimentee par data/managerMoves.json et NON par newsFeed.json ;
+//   2. deux lignes d'ACTION : le run trimestriel du 17 (fevrier, mai,
+//      aout, novembre) tant qu'il n'a pas tourne, et la file des
+//      mouvements RETENUS a appliquer dans les fiches.
+//
+// RETENTION : l'app est STATIQUE (GitHub Pages) - elle ne peut pas
+// ecrire dans data/<TICKER>.json. Chaque mouvement porte donc DEUX
+// boutons : la croix (traite, sans suite) et l'epingle (je le retiens,
+// il doit entrer dans ownership.notableHolders du titre). La retention
+// part au serveur (server/managers.php, meme infra que calendar.php /
+// news.php, repli localStorage silencieux si l'endpoint est absent) et
+// une session LLM l'applique ensuite, puis vide la file via
+// action=applied - exactement le pattern du tri calendrier.
+//
+// SCALABILITE : un mouvement dont le ticker n'est plus dans
+// data/manifest.json est ignore PARTOUT (decompte, famille, lignes
+// d'action) et sa retention est purgee (cf. mgrPruneRemovedTickers,
+// pendant de newsfPruneRemovedTickers / calPruneRemovedTickers).
+// ══════════════════════════════════════════════════════════════
+const MGR_ENDPOINT='https://model.omnium-capital.com/managers.php';
+const MGR_ACTION={
+  new:     {lbl:'New position', cls:'mgr-new'},
+  exit:    {lbl:'Exited',       cls:'mgr-exit'},
+  increase:{lbl:'Increased',    cls:'mgr-inc'},
+  decrease:{lbl:'Decreased',    cls:'mgr-dec'},
+};
+let _mgrRemote=null;          // null=inconnu, true/false apres 1er contact
+let _mgrRetained=[];          // mouvements RETENUS (objets complets) - file d'application
+let _mgrDismissed=new Set();  // ids traites sans suite
+
+function _mgrLocal(){
+  try{
+    const j=JSON.parse(localStorage.getItem('omniumMgrState')||'null');
+    return {retained:(j&&Array.isArray(j.retained))?j.retained.filter(m=>m&&m.id):[],
+            dismissed:new Set((j&&Array.isArray(j.dismissed))?j.dismissed.filter(x=>typeof x==='string'):[])};
+  }catch(e){ return {retained:[], dismissed:new Set()}; }
+}
+function _mgrLocalSave(){ try{ localStorage.setItem('omniumMgrState',JSON.stringify({retained:_mgrRetained,dismissed:[..._mgrDismissed]})); }catch(e){} }
+
+async function mgrFetch(){
+  const u=getUserId();
+  if(u){
+    try{
+      const r=await fetch(MGR_ENDPOINT+'?user='+encodeURIComponent(u),{signal:AbortSignal.timeout(5000)});
+      if(r.ok){
+        const j=await r.json();
+        _mgrRetained=Array.isArray(j.retained)?j.retained.filter(m=>m&&m.id):[];
+        _mgrDismissed=new Set(Array.isArray(j.dismissed)?j.dismissed.filter(x=>typeof x==='string'):[]);
+        _mgrRemote=true;
+        // Migration douce (pattern newsfFetch) : ce qui a ete trie pendant
+        // que l'endpoint etait absent remonte au serveur, puis le miroir
+        // local est efface.
+        const loc=_mgrLocal();
+        const known=new Set(_mgrRetained.map(m=>m.id));
+        for(const m of loc.retained){
+          if(!known.has(m.id)&&!_mgrDismissed.has(m.id)){ _mgrRetained.push(m); known.add(m.id); await mgrPost('retain',{move:m}); }
+        }
+        for(const id of loc.dismissed){
+          if(!_mgrDismissed.has(id)){ _mgrDismissed.add(id); await mgrPost('dismiss',{id}); }
+        }
+        try{ localStorage.removeItem('omniumMgrState'); }catch(e){}
+        _mgrPruned=false;   // la purge manifest doit repasser sur l'etat charge
+        return;
+      }
+    }catch(e){}
+  }
+  _mgrRemote=false;
+  const l=_mgrLocal(); _mgrRetained=l.retained; _mgrDismissed=l.dismissed;
+  _mgrPruned=false;
+}
+async function mgrPost(action,payload){
+  if(_mgrRemote){
+    try{
+      await fetch(MGR_ENDPOINT+'?user='+encodeURIComponent(getUserId())+'&action='+action,
+        {method:'POST',body:JSON.stringify(payload||{}),signal:AbortSignal.timeout(5000)});
+      return;
+    }catch(e){ _mgrRemote=false; }
+  }
+  _mgrLocalSave();
+}
+
+// Mouvements AFFICHABLES : le fichier filtre par le manifest. Vide pour un
+// INVITE - sans identifiant, aucune retention resolvable (meme regle que
+// newsfItems).
+function mgrMoves(){
+  if(IS_GUEST_SESSION)return [];
+  const mm=state.managerMoves;
+  const moves=(mm&&Array.isArray(mm.moves))?mm.moves:[];
+  return moves.filter(m=>m&&m.id&&m.ticker&&state.tickers[m.ticker]);
+}
+// A TRIER : ni retenu, ni ecarte. C'est le decompte de la famille NEWS.
+function mgrPending(){
+  const ret=new Set(_mgrRetained.map(m=>m&&m.id));
+  return mgrMoves().filter(m=>!_mgrDismissed.has(m.id)&&!ret.has(m.id))
+    .sort((a,b)=>String(a.ticker).localeCompare(String(b.ticker))||String(a.manager||'').localeCompare(String(b.manager||'')));
+}
+// A APPLIQUER : la file de retention, elle aussi filtree par le manifest.
+function mgrRetainedList(){
+  if(IS_GUEST_SESSION)return [];
+  return _mgrRetained.filter(m=>m&&m.ticker&&state.tickers[m.ticker]);
+}
+let _mgrPruned=false;
+function mgrPruneRemovedTickers(){
+  if(_mgrPruned||!state.tickers||!Object.keys(state.tickers).length) return;
+  _mgrPruned=true;
+  const goneR=_mgrRetained.filter(m=>m&&m.ticker&&!state.tickers[m.ticker]);
+  const goneD=[..._mgrDismissed].filter(id=>{const tk=String(id).split('-')[0];return tk&&!state.tickers[tk];});
+  if(!goneR.length&&!goneD.length) return;
+  if(goneR.length){
+    _mgrRetained=_mgrRetained.filter(m=>!(m&&m.ticker&&!state.tickers[m.ticker]));
+    // 'applied' est la seule operation qui RETIRE un mouvement de la file
+    // de retention cote serveur - un titre sorti du portefeuille n'a plus
+    // de fiche a servir, sa retention n'a plus d'objet.
+    mgrPost('applied',{ids:goneR.map(m=>m.id)});
+  }
+  goneD.forEach(id=>_mgrDismissed.delete(id));
+  if(_mgrRemote!==true) _mgrLocalSave();
+}
+// Optimiste : le decompte bouge IMMEDIATEMENT, la synchronisation serveur
+// part en arriere-plan (repli localStorage si le POST echoue - pattern calPost).
+function mgrRetain(id){
+  if(_mgrRetained.some(m=>m&&m.id===id)) return;
+  const m=mgrMoves().find(x=>x.id===id);
+  if(!m) return;
+  _mgrRetained.push(m);
+  _mgrDismissed.delete(id);
+  mgrPost('retain',{move:m});
+  renderNewsFeed(); renderActionsBar();
+}
+function mgrDismiss(id){
+  if(_mgrDismissed.has(id)) return;
+  _mgrDismissed.add(id);
+  _mgrRetained=_mgrRetained.filter(m=>!(m&&m.id===id));
+  mgrPost('dismiss',{id});
+  renderNewsFeed(); renderActionsBar();
+}
+
+// CADENCE DU RUN : les 13F sont deposes a J+45 apres la cloture du
+// trimestre ; le run s'ouvre le 17 du mois de depot (J+45 + 3 jours de
+// marge) et reste du le temps qu'il n'a pas tourne. 17 fevrier -> Q4 de
+// l'annee precedente, 17 mai -> Q1, 17 aout -> Q2, 17 novembre -> Q3.
+const MGR_TRIGGERS=[{m:1,q:4,dy:-1},{m:4,q:1,dy:0},{m:7,q:2,dy:0},{m:10,q:3,dy:0}];
+function mgrDueState(){
+  const now=new Date();
+  let best=null;   // declenchement le plus RECENT deja passe
+  MGR_TRIGGERS.forEach(t=>{
+    [now.getFullYear()-1, now.getFullYear()].forEach(yy=>{
+      const start=new Date(yy,t.m,17); start.setHours(0,0,0,0);
+      if(start<=now && (!best||start>best.since)) best={since:start, quarter:`${yy+t.dy}-Q${t.q}`};
+    });
+  });
+  const mm=state.managerMoves;
+  const ran=(mm&&mm._meta&&mm._meta.quarter)||null;
+  const genAt=(mm&&mm._meta&&mm._meta.generatedAt)||null;
+  // Critere unique : le fichier ne couvre pas le dernier trimestre clos.
+  return {quarter:best?best.quarter:null, since:best?best.since:null, ran, genAt, due:!!best&&ran!==best.quarter};
+}
+
+function buildMgrDuePanel(d){
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  const q=d.quarter||'';
+  return `<div style="border-left:3px solid var(--navy);padding:2px 0 2px 11px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">Manager moves — quarterly 13F run (${esc(q)})</div>
+      <div style="font-size:9.5px;color:var(--muted);margin-top:4px;line-height:1.6;">${d.ran?`Last run covered ${esc(d.ran)}${d.genAt?` (${formatFrDate(String(d.genAt).slice(0,10))})`:''}. `:'No run recorded yet. '}13F holdings are filed with the SEC 45 days after quarter end — this run opens on the 17th of February, May, August and November and stays due until it has produced the quarter. Spec file: <b style="color:var(--navy);">INSTRUCTIONS_MANAGERS.md</b></div>
+      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_MANAGERS.md — run trimestriel des positions de gérants, trimestre ${esc(q)}. Source UNIQUE : les dépôts 13F sur EDGAR (SEC) des gérants de la watchlist d'INSTRUCTIONS_MANAGERS.md — pas d'agrégateur, pas de presse, le dépôt lui-même. Le 13F ne couvre QUE les titres cotés aux États-Unis : les tickers non-US du manifest sont hors périmètre, dis-le dans _meta.note plutôt que de le taire. Ne retiens que les tickers présents dans data/manifest.json. Plafond de 50 mouvements : au-delà, garde les plus matériels (poids dans le portefeuille du gérant, ampleur du delta) et note le nombre trouvé dans _meta.movesFound face à _meta.movesKept. SORTIE : data/managerMoves.json UNIQUEMENT, au schéma imposé (_meta {generatedAt, quarter, managersCovered, tickersEligible, tickersTotal, movesFound, movesKept, note} et moves[] {id "TICKER-${esc(q.replace('-',''))}-manager-slug", ticker, manager, managerCik, action new|exit|increase|decrease, sharesBefore, sharesAfter, deltaShares, deltaPct, valueAfterUsd, weightInManagerPct, quarter, filedAt, url EDGAR, summary en une phrase}). N'ÉCRIS JAMAIS dans une fiche data/&lt;TICKER&gt;.json : l'entrée en ownership se fait plus tard, à partir des SEULS mouvements que j'aurai retenus dans l'app. Gérant ou dépôt inaccessible : entrée typée dans data/sourceGaps.json section "managers", jamais de silence. Pousse dans un commit unique.</div>
+    </div>`;
+}
+
+// Panneau de la file de RETENTION : le prompt prêt à coller qui fait entrer
+// les mouvements retenus dans ownership.notableHolders des fiches, au format
+// EXACT deja en place (cf. data/ALPHABET.json), puis vide la file serveur.
+function buildMgrApplyPanel(list){
+  const esc=t=>(t||'').toString().replace(/</g,'&lt;');
+  const ico=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>`;
+  const rows=list.map(m=>{
+    const a=MGR_ACTION[m.action]||{lbl:m.action||''};
+    return `<div style="display:grid;grid-template-columns:1fr 26px;gap:10px;align-items:start;padding:7px 0;border-top:1px solid #f2f3f9;">
+      <div style="min-width:0;">
+        <div class="newsf-meta"><b class="newsf-tk" onclick="event.stopPropagation();CT='${esc(m.ticker)}';showTab('analyse');">${esc(m.ticker)}</b><span class="mgr-who">${esc(m.manager||'')}</span><span>${esc(a.lbl)}</span></div>
+        ${m.summary?`<div class="newsf-sum">${esc(m.summary)}</div>`:''}
+      </div>
+      <button class="newsf-x" title="Retirer de la file — traité sans suite" onclick="event.stopPropagation();mgrDismiss('${esc(m.id)}')">${ico}</button>
+    </div>`;
+  }).join('');
+  const liste=list.map(m=>{
+    const a=MGR_ACTION[m.action]||{lbl:m.action||''};
+    return `- ${m.ticker} — ${m.manager||''} — ${a.lbl}${m.quarter?` (${m.quarter})`:''} — ${m.summary||''}${m.url?` — ${m.url}`:''}`;
+  }).join('\n');
+  const ids=JSON.stringify(list.map(m=>m.id));
+  const user=getUserId()||'<mon-slug>';
+  const prompt=`Applique dans les fiches les mouvements de gérants 13F que J'AI RETENUS dans l'app — ceux-ci et rien d'autre.
+
+Mouvements retenus (${list.length}) :
+${liste}
+
+Pour chaque mouvement, ouvre data/<TICKER>.json et ajoute — ou mets à jour si ce gérant y figure déjà — un objet de ownership.notableHolders au format EXACT déjà en place dans le fichier (va le lire avant d'écrire, par exemple data/ALPHABET.json) : {investor, pct, tier, movement, asOf, source}.
+- investor : "<Gérant principal> - <Société de gestion>" quand le principal est connu (ex. "Warren Buffett - Berkshire Hathaway"), sinon la seule société de gestion.
+- pct : part du CAPITAL de la société détenue après le mouvement (sharesAfter rapporté aux actions en circulation, en %). Ce n'est PAS weightInManagerPct, qui est le poids dans le portefeuille du gérant. Si tu ne peux pas la calculer sur une source solide, écris null — jamais une valeur inventée, jamais le poids portefeuille à la place.
+- tier : reprends la convention DÉJÀ utilisée dans la fiche concernée (1/2 chez certaines, "T1"/"T2" chez d'autres) — ne l'harmonise pas au passage.
+- movement : une phrase factuelle en français — nature du mouvement, ampleur, nombre d'actions après, rang dans le portefeuille du gérant si tu le sais.
+- asOf : le trimestre du dépôt, au format "AAAA-Qn".
+- source : "13F <trimestre> (dépôt <mois année>)", en ajoutant la corroboration si tu en utilises une.
+Mets ownership.asOf à jour s'il est plus ancien que ces dépôts. Ne touche à RIEN d'autre dans la fiche.
+
+DOCTRINE ownership — à respecter strictement : ce champ ne contient que du MATÉRIEL, de deux natures et pas une de plus. (1) Les fondateurs et dirigeants au-dessus de 1 % (insiderPct / insiderDesc / insiderSource), rafraîchis à chaque refresh du titre, donc HORS de ce run : n'y touche pas ici. (2) Les seuls mouvements de gérants que j'ai EXPLICITEMENT retenus dans l'app. Aucun remplissage automatique, aucun gérant ajouté pour faire nombre, aucune position non retenue — même si elle t'apparaît intéressante en passant.
+
+Puis, dans l'ordre :
+1. python3 scripts/validate_ticker.py data/<TICKER>.json pour CHAQUE fiche modifiée (aucune ne doit échouer) ;
+2. commit unique des fiches modifiées ;
+3. vide ma file de rétention en déclarant l'application faite :
+   curl -X POST "https://model.omnium-capital.com/managers.php?user=${user}&action=applied" -H "Content-Type: application/json" -d '{"ids":${ids}}'`;
+  return `<div style="border-left:3px solid var(--teal-text);padding:2px 0 2px 11px;">
+      <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">Retained manager moves — to write into ownership</div>
+      <div style="font-size:9.5px;color:var(--muted);margin-top:4px;line-height:1.6;">The app is static and cannot write to <b style="color:var(--navy);">data/&lt;TICKER&gt;.json</b>: these moves are parked server-side until an LLM session applies them to <b style="color:var(--navy);">ownership.notableHolders</b> and clears the queue. The ✕ on a row drops it from the queue without applying it.</div>
+      ${rows}
+      <div class="act-grp-w" style="margin-top:10px;">Paste to run this exact action:</div>
+      <div class="act-req">${esc(prompt)}</div>
+    </div>`;
 }
 
 // ── SOURCE DATA GAPS (20/08/2026) ─────────────────────────────────
@@ -5179,8 +5461,18 @@ function computeSourceGaps(){
     if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok')
       news.push({tk:g.ticker, detail:[g.source,g.note].filter(Boolean).join(' — ')||'pressroom inaccessible sans navigateur', url:g.url||null});
   });
-  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk)); cal.sort((a,b)=>a.tk.localeCompare(b.tk)); news.sort((a,b)=>a.tk.localeCompare(b.tk));
-  return {cons, trans, cal, news, total:cons.length+trans.length+cal.length+news.length};
+  // ECHECS DU RUN 13F (21/08/2026) : meme mecanique que 'calendar'/'news' -
+  // un depot EDGAR ou un gerant que le run trimestriel n'a pas su lire est
+  // inscrit dans sourceGaps.managers [{ticker,manager,note,url}]. Section
+  // OPTIONNELLE (creee par le run) : code defensif. Sans elle, l'echec du
+  // run serait ecrit dans un fichier que rien n'affiche.
+  const mgr=[];
+  (state.sourceGaps?.managers||[]).forEach(g=>{
+    if(g&&g.ticker&&state.tickers[g.ticker]&&g.status!=='ok')
+      mgr.push({tk:g.ticker, detail:[g.manager,g.note].filter(Boolean).join(' — ')||'dépôt 13F illisible', url:g.url||null});
+  });
+  cons.sort((a,b)=>a.tk.localeCompare(b.tk)); trans.sort((a,b)=>a.tk.localeCompare(b.tk)); cal.sort((a,b)=>a.tk.localeCompare(b.tk)); news.sort((a,b)=>a.tk.localeCompare(b.tk)); mgr.sort((a,b)=>a.tk.localeCompare(b.tk));
+  return {cons, trans, cal, news, mgr, total:cons.length+trans.length+cal.length+news.length+mgr.length};
 }
 // Panneau par CAS (21/08/2026) : chaque famille de blocage porte sa propre
 // action, avec le prompt LLM exact pret a coller — plus un texte generique
@@ -5218,6 +5510,8 @@ function buildSourceGapsPanel(g){
     `Reprends le run calendrier (INSTRUCTIONS_CALENDAR.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page Events/Financial calendar du site IR, capte les evenements a un mois (earnings, presentations investisseurs, conferences brokers) AVEC le champ url (lien precis evenement/webcast), fusionne dans data/calendarCandidates.json + data/nextEvents.json, puis efface l'entree "calendar" correspondante de data/sourceGaps.json :\n${g.cal.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   if((g.news||[]).length){ S.push(sect('News — pressroom needs the browser pass (Claude in Chrome)', g.news, 'The news run could not read these pressroom/news pages without a real browser (403/JS shell after all three access strategies).',
     `Reprends la collecte news (INSTRUCTIONS_NEWS.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page pressroom/news du site IR, capte les news de la fenetre 7 jours au schema newsFeed (id TICKER-YYYYMMDD-slug, kind, title, summary, source, url, critical, corroborations), fusionne dans data/newsFeed.json, puis efface l'entree "news" correspondante de data/sourceGaps.json :\n${g.news.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
+  if((g.mgr||[]).length){ S.push(sect('Manager moves — 13F filing could not be read', g.mgr, 'The quarterly 13F run could not read these EDGAR filings (throttling, unusual filing layout, or manager not found).',
+    `Reprends le run trimestriel des gérants (INSTRUCTIONS_MANAGERS.md) pour les cas suivants : ouvre le dépôt 13F sur EDGAR (SEC), relève la position et le mouvement vs trimestre précédent, complète data/managerMoves.json au schéma imposé (id TICKER-AAAAQn-manager-slug, action new|exit|increase|decrease, sharesBefore/sharesAfter/deltaShares/deltaPct, valueAfterUsd, weightInManagerPct, filedAt, url EDGAR, summary), puis efface l'entrée "managers" correspondante de data/sourceGaps.json. N'écris JAMAIS dans une fiche data/<TICKER>.json — l'entrée en ownership passe par la rétention manuelle dans l'app :\n${g.mgr.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   return `<div class="act-grp">${S.join('')}
       <div style="font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);margin-top:10px;line-height:1.5;">Failure after a full cascade must be reported back explicitly — never a silent null. Removing a ticker from the portfolio clears its rows here automatically.</div>
     </div>`;
@@ -5403,8 +5697,16 @@ function renderActionsBar(){
       'The field carries a sentence instead of GAAP / non-GAAP, so the app treats it as absent.',
       q.horsEnum,
       "Pour les titres ci-dessous, ramène dernierCall.resultatsVsConsensus.epsAdj.basis à l'énumération GAAP / non-GAAP (ou null) et déplace la justification vers pointsCles :"):'')});
-  // Boucle 13F ABANDONNEE (19/08/2026) - le champ ownership des fiches
-  // reste de la donnee, mais plus aucune file ni operation dediee.
+  // MANAGER MOVES 13F (21/08/2026) - la boucle 13F, abandonnee le
+  // 19/08/2026, revient sous forme de RUN TRIMESTRIEL (17 fevrier / mai /
+  // aout / novembre) et de RETENTION MANUELLE : rien n'entre dans le champ
+  // ownership d'une fiche sans avoir ete explicitement retenu dans la carte
+  // NEWS. Deux lignes distinctes : le run a lancer, la file a appliquer.
+  mgrPruneRemovedTickers();
+  const mgrDue=mgrDueState();
+  if(mgrDue.due) items.push({k:'mgrdue',dot:'var(--navy)',lbl:'Manager moves — quarterly run due',cnt:esc((mgrDue.quarter||'').split('-')[1]||'13F'),panel:buildMgrDuePanel(mgrDue)});
+  const mgrRet=mgrRetainedList();
+  if(mgrRet.length) items.push({k:'mgrret',dot:'var(--teal-text)',lbl:`Manager moves — ${mgrRet.length} retained to apply`,cnt:String(mgrRet.length),panel:buildMgrApplyPanel(mgrRet)});
 
   // Trous de donnees sources : compteur dynamique (voir computeSourceGaps).
   const gaps=computeSourceGaps();
@@ -5573,6 +5875,7 @@ document.addEventListener('DOMContentLoaded', async function(){
   startMarketActionPoll();
   calFetch().then(()=>{ try{renderActionsBar();renderMarketCalendar();}catch(e){} });
   newsfFetch().then(()=>{ try{renderNewsFeed();}catch(e){} });
+  mgrFetch().then(()=>{ try{renderNewsFeed();renderActionsBar();}catch(e){} });
 });
   </script>
 </body></html>
