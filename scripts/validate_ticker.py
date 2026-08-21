@@ -18,6 +18,7 @@ fichier echoue - pense pour un job CI qui bloque le push sur echec.
 """
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -25,7 +26,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 
 # Champs qui DOIVENT vivre a la racine du JSON (jamais imbriques dans hypothese).
-ROOT_ONLY_FIELDS = ["ownership", "compliance", "coherenceQualitative", "nextEvent"]
+ROOT_ONLY_FIELDS = ["ownership", "compliance", "coherenceQualitative", "nextEvent", "comptes"]
 
 # Champs qui DOIVENT vivre a l'interieur de hypothese (jamais a la racine).
 HYPOTHESE_ONLY_FIELDS = [
@@ -54,6 +55,32 @@ CQ_STATUT_VALUES = {"coherent", "rupture_positive", "incoherences_detectees"}
 CQ_HISTORIQUE_FORMAT_VALUES = {"brut", "compresse"}
 CQ_HISTORIQUE_TYPE_VALUES = {"resultats", "evenement_annexe"}
 CQ_ENGAGEMENT_STATUT_VALUES = {"en_cours", "confirme", "contredit", "echeance_depassee_sans_suite"}
+
+# Regle du 21/08/2026, datee comme les regles du 18/08 dans la batterie :
+# un transcript LU ce tour-ci OBLIGE une synthese narrative. La doctrine
+# l'exigeait deja ("TOUJOURS CONSTRUITE des lors qu'un transcript a ete lu
+# [...] jamais vide dans ce cas") et l'app sait l'afficher - mais rien ne
+# l'imposait, et 5 fiches sur 59 seulement la portaient : le bloc "Narrative
+# & coherence tracking" se reduisait alors a sa ligne de statut, sans le
+# detail. Les fiches anterieures sont tolerees jusqu'a leur prochain refresh.
+SUIVI_NARRATIF_RULE_DATE = "2026-08-21"
+
+# ── comptes (21/08/2026) ──────────────────────────────────────────────
+# La fiche stockait le chiffre DERIVE (data, base Omnium) et racontait le
+# chiffre SOURCE en prose (E5 d-bis : hypothese.text "reste l'unique
+# endroit ou le chiffre publie BRUT est trace"). Consequence mesuree : rien
+# ne pouvait comparer la base DECLAREE d'une fiche a la base EMPLOYEE, et
+# DIASORIN a glisse du publie vers l'ajuste entre 2025 et 2026 sans qu'un
+# seul controle bronche. `comptes` inverse le montage : on stocke la
+# source (le publie + les retraitements), on CALCULE le derive.
+COMPTES_PERIODE_RE = r"^\d{4}-(FY|H[12]|Q[1-4])$"
+COMPTES_BASE_VALUES = {"US-GAAP", "IFRS"}
+COMPTES_CLASSE_VALUES = {"oneOff", "recurrent", "indetermine"}
+COMPTES_RUPTURE_PAR_VALUES = {"emetteur", "omnium"}
+# kebab-case strict : c'est l'identifiant qui, relu periode apres periode,
+# forme la SERIE d'un poste. Sans stabilite, pas de serie, donc pas de
+# projection possible du poste (cas Luminex/PPA).
+COMPTES_ID_RE = r"^[a-z0-9]+(-[a-z0-9]+)*$"
 
 
 class Errors(list):
@@ -160,6 +187,100 @@ def validate_ancrages(d, errors):
                 f"ancrages[{i}].confiance={a.get('confiance')!r} invalide "
                 f"(attendu {sorted(ANCRAGE_CONFIANCE_VALUES)})."
             )
+
+
+def validate_comptes(d, errors):
+    """Structure de `comptes` (optionnel, absent = fiche pas encore migree).
+
+    Ne juge PAS la vraisemblance des chiffres. Verifie la forme, et la
+    seule arithmetique qui soit purement interne : le BOUCLAGE de la table
+    sur l'ajuste publie par la societe quand celui-ci est renseigne. Un
+    bouclage qui tombe faux ne peut etre qu'une erreur de recopie - c'est
+    le controle le moins cher et le plus efficace de la structure.
+    """
+    comptes = d.get("comptes")
+    if comptes is None:
+        return
+    if not isinstance(comptes, dict):
+        errors.add("comptes doit etre un objet indexe par periode ('2025-FY', '2026-H1'...).")
+        return
+
+    for per, c in comptes.items():
+        if not re.match(COMPTES_PERIODE_RE, str(per)):
+            errors.add(f"comptes['{per}'] : cle de periode invalide (attendu 'AAAA-FY', 'AAAA-H1', 'AAAA-Q3'...).")
+        if not isinstance(c, dict):
+            errors.add(f"comptes['{per}'] n'est pas un objet.")
+            continue
+        if c.get("base") not in COMPTES_BASE_VALUES:
+            errors.add(f"comptes['{per}'].base={c.get('base')!r} invalide (attendu {sorted(COMPTES_BASE_VALUES)}).")
+        if not isinstance(c.get("source"), str) or not c["source"].strip():
+            errors.add(f"comptes['{per}'].source doit nommer le document et sa date.")
+
+        pub = c.get("publie")
+        if not isinstance(pub, dict):
+            errors.add(f"comptes['{per}'].publie doit etre un objet {{ca, ebit, net}}.")
+            pub = {}
+        else:
+            for k in ("ca", "ebit", "net"):
+                if not isinstance(pub.get(k), (int, float)):
+                    errors.add(f"comptes['{per}'].publie.{k} doit etre un nombre.")
+
+        rup = c.get("rupture")
+        if rup is not None:
+            if not isinstance(rup, dict):
+                errors.add(f"comptes['{per}'].rupture doit etre null ou un objet {{par, motif}}.")
+            else:
+                if rup.get("par") not in COMPTES_RUPTURE_PAR_VALUES:
+                    errors.add(
+                        f"comptes['{per}'].rupture.par={rup.get('par')!r} invalide "
+                        f"(attendu {sorted(COMPTES_RUPTURE_PAR_VALUES)}) - qui a retraite decide "
+                        f"si on suit ou si on notifie."
+                    )
+                if not isinstance(rup.get("motif"), str) or not rup["motif"].strip():
+                    errors.add(f"comptes['{per}'].rupture.motif doit etre une phrase non vide.")
+
+        rets = c.get("retraitements")
+        if not isinstance(rets, list):
+            errors.add(f"comptes['{per}'].retraitements doit etre un tableau (vide si aucun).")
+            continue
+        seen = set()
+        for i, r in enumerate(rets):
+            where = f"comptes['{per}'].retraitements[{i}]"
+            if not isinstance(r, dict):
+                errors.add(f"{where} n'est pas un objet.")
+                continue
+            rid = r.get("id")
+            if not isinstance(rid, str) or not re.match(COMPTES_ID_RE, rid or ""):
+                errors.add(f"{where}.id={rid!r} doit etre un identifiant kebab-case stable (ex. 'luminex-ppa-amort').")
+            elif rid in seen:
+                errors.add(f"{where}.id={rid!r} est duplique dans la meme periode.")
+            else:
+                seen.add(rid)
+            if not isinstance(r.get("libelle"), str) or not r["libelle"].strip():
+                errors.add(f"{where}.libelle doit etre une chaine non vide.")
+            for k in ("ebit", "net"):
+                if not isinstance(r.get(k), (int, float)):
+                    errors.add(f"{where}.{k} doit etre un nombre (0 si la ligne ne touche pas ce niveau).")
+            cl = r.get("classe")
+            if cl not in COMPTES_CLASSE_VALUES:
+                errors.add(f"{where}.classe={cl!r} invalide (attendu {sorted(COMPTES_CLASSE_VALUES)}).")
+            elif cl == "indetermine" and not (isinstance(r.get("note"), str) and r["note"].strip()):
+                errors.add(f"{where} est 'indetermine' sans note : la raison du doute doit etre ecrite.")
+
+        # BOUCLAGE : publie + tous les retraitements + impot == ajuste publie.
+        aj = c.get("ajustePublie")
+        imp = c.get("impotSurRetraitements", 0)
+        if isinstance(aj, dict) and isinstance(imp, (int, float)):
+            for k, tax in (("ebit", 0), ("net", imp)):
+                if not isinstance(aj.get(k), (int, float)) or not isinstance(pub.get(k), (int, float)):
+                    continue
+                calc = pub[k] + sum(r.get(k, 0) for r in rets if isinstance(r, dict)) + tax
+                if abs(calc - aj[k]) > max(1.0, abs(aj[k]) * 0.005):
+                    errors.add(
+                        f"comptes['{per}'] : la table ne BOUCLE pas sur {k} - "
+                        f"publie {pub[k]} + retraitements {calc - pub[k] - tax:+g} + impot {tax:+g} "
+                        f"= {calc:g}, or l'ajuste publie vaut {aj[k]}. Erreur de recopie."
+                    )
 
 
 def validate_dernier_call(d, errors):
@@ -316,6 +437,18 @@ def validate_coherence_qualitative(d, errors):
             for i, s in enumerate(suivi):
                 if not isinstance(s, str) or not s.strip():
                     errors.add(f"coherenceQualitative.suiviNarratif[{i}] doit etre une chaine non vide.")
+    transcript_lu = (d.get("hypothese", {}).get("dernierCall") or {}).get("transcriptAnalyse") is True
+    date_fiche = (d.get("hypothese", {}) or {}).get("date") or ""
+    if transcript_lu and date_fiche >= SUIVI_NARRATIF_RULE_DATE and not (
+        isinstance(suivi, list) and any(isinstance(x, str) and x.strip() for x in suivi)
+    ):
+        errors.add(
+            "coherenceQualitative.suiviNarratif est vide alors que "
+            "dernierCall.transcriptAnalyse=true : un transcript lu impose 2 a 4 "
+            "phrases de synthese narrative (confirme / nuance / inflechi vs les "
+            "evenements de reference). Sans elles, le bloc de suivi n'affiche que "
+            "son statut, sans le detail."
+        )
     hist = cq.get("historique", [])
     if isinstance(hist, list):
         if len(hist) > 4:
@@ -442,6 +575,7 @@ def validate_file(path: Path) -> list:
     validate_coherence_qualitative(d, errors)
     validate_compliance(d, errors)
     validate_guidance_scorecard(d, errors)
+    validate_comptes(d, errors)
     return errors
 
 

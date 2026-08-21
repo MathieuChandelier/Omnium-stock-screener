@@ -793,6 +793,81 @@ def w6():
             if not 3<=n<=5: bad.append((tk,f'Lecture de these : {n} puce(s), attendu 3-5'))
     return bad
 
+# ══ comptes (21/08/2026) : la fiche stockait le chiffre DERIVE et racontait
+# le chiffre SOURCE en prose, donc rien ne pouvait comparer la base
+# DECLAREE a la base EMPLOYEE. `comptes` porte desormais le publie et les
+# retraitements ; l'Omnium s'en DEDUIT, et ces trois checks confrontent la
+# deduction a ce que la fiche affirme. W tant que la migration des fiches
+# n'est pas faite ; se durciront en C quand le portefeuille sera couvert.
+
+def _omnium_de(c):
+    """(ebit, net) en base Omnium a partir d'une periode de `comptes`."""
+    pub=c.get('publie') or {}
+    rets=[r for r in (c.get('retraitements') or []) if isinstance(r,dict)]
+    one=[r for r in rets if r.get('classe')=='oneOff']
+    eb=pub.get('ebit'); ne=pub.get('net')
+    if not isinstance(eb,(int,float)) or not isinstance(ne,(int,float)): return None
+    imp=c.get('impotSurRetraitements') or 0
+    tot=sum(r.get('net',0) for r in rets)
+    part=(sum(r.get('net',0) for r in one)/tot) if tot else 0
+    return (eb+sum(r.get('ebit',0) for r in one),
+            ne+sum(r.get('net',0) for r in one)+imp*part)
+
+@check("W10 ~ base declaree vs base employee (comptes -> data, 2%)")
+def w10():
+    bad=[]
+    for tk,t in FICHES.items():
+        comptes=t.get('comptes') or {}
+        rows={r.get('year'):r for r in (t.get('data') or [])}
+        for per,c in comptes.items():
+            if not per.endswith('-FY') or not isinstance(c,dict): continue
+            y=int(per[:4]); row=rows.get(y)
+            if not row: continue
+            om=_omnium_de(c)
+            if not om: continue
+            for i,k in ((0,'ebit'),(1,'net')):
+                fiche=row.get(k)
+                if not isinstance(fiche,(int,float)) or not fiche: continue
+                if abs(om[i]-fiche)/abs(fiche)>0.02:
+                    bad.append((tk,f'{y} {k} : data {fiche:g} vs Omnium recalcule {om[i]:.4g} '
+                                   f'({(fiche-om[i])/om[i]*100:+.0f}%)'))
+    return bad
+
+@check("W11 ~ periode `actual` vs publie (comptes, 3%)")
+def w11():
+    bad=[]
+    for tk,t in FICHES.items():
+        comptes=t.get('comptes') or {}
+        h=t.get('hypothese') or {}
+        cy=cy_of(t); qe=h.get('quarterlyEPS') or {}
+        rows={r.get('year'):r for r in (t.get('data') or [])}
+        for per,c in comptes.items():
+            if per.endswith('-FY') or not isinstance(c,dict): continue
+            y=int(per[:4]); lab=per[5:]
+            arr=qe.get('CY') if y==cy else (qe.get('PY') if y==cy-1 else qe.get('NY') if y==cy+1 else None)
+            if not arr: continue
+            e=next((x for x in arr if x.get('label')==lab and x.get('actual') is True), None)
+            if not e or not isinstance(e.get('eps'),(int,float)): continue
+            om=_omnium_de(c)
+            sh=(rows.get(y) or {}).get('shares') or (h.get('omniumShares') or {}).get(str(y))
+            if not om or not sh: continue
+            att=om[1]/sh
+            if abs(att-e['eps'])>0.03*max(abs(att),0.5):
+                bad.append((tk,f'{per} : fiche {e["eps"]:.2f} vs publie retraite {att:.2f} '
+                               f'({(e["eps"]-att)/att*100:+.0f}%) - periode marquee actual'))
+    return bad
+
+@check("W12 ~ retraitement laisse en 'indetermine'")
+def w12():
+    bad=[]
+    for tk,t in FICHES.items():
+        for per,c in (t.get('comptes') or {}).items():
+            if not isinstance(c,dict): continue
+            for r in (c.get('retraitements') or []):
+                if isinstance(r,dict) and r.get('classe')=='indetermine':
+                    bad.append((tk,f"{per} / {r.get('id')} : {r.get('note') or 'sans note'}"))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0; warns=0
