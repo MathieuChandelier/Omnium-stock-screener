@@ -175,14 +175,8 @@ tr.row-sub td.proj{color:var(--muted);}
 .mframe .ebg table{font-size:11px;}
 .mframe .ebg thead th{font-size:11px;}
 .mframe .ebg tbody td:first-child{font-size:11px;}
-/* chevron sobre : petit, blanc cercle, sans fondu */
-.vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
-.vf .chev svg{width:12px;height:12px;}
-.vf .chev.r{right:-2px;}
-.vf .chev.l{left:96px;}
-/* la fleche gauche n'existe qu'apres un scroll UTILISATEUR vers la droite */
-.vf .snapper .chev.l{opacity:0;pointer-events:none;}
-.vf .snapper.user-right .chev.l{opacity:1;pointer-events:auto;}
+/* aucune pastille de scroll : les chevrons masquaient la lecture, le scroll
+   manuel suffit. Restent le scroll-snap par colonne et l'ouverture cadree. */
 .ref-divider{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin:34px 0 14px;}
 
 /* ---------- V2 : scroll snap + affordance ---------- */
@@ -251,15 +245,13 @@ th.fold-th:hover{background:#000165;}
   <span class="vtag">V-finale</span>
   <h2>B grise — à valider</h2>
   <p class="intent">La B nue avec le <b>voile turquoise réintroduit sur le corps</b> des colonnes prospectives (le bandeau navy reste plein, sans voile), et plus <b>aucun bleu dans le corps</b> : toutes les valeurs en gris moyen <b>#64748b</b>, les lignes secondaires (Growth&nbsp;%, EBIT margin, Debt/EBIT, Div. yield) en gris plus clair <b>#94a3b8</b>, les libellés de la colonne Indicator en gris foncé <b>#334155</b>. La hiérarchie ne tient plus qu'à des niveaux de gris. Inchangé : aucune bordure, bandeau navy avec années en blanc, tout Poppins taille unique graisse 400, apostrophes 1'766, trait vertical turquoise, Indicator sticky opaque.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
+  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> scroll-snap par colonne et ouverture cadrée sur les années à venir, <b>sans aucune pastille de scroll</b> — plus rien ne se superpose au tableau.</p>
 
   <div class="demo-lbl">B grise — desktop</div>
   <div class="tbl-wrap ebg" id="ebgd"></div>
 
   <div class="demo-lbl">B grise — mobile 375&nbsp;px</div>
   <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap ebg" id="vfm"></div>
-    <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div></div>
 
   <div class="demo-lbl">Comparaison — B nue (valeurs en navy, corps sans voile)</div>
@@ -445,28 +437,16 @@ buildTable(document.getElementById('ebzd'));
 buildTable(document.getElementById('ebqd'));
 buildTable(document.getElementById('vfm'));
 (function(){
-  const s=document.getElementById('vfs'), w=document.getElementById('vfm');
+  /* plus aucune pastille : seule reste l'ouverture cadree sur les annees a
+     venir, le scroll-snap par colonne fait le reste. */
+  const w=document.getElementById('vfm');
   const ths=[...w.querySelectorAll('thead th')].slice(1);
-  const colW=()=>ths[1].offsetWidth||64;
-  /* baseline = position d'ouverture (programmatique). La fleche gauche ne se
-     montre que si l'UTILISATEUR a scrolle vers la droite au-dela de ce point. */
-  let baseline=0;
-  function state(){
-    const max=w.scrollWidth-w.clientWidth;
-    s.classList.toggle('at-end',w.scrollLeft>=max-12);
-    s.classList.toggle('user-right',w.scrollLeft>baseline+5);
-  }
-  s.querySelector('.chev.r').addEventListener('click',()=>w.scrollBy({left:colW(),behavior:'smooth'}));
-  s.querySelector('.chev.l').addEventListener('click',()=>w.scrollBy({left:-colW(),behavior:'smooth'}));
-  w.addEventListener('scroll',state,{passive:true});
   function openOn(){
     const t=ths[3]; /* 2024 : ouvre sur 2024 | 2025 | 2026 */
     if(!t)return;
     w.style.scrollBehavior='auto';
     w.scrollLeft=Math.max(0,t.offsetLeft-w.querySelector('th').offsetWidth);
     w.style.scrollBehavior='';
-    baseline=w.scrollLeft;
-    state();
   }
   openOn();
   requestAnimationFrame(openOn);
