@@ -78,6 +78,32 @@ tr.row-sub td.proj{color:var(--muted);}
 .mframe tbody td:first-child{font-size:9.5px;min-width:92px;max-width:100px;white-space:normal;line-height:1.25;padding-right:6px;}
 .mframe thead th:first-child{min-width:92px;}
 
+/* ---------- V-FINALE : consolidation validable ----------
+   Palette reduite : navy plat (en-tetes historiques), UNE teinte bleu leger
+   (var(--navy-light)) pour toutes les cellules ET labels 2026+, trait
+   turquoise vertical comme seul accent. Deux poids seulement : 400 / 700. */
+.vf thead th{font-weight:700;}
+.vf thead th.hist-last{background:var(--navy);}          /* plat : pas de navy-dark */
+.vf thead th.proj-head{background:var(--navy-light);color:var(--navy);box-shadow:none;}
+.vf tbody td{color:var(--text);}
+.vf tbody td.hist-last{background:transparent;font-weight:inherit;color:inherit;}
+.vf td.proj{background:var(--navy-light);}
+.vf tbody td:first-child{font-weight:700;font-size:10.5px;}
+.vf tr.row-sub td:not(:first-child){color:var(--text);font-size:inherit;}
+.vf tr.row-emph td{font-weight:700;color:var(--navy);}
+.vf tbody tr:hover td{background:#f2f3fb;}
+.vf tbody tr:hover td.proj{background:#e4e6fc;}
+.vf tbody tr:hover td:first-child{background:#f2f3fb;}
+/* chevron sobre : petit, blanc cercle, sans fondu */
+.vf .chev{width:26px;height:26px;background:#fff;border:1px solid var(--border);color:var(--navy);box-shadow:0 1px 5px rgba(0,1,144,.18);}
+.vf .chev svg{width:12px;height:12px;}
+.vf .chev.r{right:-2px;}
+.vf .chev.l{left:96px;}
+/* la fleche gauche n'existe qu'apres un scroll UTILISATEUR vers la droite */
+.vf .snapper .chev.l{opacity:0;pointer-events:none;}
+.vf .snapper.user-right .chev.l{opacity:1;pointer-events:auto;}
+.ref-divider{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin:34px 0 14px;}
+
 /* ---------- V2 : scroll snap + affordance ---------- */
 .snapper{position:relative;}
 .snapper .tbl-wrap{scroll-snap-type:x mandatory;scroll-behavior:smooth;}
@@ -137,7 +163,24 @@ th.fold-th:hover{background:#000165;}
 <body>
 <div class="page">
 <h1>Sandbox — Historical Data &amp; Projections</h1>
-<p class="sub">Cinq variantes d'affinage du tableau de la fiche titre. Données réalistes (fiche type : Revenue 43.08&nbsp;→&nbsp;65.84&nbsp;Md$, séparation historique&nbsp;2025&nbsp;/ projections&nbsp;2026). Commun à toutes : séparateur de milliers apostrophe (<b>1'766</b>, <b>3'700</b>), chiffres tabulaires alignés à droite, tirets «&nbsp;—&nbsp;» uniformes, zone projections sans italique.</p>
+<p class="sub">En tête : la <b>V-finale</b> consolidée d'après les retours — c'est elle qui est à valider avant tout passage dans la fiche titre. Les cinq pistes initiales restent dessous pour référence. Données réalistes (fiche type : Revenue 43.08&nbsp;→&nbsp;65.84&nbsp;Md$, séparation historique&nbsp;2025&nbsp;/ projections&nbsp;2026) ; partout : séparateur de milliers apostrophe (<b>1'766</b>, <b>3'700</b>), chiffres tabulaires alignés à droite, tirets «&nbsp;—&nbsp;» uniformes, aucun italique.</p>
+
+<!-- ================= V-FINALE ================= -->
+<div class="variant vf" id="vfinale">
+  <span class="vtag">V-finale</span>
+  <h2>Proposition consolidée — à valider</h2>
+  <p class="intent">Synthèse des retours : corrections typo conservées (apostrophes 1'766, tabular-nums, plus d'espace parasite), fond bleu léger unique sur <b>toutes</b> les années futures — 2026 comprise — appliqué aussi aux labels du bandeau, trait vertical turquoise conservé comme seul accent, couleurs plates dans le bandeau, deux poids typographiques seulement (400 / 700), aucun italique.</p>
+  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap par colonne + chevron droit discret seul au chargement ; le gauche n'apparaît qu'après un scroll vers la droite, le droit disparaît en fin de course.</p>
+  <div class="demo-lbl">Desktop</div>
+  <div class="tbl-wrap" id="vfd"></div>
+  <div class="demo-lbl">Mobile 375&nbsp;px — ouvre sur 2024&nbsp;|&nbsp;2025&nbsp;‖&nbsp;2026, un seul chevron</div>
+  <div class="mframe"><div class="snapper" id="vfs"><div class="tbl-wrap" id="vfm"></div>
+    <button class="chev l" aria-label="Colonne précédente"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="chev r" aria-label="Colonne suivante"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div></div>
+</div>
+
+<div class="ref-divider">Pistes initiales — conservées pour référence</div>
 
 <!-- ================= V1 ================= -->
 <div class="variant" id="v1">
@@ -306,6 +349,38 @@ function sparkline(vals,w=56,ht=18){
   if(hist.length)s+=`<circle cx="${X(hist[hist.length-1][0]).toFixed(1)}" cy="${Y(hist[hist.length-1][1]).toFixed(1)}" r="2.2" fill="#000190"/>`;
   return s+'</svg>';
 }
+
+/* ---------- V-FINALE ---------- */
+buildTable(document.getElementById('vfd'));
+buildTable(document.getElementById('vfm'));
+(function(){
+  const s=document.getElementById('vfs'), w=document.getElementById('vfm');
+  const ths=[...w.querySelectorAll('thead th')].slice(1);
+  const colW=()=>ths[1].offsetWidth||64;
+  /* baseline = position d'ouverture (programmatique). La fleche gauche ne se
+     montre que si l'UTILISATEUR a scrolle vers la droite au-dela de ce point. */
+  let baseline=0;
+  function state(){
+    const max=w.scrollWidth-w.clientWidth;
+    s.classList.toggle('at-end',w.scrollLeft>=max-12);
+    s.classList.toggle('user-right',w.scrollLeft>baseline+5);
+  }
+  s.querySelector('.chev.r').addEventListener('click',()=>w.scrollBy({left:colW(),behavior:'smooth'}));
+  s.querySelector('.chev.l').addEventListener('click',()=>w.scrollBy({left:-colW(),behavior:'smooth'}));
+  w.addEventListener('scroll',state,{passive:true});
+  function openOn(){
+    const t=ths[3]; /* 2024 : ouvre sur 2024 | 2025 | 2026 */
+    if(!t)return;
+    w.style.scrollBehavior='auto';
+    w.scrollLeft=Math.max(0,t.offsetLeft-w.querySelector('th').offsetWidth);
+    w.style.scrollBehavior='';
+    baseline=w.scrollLeft;
+    state();
+  }
+  openOn();
+  requestAnimationFrame(openOn);
+  window.addEventListener('load',openOn);
+})();
 
 /* ---------- V1 ---------- */
 buildTable(document.getElementById('v1d'));
