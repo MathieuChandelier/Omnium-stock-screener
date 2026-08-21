@@ -80,6 +80,21 @@ REGLES :
   marquees refusees et ne reviennent jamais). Dedup par `id` stable -
   d'ou l'importance de la convention d'id.
 - Compacite : `label` <= 60 caracteres, `note` une ligne.
+- SEMANTIQUE ABREGEE DES LABELS (21/08/2026) : la colonne Agenda du
+  portefeuille affiche le label tel quel sur un espace etroit (mobile).
+  Le run ecrit donc des labels NORMALISES, clairs mais resumes,
+  <= 14 caracteres hors date :
+  - earnings : `Q3 26`, `Q4 FY 26`, `H1 26`, `FY 26` (jamais "Q3 2026
+    earnings call") ;
+  - conference broker : `Conf <Broker abrege>` - GS (Goldman Sachs),
+    MS (Morgan Stanley), JPM, BofA, WF (Wells Fargo), DB, UBS, Citi,
+    Barclays, Jefferies, Bernstein... Ex : `Conf GS`, `Conf WF` ;
+  - capital markets day : `CMD` ; investor day : `Inv Day` ;
+    assemblee generale : `AGM` ; autre : forme courte du meme esprit.
+  Le detail complet (nom entier de la conference, lieu) va dans `note`
+  et/ou est porte par `url`. L'app applique un filet de securite
+  (abbrevEventLabel dans index.html, meme table d'abreviations) aux
+  labels herites non conformes.
 
 ## LIVRABLES (deux fichiers, un commit)
 
