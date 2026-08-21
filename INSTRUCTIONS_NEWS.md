@@ -52,9 +52,33 @@ pages "Events" IR du calendrier :
    pressroom/IR — sur des evenements precis PASSES ou EN COURS :
    acquisition ou cession, profit warning / revision de guidance, depart
    ou arrivee d'un dirigeant important, litige majeur, rappel produit,
-   contrat structurant. EXCLUS : communiques de routine (nominations
-   mineures, RSE, prix et distinctions, sponsoring, publications
-   financieres deja au calendrier).
+   contrat structurant, changement de capital allocation (voir regle
+   ci-dessous). EXCLUS : communiques de routine (nominations mineures,
+   RSE, prix et distinctions, sponsoring, publications financieres deja
+   au calendrier).
+
+   REGLE ROUTINE vs SIGNAL (ajoutee le 21/08/2026, cas d'ecole des
+   buybacks) : est retenu ce qui CHANGE l'etat de la these ; est exclu
+   ce qui EXECUTE un etat deja connu. Concretement :
+   - RETENUS (signal) : annonce d'un NOUVEAU plan de rachat d'actions
+     ou d'une nouvelle tranche (montant, autorisation) ; arret,
+     suspension ou relevement d'un plan en cours ; REPRISE de rachats
+     apres une longue interruption (signal de capital allocation) ;
+     coupe ou suspension du dividende, dividende exceptionnel.
+   - EXCLUS (routine) : les declarations HEBDOMADAIRES / periodiques
+     d'execution des rachats (achats effectifs de la semaine — tres
+     courant chez les emetteurs europeens du portefeuille, un communique
+     chaque semaine : elles ne ressortent JAMAIS dans le run) ;
+     transactions de dirigeants reglementaires de routine ; communiques
+     de mise a disposition de documents ; dividende ordinaire au
+     calendrier habituel.
+   Verifie en reel le 21/08/2026 : "Weekly progress share buyback
+   programme - 10 Aug - 14 Aug 2026" (HEINEKEN, 17/08/2026, page
+   buyback de theheinekencompany.com) et "Declaration des transactions
+   sur actions propres" hebdomadaire de BNP (invest.bnpparibas/document/
+   rachat-dactions-...) = EXCLUS ; "Heineken N.V. announces second
+   tranche of its EUR 1.5 billion share buyback programme" (12/02/2026)
+   = RETENU (nouvel engagement chiffre).
 
 2. EVENEMENTS PUBLIES AILLEURS, UNIQUEMENT SI CRITIQUES
    (`kind:"externe"` ou `kind:"broker"`) :
