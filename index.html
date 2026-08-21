@@ -759,17 +759,42 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
 .calb-evt .who{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);line-height:1.25;cursor:pointer;}
 .calb-evt .what{display:block;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:500;color:#64748b;line-height:1.25;}
 .calb-evt .x{color:#c2c8d4;font-size:10px;line-height:1;cursor:pointer;text-align:center;}
+/* Largeur utile plafonnee (21/08) : en desktop le panneau fait ~540px et
+   les colonnes chiffrees, collees a droite, laissaient pres de 200px de
+   vide entre le nom et sa valeur. Le corps du bloc est borne a 270px -
+   la colonne de noms garde ~142px, de quoi loger les plus longs sans
+   ellipse, et la lecture nom -> valeur se fait d'un coup d'oeil. */
+.peb-body{max-width:270px;}
 .peb-group{display:flex;align-items:center;gap:10px;margin:12px 0 2px;}
 .peb-group.first{margin-top:0;}
 .peb-group b{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.05em;}
 .peb-group i{flex:1;height:1px;background:#e9ebf7;}
-.peb-colhead{display:grid;grid-template-columns:1fr 64px 52px;gap:12px;}
+.peb-colhead{display:grid;grid-template-columns:1fr 60px 48px;gap:10px;}
 .peb-colhead span{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);text-align:right;}
-.peb-row{display:grid;grid-template-columns:1fr 64px 52px;gap:12px;align-items:center;height:32px;}
+.peb-row{display:grid;grid-template-columns:1fr 60px 48px;gap:10px;align-items:center;height:32px;}
 .peb-row+.peb-row{border-top:1px solid #e9ebf7;}
+/* Selecteur de periode : cible tactile de 32px (34px en mobile) sans
+   perdre sa discretion - l'actif se lit au remplissage blanc, deja la
+   matiere du dashboard, et non a une bordure ou une couleur nouvelle. */
+.peb-head{align-items:center;margin-bottom:8px;}
+.peb-head-r{display:flex;align-items:center;gap:12px;flex:none;}
+.peb-per{display:flex;align-items:center;gap:2px;}
+.peb-per span{display:inline-flex;align-items:center;justify-content:center;height:32px;min-width:34px;padding:0 10px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none;}
+.peb-per span.on{background:#fff;color:var(--navy);font-weight:700;}
 @media(max-width:760px){
   .dashb-grid{grid-template-columns:1fr;gap:14px;}
   .dashb-act{margin-bottom:26px;}
+  /* Mobile : un cran de hauteur en moins par ligne (32 -> 28px) et des
+     groupes plus serres - le bloc s'etirait pour rien. La borne de
+     largeur ne s'applique pas : le panneau y est deja plus etroit. */
+  .peb-body{max-width:none;}
+  .peb-row{height:28px;}
+  .peb-group{margin:9px 0 2px;}
+  /* Cible tactile de 34x34 mais empreinte serree : au-dela, l'en-tete ne
+     tient plus sur une ligne et le titre passe a la ligne. */
+  .peb-per span{height:34px;min-width:34px;padding:0 8px;font-size:10.5px;}
+  .peb-head-r{gap:8px;}
+  .peb-head{margin-bottom:4px;}
 }
 @media(max-width:760px){
   .dash-head{grid-template-columns:1fr;gap:18px 0;}
@@ -1755,27 +1780,30 @@ function renderAnalyse(){
   const fGrowth=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(1)+'%';
 
   const latestCA=d.data[d.data.length-1]?.ca||0;
-  /* 'B' (billions) plutot que 'Md' : l'app est en anglais et l'intitule
-     tient sur une ligne de plus sur mobile (21/08/2026). */
-  const bigUnit=Math.abs(latestCA)>=10000?'B':'M';
+  /* Notation institutionnelle (21/08/2026, standard sell-side type Goldman) :
+     SYMBOLE D'ABORD puis l'unite en minuscules - "$bn", "€mn". Les codes ISO
+     a trois lettres prennent une espace ("CHF mn"), les symboles courts sont
+     colles. Remplace le "Md$" / "M$" d'origine, qui etait l'ordre francais. */
+  const bigUnit=Math.abs(latestCA)>=10000?'bn':'mn';
+  const bigLbl=(cur.length>1?cur+' ':cur)+bigUnit;
   const fBigTbl=v=>{
     if(v==null||v==='')return'—';
     /* fSep : "3700.00" doit s'afficher "3'700.00" */
-    return bigUnit==='B' ? fSep((+v/1000).toFixed(2)) : fM(v);
+    return bigUnit==='bn' ? fSep((+v/1000).toFixed(2)) : fM(v);
   };
 
   // Contrainte de capital : presente uniquement pour un emetteur dont la
   // dette nette n'est pas une mesure de levier (banque, assureur).
   const cc=(d.issuerType && d.issuerType!=='industrial' && d.capitalConstraint) ? d.capitalConstraint : null;
   const metrics=[
-    {lbl:`Revenue (${bigUnit}${cur})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca)},
+    {lbl:`Revenue (${bigLbl})`,        sep:false, hFn:r=>fBigTbl(r.ca),    pFn:y=>fBigTbl(proj[y].ca)},
     {lbl:'Growth %',       sep:false, cls:'row-sub', hFn:r=>fGrowth(caGrowthHist(r)), pFn:y=>fGrowth(caGrowthProj(y))},
-    {lbl:`EBIT (${bigUnit}${cur})`,      sep:false, hFn:r=>fBigTbl(r.ebit),  pFn:y=>fBigTbl(proj[y].ebit)},
+    {lbl:`EBIT (${bigLbl})`,      sep:false, hFn:r=>fBigTbl(r.ebit),  pFn:y=>fBigTbl(proj[y].ebit)},
     {lbl:'EBIT margin',          sep:false, cls:'row-sub', hFn:r=>fpct(margeR(r)), pFn:y=>((proj[y].ebit/proj[y].ca)*100).toFixed(1)+'%'},
     /* "Net inc." : ce libelle etait le plus large et fixait a lui seul la
        largeur de la colonne sur mobile (21/08/2026). */
-    {lbl:`Net inc. (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net)},
-    {lbl:'Shares (M)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
+    {lbl:`Net inc. (${bigLbl})`, sep:false, hFn:r=>fBigTbl(r.net), pFn:y=>fBigTbl(proj[y].net)},
+    {lbl:'Shares (mn)', sep:false, hFn:r=>r.shares?fM(r.shares):'—', pFn:y=>proj[y].shares?fM(proj[y].shares):'—'},
     {lbl:`EPS (${cur})`,        sep:false, cls:'row-emph', hFn:r=>f2(epsR(r)), pFn:y=>f2(proj[y].eps)},
     {lbl:'P/E (x)',             sep:false, id:'pe-metric-row', cls:'row-emph', hFn:r=>'—', pFn:y=>{const e=proj[y]?.eps;const px=exCashPriceForYear(d,cours,y);return(px>0&&e>0)?(px/e).toFixed(1):'—';}},
     // Le garde-fou de la projection, dont la METRIQUE depend de l'emetteur.
@@ -1794,7 +1822,7 @@ function renderAnalyse(){
         pFn:y=>y===Object.keys(proj)[0] && typeof cc.current==='number' && typeof cc.requirement==='number'
           ? '+'+(cc.current-cc.requirement).toFixed(2).replace(/\.00$/,'')+' pt' : '—'},
     ] : [
-      {lbl:`Net debt (${bigUnit}${cur})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
+      {lbl:`Net debt (${bigLbl})`, sep:false, hFn:r=>fBigTbl(r.nd),  pFn:y=>fBigTbl(proj[y].nd)},
       {lbl:'Debt / EBIT',        sep:false, cls:'row-sub', hFn:r=>fX(dnebtR(r)), pFn:y=>fX(proj[y].nd/proj[y].ebit)},
     ]),
     {lbl:`Dividend (${cur})`,   sep:false,  hFn:r=>r.div?f2(r.div):'—', pFn:y=>divPY[y]>0?divPY[y].toFixed(2):'—'},
@@ -2355,7 +2383,7 @@ function renderReturnBlock(ticker, proj, cours){
 function fmtBigNum(v){
   if(v===null||v===undefined||v==='')return null;
   const n=+v; if(!isFinite(n))return null;
-  return Math.abs(n)>=1000 ? (n/1000).toFixed(2).replace(/\.00$/,'')+' B' : n.toFixed(n<10&&n!==0?2:0)+' M';
+  return Math.abs(n)>=1000 ? (n/1000).toFixed(2).replace(/\.00$/,'')+'bn' : n.toFixed(n<10&&n!==0?2:0)+'mn';
 }
 function fmtPctDelta(actual,consensus){
   if(actual==null||consensus==null||consensus===0||!isFinite(+actual)||!isFinite(+consensus))return null;
@@ -5282,11 +5310,11 @@ function renderMarketCalendar(){
     </div>`;
   };
   const grpHead=(txt,first)=>`<div class="peb-group${first?' first':''}"><b>${txt}</b><i></i></div>`;
-  const periodSel=`<span style="display:flex;gap:10px;font-family:'Poppins',sans-serif;font-size:9.5px;">${['1m','1y','all'].map(p=>`<span onclick="setPeAvgPeriod('${p}')" style="cursor:pointer;${_peAvgPeriod===p?'color:var(--navy);font-weight:700;':'color:var(--muted);font-weight:600;'}">${p}</span>`).join('')}</span>`;
+  const periodSel=`<span class="peb-per">${['1m','1y','all'].map(p=>`<span class="${_peAvgPeriod===p?'on':''}" onclick="setPeAvgPeriod('${p}')">${p}</span>`).join('')}</span>`;
   const colHead=`<div class="peb-colhead"><span></span><span>Current</span><span>vs avg</span></div>`;
   const peBody=(disc.length||stretch.length)
-    ? `${disc.length?grpHead('Deepest discounts',true)+colHead+disc.map(peRow).join(''):''}
-       ${stretch.length?grpHead('Most stretched')+stretch.map(peRow).join(''):''}`
+    ? `<div class="peb-body">${disc.length?grpHead('Deepest discounts',true)+colHead+disc.map(peRow).join(''):''}
+       ${stretch.length?grpHead('Most stretched')+stretch.map(peRow).join(''):''}</div>`
     : `<p style="font-size:9.5px;color:var(--muted);margin:6px 0 0;">Not enough price history yet.</p>`;
 
   wrap.innerHTML=`<div class="dashb-grid">
@@ -5295,8 +5323,8 @@ function renderMarketCalendar(){
       ${calBody}
     </div>
     <div class="dashb-panel">
-      <div class="dashb-head"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">P/E Rankings</span>
-        <span style="display:flex;align-items:baseline;gap:16px;">
+      <div class="dashb-head peb-head"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">P/E Rankings</span>
+        <span class="peb-head-r">
           ${periodSel}
           <span onclick="showTab('valuerankings', null)" style="cursor:pointer;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:var(--navy);white-space:nowrap;">Full rankings ›</span>
         </span>
