@@ -112,13 +112,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T1 2026",
+    "quarter": "Q1 26",
     "date": "2026-04-21",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Croissance organique moderee a un chiffre du chiffre d'affaires ; marge operationnelle ajustee en amelioration a change constant ; flux de tresorerie eleve."
    },
    {
-    "quarter": "S1 2026",
+    "quarter": "H1 26",
     "date": "2026-07-29",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Croissance organique RELEVEE a moderee a elevee a un chiffre (compte tenu des sorties d'activites engagees) ; marge operationnelle ajustee en amelioration a change constant (inchangee) ; flux de tresorerie eleve (inchange)."
@@ -127,7 +127,7 @@
   "guidanceLongTerme": "LEAP | 28 (annonce mars 2024, reaffirme) : croissance totale du CA elevee a un chiffre (organique moderee a elevee a un chiffre + M&A/rotation de portefeuille) ; amelioration constante de la marge operationnelle ajustee (~17% vise 2028) ; rendement annuel a deux chiffres (croissance BPA + rendement dividende) a change constant sur 2024-2028 ; conversion cash superieure a 90% ; dividende = 65% du resultat net ajuste ; ratio d'endettement net cible 1,0x-2,0x d'ici 2028.",
   "guidanceLongTermeHistory": [],
   "dernierCall": {
-   "quarter": "S1 2026",
+   "quarter": "H1 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "date": "2026-07-29",
@@ -145,7 +145,7 @@
     "epsReported": {
      "actual": null,
      "basis": "IFRS",
-     "period": "S1 26",
+     "period": "H1 26",
      "note": "Adjusted EPS EUR 0.68 (+9.8% cc) is the headline metric; reported (IFRS) EPS not restated here - includes the EUR 32M Government Services compliance provision and portfolio-exit effects. To be anchored from the H1 report at next refresh."
     }
    },
@@ -169,36 +169,36 @@
    "cadence": "semestriel",
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.647,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 0.773,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.734,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 0.876,
      "actual": false
     }
    ],
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.72,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 0.6,
      "actual": true
     }
@@ -436,7 +436,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-29",
-   "label": "H1 2026",
+   "label": "H1 26",
    "type": "earnings"
   }
  },

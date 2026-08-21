@@ -179,7 +179,7 @@
   },
   "source": "Refresh T2/H1 2026 - Communique officiel H1 2026 (06/08/2026) + transcript IR Talk H1 2026 (meme jour), migration structurelle complete vers le schema courant (dernierCall/guidanceHistory/guidanceLongTermeHistory/quarterlyEPS/ownership/compliance/coherenceQualitative absents du JSON de creation, tous peuples pour la premiere fois a l'occasion de ce refresh).",
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -196,7 +196,7 @@
     "epsReported": {
      "actual": 11.64,
      "basis": "IFRS",
-     "period": "S1 26",
+     "period": "H1 26",
      "note": "H1 26 reported IFRS EPS derived from published quarterly figures (Q1 5.21 EUR + Q2 6.43 EUR), implying ~132M EUR H1 net income - consistent with H1 EBIT of 170M EUR at a ~24-25% effective tax rate. Net income/EPS not restated in the earnings call itself."
     }
    },
@@ -218,7 +218,7 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-08-06",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Croissance CA mid-to-high single-digit ; marge EBIT visee vers le haut de la fourchette 25-26% (remboursement tarifaire US inclus)."
@@ -341,66 +341,66 @@
    "historique": [],
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 5.0,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 5.58,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 5.53,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 6.16,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 5.21,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 6.43,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 5.78,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 6.44,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 5.65,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 6.97,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 6.27,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 6.99,
      "actual": false
     }
@@ -511,7 +511,7 @@
   },
   "revisionEvent": {
    "date": "2026-08-06",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   }
  },

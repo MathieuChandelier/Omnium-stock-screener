@@ -62,7 +62,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "T3 2026",
+  "label": "Q3 26",
   "date": null
  },
  "hypothese": {
@@ -79,7 +79,7 @@
   },
   "source": "Refresh T2 2026 - Communique complet des resultats T2 2026 (28/07/2026, incluant les etats financiers condenses et les tableaux de reconciliation GAAP/Adjusted detailles) + transcript integral du call T2 2026 (28/07/2026, Olivier Loeillot/Jason Garland, incluant la session Q&A complete) + 8-K/communique de l'annonce de l'acquisition definitive de BioLife Solutions (22/07/2026) + presse financiere specialisee (BioSpace, StockTitan, Citybiz, Yahoo Finance/BigGo, ChartMill) pour la couleur BioLife. Sources primaires completes (communique + transcript) desormais mobilisees pour ce refresh.",
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "resultatsVsConsensus": {
     "ca": {
      "actual": 204.13,
@@ -94,7 +94,7 @@
     "epsReported": {
      "actual": 0.09,
      "basis": "GAAP",
-     "period": "T2 26",
+     "period": "Q2 26",
      "note": "GAAP diluted EPS of $0.09 for Q2 2026 (GAAP net income $5.0M vs $14.9M in Q2 2025, when GAAP diluted EPS was $0.26). The collapse is not operational (GAAP operating income roughly flat at $14.0M vs $13.9M): it is driven by an abnormally high one-off GAAP effective tax rate (~65% vs ~18% a year earlier and ~22% normative guidance), not commented on during the call and treated as a discrete non-recurring item in the Omnium model. Source: stockanalysis.com quarterly financials (quarter ended 06/30/2026), consistent with the Q2 press release."
     }
    },
@@ -118,19 +118,19 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T4/FY25",
+    "quarter": "Q4/FY 25",
     "date": "2026-02-24",
     "fyGuided": 2026,
     "guidanceAnnuelle": "CA FY26 803-833 M$ ; resultat operationnel ajuste 124-132 M$ ; EPS ajuste 1.97-2.05$."
    },
    {
-    "quarter": "T1 26",
+    "quarter": "Q1 26",
     "date": "2026-05-05",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance de fevrier reconduite sans changement chiffre."
    },
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-07-28",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance RELEVEE : CA 813-835 M$ ; resultat operationnel ajuste 128-134 M$ ; EPS ajuste 2.03-2.09$. Explicitement hors impact de l'acquisition BioLife Solutions (non close)."
@@ -380,36 +380,36 @@
   },
   "revisionEvent": {
    "date": "2026-07-28",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   },
   "quarterlyEPS": {
    "cadence": "trimestriel",
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.1,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.26,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.26,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.23,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.34,
      "actual": true,
      "retraitements": [
@@ -420,7 +420,7 @@
      ]
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.35,
      "actual": true,
      "retraitements": [
@@ -431,34 +431,34 @@
      ]
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.41,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.42,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.4,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.42,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.47,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.48,
      "actual": false
     }

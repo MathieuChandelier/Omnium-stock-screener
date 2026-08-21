@@ -78,7 +78,7 @@
     },
     "source": "Refresh S1 2026 - Communique de resultats semestriels (30/07/2026, conseil d'administration du meme jour) + recherche publique complementaire (Beverfood, Uptrade, Askanews, Teleborsa, Il Gazzettino, Il Nord Est, toutes convergentes sur les memes chiffres). PAS de transcript primaire lu pour ce refresh (base publique) - a rechercher activement au prochain refresh.",
     "dernierCall": {
-      "quarter": "S1 26",
+      "quarter": "H1 26",
       "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
@@ -95,7 +95,7 @@
         "epsReported": {
           "actual": null,
           "basis": "IFRS",
-          "period": "S1 26",
+          "period": "H1 26",
           "note": "No per-share figure published: the H1 2026 press release (30/07/2026) discloses group net income of EUR 141.4M (+21.2% YoY) but no reported or adjusted EPS; no reliable published H1 EPS found on stockanalysis.com either (TTM only). Q2 group net income EUR 79.7M (+34.5%)."
         }
       },
@@ -117,7 +117,7 @@
     },
     "guidanceHistory": [
       {
-        "quarter": "FY25",
+        "quarter": "FY 25",
         "date": "2026-03-01",
         "fyGuided": 2026,
         "guidanceAnnuelle": "Guidance initiale FY2026 : croissance du CA mid-single-digit ; EBITDA ajuste 640-660 M EUR."
@@ -129,7 +129,7 @@
         "guidanceAnnuelle": "Guidance FY2026 reaffirmee inchangee malgre le trou d'air Household au T1 (-2,4%) : CA mid-single-digit, EBITDA ajuste 640-660 M EUR."
       },
       {
-        "quarter": "S1 26",
+        "quarter": "H1 26",
         "date": "2026-07-30",
         "fyGuided": 2026,
         "guidanceAnnuelle": "Guidance FY2026 relevee sur l'EBITDA ajuste : 670-690 M EUR (vs 640-660 M EUR) ; CA reaffirme mid-single-digit (formulation inchangee)."
@@ -255,36 +255,36 @@
       "cadence": "semestriel",
       "CY": [
         {
-          "label": "S1",
+          "label": "H1",
           "eps": 0.94,
           "actual": true
         },
         {
-          "label": "S2",
+          "label": "H2",
           "eps": 1.57,
           "actual": false
         }
       ],
       "NY": [
         {
-          "label": "S1",
+          "label": "H1",
           "eps": 1.03,
           "actual": false
         },
         {
-          "label": "S2",
+          "label": "H2",
           "eps": 1.71,
           "actual": false
         }
       ],
       "PY": [
         {
-          "label": "S1",
+          "label": "H1",
           "eps": 0.77,
           "actual": true
         },
         {
-          "label": "S2",
+          "label": "H2",
           "eps": 1.32,
           "actual": true
         }
@@ -399,7 +399,7 @@
     },
     "revisionEvent": {
       "date": "2026-07-30",
-      "label": "H1 2026",
+      "label": "H1 26",
       "type": "earnings"
     }
   },

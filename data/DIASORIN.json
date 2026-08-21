@@ -67,7 +67,7 @@
   }
  ],
  "nextEvent": {
-  "label": "Q3 2026",
+  "label": "Q3 26",
   "date": null
  },
  "ownership": {
@@ -157,7 +157,7 @@
   },
   "source": "Refresh S1/T2 2026 - Transcript integral du call T2 2026 (Carlo Rosa CEO / Alberto Donati CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 09/07/2026 (transcript T1 + Investor Day 2026-2030 du 20/05/2026, deja integres, non rouverts par ce refresh sauf ou indique). Complement audit portefeuille du 10/08/2026 : ajout quarterlyEPS.PY (FY2025 S1 1.62 EUR / S2 1.27 EUR, derive du ratio management adjusted net profit H1 125 M EUR / FY 223 M EUR applique a la base restated Omnium 150 M EUR / 52 M titres) ; ajout coherenceQualitative avec reconstruction retroactive du T1 2026 (transcript investing.com du 08/05/2026, 7 analystes/~14 echanges) compare au T2 2026 (transcript investing.com du 31/07/2026, deja lu lors du refresh precedent, 9 analystes/~22 echanges) - aucune incoherence materielle identifiee (revision guidance Chine 5->7 M EUR justifiee par VBP/pricing concurrentiel, clarification risque Moyen-Orient est une precision et non un retournement, reponses destockage QuantiFERON coherentes T1/T2). Correction incidente : confiance de l'ancrage nes-toujours-non-chiffre normalisee sur l'enum standard (basse).",
   "dernierCall": {
-   "quarter": "Q2 2026",
+   "quarter": "Q2 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -197,19 +197,19 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "FY25",
+    "quarter": "FY 25",
     "date": "2026-03-20",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance initiale FY2026 : CA +5%-6% a change constant (hypothese EUR/USD 1,18), marge EBITDA ajustee 32%-33%."
    },
    {
-    "quarter": "Q1 2026",
+    "quarter": "Q1 26",
     "date": "2026-05-08",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance FY2026 reiteree integralement malgre un T1 faible (-3% cc) juge transitoire (saison grippale molle, destockage QuantiFERON, meteo US)."
    },
    {
-    "quarter": "Q2 2026",
+    "quarter": "Q2 26",
     "date": "2026-07-31",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance FY2026 reaffirmee integralement malgre un H1 flat a cambi constants : CA +5%-6% cc, marge EBITDA ajustee 32%-33%."
@@ -330,36 +330,36 @@
    "historique": [],
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 1.62,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 1.27,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 2.13,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 2.24,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 2.3,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 2.41,
      "actual": false
     }
@@ -473,7 +473,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-31",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   }
  },

@@ -59,7 +59,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "Q3 2026 (CA)",
+  "label": "Q3 26 (sales)",
   "date": null
  },
  "ownership": {
@@ -90,7 +90,7 @@
   },
   "source": "Refresh H1 2026 - Transcript integral du call H1 2026 (Jean-Charles Decaux Co-CEO / Jean-Francois Decaux Co-CEO / David Bourg CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 05/07/2026 (transcript FY2025 + communique T1 2026, deja integres, non rouverts par ce refresh sauf ou indique).",
   "dernierCall": {
-   "quarter": "H1 2026",
+   "quarter": "H1 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -129,7 +129,7 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "FY25/T1 26",
+    "quarter": "FY 25/Q1 26",
     "date": "2026-05-05",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance T2 26 donnee a ~+3% organique, penalisee par le conflit au Moyen-Orient (~5% du CA 2025, aeroports Dubai/EAU)."
@@ -255,36 +255,36 @@
    "cadence": "semestriel",
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.44,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 1.05,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.49,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 1.16,
      "actual": false
     }
    ],
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.36,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 0.88,
      "actual": true
     }
@@ -390,7 +390,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-31",
-   "label": "H1 2026",
+   "label": "H1 26",
    "type": "earnings"
   }
  },

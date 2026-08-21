@@ -59,7 +59,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "T3 26",
+  "label": "Q3 26",
   "date": "2026-10-27"
  },
  "compliance": {
@@ -88,7 +88,7 @@
   },
   "source": "Refresh T2 2026 - Communique de resultats (28/07/2026) + Transcript conference (28/07/2026, 8h30 ET)",
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -105,7 +105,7 @@
     "epsReported": {
      "actual": 1.03,
      "basis": "GAAP",
-     "period": "T2 26",
+     "period": "Q2 26",
      "note": "GAAP diluted EPS from the Q2 26 release (net income $4,425M), above comparable $0.97 on favorable non-comparable items (incl. divestiture/CCBA-related effects)."
     }
    },
@@ -127,13 +127,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T1 26",
+    "quarter": "Q1 26",
     "date": "2026-04-28",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Organique +4-5%, comparable EPS +8-9% vs 3,00$, ETR sous-jacent 19,9%."
    },
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-07-28",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Organique ~5% (haut de fourchette), comparable EPS +9-10% vs 3,00$ (releve), ETR sous-jacent maintenu 19,9%, tailwind devises ~3pts sur EPS, headwind cession CCBA ~1pt EPS / 2-3pts CA."
@@ -337,73 +337,73 @@
   },
   "revisionEvent": {
    "date": "2026-07-28",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   },
   "quarterlyEPS": {
    "cadence": "trimestriel",
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.77,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.88,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.86,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.53,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.91,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 1.03,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.75,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.6,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.98,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 1.11,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.81,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.64,
      "actual": false
     }

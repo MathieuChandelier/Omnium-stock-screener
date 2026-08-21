@@ -62,7 +62,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "T3 2026",
+  "label": "Q3 26",
   "date": null
  },
  "ownership": {
@@ -163,7 +163,7 @@
    }
   ],
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "resultatsVsConsensus": {
     "ca": {
      "actual": 60801,
@@ -178,7 +178,7 @@
     "epsReported": {
      "actual": 6.18,
      "basis": "GAAP",
-     "period": "T2 26",
+     "period": "Q2 26",
      "note": "GAAP diluted EPS of $6.18 on GAAP net income of $15.8B ($15,848M, quarter ended June 30, 2026, per stockanalysis.com quarterly financials, cross-checked with the earnings call). Missed sell-side consensus by ~$1.22 (~14.5%), integrally driven by one-offs: $2.4B legal charges and $1.2B severance from the May 2026 headcount reduction; ex-items, operating income would have grown +9% YoY per the CFO."
     }
    },
@@ -202,13 +202,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T1 26",
+    "quarter": "Q1 26",
     "date": "2026-04-29",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Charges totales FY26 162-169 Md$ ; capex FY26 125-145 Md$ (releve depuis 115-135 Md$) ; resultat d'exploitation FY26 attendu superieur a 2025 ; taux d'imposition 13-16% hors effet ponctuel T1."
    },
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-07-29",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Charges totales FY26 relevees a 165-169 Md$ (integrant 2,4 Md$ de charges juridiques T2) ; capex FY26 resserre/releve a 130-145 Md$ ; taux d'imposition reste de l'annee releve a 15-17% ; resultat d'exploitation FY26 > FY25 reconfirme. Toujours aucune guidance capex 2027."
@@ -356,73 +356,73 @@
   },
   "revisionEvent": {
    "date": "2026-07-29",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   },
   "quarterlyEPS": {
    "cadence": "trimestriel",
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 6.43,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 7.14,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 1.05,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 8.88,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 10.44,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 6.18,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 5.55,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 6.1,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 6.63,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 7.07,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 7.36,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 8.39,
      "actual": false
     }

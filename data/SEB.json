@@ -93,7 +93,7 @@
   },
   "source": "Deep refresh 18/08/2026 (protocole complet) : transcript H1 2026 lu depuis l'archive Drive, coherenceQualitative creee (cold start), bridge etabli (t 23,5% normatif, minoritaires Supor, charge financiere decroissante ; le 2025 aberrant de W2 documente avec arbitrage d-bis differe a la cloture FY26), scorecard cree (ancre own_vintage 5,88), cles depreciees purgees. Projections inchangees (bottom-up H2 du 04/08).",
   "dernierCall": {
-   "quarter": "S1 26",
+   "quarter": "H1 26",
    "resultatsVsConsensus": {
     "ca": {
      "actual": 3743,
@@ -107,7 +107,7 @@
     "epsReported": {
      "actual": -2.26,
      "basis": "IFRS",
-     "period": "S1 26",
+     "period": "H1 26",
      "note": "Published IFRS net income group share H1 26: EUR -124m (~EUR -2.26/share), dragged by EUR 178m of Rebound restructuring provisions and prudently limited DTA recognition; ex-Rebound net income +41m (~EUR +0.75/share) vs +1m in H1 25. No half-year sell-side EPS consensus available."
     }
    },
@@ -130,7 +130,7 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "S1 26",
+    "quarter": "H1 26",
     "date": "2026-07-22",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Retour a la croissance du ROPA sur l'annee, cash-flow libre plus normatif dans le prolongement du S1, levier financier en baisse vers ~2x hors acquisitions d'ici fin 2027."
@@ -142,36 +142,36 @@
    "cadence": "semestriel",
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.75,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 5.4,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.94,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 5.78,
      "actual": false
     }
    ],
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 0.02,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 4.43,
      "actual": true
     }
@@ -423,7 +423,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-22",
-   "label": "S1 26",
+   "label": "H1 26",
    "type": "earnings"
   }
  },

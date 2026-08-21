@@ -107,7 +107,7 @@
   },
   "particularites": [],
   "nextEvent": {
-    "label": "Q3 2026",
+    "label": "Q3 26",
     "date": null
   },
   "ownership": {
@@ -128,7 +128,7 @@
     "date": "2026-08-18",
     "source": "Deep refresh 18/08/2026 (protocole complet) : transcript Q2 2026 lu depuis l'archive Drive, coherenceQualitative creee (cold start), bridge etabli (t 24% normatif vs ~10% effectif 2025 - l'ecart W1 documente), scorecard cree (ancre CA initiale 5 205 M$ depuis guidanceHistory, desaccord de metrique declare), basis ramene a l'enum (C16), cles depreciees purgees. Projections inchangees.",
     "dernierCall": {
-      "quarter": "Q2 2026",
+      "quarter": "Q2 26",
       "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
@@ -144,7 +144,7 @@
         "epsReported": {
           "actual": 0.64,
           "basis": "GAAP",
-          "period": "Q2 2026",
+          "period": "Q2 26",
           "note": "GAAP diluted EPS $0.64 on GAAP net income of $249.1M (vs non-GAAP EPS $0.70 / non-GAAP net income $269.1M)."
         }
       },
@@ -165,19 +165,19 @@
     },
     "guidanceHistory": [
       {
-        "quarter": "FY25/Q4 25",
+        "quarter": "FY 25/Q4 25",
         "date": "2026-02-12",
         "fyGuided": 2026,
         "guidanceAnnuelle": "Guidance initiale FY2026 : CA 5,16-5,25 Md$ (+11-13%) ; marge brute non-GAAP ~63-64% ; marge operationnelle non-GAAP ~22-23%."
       },
       {
-        "quarter": "Q1 2026",
+        "quarter": "Q1 26",
         "date": "2026-04-30",
         "fyGuided": 2026,
         "guidanceAnnuelle": "Guidance FY2026 reaffirmee (CA 5,16-5,25 Md$) ; marge operationnelle non-GAAP relevee a 23-23,5% (vs 22-23%) ; marge EBITDA ajustee relevee a 31-31,5%. Marge brute non relevee malgre un bon T1, prudence sur le fret/logistique geopolitique."
       },
       {
-        "quarter": "Q2 2026",
+        "quarter": "Q2 26",
         "date": "2026-07-30",
         "fyGuided": 2026,
         "guidanceAnnuelle": "Guidance FY2026 de nouveau relevee : CA 5,18-5,25 Md$ ; marge brute non-GAAP ~64% ; marge operationnelle non-GAAP 23,5%-24% ; marge EBITDA ajustee 31,5%-32%."
@@ -296,66 +296,66 @@
       "cadence": "trimestriel",
       "CY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.51,
           "actual": true
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.64,
           "actual": true
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.71,
           "actual": false
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.64,
           "actual": false
         }
       ],
       "NY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.64,
           "actual": false
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.8,
           "actual": false
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.89,
           "actual": false
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.79,
           "actual": false
         }
       ],
       "PY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.27,
           "actual": true
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.45,
           "actual": true
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.7,
           "actual": true
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.68,
           "actual": true
         }
@@ -490,7 +490,7 @@
     },
     "revisionEvent": {
       "date": "2026-07-30",
-      "label": "Q2 2026",
+      "label": "Q2 26",
       "type": "earnings"
     }
   },

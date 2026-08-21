@@ -136,7 +136,7 @@
   },
   "source": "Refresh de forme (ajout decoupage trimestriel E5 ter) - meme call T2 26 (21/07/2026), pas de nouveau resultat publie. Passe complementaire (10/08/2026) : quarterlyEPS.PY (FY2025, 1,39$/1,31$/1,40$/1,73$ sur base non-GAAP management retraitee de l'amortissement apres impot, bouclant a 0,01$ pres sur data[2025].net/shares=5,83$) et coherenceQualitative ajoutes - transcripts T1 26 (21/04/2026) et T2 26 (21/07/2026) relus integralement, aucune contradiction materielle detectee (statut coherent). Correction incidente : le chiffre de 125 M$ de synergies Masimo, presente comme non confirme par le management dans une version anterieure de ce fichier, est en realite explicitement cite par le management lui-meme sur le call T1 26 - ajoute comme engagement structurant. coherenceNoteCY (deprecie) mis a null, contenu deja couvert dans PARAMETRES & POINTS DE SUIVI.",
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -153,7 +153,7 @@
     "epsReported": {
      "actual": 1.23,
      "basis": "GAAP",
-     "period": "T2 26",
+     "period": "Q2 26",
      "note": "GAAP diluted EPS from the Q2 26 release (net income $870M); adjusted $1.94 - gap driven mainly by acquisition amortization (~$1.9B FY incl. Masimo)."
     }
    },
@@ -175,13 +175,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T1 26",
+    "quarter": "Q1 26",
     "date": "2026-04-21",
     "fyGuided": 2026,
     "guidanceAnnuelle": "CA core reaffirme +3,0/+6,0%. EPS ajuste RELEVE a 8,35-8,55$ (vs 8,35-8,50$ precedemment)."
    },
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-07-21",
     "fyGuided": 2026,
     "guidanceAnnuelle": "CA core RESSERRE a +3,0/+4,0% (vs +3,0/+6,0%). EPS ajuste RELEVE a 8,45-8,60$ (vs 8,35-8,55$). Amort. releve a ~1,9 Md$, ETR ~17%, actions diluees ~707M."
@@ -194,66 +194,66 @@
    "historique": [],
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 1.39,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 1.31,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 1.4,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 1.73,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 1.56,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 1.38,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 1.615,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 1.745,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 1.55,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 1.65,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 1.72,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 1.79,
      "actual": false
     }
@@ -518,7 +518,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-21",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   }
  },

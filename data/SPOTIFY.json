@@ -165,7 +165,7 @@
   "priorEPS": null,
   "source": "Refresh T2 2026 - Communique + transcript T2 2026 (04/08/2026), Investor Day 2026 (21/05/2026, non capture a la creation malgre son anteriorite), migration structurelle complete vers le schema courant (dernierCall/guidanceHistory/guidanceLongTerme/guidanceLongTermeHistory/quarterlyEPS/ownership/compliance/coherenceQualitative absents du JSON de creation, tous peuples ou corriges a l'occasion de ce refresh). ancrages entierement reecrits au format actuel (id/moteur/applique-liste/confiance, remplace l'ancien format mecanisme/scope non conforme).",
   "dernierCall": {
-   "quarter": "T2 26",
+   "quarter": "Q2 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -182,7 +182,7 @@
     "epsReported": {
      "actual": 2.61,
      "basis": "IFRS",
-     "period": "T2 26",
+     "period": "Q2 26",
      "note": "IFRS diluted EPS in EUR. Spotify reports in EUR (IFRS): Q2 26 net income EUR 545M over ~209M diluted shares gives ~EUR 2.61. Consistent with the Seeking Alpha USD print of $3.01 (missed consensus by $0.22) converted at the ~1.1492 USD/EUR rate used elsewhere in this file. Shareholder-deck line-item cross-check still pending (deck not re-fetched on 2026-08-20)."
     }
    },
@@ -204,7 +204,7 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T2 26",
+    "quarter": "Q2 26",
     "date": "2026-08-04",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Amelioration de la marge brute et operationnelle attendue sur l'exercice complet 2026 malgre ~200 M€ de surcout marketing/IA concentre sur T2-T3, moderation attendue au T4."
@@ -332,66 +332,66 @@
    "historique": [],
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 1.09,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": -0.42,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 4.36,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 5.71,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 3.45,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 2.61,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 2.79,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 3.28,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 4.24,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 3.21,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 3.43,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 4.03,
      "actual": false
     }
@@ -492,7 +492,7 @@
   },
   "revisionEvent": {
    "date": "2026-08-04",
-   "label": "Q2 2026",
+   "label": "Q2 26",
    "type": "earnings"
   }
  },

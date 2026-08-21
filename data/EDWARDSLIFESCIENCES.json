@@ -184,7 +184,7 @@
     },
     "source": "Deep refresh 18/08/2026 (protocole complet) : bridge etabli (IS 17% 2026 -> 19% ensuite - Pillar Two/credits californiens - et tresorerie rebasee post-ASR), scorecard cree (ancre EPS ajuste initiale 2,975$ depuis guidanceHistory, decalage de base management/Omnium declare dans basisNote), cles depreciees purgees. Projections inchangees (etat du 24/07).",
     "dernierCall": {
-      "quarter": "T2 26",
+      "quarter": "Q2 26",
       "communiqueAnalyse": true,
       "transcriptAnalyse": true,
       "resultatsVsConsensus": {
@@ -200,7 +200,7 @@
         "epsReported": {
           "actual": 0.42,
           "basis": "GAAP",
-          "period": "T2 26",
+          "period": "Q2 26",
           "note": "GAAP diluted EPS $0.42 on GAAP net income of $241.9M; gap vs $0.78 adjusted EPS mainly reflects the California law change limiting R&D tax credits."
         }
       },
@@ -221,19 +221,19 @@
     },
     "guidanceHistory": [
       {
-        "quarter": "T4 25",
+        "quarter": "Q4 25",
         "date": "2026-02-10",
         "fyGuided": 2026,
         "guidanceAnnuelle": "CA +8-10% (CC), EPS ajusté 2,90-3,05$."
       },
       {
-        "quarter": "T1 26",
+        "quarter": "Q1 26",
         "date": "2026-04-23",
         "fyGuided": 2026,
         "guidanceAnnuelle": "CA +9-11% (CC), EPS ajusté 2,95-3,05$ (relevé)."
       },
       {
-        "quarter": "T2 26",
+        "quarter": "Q2 26",
         "date": "2026-07-23",
         "fyGuided": 2026,
         "guidanceAnnuelle": "CA +10-11% (CC), TAVR +8-9%, TMTT 760-780 M$, EPS ajusté maintenu 2,95-3,05$."
@@ -245,66 +245,66 @@
       "historique": [],
       "PY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.64,
           "actual": true
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.67,
           "actual": true
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.67,
           "actual": true
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.58,
           "actual": true
         }
       ],
       "CY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.78,
           "actual": true
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.78,
           "actual": true
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.72,
           "actual": false
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.53,
           "actual": false
         }
       ],
       "NY": [
         {
-          "label": "T1",
+          "label": "Q1",
           "eps": 0.87,
           "actual": false
         },
         {
-          "label": "T2",
+          "label": "Q2",
           "eps": 0.87,
           "actual": false
         },
         {
-          "label": "T3",
+          "label": "Q3",
           "eps": 0.8,
           "actual": false
         },
         {
-          "label": "T4",
+          "label": "Q4",
           "eps": 0.6,
           "actual": false
         }
@@ -583,7 +583,7 @@
     },
     "revisionEvent": {
       "date": "2026-07-23",
-      "label": "T2 26",
+      "label": "Q2 26",
       "type": "earnings"
     }
   },

@@ -62,7 +62,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "Q3 26 (CA)",
+  "label": "Q3 26 (sales)",
   "date": "2026-10-15"
  },
  "ownership": {
@@ -89,7 +89,7 @@
   "date": "2026-08-19",
   "source": "Creation (04/08/2026) suite a la perte des donnees d'origine du ticker (voir NOTE DE CREATION dans le texte) - TRANSCRIPT INTEGRAL et communique officiel complet du call S1 2026 (30/07/2026, Olivier Blum CEO / Nathan Fast CFO, Q&A complete), recoupes avec les communiques annuels officiels FY2021-FY2025 (se.com) pour la reconstruction de la serie historique `data` et les tableaux de pont Adjusted EBITA / Adjusted Net Income & EPS.",
   "dernierCall": {
-   "quarter": "S1 26",
+   "quarter": "H1 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -106,7 +106,7 @@
     "epsReported": {
      "actual": 4.42,
      "basis": "IFRS",
-     "period": "S1 26",
+     "period": "H1 26",
      "note": "IFRS basic EPS as published in the H1 2026 financial statements: EUR 4.42 vs EUR 3.41 in H1 2025 (net income group share EUR 2,488m, +30% reported). Distinct from the adjusted diluted EPS of EUR 4.79 tracked in epsAdj (non-GAAP). Source: Schneider Electric 2026 half-year financial statements (via MarketScreener), cross-checked 2026-08-20 against the full Seeking Alpha transcript (article 4927500)."
     }
    },
@@ -128,13 +128,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "FY25",
+    "quarter": "FY 25",
     "date": "2026-02-26",
     "fyGuided": 2026,
     "guidanceAnnuelle": "FY26 Target initial : croissance organique du CA de +7% a +10%, expansion organique de la marge EBITA ajustee de +50pb a +80pb, soit une marge implicite ~19,1%-19,4%. Taux d'imposition effectif attendu 23-25%."
    },
    {
-    "quarter": "S1 26",
+    "quarter": "H1 26",
     "date": "2026-07-30",
     "fyGuided": 2026,
     "guidanceAnnuelle": "FY26 RELEVEE : croissance organique du CA portee a +10% a +13% ; expansion organique de la marge EBITA ajustee portee a +70pb a +100pb (marge implicite ~19,4%-19,7%). Guidance moyen terme 2026-2030 (CMD 2025) reconfirmee sans changement."
@@ -373,43 +373,43 @@
   },
   "revisionEvent": {
    "date": "2026-07-30",
-   "label": "H1 2026",
+   "label": "H1 26",
    "type": "earnings"
   },
   "quarterlyEPS": {
    "cadence": "semestriel",
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 3.41,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 3.99,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 4.45,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 5.41,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 4.91,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 5.97,
      "actual": false
     }

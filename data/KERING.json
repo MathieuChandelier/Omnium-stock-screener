@@ -62,7 +62,7 @@
  },
  "particularites": [],
  "nextEvent": {
-  "label": "T3 2026",
+  "label": "Q3 26",
   "date": "2026-10-29"
  },
  "ownership": {
@@ -182,7 +182,7 @@
    }
   ],
   "dernierCall": {
-   "quarter": "S1 26",
+   "quarter": "H1 26",
    "communiqueAnalyse": true,
    "transcriptAnalyse": true,
    "resultatsVsConsensus": {
@@ -198,7 +198,7 @@
     "epsReported": {
      "actual": 1.54,
      "basis": "IFRS",
-     "period": "S1 26",
+     "period": "H1 26",
      "note": "Published IFRS net income Group share EUR 189M for H1 2026 (company release, cross-checked against the interim statements pass of 2026-08-19) over ~122.6M diluted shares = EUR 1.54. Not benchmarked against a consensus: same-day coverage compared revenue and recurring operating metrics only (see epsAdj, kept null per C16/AN-BASIS-NOTE)."
     }
    },
@@ -220,13 +220,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "FY25",
+    "quarter": "FY 25",
     "date": "2026-02-10",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Kering entre en 2026 avec l'objectif explicite de renouer avec la croissance et d'améliorer les marges sur l'exercice, sans chiffrage précis."
    },
    {
-    "quarter": "S1 26",
+    "quarter": "H1 26",
     "date": "2026-07-28",
     "fyGuided": 2026,
     "guidanceAnnuelle": "Guidance qualitative reconfirmée (croissance et amélioration de la profitabilité 2026 vs 2025) ; marge S2 > marge S1 (12,8%) explicitement confirmée ; charges opérationnelles désormais attendues en baisse sur l'année (vs stable initialement) ; T3 flattish, T4 en accélération."
@@ -387,26 +387,26 @@
   },
   "revisionEvent": {
    "date": "2026-07-28",
-   "label": "S1 26",
+   "label": "H1 26",
    "type": "earnings"
   },
   "quarterlyEPS": {
    "cadence": "semestriel",
    "PY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 3.88,
      "actual": true
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 0.46,
      "actual": true
     }
    ],
    "CY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 2.9,
      "actual": true,
      "retraitements": [
@@ -417,19 +417,19 @@
      ]
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 5.66,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "S1",
+     "label": "H1",
      "eps": 5.09,
      "actual": false
     },
     {
-     "label": "S2",
+     "label": "H2",
      "eps": 6.21,
      "actual": false
     }

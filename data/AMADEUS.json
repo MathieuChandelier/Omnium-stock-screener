@@ -127,13 +127,13 @@
   },
   "guidanceHistory": [
    {
-    "quarter": "T1 26",
+    "quarter": "Q1 26",
     "date": "2026-05-07",
     "fyGuided": 2026,
     "guidanceAnnuelle": "CA groupe high-single-digit cc, marge EBIT ajustee stable, EPS dilue ajuste low-double-digit, hypothese de trafic mondial +3% sur l'annee (date approximative du call T1, non confirmee avec precision)."
    },
    {
-    "quarter": "S1 26",
+    "quarter": "H1 26",
     "date": "2026-07-31",
     "fyGuided": 2026,
     "guidanceAnnuelle": "CA groupe ABAISSE a mid-to-high single-digit (vs high-single-digit), Air Distribution ramene a low-to-mid single-digit, EPS dilue ajuste ABAISSE a high-single to low-double-digit (vs low-double-digit), marge EBIT ajustee stable (inchange), FCF 1,35-1,45 Md€ (inchange)."
@@ -145,66 +145,66 @@
    "cadence": "trimestriel",
    "CY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.86,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.89,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.72,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.75,
      "actual": false
     }
    ],
    "NY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.95,
      "actual": false
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.98,
      "actual": false
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.8,
      "actual": false
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.82,
      "actual": false
     }
    ],
    "PY": [
     {
-     "label": "T1",
+     "label": "Q1",
      "eps": 0.79,
      "actual": true
     },
     {
-     "label": "T2",
+     "label": "Q2",
      "eps": 0.83,
      "actual": true
     },
     {
-     "label": "T3",
+     "label": "Q3",
      "eps": 0.8,
      "actual": true
     },
     {
-     "label": "T4",
+     "label": "Q4",
      "eps": 0.55,
      "actual": true
     }
@@ -429,7 +429,7 @@
   },
   "revisionEvent": {
    "date": "2026-07-31",
-   "label": "H1 2026",
+   "label": "H1 26",
    "type": "earnings"
   }
  },
