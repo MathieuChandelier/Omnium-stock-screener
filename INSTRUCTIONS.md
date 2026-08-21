@@ -12,7 +12,7 @@ Tous les actifs hors-repo du produit vivent dans le **Drive partage
 | Actif | Emplacement dans le Drive partage |
 |---|---|
 | Doctrine (methodologie complete) | `00-DOCTRINE/INSTRUCTIONS.md` (fichier `.md` — jamais de version Google Doc) |
-| Archive des transcripts de calls | `transcript/<TITRE>/` (un dossier par titre, un doc par evenement ; id Drive du dossier racine : `1OMBnENmfvCWCtAHUesumoQtvT2_rYqk3`) |
+| Archive des transcripts de calls | `transcript/<TITRE>/` (un dossier par titre, un doc par evenement ; documents Google Docs natifs ; id Drive du dossier racine : `1difkU7g9LwDTXNZMyX8nXwRaLtZdvYmo` (id historique conserve lors de la migration)) |
 | Zips de migration, versions retirees | `90-ARCHIVE/` |
 
 Acces local (Google Drive for desktop) :
@@ -27,11 +27,12 @@ Acces local (Google Drive for desktop) :
   compte (verifiable via le champ `owner` des resultats de recherche ou le
   parametre `ouid` des URLs retournees) : NE RIEN CREER, le signaler.
 - Emplacements OBSOLETES a ne plus alimenter ni consulter :
-  l'arborescence `transcript/` du compte personnel `ozdaday@gmail.com`
-  (racine historique `1difkU7g9LwDTXNZMyX8nXwRaLtZdvYmo`, migree le
-  21/08/2026), l'ancien `~/Mon Drive/OMNIUM-DOCTRINE/` (un pointeur
-  `OU-EST-LA-DOCTRINE.txt` y subsiste), et les dossiers legacy du compte
-  `investors@omnium-capital.com`.
+  le compte personnel `ozdaday@gmail.com` (l'arborescence transcript/ y a
+  ete ENTIEREMENT deplacee vers le Drive partage le 21/08/2026 - il n'y
+  reste rien), l'ancien `~/Mon Drive/OMNIUM-DOCTRINE/` (un pointeur
+  `OU-EST-LA-DOCTRINE.txt` y subsiste), les dossiers legacy du compte
+  `investors@omnium-capital.com`, et la copie .docx de migration rangee
+  dans `90-ARCHIVE/transcript-copie-docx-migration-zip-20260821`.
 
 Toute session qui execute une operation A/B doit lire la doctrine a
 l'emplacement ci-dessus. La spec operationnelle autonome

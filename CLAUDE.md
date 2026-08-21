@@ -13,16 +13,17 @@ La doctrine methodologique et l'archive des transcripts vivent dans le
 - Doctrine : `00-DOCTRINE/INSTRUCTIONS.md` (fichier `.md` ; ne jamais
   editer une version Google Doc).
 - Transcripts : `transcript/<TITRE>/` — id Drive du dossier racine :
-  `1OMBnENmfvCWCtAHUesumoQtvT2_rYqk3`.
+  `1difkU7g9LwDTXNZMyX8nXwRaLtZdvYmo` (Google Docs natifs, id historique
+  conserve lors de la migration).
 - Acces local : `~/Library/CloudStorage/GoogleDrive-mathieu.chandelier@omnium-capital.com/Drive partagés/Omnium Stock-screener/`
 
 AVANT toute creation/lecture de fichier Drive : verifier que le connecteur
 est branche sur `mathieu.chandelier@omnium-capital.com` (champ `owner` des
 resultats, ou `ouid` des URLs). Si c'est un autre compte : ne rien creer,
-le signaler. Les emplacements historiques chez `ozdaday@gmail.com`
-(ancienne racine `1difkU7g9LwDTXNZMyX8nXwRaLtZdvYmo`) et
-`investors@omnium-capital.com`, ainsi que `~/Mon Drive/OMNIUM-DOCTRINE/`,
-sont OBSOLETES. Voir `INSTRUCTIONS.md` (stub de pointage) pour le detail.
+le signaler. Il ne reste rien chez `ozdaday@gmail.com` (arborescence deplacee le
+21/08/2026) ; les dossiers legacy `investors@omnium-capital.com`,
+`~/Mon Drive/OMNIUM-DOCTRINE/` et la copie .docx dans
+`90-ARCHIVE/transcript-copie-docx-migration-zip-20260821` sont OBSOLETES. Voir `INSTRUCTIONS.md` (stub de pointage) pour le detail.
 
 ## Garde-fous repo
 
