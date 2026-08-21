@@ -258,12 +258,15 @@ thead th .fy-month-tag{color:#8be9dc;}
 .news-bar-close:hover{opacity:1;background:rgba(0,1,144,.08);}
 /* ── Bandeau NEWS (flux data/newsFeed.json, 21/08/2026) : la barre reprend
    le gabarit .news-bar, le panneau deplie le fond .dashb-panel. ── */
-.newsf-panel{background:#f6f7fe;border-radius:14px;padding:10px 18px;}
-.newsf-item{display:grid;grid-template-columns:14px 1fr;gap:10px;padding:10px 0;cursor:pointer;}
+/* Carte NEWS (21/08/2026) : meme gabarit que les blocs du dashboard
+   (.dashb-act), placee juste au-dessus d'ACTIONS. Chaque ligne porte sa
+   croix "traite" : elle disparait au clic, et la carte entiere s'efface
+   quand la derniere part. */
+.newsf-card{margin-bottom:34px;}
+.newsf-item{display:grid;grid-template-columns:1fr 26px;gap:10px;padding:10px 0;align-items:start;}
 .newsf-item+.newsf-item{border-top:1px solid #e9ebf7;}
-.newsf-item.seen{opacity:.55;}
-.newsf-dot{width:7px;height:7px;border-radius:50%;background:#c2c8d4;margin-top:5px;}
-.newsf-dot.unseen{background:var(--navy);}
+.newsf-x{width:26px;height:26px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex-shrink:0;transition:color .12s,border-color .12s,background .12s;}
+.newsf-x:hover{color:var(--navy);border-color:var(--navy);background:rgba(0,1,144,.05);}
 .newsf-meta{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--muted);}
 .newsf-tk{font-size:11.5px;font-weight:700;color:var(--navy);cursor:pointer;}
 .newsf-kind{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:1px 7px;}
@@ -937,8 +940,8 @@ footer{text-align:center;color:var(--muted);font-size:10px;padding:22px;border-t
   <div id="weekly-ai-bar-wrap"></div>
   <div id="market-action-bar-wrap"></div>
   <div id="news-bar-wrap"></div>
-  <div id="news-feed-wrap"></div>
   <div id="market-calendar-wrap"></div>
+  <div id="news-feed-wrap"></div>
   <div id="actions-bar-wrap"></div>
   <div class="card-title" style="margin-bottom:18px;"><b style="color:var(--teal-text);">All tickers</b></div>
   <div class="pf-col-header" id="pf-col-header" style="display: flex;">
@@ -4898,7 +4901,7 @@ const NEWSF_ENDPOINT='https://model.omnium-capital.com/news.php';
 const NEWSF_KIND_LABEL={communique:'Press release',externe:'External',broker:'Broker',video:'Video'};
 let _newsfRemote=null;            // null=inconnu, true/false apres 1er contact
 let _newsfSeen=new Set();         // ids consultes (source de verite en session)
-let _newsfOpen=false;
+let _newsfOpen=null;   // famille depliee (accordeon, une a la fois) - cf. _actRowOpen
 function _newsfLocal(){ try{ return new Set(JSON.parse(localStorage.getItem('omniumNewsSeen')||'[]')); }catch(e){ return new Set(); } }
 function _newsfLocalSave(){ try{ localStorage.setItem('omniumNewsSeen',JSON.stringify([..._newsfSeen])); }catch(e){} }
 
@@ -4966,7 +4969,7 @@ function newsfMarkSeen(id){
   newsfPost('seen',{ids:[id]});
   renderNewsFeed();
 }
-function newsfToggle(){ _newsfOpen=!_newsfOpen; renderNewsFeed(); }
+function newsfToggle(k){ _newsfOpen=(_newsfOpen===k?null:k); renderNewsFeed(); }
 
 function renderNewsFeed(){
   const wrap=document.getElementById('news-feed-wrap');
@@ -4974,38 +4977,59 @@ function renderNewsFeed(){
   newsfPruneRemovedTickers();
   const items=newsfItems();
   const unseen=items.filter(e=>!_newsfSeen.has(e.id));
-  if(!items.length){ wrap.innerHTML=''; _newsfOpen=false; return; }
-  // Bandeau masque a 0 non-consulte... sauf panneau encore OUVERT : le
-  // dernier clic ne doit pas faire disparaitre la liste sous la souris.
-  if(!unseen.length&&!_newsfOpen){ wrap.innerHTML=''; return; }
+  // Plus rien a traiter : la carte disparait entierement (et le panneau se
+  // replie), y compris quand la derniere ligne vient d'etre retiree par sa
+  // croix - c'est le comportement demande le 21/08.
+  if(!items.length||!unseen.length){ wrap.innerHTML=''; _newsfOpen=null; return; }
   const esc=s=>(s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const rows=_newsfOpen?items.map(e=>{
-    const seen=_newsfSeen.has(e.id);
+  // Trois familles, une ligne chacune au gabarit d'ACTIONS (21/08/2026) :
+  // le decompte se lit sans deplier, et chaque famille s'ouvre en
+  // accordeon. Chaque item porte sa croix "traite" : il disparait au clic,
+  // sa ligne s'efface quand elle se vide, et la carte entiere quand tout
+  // est traite. L'intitule doit se suffire a lui-meme - titre + resume
+  // toujours rendus, l'ouverture du lien reste facultative.
+  const newsfRow=e=>{
     const kind=NEWSF_KIND_LABEL[e.kind]||e.kind||'';
     const mark=`event.stopPropagation();newsfMarkSeen('${esc(e.id)}')`;
     const corro=(Array.isArray(e.corroborations)?e.corroborations:[]).filter(c=>c&&c.url)
-      .map(c=>`<a class="newsf-corro" href="${esc(c.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(c.source||'corroboration')}</a>`).join('');
-    return `<div class="newsf-item${seen?' seen':''}" onclick="newsfMarkSeen('${esc(e.id)}')">
-      <span class="newsf-dot${seen?'':' unseen'}"></span>
+      .map(c=>`<a class="newsf-corro" href="${esc(c.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${esc(c.source||'corroboration')}</a>`).join('');
+    return `<div class="newsf-item">
       <div style="min-width:0;">
         <div class="newsf-meta">
-          <b class="newsf-tk" onclick="${mark};CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</b>
+          <b class="newsf-tk" onclick="event.stopPropagation();CT='${esc(e.ticker)}';showTab('analyse');">${esc(e.ticker)}</b>
           <span>${esc(formatNewsDayMonth(e.date))}</span>
           ${kind?`<span class="newsf-kind">${esc(kind)}</span>`:''}
           ${e.critical?`<span class="newsf-kind crit">critical</span>`:''}
         </div>
-        <div class="newsf-title">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(e.title)}</a>`:esc(e.title)}</div>
+        <div class="newsf-title">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>`:esc(e.title)}</div>
         ${e.summary?`<div class="newsf-sum">${esc(e.summary)}</div>`:''}
-        <div class="newsf-src">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" onclick="${mark}">${esc(e.source||'source')}</a>`:esc(e.source||'')}${corro}</div>
+        <div class="newsf-src">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source||'source')}</a>`:esc(e.source||'')}${corro}</div>
       </div>
+      <button class="newsf-x" title="Traité — retirer cette ligne" onclick="${mark}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </div>`;
-  }).join(''):'';
-  wrap.innerHTML=`<div class="news-bar-wrap">
-    <div class="news-bar" style="cursor:pointer;" onclick="newsfToggle()">
-      <span class="news-bar-text">NEWS — <b>${unseen.length}</b></span>
-      <span style="flex-shrink:0;color:var(--navy);opacity:.55;font-size:12px;transition:transform .2s;${_newsfOpen?'transform:rotate(90deg);':''}">›</span>
-    </div>
-    ${_newsfOpen?`<div class="newsf-panel">${rows||'<p style="font-size:9.5px;color:var(--muted);margin:6px 0;">Nothing in the 7-day window.</p>'}</div>`:''}
+  };
+  // Familles : les communiques de la societe (source primaire) d'abord, les
+  // videos ensuite, le reste (presse critique + brokers etayes) en dernier.
+  const FAMILLES=[
+    {k:'releases', dot:'var(--navy)',   lbl:'Company releases — official statements', kinds:['communique']},
+    {k:'videos',   dot:'var(--teal)',   lbl:'Videos — executive interviews',          kinds:['video']},
+    {k:'press',    dot:'#c2c8d4',       lbl:'Press &amp; brokers — critical only',    kinds:['externe','broker']},
+  ];
+  const groupes=FAMILLES.map(f=>({...f, items:unseen.filter(e=>f.kinds.includes(e.kind))})).filter(f=>f.items.length);
+  const rows=groupes.map((f,i)=>{
+    const open=_newsfOpen===f.k;
+    return `<div onclick="newsfToggle('${f.k}')" style="display:grid;grid-template-columns:14px 1fr 46px 14px;gap:10px;align-items:center;height:36px;${i?'border-top:1px solid #e9ebf7;':''}cursor:pointer;">
+        <span style="width:7px;height:7px;border-radius:50%;background:${f.dot};"></span>
+        <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--navy);">${f.lbl}</span>
+        <span style="text-align:right;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">${f.items.length}</span>
+        <span style="color:#c2c8d4;font-size:11.5px;text-align:center;${open?'transform:rotate(90deg);':''}">›</span>
+      </div>${open?`<div onclick="event.stopPropagation();" style="padding:2px 0 8px;border-top:1px solid #e9ebf7;">${f.items.map(newsfRow).join('')}</div>`:''}`;
+  }).join('');
+  wrap.innerHTML=`<div class="dashb-act newsf-card">
+    <div class="dashb-head" style="margin-bottom:4px;"><span class="card-title" style="margin-bottom:0;color:var(--teal-text);">News</span></div>
+    ${rows}
   </div>`;
 }
 
