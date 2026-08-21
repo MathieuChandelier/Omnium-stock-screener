@@ -877,6 +877,54 @@ def w12():
                     bad.append((tk,f"{per} / {r.get('id')} : {r.get('note') or 'sans note'}"))
     return bad
 
+@check("W13 ~ taux d'impot projete vs taux effectif observe (3 pts)")
+def w13():
+    """Arbitrage du taux d'impot (21/08/2026).
+
+    Regle retenue : la GUIDANCE pour l'annee que le management guide, le
+    taux effectif OBSERVE au-dela - et une notification des que les deux
+    divergent de plus de 3 POINTS, parce que c'est le signal d'un
+    changement structurel (impot societes en Italie, aux Etats-Unis, au
+    Bresil pour un emetteur qui y fait l'essentiel de ses revenus) plutot
+    que d'un simple effet de mix.
+
+    L'echelle de `comptes` rend le taux observe LISIBLE : -impot /
+    avantImpot sur la derniere periode publiee. Avant elle, il fallait un
+    audit pour s'apercevoir qu'une fiche projetait 32% quand la guidance
+    IFRS de la societe disait 15-20%.
+
+    Un ecart peut etre parfaitement justifie - un element discret a gonfle
+    le taux observe, une loi change, la base ajustee n'est pas la base
+    publiee. Ce qu'on refuse, c'est l'ecart SILENCIEUX : la ligne ne
+    remonte pas si un ancrage fiscal la porte.
+    """
+    import re as _r
+    bad=[]
+    for tk,t in FICHES.items():
+        h=t.get('hypothese') or {}
+        br=h.get('bridge') or {}
+        proj=[(y,(b or {}).get('taxRate')) for y,b in sorted(br.items())
+              if isinstance(b,dict) and y>='2026' and isinstance((b or {}).get('taxRate'),(int,float))]
+        if not proj: continue
+        taux=proj[0][1]
+        # taux observe : derniere periode publiee qui porte les deux barreaux
+        obs=None
+        for per,c in sorted((t.get('comptes') or {}).items()):
+            pub=(c or {}).get('publie') or {}
+            if isinstance(pub.get('impot'),(int,float)) and pub.get('avantImpot'):
+                obs=(per,-pub['impot']/pub['avantImpot'])
+        if not obs: continue
+        # L'exemption se juge sur l'IDENTIFIANT du moteur, jamais sur sa prose :
+        # une mention de "tax" au detour d'une phrase exemptait des fiches dont
+        # aucun ancrage ne parlait d'impot (constate sur 4 des 7 fiches migrees).
+        anc=[a['id'] for a in (h.get('ancrages') or [])
+             if _r.search(r'tax|impot|^is[_-]|[_-]is[_-]|etr|fiscal', a.get('id',''), _r.I)]
+        ecart=(taux-obs[1])*100
+        if abs(ecart)>3 and not anc:
+            bad.append((tk,f"projete {taux*100:.1f}% vs observe {obs[1]*100:.1f}% sur {obs[0]} "
+                           f"({ecart:+.0f} pts) - AUCUN ancrage fiscal ne le justifie"))
+    return bad
+
 def main():
     print(f'{len(FICHES)} fiches auditees\n')
     total=0; warns=0
