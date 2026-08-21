@@ -3336,7 +3336,16 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
       if(+h.epsNY>0) m[+h.year+1]=+h.epsNY;
       if(+h.epsY2>0) m[+h.year+2]=+h.epsY2;
       return {date:h.date||null, m};
-    });
+    })
+    // Une entree d'historique peut n'exister QUE pour acter l'ABSENCE de
+    // consensus a une date (eps/epsNY/epsY2 a null, la source portant la
+    // raison) - la doctrine impose de la poser plutot que d'estimer. Le
+    // filtre ci-dessus ne teste que la presence d'une ANNEE : sans ce
+    // second filtre, une telle entree passe, produit une carte vide, et
+    // se fait compter comme une revision par revCount - le bouton annonce
+    // alors "Revisions · 1" et le panneau n'a rien a dessiner (constate
+    // sur DIASORIN le 21/08/2026). On ne garde que ce qui porte un chiffre.
+    .filter(x=>Object.keys(x.m).length);
   const consHistMaps=consHistList.map(x=>x.m);
 
   const allYears=new Set();
