@@ -64,14 +64,14 @@
  "particularites": [],
  "hypothese": {
   "date": "2026-08-19",
-  "source": "Creation initiale - Transcript T1 FY2027 (20/05/2026, Jensen Huang/Colette Kress) + 10-K FY2026 + recherche publique (Bloomberg/Reuters/The Information sur le dossier Chine, 08-09/07/2026)",
-  "summary": "Pari sur la poursuite du supercycle de calcul accelere IA (CA x8 en 4 exercices). La Chine reste traitee comme option pure (rumeur d'approbation Pekin pour <200k H200, non confirmee au 09/07/2026) et non comme un chiffre acquis, conformement a la guidance du management lui-meme qui l'exclut explicitement.",
+  "source": "Initial creation - Q1 FY2027 transcript (20/05/2026, Jensen Huang/Colette Kress) + 10-K FY2026 + public research (Bloomberg/Reuters/The Information on the China situation, 08-09/07/2026)",
+  "summary": "A bet on the continuation of the AI accelerated-computing supercycle (revenue x8 in 4 fiscal years). China is still treated as a pure option (rumoured Beijing approval for <200k H200, unconfirmed as of 09/07/2026) and not as a figure taken for granted, in line with management's own guidance, which explicitly excludes it.",
   "text": "== THESIS SUMMARY ==\nNvidia is the central bet on generative-AI compute infrastructure - not 'selling GPUs' but being the STRUCTURAL BOTTLENECK of the largest capital-investment cycle in recent history (Data Center 75.2bn of 81.6bn Q1 FY27 revenue, +92% YoY; revenue 8x in four fiscal years). Q2 FY27 guided ~91bn EXCLUDING China - any H200 unblocking is free optionality, integrated only on OFFICIAL confirmation. The report lands 26/08/2026.\n\n== THESIS READ ==\n- The 91bn Q2 bar (ex-China) is the imminent test; the model's FY27 (+81% revenue) leans on the guided ramp plus Rubin cycle. Watch: 26/08 print and whether China stays excluded from the next guide.\n- Deceleration is MODELED, not feared: FY29-31 growth fades from +36% to +14% with margin easing - the thesis survives normalization. Watch: hyperscaler capex plans as the leading indicator.\n- GAAP/non-GAAP convergence (SBC no longer excluded from Q1 FY27) can blur consensus comparisons still in the old format. Watch: basis labels on every consensus snapshot.\n\n== SPECIAL FACTORS ==\nFiscal year ends late January: 'data' FY26 = year ended Jan 2026; horizon FY27-FY31. Published FY26 ETR ~9.7% (FDII/R&D credits) vs 17% normative - +5.1bn residual documented, not reconducted. Bridge finNet flat +2.5bn (embedded in the fiche's conversion) - conservative vs the 90-to-320bn cash build, flagged to steepen. dernierCall absent (to initialize at the 26/08 report). priorEPS null (young fiche).\n\n== PARAMETERS & WATCH-LIST ==\nFY27: revenue 391bn, EBIT 262.8bn (67.2%), EPS 9.10 (consensus-aligned); FY28-FY31: growth +41/+36/+24/+14%, EBIT margin easing 68 -> 70 -> ~70%, ETR 17%, shares -1.6%/yr. Watch: 26/08 report (dernierCall init + first gH archive); China policy; networking attach rates; custom-ASIC competitive encroachment (AVGO).\n\n== CATALYSTS ==\nQ2 FY27 report (26/08/2026 - next week); Rubin launch cadence; China H200 official decision; hyperscaler 2027 capex frames.",
   "impact": "positif",
   "ancrages": [
    {
     "id": "guidance_q2fy27",
-    "moteur": "Guidance officielle T2 FY27 (91 Md$ de CA +/-2%, marge brute ~75%, opex ~8.3-8.5 Md$), qui ancre le point de depart du consensus FY27 et exclut explicitement tout CA Data Center Chine.",
+    "moteur": "Official Q2 FY27 guidance (91 Md$ of revenue +/-2%, gross margin ~75%, opex ~8.3-8.5 Md$), which anchors the starting point of the FY27 consensus and explicitly excludes any China Data Center revenue.",
     "applique": [
      "omniumCA.2027"
     ],
@@ -79,7 +79,7 @@
    },
    {
     "id": "consensus_eps_fy27_fy28",
-    "moteur": "Consensus sell-side recoupe (Seeking Alpha, Goldman Sachs, JPMorgan, BofA) pour l'EPS FY27 (~9.10$) et FY28 (~13.20$), utilise comme ancrage direct plutot qu'un retrofit CA->EBIT->Net bottom-up, compte tenu de l'ampleur des incertitudes sur le mix Data Center/Networking a cet horizon.",
+    "moteur": "Cross-checked sell-side consensus (Seeking Alpha, Goldman Sachs, JPMorgan, BofA) for FY27 EPS (~9.10$) and FY28 (~13.20$), used as a direct anchor rather than a bottom-up revenue->EBIT->Net retrofit, given the scale of the uncertainties on the Data Center/Networking mix at that horizon.",
     "applique": [
      "omniumEPS.2027",
      "omniumEPS.2028",
@@ -90,7 +90,7 @@
    },
    {
     "id": "deceleration_fy29_fy31",
-    "moteur": "Extrapolation d'un ralentissement progressif du taux de croissance de l'EPS (de +45% FY28 vers +17% FY31) au-dela de l'horizon consensus fiable (FY27-28), par simple loi des grands nombres - aucune source specifique au-dela de FY28/29, confiance nettement plus faible.",
+    "moteur": "Extrapolation of a gradual slowdown in the EPS growth rate (from +45% in FY28 towards +17% in FY31) beyond the reliable consensus horizon (FY27-28), by the simple law of large numbers - no specific source beyond FY28/29, markedly lower confidence.",
     "applique": [
      "omniumEPS.2029",
      "omniumEPS.2030",
@@ -103,7 +103,7 @@
    },
    {
     "id": "levier_operationnel",
-    "moteur": "Expansion de la marge EBIT vers 67-70% d'ici FY27-31, portee par un opex croissant nettement plus lentement que le CA (comme observe FY25->FY26 : opex +40% vs CA +65%), plafonnee a 70% par prudence.",
+    "moteur": "EBIT margin expansion towards 67-70% by FY27-31, driven by opex growing markedly more slowly than revenue (as observed FY25->FY26: opex +40% vs revenue +65%), capped at 70% for prudence.",
     "applique": [
      "omniumEBIT.2027",
      "omniumEBIT.2028",
@@ -115,7 +115,7 @@
    },
    {
     "id": "etr_normatif",
-    "moteur": "Taux d'imposition normatif de 17%, au milieu de la fourchette de guidance officielle FY27 (16-18%), reconduit par simplification sur tout l'horizon de projection.",
+    "moteur": "Normative tax rate of 17%, in the middle of the official FY27 guidance range (16-18%), rolled forward for simplicity across the whole projection horizon.",
     "applique": [
      "omniumNet.2027",
      "omniumNet.2028",
@@ -127,7 +127,7 @@
    },
    {
     "id": "rachat_actions",
-    "moteur": "Autorisation de rachat de 80 Md$ approuvee le 18/05/2026 (en sus des 38.5 Md$ restants) et politique de retour d'environ 50% du free cash flow, traduites en decroissance moderee du nombre d'actions diluees (~-1.7%/an en moyenne) sur l'horizon de projection.",
+    "moteur": "Buyback authorisation of 80 Md$ approved on 18/05/2026 (on top of the 38.5 Md$ still outstanding) and a policy of returning about 50% of free cash flow, translated into a moderate decline in the diluted share count (~-1.7%/yr on average) over the projection horizon.",
     "applique": [
      "omniumShares.2027",
      "omniumShares.2028",
@@ -139,7 +139,7 @@
    },
    {
     "id": "tresorerie_nette_croissante",
-    "moteur": "Le free cash flow genere depasse tres largement les 50% verses aux actionnaires et le capex, ce qui continue a faire croitre la tresorerie nette (cash+placements moins dette) meme apres rachats/dividendes.",
+    "moteur": "The free cash flow generated far exceeds the 50% paid out to shareholders and the capex, which keeps net cash (cash + investments less debt) growing even after buybacks/dividends.",
     "applique": [
      "omniumND.2027",
      "omniumND.2028",
@@ -357,7 +357,7 @@
      "actual": false
     }
    ],
-   "note": "Backfill E5-ter 20/08/2026 (C24). Base = GAAP publie (10-Q) ; exercice fiscal clos fin janvier (PY = FY26, CY = FY27). T1 FY27 (avril 2026) publie a 2,39$ ; T2-T4 estimes sur la guidance T2 (~91 Md$ de CA ex-Chine) et le calage omniumEPS 9,10 (= consensus, deliberement)."
+   "note": "E5-ter backfill 20/08/2026 (C24). Base = reported GAAP (10-Q); fiscal year ending end-January (PY = FY26, CY = FY27). Q1 FY27 (April 2026) reported at 2,39$; Q2-Q4 estimated on the Q2 guidance (~91 Md$ of revenue ex-China) and the omniumEPS calibration at 9,10 (= consensus, deliberately)."
   },
   "dernierCall": {
    "quarter": "Q1 FY 27",
@@ -410,11 +410,11 @@
    "eps": 9.1,
    "epsNY": 13.2,
    "date": "2026-07-10",
-   "source": "Seeking Alpha (P/E consensus implicite: FY27 ~9.29$, FY28 ~13.22$), recoupe avec Goldman Sachs (FY27 9.50$, FY28 15.25$) et JPMorgan (FY27 8.73$, plus prudent) - retenu au centre de la fourchette"
+   "source": "Seeking Alpha (implied consensus P/E: FY27 ~9.29$, FY28 ~13.22$), cross-checked against Goldman Sachs (FY27 9.50$, FY28 15.25$) and JPMorgan (FY27 8.73$, more conservative) - taken at the middle of the range"
   }
  ],
  "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
   "date": "2026-08-20",
   "eps": {
    "2022": 0.385,

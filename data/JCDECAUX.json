@@ -65,7 +65,7 @@
  "ownership": {
   "asOf": null,
   "insiderPct": null,
-  "insiderDesc": "Non renseigne - champ absent de la creation (famille Decaux, actionnaire de controle historique co-dirigeant le groupe, mais pourcentage non verifie a ce refresh). A completer au prochain refresh.",
+  "insiderDesc": "Not populated - field absent from creation (the Decaux family, historical controlling shareholder and co-manager of the group, but percentage not verified at this refresh). To be completed at the next refresh.",
   "insiderSource": null,
   "notableHolders": [],
   "coverageNote": "Titre cote a titre principal sur Euronext Paris - champ ownership non renseigne a ce stade.",
@@ -74,7 +74,7 @@
  "compliance": {
   "asOf": null,
   "items": [],
-  "note": "Champ absent de la creation, non renseigne a ce refresh evenementiel faute de recherche dediee. A auditer au prochain refresh."
+  "note": "Field absent from creation, not populated at this event-driven refresh for lack of dedicated research. To be audited at the next refresh."
  },
  "hypothese": {
   "date": "2026-08-19",
@@ -88,7 +88,7 @@
     "2030": 1.89
    }
   },
-  "source": "Refresh H1 2026 - Transcript integral du call H1 2026 (Jean-Charles Decaux Co-CEO / Jean-Francois Decaux Co-CEO / David Bourg CFO, incluant la session Q&A complete) fourni par l'utilisateur. Complement : creation du 05/07/2026 (transcript FY2025 + communique T1 2026, deja integres, non rouverts par ce refresh sauf ou indique).",
+  "source": "H1 2026 refresh - Full transcript of the H1 2026 call (Jean-Charles Decaux Co-CEO / Jean-Francois Decaux Co-CEO / David Bourg CFO, including the complete Q&A session) provided by the user. Supplement: creation of 05/07/2026 (FY2025 transcript + Q1 2026 press release, already incorporated, not reopened by this refresh except where indicated).",
   "dernierCall": {
    "quarter": "H1 26",
    "communiqueAnalyse": true,
@@ -102,7 +102,7 @@
      "actual": null,
      "consensus": null,
      "basis": "non-GAAP",
-     "basisNote": "Aucun consensus externe recoupe pour ce refresh (transcript uniquement, pas de communique de presse distinct fourni)."
+     "basisNote": "No external consensus cross-checked for this refresh (transcript only, no separate press release provided)."
     },
     "epsReported": {
      "actual": 0.66,
@@ -124,7 +124,7 @@
     "referentiel": "IFRS",
     "source": "Rapport financier semestriel 2026 + communique (30/07/2026)",
     "date": "2026-08-19",
-    "note": "Croises : CA S1 1 953,9 M EUR (+4,6% publie, +5,7% organique, digital 42,8% du CA), resultat net part du groupe 140,1 M (+84,7%), marge operationnelle 18,4%, EBIT recurrent +53,5%, FCF en amelioration de 91,1 M."
+    "note": "Cross-checked: revenue H1 1 953,9 M EUR (+4,6% reported, +5,7% organic, digital 42,8% of revenue), net income group share 140,1 M (+84,7%), operating margin 18,4%, recurring EBIT +53,5%, FCF improving by 91,1 M."
    }
   },
   "guidanceHistory": [
@@ -132,24 +132,24 @@
     "quarter": "FY 25/Q1 26",
     "date": "2026-05-05",
     "fyGuided": 2026,
-    "guidanceAnnuelle": "Guidance T2 26 donnee a ~+3% organique, penalisee par le conflit au Moyen-Orient (~5% du CA 2025, aeroports Dubai/EAU)."
+    "guidanceAnnuelle": "Q2 26 guidance given at ~+3% organic, penalised by the Middle East conflict (~5% of 2025 revenue, Dubai/UAE airports)."
    },
    {
     "quarter": "H1 26",
     "date": "2026-07-31",
     "fyGuided": 2026,
-    "guidanceAnnuelle": "Pas de guidance annuelle chiffree formelle ; T3 26 guide a ~+5% organique, la contribution incrementale de la Coupe du Monde refluant (40% de l'effet total attendu au T3, contre 60% deja capte au T2)."
+    "guidanceAnnuelle": "No formal quantified annual guidance; Q3 26 guided at ~+5% organic, with the incremental World Cup contribution receding (40% of the total effect expected in Q3, against 60% already captured in Q2)."
    }
   ],
   "guidanceLongTerme": null,
   "guidanceLongTermeHistory": [],
-  "summary": "H1 2026 tres nettement au-dessus des attentes (CA organique +5,7% contre une guidance T2 de ~+3%), porte par le digital/programmatique et un effet Coupe du Monde FIFA superieur aux attentes initiales, avec un levier operationnel spectaculaire (EBIT recurrent H1 +53,5%). Element important a isoler : la cession finalisee de la participation residuelle APG|SGA a genere une plus-value non taxable de 47,5 M EUR au H1, deja anticipee comme optionnalite a la creation mais desormais realisee et explicitement exclue de la base Omnium (croissance nette ex-cet element : +23,3%, toujours tres solide). omniumEPS 2026 releve de 1,30 a 1,49 EUR.",
+  "summary": "H1 2026 very clearly above expectations (organic revenue +5,7% against Q2 guidance of ~+3%), driven by digital/programmatic and a FIFA World Cup effect above initial expectations, with spectacular operating leverage (recurring EBIT H1 +53,5%). Important item to isolate: the completed disposal of the residual APG|SGA stake generated a non-taxable capital gain of 47,5 M EUR in H1, already anticipated as optionality at creation but now realised and explicitly excluded from the Omnium base (net growth ex-this item: +23,3%, still very solid). omniumEPS 2026 raised from 1,30 to 1,49 EUR.",
   "text": "== THESIS SUMMARY ==\nWorld #1 in out-of-home advertising, the only global player in a fragmented market. H1 2026 amplified the setup thesis: organic +5.7% (vs ~+3% guided for Q2), with the Middle-East conflict better absorbed than feared and a FIFA World Cup effect above expectations (+30M incremental). Operating leverage showed spectacularly: recurring EBIT +53.5%, margin +190bp. Published net (+84.7%) is inflated by a non-taxable APG|SGA disposal gain (47.5M) excluded from the Omnium base.\n\n== THESIS READ ==\n- Operating leverage is the thesis and it is now demonstrated at scale; digital/programmatic mix keeps rising. Watch: Q3 print vs the ~+5% guided.\n- H2 deliberately modeled BELOW the H1 run-rate: management explicit on dilutive start-up phase of new contracts and receding sports tailwind. Watch: start-up contract margins.\n- Middle-East exposure (~5% of revenue) absorbed better than feared. Watch: Dubai/UAE airport traffic.\n\n== SPECIAL FACTORS ==\nQuarterly-only guider: no formal annual guidance exists, so the annual scorecard function is unmeasurable by design (documented). Base = recurring published (quasi-recurrents kept), APG|SGA one-off excluded. Bridge 'other' nets associates against minorities - approximation to refine with full statements.\n\n== PARAMETERS & WATCH-LIST ==\nFY26 build-up: H1 actual (1,953.9M) + H2 on the Q3 guidance (~+5% organic, moderated) -> ~4,160M. EBIT ~480M (H1 rhythm moderated per management warnings). Net 317M / EPS 1.49 on the CFO's normalized +23.3% net growth (ex-APG). Bridge: ETR 28%, finNet declining with deleveraging (587 -> 110M). Shares ~flat. Watch: consensus cross-check (snapshot only); associates/minorities split.\n\n== CATALYSTS ==\nQ3 revenue (Nov); new-contract ramp margins; Middle-East normalization; programmatic/digital share gains.",
   "impact": "positif",
   "ancrages": [
    {
     "id": "h1-beat-organique-confirme",
-    "moteur": "CA H1 26 +5,7% organique (T1 et T2 tous deux a +5,7%), tres au-dessus de la guidance T2 donnee au call FY25/T1 26 (~+3%) - la resilience du modele face au conflit Moyen-Orient (mieux absorbe que redoute selon le management) et l'effet Coupe du Monde FIFA (+30 M EUR incrementaux, superieurs aux attentes initiales) expliquent l'essentiel de ce beat. Reconstruction bottom-up retenue : H1 reel (1 953,9 M EUR) + H2 estime par application de la guidance T3 (~+5% organique) au comparant H2 2025, donnant un FY2026 CA ~4 160 M EUR (vs 4 030 M EUR a la creation, +3,2%).",
+    "moteur": "Revenue H1 26 +5,7% organic (Q1 and Q2 both at +5,7%), well above the Q2 guidance given at the FY25/Q1 26 call (~+3%) - the resilience of the model in the face of the Middle East conflict (better absorbed than feared according to management) and the FIFA World Cup effect (+30 M EUR incremental, above initial expectations) explain most of this beat. Bottom-up reconstruction retained: actual H1 (1 953,9 M EUR) + H2 estimated by applying the Q3 guidance (~+5% organic) to the H2 2025 comparative, giving FY2026 revenue of ~4 160 M EUR (vs 4 030 M EUR at creation, +3,2%).",
     "applique": [
      "omniumCA.2026",
      "omniumCA.2027",
@@ -161,7 +161,7 @@
    },
    {
     "id": "apg-sga-oneoff-realise",
-    "moteur": "Plus-value de 47,5 M EUR liee a la cession finalisee du solde de la participation APG|SGA (10,85%, accord NZZ) comptabilisee au H1 26, non taxable comme anticipe a la creation - traitee comme un vrai one-off, exclue integralement de la base Omnium (deja la methodologie retenue a la creation : 'connue mais non projetee'). Le CFO confirme explicitement une croissance du resultat net de +23,3% hors cet element, chiffre retenu comme base de la reconstruction du resultat net normalise H1.",
+    "moteur": "Capital gain of 47,5 M EUR tied to the completed disposal of the remaining APG|SGA stake (10,85%, NZZ agreement) booked in H1 26, non-taxable as anticipated at creation - treated as a genuine one-off, excluded entirely from the Omnium base (already the methodology retained at creation: 'known but not projected'). The CFO explicitly confirms net income growth of +23,3% excluding this item, a figure retained as the basis for reconstructing normalised H1 net income.",
     "applique": [
      "omniumNet.2026"
     ],
@@ -169,7 +169,7 @@
    },
    {
     "id": "levier-operationnel-superieur",
-    "moteur": "EBIT recurrent H1 26 +53,5% (marge +220pb a 7%), operating margin H1 +16,8% (marge +190pb a 18,4%) - effet de ciseaux tres favorable (loyers/redevances +3,4% seulement vs CA +4,6%, autres couts operationnels +0,9% seulement) nettement superieur a l'hypothese de creation. Le management previent neanmoins explicitement d'un ralentissement du rythme de progression de marge au S2 du fait du demarrage de nouveaux contrats (dilutif en phase de lancement) et de l'attenuation du tailwind Coupe du Monde - trajectoire de marge 2026-2030 revisee a la hausse mais de facon moins prononcee que le seul H1 ne le suggererait.",
+    "moteur": "Recurring EBIT H1 26 +53,5% (margin +220bp to 7%), operating margin H1 +16,8% (margin +190bp to 18,4%) - a very favourable scissor effect (rents/concession fees +3,4% only vs revenue +4,6%, other operating costs +0,9% only) clearly better than the creation assumption. Management nevertheless explicitly warns of a slowdown in the pace of margin progression in H2 owing to the start-up of new contracts (dilutive during the launch phase) and to the fading of the World Cup tailwind - 2026-2030 margin trajectory revised upwards but less markedly than H1 alone would suggest.",
     "applique": [
      "omniumEBIT.2026",
      "omniumEBIT.2027",
@@ -181,13 +181,13 @@
    },
    {
     "id": "heathrow-renouvellement",
-    "moteur": "Renouvellement du contrat Heathrow pour 8 ans sans appel d'offres, conditions tarifaires globalement inchangees vs les 10 dernieres annees - confirmation de la resilience du portefeuille aeroportuaire (154 aeroports, 14 des 25 plus grands mondiaux), sans impact chiffrable materiel isole (deja dans la base contractuelle existante). [Confiance haute sur l'occurrence, sans impact chiffrable isole.]",
+    "moteur": "Renewal of the Heathrow contract for 8 years without a tender, with pricing terms broadly unchanged vs the last 10 years - confirmation of the resilience of the airport portfolio (154 airports, 14 of the 25 largest worldwide), with no material isolable quantifiable impact (already in the existing contract base). [High confidence on the occurrence, with no isolable quantifiable impact.]",
     "applique": [],
     "confiance": "haute"
    },
    {
     "id": "fcf-positif-h1-inhabituel",
-    "moteur": "FCF H1 26 devenu positif (26,2 M EUR, amelioration de 91,1 M EUR sur un an) malgre la saisonnalite habituellement defavorable du premier semestre - trajectoire de desendettement 2026-2030 revisee legerement a la hausse (dette nette FY2026 estimee legerement inferieure a l'hypothese de creation).",
+    "moteur": "FCF H1 26 turned positive (26,2 M EUR, an improvement of 91,1 M EUR year on year) despite the usually unfavourable seasonality of the first half - 2026-2030 deleveraging trajectory revised slightly upwards (FY2026 net debt estimated slightly below the creation assumption).",
     "applique": [
      "omniumND.2026",
      "omniumND.2027",
@@ -199,7 +199,7 @@
    },
    {
     "id": "programmatique-acceleration",
-    "moteur": "Programmatique +30,9% organique au H1 (12,3% du CA digital, contre 10,1% un an plus tot), VIOOH desormais breakeven cash-on-cash en standalone et deja rentable en EBIT au niveau groupe - confirme et amplifie l'ancrage de croissance digitale deja retenu a la creation.",
+    "moteur": "Programmatic +30,9% organic in H1 (12,3% of digital revenue, against 10,1% a year earlier), VIOOH now cash-on-cash breakeven on a standalone basis and already EBIT-profitable at group level - confirms and amplifies the digital growth anchor already retained at creation.",
     "applique": [
      "omniumCA.2027",
      "omniumCA.2028",
@@ -289,7 +289,7 @@
      "actual": true
     }
    ],
-   "note": "[PY 2025 pose 20/08/2026 (C24) : S1 2025 = 75,9 M EUR (derive du S1 2026 140,1 M, +84,7% publie), S2 = solde vs data 262,6 M - saisonnalite S2-lourde structurelle.]"
+   "note": "[PY 2025 set 20/08/2026 (C24): H1 2025 = 75,9 M EUR (derived from H1 2026 140,1 M, +84,7% reported), H2 = balance vs data 262,6 M - structurally H2-heavy seasonality.]"
   },
   "bridge": {
    "2025": {
@@ -411,11 +411,11 @@
    "eps": 1.55,
    "epsNY": null,
    "date": "2026-08-01",
-   "source": "Snapshot immediat post-H1 26 - a recouper au prochain refresh, plusieurs bureaux n'ayant pas encore integre le beat T2/H1 dans leurs modeles."
+   "source": "Snapshot immediately post-H1 26 - to be cross-checked at the next refresh, several houses not yet having incorporated the Q2/H1 beat into their models."
   }
  ],
  "externalActuals": {
-  "source": "MarketScreener/Zonebourse (donnees ajustees au perimetre courant, actions moyennes ponderees)",
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
   "date": "2026-08-21",
   "eps": {
    "2021": -0.068,
