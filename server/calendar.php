@@ -43,6 +43,17 @@ if (isset($_GET['ics'])) {
     $uid = preg_replace('/[^A-Za-z0-9\-]/', '', $e['id'] ?? uniqid()) . '@omnium';
     $sum = addcslashes(($e['ticker'] ?? '') . ' — ' . ($e['label'] ?? ''), ",;\\");
     $desc = addcslashes(trim(($e['type'] ?? '') . ' · ' . ($e['status'] ?? '') . ' · ' . ($e['source'] ?? ''), ' ·'), ",;\\");
+    // Lien precis de l evenement (21/08/2026) : quand la collecte a capture
+    // une URL (page evenement IR, webcast, inscription), elle part dans le
+    // calendrier Google - en propriete URL ET en tete de DESCRIPTION
+    // (Google affiche la description de facon plus fiable que URL).
+    $url = trim($e['url'] ?? '');
+    $urlLine = '';
+    if ($url && preg_match('#^https?://#i', $url)) {
+      $urlEsc = addcslashes($url, ",;\\");
+      $urlLine = "URL:$urlEsc\r\n";
+      $desc = $urlEsc . ($desc !== '' ? '\n' . $desc : '');
+    }
     // Heure de l evenement (HH:MM, Europe/Paris) : celle de la source si
     // capturee (champ "time" transmis tel quel par l app) ; a defaut,
     // 22:00 pour les EARNINGS (cloture de bourse US, le standard) ;
@@ -54,10 +65,10 @@ if (isset($_GET['ics'])) {
       $startTs = strtotime("$date $time:00");
       $endHm = date('His', $startTs + 3600);
       $endDt = date('Ymd', $startTs + 3600);
-      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;TZID=Europe/Paris:{$dt}T{$hm}00\r\nDTEND;TZID=Europe/Paris:{$endDt}T{$endHm}\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\nEND:VEVENT\r\n";
+      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;TZID=Europe/Paris:{$dt}T{$hm}00\r\nDTEND;TZID=Europe/Paris:{$endDt}T{$endHm}\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\n{$urlLine}END:VEVENT\r\n";
     } else {
       $end = date('Ymd', strtotime($date . ' +1 day'));
-      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;VALUE=DATE:$dt\r\nDTEND;VALUE=DATE:$end\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\nEND:VEVENT\r\n";
+      $out .= "BEGIN:VEVENT\r\nUID:$uid\r\nDTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\nDTSTART;VALUE=DATE:$dt\r\nDTEND;VALUE=DATE:$end\r\nSUMMARY:$sum\r\nDESCRIPTION:$desc\r\n{$urlLine}END:VEVENT\r\n";
     }
   }
   echo $out . "END:VCALENDAR\r\n"; exit;
