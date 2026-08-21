@@ -2507,11 +2507,20 @@ function buildValoXTicks(dates, maxTicks){
   const shortDate=iso=>{const p=iso.split('-');return parseInt(p[2],10)+' '+(MONTH_ABBR_FR[parseInt(p[1],10)]||'');};
   const ticks=[];
   if(spanDays<=95){
-    const n=Math.min(4, dates.length);
+    // Cibles regulierement espacees dans le TEMPS (pas dans l'index des
+    // captures : a cadence irreguliere, deux indices voisins peuvent etre
+    // a 1 jour d'ecart et leurs etiquettes se chevaucher - bug Abbott
+    // "19 Aug"/"20 Aug" du 21/08/2026), chacune rabattue sur la capture
+    // reelle la plus proche, dedupliquees.
+    const n=Math.min(maxTicks||5, dates.length);
+    const chosen=new Set();
     for(let i=0;i<n;i++){
-      const idx=Math.round(i*(dates.length-1)/(n-1||1));
-      ticks.push({t:ms(dates[idx]), label:shortDate(dates[idx])});
+      const target=t0+(t1-t0)*(n<2?0:i/(n-1));
+      let best=0,bd=Infinity;
+      for(let j=0;j<dates.length;j++){const dd=Math.abs(ms(dates[j])-target);if(dd<bd){bd=dd;best=j;}}
+      chosen.add(best);
     }
+    [...chosen].sort((a,b)=>a-b).forEach(idx=>ticks.push({t:ms(dates[idx]), label:shortDate(dates[idx])}));
   }else if(spanDays<=550){
     const step=spanDays<=200?1:(spanDays<=380?2:3);
     const d=new Date(t0); d.setUTCDate(1);
@@ -2581,7 +2590,10 @@ function buildValoChartSVG(ticker, opts){
   // une large gouttiere vide a gauche. A 1:1 il n'y a ni mise a
   // l'echelle (le texte garde son corps declare) ni centrage.
   const W=compact?260:(opts.width||(narrow?380:640)), H=compact?90:(narrow?250:220);
-  const padL=compact?4:0, padR=compact?4:54, padT=compact?10:40, padB=compact?12:30;
+  // padR : juste la place de la colonne d'etiquettes de droite (annee +
+  // multiple). Resserre sur mobile (21/08/2026) pour que le trace s'etale
+  // sur toute la largeur d'ecran.
+  const padL=compact?4:0, padR=compact?4:(narrow?46:54), padT=compact?10:40, padB=compact?12:30;
   const plotW=W-padL-padR, plotH=H-padT-padB;
 
   const t0=new Date(points[0].snap.date+'T00:00:00Z').getTime();
@@ -2689,11 +2701,26 @@ function buildValoChartSVG(ticker, opts){
   // par semaine, l'axe devient illisible en quelques mois.
   const xAxis=compact ? '' : (()=>{
     const yb=(padT+plotH+17);
-    const ticks=buildValoXTicks(points.map(p=>p.snap.date), narrow?4:6);
-    return ticks.map((tk,i)=>{
-      const anchor=i===0?'start':(i===ticks.length-1?'end':'middle');
-      return axText(xOfT(tk.t), yb, tk.label, anchor);
-    }).join('');
+    const cands=buildValoXTicks(points.map(p=>p.snap.date), narrow?5:7);
+    // GARANTIE ANTI-COLLISION (21/08/2026, scalable a n'importe quel
+    // volume de donnees) : l'empreinte pixel de chaque etiquette est
+    // estimee (~5.6px/caractere a 9.5px Poppins) et on balaie de DROITE a
+    // GAUCHE en ne gardant qu'une etiquette qui laisse >=12px avec la
+    // precedente retenue - la plus recente (droite) est donc toujours
+    // conservee, les voisines trop proches sautent. Quelle que soit la
+    // densite des captures dans 5 ans, aucun chevauchement possible.
+    const n=cands.length;
+    const estW=tk=>tk.label.length*5.6+2;
+    const range=(tk,anchor)=>{const x=xOfT(tk.t),w=estW(tk);return anchor==='start'?[x,x+w]:(anchor==='end'?[x-w,x]:[x-w/2,x+w/2]);};
+    const GAP=12;
+    const kept=[];
+    let limit=Infinity;
+    for(let i=n-1;i>=0;i--){
+      const anchor=i===0?'start':(i===n-1?'end':'middle');
+      const [x0,x1]=range(cands[i],anchor);
+      if(x1<=limit-GAP && x0>=padL-1){ kept.unshift({tk:cands[i],anchor}); limit=x0; }
+    }
+    return kept.map(k=>axText(xOfT(k.tk.t), yb, k.tk.label, k.anchor)).join('');
   })();
 
   // Ordonnee du trace principal a un x quelconque (interpolation lineaire).
@@ -2855,8 +2882,9 @@ function buildValoChartSVG(ticker, opts){
     // courbe, aucune ambiguite sur ce que designe le chiffre.
     if(!extras.length){
       const tw=txt.length*6.0+10;
-      return `<rect x="${(lx+7).toFixed(1)}" y="${(ly-8.5).toFixed(1)}" width="${tw.toFixed(1)}" height="17" rx="5" fill="${lineColor}"/>`+
-        `<text x="${(lx+7+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
+      const off1=narrow?4:7;
+      return `<rect x="${(lx+off1).toFixed(1)}" y="${(ly-8.5).toFixed(1)}" width="${tw.toFixed(1)}" height="17" rx="5" fill="${lineColor}"/>`+
+        `<text x="${(lx+off1+tw/2).toFixed(1)}" y="${(ly+1).toFixed(1)}" font-size="9.5" font-weight="800" font-family="Poppins,sans-serif" fill="#fff" text-anchor="middle" dominant-baseline="middle">${txt}</text>`;
     }
     // Trois echeances tracees ensemble : chacune se nomme au bout de sa
     // propre courbe (annee au-dessus, multiple en dessous), ce qui rend le
@@ -2882,7 +2910,8 @@ function buildValoChartSVG(ticker, opts){
     // hauteur du titre HTML du chart, sans rattachement aux chiffres).
     // Centre sur la largeur reelle de la plus large valeur de la colonne.
     const vw=Math.max(...items.map(it=>it.val.length))*6.8;
-    const colMid=lx+7+vw/2;
+    const rOff=narrow?4:7;
+    const colMid=lx+rOff+vw/2;
     const headY=Math.max(12, Math.min(...items.map(it=>it.ny))-22);
     const head=`<text x="${colMid.toFixed(1)}" y="${headY.toFixed(1)}" font-size="10" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)" text-anchor="middle" letter-spacing=".05em">TODAY</text>`;
     return head+items.map(it=>{
@@ -2898,8 +2927,8 @@ function buildValoChartSVG(ticker, opts){
         // L'annee respire au-dessus de son multiple (16px d'ecart de ligne
         // de base, contre 11 auparavant ou les deux se touchaient) et
         // s'allege : elle situe, elle n'est pas ce qu'on vient lire.
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny-5).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}" opacity=".85" letter-spacing=".03em">${it.lab}</text>`
-        +`<text x="${(lx+7).toFixed(1)}" y="${(it.ny+11).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">${it.val}</text>`;
+        +`<text x="${(lx+rOff).toFixed(1)}" y="${(it.ny-5).toFixed(1)}" font-size="9.5" font-weight="600" font-family="Poppins,sans-serif" fill="${it.col}" opacity=".85" letter-spacing=".03em">${it.lab}</text>`
+        +`<text x="${(lx+rOff).toFixed(1)}" y="${(it.ny+11).toFixed(1)}" font-size="13" font-weight="800" font-family="Poppins,sans-serif" fill="var(--navy)">${it.val}</text>`;
     }).join('');
   })();
 
@@ -3213,10 +3242,22 @@ function buildValoProjectionCurvesSVG(ticker, maxCurves, chartW){
   // Le trace demarrant a x=0, une etiquette centree sur le premier (ou le
   // dernier) point deborderait du viewBox et serait rognee : on ancre ces
   // deux-la sur leur bord.
-  const xLabels=years.map((y,i)=>{
-    const anchor=i===0?'start':(i===years.length-1?'end':'middle');
-    return `<text x="${xOf(y).toFixed(1)}" y="${H-8}" font-size="10" font-weight="700" fill="var(--muted)" text-anchor="${anchor}">${y}</text>`;
-  }).join('');
+  // Meme garantie anti-collision que l'axe du chart de valorisation
+  // (21/08/2026) : balayage droite->gauche en espace pixel, la derniere
+  // annee est toujours conservee, une etiquette qui laisserait moins de
+  // 10px avec la precedente retenue saute (rendu naturel : une annee sur
+  // deux quand l'ecran est etroit et l'horizon long).
+  const xLabels=(()=>{
+    const estW=27, GAP=10;
+    const kept=[]; let limit=Infinity;
+    for(let i=years.length-1;i>=0;i--){
+      const anchor=i===0?'start':(i===years.length-1?'end':'middle');
+      const x=xOf(years[i]);
+      const [x0,x1]=anchor==='start'?[x,x+estW]:(anchor==='end'?[x-estW,x]:[x-estW/2,x+estW/2]);
+      if(x1<=limit-GAP){ kept.unshift({y:years[i],anchor}); limit=x0; }
+    }
+    return kept.map(it=>`<text x="${xOf(it.y).toFixed(1)}" y="${H-8}" font-size="10" font-weight="700" fill="var(--muted)" text-anchor="${it.anchor}">${it.y}</text>`).join('');
+  })();
 
   const n=shown.length;
   const lastState=shown[n-1];
