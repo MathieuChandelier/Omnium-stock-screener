@@ -131,15 +131,18 @@ tr.row-sub td.proj{color:var(--muted);}
    de l'app — plus aucun Poppins dans le tableau), une seule taille (13px
    desktop / 11.5px mobile), 400 partout. Hierarchie uniquement par couleur
    (navy / gris doux) et par les fonds (#f3f4fb + voile turquoise). -- */
+/* L inverse eclairci d'un cran : #f7f8fd (navy ~3% sur blanc), toujours en
+   teinte pleine opaque (contrainte sticky mobile), perceptible face au blanc
+   et distinct du voile turquoise verdatre du corps. */
 .ebq thead th,.ebq tbody td,.ebq tbody td:first-child{font-family:'Quattrocento Sans',Georgia,serif;}
-.ebq thead th{font-weight:400;background:#f3f4fb;font-size:13px;line-height:1.5;letter-spacing:0;}
-.vf .ebq thead th:first-child{background:#f3f4fb;}
-.ebq thead th.hist-last{background:#f3f4fb;}
-.ebq thead th.proj-head{background:#f3f4fb;box-shadow:none;}
+.ebq thead th{font-weight:400;background:#f7f8fd;font-size:13px;line-height:1.5;letter-spacing:0;}
+.vf .ebq thead th:first-child{background:#f7f8fd;}
+.ebq thead th.hist-last{background:#f7f8fd;}
+.ebq thead th.proj-head{background:#f7f8fd;box-shadow:none;}
 .ebq tbody td{line-height:1.5;}
-.ebq tbody td:first-child{font-weight:400;background:#f3f4fb;font-size:13px;}
+.ebq tbody td:first-child{font-weight:400;background:#f7f8fd;font-size:13px;}
 .ebq td.proj{background:rgba(43,216,194,.055);}
-.vf .ebq tbody tr:hover td:first-child{background:#eceefb;}
+.vf .ebq tbody tr:hover td:first-child{background:#eff1fa;}
 .mframe .ebq thead th{font-size:11.5px;}
 .mframe .ebq tbody td:first-child{font-size:11.5px;}
 /* chevron sobre : petit, blanc cercle, sans fondu */
@@ -217,7 +220,7 @@ th.fold-th:hover{background:#000165;}
 <div class="variant vf" id="vfinale">
   <span class="vtag">V-finale</span>
   <h2>B Quattrocento — à valider</h2>
-  <p class="intent">Une seule famille et une seule taille pour tout le tableau : tout — labels d'années, coin, colonne Indicator, valeurs — passe en <b>'Quattrocento Sans'</b> (la police du body de l'app), 13&nbsp;px desktop / 11.5&nbsp;px mobile, graisse 400 partout, plus aucun Poppins. La hiérarchie ne tient qu'à la couleur (navy vs gris doux des valeurs secondaires) et aux fonds : L inversé #f3f4fb, voile turquoise quasi imperceptible sur le corps prospectif, trait vertical turquoise 1&nbsp;px. Apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
+  <p class="intent">Une seule famille et une seule taille pour tout le tableau : tout — labels d'années, coin, colonne Indicator, valeurs — passe en <b>'Quattrocento Sans'</b> (la police du body de l'app), 13&nbsp;px desktop / 11.5&nbsp;px mobile, graisse 400 partout, plus aucun Poppins. La hiérarchie ne tient qu'à la couleur (navy vs gris doux des valeurs secondaires) et aux fonds : L inversé <b>#f7f8fd</b> (éclairci d'un cran, navy ~3&nbsp;% sur blanc), voile turquoise quasi imperceptible sur le corps prospectif, trait vertical turquoise 1&nbsp;px. Apostrophes 1'766, tabular-nums, aucun italique ni dégradé.</p>
   <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> snap + chevron unique inchangés.</p>
 
   <div class="demo-lbl">B Quattrocento — desktop</div>
