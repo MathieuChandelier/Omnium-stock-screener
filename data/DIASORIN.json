@@ -530,7 +530,11 @@
    ],
    "impotSurRetraitements": -18,
    "source": "Communiqué FY 2025 du 20/03/2026, tableau « FY 2025 ADJUSTED INDICATORS » et compte de résultat consolidé annexé (M€). Le tableau publie l'ajustement one-off à trois étages différents (Gross Profit 4, EBITDA 19, EBIT 39) : la ligne retenue ici est celle de l'étage EBIT (39), seule qui boucle.",
-   "rupture": null
+   "rupture": null,
+   "ajustePublie": {
+    "ebit": 304,
+    "net": 223
+   }
   },
   "2026-H1": {
    "base": "IFRS",
@@ -568,6 +572,10 @@
     "type": "retraitement",
     "par": "emetteur",
     "motif": "Les indicateurs ajustés du S1 2025 ont été retraités par l'émetteur (note (*) du communiqué du 31/07/2026) pour réallouer sur l'ensemble de 2025 les coûts opérationnels de la filiale chinoise, initialement comptabilisés en totalité au T4 2025. Le comparatif S1 2025 n'est donc plus celui publié en juillet 2025 : aucun CAGR ni aucune variation semestrielle ne traverse ce point sans drapeau."
+   },
+   "ajustePublie": {
+    "ebit": 149,
+    "net": 106
    }
   }
  }

@@ -573,7 +573,11 @@
    ],
    "impotSurRetraitements": -11.756,
    "source": "8-K du 24/02/2026, exhibit 99.1 (CIK 0000730272), tables « Reconciliation of Income (Loss) from Operations (GAAP) to Adjusted Income from Operations » et « Reconciliation of Net Income (Loss) (GAAP) to Adjusted Net Income ». Montants en M$ (les k$ publiés divisés par 1 000, sans arrondi). Ajusté publié : EBIT 101,823 ; net 96,945 ; EPS dilué 1,71 $ (GAAP 0,86 $). La SBC n'est PAS dans la liste d'exclusions de l'émetteur.",
-   "rupture": null
+   "rupture": null,
+   "ajustePublie": {
+    "ebit": 101.823,
+    "net": 96.945
+   }
   },
   "2026-Q2": {
    "base": "US-GAAP",
@@ -657,7 +661,11 @@
    ],
    "impotSurRetraitements": 0.74,
    "source": "8-K du 28/07/2026, exhibit 99.1 (CIK 0000730272), tables de réconciliation EBIT, net et EPS, trois mois clos le 30/06/2026 ; compte de résultat condensé pour le CA. Montants en M$. Ajusté publié : EBIT 34,004 ; net 30,777 ; EPS dilué 0,54 $ (GAAP 0,09 $). L'ETR GAAP du trimestre est de 64,6 % (9,145 sur 14,153 de pretax) : un one-off fiscal discret que l'émetteur ne retraite PAS et qui écrase le net publié.",
-   "rupture": null
+   "rupture": null,
+   "ajustePublie": {
+    "ebit": 34.004,
+    "net": 30.777
+   }
   }
  }
 }

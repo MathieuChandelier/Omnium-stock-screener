@@ -594,7 +594,11 @@
    ],
    "impotSurRetraitements": -320,
    "source": "8-K du 22/01/2026, exhibit 99.1 « Abbott Reports Fourth-Quarter and Full-Year 2025 Results » (abt-2025q4xexhibitx991.htm) — pages 11, 13, 15 et 18 : compte de résultat 12M25, réconciliation non-GAAP, réconciliation du taux d'impôt, Details of Specified Items",
-   "rupture": null
+   "rupture": null,
+   "ajustePublie": {
+    "ebit": 10301,
+    "net": 9040
+   }
   },
   "2026-Q2": {
    "base": "US-GAAP",
@@ -659,6 +663,10 @@
    "rupture": {
     "type": "perimetre",
     "motif": "Acquisition d'Exact Sciences bouclée le 23/03/2026, sans retraitement des comparatifs 2025. Le périmètre et le stock d'incorporels amortissables sont discontinus : amortissement trimestriel 420 M$ (2Q25) → 658 M$ (2Q26), intérêts nets 50 → 299 M$, nouveau segment Cancer Diagnostics. La série des postes amort-incorporels-acquisition et acquisition-cession-frais ne se projette pas à travers cette borne sans retraitement."
+   },
+   "ajustePublie": {
+    "ebit": 2843,
+    "net": 2290
    }
   }
  }

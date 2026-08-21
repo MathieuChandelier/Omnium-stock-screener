@@ -603,7 +603,10 @@
    ],
    "impotSurRetraitements": -480,
    "source": "8-K du 28/01/2026, exhibit 99.1 « Danaher Reports Fourth Quarter and Full Year 2025 Results » (dhr-20260128xex991.htm) — Consolidated Statements of Earnings et Reconciliation of GAAP to Non-GAAP Financial Measures, notes A à J",
-   "rupture": null
+   "rupture": null,
+   "ajustePublie": {
+    "net": 5583
+   }
   },
   "2026-Q2": {
    "base": "US-GAAP",
@@ -647,6 +650,9 @@
    "rupture": {
     "type": "perimetre",
     "motif": "Acquisition de Masimo bouclée le 10/06/2026 (16 jours de contribution au T2), sans retraitement des comparatifs 2025. Guidance d'amortissement d'incorporels d'acquisition relevée de ~1,7 Md$ (CP du 28/01/2026) à ~1,9 Md$ (CP du 21/07/2026), dette d'acquisition émise en avril-juin 2026 : la série des postes amort-incorporels-acquisition et acquisition-elements-transaction ne se projette pas à travers cette borne sans retraitement."
+   },
+   "ajustePublie": {
+    "net": 1375
    }
   }
  }
