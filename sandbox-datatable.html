@@ -1,313 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Sandbox — Historical Data &amp; Projections</title>
+<title>Omnium — variantes du tableau</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- 300 et 400 ajoutes : sans eux le navigateur substitue la 500 a la graisse
-     400 declaree et tout le tableau parait trop gras. index.html a le meme
-     manque (wght@500;600;700;800) - a corriger lors du passage en prod. -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy:#000190; --teal:#2BD8C2; --teal-dark-text:#1CBBA1;
-  --bg:#ffffff; --surface:#fff; --border:#e6e6f0;
-  --text:#0d0d1a; --muted:#64748b;
-  /* voile turquoise des colonnes prospectives (corps uniquement) */
-  --proj-veil:rgba(43,216,194,.055);
-  --proj-veil-hover:rgba(43,216,194,.09);
-  /* teinte du L inverse de la variante 2 : PLEINE (opaque) — la colonne
-     Indicator est sticky en mobile, une couleur transparente laisserait
-     defiler les colonnes dessous. #eef0fb == navy a ~7% sur blanc. */
-  --lblue:#eef0fb; --lblue-hover:#e4e7f7;
+:root{
+  --navy:#000190; --navy-dark:#00004a; --navy-light:#eeeffe;
+  --teal:#2BD8C2; --teal-light:#e6faf8; --teal-text:#25CFB4;
+  --bg:#ffffff; --border:#e6e6f0; --text:#0d0d1a; --muted:#64748b;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Quattrocento Sans',Georgia,serif;background:#f4f5fb;color:var(--text);font-size:15px;line-height:1.6;padding:28px 18px 80px;}
-h1,h2,h3,th,.vtag{font-family:'Poppins',system-ui,sans-serif;}
-.page{max-width:1060px;margin:0 auto;}
-h1{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:.01em;}
-.sub{font-size:12.5px;color:var(--muted);margin:4px 0 30px;max-width:820px;}
-.variant{background:var(--surface);border-radius:16px;box-shadow:0 2px 14px rgba(0,1,144,.06);padding:22px 24px 26px;margin-bottom:34px;}
-.vtag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--navy);border-radius:20px;padding:3px 11px;text-transform:uppercase;}
-.variant h2{font-size:17px;font-weight:800;color:var(--navy);margin:10px 0 4px;}
-.intent{font-size:12.5px;color:var(--muted);line-height:1.55;max-width:820px;margin-bottom:6px;}
-.scope{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:var(--teal-dark-text);margin-bottom:16px;}
-.scope b{color:var(--navy);font-weight:700;}
-.demo-lbl{font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin:18px 0 8px;}
-.ref-divider{font-family:'Poppins',sans-serif;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;margin:34px 0 14px;}
+*{box-sizing:border-box;}
+body{margin:0;background:#f6f7fb;color:var(--text);font-family:'Poppins',system-ui,sans-serif;padding:28px 20px 80px;}
+.wrap{max-width:1180px;margin:0 auto;}
+h1{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin:0 0 6px;}
+.lede{font-family:'Quattrocento Sans',serif;font-size:13px;color:var(--muted);margin:0 0 30px;line-height:1.6;max-width:70ch;}
+.variant{background:#fff;border-radius:14px;padding:22px 24px 26px;margin-bottom:26px;box-shadow:0 1px 3px rgba(13,13,26,.06);}
+.vh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+.vt{font-size:13px;font-weight:700;color:var(--navy);letter-spacing:.04em;text-transform:uppercase;}
+.vn{font-family:'Quattrocento Sans',serif;font-size:12px;color:var(--muted);}
+.card-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin:18px 0 12px;}
+.scroll{overflow-x:auto;}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px;}
+th,td{font-family:'Poppins',sans-serif;font-weight:400;font-style:normal;white-space:nowrap;}
+th{font-size:12.5px;letter-spacing:0;line-height:1.5;padding:8px 13px;text-align:right;border:none;}
+td{padding:7px 13px;color:var(--muted);border:none;font-variant-numeric:tabular-nums;text-align:right;}
+th:first-child,td:first-child{text-align:left;width:1%;padding-right:16px;}
+td:first-child{color:#334155;}
+tr.sub td:not(:first-child){color:#94a3b8;}
 
-/* ---------- base table (identite index.html) ---------- */
-table{width:100%;border-collapse:collapse;font-size:13px;}
-thead th{background:var(--navy);color:#fff;text-align:right;padding:9px 13px;font-weight:600;font-size:12px;letter-spacing:.02em;white-space:nowrap;}
-thead th:first-child{text-align:left;}
-tbody td{padding:7px 13px;text-align:right;white-space:nowrap;
-  font-variant-numeric:tabular-nums;font-feature-settings:'tnum';}
-tbody td:first-child{text-align:left;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif;font-size:10.5px;}
-/* trait vertical turquoise entre la derniere annee publiee et la premiere projetee */
-td.proj-first,th.proj-first{border-left:2px solid var(--teal);}
+/* ══════════ A — bandeau bleu plein ══════════ */
+.vA th{background:var(--navy);color:#fff;}
+.vA th:first-child{background:var(--navy);}
+.vA td:first-child{background:var(--navy-light);}
+.vA td.proj{background:rgba(43,216,194,.055);}
+.vA th:first-child{border-radius:8px 0 0 0;}
+.vA th:last-child{border-radius:0 8px 0 0;}
+.vA tbody tr:hover td{background:#fafbfe;}
+.vA tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
+.vA tbody tr:hover td:first-child{background:#e4e7f7;}
 
-/* wrapper : header sticky vertical + colonne Indicator sticky horizontale */
-.tbl-wrap{overflow:auto;max-height:330px;border-radius:10px;border:1px solid var(--border);}
-.tbl-wrap thead th{position:sticky;top:0;z-index:3;}
-.tbl-wrap thead th:first-child,.tbl-wrap tbody td:first-child{position:sticky;left:0;z-index:2;}
-.tbl-wrap thead th:first-child{z-index:4;background:var(--navy);}
-.tbl-wrap tbody td:first-child{background:var(--bg);}
-.tbl-wrap.scrolled-x tbody td:first-child,.tbl-wrap.scrolled-x thead th:first-child{box-shadow:2px 0 5px rgba(0,0,0,.08);}
+/* ══════════ B — cadre en trait, aucun aplat ══════════ */
+.vB th{color:var(--navy);border-bottom:1px solid var(--navy);}
+.vB td:first-child,.vB th:first-child{border-right:1px solid var(--navy);color:var(--navy);}
+.vB td.proj{background:rgba(43,216,194,.05);}
+.vB tbody tr:hover td{background:#fafbfe;}
+.vB tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
 
-/* ---------- cadre mobile 375 px ---------- */
-.mframe{width:375px;max-width:100%;border:1px solid var(--border);border-radius:22px;padding:14px 10px;background:var(--bg);box-shadow:0 4px 18px rgba(0,1,144,.08);}
-.mframe .tbl-wrap{max-height:none;border:none;border-radius:8px;}
-.mframe table{font-size:11.5px;}
-.mframe thead th{padding:8px 10px;font-size:10.5px;}
-.mframe tbody td{padding:6px 10px;}
-.mframe tbody td:first-child{font-size:9.5px;min-width:92px;max-width:100px;white-space:normal;line-height:1.25;padding-right:6px;}
-.mframe thead th:first-child{min-width:92px;}
+/* ══════════ C — L asymétrique : bandeau plein, colonne en trait ══════════ */
+.vC th{background:var(--navy);color:#fff;}
+.vC th:first-child{background:var(--navy);border-radius:8px 0 0 0;}
+.vC th:last-child{border-radius:0 8px 0 0;}
+.vC td:first-child{color:var(--navy);border-right:1px solid rgba(0,1,144,.22);}
+.vC td.proj{background:rgba(43,216,194,.055);}
+.vC tbody tr:hover td{background:#fafbfe;}
+.vC tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
 
-/* ---------- mobile : scroll-snap par colonne, aucune pastille ----------
-   Les chevrons/fondus ont ete retires : ils masquaient la lecture. Restent
-   le snap par colonne (une annee n'est jamais coupee) et l'ouverture cadree
-   sur 2024 | 2025 | 2026, posee en JS. */
-.snapper{position:relative;}
-.snapper .tbl-wrap{scroll-snap-type:x mandatory;scroll-behavior:smooth;scroll-padding-left:98px;}
-.snapper th{scroll-snap-align:start;}
+/* ══════════ D — dégradé de marque + soulignement turquoise sur les projetées ══════════ */
+.vD th{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 78%,var(--navy-dark) 100%);color:#fff;}
+.vD th:first-child{border-radius:8px 0 0 0;}
+.vD th:last-child{border-radius:0 8px 0 0;}
+.vD th.proj{box-shadow:inset 0 -2px 0 var(--teal);}
+.vD td:first-child{color:var(--navy);border-right:1px solid rgba(0,1,144,.16);}
+.vD td.proj{background:rgba(43,216,194,.05);}
+.vD tbody tr:hover td{background:#fafbfe;}
+.vD tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
 
-/* ================================================================
-   SOCLE COMMUN AUX DEUX VARIANTES (.vf)
-   Table nue : aucune bordure, aucun cadre, aucun filet de ligne, aucune
-   italique, aucun bold de valeur. Tout Poppins, une seule taille
-   (12.5 px desktop / 11 px mobile), graisse 400 partout.
-   ================================================================ */
-.vf .tbl-wrap{border:none;border-radius:0;}
-.vf thead th,.vf tbody td,.vf tbody td:first-child{font-family:'Poppins',system-ui,sans-serif;}
-.vf table{font-size:12.5px;}
-.vf thead th{font-weight:400;font-size:12.5px;line-height:1.5;letter-spacing:0;border:none;box-shadow:none;}
-.vf tbody td{line-height:1.5;border:none;background:transparent;font-weight:400;color:#64748b;}
-.vf tbody td:first-child{font-weight:400;font-size:12.5px;}
-/* toutes les valeurs au meme gris : plus aucun bold ni couleur d'accent */
-.vf tr.row-emph td:not(:first-child){font-weight:400;color:#64748b;}
-/* lignes secondaires (Growth %, EBIT margin, Debt/EBIT, Div. yield) : gris clair */
-.vf tr.row-sub td:not(:first-child){color:#94a3b8;font-size:inherit;}
-/* voile turquoise : CORPS des colonnes prospectives uniquement */
-.vf td.proj{background:var(--proj-veil);}
-/* trait vertical turquoise affine a 1 px, seul « filet » de toute la table */
-.vf td.proj-first,.vf th.proj-first{border-left:1px solid var(--teal);}
-.vf tbody tr:hover td{background:#fafbfe;}
-.vf tbody tr:hover td.proj{background:var(--proj-veil-hover);}
-.vf .mframe table{font-size:11px;}
-.vf .mframe thead th{font-size:11px;}
-.vf .mframe tbody td:first-child{font-size:11px;}
+/* ══════════ E — filet turquoise seul, bandeau bleu très clair ══════════ */
+.vE th{background:#e8eaff;color:var(--navy);}
+.vE th:first-child{background:#e8eaff;border-radius:8px 0 0 0;}
+.vE th:last-child{border-radius:0 8px 0 0;}
+.vE td:first-child{background:#f4f5ff;color:var(--navy);}
+.vE td.proj{background:rgba(43,216,194,.055);}
+.vE th.proj-first,.vE td.proj-first{border-left:1.5px solid var(--teal);}
+.vE tbody tr:hover td{background:#fafbfe;}
+.vE tbody tr:hover td.proj{background:rgba(43,216,194,.09);}
+.vE tbody tr:hover td:first-child{background:#e9ebff;}
 
-/* ---------------- VARIANTE 3 : bleu clair, texte gris (.vgrey) --------
-   Reprise exacte de la variante 2 (L inverse #eef0fb plein, voile turquoise
-   dans le corps, aucune bordure, trait turquoise 1 px) MAIS plus aucun texte
-   navy : les annees du bandeau et les libelles Indicator passent en gris
-   fonce #334155 — soit deux crans plus sombres que les valeurs (#64748b) et
-   trois que les lignes secondaires (#94a3b8). La hierarchie de lecture est
-   donc portee par la seule valeur de gris, sans changement de teinte.
-   Contraste #334155 sur #eef0fb = 9.12:1 (AA et AAA). */
-.vgrey thead th{background:var(--lblue);color:#334155;}
-.vgrey thead th.proj-head{background:var(--lblue);color:#334155;}
-.vf .vgrey thead th:first-child{background:var(--lblue);color:#334155;}
-.vf .vgrey tbody td:first-child{background:var(--lblue);color:#334155;}
-.vf .vgrey tbody tr:hover td:first-child{background:var(--lblue-hover);}
-
-/* ---------------- VARIANTE 1 : bandeau navy (.vnavy) ----------------
-   Bandeau des annees en navy plein, annees en BLANC. Corps blanc, valeurs
-   en gris (#64748b / #94a3b8), libelles Indicator en #334155 sur blanc
-   opaque (contrainte sticky mobile). Le bandeau navy ne porte pas de voile
-   turquoise : le navy prime sur les labels 2026+. */
-.vnavy thead th{background:var(--navy);color:#fff;}
-.vnavy thead th.proj-head{background:var(--navy);color:#fff;}
-.vf .vnavy thead th:first-child{background:var(--navy);color:#fff;}
-.vf .vnavy tbody td:first-child{background:#fff;color:#334155;}
-.vf .vnavy tbody tr:hover td:first-child{background:#fafbfe;}
-
-/* ---------------- VARIANTE 2 : bleu transparent (.vblue) ----------------
-   Le L inverse (bandeau des annees + colonne Indicator) passe en bleu tres
-   clair, texte NAVY. Deux points de soin :
-   - jonction bleu / turquoise : dans le bandeau le bleu prime, les labels
-     2026+ ne portent pas le voile turquoise (il reste dans le corps) ;
-   - la colonne Indicator sticky recoit la teinte PLEINE --lblue (et non une
-     rgba) : en mobile, une couleur transparente laisserait apparaitre les
-     colonnes qui defilent dessous. */
-.vblue thead th{background:var(--lblue);color:var(--navy);}
-.vblue thead th.proj-head{background:var(--lblue);color:var(--navy);}
-.vf .vblue thead th:first-child{background:var(--lblue);color:var(--navy);}
-.vf .vblue tbody td:first-child{background:var(--lblue);color:var(--navy);}
-.vf .vblue tbody tr:hover td:first-child{background:var(--lblue-hover);}
-
-/* ---------------- ARCHIVE : B Quattrocento (etat porte le 21/08) --------
-   Conservee pour memoire : famille Quattrocento Sans, L inverse #f7f8fd,
-   valeurs en navy. Remplacee par les deux variantes ci-dessus. */
-.ebq thead th,.ebq tbody td,.ebq tbody td:first-child{font-family:'Quattrocento Sans',Georgia,serif;}
-.ebq thead th{font-weight:400;background:#f7f8fd;color:var(--navy);font-size:13px;line-height:1.5;letter-spacing:0;border:none;box-shadow:none;}
-.ebq thead th.proj-head{background:#f7f8fd;box-shadow:none;}
-.tbl-wrap.ebq{border:none;border-radius:0;}
-.ebq tbody td{line-height:1.5;border:none;color:var(--navy);font-weight:400;}
-.ebq tbody td:first-child{font-weight:400;background:#f7f8fd;color:var(--navy);font-size:13px;}
-.ebq tr.row-sub td:not(:first-child){color:var(--muted);}
-.ebq td.proj{background:var(--proj-veil);}
-.ebq td.proj-first,.ebq th.proj-first{border-left:1px solid var(--teal);}
-
-@media(max-width:1024px){body{padding:18px 10px 60px;}.variant{padding:16px 14px 20px;}}
+@media(max-width:760px){
+  body{padding:18px 12px 60px;}
+  .variant{padding:16px 14px 20px;border-radius:12px;}
+  table{font-size:11px;}
+  th{font-size:11px;padding:7px 9px;}
+  td{padding:6px 9px;}
+  th:first-child,td:first-child{padding-right:11px;}
+}
 </style>
 </head>
 <body>
-<div class="page">
-<h1>Sandbox — Historical Data &amp; Projections</h1>
-<p class="sub">Comparatif final avant passage en prod : <b>trois variantes</b>, identiques en tout point sauf le traitement du «&nbsp;L inversé&nbsp;» (bandeau des années + colonne Indicator). Chacune est montrée en desktop puis en mobile&nbsp;375&nbsp;px. Communs aux trois : aucune bordure, tout Poppins en taille unique et graisse 400, valeurs en gris (<b>#64748b</b>, lignes secondaires <b>#94a3b8</b>), voile turquoise sur le corps des colonnes prospectives 2026+, trait vertical turquoise 1&nbsp;px entre 2025 et 2026, séparateur de milliers apostrophe (<b>1'766</b>), colonne Indicator sticky, et en mobile un scroll-snap par colonne avec ouverture cadrée sur 2024&nbsp;|&nbsp;2025&nbsp;‖&nbsp;2026, sans aucun chevron ni pastille.</p>
+<div class="wrap">
+  <h1>Tableau — cinq pistes</h1>
+  <p class="lede">Mêmes chiffres, même typographie (Poppins 400, 12,5 px / 11 px sur mobile, apostrophes suisses, aucun gras). Seul le traitement du L inversé — bandeau des années et colonne des indicateurs — change. Le voile turquoise sur les années projetées est conservé partout, il porte la lecture.</p>
 
-<!-- ================= VARIANTE 3 — BLEU CLAIR, TEXTE GRIS ================= -->
-<div class="variant vf" id="v-grey">
-  <span class="vtag">Variante 3</span>
-  <h2>Bleu clair, texte gris</h2>
-  <p class="intent">La demande&nbsp;: <b>la variante 2 sans le texte en bleu</b>. Le L inversé garde exactement le même fond <b>#eef0fb</b> plein (le navy à ~7&nbsp;% sur blanc), mais les années du bandeau <b>et</b> les libellés de la colonne Indicator quittent le navy pour un <b>gris foncé #334155</b> — la même valeur que les libellés de la variante 1. Le tableau devient alors entièrement gris&nbsp;: plus une seule touche de bleu dans le texte, la couleur ne subsiste que dans le fond du L et dans le trait turquoise. La hiérarchie tient sur la seule échelle de gris&nbsp;: <b>#334155</b> pour les années et les libellés, <b>#64748b</b> pour les valeurs, <b>#94a3b8</b> pour les lignes secondaires — les repères de lecture restent donc les éléments les plus sombres de la table.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> scroll-snap par colonne, ouverture cadrée, colonne Indicator sticky sur bleu clair opaque. <b>Contraste :</b> #334155 sur #eef0fb = <b>9.12:1</b> (AA&nbsp;+&nbsp;AAA) ; valeurs #64748b sur blanc = 4.76:1 (AA) ; lignes secondaires #94a3b8 = 2.56:1, <b>sous le seuil AA</b>, conservé tel quel comme dans les deux autres variantes.</p>
+  <div class="variant">
+    <div class="vh"><span class="vt">A — bandeau bleu plein</span><span class="vn">Le bandeau porte la marque, la colonne reste en aplat clair. Lecture de terminal.</span></div>
+    <div class="card-title">Historical data &amp; projections</div>
+    <div class="scroll"><table class="vA" id="tA"></table></div>
+  </div>
 
-  <div class="demo-lbl">Variante 3 — desktop</div>
-  <div class="tbl-wrap vgrey" id="grey-d"></div>
+  <div class="variant">
+    <div class="vh"><span class="vt">B — cadre en trait, zéro aplat</span><span class="vn">Un filet bleu sous les années, un filet bleu à droite des indicateurs. Le plus aéré.</span></div>
+    <div class="card-title">Historical data &amp; projections</div>
+    <div class="scroll"><table class="vB" id="tB"></table></div>
+  </div>
 
-  <div class="demo-lbl">Variante 3 — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper"><div class="tbl-wrap vgrey" id="grey-m"></div></div></div>
+  <div class="variant">
+    <div class="vh"><span class="vt">C — L asymétrique</span><span class="vn">Bandeau plein, colonne en trait seul : les deux bras du L ne se répètent pas.</span></div>
+    <div class="card-title">Historical data &amp; projections</div>
+    <div class="scroll"><table class="vC" id="tC"></table></div>
+  </div>
+
+  <div class="variant">
+    <div class="vh"><span class="vt">D — dégradé de marque</span><span class="vn">Le dégradé du bandeau de navigation, et un souligné turquoise qui ne court que sous les années projetées.</span></div>
+    <div class="card-title">Historical data &amp; projections</div>
+    <div class="scroll"><table class="vD" id="tD"></table></div>
+  </div>
+
+  <div class="variant">
+    <div class="vh"><span class="vt">E — bleu clair + césure turquoise</span><span class="vn">Proche de l’actuelle, mais le bleu monte d’un cran et la césure passe en trait franc.</span></div>
+    <div class="card-title">Historical data &amp; projections</div>
+    <div class="scroll"><table class="vE" id="tE"></table></div>
+  </div>
 </div>
 
-<!-- ================= VARIANTE 1 — BANDEAU NAVY ================= -->
-<div class="variant vf" id="v-navy">
-  <span class="vtag">Variante 1</span>
-  <h2>Bandeau navy</h2>
-  <p class="intent">La variante de tête actuelle, inchangée. Le bandeau des années est en <b>navy plein</b> (#000190) avec les années en <b>blanc</b> ; la colonne Indicator est sur <b>fond blanc</b>, libellés en gris foncé <b>#334155</b>. Le bandeau ne porte aucun voile turquoise : sur les labels 2026+ le navy prime. Un seul bloc de couleur dense dans la fiche, qui pose le tableau comme un objet net et l'ancre à l'identité de la marque.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> scroll-snap par colonne, ouverture cadrée, colonne Indicator sticky sur blanc opaque.</p>
-
-  <div class="demo-lbl">Variante 1 — desktop</div>
-  <div class="tbl-wrap vnavy" id="navy-d"></div>
-
-  <div class="demo-lbl">Variante 1 — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper"><div class="tbl-wrap vnavy" id="navy-m"></div></div></div>
-</div>
-
-<!-- ================= VARIANTE 2 — BLEU TRANSPARENT ================= -->
-<div class="variant vf" id="v-blue">
-  <span class="vtag">Variante 2</span>
-  <h2>Bleu transparent</h2>
-  <p class="intent">Identique à la variante 1 <b>sauf le L inversé</b> : le bandeau des années <b>et</b> la colonne Indicator passent en <b>bleu très clair</b> (#eef0fb, soit le navy à ~7&nbsp;% sur blanc) avec le texte du bandeau et les libellés Indicator en <b>navy</b>. Plus de fond navy plein, plus de texte blanc. Le voile turquoise reste dans le corps des projections ; à la jonction, dans le bandeau, <b>le bleu prime</b>. La teinte est posée en couleur <b>pleine</b> (et non en rgba) pour que la colonne Indicator reste opaque au scroll horizontal en mobile.</p>
-  <p class="scope"><b>Commun desktop/mobile :</b> tout le visuel. <b>Spécifique mobile :</b> scroll-snap par colonne, ouverture cadrée, colonne Indicator sticky sur bleu clair opaque.</p>
-
-  <div class="demo-lbl">Variante 2 — desktop</div>
-  <div class="tbl-wrap vblue" id="blue-d"></div>
-
-  <div class="demo-lbl">Variante 2 — mobile 375&nbsp;px</div>
-  <div class="mframe"><div class="snapper"><div class="tbl-wrap vblue" id="blue-m"></div></div></div>
-</div>
-
-<div class="ref-divider">Archive — état précédent, conservé pour référence</div>
-
-<!-- ================= ARCHIVE ================= -->
-<div class="variant" id="v-archive">
-  <span class="vtag">Archive</span>
-  <h2>B Quattrocento</h2>
-  <p class="intent">L'état porté en prod le 21/08, avant le passage en Poppins gris : une seule famille (Quattrocento Sans, celle du corps de l'app), L inversé #f7f8fd, valeurs en navy. Conservé pour mesurer le chemin parcouru — les deux variantes ci-dessus le remplacent.</p>
-  <div class="demo-lbl">Archive — desktop</div>
-  <div class="tbl-wrap ebq" id="ebq-d"></div>
-</div>
-
-</div>
 <script>
-'use strict';
-/* ---------- donnees (fiche type, Md$) ---------- */
 const YEARS=[2021,2022,2023,2024,2025,2026,2027,2028,2029,2030];
-const HIST_N=5, LAST=2025;
-const D={
-  rev:[43.08,45.62,47.95,50.87,53.94,56.99,60.02,62.88,64.51,65.84],
-  growth:[null,5.9,5.1,6.1,6.0,5.7,5.3,4.8,2.6,2.1],
-  ebit:[8.76,9.35,9.98,10.62,11.32,12.05,13.41,15.08,16.72,18.55],
-  margin:[20.3,20.5,20.8,20.9,21.0,21.1,22.3,24.0,25.9,28.2],
-  net:[5.43,5.82,6.21,6.61,7.06,7.52,8.39,9.46,10.53,11.74],
-  shares:[1842,1820,1801,1783,1766,1748,1730,1713,1696,1680],
-  eps:[2.95,3.20,3.45,3.71,4.00,4.30,4.85,5.52,6.21,6.99],
-  pe:[null,null,null,null,null,26.5,23.5,20.7,18.4,16.3],
-  nd:[12.40,11.10,9.85,8.20,6.44,5.10,3.95,2.85,1.90,1.10],
-  de:[1.4,1.2,1.0,0.8,0.6,0.4,0.3,0.2,0.1,0.1],
-  div:[1.10,1.20,1.32,1.45,1.60,1.76,1.98,2.26,2.54,2.86],
-  dy:[null,null,null,null,null,1.5,1.7,2.0,2.2,2.5],
-};
-/* separateur de milliers suisse : apostrophe, partout ou un nombre >= 1000 apparait */
-const swiss=s=>s.replace(/\B(?=(\d{3})+(?!\d))/g,"'");
-const fNum=(v,dec=2)=>{
-  if(v==null)return'—';
-  const neg=v<0, a=Math.abs(v).toFixed(dec).split('.');
-  return (neg?'-':'')+swiss(a[0])+(a[1]?'.'+a[1]:'');
-};
-const fInt=v=>v==null?'—':swiss(Math.round(v).toString());
-const fPct=v=>v==null?'—':v.toFixed(1)+'%';
-const fSPct=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(1)+'%';
-const fX=v=>v==null?'—':v.toFixed(1)+'×';
-
+const FIRST_PROJ=2026;
 const ROWS=[
-  {lbl:'Revenue (Md$)', k:'rev', f:v=>fNum(v), cls:''},
-  {lbl:'Growth %',      k:'growth', f:fSPct, cls:'row-sub'},
-  {lbl:'EBIT (Md$)',    k:'ebit', f:v=>fNum(v), cls:''},
-  {lbl:'EBIT margin',   k:'margin', f:fPct, cls:'row-sub'},
-  {lbl:'Net income (Md$)', k:'net', f:v=>fNum(v), cls:''},
-  {lbl:'Shares (M)',    k:'shares', f:fInt, cls:''},
-  {lbl:'EPS ($)',       k:'eps', f:v=>fNum(v), cls:'row-emph'},
-  {lbl:'P/E (x)',       k:'pe', f:v=>v==null?'—':v.toFixed(1), cls:'row-emph'},
-  {lbl:'Net debt (Md$)',k:'nd', f:v=>fNum(v), cls:''},
-  {lbl:'Debt / EBIT',   k:'de', f:fX, cls:'row-sub'},
-  {lbl:'Dividend ($)',  k:'div', f:v=>fNum(v), cls:''},
-  {lbl:'Div. yield',    k:'dy', f:fPct, cls:'row-sub'},
+ {l:'Revenue ($bn)', v:[43.08,43.65,40.11,41.95,44.33,49.30,53.00,56.98,61.25,65.84], d:2},
+ {l:'Growth %',      v:['+24.5%','+1.3%','−8.1%','+4.6%','+5.7%','+11.2%','+7.5%','+7.5%','+7.5%','+7.5%'], sub:1},
+ {l:'EBIT ($bn)',    v:[8.43,8.36,6.48,6.83,8.22,9.10,10.34,11.57,12.86,14.29], d:2},
+ {l:'EBIT margin',   v:['19.6%','19.2%','16.2%','16.3%','18.5%','18.5%','19.5%','20.3%','21.0%','21.7%'], sub:1},
+ {l:'Net inc. ($bn)',v:[7.07,6.93,5.72,5.91,7.20,7.50,8.55,9.59,10.68,11.88], d:2},
+ {l:'Shares (mn)',   v:[1766,1759,1755,1748,1749,1745,1740,1730,1715,1700], sep:1},
+ {l:'EPS ($)',       v:[4.00,3.94,3.26,3.38,4.12,4.30,4.92,5.54,6.23,6.99], d:2},
+ {l:'P/E (x)',       v:['—','—','—','—','—',27.0,23.6,21.0,18.6,16.6], d:1, sub:1},
+ {l:'Net debt ($bn)',v:[8.00,9.30,8.90,6.60,4.40,24.00,20.00,16.50,13.00,10.00], d:2},
+ {l:'Debt / EBIT',   v:['0.9×','1.1×','1.4×','1.0×','0.5×','2.6×','1.9×','1.4×','1.0×','0.7×'], sub:1},
+ {l:'Dividend ($)',  v:[1.53,1.80,2.04,2.20,2.44,2.52,2.88,3.25,3.65,4.10], d:2},
+ {l:'Div. yield',    v:['—','—','—','—','—','2.2%','2.5%','2.8%','3.1%','3.5%'], sub:1}
 ];
-
-/* ---------- builder ---------- */
-function buildTable(el){
-  const colCls=i=>{
-    let c=[];
-    if(i<HIST_N){c.push('hist');if(i===HIST_N-1)c.push('hist-last');}
-    else{c.push('proj');if(i===HIST_N)c.push('proj-first');}
-    return c.join(' ');
-  };
-  let h='<table><thead><tr><th>Indicator</th>';
-  YEARS.forEach((y,i)=>{
-    const proj=i>=HIST_N;
-    h+=`<th class="${colCls(i)}${proj?' proj-head':''}">${y}</th>`;
+// apostrophe suisse comme separateur de milliers
+const fSep=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'’');
+const cell=(r,i)=>{
+  const v=r.v[i];
+  if(typeof v==='number') return r.sep?fSep(v):v.toFixed(r.d===undefined?2:r.d);
+  return v;
+};
+document.querySelectorAll('table').forEach(t=>{
+  let h='<thead><tr><th></th>';
+  YEARS.forEach(y=>{
+    const p=y>=FIRST_PROJ, f=y===FIRST_PROJ;
+    h+=`<th class="${p?'proj':''}${f?' proj-first':''}">${y}</th>`;
   });
   h+='</tr></thead><tbody>';
   ROWS.forEach(r=>{
-    h+=`<tr class="${r.cls}"><td>${r.lbl}</td>`;
+    h+=`<tr class="${r.sub?'sub':''}"><td>${r.l}</td>`;
     YEARS.forEach((y,i)=>{
-      const v=D[r.k][i], prev=i>0?D[r.k][i-1]:null;
-      const dTitle=(v!=null&&prev!=null&&prev!==0)?` title="${y} vs ${y-1} : ${fSPct((v-prev)/Math.abs(prev)*100)}"`:'';
-      h+=`<td class="${colCls(i)}"${dTitle}>${r.f(v)}</td>`;
+      const p=y>=FIRST_PROJ, f=y===FIRST_PROJ;
+      h+=`<td class="${p?'proj':''}${f?' proj-first':''}">${cell(r,i)}</td>`;
     });
     h+='</tr>';
   });
-  h+='</tbody></table>';
-  el.innerHTML=h;
-  /* ombre de la colonne sticky uniquement quand on a scrolle */
-  el.addEventListener('scroll',()=>el.classList.toggle('scrolled-x',el.scrollLeft>2),{passive:true});
-}
-
-/* ---------- mobile : ouverture cadree sur 2024 | 2025 || 2026 ----------
-   Position posee SANS smooth (sinon un onglet en arriere-plan, rAF throttle,
-   n'anime jamais) et rejouee au load : idempotent. */
-function openOnPivot(el){
-  const ths=[...el.querySelectorAll('thead th')].slice(1);
-  function go(){
-    const t=ths[3]; /* 2024 */
-    if(!t)return;
-    el.style.scrollBehavior='auto';
-    el.scrollLeft=Math.max(0,t.offsetLeft-el.querySelector('th').offsetWidth);
-    el.style.scrollBehavior='';
-  }
-  go();
-  requestAnimationFrame(go);
-  window.addEventListener('load',go);
-}
-
-['grey-d','grey-m','navy-d','navy-m','blue-d','blue-m','ebq-d'].forEach(id=>buildTable(document.getElementById(id)));
-['grey-m','navy-m','blue-m'].forEach(id=>openOnPivot(document.getElementById(id)));
+  t.innerHTML=h+'</tbody>';
+});
 </script>
 </body>
 </html>
