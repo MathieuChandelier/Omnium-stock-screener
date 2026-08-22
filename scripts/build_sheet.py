@@ -18,6 +18,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from openpyxl import Workbook
+from openpyxl.comments import Comment
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 from openpyxl.workbook.defined_name import DefinedName
@@ -198,9 +199,17 @@ def construire(inp, chemin):
     pose("Capex / CA", "capexRatio", h["capexSurCA"]["valeur"], "normatif", None, h["capexSurCA"]["moteur"])
     pose("Duree d'amortissement", "dureeAmort", h["dureeAmortissement"]["valeur"], "normatif", None, h["dureeAmortissement"]["moteur"])
     rf = h["resultatFinancier"]
-    pose("Taux sur dette brute", "tauxDette", rf["tauxDetteBrute"], "rang %d" % rf["rang"], None, rf["moteur"])
-    pose("Taux sur tresorerie", "tauxCash", rf["tauxPlacementCash"], "rang %d" % rf["rang"], None, rf["moteur"])
-    pose("Taux sur dette locative", "tauxLease", rf["tauxLease"], "rang %d" % rf["rang"], None, rf["moteur"])
+    if "tauxDetteBrute" in rf:
+        pose("Taux sur dette brute", "tauxDette", rf["tauxDetteBrute"], "rang %d" % rf["rang"], None, rf["moteur"])
+    if "tauxPlacementCash" in rf:
+        pose("Taux sur tresorerie", "tauxCash", rf["tauxPlacementCash"], "rang %d" % rf["rang"], None, rf["moteur"])
+    if "tauxLease" in rf:
+        pose("Taux sur dette locative", "tauxLease", rf["tauxLease"], "rang %d" % rf["rang"], None, rf["moteur"])
+    if "spreadNormatif" in rf:
+        pose("Spread normatif sur dette nette", "spreadNormatif", rf["spreadNormatif"],
+             "rang %d" % rf["rang"], None, rf["moteur"])
+    if "valeur" in rf:
+        pose("Resultat financier publie", "finPublie", rf["valeur"], "rang %d" % rf["rang"], None, rf["moteur"])
     pose("Rachat d'actions / an", "rachatPct", h["actions"]["rachatAnnuelPct"], h["actions"]["rang"],
          h["actions"].get("expire"), h["actions"]["moteur"])
     pose("Taux de distribution", "tauxDistrib", h["distribution"]["tauxDistribution"], "normatif", None, h["distribution"]["moteur"])
@@ -405,15 +414,37 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
     l_dette = ligne("Dette brute", bil0["debtGross"], lambda an, col, prev, rr: "=%s%d" % (prev, rr), None, nom="dette")
     l_cash = ligne("Tresorerie", bil0["cash"], lambda an, col, prev, rr: "=%s%d" % (prev, rr), None, nom="cash")
     l_lease = ligne("Dette locative", bil0["leaseDebt"], lambda an, col, prev, rr: "=%s%d" % (prev, rr), None)
-    l_fin = ligne("Resultat financier (rang 2)", pub["finNet"],
-                  lambda an, col, prev, rr: "=-(%s%d*tauxDette)+%s%d*tauxCash-(%s%d*tauxLease)"
-                  % (prev, l_dette, prev, l_cash, prev, l_lease), "finNet")
+    rang_fin = h["resultatFinancier"].get("rang", 3)
+    if rang_fin == 1:
+        f_fin = lambda an, col, prev, rr: "=finPublie"
+    elif rang_fin == 2:
+        f_fin = lambda an, col, prev, rr: ("=-(%s%d*tauxDette)+%s%d*tauxCash-(%s%d*tauxLease)"
+                                           % (prev, l_dette, prev, l_cash, prev, l_lease))
+    else:
+        f_fin = lambda an, col, prev, rr: ("=-(%s%d-%s%d+%s%d)*spreadNormatif"
+                                           % (prev, l_dette, prev, l_cash, prev, l_lease))
+    l_fin = ligne("Resultat financier (rang %d)" % rang_fin, pub["finNet"], f_fin, "finNet")
 
     l_avant = ligne("Resultat avant impot", pub["avantImpot"],
                     lambda an, col, prev, rr: "=%s%d+%s%d" % (col, l_ebit, col, l_fin), "avantImpot")
     l_taux = ligne("Taux d'impot applique", None, lambda an, col, prev, rr: "=tauxIS_%d" % an, "tauxImpot", fmt="0.0%")
-    l_imp = ligne("Impot", pub["impot"],
-                  lambda an, col, prev, rr: "=-%s%d*%s%d" % (col, l_avant, col, l_taux), "impot")
+    # OVERRIDE DECLARE (regle 7). Le moteur calcule ; quand le jugement
+    # diverge, la valeur posee dans inputs/ remplace la formule - et elle
+    # apparait TELLE QUELLE dans la feuille, avec sa justification en
+    # commentaire de cellule. Une exception declaree, jamais silencieuse.
+    ovr = {int(a): v for a, v in (inp.get("overrides") or {}).items() if a.isdigit()}
+
+    def f_impot(an, col, prev, rr):
+        o = (ovr.get(an) or {}).get("impot")
+        return o["valeur"] if o else "=-%s%d*%s%d" % (col, l_avant, col, l_taux)
+
+    l_imp = ligne("Impot", pub["impot"], f_impot, "impot")
+    for i, an in enumerate(horizon):
+        o = (ovr.get(an) or {}).get("impot")
+        if o:
+            c = ws.cell(row=l_imp, column=3 + i)
+            c.fill = PatternFill("solid", fgColor="FFF3CD")
+            c.comment = Comment("OVERRIDE DECLARE\n\n" + o["justification"], "Omnium engine")
     l_min = ligne("Minoritaires", pub["minoritaires"],
                   lambda an, col, prev, rr: "=partMinos*(%s%d+%s%d)" % (col, l_avant, col, l_imp), "minoritaires")
     l_net = ligne("Resultat net", pub["net"],

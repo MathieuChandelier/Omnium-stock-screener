@@ -110,6 +110,24 @@ def fin_net(bilan, params):
     return -(bilan["debtGross"] - bilan["cash"] + bilan["leaseDebt"]) * params["spreadNormatif"], 3
 
 
+def override(inp, annee, metrique):
+    """Echappatoire DECLAREE (regle 7).
+
+    Le moteur calcule ; si le jugement diverge, il pose ici une valeur avec sa
+    justification, et l'override apparait TEL QUEL dans les sorties. Une
+    exception declaree remplace un paragraphe de doctrine par cas particulier -
+    a la condition stricte qu'elle soit toujours visible. Une valeur sans
+    justification est refusee : c'est ce qui empeche l'echappatoire de devenir
+    une porte derobee.
+    """
+    e = ((inp.get("overrides") or {}).get(str(annee)) or {}).get(metrique)
+    if e is None:
+        return None
+    if not str(e.get("justification", "")).strip():
+        raise ValueError("override %s %s sans justification" % (annee, metrique))
+    return e
+
+
 def projette(inp):
     """Deroule l'horizon. Retourne une ligne par annee, chaque metrique
     accompagnee du rang du moteur qui l'a produite."""
@@ -144,6 +162,9 @@ def projette(inp):
         fn, rang_f = fin_net(bil, h["resultatFinancier"])
         avant = ebit + fn
         impot = -avant * t
+        ov = override(inp, an, "impot")
+        if ov is not None:
+            impot, rang_t = ov["valeur"], "override"
         minos = pub["minoritaires"] / pub["net"] * (avant + impot) if pub.get("net") else 0.0
         net = avant + impot + minos
 
@@ -162,6 +183,7 @@ def projette(inp):
             "ebit": ebit, "finNet": fn, "rangFinNet": rang_f, "avantImpot": avant,
             "tauxImpot": t, "rangTaux": rang_t, "moteurTaux": mot_t,
             "impot": impot, "minoritaires": minos, "net": net,
+            "override": bool(override(inp, an, "impot")),
             "actions": actions, "eps": eps, "dividende": div,
         })
     return out

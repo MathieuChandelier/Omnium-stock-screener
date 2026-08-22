@@ -1,0 +1,239 @@
+{
+  "_doc": "Cas COMPLEXE. Cumule les pieges rencontres en reel : DEUX acquisitions a echeanciers PPA decales dont une qui S'ETEINT en cours d'horizon, retraitements des deux classes ET des deux origines avec un impot PROPRE a une ligne, guidance qui perime au bout d'un an, exercice 2027 en PERTE avant impot ou l'impot reste une CHARGE (override declare), minoritaires significatifs, dette locative. Volontairement pas plus complique que ca : chaque piege doit rester tracable a l'oeil.",
+  "identite": {
+    "nom": "Complexe SA",
+    "reportingCurrency": "EUR",
+    "quoteCurrency": "EUR",
+    "cours": 47.0,
+    "coursAsOf": "2026-08-22",
+    "issuerType": "corporate",
+    "base": "IFRS"
+  },
+  "comptes": {
+    "2025-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif du 25/02/2026, table de reconciliation en annexe",
+      "publie": {
+        "ca": 2000.0,
+        "margeBrute": 1100.0,
+        "ebitda": 380.0,
+        "da": -190.0,
+        "ebit": 190.0,
+        "finNet": -48.0,
+        "avantImpot": 142.0,
+        "impot": -40.0,
+        "minoritaires": -22.0,
+        "net": 80.0
+      },
+      "ajustePublie": {
+        "ebitda": 425.0,
+        "ebit": 300.0,
+        "net": 178.0
+      },
+      "retraitements": [
+        {
+          "id": "restructuration-plan-2025",
+          "libelle": "One-off restructuring plan announced in 2025",
+          "ebitda": 45.0,
+          "ebit": 45.0,
+          "net": 45.0,
+          "impot": -3.0,
+          "classe": "oneOff",
+          "origine": "emetteur"
+        },
+        {
+          "id": "beta-ppa-amort",
+          "libelle": "Amortisation of intangibles from the Beta PPA",
+          "ebitda": 0.0,
+          "ebit": 42.0,
+          "net": 42.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        },
+        {
+          "id": "gamma-ppa-amort",
+          "libelle": "Amortisation of intangibles from the Gamma PPA",
+          "ebitda": 0.0,
+          "ebit": 23.0,
+          "net": 23.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        },
+        {
+          "id": "dette-acquisition-interets",
+          "libelle": "Interest on the acquisition debt",
+          "ebitda": 0.0,
+          "ebit": 0.0,
+          "net": 14.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        },
+        {
+          "id": "litige-provision-2025",
+          "libelle": "Isolated litigation provision, not restated by the issuer",
+          "ebitda": 18.0,
+          "ebit": 18.0,
+          "net": 18.0,
+          "classe": "oneOff",
+          "origine": "omnium"
+        }
+      ],
+      "impotSurRetraitements": -26.0
+    }
+  },
+  "bilan": {
+    "2025-FY": {
+      "debtGross": 1150.0,
+      "cash": 180.0,
+      "leaseDebt": 240.0,
+      "source": "Bilan consolide fictif au 31/12/2025"
+    }
+  },
+  "actions": {
+    "2025": 64.0
+  },
+  "ppa": {
+    "beta": {
+      "libelle": "Acquisition Beta (closing 2022) — s'eteint en 2029",
+      "degre": "echeancier_publie",
+      "echeancier": {
+        "2026": 42.0,
+        "2027": 34.0,
+        "2028": 21.0,
+        "2029": 6.0,
+        "2030": 0.0
+      },
+      "source": "Note incorporels du rapport annuel fictif 2025"
+    },
+    "gamma": {
+      "libelle": "Acquisition Gamma (closing 2025) — plein effet a partir de 2026",
+      "degre": "echeancier_publie",
+      "echeancier": {
+        "2026": 31.0,
+        "2027": 31.0,
+        "2028": 29.0,
+        "2029": 26.0,
+        "2030": 22.0
+      },
+      "source": "Note d'affectation du prix d'acquisition, rapport annuel fictif 2025"
+    }
+  },
+  "hypotheses": {
+    "horizon": [
+      2026,
+      2027,
+      2028,
+      2029,
+      2030
+    ],
+    "croissanceCA": {
+      "2026": {
+        "valeur": 0.03,
+        "rang": "guidance",
+        "expire": 2026,
+        "moteur": "Guidance FY26 : croissance organique +2 a +4 %",
+        "source": "Call FY2025 du 25/02/2026"
+      },
+      "2027": {
+        "valeur": -0.06,
+        "rang": "implicite",
+        "moteur": "Perte du contrat Delta (25 % du CA de la division Nord), non renouvele au 30/06/2027"
+      },
+      "2028": {
+        "valeur": 0.04,
+        "rang": "normatif",
+        "moteur": "Retour a la croissance de marche apres l'effet de base"
+      },
+      "2029": {
+        "valeur": 0.045,
+        "rang": "normatif",
+        "moteur": "Retour a la croissance de marche apres l'effet de base"
+      },
+      "2030": {
+        "valeur": 0.045,
+        "rang": "normatif",
+        "moteur": "Retour a la croissance de marche apres l'effet de base"
+      }
+    },
+    "margeEbitda": {
+      "2026": {
+        "valeur": 0.192,
+        "rang": "guidance",
+        "expire": 2026,
+        "moteur": "Guidance FY26 : marge d'EBITDA ajustee 19 a 19,5 %",
+        "source": "Call FY2025 du 25/02/2026"
+      },
+      "2027": {
+        "valeur": 0.15,
+        "rang": "implicite",
+        "moteur": "Effet de levier operationnel inverse sur la perte du contrat Delta, couts fixes non ajustables a court terme"
+      },
+      "2028": {
+        "valeur": 0.178,
+        "rang": "implicite",
+        "moteur": "Redressement progressif apres restructuration du perimetre Nord"
+      },
+      "2029": {
+        "valeur": 0.19,
+        "rang": "normatif",
+        "moteur": "Retour au niveau de marge historique"
+      },
+      "2030": {
+        "valeur": 0.195,
+        "rang": "normatif",
+        "moteur": "Retour au niveau de marge historique"
+      }
+    },
+    "capexSurCA": {
+      "valeur": 0.055,
+      "moteur": "Ratio de capex normatif, moyenne des 3 derniers exercices"
+    },
+    "dureeAmortissement": {
+      "valeur": 9.0,
+      "moteur": "Duree implicite = immobilisations brutes / dotation courante"
+    },
+    "tauxImpot": {
+      "2026": {
+        "valeur": 0.27,
+        "rang": "guidance",
+        "expire": 2026,
+        "moteur": "Taux effectif guide 26-28 % pour FY26",
+        "source": "Call FY2025 du 25/02/2026"
+      },
+      "defaut": {
+        "valeur": 0.285,
+        "rang": "normatif",
+        "moteur": "Taux effectif observe nettoye des elements discrets, moyenne 3 ans, releve de 1,5 pt par la reforme fiscale votee en 2026"
+      }
+    },
+    "resultatFinancier": {
+      "rang": 2,
+      "tauxDetteBrute": 0.048,
+      "tauxPlacementCash": 0.018,
+      "tauxLease": 0.038,
+      "moteur": "Rang 2 : taux appliques aux postes de bilan decomposes, faute de detail publie par instrument"
+    },
+    "actions": {
+      "rachatAnnuelPct": 0.008,
+      "rang": "implicite",
+      "moteur": "Rachats limites a la neutralisation de la dilution, aucun programme annonce"
+    },
+    "distribution": {
+      "tauxDistribution": 0.25,
+      "moteur": "Politique de dividende : 25 % du resultat net"
+    },
+    "regleTerminale": {
+      "croissanceTerminale": 0.03,
+      "margeTerminale": 0.195,
+      "moteur": "Au-dela de l'horizon pose, convergence vers ces valeurs"
+    }
+  },
+  "overrides": {
+    "2027": {
+      "impot": {
+        "valeur": -6.0,
+        "justification": "Exercice en perte avant impot, mais l'impot reste une CHARGE : les deficits du perimetre Nord ne donnent pas lieu a reconnaissance d'actifs d'impot differe (perspectives de recuperation insuffisantes), et les filiales beneficiaires restent imposees localement. Un taux normatif applique mecaniquement aurait produit un PRODUIT d'impot de +6,7, soit une erreur de 12,7 sur le resultat net. Cas verifie en reel sur SEB au S1 2026."
+      }
+    }
+  }
+}

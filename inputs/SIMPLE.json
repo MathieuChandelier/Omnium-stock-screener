@@ -1,0 +1,47 @@
+{
+  "_doc": "Cas SIMPLE. Une societe qui reporte proprement : pas d'ajuste, pas d'acquisition, pas de retraitement. Tout doit se tracer a l'oeil du CA au BPA sans un seul detour. Sert de reference de lisibilite : si une formule n'est pas evidente ICI, elle est trop compliquee.",
+  "identite": {
+    "nom": "Simple SA", "reportingCurrency": "EUR", "quoteCurrency": "EUR",
+    "cours": 60.0, "coursAsOf": "2026-08-22", "issuerType": "corporate", "base": "IFRS"
+  },
+  "comptes": {
+    "2025-FY": {
+      "base": "IFRS",
+      "source": "Compte de resultat consolide fictif au 31/12/2025",
+      "publie": {
+        "ca": 500.0, "margeBrute": 300.0, "ebitda": 100.0, "da": -20.0,
+        "ebit": 80.0, "finNet": -5.0, "avantImpot": 75.0,
+        "impot": -18.75, "minoritaires": 0.0, "net": 56.25
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    }
+  },
+  "bilan": { "2025-FY": { "debtGross": 150.0, "cash": 50.0, "leaseDebt": 0.0,
+                          "source": "Bilan consolide fictif au 31/12/2025" } },
+  "actions": { "2025": 25.0 },
+  "ppa": {},
+  "hypotheses": {
+    "horizon": [2026, 2027, 2028],
+    "croissanceCA": {
+      "2026": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" },
+      "2027": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" },
+      "2028": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" }
+    },
+    "margeEbitda": {
+      "2026": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" },
+      "2027": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" },
+      "2028": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" }
+    },
+    "capexSurCA": { "valeur": 0.04, "moteur": "Capex normatif, stable" },
+    "dureeAmortissement": { "valeur": 10.0, "moteur": "Duree implicite du parc" },
+    "tauxImpot": { "defaut": { "valeur": 0.25, "rang": "normatif", "moteur": "Taux effectif observe, stable" } },
+    "resultatFinancier": { "rang": 3, "spreadNormatif": 0.05,
+                           "moteur": "Rang 3 : spread normatif applique a la dette nette, aucun detail publie par instrument" },
+    "actions": { "rachatAnnuelPct": 0.0, "rang": "normatif", "moteur": "Aucun programme de rachat" },
+    "distribution": { "tauxDistribution": 0.40, "moteur": "Politique de dividende : 40 % du resultat net" },
+    "regleTerminale": { "croissanceTerminale": 0.03, "margeTerminale": 0.20,
+                        "moteur": "Au-dela de l'horizon pose, convergence vers ces valeurs" }
+  },
+  "overrides": {}
+}
