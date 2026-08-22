@@ -56,6 +56,39 @@ def _nom(wb, ws, nom, row, col):
     wb.defined_names.add(DefinedName(nom, attr_text=ref))
 
 
+EPOQUE = (2000, 1, 1, 0, 0, 0)
+
+
+def _normaliser(chemin):
+    """Rend le .xlsx REPRODUCTIBLE a l'octet.
+
+    openpyxl reecrit `dcterms:modified` a l'enregistrement et le ZIP horodate
+    chaque membre a l'instant de l'ecriture : deux builds identiques
+    produisaient deux fichiers differents. Sans cette normalisation, une
+    regeneration des 59 titres afficherait 59 fichiers modifies alors que rien
+    n'a bouge, et le diff - qui est justement le rapport d'impact - devient
+    illisible. On repasse donc l'archive avec un horodatage fige et un ordre
+    stable.
+    """
+    import re
+    import shutil
+    import zipfile
+
+    src = zipfile.ZipFile(chemin)
+    membres = [(i.filename, src.read(i.filename)) for i in sorted(src.infolist(), key=lambda x: x.filename)]
+    src.close()
+    tmp = chemin + ".tmp"
+    with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as out:
+        for nom, data in membres:
+            if nom == "docProps/core.xml":
+                data = re.sub(rb">[^<]*</dcterms:modified>", b">2000-01-01T00:00:00Z</dcterms:modified>", data)
+            info = zipfile.ZipInfo(nom, date_time=EPOQUE)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o600 << 16
+            out.writestr(info, data)
+    shutil.move(tmp, chemin)
+
+
 def construire(inp, chemin):
     h = inp["hypotheses"]
     horizon = h["horizon"]
@@ -69,6 +102,18 @@ def construire(inp, chemin):
     empreinte = hashlib.sha256(json.dumps(inp, sort_keys=True).encode()).hexdigest()[:12]
 
     wb = Workbook()
+    # PURETE AU NIVEAU DU FICHIER. openpyxl horodate le classeur a la
+    # generation : deux builds identiques produisaient deux fichiers
+    # differents, et `git status` aurait signale les 59 comme modifies apres
+    # chaque regeneration, meme sans le moindre changement. On fige donc les
+    # proprietes de document - le seul horodatage qui compte est l'empreinte
+    # des entrees, portee en A1.
+    from datetime import datetime
+    fige = datetime(2000, 1, 1)
+    wb.properties.created = fige
+    wb.properties.modified = fige
+    wb.properties.creator = "Omnium engine v%s" % ENGINE_VERSION
+    wb.properties.lastModifiedBy = "Omnium engine v%s" % ENGINE_VERSION
 
     # ══ 1. Lisez-moi ═══════════════════════════════════════════════════
     ws = wb.active
@@ -274,6 +319,7 @@ def construire(inp, chemin):
     lignes = _construire_modele(wb, inp, proj, pub, bil0, an0, horizon)
     _construire_controles(wb, proj, horizon, lignes)
     wb.save(chemin)
+    _normaliser(chemin)
     return empreinte, len(proj)
 
 
