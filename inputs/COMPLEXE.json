@@ -10,6 +10,108 @@
     "base": "IFRS"
   },
   "comptes": {
+    "2021-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif de fevrier 2022",
+      "publie": {
+        "ca": 1740.0,
+        "margeBrute": 957.0,
+        "ebitda": 340.0,
+        "da": -150.0,
+        "ebit": 190.0,
+        "finNet": -30.0,
+        "avantImpot": 160.0,
+        "impot": -45.6,
+        "minoritaires": -14.9,
+        "net": 99.5
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    },
+    "2022-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif de fevrier 2023",
+      "publie": {
+        "ca": 1820.0,
+        "margeBrute": 1001.0,
+        "ebitda": 352.0,
+        "da": -162.0,
+        "ebit": 190.0,
+        "finNet": -36.0,
+        "avantImpot": 154.0,
+        "impot": -43.9,
+        "minoritaires": -14.3,
+        "net": 95.8
+      },
+      "retraitements": [
+        {
+          "id": "beta-ppa-amort",
+          "libelle": "Amortisation of intangibles from the Beta PPA",
+          "ebitda": 0.0,
+          "ebit": 58.0,
+          "net": 58.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        }
+      ],
+      "impotSurRetraitements": -16.5
+    },
+    "2023-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif de fevrier 2024",
+      "publie": {
+        "ca": 1880.0,
+        "margeBrute": 1034.0,
+        "ebitda": 358.0,
+        "da": -175.0,
+        "ebit": 183.0,
+        "finNet": -42.0,
+        "avantImpot": 141.0,
+        "impot": -40.2,
+        "minoritaires": -13.1,
+        "net": 87.7
+      },
+      "retraitements": [
+        {
+          "id": "beta-ppa-amort",
+          "libelle": "Amortisation of intangibles from the Beta PPA",
+          "ebitda": 0.0,
+          "ebit": 53.0,
+          "net": 53.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        }
+      ],
+      "impotSurRetraitements": -15.1
+    },
+    "2024-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif de fevrier 2025",
+      "publie": {
+        "ca": 1940.0,
+        "margeBrute": 1067.0,
+        "ebitda": 366.0,
+        "da": -183.0,
+        "ebit": 183.0,
+        "finNet": -45.0,
+        "avantImpot": 138.0,
+        "impot": -39.3,
+        "minoritaires": -12.8,
+        "net": 85.9
+      },
+      "retraitements": [
+        {
+          "id": "beta-ppa-amort",
+          "libelle": "Amortisation of intangibles from the Beta PPA",
+          "ebitda": 0.0,
+          "ebit": 48.0,
+          "net": 48.0,
+          "classe": "recurrent",
+          "origine": "emetteur"
+        }
+      ],
+      "impotSurRetraitements": -13.7
+    },
     "2025-FY": {
       "base": "IFRS",
       "source": "Communique annuel fictif du 25/02/2026, table de reconciliation en annexe",
@@ -82,6 +184,30 @@
     }
   },
   "bilan": {
+    "2021-FY": {
+      "debtGross": 900.0,
+      "cash": 140.0,
+      "leaseDebt": 200.0,
+      "source": "Bilan consolide fictif au 31/12/2021"
+    },
+    "2022-FY": {
+      "debtGross": 1080.0,
+      "cash": 150.0,
+      "leaseDebt": 215.0,
+      "source": "Bilan consolide fictif au 31/12/2022"
+    },
+    "2023-FY": {
+      "debtGross": 1050.0,
+      "cash": 160.0,
+      "leaseDebt": 225.0,
+      "source": "Bilan consolide fictif au 31/12/2023"
+    },
+    "2024-FY": {
+      "debtGross": 1010.0,
+      "cash": 170.0,
+      "leaseDebt": 232.0,
+      "source": "Bilan consolide fictif au 31/12/2024"
+    },
     "2025-FY": {
       "debtGross": 1150.0,
       "cash": 180.0,
@@ -90,6 +216,10 @@
     }
   },
   "actions": {
+    "2021": 66.0,
+    "2022": 65.6,
+    "2023": 65.2,
+    "2024": 64.6,
     "2025": 64.0
   },
   "ppa": {

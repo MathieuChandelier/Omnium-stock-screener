@@ -1,47 +1,220 @@
 {
   "_doc": "Cas SIMPLE. Une societe qui reporte proprement : pas d'ajuste, pas d'acquisition, pas de retraitement. Tout doit se tracer a l'oeil du CA au BPA sans un seul detour. Sert de reference de lisibilite : si une formule n'est pas evidente ICI, elle est trop compliquee.",
   "identite": {
-    "nom": "Simple SA", "reportingCurrency": "EUR", "quoteCurrency": "EUR",
-    "cours": 60.0, "coursAsOf": "2026-08-22", "issuerType": "corporate", "base": "IFRS"
+    "nom": "Simple SA",
+    "reportingCurrency": "EUR",
+    "quoteCurrency": "EUR",
+    "cours": 60.0,
+    "coursAsOf": "2026-08-22",
+    "issuerType": "corporate",
+    "base": "IFRS"
   },
   "comptes": {
+    "2021-FY": {
+      "base": "IFRS",
+      "source": "Compte de resultat consolide fictif au 31/12/2021",
+      "publie": {
+        "ca": 411.0,
+        "margeBrute": 246.0,
+        "ebitda": 80.0,
+        "da": -16.0,
+        "ebit": 64.0,
+        "finNet": -6.0,
+        "avantImpot": 58.0,
+        "impot": -14.5,
+        "minoritaires": -0.0,
+        "net": 43.5
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    },
+    "2022-FY": {
+      "base": "IFRS",
+      "source": "Compte de resultat consolide fictif au 31/12/2022",
+      "publie": {
+        "ca": 432.0,
+        "margeBrute": 259.0,
+        "ebitda": 85.0,
+        "da": -17.0,
+        "ebit": 68.0,
+        "finNet": -6.0,
+        "avantImpot": 62.0,
+        "impot": -15.5,
+        "minoritaires": -0.0,
+        "net": 46.5
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    },
+    "2023-FY": {
+      "base": "IFRS",
+      "source": "Compte de resultat consolide fictif au 31/12/2023",
+      "publie": {
+        "ca": 453.0,
+        "margeBrute": 272.0,
+        "ebitda": 89.0,
+        "da": -18.0,
+        "ebit": 71.0,
+        "finNet": -5.5,
+        "avantImpot": 65.5,
+        "impot": -16.4,
+        "minoritaires": -0.0,
+        "net": 49.1
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    },
+    "2024-FY": {
+      "base": "IFRS",
+      "source": "Compte de resultat consolide fictif au 31/12/2024",
+      "publie": {
+        "ca": 476.0,
+        "margeBrute": 286.0,
+        "ebitda": 94.0,
+        "da": -19.0,
+        "ebit": 75.0,
+        "finNet": -5.2,
+        "avantImpot": 69.8,
+        "impot": -17.4,
+        "minoritaires": -0.0,
+        "net": 52.4
+      },
+      "retraitements": [],
+      "impotSurRetraitements": 0.0
+    },
     "2025-FY": {
       "base": "IFRS",
       "source": "Compte de resultat consolide fictif au 31/12/2025",
       "publie": {
-        "ca": 500.0, "margeBrute": 300.0, "ebitda": 100.0, "da": -20.0,
-        "ebit": 80.0, "finNet": -5.0, "avantImpot": 75.0,
-        "impot": -18.75, "minoritaires": 0.0, "net": 56.25
+        "ca": 500.0,
+        "margeBrute": 300.0,
+        "ebitda": 100.0,
+        "da": -20.0,
+        "ebit": 80.0,
+        "finNet": -5.0,
+        "avantImpot": 75.0,
+        "impot": -18.8,
+        "minoritaires": -0.0,
+        "net": 56.2
       },
       "retraitements": [],
       "impotSurRetraitements": 0.0
     }
   },
-  "bilan": { "2025-FY": { "debtGross": 150.0, "cash": 50.0, "leaseDebt": 0.0,
-                          "source": "Bilan consolide fictif au 31/12/2025" } },
-  "actions": { "2025": 25.0 },
+  "bilan": {
+    "2021-FY": {
+      "debtGross": 190.0,
+      "cash": 20.0,
+      "leaseDebt": 0.0,
+      "source": "Bilan consolide fictif au 31/12/2021"
+    },
+    "2022-FY": {
+      "debtGross": 180.0,
+      "cash": 28.0,
+      "leaseDebt": 0.0,
+      "source": "Bilan consolide fictif au 31/12/2022"
+    },
+    "2023-FY": {
+      "debtGross": 172.0,
+      "cash": 36.0,
+      "leaseDebt": 0.0,
+      "source": "Bilan consolide fictif au 31/12/2023"
+    },
+    "2024-FY": {
+      "debtGross": 160.0,
+      "cash": 44.0,
+      "leaseDebt": 0.0,
+      "source": "Bilan consolide fictif au 31/12/2024"
+    },
+    "2025-FY": {
+      "debtGross": 150.0,
+      "cash": 50.0,
+      "leaseDebt": 0.0,
+      "source": "Bilan consolide fictif au 31/12/2025"
+    }
+  },
+  "actions": {
+    "2021": 25.0,
+    "2022": 25.0,
+    "2023": 25.0,
+    "2024": 25.0,
+    "2025": 25.0
+  },
   "ppa": {},
   "hypotheses": {
-    "horizon": [2026, 2027, 2028],
+    "horizon": [
+      2026,
+      2027,
+      2028
+    ],
     "croissanceCA": {
-      "2026": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" },
-      "2027": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" },
-      "2028": { "valeur": 0.05, "rang": "normatif", "moteur": "Croissance de marche, aucune guidance publiee" }
+      "2026": {
+        "valeur": 0.05,
+        "rang": "normatif",
+        "moteur": "Croissance de marche, aucune guidance publiee"
+      },
+      "2027": {
+        "valeur": 0.05,
+        "rang": "normatif",
+        "moteur": "Croissance de marche, aucune guidance publiee"
+      },
+      "2028": {
+        "valeur": 0.05,
+        "rang": "normatif",
+        "moteur": "Croissance de marche, aucune guidance publiee"
+      }
     },
     "margeEbitda": {
-      "2026": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" },
-      "2027": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" },
-      "2028": { "valeur": 0.20, "rang": "normatif", "moteur": "Marge stable au niveau observe" }
+      "2026": {
+        "valeur": 0.2,
+        "rang": "normatif",
+        "moteur": "Marge stable au niveau observe"
+      },
+      "2027": {
+        "valeur": 0.2,
+        "rang": "normatif",
+        "moteur": "Marge stable au niveau observe"
+      },
+      "2028": {
+        "valeur": 0.2,
+        "rang": "normatif",
+        "moteur": "Marge stable au niveau observe"
+      }
     },
-    "capexSurCA": { "valeur": 0.04, "moteur": "Capex normatif, stable" },
-    "dureeAmortissement": { "valeur": 10.0, "moteur": "Duree implicite du parc" },
-    "tauxImpot": { "defaut": { "valeur": 0.25, "rang": "normatif", "moteur": "Taux effectif observe, stable" } },
-    "resultatFinancier": { "rang": 3, "spreadNormatif": 0.05,
-                           "moteur": "Rang 3 : spread normatif applique a la dette nette, aucun detail publie par instrument" },
-    "actions": { "rachatAnnuelPct": 0.0, "rang": "normatif", "moteur": "Aucun programme de rachat" },
-    "distribution": { "tauxDistribution": 0.40, "moteur": "Politique de dividende : 40 % du resultat net" },
-    "regleTerminale": { "croissanceTerminale": 0.03, "margeTerminale": 0.20,
-                        "moteur": "Au-dela de l'horizon pose, convergence vers ces valeurs" }
+    "capexSurCA": {
+      "valeur": 0.04,
+      "moteur": "Capex normatif, stable"
+    },
+    "dureeAmortissement": {
+      "valeur": 10.0,
+      "moteur": "Duree implicite du parc"
+    },
+    "tauxImpot": {
+      "defaut": {
+        "valeur": 0.25,
+        "rang": "normatif",
+        "moteur": "Taux effectif observe, stable"
+      }
+    },
+    "resultatFinancier": {
+      "rang": 3,
+      "spreadNormatif": 0.05,
+      "moteur": "Rang 3 : spread normatif applique a la dette nette, aucun detail publie par instrument"
+    },
+    "actions": {
+      "rachatAnnuelPct": 0.0,
+      "rang": "normatif",
+      "moteur": "Aucun programme de rachat"
+    },
+    "distribution": {
+      "tauxDistribution": 0.4,
+      "moteur": "Politique de dividende : 40 % du resultat net"
+    },
+    "regleTerminale": {
+      "croissanceTerminale": 0.03,
+      "margeTerminale": 0.2,
+      "moteur": "Au-dela de l'horizon pose, convergence vers ces valeurs"
+    }
   },
   "overrides": {}
 }

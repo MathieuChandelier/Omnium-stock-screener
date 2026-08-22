@@ -222,23 +222,39 @@ def construire(inp, chemin):
     ws = wb.create_sheet("Historique")
     for col, w in zip("ABCDEFG", (34, 13, 13, 13, 13, 13, 46)):
         ws.column_dimensions[col].width = w
-    r = _titre(ws, 1, "ECHELLE PUBLIEE %s — un modele unique, les barreaux non publies restent vides" % hist_key, 7)
+    periodes = sorted(inp["comptes"])
+    r = _titre(ws, 1, "ECHELLE PUBLIEE — un modele unique, les barreaux non publies restent vides", 2 + len(periodes))
     ECH = ["ca", "margeBrute", "ebitda", "da", "ebit", "finNet", "avantImpot", "impot", "minoritaires", "net"]
     ws.cell(row=r, column=1, value="barreau").font = LBLB
-    ws.cell(row=r, column=2, value="publie").font = LBLB
-    for c in (1, 2):
-        ws.cell(row=r, column=c).fill = FILL_L
+    ws.cell(row=r, column=1).fill = FILL_L
+    for i, pk in enumerate(periodes):
+        c = ws.cell(row=r, column=2 + i, value=pk)
+        c.font = LBLB
+        c.fill = FILL_L
     r += 1
+    col_courante = 2 + periodes.index(hist_key)
     ligne_pub = {}
     for k in ECH:
         ws.cell(row=r, column=1, value=k).font = LBL
+        for i, pk in enumerate(periodes):
+            v = inp["comptes"][pk]["publie"].get(k)
+            if isinstance(v, (int, float)):
+                c = ws.cell(row=r, column=2 + i, value=v)
+                c.font = MONO
+                c.number_format = "#,##0.0"
         if isinstance(pub.get(k), (int, float)):
-            c = ws.cell(row=r, column=2, value=pub[k])
-            c.font = MONO
-            c.number_format = "#,##0.0"
-            _nom(wb, ws, "pub_%s" % k, r, 2)
+            _nom(wb, ws, "pub_%s" % k, r, col_courante)
             ligne_pub[k] = r
         r += 1
+    r += 1
+    ws.cell(row=r, column=1, value="Taux d'impot effectif observe").font = LBLB
+    for i, pk in enumerate(periodes):
+        p2 = inp["comptes"][pk]["publie"]
+        if p2.get("avantImpot"):
+            c = ws.cell(row=r, column=2 + i, value=-p2["impot"] / p2["avantImpot"])
+            c.font = MONO
+            c.number_format = "0.0%"
+    r += 1
 
     r += 1
     ws.cell(row=r, column=1, value="IDENTITES DE L'ECHELLE").font = LBLB
@@ -250,10 +266,12 @@ def construire(inp, chemin):
         if cible in ligne_pub and all(t in ligne_pub for t in termes):
             ws.cell(row=r, column=1, value=" + ".join(termes) + " = " + cible).font = SMALL
             f = "=" + "+".join("pub_%s" % t for t in termes) + "-pub_%s" % cible
-            c = ws.cell(row=r, column=2, value=f)
+            c = ws.cell(row=r, column=col_courante, value=f)
             c.font = MONO
             c.number_format = "0.00"
-            ws.cell(row=r, column=3, value='=IF(ABS(B%d)<=MAX(1,ABS(pub_%s)*0.005),"OK","ECART")' % (r, cible)).font = LBLB
+            ws.cell(row=r, column=col_courante + 1,
+                    value='=IF(ABS(%s%d)<=MAX(1,ABS(pub_%s)*0.005),"OK","ECART")'
+                    % (get_column_letter(col_courante), r, cible)).font = LBLB
             r += 1
 
     r += 1
@@ -360,8 +378,9 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
     entete = r - 1
 
     lignes = {}
+    formules = []
 
-    def ligne(label, base_val, formule, cle_moteur, fmt="#,##0.0", nom=None, gras=False):
+    def ligne(label, base_val, formule, cle_moteur, fmt="#,##0.0", nom=None, gras=False, symbole=None):
         nonlocal r
         ws.cell(row=r, column=1, value=label).font = LBLB if gras else LBL
         if base_val is not None:
@@ -385,30 +404,33 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
                 c.font = SMALL
                 c.number_format = fmt
         lignes[label] = r
+        if symbole:
+            an1 = horizon[0]
+            formules.append((label, symbole, ws.cell(row=r, column=3).value))
         r += 1
         return r - 1
 
     # — compte de resultat —
     l_ca = ligne("Chiffre d'affaires", pub["ca"],
-                 lambda an, col, prev, rr: "=%s%d*(1+g_%d)" % (prev, rr, an), "ca", nom="CA", gras=True)
+                 lambda an, col, prev, rr: "=%s%d*(1+g_%d)" % (prev, rr, an), "ca", nom="CA", gras=True, symbole="CA(n) = CA(n-1) x (1 + g_n)")
     ligne("Croissance", None, lambda an, col, prev, rr: "=g_%d" % an, "croissance", fmt="0.0%")
     l_marge = ligne("Marge d'EBITDA", None, lambda an, col, prev, rr: "=marge_%d" % an, "margeEbitda", fmt="0.0%")
     l_ebitda = ligne("EBITDA", pub["ebitda"],
-                     lambda an, col, prev, rr: "=%s%d*%s%d" % (col, l_ca, col, l_marge), "ebitda", gras=True)
+                     lambda an, col, prev, rr: "=%s%d*%s%d" % (col, l_ca, col, l_marge), "ebitda", gras=True, symbole="EBITDA(n) = CA(n) x marge_n")
 
     da0 = -pub["da"] - sum((v.get("echeancier") or {}).get(str(an0), 0.0)
                            for k, v in (inp.get("ppa") or {}).items() if not k.startswith("_"))
     l_dahp = ligne("  dotations hors PPA", da0,
-                   lambda an, col, prev, rr: "=%s%d+%s%d*capexRatio/dureeAmort" % (prev, rr, prev, l_ca), "daHorsPpa")
+                   lambda an, col, prev, rr: "=%s%d+%s%d*capexRatio/dureeAmort" % (prev, rr, prev, l_ca), "daHorsPpa", symbole="dotHorsPPA(n) = dotHorsPPA(n-1) + CA(n-1) x capexRatio / dureeAmort")
     l_dappa = ligne("  amortissement du PPA", sum((v.get("echeancier") or {}).get(str(an0), 0.0)
                                                   for k, v in (inp.get("ppa") or {}).items() if not k.startswith("_")),
                     lambda an, col, prev, rr: "=%s" % sum((v.get("echeancier") or {}).get(str(an), 0.0)
                                                           for k, v in (inp.get("ppa") or {}).items() if not k.startswith("_")),
                     "daPpa")
     l_da = ligne("Dotations", pub["da"],
-                 lambda an, col, prev, rr: "=-(%s%d+%s%d)" % (col, l_dahp, col, l_dappa), "da")
+                 lambda an, col, prev, rr: "=-(%s%d+%s%d)" % (col, l_dahp, col, l_dappa), "da", symbole="dotations(n) = -( dotHorsPPA(n) + amortPPA(n) )")
     l_ebit = ligne("EBIT", pub["ebit"],
-                   lambda an, col, prev, rr: "=%s%d+%s%d" % (col, l_ebitda, col, l_da), "ebit", gras=True)
+                   lambda an, col, prev, rr: "=%s%d+%s%d" % (col, l_ebitda, col, l_da), "ebit", gras=True, symbole="EBIT(n) = EBITDA(n) + dotations(n)")
 
     # — bilan et resultat financier (cascade de rang) —
     l_dette = ligne("Dette brute", bil0["debtGross"], lambda an, col, prev, rr: "=%s%d" % (prev, rr), None, nom="dette")
@@ -423,10 +445,14 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
     else:
         f_fin = lambda an, col, prev, rr: ("=-(%s%d-%s%d+%s%d)*spreadNormatif"
                                            % (prev, l_dette, prev, l_cash, prev, l_lease))
-    l_fin = ligne("Resultat financier (rang %d)" % rang_fin, pub["finNet"], f_fin, "finNet")
+    SYM_FIN = {1: "resultatFinancier(n) = finPublie   [rang 1 : detail publie par instrument]",
+               2: "resultatFinancier(n) = -detteBrute(n-1) x tauxDette + tresorerie(n-1) x tauxCash - detteLocative(n-1) x tauxLease   [rang 2]",
+               3: "resultatFinancier(n) = -( detteBrute(n-1) - tresorerie(n-1) + detteLocative(n-1) ) x spreadNormatif   [rang 3]"}
+    l_fin = ligne("Resultat financier (rang %d)" % rang_fin, pub["finNet"], f_fin, "finNet",
+                  symbole=SYM_FIN[rang_fin])
 
     l_avant = ligne("Resultat avant impot", pub["avantImpot"],
-                    lambda an, col, prev, rr: "=%s%d+%s%d" % (col, l_ebit, col, l_fin), "avantImpot")
+                    lambda an, col, prev, rr: "=%s%d+%s%d" % (col, l_ebit, col, l_fin), "avantImpot", symbole="avantImpot(n) = EBIT(n) + resultatFinancier(n)")
     l_taux = ligne("Taux d'impot applique", None, lambda an, col, prev, rr: "=tauxIS_%d" % an, "tauxImpot", fmt="0.0%")
     # OVERRIDE DECLARE (regle 7). Le moteur calcule ; quand le jugement
     # diverge, la valeur posee dans inputs/ remplace la formule - et elle
@@ -438,7 +464,8 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
         o = (ovr.get(an) or {}).get("impot")
         return o["valeur"] if o else "=-%s%d*%s%d" % (col, l_avant, col, l_taux)
 
-    l_imp = ligne("Impot", pub["impot"], f_impot, "impot")
+    l_imp = ligne("Impot", pub["impot"], f_impot, "impot",
+                  symbole="impot(n) = -avantImpot(n) x tauxIS_n   [ou OVERRIDE declare]")
     for i, an in enumerate(horizon):
         o = (ovr.get(an) or {}).get("impot")
         if o:
@@ -446,16 +473,16 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
             c.fill = PatternFill("solid", fgColor="FFF3CD")
             c.comment = Comment("OVERRIDE DECLARE\n\n" + o["justification"], "Omnium engine")
     l_min = ligne("Minoritaires", pub["minoritaires"],
-                  lambda an, col, prev, rr: "=partMinos*(%s%d+%s%d)" % (col, l_avant, col, l_imp), "minoritaires")
+                  lambda an, col, prev, rr: "=partMinos*(%s%d+%s%d)" % (col, l_avant, col, l_imp), "minoritaires", symbole="minoritaires(n) = partMinos x ( avantImpot(n) + impot(n) )")
     l_net = ligne("Resultat net", pub["net"],
-                  lambda an, col, prev, rr: "=%s%d+%s%d+%s%d" % (col, l_avant, col, l_imp, col, l_min), "net", gras=True)
+                  lambda an, col, prev, rr: "=%s%d+%s%d+%s%d" % (col, l_avant, col, l_imp, col, l_min), "net", gras=True, symbole="net(n) = avantImpot(n) + impot(n) + minoritaires(n)")
 
     l_act = ligne("Actions (millions)", inp["actions"][str(an0)],
-                  lambda an, col, prev, rr: "=%s%d*(1-rachatPct)" % (prev, rr), "actions", fmt="#,##0.00")
+                  lambda an, col, prev, rr: "=%s%d*(1-rachatPct)" % (prev, rr), "actions", fmt="#,##0.00", symbole="actions(n) = actions(n-1) x (1 - rachatPct)")
     l_eps = ligne("BPA", pub["net"] / inp["actions"][str(an0)],
-                  lambda an, col, prev, rr: "=%s%d/%s%d" % (col, l_net, col, l_act), "eps", fmt="#,##0.00", gras=True)
+                  lambda an, col, prev, rr: "=%s%d/%s%d" % (col, l_net, col, l_act), "eps", fmt="#,##0.00", gras=True, symbole="BPA(n) = net(n) / actions(n)")
     l_div = ligne("Dividende verse", None,
-                  lambda an, col, prev, rr: "=%s%d*tauxDistrib" % (col, l_net), "dividende")
+                  lambda an, col, prev, rr: "=%s%d*tauxDistrib" % (col, l_net), "dividende", symbole="dividende(n) = net(n) x tauxDistrib")
 
     # la tresorerie roule apres coup : elle depend du resultat de l'annee
     for i, an in enumerate(horizon):
@@ -480,7 +507,51 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
                 c.fill = PatternFill("solid", fgColor="E6FAF8")
         r += 1
     ws.freeze_panes = ws.cell(row=entete + 1, column=3)
+    _feuille_formules(wb, formules, horizon)
     return lignes
+
+
+def _feuille_formules(wb, formules, horizon):
+    """Le modele en clair, sans cliquer cellule par cellule.
+
+    Une spreadsheet ou il faut ouvrir chaque cellule pour savoir ce qu'elle
+    calcule n'est pas un document qu'on lit. Cette feuille donne, pour chaque
+    ligne : l'ecriture symbolique du calcul, puis la formule Excel telle
+    qu'elle est posee sur la premiere annee projetee.
+    """
+    ws = wb.create_sheet("Formules", 3)
+    for col, w in zip("ABC", (26, 84, 46)):
+        ws.column_dimensions[col].width = w
+    r = _titre(ws, 1, "FORMULES DU MODELE — l'ecriture du calcul, ligne par ligne", 3)
+    for i, t in enumerate(["ligne", "calcul", "formule posee sur %d" % horizon[0]], start=1):
+        c = ws.cell(row=r, column=i, value=t)
+        c.font = LBLB
+        c.fill = FILL_L
+    r += 1
+    for label, sym, excel in formules:
+        ws.cell(row=r, column=1, value=label.strip()).font = LBLB
+        c = ws.cell(row=r, column=2, value=sym)
+        c.font = MONO
+        c.alignment = Alignment(wrap_text=True, vertical="top")
+        e = ws.cell(row=r, column=3, value="'" + str(excel) if isinstance(excel, str) else excel)
+        e.font = SMALL
+        for cc in range(1, 4):
+            ws.cell(row=r, column=cc).border = BOX
+        ws.row_dimensions[r].height = 28
+        r += 1
+    r += 1
+    ws.cell(row=r, column=1, value="OU LIRE LE RESTE").font = LBLB
+    r += 1
+    for a, b in [
+        ("Hypotheses", "la valeur de chaque moteur, son rang de provenance et sa peremption"),
+        ("Historique", "l'echelle publiee de chaque exercice, ses identites, et les trois bases"),
+        ("Modele", "le deroule annee par annee ; la colonne de droite porte la valeur du moteur Python"),
+        ("Controles", "formule contre moteur, cellule a cellule"),
+        ("engine/model.py", "la SOURCE des formules ci-dessus — le classeur n'en est que le miroir"),
+    ]:
+        ws.cell(row=r, column=1, value=a).font = LBL
+        ws.cell(row=r, column=2, value=b).font = SMALL
+        r += 1
 
 
 def _construire_controles(wb, proj, horizon, lignes):
