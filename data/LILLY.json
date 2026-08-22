@@ -1,487 +1,487 @@
 {
-  "name": "Eli Lilly",
-  "cours": 1200.06,
-  "yahooSymbol": "LLY",
-  "dividende": 6.92,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 28318.4,
-      "ebit": 6357,
-      "net": 5581.7,
-      "shares": 912,
-      "nd": 13000,
-      "div": 3.4
-    },
-    {
-      "year": 2022,
-      "ca": 28541.4,
-      "ebit": 8280.4,
-      "net": 6244.8,
-      "shares": 905,
-      "nd": 13700,
-      "div": 3.91
-    },
-    {
-      "year": 2023,
-      "ca": 34124.1,
-      "ebit": 10325,
-      "net": 5240,
-      "shares": 903,
-      "nd": 22400,
-      "div": 4.52
-    },
-    {
-      "year": 2024,
-      "ca": 45043,
-      "ebit": 17040,
-      "net": 10590,
-      "shares": 904,
-      "nd": 30100,
-      "div": 5.2
-    },
-    {
-      "year": 2025,
-      "ca": 65179,
-      "ebit": 29696,
-      "net": 20640,
-      "shares": 899,
-      "nd": 35235,
-      "div": 6
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 35.01,
-    "epsNY": 44.3,
-    "epsY2": 50.6,
-    "date": "2026-08-20",
-    "source": "MarketScreener (consensus of 29 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 36.73)",
-    "analystsCount": 29,
-    "adjGapPct": 4.9
+ "name": "Eli Lilly",
+ "cours": 1200.06,
+ "yahooSymbol": "LLY",
+ "dividende": 6.92,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 28318.4,
+   "ebit": 6357,
+   "net": 5581.7,
+   "shares": 912,
+   "nd": 13000,
+   "div": 3.4
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": "2026-10-29"
+  {
+   "year": 2022,
+   "ca": 28541.4,
+   "ebit": 8280.4,
+   "net": 6244.8,
+   "shares": 905,
+   "nd": 13700,
+   "div": 3.91
   },
-  "ownership": {
-    "asOf": "2026-08-05",
-    "insiderPct": 10.57,
-    "insiderDesc": "Officers and directors, including Lilly Endowment Inc (a philanthropic foundation linked to the founding family), which on its own holds ~9,6% of the capital according to its latest Schedule 13G/A.",
-    "insiderSource": "WallStreetZen aggregator (officers+family ~10,57%), corroborated by the Schedule 13G/A of Lilly Endowment Inc. (SEC EDGAR, filed 23/07/2026, 9,6% at 30/06/2026)",
-    "notableHolders": [],
-    "coverageNote": null,
-    "history": []
+  {
+   "year": 2023,
+   "ca": 34124.1,
+   "ebit": 10325,
+   "net": 5240,
+   "shares": 903,
+   "nd": 22400,
+   "div": 4.52
   },
-  "compliance": {
-    "asOf": "2026-08-05",
-    "items": [
-      {
-        "year": 2012,
-        "title": "Settlement with the SEC of FCPA charges over improper payments made by Lilly subsidiaries to foreign officials (Russia, Brazil, China, Poland) between 1994 and 2009.",
-        "allegedBy": "SEC",
-        "date": "2012-12-20",
-        "status": "reglee",
-        "outcome": "Settlement agreement of 29,4 M$ without admitting or denying the findings, plus an independent review of FCPA-related internal controls.",
-        "source": "SEC Litigation Release No. 22576, 20/12/2012"
-      },
-      {
-        "year": 2025,
-        "title": "Complaint by the Indiana Attorney General accusing Lilly of having taken part in a scheme to artificially inflate the price of insulin.",
-        "allegedBy": "Indiana Attorney General",
-        "date": "2025-12-31",
-        "status": "plainte_deposee",
-        "outcome": null,
-        "source": "Press release from the Office of the Indiana Attorney General, 31/12/2025"
-      },
-      {
-        "year": 2026,
-        "title": "Investigation by plaintiffs' law firms into a possible breach by officers and directors of their fiduciary duties, in connection with the Indiana complaint on insulin pricing.",
-        "allegedBy": "Scott+Scott Attorneys at Law LLP, Glancy Prongay & Murray LLP (cabinets d'avocats plaignants)",
-        "date": "2026-02-05",
-        "status": "sollicitation",
-        "outcome": null,
-        "source": "Communiques Scott+Scott / Glancy Prongay & Murray via Businesswire, fevrier 2026"
-      }
-    ],
-    "note": "No established securities fraud to date; the only settlement concluded (FCPA, 2012) is old and closed out. The 2025-2026 proceedings (Indiana, law firm solicitations) concern an allegation of pricing practice, not accounting fraud or investor deception, and remain at a preliminary or ongoing stage."
+  {
+   "year": 2024,
+   "ca": 45043,
+   "ebit": 17040,
+   "net": 10590,
+   "shares": 904,
+   "nd": 30100,
+   "div": 5.2
   },
-  "hypothese": {
-    "date": "2026-08-19",
-    "priorEPS": {
-      "date": "2026-07-02",
-      "eps": {
-        "2026": 37.13,
-        "2027": 46.03,
-        "2028": 54.52,
-        "2029": 62.65,
-        "2030": 70.33
-      }
-    },
-    "source": "Q2 2026 refresh - Results release + Q2 2026 transcript",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 22974,
-          "consensus": 20932
-        },
-        "epsAdj": {
-          "actual": 8.38,
-          "consensus": 6.07,
-          "basis": "non-GAAP",
-          "basisNote": "non-GAAP"
-        },
-        "epsReported": {
-          "actual": 7.94,
-          "basis": "GAAP",
-          "period": "Q2 26",
-          "note": "GAAP diluted EPS of $7.94 (GAAP net income $7.10B, ~30.9% net margin) vs non-GAAP EPS of $8.38; the gap is mainly amortization and fair-value items, while $3.03/share of acquired IPR&D charges is included in BOTH measures. Source: stockanalysis.com quarterly financials."
-        }
-      },
-      "guidanceProchainTrimestre": "No quarterly guidance - Lilly guides on a full-year basis only. Management flagged H2 cadence effects: favorable rebate/discount catch-up adjustments from H1 will not repeat, H2 2025 base included the bolus of international Mounjaro launches, and usual seasonality (European summer in Q3, US type 2 diabetes in Q4) is embedded in the guide.",
-      "guidanceAnnuelle": "FY26 guidance raised for the second time: revenue $85-87B (from $82-85B; low end +$3B, high end +$2B), non-GAAP performance margin 49-50.5% (from 47-48.5%, +2pts at both ends), non-GAAP EPS $35.50-36.50 - a $2.78 raise at the midpoint before absorbing the $3.03 of Q2 acquired IPR&D charges (prior range $35.50-37.00). Expected net-price erosion (end of medical exceptions, CVS formulary return in Q4) is embedded in the guide and expected to be more than offset by volume growth.",
-      "pointsCles": [
-        "Blowout quarter: revenue $22.97B +48% y/y (beat by ~$2.3B) and non-GAAP EPS $8.38 (beat by ~$1.80) despite $3.03 of acquired IPR&D charges; gross margin 86.3% (+1.3pt), non-GAAP performance margin 54.8% (+9pts); Mounjaro+Zepbound $14.9B combined (+$6.3B y/y), oncology+immunology+neuroscience up 121%.",
-        "Foundayo (orforglipron) US launch inflecting: all 3 major PBMs secured in June, full DTC campaign launched, prescriptions nearly doubled month-over-month in late July with ~1 in 4 new starts and prescriber base up from 8,000 to 36,000; US T2D submission completed (action expected late 2026), >40 countries under review, global rollout in early 2027; Q2 sales $67M US + $31M UAE.",
-        "Medicare GLP-1 Bridge live since July 1: 20M eligible seniors at $50/month out-of-pocket, coverage for Lilly obesity drugs expanded by 35%; ~80% of uptake is injectable and 60-70% of enrollees are new to treatment - offsetting an underlying -9% US price decline (reported -3% on rebate estimate adjustments) that management says is fully embedded in the guide.",
-        "Pipeline stacked: retatrutide TRIUMPH-1/2/3 all positive (bariatric-surgery-level weight loss, ~75% knee-OA pain reduction) with US submission targeted Q1 2027 via the contested BLA pathway; VERVE-102 PCSK9 editing cut LDL 62%; Jaypirca BRUIN CLL-322 first Phase 3 win over a venetoclax arm; BD spree into vaccines (Curevo, LimmaTech, Vaccine Company), psychiatry (AtaiBeckley) and in vivo CAR-T (Kelonia)."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "10-Q T2 2026 + communique (05/08/2026)",
-        "date": "2026-08-19",
-        "note": "Croises : CA T2 23,0 Md$ (+48%, volume +60% / prix -13%), EPS GAAP 7,94$ (+26%), non-GAAP 8,38$ (+33%). Mounjaro 9,9 Md$ (+91%), Zepbound US 4,9 Md$ (+44%). Guidance relevee : CA 85-87 Md$, EPS 35,50-36,50$."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-08-05",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Revenue $85-87 Md, non-GAAP performance margin 49-50,5%, non-GAAP EPS $35,50-36,50."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "Q1",
-          "eps": 3.06,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 6.29,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 6.21,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 7.39,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 8.56,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 8.38,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 9.19,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 9.87,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 10.79,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 10.57,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 11.57,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 12.42,
-          "actual": false
-        }
-      ],
-      "note": "[C25 correction 20/08/2026: the PY was set on the management NON-GAAP basis (24,21$); replaced by the reported GAAP 10-Q (22,95$ = data basis). The GAAP/non-GAAP gap (~1,25$, amortisation and one-offs adjusted by management) remains documented in basisNote.]"
-    },
-    "summary": "Lilly remains the global GLP-1 leader, with FY26 guidance raised again (revenue $85-87 Md, non-GAAP EPS $35,50-36,50) after a very sharply higher Q2. The 2027-2030 trajectory rests on the ramp-up of the Medicare Bridge and the recently confirmed inflection of Foundayo, tempered by a technically slower H2 2026 (comparison base, non-recurring rebates) and a very active M&A pace that delays deleveraging.",
-    "cagrBridge": null,
-    "text": "== THESIS SUMMARY ==\nWorld leader in GLP-1 (Mounjaro/Zepbound) and diabetes/obesity care. Q2 26 amplified the thesis: FY26 guidance RAISED on all three axes (revenue 85-87bn, non-GAAP margin 49-50.5%, EPS 35.50-36.50), the Foundayo (oral GLP-1) launch inflection is now tangible, and the Medicare GLP-1 Bridge has been ramping since 01/07. The 2027-2030 trajectory rests on three penetration engines - Medicare Bridge, Foundayo international, under-penetrated markets - not on naive extrapolation.\n\n== THESIS READ ==\n- Foundayo is the marginal thesis driver: an oral GLP-1 changes the capacity and access equation. Watch: Q3 confirmation of the inflection (data still young, noise possible).\n- The model deliberately discounts the guided margin (47.5% retained vs 49-50.5% guided) - part of the raise is H1 one-offs per management itself. Watch: H2 margin decomposition.\n- Retatrutide: the FDA/BLA litigation path and the Q1 2027 calendar are the main pipeline binaries. Watch: any calendar slip.\n\n== SPECIAL FACTORS ==\nGuidance excludes acquired IPR&D booked after 30/06 by construction - yet the M&A rhythm makes such charges recurring: the fiche anchors EPS on the guidance mid while absorbing the recurrence through the margin discount (documented in the bridge's FY25 residual too). Net debt rose vs the prior refresh (M&A) - deleveraging resumes from 2028 in the model.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 86bn (guide mid), EBIT margin 47.5% retained, EPS 36.00 (guide mid); 2027-2030: revenue +26%/yr fading to +13%, margin drift to ~47%, ETR 19% normative (FY25 ~25% documented), shares -0.5%/yr. finNet improving with deleveraging then flipping positive. Watch: Foundayo Q3; retatrutide calendar; M&A pace vs deleveraging; IRA pricing dynamics on the franchise.\n\n== CATALYSTS ==\nQ3 (late Oct); retatrutide BLA milestones (Q1 27); Foundayo international approvals; obesity reimbursement expansion.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "guidance_2026_relevee",
-        "moteur": "FY26 guidance raised at Q2 (revenue 85-87Md, performance margin 49-50,5%, non-GAAP EPS 35,50-36,50$), driven by GLP-1 demand and by favourable rebate adjustments in H1, partly non-recurring.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumEPS.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "deceleration_h2_technique",
-        "moteur": "Implicit pullback in the growth rate in H2 2026 owing to non-recurring rebate adjustments in H1, a high international comparison base in H2 2025, and the usual seasonality - not a signal of a structural slowdown in demand.",
-        "applique": [
-          "omniumCA.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "medicare_bridge_ramp",
-        "moteur": "Ramp-up of the Medicare GLP-1 Bridge programme (live since 1 July 2026, +35% access, 60-70% of patients new to treatment) over the full year 2027.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "foundayo_inflexion",
-        "moteur": "Inflection of the US launch of Foundayo in late July 2026 (prescriptions doubled in one month, prescribers from 8 000 to 36 000) and international expansion still largely ahead in 2027 (UAE, Saudi Arabia, Mexico already approved).",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "bd_actif_dette",
-        "moteur": "Very active M&A pace (Orna, Ajax, Centessa, Kelonia in Q2; 3 infectious-disease acquisitions and the AtaiBeckley agreement after Q2; +4,5Md$ invested in the Indiana sites), debt-financed, which delays deleveraging relative to the previous trajectory.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "retatrutide_bla_decale",
-        "moteur": "BLA filing for retatrutide now targeted for Q1 2027 (ongoing dispute with the FDA over the regulatory pathway), meaning a revenue contribution that can no longer be expected before 2028 at the earliest.",
-        "applique": [
-          "omniumCA.2028",
-          "omniumCA.2029"
-        ],
-        "confiance": "basse"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 36.0,
-      "2027": 45.35,
-      "2028": 55.14,
-      "2029": 65.11,
-      "2030": 74.61
-    },
-    "omniumCA": {
-      "2026": 86000,
-      "2027": 108500,
-      "2028": 130500,
-      "2029": 151500,
-      "2030": 171000
-    },
-    "omniumEBIT": {
-      "2026": 40850,
-      "2027": 50453,
-      "2028": 60683,
-      "2029": 70902,
-      "2030": 80370
-    },
-    "omniumNet": {
-      "2026": 32184,
-      "2027": 40362,
-      "2028": 48850,
-      "2029": 57431,
-      "2030": 65502
-    },
-    "omniumND": {
-      "2026": 44000,
-      "2027": 47000,
-      "2028": 43000,
-      "2029": 35000,
-      "2030": 23000
-    },
-    "omniumShares": {
-      "2026": 894,
-      "2027": 890,
-      "2028": 886,
-      "2029": 882,
-      "2030": 878
-    },
-    "bridge": {
-      "2025": {
-        "finNet": -1500,
-        "other": 0,
-        "taxRate": 0.25,
-        "minorities": 0,
-        "netCalc": 21147.0,
-        "netPub": 20640,
-        "residual": -507,
-        "residualNote": "FY25 carries acquired-IPR&D charges and an ETR above normative (~25% vs 19%) - recurring-by-rhythm M&A charges that the projections absorb via the deliberately conservative margin discount (47.5% vs the 49-50.5% guided) rather than by reconducting the charge line."
-      },
-      "2026": {
-        "finNet": -1117,
-        "other": 0,
-        "taxRate": 0.19,
-        "minorities": 0,
-        "netCalc": 32183.7
-      },
-      "2027": {
-        "finNet": -623,
-        "other": 0,
-        "taxRate": 0.19,
-        "minorities": 0,
-        "netCalc": 40362.3
-      },
-      "2028": {
-        "finNet": -374,
-        "other": 0,
-        "taxRate": 0.19,
-        "minorities": 0,
-        "netCalc": 48850.3
-      },
-      "2029": {
-        "finNet": 0,
-        "other": 0,
-        "taxRate": 0.19,
-        "minorities": 0,
-        "netCalc": 57430.6
-      },
-      "2030": {
-        "finNet": 497,
-        "other": 0,
-        "taxRate": 0.19,
-        "minorities": 0,
-        "netCalc": 65502.3
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Non-GAAP EPS (guided range)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-08-05",
-          "type": "guidance_revision",
-          "detail": "FY26 RAISED on all three axes: revenue 85-87bn, non-GAAP performance margin 49-50.5%, EPS 35.50-36.50. Guidance excludes post-30/06 acquired IPR&D by construction."
-        }
-      ],
-      "paceCheckpoint": "H1 real: Foundayo launch inflection now tangible; Medicare GLP-1 Bridge ramping since 01/07.",
-      "weightedBeatPct": null,
-      "annualBeatPct": 4.6,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 4.1,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "22.50-24.00$ non-GAAP EPS (mid 23.25)",
-          "realizedDisplay": "24.21$ non-GAAP",
-          "note": "Initial FY25 guidance (Q4-2024 release, 06/02/2025): non-GAAP EPS 22.50-24.00$ (mid 23.25); realized 24.21$ (FY25 release) - level +4.1%, above the top of the initial range."
-        },
-        {
-          "fy": 2024,
-          "beatPct": 4.3,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "12.20-12.70$ non-GAAP EPS (mid 12.45)",
-          "realizedDisplay": "12.99$ non-GAAP",
-          "note": "Initial FY24 guidance (Q4-2023 release, 06/02/2024): non-GAAP EPS 12.20-12.70$ (mid 12.45); realized 12.99$ - level +4.3%, above the top of the initial range."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 34.25,
-        "source": "initial_guidance",
-        "date": "2026-02-04",
-        "note": "TRUE initial FY26 guidance (FY25 release, 04/02/2026): non-GAAP EPS 33.50-35.00$ (mid 34.25), revenue 80-83bn. Raised at Q1 and again at Q2 (05/08: 35.50-36.50, revenue 85-87bn). Replaces the August-dated anchor (which was the second raise)."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct +4.6% BLENDED (in-progress +5.1 x1/2; FY25 +4.1 and FY24 +4.3 equal-shared). Beats are on management's non-GAAP EPS (incl. IPR&D charges as guided) - the Omnium base wedge is declared in basisNote.",
-      "consensusSource": "MarketBeat/TipRanks aggregators (non-GAAP)",
-      "consensusDate": "2026-08-04",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 34.25,
-        "currentValue": 36.0,
-        "deltaPct": 5.1,
-        "asOf": "2026-08-05",
-        "note": "Initial 33.50-35.00$ (mid 34.25); raised twice to 35.50-36.50$ (mid 36.00) - projected +5.1%. The Q2 raise was +2.78 underlying at mid, partly consumed by 3.03$ of acquired IPR&D."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-08-05",
-      "label": "Q2 26",
-      "type": "earnings"
-    }
-  },
-  "coherenceQualitative": {
-    "historique": [
-      {
-        "quarter": "Q2 26",
-        "date": "2026-08-05",
-        "source": "Q2 release/call (as exploited at the 05/08 refresh)",
-        "message": "FY26 guidance raised on all three axes (revenue 85-87bn, margin 49-50.5%, EPS 35.50-36.50); Foundayo (oral GLP-1) launch inflection now tangible; Medicare GLP-1 Bridge live since 01/07. The fiche keeps a 47.5% EBIT margin (below the guided band) because part of the raise reflects H1 non-recurring items flagged by management itself; EPS anchored on the guidance mid (36.00) because guidance excludes post-30/06 acquired IPR&D - recurring in practice given the M&A rhythm.",
-        "format": "compresse"
-      }
-    ]
-  },
-  "epsConsensusHistory": [
-    {
-      "year": 2026,
-      "eps": 36.12,
-      "epsNY": 45.34,
-      "date": "2026-08-04",
-      "source": "Non-GAAP - aggregators MarketBeat/TickerReport (2026, ~34 analysts); WallStreetZen (2027, ~33 analysts)",
-      "analystsCount": 34,
-      "analystsCountNY": 33
-    }
-  ],
-  "externalActuals": {
-    "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
-    "date": "2026-08-20",
-    "eps": {
-      "2021": 6.12,
-      "2022": 6.9,
-      "2023": 5.8,
-      "2024": 11.71,
-      "2025": 22.95
-    }
+  {
+   "year": 2025,
+   "ca": 65179,
+   "ebit": 29696,
+   "net": 20640,
+   "shares": 899,
+   "nd": 35235,
+   "div": 6
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 35.01,
+  "epsNY": 44.3,
+  "epsY2": 50.6,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus of 29 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 36.73)",
+  "analystsCount": 29,
+  "adjGapPct": 4.9
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q2 26",
+  "date": "2026-08-05"
+ },
+ "ownership": {
+  "asOf": "2026-08-05",
+  "insiderPct": 10.57,
+  "insiderDesc": "Officers and directors, including Lilly Endowment Inc (a philanthropic foundation linked to the founding family), which on its own holds ~9,6% of the capital according to its latest Schedule 13G/A.",
+  "insiderSource": "WallStreetZen aggregator (officers+family ~10,57%), corroborated by the Schedule 13G/A of Lilly Endowment Inc. (SEC EDGAR, filed 23/07/2026, 9,6% at 30/06/2026)",
+  "notableHolders": [],
+  "coverageNote": null,
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-08-05",
+  "items": [
+   {
+    "year": 2012,
+    "title": "Settlement with the SEC of FCPA charges over improper payments made by Lilly subsidiaries to foreign officials (Russia, Brazil, China, Poland) between 1994 and 2009.",
+    "allegedBy": "SEC",
+    "date": "2012-12-20",
+    "status": "reglee",
+    "outcome": "Settlement agreement of 29,4 M$ without admitting or denying the findings, plus an independent review of FCPA-related internal controls.",
+    "source": "SEC Litigation Release No. 22576, 20/12/2012"
+   },
+   {
+    "year": 2025,
+    "title": "Complaint by the Indiana Attorney General accusing Lilly of having taken part in a scheme to artificially inflate the price of insulin.",
+    "allegedBy": "Indiana Attorney General",
+    "date": "2025-12-31",
+    "status": "plainte_deposee",
+    "outcome": null,
+    "source": "Press release from the Office of the Indiana Attorney General, 31/12/2025"
+   },
+   {
+    "year": 2026,
+    "title": "Investigation by plaintiffs' law firms into a possible breach by officers and directors of their fiduciary duties, in connection with the Indiana complaint on insulin pricing.",
+    "allegedBy": "Scott+Scott Attorneys at Law LLP, Glancy Prongay & Murray LLP (cabinets d'avocats plaignants)",
+    "date": "2026-02-05",
+    "status": "sollicitation",
+    "outcome": null,
+    "source": "Communiques Scott+Scott / Glancy Prongay & Murray via Businesswire, fevrier 2026"
+   }
+  ],
+  "note": "No established securities fraud to date; the only settlement concluded (FCPA, 2012) is old and closed out. The 2025-2026 proceedings (Indiana, law firm solicitations) concern an allegation of pricing practice, not accounting fraud or investor deception, and remain at a preliminary or ongoing stage."
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "priorEPS": {
+   "date": "2026-07-02",
+   "eps": {
+    "2026": 37.13,
+    "2027": 46.03,
+    "2028": 54.52,
+    "2029": 62.65,
+    "2030": 70.33
+   }
+  },
+  "source": "Q2 2026 refresh - Results release + Q2 2026 transcript",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 22974,
+     "consensus": 20932
+    },
+    "epsAdj": {
+     "actual": 8.38,
+     "consensus": 6.07,
+     "basis": "non-GAAP",
+     "basisNote": "non-GAAP"
+    },
+    "epsReported": {
+     "actual": 7.94,
+     "basis": "GAAP",
+     "period": "Q2 26",
+     "note": "GAAP diluted EPS of $7.94 (GAAP net income $7.10B, ~30.9% net margin) vs non-GAAP EPS of $8.38; the gap is mainly amortization and fair-value items, while $3.03/share of acquired IPR&D charges is included in BOTH measures. Source: stockanalysis.com quarterly financials."
+    }
+   },
+   "guidanceProchainTrimestre": "No quarterly guidance - Lilly guides on a full-year basis only. Management flagged H2 cadence effects: favorable rebate/discount catch-up adjustments from H1 will not repeat, H2 2025 base included the bolus of international Mounjaro launches, and usual seasonality (European summer in Q3, US type 2 diabetes in Q4) is embedded in the guide.",
+   "guidanceAnnuelle": "FY26 guidance raised for the second time: revenue $85-87B (from $82-85B; low end +$3B, high end +$2B), non-GAAP performance margin 49-50.5% (from 47-48.5%, +2pts at both ends), non-GAAP EPS $35.50-36.50 - a $2.78 raise at the midpoint before absorbing the $3.03 of Q2 acquired IPR&D charges (prior range $35.50-37.00). Expected net-price erosion (end of medical exceptions, CVS formulary return in Q4) is embedded in the guide and expected to be more than offset by volume growth.",
+   "pointsCles": [
+    "Blowout quarter: revenue $22.97B +48% y/y (beat by ~$2.3B) and non-GAAP EPS $8.38 (beat by ~$1.80) despite $3.03 of acquired IPR&D charges; gross margin 86.3% (+1.3pt), non-GAAP performance margin 54.8% (+9pts); Mounjaro+Zepbound $14.9B combined (+$6.3B y/y), oncology+immunology+neuroscience up 121%.",
+    "Foundayo (orforglipron) US launch inflecting: all 3 major PBMs secured in June, full DTC campaign launched, prescriptions nearly doubled month-over-month in late July with ~1 in 4 new starts and prescriber base up from 8,000 to 36,000; US T2D submission completed (action expected late 2026), >40 countries under review, global rollout in early 2027; Q2 sales $67M US + $31M UAE.",
+    "Medicare GLP-1 Bridge live since July 1: 20M eligible seniors at $50/month out-of-pocket, coverage for Lilly obesity drugs expanded by 35%; ~80% of uptake is injectable and 60-70% of enrollees are new to treatment - offsetting an underlying -9% US price decline (reported -3% on rebate estimate adjustments) that management says is fully embedded in the guide.",
+    "Pipeline stacked: retatrutide TRIUMPH-1/2/3 all positive (bariatric-surgery-level weight loss, ~75% knee-OA pain reduction) with US submission targeted Q1 2027 via the contested BLA pathway; VERVE-102 PCSK9 editing cut LDL 62%; Jaypirca BRUIN CLL-322 first Phase 3 win over a venetoclax arm; BD spree into vaccines (Curevo, LimmaTech, Vaccine Company), psychiatry (AtaiBeckley) and in vivo CAR-T (Kelonia)."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "10-Q T2 2026 + communique (05/08/2026)",
+    "date": "2026-08-19",
+    "note": "Croises : CA T2 23,0 Md$ (+48%, volume +60% / prix -13%), EPS GAAP 7,94$ (+26%), non-GAAP 8,38$ (+33%). Mounjaro 9,9 Md$ (+91%), Zepbound US 4,9 Md$ (+44%). Guidance relevee : CA 85-87 Md$, EPS 35,50-36,50$."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-08-05",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Revenue $85-87 Md, non-GAAP performance margin 49-50,5%, non-GAAP EPS $35,50-36,50."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "Q1",
+     "eps": 3.06,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 6.29,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 6.21,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 7.39,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 8.56,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 8.38,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 9.19,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 9.87,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 10.79,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 10.57,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 11.57,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 12.42,
+     "actual": false
+    }
+   ],
+   "note": "[C25 correction 20/08/2026: the PY was set on the management NON-GAAP basis (24,21$); replaced by the reported GAAP 10-Q (22,95$ = data basis). The GAAP/non-GAAP gap (~1,25$, amortisation and one-offs adjusted by management) remains documented in basisNote.]"
+  },
+  "summary": "Lilly remains the global GLP-1 leader, with FY26 guidance raised again (revenue $85-87 Md, non-GAAP EPS $35,50-36,50) after a very sharply higher Q2. The 2027-2030 trajectory rests on the ramp-up of the Medicare Bridge and the recently confirmed inflection of Foundayo, tempered by a technically slower H2 2026 (comparison base, non-recurring rebates) and a very active M&A pace that delays deleveraging.",
+  "cagrBridge": null,
+  "text": "== THESIS SUMMARY ==\nWorld leader in GLP-1 (Mounjaro/Zepbound) and diabetes/obesity care. Q2 26 amplified the thesis: FY26 guidance RAISED on all three axes (revenue 85-87bn, non-GAAP margin 49-50.5%, EPS 35.50-36.50), the Foundayo (oral GLP-1) launch inflection is now tangible, and the Medicare GLP-1 Bridge has been ramping since 01/07. The 2027-2030 trajectory rests on three penetration engines - Medicare Bridge, Foundayo international, under-penetrated markets - not on naive extrapolation.\n\n== THESIS READ ==\n- Foundayo is the marginal thesis driver: an oral GLP-1 changes the capacity and access equation. Watch: Q3 confirmation of the inflection (data still young, noise possible).\n- The model deliberately discounts the guided margin (47.5% retained vs 49-50.5% guided) - part of the raise is H1 one-offs per management itself. Watch: H2 margin decomposition.\n- Retatrutide: the FDA/BLA litigation path and the Q1 2027 calendar are the main pipeline binaries. Watch: any calendar slip.\n\n== SPECIAL FACTORS ==\nGuidance excludes acquired IPR&D booked after 30/06 by construction - yet the M&A rhythm makes such charges recurring: the fiche anchors EPS on the guidance mid while absorbing the recurrence through the margin discount (documented in the bridge's FY25 residual too). Net debt rose vs the prior refresh (M&A) - deleveraging resumes from 2028 in the model.\n\n== PARAMETERS & WATCH-LIST ==\n2026: revenue 86bn (guide mid), EBIT margin 47.5% retained, EPS 36.00 (guide mid); 2027-2030: revenue +26%/yr fading to +13%, margin drift to ~47%, ETR 19% normative (FY25 ~25% documented), shares -0.5%/yr. finNet improving with deleveraging then flipping positive. Watch: Foundayo Q3; retatrutide calendar; M&A pace vs deleveraging; IRA pricing dynamics on the franchise.\n\n== CATALYSTS ==\nQ3 (late Oct); retatrutide BLA milestones (Q1 27); Foundayo international approvals; obesity reimbursement expansion.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "guidance_2026_relevee",
+    "moteur": "FY26 guidance raised at Q2 (revenue 85-87Md, performance margin 49-50,5%, non-GAAP EPS 35,50-36,50$), driven by GLP-1 demand and by favourable rebate adjustments in H1, partly non-recurring.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumEPS.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "deceleration_h2_technique",
+    "moteur": "Implicit pullback in the growth rate in H2 2026 owing to non-recurring rebate adjustments in H1, a high international comparison base in H2 2025, and the usual seasonality - not a signal of a structural slowdown in demand.",
+    "applique": [
+     "omniumCA.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "medicare_bridge_ramp",
+    "moteur": "Ramp-up of the Medicare GLP-1 Bridge programme (live since 1 July 2026, +35% access, 60-70% of patients new to treatment) over the full year 2027.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "foundayo_inflexion",
+    "moteur": "Inflection of the US launch of Foundayo in late July 2026 (prescriptions doubled in one month, prescribers from 8 000 to 36 000) and international expansion still largely ahead in 2027 (UAE, Saudi Arabia, Mexico already approved).",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "bd_actif_dette",
+    "moteur": "Very active M&A pace (Orna, Ajax, Centessa, Kelonia in Q2; 3 infectious-disease acquisitions and the AtaiBeckley agreement after Q2; +4,5Md$ invested in the Indiana sites), debt-financed, which delays deleveraging relative to the previous trajectory.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "retatrutide_bla_decale",
+    "moteur": "BLA filing for retatrutide now targeted for Q1 2027 (ongoing dispute with the FDA over the regulatory pathway), meaning a revenue contribution that can no longer be expected before 2028 at the earliest.",
+    "applique": [
+     "omniumCA.2028",
+     "omniumCA.2029"
+    ],
+    "confiance": "basse"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 36.0,
+   "2027": 45.35,
+   "2028": 55.14,
+   "2029": 65.11,
+   "2030": 74.61
+  },
+  "omniumCA": {
+   "2026": 86000,
+   "2027": 108500,
+   "2028": 130500,
+   "2029": 151500,
+   "2030": 171000
+  },
+  "omniumEBIT": {
+   "2026": 40850,
+   "2027": 50453,
+   "2028": 60683,
+   "2029": 70902,
+   "2030": 80370
+  },
+  "omniumNet": {
+   "2026": 32184,
+   "2027": 40362,
+   "2028": 48850,
+   "2029": 57431,
+   "2030": 65502
+  },
+  "omniumND": {
+   "2026": 44000,
+   "2027": 47000,
+   "2028": 43000,
+   "2029": 35000,
+   "2030": 23000
+  },
+  "omniumShares": {
+   "2026": 894,
+   "2027": 890,
+   "2028": 886,
+   "2029": 882,
+   "2030": 878
+  },
+  "bridge": {
+   "2025": {
+    "finNet": -1500,
+    "other": 0,
+    "taxRate": 0.25,
+    "minorities": 0,
+    "netCalc": 21147.0,
+    "netPub": 20640,
+    "residual": -507,
+    "residualNote": "FY25 carries acquired-IPR&D charges and an ETR above normative (~25% vs 19%) - recurring-by-rhythm M&A charges that the projections absorb via the deliberately conservative margin discount (47.5% vs the 49-50.5% guided) rather than by reconducting the charge line."
+   },
+   "2026": {
+    "finNet": -1117,
+    "other": 0,
+    "taxRate": 0.19,
+    "minorities": 0,
+    "netCalc": 32183.7
+   },
+   "2027": {
+    "finNet": -623,
+    "other": 0,
+    "taxRate": 0.19,
+    "minorities": 0,
+    "netCalc": 40362.3
+   },
+   "2028": {
+    "finNet": -374,
+    "other": 0,
+    "taxRate": 0.19,
+    "minorities": 0,
+    "netCalc": 48850.3
+   },
+   "2029": {
+    "finNet": 0,
+    "other": 0,
+    "taxRate": 0.19,
+    "minorities": 0,
+    "netCalc": 57430.6
+   },
+   "2030": {
+    "finNet": 497,
+    "other": 0,
+    "taxRate": 0.19,
+    "minorities": 0,
+    "netCalc": 65502.3
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Non-GAAP EPS (guided range)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-08-05",
+     "type": "guidance_revision",
+     "detail": "FY26 RAISED on all three axes: revenue 85-87bn, non-GAAP performance margin 49-50.5%, EPS 35.50-36.50. Guidance excludes post-30/06 acquired IPR&D by construction."
+    }
+   ],
+   "paceCheckpoint": "H1 real: Foundayo launch inflection now tangible; Medicare GLP-1 Bridge ramping since 01/07.",
+   "weightedBeatPct": null,
+   "annualBeatPct": 4.6,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 4.1,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "22.50-24.00$ non-GAAP EPS (mid 23.25)",
+     "realizedDisplay": "24.21$ non-GAAP",
+     "note": "Initial FY25 guidance (Q4-2024 release, 06/02/2025): non-GAAP EPS 22.50-24.00$ (mid 23.25); realized 24.21$ (FY25 release) - level +4.1%, above the top of the initial range."
+    },
+    {
+     "fy": 2024,
+     "beatPct": 4.3,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "12.20-12.70$ non-GAAP EPS (mid 12.45)",
+     "realizedDisplay": "12.99$ non-GAAP",
+     "note": "Initial FY24 guidance (Q4-2023 release, 06/02/2024): non-GAAP EPS 12.20-12.70$ (mid 12.45); realized 12.99$ - level +4.3%, above the top of the initial range."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 34.25,
+    "source": "initial_guidance",
+    "date": "2026-02-04",
+    "note": "TRUE initial FY26 guidance (FY25 release, 04/02/2026): non-GAAP EPS 33.50-35.00$ (mid 34.25), revenue 80-83bn. Raised at Q1 and again at Q2 (05/08: 35.50-36.50, revenue 85-87bn). Replaces the August-dated anchor (which was the second raise)."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct +4.6% BLENDED (in-progress +5.1 x1/2; FY25 +4.1 and FY24 +4.3 equal-shared). Beats are on management's non-GAAP EPS (incl. IPR&D charges as guided) - the Omnium base wedge is declared in basisNote.",
+   "consensusSource": "MarketBeat/TipRanks aggregators (non-GAAP)",
+   "consensusDate": "2026-08-04",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 34.25,
+    "currentValue": 36.0,
+    "deltaPct": 5.1,
+    "asOf": "2026-08-05",
+    "note": "Initial 33.50-35.00$ (mid 34.25); raised twice to 35.50-36.50$ (mid 36.00) - projected +5.1%. The Q2 raise was +2.78 underlying at mid, partly consumed by 3.03$ of acquired IPR&D."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-08-05",
+   "label": "Q2 26",
+   "type": "earnings"
+  }
+ },
+ "coherenceQualitative": {
+  "historique": [
+   {
+    "quarter": "Q2 26",
+    "date": "2026-08-05",
+    "source": "Q2 release/call (as exploited at the 05/08 refresh)",
+    "message": "FY26 guidance raised on all three axes (revenue 85-87bn, margin 49-50.5%, EPS 35.50-36.50); Foundayo (oral GLP-1) launch inflection now tangible; Medicare GLP-1 Bridge live since 01/07. The fiche keeps a 47.5% EBIT margin (below the guided band) because part of the raise reflects H1 non-recurring items flagged by management itself; EPS anchored on the guidance mid (36.00) because guidance excludes post-30/06 acquired IPR&D - recurring in practice given the M&A rhythm.",
+    "format": "compresse"
+   }
+  ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 36.12,
+   "epsNY": 45.34,
+   "date": "2026-08-04",
+   "source": "Non-GAAP - aggregators MarketBeat/TickerReport (2026, ~34 analysts); WallStreetZen (2027, ~33 analysts)",
+   "analystsCount": 34,
+   "analystsCountNY": 33
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 6.12,
+   "2022": 6.9,
+   "2023": 5.8,
+   "2024": 11.71,
+   "2025": 22.95
+  }
+ }
 }

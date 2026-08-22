@@ -1156,7 +1156,7 @@ function abbrevEventLabel(lbl){
 }
 function nextEventLabel(ticker){
   const d=state.tickers[ticker];
-  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
+  const ne=d?.nextEvent;
   if(!ne || !ne.label) return '—';
   const lbl=abbrevEventLabel(ne.label);
   if(!ne.date) return lbl;
@@ -1167,7 +1167,7 @@ function nextEventLabel(ticker){
 }
 function nextEventDate(ticker){
   const d=state.tickers[ticker];
-  const ne=(state.nextEvents&&state.nextEvents[ticker])||d?.nextEvent;
+  const ne=d?.nextEvent;
   if(!ne || !ne.date) return null;
   const dt=new Date(ne.date);
   return isNaN(dt) ? null : dt.getTime();
@@ -1191,7 +1191,6 @@ function normalizeTicker(key,d){
 
 function normalizeState(s){
   if(!s.tickers)s.tickers={};
-  if(!s.nextEvents)s.nextEvents={};
   if(!s.newsDigest)s.newsDigest=[];
   if(!s.newsAll)s.newsAll=[];
   if(!s.dismissedNewsDates)s.dismissedNewsDates=new Set();
@@ -1432,7 +1431,7 @@ async function loadState() {
     const manifest = await manRes.json();
     const codes = manifest.tickers || [];
 
-    const [results, nextEvents, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps, newsFeed, managerMoves] = await Promise.all([
+    const [results, newsDigest, newsAll, dismissedNewsDates, marketAction, priceHistory, webState, calendarProposals, calendarCandidates, sourceGaps, newsFeed, managerMoves] = await Promise.all([
       Promise.all(codes.map(async code => {
         try {
           const r = await fetch(`data/${code}.json`, NO_STORE);
@@ -1445,7 +1444,6 @@ async function loadState() {
           return null;
         }
       })),
-      fetch('data/nextEvents.json', NO_STORE).then(r => r.ok ? r.json() : {}).catch(() => ({})),
       fetch('data/newsDigest.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       fetch('data/newsAll.json', NO_STORE).then(r => r.ok ? r.json() : []).catch(() => []),
       fetchDismissedNewsDates(),
@@ -1484,9 +1482,9 @@ async function loadState() {
 
     const tickers = {};
     results.forEach(pair => { if (pair) tickers[pair[0]] = pair[1]; });
-    const jsonData = { tickers, nextEvents: nextEvents || {}, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null, newsFeed: newsFeed || null, managerMoves: managerMoves || null };
+    const jsonData = { tickers, newsDigest: newsDigest || [], newsAll: newsAll || [], dismissedNewsDates, marketAction: marketAction || null, priceHistory: priceHistory || null, webState: webState || null, calendarProposals: calendarProposals || [], calendarCandidates: calendarCandidates || null, sourceGaps: sourceGaps || null, newsFeed: newsFeed || null, managerMoves: managerMoves || null };
 
-    const fp = fingerprint(JSON.stringify({tickers, nextEvents, newsDigest, newsAll}));
+    const fp = fingerprint(JSON.stringify({tickers, newsDigest, newsAll}));
     const elFp = document.getElementById('data-fingerprint');
     if (elFp) elFp.textContent = fp;
 
@@ -4824,12 +4822,7 @@ function actionQueues(){
     const b=(dc.resultatsVsConsensus||{}).epsAdj?.basis;
     if(typeof b==='string' && !['GAAP','non-GAAP'].includes(b.trim())) horsEnum.push(tk);
   });
-  // nextEvents : passage mensuel (Operation C). L'alerte s'ouvre le 1er du
-  // mois et s'eteint quand _meta.lastRun passe dans le mois courant.
-  const lastRun=state.nextEvents?._meta?.lastRun||null;
-  const moisCourant=today.toISOString().slice(0,7);
-  const nextEventsDu=!lastRun || lastRun.slice(0,7)<moisCourant;
-  return {attente:attente.sort(), horsEnum:horsEnum.sort(), nextEventsDu, lastRunNE:lastRun};
+  return {attente:attente.sort(), horsEnum:horsEnum.sort()};
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -5529,7 +5522,7 @@ function buildSourceGapsPanel(g){
   if(cManual.length){ S.push(sect('Consensus — manual input needed', cManual, 'The full cascade (all ranks, all three access strategies) failed for these — the assistant must not invent a value.',
     `Les titres suivants ont epuise la cascade consensus complete sans resultat. Je te fournis les valeurs ci-dessous — integre-les dans epsConsensus (archive l'ancien dans epsConsensusHistory, source = "fourni par l'utilisateur (date)") puis efface l'entree de data/sourceGaps.json :\n${cManual.map(c=>`- ${c.tk} : ${c.detail} -> eps 2026 = ?, eps 2027 = ?, eps 2028 = ?`).join('\n')}`, first)); first=false; }
   if((g.cal||[]).length){ S.push(sect('Calendar — IR page needs the browser pass (Claude in Chrome)', g.cal, 'The weekly calendar run could not read these IR event pages without a real browser (403/JS shell after all three access strategies).',
-    `Reprends le run calendrier (INSTRUCTIONS_CALENDAR.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page Events/Financial calendar du site IR, capte les evenements a un mois (earnings, presentations investisseurs, conferences brokers) AVEC le champ url (lien precis evenement/webcast), fusionne dans data/calendarCandidates.json + data/nextEvents.json, puis efface l'entree "calendar" correspondante de data/sourceGaps.json :\n${g.cal.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
+    `Reprends le run calendrier (INSTRUCTIONS_CALENDAR.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page Events/Financial calendar du site IR, capte les evenements a un mois (earnings, presentations investisseurs, conferences brokers) AVEC le champ url (lien precis evenement/webcast), fusionne dans data/calendarCandidates.json et ecris la prochaine echeance dans le champ nextEvent de la fiche du titre (data/<TICKER>.json), puis efface l'entree "calendar" correspondante de data/sourceGaps.json :\n${g.cal.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   if((g.news||[]).length){ S.push(sect('News — pressroom needs the browser pass (Claude in Chrome)', g.news, 'The news run could not read these pressroom/news pages without a real browser (403/JS shell after all three access strategies).',
     `Reprends la collecte news (INSTRUCTIONS_NEWS.md) pour les titres suivants VIA MON NAVIGATEUR CHROME (Claude in Chrome — onglet dedie, jamais d'identifiants) : ouvre la page pressroom/news du site IR, capte les news de la fenetre 7 jours au schema newsFeed (id TICKER-YYYYMMDD-slug, kind, title, summary, source, url, critical, corroborations), fusionne dans data/newsFeed.json, puis efface l'entree "news" correspondante de data/sourceGaps.json :\n${g.news.map(c=>`- ${c.tk} : ${c.detail}${c.url?` (${c.url})`:''}`).join('\n')}`, first)); first=false; }
   if((g.mgr||[]).length){ S.push(sect('Manager moves — 13F filing could not be read', g.mgr, 'The quarterly 13F run could not read these EDGAR filings (throttling, unusual filing layout, or manager not found).',
@@ -5550,7 +5543,7 @@ function buildCalDuePanel(st){
   return `<div style="border-left:3px solid var(--navy);padding:2px 0 2px 11px;">
       <div style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;color:var(--navy);">Refresh calendar &amp; news — weekly (Thursday)</div>
       <div style="font-size:9.5px;color:var(--muted);margin-top:4px;line-height:1.6;">${st.gen?`Last run: ${formatFrDate(st.gen.slice(0,10))}. `:'No run recorded yet. '}Scans each company's IR events page (earnings, investor presentations, broker conferences, CMD, AGM…) over the next month, captures the precise event link for your Google Calendar, and refreshes the portfolio's NEXT EVENT column in the same pass. Spec file: <b style="color:var(--navy);">INSTRUCTIONS_CALENDAR.md</b></div>
-      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_CALENDAR.md ET INSTRUCTIONS_NEWS.md — run hebdomadaire (calendrier + news), dans la MÊME passe et le même commit. (1) CALENDRIER : pour chaque ticker du manifest, lis la page Events/Financial calendar du site IR (règle des trois stratégies d'accès : curl nu → UA sobre → navigateur) sur une fenêtre d'un mois ; capte earnings, présentations investisseurs et conférences brokers avec le champ url (lien précis événement/webcast, obligatoire quand il existe) ; livre data/calendarCandidates.json ET data/nextEvents.json (ce run est l'unique mainteneur du NEXT EVENT — plus d'Opération C séparée). (2) NEWS : dans la même visite du site IR, lis le pressroom sur une fenêtre de 7 jours et applique la typologie stricte d'INSTRUCTIONS_NEWS.md — communiqués de la société sur événements matériels PASSÉS (acquisition, warning, départ de dirigeant, nouveau plan de rachat…), externe UNIQUEMENT si critique (rumeur M&amp;A ou produit rapportée par une source de la whitelist, changement d'opinion broker ÉTAYÉ — jamais un simple changement d'objectif), règle routine vs signal (les déclarations hebdomadaires de rachats d'actions ne ressortent JAMAIS) ; un événement = un item (id TICKER-YYYYMMDD-slug, les autres liens en corroborations) ; fusionne dans data/newsFeed.json sans toucher aux items kind:"video" encore dans leur fenêtre (ils viennent de la boucle quotidienne). Échec d'accès d'un pressroom ou d'une page IR : entrée typée dans data/sourceGaps.json (section "calendar" ou "news"), jamais de silence. Pousse les fichiers modifiés dans un commit unique.</div>
+      <div class="act-req" style="margin-top:8px;">Exécute INSTRUCTIONS_CALENDAR.md ET INSTRUCTIONS_NEWS.md — run hebdomadaire (calendrier + news), dans la MÊME passe et le même commit. (1) CALENDRIER : pour chaque ticker du manifest, lis la page Events/Financial calendar du site IR (règle des trois stratégies d'accès : curl nu → UA sobre → navigateur) sur une fenêtre d'un mois ; capte earnings, présentations investisseurs et conférences brokers avec le champ url (lien précis événement/webcast, obligatoire quand il existe) ; livre data/calendarCandidates.json ET le champ nextEvent de chaque fiche data/&lt;TICKER&gt;.json (ce run en est l'unique mainteneur — il n'existe plus de fichier global : la prochaine échéance vit dans la fiche du titre qu'elle concerne). (2) NEWS : dans la même visite du site IR, lis le pressroom sur une fenêtre de 7 jours et applique la typologie stricte d'INSTRUCTIONS_NEWS.md — communiqués de la société sur événements matériels PASSÉS (acquisition, warning, départ de dirigeant, nouveau plan de rachat…), externe UNIQUEMENT si critique (rumeur M&amp;A ou produit rapportée par une source de la whitelist, changement d'opinion broker ÉTAYÉ — jamais un simple changement d'objectif), règle routine vs signal (les déclarations hebdomadaires de rachats d'actions ne ressortent JAMAIS) ; un événement = un item (id TICKER-YYYYMMDD-slug, les autres liens en corroborations) ; fusionne dans data/newsFeed.json sans toucher aux items kind:"video" encore dans leur fenêtre (ils viennent de la boucle quotidienne). Échec d'accès d'un pressroom ou d'une page IR : entrée typée dans data/sourceGaps.json (section "calendar" ou "news"), jamais de silence. Pousse les fichiers modifiés dans un commit unique.</div>
     </div>`;
 }
 function buildCalTriagePanel(st){

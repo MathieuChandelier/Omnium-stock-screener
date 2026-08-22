@@ -1,502 +1,502 @@
 {
-  "name": "Copart",
-  "cours": 46.0,
-  "yahooSymbol": "CPRT",
-  "dividende": 0.0,
-  "fyEndMonth": 7,
-  "data": [
-    {
-      "year": 2021,
-      "ca": 2691,
-      "ebit": 1136,
-      "net": 937,
-      "shares": 956,
-      "nd": -2600,
-      "div": 0
-    },
-    {
-      "year": 2022,
-      "ca": 3500,
-      "ebit": 1375,
-      "net": 1090,
-      "shares": 956,
-      "nd": -2900,
-      "div": 0
-    },
-    {
-      "year": 2023,
-      "ca": 3870,
-      "ebit": 1487,
-      "net": 1240,
-      "shares": 967,
-      "nd": -3400,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 4237,
-      "ebit": 1572,
-      "net": 1363,
-      "shares": 975,
-      "nd": -4600,
-      "div": 0
-    },
-    {
-      "year": 2025,
-      "ca": 4647,
-      "ebit": 1697,
-      "net": 1552,
-      "shares": 978,
-      "nd": -6000,
-      "div": 0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 1.58,
-    "epsNY": 1.68,
-    "epsY2": 1.85,
-    "date": "2026-08-20",
-    "source": "MarketScreener (consensus of 13 analysts, GAAP basis, July fiscal year) - 3-year consensus loop of 20/08/2026; replaces the 24/07 snapshot rebased bottom-up. FY26 reported on 09/09/2026.",
-    "analystsCount": 13
+ "name": "Copart",
+ "cours": 46.0,
+ "yahooSymbol": "CPRT",
+ "dividende": 0.0,
+ "fyEndMonth": 7,
+ "data": [
+  {
+   "year": 2021,
+   "ca": 2691,
+   "ebit": 1136,
+   "net": 937,
+   "shares": 956,
+   "nd": -2600,
+   "div": 0
   },
-  "particularites": [
-    {
-      "text": "Offset fiscal year: Copart closes its fiscal year on 31 July, not in December. The years in the table denote fiscal years (e.g. 'FY2025' = year ended 31 July 2025), not calendar years - handled by the fyEndMonth=7 field.",
-      "valuePct": null
-    },
-    {
-      "text": "No dividend paid despite a largely positive net cash position: a deliberate and structural capital allocation choice (high-ROIC land, reserve for opportunism/catastrophes, opportunistic buybacks). The buyback has been active again since Q2 FY2026 (>1,6 Md$ over 9 months) after several years at $0; the new CEO (Jay Adair, returning on 31/07/2026) signals a diversification of capital towards M&A and organic investment on top of buybacks (call of 06/07/2026) - the future buyback pace is therefore uncertain, see hypothese/ancrages.",
-      "valuePct": null
-    }
-  ],
-  "nextEvent": {
-    "label": "Q4 FY 26",
-    "date": "2026-09-09"
+  {
+   "year": 2022,
+   "ca": 3500,
+   "ebit": 1375,
+   "net": 1090,
+   "shares": 956,
+   "nd": -2900,
+   "div": 0
   },
-  "ownership": {
-    "asOf": "2026-08-09",
-    "insiderPct": 9.5,
-    "insiderDesc": "Willis J. Johnson (founder, Chairman of the Board) and A. Jayson Adair (Johnson's son-in-law, returned as CEO on 31/07/2026 after having been Executive Chairman) - historic owner-operator structure, Adair draws a symbolic salary of 1$/year",
-    "insiderSource": "Cross-checked analyses (Summit Stocks, Dec. 2025; GuruFocus, Form 4 tracking) converging on Johnson ~5,7-5,9% + Adair ~3,1% + other officers ~0,5-1%; DEF 14A PROXY not consulted verbatim this session (beneficial ownership table not found in full text) - order of magnitude, not a precision data point. No material change identified since the previous refresh (22/07/2026).",
-    "notableHolders": [
-      {
-        "investor": "Vanguard Group",
-        "pct": 6.9,
-        "asOf": "2026-Q1",
-        "source": "Schedule 13G déposé le 2026-04-29"
-      },
-      {
-        "investor": "BlackRock",
-        "pct": 6.5,
-        "asOf": "2025-Q3",
-        "source": "13F Q3 2025 (agrégé, BusinessQuant)"
-      },
-      {
-        "investor": "Principal Financial Group",
-        "pct": 4.2,
-        "asOf": "2025-Q3",
-        "source": "13F Q3 2025 (agrégé, BusinessQuant)"
-      }
-    ],
-    "coverageNote": null,
-    "history": [
-      {
-        "asOf": "2026-07-22",
-        "insiderPct": 9.5
-      }
-    ]
+  {
+   "year": 2023,
+   "ca": 3870,
+   "ebit": 1487,
+   "net": 1240,
+   "shares": 967,
+   "nd": -3400,
+   "div": 0
   },
-  "compliance": {
-    "asOf": "2026-08-09",
-    "items": [
-      {
-        "year": 2026,
-        "title": "Investigation opened by US plaintiff law firms (Pomerantz LLP, Bragar Eagel & Squire) into possible securities fraud and/or breach of duty by the officers, opened following the stock's fall (-8,0%, to 28,10$) on 29 June 2026 in the wake of the announcement of CEO Jeff Liaw's departure.",
-        "allegedBy": "Pomerantz LLP, Bragar Eagel & Squire (cabinets d'avocats plaignants US)",
-        "date": "2026-07-16",
-        "status": "sollicitation",
-        "outcome": null,
-        "source": "Communiqués PR Newswire (Pomerantz, 2026-07-16) et GlobeNewswire (Bragar Eagel & Squire, 2026-07-21)"
-      }
-    ],
-    "note": "No proven fraud and no allegation by an activist analyst/short seller (Muddy Waters, Hindenburg, Citron type) identified in the stock's history to date. The only item recorded (see items) is an investigation solicitation by plaintiff law firms - a preliminary stage and a common one after any material share price decline in the US, with no formally filed complaint and no proven element of fraud at this stage (search of 2026-08-09: still no formal complaint filed, status unchanged). The stock's ordinary commercial/employment litigation is outside the scope of this section."
+  {
+   "year": 2024,
+   "ca": 4237,
+   "ebit": 1572,
+   "net": 1363,
+   "shares": 975,
+   "nd": -4600,
+   "div": 0
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-09",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q2 FY 26",
-        "date": "2026-02-19",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Bob Labick (CJS Securities) - macro factors to watch for a recovery in volumes: Liaw points to the cyclicality of insurance premium/rate growth, insurers with healthier income statements being able to reinvest in marketing/competitive pricing once consumer purchasing habits normalise.",
-          "Q Bob Labick - returns/results from the ramp-up of the sales force: Liaw stresses that the investments cover commercial, product and technology capabilities beyond sales headcount alone, each spend assessed individually rather than an overall SG&A ratio.",
-          "Q Craig Kennison (Baird) - future land capacity needs: Stearns explains that faster cycles allow more efficient use of land, disciplined case-by-case analysis, land investment expected to continue over the coming decade.",
-          "Q Craig Kennison - risk of disruption by AI: Liaw highlights physical storage, the global buyer network, the established platform and regulatory expertise as durable moats, priority given to internal AI deployment to preserve the competitive advantage.",
-          "Q Bret Jordan (Jefferies) - intensifying price competition: Liaw refocuses the topic on the 'economic outcome delivered' rather than price, vehicle selling price gaps far outweighing fee gaps.",
-          "Q Bret Jordan - performance of Copart Dealer Services (CDS): Stearns reports 5% unit volume growth year on year with expansion of the dealer user base.",
-          "Q John Healy (Northcoast Research) - outlook for accident/total-loss frequency: Liaw explains that accident frequency is declining structurally (vehicle safety) but that total-loss frequency offsets this through the ageing of the fleet and 'risk homeostasis' behaviours.",
-          "Q John Healy - why buybacks now rather than another capital allocation: Liaw cites valuation multiples, interest rates and relative positioning, no inside information beyond standard allocation discipline.",
-          "Q Jeffrey Lick (Stephens) - near-term impact of emerging technologies (EVs, autonomous driving, lease returns): Liaw indicates that this does not materially change 5-10 year investment decisions on capacity/technology, focus on leading indicators rather than short-term noise.",
-          "Q Jeffrey Lick - which catalyst would signal an inflection in volume growth: Liaw identifies cyclical factors (consumer insurance purchasing behaviour, insurer policy changes, non-insurance segments) - dynamic judged cyclical, not structural.",
-          "Q Jash Patwa (JPMorgan) - has the de-emphasis of low-value units disadvantaged volumes vs the industry: Stearns explains that units below 1 000$ are old/non-running, uninsured vehicles going through impound lots or staying with their owners, a fragmented market outside Copart's focus.",
-          "Q Jash Patwa - performance of the Purple Wave heavy equipment business: Liaw attributes the underperformance to customs tariff uncertainty disrupting the sector, organic investments in sales talent/platform maintained, M&A secondary to organic growth.",
-          "Q Jash Patwa - explanation of the sequential moderation in service margin: Stearns cites a one-off international VAT accrual of 6,8 M$; excluding catastrophe units and that item, margins improve markedly year on year."
-        ]
-      },
-      {
-        "quarter": "Q3 FY 26",
-        "date": "2026-05-21",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Bob Labick (CJS Securities) - pass-through of fuel cost in the hybrid towing model: Liaw explains that Copart runs its own fleet, supports contractors through structured leasing/towing programmes, and adjusts rates market by market to preserve the service level and contractor profitability.",
-          "Q Bob Labick - impact of the decline in SAAR (annualised new vehicle sales rate) since 2020 on future salvage volumes: Liaw replies that Copart's supply comes from a layer of more than 10 years of vehicles already on the road, not from the timing of fleet entry - what matters is miles driven and the accident rate, not the build date.",
-          "Q Bob Labick - 5-year growth drivers: Liaw cites (1) the rise in insurance total-loss frequency, (2) the expansion of non-insurance volumes (rental/dealers/fleets/finance), (3) international expansion, (4) actively promoting a higher total-loss frequency through better returns for insurers, (5) ecosystem services reducing friction.",
-          "Q Craig Kennison (Baird) - insurer partners' outlook for 2026-2027: Liaw indicates that insurers are seeing consumers pulling back (~1 policyholder in 6 has reduced coverage), acknowledge cyclical trends, and expect major discussions on AI deployment - Copart highlights its AI capabilities on claims.",
-          "Q Craig Kennison - drivers of the 18% growth in international service revenue: Stearns cites strong performance in the United Kingdom, Germany and Canada, with Germany showing particular progress as insurers adopt the Copart-style total-loss remarketing model, improving volumes and profitability.",
-          "Q Jash Patwa (JPMorgan) - size of the non-insurance business and profile of cross-over buyers: Liaw describes buyers discovering Copart via search/social media for a specific vehicle, then broadening into adjacent categories in concentric circles, from damaged rental vehicles towards better-condition inventory.",
-          "Q Jash Patwa - is the pure sale (no reserve price) mix contractual or dynamic: Liaw confirms that it is non-contractual - insurers move to pure sales voluntarily as they observe Copart's liquidity, a reserve price would chill participation.",
-          "Q Jash Patwa - breakdown of revenue per unit (RPU) growth between ASP, mix and initiatives such as Title Express: Liaw cites Title Express penetration (processing 6-8x more volume than competitors), higher selling prices shared with Copart, volume growth, and the non-insurance seller mix (premium pricing).",
-          "Q John Healy (Northcoast Research) - definition and size of the whole car business, seller composition (including hail vehicles): Liaw describes a spectrum running from total-loss to near-new vehicles, Copart winning rights progressively (rental/damaged trade-ins then better-condition fleet vehicles).",
-          "Q John Healy - Purple Wave performance and investment in the business: Stearns reports Purple Wave GTV up more than 25% year on year, driven by territorial expansion and enterprise account development, team 2,5-3x larger than at acquisition.",
-          "Q Jeff Lick (Stephens) - long-distance delivery product: Stearns explains that it reduces friction and brings cost certainty to buyers, generating ~15 M$ of additional operating cost year on year with attractive margins and strong adoption.",
-          "Q Jeff Lick - clarification of pure sale vs sale without reserve: Liaw confirms that pure sale is synonymous with a sale with no reserve price."
-        ]
-      }
-    ],
-    "engagementsStructurants": []
-  },
-  "hypothese": {
-    "date": "2026-08-18",
-    "source": "Deep refresh 18/08/2026 (full protocol): bridge established (t 20% + growing interest income on the cash, resultatFinancierNet anchor), scorecard created (in-house, no guidance, anchor set close to the year-end - July fiscal year), deprecated keys purged. Projections unchanged (bottom-up of 09/08).",
-    "priorEPS": {
-      "date": "2026-08-09",
-      "eps": {
-        "2026": 1.65,
-        "2027": 1.9,
-        "2028": 2.09,
-        "2029": 2.31,
-        "2030": 2.56
-      }
-    },
-    "dernierCall": {
-      "quarter": "Q3 FY 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1237,
-          "consensus": 1195
-        },
-        "epsAdj": {
-          "actual": 0.43,
-          "consensus": 0.42,
-          "basis": "GAAP"
-        }
-      },
-      "guidanceProchainTrimestre": "No quantified guidance provided - Copart communicates no formal guidance (consistent practice).",
-      "guidanceAnnuelle": "No quantified annual guidance provided; management comments qualitatively on the trends (expected normalisation of insurance volumes, strength of international, structural rise in the total-loss rate).",
-      "pointsCles": [
-        "Q3 FY26 revenue of 1,237 Md$ (+2,1% y/y), net income almost flat (402,4 M$, -1,0%) but EPS up (+2,4% to 0,43$) thanks to buybacks - at the scale of the first 9 months of FY26, cumulative net income is perfectly flat (1 156,8 M$ vs 1 156,0 M$ a year earlier, +0,07%) and cumulative EPS almost flat (+0,8%), the strong Q1 (+11,7% EPS) having been erased by a weak Q2 (-10,0% EPS, unfavourable CAT comp).",
-        "US insurance unit volumes down (-4,2% y/y) on the back of lower claims frequency - a headwind judged cyclical by management, offset by the rise in average selling prices (+4,6% overall, a seasonal record in Q3) and by international (+5,9% in units, +14,1% in revenue).",
-        "Buybacks: 43,4 M shares retired for >1,6 Md$ over the first 9 months of FY26 (average price ~37$/share) via 10b5-1 + open market - first year of buyback since at least FY2021 (buyback at 0$ in each year FY2021-FY2025, verified). Liquidity at end-Q3: 5,5 Md$ (of which 4,2 Md$ cash + HTM securities), zero debt.",
-        "Management transition: Jay Adair takes back the CEO role on 31/07/2026 (Jeff Liaw becomes special adviser). On a special call on 06/07/2026 (first call outside a quarterly release in 32 years), Adair signalled a slowdown in land capex (~500 M$/yr historically) and a redirection of capital towards M&A and organic investment (international, domestic whole car, technology), on top of buybacks - the future buyback pace is therefore no longer guaranteed at the Q2-Q3 FY26 level."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "communique",
-        "date": "2026-05-21"
-      }
-    },
-    "guidanceHistory": [],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "Q1",
-          "eps": 0.36,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 0.4,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 0.42,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 0.41,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 0.4,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 0.36,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 0.43,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 0.46,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 0.46,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 0.41,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 0.5,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 0.53,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "World leader in online auctions of total-loss/salvage vehicles, with an exceptional physical and technological moat; in a cyclical air pocket confirmed over 9 months (FY26 net income almost flat, not growing) and a competitive one (return of IAA under RB Global), offset by pricing. FY26 revenue/margin/EPS rebuilt bottom-up on the 9 actual months (not an extrapolation); the 2027-2030 recovery ramp made gradual as a consequence.",
-    "text": "== THESIS SUMMARY ==\nCopart is the dominant US salvage-auction intermediary (~50% share, duopoly with RB Global ~35%) with one of the cleanest moats in the portfolio: ~280 physical yards operating as local monopolies, self-reinforcing auction liquidity, and a twenty-year technology lead since the 2003 all-digital pivot - operating margins ~37%, exceptional cash conversion. The structural tailwind is the rising total-loss rate (ADAS repair complexity) mechanically enlarging the salvage pool. The near-term reality is an air pocket, not a rebound: 9M FY26 revenue -0.2%, net +0.1% (Q1 +11.5% erased by Q2 -9.5%), so FY26 is rebuilt bottom-up on actuals (EPS ~1.65$, +3.8%, carried mostly by the buyback: 43.4M shares retired over 9M at ~37$). The 2027-2030 ramp is deliberately gradual (+4/+6/+7/+7.5%) and the buyback glide moderated (900 -> 550M$/yr) to reflect new CEO Adair's signaled capital diversification toward M&A - the single most sensitive assumption for 2027+.\n\n== THESIS READ ==\n- Third consecutive flat quarter (Q3 FY26 net -1.0%): the insurance-volume air pocket is confirmed cyclical-but-persistent; no rebound assumed before FY27.\n- EPS growth is currently a buyback story (+3.8% on flat net) - fine while the moat holds pricing, but watch the M&A-vs-buyback arbitration under Adair.\n- Purple Wave re-accelerated (+25% GTV) after the tariff-uncertainty dip flagged at Q2 - improvement read, not inconsistency.\n- Interest income is real and growing (cash 5.5 -> 10.8bn$ modeled): the bridge carries it explicitly (+257 -> +663M$ at ~T10y+2pts), unlike zero-yield peers - Copart's buyback lacks the 2-3yr regularity that E5 a-bis requires for the zero branch.\n- Watch: FY26 results (09/09) replace the whole bottom-up reconstruction - first full point under Adair.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP. Bridge (c-ter): t=20% flat (ETR normative), finNet = average net cash x ~T10y+2pts (ancrage resultatFinancierNet) - chain reconciles exactly; published FY25 reconciles at +243M$ interest. W1 flags the +17pt projected conversion rise (87% -> 104%): it is the INTEREST line compounding on a doubling cash pile, documented here, not a margin assumption. Scorecard: never guides - anchor own_vintage 1.65$ (24/07, near FY close; pose the FY27 anchor at the September results), history not measurable, application suspended. WATCH-LIST: (a) FY26 actuals (09/09); (b) Adair capital allocation (M&A vs buyback) - drives 2027+ EPS; (c) US insurance-volume inflection (still absent after 3 quarters); (d) total-loss rate trend; (e) international acceleration. Next useful refresh: FY26 results (09/09/2026).\n\n== CATALYSTS ==\nFY26 results (09 Sep): full-year actuals + Adair's first strategic frame; insurance-volume stabilization; total-loss secular tailwind; accretive buybacks on a depressed stock.",
-    "impact": "neutre",
-    "ancrages": [
-      {
-        "id": "fy26BottomUp",
-        "moteur": "FY2026 rebuilt bottom-up on the 9 months ACTUALLY reported (revenue -0,2% y/y, net income +0,07% y/y) + a reasoned Q4 (+1,5% revenue, +5% net income vs Q4 FY25, absent an identified catalyst) - replaces a top-down growth assumption (+5,9%) that was not consistent with the figures already published at the time of creation.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumEBIT.2026",
-          "omniumNet.2026"
-        ],
-        "confiance": "haute"
-      },
-      {
-        "id": "rampeReprise2027plus",
-        "moteur": "Gradual revenue growth 2027-2030 (+4%/+6%/+7%/+7,5%) replacing the previous assumption of an immediate rebound to +7-8% as early as 2027 - a flat FY26 does not justify a sharp rebound without an identified catalyst; the recovery is modelled as progressive, to be confirmed quarter after quarter.",
-        "applique": [
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "marginGradual",
-        "moteur": "Operating margin stable to slightly rising (36,7% in 2026 towards 37,8% in 2030, +0,2-0,3pt/yr), consistent with the operating leverage of the model once volumes have stabilised.",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "resultatFinancierNet",
-        "moteur": "No debt and net cash >5 Md$. The buyback programme only started in Q2 FY2026 after $0 of buyback over FY2021-FY2025 (verified) - it does not meet the 'pace observed over at least the last 2-3 fiscal years' criterion of the E5-a-bis rule, so the zero yield does not apply. Branch retained: 10-year Treasury + 2pts (4,70% at 23/07/2026 + 2pts = 6,70%) on the average net cash of each PROJECTED year (2027-2030), iterative calculation. FY2026 (75% already published) does NOT use this synthetic methodology - rebuilt bottom-up on the actual results (see fy26BottomUp).",
-        "applique": [
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "buybackModereCapitalDiversifie",
-        "moteur": "MODERATE buyback glide for 2027-2030 (900/700/600/550 M$, against 1300/1000/850/750 in the previous version) reflecting Jay Adair's explicit signal (call of 06/07/2026) of redirecting capital towards M&A (with debt flexibility) and organic investment (3 pillars), on top of buybacks - the future buyback pace is no longer guaranteed at the Q2-Q3 FY26 level. Average execution price assumed to rise (45$/50$/55$/60$) as the stock re-rates with the thesis, net of the dilution from share-based compensation (~8 M shares/yr).",
-        "applique": [
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "buybackFY26",
-        "moteur": "FY2026: 43,4 M shares / >1,6 Md$ already bought back over 9 months (average price ~37$) + an estimated ~500 M$ more in Q4 (vs ~1,1 Md$ in Q3 alone - slowdown assumed given Adair's capital diversification signal). FY26 weighted average shares recalculated directly from the actual published quarterly EPS/net income (984,6 M / 972,1 M / 935,8 M in Q1/Q2/Q3, ~925 M estimated in Q4) rather than estimated top-down.",
-        "applique": [
-          "omniumND.2026",
-          "omniumShares.2026"
-        ],
-        "confiance": "moyenne"
-      }
-    ],
-    "omniumCA": {
-      "2026": 4656,
-      "2027": 4842,
-      "2028": 5133,
-      "2029": 5492,
-      "2030": 5904
-    },
-    "omniumEBIT": {
-      "2026": 1709,
-      "2027": 1792,
-      "2028": 1914,
-      "2029": 2065,
-      "2030": 2232
-    },
-    "omniumNet": {
-      "2026": 1573,
-      "2027": 1749,
-      "2028": 1903,
-      "2029": 2095,
-      "2030": 2316
-    },
-    "omniumND": {
-      "2026": -5473,
-      "2027": -6322,
-      "2028": -7525,
-      "2029": -9020,
-      "2030": -10786
-    },
-    "omniumShares": {
-      "2026": 954,
-      "2027": 919,
-      "2028": 910,
-      "2029": 906,
-      "2030": 904
-    },
-    "omniumEPS": {
-      "2026": 1.65,
-      "2027": 1.9,
-      "2028": 2.09,
-      "2029": 2.31,
-      "2030": 2.56
-    },
-    "cagrBridge": "EPS CAGR ≈ +11.6%/yr over 2026-2030 (1,65$ -> 2,56$): FY2026 is now a transition year close to flat (net income +1,3%, EPS +3,8% driven almost entirely by the reduction in the share count already executed over 9 months), followed by a gradual acceleration from 2027 (revenue +4% -> +7,5%/yr, margin +0,2-0,3pt/yr, moderate buybacks given the capital diversification signalled by the new CEO). The 2026->2027 EPS jump (+15%) reflects the full-year benefit of the share base already reduced in 2026, NOT a sudden rebound in profitability. No dividend paid, so EPS CAGR = expected total return before any change in multiple. This trajectory depends heavily on assumptions not guaranteed by management (buyback pace, timing of the cyclical recovery) - to be treated as a central scenario, not a certainty.",
-    "bridge": {
-      "2025": {
-        "finNet": 243,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1552,
-        "netPub": 1552,
-        "residual": 0,
-        "residualNote": "Reconciles cleanly: ~243M$ interest income on the growing cash pile, 20% effective tax."
-      },
-      "2026": {
-        "finNet": 257,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1573
-      },
-      "2027": {
-        "finNet": 394,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1749
-      },
-      "2028": {
-        "finNet": 465,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 1903
-      },
-      "2029": {
-        "finNet": 554,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 2095
-      },
-      "2030": {
-        "finNet": 663,
-        "other": 0,
-        "taxRate": 0.2,
-        "minorities": 0,
-        "netCalc": 2316
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "none",
-      "metric": "None (Copart never guides)",
-      "comparedAgainst": "consensus",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-05-21",
-          "type": "vs_consensus",
-          "detail": "Q3 FY26: revenue and net income roughly flat YoY (-1.0% net) - the cyclical air pocket confirmed for a third quarter; EPS 0.43 vs consensus 0.42 (+2.4%, GAAP base).",
-          "beatPct": 2.4
-        }
-      ],
-      "paceCheckpoint": "9M FY26 real: revenue -0.2%, net +0.1% - FY26 modeled bottom-up on actuals, not on a growth assumption.",
-      "weightedBeatPct": null,
-      "annualBeatPct": null,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Copart never guides (no metric, no frame); no dated early-FY25 consensus snapshot archived - excluded structurally."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_consensus",
-          "excluded": true,
-          "note": "Same structural limitation for FY24."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 1.65,
-        "source": "own_vintage",
-        "date": "2026-07-24",
-        "note": "Own projection archived 24/07 (bottom-up on 9M actuals) - close to FY end (fiscal year closes July); the FY27 anchor should be posed at the September FY26 results."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "No measurable fiscal year: no-guidance company. The own-vintage anchor (1.65, 24/07) is near the July FY close - pose the FY27 anchor at the September FY26 results.",
-      "consensusSource": "Sell-side post-Q3 FY26 (GAAP)",
-      "consensusDate": "2026-07-24",
-      "inProgress": null
-    },
-    "revisionEvent": {
-      "date": "2026-05-21",
-      "label": "Q3 FY 26",
-      "type": "earnings"
-    }
+  {
+   "year": 2025,
+   "ca": 4647,
+   "ebit": 1697,
+   "net": 1552,
+   "shares": 978,
+   "nd": -6000,
+   "div": 0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 1.58,
+  "epsNY": 1.68,
+  "epsY2": 1.85,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus of 13 analysts, GAAP basis, July fiscal year) - 3-year consensus loop of 20/08/2026; replaces the 24/07 snapshot rebased bottom-up. FY26 reported on 09/09/2026.",
+  "analystsCount": 13
+ },
+ "particularites": [
+  {
+   "text": "Offset fiscal year: Copart closes its fiscal year on 31 July, not in December. The years in the table denote fiscal years (e.g. 'FY2025' = year ended 31 July 2025), not calendar years - handled by the fyEndMonth=7 field.",
+   "valuePct": null
+  },
+  {
+   "text": "No dividend paid despite a largely positive net cash position: a deliberate and structural capital allocation choice (high-ROIC land, reserve for opportunism/catastrophes, opportunistic buybacks). The buyback has been active again since Q2 FY2026 (>1,6 Md$ over 9 months) after several years at $0; the new CEO (Jay Adair, returning on 31/07/2026) signals a diversification of capital towards M&A and organic investment on top of buybacks (call of 06/07/2026) - the future buyback pace is therefore uncertain, see hypothese/ancrages.",
+   "valuePct": null
+  }
+ ],
+ "nextEvent": {
+  "label": "Q4 FY 26",
+  "date": "2026-09-10"
+ },
+ "ownership": {
+  "asOf": "2026-08-09",
+  "insiderPct": 9.5,
+  "insiderDesc": "Willis J. Johnson (founder, Chairman of the Board) and A. Jayson Adair (Johnson's son-in-law, returned as CEO on 31/07/2026 after having been Executive Chairman) - historic owner-operator structure, Adair draws a symbolic salary of 1$/year",
+  "insiderSource": "Cross-checked analyses (Summit Stocks, Dec. 2025; GuruFocus, Form 4 tracking) converging on Johnson ~5,7-5,9% + Adair ~3,1% + other officers ~0,5-1%; DEF 14A PROXY not consulted verbatim this session (beneficial ownership table not found in full text) - order of magnitude, not a precision data point. No material change identified since the previous refresh (22/07/2026).",
+  "notableHolders": [
+   {
+    "investor": "Vanguard Group",
+    "pct": 6.9,
+    "asOf": "2026-Q1",
+    "source": "Schedule 13G déposé le 2026-04-29"
+   },
+   {
+    "investor": "BlackRock",
+    "pct": 6.5,
+    "asOf": "2025-Q3",
+    "source": "13F Q3 2025 (agrégé, BusinessQuant)"
+   },
+   {
+    "investor": "Principal Financial Group",
+    "pct": 4.2,
+    "asOf": "2025-Q3",
+    "source": "13F Q3 2025 (agrégé, BusinessQuant)"
+   }
+  ],
+  "coverageNote": null,
+  "history": [
+   {
+    "asOf": "2026-07-22",
+    "insiderPct": 9.5
+   }
+  ]
+ },
+ "compliance": {
+  "asOf": "2026-08-09",
+  "items": [
+   {
+    "year": 2026,
+    "title": "Investigation opened by US plaintiff law firms (Pomerantz LLP, Bragar Eagel & Squire) into possible securities fraud and/or breach of duty by the officers, opened following the stock's fall (-8,0%, to 28,10$) on 29 June 2026 in the wake of the announcement of CEO Jeff Liaw's departure.",
+    "allegedBy": "Pomerantz LLP, Bragar Eagel & Squire (cabinets d'avocats plaignants US)",
+    "date": "2026-07-16",
+    "status": "sollicitation",
+    "outcome": null,
+    "source": "Communiqués PR Newswire (Pomerantz, 2026-07-16) et GlobeNewswire (Bragar Eagel & Squire, 2026-07-21)"
+   }
+  ],
+  "note": "No proven fraud and no allegation by an activist analyst/short seller (Muddy Waters, Hindenburg, Citron type) identified in the stock's history to date. The only item recorded (see items) is an investigation solicitation by plaintiff law firms - a preliminary stage and a common one after any material share price decline in the US, with no formally filed complaint and no proven element of fraud at this stage (search of 2026-08-09: still no formal complaint filed, status unchanged). The stock's ordinary commercial/employment litigation is outside the scope of this section."
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-09",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q2 FY 26",
+    "date": "2026-02-19",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Bob Labick (CJS Securities) - macro factors to watch for a recovery in volumes: Liaw points to the cyclicality of insurance premium/rate growth, insurers with healthier income statements being able to reinvest in marketing/competitive pricing once consumer purchasing habits normalise.",
+     "Q Bob Labick - returns/results from the ramp-up of the sales force: Liaw stresses that the investments cover commercial, product and technology capabilities beyond sales headcount alone, each spend assessed individually rather than an overall SG&A ratio.",
+     "Q Craig Kennison (Baird) - future land capacity needs: Stearns explains that faster cycles allow more efficient use of land, disciplined case-by-case analysis, land investment expected to continue over the coming decade.",
+     "Q Craig Kennison - risk of disruption by AI: Liaw highlights physical storage, the global buyer network, the established platform and regulatory expertise as durable moats, priority given to internal AI deployment to preserve the competitive advantage.",
+     "Q Bret Jordan (Jefferies) - intensifying price competition: Liaw refocuses the topic on the 'economic outcome delivered' rather than price, vehicle selling price gaps far outweighing fee gaps.",
+     "Q Bret Jordan - performance of Copart Dealer Services (CDS): Stearns reports 5% unit volume growth year on year with expansion of the dealer user base.",
+     "Q John Healy (Northcoast Research) - outlook for accident/total-loss frequency: Liaw explains that accident frequency is declining structurally (vehicle safety) but that total-loss frequency offsets this through the ageing of the fleet and 'risk homeostasis' behaviours.",
+     "Q John Healy - why buybacks now rather than another capital allocation: Liaw cites valuation multiples, interest rates and relative positioning, no inside information beyond standard allocation discipline.",
+     "Q Jeffrey Lick (Stephens) - near-term impact of emerging technologies (EVs, autonomous driving, lease returns): Liaw indicates that this does not materially change 5-10 year investment decisions on capacity/technology, focus on leading indicators rather than short-term noise.",
+     "Q Jeffrey Lick - which catalyst would signal an inflection in volume growth: Liaw identifies cyclical factors (consumer insurance purchasing behaviour, insurer policy changes, non-insurance segments) - dynamic judged cyclical, not structural.",
+     "Q Jash Patwa (JPMorgan) - has the de-emphasis of low-value units disadvantaged volumes vs the industry: Stearns explains that units below 1 000$ are old/non-running, uninsured vehicles going through impound lots or staying with their owners, a fragmented market outside Copart's focus.",
+     "Q Jash Patwa - performance of the Purple Wave heavy equipment business: Liaw attributes the underperformance to customs tariff uncertainty disrupting the sector, organic investments in sales talent/platform maintained, M&A secondary to organic growth.",
+     "Q Jash Patwa - explanation of the sequential moderation in service margin: Stearns cites a one-off international VAT accrual of 6,8 M$; excluding catastrophe units and that item, margins improve markedly year on year."
+    ]
+   },
+   {
+    "quarter": "Q3 FY 26",
+    "date": "2026-05-21",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Bob Labick (CJS Securities) - pass-through of fuel cost in the hybrid towing model: Liaw explains that Copart runs its own fleet, supports contractors through structured leasing/towing programmes, and adjusts rates market by market to preserve the service level and contractor profitability.",
+     "Q Bob Labick - impact of the decline in SAAR (annualised new vehicle sales rate) since 2020 on future salvage volumes: Liaw replies that Copart's supply comes from a layer of more than 10 years of vehicles already on the road, not from the timing of fleet entry - what matters is miles driven and the accident rate, not the build date.",
+     "Q Bob Labick - 5-year growth drivers: Liaw cites (1) the rise in insurance total-loss frequency, (2) the expansion of non-insurance volumes (rental/dealers/fleets/finance), (3) international expansion, (4) actively promoting a higher total-loss frequency through better returns for insurers, (5) ecosystem services reducing friction.",
+     "Q Craig Kennison (Baird) - insurer partners' outlook for 2026-2027: Liaw indicates that insurers are seeing consumers pulling back (~1 policyholder in 6 has reduced coverage), acknowledge cyclical trends, and expect major discussions on AI deployment - Copart highlights its AI capabilities on claims.",
+     "Q Craig Kennison - drivers of the 18% growth in international service revenue: Stearns cites strong performance in the United Kingdom, Germany and Canada, with Germany showing particular progress as insurers adopt the Copart-style total-loss remarketing model, improving volumes and profitability.",
+     "Q Jash Patwa (JPMorgan) - size of the non-insurance business and profile of cross-over buyers: Liaw describes buyers discovering Copart via search/social media for a specific vehicle, then broadening into adjacent categories in concentric circles, from damaged rental vehicles towards better-condition inventory.",
+     "Q Jash Patwa - is the pure sale (no reserve price) mix contractual or dynamic: Liaw confirms that it is non-contractual - insurers move to pure sales voluntarily as they observe Copart's liquidity, a reserve price would chill participation.",
+     "Q Jash Patwa - breakdown of revenue per unit (RPU) growth between ASP, mix and initiatives such as Title Express: Liaw cites Title Express penetration (processing 6-8x more volume than competitors), higher selling prices shared with Copart, volume growth, and the non-insurance seller mix (premium pricing).",
+     "Q John Healy (Northcoast Research) - definition and size of the whole car business, seller composition (including hail vehicles): Liaw describes a spectrum running from total-loss to near-new vehicles, Copart winning rights progressively (rental/damaged trade-ins then better-condition fleet vehicles).",
+     "Q John Healy - Purple Wave performance and investment in the business: Stearns reports Purple Wave GTV up more than 25% year on year, driven by territorial expansion and enterprise account development, team 2,5-3x larger than at acquisition.",
+     "Q Jeff Lick (Stephens) - long-distance delivery product: Stearns explains that it reduces friction and brings cost certainty to buyers, generating ~15 M$ of additional operating cost year on year with attractive margins and strong adoption.",
+     "Q Jeff Lick - clarification of pure sale vs sale without reserve: Liaw confirms that pure sale is synonymous with a sale with no reserve price."
+    ]
+   }
+  ],
+  "engagementsStructurants": []
+ },
+ "hypothese": {
+  "date": "2026-08-18",
+  "source": "Deep refresh 18/08/2026 (full protocol): bridge established (t 20% + growing interest income on the cash, resultatFinancierNet anchor), scorecard created (in-house, no guidance, anchor set close to the year-end - July fiscal year), deprecated keys purged. Projections unchanged (bottom-up of 09/08).",
+  "priorEPS": {
+   "date": "2026-08-09",
+   "eps": {
+    "2026": 1.65,
+    "2027": 1.9,
+    "2028": 2.09,
+    "2029": 2.31,
+    "2030": 2.56
+   }
+  },
+  "dernierCall": {
+   "quarter": "Q3 FY 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1237,
+     "consensus": 1195
+    },
+    "epsAdj": {
+     "actual": 0.43,
+     "consensus": 0.42,
+     "basis": "GAAP"
+    }
+   },
+   "guidanceProchainTrimestre": "No quantified guidance provided - Copart communicates no formal guidance (consistent practice).",
+   "guidanceAnnuelle": "No quantified annual guidance provided; management comments qualitatively on the trends (expected normalisation of insurance volumes, strength of international, structural rise in the total-loss rate).",
+   "pointsCles": [
+    "Q3 FY26 revenue of 1,237 Md$ (+2,1% y/y), net income almost flat (402,4 M$, -1,0%) but EPS up (+2,4% to 0,43$) thanks to buybacks - at the scale of the first 9 months of FY26, cumulative net income is perfectly flat (1 156,8 M$ vs 1 156,0 M$ a year earlier, +0,07%) and cumulative EPS almost flat (+0,8%), the strong Q1 (+11,7% EPS) having been erased by a weak Q2 (-10,0% EPS, unfavourable CAT comp).",
+    "US insurance unit volumes down (-4,2% y/y) on the back of lower claims frequency - a headwind judged cyclical by management, offset by the rise in average selling prices (+4,6% overall, a seasonal record in Q3) and by international (+5,9% in units, +14,1% in revenue).",
+    "Buybacks: 43,4 M shares retired for >1,6 Md$ over the first 9 months of FY26 (average price ~37$/share) via 10b5-1 + open market - first year of buyback since at least FY2021 (buyback at 0$ in each year FY2021-FY2025, verified). Liquidity at end-Q3: 5,5 Md$ (of which 4,2 Md$ cash + HTM securities), zero debt.",
+    "Management transition: Jay Adair takes back the CEO role on 31/07/2026 (Jeff Liaw becomes special adviser). On a special call on 06/07/2026 (first call outside a quarterly release in 32 years), Adair signalled a slowdown in land capex (~500 M$/yr historically) and a redirection of capital towards M&A and organic investment (international, domestic whole car, technology), on top of buybacks - the future buyback pace is therefore no longer guaranteed at the Q2-Q3 FY26 level."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-05-21"
+   }
+  },
+  "guidanceHistory": [],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "Q1",
+     "eps": 0.36,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 0.4,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 0.42,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 0.41,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 0.4,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 0.36,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 0.43,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 0.46,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 0.46,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 0.41,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 0.5,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 0.53,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "World leader in online auctions of total-loss/salvage vehicles, with an exceptional physical and technological moat; in a cyclical air pocket confirmed over 9 months (FY26 net income almost flat, not growing) and a competitive one (return of IAA under RB Global), offset by pricing. FY26 revenue/margin/EPS rebuilt bottom-up on the 9 actual months (not an extrapolation); the 2027-2030 recovery ramp made gradual as a consequence.",
+  "text": "== THESIS SUMMARY ==\nCopart is the dominant US salvage-auction intermediary (~50% share, duopoly with RB Global ~35%) with one of the cleanest moats in the portfolio: ~280 physical yards operating as local monopolies, self-reinforcing auction liquidity, and a twenty-year technology lead since the 2003 all-digital pivot - operating margins ~37%, exceptional cash conversion. The structural tailwind is the rising total-loss rate (ADAS repair complexity) mechanically enlarging the salvage pool. The near-term reality is an air pocket, not a rebound: 9M FY26 revenue -0.2%, net +0.1% (Q1 +11.5% erased by Q2 -9.5%), so FY26 is rebuilt bottom-up on actuals (EPS ~1.65$, +3.8%, carried mostly by the buyback: 43.4M shares retired over 9M at ~37$). The 2027-2030 ramp is deliberately gradual (+4/+6/+7/+7.5%) and the buyback glide moderated (900 -> 550M$/yr) to reflect new CEO Adair's signaled capital diversification toward M&A - the single most sensitive assumption for 2027+.\n\n== THESIS READ ==\n- Third consecutive flat quarter (Q3 FY26 net -1.0%): the insurance-volume air pocket is confirmed cyclical-but-persistent; no rebound assumed before FY27.\n- EPS growth is currently a buyback story (+3.8% on flat net) - fine while the moat holds pricing, but watch the M&A-vs-buyback arbitration under Adair.\n- Purple Wave re-accelerated (+25% GTV) after the tariff-uncertainty dip flagged at Q2 - improvement read, not inconsistency.\n- Interest income is real and growing (cash 5.5 -> 10.8bn$ modeled): the bridge carries it explicitly (+257 -> +663M$ at ~T10y+2pts), unlike zero-yield peers - Copart's buyback lacks the 2-3yr regularity that E5 a-bis requires for the zero branch.\n- Watch: FY26 results (09/09) replace the whole bottom-up reconstruction - first full point under Adair.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP. Bridge (c-ter): t=20% flat (ETR normative), finNet = average net cash x ~T10y+2pts (ancrage resultatFinancierNet) - chain reconciles exactly; published FY25 reconciles at +243M$ interest. W1 flags the +17pt projected conversion rise (87% -> 104%): it is the INTEREST line compounding on a doubling cash pile, documented here, not a margin assumption. Scorecard: never guides - anchor own_vintage 1.65$ (24/07, near FY close; pose the FY27 anchor at the September results), history not measurable, application suspended. WATCH-LIST: (a) FY26 actuals (09/09); (b) Adair capital allocation (M&A vs buyback) - drives 2027+ EPS; (c) US insurance-volume inflection (still absent after 3 quarters); (d) total-loss rate trend; (e) international acceleration. Next useful refresh: FY26 results (09/09/2026).\n\n== CATALYSTS ==\nFY26 results (09 Sep): full-year actuals + Adair's first strategic frame; insurance-volume stabilization; total-loss secular tailwind; accretive buybacks on a depressed stock.",
+  "impact": "neutre",
+  "ancrages": [
+   {
+    "id": "fy26BottomUp",
+    "moteur": "FY2026 rebuilt bottom-up on the 9 months ACTUALLY reported (revenue -0,2% y/y, net income +0,07% y/y) + a reasoned Q4 (+1,5% revenue, +5% net income vs Q4 FY25, absent an identified catalyst) - replaces a top-down growth assumption (+5,9%) that was not consistent with the figures already published at the time of creation.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumEBIT.2026",
+     "omniumNet.2026"
+    ],
+    "confiance": "haute"
+   },
+   {
+    "id": "rampeReprise2027plus",
+    "moteur": "Gradual revenue growth 2027-2030 (+4%/+6%/+7%/+7,5%) replacing the previous assumption of an immediate rebound to +7-8% as early as 2027 - a flat FY26 does not justify a sharp rebound without an identified catalyst; the recovery is modelled as progressive, to be confirmed quarter after quarter.",
+    "applique": [
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "marginGradual",
+    "moteur": "Operating margin stable to slightly rising (36,7% in 2026 towards 37,8% in 2030, +0,2-0,3pt/yr), consistent with the operating leverage of the model once volumes have stabilised.",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "resultatFinancierNet",
+    "moteur": "No debt and net cash >5 Md$. The buyback programme only started in Q2 FY2026 after $0 of buyback over FY2021-FY2025 (verified) - it does not meet the 'pace observed over at least the last 2-3 fiscal years' criterion of the E5-a-bis rule, so the zero yield does not apply. Branch retained: 10-year Treasury + 2pts (4,70% at 23/07/2026 + 2pts = 6,70%) on the average net cash of each PROJECTED year (2027-2030), iterative calculation. FY2026 (75% already published) does NOT use this synthetic methodology - rebuilt bottom-up on the actual results (see fy26BottomUp).",
+    "applique": [
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "buybackModereCapitalDiversifie",
+    "moteur": "MODERATE buyback glide for 2027-2030 (900/700/600/550 M$, against 1300/1000/850/750 in the previous version) reflecting Jay Adair's explicit signal (call of 06/07/2026) of redirecting capital towards M&A (with debt flexibility) and organic investment (3 pillars), on top of buybacks - the future buyback pace is no longer guaranteed at the Q2-Q3 FY26 level. Average execution price assumed to rise (45$/50$/55$/60$) as the stock re-rates with the thesis, net of the dilution from share-based compensation (~8 M shares/yr).",
+    "applique": [
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "buybackFY26",
+    "moteur": "FY2026: 43,4 M shares / >1,6 Md$ already bought back over 9 months (average price ~37$) + an estimated ~500 M$ more in Q4 (vs ~1,1 Md$ in Q3 alone - slowdown assumed given Adair's capital diversification signal). FY26 weighted average shares recalculated directly from the actual published quarterly EPS/net income (984,6 M / 972,1 M / 935,8 M in Q1/Q2/Q3, ~925 M estimated in Q4) rather than estimated top-down.",
+    "applique": [
+     "omniumND.2026",
+     "omniumShares.2026"
+    ],
+    "confiance": "moyenne"
+   }
+  ],
+  "omniumCA": {
+   "2026": 4656,
+   "2027": 4842,
+   "2028": 5133,
+   "2029": 5492,
+   "2030": 5904
+  },
+  "omniumEBIT": {
+   "2026": 1709,
+   "2027": 1792,
+   "2028": 1914,
+   "2029": 2065,
+   "2030": 2232
+  },
+  "omniumNet": {
+   "2026": 1573,
+   "2027": 1749,
+   "2028": 1903,
+   "2029": 2095,
+   "2030": 2316
+  },
+  "omniumND": {
+   "2026": -5473,
+   "2027": -6322,
+   "2028": -7525,
+   "2029": -9020,
+   "2030": -10786
+  },
+  "omniumShares": {
+   "2026": 954,
+   "2027": 919,
+   "2028": 910,
+   "2029": 906,
+   "2030": 904
+  },
+  "omniumEPS": {
+   "2026": 1.65,
+   "2027": 1.9,
+   "2028": 2.09,
+   "2029": 2.31,
+   "2030": 2.56
+  },
+  "cagrBridge": "EPS CAGR ≈ +11.6%/yr over 2026-2030 (1,65$ -> 2,56$): FY2026 is now a transition year close to flat (net income +1,3%, EPS +3,8% driven almost entirely by the reduction in the share count already executed over 9 months), followed by a gradual acceleration from 2027 (revenue +4% -> +7,5%/yr, margin +0,2-0,3pt/yr, moderate buybacks given the capital diversification signalled by the new CEO). The 2026->2027 EPS jump (+15%) reflects the full-year benefit of the share base already reduced in 2026, NOT a sudden rebound in profitability. No dividend paid, so EPS CAGR = expected total return before any change in multiple. This trajectory depends heavily on assumptions not guaranteed by management (buyback pace, timing of the cyclical recovery) - to be treated as a central scenario, not a certainty.",
+  "bridge": {
+   "2025": {
+    "finNet": 243,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1552,
+    "netPub": 1552,
+    "residual": 0,
+    "residualNote": "Reconciles cleanly: ~243M$ interest income on the growing cash pile, 20% effective tax."
+   },
+   "2026": {
+    "finNet": 257,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1573
+   },
+   "2027": {
+    "finNet": 394,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1749
+   },
+   "2028": {
+    "finNet": 465,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 1903
+   },
+   "2029": {
+    "finNet": 554,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 2095
+   },
+   "2030": {
+    "finNet": 663,
+    "other": 0,
+    "taxRate": 0.2,
+    "minorities": 0,
+    "netCalc": 2316
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "none",
+   "metric": "None (Copart never guides)",
+   "comparedAgainst": "consensus",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-05-21",
+     "type": "vs_consensus",
+     "detail": "Q3 FY26: revenue and net income roughly flat YoY (-1.0% net) - the cyclical air pocket confirmed for a third quarter; EPS 0.43 vs consensus 0.42 (+2.4%, GAAP base).",
+     "beatPct": 2.4
+    }
+   ],
+   "paceCheckpoint": "9M FY26 real: revenue -0.2%, net +0.1% - FY26 modeled bottom-up on actuals, not on a growth assumption.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Copart never guides (no metric, no frame); no dated early-FY25 consensus snapshot archived - excluded structurally."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_consensus",
+     "excluded": true,
+     "note": "Same structural limitation for FY24."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 1.65,
+    "source": "own_vintage",
+    "date": "2026-07-24",
+    "note": "Own projection archived 24/07 (bottom-up on 9M actuals) - close to FY end (fiscal year closes July); the FY27 anchor should be posed at the September FY26 results."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "No measurable fiscal year: no-guidance company. The own-vintage anchor (1.65, 24/07) is near the July FY close - pose the FY27 anchor at the September FY26 results.",
+   "consensusSource": "Sell-side post-Q3 FY26 (GAAP)",
+   "consensusDate": "2026-07-24",
+   "inProgress": null
+  },
+  "revisionEvent": {
+   "date": "2026-05-21",
+   "label": "Q3 FY 26",
+   "type": "earnings"
+  }
+ }
 }

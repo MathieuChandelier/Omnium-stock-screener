@@ -102,9 +102,12 @@ REGLES :
    `{"_meta":{"generatedAt":"<ISO UTC de ce run>","window":"1m"},
      "events":[...]}` - le fichier est REGENERE entierement a chaque run
    (les ids stables assurent la continuite des selections).
-2. `data/nextEvents.json` mis a jour DIRECTEMENT PAR CE RUN (rappel
+2. Le champ `nextEvent` de CHAQUE fiche `data/<TICKER>.json`, mis a jour
+   DIRECTEMENT PAR CE RUN (rappel
    21/08/2026 : l'Operation C n'existe PLUS comme procedure separee -
-   ce run hebdomadaire est l'UNIQUE mainteneur de nextEvents.json,
+   ce run hebdomadaire en est l'UNIQUE mainteneur ; le fichier global
+   data/nextEvents.json a ete SUPPRIME le 21/08/2026 - il doublonnait le
+   champ de la fiche et les deux divergeaient sur 42 titres sur 59,
    toujours consomme par la colonne NEXT EVENT du portefeuille) :
    pour chaque ticker, la PROCHAINE echeance retenue `{label, date}`
    (convention courte, annee sur 2 chiffres, ex. "Q3 26") - fusion avec
@@ -116,7 +119,8 @@ SCALABILITE - LE PORTEFEUILLE FAIT AUTORITE (21/08/2026). Le manifest est
 la seule liste qui compte, dans les deux sens :
 - ticker AJOUTE : il entre dans le perimetre des le run suivant, sans
   aucune declaration ailleurs - le run itere `data/manifest.json`, point ;
-- ticker RETIRE : le run PURGE son entree de `data/nextEvents.json` (et
+- ticker RETIRE : sa fiche disparait avec lui, il n'y a donc plus rien a
+  purger cote echeance (et
   il disparait de `calendarCandidates.json`, integralement regenere).
   Sans cette purge, une echeance fantome survivrait au titre.
 Cote app, la symetrie est deja assuree : evenements du tri, tuile du
@@ -148,7 +152,7 @@ sites IR (la page pressroom se lit dans la foulee de la page Events,
 avec les memes trois strategies d'acces), fenetre retrospective de 7
 jours (les evenements A VENIR restent ici, au calendrier). Son livrable
 `data/newsFeed.json` part dans LE MEME COMMIT que calendarCandidates.json
-et nextEvents.json ; ses echecs de retrieve vont dans
+et les champs `nextEvent` des fiches ; ses echecs de retrieve vont dans
 `data/sourceGaps.json`, section `news`.
 
 ## SYNCHRONISATION GOOGLE CALENDAR (directe, 21/08/2026)

@@ -189,7 +189,7 @@ de la fenetre disparaissent) :
 
 Commits :
 - run HEBDO : dans LE MEME COMMIT que `data/calendarCandidates.json` et
-  `data/nextEvents.json` ("Calendar refresh - <date>") — un run, un
+  les champs `nextEvent` des fiches ("Calendar refresh - <date>") — un run, un
   commit, trois fichiers ;
 - run DAILY : son propre commit/push quotidien ("News video - <date>,
   lot <n>/<total>") — c'est ce push qui incremente les notifications

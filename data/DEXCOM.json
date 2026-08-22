@@ -1,537 +1,537 @@
 {
-  "name": "DexCom",
-  "cours": 72.38,
-  "yahooSymbol": "DXCM",
-  "dividende": 0,
-  "data": [
-    {
-      "year": 2016,
-      "ca": 573,
-      "ebit": -64,
-      "net": -66,
-      "shares": 334,
-      "nd": -100,
-      "div": 0
-    },
-    {
-      "year": 2017,
-      "ca": 719,
-      "ebit": -43,
-      "net": -50,
-      "shares": 345,
-      "nd": -80,
-      "div": 0
-    },
-    {
-      "year": 2018,
-      "ca": 1032,
-      "ebit": -186,
-      "net": -127,
-      "shares": 353,
-      "nd": 400,
-      "div": 0
-    },
-    {
-      "year": 2019,
-      "ca": 1476,
-      "ebit": 142,
-      "net": 101,
-      "shares": 369,
-      "nd": 200,
-      "div": 0
-    },
-    {
-      "year": 2020,
-      "ca": 1927,
-      "ebit": 300,
-      "net": 265,
-      "shares": 420,
-      "nd": -1500,
-      "div": 0
-    },
-    {
-      "year": 2021,
-      "ca": 2449,
-      "ebit": 266,
-      "net": 217,
-      "shares": 429,
-      "nd": -1800,
-      "div": 0
-    },
-    {
-      "year": 2022,
-      "ca": 2910,
-      "ebit": 391,
-      "net": 341,
-      "shares": 428,
-      "nd": -1000,
-      "div": 0
-    },
-    {
-      "year": 2023,
-      "ca": 3622,
-      "ebit": 598,
-      "net": 542,
-      "shares": 426,
-      "nd": -600,
-      "div": 0
-    },
-    {
-      "year": 2024,
-      "ca": 4033,
-      "ebit": 600,
-      "net": 576,
-      "shares": 413,
-      "nd": 200,
-      "div": 0
-    },
-    {
-      "year": 2025,
-      "ca": 4662,
-      "ebit": 912,
-      "net": 836,
-      "shares": 406,
-      "nd": -1200,
-      "div": 0
-    }
-  ],
-  "epsConsensus": {
-    "year": 2026,
-    "eps": 2.5,
-    "epsNY": 2.97,
-    "epsY2": 3.6,
-    "date": "2026-08-20",
-    "source": "MarketScreener (consensus of 28 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 2.66)",
-    "analystsCount": 28,
-    "adjGapPct": 6.5
+ "name": "DexCom",
+ "cours": 72.38,
+ "yahooSymbol": "DXCM",
+ "dividende": 0,
+ "data": [
+  {
+   "year": 2016,
+   "ca": 573,
+   "ebit": -64,
+   "net": -66,
+   "shares": 334,
+   "nd": -100,
+   "div": 0
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q3 26",
-    "date": null
+  {
+   "year": 2017,
+   "ca": 719,
+   "ebit": -43,
+   "net": -50,
+   "shares": 345,
+   "nd": -80,
+   "div": 0
   },
-  "ownership": {
-    "asOf": null,
-    "insiderPct": null,
-    "insiderDesc": "Not populated at this refresh - field absent from creation, not addressed in the context of this Q2 26 event-driven refresh. To be completed at the next refresh (DEF 14A proxy statement).",
-    "insiderSource": null,
-    "notableHolders": [],
-    "coverageNote": "US-listed stock, 13F scope applicable - notableHolders not populated at this stage.",
-    "history": []
+  {
+   "year": 2018,
+   "ca": 1032,
+   "ebit": -186,
+   "net": -127,
+   "shares": 353,
+   "nd": 400,
+   "div": 0
   },
-  "compliance": {
-    "asOf": null,
-    "items": [],
-    "note": "Field absent from creation, not populated at this Q2 26 event-driven refresh for lack of dedicated research. The creation text mentioned an ongoing intellectual property dispute against Abbott Diabetes Care (minor, non-material costs) - to be formalised explicitly in this field at a future refresh rather than left solely in the body of the text."
+  {
+   "year": 2019,
+   "ca": 1476,
+   "ebit": 142,
+   "net": 101,
+   "shares": 369,
+   "nd": 200,
+   "div": 0
   },
-  "hypothese": {
-    "date": "2026-08-18",
-    "source": "Deep refresh 18/08/2026 (full protocol): Q2 2026 transcript read from the Drive archive, coherenceQualitative created (cold start), bridge established (t 24% normative vs ~10% effective 2025 - the W1 gap documented), scorecard created (initial revenue anchor 5 205 M$ taken from guidanceHistory, metric disagreement declared), basis brought back to the enum (C16), deprecated keys purged. Projections unchanged.",
-    "dernierCall": {
-      "quarter": "Q2 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 1310,
-          "consensus": 1300
-        },
-        "epsAdj": {
-          "actual": 0.7,
-          "consensus": 0.61,
-          "basis": "non-GAAP"
-        },
-        "epsReported": {
-          "actual": 0.64,
-          "basis": "GAAP",
-          "period": "Q2 26",
-          "note": "GAAP diluted EPS $0.64 on GAAP net income of $249.1M (vs non-GAAP EPS $0.70 / non-GAAP net income $269.1M)."
-        }
-      },
-      "guidanceProchainTrimestre": "No quarterly revenue/EPS guidance published (company convention: annual guidance only). Qualitative framing for Q3 26: non-GAAP gross margin expected to peak in Q3 then step down as the Ireland facility turns on commercial production (hiring, training and depreciation start in Q3); tougher international comps vs Q3 25; oil/resin cost assumptions unchanged vs prior guide.",
-      "guidanceAnnuelle": "FY2026 guidance raised on all four metrics: revenue $5.18-5.25B (+11-13% vs $5.16-5.20B prior; organic growth midpoint raised >50bps, partly offset by a ~$15M H2 FX headwind); non-GAAP gross margin ~64% (vs 63-64%); non-GAAP operating margin 23.5-24% (vs 23-23.5%); adjusted EBITDA margin 31.5-32% (vs 31-31.5%). Assumes G7 15 Day reaching ~50% of the US base by year-end and Ireland commercial production starting in H2.",
-      "pointsCles": [
-        "Q2 26 beat on both lines: revenue $1.31B (+13% reported, +12% organic) vs $1.30B consensus, with US +11% ($933M) and international +19% ($375M, +16% organic); non-GAAP EPS $0.70 vs $0.61 consensus (+46% YoY), GAAP diluted EPS $0.64; non-GAAP gross margin 64.1% (+~400bps YoY), operating margin 25.1%, adjusted EBITDA margin 32.2%; H1 FCF >$600M (more than double H1 25) and ~$600M of buybacks executed in Q2 under the $1B 2026 authorization.",
-        "FY26 guidance raised across the board: revenue $5.18-5.25B (+11-13%, organic midpoint up >50bps despite a ~$15M H2 FX headwind), non-GAAP gross margin ~64% (up ~50bps), operating margin 23.5-24% and adjusted EBITDA margin 31.5-32%; no quarterly guide by convention, but management framed a Q3 gross-margin peak followed by temporary dilution as the Ireland plant starts commercial production (Q3 hiring, training, depreciation).",
-        "Product and access momentum: G7 15 Day on track for ~50% US base conversion by year-end (Tandem/Mobi integration now live, Health Canada first ex-US 15 Day clearance), G7 NPS up 3 quarters in a row after the 2025 out-of-box quality issues were fixed; CONNECT RCT delivered a 1.6% A1c reduction (0.9% vs control, 97% median wear) in non-insulin type 2, data submitted to CMS (decision expected by end-2026, coverage assumed mid-2027, ~25M US adressable); Dexcom Flex launched in Germany, Stelo app rebuilt with Nutrisense acquisition closed, G8 on track for late 2027/early 2028 as a smaller multi-analyte platform.",
-        "Risks flagged on the call: temporary gross-margin drag from the Ireland ramp in H2, FX headwind (~$15M H2, EUR at ~1.14 vs ~1.17-1.18 breakeven), tougher international comps in Q3 after 2025 access wins, US CGM market value growth still hovering around 10% (thesis rests on population expansion rather than pricing), and CMS timing/coverage-design uncertainty for non-insulin type 2."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "communique",
-        "date": "2026-07-30"
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "FY 25/Q4 25",
-        "date": "2026-02-12",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "Initial FY2026 guidance: revenue 5,16-5,25 Md$ (+11-13%); non-GAAP gross margin ~63-64%; non-GAAP operating margin ~22-23%."
-      },
-      {
-        "quarter": "Q1 26",
-        "date": "2026-04-30",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "FY2026 guidance reaffirmed (revenue 5,16-5,25 Md$); non-GAAP operating margin raised to 23-23,5% (vs 22-23%); adjusted EBITDA margin raised to 31-31,5%. Gross margin not raised despite a good Q1, caution on geopolitical freight/logistics."
-      },
-      {
-        "quarter": "Q2 26",
-        "date": "2026-07-30",
-        "fyGuided": 2026,
-        "guidanceAnnuelle": "FY2026 guidance raised again: revenue 5,18-5,25 Md$; non-GAAP gross margin ~64%; non-GAAP operating margin 23,5%-24%; adjusted EBITDA margin 31,5%-32%."
-      }
-    ],
-    "guidanceLongTerme": "New long-term financial targets announced at the Investor Day of 14/05/2026 (Mesa, Arizona): organic revenue growth of at least 10% per year every year through 2030; 2030 non-GAAP gross margin of 67% to 69%; 2030 non-GAAP operating margin of 29% to 30%; 2030 adjusted EBITDA margin of 36% to 37%. First communication of quantified financial targets out to 2030 for DexCom (absent from the creation thesis, which had only the annual FY2026 guidance).",
-    "guidanceLongTermeHistory": [],
-    "summary": "Solid Q2 2026 (record revenue 1,31 Md$ +13%, non-GAAP EPS 0,70$ beating consensus by 14,75%) and FY2026 guidance raised again on revenue and on all three margin lines. Major event of the refresh: the Investor Day of 14/05/2026 introduced the FIRST quantified financial targets out to 2030 (organic growth >=10%/yr, non-GAAP operating margin 29-30% in 2030, against ~22-24% guided for 2026) - Omnium 2027-2030 margin trajectory raised substantially as a result. omniumEPS 2026 raised from 2,23$ to 2,50$ (Omnium normalised GAAP basis), and more strongly still over 2029-2030 to reflect the new 2030 margin target.",
-    "text": "== THESIS SUMMARY ==\nDexCom is one of the three CGM leaders, a razor/blades model (>90% recurring sensor revenue) in a structurally growing market. The creation thesis (recovery from the 2024 execution accident and 2025 margin compression) is now validated and AMPLIFIED: record Q2 (revenue 1.31bn$ +13%, non-GAAP EPS 0.70$ beating consensus by 14.75%, GAAP GM up 400bp) and, more structurally, the May 14 Investor Day where DexCom committed for the FIRST TIME to numbered 2030 targets: organic revenue growth >=10% every year and non-GAAP operating margin 29-30% (vs 23.5-24% guided 2026) - the file moved from a recovery bet to a public margin-doubling commitment, backed by a 1bn$ buyback (600M$ already executed) and H1 FCF >600M$ (2x 2025). Key risks: Abbott/Medtronic competition, the Irish plant ramp (transitory Q4 gross-margin drag), and CMS type-2 coverage timing (decision expected late 2026, effect mid-2027).\n\n== THESIS READ ==\n- Second FY26 guidance upgrade of the year (revenue 5.18-5.25bn$, OM 23.5-24%): the recovery is compounding, not just stabilizing.\n- The 2030 commitments (>=10% growth every year, OM 29-30%) now anchor the 2027-2030 margin path - a near-linear ramp replaces the old +200-300bp/yr extrapolation.\n- CONNECT readout strengthens the type-2 non-insulin opportunity (A1C -1.6%, 97% wear rate; 7M+ covered lives) ahead of the CMS decision.\n- G7 15-day at ~25% mix in 2026 exiting toward ~50%: the margin mechanics behind the 2030 target are visible in the mix.\n- Watch: Irish plant ramp on Q4 gross margin - the guided, temporary counterpoint to an otherwise ahead-of-plan margin year.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP with the single historical d-bis correction (FY2020 tax one-off removed). FY26 bottom-up: H1 GAAP EPS 1.15$ actual + H2 ~1.35$ (sequential growth, Q4 moderated by the Irish ramp) -> 2.50$. Bridge (c-ter): 24% normative tax + small growing interest income (cash 1.5 -> 4.9bn$); the published 2025 year reconciles at ~10% effective tax - which fully explains the W1 conversion gap (93% -> 80%), documented, not an error. Scorecard: revenue-guided house - FY26 anchor 5,205M$ (initial guidance, metric mismatch declared), quarterly beats tracked (+14.75% Q2), history excluded at setup, application suspended. coherenceQualitative created this refresh (transcript read; Q1 reconstructed from guidanceHistory). WATCH-LIST: (1) Q3/Q4 margin vs the raised guide and the Irish ramp; (2) 1bn$ buyback execution pace; (3) first 2027-2028 milestones against the 2030 commitments; (4) Abbott IP litigation -> compliance field; (5) ownership/compliance fields still empty (Operation D / dedicated pass). Next useful refresh: Q3 results (late Oct/early Nov).\n\n== CATALYSTS ==\nQ3 2026 (late Oct): margin trajectory vs Irish ramp; CMS type-2 coverage decision expected before year-end (effect mid-2027); 2030-path milestones.",
-    "impact": "positif",
-    "ancrages": [
-      {
-        "id": "AN-CA",
-        "moteur": "Revenue growth anchored on the raised FY26 guidance (5,18-5,25 Mds$, +11-13%), then on the new Investor Day target of organic growth >=10%/yr communicated on 14/05/2026 - taken at +11,5%/yr over 2027-2030 (a slight surplus above the official 10% floor, consistent with the pace observed in 2026), a structural revision vs the former assumption of a gradual deceleration towards 11%, which no longer has any basis given this explicit quantified commitment through 2030. High confidence on 2026 (guidance raised), medium on 2027-2030 (quantified commitment but long horizon) - 'moyenne' retained overall.",
-        "applique": [
-          "omniumCA.2026",
-          "omniumCA.2027",
-          "omniumCA.2028",
-          "omniumCA.2029",
-          "omniumCA.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-MARGE-INVESTOR-DAY-2030",
-        "moteur": "MAJOR REVISION this refresh: the Investor Day of 14/05/2026 sets for the first time a 2030 non-GAAP operating margin target of 29-30% (vs 23,5-24% guided for 2026), i.e. ~550-600bp of expansion over 4 years - a near-linear progression retained (~+145bp/yr) rather than the simple continuation of the +200-300bp pace of the creation thesis, which did not yet incorporate this quantified commitment. Omnium margin (normalised GAAP) calibrated with a gap of about 145bp below the guided non-GAAP margin, consistent with the Q1 26 calibration (22,2% non-GAAP vs a GAAP margin close but slightly lower).",
-        "applique": [
-          "omniumEBIT.2026",
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-RATIO-CONV",
-        "moteur": "Net/EBIT conversion ratio calibrated on actual Q1-Q2 26 (~78%), improved slightly to 80% from FY27 as financial income on the growing cash position contributes positively - creation methodology unchanged.",
-        "applique": [
-          "omniumNet.2026",
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-SHARES-BUYBACK-1MD",
-        "moteur": "New 1,0 Md$ share buyback programme authorised on 14/05/2026 (through 30/06/2027, replacing the previous programme of which 250 M$ remained available) - ~600 M$ already executed in Q2 26 alone. Reduction in the diluted share count slightly accelerated vs creation (~2,2%/yr against ~2%/yr), given the size of the new programme.",
-        "applique": [
-          "omniumShares.2026",
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "AN-ND",
-        "moteur": "Growing net cash position (deleveraging after the cash settlement of the convertibles in Q4 2025), moderated by the size of the new 1,0 Md$ buyback programme (of which 600 M$ already executed in Q2 26) - trajectory revised very slightly vs creation to reflect this more sustained buyback pace.",
-        "applique": [
-          "omniumND.2026",
-          "omniumND.2027",
-          "omniumND.2028",
-          "omniumND.2029",
-          "omniumND.2030"
-        ],
-        "confiance": "basse"
-      }
-    ],
-    "omniumEPS": {
-      "2026": 2.5,
-      "2027": 3.12,
-      "2028": 3.77,
-      "2029": 4.54,
-      "2030": 5.46
-    },
-    "omniumCA": {
-      "2026": 5215,
-      "2027": 5815,
-      "2028": 6484,
-      "2029": 7230,
-      "2030": 8062
-    },
-    "omniumEBIT": {
-      "2026": 1269,
-      "2027": 1509,
-      "2028": 1781,
-      "2029": 2099,
-      "2030": 2469
-    },
-    "omniumNet": {
-      "2026": 990,
-      "2027": 1207,
-      "2028": 1425,
-      "2029": 1679,
-      "2030": 1975
-    },
-    "omniumND": {
-      "2026": -1500,
-      "2027": -2100,
-      "2028": -2900,
-      "2029": -3800,
-      "2030": -4900
-    },
-    "omniumShares": {
-      "2026": 396,
-      "2027": 387,
-      "2028": 378,
-      "2029": 370,
-      "2030": 362
-    },
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 0.51,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 0.64,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 0.71,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 0.64,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 0.64,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 0.8,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 0.89,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 0.79,
-          "actual": false
-        }
-      ],
-      "PY": [
-        {
-          "label": "Q1",
-          "eps": 0.27,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 0.45,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 0.7,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 0.68,
-          "actual": true
-        }
-      ],
-      "note": "[PY 2025 set 20/08/2026 (C24): reported GAAP 10-Q - sum 2,10$ vs data 2,06$ (rounding of the average share count).]"
-    },
-    "priorEPS": {
-      "date": "2026-08-03",
-      "eps": {
-        "2026": 2.5,
-        "2027": 3.12,
-        "2028": 3.77,
-        "2029": 4.54,
-        "2030": 5.46
-      }
-    },
-    "bridge": {
-      "2025": {
-        "finNet": 20,
-        "other": 0,
-        "taxRate": 0.103,
-        "minorities": 0,
-        "netCalc": 836,
-        "netPub": 836,
-        "residual": 0,
-        "residualNote": "Low 2025 effective GAAP tax (~10%, stock-comp benefits and credits) - the reason the historical conversion (93%) exceeds the projected 80% (W1); projections carry the 24% normative rate."
-      },
-      "2026": {
-        "finNet": 30,
-        "other": 0,
-        "taxRate": 0.24,
-        "minorities": 0,
-        "netCalc": 990
-      },
-      "2027": {
-        "finNet": 79,
-        "other": 0,
-        "taxRate": 0.24,
-        "minorities": 0,
-        "netCalc": 1207
-      },
-      "2028": {
-        "finNet": 94,
-        "other": 0,
-        "taxRate": 0.24,
-        "minorities": 0,
-        "netCalc": 1425
-      },
-      "2029": {
-        "finNet": 110,
-        "other": 0,
-        "taxRate": 0.24,
-        "minorities": 0,
-        "netCalc": 1679
-      },
-      "2030": {
-        "finNet": 130,
-        "other": 0,
-        "taxRate": 0.24,
-        "minorities": 0,
-        "netCalc": 1975
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "Revenue + non-GAAP margins (annual guidance)",
-      "comparedAgainst": "guidance",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-07-30",
-          "type": "guidance_revision",
-          "detail": "FY26 raised again: revenue 5.18-5.25bn$; non-GAAP GM ~64%, OM 23.5-24% (from 23-23.5%), adj EBITDA 31.5-32% - second upgrade of the year.",
-          "flag": null
-        },
-        {
-          "date": "2026-07-30",
-          "type": "vs_guidance",
-          "detail": "Q2 26 print (company guides annually only, beat measured vs Street non-GAAP consensus as guidance proxy): non-GAAP EPS 0.70$ vs 0.61$ expected, beat +14.75%; revenue 1.31bn$ (+13%) vs 1.30bn$ expected.",
-          "beatPct": 14.75
-        },
-        {
-          "date": "2026-04-30",
-          "type": "guidance_revision",
-          "detail": "FY26 reaffirmed (5.16-5.25bn$); operating margin nudged up.",
-          "flag": null
-        }
-      ],
-      "paceCheckpoint": "H1 GAAP EPS 1.15$ actual of the 2.50$ modeled year; Irish plant ramp is the guided H2 gross-margin headwind.",
-      "weightedBeatPct": 14.75,
-      "annualBeatPct": -0.8,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": 1.3,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "revenue 4.60bn$ (initial)",
-          "realizedDisplay": "4.662bn$ (+16%)",
-          "note": "Initial FY25 guidance (prelim FY24 release, 13/01/2025): revenue ~4.60bn$ (+14%); realized 4.662bn (+16%) - level +1.3%."
-        },
-        {
-          "fy": 2024,
-          "beatPct": -5.1,
-          "source": "initial_guidance",
-          "excluded": false,
-          "initialDisplay": "revenue 4.15-4.35bn$ (mid 4.25)",
-          "realizedDisplay": "4.032bn$ (+11%)",
-          "note": "Initial FY24 guidance (prelim FY23 release, Jan 2024): revenue 4.15-4.35bn$ (mid 4.25, +16/21%); CUT in July 2024 (salesforce/channel missteps) and realized 4.032bn - level -5.1% vs the initial frame."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2026,
-        "value": 5205,
-        "source": "initial_guidance",
-        "date": "2026-02-12",
-        "note": "Initial FY26 guidance midpoint, REVENUE metric in M$ (5.16-5.25bn) - taken directly from the fiche's guidanceHistory. Metric mismatch with the EPS target DECLARED: DexCom guides revenue/margins, not EPS."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "annualBeatPct -0.8% BLENDED (in-progress +0.2 x1/2; FY25 +1.3 and FY24 -5.1 equal-shared). The FY24 miss was execution-driven (channel), not demand - metric is revenue (no EPS guidance), directional only.",
-      "consensusSource": "Management non-GAAP consensus base",
-      "consensusDate": "2026-07-31",
-      "inProgress": {
-        "fy": 2026,
-        "initialValue": 5205,
-        "currentValue": 5215,
-        "deltaPct": 0.2,
-        "asOf": "2026-07-30",
-        "note": "Initial FY26 revenue ~5.205bn$; Q2 raised the midpoint to 5.18-5.25bn (mid 5.215) - projected +0.2%."
-      }
-    },
-    "revisionEvent": {
-      "date": "2026-07-30",
-      "label": "Q2 26",
-      "type": "earnings"
-    }
+  {
+   "year": 2020,
+   "ca": 1927,
+   "ebit": 300,
+   "net": 265,
+   "shares": 420,
+   "nd": -1500,
+   "div": 0
   },
-  "coherenceQualitative": {
-    "statut": "coherent",
-    "suiviNarratif": [
-      "First tracked entries (cold start at the 18/08/2026 deep refresh; transcript read from the Drive archive). Q2 26 narrative fully consistent with the Investor Day frame: guidance raised a second time, margin trajectory ahead of the 2030 commitments, Irish plant ramp named as the only H2 headwind - no tension detected."
-    ],
-    "historique": [
-      {
-        "quarter": "Q2 2026",
-        "date": "2026-07-30",
-        "clesRetenues": "Revenue 1.31bn$ +13%; non-GAAP EPS 0.70$ (+46%), beat +14.75%; GM 64.1% +400bp; FY26 raised again; 600M$ buyback executed of the 1bn$ program; CONNECT trial: -1.6% A1C, 97% wear rate; G7 15-day on track for 50% US conversion by year-end; G8 targeted late-2027/early-2028.",
-        "format": "compresse"
-      },
-      {
-        "quarter": "Q1 2026",
-        "date": "2026-04-30",
-        "clesRetenues": "FY26 reaffirmed; operating margin nudged up (retroactively reconstructed from the fiche's guidanceHistory - pre-archive quarter).",
-        "format": "compresse"
-      }
-    ]
+  {
+   "year": 2021,
+   "ca": 2449,
+   "ebit": 266,
+   "net": 217,
+   "shares": 429,
+   "nd": -1800,
+   "div": 0
   },
-  "epsConsensusHistory": [
-    {
-      "year": 2026,
-      "eps": 2.42,
-      "epsNY": 2.85,
-      "date": "2026-07-31",
-      "source": "Management non-GAAP ADJUSTED basis (not the Omnium normalised GAAP basis) - snapshot immediately post-Q2 26 (30-31/07/2026). epsNY = Omnium extrapolation for lack of a fresh 2027 consensus identified at this stage; to be cross-checked at the next refresh."
-    }
-  ],
-  "externalActuals": {
-    "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
-    "date": "2026-08-20",
-    "eps": {
-      "2021": 0.3875,
-      "2022": 0.82,
-      "2023": 1.3,
-      "2024": 1.42,
-      "2025": 2.09
-    }
+  {
+   "year": 2022,
+   "ca": 2910,
+   "ebit": 391,
+   "net": 341,
+   "shares": 428,
+   "nd": -1000,
+   "div": 0
+  },
+  {
+   "year": 2023,
+   "ca": 3622,
+   "ebit": 598,
+   "net": 542,
+   "shares": 426,
+   "nd": -600,
+   "div": 0
+  },
+  {
+   "year": 2024,
+   "ca": 4033,
+   "ebit": 600,
+   "net": 576,
+   "shares": 413,
+   "nd": 200,
+   "div": 0
+  },
+  {
+   "year": 2025,
+   "ca": 4662,
+   "ebit": 912,
+   "net": 836,
+   "shares": 406,
+   "nd": -1200,
+   "div": 0
   }
+ ],
+ "epsConsensus": {
+  "year": 2026,
+  "eps": 2.5,
+  "epsNY": 2.97,
+  "epsY2": 3.6,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus of 28 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 2.66)",
+  "analystsCount": 28,
+  "adjGapPct": 6.5
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q3 26",
+  "date": "2026-10-29"
+ },
+ "ownership": {
+  "asOf": null,
+  "insiderPct": null,
+  "insiderDesc": "Not populated at this refresh - field absent from creation, not addressed in the context of this Q2 26 event-driven refresh. To be completed at the next refresh (DEF 14A proxy statement).",
+  "insiderSource": null,
+  "notableHolders": [],
+  "coverageNote": "US-listed stock, 13F scope applicable - notableHolders not populated at this stage.",
+  "history": []
+ },
+ "compliance": {
+  "asOf": null,
+  "items": [],
+  "note": "Field absent from creation, not populated at this Q2 26 event-driven refresh for lack of dedicated research. The creation text mentioned an ongoing intellectual property dispute against Abbott Diabetes Care (minor, non-material costs) - to be formalised explicitly in this field at a future refresh rather than left solely in the body of the text."
+ },
+ "hypothese": {
+  "date": "2026-08-18",
+  "source": "Deep refresh 18/08/2026 (full protocol): Q2 2026 transcript read from the Drive archive, coherenceQualitative created (cold start), bridge established (t 24% normative vs ~10% effective 2025 - the W1 gap documented), scorecard created (initial revenue anchor 5 205 M$ taken from guidanceHistory, metric disagreement declared), basis brought back to the enum (C16), deprecated keys purged. Projections unchanged.",
+  "dernierCall": {
+   "quarter": "Q2 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 1310,
+     "consensus": 1300
+    },
+    "epsAdj": {
+     "actual": 0.7,
+     "consensus": 0.61,
+     "basis": "non-GAAP"
+    },
+    "epsReported": {
+     "actual": 0.64,
+     "basis": "GAAP",
+     "period": "Q2 26",
+     "note": "GAAP diluted EPS $0.64 on GAAP net income of $249.1M (vs non-GAAP EPS $0.70 / non-GAAP net income $269.1M)."
+    }
+   },
+   "guidanceProchainTrimestre": "No quarterly revenue/EPS guidance published (company convention: annual guidance only). Qualitative framing for Q3 26: non-GAAP gross margin expected to peak in Q3 then step down as the Ireland facility turns on commercial production (hiring, training and depreciation start in Q3); tougher international comps vs Q3 25; oil/resin cost assumptions unchanged vs prior guide.",
+   "guidanceAnnuelle": "FY2026 guidance raised on all four metrics: revenue $5.18-5.25B (+11-13% vs $5.16-5.20B prior; organic growth midpoint raised >50bps, partly offset by a ~$15M H2 FX headwind); non-GAAP gross margin ~64% (vs 63-64%); non-GAAP operating margin 23.5-24% (vs 23-23.5%); adjusted EBITDA margin 31.5-32% (vs 31-31.5%). Assumes G7 15 Day reaching ~50% of the US base by year-end and Ireland commercial production starting in H2.",
+   "pointsCles": [
+    "Q2 26 beat on both lines: revenue $1.31B (+13% reported, +12% organic) vs $1.30B consensus, with US +11% ($933M) and international +19% ($375M, +16% organic); non-GAAP EPS $0.70 vs $0.61 consensus (+46% YoY), GAAP diluted EPS $0.64; non-GAAP gross margin 64.1% (+~400bps YoY), operating margin 25.1%, adjusted EBITDA margin 32.2%; H1 FCF >$600M (more than double H1 25) and ~$600M of buybacks executed in Q2 under the $1B 2026 authorization.",
+    "FY26 guidance raised across the board: revenue $5.18-5.25B (+11-13%, organic midpoint up >50bps despite a ~$15M H2 FX headwind), non-GAAP gross margin ~64% (up ~50bps), operating margin 23.5-24% and adjusted EBITDA margin 31.5-32%; no quarterly guide by convention, but management framed a Q3 gross-margin peak followed by temporary dilution as the Ireland plant starts commercial production (Q3 hiring, training, depreciation).",
+    "Product and access momentum: G7 15 Day on track for ~50% US base conversion by year-end (Tandem/Mobi integration now live, Health Canada first ex-US 15 Day clearance), G7 NPS up 3 quarters in a row after the 2025 out-of-box quality issues were fixed; CONNECT RCT delivered a 1.6% A1c reduction (0.9% vs control, 97% median wear) in non-insulin type 2, data submitted to CMS (decision expected by end-2026, coverage assumed mid-2027, ~25M US adressable); Dexcom Flex launched in Germany, Stelo app rebuilt with Nutrisense acquisition closed, G8 on track for late 2027/early 2028 as a smaller multi-analyte platform.",
+    "Risks flagged on the call: temporary gross-margin drag from the Ireland ramp in H2, FX headwind (~$15M H2, EUR at ~1.14 vs ~1.17-1.18 breakeven), tougher international comps in Q3 after 2025 access wins, US CGM market value growth still hovering around 10% (thesis rests on population expansion rather than pricing), and CMS timing/coverage-design uncertainty for non-insulin type 2."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "communique",
+    "date": "2026-07-30"
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "FY 25/Q4 25",
+    "date": "2026-02-12",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "Initial FY2026 guidance: revenue 5,16-5,25 Md$ (+11-13%); non-GAAP gross margin ~63-64%; non-GAAP operating margin ~22-23%."
+   },
+   {
+    "quarter": "Q1 26",
+    "date": "2026-04-30",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "FY2026 guidance reaffirmed (revenue 5,16-5,25 Md$); non-GAAP operating margin raised to 23-23,5% (vs 22-23%); adjusted EBITDA margin raised to 31-31,5%. Gross margin not raised despite a good Q1, caution on geopolitical freight/logistics."
+   },
+   {
+    "quarter": "Q2 26",
+    "date": "2026-07-30",
+    "fyGuided": 2026,
+    "guidanceAnnuelle": "FY2026 guidance raised again: revenue 5,18-5,25 Md$; non-GAAP gross margin ~64%; non-GAAP operating margin 23,5%-24%; adjusted EBITDA margin 31,5%-32%."
+   }
+  ],
+  "guidanceLongTerme": "New long-term financial targets announced at the Investor Day of 14/05/2026 (Mesa, Arizona): organic revenue growth of at least 10% per year every year through 2030; 2030 non-GAAP gross margin of 67% to 69%; 2030 non-GAAP operating margin of 29% to 30%; 2030 adjusted EBITDA margin of 36% to 37%. First communication of quantified financial targets out to 2030 for DexCom (absent from the creation thesis, which had only the annual FY2026 guidance).",
+  "guidanceLongTermeHistory": [],
+  "summary": "Solid Q2 2026 (record revenue 1,31 Md$ +13%, non-GAAP EPS 0,70$ beating consensus by 14,75%) and FY2026 guidance raised again on revenue and on all three margin lines. Major event of the refresh: the Investor Day of 14/05/2026 introduced the FIRST quantified financial targets out to 2030 (organic growth >=10%/yr, non-GAAP operating margin 29-30% in 2030, against ~22-24% guided for 2026) - Omnium 2027-2030 margin trajectory raised substantially as a result. omniumEPS 2026 raised from 2,23$ to 2,50$ (Omnium normalised GAAP basis), and more strongly still over 2029-2030 to reflect the new 2030 margin target.",
+  "text": "== THESIS SUMMARY ==\nDexCom is one of the three CGM leaders, a razor/blades model (>90% recurring sensor revenue) in a structurally growing market. The creation thesis (recovery from the 2024 execution accident and 2025 margin compression) is now validated and AMPLIFIED: record Q2 (revenue 1.31bn$ +13%, non-GAAP EPS 0.70$ beating consensus by 14.75%, GAAP GM up 400bp) and, more structurally, the May 14 Investor Day where DexCom committed for the FIRST TIME to numbered 2030 targets: organic revenue growth >=10% every year and non-GAAP operating margin 29-30% (vs 23.5-24% guided 2026) - the file moved from a recovery bet to a public margin-doubling commitment, backed by a 1bn$ buyback (600M$ already executed) and H1 FCF >600M$ (2x 2025). Key risks: Abbott/Medtronic competition, the Irish plant ramp (transitory Q4 gross-margin drag), and CMS type-2 coverage timing (decision expected late 2026, effect mid-2027).\n\n== THESIS READ ==\n- Second FY26 guidance upgrade of the year (revenue 5.18-5.25bn$, OM 23.5-24%): the recovery is compounding, not just stabilizing.\n- The 2030 commitments (>=10% growth every year, OM 29-30%) now anchor the 2027-2030 margin path - a near-linear ramp replaces the old +200-300bp/yr extrapolation.\n- CONNECT readout strengthens the type-2 non-insulin opportunity (A1C -1.6%, 97% wear rate; 7M+ covered lives) ahead of the CMS decision.\n- G7 15-day at ~25% mix in 2026 exiting toward ~50%: the margin mechanics behind the 2030 target are visible in the mix.\n- Watch: Irish plant ramp on Q4 gross margin - the guided, temporary counterpoint to an otherwise ahead-of-plan margin year.\n\n== SPECIAL FACTORS ==\nNone.\n\n== PARAMETERS & WATCH-LIST ==\nBase: published US GAAP with the single historical d-bis correction (FY2020 tax one-off removed). FY26 bottom-up: H1 GAAP EPS 1.15$ actual + H2 ~1.35$ (sequential growth, Q4 moderated by the Irish ramp) -> 2.50$. Bridge (c-ter): 24% normative tax + small growing interest income (cash 1.5 -> 4.9bn$); the published 2025 year reconciles at ~10% effective tax - which fully explains the W1 conversion gap (93% -> 80%), documented, not an error. Scorecard: revenue-guided house - FY26 anchor 5,205M$ (initial guidance, metric mismatch declared), quarterly beats tracked (+14.75% Q2), history excluded at setup, application suspended. coherenceQualitative created this refresh (transcript read; Q1 reconstructed from guidanceHistory). WATCH-LIST: (1) Q3/Q4 margin vs the raised guide and the Irish ramp; (2) 1bn$ buyback execution pace; (3) first 2027-2028 milestones against the 2030 commitments; (4) Abbott IP litigation -> compliance field; (5) ownership/compliance fields still empty (Operation D / dedicated pass). Next useful refresh: Q3 results (late Oct/early Nov).\n\n== CATALYSTS ==\nQ3 2026 (late Oct): margin trajectory vs Irish ramp; CMS type-2 coverage decision expected before year-end (effect mid-2027); 2030-path milestones.",
+  "impact": "positif",
+  "ancrages": [
+   {
+    "id": "AN-CA",
+    "moteur": "Revenue growth anchored on the raised FY26 guidance (5,18-5,25 Mds$, +11-13%), then on the new Investor Day target of organic growth >=10%/yr communicated on 14/05/2026 - taken at +11,5%/yr over 2027-2030 (a slight surplus above the official 10% floor, consistent with the pace observed in 2026), a structural revision vs the former assumption of a gradual deceleration towards 11%, which no longer has any basis given this explicit quantified commitment through 2030. High confidence on 2026 (guidance raised), medium on 2027-2030 (quantified commitment but long horizon) - 'moyenne' retained overall.",
+    "applique": [
+     "omniumCA.2026",
+     "omniumCA.2027",
+     "omniumCA.2028",
+     "omniumCA.2029",
+     "omniumCA.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-MARGE-INVESTOR-DAY-2030",
+    "moteur": "MAJOR REVISION this refresh: the Investor Day of 14/05/2026 sets for the first time a 2030 non-GAAP operating margin target of 29-30% (vs 23,5-24% guided for 2026), i.e. ~550-600bp of expansion over 4 years - a near-linear progression retained (~+145bp/yr) rather than the simple continuation of the +200-300bp pace of the creation thesis, which did not yet incorporate this quantified commitment. Omnium margin (normalised GAAP) calibrated with a gap of about 145bp below the guided non-GAAP margin, consistent with the Q1 26 calibration (22,2% non-GAAP vs a GAAP margin close but slightly lower).",
+    "applique": [
+     "omniumEBIT.2026",
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-RATIO-CONV",
+    "moteur": "Net/EBIT conversion ratio calibrated on actual Q1-Q2 26 (~78%), improved slightly to 80% from FY27 as financial income on the growing cash position contributes positively - creation methodology unchanged.",
+    "applique": [
+     "omniumNet.2026",
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-SHARES-BUYBACK-1MD",
+    "moteur": "New 1,0 Md$ share buyback programme authorised on 14/05/2026 (through 30/06/2027, replacing the previous programme of which 250 M$ remained available) - ~600 M$ already executed in Q2 26 alone. Reduction in the diluted share count slightly accelerated vs creation (~2,2%/yr against ~2%/yr), given the size of the new programme.",
+    "applique": [
+     "omniumShares.2026",
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "AN-ND",
+    "moteur": "Growing net cash position (deleveraging after the cash settlement of the convertibles in Q4 2025), moderated by the size of the new 1,0 Md$ buyback programme (of which 600 M$ already executed in Q2 26) - trajectory revised very slightly vs creation to reflect this more sustained buyback pace.",
+    "applique": [
+     "omniumND.2026",
+     "omniumND.2027",
+     "omniumND.2028",
+     "omniumND.2029",
+     "omniumND.2030"
+    ],
+    "confiance": "basse"
+   }
+  ],
+  "omniumEPS": {
+   "2026": 2.5,
+   "2027": 3.12,
+   "2028": 3.77,
+   "2029": 4.54,
+   "2030": 5.46
+  },
+  "omniumCA": {
+   "2026": 5215,
+   "2027": 5815,
+   "2028": 6484,
+   "2029": 7230,
+   "2030": 8062
+  },
+  "omniumEBIT": {
+   "2026": 1269,
+   "2027": 1509,
+   "2028": 1781,
+   "2029": 2099,
+   "2030": 2469
+  },
+  "omniumNet": {
+   "2026": 990,
+   "2027": 1207,
+   "2028": 1425,
+   "2029": 1679,
+   "2030": 1975
+  },
+  "omniumND": {
+   "2026": -1500,
+   "2027": -2100,
+   "2028": -2900,
+   "2029": -3800,
+   "2030": -4900
+  },
+  "omniumShares": {
+   "2026": 396,
+   "2027": 387,
+   "2028": 378,
+   "2029": 370,
+   "2030": 362
+  },
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 0.51,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 0.64,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 0.71,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 0.64,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 0.64,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 0.8,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 0.89,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 0.79,
+     "actual": false
+    }
+   ],
+   "PY": [
+    {
+     "label": "Q1",
+     "eps": 0.27,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 0.45,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 0.7,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 0.68,
+     "actual": true
+    }
+   ],
+   "note": "[PY 2025 set 20/08/2026 (C24): reported GAAP 10-Q - sum 2,10$ vs data 2,06$ (rounding of the average share count).]"
+  },
+  "priorEPS": {
+   "date": "2026-08-03",
+   "eps": {
+    "2026": 2.5,
+    "2027": 3.12,
+    "2028": 3.77,
+    "2029": 4.54,
+    "2030": 5.46
+   }
+  },
+  "bridge": {
+   "2025": {
+    "finNet": 20,
+    "other": 0,
+    "taxRate": 0.103,
+    "minorities": 0,
+    "netCalc": 836,
+    "netPub": 836,
+    "residual": 0,
+    "residualNote": "Low 2025 effective GAAP tax (~10%, stock-comp benefits and credits) - the reason the historical conversion (93%) exceeds the projected 80% (W1); projections carry the 24% normative rate."
+   },
+   "2026": {
+    "finNet": 30,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 990
+   },
+   "2027": {
+    "finNet": 79,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 1207
+   },
+   "2028": {
+    "finNet": 94,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 1425
+   },
+   "2029": {
+    "finNet": 110,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 1679
+   },
+   "2030": {
+    "finNet": 130,
+    "other": 0,
+    "taxRate": 0.24,
+    "minorities": 0,
+    "netCalc": 1975
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "Revenue + non-GAAP margins (annual guidance)",
+   "comparedAgainst": "guidance",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-07-30",
+     "type": "guidance_revision",
+     "detail": "FY26 raised again: revenue 5.18-5.25bn$; non-GAAP GM ~64%, OM 23.5-24% (from 23-23.5%), adj EBITDA 31.5-32% - second upgrade of the year.",
+     "flag": null
+    },
+    {
+     "date": "2026-07-30",
+     "type": "vs_guidance",
+     "detail": "Q2 26 print (company guides annually only, beat measured vs Street non-GAAP consensus as guidance proxy): non-GAAP EPS 0.70$ vs 0.61$ expected, beat +14.75%; revenue 1.31bn$ (+13%) vs 1.30bn$ expected.",
+     "beatPct": 14.75
+    },
+    {
+     "date": "2026-04-30",
+     "type": "guidance_revision",
+     "detail": "FY26 reaffirmed (5.16-5.25bn$); operating margin nudged up.",
+     "flag": null
+    }
+   ],
+   "paceCheckpoint": "H1 GAAP EPS 1.15$ actual of the 2.50$ modeled year; Irish plant ramp is the guided H2 gross-margin headwind.",
+   "weightedBeatPct": 14.75,
+   "annualBeatPct": -0.8,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": 1.3,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "revenue 4.60bn$ (initial)",
+     "realizedDisplay": "4.662bn$ (+16%)",
+     "note": "Initial FY25 guidance (prelim FY24 release, 13/01/2025): revenue ~4.60bn$ (+14%); realized 4.662bn (+16%) - level +1.3%."
+    },
+    {
+     "fy": 2024,
+     "beatPct": -5.1,
+     "source": "initial_guidance",
+     "excluded": false,
+     "initialDisplay": "revenue 4.15-4.35bn$ (mid 4.25)",
+     "realizedDisplay": "4.032bn$ (+11%)",
+     "note": "Initial FY24 guidance (prelim FY23 release, Jan 2024): revenue 4.15-4.35bn$ (mid 4.25, +16/21%); CUT in July 2024 (salesforce/channel missteps) and realized 4.032bn - level -5.1% vs the initial frame."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2026,
+    "value": 5205,
+    "source": "initial_guidance",
+    "date": "2026-02-12",
+    "note": "Initial FY26 guidance midpoint, REVENUE metric in M$ (5.16-5.25bn) - taken directly from the fiche's guidanceHistory. Metric mismatch with the EPS target DECLARED: DexCom guides revenue/margins, not EPS."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "annualBeatPct -0.8% BLENDED (in-progress +0.2 x1/2; FY25 +1.3 and FY24 -5.1 equal-shared). The FY24 miss was execution-driven (channel), not demand - metric is revenue (no EPS guidance), directional only.",
+   "consensusSource": "Management non-GAAP consensus base",
+   "consensusDate": "2026-07-31",
+   "inProgress": {
+    "fy": 2026,
+    "initialValue": 5205,
+    "currentValue": 5215,
+    "deltaPct": 0.2,
+    "asOf": "2026-07-30",
+    "note": "Initial FY26 revenue ~5.205bn$; Q2 raised the midpoint to 5.18-5.25bn (mid 5.215) - projected +0.2%."
+   }
+  },
+  "revisionEvent": {
+   "date": "2026-07-30",
+   "label": "Q2 26",
+   "type": "earnings"
+  }
+ },
+ "coherenceQualitative": {
+  "statut": "coherent",
+  "suiviNarratif": [
+   "First tracked entries (cold start at the 18/08/2026 deep refresh; transcript read from the Drive archive). Q2 26 narrative fully consistent with the Investor Day frame: guidance raised a second time, margin trajectory ahead of the 2030 commitments, Irish plant ramp named as the only H2 headwind - no tension detected."
+  ],
+  "historique": [
+   {
+    "quarter": "Q2 2026",
+    "date": "2026-07-30",
+    "clesRetenues": "Revenue 1.31bn$ +13%; non-GAAP EPS 0.70$ (+46%), beat +14.75%; GM 64.1% +400bp; FY26 raised again; 600M$ buyback executed of the 1bn$ program; CONNECT trial: -1.6% A1C, 97% wear rate; G7 15-day on track for 50% US conversion by year-end; G8 targeted late-2027/early-2028.",
+    "format": "compresse"
+   },
+   {
+    "quarter": "Q1 2026",
+    "date": "2026-04-30",
+    "clesRetenues": "FY26 reaffirmed; operating margin nudged up (retroactively reconstructed from the fiche's guidanceHistory - pre-archive quarter).",
+    "format": "compresse"
+   }
+  ]
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2026,
+   "eps": 2.42,
+   "epsNY": 2.85,
+   "date": "2026-07-31",
+   "source": "Management non-GAAP ADJUSTED basis (not the Omnium normalised GAAP basis) - snapshot immediately post-Q2 26 (30-31/07/2026). epsNY = Omnium extrapolation for lack of a fresh 2027 consensus identified at this stage; to be cross-checked at the next refresh."
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
+  "date": "2026-08-20",
+  "eps": {
+   "2021": 0.3875,
+   "2022": 0.82,
+   "2023": 1.3,
+   "2024": 1.42,
+   "2025": 2.09
+  }
+ }
 }

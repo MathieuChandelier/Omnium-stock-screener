@@ -41,11 +41,12 @@ BASCULE HEBDOMADAIRE + SONNET + CLASSEMENT PAR IMPACT (décision du
   hebdomadaire n'a plus besoin de tenir en ~60s, seulement de rester dans
   une limite raisonnable et non-bloquante.
 - Détection calendrier : dans le même passage, extraction des dates
-  d'événement CONFIRMÉES non déjà connues (comparées à data/nextEvents.json)
+  d'événement CONFIRMÉES non déjà connues (comparées au champ nextEvent
+  de chaque fiche data/<TICKER>.json)
   - écrites en PROPOSITION (artifacts/webCalendarProposals.json, reprises
     par merge_web.py dans data/calendarProposals.json) plutôt qu'appliquées
   silencieusement : la création de l'événement (Google Calendar ou mise à
-  jour de nextEvents.json) reste un geste manuel de l'utilisateur.
+  jour du champ nextEvent des fiches) reste un geste manuel de l'utilisateur.
 
 Garantie de fraîcheur : PROBABILISTE côté modèle, DETERMINISTE côté code.
 1. Le prompt reçoit la fenêtre exacte (bornes explicites, pas "récent") et
@@ -154,7 +155,9 @@ MAX_TOKENS_BUDGET = int(MAX_COST_BUDGET_EUR * 1_000_000 / SONNET_OUTPUT_PRICE_PE
 MATERIALITE_ORDER = {"fort": 3, "moyen": 2, "faible": 1, "nul": 0}
 MATERIALITES_VALIDES = set(MATERIALITE_ORDER)
 
-NEXT_EVENTS_PATH = "data/nextEvents.json"
+# Le fichier global a ete supprime le 21/08/2026 : la prochaine echeance
+# vit dans le champ nextEvent de chaque fiche data/<TICKER>.json.
+MANIFEST_PATH = "data/manifest.json"
 CALENDAR_PROPOSALS_ARTIFACT = "webCalendarProposals"
 
 
@@ -181,14 +184,28 @@ def get_web_window_start() -> datetime:
     return datetime.now(timezone.utc) - timedelta(days=DEFAULT_LOOKBACK_DAYS)
 
 
-def load_next_events(path=NEXT_EVENTS_PATH) -> dict:
-    if not os.path.exists(path):
-        return {}
+def load_next_events(manifest_path=MANIFEST_PATH) -> dict:
+    """Prochaine echeance connue, par ticker.
+
+    Lue dans le champ `nextEvent` de chaque fiche depuis le 21/08/2026 : le
+    fichier global data/nextEvents.json a ete supprime, il doublonnait ce
+    champ et les deux divergeaient sur 42 titres sur 59.
+    """
     try:
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
+        with open(manifest_path, encoding="utf-8") as f:
+            tickers = json.load(f).get("tickers", [])
     except (json.JSONDecodeError, OSError):
         return {}
+    out = {}
+    for tk in tickers:
+        try:
+            with open(os.path.join("data", tk + ".json"), encoding="utf-8") as f:
+                ne = (json.load(f) or {}).get("nextEvent")
+        except (json.JSONDecodeError, OSError):
+            continue
+        if ne:
+            out[tk] = ne
+    return out
 
 
 def build_thesis_context(tdata: dict) -> str:

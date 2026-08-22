@@ -1,514 +1,514 @@
 {
-  "name": "Nike",
-  "cours": 42.78,
-  "yahooSymbol": "NKE",
-  "dividende": 1.64,
-  "fyEndMonth": 5,
-  "data": [
-    {
-      "year": 2022,
-      "ca": 46710,
-      "ebit": 6856,
-      "net": 6046,
-      "shares": 1610,
-      "nd": -4087,
-      "div": 1.21
-    },
-    {
-      "year": 2023,
-      "ca": 51217,
-      "ebit": 6195,
-      "net": 5070,
-      "shares": 1571,
-      "nd": -2780,
-      "div": 1.35
-    },
-    {
-      "year": 2024,
-      "ca": 51362,
-      "ebit": 6539,
-      "net": 5700,
-      "shares": 1528,
-      "nd": -2673,
-      "div": 1.51
-    },
-    {
-      "year": 2025,
-      "ca": 46313,
-      "ebit": 3755,
-      "net": 3219,
-      "shares": 1490,
-      "nd": -1185,
-      "div": 1.6
-    },
-    {
-      "year": 2026,
-      "ca": 46400,
-      "ebit": 2854,
-      "net": 2342,
-      "shares": 1482,
-      "nd": -1127,
-      "div": 1.64
-    }
-  ],
-  "epsConsensus": {
-    "year": 2027,
-    "eps": 1.72,
-    "epsNY": 2.23,
-    "epsY2": 2.47,
-    "date": "2026-08-20",
-    "source": "MarketScreener (consensus of 39 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 1.71)",
-    "analystsCount": 39,
-    "adjGapPct": -0.4
+ "name": "Nike",
+ "cours": 42.78,
+ "yahooSymbol": "NKE",
+ "dividende": 1.64,
+ "fyEndMonth": 5,
+ "data": [
+  {
+   "year": 2022,
+   "ca": 46710,
+   "ebit": 6856,
+   "net": 6046,
+   "shares": 1610,
+   "nd": -4087,
+   "div": 1.21
   },
-  "particularites": [],
-  "nextEvent": {
-    "label": "Q1 FY 27",
-    "date": "2026-09-24"
+  {
+   "year": 2023,
+   "ca": 51217,
+   "ebit": 6195,
+   "net": 5070,
+   "shares": 1571,
+   "nd": -2780,
+   "div": 1.35
   },
-  "ownership": {
-    "asOf": "2026-08-09",
-    "insiderPct": 19,
-    "insiderDesc": "Knight founding family (Philip Knight, the Swoosh LLC structure, and his son Travis Knight through an irrevocable trust) - dual-class share structure: the family holds around 19% of total economic capital (Class A + Class B) but close to 97% of the voting rights of the super-voting Class A, giving it effective control of the board despite a minority economic holding.",
-    "insiderSource": "DEF 14A FY2025/FY2026 (SEC, beneficial ownership table - Swoosh LLC, Philip Knight, Travis A. Knight 2009 Irrevocable Trust II), corroborated by aggregators (FourWeekMBA, Untaylored) on the order of magnitude ~19% economic / ~97% of Class A voting rights. EXPLICIT CAVEAT: the proxy table contains double-counting between the entities owing to Class A/Class B convertibility - a figure to be treated as an order of magnitude, not a precision to the tenth of a point.",
-    "notableHolders": [],
-    "coverageNote": "No watchlist manager currently identified in the latest available 13F (2026-Q1): Terry Smith - Fundsmith, the only Tier 1 manager historically present in this stock, fully liquidated its NKE position in Q1 2026 (complete exit, with Intuit/Graco/Oddity Tech among that manager's other exits in the same quarter).",
-    "history": []
+  {
+   "year": 2024,
+   "ca": 51362,
+   "ebit": 6539,
+   "net": 5700,
+   "shares": 1528,
+   "nd": -2673,
+   "div": 1.51
   },
-  "compliance": {
-    "asOf": "2026-08-09",
-    "items": [
-      {
-        "year": 2024,
-        "title": "Securities class action (In re Nike, Inc. Securities Litigation, 3:24-cv-00974, District of Oregon) alleging misleading statements by Nike and executives (including former CEO John Donahoe) about the success of the Consumer Direct Acceleration (DTC) strategy between 2021 and 2023.",
-        "allegedBy": "Plaignants actionnaires representes par plusieurs cabinets (Labaton Keller Sucharow en lead counsel, Cohen Milstein, etc.), avec sollicitations paralleles d'autres cabinets plaignants (Rosen, Kessler Topaz, Bronstein Gewirtz, Levi & Korsinsky, Johnson Fistel) aupres d'actionnaires.",
-        "date": "2024-06-20",
-        "status": "plainte_deposee",
-        "outcome": "Order of 31/03/2026: partial dismissal (motion to dismiss granted for the most part), only 7 statements found sufficiently pleaded as to falsity and a single one as to scienter - a much reduced case but not extinguished, dismissal WITHOUT prejudice with leave granted to the plaintiffs to file a third amended complaint.",
-        "source": "District Court of Oregon, Opinion and Order du 2026-03-31 ; The Fashion Law, Cohen Milstein (suivi de dossier)."
-      }
-    ],
-    "note": "A securities class action is ongoing (see items) around the 2021-2023 DTC strategy under former CEO Donahoe, very largely dismissed by the court in March 2026 but not definitively closed. Separately, a distinct consumer suit (alleging failure to refund price increases tied to customs tariffs) exists but falls under ordinary commercial litigation, outside the fraud scope of this section - not recorded here."
+  {
+   "year": 2025,
+   "ca": 46313,
+   "ebit": 3755,
+   "net": 3219,
+   "shares": 1490,
+   "nd": -1185,
+   "div": 1.6
   },
-  "coherenceQualitative": {
-    "asOf": "2026-08-09",
-    "statut": "coherent",
-    "points": [],
-    "historique": [
-      {
-        "quarter": "Q3 FY 26",
-        "date": "2026-03-31",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Lorraine Hutchinson (BofA) - diagnosis of the EMEA underperformance vs North America and the remedy: Friend notes double-digit growth in Running but a declining Sportswear, elevated promotions, Middle East disruption and high inventory; Hill adds that new leadership (Cesar Garcia) is refocusing on performance and a balanced marketplace strategy.",
-          "Q Adrienne Yih (Barclays) - reading of the 'end of calendar year' guidance and the precise definition of 'earnings flattish': Friend specifies that the 9-month guidance gives visibility through to the end of the Win Now plan (end of calendar year 2026), confidence in the trajectory despite a turnaround taking longer than hoped; margin expected to inflect positively in Q2 FY27.",
-          "Q Simeon Siegel (Guggenheim) - health of the DTC margin and the severance share of the 230 M$ charge: Hill stresses the shift from a DTC-first strategy to an integrated marketplace; Friend reports a sequential improvement in North America digital and confirms that the 230 M$ is entirely severance concentrated in Supply Chain/Technology/Converse.",
-          "Q Michael Binetti (Evercore) - Q4 guidance on a reported or currency-neutral basis, EMEA trajectory with the World Cup: Friend confirms guidance on a reported basis, EMEA expected to grow in performance (Running, Training) offset by Sportswear weakness and the already-incorporated Middle East disruption.",
-          "Q Brooke Roach (Goldman Sachs) - scale of the remaining classic-franchise reset by geography, signs of recovery in North America Sportswear: Hill reports a stabilisation of Air Force 1/AJ1 with better full-price realisation, Dunk still to be worked on, and positive launches (AJ11 Gamma, AJ5 Wolf Grey, Air Max 95) - the team is moving from defence to offence in Sportswear.",
-          "Q Brian Nagel (Oppenheimer) - is the longer-than-expected turnaround due to internal or external factors: Hill attributes the delay to both, each geography starting from a different level and marketplace structure; reaffirms the 2-year turnaround timetable, with spring 2027 marking the first quarter benefiting from the reorganised product teams.",
-          "Q Matthew Boss (JPMorgan) - view on global Sportswear, self-inflicted share vs underlying demand in the decline: Hill remains optimistic on the sports industry, with Sportswear still critical through a local approach; Friend details the guidance geography by geography (healthier North America, marketplace clean-up outside the US, sell-in management in China towards a more full-price mix)."
-        ]
-      },
-      {
-        "quarter": "Q4 FY 26",
-        "date": "2026-06-30",
-        "format": "brut",
-        "clesRetenues": [
-          "Q Adrienne Yih (Barclays) - R&D/innovation investment in Sportswear despite the inventory pull-back: Hill answers that the halo comes from performance sport (Running +1 Md$/5 quarters), Sportswear has dedicated teams and will launch more than a dozen new models in H2 FY27, the rebuild will take time.",
-          "Q Bob Drbul (BTIG) - ability to scale NIKE Mind and the 6-18 month innovation pipeline: first wave of products from the 'Sport Offense' teams as early as spring 2027; Running (Peg 42, Aero-FIT in apparel), Football (Mercurial/women's World Cup 2027), Basketball (Caitlin Clark, holiday 2026), Training (NIKE Mind beyond the slide as early as spring 2027).",
-          "Q Matthew Boss (JPMorgan) - Performance vs Sportswear sell-through cadence and the Q1/Q2 FY27 bridge: Hill declines to set an optimal target mix (left to the consumer); Friend explains the Q2 deceleration by a favourable, non-repeatable base effect (elevated EMEA digital promotions and abnormally strong North America wholesale in Q2 FY26).",
-          "Q Lorraine Hutchinson (BofA) - China DTC/digital strategy: Hill reaffirms China as the 2nd largest market worldwide, a plan built on 3 pillars (findability/premiumisation, marketplace clean-up, online/offline elevation) plus a local product creation team delivering holiday 2027; Friend confirms a pick-up in full-price digital after 2 quarters of reduced promotions.",
-          "Q Michael Binetti (Evercore) - wholesale order books by geography and the H2 FY27 Sportswear trajectory: Hill reiterates 'flattish' EPS over the guided 3-quarter window despite a different revenue/margin mix (lower revenue, better gross margin), and defers the detail to the November Investor Day.",
-          "Q Aneesha Sherman (Bernstein) - state of progress of the turnaround (innings) and drivers of the margin inflection excluding operating leverage: Hill confirms the sunset of Win Now by end-2026 (launched December 2024) and the move to 'Sport Offense'; Friend attributes the Q4 margin beat to lower discounts/cancellations in North America and to the first effects of the site/headcount reductions undertaken in Q3-Q4 FY26.",
-          "Q Ike Boruchow (Wells Fargo) - quarters of decline expected for North America wholesale in FY27: Friend specifies that the 10% increase in NA wholesale in Q4 is not a genuine +10% sell-in (effect of lower reserves/returns), and that Q2 FY27 will face a difficult comparison in North America; Hill nonetheless remains very confident on North American momentum (positive Foot Locker relationship for the 1st time in 4 years)."
-        ]
-      }
-    ],
-    "engagementsStructurants": [
-      {
-        "id": "chine_local_product_holiday27",
-        "quarterOrigine": "Q4 FY 26",
-        "engagement": "Local product creation team in China delivering product designed/developed/manufactured locally from the holiday season (holiday) 2027.",
-        "echeance": "2027-Q4",
-        "statut": "en_cours"
-      },
-      {
-        "id": "sport_offense_premiers_produits_printemps27",
-        "quarterOrigine": "Q3 FY 26",
-        "engagement": "First quarter benefiting from the product teams reorganised by sport ('Sport Offense') expected in spring 2027 (2-year turnaround timetable reaffirmed).",
-        "echeance": "2027-Q4",
-        "statut": "confirme"
-      }
-    ]
-  },
-  "hypothese": {
-    "date": "2026-08-19",
-    "source": "Refresh (complete sourcing on the same quarter) - Initial creation 2026-07-10 (Q4 FY2026 transcript 30/06/2026, Elliott Hill/Matt Friend + 10-K FY2025/FY2026 + public research) completed by this session: press release + Q4 FY26 transcript read in full (figures/tables/Q&A), ownership, compliance, coherenceQualitative and quarterlyEPS populated for the first time. No new quarter reported since creation (next: Q1 FY27, 24/09/2026) - data/adjXXX/ancrages not reopened. RETROACTIVE RECOVERY (E2 ter point 1 bis): Q3 FY26 transcript (31/03/2026, Elliott Hill/Matt Friend) located and read after the fact in order to start the coherenceQualitative comparison immediately (no earlier raw entry available in the file before this refresh) - Q3 FY26 Q&A capture flagged as retroactively reconstructed, not a live capture of Q3 FY26.",
-    "priorEPS": {
-      "date": "2026-07-10",
-      "eps": {
-        "2027": 1.76,
-        "2028": 2.38
-      }
-    },
-    "dernierCall": {
-      "quarter": "Q4 FY 26",
-      "communiqueAnalyse": true,
-      "transcriptAnalyse": true,
-      "resultatsVsConsensus": {
-        "ca": {
-          "actual": 10972,
-          "consensus": 10850
-        },
-        "epsAdj": {
-          "actual": 0.2,
-          "consensus": 0.12,
-          "basis": "non-GAAP",
-          "basisNote": "EPS excluding the one-time $986M IEEPA tariff recovery benefit (~$0.52/share), as disclosed by management on the call; reported GAAP diluted EPS was $0.72 (see epsReported)."
-        },
-        "epsReported": {
-          "actual": 0.72,
-          "basis": "GAAP",
-          "period": "Q4 FY 26",
-          "note": "GAAP diluted EPS for the March-May 2026 quarter (Q4 FY26), cross-checked with stockanalysis.com quarterly financials (net income $1,069M on revenue of $10,972M). Includes a one-time $986M benefit (~$0.52/share) from the probable recovery of IEEPA tariffs; excluding this item, underlying EPS was $0.20 vs ~$0.13 consensus."
-        }
-      },
-      "guidanceProchainTrimestre": "Q1 FY27: reported revenue expected down low-to-mid single digits with no FX benefit and currency-neutral trends consistent with recent performance; gross margin expected slightly positive YoY (expansion pulled forward to Q1 from Q2 previously); SG&A dollars flat, with operating overhead declining while demand creation grows high single digits on World Cup investment; FY27 tax rate expected in the low-20% range; tariff assumption: 10% incremental rate through end of July 2026, then 15% thereafter.",
-      "guidanceAnnuelle": "No full-year FY27 guidance (NIKE guides on a rolling multi-quarter window). Over the Q4 FY26-Q2 FY27 window management reiterated flattish earnings excluding the IEEPA tariff recovery benefit, but with a changed composition: revenue now expected down low-to-mid single digits (tightened buys, reduced sell-in to protect marketplace health) offset by earlier gross margin expansion starting in Q1 FY27; Q2 FY27 expected to decelerate sequentially on a multi-point comp headwind (elevated prior-year EMEA digital promotions and North America wholesale shipment timing); Greater China near-term revenue in line with recent trends, with profitability expected to bottom before sales; macro assumptions embed no improvement over the next 6 months.",
-      "pointsCles": [
-        "Q4 FY26 revenue of $10.97B (-1% reported, -4% currency-neutral) beat consensus by ~$120M; reported gross margin of 49.2% (+890bp) included a ~900bp one-time benefit from the $986M IEEPA tariff recovery - underlying gross margin was 40.2%, down only 10bp vs guidance of -25/-75bp, helped by lower discounts, returns and cancellations in North America.",
-        "Geographies diverged: North America grew 3% (wholesale +10%, first quarter of positive NIKE revenue and retail sales comps at Foot Locker in over 4 years) while EMEA fell 6% (off-price down over 50% as digital promotions were slashed, +15pts full-price realization) and Greater China dropped 17% amid a deliberate marketplace clean-up (inventory down double digits, sequential sell-through improvement, House of Innovation Shanghai up double digits).",
-        "Performance business grew mid-single digits in FY26 - Running posted a 5th consecutive quarter of double-digit growth (~$1B of revenue added, +5pts share in statement footwear across Western Europe and North America) and the World Cup delivered 1.5B campaign views in week one plus kit sales at 2.5x the 2022 pace - but Sportswear and Jordan Streetwear (~half of revenue) declined double digits and are guided negative for FY27 with improvement only in H2 (a dozen-plus new Sportswear footwear styles planned).",
-        "Leadership and structure in transition: CFO Matt Friend departs after nearly 18 years, the Win Now recovery plan sunsets by end of calendar 2026 in favor of the Sport Offense (8,000 employees moved into sport verticals), supply-chain restructuring (~$400M FY26 severance, fewer facilities, reworked factory-to-retail flows) is expected to drive FY27 gross margin expansion, and the next strategic phase will be unveiled at the Nov 16-17, 2026 Investor Day."
-      ],
-      "etatsFinanciers": {
-        "analyse": true,
-        "referentiel": "US-GAAP",
-        "source": "Communique T4 FY26 + 10-K (30/06/2026)",
-        "date": "2026-08-19",
-        "note": "Cross-checked: FY26 revenue 46,4 Md$ (flat reported, -2% cc), Q4 11,0 Md$ (-1%), Q4 diluted EPS 0,72$ of which +0,52$ from the expected recovery of IEEPA tariffs, Q4 gross margin 49,2% (+890bp of which ~900bp IEEPA effect - underlying flat). Q4 wholesale +4%, Direct -7%."
-      }
-    },
-    "guidanceHistory": [
-      {
-        "quarter": "Q4 FY 26",
-        "date": "2026-06-30",
-        "fyGuided": 2027,
-        "guidanceAnnuelle": "No quantified full-year FY27 guidance; Q4 FY26-Q2 FY27 window: revenue down a low to mid double-digit %, EPS 'flattish' excluding the IEEPA tariff benefit."
-      }
-    ],
-    "guidanceLongTerme": null,
-    "guidanceLongTermeHistory": [],
-    "quarterlyEPS": {
-      "cadence": "trimestriel",
-      "historique": [],
-      "PY": [
-        {
-          "label": "Q1",
-          "eps": 0.49,
-          "actual": true
-        },
-        {
-          "label": "Q2",
-          "eps": 0.53,
-          "actual": true
-        },
-        {
-          "label": "Q3",
-          "eps": 0.35,
-          "actual": true
-        },
-        {
-          "label": "Q4",
-          "eps": 0.2,
-          "actual": true
-        }
-      ],
-      "CY": [
-        {
-          "label": "Q1",
-          "eps": 0.47,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 0.5,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 0.5,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 0.29,
-          "actual": false
-        }
-      ],
-      "NY": [
-        {
-          "label": "Q1",
-          "eps": 0.64,
-          "actual": false
-        },
-        {
-          "label": "Q2",
-          "eps": 0.68,
-          "actual": false
-        },
-        {
-          "label": "Q3",
-          "eps": 0.68,
-          "actual": false
-        },
-        {
-          "label": "Q4",
-          "eps": 0.38,
-          "actual": false
-        }
-      ]
-    },
-    "summary": "Self-inflicted crisis (2020-2024 DTC pivot under Donahoe) more than a macro shock: 'Win Now' turnaround under way since Oct. 2024 (withdrawal of 2 Md$ of classic franchises, wholesale rebuild, Running growing) but China remains in the 'early stage' and Converse continues to deteriorate; Q4 FY26 is artificially inflated by a one-off benefit of 986 M$ (IEEPA tariff recovery) to be neutralised in the base.",
-    "text": "== THESIS SUMMARY ==\nNike is in its worst cycle since 2008-09: revenue flat ~46bn across two years and net income nearly halved from FY24 - largely SELF-INFLICTED by the 2020-2024 DTC-first strategy that cut wholesale ties (share down from 68% to 56%), gifting shelf space to Hoka, On and New Balance. The thesis is the turnaround: Elliott Hill is rebuilding wholesale, cleaning inventory through a painful discount cycle, and re-centering on sport categories. FY27 is modeled as the trough (EPS 1.76, on consensus), with the operating-leverage recovery carrying EPS to ~4.00 by FY31.\n\n== THESIS READ ==\n- The window guidance (revenue down low-to-mid teens, EPS flattish ex-IEEPA through Q2 FY27) confirms the trough is being taken now, deliberately. Watch: wholesale order-book commentary - the earliest recovery indicator.\n- The recovery math is margin-led (EBIT 6.6% FY27 -> 12% FY31), not revenue-led (+4%/yr only) - conservative on the top line by design. Watch: gross-margin inflection as clean inventory meets restored full-price sell-through.\n- IEEPA tariff refunds are retreated from the base (documented) - reported prints will look better than the underlying. Watch: separating tariff benefit from operating recovery in each print.\n\n== SPECIAL FACTORS ==\nFiscal year ends MAY: 'data' FY26 = year ended May 2026; horizon FY27-FY31. Base retreated of IEEPA tariff one-offs. Knight family: ~19% economic / ~97% of Class A votes; Fundsmith fully exited in Q1 2026. No FY guidance exists - consensus-anchored scorecard by necessity.\n\n== PARAMETERS & WATCH-LIST ==\nFY27: revenue 46.3bn (flat), EBIT 3,064M (6.6%), EPS 1.76 (consensus-aligned trough); FY28-FY31: revenue +4%/yr, EBIT margin rebuilding to ~12%, ETR 18% normative, shares -1.4%/yr (moderate buybacks), net cash growing. Watch: Q1 FY27 (Sept) wholesale trajectory; China; running-category share data vs Hoka/On.\n\n== CATALYSTS ==\nQ1 FY27 (late Sept); holiday FY27 sell-through; wholesale re-engagement milestones; World Cup 2026 marketing cycle.",
-    "impact": "neutre",
-    "ancrages": [
-      {
-        "id": "guidance_q1_fy27",
-        "moteur": "Official Q1 FY27 guidance (revenue down a low/mid double-digit %, gross margin slightly positive YoY, tariff assumption 10% then 15%), extrapolated to the full year taking account of the wholesale and Running acceleration already visible in Q4 FY26.",
-        "applique": [
-          "omniumCA.2027"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "consensus_eps_fy27_fy28",
-        "moteur": "Zacks consensus on an ADJUSTED basis (excluding non-recurring items, hence excluding the 0.52$/share IEEPA benefit that inflated Q4 FY26): FY27 EPS 1.76$ (+11.4% vs adjusted FY26 base ~1.58$), FY28 EPS 2.38$ (+35.5%). Used as a direct EPS anchor rather than a revenue->EBIT->Net retrofit, given the scale of the uncertainties around the turnaround timetable. ERROR CORRECTED on 10/07/2026: the first version of this file mistakenly applied the consensus growth rate to the REPORTED GAAP base (2.10$, including the IEEPA benefit), which produced an FY27 EPS overstated by +36% (2.39$ instead of 1.76$).",
-        "applique": [
-          "omniumEPS.2027",
-          "omniumEPS.2028",
-          "omniumNet.2027",
-          "omniumNet.2028"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "deceleration_fy29_fy31",
-        "moteur": "FY29 anchored on the WallStreetZen consensus (3.09$, +29.8% vs FY28), then extrapolation of a gradual deceleration in the EPS growth rate (+16% FY30, +11% FY31) beyond the dense consensus horizon (FY27-29), through a gradual return towards Nike's historical growth algorithm outside crisis periods - materially lower confidence for want of a specific source beyond FY29.",
-        "applique": [
-          "omniumEPS.2029",
-          "omniumEPS.2030",
-          "omniumEPS.2031",
-          "omniumNet.2029",
-          "omniumNet.2030",
-          "omniumNet.2031"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "levier_operationnel_redressement",
-        "moteur": "Recovery in the EBIT margin from the depressed FY26 level (~8% excluding the IEEPA benefit) towards a level close to FY24 (~12-13%) by FY29-31, as tariff mitigation is completed and the classic-franchise reset is fully digested in the comparison base - without a return to the FY22 peak (14.7%), given the structural tariff cost overrun and a higher level of competitive intensity.",
-        "applique": [
-          "omniumEBIT.2027",
-          "omniumEBIT.2028",
-          "omniumEBIT.2029",
-          "omniumEBIT.2030",
-          "omniumEBIT.2031"
-        ],
-        "confiance": "basse"
-      },
-      {
-        "id": "etr_normatif",
-        "moteur": "Normative tax rate of 18%, in the middle of the recent effective range (14.9% FY24 - 20% FY25/Q3FY26), carried forward for simplicity across the whole projection horizon.",
-        "applique": [
-          "omniumNet.2027",
-          "omniumNet.2028",
-          "omniumNet.2029",
-          "omniumNet.2030",
-          "omniumNet.2031"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "rachat_actions_modere",
-        "moteur": "Continuation of a moderate buyback pace (~-1.4%/yr less dilution), consistent with the pace observed over FY24-FY26 despite the priority given to the operational turnaround rather than to aggressive capital returns.",
-        "applique": [
-          "omniumShares.2027",
-          "omniumShares.2028",
-          "omniumShares.2029",
-          "omniumShares.2030",
-          "omniumShares.2031"
-        ],
-        "confiance": "moyenne"
-      },
-      {
-        "id": "ieepa_one_off_exclu",
-        "moteur": "The one-off benefit of 986 M$ (of which 0.52$/share in Q4 FY26) tied to the recovery of IEEPA tariffs is a one-off explicitly quantified by management, adjusted in accordance with E5 d-bis. GROSS REPORTED FIGURES (traced here for audit): EBIT ~3 840 M$, Net 3 113 M$, diluted EPS 2.10$/share. ADJUSTMENT applied DIRECTLY IN `data.2026` (and no longer only in the projection base): EBIT 3 840 - 986 (gross margin benefit) = 2 854 M$; Net 3 113 - 771 (net-of-tax effect, derived from 0.52$/share x 1 482 M shares) = 2 342 M$; adjusted EPS 2 342/1 482 = 1.58$. It is this 1.58$ base that serves as the starting point for FY27 growth (omniumEPS.2027 = 1.76$, i.e. +11.4% vs 1.58$) - and which will also feed the engine's automatic CAGR calculation at future refreshes, without contamination by this one-off.",
-        "applique": [
-          "omniumNet.2027",
-          "omniumEPS.2027"
-        ],
-        "confiance": "haute"
-      }
-    ],
-    "omniumEPS": {
-      "2027": 1.76,
-      "2028": 2.38,
-      "2029": 3.09,
-      "2030": 3.6,
-      "2031": 4.0
-    },
-    "omniumCA": {
-      "2027": 46320,
-      "2028": 48220,
-      "2029": 50631,
-      "2030": 52910,
-      "2031": 55026
-    },
-    "omniumEBIT": {
-      "2027": 3064,
-      "2028": 4094,
-      "2029": 5249,
-      "2030": 6028,
-      "2031": 6596
-    },
-    "omniumNet": {
-      "2027": 2578,
-      "2028": 3439,
-      "2029": 4403,
-      "2030": 5058,
-      "2031": 5540
-    },
-    "omniumND": {
-      "2027": -1100,
-      "2028": -1500,
-      "2029": -2100,
-      "2030": -2800,
-      "2031": -3700
-    },
-    "omniumShares": {
-      "2027": 1465,
-      "2028": 1445,
-      "2029": 1425,
-      "2030": 1405,
-      "2031": 1385
-    },
-    "bridge": {
-      "2026": {
-        "finNet": 2,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 2342.0,
-        "netPub": 2342,
-        "residual": 0,
-        "residualNote": "Published FY26 (ended May 2026, IEEPA-retreated base) reconciles cleanly at the 18% normative ETR with a near-zero net financial result (interest income on the modest net cash offsetting charges)."
-      },
-      "2027": {
-        "finNet": 80,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 2578.1
-      },
-      "2028": {
-        "finNet": 100,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 3439.1
-      },
-      "2029": {
-        "finNet": 120,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 4402.6
-      },
-      "2030": {
-        "finNet": 140,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 5057.8
-      },
-      "2031": {
-        "finNet": 160,
-        "other": 0,
-        "taxRate": 0.18,
-        "minorities": 0,
-        "netCalc": 5539.9
-      }
-    },
-    "guidanceScorecard": {
-      "cadence": "annual",
-      "metric": "EPS via consensus (Nike guides only a rolling short window, no FY frame)",
-      "comparedAgainst": "consensus",
-      "basisAligned": true,
-      "basisNote": null,
-      "timeline": [
-        {
-          "date": "2026-06-30",
-          "type": "guidance_revision",
-          "detail": "Q4 FY26 report: no FY27 frame; Q4 FY26-Q2 FY27 window guided revenue down low-to-mid teens, EPS flattish ex-IEEPA."
-        }
-      ],
-      "paceCheckpoint": "FY26 closed at the trough: revenue 46.4bn flat, net income nearly halved vs FY24 - the wholesale-repair strategy (Elliott Hill) is in its investment phase.",
-      "weightedBeatPct": null,
-      "annualBeatPct": null,
-      "annualBeatHistory": [
-        {
-          "fy": 2025,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Searched 19/08/2026: Nike guides only a rolling short window (quarter by quarter), never a full fiscal-year frame - FY25 (May-2025 close) has no initial annual anchor to measure - excluded structurally."
-        },
-        {
-          "fy": 2024,
-          "beatPct": null,
-          "source": "initial_guidance",
-          "excluded": true,
-          "note": "Same structural limitation for FY24 (May-2024 close): window guidance only."
-        }
-      ],
-      "anchorInitial": {
-        "fy": 2027,
-        "value": 1.76,
-        "source": "initial_consensus",
-        "date": "2026-07-10",
-        "note": "Nike gives no full-year guidance (window guidance only: Q4 FY26-Q2 FY27 revenue down low-to-mid teens %, EPS 'flattish' ex-IEEPA tariff benefit) - the anchor is the FY27 consensus at the earliest archived snapshot (10/07, Zacks). Omnium FY27 EPS deliberately equals it (trough year of the turnaround)."
-      },
-      "appliedToProjection": false,
-      "applicationNote": "No measurable fiscal year: window-only guider. The FY27 consensus anchor (1.76, 10/07/2026) starts the archive - first verdict at the FY27 close (May 2027).",
-      "consensusSource": "Zacks Consensus (Yahoo Finance)",
-      "consensusDate": "2026-07-10",
-      "inProgress": null
-    },
-    "revisionEvent": {
-      "date": "2026-06-30",
-      "label": "Q4 FY 26",
-      "type": "earnings"
-    }
-  },
-  "epsConsensusHistory": [
-    {
-      "year": 2027,
-      "eps": 1.76,
-      "epsNY": 2.38,
-      "date": "2026-07-10",
-      "source": "Zacks Consensus Estimate (Yahoo Finance): FY27 EPS 1.76$ (+11.4% vs ADJUSTED FY26 base ~1.58$, excluding the 0.52$/share IEEPA benefit - Zacks explicitly states that its figures are 'adjusted for non-recurring items'), FY28 EPS 2.38$ (+35.5%). Cross-checked against LSEG (FY27 1.84$, +22%) and WallStreetZen (FY27 1.88$, FY28 2.45$, FY29 3.09$)."
-    }
-  ],
-  "externalActuals": {
-    "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
-    "date": "2026-08-20",
-    "eps": {
-      "2022": 3.75,
-      "2023": 3.23,
-      "2024": 3.73,
-      "2025": 2.16,
-      "2026": 2.1
-    }
+  {
+   "year": 2026,
+   "ca": 46400,
+   "ebit": 2854,
+   "net": 2342,
+   "shares": 1482,
+   "nd": -1127,
+   "div": 1.64
   }
+ ],
+ "epsConsensus": {
+  "year": 2027,
+  "eps": 1.72,
+  "epsNY": 2.23,
+  "epsY2": 2.47,
+  "date": "2026-08-20",
+  "source": "MarketScreener (consensus of 39 analysts, CY..CY+2) — cross-checked against stockanalysis.com (CY 1.71)",
+  "analystsCount": 39,
+  "adjGapPct": -0.4
+ },
+ "particularites": [],
+ "nextEvent": {
+  "label": "Q1 FY 27",
+  "date": "2026-09-24"
+ },
+ "ownership": {
+  "asOf": "2026-08-09",
+  "insiderPct": 19,
+  "insiderDesc": "Knight founding family (Philip Knight, the Swoosh LLC structure, and his son Travis Knight through an irrevocable trust) - dual-class share structure: the family holds around 19% of total economic capital (Class A + Class B) but close to 97% of the voting rights of the super-voting Class A, giving it effective control of the board despite a minority economic holding.",
+  "insiderSource": "DEF 14A FY2025/FY2026 (SEC, beneficial ownership table - Swoosh LLC, Philip Knight, Travis A. Knight 2009 Irrevocable Trust II), corroborated by aggregators (FourWeekMBA, Untaylored) on the order of magnitude ~19% economic / ~97% of Class A voting rights. EXPLICIT CAVEAT: the proxy table contains double-counting between the entities owing to Class A/Class B convertibility - a figure to be treated as an order of magnitude, not a precision to the tenth of a point.",
+  "notableHolders": [],
+  "coverageNote": "No watchlist manager currently identified in the latest available 13F (2026-Q1): Terry Smith - Fundsmith, the only Tier 1 manager historically present in this stock, fully liquidated its NKE position in Q1 2026 (complete exit, with Intuit/Graco/Oddity Tech among that manager's other exits in the same quarter).",
+  "history": []
+ },
+ "compliance": {
+  "asOf": "2026-08-09",
+  "items": [
+   {
+    "year": 2024,
+    "title": "Securities class action (In re Nike, Inc. Securities Litigation, 3:24-cv-00974, District of Oregon) alleging misleading statements by Nike and executives (including former CEO John Donahoe) about the success of the Consumer Direct Acceleration (DTC) strategy between 2021 and 2023.",
+    "allegedBy": "Plaignants actionnaires representes par plusieurs cabinets (Labaton Keller Sucharow en lead counsel, Cohen Milstein, etc.), avec sollicitations paralleles d'autres cabinets plaignants (Rosen, Kessler Topaz, Bronstein Gewirtz, Levi & Korsinsky, Johnson Fistel) aupres d'actionnaires.",
+    "date": "2024-06-20",
+    "status": "plainte_deposee",
+    "outcome": "Order of 31/03/2026: partial dismissal (motion to dismiss granted for the most part), only 7 statements found sufficiently pleaded as to falsity and a single one as to scienter - a much reduced case but not extinguished, dismissal WITHOUT prejudice with leave granted to the plaintiffs to file a third amended complaint.",
+    "source": "District Court of Oregon, Opinion and Order du 2026-03-31 ; The Fashion Law, Cohen Milstein (suivi de dossier)."
+   }
+  ],
+  "note": "A securities class action is ongoing (see items) around the 2021-2023 DTC strategy under former CEO Donahoe, very largely dismissed by the court in March 2026 but not definitively closed. Separately, a distinct consumer suit (alleging failure to refund price increases tied to customs tariffs) exists but falls under ordinary commercial litigation, outside the fraud scope of this section - not recorded here."
+ },
+ "coherenceQualitative": {
+  "asOf": "2026-08-09",
+  "statut": "coherent",
+  "points": [],
+  "historique": [
+   {
+    "quarter": "Q3 FY 26",
+    "date": "2026-03-31",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Lorraine Hutchinson (BofA) - diagnosis of the EMEA underperformance vs North America and the remedy: Friend notes double-digit growth in Running but a declining Sportswear, elevated promotions, Middle East disruption and high inventory; Hill adds that new leadership (Cesar Garcia) is refocusing on performance and a balanced marketplace strategy.",
+     "Q Adrienne Yih (Barclays) - reading of the 'end of calendar year' guidance and the precise definition of 'earnings flattish': Friend specifies that the 9-month guidance gives visibility through to the end of the Win Now plan (end of calendar year 2026), confidence in the trajectory despite a turnaround taking longer than hoped; margin expected to inflect positively in Q2 FY27.",
+     "Q Simeon Siegel (Guggenheim) - health of the DTC margin and the severance share of the 230 M$ charge: Hill stresses the shift from a DTC-first strategy to an integrated marketplace; Friend reports a sequential improvement in North America digital and confirms that the 230 M$ is entirely severance concentrated in Supply Chain/Technology/Converse.",
+     "Q Michael Binetti (Evercore) - Q4 guidance on a reported or currency-neutral basis, EMEA trajectory with the World Cup: Friend confirms guidance on a reported basis, EMEA expected to grow in performance (Running, Training) offset by Sportswear weakness and the already-incorporated Middle East disruption.",
+     "Q Brooke Roach (Goldman Sachs) - scale of the remaining classic-franchise reset by geography, signs of recovery in North America Sportswear: Hill reports a stabilisation of Air Force 1/AJ1 with better full-price realisation, Dunk still to be worked on, and positive launches (AJ11 Gamma, AJ5 Wolf Grey, Air Max 95) - the team is moving from defence to offence in Sportswear.",
+     "Q Brian Nagel (Oppenheimer) - is the longer-than-expected turnaround due to internal or external factors: Hill attributes the delay to both, each geography starting from a different level and marketplace structure; reaffirms the 2-year turnaround timetable, with spring 2027 marking the first quarter benefiting from the reorganised product teams.",
+     "Q Matthew Boss (JPMorgan) - view on global Sportswear, self-inflicted share vs underlying demand in the decline: Hill remains optimistic on the sports industry, with Sportswear still critical through a local approach; Friend details the guidance geography by geography (healthier North America, marketplace clean-up outside the US, sell-in management in China towards a more full-price mix)."
+    ]
+   },
+   {
+    "quarter": "Q4 FY 26",
+    "date": "2026-06-30",
+    "format": "brut",
+    "clesRetenues": [
+     "Q Adrienne Yih (Barclays) - R&D/innovation investment in Sportswear despite the inventory pull-back: Hill answers that the halo comes from performance sport (Running +1 Md$/5 quarters), Sportswear has dedicated teams and will launch more than a dozen new models in H2 FY27, the rebuild will take time.",
+     "Q Bob Drbul (BTIG) - ability to scale NIKE Mind and the 6-18 month innovation pipeline: first wave of products from the 'Sport Offense' teams as early as spring 2027; Running (Peg 42, Aero-FIT in apparel), Football (Mercurial/women's World Cup 2027), Basketball (Caitlin Clark, holiday 2026), Training (NIKE Mind beyond the slide as early as spring 2027).",
+     "Q Matthew Boss (JPMorgan) - Performance vs Sportswear sell-through cadence and the Q1/Q2 FY27 bridge: Hill declines to set an optimal target mix (left to the consumer); Friend explains the Q2 deceleration by a favourable, non-repeatable base effect (elevated EMEA digital promotions and abnormally strong North America wholesale in Q2 FY26).",
+     "Q Lorraine Hutchinson (BofA) - China DTC/digital strategy: Hill reaffirms China as the 2nd largest market worldwide, a plan built on 3 pillars (findability/premiumisation, marketplace clean-up, online/offline elevation) plus a local product creation team delivering holiday 2027; Friend confirms a pick-up in full-price digital after 2 quarters of reduced promotions.",
+     "Q Michael Binetti (Evercore) - wholesale order books by geography and the H2 FY27 Sportswear trajectory: Hill reiterates 'flattish' EPS over the guided 3-quarter window despite a different revenue/margin mix (lower revenue, better gross margin), and defers the detail to the November Investor Day.",
+     "Q Aneesha Sherman (Bernstein) - state of progress of the turnaround (innings) and drivers of the margin inflection excluding operating leverage: Hill confirms the sunset of Win Now by end-2026 (launched December 2024) and the move to 'Sport Offense'; Friend attributes the Q4 margin beat to lower discounts/cancellations in North America and to the first effects of the site/headcount reductions undertaken in Q3-Q4 FY26.",
+     "Q Ike Boruchow (Wells Fargo) - quarters of decline expected for North America wholesale in FY27: Friend specifies that the 10% increase in NA wholesale in Q4 is not a genuine +10% sell-in (effect of lower reserves/returns), and that Q2 FY27 will face a difficult comparison in North America; Hill nonetheless remains very confident on North American momentum (positive Foot Locker relationship for the 1st time in 4 years)."
+    ]
+   }
+  ],
+  "engagementsStructurants": [
+   {
+    "id": "chine_local_product_holiday27",
+    "quarterOrigine": "Q4 FY 26",
+    "engagement": "Local product creation team in China delivering product designed/developed/manufactured locally from the holiday season (holiday) 2027.",
+    "echeance": "2027-Q4",
+    "statut": "en_cours"
+   },
+   {
+    "id": "sport_offense_premiers_produits_printemps27",
+    "quarterOrigine": "Q3 FY 26",
+    "engagement": "First quarter benefiting from the product teams reorganised by sport ('Sport Offense') expected in spring 2027 (2-year turnaround timetable reaffirmed).",
+    "echeance": "2027-Q4",
+    "statut": "confirme"
+   }
+  ]
+ },
+ "hypothese": {
+  "date": "2026-08-19",
+  "source": "Refresh (complete sourcing on the same quarter) - Initial creation 2026-07-10 (Q4 FY2026 transcript 30/06/2026, Elliott Hill/Matt Friend + 10-K FY2025/FY2026 + public research) completed by this session: press release + Q4 FY26 transcript read in full (figures/tables/Q&A), ownership, compliance, coherenceQualitative and quarterlyEPS populated for the first time. No new quarter reported since creation (next: Q1 FY27, 24/09/2026) - data/adjXXX/ancrages not reopened. RETROACTIVE RECOVERY (E2 ter point 1 bis): Q3 FY26 transcript (31/03/2026, Elliott Hill/Matt Friend) located and read after the fact in order to start the coherenceQualitative comparison immediately (no earlier raw entry available in the file before this refresh) - Q3 FY26 Q&A capture flagged as retroactively reconstructed, not a live capture of Q3 FY26.",
+  "priorEPS": {
+   "date": "2026-07-10",
+   "eps": {
+    "2027": 1.76,
+    "2028": 2.38
+   }
+  },
+  "dernierCall": {
+   "quarter": "Q4 FY 26",
+   "communiqueAnalyse": true,
+   "transcriptAnalyse": true,
+   "resultatsVsConsensus": {
+    "ca": {
+     "actual": 10972,
+     "consensus": 10850
+    },
+    "epsAdj": {
+     "actual": 0.2,
+     "consensus": 0.12,
+     "basis": "non-GAAP",
+     "basisNote": "EPS excluding the one-time $986M IEEPA tariff recovery benefit (~$0.52/share), as disclosed by management on the call; reported GAAP diluted EPS was $0.72 (see epsReported)."
+    },
+    "epsReported": {
+     "actual": 0.72,
+     "basis": "GAAP",
+     "period": "Q4 FY 26",
+     "note": "GAAP diluted EPS for the March-May 2026 quarter (Q4 FY26), cross-checked with stockanalysis.com quarterly financials (net income $1,069M on revenue of $10,972M). Includes a one-time $986M benefit (~$0.52/share) from the probable recovery of IEEPA tariffs; excluding this item, underlying EPS was $0.20 vs ~$0.13 consensus."
+    }
+   },
+   "guidanceProchainTrimestre": "Q1 FY27: reported revenue expected down low-to-mid single digits with no FX benefit and currency-neutral trends consistent with recent performance; gross margin expected slightly positive YoY (expansion pulled forward to Q1 from Q2 previously); SG&A dollars flat, with operating overhead declining while demand creation grows high single digits on World Cup investment; FY27 tax rate expected in the low-20% range; tariff assumption: 10% incremental rate through end of July 2026, then 15% thereafter.",
+   "guidanceAnnuelle": "No full-year FY27 guidance (NIKE guides on a rolling multi-quarter window). Over the Q4 FY26-Q2 FY27 window management reiterated flattish earnings excluding the IEEPA tariff recovery benefit, but with a changed composition: revenue now expected down low-to-mid single digits (tightened buys, reduced sell-in to protect marketplace health) offset by earlier gross margin expansion starting in Q1 FY27; Q2 FY27 expected to decelerate sequentially on a multi-point comp headwind (elevated prior-year EMEA digital promotions and North America wholesale shipment timing); Greater China near-term revenue in line with recent trends, with profitability expected to bottom before sales; macro assumptions embed no improvement over the next 6 months.",
+   "pointsCles": [
+    "Q4 FY26 revenue of $10.97B (-1% reported, -4% currency-neutral) beat consensus by ~$120M; reported gross margin of 49.2% (+890bp) included a ~900bp one-time benefit from the $986M IEEPA tariff recovery - underlying gross margin was 40.2%, down only 10bp vs guidance of -25/-75bp, helped by lower discounts, returns and cancellations in North America.",
+    "Geographies diverged: North America grew 3% (wholesale +10%, first quarter of positive NIKE revenue and retail sales comps at Foot Locker in over 4 years) while EMEA fell 6% (off-price down over 50% as digital promotions were slashed, +15pts full-price realization) and Greater China dropped 17% amid a deliberate marketplace clean-up (inventory down double digits, sequential sell-through improvement, House of Innovation Shanghai up double digits).",
+    "Performance business grew mid-single digits in FY26 - Running posted a 5th consecutive quarter of double-digit growth (~$1B of revenue added, +5pts share in statement footwear across Western Europe and North America) and the World Cup delivered 1.5B campaign views in week one plus kit sales at 2.5x the 2022 pace - but Sportswear and Jordan Streetwear (~half of revenue) declined double digits and are guided negative for FY27 with improvement only in H2 (a dozen-plus new Sportswear footwear styles planned).",
+    "Leadership and structure in transition: CFO Matt Friend departs after nearly 18 years, the Win Now recovery plan sunsets by end of calendar 2026 in favor of the Sport Offense (8,000 employees moved into sport verticals), supply-chain restructuring (~$400M FY26 severance, fewer facilities, reworked factory-to-retail flows) is expected to drive FY27 gross margin expansion, and the next strategic phase will be unveiled at the Nov 16-17, 2026 Investor Day."
+   ],
+   "etatsFinanciers": {
+    "analyse": true,
+    "referentiel": "US-GAAP",
+    "source": "Communique T4 FY26 + 10-K (30/06/2026)",
+    "date": "2026-08-19",
+    "note": "Cross-checked: FY26 revenue 46,4 Md$ (flat reported, -2% cc), Q4 11,0 Md$ (-1%), Q4 diluted EPS 0,72$ of which +0,52$ from the expected recovery of IEEPA tariffs, Q4 gross margin 49,2% (+890bp of which ~900bp IEEPA effect - underlying flat). Q4 wholesale +4%, Direct -7%."
+   }
+  },
+  "guidanceHistory": [
+   {
+    "quarter": "Q4 FY 26",
+    "date": "2026-06-30",
+    "fyGuided": 2027,
+    "guidanceAnnuelle": "No quantified full-year FY27 guidance; Q4 FY26-Q2 FY27 window: revenue down a low to mid double-digit %, EPS 'flattish' excluding the IEEPA tariff benefit."
+   }
+  ],
+  "guidanceLongTerme": null,
+  "guidanceLongTermeHistory": [],
+  "quarterlyEPS": {
+   "cadence": "trimestriel",
+   "historique": [],
+   "PY": [
+    {
+     "label": "Q1",
+     "eps": 0.49,
+     "actual": true
+    },
+    {
+     "label": "Q2",
+     "eps": 0.53,
+     "actual": true
+    },
+    {
+     "label": "Q3",
+     "eps": 0.35,
+     "actual": true
+    },
+    {
+     "label": "Q4",
+     "eps": 0.2,
+     "actual": true
+    }
+   ],
+   "CY": [
+    {
+     "label": "Q1",
+     "eps": 0.47,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 0.5,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 0.5,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 0.29,
+     "actual": false
+    }
+   ],
+   "NY": [
+    {
+     "label": "Q1",
+     "eps": 0.64,
+     "actual": false
+    },
+    {
+     "label": "Q2",
+     "eps": 0.68,
+     "actual": false
+    },
+    {
+     "label": "Q3",
+     "eps": 0.68,
+     "actual": false
+    },
+    {
+     "label": "Q4",
+     "eps": 0.38,
+     "actual": false
+    }
+   ]
+  },
+  "summary": "Self-inflicted crisis (2020-2024 DTC pivot under Donahoe) more than a macro shock: 'Win Now' turnaround under way since Oct. 2024 (withdrawal of 2 Md$ of classic franchises, wholesale rebuild, Running growing) but China remains in the 'early stage' and Converse continues to deteriorate; Q4 FY26 is artificially inflated by a one-off benefit of 986 M$ (IEEPA tariff recovery) to be neutralised in the base.",
+  "text": "== THESIS SUMMARY ==\nNike is in its worst cycle since 2008-09: revenue flat ~46bn across two years and net income nearly halved from FY24 - largely SELF-INFLICTED by the 2020-2024 DTC-first strategy that cut wholesale ties (share down from 68% to 56%), gifting shelf space to Hoka, On and New Balance. The thesis is the turnaround: Elliott Hill is rebuilding wholesale, cleaning inventory through a painful discount cycle, and re-centering on sport categories. FY27 is modeled as the trough (EPS 1.76, on consensus), with the operating-leverage recovery carrying EPS to ~4.00 by FY31.\n\n== THESIS READ ==\n- The window guidance (revenue down low-to-mid teens, EPS flattish ex-IEEPA through Q2 FY27) confirms the trough is being taken now, deliberately. Watch: wholesale order-book commentary - the earliest recovery indicator.\n- The recovery math is margin-led (EBIT 6.6% FY27 -> 12% FY31), not revenue-led (+4%/yr only) - conservative on the top line by design. Watch: gross-margin inflection as clean inventory meets restored full-price sell-through.\n- IEEPA tariff refunds are retreated from the base (documented) - reported prints will look better than the underlying. Watch: separating tariff benefit from operating recovery in each print.\n\n== SPECIAL FACTORS ==\nFiscal year ends MAY: 'data' FY26 = year ended May 2026; horizon FY27-FY31. Base retreated of IEEPA tariff one-offs. Knight family: ~19% economic / ~97% of Class A votes; Fundsmith fully exited in Q1 2026. No FY guidance exists - consensus-anchored scorecard by necessity.\n\n== PARAMETERS & WATCH-LIST ==\nFY27: revenue 46.3bn (flat), EBIT 3,064M (6.6%), EPS 1.76 (consensus-aligned trough); FY28-FY31: revenue +4%/yr, EBIT margin rebuilding to ~12%, ETR 18% normative, shares -1.4%/yr (moderate buybacks), net cash growing. Watch: Q1 FY27 (Sept) wholesale trajectory; China; running-category share data vs Hoka/On.\n\n== CATALYSTS ==\nQ1 FY27 (late Sept); holiday FY27 sell-through; wholesale re-engagement milestones; World Cup 2026 marketing cycle.",
+  "impact": "neutre",
+  "ancrages": [
+   {
+    "id": "guidance_q1_fy27",
+    "moteur": "Official Q1 FY27 guidance (revenue down a low/mid double-digit %, gross margin slightly positive YoY, tariff assumption 10% then 15%), extrapolated to the full year taking account of the wholesale and Running acceleration already visible in Q4 FY26.",
+    "applique": [
+     "omniumCA.2027"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "consensus_eps_fy27_fy28",
+    "moteur": "Zacks consensus on an ADJUSTED basis (excluding non-recurring items, hence excluding the 0.52$/share IEEPA benefit that inflated Q4 FY26): FY27 EPS 1.76$ (+11.4% vs adjusted FY26 base ~1.58$), FY28 EPS 2.38$ (+35.5%). Used as a direct EPS anchor rather than a revenue->EBIT->Net retrofit, given the scale of the uncertainties around the turnaround timetable. ERROR CORRECTED on 10/07/2026: the first version of this file mistakenly applied the consensus growth rate to the REPORTED GAAP base (2.10$, including the IEEPA benefit), which produced an FY27 EPS overstated by +36% (2.39$ instead of 1.76$).",
+    "applique": [
+     "omniumEPS.2027",
+     "omniumEPS.2028",
+     "omniumNet.2027",
+     "omniumNet.2028"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "deceleration_fy29_fy31",
+    "moteur": "FY29 anchored on the WallStreetZen consensus (3.09$, +29.8% vs FY28), then extrapolation of a gradual deceleration in the EPS growth rate (+16% FY30, +11% FY31) beyond the dense consensus horizon (FY27-29), through a gradual return towards Nike's historical growth algorithm outside crisis periods - materially lower confidence for want of a specific source beyond FY29.",
+    "applique": [
+     "omniumEPS.2029",
+     "omniumEPS.2030",
+     "omniumEPS.2031",
+     "omniumNet.2029",
+     "omniumNet.2030",
+     "omniumNet.2031"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "levier_operationnel_redressement",
+    "moteur": "Recovery in the EBIT margin from the depressed FY26 level (~8% excluding the IEEPA benefit) towards a level close to FY24 (~12-13%) by FY29-31, as tariff mitigation is completed and the classic-franchise reset is fully digested in the comparison base - without a return to the FY22 peak (14.7%), given the structural tariff cost overrun and a higher level of competitive intensity.",
+    "applique": [
+     "omniumEBIT.2027",
+     "omniumEBIT.2028",
+     "omniumEBIT.2029",
+     "omniumEBIT.2030",
+     "omniumEBIT.2031"
+    ],
+    "confiance": "basse"
+   },
+   {
+    "id": "etr_normatif",
+    "moteur": "Normative tax rate of 18%, in the middle of the recent effective range (14.9% FY24 - 20% FY25/Q3FY26), carried forward for simplicity across the whole projection horizon.",
+    "applique": [
+     "omniumNet.2027",
+     "omniumNet.2028",
+     "omniumNet.2029",
+     "omniumNet.2030",
+     "omniumNet.2031"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "rachat_actions_modere",
+    "moteur": "Continuation of a moderate buyback pace (~-1.4%/yr less dilution), consistent with the pace observed over FY24-FY26 despite the priority given to the operational turnaround rather than to aggressive capital returns.",
+    "applique": [
+     "omniumShares.2027",
+     "omniumShares.2028",
+     "omniumShares.2029",
+     "omniumShares.2030",
+     "omniumShares.2031"
+    ],
+    "confiance": "moyenne"
+   },
+   {
+    "id": "ieepa_one_off_exclu",
+    "moteur": "The one-off benefit of 986 M$ (of which 0.52$/share in Q4 FY26) tied to the recovery of IEEPA tariffs is a one-off explicitly quantified by management, adjusted in accordance with E5 d-bis. GROSS REPORTED FIGURES (traced here for audit): EBIT ~3 840 M$, Net 3 113 M$, diluted EPS 2.10$/share. ADJUSTMENT applied DIRECTLY IN `data.2026` (and no longer only in the projection base): EBIT 3 840 - 986 (gross margin benefit) = 2 854 M$; Net 3 113 - 771 (net-of-tax effect, derived from 0.52$/share x 1 482 M shares) = 2 342 M$; adjusted EPS 2 342/1 482 = 1.58$. It is this 1.58$ base that serves as the starting point for FY27 growth (omniumEPS.2027 = 1.76$, i.e. +11.4% vs 1.58$) - and which will also feed the engine's automatic CAGR calculation at future refreshes, without contamination by this one-off.",
+    "applique": [
+     "omniumNet.2027",
+     "omniumEPS.2027"
+    ],
+    "confiance": "haute"
+   }
+  ],
+  "omniumEPS": {
+   "2027": 1.76,
+   "2028": 2.38,
+   "2029": 3.09,
+   "2030": 3.6,
+   "2031": 4.0
+  },
+  "omniumCA": {
+   "2027": 46320,
+   "2028": 48220,
+   "2029": 50631,
+   "2030": 52910,
+   "2031": 55026
+  },
+  "omniumEBIT": {
+   "2027": 3064,
+   "2028": 4094,
+   "2029": 5249,
+   "2030": 6028,
+   "2031": 6596
+  },
+  "omniumNet": {
+   "2027": 2578,
+   "2028": 3439,
+   "2029": 4403,
+   "2030": 5058,
+   "2031": 5540
+  },
+  "omniumND": {
+   "2027": -1100,
+   "2028": -1500,
+   "2029": -2100,
+   "2030": -2800,
+   "2031": -3700
+  },
+  "omniumShares": {
+   "2027": 1465,
+   "2028": 1445,
+   "2029": 1425,
+   "2030": 1405,
+   "2031": 1385
+  },
+  "bridge": {
+   "2026": {
+    "finNet": 2,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 2342.0,
+    "netPub": 2342,
+    "residual": 0,
+    "residualNote": "Published FY26 (ended May 2026, IEEPA-retreated base) reconciles cleanly at the 18% normative ETR with a near-zero net financial result (interest income on the modest net cash offsetting charges)."
+   },
+   "2027": {
+    "finNet": 80,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 2578.1
+   },
+   "2028": {
+    "finNet": 100,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 3439.1
+   },
+   "2029": {
+    "finNet": 120,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 4402.6
+   },
+   "2030": {
+    "finNet": 140,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 5057.8
+   },
+   "2031": {
+    "finNet": 160,
+    "other": 0,
+    "taxRate": 0.18,
+    "minorities": 0,
+    "netCalc": 5539.9
+   }
+  },
+  "guidanceScorecard": {
+   "cadence": "annual",
+   "metric": "EPS via consensus (Nike guides only a rolling short window, no FY frame)",
+   "comparedAgainst": "consensus",
+   "basisAligned": true,
+   "basisNote": null,
+   "timeline": [
+    {
+     "date": "2026-06-30",
+     "type": "guidance_revision",
+     "detail": "Q4 FY26 report: no FY27 frame; Q4 FY26-Q2 FY27 window guided revenue down low-to-mid teens, EPS flattish ex-IEEPA."
+    }
+   ],
+   "paceCheckpoint": "FY26 closed at the trough: revenue 46.4bn flat, net income nearly halved vs FY24 - the wholesale-repair strategy (Elliott Hill) is in its investment phase.",
+   "weightedBeatPct": null,
+   "annualBeatPct": null,
+   "annualBeatHistory": [
+    {
+     "fy": 2025,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Searched 19/08/2026: Nike guides only a rolling short window (quarter by quarter), never a full fiscal-year frame - FY25 (May-2025 close) has no initial annual anchor to measure - excluded structurally."
+    },
+    {
+     "fy": 2024,
+     "beatPct": null,
+     "source": "initial_guidance",
+     "excluded": true,
+     "note": "Same structural limitation for FY24 (May-2024 close): window guidance only."
+    }
+   ],
+   "anchorInitial": {
+    "fy": 2027,
+    "value": 1.76,
+    "source": "initial_consensus",
+    "date": "2026-07-10",
+    "note": "Nike gives no full-year guidance (window guidance only: Q4 FY26-Q2 FY27 revenue down low-to-mid teens %, EPS 'flattish' ex-IEEPA tariff benefit) - the anchor is the FY27 consensus at the earliest archived snapshot (10/07, Zacks). Omnium FY27 EPS deliberately equals it (trough year of the turnaround)."
+   },
+   "appliedToProjection": false,
+   "applicationNote": "No measurable fiscal year: window-only guider. The FY27 consensus anchor (1.76, 10/07/2026) starts the archive - first verdict at the FY27 close (May 2027).",
+   "consensusSource": "Zacks Consensus (Yahoo Finance)",
+   "consensusDate": "2026-07-10",
+   "inProgress": null
+  },
+  "revisionEvent": {
+   "date": "2026-06-30",
+   "label": "Q4 FY 26",
+   "type": "earnings"
+  }
+ },
+ "epsConsensusHistory": [
+  {
+   "year": 2027,
+   "eps": 1.76,
+   "epsNY": 2.38,
+   "date": "2026-07-10",
+   "source": "Zacks Consensus Estimate (Yahoo Finance): FY27 EPS 1.76$ (+11.4% vs ADJUSTED FY26 base ~1.58$, excluding the 0.52$/share IEEPA benefit - Zacks explicitly states that its figures are 'adjusted for non-recurring items'), FY28 EPS 2.38$ (+35.5%). Cross-checked against LSEG (FY27 1.84$, +22%) and WallStreetZen (FY27 1.88$, FY28 2.45$, FY29 3.09$)."
+  }
+ ],
+ "externalActuals": {
+  "source": "MarketScreener/Zonebourse (data adjusted to the current scope, weighted average shares)",
+  "date": "2026-08-20",
+  "eps": {
+   "2022": 3.75,
+   "2023": 3.23,
+   "2024": 3.73,
+   "2025": 2.16,
+   "2026": 2.1
+  }
+ }
 }
