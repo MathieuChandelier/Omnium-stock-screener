@@ -379,6 +379,7 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
 
     lignes = {}
     formules = []
+    cellules = []   # (label, ligne, [formule par annee]) pour le bloc miroir
 
     def ligne(label, base_val, formule, cle_moteur, fmt="#,##0.0", nom=None, gras=False, symbole=None):
         nonlocal r
@@ -404,6 +405,7 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
                 c.font = SMALL
                 c.number_format = fmt
         lignes[label] = r
+        cellules.append((label, r, [ws.cell(row=r, column=3 + i).value for i in range(len(horizon))]))
         if symbole:
             an1 = horizon[0]
             formules.append((label, symbole, ws.cell(row=r, column=3).value))
@@ -506,6 +508,34 @@ def _construire_modele(wb, inp, proj, pub, bil0, an0, horizon):
             if str(p[cle]) == "guidance":
                 c.fill = PatternFill("solid", fgColor="E6FAF8")
         r += 1
+    # ── BLOC MIROIR ────────────────────────────────────────────────────
+    # Excel affiche la VALEUR d'une cellule, jamais sa formule : il faut
+    # cliquer dedans, ou basculer toute la feuille en mode formules
+    # (Ctrl+` / Cmd+`). Pour qu'on puisse lire ce a quoi une cellule fait
+    # reference sans manipulation, les memes lignes sont reprises ici avec
+    # leur formule EN TEXTE, aux memes colonnes d'annees.
+    r += 1
+    r = _titre(ws, r, "LES MEMES CELLULES, EN FORMULES — ce a quoi chaque chiffre fait reference", 3 + len(horizon))
+    ws.cell(row=r, column=1, value="ligne").font = LBLB
+    ws.cell(row=r, column=2, value="cellule").font = LBLB
+    for i, an in enumerate(horizon):
+        c = ws.cell(row=r, column=3 + i, value=an)
+        c.font = LBLB
+        c.fill = FILL_L
+    ws.cell(row=r, column=1).fill = FILL_L
+    ws.cell(row=r, column=2).fill = FILL_L
+    r += 1
+    for label, ligne_src, formules_an in cellules:
+        ws.cell(row=r, column=1, value=label.strip()).font = LBL
+        ws.cell(row=r, column=2, value="ligne %d" % ligne_src).font = SMALL
+        for i, f in enumerate(formules_an):
+            c = ws.cell(row=r, column=3 + i,
+                        value=(f if isinstance(f, str) and f.startswith("=") else
+                               ("valeur posee : %s" % f if f is not None else "")))
+            c.font = SMALL
+            c.alignment = Alignment(horizontal="left")
+        r += 1
+
     ws.freeze_panes = ws.cell(row=entete + 1, column=3)
     _feuille_formules(wb, formules, horizon)
     return lignes
