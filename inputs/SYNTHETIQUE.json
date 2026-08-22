@@ -1,0 +1,114 @@
+{
+  "_doc": "Cas synthetique v1. Chiffres fictifs mais coherents, choisis pour exercer TOUTES les fonctions du moteur : echelle publiee complete, retraitements des deux classes et des deux origines, echeancier PPA d'une acquisition, cascade du resultat financier par rang, taux d'impot guide qui PERIME, trajectoire d'actions, regle terminale, devise de reporting != devise de cotation.",
+  "identite": {
+    "nom": "Synthetique SA",
+    "reportingCurrency": "EUR",
+    "quoteCurrency": "EUR",
+    "cours": 84.0,
+    "coursAsOf": "2026-08-22",
+    "issuerType": "corporate",
+    "base": "IFRS"
+  },
+
+  "comptes": {
+    "2025-FY": {
+      "base": "IFRS",
+      "source": "Communique annuel fictif du 20/02/2026",
+      "publie": {
+        "ca": 1000.0, "margeBrute": 620.0, "ebitda": 250.0, "da": -90.0,
+        "ebit": 160.0, "finNet": -20.0, "avantImpot": 140.0,
+        "impot": -35.0, "minoritaires": -5.0, "net": 100.0
+      },
+      "ajustePublie": { "ebitda": 262.0, "ebit": 202.0, "net": 131.0 },
+      "retraitements": [
+        { "id": "restructuration-2025", "libelle": "One-off restructuring costs",
+          "ebitda": 12.0, "ebit": 12.0, "net": 12.0, "classe": "oneOff", "origine": "emetteur" },
+        { "id": "alpha-ppa-amort", "libelle": "Amortisation of intangibles from the Alpha PPA",
+          "ebitda": 0.0, "ebit": 30.0, "net": 30.0, "classe": "recurrent", "origine": "emetteur" },
+        { "id": "alpha-dette-interets", "libelle": "Interest on the Alpha acquisition debt",
+          "ebitda": 0.0, "ebit": 0.0, "net": 6.0, "classe": "recurrent", "origine": "emetteur" }
+      ],
+      "impotSurRetraitements": -17.0
+    }
+  },
+
+  "bilan": {
+    "2025-FY": {
+      "debtGross": 520.0, "cash": 120.0, "leaseDebt": 60.0,
+      "source": "Bilan consolide fictif au 31/12/2025"
+    }
+  },
+
+  "actions": { "2025": 50.0 },
+
+  "ppa": {
+    "_doc": "Une ligne par acquisition, comme l'emetteur la nomme. L'echeancier publie prime ; a defaut on projette la serie observee.",
+    "alpha": {
+      "libelle": "Acquisition Alpha (closing 2024)",
+      "degre": "echeancier_publie",
+      "echeancier": { "2026": 30.0, "2027": 28.0, "2028": 24.0, "2029": 18.0, "2030": 10.0 },
+      "source": "Note incorporels du rapport annuel fictif 2025"
+    }
+  },
+
+  "hypotheses": {
+    "horizon": [2026, 2027, 2028, 2029, 2030],
+
+    "croissanceCA": {
+      "2026": { "valeur": 0.070, "rang": "guidance", "expire": 2026,
+                "moteur": "Guidance FY26 : croissance organique +6 a +8 %, milieu retenu", "source": "Call FY2025 du 20/02/2026" },
+      "2027": { "valeur": 0.060, "rang": "normatif", "moteur": "Convergence vers la croissance de marche" },
+      "2028": { "valeur": 0.055, "rang": "normatif", "moteur": "Convergence vers la croissance de marche" },
+      "2029": { "valeur": 0.050, "rang": "normatif", "moteur": "Convergence vers la croissance de marche" },
+      "2030": { "valeur": 0.045, "rang": "normatif", "moteur": "Convergence vers la croissance de marche" }
+    },
+
+    "margeEbitda": {
+      "2026": { "valeur": 0.262, "rang": "guidance", "expire": 2026,
+                "moteur": "Guidance FY26 : marge d'EBITDA ajustee 26 a 26,5 %", "source": "Call FY2025 du 20/02/2026" },
+      "2027": { "valeur": 0.268, "rang": "implicite", "moteur": "Objectif CMD : marge > 28 % a horizon 2030, chemin lineaire" },
+      "2028": { "valeur": 0.274, "rang": "implicite", "moteur": "Objectif CMD : marge > 28 % a horizon 2030, chemin lineaire" },
+      "2029": { "valeur": 0.280, "rang": "implicite", "moteur": "Objectif CMD : marge > 28 % a horizon 2030, chemin lineaire" },
+      "2030": { "valeur": 0.285, "rang": "implicite", "moteur": "Objectif CMD : marge > 28 % a horizon 2030, chemin lineaire" }
+    },
+
+    "capexSurCA": { "valeur": 0.060, "moteur": "Ratio de capex normatif, moyenne des 3 derniers exercices" },
+    "dureeAmortissement": { "valeur": 8.0, "moteur": "Duree implicite = immobilisations brutes / dotation courante" },
+
+    "tauxImpot": {
+      "2026": { "valeur": 0.240, "rang": "guidance", "expire": 2026,
+                "moteur": "Taux effectif guide 23-25 % pour FY26", "source": "Call FY2025 du 20/02/2026" },
+      "defaut": { "valeur": 0.255, "rang": "normatif",
+                  "moteur": "Taux effectif observe nettoye des elements discrets, moyenne 3 ans" }
+    },
+
+    "resultatFinancier": {
+      "rang": 2,
+      "tauxDetteBrute": 0.042,
+      "tauxPlacementCash": 0.020,
+      "tauxLease": 0.035,
+      "moteur": "Rang 2 : taux applique aux postes de bilan decomposes, faute de detail publie par instrument"
+    },
+
+    "actions": {
+      "rachatAnnuelPct": 0.015,
+      "rang": "guidance", "expire": 2026,
+      "moteur": "Programme de rachat annonce, ~1,5 % du capital par an"
+    },
+
+    "distribution": {
+      "tauxDistribution": 0.30,
+      "moteur": "Politique de dividende annoncee : 30 % du resultat net"
+    },
+
+    "regleTerminale": {
+      "croissanceTerminale": 0.030,
+      "margeTerminale": 0.285,
+      "moteur": "Au-dela de la derniere annee posee, croissance et marge convergent vers ces valeurs"
+    }
+  },
+
+  "overrides": {
+    "_doc": "Echappatoire DECLAREE : une valeur imposee ici remplace le calcul du moteur, et exige une justification. Elle apparait telle quelle dans les controles."
+  }
+}
