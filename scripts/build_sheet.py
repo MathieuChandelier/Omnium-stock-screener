@@ -503,14 +503,41 @@ def _construire_controles(wb, proj, horizon, lignes):
 
 
 def main():
+    """--all genere une feuille par jeu d'entrees ; sinon un seul titre.
+
+    Le classeur est une SORTIE de build, jamais une source : une correction se
+    porte dans inputs/ (un moteur) ou dans engine/ (une formule), jamais dans
+    la feuille - une modification faite dans Excel serait perdue au build
+    suivant. C'est ce qui garantit qu'il n'existe qu'une seule version du
+    modele.
+    """
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    dossier = "artifacts"
+    if "-o" in sys.argv:
+        dossier = None
+
+    if "--all" in sys.argv:
+        sources = sorted(
+            os.path.join("inputs", f) for f in os.listdir("inputs") if f.endswith(".json"))
+        if not sources:
+            print("aucun jeu d'entrees dans inputs/")
+            return 2
+        os.makedirs(dossier, exist_ok=True)
+        for src in sources:
+            nom = os.path.basename(src).replace(".json", "")
+            out = os.path.join(dossier, nom + ".xlsx")
+            inp = json.load(open(src, encoding="utf-8"))
+            emp, n = construire(inp, out)
+            print("  %-22s %d annees  empreinte %s" % (nom + ".xlsx", n, emp))
+        print("%d feuille(s) — moteur v%s" % (len(sources), ENGINE_VERSION))
+        return 0
+
     if not args:
         print(__doc__)
         return 2
     src = args[0]
-    out = "artifacts/%s.xlsx" % os.path.basename(src).replace(".json", "")
-    if "-o" in sys.argv:
-        out = sys.argv[sys.argv.index("-o") + 1]
+    out = ("%s/%s.xlsx" % (dossier, os.path.basename(src).replace(".json", ""))
+           if dossier else sys.argv[sys.argv.index("-o") + 1])
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     inp = json.load(open(src, encoding="utf-8"))
     emp, n = construire(inp, out)
