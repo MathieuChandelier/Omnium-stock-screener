@@ -2,5 +2,13 @@
 # generes, jamais versionnes
 __pycache__/
 *.pyc
-artifacts/
+# Les classeurs des VRAIS tickers restent hors du depot : 59 binaires que git
+# ne sait pas diffuser, regeneres a chaque changement de moteur.
+artifacts/*
+# Les cas SYNTHETIQUES, eux, sont verses : ils sont trois, ils sont petits, et
+# ils doivent etre consultables depuis n'importe quelle machine. Leur
+# reproductibilite a l'octet garantit qu'ils ne bougent que si le modele bouge.
+!artifacts/SIMPLE.xlsx
+!artifacts/COMPLEXE.xlsx
+!artifacts/SYNTHETIQUE.xlsx
 
